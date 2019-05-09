@@ -34,7 +34,32 @@
   </url>
   
   <url>
+    <loc>http://luochang212.github.io/portfolio/7/</loc>
+    <lastmod>2019-05-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/portfolio/5/</loc>
+    <lastmod>2019-05-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/portfolio/8/</loc>
+    <lastmod>2019-05-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://luochang212.github.io/portfolio/</loc>
+    <lastmod>2019-05-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/portfolio/4/</loc>
+    <lastmod>2019-05-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/portfolio/6/</loc>
     <lastmod>2019-05-09T00:00:00+00:00</lastmod>
   </url>
   
@@ -109,13 +134,13 @@
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/categories/jupyter-notebook/</loc>
+    <loc>http://luochang212.github.io/tags/jupyter-notebook/</loc>
     <lastmod>2019-04-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/tags/jupyter-notebook/</loc>
+    <loc>http://luochang212.github.io/categories/jupyter-notebook/</loc>
     <lastmod>2019-04-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
