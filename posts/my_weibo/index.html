@@ -22,11 +22,11 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="我的微博数据可视化"/>
-<meta name="twitter:description" content="本项目出于隐私考虑，不附数据，所以并不能运行,只是一个demo罢了。
+<meta name="twitter:description" content="本项目出于隐私考虑，不附数据，所以并不能运行，只是一个demo罢了。
  GitHub项目地址 https://github."/>
 
 <meta property="og:title" content="我的微博数据可视化" />
-<meta property="og:description" content="本项目出于隐私考虑，不附数据，所以并不能运行,只是一个demo罢了。
+<meta property="og:description" content="本项目出于隐私考虑，不附数据，所以并不能运行，只是一个demo罢了。
  GitHub项目地址 https://github." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/my_weibo/" />
@@ -221,7 +221,7 @@
     
 
 <blockquote>
-<p>本项目出于隐私考虑，不附数据，所以并不能运行,只是一个demo罢了。</p>
+<p>本项目出于隐私考虑，不附数据，所以并不能运行，只是一个demo罢了。</p>
 </blockquote>
 
 <h2 id="github项目地址">GitHub项目地址</h2>
@@ -232,21 +232,21 @@
 
 <h3 id="文本获取">文本获取</h3>
 
-<p>因为新浪微博严防死打，现如今微博的数据越来越不好爬。Github上的爬虫生存周期通常都很短，使爬取数据的成本大大增加。但是万变不离其宗，最笨的方式常常是最有效的。这里我用的是微博@失眠狸 同学的方法，用鼠标精灵写了个插件，控制快捷键和页面拖动，把内容从浏览器上粘贴到sublime里。</p>
+<p>因为新浪微博严防死打，现如今微博的数据越来越不好爬。Github上的微博爬虫生存周期通常都很短，使爬取数据的成本大大增加。但是万变不离其宗，最笨的方式常常是最有效的。这里我用的是微博@失眠狸 同学的方法，用鼠标精灵写了个插件，控制快捷键和页面拖动，把内容从浏览器上粘贴到sublime里。</p>
 
 <h3 id="生成csv文件">生成csv文件</h3>
 
-<p>获取原始数据，下一步我们要把数据归一化，做成电脑方便处理的数据。一个简单有效的方法就是将数据整理成csv格式。</p>
+<p>有了原始数据，接下来我们要把数据归一化，做成方便处理的数据。一个常用的方法就是将数据整理成csv文件。</p>
 
 <p>第一步，先将原始文件按字段进行分割。根据原数据，我划分了五个字段: id, date, time, device, content, 它们分别记录本条微博的文件位置、发布日期、发布时间、发送设备和文本内容。</p>
 
-<p>构思完数据结构之后，我们利用python对字符串的强大支持，可以快速分割文本。首先用split函数粗略划分，再用find函数进一步定位到索引，细分文本。接着用各字段分别接收内容，再依次存入csv中，整理数据的工作就完成啦。</p>
+<p>设计完数据结构之后，我们先用split函数对原数据进行粗略划分，再用find函数进一步定位到精确位置。接着提取各字段内容，再依次存入csv。整理数据的工作就完成啦。</p>
 
 <h3 id="可视化微博数据">可视化微博数据</h3>
 
-<p>有了csv文件，可视化数据就很方便了。此时我从PyCharm平台换到jupyter notebook工作，因为相比PyCharm， ipynb可以制作的各式各样的可视化图表和窗口小工具(widget),更适合于数据科学工作。至于工具包，这里我要强烈推荐数据分析工具pandas和可视化工具seaborn, 他们分别有强大的数据处理功能和快速定制的可视化体验，是我的不二之选。</p>
+<p>有了csv文件，可视化数据就很方便了。此时我从PyCharm平台换到jupyter notebook工作，因为相较于PyCharm, ipynb可以制作的各式各样的可视化图表和窗口小工具(widget), 更适合于数据科学工作。至于工具包，这里我选择了数据分析工具pandas和可视化工具seaborn.</p>
 
-<p>好了，废话少说，我们进入分析流程。</p>
+<p>好了，废话少说，让我们进入分析流程。</p>
 
 <p><strong>首先是需求分析，我的目标如下:</strong></p>
 
