@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>math on Chang Luo</title>
+    <link>https://zhaoxizhi.github.io/categories/math/</link>
+    <description>Recent content in math on Chang Luo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 16 Mar 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://zhaoxizhi.github.io/categories/math/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>用Python解置换群问题</title>
+      <link>https://zhaoxizhi.github.io/posts/python_math_problem/</link>
+      <pubDate>Sat, 16 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://zhaoxizhi.github.io/posts/python_math_problem/</guid>
+      <description>室友问我题目，把我难住了。
+想不出解法，遂写了个程序暴力求解。
+题目如下
+A permutation is applied to the string SUPERBGOLDHAT.</description>
+    </item>
+    
+  </channel>
+</rss>
