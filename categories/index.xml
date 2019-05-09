@@ -2,48 +2,48 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Chang Luo</title>
-    <link>https://zhaoxizhi.github.io/categories/</link>
+    <link>https://luochang212.github.io/categories/</link>
     <description>Recent content in Categories on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 03 May 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://zhaoxizhi.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://luochang212.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Development</title>
-      <link>https://zhaoxizhi.github.io/categories/development/</link>
+      <link>https://luochang212.github.io/categories/development/</link>
       <pubDate>Fri, 03 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://zhaoxizhi.github.io/categories/development/</guid>
+      <guid>https://luochang212.github.io/categories/development/</guid>
       <description></description>
     </item>
     
     <item>
       <title>PyCharm</title>
-      <link>https://zhaoxizhi.github.io/categories/pycharm/</link>
+      <link>https://luochang212.github.io/categories/pycharm/</link>
       <pubDate>Fri, 03 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://zhaoxizhi.github.io/categories/pycharm/</guid>
+      <guid>https://luochang212.github.io/categories/pycharm/</guid>
       <description></description>
     </item>
     
     <item>
       <title>jupyter notebook</title>
-      <link>https://zhaoxizhi.github.io/categories/jupyter-notebook/</link>
+      <link>https://luochang212.github.io/categories/jupyter-notebook/</link>
       <pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://zhaoxizhi.github.io/categories/jupyter-notebook/</guid>
+      <guid>https://luochang212.github.io/categories/jupyter-notebook/</guid>
       <description></description>
     </item>
     
     <item>
       <title>math</title>
-      <link>https://zhaoxizhi.github.io/categories/math/</link>
+      <link>https://luochang212.github.io/categories/math/</link>
       <pubDate>Sat, 16 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://zhaoxizhi.github.io/categories/math/</guid>
+      <guid>https://luochang212.github.io/categories/math/</guid>
       <description></description>
     </item>
     

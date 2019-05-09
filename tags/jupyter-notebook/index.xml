@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>jupyter notebook on Chang Luo</title>
-    <link>https://zhaoxizhi.github.io/tags/jupyter-notebook/</link>
+    <link>https://luochang212.github.io/tags/jupyter-notebook/</link>
     <description>Recent content in jupyter notebook on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 20 Apr 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://zhaoxizhi.github.io/tags/jupyter-notebook/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://luochang212.github.io/tags/jupyter-notebook/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>我的微博数据可视化</title>
-      <link>https://zhaoxizhi.github.io/posts/my_weibo/</link>
+      <link>https://luochang212.github.io/posts/my_weibo/</link>
       <pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://zhaoxizhi.github.io/posts/my_weibo/</guid>
+      <guid>https://luochang212.github.io/posts/my_weibo/</guid>
       <description>GitHub项目地址 https://github.com/luochang212/weibo_analysis
 这次的数据用的是本科期间就已经爬好，丢在硬盘里的数据。但因为raw data里夹杂着大量和博文无关的字符，当时没有足够的编程技巧处理数据，这一丢就是两年。现在，本python初丁趁着还有机会摸鱼，赶紧把数据翻出来，让它们发光发热。</description>
     </item>
     
     <item>
       <title>用Jupyter notebook规划旅行路线</title>
-      <link>https://zhaoxizhi.github.io/posts/tsp_route/</link>
+      <link>https://luochang212.github.io/posts/tsp_route/</link>
       <pubDate>Wed, 10 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://zhaoxizhi.github.io/posts/tsp_route/</guid>
+      <guid>https://luochang212.github.io/posts/tsp_route/</guid>
       <description>GitHub项目地址 https://github.com/luochang212/tsp_route
 对于在欧洲的小伙伴们，复活节假在这一周就正式开始啦。大家打算怎么计划自己的旅行呢？
 身为一个拖延患者，我通常会拖到出发前的最后一个晚上，花上半小时，在网上搜索当地感兴趣的景点 (POI), 然后在Google Maps上为它们点上小星星，以免和它们插肩而过。</description>
