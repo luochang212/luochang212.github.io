@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "print.css",
-	"sourceRoot": "D:/software/Hugo/Sites/zhaoxizhi.github.io-hugo",
+	"sourceRoot": "D:/software/Hugo/Sites/luochang212.io",
 	"sources": [
 		"themes/hyde-hyde/assets/scss/print.scss",
 		"themes/hyde-hyde/assets/scss/hyde-hyde/_variables.scss",
