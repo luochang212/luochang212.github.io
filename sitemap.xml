@@ -23,13 +23,23 @@
   </url>
   
   <url>
-    <loc>https://luochang212.github.io/categories/</loc>
-    <lastmod>2019-05-03T00:00:00+00:00</lastmod>
+    <loc>https://luochang212.github.io/</loc>
+    <lastmod>2019-05-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luochang212.github.io/</loc>
+    <loc>https://luochang212.github.io/portfolio/</loc>
+    <lastmod>2019-05-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://luochang212.github.io/portfolio/dera/</loc>
+    <lastmod>2019-05-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://luochang212.github.io/categories/</loc>
     <lastmod>2019-05-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -134,6 +144,16 @@
     <loc>https://luochang212.github.io/tags/permutation/</loc>
     <lastmod>2019-03-16T00:00:00+00:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://luochang212.github.io/portfolio/hyde-hyde/</loc>
+    <lastmod>2018-01-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://luochang212.github.io/portfolio/laramod/</loc>
+    <lastmod>2018-01-19T00:00:00+00:00</lastmod>
   </url>
   
   <url>
