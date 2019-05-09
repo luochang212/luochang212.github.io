@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>permutation on Chang Luo</title>
-    <link>https://luochang212.github.io/tags/permutation/</link>
+    <link>http://luochang212.github.io/tags/permutation/</link>
     <description>Recent content in permutation on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 16 Mar 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://luochang212.github.io/tags/permutation/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://luochang212.github.io/tags/permutation/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>用Python解置换群问题</title>
-      <link>https://luochang212.github.io/posts/python_math_problem/</link>
+      <link>http://luochang212.github.io/posts/python_math_problem/</link>
       <pubDate>Sat, 16 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/posts/python_math_problem/</guid>
+      <guid>http://luochang212.github.io/posts/python_math_problem/</guid>
       <description>室友问我题目，把我难住了。
 想不出解法，遂写了个程序暴力求解。
 题目如下
