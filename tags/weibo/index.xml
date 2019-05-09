@@ -17,8 +17,8 @@
       <pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/my_weibo/</guid>
-      <description>GitHub项目地址 https://github.com/luochang212/weibo_analysis
-这次的数据用的是本科期间就已经爬好，丢在硬盘里的数据。但因为raw data里夹杂着大量和博文无关的字符，当时没有足够的编程技巧处理数据，这一丢就是两年。现在，本python初丁趁着还有机会摸鱼，赶紧把数据翻出来，让它们发光发热。</description>
+      <description>本项目出于隐私考虑，不附数据，所以并不能运行,只是一个demo罢了。
+ GitHub项目地址 https://github.</description>
     </item>
     
   </channel>

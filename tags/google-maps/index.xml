@@ -17,9 +17,8 @@
       <pubDate>Wed, 10 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/tsp_route/</guid>
-      <description>GitHub项目地址 https://github.com/luochang212/tsp_route
-对于在欧洲的小伙伴们，复活节假在这一周就正式开始啦。大家打算怎么计划自己的旅行呢？
-身为一个拖延患者，我通常会拖到出发前的最后一个晚上，花上半小时，在网上搜索当地感兴趣的景点 (POI), 然后在Google Maps上为它们点上小星星，以免和它们插肩而过。</description>
+      <description>这是一个路线计算和可视化项目，它始于我在布里斯托的旅途。当时我想要一个能帮我设计旅行路线的工具，但我在主流APP里却找不到这项功能。于是抵达布里斯托的下午，我干脆就在青旅楼下的咖啡厅里写了起来。其实这只是一个很简单的小程序，但我觉得很实用，希望它能帮到你。
+ GitHub项目地址 https://github.</description>
     </item>
     
   </channel>
