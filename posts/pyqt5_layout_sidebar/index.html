@@ -258,9 +258,9 @@
 <p>但PyQt5并没有一个专门的方法实现侧边栏。要实现侧边栏，主要有两种技术路线。一是用标签部件(QTabWidget)改造而来，二是用网格布局(QGridLayout)画出来。本文采用第一种技术路线，制作一个简单的侧边栏应用。</p>
 
 <blockquote>
-<p><strong>Note:</strong> 两种技术路线制作的侧边栏有细微的差别。如果采用第二种技术路线，侧边栏和内容页之间没有明显的分野。所以需要额外地在侧边栏和内容页之间加一条线，来突出两者属于不同的组件。而第一种技术路线不需要，创建的侧边栏和内容页之间的区别明显。</p>
+<p><strong>Note:</strong> 两种技术路线制作的侧边栏有细微的差别。如果采用第二种技术路线，侧边栏和内容页之间没有明显的分界。所以需要额外地在侧边栏和内容页之间加一条线，来突出两者属于不同的组件。而第一种技术路线不需要，创建的侧边栏和内容页之间的区别明显。</p>
 
-<p>下图是一个用第二种技术路线(QGridLayout)制作的应用：</p>
+<p>下图是一个用第二种技术路线(QGridLayout)制作的应用，可以看到侧边栏和内容页中间画了一条线，以突出两个组件的分界。</p>
 
 <p><img src="/img/QGridLayout.png" alt="QGridLayout" /></p>
 </blockquote>
@@ -466,7 +466,7 @@ if __name__ == '__main__':
 
 <p>最终效果如上图所示。点击坐标的按钮时，右边的文字变化告诉我们页面已经进行了跳转。</p>
 
-<p>为了让代码结构清晰，易于理解，我删除了本例原有的一些功能和布局。如果你对进一步完善侧边栏应用感兴趣，请参阅<a href="https://github.com/luochang212/pyqt5-demo/blob/master/Demo/sidebar.py">sidebar.py</a>的内容。</p>
+<p>为了让代码结构清晰，易于理解，我删除了本例原有的一些功能和布局。如果你对进一步完善侧边栏感兴趣，请参阅<a href="https://github.com/luochang212/pyqt5-demo/blob/master/Demo/sidebar.py">sidebar.py</a>的内容。</p>
 
 <p>此外，在Google搜索&rdquo;pyqt sidebar&rdquo;，貌似并不能找到一个实用的代码范例。我在是学习了GitHub项目<a href="https://github.com/HuberTRoy/MusicBox">MusicBox</a>之后，才学会了本文中构建侧边栏的方法。这个项目很好，我的构建无边框窗口、重写鼠标拖拽事件和QSS都是在里面学的。</p>
 
