@@ -17,14 +17,14 @@
     
     
 
-<title>PyQt5 布局浅析之侧边栏 • Chang Luo</title>
+<title>PyQt5侧边栏布局 • Chang Luo</title>
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="PyQt5 布局浅析之侧边栏"/>
+<meta name="twitter:title" content="PyQt5侧边栏布局"/>
 <meta name="twitter:description" content="主流软件如网易云音乐、腾讯电脑管家，都有侧边栏。侧边栏能有效扩展应用空间，让软件功能的层次更加分明。但PyQt5并没有一个专门的方法实现侧边栏。要实现侧边栏，主要有两种技术路线。一是用标签部件(QTabWidget)改造而来，二是用网格布局(QGridLayout)画出来。本文采用第一种技术路线，制作一个简单的侧边栏应用。"/>
 
-<meta property="og:title" content="PyQt5 布局浅析之侧边栏" />
+<meta property="og:title" content="PyQt5侧边栏布局" />
 <meta property="og:description" content="主流软件如网易云音乐、腾讯电脑管家，都有侧边栏。侧边栏能有效扩展应用空间，让软件功能的层次更加分明。但PyQt5并没有一个专门的方法实现侧边栏。要实现侧边栏，主要有两种技术路线。一是用标签部件(QTabWidget)改造而来，二是用网格布局(QGridLayout)画出来。本文采用第一种技术路线，制作一个简单的侧边栏应用。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/pyqt5_layout_sidebar/" />
@@ -48,11 +48,6 @@
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
-
-
-
-
-<link rel="stylesheet" href="/scss/hugo-toc.8549a64d301421b4256ea9a0d5ca8b99178799f569d5d2daeb95f24cef3ce6b7.css" integrity="sha256-hUmmTTAUIbQlbqmg1cqLmReHmfVp1dLa65XyTO885rc=">
 
 
 
@@ -173,7 +168,7 @@
     
 <article>
   <header>
-    <h1>PyQt5 布局浅析之侧边栏</h1>
+    <h1>PyQt5侧边栏布局</h1>
     
     
 <div class="post__meta">
@@ -226,31 +221,6 @@
 
 
   </header>
-  
-  
-  
-    <div class="toc-wrapper">
-      <input type="checkbox" id="tocToggle">
-      <label for="tocToggle">目录</label>
-      
-          <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#软件分析">软件分析</a></li>
-<li><a href="#添加部件并设置布局">添加部件并设置布局</a></li>
-<li><a href="#添加标签部件">添加标签部件</a></li>
-<li><a href="#改造标签部件">改造标签部件</a></li>
-<li><a href="#实现页面跳转">实现页面跳转</a></li>
-<li><a href="#附录-完整代码">附录：完整代码</a></li>
-</ul></li>
-</ul></li>
-</ul>
-</nav>
-      
-    </div>
   
   
   <div class="post">
@@ -610,7 +580,7 @@ if __name__ == '__main__':
     
     <a href="/posts/pyqt5_layout/" class="navigation-prev">
       <i aria-hidden="true" class="fa fa-chevron-left"></i>
-      <span class="navigation-tittle">PyQt5 布局浅析</span>
+      <span class="navigation-tittle">PyQt5布局浅析</span>
     </a>
     
     
@@ -685,8 +655,6 @@ if (!doNotTrack) {
         hljs.initHighlightingOnLoad();
     </script>
     
-
-
 
 
 
