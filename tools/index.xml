@@ -1,37 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Tools on Chang Luo</title>
-    <link>http://luochang212.github.io/tools/</link>
-    <description>Recent content in Tools on Chang Luo</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    
-	<atom:link href="http://luochang212.github.io/tools/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title></title>
-      <link>http://luochang212.github.io/tools/book/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/tools/book/</guid>
-      <description>Deep Learninghtml{background-image: &#34;&#34;;background-position:center top;background-repeat:no-repeat;width:800px;margin:auto;}标题标题说点啥
-标题说点啥
-标题说点啥
-说点啥
-标题说点啥
-</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://luochang212.github.io/tools/showtime/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/tools/showtime/</guid>
-      <description>现在几点了？body {font-family: &#34;Source Han Sans&#34;, &#34;San Francisco&#34;, &#34;PingFang SC&#34;, &#34;Hiragino Sans GB&#34;, &#34;Droid Sans Fallback&#34;, &#34;Microsoft YaHei&#34;, sans-serif;font-size: 14px;color: #333;}a {text-decoration: none;color: #f66;transition-property: color;transition-duration: .2s;transition-timing-function: ease-in-out;}a:hover {color: #333;}p {margin: 1em 0;}p:empty {height: 1.5em;}main {margin: 0 5em;max-width: 48em;}h1 {margin: 1em 0;font-size: 24px;font-weight: 300;}textarea, article {width: 100%;height: 12em;margin: 2em 0;padding: .</description>
-    </item>
-    
-  </channel>
-</rss>
