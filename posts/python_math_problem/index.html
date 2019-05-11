@@ -284,7 +284,7 @@ $a ={1, 2, 3, 4, 5, 6} $
 例如，非循环置换 $ \upsilon $ 就可以表示成
 <code>$$\upsilon =  \left\{\begin{matrix}1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 \\ 6 &amp; 4 &amp; 2 &amp; 3 &amp; 5 &amp; 1\end{matrix}\right\} = (1 6)(2 4 3)(5) = (1 6)(2 4 3) ​$$</code></p>
 
-<p>(参考资料: <a href="https://blog.csdn.net/y990041769/article/details/45172095">置换群题目汇总</a>,  <a href="http://idl.hbdlib.cn/book/00000000000000/pdfbook/o/o01/index0069.pdf">《近世代数》杨子胥</a> )</p>
+<p>(参考资料: <a href="https://blog.csdn.net/y990041769/article/details/45172095" target="_blank">置换群题目汇总</a>，<a href="http://idl.hbdlib.cn/book/00000000000000/pdfbook/o/o01/index0069.pdf" target="_blank">《近世代数》杨子胥</a>)</p>
 
 <h3 id="暴力解法">暴力解法</h3>
 
@@ -324,7 +324,7 @@ for C in itertools.permutations(a, a.size):
 <p>要理解这个，首先要知道程序的输入。在输入中，数列<code>a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]</code>是原字符串 SUPERBGOLDHAT 各字母的对应编码。其中1代表S, 2代表U, 以此类推。因此我们只要把输出数列中的数字逐个翻译，就能得到答案了。最终答案为：BALDPORETHUGS.</p>
 
 <blockquote>
-<p><strong>Note1:</strong> 这段代码中，最不好想到的语句是<code>c[num] = C[C[num]]</code>。之前为了实现和这句同样的功能，多写了十几行代码。后来拜读了<a href="https://blog.csdn.net/y990041769/article/details/45172095">置换群题目汇总</a>一文，受到启发才写成如今这个形式。</p>
+<p><strong>Note1:</strong> 这段代码中，最不好想到的语句是<code>c[num] = C[C[num]]</code>。之前为了实现和这句同样的功能，多写了十几行代码。后来拜读了<a href="https://blog.csdn.net/y990041769/article/details/45172095" target="_blank">置换群题目汇总</a>一文，受到启发才写成如今这个形式。</p>
 
 <p><strong>Note2:</strong>如果原问题改成已知第三次输出，求第一次输出也很简单。只要加多一层中括号就可以了，像这样<code>c[num] = C[C[C[num]]]</code>。</p>
 </blockquote>

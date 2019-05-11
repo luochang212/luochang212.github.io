@@ -28,7 +28,7 @@
 解决思路  用googlemaps包获取纬度和经度信息 用OR-Tools包求解TSP问题 最后用gmaps可视化结果  敲下来以后不禁感慨，Google Maps的API真的太好用了，到头来根本不需要自己敲多少代码orz
 食用指南 项目地址 &amp;ndash;&amp;gt; 传送门
 在体验之前，你需要以下配置：
- 你需要一个Jupyter notebook, 推荐是直接安Anaconda3. 你还需要安装这些包：googleplaces, googlemaps, gmaps, ortools. 你需要一个Google Maps API key，获取链接: https://developers.google.com/maps/documentation/distance-matrix/start#get-a-key  完成配置等于成功的一半。在Jupyter notebook打开TSPSolver.ipynb，将第一个代码块的所有变量，改成自己的。比如自己的目的地和自己的API密码……最后从头到尾运行所有代码块，你就可以得到自己的旅行地图辣~
+ 你需要一个Jupyter notebook, 推荐是直接安Anaconda3. 你还需要安装这些包：googleplaces, googlemaps, gmaps, ortools. 你需要一个Google Maps API key，点这里获取API.  完成配置等于成功的一半。在Jupyter notebook打开TSPSolver.ipynb，将第一个代码块的所有变量，改成自己的。比如自己的目的地和自己的API密码……最后从头到尾运行所有代码块，你就可以得到自己的旅行地图辣~
 配置代码如下。
 # input the places of interest (POI) places = &#39;YHA London Central Hostel&#39;, &#39;Coca-Cola London Eye&#39;, &#39;St. Paul\&#39;s Cathedral&#39;, &#39;Leadenhall Market&#39;, &#39;The National Gallery&#39; \ &#39;Big Ben&#39;, &#39;Buckingham Palace&#39;, &#39;Waterloo Station&#39; # the region Location=&#39;London&#39; # choose a mode Mode = &amp;quot;walking&amp;quot; # &amp;quot;driving&amp;quot;, &amp;quot;walking&amp;quot;, &amp;quot;bicycling&amp;quot;, &amp;quot;transit&amp;quot; # get Google API key from following website: # https://developers.</description>
     </item>
