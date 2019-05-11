@@ -6,10 +6,27 @@
     <description>Recent content in PyCharm on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 03 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 10 May 2019 21:43:09 +0100</lastBuildDate>
     
 	<atom:link href="http://luochang212.github.io/categories/pycharm/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>PyQt5 布局浅析之侧边栏</title>
+      <link>http://luochang212.github.io/posts/pyqt5_layout_sidebar/</link>
+      <pubDate>Fri, 10 May 2019 21:43:09 +0100</pubDate>
+      
+      <guid>http://luochang212.github.io/posts/pyqt5_layout_sidebar/</guid>
+      <description>GitHub项目链接：pyqt5-demo
+主流软件如网易云音乐、腾讯电脑管家，都有侧边栏。侧边栏能有效扩展应用空间，让软件功能的层次更加分明。
+但PyQt5并没有一个专门的方法实现侧边栏。要实现侧边栏，主要有两种技术路线。一是用标签部件(QTabWidget)改造而来，二是用网格布局(QGridLayout)画出来。本文采用第一种技术路线，制作一个简单的侧边栏应用。
+ Note: 两种技术路线制作的侧边栏有细微的差别。如果采用第二种技术路线，侧边栏和内容页之间没有明显的分野。所以需要额外地在侧边栏和内容页之间加一条线，来突出两者属于不同的组件。而第一种技术路线不需要，创建的侧边栏和内容页之间的区别明显。
+下图是一个用第二种技术路线(QGridLayout)制作的应用：
+ 软件分析 在开始写代码之前，我们先分析制作一个侧边栏布局应用至少需要哪些步骤。
+ 添加部件 设置布局 改造标签部件(QTabWidget) 为按钮编写函数实现页面跳转  添加部件并设置布局 经过上述分析，我们明确了首先要添加部件并为部件设置布局，搭出一个基本框架。关于部件和布局的基础知识，在上一篇博文中有介绍，详见PyQt5 布局浅析。
+下面这段代码添加了部件且设置了布局。
+from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__(self): super().__init__() # set the title of main window self.setWindowTitle(&#39;Sidebar layout - www.luochang.ink&#39;) # set the size of window self.Width = 800 self.height = int(0.618 * self.Width) self.resize(self.Width, self.height) # add all widgets self.btn_1 = QPushButton(&#39;1&#39;, self) self.btn_2 = QPushButton(&#39;2&#39;, self) self.</description>
+    </item>
     
     <item>
       <title>PyQt5 布局浅析</title>

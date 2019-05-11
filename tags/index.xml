@@ -6,7 +6,7 @@
     <description>Recent content in Tags on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 03 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 10 May 2019 21:43:09 +0100</lastBuildDate>
     
 	<atom:link href="http://luochang212.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>layout</title>
       <link>http://luochang212.github.io/tags/layout/</link>
-      <pubDate>Fri, 03 May 2019 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 10 May 2019 21:43:09 +0100</pubDate>
       
       <guid>http://luochang212.github.io/tags/layout/</guid>
       <description></description>
@@ -23,7 +23,7 @@
     <item>
       <title>pycharm</title>
       <link>http://luochang212.github.io/tags/pycharm/</link>
-      <pubDate>Fri, 03 May 2019 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 10 May 2019 21:43:09 +0100</pubDate>
       
       <guid>http://luochang212.github.io/tags/pycharm/</guid>
       <description></description>
@@ -32,7 +32,7 @@
     <item>
       <title>pyqt5</title>
       <link>http://luochang212.github.io/tags/pyqt5/</link>
-      <pubDate>Fri, 03 May 2019 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 10 May 2019 21:43:09 +0100</pubDate>
       
       <guid>http://luochang212.github.io/tags/pyqt5/</guid>
       <description></description>
@@ -41,9 +41,18 @@
     <item>
       <title>python</title>
       <link>http://luochang212.github.io/tags/python/</link>
-      <pubDate>Fri, 03 May 2019 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 10 May 2019 21:43:09 +0100</pubDate>
       
       <guid>http://luochang212.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sidebar</title>
+      <link>http://luochang212.github.io/tags/sidebar/</link>
+      <pubDate>Fri, 10 May 2019 21:43:09 +0100</pubDate>
+      
+      <guid>http://luochang212.github.io/tags/sidebar/</guid>
       <description></description>
     </item>
     
