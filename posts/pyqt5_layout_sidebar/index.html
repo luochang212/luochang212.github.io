@@ -240,20 +240,18 @@
 <p><img src="/img/QGridLayout.png" alt="QGridLayout" /></p>
 </blockquote>
 
-<h3 id="软件分析">软件分析</h3>
-
-<p>在开始写代码之前，我们先分析制作一个侧边栏布局应用至少需要哪些步骤。</p>
+<p>在开始写代码之前，我们先分析一下制作侧边栏需要几个步骤。</p>
 
 <ol>
 <li>添加部件</li>
-<li>设置布局</li>
-<li>改造标签部件(QTabWidget)</li>
-<li>为按钮编写函数实现页面跳转</li>
+<li>为部件设置布局</li>
+<li>将标签部件改造成侧边栏的内容页</li>
+<li>为侧边栏按钮编写函数，实现内容页之间的跳转</li>
 </ol>
 
 <h3 id="添加部件并设置布局">添加部件并设置布局</h3>
 
-<p>经过上述分析，我们明确了首先要添加部件并为部件设置布局，搭出一个基本框架。关于部件和布局的基础知识，在上一篇博文中有介绍，详见<a href="https://www.luochang.ink/posts/pyqt5_layout/">PyQt5 布局浅析</a>。</p>
+<p>经过上述分析，我们明确了首先要有部件和基本布局，然后才能继续定义函数，完成我们的程序。关于部件和布局的基础知识，在上一篇博文中有介绍，详见<a href="https://www.luochang.ink/posts/pyqt5_layout/">PyQt5 布局浅析</a>。</p>
 
 <p><strong>下面这段代码添加了部件且设置了布局。</strong></p>
 
@@ -315,16 +313,16 @@ if __name__ == '__main__':
 
 <p><img src="/img/sidebar_basic.JPG" alt="sidebar_basic" /></p>
 
-<p>在<code>__init__</code>内，我们添加了部件。在<code>initUI</code>里，我们设置了布局。于是整个应用看起来就像上面这样。但因为我们并没有给标签部件(QTabWidget)添加页面，因此现在标签页面正好是没有标签的。后续加上内容页面，标签(Tab)又会出现，到那是我们要想办法把标签隐藏起来。</p>
+<p>在上述代码中，在<code>__init__</code>内添加了部件，在<code>initUI</code>里设置了部件的布局。做完这些工作，整个应用看起来就像上面这样。但因为我们并没有给标签部件(QTabWidget)添加页面，所以现在标签页面正好是没有标签的。后续加上内容页之后，标签(Tab)又会出现，到那是我们要用技巧把标签隐去。</p>
 
 <h3 id="添加标签部件">添加标签部件</h3>
 
 <p>添加标签部件需要三个步骤。</p>
 
 <ol>
-<li>定义内容页</li>
-<li>生成内容页</li>
-<li>将内容页加入标签部件</li>
+<li>定义内容页函数</li>
+<li>调用内容页函数以生成内容页</li>
+<li>将内容页依次加入标签部件</li>
 </ol>
 
 <p>我们首先编写定义内容页的函数。</p>
@@ -364,7 +362,7 @@ if __name__ == '__main__':
         return main
 </code></pre>
 
-<p>然后在<code>__init__</code>里生成内容页。</p>
+<p>下一步，我们要在<code>__init__</code>里调用上述函数以生成内容页。</p>
 
 <p><strong>下面这段代码生成了内容页。</strong></p>
 
@@ -378,7 +376,7 @@ if __name__ == '__main__':
         self.tab4 = self.ui4()
 </code></pre>
 
-<p>最后在<code>initUI</code>里，将内容页加入标签部件里。这段代码的位置尤其重要，它必须在语句<code>main_layout.addWidget(self.right_widget)</code>之前。</p>
+<p>最后在<code>initUI</code>函数里，将内容页加入标签部件。请注意下面这段代码添加的位置，它必须在语句<code>main_layout.addWidget(self.right_widget)</code>之前，否则程序有可能出错。</p>
 
 <p><strong>下面这段代码将内容页加入标签部件。</strong></p>
 
@@ -391,11 +389,11 @@ if __name__ == '__main__':
 
 <p><img src="/img/sidebar_tab.JPG" alt="sidebar_tab" /></p>
 
-<p>在上图中可以看见，第二节提到的标签(Tab)出现了。所以我们需要改造标签部件，隐藏其标签，并将标签的页面跳转功能迁移到侧边栏按钮上。</p>
+<p>在上图中可以看见，我们第二节中提到的标签(Tab)出现了。所以我们需要改造标签部件，隐去标签，并将标签的页面跳转功能迁移到侧边栏按钮上。</p>
 
-<h3 id="改造标签部件">改造标签部件</h3>
+<h3 id="将标签部件改造成侧边栏的内容页">将标签部件改造成侧边栏的内容页</h3>
 
-<p>隐藏标签部件的标签，只需要一行。</p>
+<p>隐藏标签部件的标签，其实只需要一行。下面用QSS隐去标签。所谓QSS，就是下述<code>setStyleSheet</code>函数内的语句。</p>
 
 <p><strong>下面这段代码隐藏了标签部件的标签并初始化显示页面。</strong></p>
 
@@ -405,9 +403,9 @@ if __name__ == '__main__':
             height: 0; margin: 0; padding: 0; border: none;}''')
 </code></pre>
 
-<h3 id="实现页面跳转">实现页面跳转</h3>
+<h3 id="通过按钮实现页面跳转">通过按钮实现页面跳转</h3>
 
-<p>页面跳转功能通过<code>QTabWidget</code>的<code>setCurrentIndex(int)</code>函数实现。函数的输入值为标签索引，只要将按钮对应页面索引填入，即可通过按钮实现页面跳转。</p>
+<p>本质上，页面跳转功能是通过<code>QTabWidget</code>的<code>setCurrentIndex(int)</code>函数实现的。只要理解了这一点就好办了。把按钮代表的页面的索引充当<code>setCurrentIndex(int)</code>函数的值，为每个按钮设定函数如下，即可实现页面跳转。</p>
 
 <p><strong>下面这段代码定义了按钮函数。</strong></p>
 
@@ -424,7 +422,7 @@ if __name__ == '__main__':
         self.right_widget.setCurrentIndex(3)
 </code></pre>
 
-<p>接着在<code>__init__</code>里，将按钮部件和函数绑定。</p>
+<p>最后一步，我们在<code>__init__</code>函数里，将按钮部件和函数绑定，一个简单的侧边栏就做好了。</p>
 
 <p><strong>下面这段代码为按钮部件绑定函数。</strong></p>
 
@@ -439,11 +437,11 @@ if __name__ == '__main__':
 
 <p><img src="/img/sidebar_hidetab.JPG" alt="sidebar_tab" /></p>
 
-<p>最终效果如上图所示。点击坐标的按钮时，右边的文字变化告诉我们页面已经进行了跳转。</p>
+<p>最终效果如上图所示。点击坐标的按钮时，右边的文字变化告诉我们页面已经发生了跳转。</p>
 
-<p>为了让代码结构清晰，易于理解，我删除了本例原有的一些功能和布局。如果你对进一步完善侧边栏感兴趣，请参阅<a href="https://github.com/luochang212/pyqt5-demo/blob/master/Demo/sidebar.py" target="_blank">sidebar.py</a></p>
+<p>为了让代码结构清晰，易于理解，本例只有最简单的功能和布局。如果你对进一步完善侧边栏感兴趣，请参阅<a href="https://github.com/luochang212/pyqt5-demo/blob/master/Demo/sidebar.py" target="_blank">sidebar.py</a>。</p>
 
-<p>此外，在Google搜索&rdquo;pyqt sidebar&rdquo;，貌似并不能找到一个实用的代码范例。我在是学习了GitHub项目<a href="https://github.com/HuberTRoy/MusicBox" target="_blank">MusicBox</a>后，才学会了本文中构建侧边栏的方法。这个项目很好，我的构建无边框窗口、重写鼠标拖拽事件和QSS都是在里面学的。</p>
+<p>此外，我没有在网络上搜索到一篇关于如何制作侧边栏的文章。事实上，我在是在GitHub学习了开源项目<a href="https://github.com/HuberTRoy/MusicBox" target="_blank">MusicBox</a>后，才从中学会了这个构建侧边栏的方法。在这个代码库里，我学到了很多PyQt5的使用方法，在此感谢作者，并且默默替他安利一波。</p>
 
 <h3 id="附录-完整代码">附录：完整代码</h3>
 

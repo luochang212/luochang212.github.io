@@ -231,18 +231,21 @@
 <p><strong>题目：</strong>A permutation is applied to the string SUPERBGOLDHAT. The same permutation is applied to the output from this operation. The second output is OGTHLEPDSUARB. What was the first output? (Note: as an example, the permutation(1 3 4) applied to WOLF gives FOWL. Write your answer in capital letters inside quotation marks, e.g. &ldquo;BEARDPLUGHOST&rdquo;.)</p>
 </blockquote>
 
-<p>译成中文就是：一个置换作用于字符串时，会生成一个新字符串。已知，某个置换作用于字符串SUPERBGOLDHAT两次，生成字符串OGTHLEPDSUARB, 求该置换作用于字符串SUPERBGOLDHAT一次，生成的结果。</p>
+<p>把它译成中文就是：一个置换作用于字符串时，会生成一个新字符串。已知将某个置换作用于字符串SUPERBGOLDHAT两次，生成字符串OGTHLEPDSUARB. 求该置换作用于字符串SUPERBGOLDHAT一次时，生成的结果。</p>
+
+<blockquote>
+<p><strong>Note:</strong> 作用两次的意思就是，当一个置换规则作用于字符串一次时，会生成一个新字符串。将这个规则作用在这个新字符串上，又会生成一个字符串，这个字符串就是两次作用的结果。</p>
+</blockquote>
 
 <h3 id="近世代数基础">近世代数基础</h3>
 
-<p>首先简单说明一下什么是置换，学过近世代数的同学可以跳过这部分</p>
+<p>如果你不知道什么是置换的话，可以看一下本节。学过近世代数的同学请自觉跳过这部分（否则就是没骨气）</p>
 
-<p>我们给定一个序列
-$a ={1, 2, 3, 4, 5, 6} $
-然后给定一个该序列的置换
-<code>$$\sigma =  \left\{\begin{matrix}1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 \\ 3 &amp; 5 &amp; 2 &amp; 6 &amp; 4 &amp; 1\end{matrix}\right\} $$</code>
-那么，置换 $\sigma$ 的作用就是，把序列 $a $ 中的1变成3，2变成5，3变成2，4变成6 $\ldots$
-以此类推</p>
+<p>我们给定一个序列$a ={1, 2, 3, 4, 5, 6} $ 。然后给定一个作用于该序列的置换：</p>
+
+<p><code>$$\sigma =  \left\{\begin{matrix}1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 \\ 3 &amp; 5 &amp; 2 &amp; 6 &amp; 4 &amp; 1\end{matrix}\right\} $$</code></p>
+
+<p>这个置换$\sigma​$的作用就是，把序列$a ​$中的1变成3，2变成5，3变成2，4变成6，6变成1。将置换$\sigma​$作用在序列a上，以此类推：</p>
 
 <p>第一次: 3 5 2 6 4 1</p>
 
@@ -250,21 +253,23 @@ $a ={1, 2, 3, 4, 5, 6} $
 
 <p>第三次: 5 6 4 3 1 2</p>
 
-<p>上面表示置换的方法叫<strong>两行式</strong>，此外，我们还可以用<strong>轮换</strong>来表示一个置换
-举个例子，如下是一个两行式表示的置换
-<code>$$\tau =  \left\{\begin{matrix}1 &amp; 3 &amp; 4 \\ 3 &amp; 4 &amp; 1 \end{matrix}\right\} $$</code>
-它表示成是轮换是 $\tau = (1 3 4) $
-以上的 $\tau $ 和 $\sigma $ 都属于 k-循环置换
-如果一个变换将 i<sub>1</sub> $\rightarrow$ i<sub>2</sub>, i<sub>2</sub> $\rightarrow$ i<sub>3</sub>, $\ldots $ i<sub>k</sub> $\rightarrow $ i<sub>1</sub>, 而其他各元不变，那么该置换称为<strong>k-循环置换</strong>(k-cycle)，写作 ( i<sub>1</sub>,i<sub>2</sub>,i<sub>3</sub> $\ldots $ i<sub>k</sub> ).
-除了k-循环置换之外，还有一种置换叫做非循环置换
-一个k-循环置换, 总是可以表示为一个轮换
-一个<strong>非循环置换</strong>，则总是可以表示成几个轮换的积
-例如，非循环置换 $ \upsilon $ 就可以表示成
-<code>$$\upsilon =  \left\{\begin{matrix}1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 \\ 6 &amp; 4 &amp; 2 &amp; 3 &amp; 5 &amp; 1\end{matrix}\right\} = (1 6)(2 4 3)(5) = (1 6)(2 4 3) ​$$</code></p>
+<p>上述置换$\sigma$的写法叫<strong>两行式</strong>，此外，我们还可以用<strong>轮换</strong>来表示一个置换。举个例子，如下是一个两行式表示的置换。</p>
+
+<p><code>$$\tau =  \left\{\begin{matrix}1 &amp; 3 &amp; 4 \\ 3 &amp; 4 &amp; 1 \end{matrix}\right\} $$</code></p>
+
+<p>它用轮换表示是 $\tau = (1 3 4) $ . 以上的 $\tau $ 和 $\sigma $ 都属于 k-循环置换。如果一个变换将 i<sub>1</sub> $\rightarrow$ i<sub>2</sub>, i<sub>2</sub> $\rightarrow$ i<sub>3</sub>, $\ldots $ i<sub>k</sub> $\rightarrow $ i<sub>1</sub>, 而其他各元不变，那么该置换称为<strong>k-循环置换</strong>(k-cycle)，写作 ( i<sub>1</sub>,i<sub>2</sub>,i<sub>3</sub> $\ldots $ i<sub>k</sub> ).</p>
+
+<p>除了k-循环置换之外，还有一种置换叫做非循环置换。一个k-循环置换, 总是可以表示为一个轮换。而一个<strong>非循环置换</strong>，则总是可以表示成几个轮换的积。例如，非循环置换 $ \upsilon $ 就可以表示成：</p>
+
+<p><code>$$\upsilon = \left\{\begin{matrix}1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 \\ 6 &amp; 4 &amp; 2 &amp; 3 &amp; 5 &amp; 1\end{matrix}\right\} = (1 6)(2 4 3)(5) = (1 6)(2 4 3) ​$$</code></p>
 
 <p>(参考资料: <a href="https://blog.csdn.net/y990041769/article/details/45172095" target="_blank">置换群题目汇总</a>，<a href="http://idl.hbdlib.cn/book/00000000000000/pdfbook/o/o01/index0069.pdf" target="_blank">《近世代数》杨子胥</a>)</p>
 
 <h3 id="暴力解法">暴力解法</h3>
+
+<p>用Python暴力解轮换，没有一点暴力美学的影子。这种行为之拙计，甚至让人有一丝羞耻。那又能怎么办呢，俺想半天也不会用解析法解。</p>
+
+<p><strong>下面这段代码实现了轮换操作，并且一个一个比照，试图找到题目中的那个轮换。</strong></p>
 
 <pre><code class="language-python">import numpy as np
 import itertools
@@ -295,23 +300,23 @@ for C in itertools.permutations(a, a.size):
 
 <p><strong>结果如下</strong></p>
 
-<p><img src="/img/20190316091702.png" alt="运行结果" /></p>
+<p><img src="/img/permutation_result.png" alt="运行结果" /></p>
 
-<p>输出是一个数列<code>[6, 12, 9,10, 3, 8, 5, 4, 13, 11, 2, 7, 1]</code>，这是什么意思呢？</p>
+<p>输出是一个数列：<code>[6, 12, 9,10, 3, 8, 5, 4, 13, 11, 2, 7, 1]</code>，这是什么意思呢？</p>
 
-<p>要理解这个，首先要知道程序的输入。在输入中，数列<code>a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]</code>是原字符串 SUPERBGOLDHAT 各字母的对应编码。其中1代表S, 2代表U, 以此类推。因此我们只要把输出数列中的数字逐个翻译，就能得到答案了。最终答案为：BALDPORETHUGS.</p>
+<p>要理解这个，首先要知道程序的输入。输入数列<code>a</code>为<code>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]</code>，它是原字符串 SUPERBGOLDHAT 各字母对应的数字编码，其中1代表S，2代表U，以此类推。因此输出的数字其实也是这个含义，我们只需要把输出数列中的数字，按照之前的字母数字搭配逐个翻译，就能得到答案了。最终的解为：BALDPORETHUGS. 经过后面一节中的手算法验证，俺算对了。</p>
 
 <blockquote>
-<p><strong>Note1:</strong> 这段代码中，最不好想到的语句是<code>c[num] = C[C[num]]</code>。之前为了实现和这句同样的功能，多写了十几行代码。后来拜读了<a href="https://blog.csdn.net/y990041769/article/details/45172095" target="_blank">置换群题目汇总</a>一文，受到启发才写成如今这个形式。</p>
+<p><strong>Note1:</strong> 这段代码中，我觉得最棒的一句是<code>c[num] = C[C[num]]</code>。之前为了实现和这句同样的功能，至少写了十几行代码，都是本弱鸡的血泪&hellip;&hellip;后来拜读了<a href="https://blog.csdn.net/y990041769/article/details/45172095" target="_blank">置换群题目汇总</a>一文，受到启发才写成这个表达形式。</p>
 
-<p><strong>Note2:</strong>如果原问题改成已知第三次输出，求第一次输出也很简单。只要加多一层中括号就可以了，像这样<code>c[num] = C[C[C[num]]]</code>。</p>
+<p><strong>Note2:</strong> 如果原问题改成已知第三次输出，求第一次输出也很简单。只要加多一层中括号就可以了<code>c[num] = C[C[C[num]]]</code>。当然这样，运气好的话你的电脑可能要跑两个星期。(๑╹っ╹๑)</p>
 </blockquote>
 
 <h3 id="手算解法">手算解法</h3>
 
 <p>计算机实在算得太慢了，补上我新学的人脑解法 O_O</p>
 
-<p><img src="/img/20190316094941.jpg" alt="不知道为什么PO上来就歪了" /></p>
+<p><img src="/img/permutation_byhand.jpg" alt="不知道为什么PO上来就歪了" /></p>
 
   </div>
   
