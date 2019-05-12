@@ -28,6 +28,11 @@
   </url>
   
   <url>
+    <loc>http://luochang212.github.io/posts/kitchen_time/</loc>
+    <lastmod>2018-08-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://luochang212.github.io/posts/nezha/</loc>
     <lastmod>2017-07-11T00:00:00+00:00</lastmod>
   </url>
@@ -192,8 +197,32 @@
   </url>
   
   <url>
+    <loc>http://luochang212.github.io/categories/kitchen/</loc>
+    <lastmod>2018-08-06T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://luochang212.github.io/categories/life/</loc>
-    <lastmod>2017-07-11T00:00:00+00:00</lastmod>
+    <lastmod>2018-08-06T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/tags/beef/</loc>
+    <lastmod>2018-08-06T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/tags/chicken/</loc>
+    <lastmod>2018-08-06T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/tags/pork/</loc>
+    <lastmod>2018-08-06T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -204,7 +233,7 @@
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/tags/nezha/</loc>
+    <loc>http://luochang212.github.io/tags/literature/</loc>
     <lastmod>2017-07-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
