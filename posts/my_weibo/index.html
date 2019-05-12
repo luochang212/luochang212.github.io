@@ -22,10 +22,10 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="微博数据可视化"/>
-<meta name="twitter:description" content="这次的数据用的是本科期间就已经爬好，丢在硬盘里的数据。但因为raw data里夹杂着大量和博文无关的字符，当时没有足够的编程技巧处理数据，因此这一丢就是两年。本Python初丁趁着现在还有机会摸鱼，赶紧把数据翻出来，让它们发光发热。"/>
+<meta name="twitter:description" content="这次的数据用的是本科期间就已经爬好，丢在硬盘里的数据。但因为raw data里夹杂着大量和博文无关的字符，当时又没有足够的编程技巧处理数据，这一丢就是两年。本Python初丁趁着现在还有机会摸鱼，赶紧把数据翻出来，让它们发光发热。"/>
 
 <meta property="og:title" content="微博数据可视化" />
-<meta property="og:description" content="这次的数据用的是本科期间就已经爬好，丢在硬盘里的数据。但因为raw data里夹杂着大量和博文无关的字符，当时没有足够的编程技巧处理数据，因此这一丢就是两年。本Python初丁趁着现在还有机会摸鱼，赶紧把数据翻出来，让它们发光发热。" />
+<meta property="og:description" content="这次的数据用的是本科期间就已经爬好，丢在硬盘里的数据。但因为raw data里夹杂着大量和博文无关的字符，当时又没有足够的编程技巧处理数据，这一丢就是两年。本Python初丁趁着现在还有机会摸鱼，赶紧把数据翻出来，让它们发光发热。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/my_weibo/" />
 <meta property="article:published_time" content="2019-04-20T00:00:00&#43;00:00"/>
@@ -225,7 +225,7 @@
 
 <p>GitHub项目链接：<a href="https://github.com/luochang212/weibo-analysis" target="_blank">weibo-analysis</a></p>
 
-<p>这次的数据用的是本科期间就已经爬好，丢在硬盘里的数据。但因为raw data里夹杂着大量和博文无关的字符，当时没有足够的编程技巧处理数据，因此这一丢就是两年。本Python初丁趁着现在还有机会摸鱼，赶紧把数据翻出来，让它们发光发热。</p>
+<p>这次的数据用的是本科期间就已经爬好，丢在硬盘里的数据。但因为raw data里夹杂着大量和博文无关的字符，当时又没有足够的编程技巧处理数据，这一丢就是两年。本Python初丁趁着现在还有机会摸鱼，赶紧把数据翻出来，让它们发光发热。</p>
 
 <h3 id="文本获取">文本获取</h3>
 
@@ -235,15 +235,15 @@
 
 <p>有了原始数据，接下来我们要把数据归一化，做成方便处理的数据。一个常用的方法就是将数据整理成csv文件。</p>
 
-<p>Step 1. 分析需要保存的字段以及数据的维度，从而设计出数据的存储结构。根据原数据，我划分了五个字段: id, date, time, device, content, 它们分别记录一条微博的文件位置、发布日期、发布时间、发送设备和文本内容。</p>
+<p><strong>Step 1.</strong> 分析需要保存的字段以及数据的维度，从而设计出数据的存储结构。根据原数据，我划分了五个字段: id, date, time, device, content, 它们分别记录一条微博的文件位置、发布日期、发布时间、发送设备和文本内容。</p>
 
-<p>Step 2. 分割raw data. 先用split函数进行粗略分割，再用find函数精确分割。接着将分割好的内容提取到各字段，并依次存入csv。</p>
+<p><strong>Step 2.</strong> 分割raw data. 先用split函数进行粗略分割，再用find函数精确分割。接着将分割好的内容提取到各字段，并依次存入csv。</p>
 
 <p>经过上述两步，数据的整理工作就做完啦。</p>
 
 <h3 id="可视化微博数据">可视化微博数据</h3>
 
-<p>有了csv文件，做数据可视化是分分钟的事。此时我的工作平台从<code>PyCharm</code>搬到<code>Jupyter Notebook</code>，因为<code>Jupyter Notebook</code>可以制作的各式各样的可视化图表和窗口小工具(widget), 比<code>PyCharm</code>更适合数据处理。至于工具包，这里我选的是pandas和seaborn. 那么在可视化之前，看看我们对从中可能获取的信息，都有哪些期待。</p>
+<p>有了csv文件，做数据可视化是分分钟的事。此时我把工作平台从<code>PyCharm</code>搬到了<code>Jupyter Notebook</code>。这是因为<code>Jupyter Notebook</code>可以制作的各式各样的可视化图表和窗口小工具(widget), 比<code>PyCharm</code>更适合数据处理。至于工具包，这里我选的是pandas和seaborn.</p>
 
 <p><strong>首先是需求分析，我的目标如下:</strong></p>
 
@@ -257,13 +257,13 @@
 <li><p>使用窗口滑块小部件，拖动查看各个时间段都发了什么内容</p></li>
 </ul>
 
-<p>这里没有过程描述，详见<a href="https://github.com/luochang212/weibo-analysis" target="_blank">GitHub Repository</a>.</p>
+<p>这里不描述具体过程，详见<a href="https://github.com/luochang212/weibo-analysis" target="_blank">GitHub Repository</a>.</p>
 
 <p><strong>分析结果如下:</strong></p>
 
 <p><img src="/img/heat_map.png" alt="Heat map" /></p>
 
-<p>热力图总的来说颜色逐年加深，说明我正在逐渐成为一个微博控。而且注意到往年年初我是不怎么玩微博的，但随着年纪渐长，1-3月份我玩微博的频率越来越高，这意味着过年可能越来越无聊，没有年味，从而加长了我混迹微博的时间。</p>
+<p>热力图总体来说颜色逐年加深，说明我正在逐渐成为一个微博控。而且注意到往年年初我是不怎么玩微博的，但随着年纪渐长，1-3月份我玩微博的频率越来越高，这意味着过年可能越来越无聊，没有年味，从而加长了我混迹微博的时间。</p>
 
 <p><img src="/img/device_distribution.png" alt="Device distribution" /></p>
 
