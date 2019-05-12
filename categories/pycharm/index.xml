@@ -22,8 +22,9 @@
 但PyQt5并没有一个专门的方法实现侧边栏。要实现侧边栏，主要有两种技术路线。一是从标签部件(QTabWidget)改造而来，二是用网格布局(QGridLayout)画出来。本文采用第一种技术路线，制作一个简单的侧边栏应用。
  Note: 两种技术路线制作的侧边栏有细微的差别。如果采用第二种技术路线(QGridLayout)，侧边栏和内容页之间没有明显的分界。所以需要额外地在侧边栏和内容页之间加一条线，来突出两者属于不同的组件。而第一种技术路线(QTabWidget)不需要，创建的侧边栏和内容页之间的区别明显。
 下图是一个用第二种技术路线(QGridLayout)制作的应用，可以看到侧边栏和内容页中间画了一条线，以突出两个组件的分界。
- 在开始写代码之前，我们先分析一下制作侧边栏需要几个步骤。
- 添加部件 为部件设置布局 将标签部件改造成侧边栏的内容页 为侧边栏按钮编写函数，实现内容页之间的跳转  添加部件并设置布局 经过上述分析，我们明确了首先要有部件和基本布局，然后才能继续定义函数，完成我们的程序。关于部件和布局的基础知识，在上一篇博文中有介绍，详见PyQt5 布局浅析。
+ 步骤分析 在开始写代码之前，我们先分析一下制作侧边栏需要几个步骤。
+ 添加部件 为部件设置布局 将标签部件改造成侧边栏的内容页 为侧边栏按钮编写函数，实现内容页之间的跳转  下面开始第一步。
+添加部件并设置布局 此段不详述。关于部件和布局的基础知识，在上一篇中有介绍，详见PyQt5 布局浅析。
 下面这段代码添加了部件且设置了布局。
 from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__(self): super().__init__() # set the title of main window self.setWindowTitle(&#39;Sidebar layout - www.luochang.ink&#39;) # set the size of window self.Width = 800 self.height = int(0.618 * self.Width) self.resize(self.Width, self.height) # add all widgets self.btn_1 = QPushButton(&#39;1&#39;, self) self.btn_2 = QPushButton(&#39;2&#39;, self) self.</description>
     </item>
@@ -34,13 +35,16 @@ from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__
       <pubDate>Fri, 03 May 2019 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/pyqt5_layout/</guid>
-      <description>GitHub项目链接：pyqt5-demo
+      <description>FAQ: 什么是PyQt5？为什么选择PyQt5开发桌面应用？
+PyQt5是Python环境下用来开发UI界面的一个包。它容易上手，对初学者友好。并且拥有丰富的函数库，可以实现大部分桌面应用的开发需求。支持QSS语言，能够对界面风格做个性化调整。总之，PyQt5是一款开发效率极高的UI框架。
+ GitHub项目链接：pyqt5-demo
+我是一个Python初丁，因此本文也是一个从零开始的PyQt5教学。本文从PyQt5布局(layout)入手，教你制作一个简单的桌面应用。
 制作一个简单的桌面应用大致可以分为三步，
- 添加窗口小部件 设置部件布局 为部件添加功能  第一步添加部件很简单，认识部件名称即可，因此学习PyQt5, 应该从设置布局入手。
- Note: PyQt5是Python环境下用来开发UI界面的一个包。它容易上手，对初学者友好。并且拥有丰富的函数库，可以实现大部分桌面应用的开发需求。支持QSS语言，能够对界面风格做个性化调整。总而言之，PyQt5是一款开发效率极高的UI框架。
- 创建第一个窗口 一般来说，桌面应用都以窗口(window)形式呈现。因此，搭建桌面应用的第一步是创建窗口。
+ 添加部件 为部件设置布局 为部件添加功能  第一步添加部件很简单，认识部件名称即可，因此学习PyQt5, 真正应该从第二步，设置布局入手。
+创建一个空白窗口 搭建桌面应用的第一步是创建窗口。
+下述代码，通过setWindowTitle函数设置了窗口的标题，通过resize函数设置了窗口的大小。其他无设置，因此一片空白。
 下面这段代码创建了一个空的窗口。
-from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__(self): super().__init__() # set the title of main window self.setWindowTitle(&#39;My first window - www.luochang.ink&#39;) # set the size of window self.Width = 500 self.height = int(0.618 * self.Width) self.resize(self.Width, self.height) if __name__ == &#39;__main__&#39;: app = QApplication(sys.argv) ex = Window() ex.show() sys.exit(app.exec_())  这段代码仅仅设置了窗口的标题和大小。</description>
+from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__(self): super().__init__() # set the title of main window self.setWindowTitle(&#39;My first window - www.luochang.ink&#39;) # set the size of window self.Width = 500 self.height = int(0.618 * self.Width) self.resize(self.Width, self.height) if __name__ == &#39;__main__&#39;: app = QApplication(sys.argv) ex = Window() ex.show() sys.</description>
     </item>
     
   </channel>

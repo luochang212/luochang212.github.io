@@ -304,10 +304,10 @@ for C in itertools.permutations(a, a.size):
 
 <p>输出是一个数列：<code>[6, 12, 9,10, 3, 8, 5, 4, 13, 11, 2, 7, 1]</code>，这是什么意思呢？</p>
 
-<p>要理解它的含义，首先要看程序的输入。输入数列<code>a</code>为<code>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]</code>，它是原字符串 SUPERBGOLDHAT 各字母对应的数字编码，其中1代表S，2代表U，以此类推。因此输出的数字其实也是这个含义，我们只需要把输出数列中的数字，按照之前的字母与数字搭配逐个翻译，就能得到答案了。最终的解为：BALDPORETHUGS. 经过后面一节中的手算法验证，俺算对了！啊不，是计算机算对了。</p>
+<p>要理解输出的含义，要先理解输入。输入数列<code>a</code>为<code>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]</code>，它代表的是是原字符串 SUPERBGOLDHAT 各字母对应的数字编码，其中1代表S，2代表U，以此类推。因此输出的数字其实也是这个含义，我们只需要把输出数列中的数字，按照之前的字母与数字搭配逐个翻译，就能得到答案了。最终的解为：BALDPORETHUGS. 经过后面一节中的手算法验证，证明俺算对了！啊不，是计算机算对了。</p>
 
 <blockquote>
-<p><strong>Note1:</strong> 这段代码中，我觉得我写得最棒的一句是<code>c[num] = C[C[num]]</code>。之前为了实现同样的功能，至少写了十几行代码，都是血泪&hellip;&hellip;后来拜读了<a href="https://blog.csdn.net/y990041769/article/details/45172095" target="_blank">置换群题目汇总</a>一文，受到启发才写成这个表达形式。</p>
+<p><strong>Note1:</strong> 这段代码中，我觉得我写得最棒的一句是<code>c[num] = C[C[num]]</code>。之前为了实现同样的功能，至少写了十几行代码，都是血泪&hellip;&hellip;后来拜读了<a href="https://blog.csdn.net/y990041769/article/details/45172095" target="_blank">置换群题目汇总</a>一文，才受到启发写成这个表达形式。</p>
 
 <p><strong>Note2:</strong> 如果原问题改成已知第三次输出，求第一次输出也很容易。只要加多一层中括号就可以了<code>c[num] = C[C[C[num]]]</code>。哈哈哈，运气好的话你的电脑可能要跑两个星期。(๑╹っ╹๑)</p>
 </blockquote>
@@ -325,7 +325,7 @@ for C in itertools.permutations(a, a.size):
     
     
     <a href="/posts/tsp_route/" class="navigation-next">
-      <span class="navigation-tittle">用Jupyter notebook规划旅行路线</span>
+      <span class="navigation-tittle">TSP旅行路线规划</span>
       <i aria-hidden="true" class="fa fa-chevron-right"></i>
     </a>
     

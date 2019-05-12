@@ -17,14 +17,14 @@
     
     
 
-<title>用Jupyter notebook规划旅行路线 • Chang Luo</title>
+<title>TSP旅行路线规划 • Chang Luo</title>
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="用Jupyter notebook规划旅行路线"/>
+<meta name="twitter:title" content="TSP旅行路线规划"/>
 <meta name="twitter:description" content="对于在欧洲的小伙伴们，复活节假在这一周就正式开始啦。大家都是怎么计划旅行的呢？我的习惯是在出发前的最后一个晚上，花上半小时，在网上搜索当地感兴趣的景点 (POI), 然后在Google Maps上为它们点上小星星，以免和它们插肩而过。"/>
 
-<meta property="og:title" content="用Jupyter notebook规划旅行路线" />
+<meta property="og:title" content="TSP旅行路线规划" />
 <meta property="og:description" content="对于在欧洲的小伙伴们，复活节假在这一周就正式开始啦。大家都是怎么计划旅行的呢？我的习惯是在出发前的最后一个晚上，花上半小时，在网上搜索当地感兴趣的景点 (POI), 然后在Google Maps上为它们点上小星星，以免和它们插肩而过。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/tsp_route/" />
@@ -168,7 +168,7 @@
     
 <article>
   <header>
-    <h1>用Jupyter notebook规划旅行路线</h1>
+    <h1>TSP旅行路线规划</h1>
     
     
 <div class="post__meta">
@@ -223,6 +223,8 @@
   <div class="post">
     
 
+<!--原题：用Jupyter notebook规划旅行路线-->
+
 <p>GitHub项目链接：<a href="https://github.com/luochang212/tsp-route" target="_blank">tsp-route</a></p>
 
 <p>对于在欧洲的小伙伴们，复活节假在这一周就正式开始啦。大家都是怎么计划旅行的呢？</p>
@@ -233,9 +235,11 @@
 
 <p>此时此刻，望着这些密集的星星，我不禁自问：如何才能走最少的路，遍历所有景点呢?</p>
 
-<p>搜索了谷歌和百度，没找到我要路径规划功能。最接近需求是谷歌地图的&rdquo;Add destination&rdquo;功能。然而这个功能只是依次连接你点选的地点。并不能由一组地点，确定连接它们的一条全局最短路径。</p>
+<p>搜索了谷歌和百度，都没找到我要路径规划功能。最接近需求是谷歌地图的&rdquo;Add destination&rdquo;功能。然而这个功能只是依次连接你点选的地点。并不能由一组地点，确定连接它们的一条全局最短路径。</p>
 
 <p>没有现成应用怎么办，我打算自己动手写一个。</p>
+
+<p><strong>下图是Google Add destination功能。</strong></p>
 
 <p><img src="/img/googlemap.JPG" alt="Add destination 功能" /></p>
 
@@ -243,7 +247,7 @@
 
 <p>如果用一句话概括需求，就是：我们需要一条从某地方出发，遍历所有地点，最终回到起点的最短路径。</p>
 
-<p>学过运筹学的同学就发现了，这就是一个经典问题，旅行商问题(TSP)。旅行商问题的确切描述是这样的：一个商人在各个城市之间旅行，要求遍历所有城市并返回到出发点，要如何规划路线，才能使总路径最短。（更多信息见<a href="https://zh.wikipedia.org/wiki/%E6%97%85%E8%A1%8C%E6%8E%A8%E9%94%80%E5%91%98%E9%97%AE%E9%A2%98" target="_blank">维基百科</a>)</p>
+<p>学过运筹学的同学发现了，这其实是一个经典问题，旅行商问题(TSP)。旅行商问题的确切描述是这样的：一个商人在各个城市之间旅行，要求遍历所有城市并返回到出发点，要如何规划路线，才能使总路径最短。（打开<a href="https://zh.wikipedia.org/wiki/%E6%97%85%E8%A1%8C%E6%8E%A8%E9%94%80%E5%91%98%E9%97%AE%E9%A2%98" target="_blank">维基百科</a>了解更多)</p>
 
 <h3 id="解决思路">解决思路</h3>
 
@@ -253,7 +257,7 @@
 <li>最后用gmaps可视化结果</li>
 </ul>
 
-<p>在敲代码的过程中，我觉得最难的地方在于看文档查API, 搞清楚输入输出和调用结构。不过一顿代码敲完之后还是不禁感慨，GoogleI太为开发者着想了，一旦学会调用API，实现一个简单应用的代码量其实很小 orz</p>
+<p>在敲代码的过程中，最难的地方莫过于看文档查API, 搞清楚输入输出和调用结构。不过敲完这一顿之后我还是不禁感慨，GoogleI太为开发者着想了。一旦学会调用API，实现一个简单应用的代码量还是很小的 orz</p>
 
 <h3 id="食用指南">食用指南</h3>
 
@@ -262,14 +266,14 @@
 <p>在运行代码之前，你需要以下配置：</p>
 
 <ol>
-<li>一个Jupyter Notebook. 推荐安装Anaconda3，Anaconda3自带Jupyter Notebook和全套Python依赖.</li>
-<li>你还需要安装这些包：googleplaces, googlemaps, gmaps, ortools.</li>
-<li>你需要一个Google Maps API key，<a href="https://developers.google.com/maps/documentation/distance-matrix/start#get-a-key" target="_blank">点这里获取API</a>.</li>
+<li>一个Jupyter Notebook. <!--推荐安装Anaconda3，Anaconda3自带Jupyter Notebook和全套Python依赖.--></li>
+<li>你需要安装这些包：googleplaces, googlemaps, gmaps, ortools.</li>
+<li>你需要一个Google Maps API key, <a href="https://developers.google.com/maps/documentation/distance-matrix/start#get-a-key" target="_blank">从这里获取API</a>.</li>
 </ol>
 
 <p>完成配置等于成功的一半。在Jupyter notebook打开<code>TSPSolver.ipynb</code>，将第二个代码块的所有变量，改成自己的，比如自己的目的地自己的区域和自己的API密码……最后从头到尾运行所有代码块，你就可以得到自己的定制路线辣~</p>
 
-<p><img src="my_route.JPG" alt="my route" /></p>
+<p><img src="/img/my_route.JPG" alt="my route" /></p>
 
 <p><strong>配置代码如下。</strong></p>
 

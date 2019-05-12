@@ -22,10 +22,10 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="PyQt5布局浅析"/>
-<meta name="twitter:description" content="PyQt5是Python环境下用来开发桌面应用的一个工具。用PyQt5制作一个简单的桌面应用大致可以分为三步，添加窗口小部件，设置部件布局和编写功能函数。第一步添加部件很简单，认识部件名称即可，因此学习PyQt5, 应该从设置布局入手。"/>
+<meta name="twitter:description" content="PyQt5是Python环境下用来开发桌面应用的一个工具。用PyQt5制作一个简单的桌面应用大致可以分为三步，添加窗口小部件，设置部件布局和编写功能函数。第一步添加部件很简单，认识部件名称即可，因此学习PyQt5, 真正应该从第二步设置布局入手。"/>
 
 <meta property="og:title" content="PyQt5布局浅析" />
-<meta property="og:description" content="PyQt5是Python环境下用来开发桌面应用的一个工具。用PyQt5制作一个简单的桌面应用大致可以分为三步，添加窗口小部件，设置部件布局和编写功能函数。第一步添加部件很简单，认识部件名称即可，因此学习PyQt5, 应该从设置布局入手。" />
+<meta property="og:description" content="PyQt5是Python环境下用来开发桌面应用的一个工具。用PyQt5制作一个简单的桌面应用大致可以分为三步，添加窗口小部件，设置部件布局和编写功能函数。第一步添加部件很简单，认识部件名称即可，因此学习PyQt5, 真正应该从第二步设置布局入手。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/pyqt5_layout/" />
 <meta property="article:published_time" content="2019-05-03T00:00:00&#43;00:00"/>
@@ -223,25 +223,31 @@
   <div class="post">
     
 
+<blockquote>
+<p><strong>FAQ:</strong> 什么是PyQt5？为什么选择PyQt5开发桌面应用？</p>
+
+<p>PyQt5是Python环境下用来开发UI界面的一个包。它容易上手，对初学者友好。并且拥有丰富的函数库，可以实现大部分桌面应用的开发需求。支持QSS语言，能够对界面风格做个性化调整。总之，PyQt5是一款开发效率极高的UI框架。</p>
+</blockquote>
+
 <p>GitHub项目链接：<a href="https://github.com/luochang212/pyqt5-demo" target="_blank">pyqt5-demo</a></p>
+
+<p>我是一个Python初丁，因此本文也是一个从零开始的PyQt5教学。本文从PyQt5布局(layout)入手，教你制作一个简单的桌面应用。</p>
 
 <p>制作一个简单的桌面应用大致可以分为三步，</p>
 
 <ol>
-<li>添加窗口小部件</li>
-<li>设置部件布局</li>
+<li>添加部件</li>
+<li>为部件设置布局</li>
 <li>为部件添加功能</li>
 </ol>
 
-<p>第一步添加部件很简单，认识部件名称即可，因此学习PyQt5, 应该从设置布局入手。</p>
+<p>第一步添加部件很简单，认识部件名称即可，因此学习PyQt5, 真正应该从第二步，设置布局入手。</p>
 
-<blockquote>
-<p><strong>Note:</strong> PyQt5是Python环境下用来开发UI界面的一个包。它容易上手，对初学者友好。并且拥有丰富的函数库，可以实现大部分桌面应用的开发需求。支持QSS语言，能够对界面风格做个性化调整。总而言之，PyQt5是一款开发效率极高的UI框架。</p>
-</blockquote>
+<h3 id="创建一个空白窗口">创建一个空白窗口</h3>
 
-<h3 id="创建第一个窗口">创建第一个窗口</h3>
+<p>搭建桌面应用的第一步是创建窗口。</p>
 
-<p>一般来说，桌面应用都以窗口(window)形式呈现。因此，搭建桌面应用的第一步是创建窗口。</p>
+<p>下述代码，通过<code>setWindowTitle</code>函数设置了窗口的标题，通过<code>resize</code>函数设置了窗口的大小。其他无设置，因此一片空白。</p>
 
 <p><strong>下面这段代码创建了一个空的窗口。</strong></p>
 
@@ -272,62 +278,33 @@ if __name__ == '__main__':
 
 <p><img src="/img/blankWindow.png" alt="blank window" /></p>
 
-<p>这段代码仅仅设置了窗口的标题和大小。</p>
-
-<p>下一步，我们要往这个空的窗口里添加部件(widget). 为了规范性，请在Window类里新建一个函数<code>initUI</code>, 然后在这个<code>initUI</code>里为窗口添加部件。</p>
+<p>下一步，我们要往这个空的窗口里添加部件(widget). 为了规范性，先在Window类里新建一个函数<code>initUI</code>, 然后在这个新建函数<code>initUI</code>里为窗口添加部件。</p>
 
 <h3 id="为窗口添加部件">为窗口添加部件</h3>
 
 <p><strong>下面这段代码为窗口添加了一个按钮部件(QPushButton).</strong></p>
 
-<pre><code class="language-python">from PyQt5.QtWidgets import *
-import sys
-
-
-class Window(QMainWindow):
-    def __init__(self):
-        super().__init__()
-
-        # set the title of main window
-        self.setWindowTitle('My first window - www.luochang.ink')
-
-        # set the size of window
-        self.Width = 500
-        self.height = int(0.618 * self.Width)
-        self.resize(self.Width, self.height)
-        
+<pre><code class="language-python"># class Window(QMainWindow):
     def initUI(self):
         # create a new button
         self.btn = QPushButton('first Button', self)
         self.btn.resize(300,90)
 
-
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    ex = Window()
-    ex.show()
-    sys.exit(app.exec_())
-
 </code></pre>
 
 <p><img src="/img/firstWidget.png" alt="first widget" /></p>
 
-<p>它看起来是这样的。由此我们发现，如果没有添加任何布局，我们创建的按钮将永远被放置在窗口的左上角。即使通过<code>move</code>函数移动它，排版作用也有限。这就是我们需要添加布局的原因。</p>
+<p>如果没有添加任何布局，我们创建的按钮永远在窗口的左上角。即使通过<code>move</code>函数移动它，排版作用也有限。这就是需要布局的原因。</p>
 
 <h3 id="为窗口添加布局">为窗口添加布局</h3>
 
-<p>PyQt5的布局(layout)有很多，比较常见的有QBoxLayout, QGridLayout, QFormLayout. 但后两种布局都有其局限性，通常只适用于特殊场景。但QBoxLayout却是“一招鲜，吃遍天”，几乎能够胜任所有情况。</p>
+<p>PyQt5的布局(layout)方法有很多，比较常见的有QBoxLayout, QGridLayout, QFormLayout. 后两种布局都有其局限性，通常只适用于特殊场景。但QBoxLayout却是“一招鲜，吃遍天”，几乎能够胜任所有情况。</p>
 
-<p>QBoxLayout的布局思想是：通过定义部件之间的上下左右关系，来定义空间结构。因此它有两个函数：QHBoxLayout和QVBoxLayout, 分别代表水平和竖直。函数名里的H和V对应的是英文单词horizontal和vertical.</p>
+<p>QBoxLayout的布局思想是：通过定义部件之间的上下左右关系，来定义空间结构。因此它有两个函数：QHBoxLayout和QVBoxLayout, 分别代表水平和竖直。函数名里的H和V分别对应了英文单词horizontal和vertical.</p>
 
-<p><strong>下面这段代码是一个QHBoxLayout的例子。为了简洁，不放重复代码，只贴initUI的部分。</strong></p>
+<p><strong>下面这段代码实现了QHBoxLayout。</strong></p>
 
 <pre><code class="language-python">def initUI(self):
-        
-        # create new buttons
-        self.btn_left = QPushButton('left', self)
-        self.btn_right = QPushButton('right', self)
-
         # setting up a layout
         main_layout = QHBoxLayout()
         main_layout.addWidget(self.btn_left)
@@ -342,25 +319,27 @@ if __name__ == '__main__':
 
 <p><img src="/img/firstLayout.png" alt="first layout" /></p>
 
-<p><strong>可以看出，创建一个布局只需要三步：</strong></p>
+<p><strong>可以看出，创建一个布局只需要四步：</strong></p>
 
-<ul>
+<ol>
 <li>创建部件(widget).</li>
 <li>创建布局(layout), 并将部件依次添加到布局中。</li>
-<li>创建中心部件(central widget), 并为中心部件添加布局。</li>
-</ul>
+<li>创建main_widget, 并通过<code>setLayout</code>函数，将上述布局设定为main_widget的布局。</li>
+<li>通过<code>setCentralWidget</code>函数，将main_widget指定为窗口的中心部件(CentralWidget)。</li>
+</ol>
 
 <blockquote>
-<p><strong>Note:</strong> 要理解这三步，首先要理解什么是中心部件(central widget)。中心部件和按钮部件(QPushButton)虽然都被称作部件(widget), 但它俩是不同的。中心部件所属的，其实是一类部件。它们不是按钮，不是文本框，不是任何一个具体的部件。它们是抽象的，没有样貌的。但它们却在布局中起着重要作用。它们通过<code>setLayout</code>函数，将名下各部件统一到一个抽象的部件集合中。简单理解就是，中心部件所属的这类部件，虽然也叫部件，但其实是一种容器，一种装部件的容器，如果这个容器里加了许多部件，那么它就是一个将部件绑定在一起的集合。将这些部件集合在一起，排版就方便了。</p>
+<p><b id="abstract_widget">Note:</b> 要理解这四步，首先要理解main_widget是什么。main_widget的定义是<code>main_widget = QWidget()</code>. 这里的<code>QWidget()</code>其实是一种泛指的部件，在本篇文章里，我把它们叫做<strong>抽象部件</strong>。抽象部件和按钮部件(QPushButton)虽然都被称作部件(widget), 但它俩是不同的。抽象部件既不是按钮，也不是文本框，它们不是任何一个具体的部件。它们是抽象的，没有样貌的。但它们却在布局中起着重要作用。它们通过<code>setLayout</code>函数，将名下各部件统一到一个<strong>部件的集合</strong>中，再通过排版这个集合来排版集合里的部件。</p>
 </blockquote>
 
-<p><strong>中心部件，布局和按钮部件之间的逻辑关系如下：</strong></p>
+<p><strong>窗口，抽象部件，布局和按钮部件之间的逻辑关系如下：</strong></p>
 
 <p><html>
 <center>Window (窗口)
 <br> |
+<br> setCentralWidget
 <br> ↓
-<br>main_widget（中心部件）
+<br>main_widget（抽象部件）
 <br> |
 <br> setLayout
 <br> ↓
@@ -373,14 +352,14 @@ if __name__ == '__main__':
 </html></p>
 
 <blockquote>
-<p><strong>Note:</strong> 想的时候，可以从上往下想。但是敲代码必须从底往上写，不然会bug，试过的人都知道。</p>
+<p><strong>Note:</strong> 想的时候，可以从上往下想。但是敲代码必须从底往上敲，不然会bug，试过的人都知道。</p>
 </blockquote>
 
-<h3 id="布局进阶之部件缩放">布局进阶之部件缩放</h3>
+<h3 id="部件缩放">部件缩放</h3>
 
-<p>布局定义了部件之间的位置关系，但有了布局还不够，我们还需要定义部件之间的比例关系。比例关系用<code>setStretch</code>函数定义。</p>
+<p>利用布局，我们定义了部件之间的位置关系。除了位置关系，部件之间还存在比例关系。用<code>setStretch</code>函数，可以对部件进行缩放。</p>
 
-<p><strong>下面这段代码调整两个按钮之间的比例为1:3。</strong></p>
+<p><strong>下面这段代码将两个按钮之间的比例调整为1:3。</strong></p>
 
 <pre><code class="language-python">def initUI(self):
         # create a new button
@@ -404,7 +383,7 @@ if __name__ == '__main__':
 
 <p><img src="/img/layoutStretch.png" alt="layout stretch" /></p>
 
-<p>这个代码块只在上一个代码块的基础上加了两行。它们是，</p>
+<p>这个代码并在上一块代码中间，因此我只好连同上个代码块一同放进来。它在上块代码的基础上只加了两行，分别是：</p>
 
 <ul>
 <li><p><code>main_layout.setStretch(0, 1)</code>表示0号部件的拉伸设置为1</p></li>
@@ -412,21 +391,23 @@ if __name__ == '__main__':
 <li><p><code>main_layout.setStretch(1, 3)</code>表示1号部件的拉伸设置为3</p></li>
 </ul>
 
-<p>默认的，我们将绑定在Layout中的左起第一个（或者从上往下第一个）定义为0号部件，然后向右（向下）号码依次递增。因此这里，左右两个部件之间的比例关系被定义为1：3。</p>
+<p>这就是两个部件大小一比三的意思。</p>
+
+<p>那么函数里的第一个参数（也就是部件的序号）是怎么来的呢？这是因为PyQt5默认我们将绑定在Layout中的左起第一个（或者从上起第一个）为0号部件，然后向右（向下）依次排下去。</p>
 
 <blockquote>
-<p><strong>注：</strong>以上步骤完整代码见 <a href="https://github.com/luochang212/pyqt5-demo/blob/master/Demo/layoutStretch.py" target="_blank" >layoutStretch.py</a></p>
+<p><strong>注：</strong>上述所有步骤的代码见 <a href="https://github.com/luochang212/pyqt5-demo/blob/master/Demo/layoutStretch.py" target="_blank" >layoutStretch.py</a></p>
 </blockquote>
 
-<h3 id="布局进阶之部件迭代">布局进阶之部件迭代</h3>
+<h3 id="部件迭代">部件迭代</h3>
 
-<p>在PyQt5里，布局或者抽象的部件可以多次迭代。这意味着你可以往布局的布局里加布局，抽象部件亦如是。</p>
+<p>在PyQt5里，布局或者抽象部件可以多次迭代。这意味着你可以往布局的布局里加布局。抽象部件亦如是，你可以往抽象部件的抽象部件里加抽象部件。两者的区别只在你使用<code>addWidget</code>还是<code>addLayout</code>.</p>
 
 <blockquote>
-<p><strong>Note:</strong> 啥是抽象部件，为了不抽象这里举一个例子，<code>main_widget = QWidget()</code>, 这里的<code>main_widget</code>就是我说的，可以迭代的抽象部件了。除了部件，布局也可以迭代，甚至连部件迭代布局再迭代部件这种混合操作也可以做出来。下面的例子中，讲述了如何迭代部件。至于迭代布局，只要把<code>addWidget</code>换成<code>addLayout</code>就行。</p>
+<p><strong>Note:</strong> 只要你想，抽象部件迭代布局再迭代抽象部件这种混合操作也可以做出来。PS: 如果你忘了什么是抽象部件，点<a href="#abstract_widget">这里</a>回顾。</p>
 </blockquote>
 
-<p><strong>下面这段代码阐明了这种迭代结构。</strong></p>
+<p><strong>下面这段代码阐释了这种迭代结构。</strong></p>
 
 <pre><code class="language-python"># 创建孙子部件
 sub_sub_Layout = QHBoxLayout()
@@ -449,9 +430,9 @@ self.setCentralWidget(main_widget)
 
 <h3 id="制作一个布局灵活的ui界面">制作一个布局灵活的UI界面</h3>
 
-<p>学会了以上这些方法，再配合一些奇技淫巧，比如加空白的占位部件addStretch(int), 你基本上就可以随心所欲地控制布局了。</p>
+<p>学会了以上这些方法，再配合一些奇技淫巧，比如addStretch(int), 你基本上就可以随心所欲地控制布局了。</p>
 
-<p>下面教你制作一个有意思的桌面应用：夸夸机器人。</p>
+<p>下面我制作一个有意思的桌面应用：夸夸机器人。</p>
 
 <p><img src="/img/praiseMePlease.png" alt="praise me please" /></p>
 
