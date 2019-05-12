@@ -39,11 +39,29 @@
     </item>
     
     <item>
-      <title>math</title>
-      <link>http://luochang212.github.io/categories/math/</link>
-      <pubDate>Sat, 16 Mar 2019 00:00:00 +0000</pubDate>
+      <title>Life</title>
+      <link>http://luochang212.github.io/categories/life/</link>
+      <pubDate>Tue, 11 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/categories/math/</guid>
+      <guid>http://luochang212.github.io/categories/life/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Movie</title>
+      <link>http://luochang212.github.io/categories/movie/</link>
+      <pubDate>Tue, 11 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/categories/movie/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Discussion</title>
+      <link>http://luochang212.github.io/categories/discussion/</link>
+      <pubDate>Wed, 06 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/categories/discussion/</guid>
       <description></description>
     </item>
     

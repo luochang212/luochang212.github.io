@@ -251,8 +251,6 @@
 <li>为侧边栏按钮编写函数，实现内容页之间的跳转</li>
 </ol>
 
-<p>下面开始第一步。</p>
-
 <h3 id="添加部件并设置布局">添加部件并设置布局</h3>
 
 <p>此段不详述。关于部件和布局的基础知识，在上一篇中有介绍，详见<a href="https://www.luochang.ink/posts/pyqt5_layout/">PyQt5 布局浅析</a>。</p>
@@ -317,9 +315,9 @@ if __name__ == '__main__':
 
 <p><img src="/img/sidebar_basic.JPG" alt="sidebar_basic" /></p>
 
-<p>上述代码在<code>__init__</code>内添加了部件，在<code>initUI</code>里设置了部件的布局。但因为我们并没有给标签部件(QTabWidget)添加页面，所以现在标签页面正好是没有标签的。后续加上内容页之后，标签(Tab)又会出现，到那是我们要用技巧再把标签隐去。</p>
+<p>上述代码，在<code>__init__</code>内添加了部件，在<code>initUI</code>里设置了部件的布局。但因为我们并没有给标签部件(QTabWidget)添加页面，所以现在标签页面正好是没有标签的。后续加上内容页之后，标签(Tab)又会出现，到那是我们要用技巧再把标签隐去。</p>
 
-<p>布局都好了，但这时的标签部件还没有内容页，没有内容页的标签部件是没有灵魂的，所以下面，我们给标签部件添加内容页。</p>
+<p>布局都好了，但这时的标签部件还没有内容页。没有内容页的标签部件是没有灵魂的，所以下面，我们给标签部件添加内容页。</p>
 
 <h3 id="为标签部件添加内容页">为标签部件添加内容页</h3>
 
@@ -382,7 +380,7 @@ if __name__ == '__main__':
         self.tab4 = self.ui4()
 </code></pre>
 
-<p>在<code>initUI</code>函数里，将标签加入标签部件。请注意下面这段代码添加的位置，它必须在语句<code>main_layout.addWidget(self.right_widget)</code>之前，否则程序有可能出错。</p>
+<p>在<code>initUI</code>函数里，将内容页加入标签部件。请注意下面这段代码添加的位置，它必须在语句<code>main_layout.addWidget(self.right_widget)</code>之前，否则程序有可能出错。</p>
 
 <p><strong>下面这段代码将内容页加入标签部件。</strong></p>
 
