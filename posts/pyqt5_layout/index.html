@@ -342,23 +342,22 @@ if __name__ == '__main__':
 
 <p><strong>窗口，中心部件，布局和按钮部件之间的逻辑关系如下：</strong></p>
 
-<pre><code>&lt;html&gt;
-&lt;center&gt;Window (窗口)
-&lt;br&gt; |
-&lt;br&gt; setCentralWidget
-&lt;br&gt; ↓
-&lt;br&gt;main_widget（抽象部件）
-&lt;br&gt; |
-&lt;br&gt; setLayout
-&lt;br&gt; ↓
-&lt;br&gt; main_layout（布局）
-&lt;br&gt; |
-&lt;br&gt; addWidget
-&lt;br&gt; ↓
-&lt;br&gt; btn_left &amp; btn_right （按钮部件）
-&lt;/center&gt;
-&lt;/html&gt;
-</code></pre>
+<p><html>
+<center>Window (窗口)
+<br> |
+<br> setCentralWidget
+<br> ↓
+<br>main_widget（抽象部件）
+<br> |
+<br> setLayout
+<br> ↓
+<br> main_layout（布局）
+<br> |
+<br> addWidget
+<br> ↓
+<br> btn_left &amp; btn_right （按钮部件）
+</center>
+</html></p>
 
 <h3 id="布局进阶之部件缩放">布局进阶之部件缩放</h3>
 
@@ -397,10 +396,6 @@ if __name__ == '__main__':
 </ul>
 
 <p>由此，两个部件之间的比例关系被定义为1：3。</p>
-
-<blockquote>
-<p><strong>注：</strong>完整代码见 <a href="https://github.com/luochang212/pyqt5-demo/blob/master/Demo/layoutStretch.py" target="_blank" >layoutStretch.py</a></p>
-</blockquote>
 
 <h3 id="布局进阶之部件迭代">布局进阶之部件迭代</h3>
 
