@@ -12,6 +12,25 @@
     
     
     <item>
+      <title>高中三角函数公式速查</title>
+      <link>http://luochang212.github.io/posts/trigonometric/</link>
+      <pubDate>Wed, 22 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/posts/trigonometric/</guid>
+      <description>两角和公式
+$\sin (A+B)=\sin A \cos B+\cos A \sin B$
+$\sin (A-B)=\sin A \cos B-\cos A \sin B$
+$\cos (\mathrm{A}+\mathrm{B})=\cos \mathrm{A} \cos \mathrm{B}-\sin \mathrm{A} \sin \mathrm{B}​$
+$\cos (A-B)=\cos A \cos B+\sin A \sin B$
+$\tan (\mathrm{A}+\mathrm{B})=\frac{\tan \mathrm{A}+\tan \mathrm{B}}{1-\text { tanAtan } \mathrm{B}}​$
+$\tan (\mathrm{A}-\mathrm{B})=\frac{\tan \mathrm{A}-\tan \mathrm{B}}{1+\tan \mathrm{A} \tan \mathrm{B}}$
+倍角公式
+$\tan 2 \mathrm{A}=\frac{2 \tan \mathrm{A}}{1-\tan ^{2} \mathrm{A}}$
+$\sin 2 A=2 \sin A \cdot \cos A$
+$\cos 2 A=\cos ^{2} A-\sin ^{2} A=2 \cos ^{2} A-1=1-2 \sin ^{2} A$</description>
+    </item>
+    
+    <item>
       <title>PyQt5侧边栏布局</title>
       <link>http://luochang212.github.io/posts/pyqt5_layout_sidebar/</link>
       <pubDate>Fri, 10 May 2019 21:43:09 +0100</pubDate>
@@ -163,25 +182,6 @@ def classification(self, txt_array, file_index): id = np.array([]) date = np.arr
 造成晓冰痛苦的原因是多方位的，家庭的破碎，平庸又手握权力的老师的刁难，爱情的不如意，学业的不顺遂等等。对于这一切，晓冰都毅然决然、不顾后果、绝不妥协地抗争。永远高昂着头，又不幸身为下贱，这场景让我想起妙玉。
 总体上讲，电影的场景感觉很碎，只给人提供一种感觉。影片没有悲壮的结局，因此对应地也缺少回响。因为没有回响，因此又显得生涩。也不知道这生涩是好是坏，虽说失掉了反复品咂的回味，但又给思考和体验留了更多空间。
 （看的电影很少，还是第一次看这么文艺的电影，写一点个人的感觉 Σ Σ Σ (|||▽||| )</description>
-    </item>
-    
-    <item>
-      <title>高中三角函数公式速查</title>
-      <link>http://luochang212.github.io/posts/trigonometric/</link>
-      <pubDate>Wed, 22 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/posts/trigonometric/</guid>
-      <description>两角和公式
-$\sin (A+B)=\sin A \cos B+\cos A \sin B$
-$\sin (A-B)=\sin A \cos B-\cos A \sin B$
-$\cos (\mathrm{A}+\mathrm{B})=\cos \mathrm{A} \cos \mathrm{B}-\sin \mathrm{A} \sin \mathrm{B}​$
-$\cos (A-B)=\cos A \cos B+\sin A \sin B$
-$\tan (\mathrm{A}+\mathrm{B})=\frac{\tan \mathrm{A}+\tan \mathrm{B}}{1-\text { tanAtan } \mathrm{B}}​$
-$\tan (\mathrm{A}-\mathrm{B})=\frac{\tan \mathrm{A}-\tan \mathrm{B}}{1+\tan \mathrm{A} \tan \mathrm{B}}$
-倍角公式
-$\tan 2 \mathrm{A}=\frac{2 \tan \mathrm{A}}{1-\tan ^{2} \mathrm{A}}$
-$\sin 2 A=2 \sin A \cdot \cos A$
-$\cos 2 A=\cos ^{2} A-\sin ^{2} A=2 \cos ^{2} A-1=1-2 \sin ^{2} A$</description>
     </item>
     
   </channel>
