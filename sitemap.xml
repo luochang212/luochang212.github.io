@@ -3,11 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://luochang212.github.io/posts/trigonometric/</loc>
-    <lastmod>2019-05-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://luochang212.github.io/posts/pyqt5_layout_sidebar/</loc>
     <lastmod>2019-05-10T21:43:09+01:00</lastmod>
   </url>
@@ -44,37 +39,13 @@
   
   <url>
     <loc>http://luochang212.github.io/categories/</loc>
-    <lastmod>2019-05-22T00:00:00+00:00</lastmod>
+    <lastmod>2019-05-10T21:43:09+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://luochang212.github.io/</loc>
-    <lastmod>2019-05-22T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://luochang212.github.io/posts/</loc>
-    <lastmod>2019-05-22T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://luochang212.github.io/tags/</loc>
-    <lastmod>2019-05-22T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://luochang212.github.io/categories/math/</loc>
-    <lastmod>2019-05-22T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://luochang212.github.io/tags/trigonometric-function/</loc>
-    <lastmod>2019-05-22T00:00:00+00:00</lastmod>
+    <lastmod>2019-05-10T21:43:09+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -85,7 +56,19 @@
   </url>
   
   <url>
+    <loc>http://luochang212.github.io/posts/</loc>
+    <lastmod>2019-05-10T21:43:09+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://luochang212.github.io/categories/pycharm/</loc>
+    <lastmod>2019-05-10T21:43:09+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/tags/</loc>
     <lastmod>2019-05-10T21:43:09+01:00</lastmod>
     <priority>0</priority>
   </url>
@@ -167,13 +150,13 @@
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/tags/jupyter-notebook/</loc>
+    <loc>http://luochang212.github.io/categories/jupyter-notebook/</loc>
     <lastmod>2019-04-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/categories/jupyter-notebook/</loc>
+    <loc>http://luochang212.github.io/tags/jupyter-notebook/</loc>
     <lastmod>2019-04-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
