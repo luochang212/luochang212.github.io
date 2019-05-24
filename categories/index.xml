@@ -6,7 +6,7 @@
     <description>Recent content in Categories on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 10 May 2019 21:43:09 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 24 May 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://luochang212.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,18 @@
     <item>
       <title>Development</title>
       <link>http://luochang212.github.io/categories/development/</link>
-      <pubDate>Fri, 10 May 2019 21:43:09 +0100</pubDate>
+      <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/categories/development/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>JavaSript</title>
+      <link>http://luochang212.github.io/categories/javasript/</link>
+      <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/categories/javasript/</guid>
       <description></description>
     </item>
     
