@@ -257,7 +257,7 @@ def classification(self, txt_array, file_index): id = np.array([]) date = np.arr
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/gadget/todolist/</guid>
-      <description>计划完成统计表var Items = {name: &#34;&#34;,isCheck: &#34;false&#34;,isDelete: &#34;false&#34;};var objArray = [];var subArray = [];var submit_flag = true;var delete_flag = true;function addElement() {submit_flag = true;var item = Object.create(Items);var v = document.getElementById(&#34;myTextarea&#34;).value;item.name = vobjArray.push(item);var body = &#39;#Name&#39;for (i = 0; i &#39;;body += &#39;&#39; + index.toString(10) + &#39;&#39;;//body += &#39;&#39; + &#39;&#39; + &#39;&#39;;body += &#39;&#39; + objArray[i].</description>
+      <description>计划表生成工具var Items = {name: &#34;&#34;,isCheck: &#34;false&#34;,isDelete: &#34;false&#34;};var objArray = [];var subArray = [];var submit_flag = true;var delete_flag = true;function addElement() {submit_flag = true;var item = Object.create(Items);var v = document.getElementById(&#34;myTextarea&#34;).value;item.name = vobjArray.push(item);var body = &#39;#Name&#39;for (i = 0; i &#39;;body += &#39;&#39; + index.toString(10) + &#39;&#39;;//body += &#39;&#39; + &#39;&#39; + &#39;&#39;;body += &#39;&#39; + objArray[i].</description>
     </item>
     
     <item>
