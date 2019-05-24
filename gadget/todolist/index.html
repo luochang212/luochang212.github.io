@@ -100,6 +100,12 @@
 		
 	}
 	
+	function handleEnter(event) {
+		if (event.keyCode == 13 && !event.shiftKey) {
+			addElement();
+		}
+	}
+	
 	function clearText() {
 		document.getElementById("myTextarea").value = '';
 	}
@@ -252,7 +258,7 @@
 	<p>这是俺写的小工具，什么？居然被你发现了 O_O !!!</p>
 
 
-	<textarea id="myTextarea" onfocus="clearContents(this);" style="width:32em">使用说明：
+	<textarea id="myTextarea" onkeydown="handleEnter(event)" onfocus="clearContents(this);" style="width:32em">使用说明：
 
 在此框中输入你的计划，点击“添加计划”按钮，将你的计划添加至计划列表。接着点击“生成表格”按钮，通过勾选生成的表格中的复选框，告诉后台你的完成情况。最后点击“下载表格”按钮，下载计划完成统计表。</textarea><br>
 
