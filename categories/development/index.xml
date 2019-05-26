@@ -12,12 +12,13 @@
     
     
     <item>
-      <title>计划表生成工具</title>
+      <title>JavaScript初探</title>
       <link>http://luochang212.github.io/posts/to_do_list/</link>
       <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/to_do_list/</guid>
-      <description>项目链接：计划表生成工具
+      <description>初次学习JavaScript，用JavaScript写了一个小工具 &amp;ndash; 计划表生成工具。
+ 项目链接：计划表生成工具
 JavaScript，名为Java，实则和Java一毛钱关系也没有。身为一个JavaScript新手，我并不适应JavaScript编程。它不支持，诸如类和继承，这样在Java中常见的概念和操作。同时，它的变量声明似乎也不如Python好用。var和let在python的self面前，立马相形见绌。
 但新手的问题，在于由陌生产生隔阂。很容易因为固有的编程习惯，而忽视新语言的特性。哪怕对JS不太感冒，但我依旧深知它的强大。尤其是在可视化这一方面，在玩qtwebengine的时候就已经感受过一次了。目前，我JS的学习平台是W3Schools，中英文网站双管齐下。对这个网站我非常好评，入门的话不需要换平台，就它一家足矣。
 其实我学JS不到一周，所涉甚浅，不过为了记录心得和思考过程，故开此文。
@@ -35,7 +36,7 @@ var item = Object.create(Items);  （二）生成表格
 这一步要把复选框(checkbox)和按钮(button)都和每一行的计划绑定。那么如何绑定呢？
 要知道，用for loop遍历subArray的过程，就是生成表格内容的过程。所以，checkbox和button也都是在这次遍历中生成的。那么，我们就可以在它们的生成过程中，创建它们的id，并把id和计划对应起来。
 具体到代码中，我用了i.toString(10)将循环数转成string类型，然后加到id上。于是，第一项计划对应的checkbox的id就是&amp;rdquo;cb0&amp;rdquo;, 对应的button的id就是&amp;rdquo;btn0&amp;rdquo;, 以此类推。
-for (i = 0; i &amp;lt; subArray.length; i++) { var index = i+1; body += &#39;&amp;lt;tr&amp;gt;&#39;; body += &#39;&amp;lt;td&amp;gt;&#39; + index.</description>
+for (i = 0; i &amp;lt; subArray.</description>
     </item>
     
     <item>
