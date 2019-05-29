@@ -6,28 +6,10 @@
     <description>Recent content in Tags on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 28 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 24 May 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://luochang212.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>bilibili</title>
-      <link>http://luochang212.github.io/tags/bilibili/</link>
-      <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/tags/bilibili/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>dance</title>
-      <link>http://luochang212.github.io/tags/dance/</link>
-      <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/tags/dance/</guid>
-      <description></description>
-    </item>
     
     <item>
       <title>efficient</title>
@@ -188,6 +170,42 @@
       <pubDate>Mon, 06 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/tags/pork/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ant colony qlgorithm</title>
+      <link>http://luochang212.github.io/tags/ant-colony-qlgorithm/</link>
+      <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/tags/ant-colony-qlgorithm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>markowitz model</title>
+      <link>http://luochang212.github.io/tags/markowitz-model/</link>
+      <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/tags/markowitz-model/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>optimization</title>
+      <link>http://luochang212.github.io/tags/optimization/</link>
+      <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/tags/optimization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>portfolio</title>
+      <link>http://luochang212.github.io/tags/portfolio/</link>
+      <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/tags/portfolio/</guid>
       <description></description>
     </item>
     
