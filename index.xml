@@ -309,6 +309,24 @@ def classification(self, txt_array, file_index): id = np.array([]) date = np.arr
     </item>
     
     <item>
+      <title>TSP旅行路线规划</title>
+      <link>http://luochang212.github.io/links/5/</link>
+      <pubDate>Sat, 26 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/links/5/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>微博数据可视化</title>
+      <link>http://luochang212.github.io/links/6/</link>
+      <pubDate>Fri, 25 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/links/6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title></title>
       <link>http://luochang212.github.io/gadget/book/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -360,6 +378,15 @@ def classification(self, txt_array, file_index): id = np.array([]) date = np.arr
     
     <item>
       <title></title>
+      <link>http://luochang212.github.io/project/my_weibo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/project/my_weibo/</guid>
+      <description>微博数据可视化body {background: #ffc19f;font-family: Georgia, Times New Roman, Times, serif;font-size: 30px;text-align: center;margin: 0;padding: 0;}h1 {font-size: 70px;font-weight: normal;margin: 0;font-family: &#39;Chelsea Market&#39;, Georgia, serif;color: #000;line-height: 1;}h2 {font-size: 60px;font-weight: normal;margin: 0;color: #cc4037;font-family: &#39;Chelsea Market&#39;, Georgia, serif;}h3 {font-size: 40px;font-weight: normal;color: #7d1f19;margin: 0;margin-top: 40px;text-transform: lowercase;}p {width: 960px;margin: 40px auto;color: #000;line-height: 200%;}p a { color: #FFFfont-size: 40px; font-weight: normal;font-style: normal; background-color: #06406c; padding: 10px 15px; border-radius: 10px; text-decoration: none; }p a:hover { text-decoration: underline; }a, a:visited {color: #000;font-size: 12px;text-decoration: none;}a:hover {text-decoration: underline;}ul {list-style: disc; margin: 0; padding: 0;}ul li a { font-size: 24px; color: #cc4037; }.</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>http://luochang212.github.io/project/naturn_system/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -383,6 +410,15 @@ def classification(self, txt_array, file_index): id = np.array([]) date = np.arr
       
       <guid>http://luochang212.github.io/project/test/</guid>
       <description>基于蚁群算法的证券投资组合优化body {background: #FFF;font-family: Georgia, Times New Roman, Times, serif;font-size: 30px;text-align: center;margin: 0;padding: 0;}h1 {font-size: 60px;font-weight: normal;margin: 0;font-family: &#39;Chelsea Market&#39;, Georgia, serif;color: #000;line-height: 1;}h2 {font-size: 70px;font-weight: normal;margin: 0;color: #FFB000;font-family: &#39;Chelsea Market&#39;, Georgia, serif;text-transform: lowercase;}h3 {font-size: 40px;font-weight: normal;margin: 0;margin-top: 40px;text-transform: lowercase;}p {width: 960px;margin: 40px auto;color: #000;line-height: 200%;}a, a:visited {color: #000;font-size: 12px;text-decoration: none;}a:hover {text-decoration: underline;}ul {list-style: none;}.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/project/tsp_route/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/project/tsp_route/</guid>
+      <description>TSP旅行路线规划body {background: #ffc19f;font-family: Georgia, Times New Roman, Times, serif;font-size: 30px;text-align: center;margin: 0;padding: 0;}h1 {font-size: 70px;font-weight: normal;margin: 0;font-family: &#39;Chelsea Market&#39;, Georgia, serif;color: #000;line-height: 1;}h2 {font-size: 60px;font-weight: normal;margin: 0;color: #cc4037;font-family: &#39;Chelsea Market&#39;, Georgia, serif;}h3 {font-size: 40px;font-weight: normal;color: #7d1f19;margin: 0;margin-top: 40px;text-transform: lowercase;}p {width: 960px;margin: 40px auto;color: #000;line-height: 200%;}p a { color: #FFFfont-size: 40px; font-weight: normal;font-style: normal; background-color: #06406c; padding: 10px 15px; border-radius: 10px; text-decoration: none; }p a:hover { text-decoration: underline; }a, a:visited {color: #000;font-size: 12px;text-decoration: none;}a:hover {text-decoration: underline;}ul {list-style: disc; margin: 0; padding: 0;}ul li a { font-size: 24px; color: #cc4037; }.</description>
     </item>
     
     <item>

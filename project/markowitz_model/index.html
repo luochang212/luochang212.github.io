@@ -1,8 +1,11 @@
-
-
 <!DOCTYPE html>
 <html lang="zh-Hans">
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<head>
+
+<meta name="author" content="luochang">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="shortcut icon" type="image/png" href="/img/favicon.png">
 
 <title>基于蚁群算法的证券投资组合优化</title>
 <style type="text/css">
@@ -126,6 +129,7 @@ code {
 .block-trees code { color: #000; background-color: white; }
 .block-add { background-color: #cc4037; }
 .block-add h2, .block-add p { color: #4c0d09; }
+.block-add p { text-align: left; }
 .block-remote { background-color: #ffc19f; }
 .block-remote h2 { color: #cc4037; }
 .block-branching { background-color: #000; }
@@ -301,6 +305,13 @@ code {
             和MATLAB金融工具箱相比，因为蚁群算法的迭代次数较多，对解的探索能力强，因此整体而言，蚁群算法的解要优于MATLAB金融工具箱的解。
         </p>
 
+        
+        
+    </div>
+	
+	<a name="add"></a>
+    <div class="scrollblock block-add">
+        <h2>比较分析</h2>
         <p>
             为了进一步验证本文设计的蚁群算法的算法性能，我们选取了前3只股票。即在n=3的情况下，暴力计算了有效市场边界。下图表示了MATLAB金融工具箱、蚁群算法、暴力算法的结果比较：
         </p>
@@ -310,7 +321,6 @@ code {
         <p>
             从图中可以看出，蚁群算法确实优于金融工具箱的解，和真实的有效市场边界更为接近。
         </p>
-        
     </div>
     
     <a name="resources"></a>
