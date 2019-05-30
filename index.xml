@@ -274,37 +274,37 @@ def classification(self, txt_array, file_index): id = np.array([]) date = np.arr
     
     <item>
       <title>证券投资组合优化</title>
-      <link>http://luochang212.github.io/project_index/1/</link>
+      <link>http://luochang212.github.io/links/1/</link>
       <pubDate>Wed, 30 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/project_index/1/</guid>
+      <guid>http://luochang212.github.io/links/1/</guid>
       <description></description>
     </item>
     
     <item>
       <title>团队软件项目</title>
-      <link>http://luochang212.github.io/project_index/2/</link>
+      <link>http://luochang212.github.io/links/2/</link>
       <pubDate>Tue, 29 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/project_index/2/</guid>
+      <guid>http://luochang212.github.io/links/2/</guid>
       <description></description>
     </item>
     
     <item>
       <title>自然系统的建模与仿真</title>
-      <link>http://luochang212.github.io/project_index/3/</link>
+      <link>http://luochang212.github.io/links/3/</link>
       <pubDate>Mon, 28 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/project_index/3/</guid>
+      <guid>http://luochang212.github.io/links/3/</guid>
       <description></description>
     </item>
     
     <item>
       <title>机器学习</title>
-      <link>http://luochang212.github.io/project_index/4/</link>
+      <link>http://luochang212.github.io/links/4/</link>
       <pubDate>Sun, 27 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/project_index/4/</guid>
+      <guid>http://luochang212.github.io/links/4/</guid>
       <description></description>
     </item>
     
