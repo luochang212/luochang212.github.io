@@ -170,6 +170,7 @@
         <div class="portfolio_content">
 		
             
+			
 			<div class="links-pretty">
 			<h2>Projects</h2>
 			<br>
@@ -288,6 +289,10 @@
 
 <style type="text/css">
 
+.links-pretty li{
+	
+}
+  
 .links-pretty ul {
 	margin: 0 0 0 2rem;
 	padding: 0;
@@ -395,14 +400,19 @@
 #line {
 	position: absolute;
 	top: 0rem;
-	bottom: -16rem;
-	left: 19.4rem;
+	bottom: -18rem;
+	
+	left: rect.left rem;
 	width: .125rem;
 	background: rgba(240,240,240,1);
 	z-index: -1;
 }
 
 </style>
+<script>
+	var rect = document.li.getBoundingClientRect();
+</script>
+
  
 
         </div>
