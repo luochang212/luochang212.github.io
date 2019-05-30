@@ -179,13 +179,13 @@
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/tags/jupyter-notebook/</loc>
+    <loc>http://luochang212.github.io/categories/jupyter-notebook/</loc>
     <lastmod>2019-04-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/categories/jupyter-notebook/</loc>
+    <loc>http://luochang212.github.io/tags/jupyter-notebook/</loc>
     <lastmod>2019-04-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -218,6 +218,31 @@
     <loc>http://luochang212.github.io/tags/permutation/</loc>
     <lastmod>2019-03-16T00:00:00+00:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/project_index/</loc>
+    <lastmod>2019-01-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/project_index/1/</loc>
+    <lastmod>2019-01-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/project_index/2/</loc>
+    <lastmod>2019-01-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/project_index/3/</loc>
+    <lastmod>2019-01-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/project_index/4/</loc>
+    <lastmod>2019-01-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -308,7 +333,22 @@
   </url>
   
   <url>
+    <loc>http://luochang212.github.io/project/machine_learning/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://luochang212.github.io/project/markowitz_model/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/project/naturn_system/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/project/team_software_project/</loc>
     <priority>0</priority>
   </url>
   
