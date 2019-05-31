@@ -68,7 +68,7 @@ p a:hover {
 
 a, a:visited {
 	color: #000;
-    font-size: 12px;
+    font-size: 14px;
     text-decoration: none;
 }
 
@@ -198,10 +198,83 @@ code {
   letter-spacing: 1px;
   font-size: 9px;
 }
+
+#menu {
+  background-color: #ffd59f;  
+  text-align: center;
+}
+
+#menu a {
+  color: #8F8F8F;
+  display: inline-block;
+  padding: .5em 1em;
+  text-shadow: 0 1px 0 #EDEDED;
+  text-decoration: none;
+}
+
+#menu a:hover {
+  background: #ffad8b  
+}
+
+#menu .home-link {
+  margin-right: 1em;
+}
+
+@media screen and (min-width:601px) {
+
+  #menu {
+    position: absolute;
+    top: -16px;
+    left: -20px;
+    width: 250px;
+    padding-top: 1.7em;
+    -webkit-transform-origin: 0 0;
+       -moz-transform-origin: 0 0;
+        -ms-transform-origin: 0 0;
+         -o-transform-origin: 0 0;
+            transform-origin: 0 0;
+    -webkit-transform: rotate(-35deg) translate(-92px, 22px);   
+       -moz-transform: rotate(-35deg) translate(-92px, 22px);   
+        -ms-transform: rotate(-35deg) translate(-92px, 22px);   
+         -o-transform: rotate(-35deg) translate(-92px, 22px);   
+            transform: rotate(-35deg) translate(-92px, 22px);   
+  }
+
+  .rtl #menu {
+    position: absolute;
+    top: -16px;
+    left: auto;
+    right: -20px;
+    width: 250px;
+    padding-top: 2em;
+    -webkit-transform-origin: 0 0;
+       -moz-transform-origin: 0 0;
+        -ms-transform-origin: 0 0;
+         -o-transform-origin: 0 0;
+            transform-origin: 0 0;
+    -webkit-transform: rotate(35deg) translate(62px, -129px);   
+       -moz-transform: rotate(35deg) translate(62px, -129px);   
+        -ms-transform: rotate(35deg) translate(62px, -129px);   
+         -o-transform: rotate(35deg) translate(62px, -129px);   
+            transform: rotate(35deg) translate(62px, -129px);   
+  }
+
+  #menu a {
+    display: block;
+    padding: .6em 0;
+  }
+
+}
 </style>
 </head>
 
 <body data-gr-c-s-loaded="true">
+
+	<div id="menu">
+      <a class="home-link" href="http://luochang212.github.io/links/">更多项目</a>
+      
+    </div>
+
     <a name="resources"></a>
     <div class="scrollblock block-resources">
 	<br>
