@@ -6,24 +6,10 @@
     <description>Recent content on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 28 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 24 May 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://luochang212.github.io/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>B站舞区UP主推荐</title>
-      <link>http://luochang212.github.io/posts/bilibili_dance/</link>
-      <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/posts/bilibili_dance/</guid>
-      <description>/* PC */ @media only screen and (min-width:1025px) { .mobile-1, .mobile-2, .mobile-3, .mobile-4 { display:none; } } /* mobile phone */ @media only screen and (max-width: 1024px) { .pc-1, .pc-2, .pc-3, .pc-4 { display:none; } }  B站有很多有意思的东西，比如动漫混剪，吃播视频，沙雕视频，MMD，MAD，VLog，纪录片，各种学习教程&amp;hellip;&amp;hellip;但是我最喜欢的还是舞区视频啊！烧饭做菜的时候，摆上一只ipad看舞蹈视频，就是俺的常规操作嘛。
-那么今天就给大家盘点一下让我心水的舞见吧！
- ★ Tocci椭奇 可爱与美貌并存的元气up主，家有美猫Kiko。直播经常划水，投稿却从不含糊。      
-★ 卡卡Orange 原年更up，现舞区劳模。柔软却莫名霸气的小姐姐，我&amp;hellip;&amp;hellip;我喜欢 (///ω///)      
-★ 三羊一狼 三羊老师牛逼！但是不知道为什么就是不火。b站这群阿宅，快给我反省！      
-★ 仮面ライアー217niconico 217小姐姐这支舞好酷啊！看得我都想学舞了。</description>
-    </item>
     
     <item>
       <title>初探JavaScript</title>
