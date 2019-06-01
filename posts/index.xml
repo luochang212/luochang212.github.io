@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>JavaScript初探</title>
+      <title>初探JavaScript</title>
       <link>http://luochang212.github.io/posts/to_do_list/</link>
       <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
       
@@ -137,12 +137,12 @@ def classification(self, txt_array, file_index): id = np.array([]) date = np.arr
     </item>
     
     <item>
-      <title>厨事笔记</title>
+      <title>厨房笔记</title>
       <link>http://luochang212.github.io/posts/kitchen_time/</link>
       <pubDate>Mon, 06 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/kitchen_time/</guid>
-      <description>刚到英国，我兴致勃勃地下厨，积累了一点经验。现在回头看，当时的做法都很精致。如果我们希望人生若只如初见，那便应不时回头，看看往日相遇之地。
+      <description>刚到英国，我兴致勃勃地下厨，积累了一点经验。现在回头看，当时的做法都很精致，正应了那句“人生若只如初见”。
   拌牛肉 原料：牛肉3两，猪油，葱，酱油，地瓜粉1匙半，盐
 做法：
  牛肉顺纹路切成宽约一寸的肉条，肉条逆纹路切片，装碗，用自来水清洗，沥干，加入一匙猪油和适量的盐与酱油，用手抓揉片刻后，加入一匙半的地瓜粉，继续抓握揉捏约3分钟即可，葱切好备用；
