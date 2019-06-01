@@ -343,6 +343,11 @@
   </url>
   
   <url>
+    <loc>http://luochang212.github.io/project/3d_scene/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://luochang212.github.io/project/machine_learning/</loc>
     <priority>0</priority>
   </url>
