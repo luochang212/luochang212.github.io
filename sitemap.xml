@@ -333,22 +333,27 @@
   </url>
   
   <url>
+    <loc>http://luochang212.github.io/gadget/audio-player/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://luochang212.github.io/gadget/book/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/gadget/player/</loc>
+    <loc>http://luochang212.github.io/gadget/media-player/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/gadget/showtime/</loc>
+    <loc>http://luochang212.github.io/gadget/show-time/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/gadget/todolist/</loc>
+    <loc>http://luochang212.github.io/gadget/to-do-list/</loc>
     <priority>0</priority>
   </url>
   
