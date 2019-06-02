@@ -16,6 +16,7 @@
 	outline: none !important;
 	cursor: pointer;
 	transition-property: padding, text-shadow, line-height, color, background, opacity, transform;
+	/* 时间延缓 */
 	transition-duration: .25s;
 	transition-timing-function: ease-in-out;
 }
@@ -42,6 +43,7 @@
 }
 .links-pretty a.linklive:hover {
 	color: rgba(120,120,120,1);
+	
 }
 .links-pretty a.linkdead:hover {
 	color: rgba(200,200,200,1);
@@ -68,6 +70,9 @@
 .links-pretty ul {
 	margin: 1rem 0;
 	color: rgba(200,200,200,1);
+	/* 行间距 */
+	line-height: 1rem;
+	
 }
 .links-pretty ul li:before {
 	content: "";
@@ -80,7 +85,7 @@
 .links-pretty li a:before {
 	content: "";
 	display: inline-block;
-	margin: 0 .5rem 0 -.3rem;
+	margin: 0 .5rem 0 -.2rem;
 	width: .5rem;
 	height: .5rem;
 	border-radius: .5rem;
@@ -88,7 +93,8 @@
 	transform: translateY(-.125rem);
 }
 .links-pretty li a:hover:before {
-	margin: 0 1.25rem 0 -.3rem;
+	/* 悬停缩进 */
+	margin: 0 1rem 0 -.2rem;
 	background: rgba(120,120,120,1);
 }
 .links-pretty h2 {
@@ -99,7 +105,7 @@
 .links-pretty h2:before {
 	content: "";
 	display: inline-block;
-	margin: 0 .25rem 0 -.4rem;
+	margin: 0 .25rem 0 -.3rem;
 	width: .5rem;
 	height: .5rem;
 	background: rgba(255,255,255,1);
