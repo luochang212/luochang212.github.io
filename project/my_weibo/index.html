@@ -3,301 +3,12 @@
 
 <head>
 
+<title>微博数据可视化</title>
+
 <meta name="author" content="luochang">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
-
-<title>微博数据可视化</title>
-<style type="text/css">
-body {
-	background: #ffc19f;
-	font-family: Georgia, Times New Roman, Times, serif;
-	font-size: 30px;
-	text-align: center;
-    margin: 0;
-    padding: 0;
-}
-
-h1 {
-	font-size: 70px;
-	font-weight: normal;
-	margin: 0;
-    font-family: 'Chelsea Market', Georgia, serif;
-    color: #000;
-	line-height: 1;
-}
-
-h2 {
-	font-size: 60px;
-	font-weight: normal;
-	margin: 0;
-	color: #cc4037;
-    font-family: 'Chelsea Market', Georgia, serif;
-}
-
-h3 {
-	font-size: 40px;
-	font-weight: normal;
-	color: #7d1f19;
-	margin: 0;
-    margin-top: 40px;
-	text-transform: lowercase;
-}
-
-p {
-	
-	margin: 40px auto;
-	color: #000;
-    line-height: 200%;
-}
-
-p a { 
-	color: #FFF
-	font-size: 40px; 
-	font-weight: normal;
-	font-style: normal; 
-	background-color: #06406c; 
-	padding: 10px 15px; 
-	border-radius: 10px; 
-	text-decoration: none; 
-}
-
-p a:hover { 
-	text-decoration: underline; 
-}
-
-a, a:visited {
-	color: #000;
-    font-size: 14px;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-ul {
-	list-style: disc; margin: 0; padding: 0;
-}
-
-ul li a { font-size: 24px; color: #cc4037; }
-
-
-
-.download {
-	padding: 10px;
-}
-
-pre {
-	font-size: 18px;
-}
-
-blockquote {
-	text-align: left;
-	width: 720px;
-	margin: 10px auto;
-	background: #C5C3DE;
-	border: solid 2px #69697A;
-	padding: 0 40px;
-}
-
-code {
-    background-color: #000;
-	font-style: normal;
-    border-radius: 10px;
-    color: white;
-    padding: 5px 15px;
-    font-family: menlo, monospace;
-}
-
-
-
-.block-resources {  }
-.block-resources h2 { color: #cc4037; }
-.block-resources h3 { color: #7d1f19; }
-.block-resources ul { list-style: disc; margin: 0; padding: 0; }
-.block-resources ul li a { font-size: 24px; color: #cc4037; }
-.block-resources p a { color: #FFF; font-size: 40px; font-weight: normal;font-style: normal; background-color: #06406c; padding: 10px 15px; border-radius: 10px; text-decoration: none; }
-.block-resources p a:hover { text-decoration: underline; }
-
-.tower {
-    display: block;
-    width: 180px;
-    height: 260px;
-    position: absolute;
-    top: 330px;
-    right: 0;
-    background: #FFF url(../img/git-tower.png) no-repeat;
-}
-
-.cheatsheet {
-    display: block;
-    width: 180px;
-    height: 250px;
-    position: absolute;
-    top: 346px;
-    left: 0;
-    background: #FFF url(../img/cheatsheet.png) no-repeat;
-}
-
-.announcement {
-    margin-bottom: 40px;
-}
-
-.announcement img {
-    border-radius: 4px;
-}
-
-#carbonads {
-  display: block;
-  overflow: hidden;
-  padding: 10px;
-  background-color: #dfdfdf;
-  border-radius: 3px;
-  max-width: 300px;
-  margin: 0 auto;
-  font-family: Verdana, "Helvetica Neue", Helvetica, sans-serif;
-  line-height: 1.5;
-}
-
-#carbonads a {
-  color: #606060;
-}
-
-#carbonads a:hover {
-  color: hsl(0, 0%, 20%);
-  text-decoration: none;
-}
-
-#carbonads span {
-  position: relative;
-  display: block;
-  overflow: hidden;
-}
-
-.carbon-img {
-  float: left;
-  margin-right: 1em;
-}
-
-.carbon-img img { display: block; }
-
-.carbon-text {
-  display: block;
-  float: left;
-  max-width: calc(100% - 130px - 1em);
-  text-align: left;
-}
-
-.carbon-poweredby {
-  position: absolute;
-  left: 144px;
-  bottom: 0;
-  display: block;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: 9px;
-}
-
-#menu {
-  background-color: #ffd59f;  
-  text-align: center;
-}
-
-#menu a {
-  color: #8F8F8F;
-  display: inline-block;
-  padding: .5em 1em;
-  text-shadow: 0 1px 0 #EDEDED;
-  text-decoration: none;
-}
-
-#menu a:hover {
-  background: #ffad8b  
-}
-
-#menu .home-link {
-  margin-right: 1em;
-}
-
-@media only screen and (min-width:1025px) {
-
-  #menu {
-    position: absolute;
-    top: -16px;
-    left: -20px;
-    width: 250px;
-    padding-top: 1.7em;
-    -webkit-transform-origin: 0 0;
-       -moz-transform-origin: 0 0;
-        -ms-transform-origin: 0 0;
-         -o-transform-origin: 0 0;
-            transform-origin: 0 0;
-    -webkit-transform: rotate(-35deg) translate(-92px, 22px);   
-       -moz-transform: rotate(-35deg) translate(-92px, 22px);   
-        -ms-transform: rotate(-35deg) translate(-92px, 22px);   
-         -o-transform: rotate(-35deg) translate(-92px, 22px);   
-            transform: rotate(-35deg) translate(-92px, 22px);   
-  }
-
-  .rtl #menu {
-    position: absolute;
-    top: -16px;
-    left: auto;
-    right: -20px;
-    width: 250px;
-    padding-top: 2em;
-    -webkit-transform-origin: 0 0;
-       -moz-transform-origin: 0 0;
-        -ms-transform-origin: 0 0;
-         -o-transform-origin: 0 0;
-            transform-origin: 0 0;
-    -webkit-transform: rotate(35deg) translate(62px, -129px);   
-       -moz-transform: rotate(35deg) translate(62px, -129px);   
-        -ms-transform: rotate(35deg) translate(62px, -129px);   
-         -o-transform: rotate(35deg) translate(62px, -129px);   
-            transform: rotate(35deg) translate(62px, -129px);   
-  }
-
-  #menu a {
-    display: block;
-    padding: .6em 0;
-  }
-
-}
-
-@media only screen and (max-width: 1024px) {
-  #menu {
-	visibility: hidden;
-  }
-
-  #menu a {
-	visibility: hidden;
-  }
-
-
-  .page-top {
- 
-  height: 26vh;
-}
-
-  .page-sub-title {
- 
-  height: 8vh;
-}
-
-  .page-content {
- 
-  height: 26vh;
-}
-
-  .copy-right {
- 
-  height: 12vh;
-}
-
-}
-</style>
+<link rel="stylesheet" href="/css/project.css">
 </head>
 
 <body data-gr-c-s-loaded="true">
@@ -307,22 +18,16 @@ code {
       
     </div>
 	
-    <a name="resources"></a>
-    <div class="scrollblock block-resources">
-		<div id="page-top">
-			<br>
-		</div>
-		<br>
-		<br>
-		<div class="page-title">
+    <div class="resources-links">
+		<div id="page-title">
 			<h2>微博数据可视化</h2>	
         </div>
-		<br>
-		<div class="page-sub-title">
+
+		<div id="page-sub-title">
 			基于Pandas和seaborn实现的新浪微博数据可视化
 		</div>
-		<br>
-        <div class="page-content">
+
+        <div id="page-content">
 			<p>
 				<a href="http://luochang212.github.io/posts/my_weibo/">博客全文</a>
 			</p>
@@ -330,12 +35,9 @@ code {
 				<a href="https://github.com/luochang212/weibo-analysis"> GitHub </a>
 			</p>
 		</div>        
-		<br>
-		<br>
-		<br>
-		<div class="copy-right">
-			<font color="#7d1f19">© 2019 Chang Luo</font>
+
+		<div id="copy-right">
+			© 2019 Chang Luo
 		</div>
-		<br>
     </div>
 </body>
