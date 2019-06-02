@@ -1,7 +1,7 @@
 body {
 	background: #ffc19f;
 	font-family: Georgia, Times New Roman, Times, serif;
-	font-size: 30px;
+	font-size: 1.875rem;  // 30px;
 	text-align: center;
     margin: 0;
     padding: 0;
@@ -11,7 +11,7 @@ body {
 }
 
 h2 {
-	font-size: 60px;
+	font-size: 3.75rem;  // 60px;
 	font-weight: normal;
 	margin: 0;
 	color: #cc4037;
@@ -23,21 +23,6 @@ p {
 	margin: 40px auto;
 	color: #000;
     line-height: 200%;
-}
-
-p a { 
-	color: #FFF
-	font-size: 40px; 
-	font-weight: normal;
-	font-style: normal; 
-	background-color: #06406c; 
-	padding: 10px 15px; 
-	border-radius: 10px; 
-	text-decoration: none; 
-}
-
-p a:hover { 
-	text-decoration: underline; 
 }
 
 a:hover {
@@ -53,7 +38,7 @@ a:hover {
 }
 
 #menu a {
-  font-size: 14px;
+  font-size: 0.85rem;  // 14px;
   color: #8F8F8F;
   display: inline-block;
   padding: .5em 1em;
@@ -79,6 +64,7 @@ a:hover {
   position: absolute;
   width: 100%;
   top: 28%;
+  //padding:.25rem;
 }
 
 #page-content {
@@ -91,7 +77,7 @@ a:hover {
   position: absolute;
   width: 100%;
   top: 87%;
-  font-size: 27px;
+  font-size: 1.7rem;  // 27px;
   color: #7d1f19;
 }
 
