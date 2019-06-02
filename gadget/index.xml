@@ -30,7 +30,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/gadget/player/</guid>
-      <description>Howler.js Audio Player0:000:00/*!* Howler.js Audio Player Demo* howlerjs.com** (c) 2013-2019, James Simpson of GoldFire Studios* goldfirestudios.com** MIT License*/// Cache references to DOM elements.var elms = [&#39;track&#39;, &#39;timer&#39;, &#39;duration&#39;, &#39;playBtn&#39;, &#39;pauseBtn&#39;, &#39;prevBtn&#39;, &#39;nextBtn&#39;, &#39;playlistBtn&#39;, &#39;volumeBtn&#39;, &#39;progress&#39;, &#39;bar&#39;, &#39;wave&#39;, &#39;loading&#39;, &#39;playlist&#39;, &#39;list&#39;, &#39;volume&#39;, &#39;barEmpty&#39;, &#39;barFull&#39;, &#39;sliderBtn&#39;];elms.</description>
+      <description>Audio Player0:000:00/*!* Howler.js Audio Player Demo* howlerjs.com** (c) 2013-2019, James Simpson of GoldFire Studios* goldfirestudios.com** MIT License*/// Cache references to DOM elements.var elms = [&#39;track&#39;, &#39;timer&#39;, &#39;duration&#39;, &#39;playBtn&#39;, &#39;pauseBtn&#39;, &#39;prevBtn&#39;, &#39;nextBtn&#39;, &#39;playlistBtn&#39;, &#39;volumeBtn&#39;, &#39;progress&#39;, &#39;bar&#39;, &#39;wave&#39;, &#39;loading&#39;, &#39;playlist&#39;, &#39;list&#39;, &#39;volume&#39;, &#39;barEmpty&#39;, &#39;barFull&#39;, &#39;sliderBtn&#39;];elms.</description>
     </item>
     
     <item>
