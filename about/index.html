@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
     
-    
-
-
     <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     <meta charset="utf-8">
@@ -22,15 +19,11 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="About me"/>
-<meta name="twitter:description" content="Hi there!
-I am an ACS student who met NLP in 2019 and worked very hard to learn it from then on. I’m especially interested in NLP.
-My undergraduate major was math. So when I started my master&rsquo;s program I didn&rsquo;t have a solid programming foundation. Over the past half year, I kept practising my programming skills. For example, I do exercises on Leetcode almost every day. So far, I have finished 29 questions."/>
+<meta name="twitter:description" content=""/>
 
 <meta property="og:title" content="About me" />
-<meta property="og:description" content="Hi there!
-I am an ACS student who met NLP in 2019 and worked very hard to learn it from then on. I’m especially interested in NLP.
-My undergraduate major was math. So when I started my master&rsquo;s program I didn&rsquo;t have a solid programming foundation. Over the past half year, I kept practising my programming skills. For example, I do exercises on Leetcode almost every day. So far, I have finished 29 questions." />
-<meta property="og:type" content="article" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
 <meta property="og:url" content="http://luochang212.github.io/about/" />
 <meta property="og:site_name" content="Title" />
 
@@ -62,7 +55,8 @@ My undergraduate major was math. So when I started my master&rsquo;s program I d
     <!-- Icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
     <link rel="shortcut icon" href="/favicon.png">
-    
+    <link rel="alternate" type="application/rss+xml" href="http://luochang212.github.io/about/index.xml" title="Chang Luo" />
+
 </head>
 
 
@@ -111,7 +105,7 @@ My undergraduate major was math. So when I started my master&rsquo;s program I d
 		 
 			 
 				<li>
-					<a href="/about_me/">
+					<a href="/about/">
 						<span>About Me</span>
 					</a>
 				</li>
@@ -168,93 +162,152 @@ My undergraduate major was math. So when I started my master&rsquo;s program I d
 
         <div class="content container">
             
-    
-<article>
-  <header>
-    <h1>About me</h1>
-    
-    
-<div class="post__meta">
-    
-    
-    
-    
-    
-    
-    <br/>
-    <i class="fas fa-clock"></i> 1 min read
+    <div class="title-space">
+  <br>
 </div>
 
+<h1>
+  About me
+</h1>
 
-  </header>
-  
-  
-  <div class="post">
-    <p>Hi there!</p>
-
-<p>I am an ACS student who met NLP in 2019 and worked very hard to learn it from then on. I’m especially interested in NLP.</p>
-
-<p>My undergraduate major was math. So when I started my master&rsquo;s program I didn&rsquo;t have a solid programming foundation. Over the past half year, I kept practising my programming skills. For example, I do exercises on Leetcode almost every day. So far, I have finished 29 questions. Now I can use many kinds of programming langrage including java, python and MATLAB.</p>
-
-<p>I’m looking for internships in Computer Science and Machine Learning, so if you are interested feel free to contact me at luochang212@gmail.com or on social media.</p>
-
-<p>For more info, please take a look at my resume:</p>
-
-<ul>
-<li><a href="/pdf/resume_En_latex_2019.01.26.pdf">English version</a></li>
-<li><a href="/pdf/resume_CN_2019.05.30.pdf">Chinese version</a></li>
-</ul>
-
-  </div>
-  
-
-<div class="navigation navigation-single">
-    
-    
+<div class="language-space">
+    <br>
 </div>
 
+<div class="language">
 
-  
+    <ul>
+    <li><button onclick="showZh()">中文 &nbsp &nbsp</button></li>
+    <li><button onclick="showEn()">English</button></li>
+    </ul>
+</div>
 
-  
+<hr>
+
+<div id="about-content-en">
+    <p>
+    Hi there!
+    </p>
+
+    <p>
+    I am an ACS student who met NLP in 2019 and worked very hard to learn it from then on. I’m especially interested in NLP.
+    </p>
+
+    <p>
+      My undergraduate major was math. So when I started my master's program I didn't have a solid programming foundation. Over the past half year, I kept practising my programming skills. For example, I do exercises on Leetcode almost every day. So far, I have finished 29 questions. Now I can use many kinds of programming langrage including java, python and MATLAB.
+    </p>
+
+    <p>
+      I’m looking for internships in Computer Science and Machine Learning, so if you are interested feel free to contact me at luochang212@gmail.com or on social media.
+    </p>
+
+    <p>
+      For more info, please take a look at my resume:
+    </p>
+
+    <p>
+      <ul>
+        <li><a href="/pdf/resume_En_latex_2019.01.26.pdf">English version</a></li>
+        <li><a href="/pdf/resume_CN_2019.05.30.pdf">Chinese version</a></li>
+      </ul>
+    </p>
+</div>
+
+<div id="about-content-zh">
+    <p>
     
+    </p>
+    
+    <p>
+    
+    </p>
+    
+    <p>
+    
+    </p>
 
 
-</article>
+    <p>
+      <ul>
+        <li><a href="/pdf/resume_CN_2019.05.30.pdf">中文版本</a></li>
+        <li><a href="/pdf/resume_En_latex_2019.01.26.pdf">英文版本</a></li>
+      </ul>
+    </p>
+</div>
+
+<script>
+/* 默认显示英文 */
+document.getElementById("about-content-en").style.display = "block";
+document.getElementById("about-content-zh").style.display = "none";
+
+
+
+
+function showEn() {
+  var x = document.getElementById("about-content-en");
+  var y = document.getElementById("about-content-zh");
+  x.style.display = "block";
+  y.style.display = "none";
+}
+
+function showZh() {
+  var x = document.getElementById("about-content-en");
+  var y = document.getElementById("about-content-zh");
+  y.style.display = "block";
+  x.style.display = "none";
+}
+</script>
+
+<style type="text/css">
+.language button {
+    background:none;
+    color:inherit;
+    border:none; 
+    padding:0!important;
+    font: inherit;
+    /*border is optional*/
+    //border-bottom:1px solid #444; 
+    cursor: pointer;
+    //text-align:right;
+    outline:none;
+}
+
+.language-space {
+  line-height: .6rem;
+}
+
+.language ul {
+  padding: 0px;
+  //line-height: 1rem;
+}
+.language li {
+  display: inline;
+  font-size: 20px;
+  //margin: 1rem;
+}
+.language li button {
+  color: #000;
+  //padding: 10px;
+}
+.language li button:hover {
+  color: #666;
+  //text-decoration: none;
+  //border-left:2px solid #444;
+}
+</style>
+
+
+<style type="text/css">
+.title-space {
+  line-height: .35rem;
+}
+</style>
+
 
 
         </div>
         
-    <script type="text/javascript" async
-  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-  MathJax.Hub.Config({
-  tex2jax: {
-    inlineMath: [['$','$'], ['\\(','\\)']],
-    displayMath: [['$$','$$']],
-    processEscapes: true,
-    processEnvironments: true,
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-    TeX: { equationNumbers: { autoNumber: "AMS" },
-         extensions: ["AMSmath.js", "AMSsymbols.js"] }
-  }
-  });
-  MathJax.Hub.Queue(function() {
     
-    
-    
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i = 0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-
-  MathJax.Hub.Config({
-  
-  TeX: { equationNumbers: { autoNumber: "AMS" } }
-  });
-</script>
-
-
   
   
 <script type="application/javascript">
@@ -270,23 +323,6 @@ if (!doNotTrack) {
 
 
 <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
-
-
-    
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
-        
-    
-    <script type="text/javascript">
-        
-        hljs.initHighlightingOnLoad();
-    </script>
-    
-
-
-
-
-    
 
 
 
