@@ -273,6 +273,15 @@ def classification(self, txt_array, file_index): id = np.array([]) date = np.arr
     
     <item>
       <title></title>
+      <link>http://luochang212.github.io/gadget/cv/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/cv/</guid>
+      <description>CV • Chang Luo   --   -- if( window.location.search.match( /print-pdf/gi ) ) { var link = document.createElement( &#39;link&#39; ); link.rel = &#39;stylesheet&#39;; link.type = &#39;text/css&#39;; link.href = &#39;https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/print/pdf.css&#39;; document.getElementsByTagName( &#39;head&#39; )[0].appendChild( link ); }  --    MathJax.Hub.Config({ tex2jax: { inlineMath: [ [&#39;$&#39;,&#39;$&#39;], [&#34;\\(&#34;,&#34;\\)&#34;] ], displayMath: [ [&#39;$$&#39;,&#39;$$&#39;], [&#34;\\[&#34;,&#34;\\]&#34;] ], processEscapes: true, processEnvironments: true }, // Center justify equations in code and markdown cells.</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>http://luochang212.github.io/gadget/audio-player/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -282,16 +291,11 @@ def classification(self, txt_array, file_index): id = np.array([]) date = np.arr
     
     <item>
       <title></title>
-      <link>http://luochang212.github.io/gadget/book/</link>
+      <link>http://luochang212.github.io/gadget/courseware/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/gadget/book/</guid>
-      <description>Deep Learninghtml{background-image: &#34;&#34;;background-position:center top;background-repeat:no-repeat;width:800px;margin:auto;}标题标题说点啥
-标题说点啥
-标题说点啥
-说点啥
-标题说点啥
-</description>
+      <guid>http://luochang212.github.io/gadget/courseware/</guid>
+      <description>lecture5_1_graph_dep_parsing slides    if( window.location.search.match( /print-pdf/gi ) ) { var link = document.createElement( &#39;link&#39; ); link.rel = &#39;stylesheet&#39;; link.type = &#39;text/css&#39;; link.href = &#39;https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/print/pdf.css&#39;; document.getElementsByTagName( &#39;head&#39; )[0].appendChild( link ); }     MathJax.Hub.Config({ tex2jax: { inlineMath: [ [&#39;$&#39;,&#39;$&#39;], [&#34;\\(&#34;,&#34;\\)&#34;] ], displayMath: [ [&#39;$$&#39;,&#39;$$&#39;], [&#34;\\[&#34;,&#34;\\]&#34;] ], processEscapes: true, processEnvironments: true }, // Center justify equations in code and markdown cells. Elsewhere // we use CSS to left justify single line equations in code cells.</description>
     </item>
     
     <item>
@@ -373,15 +377,6 @@ def classification(self, txt_array, file_index): id = np.array([]) date = np.arr
       
       <guid>http://luochang212.github.io/projects/team_software_project/</guid>
       <description>团队软件项目更多项目目录--团队软件项目	基于PyQt5编写的课程管理软件项目报告项目PPT © 2019 Chang Luo</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://luochang212.github.io/projects/test/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/projects/test/</guid>
-      <description>基于蚁群算法的证券投资组合优化body {background: #FFF;font-family: Georgia, Times New Roman, Times, serif;font-size: 30px;text-align: center;margin: 0;padding: 0;}h1 {font-size: 60px;font-weight: normal;margin: 0;font-family: &#39;Chelsea Market&#39;, Georgia, serif;color: #000;line-height: 1;}h2 {font-size: 70px;font-weight: normal;margin: 0;color: #FFB000;font-family: &#39;Chelsea Market&#39;, Georgia, serif;text-transform: lowercase;}h3 {font-size: 40px;font-weight: normal;margin: 0;margin-top: 40px;text-transform: lowercase;}p {width: 960px;margin: 40px auto;color: #000;line-height: 200%;}a, a:visited {color: #000;font-size: 12px;text-decoration: none;}a:hover {text-decoration: underline;}ul {list-style: none;}.</description>
     </item>
     
     <item>

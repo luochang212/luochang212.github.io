@@ -293,12 +293,17 @@
   </url>
   
   <url>
+    <loc>http://luochang212.github.io/gadget/cv/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://luochang212.github.io/gadget/audio-player/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/gadget/book/</loc>
+    <loc>http://luochang212.github.io/gadget/courseware/</loc>
     <priority>0</priority>
   </url>
   
@@ -344,11 +349,6 @@
   
   <url>
     <loc>http://luochang212.github.io/projects/team_software_project/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://luochang212.github.io/projects/test/</loc>
     <priority>0</priority>
   </url>
   
