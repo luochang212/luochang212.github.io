@@ -221,46 +221,6 @@
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/links/</loc>
-    <lastmod>2019-01-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://luochang212.github.io/links/1/</loc>
-    <lastmod>2019-01-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://luochang212.github.io/links/2/</loc>
-    <lastmod>2019-01-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://luochang212.github.io/links/3/</loc>
-    <lastmod>2019-01-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://luochang212.github.io/links/4/</loc>
-    <lastmod>2019-01-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://luochang212.github.io/links/5/</loc>
-    <lastmod>2019-01-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://luochang212.github.io/links/6/</loc>
-    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://luochang212.github.io/links/7/</loc>
-    <lastmod>2019-01-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://luochang212.github.io/categories/kitchen/</loc>
     <lastmod>2018-08-06T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -358,42 +318,42 @@
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/project/3d_scene/</loc>
+    <loc>http://luochang212.github.io/projects/3d_scene/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/project/machine_learning/</loc>
+    <loc>http://luochang212.github.io/projects/machine_learning/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/project/markowitz_model/</loc>
+    <loc>http://luochang212.github.io/projects/markowitz_model/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/project/my_weibo/</loc>
+    <loc>http://luochang212.github.io/projects/my_weibo/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/project/nature_system/</loc>
+    <loc>http://luochang212.github.io/projects/nature_system/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/project/team_software_project/</loc>
+    <loc>http://luochang212.github.io/projects/team_software_project/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/project/test/</loc>
+    <loc>http://luochang212.github.io/projects/test/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/project/tsp_route/</loc>
+    <loc>http://luochang212.github.io/projects/tsp_route/</loc>
     <priority>0</priority>
   </url>
   
@@ -407,8 +367,7 @@
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/project/</loc>
-    <priority>0</priority>
+    <loc>http://luochang212.github.io/projects/</loc>
   </url>
   
 </urlset>
