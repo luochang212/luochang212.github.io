@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Chang Luo</title>
+    <link>http://luochang212.github.io/categories/</link>
+    <description>Recent content in Categories on Chang Luo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 24 May 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://luochang212.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Development</title>
+      <link>http://luochang212.github.io/categories/development/</link>
+      <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/categories/development/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>JavaSript</title>
+      <link>http://luochang212.github.io/categories/javasript/</link>
+      <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/categories/javasript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PyCharm</title>
+      <link>http://luochang212.github.io/categories/pycharm/</link>
+      <pubDate>Fri, 10 May 2019 21:43:09 +0100</pubDate>
+      
+      <guid>http://luochang212.github.io/categories/pycharm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jupyter notebook</title>
+      <link>http://luochang212.github.io/categories/jupyter-notebook/</link>
+      <pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/categories/jupyter-notebook/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kitchen</title>
+      <link>http://luochang212.github.io/categories/kitchen/</link>
+      <pubDate>Mon, 06 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/categories/kitchen/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Life</title>
+      <link>http://luochang212.github.io/categories/life/</link>
+      <pubDate>Mon, 06 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/categories/life/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MATLAB</title>
+      <link>http://luochang212.github.io/categories/matlab/</link>
+      <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/categories/matlab/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Movie</title>
+      <link>http://luochang212.github.io/categories/movie/</link>
+      <pubDate>Tue, 11 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/categories/movie/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

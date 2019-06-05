@@ -1,0 +1,128 @@
+<style type="text/css">
+
+.links-pretty li{
+	font-size: 1.15rem;
+}
+  
+.links-pretty ul {
+	margin: 0 0 0 2rem;
+	padding: 0;
+	list-style-type: none;
+}
+
+.links-pretty a {
+	color: rgba(120,120,120,1);
+	text-decoration: none;
+	outline: none !important;
+	cursor: pointer;
+	transition-property: padding, text-shadow, line-height, color, background, opacity, transform;
+	/* 时间延缓 */
+	transition-duration: .25s;
+	transition-timing-function: ease-in-out;
+}
+.links-pretty a:before, a:after {
+	transition-property: top, left, right, margin, color, background, opacity, transform;
+	transition-duration: .25s;
+	transition-timing-function: ease-in-out;
+}
+.links-pretty a.underline {
+	display: inline-block;
+	white-space: nowrap;
+}
+.links-pretty a.underline:after {
+	content: "";
+	display: block;
+	height: .125rem;
+	margin: -.125rem 0 0;
+	background: rgba(0,0,0,.5);
+	border-radius: 1px;
+	transform: scaleX(0);
+}
+.links-pretty a.underline:hover:after {
+	transform: scaleX(1);
+}
+.links-pretty a.linklive:hover {
+	color: rgba(120,120,120,1);
+	
+}
+.links-pretty a.linkdead:hover {
+	color: rgba(200,200,200,1);
+	cursor: crosshair;
+}
+.links-pretty a.linklive:before, a.linkdead:before {
+	display: inline-block;
+	width: 1rem;
+	font-size: .875rem;
+	line-height: 1.5;
+	pointer-events: none;
+}
+.links-pretty a.linklive:before {
+	content: "\f131";
+}
+.links-pretty a.linkdead:before {
+	content: "\f132";
+}
+
+.links-pretty section {
+	position: relative;
+	padding: 4rem;
+}
+.links-pretty ul {
+	margin: 1rem 0;
+	color: rgba(200,200,200,1);
+	/* 行间距 */
+	line-height: 1rem;
+	
+}
+.links-pretty ul li:before {
+	content: "";
+	margin: 0;
+}
+.links-pretty li a {
+	margin: 0 .5rem 0 0;
+	color: rgba(120,120,120,1);
+}
+.links-pretty li a:before {
+	content: "";
+	display: inline-block;
+	margin: 0 .5rem 0 -.2rem;
+	width: .5rem;
+	height: .5rem;
+	border-radius: .5rem;
+	background: rgba(210,210,210,1);
+	transform: translateY(-.125rem);
+}
+.links-pretty li a:hover:before {
+	/* 悬停缩进 */
+	margin: 0 1rem 0 -.2rem;
+	background: rgba(120,120,120,1);
+}
+.links-pretty h2 {
+	margin: 3rem 0 1.5rem;
+	font-size: 2rem;
+	color: rgba(120,120,120,1);
+}
+.links-pretty h2:before {
+	content: "";
+	display: inline-block;
+	margin: 0 .25rem 0 -.3rem;
+	width: .5rem;
+	height: .5rem;
+	background: rgba(255,255,255,1);
+	border: .125rem solid rgba(200,200,200,1);
+	border-radius: .5rem;
+	transform: translateY(-.2rem);
+}
+
+#line {
+	position: absolute;
+	top: 0rem;
+	bottom: -24rem;
+	//left: 19.4rem;
+	left: rect.left rem;
+	width: .125rem;
+	background: rgba(240,240,240,1);
+	z-index: -1;
+}
+
+</style>

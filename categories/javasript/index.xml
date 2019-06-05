@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>JavaSript on Chang Luo</title>
+    <link>http://luochang212.github.io/categories/javasript/</link>
+    <description>Recent content in JavaSript on Chang Luo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 24 May 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://luochang212.github.io/categories/javasript/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>初探JavaScript</title>
+      <link>http://luochang212.github.io/posts/to_do_list/</link>
+      <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/posts/to_do_list/</guid>
+      <description>初次学习JavaScript，用JavaScript写了一个计划表生成工具。
+ 项目链接：计划表生成工具
+身为一个JavaScript新手，我并不适应用它编程。它既不像Java原生地支持类和继承，也不如Python声明变量方便，更兼闹出&amp;rdquo;===&amp;ldquo;这样的笑话。但我依旧学习它，因为我深知它的强大。尤其是在可视化这一方面，在接触qtwebengine的时候就已经感受过一次了。目前，我学习JS的平台是W3Schools 和廖雪峰的网站。
+其实我学JS才一周，所涉甚浅。为记录思考过程及所获经验，故写此文以记之。
+我的初衷 我的初衷是制作一个习惯统计工具，用来分析我在长期计划上的坚持能力。于是照例我对它做了一个需求分析。
+习惯统计工具的需求分析：
+ 需要用户能够注册。即能够声明我是谁，并且把我和我的数据绑定。 需要将数据存在文件里，而不是存在缓存文件里。 需要按时间戳对生成的数据进行统计。 需要对最终结果制作统计图表。  通过分析，我发现静态网页很难实现第一第二步。能不能实现我不敢下定论，但肯定有技术难度。目前，我只有一个由GitHub page托管的静态网页，因此我选择退而求其次。先学习生成一个单一的表格，来记录当天计划的执行情况。我把这个工具叫做计划表生成工具。
+需求分析 计划表生成工具好比是习惯统计工具的一个子系统。习惯统计工具面向的是连续多天，而计划表生成工具只面向单独一天。
+计划表生成工具的需求分析：
+ 一个UI界面（前端） 一个允许用户做输入、选择和修改操作的数据流（后端） 一个最终显示的表格（前端） 判断此工具是否easy to use，找到不好用的因素并改进 （测试）  此时我们的big picture就已经明确。战略定了，下面来定战术。
+步骤分析 （一）添加计划
+对于前端UI，首先我们需要一个textarea，用来接收每项计划的内容。还需要一个按钮，点下这个按钮时，将文本框内的信息添加到计划列表。为了便于存储，我为计划(item)设计了一个类。
+这个类的声明如下：
+var Items = { name: &amp;quot;&amp;quot;, isCheck: &amp;quot;false&amp;quot;, isDelete: &amp;quot;false&amp;quot; };  可以看出这个类有三个值。它们分别表示该对象的名称，是否完成，以及是否删除。每次添加计划，用以下代码实例化这个类(items)，生成一个对象(item)：
+var item = Object.create(Items);  （二）生成表格
+这一步要把复选框(checkbox)和按钮(button)都和每一行的计划绑定。那么如何绑定呢？
+要知道，用for loop遍历subArray的过程，就是生成表格内容的过程。所以，checkbox和button也都是在这次遍历中生成的。那么，我们就可以在它们的生成过程中，创建它们的id，并把id和计划对应起来。
+具体到代码中，我用了i.toString(10)将循环数转成string类型，然后加到id上。于是，第一项计划对应的checkbox的id就是&amp;rdquo;cb0&amp;rdquo;, 对应的button的id就是&amp;rdquo;btn0&amp;rdquo;, 以此类推。
+for (i = 0; i &amp;lt; subArray.length; i++) { var index = i+1; body += &#39;&amp;lt;tr&amp;gt;&#39;; body += &#39;&amp;lt;td&amp;gt;&#39; + index.</description>
+    </item>
+    
+  </channel>
+</rss>
