@@ -12,12 +12,12 @@
     
     
     <item>
-      <title>初探JavaScript</title>
+      <title>计划表生成工具</title>
       <link>http://luochang212.github.io/posts/to_do_list/</link>
       <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/to_do_list/</guid>
-      <description>初次学习JavaScript，用JavaScript写了一个计划表生成工具。
+      <description>初次学习JavaScript，用JS写了一个计划表生成工具。
  项目链接：计划表生成工具
 身为一个JavaScript新手，我并不适应用它编程。它既不像Java原生地支持类和继承，也不如Python声明变量方便，更兼闹出&amp;rdquo;===&amp;ldquo;这样的笑话。但我依旧学习它，因为我深知它的强大。尤其是在可视化这一方面，在接触qtwebengine的时候就已经感受过一次了。目前，我学习JS的平台是W3Schools 和廖雪峰的网站。
 其实我学JS才一周，所涉甚浅。为记录思考过程及所获经验，故写此文以记之。
