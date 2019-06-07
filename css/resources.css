@@ -120,8 +120,8 @@
 
 #line {
 	position: absolute;
-	top: 0rem;
-	bottom: -130rem;
+	top: 5rem;
+	bottom: -115rem;
 	//left: 19.4rem;
 	left: rect.left rem;
 	width: .125rem;
