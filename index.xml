@@ -273,20 +273,20 @@ def classification(self, txt_array, file_index): id = np.array([]) date = np.arr
     
     <item>
       <title></title>
-      <link>http://luochang212.github.io/gadget/cv/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/gadget/cv/</guid>
-      <description>CV • Chang Luo   --   -- if( window.location.search.match( /print-pdf/gi ) ) { var link = document.createElement( &#39;link&#39; ); link.rel = &#39;stylesheet&#39;; link.type = &#39;text/css&#39;; link.href = &#39;https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/print/pdf.css&#39;; document.getElementsByTagName( &#39;head&#39; )[0].appendChild( link ); }  --    MathJax.Hub.Config({ tex2jax: { inlineMath: [ [&#39;$&#39;,&#39;$&#39;], [&#34;\\(&#34;,&#34;\\)&#34;] ], displayMath: [ [&#39;$$&#39;,&#39;$$&#39;], [&#34;\\[&#34;,&#34;\\]&#34;] ], processEscapes: true, processEnvironments: true }, // Center justify equations in code and markdown cells.</description>
-    </item>
-    
-    <item>
-      <title></title>
       <link>http://luochang212.github.io/gadget/audio-player/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/gadget/audio-player/</guid>
       <description>Audio Player0:000:00/*!* Howler.js Audio Player Demo* howlerjs.com** (c) 2013-2019, James Simpson of GoldFire Studios* goldfirestudios.com** MIT License*/// Cache references to DOM elements.var elms = [&#39;track&#39;, &#39;timer&#39;, &#39;duration&#39;, &#39;playBtn&#39;, &#39;pauseBtn&#39;, &#39;prevBtn&#39;, &#39;nextBtn&#39;, &#39;playlistBtn&#39;, &#39;volumeBtn&#39;, &#39;progress&#39;, &#39;bar&#39;, &#39;wave&#39;, &#39;loading&#39;, &#39;playlist&#39;, &#39;list&#39;, &#39;volume&#39;, &#39;barEmpty&#39;, &#39;barFull&#39;, &#39;sliderBtn&#39;];elms.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/gadget/cv/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/cv/</guid>
+      <description>CV • Chang Luo   --   -- if( window.location.search.match( /print-pdf/gi ) ) { var link = document.createElement( &#39;link&#39; ); link.rel = &#39;stylesheet&#39;; link.type = &#39;text/css&#39;; link.href = &#39;https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/print/pdf.css&#39;; document.getElementsByTagName( &#39;head&#39; )[0].appendChild( link ); }  --    MathJax.Hub.Config({ tex2jax: { inlineMath: [ [&#39;$&#39;,&#39;$&#39;], [&#34;\\(&#34;,&#34;\\)&#34;] ], displayMath: [ [&#39;$$&#39;,&#39;$$&#39;], [&#34;\\[&#34;,&#34;\\]&#34;] ], processEscapes: true, processEnvironments: true }, // Center justify equations in code and markdown cells.</description>
     </item>
     
     <item>
