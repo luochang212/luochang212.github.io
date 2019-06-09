@@ -129,4 +129,17 @@
 	z-index: -1;
 }
 
+@media screen and (max-height: 687px) {
+	#line {
+		position: absolute;
+		top: 8rem;
+		bottom: -120rem;
+		//left: 19.4rem;
+		left: rect.left rem;
+		width: .125rem;
+		background: rgba(240,240,240,1);
+		z-index: -1;
+	}
+}
+
 </style>
