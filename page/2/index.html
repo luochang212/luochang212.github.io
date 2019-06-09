@@ -76,7 +76,7 @@
       
       
       <div class="author-image">
-        <a onclick="openNav()"><img src="http://luochang212.github.io/images/profile.png" alt="Author Image" class="img--circle img--headshot element--center"></a>
+        <a href="#" class="load-iframe" onclick="openNav()"><img src="http://luochang212.github.io/images/profile.png" alt="Author Image" class="img--circle img--headshot element--center"></a>
       </div>
       
       <p class="site__description">
@@ -168,6 +168,9 @@
 
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
+
 
 <style>
 body {
@@ -321,24 +324,28 @@ body {
 	</div>
 	
 	<div id="Resources" class="tabcontent">
-	  <iframe src="/resources/" frameborder="0" height="600" width="100%"></iframe>
+	  <iframe src="about:blank" data-src="/resources/" frameborder="0" height="600" width="100%"></iframe>
 	</div>
 
 	<div id="Audio-player" class="tabcontent">
-	  <iframe src="/gadget/audio-player/" frameborder="0" height="600" width="100%"></iframe>
+	  <iframe src="about:blank" data-src="/gadget/audio-player/" frameborder="0" height="600" width="100%"></iframe>
 	  
 	</div>
 	
 	<div id="Video-player" class="tabcontent">
+	
 	<div id="video1">
-	  <iframe src="//player.bilibili.com/player.html?aid=23622309&cid=40291448&page=1" style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+	  <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=23622309&cid=40291448&page=1" style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
     </div>
 	<div id="video2">
-	  <iframe src="//player.bilibili.com/player.html?aid=9280936&cid=15335929&page=1" style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+	  <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=9280936&cid=15335929&page=1" style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
 	</div>
 	<div id="video3">
-	  <iframe src="//player.bilibili.com/player.html?aid=47167171&cid=82804828&page=1" style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+	  <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=47167171&cid=82804828&page=1" style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
 	</div>
+	
+	
+	
 	<br>
 	  <div class="dropup">
 		<button class="dropbtn">更多视频</button>
@@ -346,12 +353,15 @@ body {
         <a onclick="link1()">1</a>
 		<a onclick="link2()">2</a>
 		<a onclick="link3()">3</a>
+		
+		
+		
 	  </div>
 </div>
 	</div>
 	
 	<div id="piano" class="tabcontent">
-	  <iframe src="/gadget/piano/" frameborder="0" height="600" width="100%"></iframe>
+	  <iframe src="about:blank" data-src="/gadget/piano/" frameborder="0" height="600" width="100%"></iframe>
 	</div>
 	
   </div>
@@ -420,6 +430,16 @@ function link3() {
   document.getElementById("video2").style.display = "none";
   document.getElementById("video3").style.display = "block";
 }
+</script>
+
+
+<script> 
+
+$(".load-iframe").click(function(){
+    $("iframe").each(function(){
+        $(this).attr("src", $(this).data("src"));
+    });
+});
 </script>
 
 </body>
