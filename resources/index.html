@@ -435,11 +435,17 @@ function link3() {
 
 
 <script> 
+ 
+var flag = 0;
 
+ 
 $(".load-iframe").click(function(){
-    $("iframe").each(function(){
-        $(this).attr("src", $(this).data("src"));
-    });
+    if (flag < 1) {
+		$("iframe").each(function(){
+			$(this).attr("src", $(this).data("src"));
+		});
+		flag = flag + 1;
+    }
 });
 </script>
 
@@ -533,7 +539,7 @@ $(".load-iframe").click(function(){
 
 <li><a target="_blank" href="http://www.deeplearningbook.org/" rel="noopener noreferrer">Deep Learning Book</a></li><div class="row-space">&nbsp;</div>
 
-<li><a target="_blank" href="https://jakevdp.github.io/PythonDataScienceHandbook/l" rel="noopener noreferrer">Python Data Science Handbook</a></li><div class="row-space">&nbsp;</div>
+<li><a target="_blank" href="https://jakevdp.github.io/PythonDataScienceHandbook/" rel="noopener noreferrer">Python Data Science Handbook</a></li><div class="row-space">&nbsp;</div>
 
 <li><a target="_blank" href="http://www.cookbook-r.com/" rel="noopener noreferrer">Cookbook for R </a></li><div class="row-space">&nbsp;</div>
 

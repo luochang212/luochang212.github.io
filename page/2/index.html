@@ -434,11 +434,17 @@ function link3() {
 
 
 <script> 
+ 
+var flag = 0;
 
+ 
 $(".load-iframe").click(function(){
-    $("iframe").each(function(){
-        $(this).attr("src", $(this).data("src"));
-    });
+    if (flag < 1) {
+		$("iframe").each(function(){
+			$(this).attr("src", $(this).data("src"));
+		});
+		flag = flag + 1;
+    }
 });
 </script>
 
