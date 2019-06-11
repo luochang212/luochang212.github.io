@@ -293,6 +293,11 @@
   </url>
   
   <url>
+    <loc>http://luochang212.github.io/demo/sidenav/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://luochang212.github.io/gadget/audio-player/</loc>
     <priority>0</priority>
   </url>
@@ -359,6 +364,11 @@
   
   <url>
     <loc>http://luochang212.github.io/about/</loc>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/demo/</loc>
+    <priority>0</priority>
   </url>
   
   <url>

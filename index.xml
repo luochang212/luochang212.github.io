@@ -273,6 +273,16 @@ def classification(self, txt_array, file_index): id = np.array([]) date = np.arr
     
     <item>
       <title></title>
+      <link>http://luochang212.github.io/demo/sidenav/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/demo/sidenav/</guid>
+      <description>Animated Side Navigation ExampleAnimated Side Navigation ExampleClick on the element below to open the side navigation menu.
+&amp;#9776; openResourcesAudio PlayerVideo playerPiano更多视频123function openNav() {on();document.getElementById(&#34;mySidenav&#34;).style.width = &#34;40%&#34;;document.body.style.backgroundColor = &#34;rgba(0,0,0,0.5)&#34;;}function closeNav() {document.getElementById(&#34;mySidenav&#34;).style.width = &#34;</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>http://luochang212.github.io/gadget/audio-player/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
