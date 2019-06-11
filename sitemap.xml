@@ -303,7 +303,12 @@
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/gadget/cv/</loc>
+    <loc>http://luochang212.github.io/gadget/cv-en/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/gadget/cv-zh/</loc>
     <priority>0</priority>
   </url>
   
