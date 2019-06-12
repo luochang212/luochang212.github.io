@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Agent based model on Chang Luo</title>
+    <link>http://luochang212.github.io/tags/agent-based-model/</link>
+    <description>Recent content in Agent based model on Chang Luo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 12 Jun 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://luochang212.github.io/tags/agent-based-model/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>生态系统模型</title>
+      <link>http://luochang212.github.io/posts/nature_system/</link>
+      <pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/posts/nature_system/</guid>
+      <description>本篇介绍如何用 Agent-based model 的方法，对一个包含狼、麋鹿、草三个物种的生态系统建模。
+ GitHub项目链接：&amp;rdquo; target=&amp;rdquo;_blank&amp;rdquo;&amp;gt;nature-system
+Agent在这里指个体，Agent-base model意即基于个体的模型。在Agent-based model中，现实里的个体与模型里的虚拟实体(virtual entity)是一一对应的，而模型内个体的状态则根据事先写好的规则迭代。因此这种模型适合对个体的详细情况建模。
+需要注意的是，在Agent-based model的框架下建模，并不是变量越多越好，过多的变量会造成调试上的困难。选取的变量，足够支撑起我们研究的问题就可以了。
+ Note: 除了Agent-base model之外，还有一种常用建模方法叫Equation-based model, 即基于方程的建模方法。这种方法就既不适用于表达每个个体发生的情况，也不适用于表达个体的速度、位置等属性信息。而更适合表达平均发生了什么，以及系统平均到达了一种怎样的状态。举例来说，人口模型就很适合用Equation-based model的方法建模。
+ 模型假设 （一）各物种的属性
+模型内有三个物种：狼(wolf)、麋鹿(moose)、草(grass)。此外，狼分为头狼和普通狼。下面这张表说明了头狼、普通狼、麋鹿的属性。
+   # age food pos speed last_breed population packNo range eaten     头狼 &amp;radic; &amp;radic; &amp;radic; &amp;radic; &amp;radic; &amp;radic;  &amp;radic; &amp;radic;   普通狼 &amp;radic; &amp;radic; &amp;radic; &amp;radic;   &amp;radic;     麋鹿 &amp;radic; &amp;radic; &amp;radic; &amp;radic; &amp;radic;        从上表中可以看出，年龄、食物、位置、速度是头狼、普通狼和麋鹿的共有属性。last_breed指和上一次生育的时间间隔，因为在模型内一个时间间隔表示为一次迭代，因此last_breed是整型变量。此外，头狼特有population属性，用来表示头狼所在狼群的狼的数量；特有range属性，表示狼群活动的范围；特有eaten属性，表示狼群在一次迭代之后吃到的麋鹿的数量。普通狼特有packNo属性，是其所属狼群的头狼在列表中的索引号。普通狼没有last_breed属性，是因为其生育被记入头狼名下，也就是记录在整个狼群名下。</description>
+    </item>
+    
+  </channel>
+</rss>
