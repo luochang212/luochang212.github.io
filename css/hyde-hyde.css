@@ -28,11 +28,13 @@ a {
   a strong {
     color: inherit; }
 
+/* portfolio里的图像格式 */
 img {
   display: block;
   max-width: 100%;
   margin: 0 0 1rem;
-  border-radius: 5px; }
+  border-radius: 5px; 
+}
 
 table {
   margin-bottom: 1rem;
