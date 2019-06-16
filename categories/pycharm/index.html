@@ -320,9 +320,10 @@ body {
   <div id="main">
 	<div class="tab">
 	  <button class="tablinks" onclick="openItem(event, 'Resources')">Resources</button>
-	  <button class="tablinks" onclick="openItem(event, 'Audio-player')">Audio Player</button>
-	  <button class="tablinks" onclick="openItem(event, 'Video-player')">Video player</button>
+	  <button class="tablinks" onclick="openItem(event, 'Audio-player')">Music</button>
+	  <button class="tablinks" onclick="openItem(event, 'Video-player')">Video</button>
 	  <button class="tablinks" onclick="openItem(event, 'piano')">Piano</button>
+	  <button class="tablinks" onclick="openItem(event, 'gadget')">Gadget</button>
 	</div>
 	
 	<div id="Resources" class="tabcontent">
@@ -352,18 +353,22 @@ body {
 	  <div class="dropup">
 		<button class="dropbtn">更多视频</button>
 		<div class="dropup-content">
-        <a onclick="link1()">1</a>
-		<a onclick="link2()">2</a>
-		<a onclick="link3()">3</a>
-		
-		
-		
+			<a onclick="link1()">1</a>
+			<a onclick="link2()">2</a>
+			<a onclick="link3()">3</a>
+			
+			
+			
+	    </div>
 	  </div>
-</div>
 	</div>
 	
 	<div id="piano" class="tabcontent">
 	  <iframe src="about:blank" data-src="/gadget/piano/" frameborder="0" height="600" width="100%"></iframe>
+	</div>
+	
+	<div id="gadget" class="tabcontent">
+	  <iframe src="about:blank" data-src="/gadget/" frameborder="0" height="600" width="100%"></iframe>
 	</div>
 	
   </div>

@@ -319,9 +319,10 @@ body {
   <div id="main">
 	<div class="tab">
 	  <button class="tablinks" onclick="openItem(event, 'Resources')">Resources</button>
-	  <button class="tablinks" onclick="openItem(event, 'Audio-player')">Audio Player</button>
-	  <button class="tablinks" onclick="openItem(event, 'Video-player')">Video player</button>
+	  <button class="tablinks" onclick="openItem(event, 'Audio-player')">Music</button>
+	  <button class="tablinks" onclick="openItem(event, 'Video-player')">Video</button>
 	  <button class="tablinks" onclick="openItem(event, 'piano')">Piano</button>
+	  <button class="tablinks" onclick="openItem(event, 'gadget')">Gadget</button>
 	</div>
 	
 	<div id="Resources" class="tabcontent">
@@ -351,18 +352,22 @@ body {
 	  <div class="dropup">
 		<button class="dropbtn">更多视频</button>
 		<div class="dropup-content">
-        <a onclick="link1()">1</a>
-		<a onclick="link2()">2</a>
-		<a onclick="link3()">3</a>
-		
-		
-		
+			<a onclick="link1()">1</a>
+			<a onclick="link2()">2</a>
+			<a onclick="link3()">3</a>
+			
+			
+			
+	    </div>
 	  </div>
-</div>
 	</div>
 	
 	<div id="piano" class="tabcontent">
 	  <iframe src="about:blank" data-src="/gadget/piano/" frameborder="0" height="600" width="100%"></iframe>
+	</div>
+	
+	<div id="gadget" class="tabcontent">
+	  <iframe src="about:blank" data-src="/gadget/" frameborder="0" height="600" width="100%"></iframe>
 	</div>
 	
   </div>
@@ -471,22 +476,37 @@ $(".load-iframe").click(function(){
 <tbody>
 <tr>
 <td>1</td>
-<td><a href="/gadget/to-do-list">to-do-list</a></td>
+<td><a href="/gadget/audio-player" target="_blank">audio-player</a></td>
 </tr>
 
 <tr>
 <td>2</td>
-<td><a href="/gadget/audio-player">audio-player</a></td>
+<td><a href="/gadget/media-player" target="_blank">media-player</a></td>
 </tr>
 
 <tr>
 <td>3</td>
-<td><a href="/gadget/media-player">media-player</a></td>
+<td><a href="/gadget/piano" target="_blank">piano</a></td>
 </tr>
 
 <tr>
 <td>4</td>
-<td><a href="/gadget/cv">cv</a></td>
+<td><a href="/gadget/cv-zh" target="_blank">cv-zh</a></td>
+</tr>
+
+<tr>
+<td>5</td>
+<td><a href="/gadget/cv-en" target="_blank">cv-en</a></td>
+</tr>
+
+<tr>
+<td>6</td>
+<td><a href="/gadget/new-to-do-list" target="_blank">new-to-do-list</a></td>
+</tr>
+
+<tr>
+<td>7</td>
+<td><a href="/gadget/gallery" target="_blank">gallery</a></td>
 </tr>
 </tbody>
 </table>
