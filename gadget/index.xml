@@ -94,6 +94,15 @@
     
     <item>
       <title></title>
+      <link>http://luochang212.github.io/gadget/speech-synthesis/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/speech-synthesis/</guid>
+      <description>Text-To-Speech Service       var pauseResume = &#39;R&#39;; $(document).ready(function(){ $(&#34;#doClear&#34;).click(function() { $(&#34;#taInput&#34;).val(&#34;&#34;); $(&#39;.voption option[value=&#34;native&#34;]&#39;).prop(&#39;selected&#39;, &#39;selected&#39;).change(); return false; }); $(&#34;#doPauseResume&#34;).click(function() { doPauseResume(); return false; }); $(&#34;#doStop&#34;).click(function() { doStop(); return false; }); $(&#34;#doLangId&#34;).click(function() { doLangId(); return false; }); $(&#34;#doTTS&#34;).click(function() { doTTS(); return false; }); $(&#34;#taInput&#34;).bind(&#39;input propertychange&#39;, function() { doTextAreaChange(this.value); }); }); // Initialize speech engine... initSpeech();    Text-To-Speech  --    Cut &amp; Paste Text To Synthesize (or enter a URL)    Voice   Rate  Pitch     setTimeout(function() { // Initialize the voices.</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>http://luochang212.github.io/gadget/to-do-list/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
