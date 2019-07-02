@@ -6,10 +6,37 @@
     <description>Recent content in Tags on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 12 Jun 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 02 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://luochang212.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>beef</title>
+      <link>http://luochang212.github.io/tags/beef/</link>
+      <pubDate>Tue, 02 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/tags/beef/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>chicken</title>
+      <link>http://luochang212.github.io/tags/chicken/</link>
+      <pubDate>Tue, 02 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/tags/chicken/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pork</title>
+      <link>http://luochang212.github.io/tags/pork/</link>
+      <pubDate>Tue, 02 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/tags/pork/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>ABM</title>
@@ -179,33 +206,6 @@
       <pubDate>Sat, 16 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/tags/permutation/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>beef</title>
-      <link>http://luochang212.github.io/tags/beef/</link>
-      <pubDate>Mon, 06 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/tags/beef/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>chicken</title>
-      <link>http://luochang212.github.io/tags/chicken/</link>
-      <pubDate>Mon, 06 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/tags/chicken/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>pork</title>
-      <link>http://luochang212.github.io/tags/pork/</link>
-      <pubDate>Mon, 06 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/tags/pork/</guid>
       <description></description>
     </item>
     

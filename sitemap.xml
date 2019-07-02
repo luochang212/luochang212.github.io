@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://luochang212.github.io/posts/kitchen_time_2/</loc>
+    <lastmod>2019-07-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://luochang212.github.io/posts/nature_system/</loc>
     <lastmod>2019-06-12T00:00:00+00:00</lastmod>
   </url>
@@ -38,7 +43,7 @@
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/posts/kitchen_time/</loc>
+    <loc>http://luochang212.github.io/posts/kitchen_time_1/</loc>
     <lastmod>2018-08-06T00:00:00+00:00</lastmod>
   </url>
   
@@ -50,6 +55,60 @@
   <url>
     <loc>http://luochang212.github.io/posts/nezha/</loc>
     <lastmod>2017-07-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/categories/</loc>
+    <lastmod>2019-07-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/</loc>
+    <lastmod>2019-07-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/categories/kitchen/</loc>
+    <lastmod>2019-07-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/categories/life/</loc>
+    <lastmod>2019-07-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/posts/</loc>
+    <lastmod>2019-07-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/tags/</loc>
+    <lastmod>2019-07-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/tags/beef/</loc>
+    <lastmod>2019-07-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/tags/chicken/</loc>
+    <lastmod>2019-07-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/tags/pork/</loc>
+    <lastmod>2019-07-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -65,18 +124,6 @@
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/categories/</loc>
-    <lastmod>2019-06-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://luochang212.github.io/</loc>
-    <lastmod>2019-06-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://luochang212.github.io/categories/development/</loc>
     <lastmod>2019-06-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -84,18 +131,6 @@
   
   <url>
     <loc>http://luochang212.github.io/categories/matlab/</loc>
-    <lastmod>2019-06-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://luochang212.github.io/posts/</loc>
-    <lastmod>2019-06-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://luochang212.github.io/tags/</loc>
     <lastmod>2019-06-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -194,13 +229,13 @@
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/tags/jupyter-notebook/</loc>
+    <loc>http://luochang212.github.io/categories/jupyter-notebook/</loc>
     <lastmod>2019-04-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/categories/jupyter-notebook/</loc>
+    <loc>http://luochang212.github.io/tags/jupyter-notebook/</loc>
     <lastmod>2019-04-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -243,36 +278,6 @@
   <url>
     <loc>http://luochang212.github.io/portfolio/4/</loc>
     <lastmod>2019-03-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://luochang212.github.io/categories/kitchen/</loc>
-    <lastmod>2018-08-06T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://luochang212.github.io/categories/life/</loc>
-    <lastmod>2018-08-06T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://luochang212.github.io/tags/beef/</loc>
-    <lastmod>2018-08-06T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://luochang212.github.io/tags/chicken/</loc>
-    <lastmod>2018-08-06T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://luochang212.github.io/tags/pork/</loc>
-    <lastmod>2018-08-06T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
