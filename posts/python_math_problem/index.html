@@ -11,7 +11,7 @@
 <meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.55.5" />
+<meta name="generator" content="Hugo 0.55.6" />
 
     
     
@@ -609,7 +609,7 @@ c = np.zeros([a.size])
 for C in itertools.permutations(a, a.size):
     print(C)
     for num in C:
-        # c (lower case) is the second output in this iteration
+		# c (lower case) is the second output in this iteration
         c[num] = C[C[num]] 
     if (b == c).all():
         C = [x+1 for x in C]
