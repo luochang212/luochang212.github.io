@@ -11,7 +11,7 @@
 <meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.55.6" />
+<meta name="generator" content="Hugo 0.55.5" />
 
     
     
@@ -525,6 +525,7 @@ $(".load-iframe").click(function(){
 <li>
 <ul>
 <li><a href="#柏松过程的推导">柏松过程的推导</a></li>
+<li><a href="#排队模型的分类">排队模型的分类</a></li>
 <li><a href="#the-m-m-1-queuing-system">The M/M/1 queuing system</a></li>
 </ul></li>
 </ul></li>
@@ -571,11 +572,14 @@ $(".load-iframe").click(function(){
 <ul>
 <li><p>在一段时间间隔$\Delta t$内，有且仅有一位顾客到达的概率$P$和$\Delta t$成比例，比例系数为$\lambda$</p></li>
 
-<li><p>在一段时间间隔$\Delta t$内，至多只允许一位顾客到达（否则应该选取一个更短的时间间隔）
-<code>$$P(在时间间隔[t, t + \Delta t]内，有且仅有一位顾客到达) = \lambda \Delta t
-\\P(在时间间隔[t, t + \Delta t]内，没有顾客到达) = 1 - \lambda \Delta t
-\\P(在时间间隔[t, t + \Delta t]内，多于一位顾客到达) = 0$$</code></p></li>
+<li><p>在一段时间间隔$\Delta t$内，至多只允许一位顾客到达（否则应该选取一个更短的时间间隔）</p></li>
+</ul>
 
+<p><code>$$P(在时间间隔[t, t + \Delta t]内，有且仅有一位顾客到达) = \lambda \Delta t
+\\P(在时间间隔[t, t + \Delta t]内，没有顾客到达) = 1 - \lambda \Delta t
+\\P(在时间间隔[t, t + \Delta t]内，多于一位顾客到达) = 0$$</code></p>
+
+<ul>
 <li><p>柏松过程是对顾客到达过程的估计，故不考虑顾客的离开情况，所以对到达人数的计数只增不减</p></li>
 
 <li><p>只考虑一阶无穷小对结果的影响，忽略二阶无穷小，$\Delta t \gg(\Delta t)^{2} \approx 0$</p></li>
@@ -589,51 +593,65 @@ $(".load-iframe").click(function(){
 
 <p>由于总人数单调递增，且在一段时间间隔$\Delta t$内，到达人数最多加1。因此，如果$t+\Delta t$时刻的到达人数是k，那么在$t$时刻的到达人数只有两种情况：k或者k-1.</p>
 
-<p>从时间$t$到时间$t+\Delta t$，到达人数的概率可由下述公式表达：
-<code>$$\begin{aligned} P_{k}(t+\Delta t) &amp;=P_{k}(t) p_{k, k}(\Delta t)+P_{k-1}(t) p_{k-1, k}(\Delta t) \\ P_{0}(t+\Delta t) &amp;=P_{0}(t) p_{0,0}(\Delta t) \quad k=0 \text { (starting condition) } \end{aligned}$$</code></p>
+<p>从时间$t$到时间$t+\Delta t$，到达人数的概率可由下述公式表达：</p>
 
-<p>由假设可知：
-<code>$$p_{k, k}(\Delta t)=(1-\lambda \Delta t) \quad \text { and } \quad p_{k-1, k}(\Delta t)=\lambda \Delta t$$</code></p>
+<p><code>$$\begin{aligned} P_{k}(t+\Delta t) &amp;=P_{k}(t) p_{k, k}(\Delta t)+P_{k-1}(t) p_{k-1, k}(\Delta t) \\ P_{0}(t+\Delta t) &amp;=P_{0}(t) p_{0,0}(\Delta t) \quad k=0 \text { (starting condition) } \end{aligned}$$</code></p>
 
-<p>将此式代入上式可得：
-<code>$$\begin{aligned} P_{k}(t+\Delta t) &amp;=P_{k}(t)(1-\lambda \Delta t)+P_{k-1}(t)(\lambda \Delta t) \\ P_{0}(t+\Delta t) &amp;=P_{0}(t)(1-\lambda \Delta t) \quad k=0 \text { (starting condition) } \end{aligned}$$</code></p>
+<p>由假设可知：</p>
 
-<p>整理得：
-<code>$$\begin{aligned} \frac{P_{k}(t+\Delta t)-P_{k}(t)}{\Delta t} &amp;=-\lambda P_{k}(t)+\lambda P_{k-1}(t) \\ \frac{P_{0}(t+\Delta t)-P_{0}(t)}{\Delta t} &amp;=-\lambda P_{0}(t) \end{aligned}$$</code></p>
+<p><code>$$p_{k, k}(\Delta t)=(1-\lambda \Delta t) \quad \text { and } \quad p_{k-1, k}(\Delta t)=\lambda \Delta t$$</code></p>
 
-<p>当$\Delta t \rightarrow 0$有：
-<code>$$\begin{aligned} \frac{d P_{k}(t)}{d t} &amp;=-\lambda P_{k}(t)+\lambda P_{k-1}(t) \quad (k \geq 1) \quad (1) \\ \frac{d P_{0}(t)}{d t} &amp;=-\lambda P_{0}(t) \quad \quad \quad \quad (2) \end{aligned} $$</code></p>
+<p>将此式代入上式可得：</p>
 
-<p>方程(2)的解为：
-<code>$$P_{0}(t)=A \exp (-\lambda t)$$</code></p>
+<p><code>$$\begin{aligned} P_{k}(t+\Delta t) &amp;=P_{k}(t)(1-\lambda \Delta t)+P_{k-1}(t)(\lambda \Delta t) \\ P_{0}(t+\Delta t) &amp;=P_{0}(t)(1-\lambda \Delta t) \quad k=0 \text { (starting condition) } \end{aligned}$$</code></p>
 
-<p>其中$A$是任意常数。设$k=1$，将方程(2)的解代入方程(1)有：
-<code>$$\frac{d P_{1}(t)}{d t}=-\lambda P_{1}(t)+A \lambda \exp (-\lambda t)$$</code></p>
+<p>整理得：</p>
 
-<p>解得：
-<code>$$P_{1}(t)=A \lambda t \exp (-\lambda t)$$</code></p>
+<p><code>$$\begin{aligned} \frac{P_{k}(t+\Delta t)-P_{k}(t)}{\Delta t} &amp;=-\lambda P_{k}(t)+\lambda P_{k-1}(t) \\ \frac{P_{0}(t+\Delta t)-P_{0}(t)}{\Delta t} &amp;=-\lambda P_{0}(t) \end{aligned}$$</code></p>
 
-<p>$k=2$时同理：
-<code>$$\frac{d P_{2}(t)}{d t}=-\lambda P_{2}(t)+A \lambda^{2} t \exp (-\lambda t)$$</code></p>
+<p>当$\Delta t \rightarrow 0$有：</p>
 
-<p>解得：
-<code>$$P_{2}(t)=\frac{A(\lambda t)^{2}}{2} \exp (-\lambda t)$$</code></p>
+<p><code>$$\begin{aligned} \frac{d P_{k}(t)}{d t} &amp;=-\lambda P_{k}(t)+\lambda P_{k-1}(t) \quad (k \geq 1) \quad (1) \\ \frac{d P_{0}(t)}{d t} &amp;=-\lambda P_{0}(t) \quad \quad \quad \quad (2) \end{aligned} $$</code></p>
 
-<p> 对任意的k，解为：
-<code>$$P_{k}(t)=\frac{A(\lambda t)^{k}}{k !} \exp (-\lambda t)$$</code></p>
+<p>方程(2)的解为：</p>
 
-<p>下面计算$A$的值，由于：
-<code>$$P_{0}(t)+P_{1}(t)+P_{2}(t)+\cdots=\sum_{i=0}^{\infty} P_{i}(t)=1$$</code></p>
+<p><code>$$P_{0}(t)=A \exp (-\lambda t)$$</code></p>
 
-<p>故有：
-<code>$$A \exp (-\lambda t) \sum_{k=0}^{\infty} \frac{(\lambda t)^{k}}{k !}=1$$</code></p>
+<p>其中$A$是任意常数。设$k=1$，将方程(2)的解代入方程(1)有：</p>
+
+<p><code>$$\frac{d P_{1}(t)}{d t}=-\lambda P_{1}(t)+A \lambda \exp (-\lambda t)$$</code></p>
+
+<p>解得：</p>
+
+<p><code>$$P_{1}(t)=A \lambda t \exp (-\lambda t)$$</code></p>
+
+<p>$k=2$时同理：</p>
+
+<p><code>$$\frac{d P_{2}(t)}{d t}=-\lambda P_{2}(t)+A \lambda^{2} t \exp (-\lambda t)$$</code></p>
+
+<p>解得：</p>
+
+<p><code>$$P_{2}(t)=\frac{A(\lambda t)^{2}}{2} \exp (-\lambda t)$$</code></p>
+
+<p> 对任意的k，解为：</p>
+
+<p><code>$$P_{k}(t)=\frac{A(\lambda t)^{k}}{k !} \exp (-\lambda t)$$</code></p>
+
+<p>下面计算$A$的值，由于：</p>
+
+<p><code>$$P_{0}(t)+P_{1}(t)+P_{2}(t)+\cdots=\sum_{i=0}^{\infty} P_{i}(t)=1$$</code></p>
+
+<p>故有：</p>
+
+<p><code>$$A \exp (-\lambda t) \sum_{k=0}^{\infty} \frac{(\lambda t)^{k}}{k !}=1$$</code></p>
 
 <p>由泰勒展开可知$A=1$。故柏松过程的一般式为：</p>
 
 <p><code>$$P(k | t, \lambda)=\frac{(\lambda t)^{k}}{k !} \exp (-\lambda t)$$</code></p>
 
-<p>柏松过程的图像如下：
-<img src="/img/The-Poisson-distribution.png" alt="柏松过程图像" /></p>
+<p>柏松过程的图像如下：</p>
+
+<p><img src="/img/The-Poisson-distribution.png" alt="柏松过程图像" /></p>
 
 <p>（三）柏松过程实例</p>
 
@@ -643,6 +661,39 @@ $(".load-iframe").click(function(){
 
 <blockquote>
 <p><strong>Note</strong>: 从上面这个实例中我们能看出，k代表顾客的数量，t代表这段时间的长度，$\lambda$代表平均每单位时间到达的顾客数。</p>
+</blockquote>
+
+<h3 id="排队模型的分类">排队模型的分类</h3>
+
+<p>排队模型用Kendall符号表示，符号形式为：</p>
+
+<p><code>$$X/Y/Z/A/B/C$$</code></p>
+
+<p>填写规则如下：</p>
+
+<ul>
+<li>X 处填写表示相继到达间隔时间的分布;</li>
+<li>Y 处填写表示服务时间的分布;</li>
+<li>Z 处填写并列的服务器的数目;</li>
+<li>A 处填写系统容量限制 N;</li>
+<li>B 处填写顾客源数目 m;</li>
+<li>C处填写服务规则，如先到先服务( FCFS)，后到后服务( LCFS)等。</li>
+</ul>
+
+<p>比如，M/M/1 表示相继到达间隔时间为负指数分布、服务时间为负指数分布、单服务器的模型；D/M/5 表示确定的到达间隔、服务时间为负指数分布、5个平行服务器的模型。</p>
+
+<blockquote>
+<p><strong>Note</strong>: 上述两个例子中，M代表负指数分布，D代表确定型，这些字母代表的是概率分布的类型。常见分布类型的代表字母如下：</p>
+
+<p>$M$ —— 负指数分布(M是Markov的字头，因为负指数分布具有无记忆性，即Markov性) ;</p>
+
+<p>$D$ —— 确定型(deterministic);</p>
+
+<p>$E_k$ —— k 阶爱尔朗(erlang)分布;</p>
+
+<p>$GI$ —— 一般相互独立(general independent)的时间间隔的分布;</p>
+
+<p>$G$ —— 一般(general)服务时间的分布。</p>
 </blockquote>
 
 <h3 id="the-m-m-1-queuing-system">The M/M/1 queuing system</h3>

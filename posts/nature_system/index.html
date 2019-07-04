@@ -11,7 +11,7 @@
 <meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.55.6" />
+<meta name="generator" content="Hugo 0.55.5" />
 
     
     
@@ -669,10 +669,10 @@ $(".load-iframe").click(function(){
 
 <p>对于狼，它的速度值同时也是它的搜索范围。在搜索范围内的麋鹿和狼的距离越近，越容易被判被狼捕获。具体实现如下：</p>
 
-<pre><code>		pk = 1 - (d/spd)
-		if pk &gt; rand
-			{麋鹿死，狼食物加1，狼移动到麋鹿原先的位置}
-		end
+<pre><code>        pk = 1 - (d/spd)
+        if pk &gt; rand
+            {麋鹿死，狼食物加1，狼移动到麋鹿原先的位置}
+        end
 </code></pre>
 
 <p>这里，pk是被杀的概率的意思。d是麋鹿和狼之间的距离，spd是狼的速度，rand是一个介于0到1之间的随机数。距离短，狼的速度大，pk就大，事件pk&gt;rand发生的可能性就大，因此麋鹿被捕获的概率高。</p>
@@ -821,10 +821,10 @@ end
         % moose
         if isa(curr,'moose')&amp;klld==0
             new=[];
-            [curr,new]=breed(curr,cn);			%breeding rule
-            if ~isempty(new)					%if current agent has bred during this iteration
+            [curr,new]=breed(curr,cn);          %breeding rule
+            if ~isempty(new)                    %if current agent has bred during this iteration
                 n_new=n_new+1;                 %increase new agent number
-                agent{n+n_new}=new;			%add new to end of agent list
+                agent{n+n_new}=new;         %add new to end of agent list
             end
         end
         
@@ -832,11 +832,11 @@ end
         % only alphaWolf can breed, wolf can not
         if isa(curr,'alphaWolf')&amp;klld==0
             new=[];
-            [curr,new]=breed(curr,cn);			%breeding rule
-            if ~isempty(new)					%if current agent has bred during this iteration
+            [curr,new]=breed(curr,cn);          %breeding rule
+            if ~isempty(new)                    %if current agent has bred during this iteration
                 for ite = 1:length(new)
                     n_new=n_new+1;                 %increase new agent number
-                    agent{n+n_new}=new{ite};			%add new to end of agent list
+                    agent{n+n_new}=new{ite};            %add new to end of agent list
                 end
             end
         end

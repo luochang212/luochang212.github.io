@@ -11,7 +11,7 @@
 <meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.55.6" />
+<meta name="generator" content="Hugo 0.55.5" />
 
     
     
@@ -593,10 +593,10 @@ $(".load-iframe").click(function(){
 <p>这个类的声明如下：</p>
 
 <pre><code class="language-javascript">var Items = {
-　　　　	name: &quot;&quot;,
-　　　　	isCheck: &quot;false&quot;,
-		   isDelete: &quot;false&quot;
-	};
+　　　　    name: &quot;&quot;,
+　　　　    isCheck: &quot;false&quot;,
+           isDelete: &quot;false&quot;
+    };
 </code></pre>
 
 <p>可以看出这个类有三个值。它们分别表示该对象的名称，是否完成，以及是否删除。每次添加计划，用以下代码实例化这个类(items)，生成一个对象(item)：</p>
@@ -613,12 +613,12 @@ $(".load-iframe").click(function(){
 <p>具体到代码中，我用了<code>i.toString(10)</code>将循环数转成string类型，然后加到id上。于是，第一项计划对应的checkbox的id就是&rdquo;cb0&rdquo;, 对应的button的id就是&rdquo;btn0&rdquo;, 以此类推。</p>
 
 <pre><code class="language-javascript">for (i = 0; i &lt; subArray.length; i++) {
-	var index = i+1;
-	body += '&lt;tr&gt;';
-	body += '&lt;td&gt;' + index.toString(10) + '&lt;/td&gt;';
-	body += '&lt;td&gt;' + '&lt;input type=&quot;checkbox&quot; id=\&quot;cb' + i.toString(10) + '\&quot; onclick=&quot;isChecked(this);&quot;&gt;' + '&lt;/td&gt;';
-	body += '&lt;td&gt;' + '&lt;input type=&quot;button&quot; id=\&quot;btn' + i.toString(10) + '\&quot; onclick=&quot;isDeleted(this);&quot;&gt;' + '&lt;/td&gt;';
-	body += '&lt;/tr&gt;';
+    var index = i+1;
+    body += '&lt;tr&gt;';
+    body += '&lt;td&gt;' + index.toString(10) + '&lt;/td&gt;';
+    body += '&lt;td&gt;' + '&lt;input type=&quot;checkbox&quot; id=\&quot;cb' + i.toString(10) + '\&quot; onclick=&quot;isChecked(this);&quot;&gt;' + '&lt;/td&gt;';
+    body += '&lt;td&gt;' + '&lt;input type=&quot;button&quot; id=\&quot;btn' + i.toString(10) + '\&quot; onclick=&quot;isDeleted(this);&quot;&gt;' + '&lt;/td&gt;';
+    body += '&lt;/tr&gt;';
 }
 </code></pre>
 
@@ -628,18 +628,18 @@ $(".load-iframe").click(function(){
 
 <p>这一步在我编程之前，还不知道用什么方法实现。最后被我查到了一段代码，它能在静态网页下生成文件并提供下载。</p>
 
-<pre><code class="language-javascript">	function download(filename, text) {
-		var element = document.createElement('a');
-		element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-		element.setAttribute('download', filename);
+<pre><code class="language-javascript">    function download(filename, text) {
+        var element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        element.setAttribute('download', filename);
 
-		element.style.display = 'none';
-		document.body.appendChild(element);
+        element.style.display = 'none';
+        document.body.appendChild(element);
 
-		element.click();
+        element.click();
 
-		document.body.removeChild(element);
-	}
+        document.body.removeChild(element);
+    }
 </code></pre>
 
 <h3 id="技术总结">技术总结</h3>
