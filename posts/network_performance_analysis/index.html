@@ -22,26 +22,10 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="排队论在网络性能分析中的应用"/>
-<meta name="twitter:description" content="排队论(queueing theory)也称随机服务系统理论，就是为解决上述问题而发展的一门学科，它研究的内容有三部分：性态问题、最优化问题、统计推断问题。（《运筹学》清华大学出版社）
-下图是书中用于解释排队过程的流程图。
-现实中的排队问题是多种多样的，对上述“顾客源”和“服务机构”应该作宽泛的理解。顾客和服务机构可以是生物，也可以是非生物；排队结构可以是有形的，也可以是无形的，比如向交换台要求通话的请求；顾客可以走向服务机构，也可以相反，比如送货上门。
- 本文着重介绍网络性能分析(Network performance analysis)中常见的几种排队模型。它们是：
- The M/M/1 queuing system The birth-death process The M/M/m queuing system The M/M/1/m queuing system The M/M/∞ queuing system The M/M/m/m queuing system  另外，作为以上模型的理论基础，本文将首先介绍柏松分布(The Poisson distribution)。
-柏松过程的推导 柏松过程是马尔可夫过程的一个特例，在排队论中经常被用来估计顾客到达的概率分布。
-（一）柏松过程的假设
- 在一段时间间隔$\Delta t$内，有且仅有一位顾客到达的概率$P$和$\Delta t$成比例，比例系数为$\lambda$
- 在一段时间间隔$\Delta t$内，至多只允许一位顾客到达（否则应该选取一个更短的时间间隔） $$P(在时间间隔[t, t &#43; \Delta t]内，有且仅有一位顾客到达) = \lambda \Delta t \\P(在时间间隔[t, t &#43; \Delta t]内，没有顾客到达) = 1 - \lambda \Delta t \\P(在时间间隔[t, t &#43; \Delta t]内，多于一位顾客到达) = 0$$"/>
+<meta name="twitter:description" content="在网络中，服务器和用户之间相互传送数据包。数据包的传送需要时间，因此或多或少都会延迟。为了分析这些延迟，我们引入了一系列假设，通过排队论对网络延迟进行建模分析。本文将着重介绍网络性能分析中的几种常见的排队模型。"/>
 
 <meta property="og:title" content="排队论在网络性能分析中的应用" />
-<meta property="og:description" content="排队论(queueing theory)也称随机服务系统理论，就是为解决上述问题而发展的一门学科，它研究的内容有三部分：性态问题、最优化问题、统计推断问题。（《运筹学》清华大学出版社）
-下图是书中用于解释排队过程的流程图。
-现实中的排队问题是多种多样的，对上述“顾客源”和“服务机构”应该作宽泛的理解。顾客和服务机构可以是生物，也可以是非生物；排队结构可以是有形的，也可以是无形的，比如向交换台要求通话的请求；顾客可以走向服务机构，也可以相反，比如送货上门。
- 本文着重介绍网络性能分析(Network performance analysis)中常见的几种排队模型。它们是：
- The M/M/1 queuing system The birth-death process The M/M/m queuing system The M/M/1/m queuing system The M/M/∞ queuing system The M/M/m/m queuing system  另外，作为以上模型的理论基础，本文将首先介绍柏松分布(The Poisson distribution)。
-柏松过程的推导 柏松过程是马尔可夫过程的一个特例，在排队论中经常被用来估计顾客到达的概率分布。
-（一）柏松过程的假设
- 在一段时间间隔$\Delta t$内，有且仅有一位顾客到达的概率$P$和$\Delta t$成比例，比例系数为$\lambda$
- 在一段时间间隔$\Delta t$内，至多只允许一位顾客到达（否则应该选取一个更短的时间间隔） $$P(在时间间隔[t, t &#43; \Delta t]内，有且仅有一位顾客到达) = \lambda \Delta t \\P(在时间间隔[t, t &#43; \Delta t]内，没有顾客到达) = 1 - \lambda \Delta t \\P(在时间间隔[t, t &#43; \Delta t]内，多于一位顾客到达) = 0$$" />
+<meta property="og:description" content="在网络中，服务器和用户之间相互传送数据包。数据包的传送需要时间，因此或多或少都会延迟。为了分析这些延迟，我们引入了一系列假设，通过排队论对网络延迟进行建模分析。本文将着重介绍网络性能分析中的几种常见的排队模型。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/network_performance_analysis/" />
 <meta property="article:published_time" content="2019-07-04T00:00:00&#43;00:00"/>
@@ -541,6 +525,7 @@ $(".load-iframe").click(function(){
 <li>
 <ul>
 <li><a href="#柏松过程的推导">柏松过程的推导</a></li>
+<li><a href="#the-m-m-1-queuing-system">The M/M/1 queuing system</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -562,7 +547,9 @@ $(".load-iframe").click(function(){
 <p>现实中的排队问题是多种多样的，对上述“顾客源”和“服务机构”应该作宽泛的理解。顾客和服务机构可以是生物，也可以是非生物；排队结构可以是有形的，也可以是无形的，比如向交换台要求通话的请求；顾客可以走向服务机构，也可以相反，比如送货上门。</p>
 </blockquote>
 
-<p>本文着重介绍<strong>网络性能分析</strong>(Network performance analysis)中常见的几种排队模型。它们是：</p>
+<p>在网络中，服务器和用户之间相互传送数据包。数据包的传送需要时间，因此或多或少都会延迟。为了分析这些延迟，我们引入了一系列假设，通过排队论对网络延迟进行建模分析。</p>
+
+<p>本文将着重介绍<strong>网络性能分析</strong>(Network performance analysis)中常见的几种排队模型。它们是：</p>
 
 <ul>
 <li>The M/M/1 queuing system</li>
@@ -644,6 +631,21 @@ $(".load-iframe").click(function(){
 <p>由泰勒展开可知$A=1$。故柏松过程的一般式为：</p>
 
 <p><code>$$P(k | t, \lambda)=\frac{(\lambda t)^{k}}{k !} \exp (-\lambda t)$$</code></p>
+
+<p>柏松过程的图像如下：
+<img src="/img/The-Poisson-distribution.png" alt="柏松过程图像" /></p>
+
+<p>（三）柏松过程实例</p>
+
+<p>一个交换机平均每分钟接收100个电话请求，按照柏松过程，该交换机连续五秒未收到电话请求的概率的多少？</p>
+
+<p><code>$$P\left(k=0 | t=\frac{1}{12}, \lambda=100\right)=\exp \left(-\frac{100}{12}\right)=0.00024$$</code></p>
+
+<blockquote>
+<p><strong>Note</strong>: 从上面这个实例中我们能看出，k代表顾客的数量，t代表这段时间的长度，$\lambda$代表平均每单位时间到达的顾客数。</p>
+</blockquote>
+
+<h3 id="the-m-m-1-queuing-system">The M/M/1 queuing system</h3>
 
   </div>
   
