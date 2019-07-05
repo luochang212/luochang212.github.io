@@ -11,7 +11,7 @@
 <meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.55.5" />
+<meta name="generator" content="Hugo 0.55.6" />
 
     
     
@@ -593,6 +593,10 @@ $(".load-iframe").click(function(){
 
 <p>由于总人数单调递增，且在一段时间间隔$\Delta t$内，到达人数最多加1。因此，如果$t+\Delta t$时刻的到达人数是k，那么在$t$时刻的到达人数只有两种情况：k或者k-1.</p>
 
+<p>柏松过程的状态转移图如下：</p>
+
+<p><img src="/img/The-Poisson-distribution-state.png" alt="柏松过程图像" /></p>
+
 <p>从时间$t$到时间$t+\Delta t$，到达人数的概率可由下述公式表达：</p>
 
 <p><code>$$\begin{aligned} P_{k}(t+\Delta t) &amp;=P_{k}(t) p_{k, k}(\Delta t)+P_{k-1}(t) p_{k-1, k}(\Delta t) \\ P_{0}(t+\Delta t) &amp;=P_{0}(t) p_{0,0}(\Delta t) \quad k=0 \text { (starting condition) } \end{aligned}$$</code></p>
@@ -645,9 +649,9 @@ $(".load-iframe").click(function(){
 
 <p><code>$$A \exp (-\lambda t) \sum_{k=0}^{\infty} \frac{(\lambda t)^{k}}{k !}=1$$</code></p>
 
-<p>由泰勒展开可知$A=1$。故柏松过程的一般式为：</p>
+<p>由泰勒展开可知$A=1$,即：</p>
 
-<p><code>$$P(k | t, \lambda)=\frac{(\lambda t)^{k}}{k !} \exp (-\lambda t)$$</code></p>
+<p><code>$$\boxed{P(k | t, \lambda)=\frac{(\lambda t)^{k}}{k !} \exp (-\lambda t)}$$</code></p>
 
 <p>柏松过程的图像如下：</p>
 
@@ -697,6 +701,27 @@ $(".load-iframe").click(function(){
 </blockquote>
 
 <h3 id="the-m-m-1-queuing-system">The M/M/1 queuing system</h3>
+
+<p>（一）M/M/1排队系统的假设</p>
+
+<p>M/M/1排队系统是相继到达时间间隔为负指数分布、服务时间为负指数分布、单服务器的模型。而且只有一个队列。M/M/1 queue 也叫 birth death process, 因为到达即代表出生，服务即代表死亡。</p>
+
+<p>M/M/1排队系统的状态转移图如下：</p>
+
+<p><img src="/img/mm1-queue-state.png" alt="M/M/1排队系统" /></p>
+
+<p>其中，<code>$\lambda_k$</code>表示当系统处于状态k时的到达速率(the arrival rate)，<code>$\mu_{k}$</code>表示当系统处于状态k时的服务速率(the service rate).</p>
+
+<blockquote>
+<p><strong>Note</strong>: M/M/1排队系统的性质：</p>
+
+<ul>
+<li>系统处于状态n是指系统内有n位顾客，这n位顾客既包括正在排队的，也包括正在接受服务的；</li>
+<li>如果状态n的情况已知，那么其他所有关于该队列的信息都可以被推断出来。</li>
+</ul>
+</blockquote>
+
+<p>(二)推导过程</p>
 
   </div>
   
