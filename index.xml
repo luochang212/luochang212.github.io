@@ -22,7 +22,7 @@
 现实中的排队问题是多种多样的，对上述“顾客源”和“服务机构”应该作宽泛的理解。顾客和服务机构可以是生物，也可以是非生物；排队结构可以是有形的，也可以是无形的，比如向交换台要求通话的请求；顾客可以走向服务机构，也可以相反，比如送货上门。
  在网络中，服务器和用户之间相互传送数据包。数据包的传送需要时间，因此或多或少都会延迟。为了分析这些延迟，我们引入了一系列假设，通过排队论对网络延迟进行建模分析。
 本文将着重介绍网络性能分析(Network performance analysis)中常见的几种排队模型。它们是：
- The M/M/1 queuing system The birth-death process The M/M/m queuing system The M/M/1/m queuing system The M/M/∞ queuing system The M/M/m/m queuing system  另外，作为以上模型的理论基础，本文将首先介绍柏松分布(The Poisson distribution)。
+ The M/M/1 queuing system The birth-death process The M/M/m queuing system The M/M/1/m queuing system The M/M/∞ queuing system The M/M/m/m queuing system  另外，作为以上模型的理论基础，本文将首先介绍柏松分布(Poisson distribution)。
 柏松过程的推导 柏松过程是马尔可夫过程的一个特例，在排队论中经常被用来估计顾客到达的概率分布。
 （一）柏松过程的假设
  在一段时间间隔$\Delta t$内，有且仅有一位顾客到达的概率$P$和$\Delta t$成比例，比例系数为$\lambda$

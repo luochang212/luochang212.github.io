@@ -506,7 +506,7 @@ $(".load-iframe").click(function(){
     
     
     <br/>
-    <i class="fas fa-clock"></i> 3 min read
+    <i class="fas fa-clock"></i> 4 min read
 </div>
 
 
@@ -525,8 +525,10 @@ $(".load-iframe").click(function(){
 <li>
 <ul>
 <li><a href="#柏松过程的推导">柏松过程的推导</a></li>
-<li><a href="#排队模型的分类">排队模型的分类</a></li>
+<li><a href="#排队系统的分类">排队系统的分类</a></li>
 <li><a href="#the-m-m-1-queuing-system">The M/M/1 queuing system</a></li>
+<li><a href="#the-birth-death-process">The birth-death process</a></li>
+<li><a href="#the-m-m-m-queuing-system">The M/M/m queuing system</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -561,7 +563,7 @@ $(".load-iframe").click(function(){
 <li>The M/M/m/m queuing system</li>
 </ul>
 
-<p>另外，作为以上模型的理论基础，本文将首先介绍<strong>柏松分布</strong>(The Poisson distribution)。</p>
+<p>另外，作为以上模型的理论基础，本文将首先介绍<strong>柏松分布</strong>(Poisson distribution)。</p>
 
 <h3 id="柏松过程的推导">柏松过程的推导</h3>
 
@@ -666,7 +668,7 @@ $(".load-iframe").click(function(){
 <p><strong>Note</strong>: 从上面这个实例中我们能看出，k代表顾客的数量，t代表这段时间的长度，$\lambda$代表平均每单位时间到达的顾客数。</p>
 </blockquote>
 
-<h3 id="排队模型的分类">排队模型的分类</h3>
+<h3 id="排队系统的分类">排队系统的分类</h3>
 
 <p>排队模型用Kendall符号表示，符号形式为：</p>
 
@@ -703,13 +705,13 @@ $(".load-iframe").click(function(){
 
 <p>（一）M/M/1排队系统的假设</p>
 
-<p>M/M/1排队系统是相继到达时间间隔为负指数分布、服务时间为负指数分布、单服务器的模型。而且只有一个队列。M/M/1 queue 也叫 birth death process, 因为到达即代表出生，服务即代表死亡。</p>
+<p>M/M/1排队系统是相继到达时间间隔为负指数分布、服务时间为负指数分布、单服务器的模型,且只有一个队列。<!--M/M/1 queue 也叫 birth death process, 因为到达即代表出生，服务即代表死亡。--></p>
 
 <p>M/M/1排队系统的状态转移图如下：</p>
 
 <p><img src="/img/mm1-queue-state.png" alt="M/M/1排队系统" /></p>
 
-<p>其中，<code>$\lambda_k$</code>表示当系统处于状态k时的到达速率(the arrival rate)，<code>$\mu_{k}$</code>表示当系统处于状态k时的服务速率(the service rate).</p>
+<p>其中，<code>$\lambda_k$</code>表示当系统处于状态k时的到达速率(arrival rate)，<code>$\mu_{k}$</code>表示当系统处于状态k时的服务速率(service rate).</p>
 
 <blockquote>
 <p><strong>Note</strong>: M/M/1排队系统的性质：</p>
@@ -750,6 +752,91 @@ $(".load-iframe").click(function(){
 <p>当$\Delta t \rightarrow 0$有：</p>
 
 <p><code>$$\begin{aligned} \frac{d P_{k}(t)}{d t} &amp;=-(\lambda+\mu) P_{k}(t)+\lambda P_{k-1}(t)+\mu P_{k+1}(t), \quad k \geq 1 \\ \frac{d P_{0}(t)}{d t} &amp;=-\lambda P_{0}(t)+\mu P_{1}(t) \end{aligned}$$</code></p>
+
+<p>考虑到系统处于稳定状态(steady state)，有：</p>
+
+<p><code>$$\frac{d P_{k}(t)}{d t}=0, \qquad k \geq 0$$</code></p>
+
+<p>代入上式得：</p>
+
+<p><code>$$\begin{aligned} (\lambda+\mu) P_{k}-\lambda P_{k-1}-\mu P_{k+1} = 0, \quad k \geq 1 \\ \lambda P_{0}-\mu P_{1} = 0, \quad k = 0 \end{aligned}$$</code></p>
+
+<p>解得：</p>
+
+<p><code>$$\lambda P_{k-1}=\mu P_{k}$$</code></p>
+
+<blockquote>
+<p><strong>Note</strong>: 等式<code>$\lambda P_{k-1}=\mu P_{k}$</code>也可以理解为越过边界的通量是左右抵消的：</p>
+
+<p><img src="/img/mm1-flow-rates.png" alt="通量图" /></p>
+</blockquote>
+
+<p>整理上式得：</p>
+
+<p><code>$$P_{k}=\frac{\lambda}{\mu} P_{k-1}$$</code></p>
+
+<p>因此：</p>
+
+<p><code>$$P_{k}=\left(\frac{\lambda}{\mu}\right)^{k} P_{0}=\rho^{k} P_{0}, \text { 其中 } \rho = \frac{\lambda}{\mu}$$</code></p>
+
+<p>下面计算$P_{0}$的值：</p>
+
+<p><code>$$\sum_{k=0}^{\infty} P_{k}=1$$</code></p>
+
+<p>因为<code>$P_{k}=\rho^{k} P_{0}$</code>，所以有：</p>
+
+<p><code>$$P_{0} \sum_{k=0}^{\infty} \rho^{k}=1$$</code></p>
+
+<p>整理得：</p>
+
+<p><code>$$P_{0}=\frac{1}{\sum_{k=0}^{\infty} \rho^{k}}$$</code></p>
+
+<p>当<code>$\rho&lt;1$</code>，即<code>$\lambda&lt;\mu$</code>时：</p>
+
+<p><code>$$\sum_{k=0}^{\infty} \rho^{k}=\frac{1}{1-\rho} \quad \text { for } \rho&lt;1$$</code></p>
+
+<p>故：</p>
+
+<p><code>$$P_{0}=(1-\rho)$$</code></p>
+
+<p>因此，处于稳定状态(steady state)的M/M/1 排队系统的概率分布为：</p>
+
+<p><code>$$\boxed{ P_{k}=\rho^{k}(1-\rho), \rho&lt;1}$$</code></p>
+
+<p>M/M/1 排队系统在不同的<code>$\rho$</code>下的概率分布如下：</p>
+
+<p><img src="/img/mm1-state-probabilities.png" alt="M/M/1 排队系统在各状态下的概率" /></p>
+
+<h3 id="the-birth-death-process">The birth-death process</h3>
+
+<blockquote>
+<p><strong>Note</strong>: The M/M/1 queuing system 和 The birth-death process 的区别:</p>
+
+<ul>
+<li>The M/M/1 queuing system - 只有一个队列，对队列中的顾客数量没有限制；有且仅有一个服务器；稳定状态时，到达速率和服务速率都是常数。</li>
+<li>The birth-death process - 是 The M/M/1 queuing system 的一个推广，稳定状态时的到达速率和服务速率是相互独立的，到达速率和服务速率随状态变化。（这一段我可能翻译得不到位，原文表达得更清楚。The birth-death process, which is an extension of the M/M/1 process in which the steady state arrival and service rates are dependent upon the state of the system）</li>
+</ul>
+</blockquote>
+
+<p>从上面的描述我们知道，The M/M/1 queuing system 和 The birth-death process是很相像的。唯一的区别在于系数。在 M/M/1 排队系统中，系数都是常数，而 The birth-death process 中的系数是随状态变化的。也就是说，在 The birth-death process 中，需要把 The M/M/1 queuing system 中的所有$\lambda$和$\mu$替换成$\lambda_k$和$\mu_k$。</p>
+
+<p>$\lambda, \mu, \lambda_k, \mu_k$之间的区别在于：$\lambda$和$\mu$是所有状态的平均值，而$\lambda_k$和$\mu_k$是到达概率通量(arrival probability flux)和服务概率通量(service probability flux)。对于 The birth-death process，当系统处于状态k时，它们之间的关系可以表达为:</p>
+
+<p><code>$$\lambda_{k}=\lambda P_{k} \quad \text { and } \quad \mu_{k}=\mu P_{k}$$</code></p>
+
+<p>The birth-death process 的通量图如下：</p>
+
+<p><img src="/img/bd-flow-rates.png" alt="通量图" /></p>
+
+<p>由经过边界的通量相互抵消可得：</p>
+
+<p><code>$$\lambda_{k} P_{k}=\mu_{k+1} P_{k+1}$$</code></p>
+
+<p>后续的推导过程和上文的 M/M/1 排队系统十分相似，就不重复了。这里直接给出概率分布函数：</p>
+
+<p><code>$$\boxed{ P_{k}=\left(\frac{\prod_{i=0}^{k-1} \lambda_{i}}{\prod_{i=1}^{k} \mu_{i}}\right) P_{0}, \qquad k \geq 1 }$$</code></p>
+
+<h3 id="the-m-m-m-queuing-system">The M/M/m queuing system</h3>
 
   </div>
   
