@@ -26,8 +26,7 @@
 柏松过程的推导 柏松过程是马尔可夫过程的一个特例，在排队论中经常被用来估计顾客到达的概率分布。
 （一）柏松过程的假设
  在一段时间间隔$\Delta t$内，有且仅有一位顾客到达的概率$P$和$\Delta t$成比例，比例系数为$\lambda$
- 在一段时间间隔$\Delta t$内，至多只允许一位顾客到达（否则应该选取一个更短的时间间隔）
-  $$P(在时间间隔[t, t + \Delta t]内，有且仅有一位顾客到达) = \lambda \Delta t \\P(在时间间隔[t, t + \Delta t]内，没有顾客到达) = 1 - \lambda \Delta t \\P(在时间间隔[t, t + \Delta t]内，多于一位顾客到达) = 0$$</description>
+ 在一段时间间隔$\Delta t$内，至多只允许一位顾客到达（否则应该选取一个更短的时间间隔） $$\begin{aligned} P(\text { 在时间间隔 }[t, t+\Delta t] \text { 内，有且仅有一位顾客到达 }) &amp;amp;=\lambda \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，没有顾客到达 }) &amp;amp;=1-\lambda \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，多于一位顾客到达 }) &amp;amp;=0 \end{aligned}$$</description>
     </item>
     
   </channel>

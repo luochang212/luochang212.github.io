@@ -506,7 +506,7 @@ $(".load-iframe").click(function(){
     
     
     <br/>
-    <i class="fas fa-clock"></i> 2 min read
+    <i class="fas fa-clock"></i> 3 min read
 </div>
 
 
@@ -572,14 +572,9 @@ $(".load-iframe").click(function(){
 <ul>
 <li><p>在一段时间间隔$\Delta t$内，有且仅有一位顾客到达的概率$P$和$\Delta t$成比例，比例系数为$\lambda$</p></li>
 
-<li><p>在一段时间间隔$\Delta t$内，至多只允许一位顾客到达（否则应该选取一个更短的时间间隔）</p></li>
-</ul>
+<li><p>在一段时间间隔$\Delta t$内，至多只允许一位顾客到达（否则应该选取一个更短的时间间隔）
+<code>$$\begin{aligned} P(\text { 在时间间隔 }[t, t+\Delta t] \text { 内，有且仅有一位顾客到达 }) &amp;=\lambda \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，没有顾客到达 }) &amp;=1-\lambda \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，多于一位顾客到达 }) &amp;=0 \end{aligned}$$</code></p></li>
 
-<p><code>$$P(在时间间隔[t, t + \Delta t]内，有且仅有一位顾客到达) = \lambda \Delta t
-\\P(在时间间隔[t, t + \Delta t]内，没有顾客到达) = 1 - \lambda \Delta t
-\\P(在时间间隔[t, t + \Delta t]内，多于一位顾客到达) = 0$$</code></p>
-
-<ul>
 <li><p>柏松过程是对顾客到达过程的估计，故不考虑顾客的离开情况，所以对到达人数的计数只增不减</p></li>
 
 <li><p>只考虑一阶无穷小对结果的影响，忽略二阶无穷小，$\Delta t \gg(\Delta t)^{2} \approx 0$</p></li>
@@ -593,13 +588,17 @@ $(".load-iframe").click(function(){
 
 <p>由于总人数单调递增，且在一段时间间隔$\Delta t$内，到达人数最多加1。因此，如果$t+\Delta t$时刻的到达人数是k，那么在$t$时刻的到达人数只有两种情况：k或者k-1.</p>
 
-<p>柏松过程的状态转移图如下：</p>
-
-<p><img src="/img/The-Poisson-distribution-state.png" alt="柏松过程图像" /></p>
+<p>柏松过程的状态转移图如下：
+<br><br><br>
+<img src="/img/The-Poisson-distribution-state.png" alt="柏松过程图像" />
+<br>
+<div id="Poisson"></p>
 
 <p>从时间$t$到时间$t+\Delta t$，到达人数的概率可由下述公式表达：</p>
 
-<p><code>$$\begin{aligned} P_{k}(t+\Delta t) &amp;=P_{k}(t) p_{k, k}(\Delta t)+P_{k-1}(t) p_{k-1, k}(\Delta t) \\ P_{0}(t+\Delta t) &amp;=P_{0}(t) p_{0,0}(\Delta t) \quad k=0 \text { (starting condition) } \end{aligned}$$</code></p>
+<p><code>$$\begin{aligned} P_{k}(t+\Delta t) &amp;=P_{k}(t) p_{k, k}(\Delta t)+P_{k-1}(t) p_{k-1, k}(\Delta t) \\ P_{0}(t+\Delta t) &amp;=P_{0}(t) p_{0,0}(\Delta t) \quad k=0 \text { (起始状态) } \end{aligned}$$</code></p>
+
+<p><div></p>
 
 <p>由假设可知：</p>
 
@@ -615,7 +614,7 @@ $(".load-iframe").click(function(){
 
 <p>当$\Delta t \rightarrow 0$有：</p>
 
-<p><code>$$\begin{aligned} \frac{d P_{k}(t)}{d t} &amp;=-\lambda P_{k}(t)+\lambda P_{k-1}(t) \quad (k \geq 1) \quad (1) \\ \frac{d P_{0}(t)}{d t} &amp;=-\lambda P_{0}(t) \quad \quad \quad \quad (2) \end{aligned} $$</code></p>
+<p><code>$$\begin{aligned} \frac{d P_{k}(t)}{d t} &amp;=-\lambda P_{k}(t)+\lambda P_{k-1}(t) \quad (k \geq 1) \quad (1) \\ \frac{d P_{0}(t)}{d t} &amp;=-\lambda P_{0}(t) \quad \quad \quad \quad \quad \quad \quad \quad (2) \end{aligned} $$</code></p>
 
 <p>方程(2)的解为：</p>
 
@@ -722,6 +721,35 @@ $(".load-iframe").click(function(){
 </blockquote>
 
 <p>(二)推导过程</p>
+
+<p>回忆前文柏松过程的假设：</p>
+
+<p><code>$$\begin{aligned} P(\text { 在时间间隔 }[t, t+\Delta t] \text { 内，有且仅有一位顾客到达 }) &amp;=\lambda \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，没有顾客到达 }) &amp;=1-\lambda \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，多于一位顾客到达 }) &amp;=0 \end{aligned}$$</code></p>
+
+<p>上述公式是对到达速率$\lambda$而言的，对服务速率$\mu$也采用相同的模型：</p>
+
+<p><code>$$\begin{aligned} P(\text { 在时间间隔 }[t, t+\Delta t] \text { 内，有且仅有一位顾客服务完成 }) &amp;=\mu \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，没有顾客服务完成 }) &amp;=1-\mu \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，多于一位顾客服务完成 }) &amp;=0 \end{aligned}$$</code></p>
+
+<p>约定：</p>
+
+<ul>
+<li>$P_{k}(t)$表示在时间间隔$t$内，系统内有$k$位顾客的概率</li>
+<li>$p_{i, j}(\Delta t)$表示在时间间隔$\Delta t$内，系统内人数由$i$变为$j$的概率</li>
+</ul>
+
+<p>从时间$t$到时间$t+\Delta t$，系统内人数的概率可由下述公式表达：</p>
+
+<p><code>$$\begin{aligned} P_{k}(t+\Delta t)=&amp; P_{k}(t) p_{k, k}(\Delta t)+P_{k-1}(t) p_{k-1, k}(\Delta t) \\ &amp;+P_{k+1}(t) p_{k+1, k}(\Delta t) \\ P_{0}(t+\Delta t)=&amp; P_{0}(t) p_{0,0}(\Delta t)+P_{1}(t) p_{1,0}(\Delta t) \quad k=0 \text { (起始状态) } \end{aligned}$$</code></p>
+
+<p>和柏松过程比较，M/M/1 排队模型的转移概率多了从状态 k+1 转到状态 k 的一项。点击<a href="#Poisson">这里</a>回顾柏松过程相关公式。</p>
+
+<p>将柏松过程的假设和M/M/1 排队系统的假设，代入上述公式：</p>
+
+<p><code>$$\begin{aligned} P_{k}(t+\Delta t)=&amp; P_{k}(t)(1-\lambda \Delta t)(1-\mu \Delta t)+P_{k-1}(t)(\lambda \Delta t)(1-\mu \Delta t) \\ &amp;+P_{k+1}(t)(\mu \Delta t)(1-\lambda \Delta t) \\ P_{0}(t+\Delta t)=&amp; P_{0}(t)(1-\lambda \Delta t)+P_{1}(t)(\mu \Delta t)(1-\lambda \Delta t), \quad k=0 \end{aligned}$$</code></p>
+
+<p>当$\Delta t \rightarrow 0$有：</p>
+
+<p><code>$$\begin{aligned} \frac{d P_{k}(t)}{d t} &amp;=-(\lambda+\mu) P_{k}(t)+\lambda P_{k-1}(t)+\mu P_{k+1}(t), \quad k \geq 1 \\ \frac{d P_{0}(t)}{d t} &amp;=-\lambda P_{0}(t)+\mu P_{1}(t) \end{aligned}$$</code></p>
 
   </div>
   
