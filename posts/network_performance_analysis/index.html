@@ -22,10 +22,10 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="排队论在网络性能分析中的应用"/>
-<meta name="twitter:description" content="在网络中，服务器和用户之间相互传送数据包。数据包的传送需要时间，因此或多或少都会延迟。为了分析这些延迟，我们引入了一系列假设，通过排队论对网络延迟进行建模分析。本文将着重介绍网络性能分析中的几种常见的排队模型。"/>
+<meta name="twitter:description" content="在网络中，服务器和用户之间相互传送数据包。数据包的传送需要时间，因此或多或少都会延迟。为了分析这些延迟，我们引入了一系列假设，并通过排队论对网络延迟进行建模分析。本文将着重介绍网络性能分析中的几种常见的排队模型。"/>
 
 <meta property="og:title" content="排队论在网络性能分析中的应用" />
-<meta property="og:description" content="在网络中，服务器和用户之间相互传送数据包。数据包的传送需要时间，因此或多或少都会延迟。为了分析这些延迟，我们引入了一系列假设，通过排队论对网络延迟进行建模分析。本文将着重介绍网络性能分析中的几种常见的排队模型。" />
+<meta property="og:description" content="在网络中，服务器和用户之间相互传送数据包。数据包的传送需要时间，因此或多或少都会延迟。为了分析这些延迟，我们引入了一系列假设，并通过排队论对网络延迟进行建模分析。本文将着重介绍网络性能分析中的几种常见的排队模型。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/network_performance_analysis/" />
 <meta property="article:published_time" content="2019-07-04T00:00:00&#43;00:00"/>
@@ -506,7 +506,7 @@ $(".load-iframe").click(function(){
     
     
     <br/>
-    <i class="fas fa-clock"></i> 4 min read
+    <i class="fas fa-clock"></i> 6 min read
 </div>
 
 
@@ -529,6 +529,9 @@ $(".load-iframe").click(function(){
 <li><a href="#the-m-m-1-queuing-system">The M/M/1 queuing system</a></li>
 <li><a href="#the-birth-death-process">The birth-death process</a></li>
 <li><a href="#the-m-m-m-queuing-system">The M/M/m queuing system</a></li>
+<li><a href="#the-m-m-1-m-queuing-system">The M/M/1/m queuing system</a></li>
+<li><a href="#the-m-m-queuing-system">The M/M/∞ queuing system</a></li>
+<li><a href="#the-m-m-m-m-queuing-system">The M/M/m/m queuing system</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -837,6 +840,200 @@ $(".load-iframe").click(function(){
 <p><code>$$\boxed{ P_{k}=\left(\frac{\prod_{i=0}^{k-1} \lambda_{i}}{\prod_{i=1}^{k} \mu_{i}}\right) P_{0}, \qquad k \geq 1 }$$</code></p>
 
 <h3 id="the-m-m-m-queuing-system">The M/M/m queuing system</h3>
+
+<p>M/M/m 排队系统有一个队列和m个服务器。该排队系统的状态转移图如下：</p>
+
+<p><img src="/img/mmm-state-transition.png" alt="M/M/m 排队系统状态转移图" /></p>
+
+<p>M/M/m 排队系统的性质：</p>
+
+<ul>
+<li>因为只有一个队列，因此对于所有的状态，到达速率都是常数<code>$\lambda$</code></li>
+<li>如果系统内人数小于或等于m，那么队列一定为空，且状态k的服务速率为<code>$\mu_{k}=k \mu$</code>，因为此时系统内的所有人都正在接受服务</li>
+<li>如果系统内人数多于m，那么一定至少有一人在队列中</li>
+</ul>
+
+<p>各状态下到达和服务速率分别为：</p>
+
+<p><code>$$\begin{aligned} \lambda_{k} &amp;=\lambda, \quad k=0,1,2, \ldots \\ \mu_{k} &amp;=\left\{\begin{array}{ll}{k \mu} &amp; {k=0,1,2, \ldots, m-1, m} \\ {m \mu} &amp; {k \geq m}\end{array}\right.\end{aligned}$$</code></p>
+
+<p>如果系统处于稳定状态，那么从状态k进入状态k-1的通量和从状态k-1进入状态k的通量应该相等：</p>
+
+<p><code>$$\begin{aligned} \lambda P_{k-1} &amp;=k \mu P_{k}, \quad k \leq m \\ \lambda P_{k-1} &amp;=m \mu P_{k}, \quad k \geq m \end{aligned}$$</code></p>
+
+<p>为了解上述公式，首先考虑k &lt; m的情况：</p>
+
+<p><code>$$P_{k}=\frac{1}{k}(\rho m) P_{k-1}, \qquad \frac{\lambda}{\mu}=\rho m$$</code></p>
+
+<p>导出：</p>
+
+<p><code>$$\begin{aligned} P_{1} &amp;=(\rho m) P_{0} \\ P_{2} &amp;=\frac{(\rho m)}{2} P_{1}=\frac{(\rho m)^{2}}{2 !} P_{0} \\ P_{3} &amp;=\frac{(\rho m)}{3} P_{2}=\frac{(\rho m)^{3}}{3 !} P_{0} \end{aligned}$$</code></p>
+
+<p>由上述公式递推可得：</p>
+
+<p><code>$$P_{k}=\left(\frac{(m \rho)^{k}}{k !}\right) P_{0}, \qquad k&lt;m$$</code></p>
+
+<p>再考虑k &gt; m的情况：</p>
+
+<p><code>$$P_{k}=\frac{\lambda}{m \mu} P_{k-1}=\rho P_{k-1}$$</code></p>
+
+<p>导出：</p>
+
+<p><code>$$\begin{aligned} P_{m} &amp;=\rho P_{m-1} \\ P_{m+1} &amp;=\rho P_{m}=\rho^{2} P_{m-1} \\ P_{m+2} &amp;=\rho P_{m+1}=\rho^{3} P_{m-1} \end{aligned}$$</code></p>
+
+<p>由上述递推公式可知一般式为：</p>
+
+<p><code>$$P_{k}=\rho^{k-m+1} P_{m-1} \qquad k=m, m+1, \ldots$$</code></p>
+
+<p>由k &lt; m情况下的概率分布，可知：</p>
+
+<p><code>$$P_{m-1}=\left(\frac{(m \rho)^{m-1}}{(m-1) !}\right) P_{0}$$</code></p>
+
+<p>由上述两式整理得：</p>
+
+<p><code>$$P_{k}=\left(\frac{m^{m} \rho^{k}}{m !}\right) P_{0}, \quad k=m, m+1, \ldots$$</code></p>
+
+<p>综上，稳定状态下，M/M/m 排队系统的状态概率分布为：</p>
+
+<p><code>$$P_{k}=\left\{\begin{array}{l}{P_{0}\left(\frac{(m \rho)^{k}}{k !}\right) \qquad k \leq m} \\ {P_{0}\left(\frac{m^{m} \rho^{k}}{m !}\right) \quad k \geq m}\end{array}\right.$$</code></p>
+
+<p>其中，<code>$\rho=\frac{\lambda}{m \mu}&lt;1$</code>。</p>
+
+<p>下面计算<code>$P_{0}$</code>，由于：</p>
+
+<p><code>$$\sum_{k=0}^{\infty} P_{k}=1$$</code></p>
+
+<p>可得：</p>
+
+<p><code>$$P_{0}\left[\sum_{k=0}^{m-1} \frac{(m \rho)^{k}}{k !}+\sum_{k=m}^{\infty} \frac{m^{m} \rho^{k}}{m !}\right]=1$$</code></p>
+
+<p>故当<code>$\rho&lt;1$</code>时，M/M/m 排队系统的稳定状态概率分布为：</p>
+
+<p><code>$$\boxed{ P_{k}=\left\{\begin{array}{ll}{P_{0}\left(\frac{(m \rho)^{k}}{k !}\right)} &amp; {k \leq m} \\ {P_{0}\left(\frac{m^{m} \rho^{k}}{m !}\right)} &amp; {k \geq m}\end{array}, \quad \rho=\frac{\lambda}{m \mu}&lt;1\right. }$$</code></p>
+
+<p>其中，<code>$P_{0}=\left[\sum_{k=0}^{m-1} \frac{(m \rho)^{k}}{k !}+\frac{(m \rho)^{m}}{m !(1-\rho)}\right]^{-1}$</code>。</p>
+
+<blockquote>
+<p><strong>Note</strong>: 对于M/M/m 排队系统，一个重要的问题是系统内需要排队的概率。当系统内人数大于服务器数量时，顾客需要排队。概率表达式为：</p>
+
+<p><code>$$P_{k \geq m+1}=\sum_{k=m+1}^{\infty} P_{k}=\sum_{k=m}^{\infty} P_{k}-P_{m}=P_{0}\left(\frac{m^{m} \rho^{m+1}}{m !(1-\rho)}\right)$$</code></p>
+</blockquote>
+
+<h3 id="the-m-m-1-m-queuing-system">The M/M/1/m queuing system</h3>
+
+<p>在之前的模型中，我们总是假设队列是无边界的。但在现实问题中，由于缓存的限制，队列的长度通常是有限的。</p>
+
+<p>在一个M/M/1/m 排队系统中，如果系统内人数为m，那么任何后来者的服务请求都会被拒绝。如果系统内最多容纳m位顾客，那么对于M/M/1/m 排队系统，那个正在接受服务的1位顾客同样会占用1个系统空间，扣除它之后，可知队列的最大长度为m-1。</p>
+
+<p>下面是M/M/1/m 排队系统的状态转移图：</p>
+
+<p><img src="/img/mm1m-state-diagram.png" alt="M/M/1/m 排队系统的状态转移图" /></p>
+
+<p>M/M/1/m 排队系统的前半部分推导过程和M/M/1 排队系统十分相像，但由于M/M/1/m 排队系统在状态k处截断，导致其<code>$P_0$</code>值与M/M/1 排队系统的<code>$P_0$</code>值不同。</p>
+
+<p>下面是M/M/1/m 排队系统的通量图：</p>
+
+<p><img src="/img/mm1m-flow-rates.png" alt="M/M/1/m 排队系统的通量图" /></p>
+
+<p>由通量图可知:</p>
+
+<p><code>$$\lambda_{k-1} P_{k-1}+\mu_{k+1} P_{k+1}=\mu_{k} P_{k}+\lambda_{k} P_{k}, \quad k=1, \ldots, m-1$$</code></p>
+
+<p>解得：</p>
+
+<p><code>$$\lambda_{k} P_{k}=\mu_{k+1} P_{k+1}, \qquad k=0, \dots, m-1$$</code></p>
+
+<p>递推可得：</p>
+
+<p><code>$$\begin{aligned} P_{1} &amp;=\left(\frac{\lambda_{0}}{\mu_{1}}\right) P_{0} \\ P_{2} &amp;=\left(\frac{\lambda_{1}}{\mu_{2}}\right) P_{1}=\left(\frac{\lambda_{0} \lambda_{1}}{\mu_{1} \mu_{2}}\right) P_{0} \\ P_{3} &amp;=\left(\frac{\lambda_{2}}{\mu_{3}}\right) P_{1}=\left(\frac{\lambda_{0} \lambda_{1} \lambda_{2}}{\mu_{1} \mu_{2} \mu_{3}}\right) P_{0} \end{aligned}$$</code></p>
+
+<p>由上述递推公式可得一般式为：</p>
+
+<p><code>$$P_{k}=\left(\frac{\prod_{i=0}^{k-1} \lambda_{i}}{\prod_{i=1}^{k} \mu_{i}}\right) P_{0}=\left(\frac{\lambda}{\mu}\right)^{k} P_{0}, \qquad k=0, \ldots, m$$</code></p>
+
+<p>下面求<code>$P_0$</code>，由于：</p>
+
+<p><code>$$\sum_{i=0}^{m} P_{i}=\left(1+\rho+\rho^{2}+\cdots+\rho^{m}\right) P_{0}=1, \qquad \rho=\frac{\lambda}{\mu}$$</code></p>
+
+<p>导出：</p>
+
+<p><code>$$P_{0}=\frac{1-\rho}{1-\rho^{m+1}}$$</code></p>
+
+<p>故M/M/1/m 排队系统在稳定状态下的概率分布为：</p>
+
+<p><code>$$\boxed{ P_{k}=\frac{(1-\rho) \rho^{k}}{1-\rho^{m+1}} \qquad k=0, \ldots, m }$$</code></p>
+
+<p>其中，<code>$\rho=\frac{\lambda}{\mu}$</code>。</p>
+
+<h3 id="the-m-m-queuing-system">The M/M/∞ queuing system</h3>
+
+<p>M/M/∞ 排队系统考虑有一个队列，无穷个服务器的情况。下面是M/M/∞ 排队系统的状态转移图：</p>
+
+<p><img src="/img/mm-state-diagram.png" alt="M/M/∞ 排队系统的状态转移图" /></p>
+
+<p>通量图如下：</p>
+
+<p><img src="/img/mm-flow-rates.png" alt="通量图" /></p>
+
+<p>由通量图可知：</p>
+
+<p><code>$$\lambda_{k-1} P_{k-1}=\mu_{k} P_{k}$$</code></p>
+
+<p>又<code>$\lambda_{k}=\lambda $</code> 且 <code>$ \mu_{k}=k \mu$</code>，等式可化为：</p>
+
+<p><code>$$\lambda P_{k-1}=k \mu P_{k}$$</code></p>
+
+<p>由递推公式可得：</p>
+
+<p><code>$$P_{k}=\frac{1}{k !}\left(\frac{\lambda}{\mu}\right)^{k} P_{0}$$</code></p>
+
+<p>依照之前的方法，求出<code>$P_0$</code>为：</p>
+
+<p><code>$$P_{0}=\left[\sum_{k=0}^{\infty}\left(\frac{\lambda}{\mu}\right)^{k} \frac{1}{k !}\right]^{-1}=\exp \left(-\frac{\lambda}{\mu}\right)$$</code></p>
+
+<p>故M/M/∞ 排队系统的状态概率分布为：</p>
+
+<p><code>$$\boxed { P_{k}=\frac{1}{k !}\left(\frac{\lambda}{\mu}\right)^{k} \exp \left(-\frac{\lambda}{\mu}\right) }$$</code></p>
+
+<h3 id="the-m-m-m-m-queuing-system">The M/M/m/m queuing system</h3>
+
+<p>M/M/m/m 排队系统有m个服务器，同时系统内最多容纳m位顾客。它的状态转移图如下：</p>
+
+<p><img src="/img/mmmm-state-diagram.png" alt="M/M/m/m 排队系统的状态转移图" /></p>
+
+<p>到达速率和服务速率表达如下：</p>
+
+<p><code>$$\lambda_{k}=\left\{\begin{array}{cl}{\lambda} &amp; {k=0,1, \ldots, m-1} \\ {0} &amp; {k \geq m}\end{array}\right.$$</code></p>
+
+<p><code>$$\mu_{k}=\left\{\begin{array}{ll}{k \mu} &amp; {k=0,1, \ldots, m} \\ {0} &amp; {k&gt;m}\end{array}\right.$$</code></p>
+
+<p>通量图如下：</p>
+
+<p><img src="/img/mmmm-flow-rates.png" alt="" /></p>
+
+<p>由通量图可得：</p>
+
+<p><code>$$\lambda P_{k-1}=k \mu P_{k}, \qquad k=1, \ldots, m$$</code></p>
+
+<p>整理得：</p>
+
+<p><code>$$P_{k}=\frac{\lambda}{k \mu} P_{k-1}=\frac{a}{k} P_{k-1}, \qquad k=1, \ldots, m$$</code></p>
+
+<p>由递推公式解得：</p>
+
+<p><code>$$P_{k}=P_{0}\left(\prod_{n=1}^{k} \frac{a}{n}\right)=\frac{a^{k}}{k !} P_{0}, \quad k=0, \ldots, m$$</code></p>
+
+<p>下面计算<code>$P_0$</code>，由于：</p>
+
+<p><code>$$P_{0} \sum_{k=0}^{m} \frac{a^{k}}{k !}=1$$</code></p>
+
+<p>故：</p>
+
+<p><code>$$P_{0}=\frac{1}{\sum_{k=0}^{m} \frac{a^{k}}{k !}}$$</code></p>
+
+<p>因此，M/M/m/m 排队系统的状态概率分布为：</p>
+
+<p><code>$$\boxed { P_{k}=\frac{\frac{a^{k}}{k !}}{\sum_{n=0}^{m} \frac{a^{n}}{n !}}, \qquad a=\frac{\lambda}{\mu}, \qquad k=0, \ldots, m }$$</code></p>
 
   </div>
   
