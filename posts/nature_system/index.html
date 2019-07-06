@@ -563,7 +563,7 @@ $(".load-iframe").click(function(){
 
 <p>（一）生物的属性</p>
 
-<p>模型内有三种生物：狼(wolf)、麋鹿(moose)、草(grass)。此外，狼还分为头狼和普通狼。下面这张表说明了头狼、普通狼、麋鹿的属性：</p>
+<p>模型内有三种生物：狼(wolf)、麋鹿(moose)、草(grass)。此外，狼还分为头狼和普通狼。下面这张表展示了头狼、普通狼、麋鹿的属性：</p>
 
 <table>
 <thead>
@@ -691,7 +691,7 @@ $(".load-iframe").click(function(){
 
 <h3 id="代码实现">代码实现</h3>
 
-<p>1.下面这段代码在每轮迭代前都要执行，用于维护各生物的属性数据。</p>
+<p>1.下面这段代码用于维护各生物的属性数据，每轮迭代前都要执行。</p>
 
 <pre><code>function [agent] = initial_iteration(agent,nf)
 % This a new function to initial the property at the beginning of each iteration
@@ -752,7 +752,7 @@ end
 
 <p>对于<code>$isa()$</code>，MATLAB帮助文档是这么解释的：tf=isa(obj, ClassName) returns true if obj is an instance of the class specified by ClassName, and false otherwise. isa also returns true if obj is an instance of a class that is derived from ClassName.</p>
 
-<p>也就是说，isa用于判断一个变量是否是一个类的实例，或者是否是一个类的子类的实例。</p>
+<p>也就是说，<code>$isa()$</code>用于判断一个变量是否是一个类的实例，或是否是一个类的子类的实例。</p>
 
 <p>还有一个常用的判断是：</p>
 
@@ -761,7 +761,7 @@ end
 
 <p><!--鉴于packNo表示一只狼所属狼群的头狼的索引值，而m正是某只头狼的索引。-->这个语句判断了一只狼是否是索引为m的头狼所在狼群中的狼。</p>
 
-<p>2.下面这段代码出自从agent_solve中</p>
+<p>2.下面这段代码出自从agent_solve中。</p>
 
 <pre><code>for cn=n:-1:1
     curr=agent{cn};
@@ -845,28 +845,28 @@ end
 end
 </code></pre>
 
-<p>因为之后的计算可能需要用到之前计算的结果，因此各个部分计算的先后次序不宜变动，本模型是按照eat, migrate, die, breed的顺序进行计算。</p>
+<p>由于一些函数的输出是另一些函数的输入，因此各个函数的调用顺序需要谨慎调整。本模型按照eat, migrate, die, breed的顺序依次调用上述函数。</p>
 
-<p>值得注意的是，第一句的for循环，也因为agent数组的缘故被写成了倒序形式：</p>
+<p>基于同样的原因，上面这段代码中第一句for循环，写成了倒序形式：</p>
 
 <pre><code>for cn=n:-1:1
 </code></pre>
 
-<p>我的贡献是基于老师的模型，为狼群写了一个集群行为。在@文件内，对每个生物的属性和行为的具体调整，在agent_solve里都可见端倪。可以以此为索引，看看每个生物的行为模式。</p>
+<!--我的贡献是基于老师的模型，为狼群写了一个集群行为。在@文件内，对每个生物的属性和行为的具体调整，在agent_solve里都可见端倪。可以以此为索引，看看每个生物的行为模式。-->
 
 <h3 id="运行结果">运行结果</h3>
 
-<p>运行<code>ecolab(30 ,100, 5, 4, 60, false, false)</code>, 可得到两幅图。</p>
+<p>在命令窗口中输入<code>ecolab(30 ,100, 5, 4, 60, false, false)</code>，可得到两幅图。</p>
 
-<p>一幅标明生物数量的变化情况和狼在每次迭代中吃掉麋鹿的数量。</p>
+<p>一幅表明生物数量的变化情况和狼在每次迭代中吃掉麋鹿的数量。</p>
 
 <p><img src="/img/state.jpg" alt="state" /></p>
 
-<p>另一幅标明麋鹿、头狼和狼的空间位置。在最后一个时刻，位置图像如下。</p>
+<p>另一幅表明麋鹿、头狼和狼的空间位置。在最后一个时刻，位置图像如下。</p>
 
 <p><img src="/img/position.jpg" alt="state" /></p>
 
-<p>在<code>ecolab(30 ,100, 5, 4, 60, false, false)</code>中，各变量分别表示：地理环境的大小，麋鹿初始数量，每个狼群中普通狼的数量，狼群数量，迭代次数，是否采用快速模式，是否保存每次迭代产生的图像为文件。</p>
+<p>注：在函数<code>ecolab(30 ,100, 5, 4, 60, false, false)</code>中，各变量分别表示：地理环境的大小，麋鹿初始数量，每个狼群中普通狼的数量，狼群数量，迭代次数，是否采用快速模式，是否保存每次迭代产生的图像为文件。</p>
 
   </div>
   
