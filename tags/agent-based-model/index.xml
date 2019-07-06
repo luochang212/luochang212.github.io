@@ -19,12 +19,12 @@
       <guid>http://luochang212.github.io/posts/nature_system/</guid>
       <description>本文介绍如何用 Agent-based model 的方法，对一个包含狼、麋鹿、草三种生物的生态系统建模。
  GitHub项目链接：nature-system
-Agent在这里指个体，Agent-base model意即基于个体的模型。在Agent-based model中，现实里的个体与模型里的虚拟实体(virtual entity)是一一对应的，而模型内个体的状态则根据事先写好的规则迭代。因此这种模型适合对个体的详细情况建模。
-需要注意的是，在Agent-based model的框架下建模，并不是变量越多越好，过多的变量会造成调试上的困难。选取的变量，足够支撑起我们研究的问题就可以了。
- Note: 除了Agent-base model之外，还有一种常用建模方法叫Equation-based model, 即基于方程的建模方法。这种方法就既不适用于表达每个个体发生的情况，也不适用于表达个体的速度、位置等属性信息。而更适合表达平均发生了什么，以及系统平均到达了一种怎样的状态。举例来说，人口模型就很适合用Equation-based model的方法建模。
- 模型假设 （一）各物种的属性
-模型内有三个物种：狼(wolf)、麋鹿(moose)、草(grass)。此外，狼分为头狼和普通狼。下面这张表说明了头狼、普通狼、麋鹿的属性。
-   # age food pos speed last_breed population packNo range eaten     头狼 &amp;radic; &amp;radic; &amp;radic; &amp;radic; &amp;radic; &amp;radic;  &amp;radic; &amp;radic;   普通狼 &amp;radic; &amp;radic; &amp;radic; &amp;radic;   &amp;radic;     麋鹿 &amp;radic; &amp;radic; &amp;radic; &amp;radic; &amp;radic;        从上表中可以看出，年龄、食物、位置、速度是头狼、普通狼和麋鹿的共有属性。last_breed指和上一次生育的时间间隔，因为在模型内一个时间间隔表示为一次迭代，因此last_breed是整型变量。此外，头狼特有population属性，用来表示头狼所在狼群的狼的数量；特有range属性，表示狼群活动的范围；特有eaten属性，表示狼群在一次迭代之后吃到的麋鹿的数量。普通狼特有packNo属性，是其所属狼群的头狼在列表中的索引号。普通狼没有last_breed属性，是因为其生育被记入头狼名下，也就是记录在整个狼群名下。</description>
+Agent指个体，Agent-base model即基于个体的模型。在Agent-based model中，虚拟实体(virtual entity)和现实个体一一对应。一般来说，虚拟实体的属性是对现实个体的抽象，虚拟实体的行为则是依照已经写好的规则迭代。这种建模方式往往涉及个体详细的行为模式，因此适合以研究个体行为规则为目的的建模。
+需要注意的是，利用Agent-based model方法建模，并不是变量越多越好，过多的变量会造成调试上的困难。选取的变量足够支撑起我们研究的问题就可以了。
+ Note: 除了Agent-base model之外，Equation-based model也是一种比较常见的建模方式。Agent-based model适合表达每个个体身上发生了什么，比如个体的速度、位置的变化等。Equation-based model则而更适合表达系统平均发生了什么，比如人口模型中人口数量变化就更适合用Equation-based model建模。
+ 模型假设 （一）生物的属性
+模型内有三种生物：狼(wolf)、麋鹿(moose)、草(grass)。此外，狼还分为头狼和普通狼。下面这张表说明了头狼、普通狼、麋鹿的属性：
+   # age food pos speed last_breed population packNo range eaten     头狼 &amp;radic; &amp;radic; &amp;radic; &amp;radic; &amp;radic; &amp;radic;  &amp;radic; &amp;radic;   普通狼 &amp;radic; &amp;radic; &amp;radic; &amp;radic;   &amp;radic;     麋鹿 &amp;radic; &amp;radic; &amp;radic; &amp;radic; &amp;radic;        从上表可以看出，年龄、食物、位置、速度是头狼、普通狼和麋鹿的共有属性。last_breed指和上一次生育的时间间隔，在模型内用一次迭代表示一次时间间隔，因为迭代必须是整数，因此last_breed也是整型变量。头狼特有population属性，用来表示该头狼所在狼群中狼的数量；头狼特有range属性，表示该狼群活动的范围；头狼特有eaten属性，表示狼群在一次迭代中，全体成员吃到的麋鹿的总数。普通狼特有packNo属性，用来标记其所属狼群的头狼在列表中的索引号。普通狼没有last_breed属性，是因为其生育是以整个狼群为单位的。由于狼群是由头狼定义的，狼群相关的属性和行为也绑定在头狼身上，因此在代码实现上，狼群的生育是通过头狼实现的。</description>
     </item>
     
   </channel>
