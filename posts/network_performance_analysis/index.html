@@ -22,10 +22,10 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="排队论在网络性能分析中的应用"/>
-<meta name="twitter:description" content="在网络中，服务器和用户之间相互传送数据包。数据包的传送需要时间，因此或多或少都会延迟。为了分析这些延迟，我们引入了一系列假设，并通过排队论对网络延迟进行建模分析。本文将着重介绍网络性能分析中的几种常见的排队模型。"/>
+<meta name="twitter:description" content="在网络中，服务器和用户之间相互传送数据包。数据包的传送需要时间，因此或多或少都会产生延迟。为了分析这些延迟，我们引入了一系列假设，并利用排队论对网络延迟进行建模分析。本文将着重介绍网络性能分析中几种常见的排队模型。"/>
 
 <meta property="og:title" content="排队论在网络性能分析中的应用" />
-<meta property="og:description" content="在网络中，服务器和用户之间相互传送数据包。数据包的传送需要时间，因此或多或少都会延迟。为了分析这些延迟，我们引入了一系列假设，并通过排队论对网络延迟进行建模分析。本文将着重介绍网络性能分析中的几种常见的排队模型。" />
+<meta property="og:description" content="在网络中，服务器和用户之间相互传送数据包。数据包的传送需要时间，因此或多或少都会产生延迟。为了分析这些延迟，我们引入了一系列假设，并利用排队论对网络延迟进行建模分析。本文将着重介绍网络性能分析中几种常见的排队模型。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/network_performance_analysis/" />
 <meta property="article:published_time" content="2019-07-04T00:00:00&#43;00:00"/>
@@ -544,18 +544,18 @@ $(".load-iframe").click(function(){
     
 
 <blockquote>
-<p><strong>排队论</strong>(queueing theory)也称随机服务系统理论，就是为解决上述问题而发展的一门学科，它研究的内容有三部分：性态问题、最优化问题、统计推断问题。（《运筹学》清华大学出版社）</p>
+<p><strong>排队论</strong>(queueing theory)也称随机服务系统理论，就是为解决上述问题而发展的一门学科，它研究的内容有三部分：性态问题、最优化问题和统计推断问题。（《运筹学》清华大学出版社）</p>
 
-<p>下图是书中用于解释排队过程的流程图。</p>
+<p>下图描述了排队过程的一般流程：</p>
 
 <p><img src="/img/queue.png" alt="排队论" /></p>
 
 <p>现实中的排队问题是多种多样的，对上述“顾客源”和“服务机构”应该作宽泛的理解。顾客和服务机构可以是生物，也可以是非生物；排队结构可以是有形的，也可以是无形的，比如向交换台要求通话的请求；顾客可以走向服务机构，也可以相反，比如送货上门。</p>
 </blockquote>
 
-<p>在网络中，服务器和用户之间相互传送数据包。数据包的传送需要时间，因此或多或少都会延迟。为了分析这些延迟，我们引入了一系列假设，通过排队论对网络延迟进行建模分析。</p>
+<p>在网络中，服务器和用户之间相互传送数据包。数据包的传送需要时间，因此或多或少都会产生延迟。为了分析这些延迟，我们引入了一系列假设，并利用排队论对网络延迟进行建模分析。</p>
 
-<p>本文将着重介绍<strong>网络性能分析</strong>(Network performance analysis)中常见的几种排队模型。它们是：</p>
+<p>本文将着重介绍<strong>网络性能分析</strong>(Network performance analysis)中几种常见的排队模型。它们是：</p>
 
 <ul>
 <li>The M/M/1 queuing system</li>
@@ -566,7 +566,7 @@ $(".load-iframe").click(function(){
 <li>The M/M/m/m queuing system</li>
 </ul>
 
-<p>另外，作为以上模型的理论基础，本文将首先介绍<strong>柏松分布</strong>(Poisson distribution)。</p>
+<p>另外，作为以上模型的理论基础，本文将首先介绍<strong>柏松过程</strong>(Poisson process)。</p>
 
 <h3 id="柏松过程的推导">柏松过程的推导</h3>
 
@@ -575,12 +575,12 @@ $(".load-iframe").click(function(){
 <p>（一）柏松过程的假设</p>
 
 <ul>
-<li><p>在一段时间间隔$\Delta t$内，有且仅有一位顾客到达的概率$P$和$\Delta t$成比例，比例系数为$\lambda$</p></li>
+<li><p>在时间间隔$\Delta t$内，有且仅有一位顾客到达的概率$P$和$\Delta t$成比例，比例系数为$\lambda$</p></li>
 
-<li><p>在一段时间间隔$\Delta t$内，至多只允许一位顾客到达（否则应该选取一个更短的时间间隔）
+<li><p>在时间间隔$\Delta t$内，至多只允许一位顾客到达（否则应该选取一个更短的时间间隔）
 <code>$$\begin{aligned} P(\text { 在时间间隔 }[t, t+\Delta t] \text { 内，有且仅有一位顾客到达 }) &amp;=\lambda \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，没有顾客到达 }) &amp;=1-\lambda \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，多于一位顾客到达 }) &amp;=0 \end{aligned}$$</code></p></li>
 
-<li><p>柏松过程是对顾客到达过程的估计，故不考虑顾客的离开情况，所以对到达人数的计数只增不减</p></li>
+<li><p>柏松过程是对顾客到达过程的估计，故不考虑顾客的离开情况，所以到达人数只增不减</p></li>
 
 <li><p>只考虑一阶无穷小对结果的影响，忽略二阶无穷小，$\Delta t \gg(\Delta t)^{2} \approx 0$</p></li>
 
@@ -591,25 +591,25 @@ $(".load-iframe").click(function(){
 
 <p>（二）推导过程</p>
 
-<p>由于总人数单调递增，且在一段时间间隔$\Delta t$内，到达人数最多加1。因此，如果$t+\Delta t$时刻的到达人数是k，那么在$t$时刻的到达人数只有两种情况：k或者k-1.</p>
-
 <p>柏松过程的状态转移图如下：
 <br><br><br>
 <img src="/img/The-Poisson-distribution-state.png" alt="柏松过程图像" />
 <br>
-<div id="Poisson"></p>
+由于总人数单调递增，且在时间间隔$\Delta t$内，到达总人数最多增加1。因此，如果$t+\Delta t$时刻的到达人数是k，那么在$t$时刻的到达人数只有两种情况：k或者k-1.</p>
 
-<p>从时间$t$到时间$t+\Delta t$，到达人数的概率可由下述公式表达：</p>
+<p><div id="Poisson"></p>
+
+<p>根据上述推断，时间间隔$t+\Delta t$内到达总人数为k的概率可由时间间隔$t$内到达总人数为k和k-1的概率表示：</p>
 
 <p><code>$$\begin{aligned} P_{k}(t+\Delta t) &amp;=P_{k}(t) p_{k, k}(\Delta t)+P_{k-1}(t) p_{k-1, k}(\Delta t) \\ P_{0}(t+\Delta t) &amp;=P_{0}(t) p_{0,0}(\Delta t) \quad k=0 \text { (起始状态) } \end{aligned}$$</code></p>
 
 <p><div></p>
 
-<p>由假设可知：</p>
+<p>由柏松过程的假设可知：</p>
 
 <p><code>$$p_{k, k}(\Delta t)=(1-\lambda \Delta t) \quad \text { and } \quad p_{k-1, k}(\Delta t)=\lambda \Delta t$$</code></p>
 
-<p>将此式代入上式可得：</p>
+<p>代入上式可得：</p>
 
 <p><code>$$\begin{aligned} P_{k}(t+\Delta t) &amp;=P_{k}(t)(1-\lambda \Delta t)+P_{k-1}(t)(\lambda \Delta t) \\ P_{0}(t+\Delta t) &amp;=P_{0}(t)(1-\lambda \Delta t) \quad k=0 \text { (starting condition) } \end{aligned}$$</code></p>
 
@@ -617,15 +617,15 @@ $(".load-iframe").click(function(){
 
 <p><code>$$\begin{aligned} \frac{P_{k}(t+\Delta t)-P_{k}(t)}{\Delta t} &amp;=-\lambda P_{k}(t)+\lambda P_{k-1}(t) \\ \frac{P_{0}(t+\Delta t)-P_{0}(t)}{\Delta t} &amp;=-\lambda P_{0}(t) \end{aligned}$$</code></p>
 
-<p>当$\Delta t \rightarrow 0$有：</p>
+<p>当$\Delta t \rightarrow 0$时有：</p>
 
 <p><code>$$\begin{aligned} \frac{d P_{k}(t)}{d t} &amp;=-\lambda P_{k}(t)+\lambda P_{k-1}(t) \quad (k \geq 1) \quad (1) \\ \frac{d P_{0}(t)}{d t} &amp;=-\lambda P_{0}(t) \quad \quad \quad \quad \quad \quad \quad \quad (2) \end{aligned} $$</code></p>
 
-<p>方程(2)的解为：</p>
+<p>解方程(2)可得：</p>
 
 <p><code>$$P_{0}(t)=A \exp (-\lambda t)$$</code></p>
 
-<p>其中$A$是任意常数。设$k=1$，将方程(2)的解代入方程(1)有：</p>
+<p>其中$A$是任意常数。设方程(1)的$k=1$，把方程(2)的解代入方程(1)中有：</p>
 
 <p><code>$$\frac{d P_{1}(t)}{d t}=-\lambda P_{1}(t)+A \lambda \exp (-\lambda t)$$</code></p>
 
@@ -641,23 +641,23 @@ $(".load-iframe").click(function(){
 
 <p><code>$$P_{2}(t)=\frac{A(\lambda t)^{2}}{2} \exp (-\lambda t)$$</code></p>
 
-<p> 对任意的k，解为：</p>
+<p> 对任意常数k，解为：</p>
 
 <p><code>$$P_{k}(t)=\frac{A(\lambda t)^{k}}{k !} \exp (-\lambda t)$$</code></p>
 
-<p>下面计算$A$的值，由于：</p>
+<p>下面计算$A$的值，由于系统处于各状态的概率之和为1，故有：</p>
 
 <p><code>$$P_{0}(t)+P_{1}(t)+P_{2}(t)+\cdots=\sum_{i=0}^{\infty} P_{i}(t)=1$$</code></p>
 
-<p>故有：</p>
+<p>即：</p>
 
 <p><code>$$A \exp (-\lambda t) \sum_{k=0}^{\infty} \frac{(\lambda t)^{k}}{k !}=1$$</code></p>
 
-<p>由泰勒展开可知$A=1$,即：</p>
+<p>由泰勒展开解得$A=1$。因此，柏松过程的概率分布函数为：</p>
 
 <p><code>$$\boxed{P(k | t, \lambda)=\frac{(\lambda t)^{k}}{k !} \exp (-\lambda t)}$$</code></p>
 
-<p>柏松过程的图像如下：</p>
+<p>下图是几个不同<code>$\mu$</code>值对应的柏松过程函数图像：</p>
 
 <p><img src="/img/The-Poisson-distribution.png" alt="柏松过程图像" /></p>
 
@@ -668,12 +668,12 @@ $(".load-iframe").click(function(){
 <p><code>$$P\left(k=0 | t=\frac{1}{12}, \lambda=100\right)=\exp \left(-\frac{100}{12}\right)=0.00024$$</code></p>
 
 <blockquote>
-<p><strong>Note</strong>: 从上面这个实例中我们能看出，k代表顾客的数量，t代表这段时间的长度，$\lambda$代表平均每单位时间到达的顾客数。</p>
+<p><strong>Note</strong>: 从上面这个实例我们能看出：k代表顾客的数量，t代表这段时间间隔的长度，$\lambda$代表平均每单位时间到达的顾客数。</p>
 </blockquote>
 
 <h3 id="排队系统的分类">排队系统的分类</h3>
 
-<p>排队模型用Kendall符号表示，符号形式为：</p>
+<p>排队系统的分类用Kendall符号表示，符号形式为：</p>
 
 <p><code>$$X/Y/Z/A/B/C$$</code></p>
 
@@ -691,7 +691,7 @@ $(".load-iframe").click(function(){
 <p>比如，M/M/1 表示相继到达间隔时间为负指数分布、服务时间为负指数分布、单服务器的模型；D/M/5 表示确定的到达间隔、服务时间为负指数分布、5个平行服务器的模型。</p>
 
 <blockquote>
-<p><strong>Note</strong>: 上述两个例子中，M代表负指数分布，D代表确定型，这些字母代表的是概率分布的类型。常见分布类型的代表字母如下：</p>
+<p><strong>Note</strong>: 从上述两个例子我们能看出：M代表负指数分布，D代表确定型。这里，M和D是概率分布类型的代号。常见概率分布类型的代号如下：</p>
 
 <p>$M$ —— 负指数分布(M是Markov的字头，因为负指数分布具有无记忆性，即Markov性) ;</p>
 
@@ -708,13 +708,13 @@ $(".load-iframe").click(function(){
 
 <p>（一）M/M/1排队系统的假设</p>
 
-<p>M/M/1排队系统是相继到达时间间隔为负指数分布、服务时间为负指数分布、单服务器的模型,且只有一个队列。<!--M/M/1 queue 也叫 birth death process, 因为到达即代表出生，服务即代表死亡。--></p>
+<p>M/M/1排队系统是相继到达时间间隔为负指数分布、服务时间为负指数分布、单服务器的模型，且只有一个队列。<!--M/M/1 queue 也叫 birth death process, 因为到达即代表出生，服务即代表死亡。--></p>
 
 <p>M/M/1排队系统的状态转移图如下：</p>
 
 <p><img src="/img/mm1-queue-state.png" alt="M/M/1排队系统" /></p>
 
-<p>其中，<code>$\lambda_k$</code>表示当系统处于状态k时的到达速率(arrival rate)，<code>$\mu_{k}$</code>表示当系统处于状态k时的服务速率(service rate).</p>
+<p>图中，<code>$\lambda_k$</code>表示当系统处于状态k时的到达速率(arrival rate)，<code>$\mu_{k}$</code>表示当系统处于状态k时的服务速率(service rate).</p>
 
 <blockquote>
 <p><strong>Note</strong>: M/M/1排队系统的性质：</p>
@@ -731,36 +731,36 @@ $(".load-iframe").click(function(){
 
 <p><code>$$\begin{aligned} P(\text { 在时间间隔 }[t, t+\Delta t] \text { 内，有且仅有一位顾客到达 }) &amp;=\lambda \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，没有顾客到达 }) &amp;=1-\lambda \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，多于一位顾客到达 }) &amp;=0 \end{aligned}$$</code></p>
 
-<p>上述公式是对到达速率$\lambda$而言的，对服务速率$\mu$也采用相同的模型：</p>
+<p>上述公式是对到达速率$\lambda$而言的，对服务速率$\mu$也采用相同的模型假设：</p>
 
 <p><code>$$\begin{aligned} P(\text { 在时间间隔 }[t, t+\Delta t] \text { 内，有且仅有一位顾客服务完成 }) &amp;=\mu \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，没有顾客服务完成 }) &amp;=1-\mu \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，多于一位顾客服务完成 }) &amp;=0 \end{aligned}$$</code></p>
 
 <p>约定：</p>
 
-<ul>
+<ol>
 <li>$P_{k}(t)$表示在时间间隔$t$内，系统内有$k$位顾客的概率</li>
 <li>$p_{i, j}(\Delta t)$表示在时间间隔$\Delta t$内，系统内人数由$i$变为$j$的概率</li>
-</ul>
+</ol>
 
-<p>从时间$t$到时间$t+\Delta t$，系统内人数的概率可由下述公式表达：</p>
+<p>时间间隔$t+\Delta t$内系统内人数为k的概率可由时间间隔$t$内系统内人数为k和k-1的概率表示：</p>
 
 <p><code>$$\begin{aligned} P_{k}(t+\Delta t)=&amp; P_{k}(t) p_{k, k}(\Delta t)+P_{k-1}(t) p_{k-1, k}(\Delta t) \\ &amp;+P_{k+1}(t) p_{k+1, k}(\Delta t) \\ P_{0}(t+\Delta t)=&amp; P_{0}(t) p_{0,0}(\Delta t)+P_{1}(t) p_{1,0}(\Delta t) \quad k=0 \text { (起始状态) } \end{aligned}$$</code></p>
 
-<p>和柏松过程比较，M/M/1 排队模型的转移概率多了从状态 k+1 转到状态 k 的一项。点击<a href="#Poisson">这里</a>回顾柏松过程相关公式。</p>
+<p>和柏松过程比较，M/M/1 排队模型的转移概率多了从状态 k+1 转到状态 k 的一项。点击<a href="#Poisson">这里</a>回顾柏松过程的相关公式。</p>
 
-<p>将柏松过程的假设和M/M/1 排队系统的假设，代入上述公式：</p>
+<p>将柏松过程的模型假设公式和M/M/1 排队系统的假设公式，代入上述公式：</p>
 
 <p><code>$$\begin{aligned} P_{k}(t+\Delta t)=&amp; P_{k}(t)(1-\lambda \Delta t)(1-\mu \Delta t)+P_{k-1}(t)(\lambda \Delta t)(1-\mu \Delta t) \\ &amp;+P_{k+1}(t)(\mu \Delta t)(1-\lambda \Delta t) \\ P_{0}(t+\Delta t)=&amp; P_{0}(t)(1-\lambda \Delta t)+P_{1}(t)(\mu \Delta t)(1-\lambda \Delta t), \quad k=0 \end{aligned}$$</code></p>
 
-<p>当$\Delta t \rightarrow 0$有：</p>
+<p>当$\Delta t \rightarrow 0$时有：</p>
 
 <p><code>$$\begin{aligned} \frac{d P_{k}(t)}{d t} &amp;=-(\lambda+\mu) P_{k}(t)+\lambda P_{k-1}(t)+\mu P_{k+1}(t), \quad k \geq 1 \\ \frac{d P_{0}(t)}{d t} &amp;=-\lambda P_{0}(t)+\mu P_{1}(t) \end{aligned}$$</code></p>
 
-<p>考虑到系统处于稳定状态(steady state)，有：</p>
+<p>考虑系统处于稳定状态(steady state)的情况，有：</p>
 
 <p><code>$$\frac{d P_{k}(t)}{d t}=0, \qquad k \geq 0$$</code></p>
 
-<p>代入上式得：</p>
+<p>代入上式可得：</p>
 
 <p><code>$$\begin{aligned} (\lambda+\mu) P_{k}-\lambda P_{k-1}-\mu P_{k+1} = 0, \quad k \geq 1 \\ \lambda P_{0}-\mu P_{1} = 0, \quad k = 0 \end{aligned}$$</code></p>
 
@@ -769,7 +769,9 @@ $(".load-iframe").click(function(){
 <p><code>$$\lambda P_{k-1}=\mu P_{k}$$</code></p>
 
 <blockquote>
-<p><strong>Note</strong>: 等式<code>$\lambda P_{k-1}=\mu P_{k}$</code>也可以理解为越过边界的通量是左右抵消的：</p>
+<p><strong>Note</strong>: 稳定状态下，系统处于状态k的概率是稳定的、不随时间变化的，因此状态k的概率变化率为0，即<code>$\frac{d P_{k}(t)}{d t}=0$</code>。</p>
+
+<p>下面是M/M/1 排队系统的通量图，由系统处于各状态的概率不随时间变化可知，从状态k-1转移到状态k的通量和从状态k转移到k-1的通量应该相等。从状态k-1到状态k的通量为<code>$\lambda P_{k-1}$</code>，从状态k到状态k-1的通量为<code>$\mu P_{k}$</code>。故即使不通过公式推导，我们也能得出<code>$\lambda P_{k-1}=\mu P_{k}$</code>的结论。</p>
 
 <p><img src="/img/mm1-flow-rates.png" alt="通量图" /></p>
 </blockquote>
@@ -778,15 +780,15 @@ $(".load-iframe").click(function(){
 
 <p><code>$$P_{k}=\frac{\lambda}{\mu} P_{k-1}$$</code></p>
 
-<p>因此：</p>
+<p>递推可得：</p>
 
 <p><code>$$P_{k}=\left(\frac{\lambda}{\mu}\right)^{k} P_{0}=\rho^{k} P_{0}, \text { 其中 } \rho = \frac{\lambda}{\mu}$$</code></p>
 
-<p>下面计算$P_{0}$的值：</p>
+<p>下面计算$P_{0}$的值，由于：</p>
 
 <p><code>$$\sum_{k=0}^{\infty} P_{k}=1$$</code></p>
 
-<p>因为<code>$P_{k}=\rho^{k} P_{0}$</code>，所以有：</p>
+<p>将<code>$P_{k}=\rho^{k} P_{0}$</code>代入上式有：</p>
 
 <p><code>$$P_{0} \sum_{k=0}^{\infty} \rho^{k}=1$$</code></p>
 
@@ -794,7 +796,7 @@ $(".load-iframe").click(function(){
 
 <p><code>$$P_{0}=\frac{1}{\sum_{k=0}^{\infty} \rho^{k}}$$</code></p>
 
-<p>当<code>$\rho&lt;1$</code>，即<code>$\lambda&lt;\mu$</code>时：</p>
+<p>当<code>$\rho&lt;1$</code>时有：</p>
 
 <p><code>$$\sum_{k=0}^{\infty} \rho^{k}=\frac{1}{1-\rho} \quad \text { for } \rho&lt;1$$</code></p>
 
@@ -802,90 +804,90 @@ $(".load-iframe").click(function(){
 
 <p><code>$$P_{0}=(1-\rho)$$</code></p>
 
-<p>因此，处于稳定状态(steady state)的M/M/1 排队系统的概率分布为：</p>
+<p>综上，处于稳定状态的M/M/1 排队系统的概率分布为：</p>
 
 <p><code>$$\boxed{ P_{k}=\rho^{k}(1-\rho), \rho&lt;1}$$</code></p>
 
-<p>M/M/1 排队系统在不同的<code>$\rho$</code>下的概率分布如下：</p>
+<p>下图是不同的<code>$\rho$</code>值下M/M/1 排队系统概率分布的函数图像：</p>
 
 <p><img src="/img/mm1-state-probabilities.png" alt="M/M/1 排队系统在各状态下的概率" /></p>
 
 <h3 id="the-birth-death-process">The birth-death process</h3>
 
 <blockquote>
-<p><strong>Note</strong>: The M/M/1 queuing system 和 The birth-death process 的区别:</p>
+<p><strong>Note</strong>: The M/M/1 queuing system 和 The birth-death process 之间的关系:</p>
 
 <ul>
 <li>The M/M/1 queuing system - 只有一个队列，对队列中的顾客数量没有限制；有且仅有一个服务器；稳定状态时，到达速率和服务速率都是常数。</li>
-<li>The birth-death process - 是 The M/M/1 queuing system 的一个推广，稳定状态时的到达速率和服务速率是相互独立的，到达速率和服务速率随状态变化。（这一段我可能翻译得不到位，原文表达得更清楚。The birth-death process, which is an extension of the M/M/1 process in which the steady state arrival and service rates are dependent upon the state of the system）</li>
+<li>The birth-death process - 是 The M/M/1 queuing system 的推广。但是，稳定状态时，到达速率和服务速率是相互独立的，到达速率和服务速率随状态k的变化而变化。<!--（这一段我有可能翻译不到位，原文表达得很清晰。The birth-death process, which is an extension of the M/M/1 process in which the steady state arrival and service rates are dependent upon the state of the system）--></li>
 </ul>
 </blockquote>
 
-<p>从上面的描述我们知道，The M/M/1 queuing system 和 The birth-death process是很相像的。唯一的区别在于系数。在 M/M/1 排队系统中，系数都是常数，而 The birth-death process 中的系数是随状态变化的。也就是说，在 The birth-death process 中，需要把 The M/M/1 queuing system 中的所有$\lambda$和$\mu$替换成$\lambda_k$和$\mu_k$。</p>
+<p>从上面的描述我们知道，The M/M/1 queuing system 和 The birth-death process是很相像的，唯一的区别在于系数。在 M/M/1 排队系统中，系数都是常数，而 The birth-death process 中的系数是随状态k的变化而变化的。也就是说，在 The birth-death process 的模型中，只需要把 The M/M/1 queuing system 中所有的$\lambda$和$\mu$替换成$\lambda_k$和$\mu_k$即可。</p>
 
-<p>$\lambda, \mu, \lambda_k, \mu_k$之间的区别在于：$\lambda$和$\mu$是所有状态的平均值，而$\lambda_k$和$\mu_k$是到达概率通量(arrival probability flux)和服务概率通量(service probability flux)。对于 The birth-death process，当系统处于状态k时，它们之间的关系可以表达为:</p>
+<p>$\lambda$和$\mu$是所有状态的平均值，而$\lambda_k$和$\mu_k$是状态k下的到达概率通量(arrival probability flux)和服务概率通量(service probability flux)。它们之间的关系可以表示为:</p>
 
 <p><code>$$\lambda_{k}=\lambda P_{k} \quad \text { and } \quad \mu_{k}=\mu P_{k}$$</code></p>
 
 <p>The birth-death process 的通量图如下：</p>
 
-<p><img src="/img/bd-flow-rates.png" alt="通量图" /></p>
+<p><img src="/img/bd-flow-rates.png" alt="The birth-death process 的通量图" /></p>
 
-<p>由经过边界的通量相互抵消可得：</p>
+<p>稳定状态下，由经过边界的通量相互抵消可得：</p>
 
 <p><code>$$\lambda_{k} P_{k}=\mu_{k+1} P_{k+1}$$</code></p>
 
-<p>后续的推导过程和上文的 M/M/1 排队系统十分相似，就不重复了。这里直接给出概率分布函数：</p>
+<p>后续的推导过程和 M/M/1 排队系统的推导十分相似，就不再赘述了。这里直接给出 The birth-death process 的状态概率分布函数：</p>
 
 <p><code>$$\boxed{ P_{k}=\left(\frac{\prod_{i=0}^{k-1} \lambda_{i}}{\prod_{i=1}^{k} \mu_{i}}\right) P_{0}, \qquad k \geq 1 }$$</code></p>
 
 <h3 id="the-m-m-m-queuing-system">The M/M/m queuing system</h3>
 
-<p>M/M/m 排队系统有一个队列和m个服务器。该排队系统的状态转移图如下：</p>
+<p>M/M/m 排队系统考虑有一个队列和m个服务器的情况。该排队系统的状态转移图如下：</p>
 
 <p><img src="/img/mmm-state-transition.png" alt="M/M/m 排队系统状态转移图" /></p>
 
 <p>M/M/m 排队系统的性质：</p>
 
 <ul>
-<li>因为只有一个队列，因此对于所有的状态，到达速率都是常数<code>$\lambda$</code></li>
-<li>如果系统内人数小于或等于m，那么队列一定为空，且状态k的服务速率为<code>$\mu_{k}=k \mu$</code>，因为此时系统内的所有人都正在接受服务</li>
-<li>如果系统内人数多于m，那么一定至少有一人在队列中</li>
+<li>因为只有一个队列，因此所有的状态下，到达速率都是常数<code>$\lambda$</code></li>
+<li>如果系统内人数小于或等于m，那么队列一定为空。且状态k的服务速率为<code>$\mu_{k}=k \mu$</code>，这是因为此时系统内的所有人都正在接受服务</li>
+<li>如果系统内人数大于m，那么至少有一个人在队列中排队等待</li>
 </ul>
 
-<p>各状态下到达和服务速率分别为：</p>
+<p>各状态下的到达速率和服务速率分别为：</p>
 
 <p><code>$$\begin{aligned} \lambda_{k} &amp;=\lambda, \quad k=0,1,2, \ldots \\ \mu_{k} &amp;=\left\{\begin{array}{ll}{k \mu} &amp; {k=0,1,2, \ldots, m-1, m} \\ {m \mu} &amp; {k \geq m}\end{array}\right.\end{aligned}$$</code></p>
 
-<p>如果系统处于稳定状态，那么从状态k进入状态k-1的通量和从状态k-1进入状态k的通量应该相等：</p>
+<p>如果系统处于稳定状态，由状态k进入状态k-1的通量和状态k-1进入状态k的通量相等可知：</p>
 
 <p><code>$$\begin{aligned} \lambda P_{k-1} &amp;=k \mu P_{k}, \quad k \leq m \\ \lambda P_{k-1} &amp;=m \mu P_{k}, \quad k \geq m \end{aligned}$$</code></p>
 
-<p>为了解上述公式，首先考虑k &lt; m的情况：</p>
+<p>首先考虑 k &lt; m 的情况：</p>
 
 <p><code>$$P_{k}=\frac{1}{k}(\rho m) P_{k-1}, \qquad \frac{\lambda}{\mu}=\rho m$$</code></p>
 
-<p>导出：</p>
+<p>递推可得：</p>
 
 <p><code>$$\begin{aligned} P_{1} &amp;=(\rho m) P_{0} \\ P_{2} &amp;=\frac{(\rho m)}{2} P_{1}=\frac{(\rho m)^{2}}{2 !} P_{0} \\ P_{3} &amp;=\frac{(\rho m)}{3} P_{2}=\frac{(\rho m)^{3}}{3 !} P_{0} \end{aligned}$$</code></p>
 
-<p>由上述公式递推可得：</p>
+<p>故 k &lt; m 时的一般式为：</p>
 
 <p><code>$$P_{k}=\left(\frac{(m \rho)^{k}}{k !}\right) P_{0}, \qquad k&lt;m$$</code></p>
 
-<p>再考虑k &gt; m的情况：</p>
+<p>再考虑 k &gt; m 的情况：</p>
 
 <p><code>$$P_{k}=\frac{\lambda}{m \mu} P_{k-1}=\rho P_{k-1}$$</code></p>
 
-<p>导出：</p>
+<p>递推可得：</p>
 
 <p><code>$$\begin{aligned} P_{m} &amp;=\rho P_{m-1} \\ P_{m+1} &amp;=\rho P_{m}=\rho^{2} P_{m-1} \\ P_{m+2} &amp;=\rho P_{m+1}=\rho^{3} P_{m-1} \end{aligned}$$</code></p>
 
-<p>由上述递推公式可知一般式为：</p>
+<p>故 k &gt; m 时的一般式为：</p>
 
 <p><code>$$P_{k}=\rho^{k-m+1} P_{m-1} \qquad k=m, m+1, \ldots$$</code></p>
 
-<p>由k &lt; m情况下的概率分布，可知：</p>
+<p>由 k &lt; m 情况下的概率分布函数<code>$P_{k}$</code>，可知：</p>
 
 <p><code>$$P_{m-1}=\left(\frac{(m \rho)^{m-1}}{(m-1) !}\right) P_{0}$$</code></p>
 
@@ -914,22 +916,22 @@ $(".load-iframe").click(function(){
 <p>其中，<code>$P_{0}=\left[\sum_{k=0}^{m-1} \frac{(m \rho)^{k}}{k !}+\frac{(m \rho)^{m}}{m !(1-\rho)}\right]^{-1}$</code>。</p>
 
 <blockquote>
-<p><strong>Note</strong>: 对于M/M/m 排队系统，一个重要的问题是系统内需要排队的概率。当系统内人数大于服务器数量时，顾客需要排队。概率表达式为：</p>
+<p><strong>Note</strong>: 对于M/M/m 排队系统，一个重要的问题是系统内需要排队的概率。当系统内人数大于服务器数量时，顾客需要排队。需要排队的概率为：</p>
 
 <p><code>$$P_{k \geq m+1}=\sum_{k=m+1}^{\infty} P_{k}=\sum_{k=m}^{\infty} P_{k}-P_{m}=P_{0}\left(\frac{m^{m} \rho^{m+1}}{m !(1-\rho)}\right)$$</code></p>
 </blockquote>
 
 <h3 id="the-m-m-1-m-queuing-system">The M/M/1/m queuing system</h3>
 
-<p>在之前的模型中，我们总是假设队列是无边界的。但在现实问题中，由于缓存的限制，队列的长度通常是有限的。</p>
+<p>在之前的模型中，我们总是假设队列的长度是无限的。但现实中，由于缓存的限制，队列的长度通常是有限的。</p>
 
-<p>在一个M/M/1/m 排队系统中，如果系统内人数为m，那么任何后来者的服务请求都会被拒绝。如果系统内最多容纳m位顾客，那么对于M/M/1/m 排队系统，那个正在接受服务的1位顾客同样会占用1个系统空间，扣除它之后，可知队列的最大长度为m-1。</p>
+<p>在一个M/M/1/m 排队系统中，如果系统内人数为m，那么任何后来者的服务请求都会被拒绝。对于M/M/1/m 排队系统，由于系统最多只能容纳m位顾客，且正在接受服务的那位顾客同样也需要占用1个位置，因此排队等待接受服务的队列的最大长度为m-1。</p>
 
-<p>下面是M/M/1/m 排队系统的状态转移图：</p>
+<p>M/M/1/m 排队系统的状态转移图如下：</p>
 
 <p><img src="/img/mm1m-state-diagram.png" alt="M/M/1/m 排队系统的状态转移图" /></p>
 
-<p>M/M/1/m 排队系统的前半部分推导过程和M/M/1 排队系统十分相像，但由于M/M/1/m 排队系统在状态k处截断，导致其<code>$P_0$</code>值与M/M/1 排队系统的<code>$P_0$</code>值不同。</p>
+<p>M/M/1/m 排队系统的前半部分推导过程和M/M/1 排队系统十分相像。唯一的区别在于，由于M/M/1/m 排队系统在状态k处截断，故其<code>$P_0$</code>值与M/M/1 排队系统的<code>$P_0$</code>值不同。</p>
 
 <p>下面是M/M/1/m 排队系统的通量图：</p>
 
@@ -947,7 +949,7 @@ $(".load-iframe").click(function(){
 
 <p><code>$$\begin{aligned} P_{1} &amp;=\left(\frac{\lambda_{0}}{\mu_{1}}\right) P_{0} \\ P_{2} &amp;=\left(\frac{\lambda_{1}}{\mu_{2}}\right) P_{1}=\left(\frac{\lambda_{0} \lambda_{1}}{\mu_{1} \mu_{2}}\right) P_{0} \\ P_{3} &amp;=\left(\frac{\lambda_{2}}{\mu_{3}}\right) P_{1}=\left(\frac{\lambda_{0} \lambda_{1} \lambda_{2}}{\mu_{1} \mu_{2} \mu_{3}}\right) P_{0} \end{aligned}$$</code></p>
 
-<p>由上述递推公式可得一般式为：</p>
+<p>由上述递推公式可知一般式为：</p>
 
 <p><code>$$P_{k}=\left(\frac{\prod_{i=0}^{k-1} \lambda_{i}}{\prod_{i=1}^{k} \mu_{i}}\right) P_{0}=\left(\frac{\lambda}{\mu}\right)^{k} P_{0}, \qquad k=0, \ldots, m$$</code></p>
 
@@ -979,7 +981,7 @@ $(".load-iframe").click(function(){
 
 <p><code>$$\lambda_{k-1} P_{k-1}=\mu_{k} P_{k}$$</code></p>
 
-<p>又<code>$\lambda_{k}=\lambda $</code> 且 <code>$ \mu_{k}=k \mu$</code>，等式可化为：</p>
+<p>又<code>$\lambda_{k}=\lambda, \mu_{k}=k \mu$</code>，等式可化为：</p>
 
 <p><code>$$\lambda P_{k-1}=k \mu P_{k}$$</code></p>
 
@@ -991,7 +993,7 @@ $(".load-iframe").click(function(){
 
 <p><code>$$P_{0}=\left[\sum_{k=0}^{\infty}\left(\frac{\lambda}{\mu}\right)^{k} \frac{1}{k !}\right]^{-1}=\exp \left(-\frac{\lambda}{\mu}\right)$$</code></p>
 
-<p>故M/M/∞ 排队系统的状态概率分布为：</p>
+<p>综上，M/M/∞ 排队系统的状态概率分布为：</p>
 
 <p><code>$$\boxed { P_{k}=\frac{1}{k !}\left(\frac{\lambda}{\mu}\right)^{k} \exp \left(-\frac{\lambda}{\mu}\right) }$$</code></p>
 

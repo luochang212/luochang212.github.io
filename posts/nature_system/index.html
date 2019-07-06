@@ -22,10 +22,10 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="生态系统建模"/>
-<meta name="twitter:description" content="本篇介绍如何用 Agent-based model 的方法，建立一个包含狼、麋鹿、草三个物种的生态系统模型。本模型的优势在于模拟了狼的集群行为，即模拟了在头狼带领下狼群的捕食行为。"/>
+<meta name="twitter:description" content="本文介绍如何用 Agent-based model 的方法，对一个包含狼、麋鹿、草三种生物的生态系统建模。本模型的优势在于模拟了狼的集群行为，即模拟了在头狼带领下狼群的捕食行为。"/>
 
 <meta property="og:title" content="生态系统建模" />
-<meta property="og:description" content="本篇介绍如何用 Agent-based model 的方法，建立一个包含狼、麋鹿、草三个物种的生态系统模型。本模型的优势在于模拟了狼的集群行为，即模拟了在头狼带领下狼群的捕食行为。" />
+<meta property="og:description" content="本文介绍如何用 Agent-based model 的方法，对一个包含狼、麋鹿、草三种生物的生态系统建模。本模型的优势在于模拟了狼的集群行为，即模拟了在头狼带领下狼群的捕食行为。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/nature_system/" />
 <meta property="article:published_time" content="2019-06-12T00:00:00&#43;00:00"/>
@@ -546,7 +546,7 @@ $(".load-iframe").click(function(){
     
 
 <blockquote>
-<p>本篇介绍如何用 Agent-based model 的方法，对一个包含狼、麋鹿、草三个物种的生态系统建模。</p>
+<p>本文介绍如何用 Agent-based model 的方法，对一个包含狼、麋鹿、草三种生物的生态系统建模。</p>
 </blockquote>
 
 <p>GitHub项目链接：<a href="https://github.com/luochang212/nature-system" target="_blank">nature-system</a></p>
@@ -631,7 +631,7 @@ $(".load-iframe").click(function(){
 
 <p>头狼、普通狼和麋鹿都具有四种行为，这些行为是：eat, migrate, breed, die。这四种行为在不同的生物种类上的实现是不同的。比如麋鹿的迁徙规则是吃掉所有草，直到自己所处的位置没草吃了，才开始迁徙。而头狼则拥有复杂的迁徙规则，会根据狼群内的种群数量，判断应该按照哪套迁徙规则进行移动。</p>
 
-<p>1.先说死亡(die)。</p>
+<p>1.死亡(die)。</p>
 
 <p>头狼、普通狼和麋鹿有两种状态：生和死。对于狼有两种死法：饿死或者老死。对麋鹿有三种死法：饿死、老死或者被吃。</p>
 
@@ -641,7 +641,7 @@ $(".load-iframe").click(function(){
 
 <p>当头狼死去时，如果普通狼的数量不为0，会有一只普通狼晋升为头狼。</p>
 
-<p>2.再说生育(breed)。</p>
+<p>2.生育(breed)。</p>
 
 <p>不同的物种有不同的生育规则。</p>
 
@@ -649,7 +649,7 @@ $(".load-iframe").click(function(){
 
 <p>本模型将整个狼群看作一个生育单位。当食物有富余时，狼群才会生育。生育个数与狼群群内个体的个数成比例。在不同的群内个体数量水平下，比例系数也不同。生育后，母体的食物也会按比例减少，并将这部分食物赋予孩子。和麋鹿一样，狼群的生育也有时间间隔的限制。一次生育后，起码要经历5次迭代的时间，才能进行下一次生育。</p>
 
-<p>3.然后是迁徙(migrate)。</p>
+<p>3.迁徙(migrate)。</p>
 
 <p>狼群的迁徙规则取决于头狼，头狼相当于狼群系统的神经中枢。它接收了上一轮狼群的捕猎信息，并安排下一步狼群的走向。但是，头狼无法获知整张地图的麋鹿分布信息，它只能从已知信息推断下一步应该向哪里移动。</p>
 
@@ -661,7 +661,7 @@ $(".load-iframe").click(function(){
 
 <p>PS: 本模型有地理范围限制，所有生物均不可以到达地图之外的地方。因此所有物种在实际迁徙之前，都必须计算移动的终点是否超越了地图边界。</p>
 
-<p>4.最后是捕猎(eat)。</p>
+<p>4.捕猎(eat)。</p>
 
 <p>无论是狼还是麋鹿，食物水平都会随着时间的流逝而下降。</p>
 
