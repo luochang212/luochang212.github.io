@@ -6,10 +6,28 @@
     <description>Recent content in Tags on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 04 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 12 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://luochang212.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Golang</title>
+      <link>http://luochang212.github.io/tags/golang/</link>
+      <pubDate>Fri, 12 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tutorial</title>
+      <link>http://luochang212.github.io/tags/tutorial/</link>
+      <pubDate>Fri, 12 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/tags/tutorial/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>network performance analysis</title>
@@ -17,6 +35,15 @@
       <pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/tags/network-performance-analysis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>poisson process</title>
+      <link>http://luochang212.github.io/tags/poisson-process/</link>
+      <pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/tags/poisson-process/</guid>
       <description></description>
     </item>
     

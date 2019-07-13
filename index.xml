@@ -6,10 +6,23 @@
     <description>Recent content on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 04 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 12 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://luochang212.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Golang学习之旅</title>
+      <link>http://luochang212.github.io/posts/learn_golang/</link>
+      <pubDate>Fri, 12 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/posts/learn_golang/</guid>
+      <description>  Golang是2009年由谷歌的三位大佬(Robert Griesemer, Rob Pike, Ken Thompson)创造的一门新语言。Goalng有很多优点。比如，作为静态类型语言，Golang的依赖少，易于部署。此外，它还有支持协程并发，支持垃圾回收，可跨平台编译等优势。Golang兼具动态语言的强大表达能力和C的执行效率，被誉为21世纪的C语言。
+  var i = 0; function show_name() { i += 1; if (i%2 == 0) { document.getElementById(&#34;names&#34;).style.display = &#34;none&#34;; } else { document.getElementById(&#34;names&#34;).style.display = &#34;inline&#34;; } }  学习路径  为什么学习Go语言：
+ 为什么要使用 Go 语言？Go 语言的优势在哪里？ Why should you learn Go? jobbole/awesome-go-cn  学习Go的安装、运行、设计理念等基础知识，详见官方文档和入门教程。
+ 通过例子学习Go语言的语法和特性，详见Go by Example。
+  </description>
+    </item>
     
     <item>
       <title>排队论在网络性能分析中的应用</title>
@@ -419,11 +432,38 @@ def classification(self, txt_array, file_index): id = np.array([]) date = np.arr
     
     <item>
       <title></title>
+      <link>http://luochang212.github.io/gadget/recorder/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/recorder/</guid>
+      <description>hello</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>http://luochang212.github.io/gadget/show-time/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/gadget/show-time/</guid>
       <description>现在几点了？ body { font-family: &#34;Source Han Sans&#34;, &#34;San Francisco&#34;, &#34;PingFang SC&#34;, &#34;Hiragino Sans GB&#34;, &#34;Droid Sans Fallback&#34;, &#34;Microsoft YaHei&#34;, sans-serif; font-size: 14px; color: #333; } a { text-decoration: none; color: #f66; transition-property: color; transition-duration: .2s; transition-timing-function: ease-in-out; } a:hover { color: #333; } p { margin: 1em 0; } p:empty { height: 1.5em; } main { margin: 0 5em; max-width: 48em; } h1 { margin: 1em 0; font-size: 24px; font-weight: 300; } textarea, article { width: 100%; height: 12em; margin: 2em 0; padding: .</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/gadget/simple-data-table-map/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/simple-data-table-map/</guid>
+      <description> Simple Data Table Map      (function(i,s,o,g,r,a,m){i[&#39;GoogleAnalyticsObject&#39;]=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,&#39;script&#39;,&#39;//www.google-analytics.com/analytics.js&#39;,&#39;ga&#39;); ga(&#39;create&#39;, &#39;UA-73834010-1&#39;, &#39;auto&#39;); ga(&#39;send&#39;, &#39;pageview&#39;);    </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/gadget/speech-synthesis-copy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/speech-synthesis-copy/</guid>
+      <description>Text-To-Speech Service       var pauseResume = &#39;R&#39;; $(document).ready(function(){ $(&#34;#doClear&#34;).click(function() { $(&#34;#taInput&#34;).val(&#34;&#34;); $(&#39;.voption option[value=&#34;native&#34;]&#39;).prop(&#39;selected&#39;, &#39;selected&#39;).change(); return false; }); $(&#34;#doPauseResume&#34;).click(function() { doPauseResume(); return false; }); $(&#34;#doStop&#34;).click(function() { doStop(); return false; }); $(&#34;#doLangId&#34;).click(function() { doLangId(); return false; }); $(&#34;#doTTS&#34;).click(function() { doTTS(); return false; }); $(&#34;#taInput&#34;).bind(&#39;input propertychange&#39;, function() { doTextAreaChange(this.value); }); }); // Initialize speech engine... initSpeech();    Text-To-Speech  --    Cut &amp; Paste Text To Synthesize (or enter a URL)    Voice   Rate  Pitch     setTimeout(function() { // Initialize the voices.</description>
     </item>
     
     <item>

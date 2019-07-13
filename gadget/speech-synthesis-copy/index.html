@@ -1,0 +1,105 @@
+<html>
+	<head>
+		<title>Text-To-Speech Service</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="UTF-8">
+		<meta name="description" content="Text-To-Speech Synthesis">
+		<meta name="keywords" content="TTS, text-to-speech, voice, API, speech, synthesis, html5">
+		<meta name="author" content="Mike Melamed">
+		<meta name="copyright" content="eDeliverables Inc">
+		
+		<link rel="stylesheet" href="/speech_synthesis/jquery/jquery.mobile-1.4.5.min.css"/>
+		
+		<script src="/speech_synthesis/jquery/jquery-1.11.3.min.js"></script>
+		<script src="/speech_synthesis/jquery/jquery.mobile-1.4.5.min.js"></script>
+		<script src="/speech_synthesis/blockui/jquery.blockUI.js"></script>
+		<script src="/speech_synthesis/algorithmia-0.2.0.js" type="text/javascript"></script>
+		<script src="/speech_synthesis/speech.js?ver=0.2" type="text/javascript"></script>
+		
+		<script>
+			var pauseResume = 'R';
+			$(document).ready(function(){
+				$("#doClear").click(function() {
+					$("#taInput").val("");
+					$('.voption option[value="native"]').prop('selected', 'selected').change();
+					return false;
+				});
+				
+				$("#doPauseResume").click(function() {
+					doPauseResume();
+					return false;
+				});
+				
+				$("#doStop").click(function() {
+					doStop();
+					return false;
+				});
+				
+				$("#doLangId").click(function() {
+					doLangId();
+					return false;
+				});
+				
+				$("#doTTS").click(function() {
+					doTTS();
+					return false;
+				});
+				
+				$("#taInput").bind('input propertychange', function() {
+				  doTextAreaChange(this.value);
+				});
+			});
+			
+			
+			initSpeech();
+		</script>
+	</head>
+	
+	<body>
+		<div data-role="page">
+			<div data-role="header">
+				<h1>Text-To-Speech</h1>
+				<center>
+					<input type='button' id='doTTS' value='Speak!'/>
+					<input type='button' id='doPauseResume' value='Pause/Resume'/>
+					<input type='button' id='doStop' value='Stop'/>
+					<input type='button' id='doClear' value='Clear'/>
+					
+			  	</center>
+			</div>
+		
+			<div role="main" class="ui-content">
+				<fieldset>
+					<legend>Cut & Paste Text To Synthesize (or enter a URL)</legend>
+					<textarea class='textareaClass' id='taInput' rows="12" cols="50"></textarea><br/>
+			  	</fieldset>
+			  <div id='statusMsg'></div>
+			  
+			  <div class="option voption">
+			  	<label for="rate">Voice</label>
+			  	<select id='voice' name='voice'>
+			  	</select>
+			  </div>
+			  
+			  <div class="option">
+					<label for="rate">Rate</label>
+					<input type="range" min="0.1" max="10" step="0.1" name="rate" id="rate" value="1">
+			  </div>
+				
+			  <div class="option">
+					<label for="pitch">Pitch</label>
+					<input type="range" min="0" max="2" step="0.1" name="pitch" id="pitch" value="1">
+			  </div>
+			</div>
+
+		</div>
+		
+		<script>
+			setTimeout(function() {
+				
+				doInitVoices();
+			}, 1);
+		</script>
+
+	</body>
+</html>
