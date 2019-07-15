@@ -22,10 +22,10 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Golang学习之旅"/>
-<meta name="twitter:description" content="Golang是2009年由谷歌的三位大佬创造的一门新语言。Goalng有很多优点。比如，作为静态类型语言，Golang的依赖少，易于部署。此外，它还有支持协程并发，支持垃圾回收，可跨平台编译等优势。Golang兼具动态语言的强大表达能力和C的执行效率，被誉为21世纪的C语言。"/>
+<meta name="twitter:description" content="Golang是2009年由谷歌的三位大佬创造的一门新语言。Goalng有很多优点。比如，作为静态类型语言，Golang的依赖少，易于部署。此外，它还支持协程并发，支持垃圾回收，可跨平台编译。Golang兼具动态语言的强大表达能力和C的执行效率，被誉为21世纪的C语言。"/>
 
 <meta property="og:title" content="Golang学习之旅" />
-<meta property="og:description" content="Golang是2009年由谷歌的三位大佬创造的一门新语言。Goalng有很多优点。比如，作为静态类型语言，Golang的依赖少，易于部署。此外，它还有支持协程并发，支持垃圾回收，可跨平台编译等优势。Golang兼具动态语言的强大表达能力和C的执行效率，被誉为21世纪的C语言。" />
+<meta property="og:description" content="Golang是2009年由谷歌的三位大佬创造的一门新语言。Goalng有很多优点。比如，作为静态类型语言，Golang的依赖少，易于部署。此外，它还支持协程并发，支持垃圾回收，可跨平台编译。Golang兼具动态语言的强大表达能力和C的执行效率，被誉为21世纪的C语言。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/learn_golang/" />
 <meta property="article:published_time" content="2019-07-12T00:00:00&#43;00:00"/>
@@ -524,7 +524,8 @@ $(".load-iframe").click(function(){
 <ul>
 <li>
 <ul>
-<li><a href="#学习路径">学习路径</a></li>
+<li><a href="#学习路径-资源列表"><!--学习路径-->资源列表</a></li>
+<li><a href="#环境配置">环境配置</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -537,7 +538,7 @@ $(".load-iframe").click(function(){
     
 
 <blockquote>
-<p><a href="https://golang.org/">Golang</a>是2009年由谷歌的<a onclick="show_name()">三位大佬</a><span id="names" style="display: none;">(Robert Griesemer, Rob Pike, Ken Thompson)</span>创造的一门新语言。Goalng有很多优点。比如，作为静态类型语言，Golang的依赖少，易于部署。此外，它还有支持协程并发，支持垃圾回收，可跨平台编译等优势。Golang兼具动态语言的强大表达能力和C的执行效率，被誉为21世纪的C语言。</p>
+<p><a href="https://golang.org/">Golang</a>是2009年由谷歌的<a onclick="show_name()">三位大佬</a><span id="names" style="display: none;">(Robert Griesemer, Rob Pike, Ken Thompson)</span>创造的一门新语言。Goalng有很多优点。比如，作为静态类型语言，Golang的依赖少，易于部署。它还支持协程并发，支持垃圾回收，可跨平台编译。Golang兼具动态语言的强大表达能力和C的执行效率，被誉为21世纪的C语言。</p>
 </blockquote>
 
 <script>
@@ -552,7 +553,7 @@ $(".load-iframe").click(function(){
     }
 </script>
 
-<h3 id="学习路径">学习路径</h3>
+<h3 id="学习路径-资源列表"><!--学习路径-->资源列表</h3>
 
 <ol>
 <li><p>为什么学习Go语言：</p>
@@ -567,6 +568,92 @@ $(".load-iframe").click(function(){
 
 <li><p>通过例子<!--Demo-->学习Go语言的语法和特性，详见<a href="https://gobyexample.com">Go by Example</a>。</p></li>
 </ol>
+
+<h3 id="环境配置">环境配置</h3>
+
+<p>（一）在终端运行</p>
+
+<p>在命令行跑程序，用vim写代码几乎不需要配置。只要下好Golang，然后按官方建议，<!--随便在电脑哪个位置-->创建一个名为gocode的文件夹。打开gocode，就可以在里面写代码了。<!--比较坑爹的是我的gocode文件夹，恰好建在了一个需要权限的目录下，于是很多命令都需要加上sudo。比如sudo mkdir, sudo touch, sudo go build, sudo vim......不一而足。对于一个正常权限的文件夹，常用命令如下：-->下面是在命令行运行Golang的一些常用命令：</p>
+
+<p><details>
+<summary>Linux系统下的常用命令（点击展开）</summary>
+<br>
+新建目录</p>
+
+<pre><code>$ mkdir foldername
+</code></pre>
+
+<p><br>
+打开目录</p>
+
+<pre><code>$ cd foldername
+</code></pre>
+
+<p><br>
+返回上一级目录</p>
+
+<pre><code>$ cd ..
+</code></pre>
+
+<p><br>
+新建go文件</p>
+
+<pre><code>$ touch filename.go
+</code></pre>
+
+<p><br>
+删除go文件</p>
+
+<pre><code>$ rm filename.go
+</code></pre>
+
+<p><br>
+重命名go文件</p>
+
+<pre><code>$ mv filename1.go filename2.go
+</code></pre>
+
+<p><br>
+用vim打开go文件</p>
+
+<pre><code>$ vim filename.go
+</code></pre>
+
+<p><br>
+运行go程序</p>
+
+<pre><code>$ go run filename.go
+</code></pre>
+
+<p><br>
+生成可执行的二进制文件</p>
+
+<pre><code>$ go build filename.go
+</code></pre>
+
+<p><br>
+运行二进制文件</p>
+
+<pre><code>$ ./filename
+</code></pre>
+
+<p><br>
+注：用vim打开文件以后，需要按a键打开编辑模式。编辑结束后，按esc键退出编辑模式。如果需要保存后退出，输入<code>:wq</code>。如果不保存直接退出，输入<code>:q</code>。最后按回车执行。
+</details></p>
+
+<p>（二）在VSCode上运行</p>
+
+<p>这个Youtube视频上讲得很细：<a href="https://youtu.be/NphW8lvJ_fg">How to Configure Visual Studio Code for Go?</a></p>
+
+<p>鉴于国内可能打不开YouTube，我用文字介绍一下配置步骤：</p>
+
+<ol>
+<li>在VSCode安装go插件</li>
+<li>打开Command Palette，输入<code>Go Install/Update Tools</code>。会弹出一列单选框，勾选最顶的全选选项，然后点OK</li>
+<li>再次打开Command Palette，输入<code>Shell Command: Install 'code' command in PATH</code>，按回车键安装</li>
+</ol>
+
+<p>运行程序的时候，打开Command Palette，输入<code>View: Toggle Integrated Terminal</code>即可在VSCode内打开命令行。</p>
 
   </div>
   
