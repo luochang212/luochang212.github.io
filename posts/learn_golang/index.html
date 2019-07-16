@@ -576,7 +576,9 @@ $(".load-iframe").click(function(){
 
 <p>（一）在终端运行</p>
 
-<p>在命令行跑程序，用vim写代码几乎不需要配置。只要下好Golang，然后按官方建议，<!--随便在电脑哪个位置-->创建一个名为gocode的文件夹。直接在里面写代码就可以了。<!--比较坑爹的是我的gocode文件夹，恰好建在了一个需要权限的目录下，于是很多命令都需要加上sudo。比如sudo mkdir, sudo touch, sudo go build, sudo vim......不一而足。对于一个正常权限的文件夹，常用命令如下：-->下面是在命令行运行Golang的一些常用命令：</p>
+<p>在命令行跑程序，用vim写代码几乎不需要配置。只要下好Golang，然后按官方建议，<!--随便在电脑哪个位置-->创建一个名为gocode的文件夹。直接在里面写代码就可以了。<!--比较坑爹的是我的gocode文件夹，恰好建在了一个需要权限的目录下，于是很多命令都需要加上sudo。比如sudo mkdir, sudo touch, sudo go build, sudo vim......不一而足。对于一个正常权限的文件夹，常用命令如下：--></p>
+
+<p>下面是在命令行运行Golang的一些常用命令：</p>
 
 <p><details>
 <summary>Linux系统下的常用命令（点击展开）</summary>
@@ -656,16 +658,15 @@ $(".load-iframe").click(function(){
 <li>再次打开Command Palette，输入<code>Shell Command: Install 'code' command in PATH</code>，按回车运行该命令</li>
 </ol>
 
-<p>这样配置就完成啦！</p>
+<p>这样就配置完成啦！</p>
 
-<p>当你写好go程序，只需打开Command Palette，输入<code>View: Toggle Integrated Terminal</code>即可打开命令行，在VSCode内运行go程序，可以说十分方便了。当熟悉了快捷键之后，上述过程还可以变得更高效。</p>
+<p>当运行go程序时，在Command Palette输入<code>View: Toggle Integrated Terminal</code>，即可在VSCode内打开命令行界面。然后在命令行界面输入<code>go run filename.go</code>，就可以运行go程序了。上述操作如果使用VSCode快捷键，还可以变得更高效。</p>
 
 <h3 id="学习路径">学习路径</h3>
 
-<p>对于从零开始的同学，建议先看官方的<a href="https://tour.golang.org/welcome/1">入门教程</a>，然后再跑跑<a href="https://gobyexample.com">Go by Example</a>上的Demo，熟悉一下语言特性。</p>
+<p>对于从零开始的同学，建议先看官方的<a href="https://tour.golang.org/welcome/1">入门教程</a>，再跑跑<a href="https://gobyexample.com">Go by Example</a>上的Demo，熟悉一下语言特性。</p>
 
-<p>然后，强烈推荐GitHub上的一本开源书：<a href="https://github.com/astaxie/build-web-application-with-golang">build-web-application-with-golang
-</a>作为进阶教材。内容有深度，表达很简练，确实是一本好书，非常合适作进阶项目实践。</p>
+<p>然后，强烈推荐GitHub上的一本开源书<a href="https://github.com/astaxie/build-web-application-with-golang">build-web-application-with-golang</a>作为进阶教材。这本书内容有深度，表达也很简练，确实是好书，而且非常适合作为进阶学习的实践项目。</p>
 
   </div>
   
