@@ -19,11 +19,19 @@
       <guid>http://luochang212.github.io/posts/learn_golang/</guid>
       <description>Golang是2009年由谷歌的三位大佬(Robert Griesemer, Rob Pike, Ken Thompson)创造的一门新语言。Goalng有很多优点。比如，作为静态类型语言，Golang的依赖少，易于部署。它还支持协程并发，支持垃圾回收，可跨平台编译。Golang兼具动态语言的强大表达能力和C的执行效率，被誉为21世纪的C语言。
   var i = 0; function show_name() { i += 1; if (i%2 == 0) { document.getElementById(&#34;names&#34;).style.display = &#34;none&#34;; } else { document.getElementById(&#34;names&#34;).style.display = &#34;inline&#34;; } }  最近在学习Golang，为了寻找配置教程、优秀的电子书以及难度曲线适中的入门实践项目，我颇费了些功夫。趁着记忆还新鲜，我想分享一下我的学习路径以及学习资料。本文涉及Golang的安装、配置、运行以及实践项目。希望通过阅读本文，初学者们可以更快地找到适合自己的学习方向。
-资源列表  为什么学习Go语言：
- 为什么要使用 Go 语言？Go 语言的优势在哪里？ Why should you learn Go? jobbole/awesome-go-cn  Golang在VSCode上的配置：How to Configure Visual Studio Code for Go?。
- Go的安装、运行、设计理念等基础知识，详见官方文档和入门教程。
- 通过例子学习Go语言的语法和特性，详见Go by Example。
- 一本讲解Go语言基础以及Web Application实现的电子书 build-web-application-with-golang。</description>
+下载安装 官网提供标准安装包，一路点击就能完成安装。
+安装包的链接是https://golang.org/dl/，更多关于安装的信息见安装 Go.
+环境配置 （一）在终端运行
+在命令行运行程序几乎不需要配置。只要下载Golang，然后按官方建议，创建一个名为gocode的文件夹，直接在里面写代码就可以了。为了防止以后import其他包发生错误，建议把gocode文件夹放在GOPATH下。如何知道Golang的工作路径(GOPATH)在哪里呢？打开命令行，输入go env，就能在输出里找到工作路径了（注意区别安装路径和工作路径，它们是两个不同的路径）。
+下面是Golang在命令行运行时的一些常用命令：
+ Linux系统下的常用命令（点击展开） 新建目录
+$ mkdir foldername  
+打开目录
+$ cd foldername  
+返回上一级目录
+$ cd ..  
+新建go文件
+$ touch filename.</description>
     </item>
     
     <item>
