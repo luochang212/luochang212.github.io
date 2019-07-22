@@ -28,10 +28,8 @@
 		<br><br>
 		<div id="controller">
 			<center>
-			<form name="myForm" onsubmit="return validateForm()">
-				Your Age: <input type="text" name="fname" id="form-text">
-				<input type="submit" value="Submit">
-			</form>
+				Your Age: <input type="text" id="your-age">
+				<input type="button" value="Submit" onclick="draw();">
 			</center>
 		</div>
 		<br><br>
@@ -40,6 +38,7 @@
 				Inspired by <a href="https://waitbutwhy.com/2014/05/life-weeks.html" target="_blank">Your Life in Weeks</a>.
 			</center>
 		</div>
+		<p id="demo"></p>
 	</div>
 
 	<script>
@@ -57,16 +56,30 @@
 		}
 
 		function validateForm() {
-  			var x = document.forms["myForm"]["fname"].value;
+			var x = document.getElementById('your-age').value;
   			if (x == "") {
     			alert("Name must be filled out");
     			return false;
   			} else if (isNaN(x) || x < 1 || x > 90) {
 				alert("Please input a number between 1 and 100");
     			return false;
-			}
+			} else return true;
 		}
 
+		
+		
+		function draw() {
+			var years = document.getElementById('your-age').value;
+			if (validateForm() == true) {
+				for (i = 0; i < (90*12); i++) {
+					document.getElementById(i.toString(10)).style.backgroundColor = 'white';
+					if (i < years*12) {
+						document.getElementById(i.toString(10)).style.backgroundColor = 'red';
+					}
+				}
+			}
+		}
+		
 	</script>
   </body>
 </html>
