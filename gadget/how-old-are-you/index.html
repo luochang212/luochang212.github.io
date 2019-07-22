@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>年龄可视化</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+
+    <div id="header">
+		<div class="navbar">
+		  <a href="https://luochang212.github.io">Home</a>
+		  <a href="https://luochang212.github.io/portfolio/">Projects</a>
+		  <a href="https://luochang212.github.io/about/">About</a>
+		</div>
+		<div id="link"><a href="https://github.com/luochang212">© 2019 Chang Luo</a></div>
+    </div>
+    <div id="container">
+		
+		<div id="data">
+			<br><br><br><br><br>
+			<h1><center>A 90-Year Human Life in Months</center><h1>
+		</div>
+		<div id="graph">
+			<br><br><br>
+			<center><div id="graph-container"></div></center>
+		</div>
+		<br><br>
+		<div id="controller">
+			<center>
+			<form name="myForm" onsubmit="return validateForm()">
+				Your Age: <input type="text" name="fname" id="form-text">
+				<input type="submit" value="Submit">
+			</form>
+			</center>
+		</div>
+		<br><br>
+		<div id="statement">
+			<center>
+				Inspired by <a href="https://waitbutwhy.com/2014/05/life-weeks.html" target="_blank">Your Life in Weeks</a>.
+			</center>
+		</div>
+	</div>
+
+	<script>
+		var container = document.getElementById('graph-container');
+		for (i = 0; i < (90*12); i++) {
+			var newspan = document.createElement('span');
+			newspan.setAttribute("class","circle"); 
+			newspan.setAttribute("id", i.toString(10)); 
+			container.appendChild(newspan);
+			if ((i+1)%36 == 0) {
+				var newspan = document.createElement('span');
+				newspan.innerHTML = "<br>"
+				container.appendChild(newspan);
+			}
+		}
+
+		function validateForm() {
+  			var x = document.forms["myForm"]["fname"].value;
+  			if (x == "") {
+    			alert("Name must be filled out");
+    			return false;
+  			} else if (isNaN(x) || x < 1 || x > 90) {
+				alert("Please input a number between 1 and 100");
+    			return false;
+			}
+		}
+
+	</script>
+  </body>
+</html>

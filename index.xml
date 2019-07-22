@@ -405,6 +405,15 @@ def classification(self, txt_array, file_index): id = np.array([]) date = np.arr
     
     <item>
       <title></title>
+      <link>http://luochang212.github.io/gadget/how-old-are-you/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/how-old-are-you/</guid>
+      <description>  年龄可视化   Home Projects About  © 2019 Chang Luo  A 90-Year Human Life in Months     Your Age:     Inspired by Your Life in Weeks.     var container = document.getElementById(&#39;graph-container&#39;); for (i = 0; i 90) { alert(&#34;Please input a number between 1 and 100&#34;); return false; } }    </description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>http://luochang212.github.io/gadget/media-player/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
