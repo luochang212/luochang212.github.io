@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-Hans" dir="ltr">
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<head>
 
 <title>计划表生成工具</title>
 <script>
@@ -28,7 +28,7 @@
 		objArray.push(item);
 		var body = '<table><tr><th>#</th><th>Name</th></tr>'
 		
-		for (i = 0; i < objArray.length; i++) {
+		for (var i = 0; i < objArray.length; i++) {
 			var index = i+1;
             body += '<tr>';
             body += '<td>' + index.toString(10) + '</td>';
@@ -52,13 +52,13 @@
 		objArray = [];
 		var body = '<table><tr><th>#</th><th>Check Box</th><th>Name</th><th>Delete</th></tr>'
 		
-		for (i = 0; i < subArray.length; i++) {
+		for (var i = 0; i < subArray.length; i++) {
 			var index = i+1;
             body += '<tr>';
             body += '<td>' + index.toString(10) + '</td>';
-			body += '<td>' + '<input type="checkbox" id=\"cb' + i.toString(10) + '\" onclick="isChecked(this);">' + '</td>';
+			body += '<td>' + '<input type=\"checkbox\" id=\"cb' + i.toString(10) + '\" onclick=\"isChecked(this);\">' + '</td>';
             body += '<td>' + subArray[i].name + '</td>';
-			body += '<td>' + '<input type="button" id=\"btn' + i.toString(10) + '\" onclick="isDeleted(this);">' + '</td>';
+			body += '<td>' + '<input type=\"button\" id=\"btn' + i.toString(10) + '\" onclick=\"isDeleted(this);\">' + '</td>';
             body += '</tr>';
 		}
 		
@@ -155,6 +155,7 @@
 		document.body.removeChild(element);
 	}
 </script>
+
 <style type="text/css">
 	body {
 		font-family: "Source Han Sans", "San Francisco", "PingFang SC", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
@@ -254,7 +255,7 @@
 <main>
 
 	<h1>计划表生成工具</h1>
-	<p>© 2019 Chang Luo <a href="https://www.weibo.com/selina330" target="_blank">Weibo</a> | <a href="https://space.bilibili.com/27447758" target="_blank">Bilibili</a></p>
+	<p>© 2019 Chang Luo | <a href="/">Home</a></p>
 	<hr>
 	<p>这是俺写的小工具，什么？居然被你发现了 O_O !!!</p>
 

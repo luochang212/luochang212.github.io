@@ -42,15 +42,16 @@
 	</div>
 
 	<script>
+		"use strict";
 		var container = document.getElementById('graph-container');
-		for (i = 0; i < (90*12); i++) {
+		for (var i = 0; i < (90*12); i++) {
 			var newspan = document.createElement('span');
-			newspan.setAttribute("class","circle"); 
+			newspan.setAttribute("class", "circle"); 
 			newspan.setAttribute("id", i.toString(10)); 
 			container.appendChild(newspan);
 			if ((i+1)%36 == 0) {
 				var newspan = document.createElement('span');
-				newspan.innerHTML = "<br>"
+				newspan.innerHTML = "<br>";
 				container.appendChild(newspan);
 			}
 		}
