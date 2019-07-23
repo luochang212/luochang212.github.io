@@ -508,7 +508,7 @@ $(".load-iframe").click(function(){
     
     
     <br/>
-    <i class="fas fa-clock"></i> 1 min read
+    <i class="fas fa-clock"></i> 6 min read
 </div>
 
 
@@ -671,7 +671,401 @@ $(".load-iframe").click(function(){
 
 <p>项目实践的最终目标是制作一个属于自己的Web application。为了实现这个目标，需要循序渐进。所以我们先用Go搭建我们的第一个静态网页，然后再尝试搭建动态网页。</p>
 
+<p>（1）用Go搭建静态网页</p>
+
 <p>搭建静态网页，我参考的是这个教程：<a href="https://www.alexedwards.net/blog/serving-static-sites-with-go">Serving Static Sites with Go</a> <a href="/pdf/serving-static-sites-with-go.pdf">[PDF]</a>。</p>
+
+<p>按教程做完之后，我打算把之前在<a href="/posts/to_do_list/">JavaScript初探</a>中写的网页移植到这里验证一下。</p>
+
+<p><details>
+<summary>详细代码（点击展开）</summary></p>
+
+<p>首先打开命令行，为项目创建目录。</p>
+
+<pre><code>$ mkdir to-do-list
+$ cd to-do-list
+</code></pre>
+
+<p>除了在app.go中放置我们的代码，我们还需要创建static文件夹放置网页内容，templates文件夹放置模版。</p>
+
+<pre><code>$ touch app.go
+
+$ mkdir -p static/stylesheets
+$ touch static/example.html static/stylesheets/style.css
+
+$ mkdir -p static/javascript
+$ touch static/example.html static/javascript/main.js
+
+$ mkdir templates
+$ touch templates/layout.html templates/example.html
+</code></pre>
+
+<p><br>
+File: app.go</p>
+
+<pre><code>package main
+
+import (
+	&quot;html/template&quot;
+	&quot;log&quot;
+	&quot;net/http&quot;
+	&quot;os&quot;
+	&quot;path/filepath&quot;
+)
+
+func main() {
+	fs := http.FileServer(http.Dir(&quot;static&quot;))
+	http.Handle(&quot;/static/&quot;, http.StripPrefix(&quot;/static/&quot;, fs))
+	http.HandleFunc(&quot;/&quot;, serveTemplate)
+
+	log.Println(&quot;\nWeb Server is available at http://localhost:3000/example.html&quot;)
+	http.ListenAndServe(&quot;:3000&quot;, nil)
+}
+
+func serveTemplate(w http.ResponseWriter, r *http.Request) {
+	lp := filepath.Join(&quot;templates&quot;, &quot;layout.html&quot;)
+	fp := filepath.Join(&quot;templates&quot;, filepath.Clean(r.URL.Path))
+
+	// Return a 404 if the template doesn't exist
+	info, err := os.Stat(fp)
+	if err != nil {
+		if os.IsNotExist(err) {
+			http.NotFound(w, r)
+			return
+		}
+	}
+
+	// Return a 404 if the request is for a directory
+	if info.IsDir() {
+		http.NotFound(w, r)
+		return
+	}
+
+	tmpl, err := template.ParseFiles(lp, fp)
+	if err != nil {
+		// Log the detailed error
+		log.Println(err.Error())
+		// Return a generic &quot;Internal Server Error&quot; message
+		http.Error(w, http.StatusText(500), 500)
+		return
+	}
+
+	if err := tmpl.ExecuteTemplate(w, &quot;layout&quot;, nil); err != nil {
+		log.Println(err.Error())
+		http.Error(w, http.StatusText(500), 500)
+	}
+}
+</code></pre>
+
+<p><br>
+File: static/stylesheets/style.css</p>
+
+<pre><code>body {
+    font-family: &quot;Source Han Sans&quot;, &quot;San Francisco&quot;, &quot;PingFang SC&quot;, &quot;Hiragino Sans GB&quot;, &quot;Droid Sans Fallback&quot;, &quot;Microsoft YaHei&quot;, sans-serif;
+    font-size: 14px;
+    color: #333;
+}
+a {
+    text-decoration: none;
+    color: #f66;
+    transition-property: color;
+    transition-duration: .2s;
+    transition-timing-function: ease-in-out;
+}
+a:hover {
+    color: #333;
+}
+p {
+    margin: 1em 0;
+}
+p:empty {
+    height: 1.5em;
+}
+main {
+    margin: 0 5em;
+    max-width: 60em;
+}
+h1 {
+    margin: 1em 0;
+    font-size: 24px;
+    font-weight: 300;
+}
+textarea, article {
+    width: 100%;
+    height: 12em;
+    margin: 2em 0;
+    padding: .5em;
+    overflow-y: scroll;
+    border: 1px solid #999;
+    border-radius: 2px;
+    line-height: 1.5;
+    text-align: justify;
+    text-justify: inter-ideograph;
+}
+textarea {
+    height: 9em;
+    font-size: 14px;
+    font-family: &quot;Source Han Sans&quot;, &quot;San Francisco&quot;, &quot;PingFang SC&quot;, &quot;Hiragino Sans GB&quot;, &quot;Droid Sans Fallback&quot;, &quot;Microsoft YaHei&quot;, sans-serif;
+    color: #333;
+}
+article {
+    cursor: pointer;
+}
+button {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    line-height: 1;
+    padding: .5em;
+    color: #666;
+    transition-property: color, background, border;
+    transition-duration: .2s;
+    transition-timing-function: ease-in-out;
+}
+button[id] {
+    border: 1px solid #999;
+    color: #333;
+    cursor: pointer;
+}
+button[id]:hover {
+    background: #666;
+    border-color: #666;
+    color: #fff;
+}
+::selection {
+    color: #fff;
+    background: #666;
+}
+::-moz-selection {
+    color: #fff;
+    background: #666;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+th, td {
+    padding: 5px;
+}
+th {
+    text-align: left;
+}
+</code></pre>
+
+<p><br>
+File: static/javascript/main.js</p>
+
+<pre><code>&quot;use strict&quot;;
+var Items = {
+　　　　	name: &quot;&quot;,
+　　　　	isCheck: &quot;false&quot;,
+    isDelete: &quot;false&quot;
+};
+
+var objArray = [];
+
+var subArray = [];
+
+var submit_flag = true;
+
+var delete_flag = true;
+
+function addElement() {
+    submit_flag = true;
+    var item = Object.create(Items);
+    
+    var v = document.getElementById(&quot;myTextarea&quot;).value;
+    item.name = v
+    objArray.push(item);
+    var body = '&lt;table&gt;&lt;tr&gt;&lt;th&gt;#&lt;/th&gt;&lt;th&gt;Name&lt;/th&gt;&lt;/tr&gt;'
+    
+    for (var i = 0; i &lt; objArray.length; i++) {
+        var index = i+1;
+        body += '&lt;tr&gt;';
+        body += '&lt;td&gt;' + index.toString(10) + '&lt;/td&gt;';
+        //body += '&lt;td&gt;' + '&lt;input type=&quot;checkbox&quot; id=\&quot;cb' + i.toString(10) + '\&quot; onclick=&quot;isChecked(this);&quot;&gt;' + '&lt;/td&gt;';
+        body += '&lt;td&gt;' + objArray[i].name + '&lt;/td&gt;';
+        //body += '&lt;td&gt;' + objArray[i].isDelete + '&lt;/td&gt;';
+        //body += '&lt;td&gt;' + '&lt;input type=&quot;button&quot; id=\&quot;btn' + i.toString(10) + '\&quot; onclick=&quot;isDeleted(this);&quot;&gt;' + '&lt;/td&gt;';
+        body += '&lt;/tr&gt;';
+    }
+    
+    body += '&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;';
+    
+    document.getElementById(&quot;object_list&quot;).innerHTML = body;
+    document.getElementById(&quot;myTextarea&quot;).value = '';
+}
+
+function submit() {
+    if (submit_flag == true) {
+    submit_flag = false;
+    subArray = objArray;
+    objArray = [];
+    var body = '&lt;table&gt;&lt;tr&gt;&lt;th&gt;#&lt;/th&gt;&lt;th&gt;Check Box&lt;/th&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Delete&lt;/th&gt;&lt;/tr&gt;'
+    
+    for (var i = 0; i &lt; subArray.length; i++) {
+        var index = i+1;
+        body += '&lt;tr&gt;';
+        body += '&lt;td&gt;' + index.toString(10) + '&lt;/td&gt;';
+        body += '&lt;td&gt;' + '&lt;input type=\&quot;checkbox\&quot; id=\&quot;cb' + i.toString(10) + '\&quot; onclick=\&quot;isChecked(this);\&quot;&gt;' + '&lt;/td&gt;';
+        body += '&lt;td&gt;' + subArray[i].name + '&lt;/td&gt;';
+        body += '&lt;td&gt;' + '&lt;input type=\&quot;button\&quot; id=\&quot;btn' + i.toString(10) + '\&quot; onclick=\&quot;isDeleted(this);\&quot;&gt;' + '&lt;/td&gt;';
+        body += '&lt;/tr&gt;';
+    }
+    
+    body += '&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;';
+    
+    document.getElementById(&quot;object_list&quot;).innerHTML = body;
+    }
+}
+
+function finalSheet() {
+    var myDate=new Date();
+    var final_sheet = '&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;style&gt;html{background-position:center top;background-repeat:no-repeat;width:800px;margin:auto;}table, th, td {border: 1px solid black;border-collapse: collapse;}th, td {padding: 5px;}th {text-align: center;}&lt;/style&gt;&lt;body&gt;&lt;h1&gt;计划完成统计表&lt;/h1&gt;&lt;h4&gt;' + myDate + '&lt;/h2&gt;'
+    var body = '&lt;table&gt;&lt;tr&gt;&lt;th&gt;#&lt;/th&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Done&lt;/th&gt;&lt;/tr&gt;'
+    
+    var i = 0;
+    var index = 1;
+    var showtext = &quot;&quot;;
+    while (i &lt; subArray.length) {
+        if (subArray[i].isDelete != &quot;true&quot; ) {
+            if (subArray[i].isCheck == &quot;true&quot;) {
+                showtext = &quot;√&quot;;
+            }else {
+                showtext = &quot;×&quot;;
+            }
+            body += '&lt;tr&gt;';
+            body += '&lt;td&gt;' + index.toString(10) + '&lt;/td&gt;';
+            body += '&lt;td&gt;' + subArray[i].name + '&lt;/td&gt;';
+            body += '&lt;td&gt;' + showtext + '&lt;/td&gt;';
+            body += '&lt;/tr&gt;';
+            index++;
+        }
+        i++;
+    }
+    
+    body += '&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;';
+    document.getElementById(&quot;object_list&quot;).innerHTML = body;
+    
+    final_sheet += body
+    download('计划完成统计表.html', final_sheet)
+    
+}
+
+function handleEnter(event) {
+    if (event.keyCode == 13 &amp;&amp; !event.shiftKey) {
+        addElement();
+    }
+}
+
+function clearText() {
+    document.getElementById(&quot;myTextarea&quot;).value = '';
+}
+
+function clearContents(element) {
+    element.value = '';
+}
+
+function isChecked(element) {
+    var id_str = element.id
+    id_str = id_str.replace(&quot;cb&quot;,&quot;&quot;);
+    var id_num = parseInt(id_str)
+    if (element.checked == true){
+        subArray[id_num].isCheck = &quot;true&quot;;
+    } else {
+        subArray[id_num].isCheck = &quot;false&quot;;
+    }
+}
+
+function isDeleted(element) {
+    var id_str = element.id
+    id_str = id_str.replace(&quot;btn&quot;,&quot;&quot;);
+    var id_num = parseInt(id_str)
+    
+    if (delete_flag == true) {
+    delete_flag = false;
+    subArray[id_num].isDelete = &quot;true&quot;;
+    element.value=&quot;×&quot;
+    } else {
+    delete_flag = true;
+    subArray[id_num].isDelete = &quot;false&quot;;
+    element.value=&quot;&quot;
+    }
+}
+
+function download(filename, text) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
+}
+</code></pre>
+
+<p><br>
+File: templates/layout.html</p>
+
+<pre><code>{{define &quot;layout&quot;}}
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;{{template &quot;title&quot;}}&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;/static/stylesheets/style.css&quot;&gt;
+    &lt;script src=&quot;/static/javascript/main.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    {{template &quot;body&quot;}}
+&lt;/body&gt;
+&lt;/html&gt;
+{{end}}
+</code></pre>
+
+<p><br>
+File: templates/example.html</p>
+
+<pre><code>{{define &quot;title&quot;}}To Do List{{end}}
+
+{{define &quot;body&quot;}}
+&lt;main&gt;
+
+	&lt;h1&gt;计划表生成工具&lt;/h1&gt;
+	&lt;p&gt;© 2019 Chang Luo | &lt;a href=&quot;https://luochang212.github.io&quot;&gt;Home&lt;/a&gt;&lt;/p&gt;
+	&lt;hr&gt;
+	&lt;p&gt;这是俺写的小工具，什么？居然被你发现了 O_O !!!&lt;/p&gt;
+
+
+	&lt;textarea id=&quot;myTextarea&quot; onkeydown=&quot;handleEnter(event)&quot; onfocus=&quot;clearContents(this);&quot; style=&quot;width:32em&quot;&gt;使用说明：
+
+在此框中输入你的计划，点击“添加计划”按钮，将你的计划添加至计划列表。接着点击“生成表格”按钮，通过勾选生成的表格中的复选框，告诉后台你的完成情况。最后点击“下载表格”按钮，下载计划完成统计表。&lt;/textarea&gt;&lt;br&gt;
+
+	&lt;button type=&quot;button&quot; onclick=&quot;addElement()&quot;&gt;添加计划&lt;/button&gt; 
+	&amp;nbsp &amp;nbsp &amp;nbsp
+	→
+	&amp;nbsp &amp;nbsp &amp;nbsp
+	&lt;button type=&quot;button&quot; onclick=&quot;submit()&quot;&gt;生成表格&lt;/button&gt;
+	&amp;nbsp &amp;nbsp &amp;nbsp 
+	→
+	&amp;nbsp &amp;nbsp &amp;nbsp 
+	&lt;button type=&quot;button&quot; onclick=&quot;finalSheet()&quot;&gt;下载表格&lt;/button&gt;
+	&amp;nbsp &amp;nbsp &amp;nbsp &amp;nbsp &amp;nbsp &amp;nbsp &amp;nbsp &amp;nbsp
+	&lt;button id=&quot;btn_clear&quot; type=&quot;button&quot; onclick=&quot;clearText()&quot;&gt;清空&lt;/button&gt;
+	&lt;br&gt;&lt;br&gt;
+	&lt;p id=&quot;object_list&quot;&gt;&lt;/p&gt;
+
+&lt;/main&gt;
+{{end}}
+</code></pre>
+
+<p></details></p>
+
+<p>（2）用Go搭建动态网页</p>
 
 <p>搭建动态网页，我参考了：</p>
 
