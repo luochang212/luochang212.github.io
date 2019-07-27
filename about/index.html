@@ -469,6 +469,28 @@ $(".load-iframe").click(function(){
 
 <h1>About me</h1>
 
+<p><head>
+    <link rel="stylesheet" href="/gadget/live2d/live2d/css/live2d.css" />
+</head></p>
+
+<div id="landlord">
+    <div class="message" style="opacity:0"></div>
+    <canvas id="live2d" width="280" height="525" class="live2d"></canvas>   <!-- 40/75 -->
+    <div class="hide-button">隐藏</div>
+</div>
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+    var message_Path = '/live2d/'
+    var home_Path = 'http://luochang212.github.io/about/'
+</script>
+<script type="text/javascript" src="/gadget/live2d/live2d/js/live2d.js"></script>
+<script type="text/javascript" src="/gadget/live2d/live2d/js/message.js"></script>
+<script type="text/javascript">
+    loadlive2d("live2d", "/gadget/live2d/live2d/model/live2d-widget-model-shizuku/assets/shizuku.model.json");
+</script>
+
+
+
 <div class="language-space">
     <br>
 </div>
