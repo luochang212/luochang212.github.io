@@ -129,11 +129,11 @@ function initLive2d (){
     $('.hide-button').fadeOut(0).on('click', () => {
         $('#landlord').css('display', 'none')
     })
-    // $('#landlord').hover(() => {
-    //     $('.hide-button').fadeIn(600)
-    // }, () => {
-    //     $('.hide-button').fadeOut(600)
-    // })
+    $('#landlord').hover(() => {
+        $('.hide-button').fadeIn(600)
+    }, () => {
+        $('.hide-button').fadeOut(600)
+    })
     var click_number = 0;
     $( "#landlord" ).click(function() {
         click_number = click_number + 1;

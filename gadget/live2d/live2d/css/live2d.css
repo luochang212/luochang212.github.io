@@ -42,14 +42,15 @@
 
 .hide-button {
     position: absolute;
-    top: 10px;
+    /* top: 10px; */
+    top: 50px;
     right: 0;
     /* bottom: 30px; */
     display: none;
     overflow: hidden;
     /* padding: 4px; */
     width: 60px;
-    height: 20px;
+    height: 30px;
     border: 1px solid rgba(255,137,255,.4);
     border-radius: 12px;
     background: rgba(255,137,255,.2);
