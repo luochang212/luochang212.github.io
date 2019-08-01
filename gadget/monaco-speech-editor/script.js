@@ -1,14 +1,7 @@
 var synth = window.speechSynthesis;
 
-//var inputForm = document.querySelector('form');
-//var inputTxt = document.querySelector('.txt');
 var inputTxt = "I am going to play basketball"
-//var voiceSelect = document.querySelector('select');
 
-// var pitch = document.querySelector('#pitch');
-// var pitchValue = document.querySelector('.pitch-value');
-// var rate = document.querySelector('#rate');
-// var rateValue = document.querySelector('.rate-value');
 
 var voices = [];
 
@@ -19,21 +12,7 @@ function populateVoiceList() {
       else if ( aname == bname ) return 0;
       else return +1;
   });
-  // var selectedIndex = voiceSelect.selectedIndex < 0 ? 0 : voiceSelect.selectedIndex;
-  // voiceSelect.innerHTML = '';
-  // for(i = 0; i < voices.length ; i++) {
-    // var option = document.createElement('option');
-    // option.textContent = voices[i].name + ' (' + voices[i].lang + ')';
-    
-    // if(voices[i].default) {
-      // option.textContent += ' -- DEFAULT';
-    // }
 
-    // option.setAttribute('data-lang', voices[i].lang);
-    // option.setAttribute('data-name', voices[i].name);
-    // voiceSelect.appendChild(option);
-  // }
-  //voiceSelect.selectedIndex = 9;// selectedIndex;
 }
 
 populateVoiceList();
@@ -46,8 +25,7 @@ function speak(){
         console.error('speechSynthesis.speaking');
         return;
     }
-    //if (inputTxt.value !== '') {
-    //var utterThis = new SpeechSynthesisUtterance(inputTxt.value);
+
 	if (inputTxt !== '') {
 	var utterThis = new SpeechSynthesisUtterance(inputTxt);
     utterThis.onend = function (event) {
@@ -64,27 +42,26 @@ function speak(){
       }
     }
     utterThis.pitch = 1;//pitch.value;
-    utterThis.rate = 1;//rate.value;
+    utterThis.rate = 1.5;//rate.value;
     synth.speak(utterThis);
   }
 }
 
-//inputForm.onsubmit = function(event) {
-  //event.preventDefault();
+function doPauseResume() {
+	if(pauseResume == 'R') {
+		window.speechSynthesis.pause();
+		pauseResume = 'P';
+	} else if(pauseResume == 'P') {
+		window.speechSynthesis.resume();
+		pauseResume = 'R';
+	} else {
+		console.log("Unknown state...");
+	}
+	return false;
+}
 
-  //speak();
-
-  //inputTxt.blur();
-//}
-
-// pitch.onchange = function() {
-  // pitchValue.textContent = pitch.value;
-// }
-
-// rate.onchange = function() {
-  // rateValue.textContent = rate.value;
-// }
-
-// voiceSelect.onchange = function(){
-  // speak();
-// }
+function doStop() {
+	pauseResume = 'R';
+	window.speechSynthesis.cancel();
+	return false;
+}

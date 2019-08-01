@@ -11,7 +11,9 @@
             <div class="navbar">
                 <button onclick="getEditorValue();">Speak Document</button>
                 <button onclick="speakByLine();">Speak by line</button>
-                <button>About</button>
+                <button onclick="doPauseResume();">Pause</button>
+                <button onclick="doStop();">Stop</button>
+                <button>Help</button>
             </div>
 
             <div id="link">
@@ -50,18 +52,18 @@
                         '/* Write your code here. */',
                         '',
                         'function isDeleted(element) {',
-                        '   var id_str = element.id',
+                        '   var id_str = element.id;',
                         '   id_str = id_str.replace("btn","");',
-                        '   var id_num = parseInt(id_str)',
+                        '   var id_num = parseInt(id_str);',
                         '',
                         '   if (delete_flag == true) {',
                         '       delete_flag = false;',
                         '       subArray[id_num].isDelete = "true";',
-                        '       element.value="×"',
+                        '       element.value="×";',
                         '   } else {',
                         '       delete_flag = true;',
                         '       subArray[id_num].isDelete = "false";',
-                        '       element.value=""',
+                        '       element.value="";',
                         '   }',
                         '}',
                     ].join('\n'),
@@ -69,11 +71,7 @@
                     wordWrap: "on",   
                     wrappingIndent: "indent"
                 });
-                
 
-                
-                
-                
                 
                 
             });
@@ -81,44 +79,31 @@
             function getEditorValue() {
                 inputTxt = editor.getValue();
                 speak();
-                
-                
-                
-                
             }
 
             function getEditorValueByLine(x) {
                 inputTxt = editor.getModel().getLineContent(x);
                 speak();
-                
-                
             }
-            
-            
-            
-            
-            
 
             function speakByLine() {
                 var lineNumber = prompt("Please input the line number:", "");
                 if (lineNumber == null || lineNumber == "") {
-                    alert("Input something!");
+                    
                 } else {
                     getEditorValueByLine(lineNumber);
                 }
             }
 
 
-
             function save() {
-                
-                
-                
-                
-                
-                
-                
-                
+                var filename = prompt("Please input filename:", "");
+                if (filename == null || filename == "") {
+                    
+                } else {
+                    var text = editor.getValue();
+                    download(filename, text);
+                }
             }
 
             function download(filename, text) {
