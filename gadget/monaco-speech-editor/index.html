@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>browser-amd-editor</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <div id="header">
+            <div class="navbar">
+                <button onclick="getEditorValue();">Speak Document</button>
+                <button onclick="speakByLine();">Speak by line</button>
+                <button>About</button>
+            </div>
+
+            <div id="link">
+                <a onclick="clickOpenNav()">&#9776;</a>
+            </div>
+
+            <div id="navbar-right">
+                <button onclick="save();">Save</button>
+            </div>
+        </div>
+
+        <div id="my-editor">
+            <div id="container"></div>
+        </div>
+
+        <div id="overlay" onclick="closeByOverlay()"></div>
+
+        <div id="mySidenav" class="sidenav">
+	        <div id="main">
+                <p>Shortcuts</p>
+            </div>
+        </div>
+
+        
+        <script src="./node_modules/monaco-editor/min/vs/loader.js"></script>
+        <script src="./script.js"></script>
+        <script>
+            'use strict'
+            var editor;
+
+            require.config({ paths: { 'vs': './node_modules/monaco-editor/min/vs' }});
+
+            require(['vs/editor/editor.main'], function() {
+                editor = monaco.editor.create(document.getElementById('container'), {
+                    value: [
+                        '/* Write your code here. */',
+                        '',
+                        'function isDeleted(element) {',
+                        '   var id_str = element.id',
+                        '   id_str = id_str.replace("btn","");',
+                        '   var id_num = parseInt(id_str)',
+                        '',
+                        '   if (delete_flag == true) {',
+                        '       delete_flag = false;',
+                        '       subArray[id_num].isDelete = "true";',
+                        '       element.value="×"',
+                        '   } else {',
+                        '       delete_flag = true;',
+                        '       subArray[id_num].isDelete = "false";',
+                        '       element.value=""',
+                        '   }',
+                        '}',
+                    ].join('\n'),
+                    language: 'javascript',
+                    wordWrap: "on",   
+                    wrappingIndent: "indent"
+                });
+                
+
+                
+                
+                
+                
+                
+            });
+
+            function getEditorValue() {
+                inputTxt = editor.getValue();
+                speak();
+                
+                
+                
+                
+            }
+
+            function getEditorValueByLine(x) {
+                inputTxt = editor.getModel().getLineContent(x);
+                speak();
+                
+                
+            }
+            
+            
+            
+            
+            
+
+            function speakByLine() {
+                var lineNumber = prompt("Please input the line number:", "");
+                if (lineNumber == null || lineNumber == "") {
+                    alert("Input something!");
+                } else {
+                    getEditorValueByLine(lineNumber);
+                }
+            }
+
+
+
+            function save() {
+                var filename = prompt("Please input filename:", "");
+                if (filename == null || filename == "") {
+                    alert("Input something!");
+                } else {
+                    
+                    
+                    download(filename, text);
+                }
+            }
+
+            function download(filename, text) {
+                var element = document.createElement('a');
+                element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+                element.setAttribute('download', filename);
+
+                element.style.display = 'none';
+                document.body.appendChild(element);
+
+                element.click();
+
+                document.body.removeChild(element);
+            }
+
+
+            
+            var clickCount = 0;
+
+            function clickOpenNav() {
+                clickCount += 1;
+                if (clickCount%2 == 1) {
+                    openNav();
+                } else {
+                    closeNav();
+                }
+            }
+
+            function closeByOverlay() {
+                clickCount += 1;
+                off();
+            }
+            
+            function openNav() {
+                on();
+                document.getElementById("mySidenav").style.width = "20%";
+                
+            }
+
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+                document.body.style.backgroundColor = "white";
+            }
+
+            function on() {
+                document.getElementById("overlay").style.display = "block";
+            }
+
+            function off() {
+                closeNav();
+                document.getElementById("overlay").style.display = "none";
+            }
+
+
+        </script>
+    </body>
+</html>

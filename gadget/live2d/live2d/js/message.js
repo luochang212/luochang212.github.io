@@ -135,7 +135,7 @@ function initLive2d (){
         $('.hide-button').fadeOut(600)
     })
     var click_number = 0;
-    $( "#landlord" ).click(function() {
+    $( "#live2d" ).click(function() {
         click_number = click_number + 1;
         if (click_number <= 8) {
             textArray = ["不要动手动脚的！快把手拿开~~", "真…真的是不知羞耻！","Hentai！", "再摸的话我可要报警了！⌇●﹏●⌇", "110吗，这里有个变态一直在摸我(ó﹏ò｡)","人家已经不是小孩子了！", "哎呀！别碰我！"];
