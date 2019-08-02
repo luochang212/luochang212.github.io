@@ -440,11 +440,6 @@
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/gadget/speech-synthesis-copy/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://luochang212.github.io/gadget/speech-synthesis/</loc>
     <priority>0</priority>
   </url>

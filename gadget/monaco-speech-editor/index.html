@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>browser-amd-editor</title>
+        <title>Monaco Speech Editor</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
         <link rel="stylesheet" href="./style.css">
+        <script>
+            
+            
+            
+            
+            
+            
+            
+        </script>
     </head>
     <body>
         <div id="header">
             <div class="navbar">
                 <button onclick="getEditorValue();">Speak Document</button>
                 <button onclick="speakByLine();">Speak by line</button>
-                <button onclick="doPauseResume();">Pause</button>
-                <button onclick="doStop();">Stop</button>
+                
                 <button>Help</button>
             </div>
 
@@ -20,20 +28,45 @@
                 <a onclick="clickOpenNav()">&#9776;</a>
             </div>
 
-            <div id="navbar-right">
-                <button onclick="save();">Save</button>
+            <div class="navbar-right">
+                <button id="save" onclick="save();">Save</button>
             </div>
+
+            <div class="controller">
+                <button id='stop' onclick="doStop();"></button>
+            </div>
+
+           
+
+            <div class="controller">
+                <button id="control-button" class="pause" onclick="changeClass(); doPauseResume();"></button>
+            </div>
+
         </div>
 
         <div id="my-editor">
-            <div id="container"></div>
+            <div id="container" style="height: h px;"></div>
         </div>
 
         <div id="overlay" onclick="closeByOverlay()"></div>
 
         <div id="mySidenav" class="sidenav">
-	        <div id="main">
-                <p>Shortcuts</p>
+            <div id="main">
+                <h1>Setting</h1>
+
+                <div class="option">
+					<label for="rate">Rate</label>
+					<input type="range" min="0.1" max="2" step="0.1" name="rate" id="rate" value="1">
+                </div>
+                    
+                <div class="option">
+                    <label for="pitch">Pitch</label>
+                    <input type="range" min="0" max="2" step="0.1" name="pitch" id="pitch" value="1">
+                </div>
+
+                <br>
+
+                <h1>Shortcuts</h1>
             </div>
         </div>
 
@@ -117,6 +150,18 @@
                 element.click();
 
                 document.body.removeChild(element);
+            }
+
+            
+            var clicTime = 0;
+
+            function changeClass() {
+                clicTime += 1;
+                if (clicTime%2 == 1) {
+                    document.getElementById('control-button').setAttribute("class", "play");
+                } else {
+                    document.getElementById('control-button').setAttribute("class", "pause");
+                }
             }
 
 

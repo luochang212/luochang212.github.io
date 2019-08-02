@@ -2,7 +2,6 @@ var synth = window.speechSynthesis;
 
 var inputTxt = "I am going to play basketball"
 
-
 var voices = [];
 
 function populateVoiceList() {
@@ -41,11 +40,13 @@ function speak(){
         break;
       }
     }
-    utterThis.pitch = 1;//pitch.value;
-    utterThis.rate = 1.5;//rate.value;
+    utterThis.rate = document.getElementById("rate").value;
+    utterThis.pitch = document.getElementById("pitch").value;
     synth.speak(utterThis);
   }
 }
+
+var pauseResume = 'R';
 
 function doPauseResume() {
 	if(pauseResume == 'R') {
