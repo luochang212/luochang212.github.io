@@ -22,6 +22,7 @@
                 <button onclick="speakByLine();">Speak by line</button>
                 
                 <button>Help</button>
+                <span id="test"><span>
             </div>
 
             <div id="link">
@@ -39,10 +40,16 @@
            
 
             <div class="controller">
-                <button id="control-button" class="pause" onclick="changeClass(); doPauseResume();"></button>
+                <button id="control-button" class="pause" onclick="doPauseResume();"></button>
             </div>
 
         </div>
+
+        <div id="toolbar">
+            
+			<select class="language-picker"><option>apex</option><option>azcli</option><option>bat</option><option>c</option><option>clojure</option><option>coffeescript</option><option>cpp</option><option>csharp</option><option>csp</option><option>css</option><option>dockerfile</option><option>fsharp</option><option>go</option><option>graphql</option><option>handlebars</option><option>html</option><option>ini</option><option>java</option><option selected>javascript</option><option>json</option><option>kotlin</option><option>less</option><option>lua</option><option>markdown</option><option>msdax</option><option>mysql</option><option>objective-c</option><option>pascal</option><option>perl</option><option>pgsql</option><option>php</option><option>plaintext</option><option>postiats</option><option>powerquery</option><option>powershell</option><option>pug</option><option>python</option><option>r</option><option>razor</option><option>redis</option><option>redshift</option><option>ruby</option><option>rust</option><option>sb</option><option>scheme</option><option>scss</option><option>shell</option><option>sol</option><option>sql</option><option>st</option><option>swift</option><option>tcl</option><option>typescript</option><option>vb</option><option>xml</option><option>yaml</option></select>
+        </div>
+
 
         <div id="my-editor">
             <div id="container" style="height: h px;"></div>
@@ -56,13 +63,17 @@
 
                 <div class="option">
 					<label for="rate">Rate</label>
-					<input type="range" min="0.1" max="2" step="0.1" name="rate" id="rate" value="1">
+                    <input type="range" min="0.1" max="2" step="0.1" name="rate" id="rate" value="1">
+                    <div class="rate-value">1</div>
                 </div>
                     
                 <div class="option">
                     <label for="pitch">Pitch</label>
-                    <input type="range" min="0" max="2" step="0.1" name="pitch" id="pitch" value="1">
+                    <input type="range" min="0.1" max="2" step="0.1" name="pitch" id="pitch" value="1">
+                    <div class="pitch-value">1</div>
                 </div>
+
+                <select class="voice-select"></select>
 
                 <br>
 
@@ -109,6 +120,17 @@
                 
             });
 
+            var languageSelect = document.querySelector('.language-picker');
+
+            function syntaxHighlight(langName) {
+                monaco.editor.setModelLanguage(window.monaco.editor.getModels()[0], langName)
+            }
+
+            languageSelect.onchange = function() {
+                syntaxHighlight(languageSelect.value);
+                
+            }
+
             function getEditorValue() {
                 inputTxt = editor.getValue();
                 speak();
@@ -153,16 +175,16 @@
             }
 
             
-            var clicTime = 0;
+            
 
-            function changeClass() {
-                clicTime += 1;
-                if (clicTime%2 == 1) {
-                    document.getElementById('control-button').setAttribute("class", "play");
-                } else {
-                    document.getElementById('control-button').setAttribute("class", "pause");
-                }
-            }
+            
+            
+            
+            
+            
+            
+            
+            
 
 
             
