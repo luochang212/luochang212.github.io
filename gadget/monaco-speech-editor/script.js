@@ -50,9 +50,11 @@ function speak(){
 	if (inputTxt !== '') {
 	var utterThis = new SpeechSynthesisUtterance(inputTxt);
     utterThis.onend = function (event) {
+      // resumeInfinity();
       console.log('SpeechSynthesisUtterance.onend');
     }
     utterThis.onerror = function (event) {
+      // clearTimeout(timeoutResumeInfinity);
       console.error('SpeechSynthesisUtterance.onerror');
     }
     var selectedOption = voiceSelect.selectedOptions[0].getAttribute('data-name');  // "Google UK English Female";
@@ -67,8 +69,6 @@ function speak(){
     synth.speak(utterThis);
   }
 }
-
-
 
 function doPauseResume() {
 	if(pauseResume == 'R') {
@@ -98,3 +98,9 @@ pitch.onchange = function() {
 rate.onchange = function() {
   rateValue.textContent = rate.value;
 }
+
+// fix chrome speech synthesis with long text online
+// function resumeInfinity() {
+//   window.speechSynthesis.resume();
+//   timeoutResumeInfinity = setTimeout(resumeInfinity, 1000);
+// }
