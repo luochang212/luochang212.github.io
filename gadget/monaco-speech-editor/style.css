@@ -223,7 +223,7 @@ body {
   
   } */
 
-  label {
+  .option label {
     float: left;
     width: 10%;
     line-height: 1.5;
@@ -276,5 +276,5 @@ body {
     font-style: oblique;
     font-size:18px;
     text-align: center;
-    width: 180px;
+    width: 170px;
   }

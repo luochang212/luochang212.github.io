@@ -54,7 +54,7 @@
                 <button onclick="backward();">
                     <img src="./images/step-backward-solid.svg" alt="step-backward-solid" height="20px">
                 </button>
-                <button onclick="play();">
+                <button onclick="play();" style="padding:4px 7px 0 10px;">
                     <img id="play-pause" src="./images/play-solid.svg" alt="pause-solid" height="18px" style="padding-bottom:1px;">
                 </button>
                 <button onclick="forward();">
@@ -65,7 +65,10 @@
                 </button>
             </div>
 
-            <sapn id="line-number">Line number: 1</sapn>
+            <sapn id="line-number">
+                <label for="showLineNumber">Line number: </label>
+                <input type="number" id="showLineNumber" value="1" style="width: 35px; text-align:left; font-style: oblique;">
+            </sapn>
         </div>
 
 
@@ -202,6 +205,7 @@
             function play() {
                 var testTxt = editor.getModel().getLineContent(currentLineNumber);
                 if(testTxt == "") {
+                    alert("This line is empty.");
                     return -1;
                 }
                 
@@ -223,7 +227,7 @@
                 } else {
                     currentLineNumber--;
                 }
-                document.getElementById("line-number").innerHTML = 'Line number: ' + currentLineNumber;
+                document.getElementById("showLineNumber").value = currentLineNumber;
             }
 
             function forward() {
@@ -235,7 +239,21 @@
                 } else {
                     currentLineNumber ++;
                 }
-                document.getElementById("line-number").innerHTML = 'Line number: ' + currentLineNumber;
+                document.getElementById("showLineNumber").value = currentLineNumber;
+            }
+
+            
+
+            document.getElementById("showLineNumber").addEventListener("change", changeLineNumber);
+
+            function changeLineNumber() {
+                var x = document.getElementById("showLineNumber");
+                if (x.value >= 1 && x.value <= editor.getModel().getLineCount()) {
+                    currentLineNumber = x.value;
+                } else {
+                    x.value = currentLineNumber;
+                    alert("Input is out of range.");
+                }
             }
 
             function testFun() {
