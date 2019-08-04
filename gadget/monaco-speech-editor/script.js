@@ -50,11 +50,12 @@ function speak(){
 	if (inputTxt !== '') {
 	var utterThis = new SpeechSynthesisUtterance(inputTxt);
     utterThis.onend = function (event) {
-      // resumeInfinity();
+      document.getElementById("play-pause").src = "./images/play-solid.svg";
+      clickNumber = 0;
+      pauseResume = 'R';
       console.log('SpeechSynthesisUtterance.onend');
     }
     utterThis.onerror = function (event) {
-      // clearTimeout(timeoutResumeInfinity);
       console.error('SpeechSynthesisUtterance.onerror');
     }
     var selectedOption = voiceSelect.selectedOptions[0].getAttribute('data-name');  // "Google UK English Female";
@@ -73,11 +74,13 @@ function speak(){
 function doPauseResume() {
 	if(pauseResume == 'R') {
     window.speechSynthesis.pause();
-    document.getElementById('control-button').setAttribute("class", "play");
+    document.getElementById("play-pause").src = "./images/play-solid.svg";
+    // document.getElementById('control-button').setAttribute("class", "play");
 		pauseResume = 'P';
 	} else if(pauseResume == 'P') {
     window.speechSynthesis.resume();
-    document.getElementById('control-button').setAttribute("class", "pause");
+    document.getElementById("play-pause").src = "./images/pause-solid.svg";
+    // document.getElementById('control-button').setAttribute("class", "pause");
 		pauseResume = 'R';
 	} else {
 		console.log("Unknown state...");
@@ -98,9 +101,3 @@ pitch.onchange = function() {
 rate.onchange = function() {
   rateValue.textContent = rate.value;
 }
-
-// fix chrome speech synthesis with long text online
-// function resumeInfinity() {
-//   window.speechSynthesis.resume();
-//   timeoutResumeInfinity = setTimeout(resumeInfinity, 1000);
-// }

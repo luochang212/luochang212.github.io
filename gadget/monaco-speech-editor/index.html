@@ -22,7 +22,7 @@
                 <button onclick="speakByLine();">Speak by line</button>
                 
                 <button onclick="cursorPosition();">Cursor Position</button>
-                <span id="test"><span>
+                <span id="test"></span>
             </div>
 
             <div id="link">
@@ -33,15 +33,11 @@
                 <button id="save" onclick="save();">Save</button>
             </div>
 
-            <div class="controller">
-                <button id='stop' onclick="doStop();"></button>
-            </div>
+            
 
            
 
-            <div class="controller">
-                <button id="control-button" class="pause" onclick="doPauseResume();"></button>
-            </div>
+            
 
         </div>
 
@@ -49,7 +45,27 @@
             
 			<select class="language-picker"><option>apex</option><option>azcli</option><option>bat</option><option>c</option><option>clojure</option><option>coffeescript</option><option>cpp</option><option>csharp</option><option>csp</option><option>css</option><option>dockerfile</option><option>fsharp</option><option>go</option><option>graphql</option><option>handlebars</option><option>html</option><option>ini</option><option>java</option><option selected>javascript</option><option>json</option><option>kotlin</option><option>less</option><option>lua</option><option>markdown</option><option>msdax</option><option>mysql</option><option>objective-c</option><option>pascal</option><option>perl</option><option>pgsql</option><option>php</option><option>plaintext</option><option>postiats</option><option>powerquery</option><option>powershell</option><option>pug</option><option>python</option><option>r</option><option>razor</option><option>redis</option><option>redshift</option><option>ruby</option><option>rust</option><option>sb</option><option>scheme</option><option>scss</option><option>shell</option><option>sol</option><option>sql</option><option>st</option><option>swift</option><option>tcl</option><option>typescript</option><option>vb</option><option>xml</option><option>yaml</option></select>
         
-            // <input type="button" value="test" onclick="testFun()"/>
+            <input type="button" value="test" onclick="testFun()"/>
+
+            
+
+            <div class="voice-controller">
+                
+                <button onclick="backward();">
+                    <img src="./images/step-backward-solid.svg" alt="step-backward-solid" height="20px">
+                </button>
+                <button onclick="play();">
+                    <img id="play-pause" src="./images/play-solid.svg" alt="pause-solid" height="18px" style="padding-bottom:1px;">
+                </button>
+                <button onclick="forward();">
+                    <img src="./images/step-forward-solid.svg" alt="step-forward-solid" height="20px">
+                </button>
+                <button onclick="doStop()">
+                    <img src="./images/stop-solid.svg" alt="stop-solid" height="18px" style="padding-bottom:1px;">
+                </button>
+            </div>
+
+            <sapn id="line-number">Line number: 1</sapn>
         </div>
 
 
@@ -122,17 +138,6 @@
                 
             });
 
-            var languageSelect = document.querySelector('.language-picker');
-
-            function syntaxHighlight(langName) {
-                monaco.editor.setModelLanguage(window.monaco.editor.getModels()[0], langName)
-            }
-
-            languageSelect.onchange = function() {
-                syntaxHighlight(languageSelect.value);
-                
-            }
-
             function getEditorValue() {
                 inputTxt = editor.getValue();
                 speak();
@@ -155,11 +160,6 @@
             function cursorPosition() {
                 alert('Line number: ' + editor.getPosition().lineNumber);
             }
-
-
-            
-            
-            
 
 
             function save() {
@@ -185,18 +185,63 @@
                 document.body.removeChild(element);
             }
 
-            
-            
+            var languageSelect = document.querySelector('.language-picker');
 
-            
-            
-            
-            
-            
-            
-            
-            
+            function syntaxHighlight(langName) {
+                monaco.editor.setModelLanguage(window.monaco.editor.getModels()[0], langName)
+            }
 
+            languageSelect.onchange = function() {
+                syntaxHighlight(languageSelect.value);
+                
+            }
+
+            var currentLineNumber = 1;
+            var clickNumber = 0;
+
+            function play() {
+                var testTxt = editor.getModel().getLineContent(currentLineNumber);
+                if(testTxt == "") {
+                    return -1;
+                }
+                
+                clickNumber ++;
+                if (clickNumber == 1) {
+                    pauseResume = 'R';
+                    getEditorValueByLine(currentLineNumber);
+                    document.getElementById("play-pause").src = "./images/pause-solid.svg";
+                } else {
+                    doPauseResume();
+                }
+            }
+
+            function backward(LineNumber) {
+                doStop();
+                if (currentLineNumber <= 1) {
+                    alert("This is the first line.");
+                    return -1;
+                } else {
+                    currentLineNumber--;
+                }
+                document.getElementById("line-number").innerHTML = 'Line number: ' + currentLineNumber;
+            }
+
+            function forward() {
+                doStop();
+                var maxLine = editor.getModel().getLineCount();
+                if (currentLineNumber >= maxLine) {
+                    alert("This is the last line.");
+                    return -1;
+                } else {
+                    currentLineNumber ++;
+                }
+                document.getElementById("line-number").innerHTML = 'Line number: ' + currentLineNumber;
+            }
+
+            function testFun() {
+                document.getElementById("test").innerHTML = "dfas";
+            }
+            
 
             
             var clickCount = 0;
