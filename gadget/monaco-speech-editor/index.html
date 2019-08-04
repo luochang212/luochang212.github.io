@@ -19,9 +19,10 @@
         <div id="header">
             <div class="navbar">
                 <button onclick="getEditorValue();">Speak Document</button>
-                <button onclick="speakByLine();">Speak by line</button>
-                
-                <button onclick="cursorPosition();">Cursor Position</button>
+                <button onclick="speakByLine();">Speak By Line</button>
+                <button onclick="cursorPosition();">Search Cursor Position</button>
+                <button onclick="clickJumpToLine();">Jump To Line</button>
+                <button onclick="doStop();">Stop Speaking</button>
                 <span id="test"></span>
             </div>
 
@@ -60,9 +61,7 @@
                 <button onclick="forward();">
                     <img src="./images/step-forward-solid.svg" alt="step-forward-solid" height="20px">
                 </button>
-                <button onclick="doStop()">
-                    <img src="./images/stop-solid.svg" alt="stop-solid" height="18px" style="padding-bottom:1px;">
-                </button>
+                
             </div>
 
             <sapn id="line-number">
@@ -134,26 +133,36 @@
                     ].join('\n'),
                     language: 'javascript',
                     wordWrap: "on",   
-                    wrappingIndent: "indent"
+                    wrappingIndent: "indent",
+                    
+                    
+                    
+                    readOnly: false,
+                    
                 });
 
                 
                 
             });
 
-            function getEditorValue() {
-                inputTxt = editor.getValue();
+            function easySpeak(val) {
+                doStop();
+                inputTxt = val;
                 speak();
             }
 
-            function getEditorValueByLine(x) {
-                inputTxt = editor.getModel().getLineContent(x);
-                speak();
+            function getEditorValue() {
+                easySpeak(editor.getValue());
+            }
+
+            function getEditorValueByLine(val) {
+                easySpeak(editor.getModel().getLineContent(val));
             }
 
             function speakByLine() {
                 var lineNumber = prompt("Please input the line number:", "");
                 if (lineNumber == null || lineNumber == "") {
+                    easySpeak("You didn't input anything");
                     
                 } else {
                     getEditorValueByLine(lineNumber);
@@ -161,8 +170,48 @@
             }
 
             function cursorPosition() {
-                alert('Line number: ' + editor.getPosition().lineNumber);
+                easySpeak("Line number is " + editor.getPosition().lineNumber + "column number is " + editor.getPosition().column);
+                
             }
+
+            
+            function jumpToLine(val) {
+                editor.setSelection(new monaco.Selection(val,1,val,1));
+                editor.focus();
+
+                
+                currentLineNumber = val;
+                document.getElementById("showLineNumber").value = currentLineNumber;
+
+                
+                
+                
+                
+            }
+
+            function jumpToPosition(x, y) {
+                editor.setSelection(new monaco.Selection(x,y,x,y));
+                editor.focus();
+            }
+
+            function clickJumpToLine() {
+                var lineNumber = prompt("Please input the line number:", "");
+                var lineNumber_int = parseInt(lineNumber, 10);  
+                if (lineNumber == null || lineNumber == "") {
+                    easySpeak("You didn't input anything");
+                } else if(lineNumber_int < 1 || lineNumber_int > editor.getModel().getLineCount()) {
+                    easySpeak("Your input is out of range");
+                } else {
+                    jumpToLine(lineNumber_int);
+                }
+            }
+
+            
+            
+            
+            
+            
+            
 
 
             function save() {
@@ -205,7 +254,8 @@
             function play() {
                 var testTxt = editor.getModel().getLineContent(currentLineNumber);
                 if(testTxt == "") {
-                    alert("This line is empty.");
+                    easySpeak("Information from monaco speech editor: " + "This line is empty");
+                    
                     return -1;
                 }
                 
@@ -222,7 +272,8 @@
             function backward(LineNumber) {
                 doStop();
                 if (currentLineNumber <= 1) {
-                    alert("This is the first line.");
+                    easySpeak("This is the first line");
+                    
                     return -1;
                 } else {
                     currentLineNumber--;
@@ -234,15 +285,14 @@
                 doStop();
                 var maxLine = editor.getModel().getLineCount();
                 if (currentLineNumber >= maxLine) {
-                    alert("This is the last line.");
+                    easySpeak("This is the last line");
+                    
                     return -1;
                 } else {
                     currentLineNumber ++;
                 }
                 document.getElementById("showLineNumber").value = currentLineNumber;
             }
-
-            
 
             document.getElementById("showLineNumber").addEventListener("change", changeLineNumber);
 
@@ -252,14 +302,19 @@
                     currentLineNumber = x.value;
                 } else {
                     x.value = currentLineNumber;
-                    alert("Input is out of range.");
+                    easySpeak("Your input is out of range");
+                    
                 }
             }
 
-            function testFun() {
-                document.getElementById("test").innerHTML = "dfas";
-            }
             
+
+
+            function testFun() {
+                
+                
+                
+            }
 
             
             var clickCount = 0;
