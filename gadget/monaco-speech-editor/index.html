@@ -370,18 +370,12 @@
 
             
             document.onkeyup = function(e) {
-                if (e.which == 37) {
-                    bondUpdateFunction();
-                } else if (e.which == 38) {
-                    bondUpdateFunction();
-                } else if (e.which == 39) {
-                    bondUpdateFunction();
-                } else if (e.which == 40) {
-                    bondUpdateFunction();
-                } else if (e.ctrlKey && e.altKey && e.which == 80) {
+                if (e.ctrlKey && e.altKey && e.which == 80) {
                     play();
                 } else if (e.ctrlKey && e.altKey && e.which == 83) {
                     doStop();
+                } else if (e.which == 13 || e.which == 37 || e.which == 38 || e.which == 39 || e.which == 40) {
+                    bondUpdateFunction();
                 }
             };
 
