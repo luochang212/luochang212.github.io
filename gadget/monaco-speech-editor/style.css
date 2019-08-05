@@ -74,7 +74,7 @@ body {
 
   .navbar-right {
     float: right;
-    padding-top: 13px;
+    padding-top: 15px;
     padding-right: 2%;
     font-size: 1rem;
     font-weight: 600;
@@ -277,4 +277,17 @@ body {
     font-size:18px;
     text-align: center;
     width: 170px;
+  }
+
+  #line-number label {
+    font-size: 17px;
+  }
+
+  #show-line-column {
+    float: right;
+    padding:4px 6px 2px 6px;
+    font-style: oblique;
+    font-size:16px;
+    text-align: center;
+    /* width: 70px; */
   }

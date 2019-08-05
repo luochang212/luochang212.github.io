@@ -21,7 +21,7 @@
                 <button onclick="getEditorValue();">Speak Document</button>
                 <button onclick="speakByLine();">Speak By Line</button>
                 <button onclick="cursorPosition();">Search Cursor Position</button>
-                <button onclick="clickJumpToLine();">Jump To Line</button>
+                <button onclick="clickJumpToLine();">Cursor Jump To Line</button>
                 <button onclick="doStop();">Stop Speaking</button>
                 <span id="test"></span>
             </div>
@@ -65,9 +65,11 @@
             </div>
 
             <sapn id="line-number">
-                <label for="showLineNumber">Line number: </label>
-                <input type="number" id="showLineNumber" value="1" style="width: 35px; text-align:left; font-style: oblique;">
+                <label for="showLineNumber">Jump To Line: </label>
+                <input type="number" id="showLineNumber" value="1" onkeyup="handleEnter(event);" style="width: 35px; text-align:left; font-style: oblique;">
             </sapn>
+
+            <span id="show-line-column">Ln 1, Col 1</span>
         </div>
 
 
@@ -106,11 +108,31 @@
         <script src="./script.js"></script>
         <script>
             'use strict'
+
             var editor;
+
+            var editorFontSize = 15;
 
             require.config({ paths: { 'vs': './node_modules/monaco-editor/min/vs' }});
 
             require(['vs/editor/editor.main'], function() {
+
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+
                 editor = monaco.editor.create(document.getElementById('container'), {
                     value: [
                         '/* Write your code here. */',
@@ -139,6 +161,9 @@
                     
                     readOnly: false,
                     
+                    
+                    
+                    fontSize: editorFontSize
                 });
 
                 
@@ -170,18 +195,19 @@
             }
 
             function cursorPosition() {
-                easySpeak("Line number is " + editor.getPosition().lineNumber + "column number is " + editor.getPosition().column);
+                easySpeak("Line number is " + editor.getPosition().lineNumber + "and column number is " + editor.getPosition().column);
                 
             }
 
             
-            function jumpToLine(val) {
+            function cursorJumpToLine(val) {
                 editor.setSelection(new monaco.Selection(val,1,val,1));
                 editor.focus();
 
                 
-                currentLineNumber = val;
-                document.getElementById("showLineNumber").value = currentLineNumber;
+                
+                
+
 
                 
                 
@@ -189,10 +215,10 @@
                 
             }
 
-            function jumpToPosition(x, y) {
-                editor.setSelection(new monaco.Selection(x,y,x,y));
-                editor.focus();
-            }
+            
+            
+            
+            
 
             function clickJumpToLine() {
                 var lineNumber = prompt("Please input the line number:", "");
@@ -202,7 +228,7 @@
                 } else if(lineNumber_int < 1 || lineNumber_int > editor.getModel().getLineCount()) {
                     easySpeak("Your input is out of range");
                 } else {
-                    jumpToLine(lineNumber_int);
+                    cursorJumpToLine(lineNumber_int);
                 }
             }
 
@@ -249,6 +275,7 @@
             }
 
             var currentLineNumber = 1;
+            var currentColumnNumber = 1;
             var clickNumber = 0;
 
             function play() {
@@ -261,6 +288,7 @@
                 
                 clickNumber ++;
                 if (clickNumber == 1) {
+                    
                     pauseResume = 'R';
                     getEditorValueByLine(currentLineNumber);
                     document.getElementById("play-pause").src = "./images/pause-solid.svg";
@@ -269,7 +297,7 @@
                 }
             }
 
-            function backward(LineNumber) {
+            function backward() {
                 doStop();
                 if (currentLineNumber <= 1) {
                     easySpeak("This is the first line");
@@ -277,6 +305,7 @@
                     return -1;
                 } else {
                     currentLineNumber--;
+                    cursorJumpToLine(currentLineNumber);
                 }
                 document.getElementById("showLineNumber").value = currentLineNumber;
             }
@@ -290,16 +319,18 @@
                     return -1;
                 } else {
                     currentLineNumber ++;
+                    cursorJumpToLine(currentLineNumber);
                 }
                 document.getElementById("showLineNumber").value = currentLineNumber;
             }
 
-            document.getElementById("showLineNumber").addEventListener("change", changeLineNumber);
+            document.getElementById("showLineNumber").addEventListener("change", jumpToLine);
 
-            function changeLineNumber() {
+            function jumpToLine() {
                 var x = document.getElementById("showLineNumber");
                 if (x.value >= 1 && x.value <= editor.getModel().getLineCount()) {
                     currentLineNumber = x.value;
+                    cursorJumpToLine(parseInt(currentLineNumber, 10));
                 } else {
                     x.value = currentLineNumber;
                     easySpeak("Your input is out of range");
@@ -307,15 +338,65 @@
                 }
             }
 
-            
+            function valueChangeWithCursor() {
+                var x = document.getElementById("showLineNumber");
+                x.value = currentLineNumber;
+            }
 
+            function updateLineColumnNumber() {
+                currentLineNumber = editor.getPosition().lineNumber;
+                currentColumnNumber = editor.getPosition().column;
+            }
+
+            function showLineColumn() {
+                
+                document.getElementById("show-line-column").innerHTML = "Ln " + currentLineNumber + ", Col " + currentColumnNumber;
+            }
+
+            function bondUpdateFunction() {
+                updateLineColumnNumber();
+                showLineColumn();
+                valueChangeWithCursor();
+            }
 
             function testFun() {
                 
+
                 
-                
+                showLineColumn();
+                document.getElementById("test").innerHTML = editor.getModel().getLineCount();
             }
 
+
+            
+            document.onkeyup = function(e) {
+                if (e.which == 37) {
+                    bondUpdateFunction();
+                } else if (e.which == 38) {
+                    bondUpdateFunction();
+                } else if (e.which == 39) {
+                    bondUpdateFunction();
+                } else if (e.which == 40) {
+                    bondUpdateFunction();
+                } else if (e.ctrlKey && e.altKey && e.which == 80) {
+                    play();
+                } else if (e.ctrlKey && e.altKey && e.which == 83) {
+                    doStop();
+                }
+            };
+
+            
+            document.onclick = function(e) {
+                bondUpdateFunction();
+            }
+
+            
+            function handleEnter(e) {
+                if (e.keyCode == 13) {
+                    document.getElementById("showLineNumber").blur();
+                }
+            }
+            
             
             var clickCount = 0;
 
