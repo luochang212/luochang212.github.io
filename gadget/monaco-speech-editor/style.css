@@ -13,23 +13,24 @@ body {
     left: 0px;
     width: 100%;
     height: 50px;
-    background: #333333;
+    background: #2b2b2b;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-    z-index: 999;
+    z-index: 99;
     overflow: hidden;
   }
 
   #toolbar {
-    margin-top: 50px; 
+    /* margin-top: 50px;  */
     position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 100%;
+    top: 50px;
+    left: 50px;
+    right: 0;
     height: 28px;
     background: #F5F5F5;  /*  #fff;	  rgb(255, 255, 255); */
     /* border-bottom: 1px solid rgba(158, 158, 158, 0.3);; */
-    z-index: 999;
+    z-index: 99;
     overflow: hidden;
+    transition: 0.5s;
   }
   
   .navbar {
@@ -37,6 +38,7 @@ body {
     /* padding-left: 5%; */
     color: white;
     font-size: 1.25rem;
+    user-select: none;
   }
   
   .navbar a {
@@ -55,7 +57,7 @@ body {
   }
 
   .navbar button {
-    background-color: #333333;
+    background-color: #2b2b2b;
     border: none;
     color: white;
     padding: 15px 16px;
@@ -64,7 +66,6 @@ body {
     text-decoration: none;
     display: inline-block;
     font-size: 17px;
-    cursor: pointer;
     outline:none;
   }
 
@@ -81,6 +82,7 @@ body {
     font-size: 1rem;
     font-weight: 600;
     text-decoration: none;
+    user-select: none;
   }
 
   #save {
@@ -104,6 +106,7 @@ body {
     font-size: 1rem;
     font-weight: 600;
     text-decoration: none;
+    user-select: none;
   }
   
   #link a {
@@ -117,26 +120,16 @@ body {
     text-decoration: none;
   }
 
-  #my-editor {
-    padding-top:47px;
-  }
-
   #container {
-    padding-top: 78px;
-    position:fixed; 
-    /* position: relative; */
-    /* padding: 4rem; */
-    top:0; 
-    left:0; 
-    bottom:0; 
-    right:0;
-    width: 100%;
+    position: fixed; 
+    top: 78px;
+    left: 50px; 
+    bottom: 0; 
+    right: 0;
     margin: 0 auto;
     display: block;
-    /* overflow-x: hidden; */
-    /* border:1px solid grey; */
-    /* height: 620px; */
     overflow: scroll;
+    transition: 0.5s;
   }
   
   #overlay {
@@ -147,7 +140,6 @@ body {
     top: 0;
     left: 0;
     z-index: 9999;
-    cursor: pointer;
   }
   
   .sidenav {
@@ -268,7 +260,6 @@ body {
     
     text-decoration: none;
     display: inline-block;
-    cursor: pointer;
     outline:none;
   }
 
@@ -291,5 +282,65 @@ body {
     font-style: oblique;
     font-size:16px;
     text-align: center;
-    /* width: 70px; */
   }
+
+  #left-nav {
+    position: fixed;
+    top: 50px;
+    bottom: 0;
+    left: 0;
+    right: calc(100vw - 50px);
+    background-color: #333;
+    z-index: 999;
+  }
+
+
+  .left-nav-button svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .left-nav-button {
+    width: auto;
+    padding: 10px 0 10px 0;
+    height: 2rem;
+    text-align: center;
+    color: #C0C0C0;
+    background:none;
+    border:none;
+    font: inherit;
+    outline:none;
+  }
+
+  .left-nav-button:hover{
+    color: white;
+  }
+
+  .left-nav-button.active {
+    color: white;
+  }
+
+  #left-sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 50px;
+    left: 50px;
+    background-color: #252525;
+    overflow-x: hidden;
+    transition: 0.5s;
+    z-index: 999;
+  }
+
+  /* #left-sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+
+  #left-sidebar a:hover {
+    color: #f1f1f1;
+  } */
