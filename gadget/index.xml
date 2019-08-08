@@ -39,6 +39,34 @@
     
     <item>
       <title></title>
+      <link>http://luochang212.github.io/gadget/fau/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/fau/readme/</guid>
+      <description>fausteditorweb  The online Faust Editor can be used to edit, compile and run Faust code from any recent Web Browser with webassembly support. It works completely on the client side and it is therefore very convenient for situations with many simultaneous users (workshops, classrooms, etc.). It embeds the latest version of the Faust compiler with an efficient webassembly backend and offers polyphonic MIDI support.
+Features Code Editing The editor engine is based on Monaco Editor.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/gadget/fau/dist/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/fau/dist/</guid>
+      <description>Faust IDE  if (&#34;serviceWorker&#34; in navigator) { window.addEventListener(&#34;load&#34;, () = { navigator.serviceWorker.register(&#34;./service-worker.js&#34;); /* .then((registration) = { console.log(&#34;SW registered: &#34;, registration); }).catch((registrationError) = { console.log(&#34;SW registration failed: &#34;, registrationError); }); */ }); }       Run   Share   Upload   Save As    Docs    Export   Poly Voices  Mono 1 2 4 8 16 32 64 128   Buffer Size  128 256 512 1024 2048 4096 8192   Use AudioWorklet   Save DSP Code   Save Params State   Save DSP Cache   Real-time Compile   Popup UI   Plot Mode  Offline Continuous On Event Manual   Samples   Sample Rate   FFT Size  256 1024 4096   FFT Overlap  1 2 4 8   Draw Spectrogram    Plot         Examples Action Examples Action Another action   --               Diagram  Plot   DSP  &amp;times;    Diagram not available     DSP not running Click Run to compile your faust code.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/gadget/font/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/font/</guid>
+      <description>Don&#39;t threaten me with a good time &amp;#9834;  Don&#39;t threaten me with a good time &amp;#9834;  Don&#39;t threaten me with a good time &amp;#9834;  </description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>http://luochang212.github.io/gadget/gallery/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -79,7 +107,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/gadget/monaco-speech-editor/</guid>
-      <description>Monaco Speech Editor  // // Check before leave website // window.addEventListener(&#39;beforeunload&#39;, function (e) { // // Cancel the event // e.preventDefault(); // // Chrome requires returnValue to be set // e.returnValue = &#39;Do you sure&#39;; // });    Speak Document Speak By Line Search Cursor Position Cursor Jump To Line Stop Speaking   &amp;#9776;  Save   --  --  --  Language -- apexazclibatcclojurecoffeescriptcppcsharpcspcssdockerfilefsharpgographqlhandlebarshtmlinijavajavascriptjsonkotlinlessluamarkdownmsdaxmysqlobjective-cpascalperlpgsqlphpplaintextpostiatspowerquerypowershellpugpythonrrazorredisredshiftrubyrustsbschemescssshellsolsqlstswifttcltypescriptvbxmlyaml    --  Jump To Line:   Ln 1, Col 1     Setting Rate 1  Pitch 1   Shortcuts      &#39;use strict&#39; var editor; var editorFontSize = 15; require.</description>
+      <description>Monaco Speech Editor  // // Check before leave website // window.addEventListener(&#39;beforeunload&#39;, function (e) { // // Cancel the event // e.preventDefault(); // // Chrome requires returnValue to be set // e.returnValue = &#39;Do you sure&#39;; // });    Speak Document Speak By Line Search Cursor Position Cursor Jump To Line Stop Speaking   &amp;#9776;  Save   apexazclibatcclojurecoffeescriptcppcsharpcspcssdockerfilefsharpgographqlhandlebarshtmlinijavajavascriptjsonkotlinlessluamarkdownmsdaxmysqlobjective-cpascalperlpgsqlphpplaintextpostiatspowerquerypowershellpugpythonrrazorredisredshiftrubyrustsbschemescssshellsolsqlstswifttcltypescriptvbxmlyaml     Jump To Line:   Ln 1, Col 1     Setting Rate 1  Pitch 1   Shortcuts      &#39;use strict&#39; var editor; var editorFontSize = 15; require.</description>
     </item>
     
     <item>
@@ -126,6 +154,15 @@
       
       <guid>http://luochang212.github.io/gadget/speech-synthesis/</guid>
       <description>Text-To-Speech Service       var pauseResume = &#39;R&#39;; $(document).ready(function(){ $(&#34;#doClear&#34;).click(function() { $(&#34;#taInput&#34;).val(&#34;&#34;); $(&#39;.voption option[value=&#34;native&#34;]&#39;).prop(&#39;selected&#39;, &#39;selected&#39;).change(); return false; }); $(&#34;#doPauseResume&#34;).click(function() { doPauseResume(); return false; }); $(&#34;#doStop&#34;).click(function() { doStop(); return false; }); $(&#34;#doLangId&#34;).click(function() { doLangId(); return false; }); $(&#34;#doTTS&#34;).click(function() { doTTS(); return false; }); $(&#34;#taInput&#34;).bind(&#39;input propertychange&#39;, function() { doTextAreaChange(this.value); }); }); // Initialize speech engine... initSpeech();    Text-To-Speech  --    Cut &amp; Paste Text To Synthesize (or enter a URL)    Voice   Rate  Pitch     setTimeout(function() { // Initialize the voices.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/gadget/test/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/test/</guid>
+      <description> </description>
     </item>
     
     <item>

@@ -34,34 +34,25 @@
                 <button id="save" onclick="save();">Save</button>
             </div>
 
-            
-
-           
-
-            
-
         </div>
 
         <div id="toolbar">
-            
 			<select class="language-picker"><option>apex</option><option>azcli</option><option>bat</option><option>c</option><option>clojure</option><option>coffeescript</option><option>cpp</option><option>csharp</option><option>csp</option><option>css</option><option>dockerfile</option><option>fsharp</option><option>go</option><option>graphql</option><option>handlebars</option><option>html</option><option>ini</option><option>java</option><option selected>javascript</option><option>json</option><option>kotlin</option><option>less</option><option>lua</option><option>markdown</option><option>msdax</option><option>mysql</option><option>objective-c</option><option>pascal</option><option>perl</option><option>pgsql</option><option>php</option><option>plaintext</option><option>postiats</option><option>powerquery</option><option>powershell</option><option>pug</option><option>python</option><option>r</option><option>razor</option><option>redis</option><option>redshift</option><option>ruby</option><option>rust</option><option>sb</option><option>scheme</option><option>scss</option><option>shell</option><option>sol</option><option>sql</option><option>st</option><option>swift</option><option>tcl</option><option>typescript</option><option>vb</option><option>xml</option><option>yaml</option></select>
         
             <input type="button" value="test" onclick="testFun()"/>
 
-            
-
             <div class="voice-controller">
-                
                 <button onclick="backward();">
                     <img src="./images/step-backward-solid.svg" alt="step-backward-solid" height="20px">
                 </button>
+
                 <button onclick="play();" style="padding:4px 7px 0 10px;">
                     <img id="play-pause" src="./images/play-solid.svg" alt="pause-solid" height="18px" style="padding-bottom:1px;">
                 </button>
+
                 <button onclick="forward();">
                     <img src="./images/step-forward-solid.svg" alt="step-forward-solid" height="20px">
                 </button>
-                
             </div>
 
             <sapn id="line-number">
@@ -117,21 +108,21 @@
 
             require(['vs/editor/editor.main'], function() {
 
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+                monaco.editor.defineTheme('myTheme', {
+                    base: 'vs',
+                    inherit: true,
+                    rules: [{ background: 'EDF9FA' }],
+                    colors: {
+                        
+                        
+                        
+                        'editor.lineHighlightBackground': '#0000FF20',
+                        
+                        
+                        
+                    }
+                });
+                monaco.editor.setTheme('myTheme');
 
                 editor = monaco.editor.create(document.getElementById('container'), {
                     value: [
@@ -374,7 +365,7 @@
                     play();
                 } else if (e.ctrlKey && e.altKey && e.which == 83) {
                     doStop();
-                } else if (e.which == 13 || e.which == 37 || e.which == 38 || e.which == 39 || e.which == 40) {
+                } else if (e.which == 13 || e.which == 37 || e.which == 38 || e.which == 39 || e.which == 40 || e.which == 8) {
                     bondUpdateFunction();
                 }
             };
@@ -392,31 +383,30 @@
             }
             
             
-            var clickCount = 0;
+            var navStatus = "c";
 
             function clickOpenNav() {
-                clickCount += 1;
-                if (clickCount%2 == 1) {
+                if (navStatus == "c") {
                     openNav();
-                } else {
-                    closeNav();
+                    navStatus = "o";
+                } else if (navStatus == "o") {
+                    off();
+                    navStatus = "c";
                 }
             }
 
             function closeByOverlay() {
-                clickCount += 1;
                 off();
+                navStatus = "c"
             }
             
             function openNav() {
                 on();
-                document.getElementById("mySidenav").style.width = "20%";
-                
+                document.getElementById("mySidenav").style.width = "300px";
             }
 
             function closeNav() {
                 document.getElementById("mySidenav").style.width = "0";
-                document.body.style.backgroundColor = "white";
             }
 
             function on() {
