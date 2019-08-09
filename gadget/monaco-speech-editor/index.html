@@ -60,11 +60,14 @@
         <div id="left-sidebar">
 
             <div id="sidebar-1" class="tabcontent">
-                <a>1asdfasdfasdf</a>
+                    <a>1asdfasdfasdf</a>
             </div>
     
             <div id="sidebar-2" class="tabcontent">
-                <a>2asdfasdfasdf</a>
+                <input id="upload" type=file size=30>
+                <div id="myDropZone" class="dropzone">
+                    <p>Drop your file here</p>
+                </div>
             </div>
     
             <div id="sidebar-3" class="tabcontent">
@@ -109,7 +112,7 @@
         <div id="overlay" onclick="closeByOverlay()"></div>
 
         <div id="mySidenav" class="sidenav">
-            <div id="main">
+            <div id="sidenav-content">
                 <h1>Setting</h1>
 
                 <div class="option">
@@ -512,6 +515,87 @@
               }
             }
 
+
+            
+            var drop_code = "";
+
+            function uploadOn(e, callback) {
+                drop_code = e.dataTransfer.getData('text');
+
+                if (drop_code) {
+                    
+                    callback();
+                } else {
+                    getUploadText(e, callback);
+                }
+            }
+
+            function getUploadText(e, callback) {
+                    var files = e.target.files || e.dataTransfer.files;
+                    var file = files[0];
+
+                    if (location.host.indexOf("sitepointstatic") >= 0) return;
+
+                    var request = new XMLHttpRequest();
+                    if (request.upload) {
+                        
+                        var reader = new FileReader();
+                        var ext = file.name.toString().split('.').pop();
+                        var filename = file.name.toString().split('.').shift();
+                        var type;
+
+                        
+                        if (ext === "json") {
+                            type = "json";
+                        } else if (ext === "js") {
+                            type = "js";
+                        }
+
+                        reader.readAsText(file);
+
+                        reader.onloadend = function(e) {
+                            drop_code = reader.result;
+                            callback();
+                            
+                        };
+                    }
+            }
+
+
+            function uploadFile(e) {
+                fileDragHover(e);
+                uploadOn(e, updateDropCode);
+            }
+
+            function fileDragHover(e) {
+                e.stopPropagation();
+                e.preventDefault();
+            }
+
+            function updateDropCode() {
+                document.getElementById("test").innerHTML = drop_code;
+            }
+
+            function configureDropZone(zoneid) {
+                var filedrag = document.getElementById(zoneid);
+                filedrag.addEventListener("dragover", fileDragHover, false);
+                filedrag.addEventListener("dragleave", fileDragHover, false);
+                filedrag.addEventListener("drop", uploadFile, false);
+            }
+
+            configureDropZone("myDropZone");
+
+
+            
+            function handleFileSelect(e) {
+                getUploadText(e, updateDropCode);
+            }
+
+            function configureFileSelect(id) {
+                document.getElementById(id).addEventListener('change', handleFileSelect, false);
+            }
+
+            configureFileSelect("upload");
 
         </script>
     </body>

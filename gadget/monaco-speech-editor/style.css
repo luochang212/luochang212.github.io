@@ -127,8 +127,8 @@ body {
     right: 0;
     margin: 0 auto;
     display: block;
-    overflow: scroll;
     transition: 0.5s;
+    overflow: scroll; 
   }
   
   #overlay {
@@ -154,10 +154,8 @@ body {
     z-index: 99999;
   }
   
-  #main {
+  #sidenav-content {
     transition: margin-left .5s;
-    padding-top: 0;
-    /* 周围留白距离 */
     padding: 16px;
     color: #FFFFFF;
   }
@@ -356,3 +354,29 @@ body {
   #left-sidebar a:hover {
     color: #f1f1f1;
   } */
+
+  .tabcontent {
+    padding: 10px 16px 10px 16px;
+  }
+
+  .dropzone {
+		width: auto;
+		height: calc(100vh - 120px);
+		font-weight: bold;
+		line-height: calc(100vh - 210px);
+    text-align: center;
+		color: gray;
+		border: 2px dashed gray;
+		cursor: default;
+		font-size : 20px;
+	}
+
+	.dropzone:hover{
+		color: #FFF;
+    border-color: #FFF;
+  }
+  
+  #upload {
+    color: white;
+    padding: 0 0 15px 0;
+  }
