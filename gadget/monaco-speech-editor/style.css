@@ -20,6 +20,7 @@ body {
     z-index: 99;
     overflow: hidden;
     transition: 0.2s;
+    display: none;
   }
 
   #show-file-name {
@@ -89,7 +90,7 @@ body {
 
   #toolbar {
     position: fixed;
-    top: 50px;
+    top: 0px;
     left: 50px;
     right: 0;
     height: 28px;
@@ -102,7 +103,7 @@ body {
 
   #container {
     position: fixed; 
-    top: 78px;
+    top: 28px;
     left: 50px; 
     bottom: 0; 
     right: 0;
@@ -204,7 +205,6 @@ body {
     font-size: 15px;
     float: left;
     width: 10%;
-    /* padding-right:10px;  */
     line-height: 1.5;
   }
   
