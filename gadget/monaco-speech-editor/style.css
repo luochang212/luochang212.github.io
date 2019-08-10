@@ -31,15 +31,35 @@ body {
     top: 0;
     text-align: center;
     line-height: 50px;
-    height: 50px;    
-    color: #f2f2f2;
-    font-size: 1.25rem;
+    height: 50px;
   }
 
-  #show-file-name p {
-    line-height: 1.5;
+  .textarea-readonly {
+    line-height: 1.2;
     display: inline-block;
     vertical-align: middle;
+
+    color: #f2f2f2;
+    font-size: 1.25rem;
+
+    border: 1px solid #2c2c2c;
+    background: #2c2c2c;
+    text-align: center;
+    outline: none;
+  }
+  
+  .textarea-modify {
+    line-height: 1.2;
+    display: inline-block;
+    vertical-align: middle;
+
+    color: #f2f2f2;
+    font-size: 1.25rem;
+
+    border: 1px solid #FFF;
+    background: #333;
+    text-align: center;
+    outline: none;
   }
 
   .navbar-right {
@@ -341,13 +361,13 @@ body {
     padding: 0;
     margin: 0;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 
   #upload-area {
     padding: 12px 15px 12px 15px;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 
   .sidebar-top-title {

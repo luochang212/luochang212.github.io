@@ -19,10 +19,10 @@
         <div id="header">
             
 
+            
             <div id="show-file-name">
-                Untitled
+                <input class="textarea-readonly" id="editable-textarea" readonly value="Untitled-1" />
             </div>
-
             
         </div>
 
@@ -648,6 +648,22 @@
                     headerHidden = "n";
                 }
             }
+
+            
+            function configureEditableTextarea(id) {
+                var textarea = document.getElementById(id);
+                textarea.ondblclick = function() {
+                    this.readOnly = false;
+                    this.className = "textarea-modify";
+                }
+                textarea.onblur = function() {
+                    this.readOnly = true;
+                    this.className = "textarea-readonly";
+                    document.getElementById("test").innerHTML = document.getElementById(id).value;
+                }
+            }
+
+            configureEditableTextarea("editable-textarea");
 
             
 
