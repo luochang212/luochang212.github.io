@@ -116,7 +116,7 @@ Features Code Editing The editor engine is based on Monaco Editor.</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/gadget/monaco-speech-editor/</guid>
-      <description>Monaco Speech Editor  // // Check before leave website // window.addEventListener(&#39;beforeunload&#39;, function (e) { // // Cancel the event // e.preventDefault(); // // Chrome requires returnValue to be set // e.returnValue = &#39;Do you sure&#39;; // });    Speak Document Speak By Line Search Cursor Position Cursor Jump To Line Stop Speaking  -- Untitled --  &amp;#9776;  Save --             Explorer</description>
+      <description>Monaco Speech Editor  // // Check before leave website // window.addEventListener(&#39;beforeunload&#39;, function (e) { // // Cancel the event // e.preventDefault(); // // Chrome requires returnValue to be set // e.returnValue = &#39;Do you sure&#39;; // });    Speak Document Speak By Line Search Cursor Position Cursor Jump To Line Stop Speaking  -- Untitled --   &amp;#9776;  Save --             Explorer</description>
     </item>
     
     <item>
@@ -163,6 +163,15 @@ Features Code Editing The editor engine is based on Monaco Editor.</description>
       
       <guid>http://luochang212.github.io/gadget/speech-synthesis/</guid>
       <description>Text-To-Speech Service       var pauseResume = &#39;R&#39;; $(document).ready(function(){ $(&#34;#doClear&#34;).click(function() { $(&#34;#taInput&#34;).val(&#34;&#34;); $(&#39;.voption option[value=&#34;native&#34;]&#39;).prop(&#39;selected&#39;, &#39;selected&#39;).change(); return false; }); $(&#34;#doPauseResume&#34;).click(function() { doPauseResume(); return false; }); $(&#34;#doStop&#34;).click(function() { doStop(); return false; }); $(&#34;#doLangId&#34;).click(function() { doLangId(); return false; }); $(&#34;#doTTS&#34;).click(function() { doTTS(); return false; }); $(&#34;#taInput&#34;).bind(&#39;input propertychange&#39;, function() { doTextAreaChange(this.value); }); }); // Initialize speech engine... initSpeech();    Text-To-Speech  --    Cut &amp; Paste Text To Synthesize (or enter a URL)    Voice   Rate  Pitch     setTimeout(function() { // Initialize the voices.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/gadget/test/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/test/</guid>
+      <description>body { margin: 0; min-width: 250px; } /* Include the padding and border in an element&#39;s total width and height */ * { box-sizing: border-box; } /* Remove margins and padding from the list */ ul { margin: 0; padding: 0; } /* Style the list items */ ul li { cursor: pointer; position: relative; padding: 12px 8px 12px 40px; list-style-type: none; background: #eee; font-size: 18px; transition: 0.</description>
     </item>
     
     <item>

@@ -465,6 +465,11 @@
   </url>
   
   <url>
+    <loc>http://luochang212.github.io/gadget/test/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://luochang212.github.io/gadget/to-do-list/</loc>
     <priority>0</priority>
   </url>
