@@ -160,7 +160,9 @@
             <span id="show-line-column">Ln 1, Col 1</span>
         </div>
 
-        <div id="container"></div>
+        <div id="myEditor"></div>
+
+        
 
         <div id="overlay" onclick="closeByOverlay()"></div>
 
@@ -186,62 +188,50 @@
 
             var editorFontSize = 15;
 
+            var defaultValue = "/* Write your code here. */\n\nfunction isDeleted(element) { \n    var id_str = element.id;\n    id_str = id_str.replace(\"btn\",\"\"); \n    var id_num = parseInt(id_str);\n\n    if (delete_flag == true) {\n        delete_flag = false;\n        subArray[id_num].isDelete = \"true\";\n        element.value=\"×\";\n    } else {\n        delete_flag = true;\n        subArray[id_num].isDelete = \"false\";\n        element.value=\"\";\n    }\n}";
+            var noneValue = "";
+
+
             require.config({ paths: { 'vs': './node_modules/monaco-editor/min/vs' }});
 
-            require(['vs/editor/editor.main'], function() {
+             
+            
 
-                monaco.editor.defineTheme('myTheme', {
-                    base: 'vs',
-                    inherit: true,
-                    rules: [{ background: 'EDF9FA' }],
-                    colors: {
-                        
-                        
-                        
-                        'editor.lineHighlightBackground': '#0000FF20',
-                        
-                        
-                        
-                    }
-                });
-                monaco.editor.setTheme('myTheme');
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
 
-                editor = monaco.editor.create(document.getElementById('container'), {
-                    value: [
-                        '/* Write your code here. */',
-                        '',
-                        'function isDeleted(element) {',
-                        '   var id_str = element.id;',
-                        '   id_str = id_str.replace("btn","");',
-                        '   var id_num = parseInt(id_str);',
-                        '',
-                        '   if (delete_flag == true) {',
-                        '       delete_flag = false;',
-                        '       subArray[id_num].isDelete = "true";',
-                        '       element.value="×";',
-                        '   } else {',
-                        '       delete_flag = true;',
-                        '       subArray[id_num].isDelete = "false";',
-                        '       element.value="";',
-                        '   }',
-                        '}',
-                    ].join('\n'),
-                    language: 'javascript',
-                    wordWrap: "on",   
-                    wrappingIndent: "indent",
-                    
-                    
-                    
-                    readOnly: false,
-                    
-                    
-                    
-                    fontSize: editorFontSize
-                });
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
 
-                
-                
-            });
+            
+            
+            
+             
 
             function easySpeak(val) {
                 doStop();
@@ -511,14 +501,22 @@
               document.getElementById("left-sidebar").style.width = "250px";
               document.getElementById("header").style.marginLeft = "250px";
               document.getElementById("toolbar").style.marginLeft = "250px";
-              document.getElementById("container").style.marginLeft = "250px";
+              var conta = document.getElementsByClassName("container");
+              for (var i = 0; i < conta.length; i++) {
+                conta[i].style.marginLeft = "250px";
+              }
+            
             }
 
             function closeLeftSideBar() {
               document.getElementById("left-sidebar").style.width = "0";
               document.getElementById("header").style.marginLeft = "0px";
               document.getElementById("toolbar").style.marginLeft = "0px";
-              document.getElementById("container").style.marginLeft = "0px";
+              var conta = document.getElementsByClassName("container");
+              for (var i = 0; i < conta.length; i++) {
+                conta[i].style.marginLeft = "0px";
+              }
+            
 
               var i, tablinks;
               tablinks = document.getElementsByClassName("left-nav-button");
@@ -813,6 +811,7 @@
 
 
             
+            
             var closeClickSpan = "n";
 
             
@@ -821,28 +820,20 @@
             
             
 
-            function clickDelete(file_id) {
-                
-                deleteFile(file_id);
-                updateFileView();
-            }
+            
+            
+            
+            
+            
 
             function clcikAddFile() {
-                newFile();
+                addFile();
             }
 
 
             
             
-            
-            
-            
-            
-            
-            
-	        
 
-            
             var fileCounter = 1;
 
             var trash = document.getElementsByClassName("trash");
@@ -854,6 +845,7 @@
                 list.addEventListener('click', function(ev) {
                 if (ev.target.tagName === 'LI' && closeClickSpan == 'n') {
                     
+                    
                     var myList = document.getElementsByTagName("LI");
                     for (i = 0; i < myList.length; i++) {
                         myList[i].className = myList[i].className.replace("active", "");
@@ -863,9 +855,9 @@
             }, false);
 
 
-            function newFile() {
+            function addFileView() {
                 var li = document.createElement("li");
-                li.background = "#fff";
+                li.id = "li-" + fileCounter.toString(10);
                 var file_name = "Untitled-" + fileCounter.toString(10);
                 var input = document.createElement("input");
                 input.readOnly = true;
@@ -896,16 +888,20 @@
                 edit_span.appendChild(img);
                 li.appendChild(edit_span);
 
-                fileCounter += 1;
-
                 for (var i = 0; i < trash.length; i++) {
                     trash[i].onclick = function() {
+                        
                         var ThisLi = this.parentElement;
                         ThisLi.style.display = "none";
+                        
+                        var index = parseInt(ThisLi.id.toString().split('-').pop());
+                        fileArray[index-1].isDelete = "true";
+                        
                     }
 
                     inputSpan[i].onclick = function() {
                         if (closeClickSpan == 'n') {
+                            
                             
                             var myList = document.getElementsByTagName("LI");
                             for (i = 0; i < myList.length; i++) {
@@ -921,16 +917,83 @@
 
             }
 
+            
+            
+            var Files = {
+                fileId: "",
+                fileName: "",
+                editorContent: "",
+                isDelete: "false"
+	        };
 
-            newFile();
-            newFile();
-            newFile();
+            var fileArray = [];
+
+            
+            function addFile() {
+                
+                
+
+                
+                
+
+                
+                var file = Object.create(Files);
+                file.fileId = fileCounter.toString(10);
+                file.fileName = 'Untitled-' + file.fileId;
+                fileArray.push(file);
+
+                
+                addFileView();
+
+                
+                var myList = document.getElementsByTagName("LI");
+                for (i = 0; i < myList.length; i++) {
+                    myList[i].className = myList[i].className.replace("active", "");
+                }
+                document.getElementById('li-' + fileCounter.toString(10)).className = "active";
+
+                
+                fileCounter += 1;
+            }
+
+            function newEditor() {
+                var new_editor = document.createElement("div");
+                new_editor.id = "container-" + fileCounter.toString(10);
+                new_editor.className = "container";
+                document.getElementById("myEditor").append(new_editor)
+
+
+                require(['vs/editor/editor.main'], function() {
+                    monaco.editor.defineTheme('myTheme', {
+                        base: 'vs',
+                        inherit: true,
+                        rules: [{ background: 'EDF9FA' }],
+                        colors: {'editor.lineHighlightBackground': '#0000FF20',}
+                    });
+                    monaco.editor.setTheme('myTheme');
+                    editor = monaco.editor.create(document.getElementById("container-" + fileCounter.toString(10)), {
+                        value: [defaultValue].join('\n'),
+                        language: 'javascript',
+                        wordWrap: "on",
+                        wrappingIndent: "indent",
+                        readOnly: false,
+                        fontSize: editorFontSize
+                    });
+                });
+
+                return editor;
+            }
+
+            function activeEditor() {
+                
+            }
 
 
 
 
 
 
+            
 
             
             document.getElementById("left-nav-button-1").click();

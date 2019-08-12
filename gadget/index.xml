@@ -149,6 +149,15 @@ Features Code Editing The editor engine is based on Monaco Editor.</description>
     
     <item>
       <title></title>
+      <link>http://luochang212.github.io/gadget/react-lifecycle-demo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/react-lifecycle-demo/</guid>
+      <description>class MyList extends React.Component { constructor(...args) { super(...args); this.state = { loading: true, error: null, data: null }; } componentDidMount() { const url = &#39;https://api.github.com/search/repositories?q=javascript&amp;sort=stars&#39;; $.getJSON(url) .done( (value) = this.setState({ loading: false, data: value }) ).fail( (jqXHR, textStatus) = this.setState({ loading: false, error: jqXHR.status }) ); } render() { if (this.state.loading) { return Loading...; } else if (this.state.error !== null) { return Error: {this.</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>http://luochang212.github.io/gadget/show-time/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
