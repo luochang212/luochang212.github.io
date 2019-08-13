@@ -290,7 +290,7 @@
             }
 
             function getEditorValue() {
-                console.log(myEditor);
+                
                 easySpeak(myEditor.getValue());
             }
 
@@ -354,14 +354,16 @@
             
 
 
-            function save() {
-                var filename = prompt("Please input filename:", "");
-                if (filename == null || filename == "") {
-                    
-                } else {
-                    var text = myEditor.getValue();
-                    download(filename, text);
-                }
+            function save(index) {
+                download(fileArray[index - 1].fileName, fileArray[index - 1].editor.getValue());
+
+                
+                
+                
+                
+                
+                
+                
             }
 
             function download(filename, text) {
@@ -578,12 +580,7 @@
                     this.className = readOnlyClassName;
                     
                     
-                    for (var i = 0; i < fileArray.length; i ++) {
-                        if (fileArray[i].isActive == "true") {
-                            var index = i + 1;
-                            break;
-                        }
-                    }
+                    var index = findActiveEditor();
                     
 
                     
@@ -633,12 +630,7 @@
                             
 
                             
-                            for (var i = 0; i < fileArray.length; i ++) {
-                                if (fileArray[i].isActive == "true") {
-                                    var active_index = i + 1;
-                                    break;
-                                }
-                            }
+                            var active_index = findActiveEditor();
                             
                             if (closeClickSpan == "y" & active_index == index) {
                                 document.getElementById("editable-textarea").value = fileArray[index-1].fileName;
@@ -788,6 +780,7 @@
             var editable = document.getElementsByClassName("editable");
             var input = document.getElementsByClassName("editable");
             var inputSpan = document.getElementsByClassName("input-span");
+            var saveSpan = document.getElementsByClassName("save");
 
             var list = document.querySelector('.file-list');
                 list.addEventListener('click', function(ev) {
@@ -843,6 +836,14 @@
                 li.appendChild(input_span);
                 input_span.appendChild(input);
                 document.getElementById("my-file-list").appendChild(li);
+
+                var save_span = document.createElement("SPAN");
+                save_span.className = "save";
+                var img = document.createElement("IMG");
+                img.src = "./images/save-solid.svg";
+                img.className = "title-icon";
+                save_span.appendChild(img);
+                li.appendChild(save_span);
                 
                 var trash_span = document.createElement("SPAN");
                 trash_span.className = "trash";
@@ -934,6 +935,12 @@
                             
                             
                         }
+                    }
+
+                    saveSpan[i].onclick = function() {
+                        var ThisLi = this.parentElement;
+                        var index = parseInt(ThisLi.id.toString(10).split('-').pop());
+                        save(index);
                     }
 
                     configureFilenameText("file-list-input-" + (i+1).toString(10), "file-list-edit-" + (i+1).toString(10), "filename-modify", "filename-readonly");
@@ -1043,6 +1050,104 @@
                 document.getElementById("editable-textarea").value = fileArray[index-1].fileName;
                 
             }
+
+            function findActiveEditor() {
+                
+                for (var i = 0; i < fileArray.length; i ++) {
+                        if (fileArray[i].isActive == "true") {
+                            var index = i + 1;
+                            return index;
+                        }
+                    }
+                return -1;
+            }
+
+
+            
+            
+            var drop_code = "";
+
+            function uploadOn(e, callback) {
+                drop_code = e.dataTransfer.getData('text');
+
+                if (drop_code) {
+                    
+                    callback();
+                } else {
+                    getUploadText(e, callback);
+                }
+            }
+
+            function getUploadText(e, callback) {
+                    var files = e.target.files || e.dataTransfer.files;
+                    var file = files[0];
+
+                    if (location.host.indexOf("sitepointstatic") >= 0) return;
+
+                    var request = new XMLHttpRequest();
+                    if (request.upload) {
+                        
+                        var reader = new FileReader();
+                        var ext = file.name.toString().split('.').pop();
+                        var filename = file.name.toString().split('.').shift();
+                        var type;
+
+                        
+                        if (ext === "json") {
+                            type = "json";
+                        } else if (ext === "js") {
+                            type = "js";
+                        }
+
+                        reader.readAsText(file);
+
+                        reader.onloadend = function(e) {
+                            drop_code = reader.result;
+                            callback();
+                            
+                        };
+                    }
+            }
+
+
+            function uploadFile(e) {
+                fileDragHover(e);
+                uploadOn(e, updateDropCode);
+            }
+
+            function fileDragHover(e) {
+                e.stopPropagation();
+                e.preventDefault();
+            }
+
+            function updateDropCode() {
+                addFile(drop_code);
+                
+                
+            }
+
+            function configureDropZone(zone_id) {
+                var filedrag = document.getElementById(zone_id);
+                filedrag.addEventListener("dragover", fileDragHover, false);
+                filedrag.addEventListener("dragleave", fileDragHover, false);
+                filedrag.addEventListener("drop", uploadFile, false);
+            }
+
+            configureDropZone("myDropZone");
+
+
+            
+            function handleFileSelect(e) {
+                getUploadText(e, updateDropCode);
+            }
+
+            function configureFileSelect(id) {
+                document.getElementById(id).addEventListener('change', handleFileSelect, false);
+            }
+
+            configureFileSelect("upload");
+
+
 
             
 
@@ -1199,85 +1304,6 @@
 
 
             
-            var drop_code = "";
-
-            function uploadOn(e, callback) {
-                drop_code = e.dataTransfer.getData('text');
-
-                if (drop_code) {
-                    
-                    callback();
-                } else {
-                    getUploadText(e, callback);
-                }
-            }
-
-            function getUploadText(e, callback) {
-                    var files = e.target.files || e.dataTransfer.files;
-                    var file = files[0];
-
-                    if (location.host.indexOf("sitepointstatic") >= 0) return;
-
-                    var request = new XMLHttpRequest();
-                    if (request.upload) {
-                        
-                        var reader = new FileReader();
-                        var ext = file.name.toString().split('.').pop();
-                        var filename = file.name.toString().split('.').shift();
-                        var type;
-
-                        
-                        if (ext === "json") {
-                            type = "json";
-                        } else if (ext === "js") {
-                            type = "js";
-                        }
-
-                        reader.readAsText(file);
-
-                        reader.onloadend = function(e) {
-                            drop_code = reader.result;
-                            callback();
-                            
-                        };
-                    }
-            }
-
-
-            function uploadFile(e) {
-                fileDragHover(e);
-                uploadOn(e, updateDropCode);
-            }
-
-            function fileDragHover(e) {
-                e.stopPropagation();
-                e.preventDefault();
-            }
-
-            function updateDropCode() {
-                
-            }
-
-            function configureDropZone(zone_id) {
-                var filedrag = document.getElementById(zone_id);
-                filedrag.addEventListener("dragover", fileDragHover, false);
-                filedrag.addEventListener("dragleave", fileDragHover, false);
-                filedrag.addEventListener("drop", uploadFile, false);
-            }
-
-            configureDropZone("myDropZone");
-
-
-            
-            function handleFileSelect(e) {
-                getUploadText(e, updateDropCode);
-            }
-
-            function configureFileSelect(id) {
-                document.getElementById(id).addEventListener('change', handleFileSelect, false);
-            }
-
-            configureFileSelect("upload");
 
             
             function hideSection(evt, section_id, icon_id) {
