@@ -136,6 +136,18 @@
                     </div>
                     <select class="voice-select"></select>
                 </div>
+
+                <button class="nav-title" id="theme-controller-title" onclick="hideSection(event, 'theme-controller', 'title-icon-4-2');"><img class="title-icon" id="title-icon-4-2" src="./images/sort-down-solid.svg" alt="down"> Theme</button>
+                <div class="navbar" id="theme-controller">
+                    <span id="night-mode" class="navbar-toggle" style="padding-top: 10px;">
+                        Night Mode
+                        <label class="switch">
+                            <input id="night-mode-input" type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </span>
+                    
+                </div>
             </div>
 
         </div>
@@ -213,8 +225,18 @@
                 
                 
 
-
                 var noCode = "";
+
+
+                monaco.editor.defineTheme('myTheme', {
+                    base: 'vs',
+                    inherit: true,
+                    rules: [{ background: 'EDF9FA' }],
+                    colors: {'editor.lineHighlightBackground': '#0000FF20'}
+                });
+                monaco.editor.setTheme('myTheme');
+
+
 
                 function newEditor(container_id, code, language) {
                     var model = monaco.editor.createModel(code, language);
@@ -260,6 +282,17 @@
                 });
                 document.getElementById("load-demo").addEventListener("click", function(){
                     loadDemo();
+                });
+                document.getElementById("night-mode-input").addEventListener("click", function(){
+                    if (document.getElementById("night-mode-input").checked == true) {
+                        monaco.editor.setTheme('vs-dark');
+                        document.getElementById("toolbar").style.background = "#333";
+                        document.getElementById("toolbar").style.color = "#FFFFF0";
+                    } else {
+                        monaco.editor.setTheme('myTheme');
+                        document.getElementById("toolbar").style.background = "#F5F5F5";
+                        document.getElementById("toolbar").style.color = "#000000";
+                    }
                 });
 
 
@@ -1324,6 +1357,11 @@
                     document.getElementById("hide-header").click();
                 }
                 init();
+
+                document.getElementById("left-nav-button-4").click();
+                document.getElementById("night-mode-input").click();
+                
+
 
         });
 
