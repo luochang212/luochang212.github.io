@@ -141,7 +141,7 @@
         </div>
 
         <div id="toolbar">
-			<select class="language-picker"><option>apex</option><option>azcli</option><option>bat</option><option>c</option><option>clojure</option><option>coffeescript</option><option>cpp</option><option>csharp</option><option>csp</option><option>css</option><option>dockerfile</option><option>fsharp</option><option>go</option><option>graphql</option><option>handlebars</option><option>html</option><option>ini</option><option>java</option><option selected>javascript</option><option>json</option><option>kotlin</option><option>less</option><option>lua</option><option>markdown</option><option>msdax</option><option>mysql</option><option>objective-c</option><option>pascal</option><option>perl</option><option>pgsql</option><option>php</option><option>plaintext</option><option>postiats</option><option>powerquery</option><option>powershell</option><option>pug</option><option>python</option><option>r</option><option>razor</option><option>redis</option><option>redshift</option><option>ruby</option><option>rust</option><option>sb</option><option>scheme</option><option>scss</option><option>shell</option><option>sol</option><option>sql</option><option>st</option><option>swift</option><option>tcl</option><option>typescript</option><option>vb</option><option>xml</option><option>yaml</option></select>
+			<select class="language-picker"><option>apex</option><option>azcli</option><option>bat</option><option>c</option><option>clojure</option><option>coffeescript</option><option>cpp</option><option>csharp</option><option>csp</option><option>css</option><option>dockerfile</option><option>fsharp</option><option>go</option><option>graphql</option><option>handlebars</option><option selected>html</option><option>ini</option><option>java</option><option>javascript</option><option>json</option><option>kotlin</option><option>less</option><option>lua</option><option>markdown</option><option>msdax</option><option>mysql</option><option>objective-c</option><option>pascal</option><option>perl</option><option>pgsql</option><option>php</option><option>plaintext</option><option>postiats</option><option>powerquery</option><option>powershell</option><option>pug</option><option>python</option><option>r</option><option>razor</option><option>redis</option><option>redshift</option><option>ruby</option><option>rust</option><option>sb</option><option>scheme</option><option>scss</option><option>shell</option><option>sol</option><option>sql</option><option>st</option><option>swift</option><option>tcl</option><option>typescript</option><option>vb</option><option>xml</option><option>yaml</option></select>
         
             
 
@@ -521,7 +521,7 @@
                     console.error('SpeechSynthesisUtterance.onerror');
                     }
                     var selectedOption = voiceSelect.selectedOptions[0].getAttribute('data-name');  
-                    for(i = 0; i < voices.length ; i++) {
+                    for(var i = 0; i < voices.length ; i++) {
                     if(voices[i].name === selectedOption) {
                     utterThis.voice = voices[i];
                     break;
@@ -720,7 +720,7 @@
             var closeClickSpan = "n";
             
             document.getElementById("title-button-add").addEventListener("click", function(){
-                addFile(noCode, "javascript");
+                addFile(noCode, "html");
                 
             });
             
@@ -842,7 +842,7 @@
                         
                         if (isAllDelete == "y") {
                             
-                            addFile(noCode, "javascript");
+                            addFile(noCode, "html");
                             
                         } else {
                             
@@ -1098,7 +1098,7 @@
                                 addFile(drop_code, type);
                                 
                             } else {
-                                addFile(drop_code, "javascript");
+                                addFile(drop_code, "html");
                                 
                             }
                             
@@ -1119,7 +1119,7 @@
             }
 
             function updateDropCode() {
-                addFile(drop_code, "javascript");
+                addFile(drop_code, "html");
                 
                 
             }
@@ -1184,7 +1184,7 @@
                         if (type != null) {
                             addFile(val, type);
                         } else {
-                            addFile(val, "javascript");
+                            addFile(val, "html");
                         }
                         
                         var index = fileCounter - 1;
