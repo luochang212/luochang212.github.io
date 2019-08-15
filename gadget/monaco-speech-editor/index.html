@@ -191,10 +191,17 @@
         <div id="monaco-speech-editor"></div>
 
         <div id="console-bar" class="console">
-            <button id="console-button">Console</button>
-            <button id="console-button-run" style="display: none;">Run</button>
+            <div id="console-button-bar">
+                <button id="console-button">Console</button>
+                <button id="console-button-run" style="display: none;">Run</button>
+            </div>
+
             <div id="compiler-bar" class="compiler">
                 <iframe id="compiler-iframe" scrolling="auto" marginheight="0px" marginwidth="0px"></iframe>
+            </div>
+            <div id="console-log">
+                
+                <iframe id="log-iframe" scrolling="auto" marginheight="0px" marginwidth="0px"></iframe>
             </div>
         </div>
 
@@ -235,7 +242,7 @@
                 
                 
                 
-                var htmlCode = "<!DOCTYPE html>\n<html>\n<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n<title>what time is it?</title>\n<style type=\"text/css\">\n	body {\n		font-family: \"Source Han Sans\", \"San Francisco\", \"PingFang SC\", \"Hiragino Sans GB\", \"Droid Sans Fallback\", \"Microsoft YaHei\", sans-serif;\n		font-size: 14px;\n		color: #333;\n	}\n	p {\n		margin: 1em 0;\n	}\n	p:empty {\n		height: 1.5em;\n	}\n	main {\n		margin: 0 5em;\n		max-width: 48em;\n	}\n	h1 {\n		margin: 1em 0;\n		font-size: 24px;\n		font-weight: 300;\n	}\n	button {\n		background: #fff;\n		border: 1px solid #ccc;\n		border-radius: 2px;\n		line-height: 1;\n		padding: .5em;\n	}\n</style>\n</head>\n\n<body>\n<main>\n		\n	<h1>what time is it?</h1>\n	<p>© 2019 Chang Luo</p>\n	<hr>\n	\n	<p>Excuse me, what time is it now O_O ???</p>\n	<br>\n	\n	<button type=\"button\" onclick=\"document.getElementById('time').innerHTML = Date()\">\n		Click Me\n	</button>\n\n	<p id=\"time\"></p>\n	\n</main>\n</html>"
+                var htmlCode = "<!DOCTYPE html>\n<html>\n<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n<title>what time is it?<" + "/title>\n<style type=\"text/css\">\n	body {\n		font-family: \"Source Han Sans\", \"San Francisco\", \"PingFang SC\", \"Hiragino Sans GB\", \"Droid Sans Fallback\", \"Microsoft YaHei\", sans-serif;\n		font-size: 14px;\n		color: #333;\n	}\n	p {\n		margin: 1em 0;\n	}\n	p:empty {\n		height: 1.5em;\n	}\n	main {\n		margin: 0 5em;\n		max-width: 48em;\n	}\n	h1 {\n		margin: 1em 0;\n		font-size: 24px;\n		font-weight: 300;\n	}\n	button {\n		background: #fff;\n		border: 1px solid #ccc;\n		border-radius: 2px;\n		line-height: 1;\n		padding: .5em;\n	}\n<" + "/style>\n<" + "/head>\n\n<body>\n<main>\n		\n	<h1>what time is it?<" + "/h1>\n	<p>© 2019 Chang Luo<" + "/p>\n	<hr>\n	\n	<p>Excuse me, what time is it now O_O ???<" + "/p>\n	<br>\n	\n	<button type=\"button\" onclick=\"document.getElementById('time').innerHTML = Date()\">\n		Click Me\n	<" + "/button>\n\n	<p id=\"time\"><" + "/p>\n	\n<" + "/main>"+ "\n<script" + ">\n	console.log('Hi there! Welcome to Monaco Speech Editor.');\n	console.log('Monaco Speech Editor is an open source web application.');\n	console.log('The repo address is https://github.com/luochang212/monaco-speech-editor');\n	console.log(\"If you like this web page or think it's useful,\");\n	console.log('could you give me a star on GitHub (●°u°●)​ 」');\n<" + "/script>" +"\n<" + "/body>\n<" + "/html>"
                 var noCode = "";
 
 
@@ -243,7 +250,7 @@
                     base: 'vs',
                     inherit: true,
                     rules: [{ background: 'EDF9FA' }],
-                    colors: {'editor.lineHighlightBackground': '#0000FF20'}
+                    colors: {'editor.lineHighlightBackground': '#0000FF20'}     
                 });
                 monaco.editor.setTheme('myTheme');
 
@@ -253,6 +260,7 @@
                     var model = monaco.editor.createModel(code, language);
                     var editor = monaco.editor.create(document.getElementById(container_id), {
                         model: model,
+                        
                         
                     });
                     editorArray.push(editor);
@@ -265,7 +273,7 @@
                     speakDocument();
                 });
                 document.getElementById("speak-by-line").addEventListener("click", function(){
-                    speakByLine();
+                    speakByLineFunc();
                 });
                 document.getElementById("stop-speaking").addEventListener("click", function(){
                     doStop();
@@ -314,7 +322,9 @@
                 document.getElementById("console-button-run").addEventListener("click", function(){
                     run();
                 });
-
+                
+                
+                
 
 
                 
@@ -383,7 +393,7 @@
                 easySpeak(myEditor.getModel().getLineContent(line_number));
             }
 
-            function speakByLine() {
+            function speakByLineFunc() {
                 var lineNumber = prompt("Please input the line number:", "");
                 if (lineNumber == null || lineNumber == "") {
                     easySpeak("You didn't input anything");
@@ -1332,9 +1342,41 @@
             function run() {
                 var text = myEditor.getValue();
                 
-                var iframe = document.getElementById("compiler-iframe").contentWindow.document.body.innerText = "";
-                iframe = document.getElementById("compiler-iframe").contentDocument.write(text);
-                console.log(document.getElementById("compiler-iframe").src);
+                newIframe("compiler-iframe");
+                
+                document.getElementById("compiler-iframe").contentDocument.write(text);
+
+                
+                
+                
+                var injection = "<script" + ">(function (logger) {conso"+"le.old = console.log;console.log = function () {var output = \"\", arg, i;for (var i = 0; i < argu"+"ments.length; i++) {arg = argume"+"nts[i];output += \"<span class='log-\" + (typeof arg) + \"'>\";if (ty"+"peof arg === \"object\" \&"+"\&typeof JSON === \"object\" \&"+"\&typeof JSON.stringify === \"function\") {output += JSON.stringify(arg);   } else {output += arg;   }output += '<" + "/span>\&nbsp;';}logger.innerHTML += output + '<br>';console.old.apply(undefined, arguments);};})(document.getElementById('logger'));<" + "/script>";
+                
+                
+                
+                
+                var hideAllElem = "<script" + ">var nodes = document.all;for(var i=0;i<nodes.length;i++){var o = nodes[i];o.style.display = 'none';}<"+"/script>";
+                
+                var showLog = "<script" + ">document.getElementsByTagName('html')[0].style.display = 'block';document.getElementsByTagName('body')[0].style.display = 'block';document.getElementById('logger').style.display = 'block'; var cn = document.getElementById('logger').childNodes;for (var i = 0; i < cn.length; i++) {cn[i].style = 'display: block;';}<"+"/script>";
+                var logInput =  "<link rel=\"stylesheet\" href=\"./src/style.css\">" + "<pre id='logger'></pre>" + injection + text + hideAllElem + showLog;
+                newIframe("log-iframe");
+                document.getElementById("log-iframe").contentDocument.write(logInput);
+                
+                document.getElementById("log-iframe").contentDocument.body.style.background = "#333";
+            }
+
+            function newIframe(id) {
+                
+                var selectedIframe = document.getElementById(id);
+                var parent = selectedIframe.parentNode;
+                parent.removeChild(selectedIframe);
+
+                
+                var iframe = document.createElement("iframe");
+                
+                
+                
+                iframe.id = id;
+                parent.appendChild(iframe);
             }
 
 
@@ -1390,6 +1432,9 @@
                 
                 
                 
+                
+                
+
                 
                 
 

@@ -123,8 +123,8 @@ body {
 
   .container {
     position: fixed; 
-    /* top: 28px; */
-    top: 78px;
+    top: 28px;
+    /* top: 78px; */
     left: 50px; 
     bottom: 0; 
     right: 0;
@@ -712,6 +712,7 @@ body {
     border-radius: 50%;
   }
 
+   /* console */
   .console{
     position: fixed;
     right: 0px;
@@ -744,22 +745,55 @@ body {
     overflow: hidden;
   }
 
+  #console-button-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 20px;
+    overflow: hidden;
+  }
+
   .console button:hover {
     color: rgb(88, 86, 214);
     /* background: #FFF; */
   }
 
   .compiler {
-    /* position: absolute;
+    position: absolute;
     top: 20px;
     bottom: 0;
     left: 0;
-    right: 0; */
+    width: calc((100vw - 50px)*0.6);
+    overflow: hidden;
     background: #FFF;
   }
 
   #compiler-iframe {
     height: calc(300px - 20px);
-    width: calc(100vw - 50px);
+    /* width: calc((100vw - 50px)*0.6); */
+    width: 100%;
     border: 0px none #ffffff;
   }
+
+  #console-log {
+    position: absolute;
+    top: 20px;
+    bottom: 0;
+    left: calc((100vw - 50px)*0.6);
+    right: 0;
+    background: #333;
+    overflow: auto;
+  }
+
+  #log-iframe {
+    height: calc(300px - 20px);
+    width: 100%;
+    border: 0px none #ffffff;
+  }
+
+  .log-boolean,
+  .log-undefined {color: magenta;font-size:12px;}
+  .log-object,
+  .log-string {color: orange;font-size: 12px;}
+  .log-number {color: cyan;font-size: 12px;}
