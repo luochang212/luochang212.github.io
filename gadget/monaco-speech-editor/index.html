@@ -299,10 +299,16 @@
                         monaco.editor.setTheme('vs-dark');
                         document.getElementById("toolbar").style.background = "#333";
                         document.getElementById("toolbar").style.color = "#FFFFF0";
+                        document.getElementById("console-bar").style.background = "#333";
+                        document.getElementById("console-button").style.color = "#FFF";
+                        document.getElementById("console-button-run").style.color = "#FFF";
                     } else {
                         monaco.editor.setTheme('myTheme');
                         document.getElementById("toolbar").style.background = "#F5F5F5";
                         document.getElementById("toolbar").style.color = "#000000";
+                        document.getElementById("console-bar").style.background = "#F5F5F5";
+                        document.getElementById("console-button").style.color = "inherit";
+                        document.getElementById("console-button-run").style.color = "inherit";
                     }
                 });
                 document.getElementById("console-button-run").addEventListener("click", function(){
@@ -1546,7 +1552,10 @@
             function hideConsole() {
                 if (consoleToggle == "h") {
                     
+                    
                     document.getElementById("console-button-run").style.display = "inline-block";
+                    
+                    document.getElementById("console-bar").style.borderTop = "1px solid #000000";
                     
                     document.getElementById("console-bar").style.WebkitTransform = "translateY(-280px)"; 
                     
@@ -1556,7 +1565,10 @@
                     consoleToggle = "s";
                 } else {
                     
+                    
                     document.getElementById("console-button-run").style.display = "none";
+                    
+                    document.getElementById("console-bar").style.borderTop = "0px none #FFFFFF";
                     
                     document.getElementById("console-bar").style.WebkitTransform = "translateY(0)"; 
                     
@@ -1566,6 +1578,59 @@
                     consoleToggle = "h";
                 }
             }
+
+
+            
+            
+            function Router() {
+                this.routes = {};
+                this.currentUrl = '';
+            }
+            Router.prototype.route = function(path, callback) {
+                this.routes[path] = callback || function(){};
+            };
+            Router.prototype.refresh = function() {
+                this.currentUrl = location.hash.slice(1) || '/';
+                this.routes[this.currentUrl]();
+            };
+            Router.prototype.init = function() {
+                window.addEventListener('load', this.refresh.bind(this), false);
+                window.addEventListener('hashchange', this.refresh.bind(this), false);
+            }
+            window.Router = new Router();
+            window.Router.init();
+
+            
+            Router.route('/', function() {
+                
+                
+            });
+            Router.route('dark', function() {
+                document.getElementById("night-mode-input").click();
+            });
+            Router.route('full-screen', function() {
+                document.getElementById("left-nav-button-1").click();
+                document.getElementById("hide-header").click();
+            });
+            Router.route('load-demo', function() {
+                document.getElementById("load-demo").click();
+            });
+            Router.route('console', function() {
+                document.getElementById("console-button").click();
+            });
+            Router.route('run', function() {
+                document.getElementById("console-button").click();
+                document.getElementById("console-button-run").click();
+            });
+            Router.route('dark+run', function() {
+                document.getElementById("night-mode-input").click();
+                document.getElementById("console-button").click();
+                document.getElementById("console-button-run").click();
+            });
+
+
+
+            
 
         </script>
     </body>
