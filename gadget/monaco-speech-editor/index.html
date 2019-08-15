@@ -11,14 +11,9 @@
     </head>
     <body>
         <div id="header">
-            
-
-            
             <div id="show-file-name">
                 <input class="textarea-readonly" id="editable-textarea" readonly value="Untitled-1" />
             </div>
-            
-            
         </div>
 
         <div id="left-nav">
@@ -68,14 +63,6 @@
                 </div>
                     
                 
-
-                
-                
-                
-                    
-                
-                
-
 
             </div>
     
@@ -630,14 +617,6 @@
             }
 
             
-            
-
-            
-            
-            
-            
-
-            
             document.onkeyup = function(e) {
                 if (e.ctrlKey && e.altKey && e.which == 80) {
                     play();
@@ -647,21 +626,11 @@
             };
 
             
-            
-            
-            
-            
-            
-
-            
             function handleEnter() {
                 if (e.keyCode == 13) {
                     document.getElementById("showLineNumber").blur();
                 }
             }
-
-
-
 
 
 
@@ -744,126 +713,11 @@
             
             
 
-            
-            
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-	        
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-  
-            
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-
-
 
 
             
             
             var closeClickSpan = "n";
-
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-
             
             document.getElementById("title-button-add").addEventListener("click", function(){
                 addFile(noCode, "javascript");
@@ -1065,13 +919,19 @@
                 
                 
                 
-                var new_editor = document.createElement("DIV");
-                new_editor.id = "container-" + fileCounter.toString(10);
+                var new_container = document.createElement("DIV");
+                new_container.id = "container-" + fileCounter.toString(10);
                 
-                new_editor.className = "container";
-                document.getElementById("monaco-speech-editor").appendChild(new_editor);
+                new_container.className = "container";
                 
-                var editor = newEditor(new_editor.id, code, language);
+                if (headerHidden == "y") {
+                    new_container.style.top = "28px";
+                } else {
+                    new_container.style.top = "78px";
+                }
+                document.getElementById("monaco-speech-editor").appendChild(new_container);
+                
+                var editor = newEditor(new_container.id, code, language);
 
 
                 
@@ -1262,7 +1122,6 @@
                 addFile(drop_code, "javascript");
                 
                 
-                
             }
 
             function configureDropZone(zone_id) {
@@ -1350,18 +1209,13 @@
                 
                 
                 var injection = "<script" + ">(function (logger) {conso"+"le.old = console.log;console.log = function () {var output = \"\", arg, i;for (var i = 0; i < argu"+"ments.length; i++) {arg = argume"+"nts[i];output += \"<span class='log-\" + (typeof arg) + \"'>\";if (ty"+"peof arg === \"object\" \&"+"\&typeof JSON === \"object\" \&"+"\&typeof JSON.stringify === \"function\") {output += JSON.stringify(arg);   } else {output += arg;   }output += '<" + "/span>\&nbsp;';}logger.innerHTML += output + '<br>';console.old.apply(undefined, arguments);};})(document.getElementById('logger'));<" + "/script>";
-                
-                
-                
-                
                 var hideAllElem = "<script" + ">var nodes = document.all;for(var i=0;i<nodes.length;i++){var o = nodes[i];o.style.display = 'none';}<"+"/script>";
-                
                 var showLog = "<script" + ">document.getElementsByTagName('html')[0].style.display = 'block';document.getElementsByTagName('body')[0].style.display = 'block';document.getElementById('logger').style.display = 'block'; var cn = document.getElementById('logger').childNodes;for (var i = 0; i < cn.length; i++) {cn[i].style = 'display: block;';}<"+"/script>";
                 var logInput =  "<link rel=\"stylesheet\" href=\"./src/style.css\">" + "<pre id='logger'></pre>" + injection + text + hideAllElem + showLog;
                 newIframe("log-iframe");
                 document.getElementById("log-iframe").contentDocument.write(logInput);
                 
-                document.getElementById("log-iframe").contentDocument.body.style.background = "#333";
+                document.getElementById("log-iframe").contentDocument.body.style.background = "#202020";
             }
 
             function newIframe(id) {
@@ -1372,68 +1226,24 @@
 
                 
                 var iframe = document.createElement("iframe");
-                
-                
-                
                 iframe.id = id;
                 parent.appendChild(iframe);
             }
 
-
-
-            
-
-            
-            
-            
-            
-            
-
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-
-            
+            function init() {
+                document.getElementById("left-nav-button-1").click();
                 
+                addFile(htmlCode, "html");
+                
+                document.getElementById("hide-header").click();
+            }
+            init();
+
             
-
             
-
-
-
-
-                function init() {
-                    document.getElementById("left-nav-button-1").click();
-                    
-                    addFile(htmlCode, "html");
-                    
-                    document.getElementById("hide-header").click();
-                }
-                init();
-
-                
-                
-                
-                
-                
+            
+            
+            
 
                 
                 
@@ -1495,7 +1305,6 @@
               for (var i = 0; i < conta.length; i++) {
                 conta[i].style.marginLeft = "250px";
               }
-            
             }
 
             function closeLeftSideBar() {
@@ -1507,7 +1316,6 @@
               for (var i = 0; i < conta.length; i++) {
                 conta[i].style.marginLeft = "0px";
               }
-            
 
               var i, tablinks;
               tablinks = document.getElementsByClassName("left-nav-button");
@@ -1647,7 +1455,6 @@
             window.Router = new Router();
             window.Router.init();
 
-            
             Router.route('/', function() {
                 
                 
