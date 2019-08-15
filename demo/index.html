@@ -181,12 +181,11 @@ body {
 #overlay {
   position: fixed;
   display: none;
-   
-  width: 60%;
+  width: calc(100vw - 580px);
   height: 100%;
   top: 0;
   left: 0;
-  
+   
   z-index: 2;
   cursor: pointer;
 }
@@ -213,6 +212,12 @@ body {
   transition: margin-left .5s;
    
   padding: 16px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
 }
 
  
@@ -255,6 +260,7 @@ body {
 .tabcontent {
   display: none;
   padding: 12px 12px;
+  margin: 0;
   border: 1px solid #ccc;
   border-top: none;
 }
@@ -326,7 +332,7 @@ body {
 	</div>
 	
 	<div id="Resources" class="tabcontent">
-	  <iframe src="about:blank" data-src="/resources/" frameborder="0" height="560" width="100%"></iframe>
+	  <iframe src="about:blank" data-src="/resources/" frameborder="0" height="560" width="100%" marginheight="0" marginwidth="0"></iframe>
 	</div>
 
 	<div id="Audio-player" class="tabcontent">
@@ -365,7 +371,7 @@ body {
 	</div>
 	
 	<div id="piano" class="tabcontent">
-	  <iframe src="about:blank" data-src="/gadget/piano/" frameborder="0" height="560" width="100%"></iframe>
+    <iframe src="about:blank" data-src="/gadget/piano/" frameborder="0" height="560" width="100%"></iframe>
 	</div>
 	
 	<div id="gadget" class="tabcontent">
@@ -379,7 +385,7 @@ body {
 <script>
 function openNav() {
   on();
-  document.getElementById("mySidenav").style.width = "40%";   
+  document.getElementById("mySidenav").style.width = "580px";
   
   document.body.style.backgroundColor = "rgba(0,0,0,0.5)";
 }
