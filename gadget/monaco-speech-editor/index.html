@@ -1156,7 +1156,8 @@
             
             
             function loadDemo() {
-                $.getJSON("https://luochang212.github.io/gadget/monaco-speech-editor/data/code.json", function(data){
+                
+                $.getJSON("./data/code.json", function(data){
                     $.each( data, function( key, val ) {
                         var ext = key.toString().split('.').pop();
                         
