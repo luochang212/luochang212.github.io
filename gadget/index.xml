@@ -116,9 +116,8 @@ Features Code Editing The editor engine is based on Monaco Editor.</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/gadget/monaco-speech-editor/</guid>
-      <description>Monaco Speech Editor  // Check before leave website window.addEventListener(&#39;beforeunload&#39;, function (e) { // Cancel the event e.preventDefault(); // Chrome requires returnValue to be set e.returnValue = &#39;Do you sure&#39;; });  --                Explorer
- File manager     Demo You can load demo from a JSON file.
-Load Demo  test --  Upload</description>
+      <description>Monaco Speech Editor  // Check before leave website window.addEventListener(&#39;beforeunload&#39;, function (e) { // Cancel the event e.preventDefault(); // Chrome requires returnValue to be set e.returnValue = &#39;Do you sure&#39;; });  --                    Explorer
+ File manager     Demo You can load demo from a JSON file.</description>
     </item>
     
     <item>
