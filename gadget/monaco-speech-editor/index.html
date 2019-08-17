@@ -206,8 +206,34 @@
                         <span class="slider round"></span>
                     </label>
                 </span>
-
             </div>
+
+            <button class="nav-title" id="console-controller-title"
+                onclick="hideSection(event, 'console-controller', 'title-icon-4-4');"><img class="title-icon"
+                    id="title-icon-4-4" src="./images/sort-down-solid.svg" alt="down"> Console</button>
+            <div class="navbar" id="console-controller">
+                <span id="hide-log-area" class="navbar-toggle" style="padding-top: 10px;">
+                    Hide Console Log Area
+                    <label class="switch">
+                        <input id="log-area-input" type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </span>
+                <span id="hide-result-area" class="navbar-toggle" style="padding-top: 10px;">
+                    Hide Rendering Result Area
+                    <label class="switch">
+                        <input id="result-area-input" type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </span>
+                
+            </div>
+
+
+
+
+
+
         </div>
 
     </div>
@@ -312,10 +338,12 @@
         <div id="console-button-bar">
             <button id="console-button">Console</button>
             <button id="console-button-run" style="display: none;">Run</button>
+            <button id="console-button-open-window" style="display: none;">Open In New Window</button>
+            <button id="console-button-open-tab" style="display: none;">Open In New Tab</button>
         </div>
 
-        <div id="compiler-bar" class="compiler">
-            <iframe id="compiler-iframe" scrolling="auto" marginheight="0px" marginwidth="0px"></iframe>
+        <div id="console-result" class="result">
+            <iframe id="result-iframe" scrolling="auto" marginheight="0px" marginwidth="0px"></iframe>
         </div>
         <div id="console-log">
             <iframe id="log-iframe" scrolling="auto" marginheight="0px" marginwidth="0px"></iframe>
@@ -425,19 +453,39 @@
                     document.getElementById("toolbar").style.background = "#333";
                     document.getElementById("toolbar").style.color = "#FFFFF0";
                     document.getElementById("console-bar").style.background = "#333";
-                    document.getElementById("console-button").style.color = "#FFF";
-                    document.getElementById("console-button-run").style.color = "#FFF";
+                    
+                    
+                    var btn_bar = document.getElementById('console-button-bar');
+                    for (var i = 0; i < btn_bar.children.length; i ++) {
+                        btn_bar.children[i].style.color = "#FFF";
+                    }
                 } else {
                     monaco.editor.setTheme('myTheme');
                     document.getElementById("toolbar").style.background = "#F5F5F5";
                     document.getElementById("toolbar").style.color = "#000000";
                     document.getElementById("console-bar").style.background = "#F5F5F5";
-                    document.getElementById("console-button").style.color = "inherit";
-                    document.getElementById("console-button-run").style.color = "inherit";
+                    
+                    
+                    var btn_bar = document.getElementById('console-button-bar');
+                    for (var i = 0; i < btn_bar.children.length; i ++) {
+                        btn_bar.children[i].style.color = "inherit";
+                    }
+                }
+            });
+            document.getElementById("console-button").addEventListener("click", function () {
+                hideConsole();
+                if (consoleToggle == "s") {
+                    run();
                 }
             });
             document.getElementById("console-button-run").addEventListener("click", function () {
                 run();
+            });
+            document.getElementById("console-button-open-tab").addEventListener("click", function () {
+                openInNewTab();
+            });
+            document.getElementById("console-button-open-window").addEventListener("click", function () {
+                openInNewWindow();
             });
             document.getElementById("character-mode-input").addEventListener("click", function () {
                 document.getElementById("code-mode-input").checked = false;
@@ -468,6 +516,26 @@
                     modeController = 'easySpeak';
                 }
                 
+            });
+            document.getElementById("result-area-input").addEventListener("click", function () {
+                document.getElementById("log-area-input").checked = false;
+                if (document.getElementById("result-area-input").checked === true) {
+                    document.getElementById("console-result").style.width = '0';
+                    document.getElementById("console-log").style.left = '0';
+                } else {
+                    document.getElementById("console-result").style.width = 'calc((100vw - 50px)*0.6)';
+                    document.getElementById("console-log").style.left = 'calc((100vw - 50px)*0.6)';
+                }
+            });
+            document.getElementById("log-area-input").addEventListener("click", function () {
+                document.getElementById("result-area-input").checked = false;
+                if (document.getElementById("log-area-input").checked === true) {
+                    document.getElementById("console-log").style.left = '100vw';
+                    document.getElementById("console-result").style.width = '100%';
+                } else {
+                    document.getElementById("console-result").style.width = 'calc((100vw - 50px)*0.6)';
+                    document.getElementById("console-log").style.left = 'calc((100vw - 50px)*0.6)';
+                }
             });
 
 
@@ -1610,9 +1678,9 @@
             function run() {
                 var text = myEditor.getValue();
                 
-                newIframe("compiler-iframe");
+                newIframe("result-iframe");
                 
-                document.getElementById("compiler-iframe").contentDocument.write(text);
+                document.getElementById("result-iframe").contentDocument.write(text);
 
                 
                 
@@ -1620,11 +1688,12 @@
                 var injection = "<script" + ">(function (logger) {conso" + "le.old = console.log;console.log = function () {var output = \"\", arg, i;for (var i = 0; i < argu" + "ments.length; i++) {arg = argume" + "nts[i];output += \"<span class='log-\" + (typeof arg) + \"'>\";if (ty" + "peof arg === \"object\" \&" + "\&typeof JSON === \"object\" \&" + "\&typeof JSON.stringify === \"function\") {output += JSON.stringify(arg);   } else {output += arg;   }output += '<" + "/span>\&nbsp;';}logger.innerHTML += output + '<br>';console.old.apply(undefined, arguments);};})(document.getElementById('logger'));<" + "/script>";
                 var hideAllElem = "<script" + ">var nodes = document.all;for(var i=0;i<nodes.length;i++){var o = nodes[i];o.style.display = 'none';}<" + "/script>";
                 var showLog = "<script" + ">document.getElementsByTagName('html')[0].style.display = 'block';document.getElementsByTagName('body')[0].style.display = 'block';document.getElementById('logger').style.display = 'block'; var cn = document.getElementById('logger').childNodes;for (var i = 0; i < cn.length; i++) {cn[i].style = 'display: block;';}<" + "/script>";
-                var logInput = "<link rel=\"stylesheet\" href=\"./src/style.css\">" + "<pre id='logger'></pre>" + injection + text + hideAllElem + showLog;
+                var logInput = "<link rel=\"stylesheet\" href=\"./src/style.css\">" + "<div id='logger'></div>" + injection + text + hideAllElem + showLog;
                 newIframe("log-iframe");
                 document.getElementById("log-iframe").contentDocument.write(logInput);
                 
-                document.getElementById("log-iframe").contentDocument.body.style.background = "#202020";
+                document.getElementById("log-iframe").contentDocument.body.style.background = "#FFFFFF";  
+                
             }
 
             function newIframe(id) {
@@ -1639,6 +1708,21 @@
                 parent.appendChild(iframe);
             }
 
+            
+            function openInNewWindow() {
+                var win = window.open("", "Title", "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=780,height=200,top="+(screen.height-400)+",left="+(screen.width-840));
+                var text = myEditor.getValue();
+                win.document.write(text);
+                
+            }
+
+            function openInNewTab() {
+                var win = window.open("_blank");
+                var text = myEditor.getValue();
+                win.document.write(text);
+                
+            }
+
             function init() {
                 document.getElementById("left-nav-button-1").click();
                 
@@ -1651,9 +1735,12 @@
             
             
             
-            document.getElementById("console-button").click();
+            
             
 
+
+            
+            
             
             
             
@@ -1811,32 +1898,47 @@
         }
 
         
-        document.getElementById("console-button").addEventListener("click", function () {
-            hideConsole();
-        });
-
-
-        var consoleToggle = "h"
+        var consoleToggle = "h";
         function hideConsole() {
             if (consoleToggle == "h") {
                 
                 
                 document.getElementById("console-button-run").style.display = "inline-block";
+                document.getElementById("console-button-open-window").style.display = "inline-block";
+                document.getElementById("console-button-open-tab").style.display = "inline-block";
                 
-                document.getElementById("console-bar").style.borderTop = "1px solid #000000";
+                var btn_bar = document.getElementById('console-button-bar');
+                for (var i = 0; i < btn_bar.children.length; i ++) {
+                    btn_bar.children[i].style.height = '29px';
+                    btn_bar.children[i].style.fontSize = '14px';
+                }
                 
-                document.getElementById("console-bar").style.WebkitTransform = "translateY(-280px)";
+                console_border_style = "1px solid";
+                document.getElementById("console-bar").style.borderTop = console_border_style + console_border_color;
                 
-                document.getElementById("console-bar").style.msTransform = "translateY(-280px)";
                 
-                document.getElementById("console-bar").style.transform = "translateY(-280px)";
+                
+                document.getElementById("console-bar").style.WebkitTransform = "translateY(-310px)";
+                
+                document.getElementById("console-bar").style.msTransform = "translateY(-310px)";
+                
+                document.getElementById("console-bar").style.transform = "translateY(-310px)";
                 consoleToggle = "s";
             } else {
                 
                 
                 document.getElementById("console-button-run").style.display = "none";
+                document.getElementById("console-button-open-window").style.display = "none";
+                document.getElementById("console-button-open-tab").style.display = "none";
                 
-                document.getElementById("console-bar").style.borderTop = "0px none #FFFFFF";
+                var btn_bar = document.getElementById('console-button-bar');
+                for (var i = 0; i < btn_bar.children.length; i ++) {
+                    btn_bar.children[i].style.height = '20px';
+                    btn_bar.children[i].style.fontSize = '12px';
+                }
+                
+                console_border_style = "0px none";
+                document.getElementById("console-bar").style.borderTop = console_border_style + console_border_color;
                 
                 document.getElementById("console-bar").style.WebkitTransform = "translateY(0)";
                 
@@ -1846,6 +1948,27 @@
                 consoleToggle = "h";
             }
         }
+
+        var console_border_style = "0px none";
+        var console_border_color = "#bbbbbb";
+
+        document.getElementById("night-mode-input").addEventListener("click", function () {
+            
+                if (document.getElementById("night-mode-input").checked === true) {
+                    console_border_color = "#000000";
+                    
+                    
+                    
+                    document.getElementById("console-bar").style.borderTop = console_border_style + console_border_color;
+                } else {
+                    console_border_color = "#bbbbbb";
+                    
+                    
+                    
+                    document.getElementById("console-bar").style.borderTop = console_border_style + console_border_color;
+                }
+                console.log(document.getElementById("console-bar").style.borderTop)
+            });
 
 
         
@@ -1892,7 +2015,6 @@
         Router.route('dark+run', function () {
             document.getElementById("night-mode-input").click();
             document.getElementById("console-button").click();
-            document.getElementById("console-button-run").click();
         });
 
 
