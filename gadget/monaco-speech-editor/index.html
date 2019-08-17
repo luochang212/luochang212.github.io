@@ -125,7 +125,35 @@
                     <select class="voice-select"></select>
                 </div>
 
-                <button class="nav-title" id="theme-controller-title" onclick="hideSection(event, 'theme-controller', 'title-icon-4-2');"><img class="title-icon" id="title-icon-4-2" src="./images/sort-down-solid.svg" alt="down"> Theme</button>
+                <button class="nav-title" id="mode-controller-title" onclick="hideSection(event, 'mode-controller', 'title-icon-4-2');"><img class="title-icon" id="title-icon-4-2" src="./images/sort-down-solid.svg" alt="down"> Mode</button>
+                <div class="navbar" id="mode-controller">
+                    <span id="character-mode" class="navbar-toggle" style="padding-top: 10px;">
+                        Character Mode
+                        <label class="switch">
+                            <input id="character-mode-input" type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </span>
+
+                    <span id="code-mode" class="navbar-toggle" style="padding-top: 10px;">
+                        Code Mode
+                        <label class="switch">
+                            <input id="code-mode-input" type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </span>
+
+                    <span id="overview-mode" class="navbar-toggle" style="padding-top: 10px;">
+                        Overview Mode
+                        <label class="switch">
+                            <input id="overview-mode-input" type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </span>
+                    
+                </div>
+
+                <button class="nav-title" id="theme-controller-title" onclick="hideSection(event, 'theme-controller', 'title-icon-4-3');"><img class="title-icon" id="title-icon-4-3" src="./images/sort-down-solid.svg" alt="down"> Theme</button>
                 <div class="navbar" id="theme-controller">
                     <span id="night-mode" class="navbar-toggle" style="padding-top: 10px;">
                         Night Mode
@@ -229,7 +257,7 @@
                 
                 
                 
-                var htmlCode = "<!DOCTYPE html>\n<html>\n<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n<title>what time is it?<" + "/title>\n<style type=\"text/css\">\n	body {\n		font-family: \"Source Han Sans\", \"San Francisco\", \"PingFang SC\", \"Hiragino Sans GB\", \"Droid Sans Fallback\", \"Microsoft YaHei\", sans-serif;\n		font-size: 14px;\n		color: #333;\n	}\n	p {\n		margin: 1em 0;\n	}\n	p:empty {\n		height: 1.5em;\n	}\n	main {\n		margin: 0 5em;\n		max-width: 48em;\n	}\n	h1 {\n		margin: 1em 0;\n		font-size: 24px;\n		font-weight: 300;\n	}\n	button {\n		background: #fff;\n		border: 1px solid #ccc;\n		border-radius: 2px;\n		line-height: 1;\n		padding: .5em;\n	}\n<" + "/style>\n<" + "/head>\n\n<body>\n<main>\n		\n	<h1>what time is it?<" + "/h1>\n	<p>© 2019 Chang Luo<" + "/p>\n	<hr>\n	\n	<p>Excuse me, what time is it now O_O ???<" + "/p>\n	<br>\n	\n	<button type=\"button\" onclick=\"document.getElementById('time').innerHTML = Date()\">\n		Click Me\n	<" + "/button>\n\n	<p id=\"time\"><" + "/p>\n	\n<" + "/main>"+ "\n<script" + ">\n	console.log('Hi there! Welcome to Monaco Speech Editor.');\n	console.log('Monaco Speech Editor is an open source web application.');\n	console.log('The repo address is https://github.com/luochang212/monaco-speech-editor');\n	console.log(\"If you like this web page or think it's useful,\");\n	console.log('could you give me a star on GitHub (●°u°●)​ 」');\n<" + "/script>" +"\n<" + "/body>\n<" + "/html>"
+                var htmlCode = "<!DOCTYPE html>\n<html>\n<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n<title>what time is it?<" + "/title>\n<style type=\"text/css\">\n	body {\n		font-family: \"Source Han Sans\", \"San Francisco\", \"PingFang SC\", \"Hiragino Sans GB\", \"Droid Sans Fallback\", \"Microsoft YaHei\", sans-serif;\n		font-size: 14px;\n		color: #333;\n	}\n	p {\n		margin: 1em 0;\n	}\n	p:empty {\n		height: 1.5em;\n	}\n	main {\n		margin: 0 5em;\n		max-width: 48em;\n	}\n	h1 {\n		margin: 1em 0;\n		font-size: 24px;\n		font-weight: 300;\n	}\n	button {\n		background: #fff;\n		border: 1px solid #ccc;\n		border-radius: 2px;\n		line-height: 1;\n		padding: .5em;\n	}\n<" + "/style>\n<" + "/head>\n\n<body>\n<main>\n		\n	<h1>what time is it?<" + "/h1>\n	<p>© 2019 Chang Luo<" + "/p>\n	<hr>\n	\n	<p>Excuse me, what time is it now O_O ???<" + "/p>\n	<br>\n	\n	<button type=\"button\" onclick=\"document.getElementById('time').innerHTML = Date()\">\n		Click Me\n	<" + "/button>\n\n	<p id=\"time\"><" + "/p>\n	\n<" + "/main>"+ "\n<script" + ">\n	console.log('Hi there! Welcome to Monaco Speech Editor.');\n	console.log('Monaco Speech Editor is an open source web application.');\n	console.log('The repo address is https://github.com/luochang212/monaco-speech-editor');\n	console.log(\"If you like this web application or think it's useful,\");\n	console.log('could you give me a star on GitHub (●°u°●)​ 」');\n<" + "/script>" +"\n<" + "/body>\n<" + "/html>"
                 var noCode = "";
 
 
@@ -309,13 +337,48 @@
                 document.getElementById("console-button-run").addEventListener("click", function(){
                     run();
                 });
+                document.getElementById("character-mode-input").addEventListener("click", function(){
+                    document.getElementById("code-mode-input").checked = false;
+                    document.getElementById("overview-mode-input").checked = false;
+                    if (document.getElementById("character-mode-input").checked === true) {
+                        modeController = 'charSpeak';
+                    } else {
+                        modeController = 'easySpeak';
+                    }
+                    
+                });
+                document.getElementById("code-mode-input").addEventListener("click", function(){
+                    document.getElementById("character-mode-input").checked = false;
+                    document.getElementById("overview-mode-input").checked = false;
+                    if (document.getElementById("code-mode-input").checked === true) {
+                        modeController = 'codeSpeak';
+                    } else {
+                        modeController = 'easySpeak';
+                    }
+                    
+                });
+                document.getElementById("overview-mode-input").addEventListener("click", function(){
+                    document.getElementById("code-mode-input").checked = false;
+                    document.getElementById("character-mode-input").checked = false;
+                    if (document.getElementById("overview-mode-input").checked === true) {
+                        modeController = 'overSpeak';
+                    } else {
+                        modeController = 'easySpeak';
+                    }
+                    
+                });
+
+
+                
+                
+
                 
                 
                 
 
 
                 
-
+                
 
                 
 
@@ -371,13 +434,256 @@
                 speak();
             }
 
+            
+            var modeController = 'easySpeak';
+
+            
+            function charSpeak(val) {
+                var res = '';
+                for (var i = 0; i < val.length; i++) {
+                    var temp = val[i];
+                    switch (temp) {
+                        case ' ':
+                            temp = "space";
+                            break;
+                        case '!':
+                            temp = "exclamation mark";
+                            break;
+                        case '\"':
+                            temp = "quotation mark";
+                            break;
+                        case '#':
+                            temp = "number sign";
+                            break;
+                        case '$':
+                            temp = "dollar sign";
+                            break;
+                        case '%':
+                            temp = "percent sign";
+                            break;
+                        case '&':
+                            temp = "ampersand";
+                            break;
+                        case '\'':
+                            temp = "apostrophe";
+                            break;
+                        case '(':
+                            temp = "left parenthesis";
+                            break;
+                        case ')':
+                            temp = "right parenthesis";
+                            break;
+                        case '*':
+                            temp = "asterisk";
+                            break;
+                        case '+':
+                            temp = "plus sign";
+                            break;
+                        case ',':
+                            temp = "comma";
+                            break;
+                        case '-':
+                            temp = "hyphen";
+                            break;
+                        case '.':
+                            temp = "full stop";
+                            break;
+                        case '/':
+                            temp = "solidus";
+                            break;
+                        case ':':
+                            temp = "colon";
+                            break;
+                        case ';':
+                            temp = "semicolon";
+                            break;
+                        case '<':
+                            temp = "less than sign";
+                            break;
+                        case '=':
+                            temp = "equals sign";
+                            break;
+                        case '>':
+                            temp = "greater than sign";
+                            break;
+                        case '?':
+                            temp = "question mark";
+                            break;
+                        case '@':
+                            temp = "at sign";
+                            break;
+                        case 'A':
+                            temp = "capital a";
+                            break;
+                        case 'B':
+                            temp = "capital b";
+                            break;
+                        case 'C':
+                            temp = "capital c";
+                            break;
+                        case 'D':
+                            temp = "capital d";
+                            break;
+                        case 'E':
+                            temp = "capital e";
+                            break;
+                        case 'F':
+                            temp = "capital f";
+                            break;
+                        case 'G':
+                            temp = "capital g";
+                            break;
+                        case 'H':
+                            temp = "capital h";
+                            break;
+                        case 'I':
+                            temp = "capital i";
+                            break;
+                        case 'J':
+                            temp = "capital j";
+                            break;
+                        case 'K':
+                            temp = "capital k";
+                            break;
+                        case 'L':
+                            temp = "capital l";
+                            break;
+                        case 'M':
+                            temp = "capital m";
+                            break;
+                        case 'N':
+                            temp = "capital n";
+                            break;
+                        case 'O':
+                            temp = "capital o";
+                            break;
+                        case 'P':
+                            temp = "capital p";
+                            break;
+                        case 'Q':
+                            temp = "capital q";
+                            break;
+                        case 'R':
+                            temp = "capital r";
+                            break;
+                        case 'S':
+                            temp = "capital s";
+                            break;
+                        case 'T':
+                            temp = "capital t";
+                            break;
+                        case 'U':
+                            temp = "capital u";
+                            break;
+                        case 'V':
+                            temp = "capital v";
+                            break;
+                        case 'W':
+                            temp = "capital w";
+                            break;
+                        case 'X':
+                            temp = "capital x";
+                            break;
+                        case 'Y':
+                            temp = "capital y";
+                            break;
+                        case 'Z':
+                            temp = "capital z";
+                            break;
+                        case '[':
+                            temp = "left square bracket";
+                            break;
+                        case '\\':
+                            temp = "reverse solidus";
+                            break;
+                        case ']':
+                            temp = "right square bracket";
+                            break;
+                        case '^':
+                            temp = "circumflex accent";
+                            break;
+                        case '_':
+                            temp = "low line";
+                            break;
+                        case '`':
+                            temp = "grave accent";
+                            break;
+                        case '{':
+                            temp = "left curly bracket";
+                            break;
+                        case '|':
+                            temp = "vertical line";
+                            break;
+                        case '}':
+                            temp = "right curly bracket";
+                            break;
+                        case '~':
+                            temp = "tilde";
+                            break;
+                        default:
+                            temp = val[i];
+                    }
+                    res += temp + ' ';
+                }
+                return res;
+            }
+
+
+            
+            function overDocSpeak() {
+                var index = findActiveEditor();
+                var file_name = fileArray[index - 1].fileName;
+                var max_line = myEditor.getModel().getLineCount();
+                var char_count = myEditor.getValue().length;
+                
+                var res = 'the filename is ' + file_name + ' the row count is ' + max_line + '  and there are ' + char_count + 'characters in this file ';
+                return res;
+            }
+            
+            function overLineSpeak(line_number) {
+                var char_count = myEditor.getModel().getLineContent(line_number).length;
+                
+                var res = 'This is line ' + line_number + ' This line have ' + char_count + ' characters ';
+                return res;
+            }
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
             function speakDocument() {
                 
-                easySpeak(myEditor.getValue());
+                if (modeController == 'easySpeak') {
+                    easySpeak(myEditor.getValue());
+                } else if (modeController == 'charSpeak') {
+                    easySpeak(charSpeak(myEditor.getValue()));
+                } else if (modeController == 'codeSpeak') {
+                    
+                } else if (modeController == 'overSpeak') {
+                    easySpeak(overDocSpeak());
+                } else {
+                    console.log('Something wrong in speakDocument()');
+                }
             }
 
             function speakByLine(line_number) {
-                easySpeak(myEditor.getModel().getLineContent(line_number));
+                if (modeController == 'easySpeak') {
+                    easySpeak(myEditor.getModel().getLineContent(line_number));
+                } else if (modeController == 'charSpeak') {
+                    easySpeak(charSpeak(myEditor.getModel().getLineContent(line_number)));
+                } else if (modeController == 'codeSpeak') {
+                    
+                } else if (modeController == 'overSpeak') {
+                    easySpeak(overLineSpeak(line_number));
+                } else {
+                    console.log('Something wrong in speakByLine()');
+                }
             }
 
             function speakByLineFunc() {
@@ -1245,6 +1551,10 @@
             
             
             
+            
+            
+            
+            
 
                 
                 
@@ -1411,7 +1721,7 @@
                     
                     document.getElementById("console-button-run").style.display = "inline-block";
                     
-                    document.getElementById("console-bar").style.borderTop = "1px solid #000000";
+                    document.getElementById("console-bar").style.borderTop = "1px solid #bbbbbb";
                     
                     document.getElementById("console-bar").style.WebkitTransform = "translateY(-280px)"; 
                     
