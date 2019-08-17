@@ -163,6 +163,14 @@
                     <div class="pitch-value">1</div>
                 </div>
                 <select class="voice-select"></select>
+
+                <span id="voice-feedback" class="navbar-toggle" style="padding-top: 10px;">
+                        Voice Feedback
+                        <label class="switch">
+                            <input id="voice-feedback-input" type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </span>
             </div>
 
             <button class="nav-title" id="mode-controller-title"
@@ -192,7 +200,6 @@
                         <span class="slider round"></span>
                     </label>
                 </span>
-
             </div>
 
             <button class="nav-title" id="theme-controller-title"
@@ -537,8 +544,11 @@
                     document.getElementById("console-log").style.left = 'calc((100vw - 50px)*0.6)';
                 }
             });
-
-
+            document.getElementById("voice-feedback-input").addEventListener("click", function () {
+                if (document.getElementById("voice-feedback-input").checked === true) {
+                    voiceFeedback();
+                }
+            });
 
 
 
@@ -818,6 +828,24 @@
             }
 
             
+            function voiceFeedback() {
+                var row, col, char;
+                myEditor.onDidChangeCursorPosition((e) => {
+                    row = myEditor.getPosition().lineNumber;
+                    col = myEditor.getPosition().column;
+                    char = myEditor.getModel().getValueInRange({
+                        startLineNumber: row,
+                        startColumn: col - 1,
+
+                        endLineNumber: row,
+                        endColumn: col,
+                    });
+                    
+                    easySpeak(charSpeak( char ));
+                });
+            }
+
+            
             
             
             
@@ -944,7 +972,7 @@
                 var index = findActiveEditor();
                 monaco.editor.setModelLanguage(window.monaco.editor.getModels()[index - 1], langName)
                 fileArray[index - 1].editorLanguage = langName;
-                console.log(fileArray);
+                
             }
 
 
@@ -991,7 +1019,7 @@
                         document.getElementById("play-pause").src = "./images/play-solid.svg";
                         clickNumber = 0;
                         pauseResume = 'R';
-                        console.log('SpeechSynthesisUtterance.onend');
+                        
                     }
                     utterThis.onerror = function (event) {
                         console.error('SpeechSynthesisUtterance.onerror');
@@ -1322,7 +1350,7 @@
 
                         } else {
                             
-                            console.log(fileIndex);
+                            
                             activeEditor(fileIndex);
                         }
 
@@ -1744,6 +1772,7 @@
             
             
             
+            
 
 
 
@@ -1967,7 +1996,7 @@
                     
                     document.getElementById("console-bar").style.borderTop = console_border_style + console_border_color;
                 }
-                console.log(document.getElementById("console-bar").style.borderTop)
+                
             });
 
 
