@@ -546,7 +546,9 @@
             });
             document.getElementById("voice-feedback-input").addEventListener("click", function () {
                 if (document.getElementById("voice-feedback-input").checked === true) {
-                    voiceFeedback();
+                    voiceFbToggole = true;
+                } else {
+                    voiceFbToggole = false;
                 }
             });
 
@@ -825,24 +827,6 @@
                 
                 var res = 'This is line ' + line_number + ' This line have ' + char_count + ' characters ';
                 return res;
-            }
-
-            
-            function voiceFeedback() {
-                var row, col, char;
-                myEditor.onDidChangeCursorPosition((e) => {
-                    row = myEditor.getPosition().lineNumber;
-                    col = myEditor.getPosition().column;
-                    char = myEditor.getModel().getValueInRange({
-                        startLineNumber: row,
-                        startColumn: col - 1,
-
-                        endLineNumber: row,
-                        endColumn: col,
-                    });
-                    
-                    easySpeak(charSpeak( char ));
-                });
             }
 
             
@@ -1488,6 +1472,32 @@
                 fileCounter += 1;
             }
 
+            
+            function voiceFeedback(editor) {
+                
+                
+                var row, col, char;
+                myEditor.onDidChangeCursorPosition((e) => {
+                    row = myEditor.getPosition().lineNumber;
+                    col = myEditor.getPosition().column;
+                    char = myEditor.getModel().getValueInRange({
+                        startLineNumber: row,
+                        startColumn: col - 1,
+
+                        endLineNumber: row,
+                        endColumn: col,
+                    });
+                    
+                    if (voiceFbToggole === 't') {
+                        
+                        
+                        easySpeak(charSpeak( char ));
+                    }
+                });
+            }
+
+            
+            var voiceFbToggole = '';
             function activeEditor(index) {
                 
                 
@@ -1511,9 +1521,21 @@
                 myEditor = fileArray[index - 1].editor;
 
                 
+                var char;
                 myEditor.onDidChangeCursorPosition((e) => {
                     
                     updateCursorPosition();
+                    
+                    if (voiceFbToggole === true) {
+                        char = myEditor.getModel().getValueInRange({
+                            startLineNumber: currentLineNumber,
+                            startColumn: currentColumnNumber - 1,
+
+                            endLineNumber: currentLineNumber,
+                            endColumn: currentColumnNumber,
+                        });
+                        easySpeak(charSpeak( char ));
+                    }
                 });
 
                 
