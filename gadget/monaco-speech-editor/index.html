@@ -163,14 +163,6 @@
                     <div class="pitch-value">1</div>
                 </div>
                 <select class="voice-select"></select>
-
-                <span id="voice-feedback" class="navbar-toggle" style="padding-top: 10px;">
-                        Voice Feedback
-                        <label class="switch">
-                            <input id="voice-feedback-input" type="checkbox">
-                            <span class="slider round"></span>
-                        </label>
-                    </span>
             </div>
 
             <button class="nav-title" id="mode-controller-title"
@@ -202,9 +194,31 @@
                 </span>
             </div>
 
+            <button class="nav-title" id="accessibility-controller-title"
+                onclick="hideSection(event, 'accessibility-controller', 'title-icon-4-3');"><img class="title-icon"
+                    id="title-icon-4-3" src="./images/sort-down-solid.svg" alt="down"> Accessibility</button>
+            <div class="navbar" id="accessibility-controller">
+                <span id="voice-feedback" class="navbar-toggle" style="padding-top: 10px;">
+                    Voice Feedback
+                    <label class="switch">
+                        <input id="voice-feedback-input" type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </span>
+                <span id="voice-cue" class="navbar-toggle" style="padding-top: 10px;">
+                    Voice Cue
+                    <label class="switch">
+                        <input id="voice-cue-input" type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </span>
+
+                
+            </div>
+
             <button class="nav-title" id="theme-controller-title"
-                onclick="hideSection(event, 'theme-controller', 'title-icon-4-3');"><img class="title-icon"
-                    id="title-icon-4-3" src="./images/sort-down-solid.svg" alt="down"> Theme</button>
+                onclick="hideSection(event, 'theme-controller', 'title-icon-4-4');"><img class="title-icon"
+                    id="title-icon-4-4" src="./images/sort-down-solid.svg" alt="down"> Theme</button>
             <div class="navbar" id="theme-controller">
                 <span id="night-mode" class="navbar-toggle" style="padding-top: 10px;">
                     Night Mode
@@ -216,8 +230,8 @@
             </div>
 
             <button class="nav-title" id="console-controller-title"
-                onclick="hideSection(event, 'console-controller', 'title-icon-4-4');"><img class="title-icon"
-                    id="title-icon-4-4" src="./images/sort-down-solid.svg" alt="down"> Console</button>
+                onclick="hideSection(event, 'console-controller', 'title-icon-4-5');"><img class="title-icon"
+                    id="title-icon-4-5" src="./images/sort-down-solid.svg" alt="down"> Console</button>
             <div class="navbar" id="console-controller">
                 <span id="hide-log-area" class="navbar-toggle" style="padding-top: 10px;">
                     Hide Console Log Area
@@ -233,7 +247,6 @@
                         <span class="slider round"></span>
                     </label>
                 </span>
-                
             </div>
 
 
@@ -420,6 +433,8 @@
                 return editor;
             }
 
+            
+
 
             document.getElementById("speak-document").addEventListener("click", function () {
                 speakDocument();
@@ -463,7 +478,7 @@
                     
                     
                     var btn_bar = document.getElementById('console-button-bar');
-                    for (var i = 0; i < btn_bar.children.length; i ++) {
+                    for (var i = 0; i < btn_bar.children.length; i++) {
                         btn_bar.children[i].style.color = "#FFF";
                     }
                 } else {
@@ -474,7 +489,7 @@
                     
                     
                     var btn_bar = document.getElementById('console-button-bar');
-                    for (var i = 0; i < btn_bar.children.length; i ++) {
+                    for (var i = 0; i < btn_bar.children.length; i++) {
                         btn_bar.children[i].style.color = "inherit";
                     }
                 }
@@ -554,18 +569,70 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
             
+            var voiceCueToggle = false;
+            document.getElementById("voice-cue-input").addEventListener("click", function () {
+                if (document.getElementById("voice-cue-input").checked === true) {
+                    voiceCueToggle = true;
+                } else {
+                    voiceCueToggle = false;
+                }
+            });
             
+            document.getElementById('sidebar-4').addEventListener("click", function (evt) {
+                if (voiceCueToggle == true) {
+                    if (evt.target.tagName == "INPUT" && evt.target.id != 'rate' && evt.target.id != 'pitch') {
+                        if (evt.target.checked == true) {
+                            
+                            easySpeak('open' + evt.target.parentElement.parentElement.innerText);
+                        } else if (evt.target.checked == false) {
+                            easySpeak('close' + evt.target.parentElement.parentElement.innerText);
+                        }
+                    }
+                }
+            });
             
-
-
-
-
-
-
-
-
-
+            var allElem = document.all;
+            var allBtns = [];
+            var allSpans = [];
+            var allLeftNavBtms = [];
+            for (var i = 0; i < allElem.length; i++) {
+                if (allElem[i].tagName == 'BUTTON') {
+                    
+                    allBtns.push(allElem[i]);
+                } else if (allElem[i].tagName == 'SPAN') {
+                    allSpans.push(allElem[i]);
+                } else if (allElem[i].className == 'left-nav-button') {
+                    allLeftNavBtms.push(allElem[i]);
+                }
+            }
+            
+            for (var i = 0; i < allBtns.length; i++) {
+                allBtns[i].addEventListener("mouseover", function (evt) {
+                    if (voiceCueToggle == true) {
+                        easySpeak(this.innerText + 'button');
+                    }
+                });
+            }
+            
+            for (var i = 0; i < allSpans.length; i++) {
+                allSpans[i].addEventListener("mouseover", function (evt) {
+                    if (voiceCueToggle == true) {
+                        easySpeak(this.innerText);
+                    }
+                });
+            }
 
 
 
@@ -609,12 +676,15 @@
             
             
              
+
+            
+
 
             function easySpeak(val) {
-                doStop();
-                inputTxt = val;
-                speak();
-            }
+                    doStop();
+                    inputTxt = val;
+                    speak();
+                }
 
             
             var modeController = 'easySpeak';
@@ -923,32 +993,6 @@
             
             
 
-
-            function save(index) {
-                download(fileArray[index - 1].fileName, fileArray[index - 1].editor.getValue());
-
-                
-                
-                
-                
-                
-                
-                
-            }
-
-            function download(filename, text) {
-                var element = document.createElement('a');
-                element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-                element.setAttribute('download', filename);
-
-                element.style.display = 'none';
-                document.body.appendChild(element);
-
-                element.click();
-
-                document.body.removeChild(element);
-            }
-
             var languageSelect = document.querySelector('.language-picker');
 
             
@@ -959,13 +1003,10 @@
                 
             }
 
-
             languageSelect.onchange = function () {
                 syntaxHighlight(languageSelect.value);
                 
             }
-
-            
 
             var currentLineNumber = 1;
             var currentColumnNumber = 1;
@@ -1106,10 +1147,18 @@
 
             
             document.onkeyup = function (e) {
-                if (e.ctrlKey && e.altKey && e.which == 80) {
+                if (e.ctrlKey && e.altKey && (e.which == 80 || e.which == 13)) {
                     play();
                 } else if (e.ctrlKey && e.altKey && e.which == 83) {
                     doStop();
+                } else if (e.ctrlKey && e.altKey && e.which == 38) {
+                    backward();
+                    play();
+                } else if (e.ctrlKey && e.altKey && e.which == 40) {
+                    forward();
+                    play();
+                } else if (e.ctrlKey && e.altKey && e.which == 74) {
+                    document.getElementById("showLineNumber").focus();
                 }
             };
 
@@ -1120,11 +1169,9 @@
                 }
             }
 
-
-
-
-
             
+
+
             
             function configureEditableTextarea(id, modifyClassName, readOnlyClassName) {
                 var textarea = document.getElementById(id);
@@ -1491,7 +1538,7 @@
                     if (voiceFbToggole === 't') {
                         
                         
-                        easySpeak(charSpeak( char ));
+                        easySpeak(charSpeak(char));
                     }
                 });
             }
@@ -1534,7 +1581,7 @@
                             endLineNumber: currentLineNumber,
                             endColumn: currentColumnNumber,
                         });
-                        easySpeak(charSpeak( char ));
+                        easySpeak(charSpeak(char));
                     }
                 });
 
@@ -1564,6 +1611,8 @@
                 }
                 return -1;
             }
+
+            
 
 
             
@@ -1673,6 +1722,33 @@
 
             
             
+            function save(index) {
+                download(fileArray[index - 1].fileName, fileArray[index - 1].editor.getValue());
+
+                
+                
+                
+                
+                
+                
+                
+            }
+
+            function download(filename, text) {
+                var element = document.createElement('a');
+                element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+                element.setAttribute('download', filename);
+
+                element.style.display = 'none';
+                document.body.appendChild(element);
+
+                element.click();
+
+                document.body.removeChild(element);
+            }
+
+            
+            
             function findDeletedFiles() {
                 alert("Please open the console in your browser.");
                 console.log(fileArray);
@@ -1760,7 +1836,7 @@
 
             
             function openInNewWindow() {
-                var win = window.open("", "Title", "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=780,height=200,top="+(screen.height-400)+",left="+(screen.width-840));
+                var win = window.open("", "Title", "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=780,height=200,top=" + (screen.height - 400) + ",left=" + (screen.width - 840));
                 var text = myEditor.getValue();
                 win.document.write(text);
                 
@@ -1782,6 +1858,7 @@
             }
             init();
 
+            
             
             
             
@@ -1959,7 +2036,7 @@
                 document.getElementById("console-button-open-tab").style.display = "inline-block";
                 
                 var btn_bar = document.getElementById('console-button-bar');
-                for (var i = 0; i < btn_bar.children.length; i ++) {
+                for (var i = 0; i < btn_bar.children.length; i++) {
                     btn_bar.children[i].style.height = '29px';
                     btn_bar.children[i].style.fontSize = '14px';
                 }
@@ -1983,7 +2060,7 @@
                 document.getElementById("console-button-open-tab").style.display = "none";
                 
                 var btn_bar = document.getElementById('console-button-bar');
-                for (var i = 0; i < btn_bar.children.length; i ++) {
+                for (var i = 0; i < btn_bar.children.length; i++) {
                     btn_bar.children[i].style.height = '20px';
                     btn_bar.children[i].style.fontSize = '12px';
                 }
@@ -2005,21 +2082,21 @@
 
         document.getElementById("night-mode-input").addEventListener("click", function () {
             
-                if (document.getElementById("night-mode-input").checked === true) {
-                    console_border_color = "#000000";
-                    
-                    
-                    
-                    document.getElementById("console-bar").style.borderTop = console_border_style + console_border_color;
-                } else {
-                    console_border_color = "#bbbbbb";
-                    
-                    
-                    
-                    document.getElementById("console-bar").style.borderTop = console_border_style + console_border_color;
-                }
+            if (document.getElementById("night-mode-input").checked === true) {
+                console_border_color = "#000000";
                 
-            });
+                
+                
+                document.getElementById("console-bar").style.borderTop = console_border_style + console_border_color;
+            } else {
+                console_border_color = "#bbbbbb";
+                
+                
+                
+                document.getElementById("console-bar").style.borderTop = console_border_style + console_border_color;
+            }
+            
+        });
 
 
         
@@ -2046,6 +2123,9 @@
             
             
         });
+        Router.route('load-demo', function () {
+            document.getElementById("load-demo").click();
+        });
         Router.route('dark', function () {
             document.getElementById("night-mode-input").click();
         });
@@ -2053,17 +2133,10 @@
             document.getElementById("left-nav-button-1").click();
             document.getElementById("hide-header").click();
         });
-        Router.route('load-demo', function () {
-            document.getElementById("load-demo").click();
-        });
-        Router.route('console', function () {
-            document.getElementById("console-button").click();
-        });
         Router.route('run', function () {
             document.getElementById("console-button").click();
-            document.getElementById("console-button-run").click();
         });
-        Router.route('dark+run', function () {
+        Router.route('dark&run', function () {
             document.getElementById("night-mode-input").click();
             document.getElementById("console-button").click();
         });
