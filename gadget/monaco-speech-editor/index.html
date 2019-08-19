@@ -218,6 +218,14 @@
                     </label>
                 </span>
 
+                <span id="spot-light" class="navbar-toggle">
+                    Spot Light
+                    <label class="switch">
+                        <input id="spot-light-input" type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </span>
+
                 
             </div>
 
@@ -375,6 +383,11 @@
         </div>
     </div>
 
+    <div id="overlay"></div>
+
+    <div id="spot-light-canvas">
+        
+    </div>
 
 
     
@@ -572,8 +585,8 @@
                 }
             });
             document.getElementById("audio-tutorial").addEventListener("click", function () {
-                    var val = 'Here is a short introduction about Monaco Speech Editor. Press control, alt and s, if you want to stop this audio. Monaco Speech Editor is an online code editor for visually impaired people. It provides several built-in functions to make it easy to read code. For example, you can play the synthetic speech of current code line by pressing control, option and p on Mac or control, alt and p on window. Play next code line by pressing control, alt and arrow down key. Play previous code line by pressing control alt and arrow up key. If you want it to speak the whole document, please press control alt and d. Monaco Speech Editor provides three modes to meet the different needs of reviewing code. There are character mode, code mode and overview mode. If you want to get accurate information about your code, you should use character mode, it will read every symbol, such as bracket or space. Code mode provides regular content of your code, some less important elements will be ignored. Overview mode will provide the outline information of this code line or this document, depending on your choice. Except powerful audio player, Monaco Speech Editor also provides incredible support in terms of file management. You can upload, download, add a new file, delete a file, change the file name by the build-in file manager. If you delete a file accidentally, you can recover the file by trash before you refresh current webpage. In addition, Monaco Speech Editor can also compile html file, It will render the html file in an iframe at the lower left corner of the editor. It can also output the result of consile dot log in an iframe at the lower right corner of the editor. There are many useful functionality, like using router to load setting. It will be introduced in my thesis. please enjoy and have fun. Thanks for listening.';
-                    easySpeak(val);
+                var val = 'Here is a short introduction about Monaco Speech Editor. Press control, alt and s, if you want to stop this audio. Monaco Speech Editor is an online code editor for visually impaired people. It provides several built-in functions to make it easy to read code. For example, you can play the synthetic speech of current code line by pressing control, option and p on Mac or control, alt and p on window. Play next code line by pressing control, alt and arrow down key. Play previous code line by pressing control alt and arrow up key. If you want it to speak the whole document, please press control alt and d. Moreover, Monaco Speech Editor provides three modes to meet the different needs of reviewing code. There are character mode, code mode and overview mode. If you want to get accurate information about your code, you should use character mode, it will read every symbol, such as bracket or space. Code mode provides regular content of your code, some less important elements will be ignored. Overview mode will provide the outline information of this code line or this document, depending on your choice. Except powerful audio player, Monaco Speech Editor also provides incredible support in terms of file management. You can upload, download, add a new file, delete a file, change the file name by the build-in file manager. If you delete a file accidentally, you can recover the file by trash before you refresh current webpage. In addition, Monaco Speech Editor can also compile html file, It will render the html file in an iframe at the lower left corner of the editor. It can also output the result of consile dot log in an iframe at the lower right corner of the editor. There are many useful functionality, like using router to load setting. It will be introduced in my thesis. please enjoy and have fun. Thanks for listening.';
+                easySpeak(val);
             });
 
 
@@ -589,6 +602,240 @@
 
 
 
+
+            
+            
+            var SLNameArray = ['character-mode-input', 'code-mode-input', 'overview-mode-input', 'voice-feedback-input', 'voice-cue-input', 'night-mode-input', 'log-area-input', 'result-area-input'];
+
+            var topPos;  
+            var innerElementHeight;
+            var innerElementNumber; 
+            var elementVisibleNumber = 3; 
+            var selectElemIndex = 1; 
+            var scrollDownDistance = 0; 
+            var spotLightToggle = true;
+            
+            document.getElementById("spot-light-input").addEventListener("click", function () {
+                if (document.getElementById("spot-light-input").checked === true) {
+                    document.getElementById("overlay").style.display = "block";
+                    document.getElementById("spot-light-canvas").style.display = "block";
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+
+
+                    
+                    selectElemIndex = 1; 
+                    scrollDownDistance = 0; 
+                    updateSLColor(1);
+                    updateSLStatus();
+                    document.getElementById('spot-light-canvas').scrollTop = 0;
+
+
+                    spotLightToggle = true;
+
+
+
+                } else {
+                    
+                    
+                    
+                    
+                    spotLightToggle = false;
+                }
+            });
+
+            
+            
+            
+            document.addEventListener("keydown", (e) => {
+                if (spotLightToggle === true) {
+                    SLReact(e)
+                }
+            });
+
+            
+            function SLReact(e) {
+                
+                
+                topPos = document.getElementById('spot-light-1').offsetTop;
+                innerElementHeight = document.getElementById('spot-light-1').offsetHeight;
+                innerElementNumber = SLNameArray.length;
+                
+                
+
+                if (e.which == 37) {
+                    
+                    
+                    
+                    
+                    
+                    document.getElementById(SLNameArray[selectElemIndex - 1]).click();
+                    updateSLStatus();
+                } else if (e.which == 38) {
+                    
+                    
+                    
+                    if (selectElemIndex > 1) {
+                        scrollDownDistance -= innerElementHeight;
+                        
+                        selectElemIndex -= 1;
+                    }
+                    
+                    
+                    updateSLColor(selectElemIndex);
+
+
+                    
+                    document.getElementById('spot-light-canvas').scrollTop = topPos + scrollDownDistance;
+                } else if (e.which == 39) {
+                    
+                    
+                    
+                    
+                    document.getElementById(SLNameArray[selectElemIndex - 1]).click();
+                    updateSLStatus();
+                } else if (e.which == 40) {
+                    
+
+                    
+                    
+                    
+                    
+
+                    
+                    
+
+
+                    if (selectElemIndex <= (innerElementNumber - 1)) {
+                        scrollDownDistance += innerElementHeight;
+                        
+                        selectElemIndex += 1;
+                    }
+
+                    
+                    
+                    updateSLColor(selectElemIndex);
+                    
+                    document.getElementById('spot-light-canvas').scrollTop = topPos + scrollDownDistance;
+                    
+                    
+                } else {
+                    
+                    document.getElementById('overlay').click();
+                }
+            }
+
+
+            
+            var SLArray;  
+            function createSLMember(SLNameArray) {
+                
+                
+                var SoptLightMember = {
+                    name: "",
+                    status: false
+                }
+                var SLArray = [];
+
+                
+                var div = document.createElement('DIV');
+                var newMember = Object.create(SoptLightMember);
+                newMember.name = '';
+                newMember.status = false;
+                SLArray.push(newMember);
+
+                for (var i = 0; i < SLNameArray.length; i++) {
+                    var SLName = document.getElementById(SLNameArray[i]).parentElement.parentElement.innerText;
+                    var SLStatus = document.getElementById(SLNameArray[i]).checked;
+                    var newMember = Object.create(SoptLightMember);
+                    newMember.name = SLName;
+                    newMember.status = SLStatus;
+                    SLArray.push(newMember);
+                }
+
+                
+                var div = document.createElement('DIV');
+                var newMember = Object.create(SoptLightMember);
+                newMember.name = "";
+                newMember.status = false;
+                SLArray.push(newMember);
+
+                
+
+                
+                for (var i = 0; i < SLArray.length; i++) {
+                    var div = document.createElement('DIV');
+                    div.className = 'spot-light-div';
+                    div.id = 'spot-light-' + (i + 1).toString(10);
+                    
+                    
+                    if (i != 0 && i != SLArray.length - 1) {
+                        div.innerText = SLArray[i].name + (SLArray[i].status ? ":  on" : ": off");
+                    }
+                    
+                    if (i == 1) {
+                        div.style.backgroundColor = "#b1b1b1";
+                        div.style.fontSize = "28px";
+                    }
+                    document.getElementById('spot-light-canvas').appendChild(div);
+                }
+
+                return SLArray;
+            }
+
+            
+            
+            function updateSLColor(index) {
+                var allDiv = document.getElementById('spot-light-canvas').children;
+                
+                for (var i = 0; i < allDiv.length; i++) {
+                    allDiv[i].style.backgroundColor = 'transparent';
+                    allDiv[i].style.fontSize = "25px";
+                }
+                allDiv[index].style.backgroundColor = '#b1b1b1'; 
+                allDiv[index].style.fontSize = "28px"; 
+            }
+
+
+            
+            
+            function updateSLStatus() {
+                
+                for (var i = 1; i < SLArray.length - 1; i++) {
+                    var SLStatus = document.getElementById(SLNameArray[i - 1]).checked;
+                    SLArray[i].status = SLStatus;
+                }
+
+                
+                var allDiv = document.getElementById('spot-light-canvas').children;
+                for (var i = 1; i < allDiv.length - 1; i++) {
+                    allDiv[i].innerText = SLArray[i].name + (SLArray[i].status ? ":  on" : ": off");
+                }
+            }
+
+            
+            document.getElementById("overlay").addEventListener("click", function () {
+                document.getElementById("spot-light-canvas").style.display = "none";
+                document.getElementById("overlay").style.display = "none";
+                document.getElementById("spot-light-input").checked = false;
+                spotLightToggle = false;
+            });
+
+
+
+
             
             var voiceCueToggle = false;
             document.getElementById("voice-cue-input").addEventListener("click", function () {
@@ -596,6 +843,7 @@
                     voiceCueToggle = true;
                 } else {
                     voiceCueToggle = false;
+                    easySpeak('close voice cue');
                 }
             });
             
@@ -1071,6 +1319,13 @@
                 }
             }
 
+            function doStop() {
+                pauseResume = 'R';
+                clickNumber = 0;
+                window.speechSynthesis.cancel();
+                return false;
+            }
+
             function play() {
                 var testTxt = myEditor.getModel().getLineContent(currentLineNumber);
                 if (testTxt == "") {
@@ -1088,11 +1343,13 @@
                     document.getElementById("play-pause").src = "./images/pause-solid.svg";
                 } else {
                     doPauseResume();
+                    
                 }
             }
 
             function backward() {
                 doStop();
+                
                 if (currentLineNumber <= 1) {
                     easySpeak("This is the first line");
                     
@@ -1106,6 +1363,14 @@
 
             function forward() {
                 doStop();
+                
+                
+                
+                
+                
+                
+                
+                
                 var maxLine = myEditor.getModel().getLineCount();
                 if (currentLineNumber >= maxLine) {
                     easySpeak("This is the last line");
@@ -1155,21 +1420,36 @@
             }
 
             
-            document.onkeyup = function (e) {
-                if (e.ctrlKey && e.altKey && (e.which == 80 || e.which == 13)) {
+            
+            document.addEventListener('keyup', (e) => {
+                
+                if (e.ctrlKey && e.altKey && (e.which == 80 || e.which == 13)) { 
                     play();
-                } else if (e.ctrlKey && e.altKey && e.which == 83) {
+                } else if (e.ctrlKey && e.altKey && e.which == 83) { 
                     doStop();
-                } else if (e.ctrlKey && e.altKey && e.which == 38) {
+                } else if (e.ctrlKey && e.altKey && e.which == 38) { 
                     backward();
                     play();
-                } else if (e.ctrlKey && e.altKey && e.which == 40) {
+                } else if (e.ctrlKey && e.altKey && e.which == 40) { 
                     forward();
                     play();
-                } else if (e.ctrlKey && e.altKey && e.which == 74) {
+                } else if (e.ctrlKey && e.altKey && e.which == 74) { 
                     document.getElementById("showLineNumber").focus();
+                } else if (e.ctrlKey && e.altKey && e.which == 68) { 
+                    speakDocument();
+                } else if (e.ctrlKey && e.altKey && e.which == 67) { 
+                    cursorPosition();
                 }
-            };
+            });
+
+            
+            document.addEventListener('keydown', (e) => {
+                if (e.ctrlKey && e.altKey && e.which == 32) { 
+                    
+                    document.activeElement.blur();
+                    document.getElementById("spot-light-input").click();
+                }
+            });
 
             
             function handleEnter() {
@@ -1858,7 +2138,10 @@
                 
             }
 
+            
             function init() {
+                
+                SLArray = createSLMember(SLNameArray)
                 document.getElementById("left-nav-button-1").click();
                 
                 addFile(htmlCode, "html");
@@ -1873,7 +2156,8 @@
             
             
             
-
+            
+            
 
             
             
@@ -2144,6 +2428,9 @@
         });
         Router.route('run', function () {
             document.getElementById("console-button").click();
+        });
+        Router.route('tutorial', function () {
+            setTimeout(() => { document.getElementById("audio-tutorial").click(); }, 1000);
         });
         Router.route('dark&run', function () {
             document.getElementById("night-mode-input").click();
