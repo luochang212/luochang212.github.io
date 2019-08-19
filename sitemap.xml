@@ -395,16 +395,6 @@
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/gadget/fau/readme/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://luochang212.github.io/gadget/fau/dist/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://luochang212.github.io/gadget/font/</loc>
     <priority>0</priority>
   </url>
@@ -466,11 +456,6 @@
   
   <url>
     <loc>http://luochang212.github.io/gadget/speech-synthesis/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://luochang212.github.io/gadget/test/</loc>
     <priority>0</priority>
   </url>
   
