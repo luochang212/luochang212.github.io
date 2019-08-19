@@ -234,6 +234,15 @@
                 </span>
 
                 
+
+                <span id="mute" class="navbar-toggle" style="display: none;">
+                    Mute
+                    <label class="switch">
+                        <input id="mute-input" type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </span>
+
             </div>
 
             <button class="nav-title" id="theme-controller-title"
@@ -636,8 +645,14 @@
                     easySpeak(logger.innerText);
                 }
             });
-
-
+            var mute = false;
+            document.getElementById("mute-input").addEventListener("click", function () {
+                if (document.getElementById("mute-input").checked === true) {
+                    mute = true;
+                } else {
+                    mute = false;
+                }
+            });
 
 
 
@@ -872,9 +887,10 @@
 
             
             function speakSL(index) {
-                var allDiv = document.getElementById('spot-light-canvas').children;
-                
-                easySpeak(allDiv[index].innerText);
+                if (!mute) {
+                    var allDiv = document.getElementById('spot-light-canvas').children;
+                    easySpeak(allDiv[index].innerText);
+                }
             }
 
             
@@ -1008,11 +1024,13 @@
 
             
             function speakLI(index) {
-                var allDiv = document.getElementById('linear-index-canvas').children;
-                var fullName = allDiv[index].innerText;
-                var realName = fullName.split('(').shift();
-                var realhotKey = fullName.split('+').pop().replace(")", "");
-                easySpeak(realName + ', hot key is control, alt and ' + realhotKey + ', In windows systems. On Mac systems, hot key is control, option and ' + realhotKey);
+                if (!mute) {
+                    var allDiv = document.getElementById('linear-index-canvas').children;
+                    var fullName = allDiv[index].innerText;
+                    var realName = fullName.split('(').shift();
+                    var realhotKey = fullName.split('+').pop().replace(")", "");
+                    easySpeak(realName + ', hot key is control, alt and ' + realhotKey + ', In windows systems. On Mac systems, hot key is control, option and ' + realhotKey);
+                }
             }
 
             
@@ -2898,9 +2916,16 @@
         Router.route('voice-cue', function () {
             document.getElementById("voice-cue-input").click();
         });
+        Router.route('mute', function () {
+            document.getElementById("mute-input").click();
+        });
         Router.route('dark&run', function () {
             document.getElementById("night-mode-input").click();
             document.getElementById("console-button").click();
+        });
+        Router.route('dark&mute', function () {
+            document.getElementById("night-mode-input").click();
+            document.getElementById("mute-input").click();
         });
 
 
