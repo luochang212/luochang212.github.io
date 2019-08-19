@@ -131,8 +131,6 @@
                 <button id="speak-console-log">Speak Console Log</button>
                 <button id="stop-speaking">Stop Speaking</button>
 
-                
-
             </div>
             <button class="nav-title" id="position-controller-title"
                 onclick="hideSection(event, 'position-controller', 'title-icon-3-2');"><img class="title-icon"
@@ -277,10 +275,6 @@
                     </label>
                 </span>
             </div>
-
-
-
-
 
 
         </div>
@@ -429,9 +423,6 @@
     </div>
 
 
-    
-
-    
 
     
     <script src="./node_modules/monaco-editor/min/vs/loader.js"></script>
@@ -443,7 +434,6 @@
 
         
 
-        
         
 
 
@@ -464,7 +454,7 @@
             
             
             
-            var htmlCode = "<!DOCTYPE html>\n<html>\n<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n<title>what time is it?<" + "/title>\n<style type=\"text/css\">\n	body {\n		font-family: \"Source Han Sans\", \"San Francisco\", \"PingFang SC\", \"Hiragino Sans GB\", \"Droid Sans Fallback\", \"Microsoft YaHei\", sans-serif;\n		font-size: 14px;\n		color: #333;\n	}\n	p {\n		margin: 1em 0;\n	}\n	p:empty {\n		height: 1.5em;\n	}\n	main {\n		margin: 0 5em;\n		max-width: 48em;\n	}\n	h1 {\n		margin: 1em 0;\n		font-size: 24px;\n		font-weight: 300;\n	}\n	button {\n		background: #fff;\n		border: 1px solid #ccc;\n		border-radius: 2px;\n		line-height: 1;\n		padding: .5em;\n	}\n<" + "/style>\n<" + "/head>\n\n<body>\n<main>\n		\n	<h1>what time is it?<" + "/h1>\n	<p>© 2019 Chang Luo<" + "/p>\n	<hr>\n	\n	<p>Excuse me, what time is it now O_O ???<" + "/p>\n	<br>\n	\n	<button type=\"button\" onclick=\"document.getElementById('time').innerHTML = Date()\">\n		Click Me\n	<" + "/button>\n\n	<p id=\"time\"><" + "/p>\n	\n<" + "/main>" + "\n<script" + ">\n	console.log('Hi there! Welcome to Monaco Speech Editor.');\n	console.log('Monaco Speech Editor is an open source web application.');\n	console.log('The repo address is https://github.com/luochang212/monaco-speech-editor');\n	console.log(\"If you like this web application or think it's useful,\");\n	console.log('could you give me a star on GitHub (●°u°●)​ 」');\n<" + "/script>" + "\n<" + "/body>\n<" + "/html>"
+            var htmlCode = "<!DOCTYPE html>\n<html>\n<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n<title>What time is it?<" + "/title>\n<style type=\"text/css\">\n	body {\n		font-family: \"Source Han Sans\", \"San Francisco\", \"PingFang SC\", \"Hiragino Sans GB\", \"Droid Sans Fallback\", \"Microsoft YaHei\", \"sans-serif\";\n		font-size: 14px;\n		color: #333;\n	}\n	p {\n		margin: 1em 0;\n	}\n	p:empty {\n		height: 1.5em;\n	}\n	main {\n		margin: 0 5em;\n		max-width: 48em;\n	}\n	h1 {\n		margin: 1em 0;\n		font-size: 24px;\n		font-weight: 300;\n	}\n	button {\n		background: #fff;\n		border: 1px solid #ccc;\n		border-radius: 2px;\n		line-height: 1;\n		padding: .5em;\n	}\n<" + "/style>\n<" + "/head>\n\n<body>\n<main>\n		\n	<h1>What time is it?<" + "/h1>\n	<p>© 2019 Chang Luo<" + "/p>\n	<hr>\n	\n	<p>Excuse me, what time is it now O_O ???<" + "/p>\n	<br>\n	\n	<button type=\"button\" onclick=\"document.getElementById('time').innerHTML = Date()\">\n		Click Me\n	<" + "/button>\n\n	<p id=\"time\"><" + "/p>\n	\n<" + "/main>" + "\n<script" + ">\n	console.log('Hi there! Welcome to Monaco Speech Editor.');\n	console.log('Monaco Speech Editor is an open source web application.');\n	console.log('The repo address is https://github.com/luochang212/monaco-speech-editor');\n	console.log(\"If you like this web application or think it's useful,\");\n	console.log('could you give me a star on GitHub (●°u°●)​ 」');\n<" + "/script>" + "\n<" + "/body>\n<" + "/html>"
             var noCode = "";
 
 
@@ -532,8 +522,6 @@
                     document.getElementById("toolbar").style.background = "#333";
                     document.getElementById("toolbar").style.color = "#FFFFF0";
                     document.getElementById("console-bar").style.background = "#333";
-                    
-                    
                     var btn_bar = document.getElementById('console-button-bar');
                     for (var i = 0; i < btn_bar.children.length; i++) {
                         btn_bar.children[i].style.color = "#FFF";
@@ -543,8 +531,6 @@
                     document.getElementById("toolbar").style.background = "#F5F5F5";
                     document.getElementById("toolbar").style.color = "#000000";
                     document.getElementById("console-bar").style.background = "#F5F5F5";
-                    
-                    
                     var btn_bar = document.getElementById('console-button-bar');
                     for (var i = 0; i < btn_bar.children.length; i++) {
                         btn_bar.children[i].style.color = "inherit";
@@ -846,8 +832,6 @@
                     var div = document.createElement('DIV');
                     div.className = 'spot-light-div';
                     div.id = 'spot-light-' + (i + 1).toString(10);
-                    
-                    
                     if (i != 0 && i != SLArray.length - 1) {
                         div.innerText = SLArray[i].name + (SLArray[i].status ? ":  on" : ": off");
                     }
@@ -1124,10 +1108,10 @@
                     easySpeak('file name text area, double click to modify the file name');
                 }
             });
-            
 
 
-            
+
+
 
              
             
@@ -1371,6 +1355,119 @@
                 return res;
             }
 
+            
+            function codeSpeak(val) {
+                
+                
+                
+                var res = '';
+                for (var i = 0; i < val.length; i++) {
+                    var temp = val[i];
+                    switch (temp) {
+                        case '!':
+                            temp = " exclamation ";
+                            break;
+                        case '\"':
+                            temp = " quotation mark ";
+                            break;
+                        case '#':
+                            temp = " number sign ";
+                            break;
+                        case '$':
+                            temp = " dollar sign ";
+                            break;
+                        case '%':
+                            temp = " percent ";
+                            break;
+                        case '&':
+                            temp = " ampersand ";
+                            break;
+                        case '\'':
+                            temp = " apostrophe ";
+                            break;
+                        case '(':
+                            temp = " left parenthesis ";
+                            break;
+                        case ')':
+                            temp = " right parenthesis ";
+                            break;
+                        case '*':
+                            temp = " asterisk ";
+                            break;
+                        case '+':
+                            temp = " plus ";
+                            break;
+                        case ',':
+                            temp = " comma ";
+                            break;
+                        case '-':
+                            temp = " hyphen ";
+                            break;
+                        case '.':
+                            temp = " full stop ";
+                            break;
+                        case '/':
+                            temp = " solidus ";
+                            break;
+                        case ':':
+                            temp = " colon ";
+                            break;
+                        case ';':
+                            temp = " semicolon ";
+                            break;
+                        case '<':
+                            temp = " less than ";
+                            break;
+                        case '=':
+                            temp = " equals ";
+                            break;
+                        case '>':
+                            temp = " greater than ";
+                            break;
+                        case '?':
+                            temp = " question mark ";
+                            break;
+                        case '@':
+                            temp = " at ";
+                            break;
+                        case '[':
+                            temp = " left square bracket ";
+                            break;
+                        case '\\':
+                            temp = " reverse solidus ";
+                            break;
+                        case ']':
+                            temp = " right square bracket ";
+                            break;
+                        case '^':
+                            temp = " circumflex accent ";
+                            break;
+                        case '_':
+                            temp = " low line ";
+                            break;
+                        case '`':
+                            temp = " grave accent ";
+                            break;
+                        case '{':
+                            temp = " left curly bracket ";
+                            break;
+                        case '|':
+                            temp = " vertical line ";
+                            break;
+                        case '}':
+                            temp = " right curly bracket ";
+                            break;
+                        case '~':
+                            temp = " tilde ";
+                            break;
+                        default:
+                            temp = val[i];
+                    }
+                    res += temp;
+                }
+                return res;
+            }
+
 
             
             function overDocSpeak() {
@@ -1407,7 +1504,7 @@
                 } else if (modeController == 'charSpeak') {
                     easySpeak(charSpeak(myEditor.getValue()));
                 } else if (modeController == 'codeSpeak') {
-                    
+                    easySpeak(codeSpeak(myEditor.getValue()));
                 } else if (modeController == 'overSpeak') {
                     easySpeak(overDocSpeak());
                 } else {
@@ -1421,7 +1518,7 @@
                 } else if (modeController == 'charSpeak') {
                     easySpeak(charSpeak(myEditor.getModel().getLineContent(line_number)));
                 } else if (modeController == 'codeSpeak') {
-                    
+                    easySpeak(codeSpeak(myEditor.getModel().getLineContent(line_number)));
                 } else if (modeController == 'overSpeak') {
                     easySpeak(overLineSpeak(line_number));
                 } else {
@@ -1694,6 +1791,7 @@
                 } else if (e.ctrlKey && e.altKey && e.which == 73) {
                     
                     
+                    document.activeElement.blur();
                     document.getElementById("linear-index-input").click();
                 } else if (e.ctrlKey && e.altKey && e.which == 70) {
                     
@@ -1736,7 +1834,7 @@
 
             
             document.addEventListener('keydown', (e) => {
-                if (e.ctrlKey && e.altKey && e.which == 32) { 
+                if (e.ctrlKey && e.altKey && e.which == 32) {
                     
                     
                     
@@ -2246,6 +2344,26 @@
                         type = "go";
                     } else if (ext === "css") {
                         type = "css";
+                    } else if (ext === "cpp" || ext === "C" || ext === "cxx" || ext === "c++" || ext === "cc") {
+                        type = "css";
+                    } else if (ext === "c") {
+                        type = "c";
+                    } else if (ext === "rb") {
+                        type = "ruby";
+                    } else if (ext === "sh") {
+                        type = "shell";
+                    } else if (ext === "swift") {
+                        type = "swift";
+                    } else if (ext === "ts") {
+                        type = "typescript";
+                    } else if (ext === "R") {
+                        type = "r";
+                    } else if (ext === "md") {
+                        type = "markdown";
+                    } else if (ext === "yml") {
+                        type = "yaml";
+                    } else if (ext === "xml") {
+                        type = "xml";
                     }
 
                     reader.readAsText(file);
@@ -2365,6 +2483,26 @@
                             type = "go";
                         } else if (ext === "css") {
                             type = "css";
+                        } else if (ext === "cpp" || ext === "C" || ext === "cxx" || ext === "c++" || ext === "cc") {
+                            type = "css";
+                        } else if (ext === "c") {
+                            type = "c";
+                        } else if (ext === "rb") {
+                            type = "ruby";
+                        } else if (ext === "sh") {
+                            type = "shell";
+                        } else if (ext === "swift") {
+                            type = "swift";
+                        } else if (ext === "ts") {
+                            type = "typescript";
+                        } else if (ext === "R") {
+                            type = "r";
+                        } else if (ext === "md") {
+                            type = "markdown";
+                        } else if (ext === "yml") {
+                            type = "yaml";
+                        } else if (ext === "xml") {
+                            type = "xml";
                         }
 
                         if (type != null) {
@@ -2476,43 +2614,6 @@
         });
 
         
-
-        
-        
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-
-        
-        
-        
-        
-
-        
-        
-        
-        
-
-        
-        
-        
-
-        
-        
-        
-
-        
-        
-        
-        
-
 
 
         var leftSidebarStatus = "c";
