@@ -90,11 +90,17 @@
                 onclick="hideSection(event, 'demo-controller', 'title-icon-1-2');"><img class="title-icon"
                     id="title-icon-1-2" src="./images/sort-down-solid.svg" alt="down"> Demo</button>
             <div class="navbar" id="demo-controller">
-                <p id="load-demo-text">You can load demo from a JSON file.</p>
+                <p id="load-demo-text">You can load demos from a JSON file.</p>
                 <button id="load-demo">Load Demo</button>
             </div>
 
-            
+            <button class="nav-title" id="tutorial-controller-title"
+                onclick="hideSection(event, 'tutorial-controller', 'title-icon-1-3');"><img class="title-icon"
+                    id="title-icon-1-3" src="./images/sort-down-solid.svg" alt="down"> Tutorial</button>
+            <div class="navbar" id="tutorial-controller">
+                <p id="audio-tutorial-text">Listen to the features of this application.</p>
+                <button id="audio-tutorial">Quick Start</button>
+            </div>
 
         </div>
 
@@ -121,6 +127,8 @@
 
                 <button id="speak-document">Speak Document</button>
                 <button id="speak-by-line">Speak By Line</button>
+                <button id="speak-console-result">Speak Console Result</button>
+                <button id="speak-console-log">Speak Console Log</button>
                 <button id="stop-speaking">Stop Speaking</button>
 
                 
@@ -134,16 +142,9 @@
                 <button id="cursor-jump-to-line">Cursor Jump To Line</button>
             </div>
 
-            <button class="nav-title" id="tutorial-controller-title"
-                onclick="hideSection(event, 'tutorial-controller', 'title-icon-3-3');"><img class="title-icon"
-                    id="title-icon-3-3" src="./images/sort-down-solid.svg" alt="down"> Tutorial</button>
-            <div class="navbar" id="tutorial-controller">
-                <button id="audio-tutorial">Audio Tutorial</button>
-            </div>
-
             <button class="nav-title" id="trash-controller-title"
-                onclick="hideSection(event, 'trash-controller', 'title-icon-3-4');"><img class="title-icon"
-                    id="title-icon-3-4" src="./images/sort-down-solid.svg" alt="down"> Trash</button>
+                onclick="hideSection(event, 'trash-controller', 'title-icon-3-3');"><img class="title-icon"
+                    id="title-icon-3-3" src="./images/sort-down-solid.svg" alt="down"> Trash</button>
             <div class="navbar" id="trash-controller">
                 <button id="find-deleted-files">Find Deleted Files</button>
             </div>
@@ -226,6 +227,14 @@
                     </label>
                 </span>
 
+                <span id="linear-index" class="navbar-toggle">
+                    Linear Index
+                    <label class="switch">
+                        <input id="linear-index-input" type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </span>
+
                 
             </div>
 
@@ -246,6 +255,13 @@
                 onclick="hideSection(event, 'console-controller', 'title-icon-4-5');"><img class="title-icon"
                     id="title-icon-4-5" src="./images/sort-down-solid.svg" alt="down"> Console</button>
             <div class="navbar" id="console-controller">
+                <span id="open-console-bar" class="navbar-toggle">
+                    Console Bar
+                    <label class="switch">
+                        <input id="open-console-input" type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </span>
                 <span id="hide-log-area" class="navbar-toggle">
                     Hide Console Log Area
                     <label class="switch">
@@ -387,6 +403,29 @@
 
     <div id="spot-light-canvas">
         
+    </div>
+
+    <div id="overlay-2"></div>
+
+    <div id="linear-index-canvas">
+        <div id="linear-index-1" class="linear-index-div"></div>
+        <div id="linear-index-2" class="linear-index-div">Speak Document (Ctrl+Alt+D)</div>
+        <div id="linear-index-3" class="linear-index-div">Speak By Line (Ctrl+Alt+P)</div>
+        <div id="linear-index-4" class="linear-index-div">Speak Next Line (Ctrl+Alt+&#8681;)</div>
+        <div id="linear-index-5" class="linear-index-div">Speak previous Line (Ctrl+Alt+&#8679;)</div>
+        <div id="linear-index-6" class="linear-index-div">Speak Console Result (Ctrl+Alt+E)</div>
+        <div id="linear-index-7" class="linear-index-div">Speak Console Log (Ctrl+Alt+L)</div>
+        <div id="linear-index-8" class="linear-index-div">Stop Speaking (Ctrl+Alt+S)</div>
+        <div id="linear-index-9" class="linear-index-div">Search Cursor Position (Ctrl+Alt+C)</div>
+        <div id="linear-index-10" class="linear-index-div">Character Mode (Ctrl+Alt+A)</div>
+        <div id="linear-index-11" class="linear-index-div">Code Mode (Ctrl+Alt+O)</div>
+        <div id="linear-index-12" class="linear-index-div">Overview Mode (Ctrl+Alt+V)</div>
+        <div id="linear-index-13" class="linear-index-div">Voice Feedback (Ctrl+Alt+F)</div>
+        <div id="linear-index-14" class="linear-index-div">Voice Cue (Ctrl+Alt+U)</div>
+        <div id="linear-index-15" class="linear-index-div">Console Bar (Ctrl+Alt+B)</div>
+        <div id="linear-index-16" class="linear-index-div">Running Code (Ctrl+Alt+R)</div>
+        <div id="linear-index-17" class="linear-index-div">Night Mode (Ctrl+Alt+N)</div>
+        <div id="linear-index-18" class="linear-index-div"></div>
     </div>
 
 
@@ -585,8 +624,31 @@
                 }
             });
             document.getElementById("audio-tutorial").addEventListener("click", function () {
-                var val = 'Here is a short introduction about Monaco Speech Editor. Press control, alt and s, if you want to stop this audio. Monaco Speech Editor is an online code editor for visually impaired people. It provides several built-in functions to make it easy to read code. For example, you can play the synthetic speech of current code line by pressing control, option and p on Mac or control, alt and p on window. Play next code line by pressing control, alt and arrow down key. Play previous code line by pressing control alt and arrow up key. If you want it to speak the whole document, please press control alt and d. Moreover, Monaco Speech Editor provides three modes to meet the different needs of reviewing code. There are character mode, code mode and overview mode. If you want to get accurate information about your code, you should use character mode, it will read every symbol, such as bracket or space. Code mode provides regular content of your code, some less important elements will be ignored. Overview mode will provide the outline information of this code line or this document, depending on your choice. Except powerful audio player, Monaco Speech Editor also provides incredible support in terms of file management. You can upload, download, add a new file, delete a file, change the file name by the build-in file manager. If you delete a file accidentally, you can recover the file by trash before you refresh current webpage. In addition, Monaco Speech Editor can also compile html file, It will render the html file in an iframe at the lower left corner of the editor. It can also output the result of consile dot log in an iframe at the lower right corner of the editor. There are many useful functionality, like using router to load setting. It will be introduced in my thesis. please enjoy and have fun. Thanks for listening.';
+                
+                var val = "Welcome to Monaco Speech Editor! If you want to stop this audio, please press control, alt, and S, in windows system, or press control, option and S, on mac system. Monaco Speech Editor is an online code editor for visually impaired people. It provides several built-in functions to make it easy to read, edit and compile code. If you want to explore these features, please press control, option, and I, to open linear index.  Linear index is a feature list. When you open linear index,  please press arrow, up, or arrow down key to select the feature. Once a feature is selected, It will tell you the feature name and hotkey automatically. If you want to explore the setting of Monaco speech editor, please press control, option, and space to open spot light. Spot light is a list of setting. When you open spot light, you can press arrow, up, or arrow down key to select different setting, press arrow left or arrow right key to toggle the switch. Considering that spot light would tell you the name of the setting automatically when you jump from one setting to another. My advice is to open the voice cue, so you can hear the setting status when you change a setting. To open voice cue, please open spot light first, then press arrow left or arrow right key. This is the end of the quick start, please enjoy yourself!";
                 easySpeak(val);
+            });
+            document.getElementById("open-console-input").addEventListener("click", function () {
+                document.getElementById('console-button').click();
+            });
+            document.getElementById("speak-console-result").addEventListener("click", function () {
+                var doc = getIframeDocument('result-iframe');
+                var content = doc.body.innerText;
+                
+                if (content == '') {
+                    easySpeak('console result is empty');
+                } else {
+                    easySpeak(content);
+                }
+            });
+            document.getElementById("speak-console-log").addEventListener("click", function () {
+                var doc = getIframeDocument('log-iframe');
+                var logger = doc.getElementById('logger');
+                if (logger == null) {
+                    easySpeak('console log is empty');
+                } else {
+                    easySpeak(content.innerText);
+                }
             });
 
 
@@ -603,9 +665,12 @@
 
 
 
+
+
+
             
             
-            var SLNameArray = ['character-mode-input', 'code-mode-input', 'overview-mode-input', 'voice-feedback-input', 'voice-cue-input', 'night-mode-input', 'log-area-input', 'result-area-input'];
+            var SLNameArray = ['voice-cue-input', 'character-mode-input', 'code-mode-input', 'overview-mode-input', 'voice-feedback-input', 'night-mode-input', 'open-console-input', 'log-area-input', 'result-area-input'];
 
             var topPos;  
             var innerElementHeight;
@@ -613,13 +678,13 @@
             var elementVisibleNumber = 3; 
             var selectElemIndex = 1; 
             var scrollDownDistance = 0; 
-            var spotLightToggle = true;
+            var spotLightToggle = false;
             
             document.getElementById("spot-light-input").addEventListener("click", function () {
                 if (document.getElementById("spot-light-input").checked === true) {
                     document.getElementById("overlay").style.display = "block";
                     document.getElementById("spot-light-canvas").style.display = "block";
-                    
+
                     
                     
                     
@@ -661,7 +726,9 @@
             
             document.addEventListener("keydown", (e) => {
                 if (spotLightToggle === true) {
-                    SLReact(e)
+                    SLReact(e);
+                } else if (LinearIndexToggle === true) {
+                    LIReact(e);
                 }
             });
 
@@ -808,6 +875,8 @@
                 allDiv[index].style.fontSize = "28px"; 
             }
 
+            
+            
 
             
             
@@ -834,6 +903,115 @@
             });
 
 
+            
+            
+            
+            
+            var topPosLI;  
+            var innerElementHeightLI;
+            var innerElementNumberLI; 
+            var elementVisibleNumberLI = 3; 
+            var selectElemIndexLI = 1; 
+            var scrollDownDistanceLI = 0; 
+            var LinearIndexToggle = true;
+            
+            
+            document.getElementById("linear-index-input").addEventListener("click", function () {
+                if (document.getElementById("linear-index-input").checked === true) {
+                    document.getElementById("overlay-2").style.display = "block";
+                    document.getElementById("linear-index-canvas").style.display = "block";
+
+                    
+                    selectElemIndexLI = 1; 
+                    scrollDownDistanceLI = 0; 
+                    updateSLColorLI(1);
+                    speakLI(1);
+                    document.getElementById('linear-index-canvas').scrollTop = 0;
+
+                    LinearIndexToggle = true;
+                    
+                } else {
+                    LinearIndexToggle = false;
+                }
+            });
+
+
+            
+            var LinearIndexToggle = false;
+            function LIReact(e) {
+                topPosLI = document.getElementById('linear-index-1').offsetTop;
+                innerElementHeightLI = document.getElementById('linear-index-1').offsetHeight;
+                innerElementNumberLI = document.getElementById('linear-index-canvas').children.length - 2;
+
+                if (e.which == 38) {
+                    
+                    
+                    if (selectElemIndexLI > 1) {
+                        scrollDownDistanceLI -= innerElementHeightLI;
+                        selectElemIndexLI -= 1;
+                    }
+                    document.getElementById('linear-index-canvas').scrollTop = topPosLI + scrollDownDistanceLI;
+                    
+                    
+                    updateSLColorLI(selectElemIndexLI);
+                    
+                    speakLI(selectElemIndexLI);
+                } else if (e.which == 40) {
+                    
+                    
+                    if (selectElemIndexLI <= (innerElementNumberLI - 1)) {
+                        scrollDownDistanceLI += innerElementHeightLI;
+                        selectElemIndexLI += 1;
+                    }
+                    document.getElementById('linear-index-canvas').scrollTop = topPosLI + scrollDownDistanceLI;
+                    
+                    
+                    updateSLColorLI(selectElemIndexLI);
+                    
+                    speakLI(selectElemIndexLI);
+                } else if (e.which == 37) {
+                    
+                    
+                    speakLI(selectElemIndexLI);
+                } else if (e.which == 39) {
+                    
+                    
+                    speakLI(selectElemIndexLI);
+                } else {
+                    
+                    document.getElementById('overlay-2').click();
+                }
+            }
+
+            
+            function updateSLColorLI(index) {
+                var allDiv = document.getElementById('linear-index-canvas').children;
+                for (var i = 0; i < allDiv.length; i++) {
+                    allDiv[i].style.backgroundColor = 'transparent';
+                    allDiv[i].style.fontSize = "25px";
+                }
+                allDiv[index].style.backgroundColor = '#b1b1b1'; 
+                allDiv[index].style.fontSize = "28px"; 
+            }
+
+            
+            function speakLI(index) {
+                var allDiv = document.getElementById('linear-index-canvas').children;
+                var fullName = allDiv[index].innerText;
+                var realName = fullName.split('(').shift();
+                var realhotKey = fullName.split('+').pop().replace(")", "");
+                easySpeak(realName + ', hot key is control, alt and ' + realhotKey + ' In windows systems. On Mac systems, hot key is control, option and ' + realhotKey);
+            }
+
+            
+            document.getElementById("overlay-2").addEventListener("click", function () {
+                document.getElementById("linear-index-canvas").style.display = "none";
+                document.getElementById("overlay-2").style.display = "none";
+                document.getElementById("linear-index-input").checked = false;
+                LinearIndexToggle = false;
+                doStop();
+            });
+
 
 
             
@@ -846,6 +1024,7 @@
                     easySpeak('close voice cue');
                 }
             });
+
             
             document.getElementById('sidebar-4').addEventListener("click", function (evt) {
                 if (voiceCueToggle == true) {
@@ -891,6 +1070,61 @@
                 });
             }
 
+            
+            
+            document.getElementById('left-nav-button-1').addEventListener("click", function (evt) {
+                if (voiceCueToggle == true) {
+                    easySpeak('you click explorer navigation button');
+                }
+            });
+            document.getElementById('left-nav-button-2').addEventListener("click", function (evt) {
+                if (voiceCueToggle == true) {
+                    easySpeak('you click upload navigation button');
+                }
+            });
+            document.getElementById('left-nav-button-3').addEventListener("click", function (evt) {
+                if (voiceCueToggle == true) {
+                    easySpeak('you click feature list navigation button');
+                }
+            });
+            document.getElementById('left-nav-button-4').addEventListener("click", function (evt) {
+                if (voiceCueToggle == true) {
+                    easySpeak('you click setting navigation button');
+                }
+            });
+            document.getElementById('editable-textarea').addEventListener("dblclick", function (evt) {
+                if (voiceCueToggle == true) {
+                    easySpeak('you can modify the file name now, press enter to update the file name');
+                }
+            });
+
+            
+            document.getElementById('left-nav-button-1').addEventListener("mouseover", function (evt) {
+                if (voiceCueToggle == true) {
+                    easySpeak('explorer navigation button');
+                }
+            });
+            document.getElementById('left-nav-button-2').addEventListener("mouseover", function (evt) {
+                if (voiceCueToggle == true) {
+                    easySpeak('upload navigation button');
+                }
+            });
+            document.getElementById('left-nav-button-3').addEventListener("mouseover", function (evt) {
+                if (voiceCueToggle == true) {
+                    easySpeak('feature list navigation button');
+                }
+            });
+            document.getElementById('left-nav-button-4').addEventListener("mouseover", function (evt) {
+                if (voiceCueToggle == true) {
+                    easySpeak('setting navigation button');
+                }
+            });
+            document.getElementById('editable-textarea').addEventListener("mouseover", function (evt) {
+                if (voiceCueToggle == true) {
+                    easySpeak('file name text area, double click to modify the file name');
+                }
+            });
+            
 
 
             
@@ -1423,28 +1657,88 @@
             
             document.addEventListener('keyup', (e) => {
                 
-                if (e.ctrlKey && e.altKey && (e.which == 80 || e.which == 13)) { 
+                if (e.ctrlKey && e.altKey && (e.which == 80 || e.which == 13)) {
+                    
+                    
                     play();
-                } else if (e.ctrlKey && e.altKey && e.which == 83) { 
+                } else if (e.ctrlKey && e.altKey && e.which == 83) {
+                    
+                    
                     doStop();
-                } else if (e.ctrlKey && e.altKey && e.which == 38) { 
+                } else if (e.ctrlKey && e.altKey && e.which == 38) {
+                    
+                    
                     backward();
                     play();
-                } else if (e.ctrlKey && e.altKey && e.which == 40) { 
+                } else if (e.ctrlKey && e.altKey && e.which == 40) {
+                    
+                    
                     forward();
                     play();
-                } else if (e.ctrlKey && e.altKey && e.which == 74) { 
+                } else if (e.ctrlKey && e.altKey && e.which == 65) {
+                    
+                    
+                    document.getElementById('character-mode-input').click();
+                } else if (e.ctrlKey && e.altKey && e.which == 79) {
+                    
+                    
+                    document.getElementById('code-mode-input').click();
+                } else if (e.ctrlKey && e.altKey && e.which == 86) {
+                    
+                    
+                    document.getElementById('overview-mode-input').click();
+                } else if (e.ctrlKey && e.altKey && e.which == 74) {
+                    
+                    
                     document.getElementById("showLineNumber").focus();
-                } else if (e.ctrlKey && e.altKey && e.which == 68) { 
+                } else if (e.ctrlKey && e.altKey && e.which == 73) {
+                    
+                    
+                    document.getElementById("linear-index-input").click();
+                } else if (e.ctrlKey && e.altKey && e.which == 70) {
+                    
+                    
+                    document.getElementById('voice-feedback-input').click();
+                } else if (e.ctrlKey && e.altKey && e.which == 85) {
+                    
+                    
+                    document.getElementById('voice-cue-input').click();
+                } else if (e.ctrlKey && e.altKey && e.which == 68) {
+                    
+                    
                     speakDocument();
-                } else if (e.ctrlKey && e.altKey && e.which == 67) { 
+                } else if (e.ctrlKey && e.altKey && e.which == 69) {
+                    
+                    
+                    document.getElementById('speak-console-result').click();
+                } else if (e.ctrlKey && e.altKey && e.which == 76) {
+                    
+                    
+                    document.getElementById('speak-console-log').click();
+                } else if (e.ctrlKey && e.altKey && e.which == 67) {
+                    
+                    
                     cursorPosition();
+                } else if (e.ctrlKey && e.altKey && e.which == 66) {
+                    
+                    
+                    document.getElementById('console-button').click();
+                } else if (e.ctrlKey && e.altKey && e.which == 82) {
+                    
+                    
+                    document.getElementById('console-button-run').click();
+                } else if (e.ctrlKey && e.altKey && e.which == 78) {
+                    
+                    
+                    document.getElementById('night-mode-input').click();
                 }
             });
 
             
             document.addEventListener('keydown', (e) => {
                 if (e.ctrlKey && e.altKey && e.which == 32) { 
+                    
+                    
                     
                     document.activeElement.blur();
                     document.getElementById("spot-light-input").click();
@@ -2138,6 +2432,12 @@
                 
             }
 
+            function getIframeDocument(iframe_id) {
+                var iframe = document.getElementById(iframe_id);
+                var doc = iframe.contentWindow.document;
+                return doc;
+            }
+
             
             function init() {
                 
@@ -2147,9 +2447,12 @@
                 addFile(htmlCode, "html");
                 
                 document.getElementById("hide-header").click();
+                
+                
             }
             init();
 
+            
             
             
             
@@ -2345,6 +2648,8 @@
                 
                 document.getElementById("console-bar").style.transform = "translateY(-310px)";
                 consoleToggle = "s";
+                
+                document.getElementById('open-console-input').checked = true;
             } else {
                 
                 
@@ -2367,6 +2672,8 @@
                 
                 document.getElementById("console-bar").style.transform = "translateY(0)";
                 consoleToggle = "h";
+                
+                document.getElementById('open-console-input').checked = false;
             }
         }
 
