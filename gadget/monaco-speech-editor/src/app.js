@@ -1164,47 +1164,47 @@ require(['vs/editor/editor.main'], function () {
         return wordArray;
     }
 
-    // var audio = document.getElementById('piano');
-    // var audio = document.getElementById('piano');
-
 
     function CreateMusic(char) {
         // case
         var audio; // = document.getElementById('piano');
-        switch (char) {
-            case '(':
-                audio = document.getElementById('piano');
-                break;
-            case ')':
-                audio = document.getElementById('piano');
-                break;
-            case ';':
-                audio = document.getElementById('piano');
-                break;
-            case '\"':
-                audio = document.getElementById('piano');
-                break;
-            case '<':
-                audio = document.getElementById('piano');
-                break;
-            case '>':
-                audio = document.getElementById('piano');
-                break;
-            case '[':
-                audio = document.getElementById('piano');
-                break;
-            case ']':
-                audio = document.getElementById('piano');
-                break;
-            case '{':
-                audio = document.getElementById('piano');
-                break;
-            case '}':
-                audio = document.getElementById('piano');
-                break;
-        }
-        audio.play();
-        audio.onended = function () {
+        // switch (char) {
+        //     case '(':
+        //         audio = document.getElementById('piano');
+        //         break;
+        //     case ')':
+        //         audio = document.getElementById('piano');
+        //         break;
+        //     case ';':
+        //         audio = document.getElementById('piano');
+        //         break;
+        //     case '\"':
+        //         audio = document.getElementById('piano');
+        //         break;
+        //     case '<':
+        //         audio = document.getElementById('piano');
+        //         break;
+        //     case '>':
+        //         audio = document.getElementById('piano');
+        //         break;
+        //     case '[':
+        //         audio = document.getElementById('piano');
+        //         break;
+        //     case ']':
+        //         audio = document.getElementById('piano');
+        //         break;
+        //     case '{':
+        //         audio = document.getElementById('piano');
+        //         break;
+        //     case '}':
+        //         audio = document.getElementById('piano');
+        //         break;
+        // }
+        var audio = document.getElementById('piano-c-1');
+        setTimeout(() =>{audio.play();}, 250)
+        var audio1 = document.getElementById('piano-d-1');
+        audio1.play();
+        audio1.onended = function () {
             playNext()
         };
     }
@@ -1229,7 +1229,7 @@ require(['vs/editor/editor.main'], function () {
     // 而且是在一次播放完毕以后，自动播放下一段
     // 因此，我们需要加一个变量监听器，来监听上一段语音是否已经播放完毕了
     function playNext() {
-        console.log('hiii');
+        // console.log('hiii');
         if (musicIndex < wordArray.length && musicToggle == true) {
             if (wordArray[musicIndex].isSymbol == false) {
                 // code spaek
