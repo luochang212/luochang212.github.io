@@ -1164,47 +1164,53 @@ require(['vs/editor/editor.main'], function () {
         return wordArray;
     }
 
-
+    // 创建音乐
+    var audio_1, audio_2;
+    var audio_id_1, audio_id_1;
     function CreateMusic(char) {
-        // case
-        var audio; // = document.getElementById('piano');
-        // switch (char) {
-        //     case '(':
-        //         audio = document.getElementById('piano');
-        //         break;
-        //     case ')':
-        //         audio = document.getElementById('piano');
-        //         break;
-        //     case ';':
-        //         audio = document.getElementById('piano');
-        //         break;
-        //     case '\"':
-        //         audio = document.getElementById('piano');
-        //         break;
-        //     case '<':
-        //         audio = document.getElementById('piano');
-        //         break;
-        //     case '>':
-        //         audio = document.getElementById('piano');
-        //         break;
-        //     case '[':
-        //         audio = document.getElementById('piano');
-        //         break;
-        //     case ']':
-        //         audio = document.getElementById('piano');
-        //         break;
-        //     case '{':
-        //         audio = document.getElementById('piano');
-        //         break;
-        //     case '}':
-        //         audio = document.getElementById('piano');
-        //         break;
-        // }
-        var audio = document.getElementById('piano-c-1');
-        setTimeout(() =>{audio.play();}, 250)
-        var audio1 = document.getElementById('piano-d-1');
-        audio1.play();
-        audio1.onended = function () {
+        audio_id_1 = '';
+        audio_id_2 = '';
+
+        switch (char) {
+            case '(':
+                audio = document.getElementById('piano');
+                break;
+            case ')':
+                audio = document.getElementById('piano');
+                break;
+            case ';':
+                audio = document.getElementById('piano');
+                break;
+            case '\"':
+                audio_id_1 = 'Hi-Hat-Closed';
+                audio_id_2 = 'Hi-Hat-Closed';
+                break;
+            case '<':
+                audio = document.getElementById('piano');
+                break;
+            case '>':
+                audio = document.getElementById('piano');
+                break;
+            case '[':
+                audio = document.getElementById('piano');
+                break;
+            case ']':
+                audio = document.getElementById('piano');
+                break;
+            case '{':
+                audio = document.getElementById('piano');
+                break;
+            case '}':
+                audio = document.getElementById('piano');
+                break;
+        }
+        if (audio_id_1 != '') {
+            audio_1 = document.getElementById(audio_id_1);
+            setTimeout(() =>{audio.play();}, 250)  // 125 250
+        }
+        audio_2 = document.getElementById(audio_id_2);
+        audio_2.play();
+        audio_2.onended = function () {
             playNext()
         };
     }
