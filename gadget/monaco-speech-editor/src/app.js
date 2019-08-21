@@ -128,6 +128,7 @@ require(['vs/editor/editor.main'], function () {
     document.getElementById("character-mode-input").addEventListener("click", function () {
         document.getElementById("code-mode-input").checked = false;
         document.getElementById("overview-mode-input").checked = false;
+        document.getElementById("music-mode-input").checked = false;
         if (document.getElementById("character-mode-input").checked === true) {
             modeController = 'charSpeak';
         } else {
@@ -138,8 +139,20 @@ require(['vs/editor/editor.main'], function () {
     document.getElementById("code-mode-input").addEventListener("click", function () {
         document.getElementById("character-mode-input").checked = false;
         document.getElementById("overview-mode-input").checked = false;
+        document.getElementById("music-mode-input").checked = false;
         if (document.getElementById("code-mode-input").checked === true) {
             modeController = 'codeSpeak';
+        } else {
+            modeController = 'easySpeak';
+        }
+        // console.log(modeController);
+    });
+    document.getElementById("music-mode-input").addEventListener("click", function () {
+        document.getElementById("code-mode-input").checked = false;
+        document.getElementById("character-mode-input").checked = false;
+        document.getElementById("overview-mode-input").checked = false;
+        if (document.getElementById("music-mode-input").checked === true) {
+            modeController = 'musicSpeak';
         } else {
             modeController = 'easySpeak';
         }
@@ -148,10 +161,12 @@ require(['vs/editor/editor.main'], function () {
     document.getElementById("overview-mode-input").addEventListener("click", function () {
         document.getElementById("code-mode-input").checked = false;
         document.getElementById("character-mode-input").checked = false;
+        document.getElementById("music-mode-input").checked = false;
         if (document.getElementById("overview-mode-input").checked === true) {
             modeController = 'overSpeak';
         } else {
             modeController = 'easySpeak';
+            musicToggle = false;
         }
         // console.log(modeController);
     });
@@ -226,7 +241,7 @@ require(['vs/editor/editor.main'], function () {
 
     // ------------------------------------------------------------------------------------------------------------------
     // 在这里输入spot light 成员
-    var SLNameArray = ['voice-cue-input', 'character-mode-input', 'code-mode-input', 'overview-mode-input', 'voice-feedback-input', 'night-mode-input', 'open-console-input', 'log-area-input', 'result-area-input'];
+    var SLNameArray = ['voice-cue-input', 'character-mode-input', 'code-mode-input', 'music-mode-input', 'overview-mode-input', 'voice-feedback-input', 'night-mode-input', 'open-console-input', 'log-area-input', 'result-area-input'];
 
     var topPos;  // = document.getElementById('spot-light-1').offsetTop;
     var innerElementHeight;
@@ -684,7 +699,7 @@ require(['vs/editor/editor.main'], function () {
     });
     document.getElementById('editable-textarea').addEventListener("dblclick", function (evt) {
         if (voiceCueToggle == true) {
-            easySpeak('you can modify the file name now, press enter to update the file name');
+            easySpeak('you can modify the file name now, click outside of the text box to submit your input.');
         }
     });
 
@@ -1166,64 +1181,74 @@ require(['vs/editor/editor.main'], function () {
 
     // 创建音乐
     var audio_1, audio_2;
-    var audio_id_1, audio_id_1;
+    var audio_id_1, audio_id_2;
     function CreateMusic(char) {
         audio_id_1 = '';
         audio_id_2 = '';
-
+        // 先播audio_id_2，再播audio_id_1
         switch (char) {
             case '(':
-                audio_id_1 = 'piano-g-1';
-                audio_id_2 = 'piano-d-2';
+                audio_id_1 = 'piano-ff-1';
+                audio_id_2 = 'piano-e-1';
                 break;
             case ')':
-                audio_id_1 = 'piano-e-2';
-                audio_id_2 = 'piano-c-2';
+                audio_id_1 = 'piano-e-1';
+                audio_id_2 = 'piano-gg-1';
                 break;
             case ';':
                 audio_id_2 = 'Big-Rack-Tom';
                 break;
             case '\"':
                 audio_id_1 = 'Hi-Hat-Closed';
-                audio_id_2 = 'Hi-Hat-Closed';
+                audio_id_2 = 'Hi-Hat-Closed-1';
                 break;
             case '<':
-                audio = document.getElementById('piano');
+                audio_id_1 = 'piano-aa-1';
+                audio_id_2 = 'piano-f-1';
                 break;
             case '>':
-                audio = document.getElementById('piano');
+                audio_id_1 = 'piano-g-1';
+                audio_id_2 = 'piano-a-1';
                 break;
             case '[':
-                audio_id_1 = 'Kick';
-                audio_id_2 = 'Snare';
+                audio_id_1 = 'Snare';
+                audio_id_2 = 'Hi-Hat-Closed';
                 break;
             case ']':
+                audio_id_1 = 'Hi-Hat-Closed';
+                audio_id_2 = 'Snare';
+                break;
+            case '{':
                 audio_id_1 = 'Snare';
                 audio_id_2 = 'Kick';
                 break;
-            case '{':
-                audio = document.getElementById('piano');
-                break;
             case '}':
-                audio = document.getElementById('piano');
+                audio_id_1 = 'Kick';
+                audio_id_2 = 'Snare';
                 break;
         }
         if (audio_id_1 != '') {
             audio_1 = document.getElementById(audio_id_1);
-            setTimeout(() =>{audio.play();}, 250)  // 125 250
+            setTimeout(() => { audio_1.play(); }, 250)  // 125 250
+            audio_2 = document.getElementById(audio_id_2);
+            audio_2.play();
+            audio_2.onended = function () {  // 这里的audio_2 换成audio_1会念乱码
+                playNext()
+            };
+        } else {
+            audio_2 = document.getElementById(audio_id_2);
+            audio_2.play();
+            audio_2.onended = function () {
+                playNext()
+            };
         }
-        audio_2 = document.getElementById(audio_id_2);
-        audio_2.play();
-        audio_2.onended = function () {
-            playNext()
-        };
     }
 
 
     var musicIndex = 0;
     var musicToggle = false;
     var wordArray;
-    function codeMusicSpeak(val) {
+    function musicSpeak(val) {
         // 把回车去掉
         val = val.replace(/(\r\n|\n|\r)/gm, "");
 
@@ -1232,7 +1257,8 @@ require(['vs/editor/editor.main'], function () {
         // 除非上一段语音结束，否则不能播放下一段
         musicIndex = 0;
         musicToggle = true;
-        // easySpeak('hello');
+        easySpeak(' ');
+        // console.log(musicToggle)
     }
 
     // code music 功能在一次播放中要调用好多次easySpeak
@@ -1247,19 +1273,14 @@ require(['vs/editor/editor.main'], function () {
                 easySpeak(codeSpeak(wordArray[musicIndex].value));
             } else {
                 CreateMusic(wordArray[musicIndex].value);
-                // easySpeak('hi');
             }
-            // easySpeak('hi');
             musicIndex++;
             if (musicIndex == wordArray.length) {
                 musicToggle = false;
+                console.log(musicToggle);
             }
-
         }
     }
-
-
-
 
 
     // overview mode
@@ -1300,6 +1321,8 @@ require(['vs/editor/editor.main'], function () {
             easySpeak(codeSpeak(myEditor.getValue()));
         } else if (modeController == 'overSpeak') {
             easySpeak(overDocSpeak());
+        } else if (modeController == 'musicSpeak') {
+            musicSpeak(myEditor.getValue());
         } else {
             console.log('Something wrong in speakDocument()');
         }
@@ -1314,6 +1337,8 @@ require(['vs/editor/editor.main'], function () {
             easySpeak(codeSpeak(myEditor.getModel().getLineContent(line_number)));
         } else if (modeController == 'overSpeak') {
             easySpeak(overLineSpeak(line_number));
+        } else if (modeController == 'musicSpeak') {
+            musicSpeak(myEditor.getModel().getLineContent(line_number));
         } else {
             console.log('Something wrong in speakByLine()');
         }
@@ -1453,6 +1478,7 @@ require(['vs/editor/editor.main'], function () {
     }
 
     function play() {
+        musicToggle = false;
         var testTxt = myEditor.getModel().getLineContent(currentLineNumber);
         if (testTxt == "") {
             easySpeak("Information from monaco speech editor: " + "This line is empty");
@@ -1559,6 +1585,7 @@ require(['vs/editor/editor.main'], function () {
             // 终止
             // s
             doStop();
+            musicToggle = false;
         } else if (e.ctrlKey && e.altKey && e.which == 38) {
             // 光标移动到下一行，并自动播放当前行
             // arrow up
@@ -2413,6 +2440,7 @@ require(['vs/editor/editor.main'], function () {
     // document.getElementById("voice-cue-input").click();
     // document.getElementById("spot-light-input").click();
     // document.getElementById("linear-index-input").click();
+    // document.getElementById("music-mode-input").click();
 
     // overDocSpeak();
     // overLineSpeak();
@@ -2430,7 +2458,7 @@ require(['vs/editor/editor.main'], function () {
     // // console.log(myString);
     // console.log(String);
 
-    codeMusicSpeak(myEditor.getValue());
+    // codeMusicSpeak(myEditor.getValue());
 
 
 
