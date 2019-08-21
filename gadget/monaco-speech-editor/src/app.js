@@ -1173,13 +1173,15 @@ require(['vs/editor/editor.main'], function () {
 
         switch (char) {
             case '(':
-                audio = document.getElementById('piano');
+                audio_id_1 = 'piano-g-1';
+                audio_id_2 = 'piano-d-2';
                 break;
             case ')':
-                audio = document.getElementById('piano');
+                audio_id_1 = 'piano-e-2';
+                audio_id_2 = 'piano-c-2';
                 break;
             case ';':
-                audio = document.getElementById('piano');
+                audio_id_2 = 'Big-Rack-Tom';
                 break;
             case '\"':
                 audio_id_1 = 'Hi-Hat-Closed';
@@ -1192,10 +1194,12 @@ require(['vs/editor/editor.main'], function () {
                 audio = document.getElementById('piano');
                 break;
             case '[':
-                audio = document.getElementById('piano');
+                audio_id_1 = 'Kick';
+                audio_id_2 = 'Snare';
                 break;
             case ']':
-                audio = document.getElementById('piano');
+                audio_id_1 = 'Snare';
+                audio_id_2 = 'Kick';
                 break;
             case '{':
                 audio = document.getElementById('piano');
