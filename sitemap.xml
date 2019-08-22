@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://luochang212.github.io/posts/monaco_speech_editor/</loc>
+    <lastmod>2019-08-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://luochang212.github.io/posts/learn_golang/</loc>
     <lastmod>2019-07-12T00:00:00+00:00</lastmod>
   </url>
@@ -69,19 +74,49 @@
   
   <url>
     <loc>http://luochang212.github.io/categories/</loc>
-    <lastmod>2019-07-12T00:00:00+00:00</lastmod>
+    <lastmod>2019-08-22T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://luochang212.github.io/</loc>
-    <lastmod>2019-07-12T00:00:00+00:00</lastmod>
+    <lastmod>2019-08-22T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://luochang212.github.io/categories/development/</loc>
-    <lastmod>2019-07-12T00:00:00+00:00</lastmod>
+    <lastmod>2019-08-22T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/categories/javascript/</loc>
+    <lastmod>2019-08-22T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/tags/monaco-editor/</loc>
+    <lastmod>2019-08-22T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/posts/</loc>
+    <lastmod>2019-08-22T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/tags/</loc>
+    <lastmod>2019-08-22T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/tags/web-speech-api/</loc>
+    <lastmod>2019-08-22T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -93,18 +128,6 @@
   
   <url>
     <loc>http://luochang212.github.io/tags/golang/</loc>
-    <lastmod>2019-07-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://luochang212.github.io/posts/</loc>
-    <lastmod>2019-07-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://luochang212.github.io/tags/</loc>
     <lastmod>2019-07-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -415,11 +438,6 @@
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/gadget/media-player/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://luochang212.github.io/gadget/monaco-speech-editor-test/</loc>
     <priority>0</priority>
   </url>
@@ -451,11 +469,6 @@
   
   <url>
     <loc>http://luochang212.github.io/gadget/show-time/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://luochang212.github.io/gadget/speech-synthesis/</loc>
     <priority>0</priority>
   </url>
   

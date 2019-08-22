@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>web speech API on Chang Luo</title>
+    <link>http://luochang212.github.io/tags/web-speech-api/</link>
+    <description>Recent content in web speech API on Chang Luo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 22 Aug 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://luochang212.github.io/tags/web-speech-api/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Monaco Speech Editor</title>
+      <link>http://luochang212.github.io/posts/monaco_speech_editor/</link>
+      <pubDate>Thu, 22 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/posts/monaco_speech_editor/</guid>
+      <description>Monaco Speech Editor 是一款在线代码编辑器，它能为视障人群提供语音支持，以减少他们在阅读、编辑和编译程序时的阻碍。
+ GitHub项目链接：monaco-speech-editor</description>
+    </item>
+    
+  </channel>
+</rss>

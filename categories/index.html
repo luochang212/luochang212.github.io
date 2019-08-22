@@ -26,7 +26,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://luochang212.github.io/categories/" />
 
-<meta property="og:updated_time" content="2019-07-12T00:00:00&#43;00:00"/><meta property="og:site_name" content="Title" />
+<meta property="og:updated_time" content="2019-08-22T00:00:00&#43;00:00"/><meta property="og:site_name" content="Title" />
 
 
     
@@ -78,7 +78,8 @@
       
       
       <div class="author-image">
-        <a href="#" class="load-iframe" onclick="openNav()"><img src="http://luochang212.github.io/images/profile.png" alt="Author Image" class="img--circle img--headshot element--center"></a>
+        <a href="#" class="load-iframe" onclick="openNav()"><img src="http://luochang212.github.io/images/profile.png" id="author-iamge"
+            alt="Author Image" class="img--circle img--headshot element--center"></a>
       </div>
       
       <p class="site__description">
@@ -168,303 +169,301 @@
 
 
 
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
+  <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
 
+  
+  <style>
+    body {
+      transition: background-color .5s;
+    }
 
-<style>
-body {
-  transition: background-color .5s;
-}
+    #overlay {
+      position: fixed;
+      display: none;
+      width: calc(100vw - 580px);
+      height: 100%;
+      top: 0;
+      left: 0;
+       
+      z-index: 2;
+      cursor: pointer;
+    }
 
-#overlay {
-  position: fixed;
-  display: none;
-  width: calc(100vw - 580px);
-  height: 100%;
-  top: 0;
-  left: 0;
-   
-  z-index: 2;
-  cursor: pointer;
-}
+    .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      right: 0;
+      background-color: #FFF;
+       
+      overflow-x: hidden;
+      transition: 0.5s;
+       
+       
+    }
 
-.sidenav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  right: 0;
-  background-color: #FFF;  
-  overflow-x: hidden;
-  transition: 0.5s;
-   
-   
-}
+     
 
- 
+     
 
- 
+    #main {
+      transition: margin-left .5s;
+       
+      padding: 16px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      overflow: hidden;
+    }
 
-#main {
-  transition: margin-left .5s;
-   
-  padding: 16px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  overflow: hidden;
-}
+     
 
- 
-</style>
+     
+    .tab {
+      overflow: hidden;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+    }
 
+     
+    .tab button {
+      background-color: inherit;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      transition: 0.3s;
+      font-size: 17px;
+    }
 
-<style>
-<!-- body {font-family: Arial;} -->
+     
+    .tab button:hover {
+      background-color: #ddd;
+    }
 
- 
-.tab {
-  overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
-}
+     
+    .tab button.active {
+      background-color: #ccc;
+    }
 
- 
-.tab button {
-  background-color: inherit;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  transition: 0.3s;
-  font-size: 17px;
-}
+     
+    .tabcontent {
+      display: none;
+      padding: 12px 12px;
+      margin: 0;
+      border: 1px solid #ccc;
+      border-top: none;
+    }
+  </style>
 
- 
-.tab button:hover {
-  background-color: #ddd;
-}
+  
+  <style>
+    .dropbtn {
+      background-color: #3498DB;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+    }
 
- 
-.tab button.active {
-  background-color: #ccc;
-}
+    .dropup {
+      position: relative;
+      display: inline-block;
+    }
 
- 
-.tabcontent {
-  display: none;
-  padding: 12px 12px;
-  margin: 0;
-  border: 1px solid #ccc;
-  border-top: none;
-}
-</style>
+    .dropup-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      bottom: 50px;
+      z-index: 1;
+    }
 
+    .dropup-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
 
-<style>
-.dropbtn {
-  background-color: #3498DB;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-}
+    .dropup-content a:hover {
+      background-color: #ccc
+    }
 
-.dropup {
-  position: relative;
-  display: inline-block;
-}
+    .dropup:hover .dropup-content {
+      display: block;
+    }
 
-.dropup-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  bottom: 50px;
-  z-index: 1;
-}
+    .dropup:hover .dropbtn {
+      background-color: #2980B9;
+    }
 
-.dropup-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropup-content a:hover {background-color: #ccc}
-
-.dropup:hover .dropup-content {
-  display: block;
-}
-
-.dropup:hover .dropbtn {
-  background-color: #2980B9;
-}
-
-#video2,
-#video3 {
-  display:none;
-}
-</style>
+    #video2,
+    #video3 {
+      display: none;
+    }
+  </style>
 
 </head>
 
 
 <body>
 
-<div id="overlay" onclick="off()"></div>
+  <div id="overlay" onclick="off()"></div>
 
-<div id="mySidenav" class="sidenav">
-  
-  <div id="main">
-	<div class="tab">
-	  <button class="tablinks" onclick="openItem(event, 'Resources')">Resources</button>
-	  <button class="tablinks" onclick="openItem(event, 'Audio-player')">Music</button>
-	  <button class="tablinks" onclick="openItem(event, 'Video-player')">Video</button>
-	  <button class="tablinks" onclick="openItem(event, 'piano')">Piano</button>
-	  <button class="tablinks" onclick="openItem(event, 'gadget')">Gadget</button>
-	</div>
-	
-	<div id="Resources" class="tabcontent">
-	  <iframe src="about:blank" data-src="/resources/" frameborder="0" height="560" width="100%" marginheight="0" marginwidth="0" scrolling="yes"></iframe>
-	</div>
+  <div id="mySidenav" class="sidenav">
 
-	<div id="Audio-player" class="tabcontent">
-	  <iframe src="about:blank" data-src="/gadget/audio-player/" frameborder="0" height="560" width="100%" scrolling="yes"></iframe>
-	  
-	</div>
-	
-	<div id="Video-player" class="tabcontent">
-	
-	<div id="video1">
-	  <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=41949084&cid=75021374&page=1" style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+    <div id="main">
+      <div class="tab">
+        <button id="default-tab" class="tablinks" onclick="openItem(event, 'Resources')">Resources</button>
+        
+        <button class="tablinks" onclick="openItem(event, 'Video-player')">Video</button>
+        
+        <button class="tablinks" onclick="openItem(event, 'gallery')">Gallery</button>
+        <button class="tablinks" onclick="openItem(event, 'gadget')">Gadget</button>
+      </div>
+
+      <div id="Resources" class="tabcontent">
+        <iframe src="about:blank" data-src="/resources/" frameborder="0" height="560" width="100%" marginheight="0"
+          marginwidth="0" scrolling="yes"></iframe>
+      </div>
+
+      
+
+      <div id="Video-player" class="tabcontent">
+
+        <div id="video1">
+          <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=41949084&cid=75021374&page=1"
+            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+        <div id="video2">
+          <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=9280936&cid=15335929&page=1"
+            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+        <div id="video3">
+          <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=47167171&cid=82804828&page=1"
+            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+
+        
+
+        
+
+        <br>
+        <div class="dropup">
+          <button class="dropbtn">更多视频</button>
+          <div class="dropup-content">
+            <a onclick="link1()">1</a>
+            <a onclick="link2()">2</a>
+            <a onclick="link3()">3</a>
+            
+            
+            
+          </div>
+        </div>
+      </div>
+
+      
+
+      <div id="gallery" class="tabcontent">
+        <iframe src="about:blank" data-src="/gadget/gallery/#two" frameborder="0" height="560" width="100%"
+          scrolling="yes"></iframe>
+      </div>
+
+      <div id="gadget" class="tabcontent">
+        <iframe src="about:blank" data-src="/gadget/" frameborder="0" height="560" width="100%"
+          scrolling="yes"></iframe>
+      </div>
+
     </div>
-	<div id="video2">
-	  <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=9280936&cid=15335929&page=1" style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-	</div>
-	<div id="video3">
-	  <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=47167171&cid=82804828&page=1" style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
   </div>
+
   
-  
-	
-	
-	
-	<br>
-	  <div class="dropup">
-		<button class="dropbtn">更多视频</button>
-		<div class="dropup-content">
-			<a onclick="link1()">1</a>
-			<a onclick="link2()">2</a>
-			<a onclick="link3()">3</a>
-			
-			
-			
-	    </div>
-	  </div>
-	</div>
-	
-	<div id="piano" class="tabcontent">
-    <iframe src="about:blank" data-src="/gadget/piano/" frameborder="0" height="560" width="100%" scrolling="yes"></iframe>
-	</div>
-	
-	<div id="gadget" class="tabcontent">
-	  <iframe src="about:blank" data-src="/gadget/" frameborder="0" height="560" width="100%" scrolling="yes"></iframe>
-	</div>
-	
-  </div>
-</div>
-
-
-<script>
-function openNav() {
-  on();
-  document.getElementById("mySidenav").style.width = "580px";
-  
-  document.body.style.backgroundColor = "rgba(0,0,0,0.5)";
-}
-
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-  
-  document.body.style.backgroundColor = "white";
-}
-
-function on() {
-  document.getElementById("overlay").style.display = "block";
-}
-
-function off() {
-  closeNav();
-  document.getElementById("overlay").style.display = "none";
-}
-</script>
-
-
-<script>
-openItem(event, 'Resources')
-
-function openItem(evt, itemName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(itemName).style.display = "block";
-  evt.currentTarget.className += "active";
-}
-</script>
-
-
-<script>
-function link1() {
-  document.getElementById("video1").style.display = "block";
-  document.getElementById("video2").style.display = "none";
-  document.getElementById("video3").style.display = "none";
-}
-
-function link2() {
-  document.getElementById("video1").style.display = "none";
-  document.getElementById("video2").style.display = "block";
-  document.getElementById("video3").style.display = "none";
-}
-
-function link3() {
-  document.getElementById("video1").style.display = "none";
-  document.getElementById("video2").style.display = "none";
-  document.getElementById("video3").style.display = "block";
-}
-</script>
-
-
-<script> 
- 
-var flag = 0;
-
- 
-$(".load-iframe").click(function(){
-    if (flag < 1) {
-		$("iframe").each(function(){
-			$(this).attr("src", $(this).data("src"));
-		});
-		flag = flag + 1;
+  <script>
+    'use strict'
+    function openNav() {
+      on();
+      document.getElementById("mySidenav").style.width = "580px";
+      document.body.style.backgroundColor = "rgba(0,0,0,0.5)";
     }
-});
-</script>
+
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.body.style.backgroundColor = "white";
+    }
+
+    function on() {
+      document.getElementById("overlay").style.display = "block";
+    }
+
+    function off() {
+      closeNav();
+      document.getElementById("overlay").style.display = "none";
+    }
+
+    
+    document.getElementById('default-tab').click();
+
+    function openItem(evt, itemName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(itemName).style.display = "block";
+      evt.currentTarget.className += "active";
+    }
+
+    function link1() {
+      document.getElementById("video1").style.display = "block";
+      document.getElementById("video2").style.display = "none";
+      document.getElementById("video3").style.display = "none";
+    }
+
+    function link2() {
+      document.getElementById("video1").style.display = "none";
+      document.getElementById("video2").style.display = "block";
+      document.getElementById("video3").style.display = "none";
+    }
+
+    function link3() {
+      document.getElementById("video1").style.display = "none";
+      document.getElementById("video2").style.display = "none";
+      document.getElementById("video3").style.display = "block";
+    }
+
+     
+    var flag = 0;
+
+     
+    $(".load-iframe").click(function () {
+      if (flag < 1) {
+        $("iframe").each(function () {
+          $(this).attr("src", $(this).data("src"));
+        });
+        flag = flag + 1;
+      }
+    });
+  </script>
 
 </body>
-
 
 
 
@@ -478,7 +477,16 @@ $(".load-iframe").click(function(){
   <span class="list__title--small">
     <a href="/categories/development/" >Development</a>
       
-      <time class="pull-right hidden-tablet">Jul 12, 2019</time>
+      <time class="pull-right hidden-tablet">Aug 22, 2019</time>
+      
+  </span>
+</li>
+
+<li>
+  <span class="list__title--small">
+    <a href="/categories/javascript/" >JavaScript</a>
+      
+      <time class="pull-right hidden-tablet">Aug 22, 2019</time>
       
   </span>
 </li>
