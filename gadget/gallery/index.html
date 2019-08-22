@@ -1,169 +1,175 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-* {
-  box-sizing: border-box;
-}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-.header {
-  text-align: center;
-  padding: 32px;
-}
+    .header {
+      text-align: center;
+      padding: 32px;
+    }
 
-.row {
-  display: -ms-flexbox;  
-  display: flex;
-  -ms-flex-wrap: wrap;  
-  flex-wrap: wrap;
-  padding: 0 4px;
-}
+    .row {
+      display: -ms-flexbox;
+       
+      display: flex;
+      -ms-flex-wrap: wrap;
+       
+      flex-wrap: wrap;
+      padding: 0 4px;
+    }
 
- 
- 
-.column {
-  -ms-flex: 25%;  
-  flex: 25%;
-  padding: 0 4px;
-}
+     
+     
+    .column {
+      -ms-flex: 25%;
+       
+      flex: 25%;
+      padding: 0 4px;
+    }
 
-.column img {
-  margin-top: 8px;
-  vertical-align: middle;
-}
+    .column img {
+      margin-top: 8px;
+      vertical-align: middle;
+    }
 
- 
-.btn {
-  border: none;
-  outline: none;
-  padding: 10px 16px;
-  background-color: #f1f1f1;
-  cursor: pointer;
-  font-size: 18px;
-}
+     
+    .btn {
+      border: none;
+      outline: none;
+      padding: 10px 16px;
+      background-color: #f1f1f1;
+      cursor: pointer;
+      font-size: 18px;
+    }
 
-.btn:hover {
-  background-color: #ddd;
-}
+    .btn:hover {
+      background-color: #ddd;
+    }
 
-.btn.active {
-  background-color: #666;
-  color: white;
-}
-</style>
+    .btn.active {
+      background-color: #666;
+      color: white;
+    }
+  </style>
 </head>
+
 <body>
 
-
-<div class="header" id="myHeader">
-  <h1>Gallery</h1>
-  <p>Click on the buttons to change the grid view.</p>
-  <button class="btn" onclick="one()">1</button>
-  <button class="btn" onclick="two()">2</button>
-  <button class="btn active" onclick="four()">4</button>
-</div>
-
-
-<div class="row"> 
-  <div class="column">
-    <img src="/img/gallery-1.jpg" style="width:100%">
-	<img src="/img/gallery-5.jpg" style="width:100%">
-	<img src="/img/gallery-9.jpg" style="width:100%">
+  
+  <div class="header" id="myHeader">
+    <h1>Gallery</h1>
+    <p>Click on the buttons to change the grid view.</p>
+    <button class="btn" onclick="one()">1</button>
+    <button id="two-two" class="btn" onclick="two()">2</button>
+    <button class="btn active" onclick="four()">4</button>
   </div>
-  <div class="column">
-    <img src="/img/gallery-2.jpg" style="width:100%">
-	<img src="/img/gallery-6.jpg" style="width:100%">
-	<img src="/img/gallery-10.jpg" style="width:100%">
-	<img src="/img/gallery-13.jpg" style="width:100%">
+
+  
+  <div class="row">
+    <div class="column">
+      <img src="/img/gallery-1.jpg" style="width:100%">
+      <img src="/img/gallery-5.jpg" style="width:100%">
+      <img src="/img/gallery-9.jpg" style="width:100%">
+    </div>
+    <div class="column">
+      <img src="/img/gallery-2.jpg" style="width:100%">
+      <img src="/img/gallery-6.jpg" style="width:100%">
+      <img src="/img/gallery-10.jpg" style="width:100%">
+      <img src="/img/gallery-13.jpg" style="width:100%">
+    </div>
+    <div class="column">
+      <img src="/img/gallery-3.jpg" style="width:100%">
+      <img src="/img/gallery-7.jpg" style="width:100%">
+      <img src="/img/gallery-11.jpg" style="width:100%">
+    </div>
+    <div class="column">
+      <img src="/img/gallery-4.jpg" style="width:100%">
+      <img src="/img/gallery-8.jpg" style="width:100%">
+      <img src="/img/gallery-12.jpg" style="width:100%">
+    </div>
   </div>
-  <div class="column">
-    <img src="/img/gallery-3.jpg" style="width:100%">
-	<img src="/img/gallery-7.jpg" style="width:100%">
-	<img src="/img/gallery-11.jpg" style="width:100%">
-  </div>  
-  <div class="column">
-    <img src="/img/gallery-4.jpg" style="width:100%">
-	<img src="/img/gallery-8.jpg" style="width:100%">
-	<img src="/img/gallery-12.jpg" style="width:100%">
-  </div>
-</div>
 
-<script>
-
-var elements = document.getElementsByClassName("column");
-
-
-var i;
-
-
-function one() {
-    for (i = 0; i < elements.length; i++) {
-    elements[i].style.msFlex = "100%";  
-    elements[i].style.flex = "100%";
-  }
-}
-
-
-function two() {
-  for (i = 0; i < elements.length; i++) {
-    elements[i].style.msFlex = "50%";  
-    elements[i].style.flex = "50%";
-  }
-}
-
-
-function four() {
-  for (i = 0; i < elements.length; i++) {
-    elements[i].style.msFlex = "25%";  
-    elements[i].style.flex = "25%";
-  }
-}
-
-
-var header = document.getElementById("myHeader");
-var btns = header.getElementsByClassName("btn");
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function() {
-    var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-  });
-}
-
-
-function Router() {
-    this.routes = {};
-    this.currentUrl = '';
-}
-Router.prototype.route = function (path, callback) {
-    this.routes[path] = callback || function () { };
-};
-Router.prototype.refresh = function () {
-    this.currentUrl = location.hash.slice(1) || '/';
-    this.routes[this.currentUrl]();
-};
-Router.prototype.init = function () {
-    window.addEventListener('load', this.refresh.bind(this), false);
-    window.addEventListener('hashchange', this.refresh.bind(this), false);
-}
-window.Router = new Router();
-window.Router.init();
-
-Router.route('/', function () {
+  <script>
     
-    
-});
-Router.route('two', function () {
-    two();
-});
+    var elements = document.getElementsByClassName("column");
 
-</script>
+    
+    var i;
+
+    
+    function one() {
+      for (i = 0; i < elements.length; i++) {
+        elements[i].style.msFlex = "100%";  
+        elements[i].style.flex = "100%";
+      }
+    }
+
+    
+    function two() {
+      for (i = 0; i < elements.length; i++) {
+        elements[i].style.msFlex = "50%";  
+        elements[i].style.flex = "50%";
+      }
+    }
+
+    
+    function four() {
+      for (i = 0; i < elements.length; i++) {
+        elements[i].style.msFlex = "25%";  
+        elements[i].style.flex = "25%";
+      }
+    }
+
+    
+    var header = document.getElementById("myHeader");
+    var btns = header.getElementsByClassName("btn");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener("click", function () {
+        var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+        this.className += " active";
+      });
+    }
+
+    
+    function Router() {
+      this.routes = {};
+      this.currentUrl = '';
+    }
+    Router.prototype.route = function (path, callback) {
+      this.routes[path] = callback || function () { };
+    };
+    Router.prototype.refresh = function () {
+      this.currentUrl = location.hash.slice(1) || '/';
+      this.routes[this.currentUrl]();
+    };
+    Router.prototype.init = function () {
+      window.addEventListener('load', this.refresh.bind(this), false);
+      window.addEventListener('hashchange', this.refresh.bind(this), false);
+    }
+    window.Router = new Router();
+    window.Router.init();
+
+    Router.route('/', function () {
+      
+      
+    });
+    Router.route('two', function () {
+      document.getElementById('two-two').click();
+    });
+
+  </script>
 
 </body>
+
 </html>
