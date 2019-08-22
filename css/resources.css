@@ -1,14 +1,17 @@
-.links-pretty li{
-	font-size: 1.15rem;
+.row-space {
+	line-height: 0.6rem;
 }
-  
+
+.links-pretty li{
+	font-size: 1rem;
+}
+
 .links-pretty ul {
 	/* 条目字体大小 */
 	font-size: .8rem;
 	margin: 0 0 0 2rem;
 	padding: 0;
 	list-style-type: none;
-	
 }
 
 .links-pretty a {
@@ -128,8 +131,8 @@
 @media screen and (max-height: 687px) {
 	#line {
 		position: absolute;
-		top: 8rem;
-		bottom: -120rem;
+		top: 5rem;
+		bottom: -170rem;
 		width: .125rem;
 		background: rgba(240,240,240,1);
 		z-index: -1;
