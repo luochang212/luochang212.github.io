@@ -39,6 +39,15 @@
     
     <item>
       <title></title>
+      <link>http://luochang212.github.io/gadget/dictionary.js/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/dictionary.js/</guid>
+      <description>Monaco Speech Editor --    hello, world! 你好，世界 hello, world! 你好，世界 &#34;My text is long and wise and it consumes a lot of interwebs.&#34;   // 从JSON文件导入汉字单词 function LoadWords() { // $.getJSON(&#34;https://www.luochang.ink/gadget/dictionary.js/src/chinese-xinhua/data/ci.json&#34;, function(data){ $.getJSON(&#34;./src/chinese-xinhua/data/ci.json&#34;, function (data) { $.each(data, function (key, val) { var ext = key.toString().split(&#39;.&#39;).pop(); // var filename = key.toString().split(&#39;.&#39;).shift(); }); }); } function get_selection() { var txt = &#39;&#39;; if (window.getSelection) { txt = window.</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>http://luochang212.github.io/gadget/font/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       

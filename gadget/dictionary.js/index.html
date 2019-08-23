@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Monaco Speech Editor</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta name="description" content="dictionary extension">
+    <meta name="keywords" content="dictionary,Goole Chrome,extension,JavaScript">
+    <meta name="author" content="Chang Luo">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="./src/jquery/3.4.1/jquery-3.4.1.min.js"></script>
+</head>
+
+<body>
+
+    hello, world!
+
+    你好，世界
+
+    <span>hello, world!</span>
+
+    <div>你好，世界</div>
+
+    <div id="txt">"My text is long and wise and it consumes a lot of interwebs."</div>
+    <div id="out"></div>
+
+    <script>
+
+
+
+        
+        function LoadWords() {
+            
+            $.getJSON("./src/chinese-xinhua/data/ci.json", function (data) {
+                $.each(data, function (key, val) {
+                    var ext = key.toString().split('.').pop();
+                    
+                });
+            });
+        }
+
+        function get_selection() {
+            var txt = '';
+            if (window.getSelection) {
+                txt = window.getSelection().toString();
+            } else if (document.selection) {
+                txt = document.selection.createRange().text;
+            }
+            document.getElementById("out").innerHTML = txt;
+        }
+
+        document.onclick = get_selection;
+
+
+    </script>
+</body>
+
+</html>
