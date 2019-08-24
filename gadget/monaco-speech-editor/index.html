@@ -5,14 +5,22 @@
     <title>Monaco Speech Editor</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-    <meta name="description" content="Free Web tutorials">
+    <meta name="description" content="online code editor">
     <meta name="keywords" content="speech,editor,code editor,blind,visually impaired,accessibility,JavaScript">
     <meta name="author" content="Chang Luo">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/style.css">
     <link rel="shortcut icon" type="image/png" href="./images/logo-1.jpeg">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    
+    <script>
+        
+        window.addEventListener('beforeunload', function (e) {
+            
+            e.preventDefault();
+            
+            e.returnValue = 'Do you sure';
+        });
+    </script>
 </head>
 
 <body>

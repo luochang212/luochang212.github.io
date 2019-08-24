@@ -17,7 +17,7 @@
       <pubDate>Thu, 22 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/monaco_speech_editor/</guid>
-      <description>Monaco Speech Editor 是一款在线代码编辑器，它能为视障人群提供语音支持，以减少他们在阅读、编辑和编译程序时的阻碍。
+      <description>Monaco Speech Editor 是一款在线代码编辑器，它能为视障人群提供语音支持，以减轻他们在阅读、编辑和编译程序时的障碍。
  GitHub项目链接：monaco-speech-editor</description>
     </item>
     
@@ -464,7 +464,7 @@ def classification(self, txt_array, file_index): id = np.array([]) date = np.arr
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/gadget/monaco-speech-editor/</guid>
-      <description>Monaco Speech Editor  // Check before leave website window.addEventListener(&#39;beforeunload&#39;, function (e) { // Cancel the event e.preventDefault(); // Chrome requires returnValue to be set e.returnValue = &#39;Do you sure&#39;; });  --                    Explorer
+      <description>Monaco Speech Editor   // Check before leave website window.addEventListener(&#39;beforeunload&#39;, function (e) { // Cancel the event e.preventDefault(); // Chrome requires returnValue to be set e.returnValue = &#39;Do you sure&#39;; });                     Explorer
  File manager     Demo You can load demos from a JSON file.</description>
     </item>
     
