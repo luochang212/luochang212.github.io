@@ -6,20 +6,10 @@
     <description>Recent content on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 22 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 12 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://luochang212.github.io/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Monaco Speech Editor</title>
-      <link>http://luochang212.github.io/posts/monaco_speech_editor/</link>
-      <pubDate>Thu, 22 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/posts/monaco_speech_editor/</guid>
-      <description>Monaco Speech Editor 是一款在线代码编辑器，它能为视障人群提供语音支持，以减轻他们在阅读、编辑和编译程序时的障碍。
- GitHub项目链接：monaco-speech-editor</description>
-    </item>
     
     <item>
       <title>Golang学习之旅</title>
@@ -410,7 +400,7 @@ def classification(self, txt_array, file_index): id = np.array([]) date = np.arr
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/gadget/dictionary.js/</guid>
-      <description>Monaco Speech Editor --    hello, world! 你好，世界 hello, world! 你好，世界 &#34;My text is long and wise and it consumes a lot of interwebs.&#34;   // 从JSON文件导入汉字单词 function LoadWords() { // $.getJSON(&#34;https://www.luochang.ink/gadget/dictionary.js/src/chinese-xinhua/data/ci.json&#34;, function(data){ $.getJSON(&#34;./src/chinese-xinhua/data/ci.json&#34;, function (data) { $.each(data, function (key, val) { var ext = key.toString().split(&#39;.&#39;).pop(); // var filename = key.toString().split(&#39;.&#39;).shift(); }); }); } function get_selection() { var txt = &#39;&#39;; if (window.getSelection) { txt = window.</description>
+      <description>dictionary.js    hello, world! 你好，世界 hello, world! 你好，世界 &#34;My text is long and wise and it consumes a lot of interwebs.&#34;       // 获取被选中的文本 var selectedTxt = &#39;&#39;; function getSelectedTxt() { selectedTxt = &#39;&#39;; if (window.getSelection) { selectedTxt = window.getSelection().toString(); } else if (document.selection) { selectedTxt = document.selection.createRange().text; } document.getElementById(&#34;out&#34;).innerHTML = selectedTxt; } // 从JSON文件导入汉字单词 function compareWords() { $.getJSON(&#34;./src/chinese-xinhua/data/word.json&#34;, function (data) { $.</description>
     </item>
     
     <item>

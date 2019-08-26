@@ -6,28 +6,10 @@
     <description>Recent content in Tags on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 22 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 12 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://luochang212.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Monaco editor</title>
-      <link>http://luochang212.github.io/tags/monaco-editor/</link>
-      <pubDate>Thu, 22 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/tags/monaco-editor/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>web speech API</title>
-      <link>http://luochang212.github.io/tags/web-speech-api/</link>
-      <pubDate>Thu, 22 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/tags/web-speech-api/</guid>
-      <description></description>
-    </item>
     
     <item>
       <title>Golang</title>

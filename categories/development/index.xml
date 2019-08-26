@@ -6,20 +6,10 @@
     <description>Recent content in Development on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 22 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 12 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://luochang212.github.io/categories/development/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Monaco Speech Editor</title>
-      <link>http://luochang212.github.io/posts/monaco_speech_editor/</link>
-      <pubDate>Thu, 22 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/posts/monaco_speech_editor/</guid>
-      <description>Monaco Speech Editor 是一款在线代码编辑器，它能为视障人群提供语音支持，以减轻他们在阅读、编辑和编译程序时的障碍。
- GitHub项目链接：monaco-speech-editor</description>
-    </item>
     
     <item>
       <title>Golang学习之旅</title>
