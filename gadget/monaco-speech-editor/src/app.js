@@ -1293,6 +1293,7 @@ require(['vs/editor/editor.main'], function () {
         val = val.replace(/(\r\n|\n|\r)/gm, "");
 
         wordArray = createWordArray(val);  // 带判断是否是特殊符号的字符串集合
+        console.log(wordArray);
 
         // 除非上一段语音结束，否则不能播放下一段
         musicIndex = 0;
