@@ -513,7 +513,7 @@
     
     
     <br/>
-    <i class="fas fa-clock"></i> 1 min read
+    <i class="fas fa-clock"></i> 2 min read
 </div>
 
 
@@ -535,7 +535,13 @@
 <li><a href="#技术选择">技术选择</a></li>
 <li><a href="#需求分析">需求分析</a></li>
 <li><a href="#功能设计">功能设计</a></li>
-<li><a href="#详说文件系统">详说文件系统</a></li>
+<li><a href="#部件详解">部件详解</a>
+<ul>
+<li><a href="#文件系统">文件系统</a></li>
+<li><a href="#工具栏">工具栏</a></li>
+<li><a href="#控制台">控制台</a></li>
+</ul></li>
+<li><a href="#前端路由">前端路由</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -770,7 +776,7 @@
 
 <p>Character Mode 被设计成最精细的模式，不但逐字母朗读，而且不省略任何字符。Code Mode 被设计成最普通的模式，适用于最一般情况下的代码朗读。Music Mode 是为了避免尴尬的符号语音设计的。如果一段代码朗读起来充斥着诸如“左括号”，“左中括号”这样的语音，听起来是会引起不适的。因此本程序尝试将这些符号语音，替换成乐器的声音，使用户能更直观地获取符号信息。Overview Mode 被设计成全局信息解释系统，本来这个系统应该更加强大，但由于一些来不及完成的工作，目前只提供该功能的弱化版本。</p>
 
-<p>（三）UI交互辅助</p>
+<p>（三）交互辅助</p>
 
 <p>光有语音辅助功能还不够，还需要提供一个类似游戏中新手村这样的地方，让用户可以学习和探索本应用的功能。因此就有了UI交互辅助功能。</p>
 
@@ -784,9 +790,168 @@
 
 <p><img src="/img/monaco-6.png" alt="" /></p>
 
-<h3 id="详说文件系统">详说文件系统</h3>
+<h3 id="部件详解">部件详解</h3>
 
-<p>文件系统</p>
+<h4 id="文件系统">文件系统</h4>
+
+<p>文件系统是纯手撸的，没有采用任何框架。UI技术来自W3C的范例 <a href="https://www.w3schools.com/howto/howto_js_todolist.asp">to do list</a>（中国大陆无法访问），交互设计借鉴了 <a href="https://github.com/grame-cncm/fausteditorweb">fausteditorweb</a> 的文件系统。</p>
+
+<p><img src="/img/monaco-9.PNG" alt="" /></p>
+
+<p>文件列表中的每个文件都以面向对象的方式存储。下面这段代码初始化了文件对象<code>Files</code>，以及用于存储该对象的数组<code>fileArray</code>。</p>
+
+<pre><code>    // 用面向对象的方法控制页面切换
+    // 初始化变量
+    var Files = {
+        fileId: &quot;&quot;,
+        fileName: &quot;&quot;,
+        isDelete: &quot;false&quot;,
+        isActive: &quot;&quot;,
+        editor: null,
+        editorContent: &quot;&quot;,
+        editorLanguage: &quot;&quot;
+    };
+
+    var fileArray = [];
+</code></pre>
+
+<p><code>Files</code>的成员有：</p>
+
+<ul>
+<li><code>FileId</code> - String（数值），用于唯一标记该文件</li>
+<li><code>fileName</code> - String，用于记录该文件的文件名</li>
+<li><code>isDelete</code> - Boolean，删除标志</li>
+<li><code>isActive</code> - Boolean，当前打开文件的标志
+<!-- 如为true，则说明该文件是打开状态 --></li>
+<li><code>editorContent</code> - String，用于记录文件内容</li>
+<li><code>editorLanguage</code> - String，用于记录该文件的编程语言类型</li>
+</ul>
+
+<p>因为没有采用任何框架，所以文件系统还是蛮复杂的。因为本应用编写了很多基于Editor的功能，因此每当打开一个文件或者新建一个新文件时，都需要为这个文件注册所有功能。这些注册功能就会使文件系统的代码看起来很冗长。</p>
+
+<p>而且，文件系统还需要处理一些边界情况。比如，所有文件均被删除，一个文件也不剩时，应该如何处理；当前打开文件被删除时，应该如何处理，如果需要跳转到另一个文件并打开它，因为本应用采用软删除法，那么应该如何确保打开的文件不是已删除文件，以及如何确保至少有一个文件能够接受跳转&hellip;&hellip;这些细节都需要考虑在内，才能不出bug。</p>
+
+<h4 id="工具栏">工具栏</h4>
+
+<p>工具栏也是本应用的一个特色，它采用类音乐软件的设计。它假设每一行代码是一首歌曲，一个代码编辑器里的多行代码，就组成了一个歌单。基于这样的想象，工具栏的交互界面也提供了4个功能，分别是：播放下一行代码，播放上一行代码，播放当前行代码，暂停播放当前行代码。</p>
+
+<p><img src="/img/monaco-10.png" alt="" /></p>
+
+<p>一个小秘密是，用快捷键调用工具栏的播放上一行和播放下一行会比用鼠标点击图标的效果更好，因为我对快捷键触发的功能做了一些优化。相当于图标点击触发的是基础版，快捷键触发的是改进版。</p>
+
+<!-- 此外，工具栏还隐藏了一个bug，至今没法解决。那就是音乐模式下的暂停问题。因为音乐模式交替地调用两个API，所以难以标记暂停点。这就属于采用的技术和能实现的功能之间的矛盾，大概很难用简洁的方法调和。鉴于毕设已经结束，我已经懒得改进了...... -->
+
+<p>其他三个功能：语法高亮、全屏，比较容易理解，那么就略过不表。跳转到行也很容易理解，但值得一提的是本应用允许用户用快捷键<code>Ctro + option + J</code>将光标聚焦到跳转到行功能的文本框里，在文本框里输入行数以后，按回车键即可将光标移动到该行的最左端。加了快捷键以后，跳转到行功能就可以完全依靠键盘实现，而不需要动用鼠标了。</p>
+
+<h4 id="控制台">控制台</h4>
+
+<p>控制台目前功能很弱，因为只有前端，所以只支持了HTML, CSS, JavaScript。要想实现Golang, Python, Java的编译，据我的理解，都必须要有后端。</p>
+
+<p>控制台长这样：</p>
+
+<p><img src="/img/monaco-11.png" alt="" /></p>
+
+<p>控制台有两个区域，左边输出的是渲染好的页面，右边输出的是console.log()函数的信息，可以用来打印各种类型的变量。控制台的设计有一个细节，按钮在控制台打开状态下会变大，在缩回状态下会变小。此外，还提供了隐藏右侧区域和隐藏右侧区域的功能。</p>
+
+<h3 id="前端路由">前端路由</h3>
+
+<p>前端路由是为了弥补没有后端的缺陷设计的一个功能。利用前端路由可以加载默认设置。比如在原地址后加上<code>#dark</code>，在打开这个网页时，即可获得一个已打开夜间模式的Monaco Speech Editor。</p>
+
+<p><img src="/img/monaco-12.png" alt="" /></p>
+
+<p>完整的路由列表如下：</p>
+
+<table>
+<thead>
+<tr>
+<th>Router</th>
+<th>Setting</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>#load-demo</td>
+<td>Load demo</td>
+</tr>
+
+<tr>
+<td>#dark</td>
+<td>Turn on night mode</td>
+</tr>
+
+<tr>
+<td>#full-screen</td>
+<td>Full screen</td>
+</tr>
+
+<tr>
+<td>#run</td>
+<td>Open console bar</td>
+</tr>
+
+<tr>
+<td>#tutorial</td>
+<td>Play audio tutorial</td>
+</tr>
+
+<tr>
+<td>#spotlight</td>
+<td>Turn on spotlight</td>
+</tr>
+
+<tr>
+<td>#linear-index</td>
+<td>Turn on linear index</td>
+</tr>
+
+<tr>
+<td>#character-mode</td>
+<td>Turn on character mode</td>
+</tr>
+
+<tr>
+<td>#code-mode</td>
+<td>Turn on code mode</td>
+</tr>
+
+<tr>
+<td>#overview-mode</td>
+<td>Turn on overview mode</td>
+</tr>
+
+<tr>
+<td>#voice-feedback</td>
+<td>Turn on voice feedback</td>
+</tr>
+
+<tr>
+<td>#voice-cue</td>
+<td>Turn on voice cue</td>
+</tr>
+
+<tr>
+<td>#mute</td>
+<td>Disable any autoplay event</td>
+</tr>
+
+<tr>
+<td>#dark&amp;run</td>
+<td>Turn on night mode and console bar</td>
+</tr>
+
+<tr>
+<td>#dark&amp;mute</td>
+<td>Turn on night mode and disable any autoplay event</td>
+</tr>
+</tbody>
+</table>
+
+<p>如果你对本项目感兴趣，以下链接可能对你有帮助：</p>
+
+<p><strong>GitHub:</strong> <a href="https://github.com/luochang212/monaco-speech-editor/">luochang212/monaco-speech-editor</a></p>
+
+<p><strong>Demo:</strong> <a href="https://luochang212.github.io/gadget/monaco-speech-editor/">Monaco Speech Editor</a></p>
 
 <!-- ### UI设计 -->
 
