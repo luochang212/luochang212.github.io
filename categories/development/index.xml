@@ -17,11 +17,12 @@
       <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/monaco_editor_tutorial/</guid>
-      <description>Monaco Editor 是微软公司开发的一款开源的在线代码编辑器。它是VSCode的浏览器版本，其大部分源代码与 VSCode 相同。随着近年 VSCode 大热，Monaco Editor 也逐渐走红。虽然目前尚未问鼎 online editor 领域的宝座，却已隐然有超越几位老前辈（指 CodeMirror, Ace 之流）之势。
+      <description>Monaco Editor 是微软开发的一款开源在线代码编辑器。它是 VSCode 的浏览器版本，随着近年 VSCode 大热，Monaco Editor 也逐渐走红。目前虽离登上 Online Editor 领域的王座还比较遥远，却隐燃有超越几位老前辈（指 CodeMirror, Ace 之流）之势。
   var i = 0; function show_name(id) { i += 1; if (i%2 == 0) { document.getElementById(id).style.display = &#34;none&#34;; } else { document.getElementById(id).style.display = &#34;inline&#34;; } }  GitHub项目链接：monaco-editor-demos
-如果你需要制作在线代码编辑器，或者在浏览上做比较复杂的文字处理，那么你可能需要编辑器框架。它提供基础且难以正确实现的那部分功能，从而使开发者能够集中精力开发他们应用中的核心功能。Monaco Editor 就是一个比较有名的开源编辑器框架。本文主要涉及三方面内容：
- 如何下载与搭建 Monaco Editor 如何寻找相关学习资源及范例 如何调用常用 API  下载 新建项目文件夹，然后打开它：
-$ mkdir my-application $ cd my-application  下载 Monaco Editor，该命令会在当前目录下新建一个名为 node_modules 的文件:</description>
+如果你需要制作在线代码编辑器，或者在浏览上做比较复杂的文字处理，那么你可能需要编辑器框架。它提供基础且难以正确实现的那部分功能，从而使开发者能够集中精力开发他们应用中的核心功能。Monaco Editor 就是一个比较有名的开源编辑器框架。
+通过阅读本文，你可以了解以下内容：
+ 如何下载 Monaco Editor 如何标准化搭建 Monaco Editor 如何寻找相关学习资源 如何调用常用 API  下载 新建项目文件夹，然后打开它：
+$ mkdir my-application $ cd my-application  接着下载 Monaco Editor：$ npm install monaco-editor  搭建 本文提供了一个标准化的搭建方法，通过本文的方法搭建的 Monaco Editor 具有较强的功能扩展性。比如，如果你希望为应用添加多个编辑器，甚至文件管理系统，那么在本文提供的搭建方法之上，就可以直接添加这些新特性，从而避免不必要的踩坑。</description>
     </item>
     
     <item>
@@ -184,11 +185,11 @@ def classification(self, txt_array, file_index): id = np.array([]) date = np.arr
 对于在欧洲的小伙伴们，复活节假在这一周就正式开始啦。大家都是怎么计划旅行的呢？
 我的习惯是在出发前最后一晚，花上半小时，搜索目的地景点 (Point of interest, POI), 然后在Google Maps上为它们点上小星星，以免和它们擦肩而过。我的地图经过一番操作，就成了下面这副模样。
 此时此刻，望着这些密集的星星，我不禁自问：如何才能走最少的路，遍历所有景点呢?
-搜索了谷歌和百度，都没找到我要路径规划功能。最接近需求是谷歌地图的&amp;rdquo;Add destination&amp;rdquo;功能。然而这个功能只是依次连接你点选的地点。并不能由一组地点，确定连接它们的一条全局最短路径。
+搜索了谷歌和百度，都没找到我要路径规划功能。最接近需求的是谷歌地图的&amp;rdquo;Add destination&amp;rdquo;功能。然而这个功能只是依次连接你点选的地点。并不能由一组地点，确定连接它们的一条全局最短路径。
 没有现成应用怎么办，我打算自己动手写一个。
 下图是Google Add destination功能。
-适用模型：TSP 模型 如果用一句话概括需求，就是：我们需要一条从某地方出发，遍历所有地点，最终回到起点的最短路径。
-学过运筹学的同学发现了，这其实是一个经典问题，旅行商问题(TSP)。旅行商问题的确切描述是这样的：一个商人在各个城市之间旅行，要求遍历所有城市并返回到出发点，要如何规划路线，才能使总路径最短。（打开维基百科了解更多)
+适用模型：TSP 模型 用一句话概括需求就是：我们需要一条从某地方出发，遍历所有地点，最终回到起点的最短路径。
+这个需求其实就是运筹学的一个经典问题，旅行商问题(TSP)。旅行商问题的确切描述是这样的：一个商人在各个城市之间旅行，要求遍历所有城市并返回到出发点，要如何规划路线，才能使总路径最短。（打开维基百科了解更多)
 解决思路  用googlemaps包获取纬度和经度信息 用OR-Tools包求解TSP问题 最后用gmaps可视化结果  在敲代码的过程中，最难的地方莫过于看文档查API, 搞清楚输入输出和调用结构。不过敲完这一顿之后我还是不禁感慨，GoogleI太为开发者着想了。一旦学会调用API，实现一个简单应用的代码量还是很小的 orz
 食用指南 项目地址 &amp;ndash;&amp;gt; 传送门
 在运行代码之前，你需要以下配置：
