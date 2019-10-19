@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>api on Chang Luo</title>
+    <title>API on Chang Luo</title>
     <link>http://luochang212.github.io/tags/api/</link>
-    <description>Recent content in api on Chang Luo</description>
+    <description>Recent content in API on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 07 Oct 2019 00:00:00 +0000</lastBuildDate>
@@ -17,9 +17,8 @@
       <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/monaco_editor_tutorial/</guid>
-      <description>Monaco Editor 是微软开发的一款开源在线代码编辑器。它是 VSCode 的浏览器版本，随着近年 VSCode 大热，Monaco Editor 也逐渐走红。目前虽离登上 Online Editor 领域的王座还比较遥远，却隐燃有超越几位老前辈（指 CodeMirror, Ace 之流）之势。
+      <description>Monaco Editor 是微软开发的一款开源在线代码编辑器。它是 VSCode 的浏览器版本，随着近年 VSCode 大热，Monaco Editor 也逐渐走红。目前虽未登上 Online Editor 领域的宝座，却也隐燃有超越几位老前辈（指 CodeMirror, Ace 之流）之势。
   var i = 0; function show_name(id) { i += 1; if (i%2 == 0) { document.getElementById(id).style.display = &#34;none&#34;; } else { document.getElementById(id).style.display = &#34;inline&#34;; } }  GitHub项目链接：monaco-editor-demos
-如果你需要制作在线代码编辑器，或者在浏览上做比较复杂的文字处理，那么你可能需要编辑器框架。它提供基础且难以正确实现的那部分功能，从而使开发者能够集中精力开发他们应用中的核心功能。Monaco Editor 就是一个比较有名的开源编辑器框架。
 通过阅读本文，你可以了解以下内容：
  如何下载 Monaco Editor 如何标准化搭建 Monaco Editor 如何寻找相关学习资源 如何调用常用 API  下载 新建项目文件夹，然后打开它：
 $ mkdir my-application $ cd my-application  接着下载 Monaco Editor：$ npm install monaco-editor  搭建 本文提供了一个标准化的搭建方法，通过本文的方法搭建的 Monaco Editor 具有较强的功能扩展性。比如，如果你希望为应用添加多个编辑器，甚至文件管理系统，那么在本文提供的搭建方法之上，就可以直接添加这些新特性，从而避免不必要的踩坑。</description>
