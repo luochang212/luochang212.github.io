@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Elasticsearch on Chang Luo</title>
+    <link>http://luochang212.github.io/tags/elasticsearch/</link>
+    <description>Recent content in Elasticsearch on Chang Luo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 24 Oct 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://luochang212.github.io/tags/elasticsearch/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Elasticsearch 初探</title>
+      <link>http://luochang212.github.io/posts/elastic-search/</link>
+      <pubDate>Thu, 24 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/posts/elastic-search/</guid>
+      <description>Elasticsearch 是一个开源的分布式全文搜索引擎。它建立在当前最先进有效的搜索引擎库 Lucene 之上。Elasticsearch 集成了 Lucene 的功能，并通过一套简单的 API 隐藏了 Lucene 的复杂性，是一个开箱即用的搜索引擎。
+ 初识 Elasticsearch 不仅仅是搜索 ES 不仅仅能够搜索，它还提供了一套分布式实时存储文档的解决方案。它允许用户将数据存储在多个服务器节点上。这些节点能实时共享数据。一旦主节点的内容发生改变，它发生的改变会实时传递到其它副节点上。如果主节点挂掉，它还能瞬间选举出一个副节点来充当主节点，保障了软件的可靠性。
+分布式存储不仅能保障数据安全，而且可以加快检索速度。利用 MapReduce 模型，ES 可以在多个节点上并行地检索数据。
+领域专用语言 前文已经提到，ES 为全文检索提供了一套简单的 API。为了统一查询语句，ES 设计了一套专门用于查询的领域专用语言(DSL, domainspecific language)。这套语言基于 JSON，语法比较简单，容易上手。但如果遇到复杂的多条件的查询，查询体会写得非常冗长，这也可以说是 ES 的一个小坑。
+SQL 和 NoSQL SQL 全称 Structured Query Language。SQL 中的 S 突出了它是结构化的查询语言。结构化意味着数据是受字段限制的。比如现在有一组结构化的数据，已知它有3条数据、5个字段，那么我们一定可以确定它是一张3乘5的数据表。但 NoSQL 就并非如此。NoSQL 允许更灵活多变的数据结构。数据可以有不同的字段以及复杂的层级关系。NoSQL 的数据可以用 JSON 来表达。
+入门 Elasticsearch 安装和运行  首先打开https://www.elastic.co/downloads/elasticsearch，下载操作系统对应版本的 ES。
+ 解压下载的文件，然后将解压出的文件夹放在你希望放置的目录下。
+ 打开 Terminal (MacOS) 或者 PowerShell (Windows)，在命令行中切换到解压出的文件夹所在的目录。运行以下命令：
+cd elasticsearch-7.4.0 cd bin ./elasticsearch  这将在当前 Terminal 窗口运行 ES，如果你不希望 ES 服务关闭，请勿关闭窗口或者中止程序。</description>
+    </item>
+    
+  </channel>
+</rss>
