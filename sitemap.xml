@@ -131,6 +131,12 @@
   </url>
   
   <url>
+    <loc>http://luochang212.github.io/tags/api/</loc>
+    <lastmod>2019-10-07T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://luochang212.github.io/categories/javascript/</loc>
     <lastmod>2019-10-07T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -138,12 +144,6 @@
   
   <url>
     <loc>http://luochang212.github.io/tags/monaco-editor/</loc>
-    <lastmod>2019-10-07T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://luochang212.github.io/tags/api/</loc>
     <lastmod>2019-10-07T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -161,13 +161,13 @@
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/categories/golang/</loc>
+    <loc>http://luochang212.github.io/tags/golang/</loc>
     <lastmod>2019-07-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/tags/golang/</loc>
+    <loc>http://luochang212.github.io/categories/golang/</loc>
     <lastmod>2019-07-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -197,13 +197,13 @@
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/categories/queuing-theory/</loc>
+    <loc>http://luochang212.github.io/tags/queuing-theory/</loc>
     <lastmod>2019-07-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/tags/queuing-theory/</loc>
+    <loc>http://luochang212.github.io/categories/queuing-theory/</loc>
     <lastmod>2019-07-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -350,13 +350,13 @@
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/categories/jupyter-notebook/</loc>
+    <loc>http://luochang212.github.io/tags/jupyter-notebook/</loc>
     <lastmod>2019-04-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/tags/jupyter-notebook/</loc>
+    <loc>http://luochang212.github.io/categories/jupyter-notebook/</loc>
     <lastmod>2019-04-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
