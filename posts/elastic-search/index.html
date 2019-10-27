@@ -702,13 +702,13 @@ cd bin
 
 <h3 id="客户端">客户端</h3>
 
-<p>搭建好 ES 之后，我们还需要与 ES 交互。既然要交互，那么就有客户端和服务端。在生产环境中，服务端往往架设在服务器上，这种情况下，我们只需要配置好客户端就可以了。</p>
+<p>搭建好 ES 之后，我们还需要与 ES 交互。既然要交互，那么就有客户端和服务端两个主体。在生产环境中，服务端往往架设在服务器上。这种情况下，我们只需要配置好客户端就可以了。</p>
 
-<p>ES 支持多种客户端语言，比如 Java, Ruby, Python。这些语言都有相应的 ES 库，我们可以依据自己的喜好选择语言。下面主要介绍在 Python 环境下应该如何配置 ES。</p>
-
-<p>首先确保你已经安装了 Python 及 Python 相关依赖。</p>
+<p>ES 支持多种客户端语言，比如 Java, Ruby, Python。这些语言都有相应的 ES 库，我们可以依据自己的喜好选择。下面主要介绍在 Python 环境下应该如何搭建 ES 客户端。</p>
 
 <ol>
+<li><p>首先确保你已经安装了 Python 及 Python 相关依赖。</p></li>
+
 <li><p>安装 <a href="https://pypi.org/project/elasticsearch/">Elasticsearch</a>。</p>
 
 <pre><code>pip install elasticsearch
@@ -719,7 +719,7 @@ cd bin
 <pre><code>touch my_es.py
 </code></pre></li>
 
-<li><p>在你喜欢的 IDE 里打开它，输入：</p>
+<li><p>在你喜欢的 IDE 里打开它，输入以下内容，这将初始化一个名为 <code>es</code> 的客户端。</p>
 
 <pre><code># 初始化 ES 客户端
 import elasticsearch
@@ -735,17 +735,17 @@ return es
 es = init_es_client()
 </code></pre></li>
 
-<li><p>如果你希望测试客户端是否成功搭建，可以 <code>print</code> 一下客户端的信息。在前文代码后加上：</p>
+<li><p>为测试客户端搭建是否成功，可以 <code>print</code> 一下客户端信息。在前文代码后加上：</p>
 
 <pre><code>print(es.info())
 </code></pre>
 
-<p>如果收到一条包含 <code>name</code>, <code>cluster_name</code> 等字段的 JSON 返回值，那么说明你已经搭建成功了。</p></li>
+<p>运行 <code>my_es.py</code>，如果收到一条包含 <code>name</code>, <code>cluster_name</code> 等字段的 JSON 返回值，那么恭喜你已经搭建成功了。</p></li>
 </ol>
 
 <h3 id="客户端请求">客户端请求</h3>
 
-<p>搭建完成以后，和 ES 交互数据还需要向服务端发送请求。一个请求往往写成一个函数。下面这个函数就是一个查询请求。其中 <code>body</code> 里的内容是请求体，请求体是用 DSL 语法写成的。</p>
+<p>客户端搭建完成以后，我们可以通过向 ES 发送请求来交互数据。一个请求常常被写成一个函数。下面这个函数就是一个查询请求。其中 <code>body</code> 里的内容是请求体，它是用 DSL 语法写成的。</p>
 
 <pre><code>def search(es_client, start, end):
     result = es_client.search(index=&quot;[YOUR-INDEX]&quot;, body={
@@ -772,17 +772,17 @@ es = init_es_client()
 
 <ol>
 <li>时间字段的值的范围在 <code>start</code> 和 <code>end</code> 之间</li>
-<li>内容字段的值包含短语 <code>[KEYWORD-1]</code> 或者 <code>[KEYWORD-2]</code></li>
+<li>内容字段的值包含短语 <code>[KEYWORD-1]</code> 或 <code>[KEYWORD-2]</code></li>
 </ol>
 
-<p>拿到数据以后，你就可以大展才能啦！</p>
+<p>通过请求，拿到数据之后，你就可以大展才能啦！</p>
 
-<p>你可以进一步筛选数据，分析数据；也可以用可视化库绘制图和表；甚至可以上一些 NLP 的手段。</p>
+<p>你可以进一步筛选数据、分析数据；也可以用各种可视化库绘制图表；甚至可以上一些 NLP 的手段训练模型。大门已经开启，一切随你的心意。</p>
 
-<p>祝各位和数据玩耍愉快<img src="/img/quyin/watermaleon.png" class="my-emoji" style = "height: 32px;"></p>
+<p>祝各位玩耍愉快 <img src="/img/quyin/watermaleon.png" class="my-emoji" style = "height: 32px;"></p>
 
 <blockquote>
-<p><strong>Note</strong>：更多信息请参见 <a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html">ES 官方中文教程</a>。</p>
+<p><strong>Note</strong>：更多信息可参见 <a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html">ES 官方中文教程</a>。</p>
 </blockquote>
 
 <!--  -->
