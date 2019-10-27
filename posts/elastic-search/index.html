@@ -22,10 +22,10 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Elasticsearch 初探"/>
-<meta name="twitter:description" content="Elasticsearch 是一个开源的分布式搜索引擎。"/>
+<meta name="twitter:description" content="Elasticsearch 是一个开源的分布式全文搜索引擎。它建立在当前最先进有效的搜索引擎库 Lucene 之上。Elasticsearch 集成了 Lucene 的全文检索功能，并通过一套简单的 API 隐藏了 Lucene 的复杂性，使之简单易用。"/>
 
 <meta property="og:title" content="Elasticsearch 初探" />
-<meta property="og:description" content="Elasticsearch 是一个开源的分布式搜索引擎。" />
+<meta property="og:description" content="Elasticsearch 是一个开源的分布式全文搜索引擎。它建立在当前最先进有效的搜索引擎库 Lucene 之上。Elasticsearch 集成了 Lucene 的全文检索功能，并通过一套简单的 API 隐藏了 Lucene 的复杂性，使之简单易用。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/elastic-search/" />
 <meta property="article:published_time" content="2019-10-24T00:00:00&#43;00:00"/>
@@ -520,7 +520,7 @@
     
     
     <br/>
-    <i class="fas fa-clock"></i> 1 min read
+    <i class="fas fa-clock"></i> 2 min read
 </div>
 
 
@@ -536,17 +536,22 @@
 <ul>
 <li>
 <ul>
-<li><a href="#初识-elasticsearch">初识 Elasticsearch</a>
+<li><a href="#初识">初识</a>
 <ul>
 <li><a href="#不仅仅是搜索">不仅仅是搜索</a></li>
 <li><a href="#领域专用语言">领域专用语言</a></li>
 <li><a href="#sql-和-nosql">SQL 和 NoSQL</a></li>
 </ul></li>
-<li><a href="#入门-elasticsearch">入门 Elasticsearch</a>
+<li><a href="#入门">入门</a>
 <ul>
-<li><a href="#安装和运行">安装和运行</a></li>
-<li><a href="#elasticsearch-文档">Elasticsearch 文档</a></li>
-<li><a href="#elasticsearch-请求">Elasticsearch 请求</a></li>
+<li><a href="#文档">文档</a></li>
+<li><a href="#请求">请求</a></li>
+</ul></li>
+<li><a href="#实践">实践</a>
+<ul>
+<li><a href="#安装与运行">安装与运行</a></li>
+<li><a href="#客户端">客户端</a></li>
+<li><a href="#客户端请求">客户端请求</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -559,68 +564,38 @@
     
 
 <blockquote>
-<p><a href="https://github.com/elastic/elasticsearch">Elasticsearch</a> 是一个开源的分布式全文搜索引擎。它建立在当前最先进有效的搜索引擎库 <a href="https://lucene.apache.org/">Lucene</a> 之上。Elasticsearch 集成了 Lucene 的功能，并通过一套简单的 API 隐藏了 Lucene 的复杂性，是一个开箱即用的搜索引擎。</p>
+<p><a href="https://github.com/elastic/elasticsearch">Elasticsearch</a> 是一个开源分布式全文搜索引擎。它建立在当前最先进有效的搜索引擎库 <a href="https://lucene.apache.org/">Lucene</a> 之上。Elasticsearch 集成了 Lucene 的检索功能，并通过一套简单的 API 隐藏了 Lucene 的复杂性，使之简单易用。</p>
 </blockquote>
 
-<!-- https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html -->
+<h2 id="初识">初识</h2>
 
-<!-- 根据 ES 的官方介绍，它目前正在为 Wikipedia, Stack Overflow, GitHub 等大型公司和组织提供 PB 级别的全文搜索服务。
+<p><hr>ES 的初步介绍</p>
 
-- Wikipedia 使用 Elasticsearch 提供带有高亮片段的全文搜索，还有 search-as-you-type 和 did-you-mean 的建议。
-- Stack Overflow 将地理位置查询融入全文检索中去，并且使用 more-like-this 接口去查找相关的问题和回答。
-- GitHub 使用 Elasticsearch 对1300亿行代码进行查询。 -->
-
-<h2 id="初识-elasticsearch">初识 Elasticsearch</h2>
+<p>本节将介绍 ES 的几个特性。这些介绍能帮助我们理解 ES 是应什么需求诞生的？它解决了什么问题？它为何如此架构？以及这种架构方式为它带来哪些性能上的提升？这些信息虽然不能直接提升我们使用 ES 的能力，但它能从更深的维度帮助我们使用好它。</p>
 
 <h3 id="不仅仅是搜索">不仅仅是搜索</h3>
 
-<p>ES 不仅仅能够搜索，它还提供了一套分布式实时存储文档的解决方案。它允许用户将数据存储在多个服务器节点上。这些节点能实时共享数据。一旦主节点的内容发生改变，它发生的改变会实时传递到其它副节点上。如果主节点挂掉，它还能瞬间选举出一个副节点来充当主节点，保障了软件的可靠性。</p>
+<p>ES 不仅能够搜索，它还提供一套分布式实时存储文档的解决方案。它允许用户将数据存储在多个服务器节点上。这些节点能实时共享数据。一旦主节点的内容发生改变，这些改变会实时传递到副节点上，以保证主副节点的内容一致。假如主节点掉线，ES 能立刻选举出一个副节点充当主节点。选举过程就像切换开关一样，能够在瞬间完成，从而保证了 ES 的可靠性。</p>
 
-<p>分布式存储不仅能保障数据安全，而且可以加快检索速度。利用 <a href="https://research.google.com/archive/mapreduce-osdi04-slides/index.html">MapReduce</a> 模型，ES 可以在多个节点上并行地检索数据。</p>
+<p>ES 提供的分布式存储方案不仅仅是基于数据安全的考量，同时也是为了加快检索的速度。利用 <a href="https://research.google.com/archive/mapreduce-osdi04-slides/index.html">MapReduce</a>，ES 可以在多个节点上并行地检索数据，大大加快了海量数据处理的速度。</p>
 
 <h3 id="领域专用语言">领域专用语言</h3>
 
-<p>前文已经提到，ES 为全文检索提供了一套简单的 API。为了统一查询语句，ES 设计了一套专门用于查询的领域专用语言(DSL, domainspecific language)。这套语言基于 JSON，语法比较简单，容易上手。但如果遇到复杂的多条件的查询，查询体会写得非常冗长，这也可以说是 ES 的一个小坑。</p>
+<p>为了统一查询语法，ES 拥有一套领域专用语言 (DSL, domain specific language)。这套语言基于 JSON，优点是简单易学，缺点是在表达复杂的查询时，会显得格外冗长，阅读起来也不太友好。</p>
 
 <h3 id="sql-和-nosql">SQL 和 NoSQL</h3>
 
-<p>SQL 全称 Structured Query Language。SQL 中的 S 突出了它是结构化的查询语言。结构化意味着数据是受字段限制的。比如现在有一组结构化的数据，已知它有3条数据、5个字段，那么我们一定可以确定它是一张3乘5的数据表。但 NoSQL 就并非如此。NoSQL 允许更灵活多变的数据结构。数据可以有不同的字段以及复杂的层级关系。NoSQL 的数据可以用 JSON 来表达。</p>
+<p>SQL 全称 Structured Query Language。SQL 中的 Structured 突出了它是结构化的查询语言。结构化即受字段限制。<!-- 比如有一组结构化的数据，已知它有3条数据、5个字段，那么我们可以确定它就是一张3乘5的数据表。-->NoSQL 则允许更复杂多变的数据结构。每个字段之间不相互影响，可以拥有各自的层次结构。因此 NoSQL 数据库要比 SQL 数据库更加灵活。NoSQL 可以用 JSON 来表达。</p>
 
-<h2 id="入门-elasticsearch">入门 Elasticsearch</h2>
+<h2 id="入门">入门</h2>
 
-<h3 id="安装和运行">安装和运行</h3>
+<p><hr>一些简单概念</p>
 
-<ol>
-<li><p>首先打开<a href="https://www.elastic.co/downloads/elasticsearch">https://www.elastic.co/downloads/elasticsearch</a>，下载操作系统对应版本的 ES。</p></li>
+<h3 id="文档">文档</h3>
 
-<li><p>解压下载的文件，然后将解压出的文件夹放在你希望放置的目录下。</p></li>
+<p>在 ES 中，文档是一个特定的术语。它表示一个用来存储对象的存储单元。一个对象通常不会是简单的键值对，它可能包含更复杂的数据结构，比如日期、地理数据、数组等。为表达这种复杂的、多层次的数据，ES 将 JSON 作为文档存储的固定格式。因此，如果你想简单地理解文档这个概念，不妨把它当作存储在 ES 中的某个 JSON 值。</p>
 
-<li><p>打开 Terminal (MacOS) 或者 PowerShell (Windows)，在命令行中切换到解压出的文件夹所在的目录。运行以下命令：</p>
-
-<pre><code>cd elasticsearch-7.4.0
-cd bin
-./elasticsearch
-</code></pre>
-
-<p>这将在当前 Terminal 窗口运行 ES，如果你不希望 ES 服务关闭，请勿关闭窗口或者中止程序。</p></li>
-
-<li><p>打开一个新的 Terminal 窗口，然后运行：</p>
-
-<pre><code>curl 'http://localhost:9200/?pretty'
-</code></pre>
-
-<p>如果 ES 运行正常，终端将收到一条包含本地集群信息的 JSON 数据。</p></li>
-</ol>
-
-<blockquote>
-<p><strong>Note</strong>: 如果希望获取更多关于安装的介绍，可以参考 <a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/running-elasticsearch.html">安装并运行 Elasticsearch</a> 或 <a href="https://opensource.com/article/19/7/installing-elasticsearch-macos">How to install Elasticsearch on MacOS</a>。</p>
-</blockquote>
-
-<h3 id="elasticsearch-文档">Elasticsearch 文档</h3>
-
-<p>文档在 ES 中，是一个特定的术语。它代表用于存储对象的存储单元。一个对象通常来说不会是简单的键值对，它可能包含复杂的数据结构，比如日期、地理数据、数组等。为表达这种复杂的，甚至多层次的数据结构，ES 使用 JSON 作为文档存储的固定格式。因此在 ES 中，一个 JSON 文档就代表一个存储对象。</p>
-
-<p>一个文档除了包含它的数据，ES 规定它还必须包含三个<a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/_Document_Metadata.html">元数据</a>：</p>
+<p>一个文档必须包含三个<a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/_Document_Metadata.html">元数据</a>：</p>
 
 <ul>
 <li>_index：文档在哪存放</li>
@@ -628,12 +603,189 @@ cd bin
 <li>_id：文档的唯一标识</li>
 </ul>
 
-<p>文档中的其他数据，可以视需求定义。</p>
+<p>文档中的其他数据，则可以视需求定义。</p>
 
-<h3 id="elasticsearch-请求">Elasticsearch 请求</h3>
+<h3 id="请求">请求</h3>
+
+<p>一个个文档存在于 ES 中，如果我们想要查询、添加、删除、更新某个文档，那么我们就需要向 ES 发送请求。</p>
+
+<p>一个 Elasticsearch 请求由以下部件组成：</p>
 
 <pre><code>curl -X&lt;VERB&gt; '&lt;PROTOCOL&gt;://&lt;HOST&gt;:&lt;PORT&gt;/&lt;PATH&gt;?&lt;QUERY_STRING&gt;' -d '&lt;BODY&gt;'
 </code></pre>
+
+<p>各部件的介绍：</p>
+
+<table>
+<thead>
+<tr>
+<th>部件</th>
+<th>用途</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>&lt;VERB&gt;</td>
+<td>操作数据的方法，常见的有查询(GET)、上传(POST)、更新(PUT)</td>
+</tr>
+
+<tr>
+<td>&lt;PROTOCOL&gt;</td>
+<td><code>http</code> 或者 <code>https</code></td>
+</tr>
+
+<tr>
+<td>&lt;HOST&gt;</td>
+<td>主机名</td>
+</tr>
+
+<tr>
+<td>&lt;PORT&gt;</td>
+<td>HTTP 服务端口，默认是 9200</td>
+</tr>
+
+<tr>
+<td>&lt;PATH&gt;</td>
+<td>文档路径，由<code>_index</code>, <code>_type</code>, <code>_id</code>组成</td>
+</tr>
+
+<tr>
+<td>&lt;QUERY_STRING&gt;</td>
+<td>查询参数，<code>?pretty</code> 可以输出格式化的 JSON 值</td>
+</tr>
+
+<tr>
+<td>&lt;BODY&gt;</td>
+<td>JSON 请求体</td>
+</tr>
+</tbody>
+</table>
+
+<!-- 上表十分抽象，那么举个例子。如果你想取回一个 `_index` 为 `website`，`_type` 为 `blog`，`_id` 为 `es` 的文档，请求应该是这样的：
+
+```
+curl -XGET 'http://localhost:9200/website/blog/es'
+``` -->
+
+<h2 id="实践">实践</h2>
+
+<p><hr>君 ES 本当上手</p>
+
+<h3 id="安装与运行">安装与运行</h3>
+
+<ol>
+<li><p>首先打开<a href="https://www.elastic.co/downloads/elasticsearch">https://www.elastic.co/downloads/elasticsearch</a>，下载操作系统对应版本的 ES。</p></li>
+
+<li><p>解压下载的文件，将解压出的文件夹放在你希望的目录下。</p></li>
+
+<li><p>打开 Terminal (MacOS) 或者 PowerShell (Windows)，将当前目录切换到放解压文件夹的目录，然后运行：</p>
+
+<pre><code>cd elasticsearch-7.4.0
+cd bin
+./elasticsearch
+</code></pre>
+
+<p>这将在当前 Terminal 窗口运行 ES。如果你不希望 ES 服务中止，请勿关闭窗口。</p></li>
+
+<li><p>另外打开一个新的 Terminal 窗口，运行：</p>
+
+<pre><code>curl 'http://localhost:9200/?pretty'
+</code></pre>
+
+<p>如果 ES 正常运行，终端将会返回一条包含集群信息的 JSON 值。</p></li>
+</ol>
+
+<blockquote>
+<p><strong>Note</strong>: 更多有关安装的信息，参见 <a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/running-elasticsearch.html">安装并运行 Elasticsearch</a> 和 <a href="https://opensource.com/article/19/7/installing-elasticsearch-macos">How to install Elasticsearch on MacOS</a>。</p>
+</blockquote>
+
+<h3 id="客户端">客户端</h3>
+
+<p>搭建好 ES 之后，我们还需要与 ES 交互。既然要交互，那么就有客户端和服务端。在生产环境中，服务端往往架设在服务器上，这种情况下，我们只需要配置好客户端就可以了。</p>
+
+<p>ES 支持多种客户端语言，比如 Java, Ruby, Python。这些语言都有相应的 ES 库，我们可以依据自己的喜好选择语言。下面主要介绍在 Python 环境下应该如何配置 ES。</p>
+
+<p>首先确保你已经安装了 Python 及 Python 相关依赖。</p>
+
+<ol>
+<li><p>安装 <a href="https://pypi.org/project/elasticsearch/">Elasticsearch</a>。</p>
+
+<pre><code>pip install elasticsearch
+</code></pre></li>
+
+<li><p>新建一个 <code>.py</code> 文件。</p>
+
+<pre><code>touch my_es.py
+</code></pre></li>
+
+<li><p>在你喜欢的 IDE 里打开它，输入：</p>
+
+<pre><code># 初始化 ES 客户端
+import elasticsearch
+
+
+def init_es_client():
+es = elasticsearch.Elasticsearch(
+    hosts=&quot;[YOUR-HOST-NAME]&quot;, http_auth=(&quot;[YOUR-ACCOUNT]&quot;, &quot;[YOUR-PASSWORD]&quot;)
+)
+
+return es
+
+es = init_es_client()
+</code></pre></li>
+
+<li><p>如果你希望测试客户端是否成功搭建，可以 <code>print</code> 一下客户端的信息。在前文代码后加上：</p>
+
+<pre><code>print(es.info())
+</code></pre>
+
+<p>如果收到一条包含 <code>name</code>, <code>cluster_name</code> 等字段的 JSON 返回值，那么说明你已经搭建成功了。</p></li>
+</ol>
+
+<h3 id="客户端请求">客户端请求</h3>
+
+<p>搭建完成以后，和 ES 交互数据还需要向服务端发送请求。一个请求往往写成一个函数。下面这个函数就是一个查询请求。其中 <code>body</code> 里的内容是请求体，请求体是用 DSL 语法写成的。</p>
+
+<pre><code>def search(es_client, start, end):
+    result = es_client.search(index=&quot;[YOUR-INDEX]&quot;, body={
+        &quot;query&quot;: {
+            &quot;bool&quot;: {
+                &quot;must&quot;:[
+                    { &quot;range&quot;: { &quot;[YOUR-DATE]&quot;:{ &quot;gte&quot;: start, &quot;lte&quot;: end }}}, 
+                    {
+                        &quot;bool&quot;: {
+                            &quot;should&quot;: [
+                                { &quot;match_phrase&quot;: { &quot;[YOUR-CONTENT]&quot;: &quot;[KEYWORD-1]&quot;}},
+                                { &quot;match_phrase&quot;: { &quot;[YOUR-CONTENT]&quot;: &quot;[KEYWORD-2]&quot;}}
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    })
+    return result
+</code></pre>
+
+<p>收到这段请求，服务端将返回同时符合以下两个条件的数据：</p>
+
+<ol>
+<li>时间字段的值的范围在 <code>start</code> 和 <code>end</code> 之间</li>
+<li>内容字段的值包含短语 <code>[KEYWORD-1]</code> 或者 <code>[KEYWORD-2]</code></li>
+</ol>
+
+<p>拿到数据以后，你就可以大展才能啦！</p>
+
+<p>你可以进一步筛选数据，分析数据；也可以用可视化库绘制图和表；甚至可以上一些 NLP 的手段。</p>
+
+<p>祝你和数据玩耍愉快</p>
+
+<blockquote>
+<p><strong>Note</strong>：更多信息请参见 <a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html">ES 官方中文教程</a>。</p>
+</blockquote>
+
+<!--  -->
 
   </div>
   

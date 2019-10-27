@@ -17,15 +17,15 @@
       <pubDate>Thu, 24 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/elastic-search/</guid>
-      <description>Elasticsearch 是一个开源的分布式全文搜索引擎。它建立在当前最先进有效的搜索引擎库 Lucene 之上。Elasticsearch 集成了 Lucene 的功能，并通过一套简单的 API 隐藏了 Lucene 的复杂性，是一个开箱即用的搜索引擎。
- 初识 Elasticsearch 不仅仅是搜索 ES 不仅仅能够搜索，它还提供了一套分布式实时存储文档的解决方案。它允许用户将数据存储在多个服务器节点上。这些节点能实时共享数据。一旦主节点的内容发生改变，它发生的改变会实时传递到其它副节点上。如果主节点挂掉，它还能瞬间选举出一个副节点来充当主节点，保障了软件的可靠性。
-分布式存储不仅能保障数据安全，而且可以加快检索速度。利用 MapReduce 模型，ES 可以在多个节点上并行地检索数据。
-领域专用语言 前文已经提到，ES 为全文检索提供了一套简单的 API。为了统一查询语句，ES 设计了一套专门用于查询的领域专用语言(DSL, domainspecific language)。这套语言基于 JSON，语法比较简单，容易上手。但如果遇到复杂的多条件的查询，查询体会写得非常冗长，这也可以说是 ES 的一个小坑。
-SQL 和 NoSQL SQL 全称 Structured Query Language。SQL 中的 S 突出了它是结构化的查询语言。结构化意味着数据是受字段限制的。比如现在有一组结构化的数据，已知它有3条数据、5个字段，那么我们一定可以确定它是一张3乘5的数据表。但 NoSQL 就并非如此。NoSQL 允许更灵活多变的数据结构。数据可以有不同的字段以及复杂的层级关系。NoSQL 的数据可以用 JSON 来表达。
-入门 Elasticsearch 安装和运行  首先打开https://www.elastic.co/downloads/elasticsearch，下载操作系统对应版本的 ES。
- 解压下载的文件，然后将解压出的文件夹放在你希望放置的目录下。
- 打开 Terminal (MacOS) 或者 PowerShell (Windows)，在命令行中切换到解压出的文件夹所在的目录。运行以下命令：
-cd elasticsearch-7.4.0 cd bin ./elasticsearch  这将在当前 Terminal 窗口运行 ES，如果你不希望 ES 服务关闭，请勿关闭窗口或者中止程序。</description>
+      <description>Elasticsearch 是一个开源分布式全文搜索引擎。它建立在当前最先进有效的搜索引擎库 Lucene 之上。Elasticsearch 集成了 Lucene 的检索功能，并通过一套简单的 API 隐藏了 Lucene 的复杂性，使之简单易用。
+ 初识 ES 的初步介绍
+本节将介绍 ES 的几个特性。这些介绍能帮助我们理解 ES 是应什么需求诞生的？它解决了什么问题？它为何如此架构？以及这种架构方式为它带来哪些性能上的提升？这些信息虽然不能直接提升我们使用 ES 的能力，但它能从更深的维度帮助我们使用好它。
+不仅仅是搜索 ES 不仅能够搜索，它还提供一套分布式实时存储文档的解决方案。它允许用户将数据存储在多个服务器节点上。这些节点能实时共享数据。一旦主节点的内容发生改变，这些改变会实时传递到副节点上，以保证主副节点的内容一致。假如主节点掉线，ES 能立刻选举出一个副节点充当主节点。选举过程就像切换开关一样，能够在瞬间完成，从而保证了 ES 的可靠性。
+ES 提供的分布式存储方案不仅仅是基于数据安全的考量，同时也是为了加快检索的速度。利用 MapReduce，ES 可以在多个节点上并行地检索数据，大大加快了海量数据处理的速度。
+领域专用语言 为了统一查询语法，ES 拥有一套领域专用语言 (DSL, domain specific language)。这套语言基于 JSON，优点是简单易学，缺点是在表达复杂的查询时，会显得格外冗长，阅读起来也不太友好。
+SQL 和 NoSQL SQL 全称 Structured Query Language。SQL 中的 Structured 突出了它是结构化的查询语言。结构化即受字段限制。NoSQL 则允许更复杂多变的数据结构。每个字段之间不相互影响，可以拥有各自的层次结构。因此 NoSQL 数据库要比 SQL 数据库更加灵活。NoSQL 可以用 JSON 来表达。
+入门 一些简单概念
+文档 在 ES 中，文档是一个特定的术语。它表示一个用来存储对象的存储单元。一个对象通常不会是简单的键值对，它可能包含更复杂的数据结构，比如日期、地理数据、数组等。为表达这种复杂的、多层次的数据，ES 将 JSON 作为文档存储的固定格式。因此，如果你想简单地理解文档这个概念，不妨把它当作存储在 ES 中的某个 JSON 值。</description>
     </item>
     
     <item>
@@ -34,7 +34,7 @@ cd elasticsearch-7.4.0 cd bin ./elasticsearch  这将在当前 Terminal 窗口�
       <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/monaco_editor_tutorial/</guid>
-      <description>Monaco Editor 是微软开发的一款开源在线代码编辑器。它是 VSCode 的浏览器版本，随着近年 VSCode 大热，Monaco Editor 也逐渐走红。目前虽未登上 Online Editor 领域的宝座，却也隐然有超越几位老前辈（指 CodeMirror, Ace 之流）之势。
+      <description>Monaco Editor 是一款开源在线代码编辑器。它是 VSCode 的浏览器版本，随着近年 VSCode 大热，Monaco Editor 也逐渐走红。目前虽未登上 Online Editor 领域的宝座，却也隐然有超越几位老前辈（指 CodeMirror, Ace 之流）之势。
   var i = 0; function show_name(id) { i += 1; if (i%2 == 0) { document.getElementById(id).style.display = &#34;none&#34;; } else { document.getElementById(id).style.display = &#34;inline&#34;; } }  GitHub项目链接：monaco-editor-demos
 通过阅读本文，你可以了解以下内容：
  如何下载 Monaco Editor 如何标准化搭建 Monaco Editor 如何寻找相关学习资源 如何调用常用 API  下载 新建项目文件夹，然后打开它：
