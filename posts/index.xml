@@ -6,10 +6,29 @@
     <description>Recent content in Posts on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 24 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 14 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://luochang212.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python Tips</title>
+      <link>http://luochang212.github.io/posts/python-tips/</link>
+      <pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/posts/python-tips/</guid>
+      <description>Python 技巧合集，长期更新  GitHub项目地址：python-tips
+本文记录了一些代码模版。实现相似功能的时候，改改参数就能用，非常方便。
+画图篇 Matplotlib 和 Seaborn 是 Python 环境下比较常用的两个画图库。本例展示了用 Matplotlib 绘制条形图、饼图、折线图和用 Seaborn 绘制复杂折线图的方法。
+这里需要专门提一下 Seaborn 的一个坑。
+在 Seaborn 的 lineplot() 方法中，如果没有将参数 sort 设为 False，则图像横轴标签将按 String 的默认方法排序。这会造成什么困扰呢？举个例子，如果你的图像横轴标签是 1 到 12 月份，那么在未设置 sort 为 False 的情况下，图像横轴标签的实际显示顺序是：1月，10月，11月，12月，2月，3月，&amp;hellip; 8月，9月。你会发现，原本应该排在末尾的 10、11、12 三个月份，根据默认的排序方法，自动跑到 2 月前面去了。横轴标签是数字或英文还好，如果是中文，那么排序方法就更迷了，分分钟破坏数据之间的逻辑关联。
+下图展示了未设置 sort 参数的情况下，中文横轴标签的迷之排序。
+ PS：点击下方按钮可在 nbviewer 中查看示例。如果需要下载和收藏，请点文章开头的GitHub项目地址链接。
+  查看示例 
+字典篇 鉴于 JSON 在大数据中的大量使用，字典的重要性也不言而喻。
+本文从以下几个方面介绍字典：
+ 创建 获取 更新 遍历 排序 删除 字典与JSON   查看示例</description>
+    </item>
     
     <item>
       <title>Elasticsearch 初探</title>
@@ -34,9 +53,9 @@ SQL 和 NoSQL SQL 全称 Structured Query Language。SQL 中的 Structured 突�
       <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/monaco_editor_tutorial/</guid>
-      <description>Monaco Editor 是一款开源的在线代码编辑器。它是 VSCode 的浏览器版本，随着近年 VSCode 大热，Monaco Editor 也随之走红。目前颇有几分赶超前辈（指 CodeMirror, Ace 之流）之势。
+      <description>Monaco Editor 是一款开源的在线代码编辑器。它是 VSCode 的浏览器版本，随着近年 VSCode 大热，Monaco Editor 也随之走红。目前虽未登上 Online Editor 领域的宝座，却也隐然有超越几位老前辈（指 CodeMirror, Ace 之流）之势。
   var i = 0; function show_name(id) { i += 1; if (i%2 == 0) { document.getElementById(id).style.display = &#34;none&#34;; } else { document.getElementById(id).style.display = &#34;inline&#34;; } }  GitHub项目链接：monaco-editor-demos
-在学习 Monaco Editor 的过程中，我发现网络上的中文教程很少。为了填补这部分空白，我决定自己写一份入门向的教程。文中包含多个 Demo。Demo 的功能简单易明，希望能帮助初学者更快熟悉 Monaco Editor。通过阅读本文，你可以了解以下内容：
+在学习 Monaco Editor 的过程中，我发现网络上的中文教程很少。为了填补这部分空白，我决定写一份入门教程，帮助初学者快速熟悉 Monaco Editor。通过阅读本文，你可以了解以下内容：
  如何安装 如何搭建 如何调用常用 API 如何寻找学习资源  安装 新建项目文件夹，打开它：
 $ mkdir my-application $ cd my-application  确保你已经下载了 npm，然后安装 Monaco Editor：$ npm install monaco-editor  搭建  本文提供了搭建 Monaco Editor 的一种方法，此方法的特点是能够兼容文件系统。如果你希望为后续应用添加文件管理系统，那么参考本文的搭建流程可以避免不必要的踩坑。添加文件系统的具体方法参见 monaco-speech-editor。</description>
     </item>
@@ -48,7 +67,7 @@ $ mkdir my-application $ cd my-application  确保你已经下载了 npm，然�
       
       <guid>http://luochang212.github.io/posts/monaco_speech_editor/</guid>
       <description>Monaco Speech Editor 是一款适用于视障人群的在线代码编辑器。它提供丰富的语音辅助功能，可以精准地定位并朗读用户指定内容。并且，它还提供多种语音模式，比如字符模式、音乐模式、全局模式。这些模式可以根据用户在不同编程阶段的不同需求，提供差异化的语音内容输出。此外，它内置供全盲者使用的操作界面，从而使全盲者无需使用电脑屏幕和鼠标，也能正常使用本编辑器。
- GitHub项目链接：monaco-speech-editor
+ GitHub项目地址：monaco-speech-editor
 项目背景 根据世界卫生组织2010年的数据，全盲者在全年龄段人口中所占比例为0.58%。在全盲人口中，大部分是中老年人口。从下图可以看出，致盲风险随着年龄快速升高。在0～14岁人群中，全盲比例仅有0.07%；在15～49岁人群中，全盲比例稍高一些，为0.16%；而在50岁以上人群中，全盲比例则达到了2.39%。
 全盲人口的比例不大，但从绝对数值来看却是非常可观的。2010年，世界全盲人口比例为0.58%，但全盲人口数却达到了3936.5万。即使14岁以下人口的全盲比例仅有0.07%，但考虑绝对数值，也达到了142.1万人。
 而且并非只有全盲者才需要语音辅助。有相当比例的视力障碍者，即使使用眼镜，也无法矫正到正常视力。这部分的视障者，也是需要语音辅助的。相比于全盲者，视力障碍者的人口则更为庞大，达到了惊人的2亿8538万。
@@ -156,7 +175,7 @@ $ touch filename.</description>
       
       <guid>http://luochang212.github.io/posts/nature_system/</guid>
       <description>本文介绍如何用 Agent-based model 的方法，对一个包含狼、麋鹿、草三种生物的生态系统建模。
- GitHub项目链接：nature-system
+ GitHub项目地址：nature-system
 Agent指个体，Agent-base model即基于个体的模型。在Agent-based model中，虚拟实体(virtual entity)和现实个体一一对应。一般来说，虚拟实体的属性是对现实个体的抽象，虚拟实体的行为则是依照已经写好的规则迭代。这种建模方式往往涉及个体详细的行为模式，因此适合以研究个体行为规则为目的的建模。
 需要注意的是，利用Agent-based model方法建模，并不是变量越多越好，过多的变量会造成调试上的困难。选取的变量足够支撑起我们研究的问题就可以了。
  Note: 除了Agent-base model之外，Equation-based model也是一种比较常见的建模方式。Agent-based model适合表达每个个体身上发生了什么，比如个体的速度、位置的变化等。Equation-based model则而更适合表达系统平均发生了什么，比如人口模型中人口数量变化就更适合用Equation-based model建模。
@@ -198,7 +217,7 @@ for (i = 0; i &amp;lt; subArray.length; i++) { var index = i+1; body += &#39;&am
       <pubDate>Fri, 10 May 2019 21:43:09 +0100</pubDate>
       
       <guid>http://luochang212.github.io/posts/pyqt5_layout_sidebar/</guid>
-      <description>GitHub项目链接：pyqt5-demo
+      <description>GitHub项目地址：pyqt5-demo
 主流软件如网易云音乐、腾讯电脑管家，都有侧边栏。侧边栏能有效扩展应用空间，使软件功能的层次更加分明。
 但PyQt5并没有一个专门的方法实现侧边栏。要实现侧边栏，主要有两种技术路线。一是从标签部件(QTabWidget)改造而来，二是用网格布局(QGridLayout)画出来。本文采用第一种技术路线，制作一个简单的侧边栏应用。
  Note: 两种技术路线制作的侧边栏有细微的差别。如果采用第二种技术路线(QGridLayout)，侧边栏和内容页之间没有明显的分界。所以需要额外地在侧边栏和内容页之间加一条线，来突出两者属于不同的组件。而第一种技术路线(QTabWidget)不需要，创建的侧边栏和内容页之间的区别明显。
@@ -216,7 +235,7 @@ from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__
       
       <guid>http://luochang212.github.io/posts/pyqt5_layout/</guid>
       <description>PyQt5是Python环境下用来开发UI界面的一个包。它容易上手，对初学者友好，并且拥有丰富的函数库，可以实现大部分桌面应用的开发需求，且支持QSS语言，能够对界面风格做个性化调整。总体来说，PyQt5是一款开发效率极高的UI框架。这篇文章从零开始，教你搭建一个属于自己的桌面应用。
- GitHub项目链接：pyqt5-demo
+ GitHub项目地址：pyqt5-demo
 创建第一个窗口 一般来说，桌面应用都以窗口(window)形式呈现。因此，要搭建桌面应用，首先要创建窗口。
 下面这段代码创建了一个空的窗口。
 from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__(self): super().__init__() # set the title of main window self.setWindowTitle(&#39;My first window - www.luochang.ink&#39;) # set the size of window self.Width = 500 self.height = int(0.618 * self.Width) self.resize(self.Width, self.height) if __name__ == &#39;__main__&#39;: app = QApplication(sys.argv) ex = Window() ex.show() sys.exit(app.exec_())  这段代码仅仅设置了窗口的标题和大小。下一步，我们要往这个空的窗口里添加部件(widget). 为了规范性，我们在Window类里新建一个函数initUI, 然后在initUI里为窗口添加部件。
@@ -230,7 +249,7 @@ from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__
       <pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/my_weibo/</guid>
-      <description>GitHub项目链接：weibo-analysis
+      <description>GitHub项目地址：weibo-analysis
 这次的数据用的是本科期间就已经爬好，但因为当时没有足够的处理技巧，这些数据在硬盘里一丢就是两年。如今，本Python初丁趁着还有机会摸鱼，赶紧把数据翻出来，让它们发光发热。
 文本获取 因为新浪微博的严防死打，现如今微博的数据越来越不好爬。GitHub上的微博爬虫生存周期通常都很短，使爬取数据的成本大大增加。这里我用的是微博@失眠狸 同学的方法，用鼠标精灵写了个插件，控制快捷键和页面拖动，把内容从浏览器上粘贴到sublime里。
 生成csv文件 有了原始数据，接下来我们要把数据归一化，做成方便处理的数据。一个常用的方法就是将数据整理成csv文件。
@@ -258,7 +277,7 @@ def classification(self, txt_array, file_index): id = np.array([]) date = np.arr
       <pubDate>Wed, 10 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/tsp_route/</guid>
-      <description>GitHub项目链接：tsp-route
+      <description>GitHub项目地址：tsp-route
 对于在欧洲的小伙伴们，复活节假在这一周就正式开始啦。大家都是怎么计划旅行的呢？
 我的习惯是在出发前最后一晚，花上半小时，搜索目的地景点 (Point of interest, POI), 然后在Google Maps上为它们点上小星星，以免和它们擦肩而过。我的地图经过一番操作，就成了下面这副模样。
 此时此刻，望着这些密集的星星，我不禁自问：如何才能走最少的路，遍历所有景点呢?

@@ -17,9 +17,9 @@
       <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/monaco_editor_tutorial/</guid>
-      <description>Monaco Editor 是一款开源的在线代码编辑器。它是 VSCode 的浏览器版本，随着近年 VSCode 大热，Monaco Editor 也随之走红。目前颇有几分赶超前辈（指 CodeMirror, Ace 之流）之势。
+      <description>Monaco Editor 是一款开源的在线代码编辑器。它是 VSCode 的浏览器版本，随着近年 VSCode 大热，Monaco Editor 也随之走红。目前虽未登上 Online Editor 领域的宝座，却也隐然有超越几位老前辈（指 CodeMirror, Ace 之流）之势。
   var i = 0; function show_name(id) { i += 1; if (i%2 == 0) { document.getElementById(id).style.display = &#34;none&#34;; } else { document.getElementById(id).style.display = &#34;inline&#34;; } }  GitHub项目链接：monaco-editor-demos
-在学习 Monaco Editor 的过程中，我发现网络上的中文教程很少。为了填补这部分空白，我决定自己写一份入门向的教程。文中包含多个 Demo。Demo 的功能简单易明，希望能帮助初学者更快熟悉 Monaco Editor。通过阅读本文，你可以了解以下内容：
+在学习 Monaco Editor 的过程中，我发现网络上的中文教程很少。为了填补这部分空白，我决定写一份入门教程，帮助初学者快速熟悉 Monaco Editor。通过阅读本文，你可以了解以下内容：
  如何安装 如何搭建 如何调用常用 API 如何寻找学习资源  安装 新建项目文件夹，打开它：
 $ mkdir my-application $ cd my-application  确保你已经下载了 npm，然后安装 Monaco Editor：$ npm install monaco-editor  搭建  本文提供了搭建 Monaco Editor 的一种方法，此方法的特点是能够兼容文件系统。如果你希望为后续应用添加文件管理系统，那么参考本文的搭建流程可以避免不必要的踩坑。添加文件系统的具体方法参见 monaco-speech-editor。</description>
     </item>
@@ -31,7 +31,7 @@ $ mkdir my-application $ cd my-application  确保你已经下载了 npm，然�
       
       <guid>http://luochang212.github.io/posts/monaco_speech_editor/</guid>
       <description>Monaco Speech Editor 是一款适用于视障人群的在线代码编辑器。它提供丰富的语音辅助功能，可以精准地定位并朗读用户指定内容。并且，它还提供多种语音模式，比如字符模式、音乐模式、全局模式。这些模式可以根据用户在不同编程阶段的不同需求，提供差异化的语音内容输出。此外，它内置供全盲者使用的操作界面，从而使全盲者无需使用电脑屏幕和鼠标，也能正常使用本编辑器。
- GitHub项目链接：monaco-speech-editor
+ GitHub项目地址：monaco-speech-editor
 项目背景 根据世界卫生组织2010年的数据，全盲者在全年龄段人口中所占比例为0.58%。在全盲人口中，大部分是中老年人口。从下图可以看出，致盲风险随着年龄快速升高。在0～14岁人群中，全盲比例仅有0.07%；在15～49岁人群中，全盲比例稍高一些，为0.16%；而在50岁以上人群中，全盲比例则达到了2.39%。
 全盲人口的比例不大，但从绝对数值来看却是非常可观的。2010年，世界全盲人口比例为0.58%，但全盲人口数却达到了3936.5万。即使14岁以下人口的全盲比例仅有0.07%，但考虑绝对数值，也达到了142.1万人。
 而且并非只有全盲者才需要语音辅助。有相当比例的视力障碍者，即使使用眼镜，也无法矫正到正常视力。这部分的视障者，也是需要语音辅助的。相比于全盲者，视力障碍者的人口则更为庞大，达到了惊人的2亿8538万。

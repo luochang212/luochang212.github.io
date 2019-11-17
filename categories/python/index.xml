@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on Chang Luo</title>
+    <link>http://luochang212.github.io/categories/python/</link>
+    <description>Recent content in Python on Chang Luo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 14 Nov 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://luochang212.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Python Tips</title>
+      <link>http://luochang212.github.io/posts/python-tips/</link>
+      <pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/posts/python-tips/</guid>
+      <description>Python 技巧合集，长期更新  GitHub项目地址：python-tips
+本文记录了一些代码模版。实现相似功能的时候，改改参数就能用，非常方便。
+画图篇 Matplotlib 和 Seaborn 是 Python 环境下比较常用的两个画图库。本例展示了用 Matplotlib 绘制条形图、饼图、折线图和用 Seaborn 绘制复杂折线图的方法。
+这里需要专门提一下 Seaborn 的一个坑。
+在 Seaborn 的 lineplot() 方法中，如果没有将参数 sort 设为 False，则图像横轴标签将按 String 的默认方法排序。这会造成什么困扰呢？举个例子，如果你的图像横轴标签是 1 到 12 月份，那么在未设置 sort 为 False 的情况下，图像横轴标签的实际显示顺序是：1月，10月，11月，12月，2月，3月，&amp;hellip; 8月，9月。你会发现，原本应该排在末尾的 10、11、12 三个月份，根据默认的排序方法，自动跑到 2 月前面去了。横轴标签是数字或英文还好，如果是中文，那么排序方法就更迷了，分分钟破坏数据之间的逻辑关联。
+下图展示了未设置 sort 参数的情况下，中文横轴标签的迷之排序。
+ PS：点击下方按钮可在 nbviewer 中查看示例。如果需要下载和收藏，请点文章开头的GitHub项目地址链接。
+  查看示例 
+字典篇 鉴于 JSON 在大数据中的大量使用，字典的重要性也不言而喻。
+本文从以下几个方面介绍字典：
+ 创建 获取 更新 遍历 排序 删除 字典与JSON   查看示例</description>
+    </item>
+    
+  </channel>
+</rss>

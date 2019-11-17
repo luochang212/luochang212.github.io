@@ -17,7 +17,7 @@
       <pubDate>Fri, 10 May 2019 21:43:09 +0100</pubDate>
       
       <guid>http://luochang212.github.io/posts/pyqt5_layout_sidebar/</guid>
-      <description>GitHub项目链接：pyqt5-demo
+      <description>GitHub项目地址：pyqt5-demo
 主流软件如网易云音乐、腾讯电脑管家，都有侧边栏。侧边栏能有效扩展应用空间，使软件功能的层次更加分明。
 但PyQt5并没有一个专门的方法实现侧边栏。要实现侧边栏，主要有两种技术路线。一是从标签部件(QTabWidget)改造而来，二是用网格布局(QGridLayout)画出来。本文采用第一种技术路线，制作一个简单的侧边栏应用。
  Note: 两种技术路线制作的侧边栏有细微的差别。如果采用第二种技术路线(QGridLayout)，侧边栏和内容页之间没有明显的分界。所以需要额外地在侧边栏和内容页之间加一条线，来突出两者属于不同的组件。而第一种技术路线(QTabWidget)不需要，创建的侧边栏和内容页之间的区别明显。

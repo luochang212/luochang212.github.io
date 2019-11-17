@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://luochang212.github.io/posts/python-tips/</loc>
+    <lastmod>2019-11-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://luochang212.github.io/posts/elastic-search/</loc>
     <lastmod>2019-10-24T00:00:00+00:00</lastmod>
   </url>
@@ -84,19 +89,49 @@
   
   <url>
     <loc>http://luochang212.github.io/categories/</loc>
-    <lastmod>2019-10-24T00:00:00+00:00</lastmod>
+    <lastmod>2019-11-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://luochang212.github.io/</loc>
-    <lastmod>2019-10-24T00:00:00+00:00</lastmod>
+    <lastmod>2019-11-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://luochang212.github.io/categories/development/</loc>
-    <lastmod>2019-10-24T00:00:00+00:00</lastmod>
+    <lastmod>2019-11-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/posts/</loc>
+    <lastmod>2019-11-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/categories/python/</loc>
+    <lastmod>2019-11-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/tags/</loc>
+    <lastmod>2019-11-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/tags/python/</loc>
+    <lastmod>2019-11-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/tags/tips/</loc>
+    <lastmod>2019-11-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -108,18 +143,6 @@
   
   <url>
     <loc>http://luochang212.github.io/tags/elasticsearch/</loc>
-    <lastmod>2019-10-24T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://luochang212.github.io/posts/</loc>
-    <lastmod>2019-10-24T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://luochang212.github.io/tags/</loc>
     <lastmod>2019-10-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -327,12 +350,6 @@
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/tags/python/</loc>
-    <lastmod>2019-05-10T21:43:09+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://luochang212.github.io/tags/sidebar/</loc>
     <lastmod>2019-05-10T21:43:09+01:00</lastmod>
     <priority>0</priority>
@@ -488,6 +505,11 @@
   
   <url>
     <loc>http://luochang212.github.io/gadget/mozi/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/gadget/my-first-try/</loc>
     <priority>0</priority>
   </url>
   
