@@ -17,14 +17,14 @@
     
     
 
-<title>Python Tips • Chang Luo</title>
+<title>我的 Python 不可能这么麻烦！ • Chang Luo</title>
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Python Tips"/>
+<meta name="twitter:title" content="我的 Python 不可能这么麻烦！"/>
 <meta name="twitter:description" content="Python 技巧合集，长期更新。"/>
 
-<meta property="og:title" content="Python Tips" />
+<meta property="og:title" content="我的 Python 不可能这么麻烦！" />
 <meta property="og:description" content="Python 技巧合集，长期更新。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/python-tips/" />
@@ -481,7 +481,7 @@
     
 <article>
   <header>
-    <h1>Python Tips</h1>
+    <h1>我的 Python 不可能这么麻烦！</h1>
     
     
 <div class="post__meta">
@@ -538,8 +538,9 @@
 <ul>
 <li>
 <ul>
-<li><a href="#画图篇">画图篇</a></li>
-<li><a href="#字典篇">字典篇</a></li>
+<li><a href="#画图">画图</a></li>
+<li><a href="#字典">字典</a></li>
+<li><a href="#装饰器">装饰器</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -557,33 +558,39 @@
 
 <p>GitHub项目地址：<a href="https://github.com/luochang212/python-tips" target="_blank">python-tips</a></p>
 
-<p>本文记录了一些代码模版。实现相似功能的时候，改改参数就能用，非常方便。</p>
+<p>本文记录了一些 Python 代码模版，实现相似功能的时候，改改参数就能用，非常方便。</p>
 
-<h3 id="画图篇">画图篇</h3>
+<h3 id="画图">画图</h3>
 
-<p><a href="https://matplotlib.org/">Matplotlib</a> 和 <a href="https://seaborn.pydata.org/">Seaborn</a> 是 Python 环境下比较常用的两个画图库。本例展示了用 Matplotlib 绘制条形图、饼图、折线图和用 Seaborn 绘制复杂折线图的方法。</p>
+<p><a href="https://matplotlib.org/">Matplotlib</a> 和 <a href="https://seaborn.pydata.org/">Seaborn</a> 是 Python 环境下比较常用的两个画图库。本例展示了用 Matplotlib 绘制条形图、饼图、折线图和用 Seaborn 绘制复杂折线图的方法。下图展示了本例中实现的图像类型。</p>
 
 <p><img src="/img/python-tips-1.jpg" alt="" /></p>
 
-<p>这里需要专门提一下 Seaborn 的一个坑。</p>
+<blockquote>
+<p><strong>Note</strong>: 这里专门提一下 Seaborn 的一个坑。</p>
 
-<p>在 Seaborn 的 <code>lineplot()</code> 方法中，如果没有将参数 <code>sort</code> 设为 <code>False</code>，则图像横轴标签将按 <code>String</code> 的默认方法排序<!--，而非 `DataFrame` 中显示的排序顺序-->。这会造成什么困扰呢？举个例子，如果你的图像横轴标签是 1 到 12 月份，那么在未设置 <code>sort</code> 为 <code>False</code> 的情况下，图像横轴标签的实际显示顺序是：1月，10月，11月，12月，2月，3月，&hellip; 8月，9月。你会发现，原本应该排在末尾的 10、11、12 三个月份，根据默认的排序方法，自动跑到 2 月前面去了。横轴标签是数字或英文还好，如果是中文，那么排序方法就更迷了，分分钟破坏数据之间的逻辑关联。</p>
+<p>Seaborn 的 <code>lineplot()</code> 方法会将横轴标签按 <code>String</code> 的默认方法进行排序。例如，你要画一副横轴标签是 1 - 12 月份的函数图像，那么在 <code>lineplot()</code> 画出的图像里，横轴的实际排序将变成：1月，10月，11月，12月，2月，&hellip; 这完全打乱了我们希望图像展现的月份间的趋势变化。</p>
 
-<p>下图展示了未设置 <code>sort</code> 参数的情况下，中文横轴标签的迷之<!--默认-->排序。</p>
+<p>为了避免 <code>lineplot()</code> 对横轴标签进行默认排序，需要在函数内添加 <code>sort</code> 参数，并设置 <code>sort=False</code>。</p>
+
+<p>下图展示了默认情况下，Seaborn 对中文横轴标签的迷之排序。</p>
 
 <p><img src="/img/python-tips-2.png" alt="" /></p>
+</blockquote>
+
+<p><p></p>
 
 <blockquote>
-<p>PS：点击下方按钮可在 <code>nbviewer</code> 中查看示例。如果需要下载和收藏，请点文章开头的GitHub项目地址链接。</p>
+<p>PS：点击下方按钮可在 <code>nbviewer</code> 中查看示例。如需下载和收藏，请点文章开头的GitHub项目地址链接。</p>
 </blockquote>
 
 <p><center>
 <button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/plot.ipynb')">查看示例</button>
 </center></p>
 
-<h3 id="字典篇">字典篇</h3>
+<h3 id="字典">字典</h3>
 
-<p>鉴于 JSON 在大数据中的大量使用，字典的重要性也不言而喻。</p>
+<p>鉴于 JSON 在数据处理中的大量使用，字典的重要性也不言而喻。</p>
 
 <p>本文从以下几个方面介绍字典：</p>
 
@@ -601,7 +608,31 @@
 <button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/dict.ipynb')">查看示例</button>
 </center></p>
 
-<!-- ### 装饰器 -->
+<h3 id="装饰器">装饰器</h3>
+
+<p>本代码基于博文: <a href="https://pouannes.github.io/blog/decorators/" target="_blank">《Finally understanding decorators in Python》</a></p>
+
+<p>一个带装饰器的函数看起来是这样的：</p>
+
+<pre><code>def decorator_name(func):
+    return func
+
+@decorator_name
+def func_name():
+    pass
+</code></pre>
+
+<p>在上面这段代码中，<code>@decorator_name</code> 就是装饰器。</p>
+
+<p>顾名思义，装饰器是用来装饰东西的。但这里只有装饰这个动词，却没有宾语。那么它装饰的究竟是什么的呢？</p>
+
+<p>事实上，装饰器是用来装饰<strong>函数</strong>的。它的作用是将函数捉出来“装饰”一番，然后再放回原处。</p>
+
+<p>下面通过一些例子说明装饰器的用法和意义。</p>
+
+<p><center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/decorator.ipynb')">查看示例</button>
+</center></p>
 
 <!-- ### 函数 -->
 
