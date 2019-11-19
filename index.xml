@@ -434,6 +434,16 @@ def classification(self, txt_array, file_index): id = np.array([]) date = np.arr
     
     <item>
       <title></title>
+      <link>http://luochang212.github.io/demo/mini-window/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/demo/mini-window/</guid>
+      <description> mini-window    Animated Side Navigation Example Click on the element below to open the side navigation.
+&amp;#9776; open   ×  </description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>http://luochang212.github.io/demo/sidenav/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
