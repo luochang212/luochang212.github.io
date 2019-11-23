@@ -17,15 +17,15 @@
     
     
 
-<title>我的 Python 不可能这么麻烦！ • Chang Luo</title>
+<title>我的 Python 不可能这么麻烦 • Chang Luo</title>
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="我的 Python 不可能这么麻烦！"/>
-<meta name="twitter:description" content="Python 技巧合集，长期更新。"/>
+<meta name="twitter:title" content="我的 Python 不可能这么麻烦"/>
+<meta name="twitter:description" content="Python 基础知识，长期更新。"/>
 
-<meta property="og:title" content="我的 Python 不可能这么麻烦！" />
-<meta property="og:description" content="Python 技巧合集，长期更新。" />
+<meta property="og:title" content="我的 Python 不可能这么麻烦" />
+<meta property="og:description" content="Python 基础知识，长期更新。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/python-tips/" />
 <meta property="article:published_time" content="2019-11-14T00:00:00&#43;00:00"/>
@@ -481,7 +481,7 @@
     
 <article>
   <header>
-    <h1>我的 Python 不可能这么麻烦！</h1>
+    <h1>我的 Python 不可能这么麻烦</h1>
     
     
 <div class="post__meta">
@@ -540,7 +540,9 @@
 <ul>
 <li><a href="#画图">画图</a></li>
 <li><a href="#字典">字典</a></li>
+<li><a href="#函数">函数</a></li>
 <li><a href="#装饰器">装饰器</a></li>
+<li><a href="#读写-csv">读写 CSV</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -553,12 +555,12 @@
     
 
 <blockquote>
-<p>Python 技巧合集，长期更新 <img src="/img/quyin/witty.png" class="my-emoji" style = "height: 32px;"></p>
+<p>Python 基础知识，长期更新 <img src="/img/quyin/witty.png" class="my-emoji" style = "height: 32px;"></p>
 </blockquote>
 
 <p>GitHub项目地址：<a href="https://github.com/luochang212/python-tips" target="_blank">python-tips</a></p>
 
-<p>本文记录了一些 Python 代码模版，实现相似功能的时候，改改参数就能用，非常方便。</p>
+<p>本文也记录了一些 Python 模版，实现相似功能的时候，改改参数就能用，非常方便。</p>
 
 <h3 id="画图">画图</h3>
 
@@ -608,6 +610,25 @@
 <button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/dict.ipynb')">查看示例</button>
 </center></p>
 
+<h3 id="函数">函数</h3>
+
+<p>本文目录：</p>
+
+<ol>
+<li>形参和实参</li>
+<li>位置实参</li>
+<li>关键字实参</li>
+<li>默认值</li>
+<li>位置实参和关键字实参的混用</li>
+<li>默认值、位置实参和关键字实参的混用</li>
+<li>传递任意数量的位置实参</li>
+<li>传递任意数量的关键字实参</li>
+</ol>
+
+<p><center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/func.ipynb')">查看示例</button>
+</center></p>
+
 <h3 id="装饰器">装饰器</h3>
 
 <p>本代码基于博文: <a href="https://pouannes.github.io/blog/decorators/" target="_blank">《Finally understanding decorators in Python》</a></p>
@@ -615,7 +636,10 @@
 <p>一个带装饰器的函数看起来是这样的：</p>
 
 <pre><code>def decorator_name(func):
-    return func
+    def f():
+        rv = func()
+        return rv
+    return f
 
 @decorator_name
 def func_name():
@@ -624,9 +648,9 @@ def func_name():
 
 <p>在上面这段代码中，<code>@decorator_name</code> 就是装饰器。</p>
 
-<p>顾名思义，装饰器是用来装饰东西的。但这里只有装饰这个动词，却没有宾语。那么它装饰的究竟是什么的呢？</p>
+<p>顾名思义，装饰器是用来装饰东西的。用来装饰什么东西呢？</p>
 
-<p>事实上，装饰器是用来装饰<strong>函数</strong>的。它的作用是将函数捉出来“装饰”一番，然后再放回原处。</p>
+<p>它是用来装饰<strong>函数</strong>的。从作用上来说，就是把函数捉出来“装饰”一番，然后放回去。</p>
 
 <p>下面通过一些例子说明装饰器的用法和意义。</p>
 
@@ -634,7 +658,26 @@ def func_name():
 <button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/decorator.ipynb')">查看示例</button>
 </center></p>
 
-<!-- ### 函数 -->
+<h3 id="读写-csv">读写 CSV</h3>
+
+<p>CSV 是数据表的常用存储方式。除第一行外，每行表示一条信息，行内各字段用英文逗号分隔开。</p>
+
+<p>本例介绍了从读取 CSV 文件，修改 CSV 文件，到重新写入 CSV 文件的一般流程。</p>
+
+<p>本文目录：</p>
+
+<ol>
+<li>读取 CSV 文件</li>
+<li>用 DataFrame 展示数据</li>
+<li>处理数据</li>
+<li>导出数据到 CSV 文件</li>
+<li>用 pandas 读 CSV 文件</li>
+<li>用 pandas 随机读取 CSV 文件</li>
+</ol>
+
+<p><center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/csv.ipynb')">查看示例</button>
+</center></p>
 
 <!-- ### 类 -->
 

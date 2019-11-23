@@ -57,6 +57,7 @@ body {
     outline: none;
     font-size: 20px;
     color: white;
+    border:none;
   }
   
   .demo-btn:hover {
