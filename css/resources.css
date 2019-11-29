@@ -122,7 +122,7 @@
 #line {
 	position: absolute;
 	top: 5rem;
-	bottom: -140rem;
+	bottom: -200rem;
 	width: .125rem;
 	background: rgba(240,240,240,1);
 	z-index: -1;
@@ -132,7 +132,7 @@
 	#line {
 		position: absolute;
 		top: 5rem;
-		bottom: -170rem;
+		bottom: -220rem;
 		width: .125rem;
 		background: rgba(240,240,240,1);
 		z-index: -1;

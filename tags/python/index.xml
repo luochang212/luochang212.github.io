@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>python on Chang Luo</title>
+    <title>Python on Chang Luo</title>
     <link>http://luochang212.github.io/tags/python/</link>
-    <description>Recent content in python on Chang Luo</description>
+    <description>Recent content in Python on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 14 Nov 2019 00:00:00 +0000</lastBuildDate>
