@@ -536,13 +536,21 @@
 <ul>
 <li>
 <ul>
-<li>
+<li><a href="#语言基础">语言基础</a>
 <ul>
-<li><a href="#画图">画图</a></li>
 <li><a href="#字典">字典</a></li>
 <li><a href="#函数">函数</a></li>
 <li><a href="#装饰器">装饰器</a></li>
+<li><a href="#内置函数">内置函数</a></li>
+</ul></li>
+<li><a href="#代码模版">代码模版</a>
+<ul>
+<li><a href="#画图">画图</a></li>
 <li><a href="#读写-csv">读写 CSV</a></li>
+</ul></li>
+<li><a href="#玩转-python">玩转 Python</a>
+<ul>
+<li><a href="#词云">词云</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -560,35 +568,9 @@
 
 <p>GitHub项目地址：<a href="https://github.com/luochang212/python-tips" target="_blank">python-tips</a></p>
 
-<p>本文也记录了一些 Python 模版，实现相似功能的时候，改改参数就能用，非常方便。</p>
+<!-- 本文也记录了一些 Python 模版，实现相似功能的时候，改改参数就能用，非常方便。 -->
 
-<h3 id="画图">画图</h3>
-
-<p><a href="https://matplotlib.org/">Matplotlib</a> 和 <a href="https://seaborn.pydata.org/">Seaborn</a> 是 Python 环境下比较常用的两个画图库。本例展示了用 Matplotlib 绘制条形图、饼图、折线图和用 Seaborn 绘制复杂折线图的方法。下图展示了本例中实现的图像类型。</p>
-
-<p><img src="/img/python-tips-1.jpg" alt="" /></p>
-
-<blockquote>
-<p><strong>Note</strong>: 这里专门提一下 Seaborn 的一个坑。</p>
-
-<p>Seaborn 的 <code>lineplot()</code> 方法会将横轴标签按 <code>String</code> 的默认方法进行排序。例如，你要画一副横轴标签是 1 - 12 月份的函数图像，那么在 <code>lineplot()</code> 画出的图像里，横轴的实际排序将变成：1月，10月，11月，12月，2月，&hellip; 这完全打乱了我们希望图像展现的月份间的趋势变化。</p>
-
-<p>为了避免 <code>lineplot()</code> 对横轴标签进行默认排序，需要在函数内添加 <code>sort</code> 参数，并设置 <code>sort=False</code>。</p>
-
-<p>下图展示了默认情况下，Seaborn 对中文横轴标签的迷之排序。</p>
-
-<p><img src="/img/python-tips-2.png" alt="" /></p>
-</blockquote>
-
-<p><p></p>
-
-<blockquote>
-<p>PS：点击下方按钮可在 <code>nbviewer</code> 中查看示例。如需下载和收藏，请点文章开头的GitHub项目地址链接。</p>
-</blockquote>
-
-<p><center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/plot.ipynb')">查看示例</button>
-</center></p>
+<h2 id="语言基础">语言基础</h2>
 
 <h3 id="字典">字典</h3>
 
@@ -659,6 +641,61 @@ def func_name():
 <button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/decorator.ipynb')">查看示例</button>
 </center></p>
 
+<h3 id="内置函数">内置函数</h3>
+
+<p>Python 是一门实用主义的语言，很多常用的功能都已经封装在内置函数里了。学习一些常用的内置函数，能提高我们使用 Python 的效率。</p>
+
+<p>本文提及的内置函数包括：</p>
+
+<ul>
+<li>abs()</li>
+<li>hash()</li>
+
+<li><p>divmod()</p>
+
+<p>&hellip;&hellip;</p></li>
+
+<li><p>open()</p></li>
+
+<li><p>pow()</p></li>
+
+<li><p>join()</p></li>
+</ul>
+
+<p><center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/builtInFunction.ipynb')">查看示例</button>
+</center></p>
+
+<h2 id="代码模版">代码模版</h2>
+
+<h3 id="画图">画图</h3>
+
+<p><a href="https://matplotlib.org/">Matplotlib</a> 和 <a href="https://seaborn.pydata.org/">Seaborn</a> 是 Python 环境下比较常用的两个画图库。本例展示了用 Matplotlib 绘制条形图、饼图、折线图和用 Seaborn 绘制复杂折线图的方法。下图展示了本例中实现的图像类型。</p>
+
+<p><img src="/img/python-tips-1.jpg" alt="" /></p>
+
+<blockquote>
+<p><strong>Note</strong>: 这里专门提一下 Seaborn 的一个坑。</p>
+
+<p>Seaborn 的 <code>lineplot()</code> 方法会将横轴标签按 <code>String</code> 的默认方法进行排序。例如，你要画一副横轴标签是 1 - 12 月份的函数图像，那么在 <code>lineplot()</code> 画出的图像里，横轴的实际排序将变成：1月，10月，11月，12月，2月，&hellip; 这完全打乱了我们希望图像展现的月份间的趋势变化。</p>
+
+<p>为了避免 <code>lineplot()</code> 对横轴标签进行默认排序，需要在函数内添加 <code>sort</code> 参数，并设置 <code>sort=False</code>。</p>
+
+<p>下图展示了默认情况下，Seaborn 对中文横轴标签的迷之排序。</p>
+
+<p><img src="/img/python-tips-2.png" alt="" /></p>
+</blockquote>
+
+<p><p></p>
+
+<blockquote>
+<p>PS：点击下方按钮可在 <code>nbviewer</code> 中查看示例。如需下载和收藏，请点文章开头的GitHub项目地址链接。</p>
+</blockquote>
+
+<p><center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/plot.ipynb')">查看示例</button>
+</center></p>
+
 <h3 id="读写-csv">读写 CSV</h3>
 
 <p>CSV 是数据表的常用存储方式。除第一行外，每行表示一条信息，行内各字段用英文逗号分隔开。</p>
@@ -680,7 +717,22 @@ def func_name():
 <button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/csv.ipynb')">查看示例</button>
 </center></p>
 
-<!-- ### 类 -->
+<h2 id="玩转-python">玩转 Python</h2>
+
+<h3 id="词云">词云</h3>
+
+<p>本文目录：</p>
+
+<ul>
+<li>最简单的词云</li>
+<li>几何形状的词云</li>
+<li>以 png 图片作遮罩的词云</li>
+<li>中文词云</li>
+</ul>
+
+<p><center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/wordCloud.ipynb')">查看示例</button>
+</center></p>
 
 <p><div id="mini-overlay" onclick="overlay_off()"></div>
 <div id="mini-window"><iframe id="mini-iframe" frameBorder="0"></iframe></div>

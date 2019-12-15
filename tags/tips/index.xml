@@ -18,18 +18,18 @@
       
       <guid>http://luochang212.github.io/posts/python-tips/</guid>
       <description>Python 基础知识笔记，长期更新  GitHub项目地址：python-tips
-本文也记录了一些 Python 模版，实现相似功能的时候，改改参数就能用，非常方便。
-画图 Matplotlib 和 Seaborn 是 Python 环境下比较常用的两个画图库。本例展示了用 Matplotlib 绘制条形图、饼图、折线图和用 Seaborn 绘制复杂折线图的方法。下图展示了本例中实现的图像类型。
- Note: 这里专门提一下 Seaborn 的一个坑。
-Seaborn 的 lineplot() 方法会将横轴标签按 String 的默认方法进行排序。例如，你要画一副横轴标签是 1 - 12 月份的函数图像，那么在 lineplot() 画出的图像里，横轴的实际排序将变成：1月，10月，11月，12月，2月，&amp;hellip; 这完全打乱了我们希望图像展现的月份间的趋势变化。
-为了避免 lineplot() 对横轴标签进行默认排序，需要在函数内添加 sort 参数，并设置 sort=False。
-下图展示了默认情况下，Seaborn 对中文横轴标签的迷之排序。
- 
- PS：点击下方按钮可在 nbviewer 中查看示例。如需下载和收藏，请点文章开头的GitHub项目地址链接。
-  查看示例 
-字典 鉴于 JSON 在数据处理中的大量使用，字典的重要性也不言而喻。
+语言基础 字典 鉴于 JSON 在数据处理中的大量使用，字典的重要性也不言而喻。
 本文从以下几个方面介绍字典：
- 创建 获取 更新 遍历 排序 删除 字典与JSON   查看示例</description>
+ 创建 获取 更新 遍历 排序 删除 字典与JSON   查看示例 
+函数 本文目录：
+ 形参和实参 位置实参 关键字实参 默认值 位置实参和关键字实参的混用 默认值、位置实参和关键字实参的混用 传递任意数量的位置实参 传递任意数量的关键字实参 由字符串函数名生成可调用的函数   查看示例 
+装饰器 本代码基于博文: 《Finally understanding decorators in Python》
+一个带装饰器的函数看起来是这样的：
+def decorator_name(func): def f(): rv = func() return rv return f @decorator_name def func_name(): pass  在上面这段代码中，@decorator_name 就是装饰器。
+顾名思义，装饰器是用来装饰东西的。用来装饰什么东西呢？
+它是用来装饰函数的。从作用上来说，就是把函数捉出来“装饰”一番，然后放回去。
+下面通过一些例子说明装饰器的用法和意义。
+ 查看示例</description>
     </item>
     
   </channel>
