@@ -6,17 +6,30 @@
     <description>Recent content in Development on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 14 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 01 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://luochang212.github.io/categories/development/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>机器学习数学基础</title>
+      <link>http://luochang212.github.io/posts/ml_math/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/posts/ml_math/</guid>
+      <description>  机器学习数学基础是一个很大的命题。本文既不打算无所不包，也没打算成体系地介绍，算是个人知识总结帖。
+ 贝叶斯分类  贝叶斯公式
+ 先验概率、后验概率和条件概率
+ 极大似然估计
+  </description>
+    </item>
+    
+    <item>
       <title>我的 Python 不可能这么麻烦</title>
-      <link>http://luochang212.github.io/posts/python-tips/</link>
+      <link>http://luochang212.github.io/posts/python_tips/</link>
       <pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/python-tips/</guid>
+      <guid>http://luochang212.github.io/posts/python_tips/</guid>
       <description>Python 基础知识笔记，长期更新  GitHub项目地址：python-tips
 语言基础 字典 鉴于 JSON 在数据处理中的大量使用，字典的重要性也不言而喻。
 本文从以下几个方面介绍字典：
@@ -34,10 +47,10 @@ def decorator_name(func): def f(): rv = func() return rv return f @decorator_nam
     
     <item>
       <title>Elasticsearch 初探</title>
-      <link>http://luochang212.github.io/posts/elastic-search/</link>
+      <link>http://luochang212.github.io/posts/elastic_search/</link>
       <pubDate>Thu, 24 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/elastic-search/</guid>
+      <guid>http://luochang212.github.io/posts/elastic_search/</guid>
       <description>Elasticsearch 是一个开源分布式全文搜索引擎。它建立在当前最先进有效的搜索引擎库 Lucene 之上。Elasticsearch 集成了 Lucene 的检索功能，并通过一套简单的 API 隐藏了 Lucene 的复杂性，使之简单易用。
  初识 ES 的初步介绍
 本节将介绍 ES 的几个特性。这些介绍能帮助我们理解 ES 是应什么需求诞生的？它解决了什么问题？它为何如此架构？以及这种架构方式为它带来哪些性能上的提升？这些信息虽然不能直接提升我们使用 ES 的能力，但能从更深的维度帮助我们使用好它。
@@ -263,7 +276,7 @@ def classification(self, txt_array, file_index): id = np.array([]) date = np.arr
 余超在《基于蚁群算法的投资组合优化研究》中给出了完整的模型假设。概括如下：
  一只蚂蚁代表了一个投资组合； 在投资组合优化问题中的蚁群算法要采用连续域优化； 相较于传统蚁群问题，该算法中信息素应该在城市而非路径上积累； 可在蚂蚁移动过程中加入随机扰动以增加全局搜索能力。  余超在模型基础上已经做了非常完整的工作，但是没能求出完整的有效市场边界。
 于是，卞蓓丽在《蚁群算法在多目标优化的证券投资组合中的应用研究》中指出，多目标优化的证券投资组合问题是没有绝对最优解的，而是有一群无法相互支配的解形成的有效边界。对多目标优化问题而言，最重要的是求出有效边界，而不仅仅是求出一两个更优解，后者用单目标就可以完成。余超的多目标研究没有求出有效边界。”
-卞蓓丽提示我们：首先，投资组合问题，本质上是一个多目标优化问题。其次，我们要计算出完整的有效边界曲线，才算达成预期目标。
+卞蓓丽提示我们：因为，投资组合问题，本质上是一个多目标优化问题。所以，我们要计算出完整的有效边界曲线，才算达成预期目标。
 余超建立了基础模型，而卞蓓丽在余超的基础上进行了改进。本文借鉴他们二人建立的数学模型，利用多元函数连续域蚁群算法，求解马科维茨均值-方差模型。
 研究方法 （一）马科维茨投资组合理论简介
 投资组合的预期收益($𝒓_𝒑$)：单一证券i的预期收益为$E\left(r_{i}\right) $，式中$r_{i s}$为针对状况s证券i的收益率，$P_{s}$是状态s出现的概率；在计算了所有N个证券的预期收益率后，就可以计算出证券组合的预期收益率$𝒓_𝒑$，式中$x_{i}$表示组合中证券i所占的比例，即加权系数。

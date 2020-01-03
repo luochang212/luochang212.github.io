@@ -6,17 +6,30 @@
     <description>Recent content in python on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 14 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 01 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://luochang212.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>机器学习数学基础</title>
+      <link>http://luochang212.github.io/posts/ml_math/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/posts/ml_math/</guid>
+      <description>  机器学习数学基础是一个很大的命题。本文既不打算无所不包，也没打算成体系地介绍，算是个人知识总结帖。
+ 贝叶斯分类  贝叶斯公式
+ 先验概率、后验概率和条件概率
+ 极大似然估计
+  </description>
+    </item>
+    
+    <item>
       <title>我的 Python 不可能这么麻烦</title>
-      <link>http://luochang212.github.io/posts/python-tips/</link>
+      <link>http://luochang212.github.io/posts/python_tips/</link>
       <pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/python-tips/</guid>
+      <guid>http://luochang212.github.io/posts/python_tips/</guid>
       <description>Python 基础知识笔记，长期更新  GitHub项目地址：python-tips
 语言基础 字典 鉴于 JSON 在数据处理中的大量使用，字典的重要性也不言而喻。
 本文从以下几个方面介绍字典：

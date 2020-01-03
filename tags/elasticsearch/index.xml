@@ -13,10 +13,10 @@
     
     <item>
       <title>Elasticsearch 初探</title>
-      <link>http://luochang212.github.io/posts/elastic-search/</link>
+      <link>http://luochang212.github.io/posts/elastic_search/</link>
       <pubDate>Thu, 24 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/elastic-search/</guid>
+      <guid>http://luochang212.github.io/posts/elastic_search/</guid>
       <description>Elasticsearch 是一个开源分布式全文搜索引擎。它建立在当前最先进有效的搜索引擎库 Lucene 之上。Elasticsearch 集成了 Lucene 的检索功能，并通过一套简单的 API 隐藏了 Lucene 的复杂性，使之简单易用。
  初识 ES 的初步介绍
 本节将介绍 ES 的几个特性。这些介绍能帮助我们理解 ES 是应什么需求诞生的？它解决了什么问题？它为何如此架构？以及这种架构方式为它带来哪些性能上的提升？这些信息虽然不能直接提升我们使用 ES 的能力，但能从更深的维度帮助我们使用好它。
