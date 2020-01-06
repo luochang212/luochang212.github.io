@@ -6,23 +6,10 @@
     <description>Recent content in Posts on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 01 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 08 Dec 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://luochang212.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>机器学习数学基础</title>
-      <link>http://luochang212.github.io/posts/ml_math/</link>
-      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/posts/ml_math/</guid>
-      <description>  机器学习数学基础是一个很大的命题。本文既不打算无所不包，也没打算成体系地介绍，算是个人知识总结帖。
- 贝叶斯分类  贝叶斯公式
- 先验概率、后验概率和条件概率
- 极大似然估计
-  </description>
-    </item>
     
     <item>
       <title>达尔文的故乡</title>
