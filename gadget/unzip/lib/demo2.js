@@ -1,4 +1,5 @@
 (function(obj) {
+	zip.workerScriptsPath = "lib/";
 
 	var requestFileSystem = obj.webkitRequestFileSystem || obj.mozRequestFileSystem || obj.requestFileSystem;
 
