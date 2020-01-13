@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>PyQt5侧边栏布局</title>
+      <title>PyQt5 侧边栏布局</title>
       <link>http://luochang212.github.io/posts/pyqt5_layout_sidebar/</link>
       <pubDate>Fri, 10 May 2019 21:43:09 +0100</pubDate>
       
@@ -29,7 +29,7 @@ from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__
     </item>
     
     <item>
-      <title>PyQt5布局浅析</title>
+      <title>PyQt5 布局浅析</title>
       <link>http://luochang212.github.io/posts/pyqt5_layout/</link>
       <pubDate>Fri, 03 May 2019 00:00:00 +0000</pubDate>
       
