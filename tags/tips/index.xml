@@ -19,15 +19,14 @@
       <guid>http://luochang212.github.io/posts/python_tips/</guid>
       <description>Python 基础知识笔记，长期更新  GitHub项目地址：python-tips
 语言基础 列表 本文从以下几个方面介绍字典：
- 创建 获取 修改 添加 插入 删除 排序 倒排 倒数 循环 列表推导 切片 复制   查看示例 
+ 创建 获取 修改 添加 插入 删除 排序 倒排 倒数 循环 列表推导 切片 复制 去重 计数   查看示例 
 字典 鉴于 JSON 在数据处理中的大量使用，字典的重要性也不言而喻。
 本文从以下几个方面介绍字典：
  创建 获取 更新 遍历 排序 删除 字典与JSON   查看示例 
+字符串 除了列表和字典，字符串也是 Python 中一种非常重要的数据类型。
+ 基本操作 格式化 字符串方法   查看示例 
 函数 本文目录：
- 形参和实参 位置实参 关键字实参 默认值 位置实参和关键字实参的混用 默认值、位置实参和关键字实参的混用 传递任意数量的位置实参 传递任意数量的关键字实参 由字符串函数名生成可调用的函数   查看示例 
-装饰器 本代码基于博文: 《Finally understanding decorators in Python》
-一个带装饰器的函数看起来是这样的：
-def decorator_name(func): def f(): rv = func() return rv return f @decorator_name def func_name(): pass  在上面这段代码中，@decorator_name 就是装饰器。</description>
+ 形参和实参 位置实参 关键字实参 默认值 位置实参和关键字实参的混用 默认值、位置实参和关键字实参的混用 传递任意数量的位置实参 传递任意数量的关键字实参 由字符串函数名生成可调用的函数   查看示例</description>
     </item>
     
   </channel>
