@@ -595,6 +595,15 @@ Quick Start   Upload
     
     <item>
       <title></title>
+      <link>http://luochang212.github.io/gadget/plan/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/plan/</guid>
+      <description>Plan  body { font-family: &#34;Source Han Sans&#34;, &#34;San Francisco&#34;, &#34;PingFang SC&#34;, &#34;Hiragino Sans GB&#34;, &#34;Droid Sans Fallback&#34;, &#34;Microsoft YaHei&#34;, &#34;sans-serif&#34;; font-size: 17px; margin: 0; } #header { position: relative; top: 0px; left: 0px; width: 100%; height: 50px; background: #333333; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); z-index: 999; } .navbar { position: relative; margin-left: 10%; color: white; font-size: 1.25rem; } .figure { position: relative; width: 80%; } .</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>http://luochang212.github.io/gadget/react-lifecycle-demo/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
