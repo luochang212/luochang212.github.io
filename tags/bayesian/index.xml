@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Python on Chang Luo</title>
-    <link>http://luochang212.github.io/categories/python/</link>
-    <description>Recent content in Python on Chang Luo</description>
+    <title>Bayesian on Chang Luo</title>
+    <link>http://luochang212.github.io/tags/bayesian/</link>
+    <description>Recent content in Bayesian on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 31 Jan 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://luochang212.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://luochang212.github.io/tags/bayesian/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -27,24 +27,6 @@
 $ P(X | A) $ 可以被定义为在史蒂文真的是一个图书管理员的情况下，史蒂文的邻居们给出某种描述的概率。如果史蒂文真的是一个图书管理员，那么我们很有可能获得对认定史蒂文是一个图书管理员有利的描述信息。这个值可能接近于1。假设它为 0.95。
 （2）对 $ P(X | \sim A) $ 的理解
 一般，图书管理员都拥有细心的品质、做事有规律这样的品质，但拥有这些品质的不一定是图书管理员。理解了它们之间的充分必要关系，就很容易理解某些农民同样担得起邻居们这样的描述。因此 $ P(X | \sim A) $ 接近于 0 的程度应该比 $ P(X | A) $ 接近于 1 的程度为轻。假设它为 0.</description>
-    </item>
-    
-    <item>
-      <title>我的 Python 不可能这么麻烦</title>
-      <link>http://luochang212.github.io/posts/python_tips/</link>
-      <pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/posts/python_tips/</guid>
-      <description>Python 基础知识笔记，长期更新  GitHub项目地址：python-tips
-语言基础 列表 本文从以下几个方面介绍字典：
- 创建 获取 修改 添加 插入 删除 排序 倒排 倒数 循环 列表推导 切片 复制 去重 计数   查看示例 
-字典 鉴于 JSON 在数据处理中的大量使用，字典的重要性也不言而喻。
-本文从以下几个方面介绍字典：
- 创建 获取 更新 遍历 排序 删除 字典与JSON   查看示例 
-字符串 除了列表和字典，字符串也是 Python 中一种非常重要的数据类型。
- 基本操作 格式化 字符串方法   查看示例 
-函数 本文目录：
- 形参和实参 位置实参 关键字实参 默认值 位置实参和关键字实参的混用 默认值、位置实参和关键字实参的混用 传递任意数量的位置实参 传递任意数量的关键字实参 由字符串函数名生成可调用的函数   查看示例</description>
     </item>
     
   </channel>

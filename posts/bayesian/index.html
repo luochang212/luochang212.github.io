@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.55.6" />
+
+    
+    
+    
+
+<title>贝叶斯方法 • Chang Luo</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="贝叶斯方法"/>
+<meta name="twitter:description" content="统计学中有两个大的学派，频率学派和贝叶斯学派。频率派用总体信息和样本信息进行统计推断。而贝叶斯派除了使用以上两种信息之外，还使用先验信息进行统计推断。本文介绍贝叶斯方法的数学原理与编程实践。（已更新数学原理部分，编程实践蓄力中）"/>
+
+<meta property="og:title" content="贝叶斯方法" />
+<meta property="og:description" content="统计学中有两个大的学派，频率学派和贝叶斯学派。频率派用总体信息和样本信息进行统计推断。而贝叶斯派除了使用以上两种信息之外，还使用先验信息进行统计推断。本文介绍贝叶斯方法的数学原理与编程实践。（已更新数学原理部分，编程实践蓄力中）" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://luochang212.github.io/posts/bayesian/" />
+<meta property="article:published_time" content="2020-01-31T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2020-01-31T00:00:00&#43;00:00"/><meta property="og:site_name" content="Title" />
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.6a83d62c39a364f036df4db1ecd564645635d6c7fc182425cb501218fec485f5.css" integrity="sha256-aoPWLDmjZPA2302x7NVkZFY11sf8GCQly1ASGP7EhfU=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+
+<link rel="stylesheet" href="/scss/hugo-toc.8549a64d301421b4256ea9a0d5ca8b99178799f569d5d2daeb95f24cef3ce6b7.css" integrity="sha256-hUmmTTAUIbQlbqmg1cqLmReHmfVp1dLa65XyTO885rc=">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+</head>
+
+
+    <body class=" ">
+    <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
+
+  <style>
+    body {
+      transition: background-color .5s;
+    }
+
+    #overlay {
+      position: fixed;
+      display: none;
+      width: calc(100vw - 580px);
+      height: 100%;
+      top: 0;
+      left: 0;
+       
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      right: 0;
+      background-color: #FFF;
+       
+      overflow-x: hidden;
+      transition: 0.5s;
+       
+       
+    }
+
+    #main {
+      transition: margin-left .5s;
+       
+      padding: 16px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      overflow: hidden;
+    }
+
+     
+    .tab {
+      overflow: hidden;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+    }
+
+     
+    .tab button {
+      background-color: inherit;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      transition: 0.3s;
+      font-size: 17px;
+    }
+
+     
+    .tab button:hover {
+      background-color: #ddd;
+    }
+
+     
+    .tab button.active {
+      background-color: #ccc;
+    }
+
+     
+    .tabcontent {
+      display: none;
+      padding: 12px 12px;
+      margin: 0;
+      border: 1px solid #ccc;
+      border-top: none;
+    }
+
+    .dropbtn {
+      background-color: #3498DB;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+    }
+
+    .dropup {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropup-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      bottom: 50px;
+      z-index: 1;
+    }
+
+    .dropup-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropup-content a:hover {
+      background-color: #ccc
+    }
+
+    .dropup:hover .dropup-content {
+      display: block;
+    }
+
+    .dropup:hover .dropbtn {
+      background-color: #2980B9;
+    }
+
+    #video2,
+    #video3 {
+      display: none;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  
+  <div class="sidebar">
+    <div class="container ">
+      <div class="sidebar-about">
+        <span class="site__title">
+          <a href="http://luochang212.github.io">Chang Luo</a>
+        </span>
+        
+        
+        
+        <div class="author-image">
+          <a href="#" class="load-iframe" onclick="openNav()"><img src="http://luochang212.github.io/images/profile.png" id="author-iamge"
+              alt="Author Image" class="img--circle img--headshot element--center"></a>
+        </div>
+        
+        <p class="site__description">
+          
+        </p>
+      </div>
+      <div class="collapsible-menu">
+        <input type="checkbox" id="menuToggle">
+        <label for="menuToggle">Chang Luo</label>
+        <div class="menu-content">
+          <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/portfolio/">
+						<span>Projects</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+		</li>
+	</ul>
+</div>
+
+          <section class="social">
+	
+	<a href="https://twitter.com/MinosPalace" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	<a href="https://instagram.com/icstocs" rel="me"><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></a>
+	
+	
+	<a href="https://github.com/luochang212" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://linkedin.com/in/bupt-luochang" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+</section>
+
+        </div>
+      </div>
+      
+<div class="copyright">
+  &copy; 2020 Chang Luo
+  
+</div>
+
+
+
+    </div>
+  </div>
+
+  
+  
+
+
+  <div id="overlay" onclick="off()"></div>
+
+  <div id="mySidenav" class="sidenav">
+
+    <div id="main">
+      <div class="tab">
+        <button id="default-tab" class="tablinks" onclick="openItem(event, 'Resources')">Resources</button>
+        <button class="tablinks" onclick="openItem(event, 'netease-player')">Music</button>
+        <button class="tablinks" onclick="openItem(event, 'Video-player')">Video</button>
+        <button class="tablinks" onclick="openItem(event, 'gallery')">Gallery</button>
+        <button class="tablinks" onclick="openItem(event, 'gadget')">Gadget</button>
+      </div>
+
+      <div id="Resources" class="tabcontent">
+        <iframe src="about:blank" data-src="/resources/" frameborder="0" height="560" width="100%" marginheight="0"
+          marginwidth="0" scrolling="yes"></iframe>
+      </div>
+
+      <div id="netease-player" class="tabcontent">
+        <iframe src="about:blank" data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
+          frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=450></iframe>
+      </div>
+
+      <div id="Video-player" class="tabcontent">
+
+        <div id="video1">
+          <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=3412958&cid=5410806&page=1"
+            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+        <div id="video2">
+          <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=20209913&cid=33001151&page=1"
+            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+        <div id="video3">
+          <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=70827140&cid=122709879&page=1"
+            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+
+        
+
+        
+
+        <br>
+        <div class="dropup">
+          <button class="dropbtn">更多视频</button>
+          <div class="dropup-content">
+            <a onclick="link1()">1</a>
+            <a onclick="link2()">2</a>
+            <a onclick="link3()">3</a>
+          </div>
+        </div>
+      </div>
+
+      <div id="gallery" class="tabcontent">
+        <iframe src="about:blank" data-src="/gadget/gallery/#two" frameborder="0" height="560" width="100%"
+          scrolling="yes"></iframe>
+      </div>
+
+      <div id="gadget" class="tabcontent">
+        <iframe src="about:blank" data-src="/gadget/" frameborder="0" height="560" width="100%"
+          scrolling="yes"></iframe>
+      </div>
+
+    </div>
+  </div>
+
+  
+  <script>
+    'use strict'
+    
+    function openNav() {
+      on();
+      document.getElementById("mySidenav").style.width = "580px";
+      document.body.style.backgroundColor = "rgba(0,0,0,0.5)";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.body.style.backgroundColor = "white";
+    }
+
+    function on() {
+      document.getElementById("overlay").style.display = "block";
+    }
+
+    function off() {
+      closeNav();
+      document.getElementById("overlay").style.display = "none";
+    }
+
+    
+    document.getElementById('default-tab').click();
+
+    function openItem(evt, itemName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(itemName).style.display = "block";
+      evt.currentTarget.className += "active";
+    }
+
+    function link1() {
+      document.getElementById("video1").style.display = "block";
+      document.getElementById("video2").style.display = "none";
+      document.getElementById("video3").style.display = "none";
+    }
+
+    function link2() {
+      document.getElementById("video1").style.display = "none";
+      document.getElementById("video2").style.display = "block";
+      document.getElementById("video3").style.display = "none";
+    }
+
+    function link3() {
+      document.getElementById("video1").style.display = "none";
+      document.getElementById("video2").style.display = "none";
+      document.getElementById("video3").style.display = "block";
+    }
+
+     
+    var flag = 0;
+
+     
+    $(".load-iframe").click(function () {
+      if (flag < 1) {
+        $("iframe").each(function () {
+          $(this).attr("src", $(this).data("src"));
+        });
+        flag = flag + 1;
+      }
+    });
+  </script>
+
+</body>
+
+
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>贝叶斯方法</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Jan 31, 2020
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/development">DEVELOPMENT</a>
+              •
+          
+              <a class="badge badge-category" href="/categories/python">PYTHON</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/python">python</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/bayesian">bayesian</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 9 min read
+</div>
+
+
+  </header>
+  
+  
+  
+    <div class="toc-wrapper">
+      <input type="checkbox" id="tocToggle">
+      <label for="tocToggle">目录</label>
+      
+          <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#引入">引入</a>
+<ul>
+<li><a href="#为什么我们要用贝叶斯方法">为什么我们要用贝叶斯方法</a></li>
+<li><a href="#探索-假设值对后验概率的影响">探索：假设值对后验概率的影响</a></li>
+</ul></li>
+<li><a href="#贝叶斯公式的事件形式">贝叶斯公式的事件形式</a>
+<ul>
+<li><a href="#简单版">简单版</a></li>
+<li><a href="#复杂版">复杂版</a></li>
+</ul></li>
+<li><a href="#贝叶斯公式的密度函数形式">贝叶斯公式的密度函数形式</a>
+<ul>
+<li><a href="#符号定义">符号定义</a></li>
+<li><a href="#推导过程">推导过程</a></li>
+</ul></li>
+<li><a href="#贝叶斯估计">贝叶斯估计</a>
+<ul>
+<li><a href="#贝叶斯假设">贝叶斯假设</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+      
+    </div>
+  
+  
+  <div class="post">
+    
+
+<h3 id="引入">引入</h3>
+
+<p>首先说明一下贝叶斯方法能做什么，让大家有一个先验的理解。下面这个例子来自《贝叶斯方法：概率编程与贝叶斯推断》。</p>
+
+<p>史蒂文被描述为一个害羞的人，他乐于助人，但是他对其他人不太关注。他非常乐见事情处于合理的顺序，并对他的工作十分细心。你会认为史蒂文是一个图书管理员还是一个农民呢？从上面的描述来看大多数人都会认为史蒂文看上去更像是图书管理员，但是这里忽略了一个关于图书管理员和农民的事实：男性图书管理员的人数只有男性农民的 1/20。所以从统计学来看史蒂文更有可能是一个农民。</p>
+
+<h4 id="为什么我们要用贝叶斯方法">为什么我们要用贝叶斯方法</h4>
+
+<p>如何正确地计算史蒂文是图书管理员的概率呢？</p>
+
+<p>如果我们不知道对史蒂文的描述，单纯依照统计学概率，史蒂文是图书管理员的概率为 1/21。但如果我们需要量化这类描述对史蒂文是图书管理员的最终概率的影响，就要用到贝叶斯方法。</p>
+
+<p>我们假设：</p>
+
+<ul>
+<li>事件 <code>A</code>：史蒂文是一个图书管理员。</li>
+<li>事件 <code>～A</code>: 史蒂文不是一个图书管理员，即史蒂文是一个农民。</li>
+<li>事件 <code>X</code>: 获得对认定史蒂文是一个图书管理员有利的描述信息。</li>
+</ul>
+
+<p>根据贝叶斯公式：
+<code>$$ P(A | X) = \frac{P(X | A) P(A)}{P(X)} $$</code>
+<code>$ P(A) $</code> 容易理解，<code>$ P(X) $</code> 和 <code>$ P(X | A) $</code> 是什么呢？</p>
+
+<p><strong>（1）对 <code>$ P(X | A) $</code> 的理解</strong></p>
+
+<p><code>$ P(X | A) $</code> 可以被定义为在史蒂文真的是一个图书管理员的情况下，史蒂文的邻居们给出某种描述的概率。如果史蒂文真的是一个图书管理员，那么我们很有可能获得对认定史蒂文是一个图书管理员有利的描述信息。这个值可能接近于1。假设它为 0.95。</p>
+
+<p><strong>（2）对 <code>$ P(X | \sim A) $</code> 的理解</strong></p>
+
+<p>一般，图书管理员都拥有细心的品质、做事有规律这样的品质，但拥有这些品质的不一定是图书管理员。理解了它们之间的充分必要关系，就很容易理解某些农民同样担得起邻居们这样的描述。因此 <code>$ P(X | \sim A) $</code> 接近于 0 的程度应该比 <code>$ P(X | A) $</code> 接近于 1 的程度为轻。假设它为 0.1。</p>
+
+<p><strong>（3）对 <code>$ P(X) $</code> 的理解</strong></p>
+
+<p><code>$ P(X) $</code> 是事件“获得对认定史蒂文是一个图书管理员有利的描述信息”的先验概率。它的值可以用已知信息计算出来：</p>
+
+<p>根据全概率公式，我们有：
+<code>$$ P(X) = P(X | A)P(A) + P(X | \sim A)P(\sim A) $$</code>
+又因为：</p>
+
+<ul>
+<li><code>$ P(A) $</code> 史蒂文是一个图书管理员的先验概率，已知为 <code>$ \frac{1}{21} $</code>；</li>
+<li><code>$ P(\sim A) $</code> 史蒂文不是一个图书管理员的先验概率。值为 <code>$ 1 - P(A) = \frac{20}{21} $</code>；</li>
+<li>- <code>$ P(X | A) $</code> 史蒂文是图书管理员的情况下，邻居给出有利于认定史蒂文是图书管理员的概率。假设为 <code>$ 0.95 $</code>；</li>
+<li><code>$ P(X | \sim A) $</code> 史蒂文不是图书管理员的情况下，邻居给出有利于认定史蒂文是图书管理员的概率。假设为 <code>$ 0.1 $</code>；</li>
+</ul>
+
+<p>所以：
+<code>$$ \begin{aligned} P(X) &amp;=P(X | A) P(A)+P(X | \sim A) P(\sim A) \\ &amp;=0.95 \times \frac{1}{21} + 0.1 \times \frac{20}{21} \\ &amp;\approx 0.14 \end{aligned} $$</code></p>
+
+<p><strong>（4）<code>$ P(A | X) $</code> 的计算</strong>
+<code>$$ \begin{aligned} P(A | X) &amp;=  \frac{P(X | A) P(A)}{P(X)} \\ &amp;= \frac{0.95 \times \frac{1}{21}}{0.14} \\ &amp;\approx 0.32 \end{aligned} $$</code>
+这个值远大于使用统计学方法计算出的概率 <code>$ \frac{1}{21} \approx 0.05 $</code>。使用贝叶斯方法计算出的概率更接近于获得新描述后，我们认定史蒂文是图书管理员的实际概率。</p>
+
+<h4 id="探索-假设值对后验概率的影响">探索：假设值对后验概率的影响</h4>
+
+<p><strong>（1）代码</strong></p>
+
+<p>在上述计算中，我们分别将 <code>$ P(X | A) $</code> 和 <code>$ P(X | \sim A) $</code> 假设为 <code>$ 0.95 $</code> 和 <code>$ 0.1 $</code>。在这两个值是猜出来的，缺乏科学依据。为了进一步探索这两个值在其他情况下对后验概率的影响。我们用 Python 对照了不同取值情况下出现的结果。</p>
+
+<p><center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/bayesian/introduction.ipynb')">查看代码</button>
+</center></p>
+
+<p><strong>（2）测试结果</strong></p>
+
+<p>对照组：</p>
+
+<p><img src="/img/bayesian-base.png" alt="" /></p>
+
+<p>实验组：</p>
+
+<p><code>$ P(X | A) $</code> 增大时，<code>$ P(A | X) $</code> 增大：</p>
+
+<p><img src="/img/P(X|A)-increase.png" alt="" /></p>
+
+<p><code>$ P(X | A) $</code> 减小时，<code>$ P(A | X) $</code> 减小：</p>
+
+<p><img src="/img/P(X|A)-decrease.png" alt="" /></p>
+
+<p><code>$ P(X | \sim A) $</code> 增大时，<code>$ P(A | X) $</code> 减小：</p>
+
+<p><img src="/img/P(X|~A)-increase.png" alt="" /></p>
+
+<p><code>$ P(X | \sim A) $</code> 减小时，<code>$ P(A | X) $</code> 增大：</p>
+
+<p><img src="/img/P(X|~A)-decrease.png" alt="" /></p>
+
+<p>分别调整 <code>$ P(X | A) $</code> 和 <code>$ P(X | \sim A) $</code> 的值。我们发现，当 <code>$ P(X | A) $</code> 的值越大，<code>$ P(X | \sim A) $</code> 的值越小时，<code>$ P(A | X) $</code> 的值就越大。</p>
+
+<p><strong>（3）数学解释</strong></p>
+
+<p>我们将贝叶斯公式变换一下形式，
+<code>$$ P(A | X) = \frac{P(A) P(X | A)}{P(X | A)P(A) + P(X | \sim A) P(\sim A)}. $$</code>
+其他参数不变，<code>$ P(X | \sim A) $</code> 越小，<code>$ P(A | X) $</code> 的值就越大，
+<code>$$ P(A | X) \uparrow = \frac{P(A) P(X | A)}{P(X | A)P(A) + P(X | \sim A) \downarrow P(\sim A)}. \uparrow $$</code>
+其他参数不变，<code>$ P(X | A) $</code> 越大，<code>$ P(A | X) $</code> 的值就越大，
+<code>$$ \begin{aligned} P(A | X) \uparrow &amp;= \frac{P(A) P(X | A)}{P(X | A)P(A) + P(X | \sim A) P(\sim A)} \\ &amp;= \frac{1}{1 + \frac{P(X | \sim A) P(\sim A)}{P(X | A) \uparrow P(A)} \downarrow }. \uparrow \end{aligned} $$</code></p>
+
+<blockquote>
+<p><strong>Note:</strong> 在上述问题中，<code>$ P(A) $</code> 被称作先验概率，<code>$ P(A | X) $</code> 被称作后验概率。</p>
+</blockquote>
+
+<h3 id="贝叶斯公式的事件形式">贝叶斯公式的事件形式</h3>
+
+<h4 id="简单版">简单版</h4>
+
+<p>在上一节中，我们已经接触到了贝叶斯公式：
+<code>$$ P(A | X) = \frac{P(A) P(X | A)}{P(X)} $$</code>
+<strong>证明</strong> 由条件概率的定义：
+<code>$$  P(A | X) = \frac{P(AX)}{P(X)}, \\  P(X | A) = \frac{P(AX)}{P(A)}, $$</code>
+利用 <code>$ P(AX) $</code> 构造等式，
+<code>$$ P(X) P(A | X) = P(AX) = P(A) P(X | A), \\ P(A | X)= \frac{P(A) P(X | A)}{P(X)}. $$</code>
+结论得证。</p>
+
+<h4 id="复杂版">复杂版</h4>
+
+<p><code>$$ P(B_{i}|A) = \frac{P(B_{i}) P(A | B_{i})}{\sum_{j=1}^{n} P(B_{j}) P(A | B_{j})}, i = 1,2, \dots, n. $$</code>
+<strong>证明</strong> 由条件概率的定义：
+<code>$$ P(B_{i} | X) = \frac{P(AB_{i})}{P(A)}, $$</code>
+对上式的分子用乘法公式、分母用全概率公式，
+<code>$$ P(AB_{i}) = P(B_{i}) P(A | B_{i}), \\ P(A) = \sum_{j=1}^{n} P(B_{j}) P(A | B_{j}), \\ P(B_{i}|A) = \frac{P(B_{i}) P(A | B_{i})}{\sum_{j=1}^{n} P(B_{j}) P(A | B_{j})}. $$</code>
+结论得证。</p>
+
+<blockquote>
+<p><strong>Note 1:</strong> 全概率公式</p>
+
+<p>设 <code>$ B_{1}, B_{2}, \cdots, B_{n}$</code> 为样本空间 <code>$ \Omega $</code> 的一个分割，即 <code>$ B_{1}, B_{2}, \cdots, B_{n}$</code> 互不相容，且 <code>$ \bigcup_{i=1}^{n} B_{i}=\Omega $</code>，如果 <code>$ P\left(B_{i}\right)&gt;0, i=1,2, \cdots, n, $</code> 则对任一事件 A 有
+<code>$$ P(A)=\sum_{i=1}^{n} P\left(B_{i}\right) P\left(A | B_{i}\right). $$</code>
+<strong>Note 2:</strong> 乘法公式</p>
+
+<p>（1）若 <code>$ P(B) &gt; 0 $</code>，则
+<code>$$ P(AB) = P(B) P(A | B). $$</code>
+（2）若 <code>$ P(A_{1} A_{2} \dots A_{n-1}) &gt; 0 $</code>，则
+<code>$$ P(A_{1} \dots A_{n}) = P(A_{1}) P(A_{2} | A_{1}) P(A_{3} | A_{1}A_{2}) \dots P(A_{n} | A_{1}A_{2} \dots A_{n-1}) $$</code></p>
+</blockquote>
+
+<h3 id="贝叶斯公式的密度函数形式">贝叶斯公式的密度函数形式</h3>
+
+<p><code>$$ \pi(\theta | X)=\frac{h(X, \theta)}{m(X)}=\frac{p(X | \theta) \pi(\theta)}{\int_{\Theta} p(X | \theta) \pi(\theta) \mathrm{d} \theta} $$</code></p>
+
+<h4 id="符号定义">符号定义</h4>
+
+<ul>
+<li><code>$ X $</code>：样本，可视为随机变量；</li>
+<li><code>$ \theta $</code>：参数。参数空间中不同的参数 <code>$ \theta $</code> 对应随机变量 <code>$ X $</code> 的不同分布；</li>
+<li><code>$ \Theta $</code>：参数 <code>$ \theta $</code> 的参数空间，<code>$ \theta \in \Theta $</code>；</li>
+<li><code>$ \pi(\theta) $</code>：参数 <code>$ \theta $</code> 的先验分布。根据参数 <code>$ \theta $</code> 的先验信息确定的分布；</li>
+<li><code>$ \pi(\theta | X) $</code>：参数 <code>$ \theta $</code> 的后验分布。集中了总体、样本和先验中有关 <code>$ \theta $</code> 的一切信息以后确定的分布；</li>
+<li><code>$ P(X | \theta) $</code>：样本 <code>$ X $</code> 的条件概率函数。<code>$ X $</code> 和 <code>$ \theta $</code> 都被视作随机变量，其中 <code>$ \theta $</code> 是参数。它表示在随机变量 <code>$ \theta $</code> 取某个给定值时总体的条件概率函数；</li>
+<li><code>$ h(X, \theta) $</code>：样本 <code>$ X $</code> 和 参数 <code>$ \theta $</code> 的联合分布；</li>
+<li><code>$ m(X) $</code>：样本 <code>$ X $</code> 的边际概率函数。</li>
+</ul>
+
+<h4 id="推导过程">推导过程</h4>
+
+<p>从贝叶斯观点来看，样本 <code>$ X $</code> 的产生要分两步走：</p>
+
+<ol>
+<li>首先<strong>设想</strong>从先验分布 <code>$  \pi(\theta) $</code> 产生一个样本 <code>$  \theta_{0} $</code>. 这一步是“老天爷”做的，人们是看不到的，故用“设想”二字。</li>
+<li>从 <code>$ P(X | \theta_{0}) $</code> 中产生一组样本。这时样本 <code>$ X = (x_{1}, \dots , x_{n}) $</code> 的联合条件概率函数为
+<code>$$ p\left(\boldsymbol{X} | \theta_{0}\right)=p\left(x_{1}, \cdots, x_{n} | \theta_{0}\right)=\prod_{i=1}^{n} p\left(x_{i} | \theta_{0}\right) $$</code>
+这个分布综合了总体信息和样本信息。</li>
+</ol>
+
+<p>由于 <code>$ \theta_{0} $</code> 是设想出来的，仍然是未知的，它是按先验分布产生的。为把先验信息综合进去，不能只考虑 <code>$ \theta_{0} $</code>，对 <code>$ \theta $</code> 的其他值发生的可能性也要加以考虑，故要用 <code>$ \pi(\theta) $</code> 进行综合。这样一来，样本 <code>$ X $</code> 和 参数 <code>$ \theta $</code> 的<strong>联合分布</strong>为
+<code>$$ h(X, \theta) = p(X | \theta) \pi(\theta) $$</code>
+我们的目的是要对未知参数 <code>$ \theta $</code> 作<strong>统计推断</strong>，在没有样本信息时，我们只能依据先验分布对 <code>$ \theta $</code> 作出推断。在有了样本观测值<code>$ X = (x_{1}, \dots , x_{n}) $</code> 之后，我们应依据 <code>$ h(X, \theta) $</code> 对 <code>$ \theta $</code> 作出推断。若把 <code>$ h(X, \theta) $</code> 作如下分解：
+<code>$$ h(X, \theta) = p(\theta ｜ X) m(X) $$</code>
+其中 <code>$ m(X) $</code> 是 <code>$ X $</code> 的<strong>边际概率函数</strong>
+<code>$$ m(\boldsymbol{X})=\int_{\boldsymbol{\Theta}} h(\boldsymbol{X}, \boldsymbol{\theta}) \mathrm{d} \theta=\int_{\boldsymbol{\Theta}} p(\boldsymbol{X} | \boldsymbol{\theta}) \pi(\boldsymbol{\theta}) \mathrm{d} \theta $$</code>
+它与 <code>$ \theta $</code> 无关，或者说 <code>$ m(X) $</code> 中不含 <code>$ \theta $</code> 的任何信息。因此能用来对 <code>$ \theta $</code> 作出推断的仅是条件分布 <code>$ \pi(\theta ｜ X) $</code>，它的计算公式是
+<code>$$ \pi(\theta | X)=\frac{h(X, \theta)}{m(X)}=\frac{p(X | \theta) \pi(\theta)}{\int_{\Theta} p(X | \theta) \pi(\theta) \mathrm{d} \theta} $$</code>
+这个条件分布称为 <code>$ \theta $</code> 的后验分布，它集中了总体、样本和先验中有关 <code>$ \theta $</code> 的一切信息。它就是用密度函数表示的贝叶斯公式，是用总体和样本对先验分布 <code>$ \pi(\theta) $</code> 作调整的结果。后验分布 <code>$ h(X, \theta) $</code> 要比先验分布 <code>$ \pi(\theta) $</code> 更接近 <code>$ \theta $</code> 的真实情况。</p>
+
+<p>（以上推导过程来自《概率论与数理统计教程》第二版 P334）</p>
+
+<blockquote>
+<p><strong>Note 1:</strong> 概率密度函数</p>
+
+<p><strong>离散随机变量</strong>取各个值的概率可以用<strong>概率分布列</strong>表示。而连续随机变量的一切可能取值充满某个区间 <code>$ (a, b) $</code>，在这个区间内有无穷不可列个实数，因此描述<strong>连续随机变量</strong>的概率分布不能用分布列形式表示，而要用<strong>概率密度函数</strong>表示。</p>
+
+<p>概率密度函数用 <code>$ p(x) $</code> 表示。这里，<code>$ p(x) $</code> 的值不是概率，它表示的是当 <code>$ X = x $</code> 时，概率分布的密集程度。如果用 <code>$ P(X = x) $</code> 表示随机变量 <code>$ X $</code> 取值为 <code>$ x $</code> 的概率，则 <code>$ P(X = x) \equiv 0. $</code>（实数域的完备性+概率的可列可加性）</p>
+
+<p><code>$ p(x) $</code> 的值虽不是概率，但乘以微分元 <code>$ dx $</code> 就可得小区间 <code>$ (x, x + dx) $</code> 上概率的近似值，即
+<code>$$ p(x)dx \approx P(x &lt; X &lt; x+dx) $$</code>
+很多相邻的微分元的积累就得到了 <code>$ X $</code> 在某个区间 <code>$ (a, b) $</code> 上的概率，即
+<code>$$ \int_{a}^{b} p(x) \mathrm{d} x = P(a &lt; X &lt; b). $$</code>
+特别地，在 <code>$ (-\infty, x) $</code> 上的积分就是<strong>分布函数</strong> <code>$ F(x) $</code>，即
+<code>$$ \int_{-\infty}^{x} p(t) \mathrm{d} t = F(x) $$</code>
+概率密度函数由分布函数以如下形式严格定义。</p>
+
+<p><strong>定义</strong> 设随机变量 <code>$ X $</code> 的分布函数为 <code>$ F(x) $</code>，如果存在实数轴上的一个非负可积函数 <code>$ p(x) $</code>，使得对任意实数 <code>$ x $</code> 有
+<code>$$ F(x) = \int_{-\infty}^{x} p(t) \mathrm{d} t $$</code>
+则称 <code>$ p(x) $</code> 为 <code>$ X $</code> 的<strong>概率密度函数</strong>。</p>
+
+<p>由上式，可从分布函数求得密度函数。在 <code>$ F(x) $</code> 导数存在的点上有
+<code>$$ F'(x) = p(x) $$</code></p>
+
+<p><strong>Note 2:</strong> 联合密度函数</p>
+
+<p>在有些随机现象中，对每个样本点 <code>$ \omega $</code> 只用一个随机变量去描述是不够的。比如研究儿童的生长发育情况，仅研究儿童的身高 <code>$ X_{1}(\omega) $</code> 或仅研究其体重 <code>$ X_{2}(\omega) $</code> 都是局部的，有必要把 <code>$ X_{1}(\omega) $</code> 和 <code>$ X_{2}(\omega) $</code> 当作一个整体来考虑，讨论它们总体变化的统计规律性，进一步可以讨论 <code>$ X_{1}(\omega) $</code> 和 <code>$ X_{2}(\omega) $</code> 之间的关系。</p>
+
+<p>上述例子中的 <code>$ X_{1}(\omega) $</code> 和 <code>$ X_{2}(\omega) $</code> 被称作二维随机变量。下面我们给出n维随机变量的定义。</p>
+
+<p><strong>定义</strong> 如果 <code>$ X_{1}(\omega), X_{2}(\omega), \dots , X_{n}(\omega) $</code> 是定义在同一个样本空间 <code>$ \Omega = \{ \omega \} $</code> 上的n个随机变量，则称
+<code>$$ X(\omega) =（X_{1}(\omega), X_{2}(\omega), \dots , X_{n}(\omega)） $$</code>
+为<strong>n维随机变量</strong>。</p>
+
+<p>注意：多维随机变量定义的关键是定义在同一样本空间上，对于不同样本空间 <code>$ \omega_{1} $</code> 和 <code>$ \omega_{2} $</code> 上的两个随机变量，我们只能在乘积空间 <code>$ \Omega_{1} \times \Omega_{2} = \{ (\omega_{1}, \omega_{2}): \omega_{1} \in \Omega_{1}, \omega_{2} \in \Omega_{2} \} $</code> 及其事件域上讨论它们。</p>
+
+<p>联合分布列和联合密度函数由联合分布函数定义。因此先介绍联合分布函数。</p>
+
+<p><strong>定义</strong> 对任意的n个实数 <code>$ x_{1}, x_{2}, \dots , x_{n} $</code>，则 <code>$ n $</code> 个事件 <code>$ \{ X_{1} \leqslant x_{1} \},  $</code> <code>$ \{ X_{2} \leqslant x_{2} \},  $</code> <code>$ \dots ,  $</code> <code>$ \{ X_{n} \leqslant x_{n} \} $</code> 同时发生的概率
+<code>$$ F(x_{1}, x_{2}, \dots , x_{n}) = P(X_{1} \leqslant x_{1}, X_{2} \leqslant x_{2}, \dots , X_{n} \leqslant x_{n} ) $$</code>
+称为 n 维随机变量 <code>$ (X_{1}, X_{2}, \dots , X_{n}) $</code> 的联合分布函数。</p>
+
+<p><strong>二元离散随机变量</strong>用<strong>联合分布列</strong>表示两事件同时发生的概率。<strong>二元连续随机变量</strong>用<strong>联合密度函数</strong>表示两事件同时发生的概率的密集程度。</p>
+
+<p><strong>定义</strong> 如果存在二元非负函数 <code>$ p(x, y) $</code>，使得二维随机变量 <code>$ (X, Y) $</code> 的分布函数 <code>$ F(x, y) $</code> 可表示为
+<code>$$ F(x, y) = \int_{-\infty}^{x} \int_{-\infty}^{y} p(u,v) \mathrm{d}v \mathrm{d}u, $$</code>
+则称 <code>$ (X, Y) $</code> 为二维连续随机变量，称 <code>$ p(u, v) $</code> 为 <code>$ (X, Y) $</code> 的<strong>联合密度函数</strong>。</p>
+
+<p>在 <code>$ F(x, y) $</code> 偏导数存在的点上有
+<code>$$ p(x, y)=\frac{\partial^{2}}{\partial x \partial y} F(x, y). $$</code></p>
+
+<p><strong>Note 3:</strong> 边际密度函数</p>
+
+<p>二维联合分布函数含有丰富的信息，主要有以下三方面信息：</p>
+
+<ul>
+<li>每个分量的分布，即边际分布；</li>
+<li>两个分量之间的关联程度，可用协方差和相关系数来描述；</li>
+<li>给定一个分量的分布时，另一个分量的分布，即条件分布。</li>
+</ul>
+
+<p><strong>定义</strong> 如果在二维随机变量 <code>$ (X, Y) $</code> 的联合分布函数 <code>$ F(x, y) $</code> 中令 <code>$ y \rightarrow \infty $</code>，由于 <code>$ \{ Y &lt; \infty \} $</code> 为必然事件，故可得
+<code>$$ \lim_{y \rightarrow \infty} F(x, y)=P(X \leqslant x, Y&lt;\infty)=P(X \leqslant x) $$</code>
+这是由 <code>$ (X, Y) $</code> 的联合分布函数 <code>$ F(x, y) $</code> 求得的 <code>$ X $</code> 的分布函数，被称为 <code>$ X $</code> 的<strong>边际分布</strong>，记为
+<code>$$ F_{X}(x) = F(x, \infty). $$</code>
+类似地，在 <code>$ F(x, y) $</code> 中令 <code>$ x \rightarrow \infty $</code>，可得 <code>$ Y $</code> 的<strong>边际分布</strong>
+<code>$$ F_{Y}(y) = F(\infty, y). $$</code></p>
+
+<p>在<strong>二维离散随机变量</strong>中，利用联合分布求得的某分量的分布列，称作<strong>边际分布列</strong>。在<strong>二维连续随机变量</strong>中，求得的某分量的密度函数，称作<strong>边际密度函数</strong>。</p>
+
+<p><strong>定义</strong> 如果二维连续随机变量 <code>$ (X, Y) $</code> 的联合密度函数为 <code>$ p(x, y) $</code>，因为
+<code>$$ \begin{aligned}
+&amp;F_{X}(x)=F(x, \infty)=\int_{-\infty}^{x}\left(\int_{-\infty}^{\infty} p(u, v) \mathrm{d} v\right) \mathrm{d} u=\int_{-\infty}^{x} p_{X}(u) \mathrm{d} u,\\
+&amp;F_{Y}(y)=F(\infty, y)=\int_{-\infty}^{y}\left(\int_{-\infty}^{\infty} p(u, v) \mathrm{d} u\right) \mathrm{d} v=\int_{-\infty}^{y} p_{Y}(v) \mathrm{d} v,
+\end{aligned} $$</code>
+其中 <code>$ F_{X}(x) $</code> 和 <code>$ F_{Y}(y) $</code> 分别为
+<code>$$ \begin{aligned}
+&amp;p_{X}(x)=\int_{-\infty}^{\infty} p(x, y) \mathrm{d} y,\\
+&amp;p_{Y}(y)=\int_{-\infty}^{\infty} p(x, y) \mathrm{d} x.
+\end{aligned} $$</code>
+它们恰好处于密度函数位置，故称上式给出的 <code>$ p_{X}(x) $</code> 为 <code>$ X $</code> 的边际密度函数，<code>$ p_{Y}(y) $</code> 为 <code>$ Y $</code> 的边际密度函数。</p>
+
+<p>由联合密度函数求边际密度函数时，要注意积分区域的确定。</p>
+
+<p><strong>Note 4:</strong> 统计推断</p>
+
+<p>统计推断是根据<strong>样本信息</strong>对<strong>总体分布</strong>或<strong>总体的特征数</strong>进行推断。
+<!-- #todo --></p>
+</blockquote>
+
+<h3 id="贝叶斯估计">贝叶斯估计</h3>
+
+<p>贝叶斯估计是参数估计的一种。</p>
+
+<p><strong>定义</strong> 使用后验分布 <code>$ \pi(\theta | X) $</code> 的均值作为 <code>$ \theta $</code> 的点估计，被称为<strong>后验期望估计</strong>，简称<strong>贝叶斯估计</strong>，记为 <code>$ \hat{\theta}_{B} $</code>。</p>
+
+<blockquote>
+<p><strong>Note 1:</strong> 点估计</p>
+
+<p><strong>定义</strong> 设 <code>$ x_{1}, \dots , x_{n} $</code> 是来自总体的一个样本，用于估计未知参数 <code>$ \theta $</code> 的统计量 <code>$ \hat{\theta} = \hat{\theta}(x_{1}, \dots , x_{n}) $</code> 称为 <code>$ \theta $</code> 的<strong>点估计</strong>。</p>
+
+<p><strong>Note 2:</strong> 无偏估计</p>
+
+<p><strong>定义</strong> 设 <code>$ \hat{\theta} = \hat{\theta}(x_{1}, \dots , x_{n}) $</code> 是 <code>$ \theta $</code> 的一个估计，<code>$ \theta $</code> 的参数空间为 <code>$ \Theta $</code>，若对任意的 <code>$ \theta \in \Theta $</code>，有
+<code>$$ E_{\theta}(\hat{\theta}) = \theta , $$</code>
+则称 <code>$ \hat{\theta} $</code> 是 <code>$ \theta $</code> 的<strong>无偏估计</strong>，否则称为<strong>有偏估计</strong>。</p>
+</blockquote>
+
+<h4 id="贝叶斯假设">贝叶斯假设</h4>
+
+<p>假如我们在试验前对事件没有什么了解，从而对其参数 <code>$ \theta $</code> 也没有任何信息。在这种场合，贝叶斯本人建议采用“同等无知”原则使用均匀分布作为参数 <code>$ \theta $</code> 的先验分布。下面用一个实例计算此种情形下 <code>$ \theta $</code> 的贝叶斯估计。</p>
+
+<p><strong>实例1</strong> 设某事件 A 在一次试验中发生的概率为 <code>$ \theta $</code>，为估计 <code>$ \theta $</code>，对试验进行了n次独立观测，其中事件 A 发生了 <code>$ X $</code> 次，显然 <code>$ X ｜ \theta \sim b(n, \theta) $</code>，即
+<code>$$ P(X=x | \theta)=\left(\begin{array}{l}{n} \\ {x}\end{array}\right) \theta^{x}(1-\theta)^{n-x}, \quad x=0,1, \cdots, n $$</code>
+采用“同等无知”原则，用均匀分布 <code>$ U(0, 1) $</code> 作为概率 <code>$ \theta $</code> 的先验分布 <code>$ \pi(\theta) $</code>。
+<code>$$ \pi(\theta) = \left\{\begin{array}{l} {\frac{1}{b - a}, a &lt; x &lt; b} \\ {0, 其他} \end{array}\right. $$</code>
+由此可利用贝叶斯公式求出 <code>$ \theta $</code> 的后验分布。步骤如下：</p>
+
+<ol>
+<li>写出 <code>$ X $</code> 和 <code>$ \theta $</code> 的联合密度函数（联合分布列）：
+<code>$$ h(x, \theta)=\left(\begin{array}{l}{n} \\ {x}\end{array}\right) \theta^{x}(1-\theta)^{n-x}, \quad x=0,1, \cdots, n, \quad 0&lt;\theta&lt;1 $$</code></li>
+<li>由边际密度函数的定义，求 <code>$ X $</code> 的边际分布列：
+<code>$$ m(x)=\left(\begin{array}{l}{n} \\ {x}\end{array}\right) \int_{0}^{1} \theta^{x}(1-\theta)^{n-x} \mathrm{d} \theta=\left(\begin{array}{l}{n} \\ {x}\end{array}\right) \frac{\Gamma(x+1) \Gamma(n-x+1)}{\Gamma(n+2)} $$</code>
+其中 <code>$ \Gamma(x) $</code> 为伽马（Gamma）函数。</li>
+<li>由贝叶斯公式，求 <code>$ \theta $</code> 的后验分布的密度函数：
+<code>$$ \begin{aligned} \pi(\theta | x) &amp;=\frac{h(x, \theta)}{m(x)} \\ &amp;=\frac{\Gamma(n+2)}{\Gamma(x+1) \Gamma(n-x+1)} \theta^{(x+1)-1}(1-\theta ^{(n-x+1)-1}, \quad 0&lt;\theta&lt;1 \end{aligned} $$</code></li>
+<li>最后求后验分布的均值<code>$ E(\theta | x) $</code>。由 <code>$ \theta $</code> 的后验分布的密度函数 <code>$ \pi(\theta | x) $</code> 的形式，我们发现 <code>$ \theta | x \sim B e(x+1, n-x+1) $</code>。由贝塔分布 <code>$ X \sim Be(a, b) $</code> 的数学期望计算公式，可得：
+<code>$$ E(X) = \frac{a}{a + b} = \frac{x + 1}{n + 2} $$</code></li>
+</ol>
+
+<p>（以上推导过程来自《概率论与数理统计教程》第二版 P335）</p>
+
+<p>假如不用先验信息，只用总体信息与样本信息，那么事件 A 发生的概率的<strong>最大似然估计</strong>为
+<code>$$ \hat{\theta}_{M} = \frac{x}{n} $$</code>
+事实证明，以均匀分布作为参数 <code>$ \theta $</code> 的先验分布的贝叶斯估计<strong>并没有</strong>退化为最大似然估计。那么最大似然估计和贝叶斯估计有什么区别呢？</p>
+
+<p>某些场合，贝叶斯估计要比最大似然估计更合理一点。比如，在产品抽检中只区分合格品和不合格品，<code>$ \theta $</code> 表示合格品率。则该过程可看作 n 次随机抽样，由 <strong>实例1</strong> 可知，<code>$ \theta $</code> 的贝叶斯估计为 <code>$ \hat{\theta}_{B} = \frac{x + 1}{n + 2} $</code>。而最大似然估计为 <code>$ \hat{\theta}_{M} = \frac{x}{n} $</code>。在抽检中，“抽样三次全为合格品”和“抽检十次全为合格品”这两个事件在人们心目中的印象是不同的，后者的质量比前者更信得过。这种差别在合格品率 <code>$ \theta $</code> 的最大似然估计 <code>$ \hat{\theta}_{M} $</code> 中反映不出（两者都是1）。而 <code>$ \hat{\theta}_{B} $</code> 分别是 (3+1)/(3+2)=0.8 和 (10+1)/(10+2)=0.917。由此可以看到，贝叶斯估计更符合人们的理念。</p>
+
+<!-- 
+- b
+- be
+- gamma 
+- 最大似然估计 
+#todo
+-->
+
+<!-- **实例2**  
+#todo -->
+
+<blockquote>
+<p><strong>FAQ</strong></p>
+
+<p>Q: <strong>参数估计中的“参数”指的是什么？</strong></p>
+
+<p>A: “参数”指如下三类未知参数：</p>
+
+<ul>
+<li>分布中的未知参数 <code>$ \theta $</code>；</li>
+<li>分布中的未知参数 <code>$ \theta $</code> 的函数；</li>
+<li>分布的各种特征数。</li>
+</ul>
+
+<p>Q: <strong>参数估计的目的是什么？</strong></p>
+
+<p>A: 参数估计的目的是估计参数 <img src="/img/quyin/huaji.png" class="my-emoji" style = "height: 32px;"></p>
+
+<p>Q: <strong>进行参数估计之前需要哪些信息？</strong></p>
+
+<p>A: 我们需要参数 <code>$ \theta $</code> 的后验分布。任何关于  <code>$ \theta $</code> 的统计推断都应该基于 <code>$ \theta $</code> 的后验分布。</p>
+
+<p>Q: <strong>除了贝叶斯估计，还有哪些参数估计的方法？</strong>
+<code>$$ 参数估计 \left\{\begin{array}{l} {点估计} \\ {矩估计} \\ {最大似然估计} \\ {最小防方差无偏估计} \\ {区间估计} \\ { \dots } \end{array}\right. $$</code></p>
+</blockquote>
+
+<!-- 不同参数估计方法之间有什么区别
+#todo -->
+
+<!-- 
+### 贝叶斯分类 
+#todo -->
+
+<!-- 
+
+- 贝叶斯分类
+- - 朴素贝叶斯
+
+用一张图表示我对贝叶斯哲学的理解
+-->
+
+<p>参考书籍：</p>
+
+<ol>
+<li>《贝叶斯方法：概率编程与贝叶斯推断》 <!-- ISBN: 978-7-115-43880-5 --></li>
+<li>《概率论与数理统计教程》 <!-- ISBN: 978-7-04-031210-2 --></li>
+</ol>
+
+<p><div id="mini-overlay" onclick="overlay_off()"></div>
+<div id="mini-window"><iframe id="mini-iframe" frameBorder="0"></iframe></div>
+<button id="btn-close" onclick="overlay_off()">×</button></p>
+
+<p><script src="/python-tips/overlay.js"></script>
+<link rel="stylesheet" href="/python-tips/style.css"></p>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/python_tips/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">我的 Python 不可能这么麻烦</span>
+    </a>
+    
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+<style>
+  .my-emoji {
+    height: 25px;
+    display: inline-block;
+    margin: 0;
+    vertical-align: text-bottom;
+  }
+</style>
+
+
+        </div>
+        
+    <script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
+
+
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-110240674-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+
+
+    
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+
+
+
+    
+
+
+
+    </body>
+</html>

@@ -6,10 +6,28 @@
     <description>Recent content on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 14 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 31 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://luochang212.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>贝叶斯方法</title>
+      <link>http://luochang212.github.io/posts/bayesian/</link>
+      <pubDate>Fri, 31 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/posts/bayesian/</guid>
+      <description>引入 首先说明一下贝叶斯方法能做什么，让大家有一个先验的理解。下面这个例子来自《贝叶斯方法：概率编程与贝叶斯推断》。
+史蒂文被描述为一个害羞的人，他乐于助人，但是他对其他人不太关注。他非常乐见事情处于合理的顺序，并对他的工作十分细心。你会认为史蒂文是一个图书管理员还是一个农民呢？从上面的描述来看大多数人都会认为史蒂文看上去更像是图书管理员，但是这里忽略了一个关于图书管理员和农民的事实：男性图书管理员的人数只有男性农民的 1/20。所以从统计学来看史蒂文更有可能是一个农民。
+为什么我们要用贝叶斯方法 如何正确地计算史蒂文是图书管理员的概率呢？
+如果我们不知道对史蒂文的描述，单纯依照统计学概率，史蒂文是图书管理员的概率为 1/21。但如果我们需要量化这类描述对史蒂文是图书管理员的最终概率的影响，就要用到贝叶斯方法。
+我们假设：
+ 事件 A：史蒂文是一个图书管理员。 事件 ～A: 史蒂文不是一个图书管理员，即史蒂文是一个农民。 事件 X: 获得对认定史蒂文是一个图书管理员有利的描述信息。  根据贝叶斯公式： $$ P(A | X) = \frac{P(X | A) P(A)}{P(X)} $$ $ P(A) $ 容易理解，$ P(X) $ 和 $ P(X | A) $ 是什么呢？
+（1）对 $ P(X | A) $ 的理解
+$ P(X | A) $ 可以被定义为在史蒂文真的是一个图书管理员的情况下，史蒂文的邻居们给出某种描述的概率。如果史蒂文真的是一个图书管理员，那么我们很有可能获得对认定史蒂文是一个图书管理员有利的描述信息。这个值可能接近于1。假设它为 0.95。
+（2）对 $ P(X | \sim A) $ 的理解
+一般，图书管理员都拥有细心的品质、做事有规律这样的品质，但拥有这些品质的不一定是图书管理员。理解了它们之间的充分必要关系，就很容易理解某些农民同样担得起邻居们这样的描述。因此 $ P(X | \sim A) $ 接近于 0 的程度应该比 $ P(X | A) $ 接近于 1 的程度为轻。假设它为 0.</description>
+    </item>
     
     <item>
       <title>我的 Python 不可能这么麻烦</title>
@@ -599,7 +617,7 @@ Quick Start   Upload
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/gadget/plan/</guid>
-      <description>Plan  body { font-family: &#34;Source Han Sans&#34;, &#34;San Francisco&#34;, &#34;PingFang SC&#34;, &#34;Hiragino Sans GB&#34;, &#34;Droid Sans Fallback&#34;, &#34;Microsoft YaHei&#34;, &#34;sans-serif&#34;; font-size: 17px; margin: 0; } #header { position: relative; top: 0px; left: 0px; width: 100%; height: 50px; background: #333333; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); z-index: 999; } .navbar { position: relative; margin-left: 10%; color: white; font-size: 1.25rem; } .figure { position: relative; width: 80%; } .</description>
+      <description>Plan  body { font-family: &#34;Source Han Sans&#34;, &#34;San Francisco&#34;, &#34;PingFang SC&#34;, &#34;Hiragino Sans GB&#34;, &#34;Droid Sans Fallback&#34;, &#34;Microsoft YaHei&#34;, &#34;sans-serif&#34;; font-size: 17px; margin: 0; } #header { position: relative; top: 0px; left: 0px; width: 100%; height: 50px; background: #333333; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); z-index: 2; } .navbar { position: relative; margin-left: 10%; color: white; font-size: 1.25rem; } .figure { position: relative; width: 80%; } .</description>
     </item>
     
     <item>

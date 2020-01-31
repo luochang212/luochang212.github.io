@@ -6,15 +6,24 @@
     <description>Recent content in Tags on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 14 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 31 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://luochang212.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Bayesian</title>
+      <link>http://luochang212.github.io/tags/bayesian/</link>
+      <pubDate>Fri, 31 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/tags/bayesian/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>python</title>
       <link>http://luochang212.github.io/tags/python/</link>
-      <pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 31 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/tags/python/</guid>
       <description></description>
