@@ -46,7 +46,7 @@
             text-align: center;
         }
 
-        .container h3 {
+        .container h3, p {
             text-align: left;
         }
 
@@ -114,26 +114,29 @@
         </div>
     </div>
 
-    <div id="container-1" class="container">
-        <h1>2020年1月计划</h1>
+    <div id="container-2" class="container">
+        <h1>2020年2月计划</h1>
         <h3>一、计划内容</h3>
+        
         <ol>
-            <li>学习计划</li>
+            <li>学习计划 📖</li>
             <br>
             <ul>
                 <li>LeetCode (1 题/天)</li>
                 <li>读书 (10 页/天)</li>
             </ul>
             <br>
-            <li>运动计划</li>
+            <li>运动计划 🏃</li>
             <br>
             <ul>
-                <li>游泳 (50 米/天)</li>
-                <li>跑步 (100 米/天)</li>
+                <li>跑步 (1000 米/天)</li>
                 <li>仰卧起坐 (10 次/天)</li>
             </ul>
             <br>
         </ol>
+
+        <p>注：括号内是计量单位，不是计划数。</p>
+
         <h3>二、完成情况</h3>
 
         <div class="figure">
@@ -144,24 +147,27 @@
         </div>
     </div>
 
-    <div id="container-2" class="container"></div>
+    <div id="container-1" class="container">
+        <p>none</p>
+    </div>
     <div id="container-3" class="container"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.xkcd@1.1/dist/chart.xkcd.min.js"></script>
     <script>
         const svg_1_1 = document.querySelector('.line-chart-1')
+        const date=['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31']
         const lineChart_1_1 = new chartXkcd.Line(svg_1_1, {
             title: 'Monthly learning program',
             xLabel: 'Date',
             yLabel: 'Amount',
             data: {
-                labels: ['1.21', '1.22', '1.23', '1.24', '1.25', '1.26', '1.27', '1.28', '1.29', '1.30', '1.31'],
+                labels: date,
                 datasets: [{
                     label: 'LeetCode',
-                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                 }, {
                     label: '读书',
-                    data: [4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    data: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                 }],
             },
             options: {
@@ -176,16 +182,13 @@
             xLabel: 'Date',
             yLabel: 'Amount',
             data: {
-                labels: ['1.21', '1.22', '1.23', '1.24', '1.25', '1.26', '1.27', '1.28', '1.29', '1.30', '1.31'],
+                labels: date,
                 datasets: [{
-                    label: '游泳',
-                    data: [14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                }, {
                     label: '跑步',
-                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    data: [5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                 }, {
                     label: '仰卧起坐',
-                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                 }],
             },
             options: {
@@ -215,6 +218,12 @@
             }
             document.getElementById('container-3').style.display = "block";
         })
+
+        window.addEventListener('resize', () => {
+            location.reload();
+        })
+
+        document.getElementById('month-2').click();
     </script>
 </body>
 
