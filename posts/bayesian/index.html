@@ -22,10 +22,10 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="贝叶斯方法"/>
-<meta name="twitter:description" content="统计学中有两个大的学派，频率学派和贝叶斯学派。频率派用总体信息和样本信息进行统计推断。而贝叶斯派除了使用以上两种信息之外，还使用先验信息进行统计推断。本文介绍贝叶斯方法的数学原理与编程实践。（已更新数学原理部分，编程实践蓄力中）"/>
+<meta name="twitter:description" content="统计学中有两大学派，频率学派和贝叶斯学派。频率派用总体信息和样本信息进行统计推断。而贝叶斯派除了使用以上两种信息之外，还使用先验信息进行统计推断。本文介绍贝叶斯方法的数学原理和编程实践。（已更新数学原理部分，编程实践蓄力中）"/>
 
 <meta property="og:title" content="贝叶斯方法" />
-<meta property="og:description" content="统计学中有两个大的学派，频率学派和贝叶斯学派。频率派用总体信息和样本信息进行统计推断。而贝叶斯派除了使用以上两种信息之外，还使用先验信息进行统计推断。本文介绍贝叶斯方法的数学原理与编程实践。（已更新数学原理部分，编程实践蓄力中）" />
+<meta property="og:description" content="统计学中有两大学派，频率学派和贝叶斯学派。频率派用总体信息和样本信息进行统计推断。而贝叶斯派除了使用以上两种信息之外，还使用先验信息进行统计推断。本文介绍贝叶斯方法的数学原理和编程实践。（已更新数学原理部分，编程实践蓄力中）" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/bayesian/" />
 <meta property="article:published_time" content="2020-01-31T00:00:00&#43;00:00"/>
@@ -500,7 +500,7 @@
     
     
     <br/>
-    <i class="fas fa-clock"></i> 9 min read
+    <i class="fas fa-clock"></i> 10 min read
 </div>
 
 
@@ -516,27 +516,34 @@
 <ul>
 <li>
 <ul>
-<li>
+<li><a href="#数学原理">数学原理</a>
 <ul>
-<li><a href="#引入">引入</a>
+<li><a href="#一-实例-癌症化验的准确率">一、实例：癌症化验的准确率</a>
+<ul>
+<li><a href="#题目">📖 题目</a></li>
+<li><a href="#解答">✍️ 解答</a></li>
+</ul></li>
+<li><a href="#二-实例-史蒂文的真实身份">二、实例：史蒂文的真实身份</a>
 <ul>
 <li><a href="#为什么我们要用贝叶斯方法">为什么我们要用贝叶斯方法</a></li>
 <li><a href="#探索-假设值对后验概率的影响">探索：假设值对后验概率的影响</a></li>
+<li><a href="#探索-先验概率对后验概率的影响">探索：先验概率对后验概率的影响</a></li>
 </ul></li>
-<li><a href="#贝叶斯公式的事件形式">贝叶斯公式的事件形式</a>
+<li><a href="#三-贝叶斯公式的事件形式">三、贝叶斯公式的事件形式</a>
 <ul>
 <li><a href="#简单版">简单版</a></li>
 <li><a href="#复杂版">复杂版</a></li>
 </ul></li>
-<li><a href="#贝叶斯公式的密度函数形式">贝叶斯公式的密度函数形式</a>
+<li><a href="#四-贝叶斯公式的密度函数形式">四、贝叶斯公式的密度函数形式</a>
 <ul>
 <li><a href="#符号定义">符号定义</a></li>
 <li><a href="#推导过程">推导过程</a></li>
 </ul></li>
-<li><a href="#贝叶斯估计">贝叶斯估计</a>
+<li><a href="#五-贝叶斯估计">五、贝叶斯估计</a>
 <ul>
 <li><a href="#贝叶斯假设">贝叶斯假设</a></li>
 </ul></li>
+<li><a href="#六-探索-联合分布蕴含的信息">六、探索：联合分布蕴含的信息</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -548,15 +555,106 @@
   <div class="post">
     
 
-<h3 id="引入">引入</h3>
+<blockquote>
+<p>统计学中有两大学派，频率学派和贝叶斯学派。频率派用总体信息和样本信息进行统计推断。而贝叶斯派除了使用以上两种信息之外，还使用<strong>先验信息</strong>进行统计推断。本文介绍贝叶斯方法的数学原理和编程实践。</p>
+</blockquote>
 
-<p>首先说明一下贝叶斯方法能做什么，让大家有一个先验的理解。下面这个例子来自《贝叶斯方法：概率编程与贝叶斯推断》。</p>
+<p>本文从数学原理和编程实践两个方面来介绍贝叶斯方法。</p>
+
+<h2 id="数学原理">数学原理</h2>
+
+<p>贝叶斯理论包含很多内容。我们熟悉的利用先验分布推后验分布的方法被称为<strong>贝叶斯推理</strong>（Bayesian inference）。此外，还可以利用参数的后验分布的均值作为该参数的点估计，这种方法被称为<strong>贝叶斯估计</strong>（Bayesian estimation）。本文数学原理部分主要介绍贝叶斯推理和贝叶斯估计。</p>
+
+<p>理论部分为六节，各节的主要内容如下。</p>
+
+<table>
+<thead>
+<tr>
+<th>章节</th>
+<th>主要内容</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>第一节</td>
+<td>用一个简单的实例，让大家对贝叶斯方法有一个形象的认识。</td>
+</tr>
+
+<tr>
+<td>第二节</td>
+<td>用一个复杂的实例，让大家对贝叶斯方法的术语有一个形象的认识。</td>
+</tr>
+
+<tr>
+<td>第三节</td>
+<td>介绍贝叶斯公式的事件形式及其推导。</td>
+</tr>
+
+<tr>
+<td>第四节</td>
+<td>介绍贝叶斯公式的密度函数形式及其推导。</td>
+</tr>
+
+<tr>
+<td>第五节</td>
+<td>介绍贝叶斯估计。</td>
+</tr>
+
+<tr>
+<td>第六节</td>
+<td>探索联合分布蕴含了哪些信息。</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="一-实例-癌症化验的准确率">一、实例：癌症化验的准确率</h3>
+
+<p>下面请各位做题家们做一下你们最爱的经典老题 <img src="/img/quyin/watermaleon.png" class="my-emoji" style = "height: 32px;"></p>
+
+<h4 id="题目">📖 题目</h4>
+
+<p><strong>有两个可选的假设</strong>：</p>
+
+<p>病人有癌症（cancer）、病人无癌症（normal）</p>
+
+<p><strong>可用数据来自化验结果</strong>：</p>
+
+<p>正（+）、负（-）</p>
+
+<p><strong>有先验知识</strong>：</p>
+
+<p>在所有人口中，患病率是 0.8%。对确实有病的患者的化验准确率为 98%，对确实无病的患者的化验准确率为 97%，总结如下：</p>
+
+<p><code>$ P(cancer) = 0.008, P(normal) = 0.992 \\ P(+ | cancer) = 0.98, P(- | cancer) = 0.02 \\ P(+ | normal) = 0.03, P(- | normal) = 0.97 $</code></p>
+
+<p><strong>问题</strong>：</p>
+
+<p>假定有一个新病人，化验结果为正，是否应将病人断定为有癌症？求后验概率 <code>$ P(cancer | +) $</code>。</p>
+
+<h4 id="解答">✍️ 解答</h4>
+
+<p>根据贝叶斯公式：</p>
+
+<p><code>$ P(cancer | +) = \frac{P(+ | cancer) P(cancer)}{P(+)} $</code></p>
+
+<p>其中 <code>$ P(+) $</code> 为：</p>
+
+<p><code>$ \begin{aligned} P(+) &amp;= P(+ | cancer) P(cancer) + P(+ | \sim cancer) P(\sim cancer) \\ &amp;= P(+ | cancer) P(cancer) + P(+ | normal) P(normal) \end{aligned} $</code></p>
+
+<p>故：</p>
+
+<p><code>$ \begin{aligned} P(cancer | +) &amp;= \frac{P(+ | cancer) P(cancer)}{P(+ | cancer) P(cancer) + P(+ | normal) P(normal) } \\ &amp;= \frac{0.98 \times 0.008}{0.98 \times 0.008 + 0.03 \times 0.992} \\ &amp;\approx 0.209 \end{aligned} $</code></p>
+
+<h3 id="二-实例-史蒂文的真实身份">二、实例：史蒂文的真实身份</h3>
+
+<p>本节意在用一个稍微复杂的例子介绍贝叶斯公式中各个术语的含义。下面这个例子来自书籍《贝叶斯方法：概率编程与贝叶斯推断》。</p>
 
 <p>史蒂文被描述为一个害羞的人，他乐于助人，但是他对其他人不太关注。他非常乐见事情处于合理的顺序，并对他的工作十分细心。你会认为史蒂文是一个图书管理员还是一个农民呢？从上面的描述来看大多数人都会认为史蒂文看上去更像是图书管理员，但是这里忽略了一个关于图书管理员和农民的事实：男性图书管理员的人数只有男性农民的 1/20。所以从统计学来看史蒂文更有可能是一个农民。</p>
 
 <h4 id="为什么我们要用贝叶斯方法">为什么我们要用贝叶斯方法</h4>
 
-<p>如何正确地计算史蒂文是图书管理员的概率呢？</p>
+<!-- 如何正确地计算史蒂文是图书管理员的概率呢？ -->
 
 <p>如果我们不知道对史蒂文的描述，单纯依照统计学概率，史蒂文是图书管理员的概率为 1/21。但如果我们需要量化这类描述对史蒂文是图书管理员的最终概率的影响，就要用到贝叶斯方法。</p>
 
@@ -651,7 +749,13 @@
 <p><strong>Note:</strong> 在上述问题中，<code>$ P(A) $</code> 被称作先验概率，<code>$ P(A | X) $</code> 被称作后验概率。</p>
 </blockquote>
 
-<h3 id="贝叶斯公式的事件形式">贝叶斯公式的事件形式</h3>
+<h4 id="探索-先验概率对后验概率的影响">探索：先验概率对后验概率的影响</h4>
+
+<p>在其他参数不变的情况下，先验概率 <code>$ P(A) $</code> 越大，后验概率 <code>$ P(A | X) $</code> 就越大。</p>
+
+<p><code>$$ \begin{aligned} P(A | X) \uparrow &amp;= \frac{P(A) P(X | A)}{P(X | A)P(A) + P(X | \sim A) P(\sim A)} \\ &amp;= \frac{1}{1 + \frac{P(X | \sim A) P(\sim A) \downarrow }{P(X | A) P(A) \uparrow } \downarrow }. \uparrow \end{aligned} $$</code></p>
+
+<h3 id="三-贝叶斯公式的事件形式">三、贝叶斯公式的事件形式</h3>
 
 <h4 id="简单版">简单版</h4>
 
@@ -685,7 +789,7 @@
 <code>$$ P(A_{1} \dots A_{n}) = P(A_{1}) P(A_{2} | A_{1}) P(A_{3} | A_{1}A_{2}) \dots P(A_{n} | A_{1}A_{2} \dots A_{n-1}) $$</code></p>
 </blockquote>
 
-<h3 id="贝叶斯公式的密度函数形式">贝叶斯公式的密度函数形式</h3>
+<h3 id="四-贝叶斯公式的密度函数形式">四、贝叶斯公式的密度函数形式</h3>
 
 <p><code>$$ \pi(\theta | X)=\frac{h(X, \theta)}{m(X)}=\frac{p(X | \theta) \pi(\theta)}{\int_{\Theta} p(X | \theta) \pi(\theta) \mathrm{d} \theta} $$</code></p>
 
@@ -813,7 +917,7 @@
 <!-- #todo --></p>
 </blockquote>
 
-<h3 id="贝叶斯估计">贝叶斯估计</h3>
+<h3 id="五-贝叶斯估计">五、贝叶斯估计</h3>
 
 <p>贝叶斯估计是参数估计的一种。</p>
 
@@ -899,6 +1003,10 @@
 
 <!-- 不同参数估计方法之间有什么区别
 #todo -->
+
+<h3 id="六-探索-联合分布蕴含的信息">六、探索：联合分布蕴含的信息</h3>
+
+<p>#todo</p>
 
 <!-- 
 ### 贝叶斯分类 
