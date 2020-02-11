@@ -71,7 +71,7 @@
     <body class=" ">
     <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
+  <script src="https://upcdn.b0.upaiyun.com/libs/jquery/jquery-1.9.0.min.js"></script>
 
   <style>
     body {
@@ -526,6 +526,7 @@
 <li><a href="#装饰器">装饰器</a></li>
 <li><a href="#内置函数">内置函数</a></li>
 <li><a href="#numpy">NumPy</a></li>
+<li><a href="#pandas">pandas</a></li>
 </ul></li>
 <li><a href="#代码模版">代码模版</a>
 <ul>
@@ -709,7 +710,7 @@ def func_name():
 
 <h3 id="numpy">NumPy</h3>
 
-<p>NumPy 是用于科学计算的包。</p>
+<p>NumPy 是用于科学计算的库。</p>
 
 <p>本文的内容包括：</p>
 
@@ -743,6 +744,80 @@ def func_name():
 
 <p><center>
 <button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/numpy.ipynb')">查看示例</button>
+</center></p>
+
+<h3 id="pandas">pandas</h3>
+
+<p>pandas 是用于数据分析的库。</p>
+
+<p>本文的内容包括：</p>
+
+<ol>
+<li>基本数据类型
+
+<ul>
+<li>Series</li>
+<li>DataFrame</li>
+</ul></li>
+<li>基本功能
+
+<ul>
+<li>重新索引</li>
+<li>丢弃指定轴上的项</li>
+<li>索引</li>
+<li>算术运算</li>
+<li>算术方法</li>
+<li>DataFrame 和 Series 之间的运算</li>
+<li>函数</li>
+<li>排序</li>
+<li>排名</li>
+<li>带有重复值的索引</li>
+</ul></li>
+<li>统计描述
+
+<ul>
+<li>求和</li>
+<li>取到最大值时的索引值</li>
+<li>累计求和</li>
+<li>均值</li>
+<li>汇总统计</li>
+<li>相关系数</li>
+<li>协方差</li>
+<li>去重</li>
+<li>值计数</li>
+<li>成员资格</li>
+</ul></li>
+<li>缺失数据
+
+<ul>
+<li>处理缺失数据</li>
+<li>过滤缺失数据</li>
+<li>填充缺失数据</li>
+</ul></li>
+<li>层次化索引
+
+<ul>
+<li>构建层次化索引的 Series</li>
+<li>选取数据子集</li>
+<li>stack 和 unstack</li>
+<li>构建层次化索引的 DataFrame</li>
+<li>调整某条轴上索引级别的顺序</li>
+<li>根据级别进行汇总统计</li>
+<li>将 DataFrame 的列作为索引</li>
+</ul></li>
+<li>整数索引</li>
+<li>合并
+
+<ul>
+<li>默认合并方式</li>
+<li>显式指定作为键的列名</li>
+<li>连接方式</li>
+<li>多对多的合并</li>
+</ul></li>
+</ol>
+
+<p><center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/pandas.ipynb')">查看示例</button>
 </center></p>
 
 <h2 id="代码模版">代码模版</h2>
@@ -881,20 +956,6 @@ def func_name():
   TeX: { equationNumbers: { autoNumber: "AMS" } }
   });
 </script>
-
-
-  
-  
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-110240674-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
 <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>

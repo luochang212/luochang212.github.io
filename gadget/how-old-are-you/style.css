@@ -1,8 +1,5 @@
 body {
   font-family: 'Lato', san-serif;
-}
-
-body {
   transition: background-color .5s;
 }
 
@@ -79,12 +76,12 @@ code {
   padding-top: 17px;
   padding-right: 10%;
   font-size: 1rem;
-  font-weight: 600;
+  /* font-weight: 600; */
   text-decoration: none;
 }
 
 #link a {
-  color: mediumorchid;
+  color: #2196F3 ;
   text-decoration: none;
 }
 
@@ -94,13 +91,19 @@ code {
 }
 
 #container {
+  position: relative;
+  top: 50px;
   width: 80%;
   max-width: 960px;
   padding: 0 50px 0 50px;
   margin: 0 auto;
   display: block;
   overflow-x: hidden;
-  height: 1500px; /* Used in this example to enable scrolling */
+  /* height: 1500px;  */
+}
+
+#your-age {
+  outline: none;
 }
 
 #run {
