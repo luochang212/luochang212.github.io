@@ -108,13 +108,12 @@ To
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/gadget/monaco-speech-editor/</guid>
-      <description>Monaco Speech Editor                     Explorer
+      <description>Monaco Speech Editor  --                     Explorer
  File manager     Demo You can load demos from a JSON file.
 Load Demo  Tutorial Listen to the features of this application.
 Quick Start   Upload
  Drop your file here
-   Feature List
- Speech Synthesis Speak Document Speak By Line Speak Console Result Speak Console Log Stop Speaking  Cursor Position Search Cursor Position Cursor Jump To Line  Trash Find Deleted Files   Setting</description>
+   Feature List</description>
     </item>
     
     <item>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>API on Chang Luo</title>
+    <title>api on Chang Luo</title>
     <link>http://luochang212.github.io/tags/api/</link>
-    <description>Recent content in API on Chang Luo</description>
+    <description>Recent content in api on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 07 Oct 2019 00:00:00 +0000</lastBuildDate>
@@ -25,7 +25,7 @@ $ mkdir my-application $ cd my-application  确保你已经下载了 npm，然�
     </item>
     
     <item>
-      <title>TSP旅行路线规划</title>
+      <title>【项目】TSP旅行路线规划</title>
       <link>http://luochang212.github.io/posts/tsp_route/</link>
       <pubDate>Wed, 10 Apr 2019 00:00:00 +0000</pubDate>
       
