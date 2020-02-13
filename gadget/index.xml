@@ -90,7 +90,7 @@ To
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/gadget/live2d/</guid>
-      <description>  Live2D！     隐藏   --  var message_Path = &#39;/gadget/live2d/&#39; var home_Path = &#39;http://localhost&#39;    loadlive2d(&#34;live2d&#34;, &#34;/gadget/live2d/live2d/model/live2d-widget-model-shizuku/assets/shizuku.model.json&#34;); // live2d-widget-model-haru // live2d-widget-model-shizuku // live2d-widget-model-tia // live2d-widget-model-xiaomai   </description>
+      <description>  Live2D！     隐藏   --  var message_Path = &#39;/live2d/&#39; var home_Path = &#39;http://localhost&#39;    loadlive2d(&#34;live2d&#34;, &#34;/gadget/live2d/live2d/model/live2d-widget-model-shizuku/assets/shizuku.model.json&#34;); // live2d-widget-model-haru // live2d-widget-model-shizuku // live2d-widget-model-tia // live2d-widget-model-xiaomai   </description>
     </item>
     
     <item>
