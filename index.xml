@@ -6,10 +6,26 @@
     <description>Recent content on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 12 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 21 Feb 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://luochang212.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>只有魔法才能打败魔法</title>
+      <link>http://luochang212.github.io/posts/chico_and_dico/</link>
+      <pubDate>Fri, 21 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/posts/chico_and_dico/</guid>
+      <description>Chico 和 Dico 是两位魔术师，他们有一个经典魔术：根据任意四张牌猜第五张牌。但完成这个魔术并不需要任何魔术师的技巧，因为它完全建立在数学原理之上。只需要一点数学知识和充分的练习，你也能表演这个魔术！
+ GitHub项目地址：chico-and-dico
+Chico 和 Dico 的魔术 Chico 和 Dico 是两位魔术师，他们经常表演的一个魔术是这样的：Chico 将一副 52 张的扑克牌交给一位观众，让他随机抽取其中的 5 张。然后 Chico 将这 5 张牌按一定的顺序重新排列，再将其还给观众。上述整个过程 Dico 都是看不见的。然而，当观众按 Chico 排好的顺序依次展示前四张牌之后，Dico 却能准确地说出第五张牌是什么。
+乍一看这个魔术很神奇。随机抽取 5 张牌，你能从前 4 张牌中看出第 5 张牌是什么吗？对于普通人来说，当然不可能。Chico 和 Dico 的秘诀在于 Chico 有机会将扑克重新排序。如果两人事先约定好某种协议，Chico 是有可能通过扑克排列的顺序，向 Dico 传递关于第 5 张牌的信息的。
+关键在于如何实现这种协议。
+数学模型 在进行分析之前，我们需要把 Chico 和 Dico 的魔术抽象成一个数学模型。
+魔术本身已经提供了一些建模信息。我们可以假设一共有 n 张牌，抽取其中的 k 张。在对牌组进行某种排序之后，我们需要利用前 (k - j) 张牌的信息，推测后 j 张牌是什么。
+现在我们有 n, j, k 三个变量，下面我们来进一步探究三个变量之间究竟服从何种关系。</description>
+    </item>
     
     <item>
       <title>达尔文的故乡</title>
@@ -68,7 +84,7 @@ $ P(cancer) = 0.008, P(normal) = 0.992 \\ P(+ | cancer) = 0.98, P(- | cancer) = 
       <guid>http://luochang212.github.io/posts/python_tips/</guid>
       <description>Python 学习笔记，长期更新  GitHub项目地址：python-tips
 语言基础 列表 本文从以下几个方面介绍字典：
- 创建 获取 修改 添加 插入 删除 排序 倒排 倒数 循环 列表推导 切片 复制 去重 计数   查看示例 
+ 创建 获取 修改 添加 插入 删除 排序 逆序 索引 循环 列表推导 切片 复制 去重 计数 查找   查看示例 
 字典 鉴于 JSON 在数据处理中的大量使用，字典的重要性也不言而喻。
 本文从以下几个方面介绍字典：
  创建 获取 更新 遍历 排序 删除 字典与JSON   查看示例 
