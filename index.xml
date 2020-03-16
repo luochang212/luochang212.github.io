@@ -516,6 +516,19 @@ def classification(self, txt_array, file_index): id = np.array([]) date = np.arr
     
     <item>
       <title></title>
+      <link>http://luochang212.github.io/gadget/algorithms/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/algorithms/</guid>
+      <description> 算法集萃   Home Projects About  © 2019 Chang Luo --   算法集萃  1. 分配货物 有四条船，有一堆货物。往每条船上分配货物，要求每条船上货物的重量相等。 列表中的元素表示每个货物的重量。 返回 Ture 或者 False 表示是否存在满足条件的装货方式。 示例：
+输入: [2,2,2,1,1] 输出: True 输入: [2,2,2,3] 输出: False 解答：
+None 2. 复原IP地址[LeetCode] 给定一个只包含数字的字符串，复原它并返回所有可能的 IP 地址格式。 示例：
+输入: &#34;25525511135&#34; 输出: [&#34;255.255.11.135&#34;, &#34;255.255.111.35&#34;] 解答：
+None   hljs.initHighlightingOnLoad();   </description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>http://luochang212.github.io/gadget/audio-player/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       

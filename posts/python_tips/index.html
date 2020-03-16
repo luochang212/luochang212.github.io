@@ -522,6 +522,7 @@
 <li><a href="#字符串">字符串</a></li>
 <li><a href="#函数">函数</a></li>
 <li><a href="#异常">异常</a></li>
+<li><a href="#闭包">闭包</a></li>
 <li><a href="#装饰器">装饰器</a></li>
 <li><a href="#内置函数">内置函数</a></li>
 <li><a href="#numpy">NumPy</a></li>
@@ -654,6 +655,32 @@
 
 <p><center>
 <button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/exception.ipynb')">查看示例</button>
+</center></p>
+
+<h3 id="闭包">闭包</h3>
+
+<blockquote>
+<p><strong>Actually, a closure is a function with an extended scope that encompasses nonglobal variables referenced in the body of the function but not defined there.</strong> It does not matter whether the function is anonymous or not; <strong>what matters is that it can access nonglobal variables that are defined outside of its body.</strong> (<em>Fluent Python</em>)</p>
+</blockquote>
+
+<p>上面这段话告诉我们，闭包是一个有延伸作用域的函数。该延伸作用域包含非全局变量，这个非全局变量在闭包内引用，但不在闭包内定义。</p>
+
+<p>这听起来挺抽象的。</p>
+
+<p>简而言之，闭包本质上是嵌套函数的内层函数。但是嵌套函数的内层函数要成为闭包，还需要满足：</p>
+
+<ol>
+<li>有延伸作用域；</li>
+<li>该延伸作用域内包含非全局变量；</li>
+<li>该非全局变量在闭包内引用，但不在闭包内定义。</li>
+</ol>
+
+<p>依旧抽象，直接上例子。</p>
+
+<p> …………</p>
+
+<p><center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/closures.ipynb')">查看示例</button>
 </center></p>
 
 <h3 id="装饰器">装饰器</h3>
