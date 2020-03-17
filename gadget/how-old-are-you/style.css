@@ -99,7 +99,6 @@ code {
   margin: 0 auto;
   display: block;
   overflow-x: hidden;
-  /* height: 1500px;  */
 }
 
 #your-age {
@@ -194,4 +193,14 @@ input:checked + .slider:before {
 .hint li {
   display: inline;
   font-size: 20px;
+}
+
+@media screen and (min-width: 200px) and (max-width: 450px) {
+  #container {
+    width: 260px;
+  }
+
+  #your-age {
+    width: 32px
+  }
 }
