@@ -559,11 +559,6 @@
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/gadget/monaco-speech-editor-test/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://luochang212.github.io/gadget/monaco-speech-editor/</loc>
     <priority>0</priority>
   </url>

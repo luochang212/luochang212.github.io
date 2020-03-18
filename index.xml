@@ -83,7 +83,7 @@ $ P(cancer) = 0.008, P(normal) = 0.992 \\ P(+ | cancer) = 0.98, P(- | cancer) = 
       
       <guid>http://luochang212.github.io/posts/python_tips/</guid>
       <description>Python 学习笔记，长期更新  GitHub项目地址：python-tips
-语言基础 列表 本文从以下几个方面介绍字典：
+语言基础 列表 本文从以下几个方面介绍列表：
  创建 获取 修改 添加 插入 删除 排序 逆序 索引 循环 列表推导 切片 复制 去重 计数 查找   查看示例 
 字典 鉴于 JSON 在数据处理中的大量使用，字典的重要性也不言而喻。
 本文从以下几个方面介绍字典：
@@ -617,15 +617,6 @@ To
       
       <guid>http://luochang212.github.io/gadget/live2d/</guid>
       <description>  Live2D！     隐藏   --  var message_Path = &#39;/live2d/&#39; var home_Path = &#39;http://localhost&#39;    loadlive2d(&#34;live2d&#34;, &#34;/gadget/live2d/live2d/model/live2d-widget-model-shizuku/assets/shizuku.model.json&#34;);   </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://luochang212.github.io/gadget/monaco-speech-editor-test/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/gadget/monaco-speech-editor-test/</guid>
-      <description>Monaco Speech Editor  // // Check before leave website // window.addEventListener(&#39;beforeunload&#39;, function (e) { // // Cancel the event // e.preventDefault(); // // Chrome requires returnValue to be set // e.returnValue = &#39;Do you sure&#39;; // });    Speak Document Speak By Line Search Cursor Position Cursor Jump To Line Stop Speaking  -- Untitled --  &amp;#9776;  Save --             Explorer</description>
     </item>
     
     <item>
