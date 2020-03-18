@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Demos on Chang Luo</title>
+    <link>http://luochang212.github.io/demo/</link>
+    <description>Recent content in Demos on Chang Luo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="http://luochang212.github.io/demo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/demo/mini-window/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/demo/mini-window/</guid>
+      <description> mini-window    Animated Side Navigation Example Click on the element below to open the side navigation.
+&amp;#9776; open   ×  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/demo/sidenav/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/demo/sidenav/</guid>
+      <description>Animated Side Navigation Example    Animated Side Navigation Example Click on the element below to open the side navigation menu.
+&amp;#9776; open  Resources Audio Player Video player Piano            更多视频 1 2 3         function openNav() { on(); document.getElementById(&#34;mySidenav&#34;).style.width = &#34;40%&#34;; document.body.style.backgroundColor = &#34;rgba(0,0,0,0.5)&#34;; } function closeNav() { document.getElementById(&#34;mySidenav&#34;).style.width = &#34;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gadget on Chang Luo</title>
+    <link>http://luochang212.github.io/gadget/</link>
+    <description>Recent content in Gadget on Chang Luo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="http://luochang212.github.io/gadget/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/gadget/algorithms/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/algorithms/</guid>
+      <description> 算法集萃   Home Projects About  © 2019 Chang Luo --   算法集萃  1. 分配货物 有四条船，有一堆货物。往每条船上分配货物，要求每条船上货物的重量相等。 列表中的元素表示每个货物的重量。 返回 Ture 或者 False 表示是否存在满足条件的装货方式。 示例：
+输入: [2,2,2,1,1] 输出: True 输入: [2,2,2,3] 输出: False 解答：
+None 2. 复原IP地址[LeetCode] 给定一个只包含数字的字符串，复原它并返回所有可能的 IP 地址格式。 示例：
+输入: &#34;25525511135&#34; 输出: [&#34;255.255.11.135&#34;, &#34;255.255.111.35&#34;] 解答：
+None   hljs.initHighlightingOnLoad();   </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/gadget/audio-player/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/audio-player/</guid>
+      <description>Audio Player    0:00 0:00                       /*! * Howler.js Audio Player Demo * howlerjs.com * * (c) 2013-2019, James Simpson of GoldFire Studios * goldfirestudios.com * * MIT License */ // Cache references to DOM elements. var elms = [&#39;track&#39;, &#39;timer&#39;, &#39;duration&#39;, &#39;playBtn&#39;, &#39;pauseBtn&#39;, &#39;prevBtn&#39;, &#39;nextBtn&#39;, &#39;playlistBtn&#39;, &#39;volumeBtn&#39;, &#39;progress&#39;, &#39;bar&#39;, &#39;wave&#39;, &#39;loading&#39;, &#39;playlist&#39;, &#39;list&#39;, &#39;volume&#39;, &#39;barEmpty&#39;, &#39;barFull&#39;, &#39;sliderBtn&#39;]; elms.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/gadget/baijiahao/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/baijiahao/</guid>
+      <description> 百家号模拟器   Home Projects About    百家号模拟器 主题：属性：生成文章      </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/gadget/cv-en/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/cv-en/</guid>
+      <description>CV • Chang Luo   --   -- if( window.location.search.match( /print-pdf/gi ) ) { var link = document.createElement( &#39;link&#39; ); link.rel = &#39;stylesheet&#39;; link.type = &#39;text/css&#39;; link.href = &#39;https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/print/pdf.css&#39;; document.getElementsByTagName( &#39;head&#39; )[0].appendChild( link ); }  --    MathJax.Hub.Config({ tex2jax: { inlineMath: [ [&#39;$&#39;,&#39;$&#39;], [&#34;\\(&#34;,&#34;\\)&#34;] ], displayMath: [ [&#39;$$&#39;,&#39;$$&#39;], [&#34;\\[&#34;,&#34;\\]&#34;] ], processEscapes: true, processEnvironments: true }, // Center justify equations in code and markdown cells.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/gadget/cv-zh/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/cv-zh/</guid>
+      <description>CV • Chang Luo   --   -- if( window.location.search.match( /print-pdf/gi ) ) { var link = document.createElement( &#39;link&#39; ); link.rel = &#39;stylesheet&#39;; link.type = &#39;text/css&#39;; link.href = &#39;https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/print/pdf.css&#39;; document.getElementsByTagName( &#39;head&#39; )[0].appendChild( link ); }  --    MathJax.Hub.Config({ tex2jax: { inlineMath: [ [&#39;$&#39;,&#39;$&#39;], [&#34;\\(&#34;,&#34;\\)&#34;] ], displayMath: [ [&#39;$$&#39;,&#39;$$&#39;], [&#34;\\[&#34;,&#34;\\]&#34;] ], processEscapes: true, processEnvironments: true }, // Center justify equations in code and markdown cells.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/gadget/dictionary.js/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/dictionary.js/</guid>
+      <description>dictionary.js    hello, world! 你好，世界 hello, world! 你好，世界 &#34;My text is long and wise and it consumes a lot of interwebs.&#34;       // 获取被选中的文本 var selectedTxt = &#39;&#39;; function getSelectedTxt() { selectedTxt = &#39;&#39;; if (window.getSelection) { selectedTxt = window.getSelection().toString(); } else if (document.selection) { selectedTxt = document.selection.createRange().text; } document.getElementById(&#34;out&#34;).innerHTML = selectedTxt; } // 从JSON文件导入汉字单词 function compareWords() { $.getJSON(&#34;./src/chinese-xinhua/data/word.json&#34;, function (data) { $.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/gadget/font/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/font/</guid>
+      <description>Don&#39;t threaten me with a good time &amp;#9834;  Don&#39;t threaten me with a good time &amp;#9834;  Don&#39;t threaten me with a good time &amp;#9834;  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/gadget/gallery/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/gallery/</guid>
+      <description>* { box-sizing: border-box; } body { margin: 0; font-family: Arial, Helvetica, sans-serif; } .header { text-align: center; padding: 32px; } .row { display: -ms-flexbox; /* IE 10 */ display: flex; -ms-flex-wrap: wrap; /* IE 10 */ flex-wrap: wrap; padding: 0 4px; } /* Create two equal columns that sits next to each other */ /* 列数初始化 */ .column { -ms-flex: 25%; /* IE 10 */ flex: 25%; padding: 0 4px; } .</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/gadget/happy-birthday/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/happy-birthday/</guid>
+      <description>  ┗|｀O′|┛   Happy Birthday
+To
+赵公公        </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/gadget/how-old-are-you/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/how-old-are-you/</guid>
+      <description> 年龄可视化   Home Projects About  © 2019 Chang Luo --   A 90-Year Human Life in Months Your Age:  Inspired by Your Life in Weeks.     </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/gadget/live2d/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/live2d/</guid>
+      <description>  Live2D！     隐藏   --  var message_Path = &#39;/live2d/&#39; var home_Path = &#39;http://localhost&#39;    loadlive2d(&#34;live2d&#34;, &#34;/gadget/live2d/live2d/model/live2d-widget-model-shizuku/assets/shizuku.model.json&#34;);   </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/gadget/monaco-speech-editor/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/monaco-speech-editor/</guid>
+      <description>Monaco Speech Editor  --                     Explorer
+ File manager     Demo You can load demos from a JSON file.
+Load Demo  Tutorial Listen to the features of this application.
+Quick Start   Upload
+ Drop your file here
+   Feature List</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/gadget/mozi/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/mozi/</guid>
+      <description>墨子 | 读书笔记      墨子 原文及读书笔记
+     卷一 亲士 修身 所染 法仪 七患 辞过 三辩   卷二 尚贤上 尚贤中 尚贤下   卷三 尚同上 尚同中 尚同下   卷四 兼爱上 兼爱中 兼爱下   卷五 非攻上 非攻中 非攻下   卷六 节用上 节用中 节葬下   卷七 天志上 天志中 天志下   卷九 卷十 卷十一 卷十二   介绍  作者 : 墨翟 成书时间 : [春秋 - 战国] 公元前490年-公元前221年 篇目数量 : 原有71篇，现存53篇     墨家主张“兼爱”，和西方的“博爱”相似；墨家重视技术，这也与西方不谋而合。在诸子百家中，墨家可能是最接近西方文明的学派。因此，当近代中国在西方的坚船利炮下生灵涂炭之时，中国的学者们不由开始缅怀墨子。倘若当年汉武帝不尊儒而尊墨，或许就能引领中华文明走上一条科技之路，从而免于两千多年后落得一个被列强欺凌的下场。这当然是臆想，但这却让墨家在近代意外走红，引起了关注。</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/gadget/my-first-try/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/my-first-try/</guid>
+      <description>  Document  --      --      </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/gadget/new-to-do-list/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/new-to-do-list/</guid>
+      <description>body { margin: 0; min-width: 250px; } /* Include the padding and border in an element&#39;s total width and height */ * { box-sizing: border-box; } /* Remove margins and padding from the list */ ul { margin: 0; padding: 0; } /* Style the list items */ ul li { cursor: pointer; position: relative; padding: 12px 8px 12px 40px; list-style-type: none; background: #eee; font-size: 18px; transition: 0.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/gadget/piano/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/piano/</guid>
+      <description>JS Piano Use your keyboard. Hover for hints. html { background: #000; font-family: &#39;Noto Serif&#39;, serif; -webkit-font-smoothing: antialiased; text-align: center; } video#bgvid { position: fixed; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; z-index: -100; transform: translateX(-50%) translateY(-50%); background-size: cover; } header { position: relative; margin: 30px 0; } header:after { content: &#39;&#39;; width: 460px; height: 15px; background: url(images/intro-div.svg) no-repeat center; display: inline-block; text-align: center; background-size: 70%; } h1 { color: #fff; font-size: 50px; font-weight: 400; letter-spacing: 0.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/gadget/plan/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/plan/</guid>
+      <description>Plan  body { font-family: &#34;Source Han Sans&#34;, &#34;San Francisco&#34;, &#34;PingFang SC&#34;, &#34;Hiragino Sans GB&#34;, &#34;Droid Sans Fallback&#34;, &#34;Microsoft YaHei&#34;, &#34;sans-serif&#34;; font-size: 17px; margin: 0; } #header { position: relative; top: 0px; left: 0px; width: 100%; height: 50px; background: #333333; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); z-index: 2; } .navbar { position: relative; margin-left: 10%; color: white; font-size: 1.25rem; } .figure { position: relative; width: 80%; } .</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/gadget/react-lifecycle-demo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/react-lifecycle-demo/</guid>
+      <description>class MyList extends React.Component { constructor(...args) { super(...args); this.state = { loading: true, error: null, data: null }; } componentDidMount() { const url = &#39;https://api.github.com/search/repositories?q=javascript&amp;sort=stars&#39;; $.getJSON(url) .done( (value) = this.setState({ loading: false, data: value }) ).fail( (jqXHR, textStatus) = this.setState({ loading: false, error: jqXHR.status }) ); } render() { if (this.state.loading) { return Loading...; } else if (this.state.error !== null) { return Error: {this.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/gadget/read-zip-file-by-url/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/read-zip-file-by-url/</guid>
+      <description> Read a zip file demo  操作方法：  选中下方文本框; 按 Ctrl + v 粘贴链接; 点击文本框外任意区域。    Please wait.          body { background-color: rgb(238, 224, 224); }  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/gadget/show-time/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/show-time/</guid>
+      <description>现在几点了？ body { font-family: &#34;Source Han Sans&#34;, &#34;San Francisco&#34;, &#34;PingFang SC&#34;, &#34;Hiragino Sans GB&#34;, &#34;Droid Sans Fallback&#34;, &#34;Microsoft YaHei&#34;, sans-serif; font-size: 14px; color: #333; } a { text-decoration: none; color: #f66; transition-property: color; transition-duration: .2s; transition-timing-function: ease-in-out; } a:hover { color: #333; } p { margin: 1em 0; } p:empty { height: 1.5em; } main { margin: 0 5em; max-width: 48em; } h1 { margin: 1em 0; font-size: 24px; font-weight: 300; } textarea, article { width: 100%; height: 12em; margin: 2em 0; padding: .</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/gadget/tic-tac-toe/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/tic-tac-toe/</guid>
+      <description>React AppYou need to enable JavaScript to run this app.!function(e){function t(t){for(var n,a,p=t[0],l=t[1],i=t[2],c=0,s=[];c</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/gadget/to-do-list/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/to-do-list/</guid>
+      <description>计划表生成工具  &#34;use strict&#34;; var Items = { name: &#34;&#34;, isCheck: &#34;false&#34;, isDelete: &#34;false&#34; }; var objArray = []; var subArray = []; var submit_flag = true; var delete_flag = true; function addElement() { submit_flag = true; var item = Object.create(Items); var v = document.getElementById(&#34;myTextarea&#34;).value; item.name = v objArray.push(item); var body = &#39;#Name&#39; for (var i = 0; i &#39;; body += &#39;&#39; + index.toString(10) + &#39;&#39;; //body += &#39;&#39; + &#39;&#39; + &#39;&#39;; body += &#39;&#39; + objArray[i].</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/gadget/unzip/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/unzip/</guid>
+      <description>Read a zip file demo    zip.js   A JavaScript library to zip and unzip files   Read a zip file demo   choose a zip file     choose temporary storage RAM HDD     download zip content         var _gaq = _gaq || []; _gaq.push([&#39;_setAccount&#39;, &#39;UA-15560121-15&#39;]); _gaq.push([&#39;_trackPageview&#39;]); (function () { var ga = document.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>pyqt5 on Chang Luo</title>
+    <link>http://luochang212.github.io/tags/pyqt5/</link>
+    <description>Recent content in pyqt5 on Chang Luo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 10 May 2019 21:43:09 +0100</lastBuildDate>
+    
+	<atom:link href="http://luochang212.github.io/tags/pyqt5/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PyQt5 侧边栏布局</title>
+      <link>http://luochang212.github.io/posts/pyqt5_layout_sidebar/</link>
+      <pubDate>Fri, 10 May 2019 21:43:09 +0100</pubDate>
+      
+      <guid>http://luochang212.github.io/posts/pyqt5_layout_sidebar/</guid>
+      <description>GitHub项目地址：pyqt5-demo
+主流软件如网易云音乐、腾讯电脑管家，都有侧边栏。侧边栏能有效扩展应用空间，使软件功能的层次更加分明。
+但PyQt5并没有一个专门的方法实现侧边栏。要实现侧边栏，主要有两种技术路线。一是从标签部件(QTabWidget)改造而来，二是用网格布局(QGridLayout)画出来。本文采用第一种技术路线，制作一个简单的侧边栏应用。
+ Note: 两种技术路线制作的侧边栏有细微的差别。如果采用第二种技术路线(QGridLayout)，侧边栏和内容页之间没有明显的分界。所以需要额外地在侧边栏和内容页之间加一条线，来突出两者属于不同的组件。而第一种技术路线(QTabWidget)不需要，创建的侧边栏和内容页之间的区别明显。
+下图是一个用第二种技术路线(QGridLayout)制作的应用，可以看到侧边栏和内容页中间画了一条线，以突出两个组件的分界。
+ 步骤分析 在开始写代码之前，我们先分析一下制作侧边栏需要几个步骤。
+ 添加部件 为部件设置布局 将标签部件改造成侧边栏的内容页 为侧边栏按钮编写函数，实现内容页之间的跳转  添加部件并设置布局 此段不详述。关于部件和布局的基础知识，在上一篇中有介绍，详见PyQt5 布局浅析。
+下面这段代码添加了部件且设置了布局。
+from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__(self): super().__init__() # set the title of main window self.setWindowTitle(&#39;Sidebar layout - www.luochang.ink&#39;) # set the size of window self.Width = 800 self.height = int(0.618 * self.Width) self.resize(self.Width, self.height) # add all widgets self.btn_1 = QPushButton(&#39;1&#39;, self) self.btn_2 = QPushButton(&#39;2&#39;, self) self.</description>
+    </item>
+    
+    <item>
+      <title>PyQt5 布局浅析</title>
+      <link>http://luochang212.github.io/posts/pyqt5_layout/</link>
+      <pubDate>Fri, 03 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/posts/pyqt5_layout/</guid>
+      <description>PyQt5是Python环境下用来开发UI界面的一个包。它容易上手，对初学者友好，并且拥有丰富的函数库，可以实现大部分桌面应用的开发需求，且支持QSS语言，能够对界面风格做个性化调整。总体来说，PyQt5是一款开发效率极高的UI框架。这篇文章从零开始，教你搭建一个属于自己的桌面应用。
+ GitHub项目地址：pyqt5-demo
+创建第一个窗口 一般来说，桌面应用都以窗口(window)形式呈现。因此，要搭建桌面应用，首先要创建窗口。
+下面这段代码创建了一个空的窗口。
+from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__(self): super().__init__() # set the title of main window self.setWindowTitle(&#39;My first window - www.luochang.ink&#39;) # set the size of window self.Width = 500 self.height = int(0.618 * self.Width) self.resize(self.Width, self.height) if __name__ == &#39;__main__&#39;: app = QApplication(sys.argv) ex = Window() ex.show() sys.exit(app.exec_())  这段代码仅仅设置了窗口的标题和大小。下一步，我们要往这个空的窗口里添加部件(widget). 为了规范性，我们在Window类里新建一个函数initUI, 然后在initUI里为窗口添加部件。
+为窗口添加部件 下面这段代码为窗口添加了一个按钮部件(QPushButton).
+from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__(self): super().</description>
+    </item>
+    
+  </channel>
+</rss>

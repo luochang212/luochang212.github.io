@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.55.6" />
+
+    
+    
+    
+
+<title>PyQt5 侧边栏布局 • Chang Luo</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="PyQt5 侧边栏布局"/>
+<meta name="twitter:description" content="主流软件如网易云音乐、腾讯电脑管家，都有侧边栏。侧边栏能有效扩展应用空间，使软件功能的层次更加分明。但PyQt5并没有一个专门的方法实现侧边栏。要实现侧边栏，主要有两种技术路线。一是从标签部件(QTabWidget)改造而来，二是用网格布局(QGridLayout)画出来。本文采用第一种技术路线，制作一个简单的侧边栏应用。"/>
+
+<meta property="og:title" content="PyQt5 侧边栏布局" />
+<meta property="og:description" content="主流软件如网易云音乐、腾讯电脑管家，都有侧边栏。侧边栏能有效扩展应用空间，使软件功能的层次更加分明。但PyQt5并没有一个专门的方法实现侧边栏。要实现侧边栏，主要有两种技术路线。一是从标签部件(QTabWidget)改造而来，二是用网格布局(QGridLayout)画出来。本文采用第一种技术路线，制作一个简单的侧边栏应用。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://luochang212.github.io/posts/pyqt5_layout_sidebar/" />
+<meta property="article:published_time" content="2019-05-10T21:43:09&#43;01:00"/>
+<meta property="article:modified_time" content="2019-05-10T21:43:09&#43;01:00"/><meta property="og:site_name" content="Title" />
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.6a83d62c39a364f036df4db1ecd564645635d6c7fc182425cb501218fec485f5.css" integrity="sha256-aoPWLDmjZPA2302x7NVkZFY11sf8GCQly1ASGP7EhfU=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+
+<link rel="stylesheet" href="/scss/hugo-toc.8549a64d301421b4256ea9a0d5ca8b99178799f569d5d2daeb95f24cef3ce6b7.css" integrity="sha256-hUmmTTAUIbQlbqmg1cqLmReHmfVp1dLa65XyTO885rc=">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+</head>
+
+
+    <body class=" ">
+    <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://upcdn.b0.upaiyun.com/libs/jquery/jquery-1.9.0.min.js"></script>
+
+  <style>
+    body {
+      transition: background-color .5s;
+    }
+
+    #overlay {
+      position: fixed;
+      display: none;
+      width: calc(100vw - 580px);
+      height: 100%;
+      top: 0;
+      left: 0;
+       
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      right: 0;
+      background-color: #FFF;
+       
+      overflow-x: hidden;
+      transition: 0.5s;
+       
+       
+    }
+
+    #main {
+      transition: margin-left .5s;
+       
+      padding: 16px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      overflow: hidden;
+    }
+
+     
+    .tab {
+      overflow: hidden;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+    }
+
+     
+    .tab button {
+      background-color: inherit;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      transition: 0.3s;
+      font-size: 17px;
+    }
+
+     
+    .tab button:hover {
+      background-color: #ddd;
+    }
+
+     
+    .tab button.active {
+      background-color: #ccc;
+    }
+
+     
+    .tabcontent {
+      display: none;
+      padding: 12px 12px;
+      margin: 0;
+      border: 1px solid #ccc;
+      border-top: none;
+    }
+
+    .dropbtn {
+      background-color: #3498DB;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+    }
+
+    .dropup {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropup-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      bottom: 50px;
+      z-index: 1;
+    }
+
+    .dropup-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropup-content a:hover {
+      background-color: #ccc
+    }
+
+    .dropup:hover .dropup-content {
+      display: block;
+    }
+
+    .dropup:hover .dropbtn {
+      background-color: #2980B9;
+    }
+
+    #video2,
+    #video3 {
+      display: none;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  
+  <div class="sidebar">
+    <div class="container ">
+      <div class="sidebar-about">
+        <span class="site__title">
+          <a href="http://luochang212.github.io">Chang Luo</a>
+        </span>
+        
+        
+        
+        <div class="author-image">
+          <a href="#" class="load-iframe" onclick="openNav()"><img src="http://luochang212.github.io/images/profile.png" id="author-iamge"
+              alt="Author Image" class="img--circle img--headshot element--center"></a>
+        </div>
+        
+        <p class="site__description">
+          
+        </p>
+      </div>
+      <div class="collapsible-menu">
+        <input type="checkbox" id="menuToggle">
+        <label for="menuToggle">Chang Luo</label>
+        <div class="menu-content">
+          <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/portfolio/">
+						<span>Projects</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+		</li>
+	</ul>
+</div>
+
+          <section class="social">
+	
+	<a href="https://twitter.com/MinosPalace" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	<a href="https://instagram.com/icstocs" rel="me"><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></a>
+	
+	
+	<a href="https://github.com/luochang212" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://linkedin.com/in/bupt-luochang" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+</section>
+
+        </div>
+      </div>
+      
+<div class="copyright">
+  &copy; 2020 Chang Luo
+  
+</div>
+
+
+
+    </div>
+  </div>
+
+  
+  
+
+  <div id="overlay" onclick="off()"></div>
+
+  <div id="mySidenav" class="sidenav">
+
+    <div id="main">
+      <div class="tab">
+        <button id="default-tab" class="tablinks" onclick="openItem(event, 'Resources')">Resources</button>
+        <button class="tablinks" onclick="openItem(event, 'netease-player')">Music</button>
+        <button class="tablinks" onclick="openItem(event, 'Video-player')">Video</button>
+        <button class="tablinks" onclick="openItem(event, 'gallery')">Gallery</button>
+        <button class="tablinks" onclick="openItem(event, 'gadget')">Gadget</button>
+      </div>
+
+      <div id="Resources" class="tabcontent">
+        <iframe src="about:blank" data-src="/resources/" frameborder="0" height="560" width="100%" marginheight="0"
+          marginwidth="0" scrolling="yes"></iframe>
+      </div>
+
+      <div id="netease-player" class="tabcontent">
+        <iframe src="about:blank" data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
+          frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=450></iframe>
+      </div>
+
+      <div id="Video-player" class="tabcontent">
+
+        <div id="video1">
+          <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=94304902&cid=161422087&page=1"
+            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+        <div id="video2">
+          <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=20209913&cid=33001151&page=1"
+            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+        <div id="video3">
+          <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=15159845&cid=24679968&page=1"
+            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+
+        
+
+        
+
+        <br>
+        <div class="dropup">
+          <button class="dropbtn">更多视频</button>
+          <div class="dropup-content">
+            <a onclick="link1()">1</a>
+            <a onclick="link2()">2</a>
+            <a onclick="link3()">3</a>
+          </div>
+        </div>
+      </div>
+
+      <div id="gallery" class="tabcontent">
+        <iframe src="about:blank" data-src="/gadget/gallery/#two" frameborder="0" height="560" width="100%"
+          scrolling="yes"></iframe>
+      </div>
+
+      <div id="gadget" class="tabcontent">
+        <iframe src="about:blank" data-src="/gadget/" frameborder="0" height="560" width="100%"
+          scrolling="yes"></iframe>
+      </div>
+
+    </div>
+  </div>
+
+  
+  <script>
+    'use strict'
+    
+    function openNav() {
+      on();
+      document.getElementById("mySidenav").style.width = "580px";
+      document.body.style.backgroundColor = "rgba(0,0,0,0.5)";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.body.style.backgroundColor = "white";
+    }
+
+    function on() {
+      document.getElementById("overlay").style.display = "block";
+    }
+
+    function off() {
+      closeNav();
+      document.getElementById("overlay").style.display = "none";
+    }
+
+    
+    document.getElementById('default-tab').click();
+
+    function openItem(evt, itemName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(itemName).style.display = "block";
+      evt.currentTarget.className += "active";
+    }
+
+    function link1() {
+      document.getElementById("video1").style.display = "block";
+      document.getElementById("video2").style.display = "none";
+      document.getElementById("video3").style.display = "none";
+    }
+
+    function link2() {
+      document.getElementById("video1").style.display = "none";
+      document.getElementById("video2").style.display = "block";
+      document.getElementById("video3").style.display = "none";
+    }
+
+    function link3() {
+      document.getElementById("video1").style.display = "none";
+      document.getElementById("video2").style.display = "none";
+      document.getElementById("video3").style.display = "block";
+    }
+
+     
+    var flag = 0;
+
+     
+    $(".load-iframe").click(function () {
+      if (flag < 1) {
+        $("iframe").each(function () {
+          $(this).attr("src", $(this).data("src"));
+        });
+        flag = flag + 1;
+      }
+    });
+  </script>
+
+</body>
+
+
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>PyQt5 侧边栏布局</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> May 10, 2019
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/development">DEVELOPMENT</a>
+              •
+          
+              <a class="badge badge-category" href="/categories/pycharm">PYCHARM</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/python">python</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/pycharm">pycharm</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/pyqt5">pyqt5</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/layout">layout</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/sidebar">sidebar</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 3 min read
+</div>
+
+
+  </header>
+  
+  
+  
+    <div class="toc-wrapper">
+      <input type="checkbox" id="tocToggle">
+      <label for="tocToggle">目录</label>
+      
+          <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#步骤分析">步骤分析</a></li>
+<li><a href="#添加部件并设置布局">添加部件并设置布局</a></li>
+<li><a href="#为标签部件添加内容页">为标签部件添加内容页</a></li>
+<li><a href="#改造标签部件">改造标签部件</a></li>
+<li><a href="#通过按钮实现页面跳转">通过按钮实现页面跳转</a></li>
+<li><a href="#附录-本教程完整代码">附录：本教程完整代码</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+      
+    </div>
+  
+  
+  <div class="post">
+    
+
+<p>GitHub项目地址：<a href="https://github.com/luochang212/pyqt5-demo" target="_blank">pyqt5-demo</a></p>
+
+<p>主流软件如网易云音乐、腾讯电脑管家，都有侧边栏。侧边栏能有效扩展应用空间，使软件功能的层次更加分明。</p>
+
+<p>但PyQt5并没有一个专门的方法实现侧边栏。要实现侧边栏，主要有两种技术路线。一是从标签部件(QTabWidget)改造而来，二是用网格布局(QGridLayout)画出来。本文采用第一种技术路线，制作一个简单的侧边栏应用。</p>
+
+<blockquote>
+<p><strong>Note:</strong> 两种技术路线制作的侧边栏有细微的差别。如果采用第二种技术路线(QGridLayout)，侧边栏和内容页之间没有明显的分界。所以需要额外地在侧边栏和内容页之间加一条线，来突出两者属于不同的组件。而第一种技术路线(QTabWidget)不需要，创建的侧边栏和内容页之间的区别明显。</p>
+
+<p>下图是一个用第二种技术路线(QGridLayout)制作的应用，可以看到侧边栏和内容页中间画了一条线，以突出两个组件的分界。</p>
+
+<p><img src="/img/QGridLayout.png" alt="QGridLayout" /></p>
+</blockquote>
+
+<h3 id="步骤分析">步骤分析</h3>
+
+<p>在开始写代码之前，我们先分析一下制作侧边栏需要几个步骤。</p>
+
+<ol>
+<li>添加部件</li>
+<li>为部件设置布局</li>
+<li>将标签部件改造成侧边栏的内容页</li>
+<li>为侧边栏按钮编写函数，实现内容页之间的跳转</li>
+</ol>
+
+<h3 id="添加部件并设置布局">添加部件并设置布局</h3>
+
+<p>此段不详述。关于部件和布局的基础知识，在上一篇中有介绍，详见<a href="https://www.luochang.ink/posts/pyqt5_layout/">PyQt5 布局浅析</a>。</p>
+
+<p><strong>下面这段代码添加了部件且设置了布局。</strong></p>
+
+<pre><code class="language-python">from PyQt5.QtWidgets import *
+import sys
+
+
+class Window(QMainWindow):
+    def __init__(self):
+        super().__init__()
+
+        # set the title of main window
+        self.setWindowTitle('Sidebar layout - www.luochang.ink')
+
+        # set the size of window
+        self.Width = 800
+        self.height = int(0.618 * self.Width)
+        self.resize(self.Width, self.height)
+		
+		# add all widgets
+        self.btn_1 = QPushButton('1', self)
+        self.btn_2 = QPushButton('2', self)
+        self.btn_3 = QPushButton('3', self)
+        self.btn_4 = QPushButton('4', self)
+
+        self.initUI()
+
+    def initUI(self):
+        left_layout = QVBoxLayout()
+        left_layout.addWidget(self.btn_1)
+        left_layout.addWidget(self.btn_2)
+        left_layout.addWidget(self.btn_3)
+        left_layout.addWidget(self.btn_4)
+        left_layout.addStretch(5)
+        left_layout.setSpacing(20)
+        left_widget = QWidget()
+        left_widget.setLayout(left_layout)
+
+        self.right_widget = QTabWidget()
+        self.right_widget.tabBar().setObjectName(&quot;mainTab&quot;)
+
+        main_layout = QHBoxLayout()
+        main_layout.addWidget(left_widget)
+        main_layout.addWidget(self.right_widget)
+        main_layout.setStretch(0, 40)
+        main_layout.setStretch(1, 200)
+        main_widget = QWidget()
+        main_widget.setLayout(main_layout)
+        self.setCentralWidget(main_widget)
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    ex = Window()
+    ex.show()
+    sys.exit(app.exec_())
+
+</code></pre>
+
+<p><img src="/img/sidebar_basic.JPG" alt="sidebar_basic" /></p>
+
+<p>上述代码，在<code>__init__</code>内添加了部件，在<code>initUI</code>里设置了部件的布局。但因为我们并没有给标签部件(QTabWidget)添加页面，所以现在标签页面正好是没有标签的。后续加上内容页之后，标签(Tab)又会出现，到那是我们要用技巧再把标签隐去。</p>
+
+<p>布局都好了，但这时的标签部件还没有内容页。没有内容页的标签部件是没有灵魂的，所以下面，我们给标签部件添加内容页。</p>
+
+<h3 id="为标签部件添加内容页">为标签部件添加内容页</h3>
+
+<p><strong>添加标签的三个步骤：</strong></p>
+
+<ol>
+<li>定义内容页函数</li>
+<li>调用内容页函数以生成内容页</li>
+<li>将内容页依次加入标签部件</li>
+</ol>
+
+<p>我们首先编写定义内容页的函数。</p>
+
+<p><strong>下面这段代码定义了内容页。</strong></p>
+
+<pre><code class="language-python">	def ui1(self):
+		main_layout = QVBoxLayout()
+		main_layout.addWidget(QLabel('page 1'))
+		main_layout.addStretch(5)
+		main = QWidget()
+		main.setLayout(main_layout)
+		return main
+
+	def ui2(self):
+		main_layout = QVBoxLayout()
+		main_layout.addWidget(QLabel('page 2'))
+		main_layout.addStretch(5)
+		main = QWidget()
+		main.setLayout(main_layout)
+		return main
+			
+	def ui3(self):
+		main_layout = QVBoxLayout()
+		main_layout.addWidget(QLabel('page 3'))
+		main_layout.addStretch(5)
+		main = QWidget()
+		main.setLayout(main_layout)
+		return main
+
+	def ui4(self):
+		main_layout = QVBoxLayout()
+		main_layout.addWidget(QLabel('page 4'))
+		main_layout.addStretch(5)
+		main = QWidget()
+		main.setLayout(main_layout)
+		return main
+</code></pre>
+
+<p>下一步，在<code>__init__</code>里调用上述函数以生成内容页。</p>
+
+<p><strong>下面这段代码生成了内容页。</strong></p>
+
+<pre><code class="language-python">    # def __init__(self):
+    #     super().__init__()
+	
+        # add tabs
+        self.tab1 = self.ui1()
+        self.tab2 = self.ui2()
+        self.tab3 = self.ui3()
+        self.tab4 = self.ui4()
+</code></pre>
+
+<p>在<code>initUI</code>函数里，将内容页加入标签部件。请注意下面这段代码添加的位置，它必须在语句<code>main_layout.addWidget(self.right_widget)</code>之前，否则程序有可能出错。</p>
+
+<p><strong>下面这段代码将内容页加入标签部件。</strong></p>
+
+<pre><code class="language-python">    # def initUI(self):
+        self.right_widget.addTab(self.tab1, '')
+        self.right_widget.addTab(self.tab2, '')
+        self.right_widget.addTab(self.tab3, '')
+        self.right_widget.addTab(self.tab4, '')
+</code></pre>
+
+<p><img src="/img/sidebar_tab.JPG" alt="sidebar_tab" /></p>
+
+<p>在上图中可以看见，标签部件的顶上冒出了小方头，在第二节中提到的<strong>标签</strong>(Tab)出现了。这时我们需要改造标签部件，隐去标签，并将原先点击标签触发的页面跳转功能，迁移到侧边栏按钮上。</p>
+
+<h3 id="改造标签部件">改造标签部件</h3>
+
+<p>隐藏标签部件的标签，其实只需要一行。下面用QSS隐去标签。<!--所谓QSS，就是下述`setStyleSheet`函数内的语句。--></p>
+
+<p><strong>下面这段代码隐藏了标签部件的标签并初始化显示页面。</strong></p>
+
+<pre><code class="language-python">    # def initUI(self):
+        self.right_widget.setCurrentIndex(0)
+        self.right_widget.setStyleSheet('''QTabBar::tab{width: 0; \
+            height: 0; margin: 0; padding: 0; border: none;}''')
+</code></pre>
+
+<h3 id="通过按钮实现页面跳转">通过按钮实现页面跳转</h3>
+
+<p>页面跳转功能本质上是通过<code>QTabWidget</code>的<code>setCurrentIndex(int)</code>函数实现的，知道这一点就好办了。把按钮代表的页面的索引作为<code>setCurrentIndex(int)</code>函数的输入，为每个按钮设定如下，即可实现页面跳转。</p>
+
+<p><strong>下面这段代码定义了按钮函数。</strong></p>
+
+<pre><code class="language-python">    def button1(self):
+        self.right_widget.setCurrentIndex(0)
+
+    def button2(self):
+        self.right_widget.setCurrentIndex(1)
+
+    def button3(self):
+        self.right_widget.setCurrentIndex(2)
+
+    def button4(self):
+        self.right_widget.setCurrentIndex(3)
+</code></pre>
+
+<p>最后，在<code>__init__</code>函数里，将按钮部件和函数绑定，一个简单的侧边栏就大功告成了！</p>
+
+<p><strong>下面这段代码为按钮部件绑定函数。</strong></p>
+
+<pre><code class="language-python">    # def __init__(self):
+    #     super().__init__()
+	
+        self.btn_1.clicked.connect(self.button1)
+        self.btn_2.clicked.connect(self.button2)
+        self.btn_3.clicked.connect(self.button3)
+        self.btn_4.clicked.connect(self.button4)
+</code></pre>
+
+<p><img src="/img/sidebar_hidetab.JPG" alt="sidebar_tab" /></p>
+
+<blockquote>
+<p><strong>Note1:</strong> 为了让代码结构清晰，易于理解，本例只有最简单的功能和布局。如果你对进一步完善侧边栏感兴趣，请参阅<a href="https://github.com/luochang212/pyqt5-demo/blob/master/Demo/sidebar.py" target="_blank">sidebar.py</a>。</p>
+
+<p><strong>Note2:</strong> 此外，我在网络上搜了很久，没有搜到一篇关于制作侧边栏的文章。一番折腾后，我在GitHub找到了开源项目<a href="https://github.com/HuberTRoy/MusicBox" target="_blank">MusicBox</a>，然后才从中学会了这个构建侧边栏的方法。这个项目不错，在里面我学到了很多PyQt5的使用方法。在此感谢作者，并默默替他安利一波。</p>
+</blockquote>
+
+<h3 id="附录-本教程完整代码">附录：本教程完整代码</h3>
+
+<pre><code class="language-python">from PyQt5.QtWidgets import *
+import sys
+
+
+class Window(QMainWindow):
+    def __init__(self):
+        super().__init__()
+
+        # set the title of main window
+        self.setWindowTitle('Sidebar layout - www.luochang.ink')
+
+        # set the size of window
+        self.Width = 800
+        self.height = int(0.618 * self.Width)
+        self.resize(self.Width, self.height)
+		
+		# add all widgets
+        self.btn_1 = QPushButton('1', self)
+        self.btn_2 = QPushButton('2', self)
+        self.btn_3 = QPushButton('3', self)
+        self.btn_4 = QPushButton('4', self)
+
+        self.btn_1.clicked.connect(self.button1)
+        self.btn_2.clicked.connect(self.button2)
+        self.btn_3.clicked.connect(self.button3)
+        self.btn_4.clicked.connect(self.button4)
+
+        # add tabs
+        self.tab1 = self.ui1()
+        self.tab2 = self.ui2()
+        self.tab3 = self.ui3()
+        self.tab4 = self.ui4()
+
+        self.initUI()
+
+    def initUI(self):
+        left_layout = QVBoxLayout()
+        left_layout.addWidget(self.btn_1)
+        left_layout.addWidget(self.btn_2)
+        left_layout.addWidget(self.btn_3)
+        left_layout.addWidget(self.btn_4)
+        left_layout.addStretch(5)
+        left_layout.setSpacing(20)
+        left_widget = QWidget()
+        left_widget.setLayout(left_layout)
+
+        self.right_widget = QTabWidget()
+        self.right_widget.tabBar().setObjectName(&quot;mainTab&quot;)
+
+        self.right_widget.addTab(self.tab1, '')
+        self.right_widget.addTab(self.tab2, '')
+        self.right_widget.addTab(self.tab3, '')
+        self.right_widget.addTab(self.tab4, '')
+
+        self.right_widget.setCurrentIndex(0)
+        self.right_widget.setStyleSheet('''QTabBar::tab{width: 0; \
+            height: 0; margin: 0; padding: 0; border: none;}''')
+
+        main_layout = QHBoxLayout()
+        main_layout.addWidget(left_widget)
+        main_layout.addWidget(self.right_widget)
+        main_layout.setStretch(0, 40)
+        main_layout.setStretch(1, 200)
+        main_widget = QWidget()
+        main_widget.setLayout(main_layout)
+        self.setCentralWidget(main_widget)
+
+    # ----------------- 
+    # buttons
+
+    def button1(self):
+        self.right_widget.setCurrentIndex(0)
+
+    def button2(self):
+        self.right_widget.setCurrentIndex(1)
+
+    def button3(self):
+        self.right_widget.setCurrentIndex(2)
+
+    def button4(self):
+        self.right_widget.setCurrentIndex(3)
+	
+	# ----------------- 
+    # pages
+
+    def ui1(self):
+        main_layout = QVBoxLayout()
+        main_layout.addWidget(QLabel('page 1'))
+        main_layout.addStretch(5)
+        main = QWidget()
+        main.setLayout(main_layout)
+        return main
+
+    def ui2(self):
+        main_layout = QVBoxLayout()
+        main_layout.addWidget(QLabel('page 2'))
+        main_layout.addStretch(5)
+        main = QWidget()
+        main.setLayout(main_layout)
+        return main
+        
+    def ui3(self):
+        main_layout = QVBoxLayout()
+        main_layout.addWidget(QLabel('page 3'))
+        main_layout.addStretch(5)
+        main = QWidget()
+        main.setLayout(main_layout)
+        return main
+
+    def ui4(self):
+        main_layout = QVBoxLayout()
+        main_layout.addWidget(QLabel('page 4'))
+        main_layout.addStretch(5)
+        main = QWidget()
+        main.setLayout(main_layout)
+        return main
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    ex = Window()
+    ex.show()
+    sys.exit(app.exec_())
+
+</code></pre>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/pyqt5_layout/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">PyQt5 布局浅析</span>
+    </a>
+    
+    
+    <a href="/posts/to_do_list/" class="navigation-next">
+      <span class="navigation-tittle">JavaScript 初探</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+<style>
+  .my-emoji {
+    height: 25px;
+    display: inline-block;
+    margin: 0;
+    vertical-align: text-bottom;
+  }
+</style>
+
+
+        </div>
+        
+    <script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
+
+
+
+<script defer src="/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+
+    
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+
+
+
+    
+
+
+
+    </body>
+</html>

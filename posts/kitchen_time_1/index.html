@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.55.6" />
+
+    
+    
+    
+
+<title>厨房笔记（一）：牛刀小试 • Chang Luo</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="厨房笔记（一）：牛刀小试"/>
+<meta name="twitter:description" content="刚到英国那会儿，做饭的兴致很高。每天都跟过家家似的，买菜，钻研菜谱，然后做饭，在厨房里待上四五个小时也不觉得累，大概这就是“人生若只如初见”吧。"/>
+
+<meta property="og:title" content="厨房笔记（一）：牛刀小试" />
+<meta property="og:description" content="刚到英国那会儿，做饭的兴致很高。每天都跟过家家似的，买菜，钻研菜谱，然后做饭，在厨房里待上四五个小时也不觉得累，大概这就是“人生若只如初见”吧。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://luochang212.github.io/posts/kitchen_time_1/" />
+<meta property="article:published_time" content="2018-08-06T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2018-08-06T00:00:00&#43;00:00"/><meta property="og:site_name" content="Title" />
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.6a83d62c39a364f036df4db1ecd564645635d6c7fc182425cb501218fec485f5.css" integrity="sha256-aoPWLDmjZPA2302x7NVkZFY11sf8GCQly1ASGP7EhfU=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+
+<link rel="stylesheet" href="/scss/hugo-toc.8549a64d301421b4256ea9a0d5ca8b99178799f569d5d2daeb95f24cef3ce6b7.css" integrity="sha256-hUmmTTAUIbQlbqmg1cqLmReHmfVp1dLa65XyTO885rc=">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+</head>
+
+
+    <body class=" ">
+    <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://upcdn.b0.upaiyun.com/libs/jquery/jquery-1.9.0.min.js"></script>
+
+  <style>
+    body {
+      transition: background-color .5s;
+    }
+
+    #overlay {
+      position: fixed;
+      display: none;
+      width: calc(100vw - 580px);
+      height: 100%;
+      top: 0;
+      left: 0;
+       
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      right: 0;
+      background-color: #FFF;
+       
+      overflow-x: hidden;
+      transition: 0.5s;
+       
+       
+    }
+
+    #main {
+      transition: margin-left .5s;
+       
+      padding: 16px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      overflow: hidden;
+    }
+
+     
+    .tab {
+      overflow: hidden;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+    }
+
+     
+    .tab button {
+      background-color: inherit;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      transition: 0.3s;
+      font-size: 17px;
+    }
+
+     
+    .tab button:hover {
+      background-color: #ddd;
+    }
+
+     
+    .tab button.active {
+      background-color: #ccc;
+    }
+
+     
+    .tabcontent {
+      display: none;
+      padding: 12px 12px;
+      margin: 0;
+      border: 1px solid #ccc;
+      border-top: none;
+    }
+
+    .dropbtn {
+      background-color: #3498DB;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+    }
+
+    .dropup {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropup-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      bottom: 50px;
+      z-index: 1;
+    }
+
+    .dropup-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropup-content a:hover {
+      background-color: #ccc
+    }
+
+    .dropup:hover .dropup-content {
+      display: block;
+    }
+
+    .dropup:hover .dropbtn {
+      background-color: #2980B9;
+    }
+
+    #video2,
+    #video3 {
+      display: none;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  
+  <div class="sidebar">
+    <div class="container ">
+      <div class="sidebar-about">
+        <span class="site__title">
+          <a href="http://luochang212.github.io">Chang Luo</a>
+        </span>
+        
+        
+        
+        <div class="author-image">
+          <a href="#" class="load-iframe" onclick="openNav()"><img src="http://luochang212.github.io/images/profile.png" id="author-iamge"
+              alt="Author Image" class="img--circle img--headshot element--center"></a>
+        </div>
+        
+        <p class="site__description">
+          
+        </p>
+      </div>
+      <div class="collapsible-menu">
+        <input type="checkbox" id="menuToggle">
+        <label for="menuToggle">Chang Luo</label>
+        <div class="menu-content">
+          <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/portfolio/">
+						<span>Projects</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+		</li>
+	</ul>
+</div>
+
+          <section class="social">
+	
+	<a href="https://twitter.com/MinosPalace" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	<a href="https://instagram.com/icstocs" rel="me"><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></a>
+	
+	
+	<a href="https://github.com/luochang212" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://linkedin.com/in/bupt-luochang" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+</section>
+
+        </div>
+      </div>
+      
+<div class="copyright">
+  &copy; 2020 Chang Luo
+  
+</div>
+
+
+
+    </div>
+  </div>
+
+  
+  
+
+  <div id="overlay" onclick="off()"></div>
+
+  <div id="mySidenav" class="sidenav">
+
+    <div id="main">
+      <div class="tab">
+        <button id="default-tab" class="tablinks" onclick="openItem(event, 'Resources')">Resources</button>
+        <button class="tablinks" onclick="openItem(event, 'netease-player')">Music</button>
+        <button class="tablinks" onclick="openItem(event, 'Video-player')">Video</button>
+        <button class="tablinks" onclick="openItem(event, 'gallery')">Gallery</button>
+        <button class="tablinks" onclick="openItem(event, 'gadget')">Gadget</button>
+      </div>
+
+      <div id="Resources" class="tabcontent">
+        <iframe src="about:blank" data-src="/resources/" frameborder="0" height="560" width="100%" marginheight="0"
+          marginwidth="0" scrolling="yes"></iframe>
+      </div>
+
+      <div id="netease-player" class="tabcontent">
+        <iframe src="about:blank" data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
+          frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=450></iframe>
+      </div>
+
+      <div id="Video-player" class="tabcontent">
+
+        <div id="video1">
+          <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=94304902&cid=161422087&page=1"
+            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+        <div id="video2">
+          <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=20209913&cid=33001151&page=1"
+            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+        <div id="video3">
+          <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=15159845&cid=24679968&page=1"
+            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+
+        
+
+        
+
+        <br>
+        <div class="dropup">
+          <button class="dropbtn">更多视频</button>
+          <div class="dropup-content">
+            <a onclick="link1()">1</a>
+            <a onclick="link2()">2</a>
+            <a onclick="link3()">3</a>
+          </div>
+        </div>
+      </div>
+
+      <div id="gallery" class="tabcontent">
+        <iframe src="about:blank" data-src="/gadget/gallery/#two" frameborder="0" height="560" width="100%"
+          scrolling="yes"></iframe>
+      </div>
+
+      <div id="gadget" class="tabcontent">
+        <iframe src="about:blank" data-src="/gadget/" frameborder="0" height="560" width="100%"
+          scrolling="yes"></iframe>
+      </div>
+
+    </div>
+  </div>
+
+  
+  <script>
+    'use strict'
+    
+    function openNav() {
+      on();
+      document.getElementById("mySidenav").style.width = "580px";
+      document.body.style.backgroundColor = "rgba(0,0,0,0.5)";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.body.style.backgroundColor = "white";
+    }
+
+    function on() {
+      document.getElementById("overlay").style.display = "block";
+    }
+
+    function off() {
+      closeNav();
+      document.getElementById("overlay").style.display = "none";
+    }
+
+    
+    document.getElementById('default-tab').click();
+
+    function openItem(evt, itemName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(itemName).style.display = "block";
+      evt.currentTarget.className += "active";
+    }
+
+    function link1() {
+      document.getElementById("video1").style.display = "block";
+      document.getElementById("video2").style.display = "none";
+      document.getElementById("video3").style.display = "none";
+    }
+
+    function link2() {
+      document.getElementById("video1").style.display = "none";
+      document.getElementById("video2").style.display = "block";
+      document.getElementById("video3").style.display = "none";
+    }
+
+    function link3() {
+      document.getElementById("video1").style.display = "none";
+      document.getElementById("video2").style.display = "none";
+      document.getElementById("video3").style.display = "block";
+    }
+
+     
+    var flag = 0;
+
+     
+    $(".load-iframe").click(function () {
+      if (flag < 1) {
+        $("iframe").each(function () {
+          $(this).attr("src", $(this).data("src"));
+        });
+        flag = flag + 1;
+      }
+    });
+  </script>
+
+</body>
+
+
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>厨房笔记（一）：牛刀小试</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Aug 6, 2018
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/kitchen">KITCHEN</a>
+              •
+          
+              <a class="badge badge-category" href="/categories/life">LIFE</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/beef">beef</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/chicken">chicken</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/pork">pork</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 1 min read
+</div>
+
+
+  </header>
+  
+  
+  
+    <div class="toc-wrapper">
+      <input type="checkbox" id="tocToggle">
+      <label for="tocToggle">目录</label>
+      
+          <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#拌牛肉">拌牛肉</a></li>
+<li><a href="#亲子丼">亲子丼</a></li>
+<li><a href="#红烧肉">红烧肉</a></li>
+<li><a href="#牛肉丸意大利面">牛肉丸意大利面</a></li>
+<li><a href="#葱油鸡">葱油鸡</a></li>
+<li><a href="#芋头的鸡丝凉面">芋头的鸡丝凉面！</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+      
+    </div>
+  
+  
+  <div class="post">
+    
+
+<blockquote>
+<p>刚到英国那会儿，做饭的兴致很高。每天都跟过家家似的，买菜，钻研菜谱，然后做饭，在厨房里待上四五个小时也不觉得累。大概这就是“人生若只如初见”吧。</p>
+</blockquote>
+
+<p><br></p>
+
+<!--原文首发于我的豆瓣-->
+
+<h3 id="拌牛肉">拌牛肉</h3>
+
+<!--2017-08-05 21:26:06-->
+
+<p>原料：牛肉3两，猪油，葱，酱油，地瓜粉1匙半，盐</p>
+
+<p>做法：</p>
+
+<ol>
+<li><p>牛肉顺纹路切成宽约一寸的肉条，肉条逆纹路切片，装碗，用自来水清洗，沥干，加入一匙猪油和适量的盐与酱油，用手抓揉片刻后，加入一匙半的地瓜粉，继续抓握揉捏约3分钟即可，葱切好备用；</p></li>
+
+<li><p>五匙猪油下锅，至微热，放入适量葱头和小半葱段，煎至略有香味溢出，起锅备用；</p></li>
+
+<li><p>水烧沸，调至小火，牛肉下锅，先不要搅动，待地瓜粉固结后，可用筷子将牛肉摊开，当水再次沸腾时，用漏勺将肉舀出，趁热放入煎好的猪油中搅拌，菜即成。</p></li>
+</ol>
+
+<p><img src="/img/kitchen-beef.jpg" alt="拌牛肉配面吃" /></p>
+
+<p><br></p>
+
+<h3 id="亲子丼">亲子丼</h3>
+
+<!--2018-08-07 15:40:25-->
+
+<p>原料：米饭，鸡肉，洋葱，鸡蛋，酱油，盐，糖，料酒</p>
+
+<p>做法：</p>
+
+<ol>
+<li><p>米饭下锅煮，可弃之不顾。</p></li>
+
+<li><p>鸡肉切小块，放酱油、盐、料酒腌一下；洋葱切短条；鸡蛋稍稍打散。</p></li>
+
+<li><p>鸡肉下锅煎至出油，起锅。此时锅不必洗，放半碗水，加酱油、少量料酒和糖。</p></li>
+
+<li><p>待水烧开，放入鸡肉和洋葱。盖锅盖将鸡肉焖熟，然后倒入一半蛋液，盖锅盖小火焖3分钟。</p></li>
+
+<li><p>起锅盖，倒入剩下一半蛋液。菜即成。</p></li>
+</ol>
+
+<p><img src="/img/kitchen-chicken-egg.jpg" alt="亲子丼" /></p>
+
+<p><br></p>
+
+<h3 id="红烧肉">红烧肉</h3>
+
+<!--2018-08-07 16:13:03-->
+
+<p>原料：五花肉，葱，姜，蒜，大料，老抽，生抽，糖，油</p>
+
+<p>做法：</p>
+
+<ol>
+<li><p>五花肉切块，葱切段，蒜切末，姜切条。</p></li>
+
+<li><p>倒油，加葱头、姜条、蒜末、大料，小火熬油。油熬出香味后，放五花肉翻炒，闻香即可起锅。</p></li>
+
+<li><p>另起一锅油，倒六七小勺糖，中火将糖煮化。倒入五花肉，翻炒片刻后，加少量水、老抽、生抽。</p></li>
+
+<li><p>时不时搅拌，尝肉汁甜度，不够可加糖。待锅内汤汁收浓稠，起锅享用。</p></li>
+</ol>
+
+<p><img src="/img/kitchen-pork-stewed-in-soy-sauce.jpg" alt="红烧肉" /></p>
+
+<p><br></p>
+
+<h3 id="牛肉丸意大利面">牛肉丸意大利面</h3>
+
+<!--2018-08-07 16:25:29-->
+
+<p>原料：意面、牛肉丸、葱、蒜、番茄、番茄酱</p>
+
+<p>做法：</p>
+
+<ol>
+<li><p>烧一壶开水，倒入电饭锅，加两勺盐，放入螺旋意大利面。面煮不烂，可以弃之不顾。</p></li>
+
+<li><p>切葱头，剁蒜泥，番茄切小块备用。</p></li>
+
+<li><p>烧一锅油，放入丸子，翻面煎至定型。</p></li>
+
+<li><p>起锅后油不倒，加入蒜泥葱头炒香。番茄块倒入锅中炒软，然后加大量番茄酱，继续翻炒，以防番茄酱烧焦。</p></li>
+
+<li><p>捞面放入锅中和酱汁搅和搅和，放入丸子，起锅开吃。</p></li>
+</ol>
+
+<p><img src="/img/kitchen-beef-ball.jpg" alt="牛肉丸意大利面" /></p>
+
+<p><br></p>
+
+<h3 id="葱油鸡">葱油鸡</h3>
+
+<!--2018-08-07 16:29:43-->
+
+<p>原料：大鸡腿、葱、姜、蒜、料酒</p>
+
+<p>做法：</p>
+
+<ol>
+<li><p>鸡肉处理干净后，用盐给它来个大宝剑。盘中先放葱结、姜片、鸡肉，次淋白葡萄酒。</p></li>
+
+<li><p>鸡肉盛于盘内，冷水入锅，小火蒸20分钟。</p></li>
+
+<li><p>此时切葱末、蒜泥、姜泥备用。</p></li>
+
+<li><p>起油锅，小火炸葱头，出香味后放入葱末、蒜泥、姜泥，煸炒出香味。待肉出锅后，可拿干净的刀切片，再浇葱油。亦可不切，大口嚼之可也。</p></li>
+</ol>
+
+<p><br></p>
+
+<h3 id="芋头的鸡丝凉面">芋头的鸡丝凉面！</h3>
+
+<!--2018-08-07 17:31:52-->
+
+<p>原教程链接：<a href="https://www.bilibili.com/video/av28407533">https://www.bilibili.com/video/av28407533</a></p>
+
+<p>原料：鸡胸肉、黄瓜、意大利面、花生酱、松子、生抽、醋、料酒、辣椒、蒜头、橄榄油</p>
+
+<p>做法：</p>
+
+<ol>
+<li><p>电饭锅加水放面，加盐巴煮。</p></li>
+
+<li><p>鸡胸肉处理干净，将肉肉锤松。开水放肉，加八角、葱段、姜片、料酒。再次煮沸后关火，焖十分钟。</p></li>
+
+<li><p>意面起锅，放凉水里泡一哈，滤出面条，加橄榄油拌一拌，放在一边就好啦！</p></li>
+
+<li><p>黄瓜去皮切条，葱切成细细的小圈，菜码就做好啦！</p></li>
+
+<li><p>花生酱加两份生抽一份醋，调成酸奶一样的质感，凉面汁就做好啦！</p></li>
+
+<li><p>蒜切末，松子装进保鲜袋用书脊砸碎。碗内放辣椒、松子碎末、蒜末。烧一锅油，倒入碗中搅合搅合，油泼辣子（伪）就做好啦！</p></li>
+
+<li><p>拿个盘中，放面，放菜码，放葱花，放凉面汁，放油泼辣子。鸡丝凉面就做好啦~</p></li>
+</ol>
+
+<p>注：根据个人口味适当调整了生抽和醋的比例，凉面汁的稠度以及简化了蒜汁的制作（直接把蒜末加到油泼辣子中）另本人冰箱里没有鸡胸肉，所以本次图片中的成品是牛肉丝凉面，事实证明牛肉丝并不适合做凉面，别问我怎么知道的（皮）</p>
+
+<p><img src="/img/kitchen-chicken-noodle.jpg" alt="鸡丝凉面" /></p>
+
+<p><br></p>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/markowitz_model/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">【项目】基于蚁群算法的证券投资组合优化</span>
+    </a>
+    
+    
+    <a href="/posts/python_math_problem/" class="navigation-next">
+      <span class="navigation-tittle">Python 解置换群问题</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+<style>
+  .my-emoji {
+    height: 25px;
+    display: inline-block;
+    margin: 0;
+    vertical-align: text-bottom;
+  }
+</style>
+
+
+        </div>
+        
+    <script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
+
+
+
+<script defer src="/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+
+    
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+
+
+
+    
+
+
+
+    </body>
+</html>
