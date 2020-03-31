@@ -499,7 +499,7 @@
     
     
     <br/>
-    <i class="fas fa-clock"></i> 2 min read
+    <i class="fas fa-clock"></i> 3 min read
 </div>
 
 
@@ -523,6 +523,7 @@
 <li><a href="#函数">函数</a></li>
 <li><a href="#异常">异常</a></li>
 <li><a href="#闭包">闭包</a></li>
+<li><a href="#生成器">生成器</a></li>
 <li><a href="#装饰器">装饰器</a></li>
 <li><a href="#内置函数">内置函数</a></li>
 </ul></li>
@@ -684,6 +685,34 @@
 
 <p><center>
 <button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/closures.ipynb')">查看示例</button>
+</center></p>
+
+<h3 id="生成器">生成器</h3>
+
+<blockquote>
+<p>Every generator is an iterator: generators fully implement the iterator interface. But an iterator—as defined in the GoF book— retrieves items from a collection, while a generator can produce items “out of thin air.” That’s why the Fibonacci sequence gener‐ ator is a common example: an infinite series of numbers cannot be stored in a collection.  &ndash; <em>Fluent Pyton</em></p>
+</blockquote>
+
+<p>《流畅的Python》这本书中告诉我们：每个生成器都是一个迭代器。为什么这么说？因为生成器完全实现了迭代器的接口。但是一个迭代器需要从集合中取出元素，而生成器却可以无中生有。</p>
+
+<p>本文目录：</p>
+
+<ol>
+<li>可迭代对象</li>
+<li>可迭代对象与迭代器的对比</li>
+<li>典型的迭代器</li>
+<li>Sentence 类第3版: 生成器函数</li>
+<li>Sentence 类第4版: 惰性实现</li>
+<li>Sentence类第5版: 生成器表达式</li>
+<li>等差数列生成器</li>
+<li>标准库中的生成器函数</li>
+<li>Python 3.3 中新出现的句法: yield from</li>
+<li>可迭代的归约函数</li>
+<li>深入分析iter函数</li>
+</ol>
+
+<p><center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/iter.ipynb')">查看示例</button>
 </center></p>
 
 <h3 id="装饰器">装饰器</h3>
