@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>algorithm</title>
+      <link>http://luochang212.github.io/tags/algorithm/</link>
+      <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/tags/algorithm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>combinatorics</title>
       <link>http://luochang212.github.io/tags/combinatorics/</link>
       <pubDate>Fri, 21 Feb 2020 00:00:00 +0000</pubDate>
@@ -93,20 +102,20 @@
     </item>
     
     <item>
-      <title>API</title>
-      <link>http://luochang212.github.io/tags/api/</link>
-      <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/tags/api/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Monaco editor</title>
       <link>http://luochang212.github.io/tags/monaco-editor/</link>
       <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/tags/monaco-editor/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>api</title>
+      <link>http://luochang212.github.io/tags/api/</link>
+      <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/tags/api/</guid>
       <description></description>
     </item>
     

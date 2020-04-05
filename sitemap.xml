@@ -150,6 +150,12 @@
   </url>
   
   <url>
+    <loc>http://luochang212.github.io/tags/algorithm/</loc>
+    <lastmod>2020-04-03T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://luochang212.github.io/tags/combinatorics/</loc>
     <lastmod>2020-02-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -210,12 +216,6 @@
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/tags/api/</loc>
-    <lastmod>2019-10-07T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://luochang212.github.io/categories/javascript/</loc>
     <lastmod>2019-10-07T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -223,6 +223,12 @@
   
   <url>
     <loc>http://luochang212.github.io/tags/monaco-editor/</loc>
+    <lastmod>2019-10-07T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/tags/api/</loc>
     <lastmod>2019-10-07T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
