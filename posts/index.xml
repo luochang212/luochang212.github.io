@@ -6,10 +6,22 @@
     <description>Recent content in Posts on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 21 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 03 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://luochang212.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>算法集萃</title>
+      <link>http://luochang212.github.io/posts/algorithms/</link>
+      <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/posts/algorithms/</guid>
+      <description>排序 本节介绍各种排序算法的思路和特点，并提供了示例代码。
+ 插入排序  直接插入排序 希尔排序  交换排序  冒泡排序 快速排序  选择排序  简单选择排序 堆排序  归并排序  二路归并排序    查看示例 
+排列组合  排列 组合 子集   查看示例 
+n or k==0: return [] if k==1: return [[i] for i in range(1,n+1)] if k==n: return [[i for i in range(1,n+1)]] answer=self.combine(n-1,k) for item in self.combine(n-1,k-1): item.append(n) answer.append(item) return answer if __name__ == &#39;__main__&#39;: solution = Solution() print(solution.</description>
+    </item>
     
     <item>
       <title>只有魔法才能打败魔法</title>
