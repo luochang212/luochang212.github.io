@@ -6,7 +6,7 @@
     <description>Recent content in practice on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 11 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 14 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://luochang212.github.io/tags/practice/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,10 +14,11 @@
     <item>
       <title>Python 工程化实践</title>
       <link>http://luochang212.github.io/posts/python_practice/</link>
-      <pubDate>Thu, 11 Jun 2020 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/python_practice/</guid>
-      <description>Virtualenv Virtualenv 用于为 Python 项目创建独立的运行环境。
+      <description>学 Python 不应仅限于学习程序设计，在工程实践中同样存在大量知识，比如虚拟环境的创建、编码风格的养成以及如何编写单测等等。本文致力于介绍 Python 走向工程化所需的前置知识。
+ Virtualenv Virtualenv 用于为 Python 项目创建独立的运行环境。
 作为一门动态语言，Python 程序能否正确运行和环境配置密切相关。当我们下载好一个 Python 项目代码，通常需要先配置环境，然后才能运行。为了防止这个外来的 Python 项目污染我们的全局环境(global environment)，我们应该为它配置独立的运行环境。这时 Virtualenv 就派上用场了。
 在 Virtualenv 创建的虚拟环境中，我们可以指定特定的库版本甚至Python版本，而不影响全局环境。但需要注意的是，因为 Virtualenv 依赖于全局环境，因此如果你更新了 Python 全局环境，有可能对 Virtualenv 造成影响。
 更多细节参见 Virtualenv 文档。
@@ -25,8 +26,7 @@
  如果你还没有 Virtualenv，打开命令行窗口，下载一个。
 $ pip install virtualenv  安装好之后，如果你想在当前目录创建一个虚拟环境，只需要一行代码。
 $ virtualenv my_project # my_project 可替换为你项目的名称   Note: 如果需要安装特定版本的 Python，可使用 -p 选项指定 Python 版本。
-$ virtualenv -p /usr/bin/python2.6 my_project   用 ls 命令检查，你可以发现当前目录下创建了一个名为 my_project 的文件夹。但虚拟环境仅仅是被创建，要激活该环境，请使用如下命令：
-$ source my_project/bin/activate  激活完以后，使用以下命令可看当前的 Python 路径：</description>
+$ virtualenv -p /usr/bin/python2.6 my_project   用 ls 命令检查，你可以发现当前目录下创建了一个名为 my_project 的文件夹。但虚拟环境仅仅是被创建，要激活该环境，请使用如下命令：</description>
     </item>
     
   </channel>
