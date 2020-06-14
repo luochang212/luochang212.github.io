@@ -17,19 +17,19 @@
     
     
 
-<title>算法集萃 • Chang Luo</title>
+<title>Python 工程化实践 • Chang Luo</title>
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="算法集萃"/>
-<meta name="twitter:description" content="用于总结各类算法，持续更新中。"/>
+<meta name="twitter:title" content="Python 工程化实践"/>
+<meta name="twitter:description" content="---"/>
 
-<meta property="og:title" content="算法集萃" />
-<meta property="og:description" content="用于总结各类算法，持续更新中。" />
+<meta property="og:title" content="Python 工程化实践" />
+<meta property="og:description" content="---" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://luochang212.github.io/posts/algorithms/" />
-<meta property="article:published_time" content="2020-04-03T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2020-04-03T00:00:00&#43;00:00"/><meta property="og:site_name" content="Title" />
+<meta property="og:url" content="http://luochang212.github.io/posts/python_practice/" />
+<meta property="article:published_time" content="2020-06-11T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2020-06-11T00:00:00&#43;00:00"/><meta property="og:site_name" content="Title" />
 
 
     
@@ -460,13 +460,13 @@
     
 <article>
   <header>
-    <h1>算法集萃</h1>
+    <h1>Python 工程化实践</h1>
     
     
 <div class="post__meta">
     
     
-      <i class="fas fa-calendar-alt"></i> Apr 3, 2020
+      <i class="fas fa-calendar-alt"></i> Jun 11, 2020
     
     
     
@@ -493,13 +493,13 @@
           <a class="badge badge-tag" href="/tags/python">python</a>
            
       
-          <a class="badge badge-tag" href="/tags/algorithm">algorithm</a>
+          <a class="badge badge-tag" href="/tags/practice">practice</a>
           
       
     
     
     <br/>
-    <i class="fas fa-clock"></i> 1 min read
+    <i class="fas fa-clock"></i> 3 min read
 </div>
 
 
@@ -515,10 +515,12 @@
 <ul>
 <li>
 <ul>
-<li>
+<li><a href="#virtualenv">Virtualenv</a></li>
+<li><a href="#代码风格">代码风格</a>
 <ul>
-<li><a href="#排序">排序</a></li>
-<li><a href="#排列组合">排列组合</a></li>
+<li><a href="#①-docstrings">① Docstrings</a></li>
+<li><a href="#②-none-的判断">② None 的判断</a></li>
+<li><a href="#③-命名">③ 命名</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -530,176 +532,253 @@
   <div class="post">
     
 
+<h2 id="virtualenv">Virtualenv</h2>
+
+<p>Virtualenv 用于为 Python 项目创建独立的运行环境。</p>
+
+<p>作为一门动态语言，Python 程序能否正确运行和环境配置密切相关。当我们下载好一个 Python 项目代码，通常需要先配置环境，然后才能运行。为了防止这个外来的 Python 项目污染我们的全局环境(global environment)，我们应该为它配置独立的运行环境。这时 Virtualenv 就派上用场了。</p>
+
+<p>在 Virtualenv 创建的虚拟环境中，我们可以指定特定的库版本甚至Python版本，而不影响全局环境。但需要注意的是，因为 Virtualenv 依赖于全局环境，因此如果你更新了 Python 全局环境，有可能对 Virtualenv 造成影响。</p>
+
+<p>更多细节参见 <a href="https://docs.python.org/3/library/venv.html">Virtualenv 文档</a>。</p>
+
 <blockquote>
-<p>算法学习笔记，长期更新 <img src="/img/quyin/witty.png" class="my-emoji" style = "height: 32px;"></p>
+<p>注：以下教程适用于 MacOS。</p>
 </blockquote>
 
-<p>GitHub项目地址：<a href="https://github.com/luochang212/python-tips/tree/master/algorithms" target="_blank">python-tips/algorithms</a></p>
+<p>如果你还没有 Virtualenv，打开命令行窗口，下载一个。</p>
 
-<!-- ### 查找
+<pre><code class="language-shell">$ pip install virtualenv
+</code></pre>
 
-（1）二分查找
+<p>安装好之后，如果你想在当前目录创建一个虚拟环境，只需要一行代码。</p>
 
-LeetCode 704
+<pre><code class="language-shell">$ virtualenv my_project  # my_project 可替换为你项目的名称
+</code></pre>
 
-给定有序列表 nums，查找目标 target。如果不存在输出 -1；存在则输出下标。
-```python
-class Solution:
-    def search(self, nums, target):
-        if nums:
-            left = mid = 0
-            right = len(nums)
-            while left < right:
-                mid = left + (right - left) // 2
-                if nums[mid] == target:
-                    return mid
-                elif nums[mid] < target:
-                    left = mid + 1
-                elif nums[mid] > target:
-                    right = mid
-        return -1
-```
+<blockquote>
+<p><strong>Note</strong>: 如果需要安装特定版本的 Python，可使用 <code>-p</code> 选项指定 Python 版本。</p>
 
-（2）100 以内质数
+<pre><code class="language-shell">$ virtualenv -p /usr/bin/python2.6 my_project
+</code></pre>
+</blockquote>
 
-统计 100 以内质数的数量。
+<p>用 <code>ls</code> 命令检查，你可以发现当前目录下创建了一个名为 <code>my_project</code> 的文件夹。但虚拟环境仅仅是被创建，要激活该环境，请使用如下命令：</p>
 
-```python
-class Solution:
-    def prime(self):
-        ans = [2]
-        for i in range(3, 100):
-            flag = True
-            for j in ans:
-                if i % j == 0:
-                    flag = False
-            if flag:
-                ans.append(i)
-        return ans
-```
+<pre><code class="language-shell">$ source my_project/bin/activate
+</code></pre>
 
-（3）计数质数
+<p>激活完以后，使用以下命令可看当前的 Python 路径：</p>
 
-LeetCode 204
+<pre><code class="language-shell">$ which Python
+</code></pre>
 
-统计所有小于非负整数 n 的质数的数量。
+<p>使用以下命令可查看当前的 pip 路径：</p>
 
-```python
-class Solution:
-    def countPrimes(self, n):
-        if n < 3:
-            return 0
-        res = [1] * n
-        res[0], res[1] = 0, 0
-        for i in range(2, int(n**0.5)+1):
-            if res[i] == 1:
-                res[i*i:n:i] = [0]*len(res[i*i:n:i])
-        return sum(res)
-``` 
--->
+<pre><code class="language-shell">$ which pip
+</code></pre>
 
-<h3 id="排序">排序</h3>
+<p>如果你的虚拟环境创建成功了，那么路径应当会变更到虚拟环境目录下。</p>
 
-<p>本节介绍各种排序算法的思路和特点，并提供了示例代码。</p>
+<p>使用命令</p>
 
-<ol>
-<li>插入排序
+<pre><code class="language-shell">$ pip list
+</code></pre>
 
-<ul>
-<li>直接插入排序</li>
-<li>希尔排序</li>
-</ul></li>
-<li>交换排序
+<p>可查看当前 pip 安装的所有包。你会发现当前环境下仅仅只剩少数几个包，因为这是一个全新的环境。现在你可以在这个新环境下配置项目所需的库版本了！</p>
 
-<ul>
-<li>冒泡排序</li>
-<li>快速排序</li>
-</ul></li>
-<li>选择排序
+<p><font color="#0284c5">&mdash;&mdash; 疯狂 pip install 的分割线 &mdash;&mdash;</font></p>
 
-<ul>
-<li>简单选择排序</li>
-<li>堆排序</li>
-</ul></li>
-<li>归并排序
+<p>在为你的项目安装完一系列库依赖之后，你可能想记录当前的环境配置，使用 pip 的 freeze 命令可以帮你做到这一点。</p>
 
-<ul>
-<li>二路归并排序</li>
-</ul></li>
-</ol>
+<pre><code class="language-shell">$ pip freeze --local &gt; requirements.txt
+</code></pre>
 
-<p><center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/algorithms/sort.ipynb')">查看示例</button>
-</center></p>
+<p>这将把当前已安装的库和对应库版本记录在当前目录下的 <code>requirements.txt</code> 文件中。</p>
 
-<h3 id="排列组合">排列组合</h3>
+<blockquote>
+<p><strong>Note</strong>: 在将来构建新环境时，只要使用如下命令，就可以移植该 txt 文件指定的环境配置。</p>
+
+<pre><code>$ pip install -r requirements.txt
+</code></pre>
+</blockquote>
+
+<p>最后，当你想退出虚拟环境，回到全局环境时，可使用如下命令：</p>
+
+<pre><code class="language-shell">$ deactivate
+</code></pre>
+
+<p>通过 <code>which Python</code> 或者 <code>which pip</code> 检查一下是否回到了全局环境吧～</p>
+
+<p><br/></p>
+
+<h2 id="代码风格">代码风格</h2>
+
+<blockquote>
+<p>引言：为什么工程化 Python 需要重视代码风格？</p>
 
 <ol>
-<li>排列</li>
-<li>组合</li>
-<li>子集</li>
+<li>按某种约定风格写代码，可以让团队项目的风格更统一，有利于团队成员间交接工作。</li>
+<li>工程项目通常代码量较大。随着代码量的增加，debug 变得愈发困难。按约定好的风格写代码，能有效预防代码发生未预期的错误。</li>
 </ol>
+</blockquote>
 
-<p><center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/algorithms/comb.ipynb')">查看示例</button>
-</center></p>
+<p>建议通过 <a href="http://google.github.io/styleguide/pyguide.html"><em>Google Python Style Guide</em></a> 学习代码风格，该指南非常中肯地提出了每项建议的优缺点以及例外的情况。</p>
 
-<!-- ### 递归 -->
+<p>下面列几条我认为重要的代码风格建议：</p>
 
-<!-- ### DFS
+<h3 id="①-docstrings">① Docstrings</h3>
 
+<p>docstring 是 Python 为模块、类、函数书写帮助文档的一种方法。按约定，写在模块、类、函数之下的第一条声明就是 docstring.</p>
 
-### BFS
+<pre><code class="language-python">def foo():
+    &quot;&quot;&quot;docstring here.&quot;&quot;&quot;
+    pass
+</code></pre>
 
+<p>可以通过对象的<code>__doc__</code>成员查看该对象的 docstring。假如你已经为函数<code>foo()</code>写好了 docstring，那么你可以使用如下命令查看它。</p>
 
-### 回溯法
+<pre><code class="language-python">print(foo.__doc__)
+</code></pre>
 
+<p>关于书写docstring的具体规范，请参见 <a href="http://google.github.io/styleguide/pyguide.html">Google Python Style Guide</a>，这里就不过分拾人牙慧了。</p>
 
-### 动态规划 -->
+<h3 id="②-none-的判断">② None 的判断</h3>
 
-<!-- 
-### 1. 分配货物
+<p>判断一个变量是否为空，请使用 <code>if foo is None</code> (或者 <code>if foo is not None</code> ). 避免使用 <code>==</code> 判断。</p>
 
-有四条船，有一堆货物。往每条船上分配货物，要求每条船上货物的重量相等。列表中的元素表示每个货物的重量。返回 Ture 或者 False 表示是否存在满足条件的装货方式。
+<p>为什么这里要用 <code>is</code> 呢？下面是 <em>Fluent Python</em> 一书中的解释：</p>
 
-示例：
+<blockquote>
+<p>The <code>==</code> operator compares the values of objects (the data they hold), while is compares their identities.</p>
 
-```
-输入: [2,2,2,1,1]
-输出: True
+<p>We often care about values and not identities, so == appears more frequently than is in Python code.</p>
 
-输入: [2,2,2,3]
-输出: False
-```
+<p>However, if you are comparing a variable to a singleton, then it makes sense to use is. By far, the most common case is checking whether a variable is bound to None. This is the recommended way to do it:</p>
 
-解答：
+<p><code>x is None</code></p>
 
-### 2. 复原IP地址
+<p>And the proper way to write its negation is:</p>
 
-[LeetCode](https://leetcode-cn.com/problems/restore-ip-addresses) -->
+<p><code>x is not None</code></p>
 
-<p><div id="mini-overlay" onclick="overlay_off()"></div>
-<div id="mini-window"><iframe id="mini-iframe" frameBorder="0"></iframe></div>
-<button id="btn-close" onclick="overlay_off()">×</button></p>
+<p>The <code>is</code> operator is faster than <code>==</code>, because it cannot be overloaded, so Python does not have to find and invoke special methods to evaluate it, and computing is as simple as comparing two integer IDs. In contrast, <code>a == b</code> is syntactic sugar for <code>a.__eq__(b)</code>. The <code>__eq__</code> method inherited from object compares object IDs, so it produces the same result as is. But most built-in types override <code>__eq__</code> with more meaningful implementations that actually take into account the values of the object attributes. Equality may involve a lot of processing —- for example, when comparing large collections or deeply nested structures.</p>
 
-<p><script src="/python-tips/overlay.js"></script>
-<link rel="stylesheet" href="/python-tips/style.css"></p>
+<p>摘自 <em>Fluent Python</em> CHAPTER 8</p>
+</blockquote>
+
+<p>总结来说就是，虽然 <code>==</code> 和 <code>is</code> 的运算结果相同，但 <code>==</code> 其实是 <code>__eq__</code> 的语法糖，而 <code>__eq__</code> 在实际调用中经常被重载，导致程序进入一系列繁琐的步骤中。而 <code>is</code> 则直接比较两个对象的整数ID得出结果，所以比 <code>==</code> 效率更高。</p>
+
+<h3 id="③-命名">③ 命名</h3>
+
+<!-- # 这里还有东西要写 -->
+
+<p>命名规范见下表：</p>
+
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Public</th>
+<th>Internal</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Packages</td>
+<td>lower_with_under</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Modules</td>
+<td>lower_with_under</td>
+<td>_lower_with_under</td>
+</tr>
+
+<tr>
+<td>Classes</td>
+<td>CapWords</td>
+<td>_CapWords</td>
+</tr>
+
+<tr>
+<td>Exceptions</td>
+<td>CapWords</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Functions</td>
+<td>lower_with_under()</td>
+<td>_lower_with_under()</td>
+</tr>
+
+<tr>
+<td>Global/Class Constants</td>
+<td>CAPS_WITH_UNDER</td>
+<td>_CAPS_WITH_UNDER</td>
+</tr>
+
+<tr>
+<td>Global/Class Variables</td>
+<td>lower_with_under</td>
+<td>_lower_with_under</td>
+</tr>
+
+<tr>
+<td>Instance Variables</td>
+<td>lower_with_under</td>
+<td>_lower_with_under (protected)</td>
+</tr>
+
+<tr>
+<td>Method Names</td>
+<td>lower_with_under()</td>
+<td>_lower_with_under() (protected)</td>
+</tr>
+
+<tr>
+<td>Function/Method Parameters</td>
+<td>lower_with_under</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Local Variables</td>
+<td>lower_with_under</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p>摘自 Google Python Style Guide</p>
+
+<p><br/></p>
+
+<!-- ## 单元测试 -->
+
+<!-- ## 设计模式 -->
+
+<p>参考：</p>
+
+<ol>
+<li><a href="https://www.youtube.com/watch?v=N5vscPTWKOk">Python Tutorial: virtualenv and why you should use virtual environments</a></li>
+<li><a href="http://google.github.io/styleguide/pyguide.html">Google Python Style Guide</a></li>
+<li><a href="https://github.com/zh-google-styleguide/zh-google-styleguide">Google 开源项目风格指南 (中文版)</a></li>
+</ol>
 
   </div>
   
 
 <div class="navigation navigation-single">
     
-    <a href="/posts/chico_and_dico/" class="navigation-prev">
+    <a href="/posts/algorithms/" class="navigation-prev">
       <i aria-hidden="true" class="fa fa-chevron-left"></i>
-      <span class="navigation-tittle">只有魔法才能打败魔法</span>
+      <span class="navigation-tittle">算法集萃</span>
     </a>
     
-    
-    <a href="/posts/python_practice/" class="navigation-next">
-      <span class="navigation-tittle">Python 工程化实践</span>
-      <i aria-hidden="true" class="fa fa-chevron-right"></i>
-    </a>
     
 </div>
 
