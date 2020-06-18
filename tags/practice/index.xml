@@ -18,15 +18,12 @@
       
       <guid>http://luochang212.github.io/posts/python_practice/</guid>
       <description>学 Python 不应仅限于学习程序设计，在工程实践中同样存在大量知识，比如虚拟环境的创建、编码风格的养成以及如何编写单测等等。本文致力于介绍 Python 走向工程化所需的前置知识。
- Virtualenv Virtualenv 用于为 Python 项目创建独立的运行环境。
-作为一门动态语言，Python 程序能否正确运行和环境配置密切相关。当我们下载好一个 Python 项目代码，通常需要先配置环境，然后才能运行。为了防止这个外来的 Python 项目污染我们的全局环境(global environment)，我们应该为它配置独立的运行环境。这时 Virtualenv 就派上用场了。
-在 Virtualenv 创建的虚拟环境中，我们可以指定特定的库版本甚至Python版本，而不影响全局环境。但需要注意的是，因为 Virtualenv 依赖于全局环境，因此如果你更新了 Python 全局环境，有可能对 Virtualenv 造成影响。
-更多细节参见 Virtualenv 文档。
- 注：以下教程适用于 MacOS。
- 如果你还没有 Virtualenv，打开命令行窗口，下载一个。
-$ pip install virtualenv  安装好之后，如果你想在当前目录创建一个虚拟环境，只需要一行代码。
-$ virtualenv my_project # my_project 可替换为你项目的名称   Note: 如果需要安装特定版本的 Python，可使用 -p 选项指定 Python 版本。
-$ virtualenv -p /usr/bin/python2.6 my_project   用 ls 命令检查，你可以发现当前目录下创建了一个名为 my_project 的文件夹。但虚拟环境仅仅是被创建，要激活该环境，请使用如下命令：</description>
+ ⚠️ 注意：以下教程适用于 MacOS。
+部署环境 1. Anaconda Anaconda 是一个包管理器，它能让你方便的管理 Python 版本与包版本。并且， Anaconda 因为聚合了 Jupyter notebook，而颇受数据科学家和人工智能工程师的欢迎。然而，由于 Jupyter notebook 太过耀眼，我们有时会忘记它作为一个包管理器的本分。其实 Anaconda 也是可以用于搭建虚拟环境的。
+如果没有 Anaconda，安装一个：
+ 海外用户直接访问 Anaconda 官网 下载即可 国内用户无法访问上述链接(被墙)，建议选择清华镜像替代。  安装完以后，在命令行界面输入 conda，会打印一个帮助文档。
+这里说的大概就是 conda 有哪些常用命令，比如：
+$ conda help # 打印帮助文档 $ conda info # 查看conda信息，包括当前在哪个环境，环境路径，Python版本等信息 $ conda list # 列出conda下安装了哪些包 $ conda install [package_name] # 在conda环境中安装某个包 $ conda update [package_name] # 升级conda环境中的某个包   重要信息：但是上面这个简易的文档并不能覆盖我们所有使用需求，更多信息请在 Anaconda 官方文档 中查看。这个文档十分有用，后文仅专注于介绍其中虚拟环境相关的内容。</description>
     </item>
     
   </channel>

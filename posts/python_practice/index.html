@@ -499,7 +499,7 @@
     
     
     <br/>
-    <i class="fas fa-clock"></i> 3 min read
+    <i class="fas fa-clock"></i> 4 min read
 </div>
 
 
@@ -515,12 +515,20 @@
 <ul>
 <li>
 <ul>
-<li><a href="#virtualenv">Virtualenv</a></li>
+<li><a href="#部署环境">部署环境</a>
+<ul>
+<li><a href="#1-anaconda">1. Anaconda</a>
+<ul>
+<li><a href="#①-全局环境">① 全局环境</a></li>
+<li><a href="#②-局部环境">② 局部环境</a></li>
+</ul></li>
+<li><a href="#2-virtualenv">2. Virtualenv</a></li>
+</ul></li>
 <li><a href="#代码风格">代码风格</a>
 <ul>
-<li><a href="#①-docstrings">① Docstrings</a></li>
-<li><a href="#②-none-的判断">② None 的判断</a></li>
-<li><a href="#③-命名">③ 命名</a></li>
+<li><a href="#1-docstrings">1. Docstrings</a></li>
+<li><a href="#2-none-的判断">2. None 的判断</a></li>
+<li><a href="#3-命名">3. 命名</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -536,7 +544,142 @@
 <p>学 Python 不应仅限于学习程序设计，在工程实践中同样存在大量知识，比如虚拟环境的创建、编码风格的养成以及如何编写单测等等。本文致力于介绍 Python 走向工程化所需的前置知识。</p>
 </blockquote>
 
-<h2 id="virtualenv">Virtualenv</h2>
+<p><font color="red">⚠️</font> 注意：以下教程适用于 MacOS。</p>
+
+<h2 id="部署环境">部署环境</h2>
+
+<h3 id="1-anaconda">1. Anaconda</h3>
+
+<p>Anaconda 是一个包管理器，它能让你方便的管理 Python 版本与包版本。并且， Anaconda 因为聚合了 Jupyter notebook，而颇受数据科学家和人工智能工程师的欢迎。然而，由于 Jupyter notebook 太过耀眼，我们有时会忘记它作为一个包管理器的本分。其实 Anaconda 也是可以用于搭建虚拟环境的。</p>
+
+<p>如果没有 Anaconda，安装一个：</p>
+
+<ul>
+<li>海外用户直接访问 <a href="https://www.anaconda.com/products/individual">Anaconda 官网</a> 下载即可</li>
+<li>国内用户无法访问上述链接(被墙)，建议选择<a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/">清华镜像</a>替代。</li>
+</ul>
+
+<p>安装完以后，在命令行界面输入 <code>conda</code>，会打印一个帮助文档。</p>
+
+<p><img src="/img/conda-command.png" alt="" /></p>
+
+<p>这里说的大概就是 conda 有哪些常用命令，比如：</p>
+
+<pre><code class="language-shell">$ conda help  # 打印帮助文档
+$ conda info  # 查看conda信息，包括当前在哪个环境，环境路径，Python版本等信息
+$ conda list  # 列出conda下安装了哪些包
+$ conda install [package_name]  # 在conda环境中安装某个包
+$ conda update [package_name]  # 升级conda环境中的某个包
+</code></pre>
+
+<blockquote>
+<p>重要信息：但是上面这个简易的文档并不能覆盖我们所有使用需求，更多信息请在 <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">Anaconda 官方文档</a> 中查看。这个文档十分有用，后文仅专注于介绍其中虚拟环境相关的内容。</p>
+</blockquote>
+
+<p>conda 环境有本地(lcoal) 和全局 (global) 之分。如果我们需要为某个项目安排一个独立的隔离的环境，我们应该使用 local 的配置。如果我们需要修改系统默认的 conda 环境，我们需要改 global 的配置。我们先讲全局环境的配置，后讲局部环境的配置。</p>
+
+<h4 id="①-全局环境">① 全局环境</h4>
+
+<p>📖 新建环境</p>
+
+<pre><code class="language-shell">$ conda create --name myenv
+</code></pre>
+
+<p>上述命令可新建一个名为 <code>myenv</code> 的全局环境.</p>
+
+<pre><code class="language-shell">$ conda create -n myenv python=2.7
+</code></pre>
+
+<p>上述命令用于指定新建环境的 Python 版本，本例指定 Python 版本为 2.7。</p>
+
+<pre><code class="language-shell">$ conda create -n myenv python=2.7 [package1] [package2] [package3]  ...
+</code></pre>
+
+<p>上述命令指定新建环境下初始安装的包。</p>
+
+<p>👀 查看环境</p>
+
+<pre><code class="language-shell">$ conda info --envs
+</code></pre>
+
+<p>上述命令打印所有 Python 环境，包括全局环境和局部环境，在当前环境前会有一个 <code>*</code> 号。</p>
+
+<p>🏀 激活环境</p>
+
+<pre><code class="language-shell">$ conda activate myenv
+</code></pre>
+
+<p>上述命令激活名为 <code>myenv</code> 的 conda 环境。</p>
+
+<p>⚽️ 退出环境</p>
+
+<pre><code class="language-shell">$ conda deactivate
+</code></pre>
+
+<p>上述命令用于退出当前 conda 环境。在非 base 环境里，会退出到 base 环境；而在 base 环境里，则会退出到系统环境。</p>
+
+<blockquote>
+<p><strong>Note</strong>: 彻底退出环境以后，在命令行输入 <code>which python</code> 会打印系统 Python 的路径。再次进入 conda 环境以后，输入 <code>which python</code> 则会打印 conda 下的 Python 路径。</p>
+
+<p>鉴于今日的 MacOS 依旧默认安装 Python2.7，因此建议将 conda 设为默认运行环境，这样我们就能享受 Python3 的便利了！</p>
+</blockquote>
+
+<p>🚮 移除环境</p>
+
+<pre><code class="language-shell">$ conda env remove --name myenv
+</code></pre>
+
+<p>上述命令移除名为 <code>myenv</code> 的全局环境。</p>
+
+<h4 id="②-局部环境">② 局部环境</h4>
+
+<p>如果我们需要为某个项目配置特定的 Python 版本或包版本，就需要搭建局部环境(local environment)。</p>
+
+<p>📖 新建环境</p>
+
+<pre><code class="language-shell">$ conda create --prefix ./envs python=2.7
+</code></pre>
+
+<p>上述命令在当前工作目录下，新建了一个名为 <code>envs</code> 的子目录。并在该子目录下新建了一个虚拟环境，并指定该环境的 Python 版本为 2.7。</p>
+
+<p>🏀 激活环境</p>
+
+<pre><code class="language-shell">$ conda activate ./envs
+</code></pre>
+
+<p>⚽️ 退出环境</p>
+
+<pre><code class="language-shell">$ conda deactivate
+</code></pre>
+
+<p>⏬ 安装依赖</p>
+
+<pre><code class="language-shell">$ conda install [package_name]
+</code></pre>
+
+<p>上述命令用于为此环境安装各种包。</p>
+
+<pre><code class="language-shell">$ pip install [package_name]
+</code></pre>
+
+<p>有些包 conda 安装不了，可以使用 <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#using-pip-in-an-environment">pip</a> 安装。</p>
+
+<blockquote>
+<p><strong>Note</strong>: conda 集成了 pip，所以在 conda 环境下也可以使用 pip 命令。在 conda 环境下，试试 <code>pip list</code> 来加深印象吧～</p>
+</blockquote>
+
+<p>🚮 移除环境</p>
+
+<pre><code class="language-shell">$ rm -rf ./envs
+</code></pre>
+
+<p>注意，<code>rm -rf</code> 是一个极其危险的命令，使用时请务必小心。</p>
+
+<h3 id="2-virtualenv">2. Virtualenv</h3>
+
+<blockquote>
+<p><strong>Note</strong>: 建议用 conda 替代 Virtualenv 搭建虚拟环境，使用 Virtualenv 是一种 oldstyle 的做法。</p>
+</blockquote>
 
 <p>Virtualenv 用于为 Python 项目创建独立的运行环境。</p>
 
@@ -546,9 +689,7 @@
 
 <p>更多细节参见 <a href="https://docs.python.org/3/library/venv.html">Virtualenv 文档</a>。</p>
 
-<blockquote>
-<p>注：以下教程适用于 MacOS。</p>
-</blockquote>
+<!-- > 注：以下教程适用于 MacOS。 -->
 
 <p>如果你还没有 Virtualenv，打开命令行窗口，下载一个。</p>
 
@@ -631,7 +772,7 @@
 
 <p>下面列几条我认为重要的代码风格建议：</p>
 
-<h3 id="①-docstrings">① Docstrings</h3>
+<h3 id="1-docstrings">1. Docstrings</h3>
 
 <p>docstring 是 Python 为模块、类、函数书写帮助文档的一种方法。按约定，写在模块、类、函数之下的第一条声明就是 docstring.</p>
 
@@ -647,7 +788,7 @@
 
 <p>关于书写docstring的具体规范，请参见 <a href="http://google.github.io/styleguide/pyguide.html">Google Python Style Guide</a>，这里就不过分拾人牙慧了。</p>
 
-<h3 id="②-none-的判断">② None 的判断</h3>
+<h3 id="2-none-的判断">2. None 的判断</h3>
 
 <p>判断一个变量是否为空，请使用 <code>if foo is None</code> (或者 <code>if foo is not None</code> ). 避免使用 <code>==</code> 判断。</p>
 
@@ -673,7 +814,7 @@
 
 <p>总结来说就是，虽然 <code>==</code> 和 <code>is</code> 的运算结果相同，但 <code>==</code> 其实是 <code>__eq__</code> 的语法糖，而 <code>__eq__</code> 在实际调用中经常被重载，导致程序进入一系列繁琐的步骤中。而 <code>is</code> 则直接比较两个对象的整数ID得出结果，所以比 <code>==</code> 效率更高。</p>
 
-<h3 id="③-命名">③ 命名</h3>
+<h3 id="3-命名">3. 命名</h3>
 
 <!-- # 这里还有东西要写 -->
 
