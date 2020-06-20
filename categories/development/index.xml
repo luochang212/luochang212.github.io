@@ -17,13 +17,13 @@
       <pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/python_practice/</guid>
-      <description>学 Python 不应仅限于学习程序设计，在工程实践中同样存在大量知识，比如虚拟环境的创建、编码风格的养成以及如何编写单测等等。本文致力于介绍 Python 走向工程化所需的前置知识。
+      <description>学 Python 不应仅限于学习程序设计，在工程实践中同样存在大量知识，比如虚拟环境的搭建、编码风格的养成以及如何编写单测等等。本文致力于介绍 Python 走向工程化所需的前置知识。
  ⚠️ 注意：以下教程适用于 MacOS。
-部署环境 1. Anaconda Anaconda 是一个包管理器，它能让你方便的管理 Python 版本与包版本。并且， Anaconda 因为聚合了 Jupyter notebook，而颇受数据科学家和人工智能工程师的欢迎。然而，由于 Jupyter notebook 太过耀眼，我们有时会忘记它作为一个包管理器的本分。其实 Anaconda 也是可以用于搭建虚拟环境的。
-如果没有 Anaconda，安装一个：
- 海外用户直接访问 Anaconda 官网 下载即可 国内用户无法访问上述链接(被墙)，建议选择清华镜像替代。  安装完以后，在命令行界面输入 conda，会打印一个帮助文档。
-这里说的大概就是 conda 有哪些常用命令，比如：
-$ conda help # 打印帮助文档 $ conda info # 查看conda信息，包括当前在哪个环境，环境路径，Python版本等信息 $ conda list # 列出conda下安装了哪些包 $ conda install [package_name] # 在conda环境中安装某个包 $ conda update [package_name] # 升级conda环境中的某个包   重要信息：但是上面这个简易的文档并不能覆盖我们所有使用需求，更多信息请在 Anaconda 官方文档 中查看。这个文档十分有用，后文仅专注于介绍其中虚拟环境相关的内容。</description>
+部署环境 1. Anaconda Anaconda 是一个包管理器，它能让你方便的管理 Python 版本和包版本。并且， Anaconda 聚合了 Jupyter notebook，使其大受数据科学家和人工智能工程师的欢迎。下面我们来介绍如何用 Anaconda 管理我们的 Python 环境。
+如果你还没有 Anaconda，安装一个：
+ 海外用户直接访问 Anaconda 官网 下载即可 国内用户无法访问Anaconda 官网(被墙)，建议选择清华镜像替代。  安装完以后，在命令行界面输入 conda，会打印一个帮助文档。
+帮助文档大概是说 conda 有哪些常用命令，比如下面这些：
+$ conda help # 打印帮助文档 $ conda info # 查看conda信息，包括当前在哪个环境，环境路径，Python版本等信息 $ conda list # 列出conda下安装了哪些包 $ conda install [package_name] # 在conda环境中安装某个包 $ conda update [package_name] # 升级conda环境中的某个包   Note：后文仅专注介绍虚拟环境相关内容，更多内容请在 Anaconda 官方文档 中查看。</description>
     </item>
     
     <item>
@@ -83,7 +83,7 @@ $ P(cancer) = 0.008, P(normal) = 0.992 \\ P(+ | cancer) = 0.98, P(- | cancer) = 
  创建 获取 修改 添加 插入 删除 排序 逆序 索引 循环 列表推导 切片 复制 去重 计数 查找   查看示例 
 字典 鉴于 JSON 在数据处理中的大量使用，字典的重要性也不言而喻。
 本文从以下几个方面介绍字典：
- 创建 获取 更新 遍历 排序 删除 字典与JSON collections.defaultdict()   查看示例 
+ 创建 获取 更新 遍历 排序 删除 字典与JSON collections.defaultdict() setdefault()   查看示例 
 字符串 除了列表和字典，字符串也是 Python 中一种非常重要的数据类型。
  基本操作 格式化 字符串方法   查看示例 
 函数 本文目录：

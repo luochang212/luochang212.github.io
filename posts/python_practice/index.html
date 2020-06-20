@@ -22,10 +22,10 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Python 工程化实践"/>
-<meta name="twitter:description" content="学 Python 不应仅限于学习程序设计，在工程实践中同样存在大量知识，比如虚拟环境的创建、编码风格的养成以及如何编写单测等等。本文致力于介绍 Python 走向工程化所需的前置知识。"/>
+<meta name="twitter:description" content="学 Python 不应仅限于学习程序设计，在工程实践中同样存在大量知识，比如虚拟环境的搭建、编码风格的养成以及如何编写单测等等。本文致力于介绍 Python 走向工程化所需的前置知识。"/>
 
 <meta property="og:title" content="Python 工程化实践" />
-<meta property="og:description" content="学 Python 不应仅限于学习程序设计，在工程实践中同样存在大量知识，比如虚拟环境的创建、编码风格的养成以及如何编写单测等等。本文致力于介绍 Python 走向工程化所需的前置知识。" />
+<meta property="og:description" content="学 Python 不应仅限于学习程序设计，在工程实践中同样存在大量知识，比如虚拟环境的搭建、编码风格的养成以及如何编写单测等等。本文致力于介绍 Python 走向工程化所需的前置知识。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/python_practice/" />
 <meta property="article:published_time" content="2020-06-14T00:00:00&#43;00:00"/>
@@ -499,7 +499,7 @@
     
     
     <br/>
-    <i class="fas fa-clock"></i> 4 min read
+    <i class="fas fa-clock"></i> 5 min read
 </div>
 
 
@@ -519,8 +519,8 @@
 <ul>
 <li><a href="#1-anaconda">1. Anaconda</a>
 <ul>
-<li><a href="#①-全局环境">① 全局环境</a></li>
-<li><a href="#②-局部环境">② 局部环境</a></li>
+<li><a href="#①-部署全局环境">① 部署全局环境</a></li>
+<li><a href="#②-部署局部环境">② 部署局部环境</a></li>
 </ul></li>
 <li><a href="#2-virtualenv">2. Virtualenv</a></li>
 </ul></li>
@@ -530,6 +530,11 @@
 <li><a href="#2-none-的判断">2. None 的判断</a></li>
 <li><a href="#3-命名">3. 命名</a></li>
 </ul></li>
+<li><a href="#单元测试">单元测试</a>
+<ul>
+<li><a href="#unittest">unittest</a></li>
+</ul></li>
+<li><a href="#从命令行运行-python">从命令行运行 Python</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -541,7 +546,7 @@
     
 
 <blockquote>
-<p>学 Python 不应仅限于学习程序设计，在工程实践中同样存在大量知识，比如虚拟环境的创建、编码风格的养成以及如何编写单测等等。本文致力于介绍 Python 走向工程化所需的前置知识。</p>
+<p>学 Python 不应仅限于学习程序设计，在工程实践中同样存在大量知识，比如虚拟环境的搭建、编码风格的养成以及如何编写单测等等。本文致力于介绍 Python 走向工程化所需的前置知识。</p>
 </blockquote>
 
 <p><font color="red">⚠️</font> 注意：以下教程适用于 MacOS。</p>
@@ -550,20 +555,20 @@
 
 <h3 id="1-anaconda">1. Anaconda</h3>
 
-<p>Anaconda 是一个包管理器，它能让你方便的管理 Python 版本与包版本。并且， Anaconda 因为聚合了 Jupyter notebook，而颇受数据科学家和人工智能工程师的欢迎。然而，由于 Jupyter notebook 太过耀眼，我们有时会忘记它作为一个包管理器的本分。其实 Anaconda 也是可以用于搭建虚拟环境的。</p>
+<p>Anaconda 是一个包管理器，它能让你方便的管理 Python 版本和包版本。并且， Anaconda 聚合了 Jupyter notebook，使其大受数据科学家和人工智能工程师的欢迎。下面我们来介绍如何用 Anaconda 管理我们的 Python 环境。</p>
 
-<p>如果没有 Anaconda，安装一个：</p>
+<p>如果你还没有 Anaconda，安装一个：</p>
 
 <ul>
 <li>海外用户直接访问 <a href="https://www.anaconda.com/products/individual">Anaconda 官网</a> 下载即可</li>
-<li>国内用户无法访问上述链接(被墙)，建议选择<a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/">清华镜像</a>替代。</li>
+<li>国内用户无法访问Anaconda 官网(被墙)，建议选择<a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/">清华镜像</a>替代。</li>
 </ul>
 
 <p>安装完以后，在命令行界面输入 <code>conda</code>，会打印一个帮助文档。</p>
 
 <p><img src="/img/conda-command.png" alt="" /></p>
 
-<p>这里说的大概就是 conda 有哪些常用命令，比如：</p>
+<p>帮助文档大概是说 conda 有哪些常用命令，比如下面这些：</p>
 
 <pre><code class="language-shell">$ conda help  # 打印帮助文档
 $ conda info  # 查看conda信息，包括当前在哪个环境，环境路径，Python版本等信息
@@ -573,19 +578,19 @@ $ conda update [package_name]  # 升级conda环境中的某个包
 </code></pre>
 
 <blockquote>
-<p>重要信息：但是上面这个简易的文档并不能覆盖我们所有使用需求，更多信息请在 <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">Anaconda 官方文档</a> 中查看。这个文档十分有用，后文仅专注于介绍其中虚拟环境相关的内容。</p>
+<p><strong>Note</strong>：后文仅专注介绍虚拟环境相关内容，更多内容请在 <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">Anaconda 官方文档</a> 中查看。</p>
 </blockquote>
 
-<p>conda 环境有本地(lcoal) 和全局 (global) 之分。如果我们需要为某个项目安排一个独立的隔离的环境，我们应该使用 local 的配置。如果我们需要修改系统默认的 conda 环境，我们需要改 global 的配置。我们先讲全局环境的配置，后讲局部环境的配置。</p>
+<p>Python 环境分为本地环境(lcoal env) 和全局环境 (global env) 。为一个项目配置环境，应该配置本地环境；为本机所有项目配置环境，则应该配置全局环境。</p>
 
-<h4 id="①-全局环境">① 全局环境</h4>
+<h4 id="①-部署全局环境">① 部署全局环境</h4>
 
 <p>📖 新建环境</p>
 
 <pre><code class="language-shell">$ conda create --name myenv
 </code></pre>
 
-<p>上述命令可新建一个名为 <code>myenv</code> 的全局环境.</p>
+<p>上述命令新建一个名为 <code>myenv</code> 的全局环境.</p>
 
 <pre><code class="language-shell">$ conda create -n myenv python=2.7
 </code></pre>
@@ -595,7 +600,7 @@ $ conda update [package_name]  # 升级conda环境中的某个包
 <pre><code class="language-shell">$ conda create -n myenv python=2.7 [package1] [package2] [package3]  ...
 </code></pre>
 
-<p>上述命令指定新建环境下初始安装的包。</p>
+<p>上述命令指定新建环境下初始安装包。</p>
 
 <p>👀 查看环境</p>
 
@@ -609,7 +614,7 @@ $ conda update [package_name]  # 升级conda环境中的某个包
 <pre><code class="language-shell">$ conda activate myenv
 </code></pre>
 
-<p>上述命令激活名为 <code>myenv</code> 的 conda 环境。</p>
+<p>环境需要激活才能使用。上述命令将名为 <code>myenv</code> 的 conda 环境激活。</p>
 
 <p>⚽️ 退出环境</p>
 
@@ -619,9 +624,9 @@ $ conda update [package_name]  # 升级conda环境中的某个包
 <p>上述命令用于退出当前 conda 环境。在非 base 环境里，会退出到 base 环境；而在 base 环境里，则会退出到系统环境。</p>
 
 <blockquote>
-<p><strong>Note</strong>: 彻底退出环境以后，在命令行输入 <code>which python</code> 会打印系统 Python 的路径。再次进入 conda 环境以后，输入 <code>which python</code> 则会打印 conda 下的 Python 路径。</p>
+<p><strong>Note</strong>: 退到系统环境以后，在命令行输入 <code>which python</code> 会打印系统 Python 的路径。再次进入 conda 环境以后，输入 <code>which python</code> 则会打印 conda 下的 Python 路径。</p>
 
-<p>鉴于今日的 MacOS 依旧默认安装 Python2.7，因此建议将 conda 设为默认运行环境，这样我们就能享受 Python3 的便利了！</p>
+<p>鉴于今年（2020年）的 MacOS 系统依旧默认安装 Python2.7，因此建议把 conda 作为默认运行环境以享受 Python3 的便利！</p>
 </blockquote>
 
 <p>🚮 移除环境</p>
@@ -631,7 +636,7 @@ $ conda update [package_name]  # 升级conda环境中的某个包
 
 <p>上述命令移除名为 <code>myenv</code> 的全局环境。</p>
 
-<h4 id="②-局部环境">② 局部环境</h4>
+<h4 id="②-部署局部环境">② 部署局部环境</h4>
 
 <p>如果我们需要为某个项目配置特定的 Python 版本或包版本，就需要搭建局部环境(local environment)。</p>
 
@@ -662,10 +667,10 @@ $ conda update [package_name]  # 升级conda环境中的某个包
 <pre><code class="language-shell">$ pip install [package_name]
 </code></pre>
 
-<p>有些包 conda 安装不了，可以使用 <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#using-pip-in-an-environment">pip</a> 安装。</p>
+<p>有些包 conda 安装不了，可以<a href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#using-pip-in-an-environment">使用 pip 安装</a>。</p>
 
 <blockquote>
-<p><strong>Note</strong>: conda 集成了 pip，所以在 conda 环境下也可以使用 pip 命令。在 conda 环境下，试试 <code>pip list</code> 来加深印象吧～</p>
+<p><strong>Note</strong>: conda 集成了 pip，所以在 conda 环境下也可以使用 pip 命令。在 conda 环境下，试试 <code>pip list</code> 吧～</p>
 </blockquote>
 
 <p>🚮 移除环境</p>
@@ -673,19 +678,19 @@ $ conda update [package_name]  # 升级conda环境中的某个包
 <pre><code class="language-shell">$ rm -rf ./envs
 </code></pre>
 
-<p>注意，<code>rm -rf</code> 是一个极其危险的命令，使用时请务必小心。</p>
+<p>移除环境只需要删除对应的安装目录就可以了。注意，<code>rm -rf</code> 是一个极其危险的命令，使用时请务必小心。</p>
 
 <h3 id="2-virtualenv">2. Virtualenv</h3>
 
 <blockquote>
-<p><strong>Note</strong>: 建议用 conda 替代 Virtualenv 搭建虚拟环境，使用 Virtualenv 是一种 oldstyle 的做法。</p>
+<p><strong>Note</strong>: Virtualenv 的好处在于体积小，适合开发机之类的环境。如果我们在笔记本电脑上做开发，还是用 conda 部署环境更方便～</p>
 </blockquote>
 
 <p>Virtualenv 用于为 Python 项目创建独立的运行环境。</p>
 
 <p>作为一门动态语言，Python 程序能否正确运行和环境配置密切相关。当我们下载好一个 Python 项目代码，通常需要先配置环境，然后才能运行。为了防止这个外来的 Python 项目污染我们的全局环境(global environment)，我们应该为它配置独立的运行环境。这时 Virtualenv 就派上用场了。</p>
 
-<p>在 Virtualenv 创建的虚拟环境中，我们可以指定特定的库版本甚至Python版本，而不影响全局环境。但需要注意的是，因为 Virtualenv 依赖于全局环境，因此如果你更新了 Python 全局环境，有可能对 Virtualenv 造成影响。</p>
+<p>在 Virtualenv 创建的虚拟环境中，我们可以指定特定的包版本甚至Python版本，而不影响全局环境。但需要注意的是，因为 Virtualenv 依赖于全局环境，因此如果你更新了 Python 全局环境，有可能对 Virtualenv 造成影响。</p>
 
 <p>更多细节参见 <a href="https://docs.python.org/3/library/venv.html">Virtualenv 文档</a>。</p>
 
@@ -695,6 +700,8 @@ $ conda update [package_name]  # 升级conda环境中的某个包
 
 <pre><code class="language-shell">$ pip install virtualenv
 </code></pre>
+
+<p>📖 新建环境</p>
 
 <p>安装好之后，如果你想在当前目录创建一个虚拟环境，只需要一行代码。</p>
 
@@ -708,6 +715,8 @@ $ conda update [package_name]  # 升级conda环境中的某个包
 </code></pre>
 </blockquote>
 
+<p>🏀 激活环境</p>
+
 <p>用 <code>ls</code> 命令检查，你可以发现当前目录下创建了一个名为 <code>my_project</code> 的文件夹。但虚拟环境仅仅是被创建，要激活该环境，请使用如下命令：</p>
 
 <pre><code class="language-shell">$ source my_project/bin/activate
@@ -718,28 +727,24 @@ $ conda update [package_name]  # 升级conda环境中的某个包
 <pre><code class="language-shell">$ which Python
 </code></pre>
 
-<p>使用以下命令可查看当前的 pip 路径：</p>
+<p>使用以下命令可查看当前的 pip 路径。如果你的虚拟环境创建成功了，那么路径应当会变更到虚拟环境目录下。</p>
 
 <pre><code class="language-shell">$ which pip
 </code></pre>
-
-<p>如果你的虚拟环境创建成功了，那么路径应当会变更到虚拟环境目录下。</p>
 
 <p>使用命令</p>
 
 <pre><code class="language-shell">$ pip list
 </code></pre>
 
-<p>可查看当前 pip 安装的所有包。你会发现当前环境下仅仅只剩少数几个包，因为这是一个全新的环境。现在你可以在这个新环境下配置项目所需的库版本了！</p>
-
-<p><font color="#0284c5">&mdash;&mdash; 疯狂 pip install 的分割线 &mdash;&mdash;</font></p>
+<p>可查看当前 pip 安装的所有包。你会发现当前环境下仅仅只剩少数几个包，因为这是一个全新的环境。现在你可以在这个新环境下配置项目所需的包版本了！</p>
 
 <p>在为你的项目安装完一系列库依赖之后，你可能想记录当前的环境配置，使用 pip 的 freeze 命令可以帮你做到这一点。</p>
 
 <pre><code class="language-shell">$ pip freeze --local &gt; requirements.txt
 </code></pre>
 
-<p>这将把当前已安装的库和对应库版本记录在当前目录下的 <code>requirements.txt</code> 文件中。</p>
+<p>这将把当前已安装的包和对应包版本记录在当前目录下的 <code>requirements.txt</code> 文件中。</p>
 
 <blockquote>
 <p><strong>Note</strong>: 在将来构建新环境时，只要使用如下命令，就可以移植该 txt 文件指定的环境配置。</p>
@@ -748,6 +753,8 @@ $ conda update [package_name]  # 升级conda环境中的某个包
 </code></pre>
 </blockquote>
 
+<p>⚽️ 退出环境</p>
+
 <p>最后，当你想退出虚拟环境，回到全局环境时，可使用如下命令：</p>
 
 <pre><code class="language-shell">$ deactivate
@@ -755,7 +762,16 @@ $ conda update [package_name]  # 升级conda环境中的某个包
 
 <p>通过 <code>which Python</code> 或者 <code>which pip</code> 检查一下是否回到了全局环境吧～</p>
 
-<p><br/></p>
+<p>🚮 移除环境</p>
+
+<p>在 <code>my_project</code> 所在目录下执行：</p>
+
+<pre><code class="language-shell">$ rm -rf my_project
+</code></pre>
+
+<p>请谨慎使用 <code>rm -rf</code>。</p>
+
+<p><br></p>
 
 <h2 id="代码风格">代码风格</h2>
 
@@ -794,6 +810,9 @@ $ conda update [package_name]  # 升级conda环境中的某个包
 
 <p>为什么这里要用 <code>is</code> 呢？下面是 <em>Fluent Python</em> 一书中的解释：</p>
 
+<p><details>
+<summary><font color='#0284c5'>已折叠，点击展开</font></summary></p>
+
 <blockquote>
 <p>The <code>==</code> operator compares the values of objects (the data they hold), while is compares their identities.</p>
 
@@ -801,16 +820,20 @@ $ conda update [package_name]  # 升级conda环境中的某个包
 
 <p>However, if you are comparing a variable to a singleton, then it makes sense to use is. By far, the most common case is checking whether a variable is bound to None. This is the recommended way to do it:</p>
 
-<p><code>x is None</code></p>
+<pre><code class="language-python">x is None
+</code></pre>
 
 <p>And the proper way to write its negation is:</p>
 
-<p><code>x is not None</code></p>
+<pre><code class="language-python">x is not None
+</code></pre>
 
 <p>The <code>is</code> operator is faster than <code>==</code>, because it cannot be overloaded, so Python does not have to find and invoke special methods to evaluate it, and computing is as simple as comparing two integer IDs. In contrast, <code>a == b</code> is syntactic sugar for <code>a.__eq__(b)</code>. The <code>__eq__</code> method inherited from object compares object IDs, so it produces the same result as is. But most built-in types override <code>__eq__</code> with more meaningful implementations that actually take into account the values of the object attributes. Equality may involve a lot of processing —- for example, when comparing large collections or deeply nested structures.</p>
 
 <p>摘自 <em>Fluent Python</em> CHAPTER 8</p>
 </blockquote>
+
+<p></details></p>
 
 <p>总结来说就是，虽然 <code>==</code> 和 <code>is</code> 的运算结果相同，但 <code>==</code> 其实是 <code>__eq__</code> 的语法糖，而 <code>__eq__</code> 在实际调用中经常被重载，导致程序进入一系列繁琐的步骤中。而 <code>is</code> 则直接比较两个对象的整数ID得出结果，所以比 <code>==</code> 效率更高。</p>
 
@@ -900,11 +923,124 @@ $ conda update [package_name]  # 升级conda环境中的某个包
 
 <p>摘自 Google Python Style Guide</p>
 
-<p><br/></p>
+<p><br></p>
 
-<p># 施工中&hellip;未完待续</p>
+<h2 id="单元测试">单元测试</h2>
 
-<!-- ## 单元测试 -->
+<blockquote>
+<p>关于 &ldquo;The best way of unit test&rdquo;，大家有不同的意见，有人觉得 nose 好用，有人觉得原生的 unittest 好用。但是我有不同的见解，个人觉得 Jupyter notebook 才是最好用的单测工具。<img src="/img/quyin/huaji.png" class="my-emoji" style = "height: 32px;"></p>
+</blockquote>
+
+<p>GitHub项目地址：<a href="https://github.com/luochang212/python-tips/tree/master/test" target="_blank">python-tips/test</a></p>
+
+<p>当然言归正传，我们还是得正经地学习一下单测的。单测可以确保每个函数每个模块都按照我们预期的方式运行。如果你不是在写完代码以后，才写单测代码，而是一边开发一边测试，那么你其实遵循了<strong>测试驱动开发</strong>(Test-Driven Development)的开发方式。这种开发方式的好处是，在开发的全生命周期内，我们都能确保代码正确运行。</p>
+
+<h3 id="unittest">unittest</h3>
+
+<p>unittest 是 Python 原生支持(natively supported)的单元测试库。在使用这个库的时候，我们按照模版写就好了。模版可以参考 <a href="https://docs.python.org/3/library/unittest.html">unittest 文档</a> 中的 basic example 一节。</p>
+
+<pre><code class="language-python"># file name: test_upper.py
+import unittest
+
+class TestStringMethods(unittest.TestCase):  # 继承 unittest.TestCase 是固定的写法
+
+    def test_upper(self):  # 单测函数一般以test开头
+        self.assertEqual('foo'.upper(), 'FOO')  # 使用assert断言判断测试结果是否符合预期
+
+if __name__ == '__main__':
+    unittest.main()  # 这个也是固定写法
+</code></pre>
+
+<p>在命令行运行 <code>python test_upper.py</code>，输出如下：</p>
+
+<p><img src="/img/unittest-res.png" alt="" /></p>
+
+<p>在上面这个例子中 <code>assertEqual(a, b)</code> 用于判断 <code>a</code> 和 <code>b</code> 是否相等。像这样的 assert 方法还有很多，下面是它们的用法：</p>
+
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Checks that</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>assertEqual(a, b)</td>
+<td><code>a == b</code></td>
+</tr>
+
+<tr>
+<td>assertNotEqual(a, b)</td>
+<td><code>a != b</code></td>
+</tr>
+
+<tr>
+<td>assertTrue(x)</td>
+<td><code>bool(x) is True</code></td>
+</tr>
+
+<tr>
+<td>assertFalse(x)</td>
+<td><code>bool(x) is False</code></td>
+</tr>
+
+<tr>
+<td>assertIs(a, b)</td>
+<td><code>a is b</code></td>
+</tr>
+
+<tr>
+<td>assertIsNot(a, b)</td>
+<td><code>a is not b</code></td>
+</tr>
+
+<tr>
+<td>assertIsNone(x)</td>
+<td><code>x is None</code></td>
+</tr>
+
+<tr>
+<td>assertIsNotNone(x)</td>
+<td><code>x is not None</code></td>
+</tr>
+
+<tr>
+<td>assertIn(a, b)</td>
+<td><code>a in b</code></td>
+</tr>
+
+<tr>
+<td>assertNotIn(a, b)</td>
+<td><code>a not in b</code></td>
+</tr>
+
+<tr>
+<td>assertIsInstance(a, b)</td>
+<td><code>isinstance(a, b)</code></td>
+</tr>
+
+<tr>
+<td>assertNotIsInstance(a, b)</td>
+<td><code>not isinstance(a, b)</code></td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p><strong>Note</strong>: <code>setUp()</code> 方法运行在测试前，可将测试前需要运行的代码放在该函数内。<code>tearDown()</code> 方法运行在测试后，一般用于清理测试产生的变量。如果想要全面地了解单测，请阅读 <a href="https://docs.python.org/3/library/unittest.html">unittest 文档</a>，文档的作用是任何教程都无法替代的。</p>
+</blockquote>
+
+<p><br></p>
+
+<h2 id="从命令行运行-python">从命令行运行 Python</h2>
+
+<blockquote>
+<p>运行 Python 的方法很多，常用的有 Pycharm, Jupyter notebook, VSCode 等。但是，公司的 Python 环境通常搭建在开发机上，而开发机安装的是 Linux 的各种发行版。这就需要我们熟悉 bash 编程，以及 Python 的命令行选项。</p>
+</blockquote>
+
+<p><em>施工中&hellip;</em></p>
 
 <!-- ## 设计模式 -->
 
@@ -914,6 +1050,9 @@ $ conda update [package_name]  # 升级conda环境中的某个包
 <li><a href="https://www.youtube.com/watch?v=N5vscPTWKOk">Python Tutorial: virtualenv and why you should use virtual environments</a></li>
 <li><a href="http://google.github.io/styleguide/pyguide.html">Google Python Style Guide</a></li>
 <li><a href="https://github.com/zh-google-styleguide/zh-google-styleguide">Google 开源项目风格指南 (中文版)</a></li>
+<li><a href="https://medium.com/swlh/unit-testing-in-python-code-confidently-and-break-stuff-on-purpose-d246e7167e79">Unit Testing in Python</a></li>
+<li><a href="https://medium.com/@mashood.snhu/a-quick-start-guide-to-python-unittest-part-1-9653683637ca">Quick Start Guide to Python unittest</a></li>
+<li><a href="https://docs.python.org/3/using/cmdline.html">Command line and environment</a></li>
 </ol>
 
   </div>
