@@ -499,7 +499,7 @@
     
     
     <br/>
-    <i class="fas fa-clock"></i> 5 min read
+    <i class="fas fa-clock"></i> 6 min read
 </div>
 
 
@@ -534,7 +534,17 @@
 <ul>
 <li><a href="#unittest">unittest</a></li>
 </ul></li>
-<li><a href="#从命令行运行-python">从命令行运行 Python</a></li>
+<li><a href="#从命令行运行-python">从命令行运行 Python</a>
+<ul>
+<li><a href="#1-命令行选项">1. 命令行选项</a></li>
+<li><a href="#2-从标准输入获取文本">2. 从标准输入获取文本</a>
+<ul>
+<li><a href="#①-使用-echo-从命令行获取输入">① 使用 <code>echo</code> 从命令行获取输入</a></li>
+<li><a href="#②-使用-cat-从指定文件输入">② 使用 <code>cat</code> 从指定文件输入</a></li>
+<li><a href="#③-从另一个-python-文件的输出中获取输入">③ 从另一个 Python 文件的输出中获取输入</a></li>
+</ul></li>
+<li><a href="#3-从命令行读参数">3. 从命令行读参数</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -1037,10 +1047,141 @@ if __name__ == '__main__':
 <h2 id="从命令行运行-python">从命令行运行 Python</h2>
 
 <blockquote>
-<p>运行 Python 的方法很多，常用的有 Pycharm, Jupyter notebook, VSCode 等。但是，公司的 Python 环境通常搭建在开发机上，而开发机安装的是 Linux 的各种发行版。这就需要我们熟悉 bash 编程，以及 Python 的命令行选项。</p>
+<p>运行 Python 的方法很多，常用的有 Pycharm, Jupyter notebook, VSCode 等。但是，公司的 Python 环境通常搭建在开发机上，而开发机安装的是 Linux 的各种发行版。这就需要我们<a href="https://wangdoc.com/bash/">熟悉 bash 编程</a>，以及 Python 的命令行选项。</p>
 </blockquote>
 
-<p><em>施工中&hellip;</em></p>
+<p>GitHub项目地址：<a href="https://github.com/luochang212/python-tips/tree/master/command_line" target="_blank">python-tips/command_line</a></p>
+
+<h3 id="1-命令行选项">1. 命令行选项</h3>
+
+<p>最常用的从命令行执行 Python 的方法是，在 Terminal 中进入脚本所在的工作路径下，执行：</p>
+
+<pre><code class="language-shell">python srcipt.py  # script.py 可以换成你的 Python 文件
+</code></pre>
+
+<p>除了这种运行方法，Python 还提供 <code>-c</code> 和 <code>-m</code> 两个接口选项(interface options)。</p>
+
+<p><strong><code>-c &lt;command&gt;</code></strong></p>
+
+<p><code>-c</code> 选项后接 Python 代码，可在命令行直接执行。行前空格的规和脚本的规则相同。</p>
+
+<pre><code class="language-shell"># 例一
+python -c '
+print(&quot;hello&quot;)
+print(&quot;world&quot;)'
+</code></pre>
+
+<pre><code class="language-shell"># 例二
+python -c '
+for i in range(3):
+    print(i)'
+</code></pre>
+
+<p><strong><code>-m &lt;module-name&gt;</code></strong></p>
+
+<p><code>-m</code> 选项后接 Python 模块。该命令会在 <code>sys.path</code> 下搜索该模块，并将该模块作为 <code>__main__</code> 模块执行。</p>
+
+<pre><code class="language-shell"># 如果你的工作目录下有一个 script.py 文件
+python -m script  # 将 script.py 作为模块执行
+</code></pre>
+
+<blockquote>
+<p><strong>Note</strong>: 更多内容请参考 <a href="https://docs.python.org/3/using/cmdline.html">Command line and environment</a>.</p>
+</blockquote>
+
+<h3 id="2-从标准输入获取文本">2. 从标准输入获取文本</h3>
+
+<p>Python 可以从标准输入<a href="https://docs.python.org/3/library/sys.html#sys.stdin">sys.stdin</a> 获取文本。</p>
+
+<h4 id="①-使用-echo-从命令行获取输入">① 使用 <code>echo</code> 从命令行获取输入</h4>
+
+<p>当前目录下新建 <code>read_text.py</code>。</p>
+
+<pre><code class="language-python"># read_text.py
+import sys
+
+for line in sys.stdin:
+    line = line.strip()
+    print(line + '......ok')
+</code></pre>
+
+<p>然后我们在当前目录下执行：</p>
+
+<pre><code class="language-shell">echo &quot;hello&quot; | python read_text.py
+</code></pre>
+
+<p>获得的输出是：</p>
+
+<p><img src="/img/command-line-execute-1.png" alt="" /></p>
+
+<p>这说明我们已经成功地从命令行读取了字符串 &ldquo;hello&rdquo;。</p>
+
+<h4 id="②-使用-cat-从指定文件输入">② 使用 <code>cat</code> 从指定文件输入</h4>
+
+<p>除了使用 <code>echo</code> 我们还可以使用 <code>cat</code> 指定作为标准输入的文件:</p>
+
+<p>先新建一个非空文件 info.txt，在里面随便写点什么。</p>
+
+<pre><code class="language-shell">hello
+are you ok
+how are you
+i fine, thx
+that's great
+</code></pre>
+
+<p>然后在当前目录下执行：</p>
+
+<pre><code class="language-shell">cat info.txt | python read_text.py
+</code></pre>
+
+<p>获得的输出是：</p>
+
+<p><img src="/img/command-line-execute-2.png" alt="" /></p>
+
+<h4 id="③-从另一个-python-文件的输出中获取输入">③ 从另一个 Python 文件的输出中获取输入</h4>
+
+<p>或者也可以从另一个 Python 文件的输出流中获取输入。</p>
+
+<p>当前目录下新建一个 <code>gen_text.py</code>。</p>
+
+<pre><code class="language-python"># gen_text.py
+import sys
+
+for i in range(3):
+    print(&quot; &quot;.join([&quot;This is line&quot;, str(i)]))
+</code></pre>
+
+<p>在命令行界面中，来到当前目录下执行：</p>
+
+<pre><code class="language-shell">python gen_text.py | python read_text.py
+</code></pre>
+
+<p>获得的输出是：</p>
+
+<p><img src="/img/command-line-execute-3.png" alt="" /></p>
+
+<p>Windows 用户参见 <a href="https://stackoverflow.com/questions/1450393/how-do-you-read-from-stdin/1450396#1450396">How do you read from stdin?</a></p>
+
+<h3 id="3-从命令行读参数">3. 从命令行读参数</h3>
+
+<p>Python 可以从 <a href="https://docs.python.org/3/library/sys.html#sys.argv">sys.argv</a> 读取命令行参数。</p>
+
+<p>在当前目录新建 <code>get_argv.py</code>。</p>
+
+<pre><code class="language-python">import sys
+
+print(sys.argv)
+</code></pre>
+
+<p>试试执行以下两个命令会输出什么吧～</p>
+
+<pre><code>python get_argv.py  # 输出 ['get_argv.py']
+python get_argv.py hi nihao  # 输出 ['get_argv.py', 'hi', 'nihao']
+</code></pre>
+
+<blockquote>
+<p><strong>Note</strong>: 关于 Terminal 快捷键，Mac 用户可以看看 <a href="https://support.apple.com/en-gb/guide/terminal/trmlshtcts/mac">Keyboard shortcuts in Terminal on Mac</a>.</p>
+</blockquote>
 
 <!-- ## 设计模式 -->
 
@@ -1053,6 +1194,7 @@ if __name__ == '__main__':
 <li><a href="https://medium.com/swlh/unit-testing-in-python-code-confidently-and-break-stuff-on-purpose-d246e7167e79">Unit Testing in Python</a></li>
 <li><a href="https://medium.com/@mashood.snhu/a-quick-start-guide-to-python-unittest-part-1-9653683637ca">Quick Start Guide to Python unittest</a></li>
 <li><a href="https://docs.python.org/3/using/cmdline.html">Command line and environment</a></li>
+<li><a href="https://stackoverflow.com/questions/1450393/how-do-you-read-from-stdin/1450396#1450396">How do you read from stdin?</a></li>
 </ol>
 
   </div>
