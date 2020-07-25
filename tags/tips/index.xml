@@ -17,7 +17,7 @@
       <pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/python_tips/</guid>
-      <description>Python 学习笔记，敬请指教  GitHub项目地址：python-tips
+      <description>Python 学习笔记，如有错误，欢迎指正  GitHub项目地址：python-tips
 语言基础 列表 本文从以下几个方面介绍列表：
  创建 获取 修改 添加 插入 删除 排序 逆序 索引 循环 列表推导 切片 复制 去重 计数 查找   查看示例 
 字典 鉴于 JSON 在数据处理中的大量使用，字典的重要性也不言而喻。
