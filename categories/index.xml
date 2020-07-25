@@ -6,7 +6,7 @@
     <description>Recent content in Categories on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 14 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 25 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://luochang212.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,18 @@
     <item>
       <title>Development</title>
       <link>http://luochang212.github.io/categories/development/</link>
-      <pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 25 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/categories/development/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hadoop</title>
+      <link>http://luochang212.github.io/categories/hadoop/</link>
+      <pubDate>Sat, 25 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/categories/hadoop/</guid>
       <description></description>
     </item>
     

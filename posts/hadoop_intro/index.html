@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.55.6" />
+
+    
+    
+    
+
+<title>漫谈 Hadoop Streaming • Chang Luo</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="漫谈 Hadoop Streaming"/>
+<meta name="twitter:description" content="【本文 Python 向】Hadoop Streaming 是 Hadoop 提供的一个官方工具，为非 Java 语言提供编程接口，让诸如 Golang, Python, Bash 等其他语言的开发者也能享受在 Hadoop MapReduce 上编程的乐趣。"/>
+
+<meta property="og:title" content="漫谈 Hadoop Streaming" />
+<meta property="og:description" content="【本文 Python 向】Hadoop Streaming 是 Hadoop 提供的一个官方工具，为非 Java 语言提供编程接口，让诸如 Golang, Python, Bash 等其他语言的开发者也能享受在 Hadoop MapReduce 上编程的乐趣。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://luochang212.github.io/posts/hadoop_intro/" />
+<meta property="article:published_time" content="2020-07-25T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2020-07-25T00:00:00&#43;00:00"/><meta property="og:site_name" content="Title" />
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.6a83d62c39a364f036df4db1ecd564645635d6c7fc182425cb501218fec485f5.css" integrity="sha256-aoPWLDmjZPA2302x7NVkZFY11sf8GCQly1ASGP7EhfU=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+
+<link rel="stylesheet" href="/scss/hugo-toc.8549a64d301421b4256ea9a0d5ca8b99178799f569d5d2daeb95f24cef3ce6b7.css" integrity="sha256-hUmmTTAUIbQlbqmg1cqLmReHmfVp1dLa65XyTO885rc=">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+</head>
+
+
+    <body class=" ">
+    <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://upcdn.b0.upaiyun.com/libs/jquery/jquery-1.9.0.min.js"></script>
+
+  <style>
+    body {
+      transition: background-color .5s;
+    }
+
+    #overlay {
+      position: fixed;
+      display: none;
+      width: calc(100vw - 580px);
+      height: 100%;
+      top: 0;
+      left: 0;
+       
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      right: 0;
+      background-color: #FFF;
+       
+      overflow-x: hidden;
+      transition: 0.5s;
+       
+       
+    }
+
+    #main {
+      transition: margin-left .5s;
+       
+      padding: 16px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      overflow: hidden;
+    }
+
+     
+    .tab {
+      overflow: hidden;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+    }
+
+     
+    .tab button {
+      background-color: inherit;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      transition: 0.3s;
+      font-size: 17px;
+    }
+
+     
+    .tab button:hover {
+      background-color: #ddd;
+    }
+
+     
+    .tab button.active {
+      background-color: #ccc;
+    }
+
+     
+    .tabcontent {
+      display: none;
+      padding: 12px 12px;
+      margin: 0;
+      border: 1px solid #ccc;
+      border-top: none;
+    }
+
+    .dropbtn {
+      background-color: #3498DB;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+    }
+
+    .dropup {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropup-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      bottom: 50px;
+      z-index: 1;
+    }
+
+    .dropup-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropup-content a:hover {
+      background-color: #ccc
+    }
+
+    .dropup:hover .dropup-content {
+      display: block;
+    }
+
+    .dropup:hover .dropbtn {
+      background-color: #2980B9;
+    }
+
+    #video2,
+    #video3 {
+      display: none;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  
+  <div class="sidebar">
+    <div class="container ">
+      <div class="sidebar-about">
+        <span class="site__title">
+          <a href="http://luochang212.github.io">Chang Luo</a>
+        </span>
+        
+        
+        
+        <div class="author-image">
+          <a href="#" class="load-iframe" onclick="openNav()"><img src="http://luochang212.github.io/images/profile.png" id="author-iamge"
+              alt="Author Image" class="img--circle img--headshot element--center"></a>
+        </div>
+        
+        <p class="site__description">
+          
+        </p>
+      </div>
+      <div class="collapsible-menu">
+        <input type="checkbox" id="menuToggle">
+        <label for="menuToggle">Chang Luo</label>
+        <div class="menu-content">
+          <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/portfolio/">
+						<span>Projects</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+		</li>
+	</ul>
+</div>
+
+          <section class="social">
+	
+	<a href="https://twitter.com/MinosPalace" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	<a href="https://instagram.com/icstocs" rel="me"><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></a>
+	
+	
+	<a href="https://github.com/luochang212" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://linkedin.com/in/bupt-luochang" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+</section>
+
+        </div>
+      </div>
+      
+<div class="copyright">
+  &copy; 2020 Chang Luo
+  
+</div>
+
+
+
+    </div>
+  </div>
+
+  
+  
+
+  <div id="overlay" onclick="off()"></div>
+
+  <div id="mySidenav" class="sidenav">
+
+    <div id="main">
+      <div class="tab">
+        <button id="default-tab" class="tablinks" onclick="openItem(event, 'Resources')">Resources</button>
+        <button class="tablinks" onclick="openItem(event, 'netease-player')">Music</button>
+        <button class="tablinks" onclick="openItem(event, 'Video-player')">Video</button>
+        <button class="tablinks" onclick="openItem(event, 'gallery')">Gallery</button>
+        <button class="tablinks" onclick="openItem(event, 'gadget')">Gadget</button>
+      </div>
+
+      <div id="Resources" class="tabcontent">
+        <iframe src="about:blank" data-src="/resources/" frameborder="0" height="560" width="100%" marginheight="0"
+          marginwidth="0" scrolling="yes"></iframe>
+      </div>
+
+      <div id="netease-player" class="tabcontent">
+        <iframe src="about:blank" data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
+          frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=450></iframe>
+      </div>
+
+      <div id="Video-player" class="tabcontent">
+
+        <div id="video1">
+          <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=455023331&bvid=BV1X541167RE&cid=170542054&page=1&high_quality=1&danmaku=0"
+            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+        <div id="video2">
+          <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=65042716&bvid=BV1M4411r7yu&cid=112895137&page=1&high_quality=1&high_quality=1&danmaku=0"
+            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+        <div id="video3">
+          <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=20535616&bvid=BV1zW411W75L&cid=33582726&page=1//player.bilibili.com/player.html?aid=15159845&cid=24679968&page=1&high_quality=1&danmaku=0"
+            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+
+        
+
+        
+
+        <br>
+        <div class="dropup">
+          <button class="dropbtn">更多视频</button>
+          <div class="dropup-content">
+            <a onclick="link1()">1</a>
+            <a onclick="link2()">2</a>
+            <a onclick="link3()">3</a>
+          </div>
+        </div>
+      </div>
+
+      <div id="gallery" class="tabcontent">
+        <iframe src="about:blank" data-src="/gadget/gallery/#two" frameborder="0" height="560" width="100%"
+          scrolling="yes"></iframe>
+      </div>
+
+      <div id="gadget" class="tabcontent">
+        <iframe src="about:blank" data-src="/gadget/" frameborder="0" height="560" width="100%"
+          scrolling="yes"></iframe>
+      </div>
+
+    </div>
+  </div>
+
+  
+  <script>
+    'use strict'
+    
+    function openNav() {
+      on();
+      document.getElementById("mySidenav").style.width = "580px";
+      document.body.style.backgroundColor = "rgba(0,0,0,0.5)";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.body.style.backgroundColor = "white";
+    }
+
+    function on() {
+      document.getElementById("overlay").style.display = "block";
+    }
+
+    function off() {
+      closeNav();
+      document.getElementById("overlay").style.display = "none";
+    }
+
+    
+    document.getElementById('default-tab').click();
+
+    function openItem(evt, itemName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(itemName).style.display = "block";
+      evt.currentTarget.className += "active";
+    }
+
+    function link1() {
+      document.getElementById("video1").style.display = "block";
+      document.getElementById("video2").style.display = "none";
+      document.getElementById("video3").style.display = "none";
+    }
+
+    function link2() {
+      document.getElementById("video1").style.display = "none";
+      document.getElementById("video2").style.display = "block";
+      document.getElementById("video3").style.display = "none";
+    }
+
+    function link3() {
+      document.getElementById("video1").style.display = "none";
+      document.getElementById("video2").style.display = "none";
+      document.getElementById("video3").style.display = "block";
+    }
+
+     
+    var flag = 0;
+
+     
+    $(".load-iframe").click(function () {
+      if (flag < 1) {
+        $("iframe").each(function () {
+          $(this).attr("src", $(this).data("src"));
+        });
+        flag = flag + 1;
+      }
+    });
+  </script>
+
+</body>
+
+
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>漫谈 Hadoop Streaming</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Jul 25, 2020
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/development">DEVELOPMENT</a>
+              •
+          
+              <a class="badge badge-category" href="/categories/hadoop">HADOOP</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/hadoop">hadoop</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/python">python</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/hadoop-streaming">hadoop streaming</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/mapreduce">mapreduce</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 4 min read
+</div>
+
+
+  </header>
+  
+  
+  
+    <div class="toc-wrapper">
+      <input type="checkbox" id="tocToggle">
+      <label for="tocToggle">目录</label>
+      
+          <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#1-mapreduce">1. MapReduce</a>
+<ul>
+<li><a href="#1-1-数据处理的三个阶段">1.1 数据处理的三个阶段</a></li>
+<li><a href="#1-2-kv表">1.2 kv表</a></li>
+<li><a href="#1-3-一个例子">1.3 一个例子</a></li>
+</ul></li>
+<li><a href="#2-用-python-写-mapreduce">2. 用 Python 写 MapReduce</a></li>
+<li><a href="#3-测试">3. 测试</a></li>
+<li><a href="#4-文件操作">4. 文件操作</a></li>
+<li><a href="#5-漫谈">5. 漫谈</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+      
+    </div>
+  
+  
+  <div class="post">
+    
+
+<blockquote>
+<p>随着计算机的硬件性能逐渐至达瓶颈，再通过升级硬件的方式来提升运算性能效果有限，于是人们开始寻求软件的办法来提升运算性能，分布式计算就此应运而生。</p>
+</blockquote>
+
+<p><a href="https://hadoop.apache.org/">Hadoop</a> 是一种分布式计算框架，它是建立在计算机集群上的一套软件，控制着数据从输入到输出再到存储全生命周期的管理工作。</p>
+
+<p>分布式计算是复杂的，它要考虑机器交互、数据存储、分布式算法等一系列问题。Hadoop 存在的意义就是约定一个编程模型，大家按着模型的要求跑就行。至于分布式计算的实现细节，丢给 Hadoop 处理就好了。因此虽然 <a href="https://research.google.com/archive/mapreduce-osdi04-slides/index.html">Hadoop 的具体实现原理</a>很艰深，但掌握 Hadoop 的这套编程模型却不难。</p>
+
+<h3 id="1-mapreduce">1. MapReduce</h3>
+
+<p>拖了这么久终于进入正题了。</p>
+
+<p>Hadoop 的这套编程模型叫做 MapReduce。MapReduce 描述了数据在 Hadoop 中是如何处理的，处理过程可大致分为三个阶段：Map, Shuffle 和 Reduce。中间的 Shuffle 由 Hadoop 完成，我们只需要编写 Map 阶段和 Reduce 阶段对应的代码就好了。</p>
+
+<h4 id="1-1-数据处理的三个阶段">1.1 数据处理的三个阶段</h4>
+
+<p>下图中，两个红圈分别代表 Map 阶段和 Reduce 阶段，中间蓝框代表 Shuffle 阶段。</p>
+
+<p><img src="/img//hadoop-streaming.png" alt="" /></p>
+
+<p>一般而言，map 阶段对应的程序叫 mapper，reduce 阶段对应的程序叫 reducer。三个数据处理阶段的作用分别是：</p>
+
+<ul>
+<li><p><strong>Mapper</strong>：预处理。因为 Shuffle 通常是要耗费大量计算资源的，因此经过 Mapper 处理后的数据越精简越好。这就要求我们在这一步把和问题无关的数据都过滤掉。Mapper 会指定一个或多个字段作为主键。</p></li>
+
+<li><p><strong>Shuffle</strong>：对 Mapper 传输过来的数据按主键进行排序。然后将排好序的数据分桶。分桶就是对有序数据进行切割，然后把切好的数据送进 reducer 中，这里把 reducer 比作“桶”。（这里我也有个疑问：同一个主键的数据是否会被分如同一个桶中？希望懂的大神告我一声）</p></li>
+
+<li><p><strong>Reducer</strong>: 规约数据。大数据运算通常是将一个大数据集作为输入，小数据集（或者统计量）作为输出，这都可以统称为对数据的规约 (reduce)。</p></li>
+</ul>
+
+<h4 id="1-2-kv表">1.2 kv表</h4>
+
+<p>数据在 Hadoop Streaming 的各阶段中，是通过<strong>kv表</strong>的形式交换数据的。kv 表可能将一个或多个字段作为 key，其余作为 value。也许有同学不知道kv表是什么。在 Unix 中kv表一般就长下面这个样子👇。每行各字段间用制表符 <code>\t</code> 分隔。
+<!-- 当然 Hadoop 也接受其他分割符，自己去参数里设就好啦。 --></p>
+
+<pre><code class="language-html">dogs    1    happy
+cats    3    happy
+pigs    2    sleeping
+cats    1    sad
+</code></pre>
+
+<!-- 生产环境下日志肯定不止这几列，有时会有三四十列之多，颇有乱花迷人眼的阵势。 -->
+
+<h4 id="1-3-一个例子">1.3 一个例子</h4>
+
+<p>WordCount 是 MapReduce 的一个经典例子，它要求我们计算给定文本中各单词出现的次数。我们通过这个例子说明 Hadoop 是如何处理数据的。</p>
+
+<p>在小数据量场景下，用 Python 处理该问题只需要简单几行代码👇。但在大数据场景下，实现同样功能的 MapReduce 代码则会相对复杂一些。</p>
+
+<pre><code class="language-python"># word_count.py
+# usage: cat test_file.txt | python word_count.py
+import sys
+import collections
+
+
+words_dict = collections.defaultdict(int)
+
+for line in sys.stdin:
+    line = line.strip().split(' ')
+    
+    if not line:
+        continue
+    
+    for word in line:
+        words_dict[word] += 1
+
+for k, v in words_dict.items():
+    print('{}: {}'.format(k, v))
+</code></pre>
+
+<p>☆ 数据在 Hadoop 中是如何被处理的</p>
+
+<p>在开始写 MapReduce 代码前，先简单描述一下数据在 Hadoop 中的处理过程，这有助于我们理解代码。</p>
+
+<ol>
+<li><p>原始数据长这样</p>
+
+<pre><code>i love you
+you love him
+he loves her
+she loves him
+</code></pre></li>
+
+<li><p>在 Hadoop Streaming 中，数据首先被切分为多个 part (split 操作)</p>
+
+<pre><code># part_1
+i love you
+you love him
+✄ -----------------
+# part_2
+he loves her
+she loves him
+</code></pre></li>
+
+<li><p>每个 part 送入各自的 mapper 做预处理，输出以单词为主键的 kv 表</p>
+
+<pre><code># part_1
+i    1
+love    1
+you    1
+you    1
+love    1
+him    1
+✄ -----------------
+# part_2
+he    1
+loves    1
+her    1
+she    1
+loves    1
+him    1
+</code></pre></li>
+
+<li><p>shuffle 阶段，按主键排序并分桶</p>
+
+<pre><code># part_1
+he    1
+her    1
+him    1
+him    1
+i    1
+✄ -----------------
+# part_2
+love    1
+love    1
+loves    1
+loves    1
+she    1
+you    1
+you    1
+</code></pre></li>
+
+<li><p>reduce 阶段，规约数据</p>
+
+<pre><code># part-00000
+he    1
+her    1
+him    2
+i    1
+✄ -----------------
+# part-00001
+love    2
+loves    2
+she    1
+you    2
+</code></pre></li>
+</ol>
+
+<p>最终我们会在输出目录下得到两个文件：<code>part-00000</code> 和 <code>part-00001</code>。文件数量和 reducer 的数量相同，本例中有两个 reducer 所以输出两个文件。</p>
+
+<h3 id="2-用-python-写-mapreduce">2. 用 Python 写 MapReduce</h3>
+
+<p>利用 <a href="https://hadoop.apache.org/docs/current/hadoop-streaming/HadoopStreaming.html">Hadoop Streaming</a> 我们可以用 Python 来写 MapReduce。</p>
+
+<p>要知道 Hadoop 本身是由 Java 写成的，Hadoop Streaming 利用标准输入输出 (stdin / stdout) 桥接了 MapReduce 编程模型中的各个阶段，使得 Hadoop Streaming 几乎能支持所有后端语言。但也同时因为需要利用标准输入输出来传递数据，因此运行效率相比原生 Hadoop 来讲要慢一些。</p>
+
+<p>以下代码摘自 <a href="https://www.michael-noll.com/tutorials/writing-an-hadoop-mapreduce-program-in-python/"><em>Writing An Hadoop MapReduce Program In Python</em></a>，无意冒犯，侵删。因为他的注释写得太完备了，所以还是决定贴他的版本。非常推荐阅读原文哦，他写得比我好多了<img src="/img/quyin/OK.png" class="my-emoji" style = "height: 32px;"></p>
+
+<p>mapper</p>
+
+<pre><code>#!/usr/bin/env python
+&quot;&quot;&quot;mapper.py&quot;&quot;&quot;
+
+import sys
+
+# input comes from STDIN (standard input)
+for line in sys.stdin:
+    # remove leading and trailing whitespace
+    line = line.strip()
+    # split the line into words
+    words = line.split()
+    # increase counters
+    for word in words:
+        # write the results to STDOUT (standard output);
+        # what we output here will be the input for the
+        # Reduce step, i.e. the input for reducer.py
+        #
+        # tab-delimited; the trivial word count is 1
+        print '%s\t%s' % (word, 1)
+</code></pre>
+
+<p>reducer</p>
+
+<pre><code>#!/usr/bin/env python
+&quot;&quot;&quot;reducer.py&quot;&quot;&quot;
+
+from operator import itemgetter
+import sys
+
+current_word = None
+current_count = 0
+word = None
+
+# input comes from STDIN
+for line in sys.stdin:
+    # remove leading and trailing whitespace
+    line = line.strip()
+
+    # parse the input we got from mapper.py
+    word, count = line.split('\t', 1)
+
+    # convert count (currently a string) to int
+    try:
+        count = int(count)
+    except ValueError:
+        # count was not a number, so silently
+        # ignore/discard this line
+        continue
+
+    # this IF-switch only works because Hadoop sorts map output
+    # by key (here: word) before it is passed to the reducer
+    if current_word == word:
+        current_count += count
+    else:
+        if current_word:
+            # write result to STDOUT
+            print '%s\t%s' % (current_word, current_count)
+        current_count = count
+        current_word = word
+
+# do not forget to output the last word if needed!
+if current_word == word:
+    print '%s\t%s' % (current_word, current_count)
+</code></pre>
+
+<h3 id="3-测试">3. 测试</h3>
+
+<p>一个 Hadoop 任务要跑很长时间，如果你的代码因为有 bug 终止任务，你就亏大了。因为重跑可能要花很长时间，一个粗心大意可能你今天就没法准时下班了。所以在跑 Hadoop 之前，测试是必要的。</p>
+
+<p>我一般会按下面这个流程检查代码：</p>
+
+<ol>
+<li>code review</li>
+<li>local test</li>
+<li>check try except</li>
+</ol>
+
+<p>Code review 就不细说了，这不是今天的主题；</p>
+
+<p>Local test 是指构造数据文件，然后用 <code>cat data_file | python mapper.py | sort | python reducer.py</code> 命令在本地运行，测试 MapReduce 代码中是否存在语法错误；</p>
+
+<p>Check try except 指检查是否写了充分的 try except 语句来处理可能出现的问题，比如字段缺失、数据类型异常、数值异常等。因为代码需要经受住大数据量的考验，因此对健壮性的要求很高。</p>
+
+<h3 id="4-文件操作">4. 文件操作</h3>
+
+<p>Hadoop 通过 <a href="https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html">HDFS</a> (Hadoop Distributed File System) 来管理集群上的文件。</p>
+
+<p>常用命令：</p>
+
+<pre><code class="language-bash"># 查看帮助文档
+hadoop fs -help
+# 查看当前文件夹的文件
+hadoop fs -ls
+# 下载文件到本地
+hadoop fs -copyToLocal [hdfs路径] [本地路径]
+# 上传文件到HDFS
+hadoop fs -copyFromLocal [本地路径] [hdfs路径]
+# 新建HDFS目录
+hadoop fs -mkdir [hdfs路径]
+# 删除HDFS文件
+hadoop fs -rm [hdfs路径]
+</code></pre>
+
+<p>总之和 Unix 系统下的命令差不多。</p>
+
+<h3 id="5-漫谈">5. 漫谈</h3>
+
+<p>Hadoop MapReduce 是一套编程模型，基本思路是先把数据切成不同分片，然后基于键值对排序并在机器间交换一次数据，接着按主键对数据分桶，最后规约到最终结果。我们发现这套模式是死的，也就是你只能按照既定的运算框架和运算顺序来处理数据。</p>
+
+<p>由于模式是死的，因此存在一部分问题天然不适合用 Hadoop 解决。事实上具体到每个问题，适用 Hadoop 的程度都是不一样的。对于有些本来不太适合但又不得不用的，我们还是需要拆分需求/设计运算流程，尽量地去贴 MapReduce 这套模型。需求拆得对不对，流程设计得好不好，在很大程度上会影响 MR 的运行效率。</p>
+
+<p>#todo: 参数配置 参数调优</p>
+
+<p>参考：</p>
+
+<ol>
+<li><a href="https://hadoop.apache.org/">Hadoop 官网</a></li>
+<li><a href="https://hadoop.apache.org/docs/current/">Apache Hadoop Documentation</a></li>
+<li><a href="https://research.google.com/archive/mapreduce-osdi04-slides/index.html">MapReduce: Simplified Data Processing on Large Clusters</a></li>
+<li><a href="https://www.michael-noll.com/tutorials/writing-an-hadoop-mapreduce-program-in-python/">Writing An Hadoop MapReduce Program In Python</a></li>
+<li><a href="https://data-flair.training/blogs/top-hadoop-hdfs-commands-tutorial/">Top 10 Hadoop HDFS Commands with Examples and Usage</a></li>
+<li>《Hadoop权威指南》</li>
+</ol>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/python_practice/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Python 工程化实践</span>
+    </a>
+    
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+<style>
+  .my-emoji {
+    height: 25px;
+    display: inline-block;
+    margin: 0;
+    vertical-align: text-bottom;
+  }
+</style>
+
+
+        </div>
+        
+    <script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
+
+
+
+<script defer src="/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+
+    
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+
+
+
+    
+
+
+
+    </body>
+</html>
