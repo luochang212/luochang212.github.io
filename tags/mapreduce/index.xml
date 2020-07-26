@@ -17,17 +17,16 @@
       <pubDate>Sat, 25 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/hadoop_intro/</guid>
-      <description>随着计算机的硬件性能逐渐至达瓶颈，再通过升级硬件的方式来提升运算性能效果有限，于是人们开始寻求软件的办法来提升运算性能，分布式计算就此应运而生。
- Hadoop 是一种分布式计算框架，它是建立在计算机集群上的一套软件，控制着数据从输入到输出再到存储全生命周期的管理工作。
-分布式计算是复杂的，它要考虑机器交互、数据存储、分布式算法等一系列问题。Hadoop 存在的意义就是约定一个编程模型，大家按着模型的要求跑就行。至于分布式计算的实现细节，丢给 Hadoop 处理就好了。因此虽然 Hadoop 的具体实现原理很艰深，但掌握 Hadoop 的这套编程模型却不难。
+      <description>【本文 Python 向】Hadoop Streaming 是 Hadoop 提供的官方工具，它为非 Java 语言提供编程接口，让诸如 Golang, Python, Bash 等其他语言的开发者也能享受用 Hadoop MapReduce 编程的乐趣。
+ 随着计算机的硬件性能逐渐至达瓶颈，再通过升级硬件的方式对运算性能的提升有限，于是人们开始寻求提升性能的软件方法，分布式计算就是在这种思路下应运而生。
+Hadoop 是一种分布式计算框架，它是建立在计算机集群上的一套软件，用以协同各机器共同完成任务。
+分布式计算是复杂的，它要考虑机器间交互、数据存储、分布式算法等一系列问题。Hadoop 存在的意义就是约定一个编程模型，大家按模型的要求跑就行。至于实现细节，丢给 Hadoop 处理就好了。因此虽然 Hadoop 的具体实现原理很复杂，但掌握 Hadoop 的这套编程模型却不难。
 1. MapReduce 拖了这么久终于进入正题了。
-Hadoop 的这套编程模型叫做 MapReduce。MapReduce 描述了数据在 Hadoop 中是如何处理的，处理过程可大致分为三个阶段：Map, Shuffle 和 Reduce。中间的 Shuffle 由 Hadoop 完成，我们只需要编写 Map 阶段和 Reduce 阶段对应的代码就好了。
-1.1 数据处理的三个阶段 下图中，两个红圈分别代表 Map 阶段和 Reduce 阶段，中间蓝框代表 Shuffle 阶段。
-一般而言，map 阶段对应的程序叫 mapper，reduce 阶段对应的程序叫 reducer。三个数据处理阶段的作用分别是：
- Mapper：预处理。因为 Shuffle 通常是要耗费大量计算资源的，因此经过 Mapper 处理后的数据越精简越好。这就要求我们在这一步把和问题无关的数据都过滤掉。Mapper 会指定一个或多个字段作为主键。
- Shuffle：对 Mapper 传输过来的数据按主键进行排序。然后将排好序的数据分桶。分桶就是对有序数据进行切割，然后把切好的数据送进 reducer 中，这里把 reducer 比作“桶”。（这里我也有个疑问：同一个主键的数据是否会被分如同一个桶中？希望懂的大神告我一声）
- Reducer: 规约数据。大数据运算通常是将一个大数据集作为输入，小数据集（或者统计量）作为输出，这都可以统称为对数据的规约 (reduce)。
-  1.2 kv表 数据在 Hadoop Streaming 的各阶段中，是通过kv表的形式交换数据的。kv 表可能将一个或多个字段作为 key，其余作为 value。也许有同学不知道kv表是什么。在 Unix 中kv表一般就长下面这个样子👇。每行各字段间用制表符 \t 分隔。 dogs 1 happy cats 3 happy pigs 2 sleeping cats 1 sad  1.</description>
+上文中提到的这套编程模型名叫 MapReduce。MapReduce 描述了数据在 Hadoop 中是如何被处理的，处理过程可大致分为三个阶段：Map, Shuffle 和 Reduce。中间的 Shuffle 由 Hadoop 完成，因此我们只需要编写 Map 阶段和 Reduce 阶段对应的代码就好了。
+1.1 三个阶段 下图标示了数据处理的三个阶段在数据流程中的位置，一左一右两个红圈分别代表 Map 和 Reduce 阶段，中间蓝框代表 Shuffle 阶段。
+* 一般而言，map 阶段的对应程序叫 mapper，reduce 阶段叫 reducer。
+三个阶段的作用分别是：
+ Map：预处理。Shuffle 通常是要耗费大量的计算资源，因此传给 Shuffle 的数据越精简越好，这就要求我们在 Mapper 阶段把和研究问题无关的数据都筛掉。Mapper 在输出时，会指定一个或多个字段作为主键。</description>
     </item>
     
   </channel>
