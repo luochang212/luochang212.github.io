@@ -17,7 +17,7 @@
       <pubDate>Sat, 25 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/hadoop_intro/</guid>
-      <description>Hadoop 本身是用 Java 写的，所以使用 Java 编写 MapReduce 框架是最原生的方法。但随着 Hadoop 影响力扩大，其他语言的程序员也希望使用自己的编程语言编写 MapReduce。于是 Hadoop Streaming 应运而生，它用 Unix pipeline 在任务间传递数据，使得我们几乎可以使用任何一个主流语言编写 MapReduce。
+      <description>Hadoop 是用 Java 写的，因此最原生的方法就是用 Java 编写 MapReduce 程序。但随着 Hadoop 的影响力在其他语言的使用者中扩大，他们也希望用自己的语言来编写 MapReduce 程序，由是 Hadoop Streaming 应运而生。它用 Unix pipeline 在任务间传递数据，使得我们几乎可以使用任何一个主流语言编写 MapReduce。
 PS: 本文主要关注 Python 在 Hadoop Streaming 上的应用。
  过去半个多世纪，随着算力的高速增长，半导体工业似乎达到了它的物理极限，摩尔定律正在失效，寄托于更好更快的芯片来提高算力的期望正在落空。但业务的增长却不会因此而中止，人们亟需一个解决方案来满足对我们算力的渴求。
 分布式计算似乎是个好主意。“当古人用一头牛拉不动一根原木时，他们从未想过培育更高更壮的牛。同样，我们也不需要尝试开发超级计算机，而应该试着结合使用更多的计算机系统。” (Haddop 权威指南)。但分布式计算的发展存在进程间交互、数据存储、分布式算法等瓶颈。Google 的几位工程师为了解决这些痛点，开发了 Hadoop。
