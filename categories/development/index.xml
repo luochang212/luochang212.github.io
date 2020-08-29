@@ -17,16 +17,15 @@
       <pubDate>Sat, 25 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/hadoop_intro/</guid>
-      <description>【本文 Python 向】Hadoop Streaming 是 Hadoop 提供的官方工具，它为非 Java 语言提供编程接口，让诸如 Golang, Python, Bash 等其他语言的开发者也能享受用 Hadoop MapReduce 编程的乐趣。
- 随着计算机的硬件性能逐渐至达瓶颈，再通过升级硬件的方式对运算性能的提升有限，于是人们开始寻求提升性能的软件方法，分布式计算就是在这种思路下应运而生。
-Hadoop 是一种分布式计算框架，它是建立在计算机集群上的一套软件，用以协同各机器共同完成任务。
-分布式计算是复杂的，它要考虑机器间交互、数据存储、分布式算法等一系列问题。Hadoop 存在的意义就是约定一个编程模型，大家按模型的要求跑就行。至于实现细节，丢给 Hadoop 处理就好了。因此虽然 Hadoop 的具体实现原理很复杂，但掌握 Hadoop 的这套编程模型却不难。
-1. MapReduce 拖了这么久终于进入正题了。
-上文中提到的这套编程模型名叫 MapReduce。MapReduce 描述了数据在 Hadoop 中是如何被处理的，处理过程可大致分为三个阶段：Map, Shuffle 和 Reduce。中间的 Shuffle 由 Hadoop 完成，因此我们只需要编写 Map 阶段和 Reduce 阶段对应的代码就好了。
-1.1 三个阶段 下图标示了数据处理的三个阶段在数据流程中的位置，一左一右两个红圈分别代表 Map 和 Reduce 阶段，中间蓝框代表 Shuffle 阶段。
-* 一般而言，map 阶段的对应程序叫 mapper，reduce 阶段叫 reducer。
-三个阶段的作用分别是：
- Map：预处理。Shuffle 通常是要耗费大量的计算资源，因此传给 Shuffle 的数据越精简越好，这就要求我们在 Mapper 阶段把和研究问题无关的数据都筛掉。Mapper 在输出时，会指定一个或多个字段作为主键。</description>
+      <description>Hadoop 本身是用 Java 写的，所以使用 Java 编写 MapReduce 框架是最原生的方法。但随着 Hadoop 影响力扩大，其他语言的程序员也希望使用自己的编程语言编写 MapReduce。于是 Hadoop Streaming 应运而生，它用 Unix pipeline 在任务间传递数据，使得我们几乎可以使用任何一个主流语言编写 MapReduce。
+PS: 本文主要关注 Python 在 Hadoop Streaming 上的应用。
+ 过去半个多世纪，随着算力的高速增长，半导体工业似乎达到了它的物理极限，摩尔定律正在失效，寄托于更好更快的芯片来提高算力的期望正在落空。但业务的增长却不会因此而中止，人们亟需一个解决方案来满足对我们算力的渴求。
+分布式计算似乎是个好主意。“当古人用一头牛拉不动一根原木时，他们从未想过培育更高更壮的牛。同样，我们也不需要尝试开发超级计算机，而应该试着结合使用更多的计算机系统。” (Haddop 权威指南)。但分布式计算的发展存在进程间交互、数据存储、分布式算法等瓶颈。Google 的几位工程师为了解决这些痛点，开发了 Hadoop。
+Hadoop 是一个分布式计算框架，它建立在计算机集群上，负责协同集群上的机器共同工作。Hadoop 处理了分布式计算中的大部分难题，大量复杂细节都无需用户考虑，用户只需要告诉 hadoop 应该如何处理数据就可以了。
+Hadoop 将数据处理抽象成 MapReduce 框架。顾名思义，MapReduce 包含了两个过程，Map 和 Reduce。Hadoop 编程，其实主要就是编写 MapReduce （以及一系列烦人的配置文件）。
+ Note: 对 Hadoop 原理感兴趣的同学，可以看看这个 -&amp;gt; MapReduce: Simplified Data Processing on Large Clusters
+ 1. MapReduce OK，终于进入正题了。
+MapReduce 的重要性不必详说。MapReduce 描述了数据在 Hadoop 中是如何被处理的。数据处理可大致分为三个过程：Map, Shuffle 和 Reduce。其中，Shuffle 由 Hadoop 完成，因此我们编写 Map 和 Reduce 就好。</description>
     </item>
     
     <item>

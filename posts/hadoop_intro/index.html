@@ -525,8 +525,8 @@
 <ul>
 <li><a href="#1-mapreduce">1. MapReduce</a>
 <ul>
-<li><a href="#1-1-三个阶段">1.1 三个阶段</a></li>
-<li><a href="#1-2-kv表">1.2 kv表</a></li>
+<li><a href="#1-1-数据处理三阶段">1.1 数据处理三阶段</a></li>
+<li><a href="#1-2-kv-表">1.2 kv 表</a></li>
 <li><a href="#1-3-一个例子">1.3 一个例子</a></li>
 </ul></li>
 <li><a href="#2-用-python-写-mapreduce">2. 用 Python 写 MapReduce</a></li>
@@ -545,30 +545,37 @@
     
 
 <blockquote>
-<p>【本文 Python 向】Hadoop Streaming 是 Hadoop 提供的官方工具，它为非 Java 语言提供编程接口，让诸如 Golang, Python, Bash 等其他语言的开发者也能享受用 Hadoop MapReduce 编程的乐趣。</p>
+<p>Hadoop 本身是用 Java 写的，所以使用 Java 编写 MapReduce 框架是最原生的方法。但随着 Hadoop 影响力扩大，其他语言的程序员也希望使用自己的编程语言编写 MapReduce。于是 Hadoop Streaming 应运而生，它用 Unix pipeline 在任务间传递数据，使得我们几乎可以使用任何一个主流语言编写 MapReduce。</p>
+
+<p>PS: 本文主要关注 Python 在 Hadoop Streaming 上的应用。</p>
 </blockquote>
 
-<p>随着计算机的硬件性能逐渐至达瓶颈，再通过升级硬件的方式对运算性能的提升有限，于是人们开始寻求提升性能的软件方法，分布式计算就是在这种思路下应运而生。</p>
+<p>过去半个多世纪，随着算力的高速增长，半导体工业似乎达到了它的物理极限，摩尔定律正在失效，寄托于更好更快的芯片来提高算力的期望正在落空。但业务的增长却不会因此而中止，人们亟需一个解决方案来满足对我们算力的渴求。</p>
 
-<p><a href="https://hadoop.apache.org/">Hadoop</a> 是一种分布式计算框架，它是建立在计算机集群上的一套软件，用以协同各机器共同完成任务。</p>
+<p>分布式计算似乎是个好主意。“当古人用一头牛拉不动一根原木时，他们从未想过培育更高更壮的牛。同样，我们也不需要尝试开发超级计算机，而应该试着结合使用更多的计算机系统。” (Haddop 权威指南)。但分布式计算的发展存在进程间交互、数据存储、分布式算法等瓶颈。Google 的几位工程师为了解决这些痛点，开发了 Hadoop。</p>
 
-<p>分布式计算是复杂的，它要考虑机器间交互、数据存储、分布式算法等一系列问题。Hadoop 存在的意义就是约定一个编程模型，大家按模型的要求跑就行。至于实现细节，丢给 Hadoop 处理就好了。因此虽然 <a href="https://research.google.com/archive/mapreduce-osdi04-slides/index.html">Hadoop 的具体实现原理</a>很复杂，但掌握 Hadoop 的这套编程模型却不难。</p>
+<p><a href="https://hadoop.apache.org/">Hadoop</a> 是一个分布式计算框架，它建立在计算机集群上，负责协同集群上的机器共同工作。Hadoop 处理了分布式计算中的大部分难题，大量复杂细节都无需用户考虑，用户只需要告诉 hadoop 应该如何处理数据就可以了。</p>
+
+<p>Hadoop 将数据处理抽象成 MapReduce 框架。顾名思义，MapReduce 包含了两个过程，Map 和 Reduce。Hadoop 编程，其实主要就是编写 MapReduce （以及一系列烦人的配置文件）。</p>
+
+<blockquote>
+<p><strong>Note</strong>: 对 Hadoop 原理感兴趣的同学，可以看看这个 -&gt; <a href="https://research.google.com/archive/mapreduce-osdi04-slides/index.html">MapReduce:
+Simplified Data Processing on Large Clusters</a></p>
+</blockquote>
 
 <h3 id="1-mapreduce">1. MapReduce</h3>
 
-<p>拖了这么久终于进入正题了。</p>
+<p>OK，终于进入正题了。</p>
 
-<p>上文中提到的这套编程模型名叫 MapReduce。MapReduce 描述了数据在 Hadoop 中是如何被处理的，处理过程可大致分为三个阶段：Map, Shuffle 和 Reduce。中间的 Shuffle 由 Hadoop 完成，因此我们只需要编写 Map 阶段和 Reduce 阶段对应的代码就好了。</p>
+<p>MapReduce 的重要性不必详说。MapReduce 描述了数据在 Hadoop 中是如何被处理的。数据处理可大致分为三个过程：Map, Shuffle 和 Reduce。其中，Shuffle 由 Hadoop 完成，因此我们编写 Map 和 Reduce 就好。</p>
 
-<h4 id="1-1-三个阶段">1.1 三个阶段</h4>
+<h4 id="1-1-数据处理三阶段">1.1 数据处理三阶段</h4>
 
-<p>下图标示了数据处理的三个阶段在数据流程中的位置，一左一右两个红圈分别代表 Map 和 Reduce 阶段，中间蓝框代表 Shuffle 阶段。</p>
+<p>下图展示了数据在 Map, Shuffle, Reduce 三阶段中的流向。</p>
 
 <p><img src="/img//hadoop-streaming.png" alt="" /></p>
 
-<p>* 一般而言，map 阶段的对应程序叫 mapper，reduce 阶段叫 reducer。</p>
-
-<p>三个阶段的作用分别是：</p>
+<p>三阶段的作用：</p>
 
 <ul>
 <li><p><strong>Map</strong>：预处理。Shuffle 通常是要耗费大量的计算资源，因此传给 Shuffle 的数据越精简越好，这就要求我们在 Mapper 阶段把和研究问题无关的数据都筛掉。Mapper 在输出时，会指定一个或多个字段作为主键。</p></li>
@@ -578,9 +585,9 @@
 <li><p><strong>Reduce</strong>: 规约数据。将大数据规约为我们关心的问题。可能是一个或一组统计量，也可能是一组经过规约的原始数据。</p></li>
 </ul>
 
-<h4 id="1-2-kv表">1.2 kv表</h4>
+<h4 id="1-2-kv-表">1.2 kv 表</h4>
 
-<p>数据在 map, shuffle 和 reduce 三个阶段中，是通过<strong>kv表</strong>的形式在每个阶段间交换的。kv 表以一个或多个字段作为 key（主键），其余作为 value。在 Unix 中 kv 表一般就长这样子👇。下面的每行数据，各字段间是以制表符 <code>\t</code> 作为分隔符的。
+<p>数据在 map, shuffle 和 reduce 三个阶段中，是通过 <strong>kv表</strong> 的形式在每个阶段间交换的。kv 表以一个或多个字段作为 key（主键），其余作为 value。在 Unix 中 kv 表一般就长这样子👇。下面的每行数据，各字段间是以制表符 <code>\t</code> 作为分隔符的。
 <!-- 当然 Hadoop 也接受其他分割符，自己去参数里设就好啦。 --></p>
 
 <pre><code class="language-html">dogs    1    happy
