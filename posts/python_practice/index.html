@@ -523,6 +523,7 @@
 <li><a href="#②-部署局部环境">② 部署局部环境</a></li>
 </ul></li>
 <li><a href="#2-virtualenv">2. Virtualenv</a></li>
+<li><a href="#3-docker">3. Docker</a></li>
 </ul></li>
 <li><a href="#代码风格">代码风格</a>
 <ul>
@@ -540,10 +541,15 @@
 <li><a href="#2-从标准输入获取文本">2. 从标准输入获取文本</a>
 <ul>
 <li><a href="#①-使用-echo-从命令行获取输入">① 使用 <code>echo</code> 从命令行获取输入</a></li>
-<li><a href="#②-使用-cat-从指定文件输入">② 使用 <code>cat</code> 从指定文件输入</a></li>
-<li><a href="#③-从另一个-python-文件的输出中获取输入">③ 从另一个 Python 文件的输出中获取输入</a></li>
+<li><a href="#②-使用-cat-从指定文件获取输入">② 使用 <code>cat</code> 从指定文件获取输入</a></li>
+<li><a href="#③-从另一个-python-文件输出流中获取输入">③ 从另一个 Python 文件输出流中获取输入</a></li>
 </ul></li>
 <li><a href="#3-从命令行读入参数">3. 从命令行读入参数</a></li>
+<li><a href="#4-标准错误输出">4. 标准错误输出</a>
+<ul>
+<li><a href="#①-将标准错误打印到命令行">① 将标准错误打印到命令行</a></li>
+<li><a href="#②-将标准错误打印到日志">② 将标准错误打印到日志</a></li>
+</ul></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -780,6 +786,36 @@ $ conda update [package_name]  # 升级conda环境中的某个包
 </code></pre>
 
 <p>请谨慎使用 <code>rm -rf</code>。</p>
+
+<h3 id="3-docker">3. Docker</h3>
+
+<p><a href="https://www.docker.com/">Docker</a> 是什么？</p>
+
+<p>Docker 是一项虚拟化技术，它将软件和配置文件、依赖库封装在一起，放到一个操作系统级别的虚拟化环境中。这个环境我们称作容器 (container)。容器和容器之前是相互隔离的，但是也能通过优良定义的接口进行交互。因为容器运行在一个单独的操作系统内核上，因此它占用的资源比虚拟机更少。</p>
+
+<blockquote>
+<p>原文：<strong>Docker</strong> is a set of platform as a service (PaaS) products that use OS-level virtualization to deliver software in packages called containers. Containers are isolated from one another and bundle their own software, libraries and configuration files; they can communicate with each other through well-defined channels. All containers are run by a single operating system kernel and therefore use fewer resources than virtual machines. &ndash; from wikipedia</p>
+</blockquote>
+
+<p>下面我们来介绍如何使用 Docker。</p>
+
+<p>#todo</p>
+
+<blockquote>
+<p>推荐的视频教程：</p>
+
+<ol>
+<li><a href="https://youtu.be/8XrDSNnesEQ">别问，问就先干</a> &ndash; 基于node.js</li>
+<li><a href="https://youtu.be/gHaFqYRJ_aw">How To Containerize Your Python Application using Docker</a> &ndash; 基于Flask</li>
+</ol>
+
+<p>推荐的文字教程：</p>
+
+<ol>
+<li><a href="https://www.runoob.com/docker/docker-tutorial.html">菜鸟教程</a></li>
+<li><a href="https://docs.docker.com/get-started/">Docker Documentation</a></li>
+</ol>
+</blockquote>
 
 <p><br></p>
 
@@ -1091,7 +1127,7 @@ python -m script  # 将 script.py 作为模块执行
 
 <h3 id="2-从标准输入获取文本">2. 从标准输入获取文本</h3>
 
-<p>Python 可以从标准输入<a href="https://docs.python.org/3/library/sys.html#sys.stdin">sys.stdin</a> 获取文本。</p>
+<p>Python 可以从标准输入 <a href="https://docs.python.org/3/library/sys.html#sys.stdin">sys.stdin</a> 获取文本。</p>
 
 <h4 id="①-使用-echo-从命令行获取输入">① 使用 <code>echo</code> 从命令行获取输入</h4>
 
@@ -1110,17 +1146,17 @@ for line in sys.stdin:
 <pre><code class="language-shell">echo &quot;hello&quot; | python read_text.py
 </code></pre>
 
-<p>获得的输出是：</p>
+<p>其输出是：</p>
 
 <p><img src="/img/command-line-execute-1.png" alt="" /></p>
 
 <p>这说明我们已经成功地从命令行读取了字符串 &ldquo;hello&rdquo;。</p>
 
-<h4 id="②-使用-cat-从指定文件输入">② 使用 <code>cat</code> 从指定文件输入</h4>
+<h4 id="②-使用-cat-从指定文件获取输入">② 使用 <code>cat</code> 从指定文件获取输入</h4>
 
-<p>除了使用 <code>echo</code> 我们还可以使用 <code>cat</code> 指定作为标准输入的文件:</p>
+<p>除了使用 <code>echo</code> 外，我们还可以使用 <code>cat</code> 将文件作为标准输入:</p>
 
-<p>先新建一个非空文件 info.txt，在里面随便写点什么。</p>
+<p>新建一个非空文件 info.txt，随便在里面写点什么。</p>
 
 <pre><code class="language-shell">hello
 are you ok
@@ -1129,20 +1165,20 @@ i fine, thx
 that's great
 </code></pre>
 
-<p>然后在当前目录下执行：</p>
+<p>执行：</p>
 
 <pre><code class="language-shell">cat info.txt | python read_text.py
 </code></pre>
 
-<p>获得的输出是：</p>
+<p>输出是：</p>
 
 <p><img src="/img/command-line-execute-2.png" alt="" /></p>
 
-<h4 id="③-从另一个-python-文件的输出中获取输入">③ 从另一个 Python 文件的输出中获取输入</h4>
+<h4 id="③-从另一个-python-文件输出流中获取输入">③ 从另一个 Python 文件输出流中获取输入</h4>
 
-<p>或者也可以从另一个 Python 文件的输出流中获取输入。</p>
+<p>也可以从另一个 Python 文件的输出流中获取输入。</p>
 
-<p>当前目录下新建一个 <code>gen_text.py</code>。</p>
+<p>在当前目录下新建一个 <code>gen_text.py</code>。</p>
 
 <pre><code class="language-python"># gen_text.py
 import sys
@@ -1178,6 +1214,28 @@ print(sys.argv)
 <pre><code>python get_argv.py  # 输出 ['get_argv.py']
 python get_argv.py hi nihao  # 输出 ['get_argv.py', 'hi', 'nihao']
 </code></pre>
+
+<h3 id="4-标准错误输出">4. 标准错误输出</h3>
+
+<p>Python 可以将标准错误 <a href="https://docs.python.org/3/library/sys.html#sys.stderr">sys.stderr</a> 打印到命令行。</p>
+
+<h4 id="①-将标准错误打印到命令行">① 将标准错误打印到命令行</h4>
+
+<pre><code class="language-python"># gen_error.py
+import sys
+
+print('NORMAL INFO')
+print('ERROR INFO', file=sys.stderr)  # Python3
+</code></pre>
+
+<p>利用上述命令，我们可以将标准错误打印到命令行。但是，加了 <code>file</code> 参数的 <code>print</code> 函数和不加参数的似乎没有任何区别。其实有区别，请看下一个示例。</p>
+
+<h4 id="②-将标准错误打印到日志">② 将标准错误打印到日志</h4>
+
+<pre><code class="language-shell">python gen_error.py &gt;&gt; result.log 2&gt;&gt; error.log
+</code></pre>
+
+<p>利用上述命令，我们可以把正常输出信息打印到 <code>result.log</code>，将错误信息打印到 <code>error.log</code>。这说明加了 <code>file=sys.stderr</code> 参数的输出，可以在命令行中识别到。</p>
 
 <blockquote>
 <p><strong>Note</strong>: 关于 Terminal 快捷键，Mac 用户可以看看 <a href="https://support.apple.com/en-gb/guide/terminal/trmlshtcts/mac">Keyboard shortcuts in Terminal on Mac</a>.</p>
