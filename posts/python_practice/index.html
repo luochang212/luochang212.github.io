@@ -499,7 +499,7 @@
     
     
     <br/>
-    <i class="fas fa-clock"></i> 6 min read
+    <i class="fas fa-clock"></i> 7 min read
 </div>
 
 
@@ -797,19 +797,77 @@ $ conda update [package_name]  # 升级conda环境中的某个包
 <p>原文：<strong>Docker</strong> is a set of platform as a service (PaaS) products that use OS-level virtualization to deliver software in packages called containers. Containers are isolated from one another and bundle their own software, libraries and configuration files; they can communicate with each other through well-defined channels. All containers are run by a single operating system kernel and therefore use fewer resources than virtual machines. &ndash; from wikipedia</p>
 </blockquote>
 
-<p>下面我们来介绍如何使用 Docker。</p>
+<p>✨ 下面我们来介绍如何使用 Docker。</p>
 
-<p>#todo</p>
+<p>1.首先去官网下载 <a href="https://www.docker.com/products/docker-desktop">Docker Desktop</a>。</p>
+
+<p>2.安装 Docker，装完后执行 <code>docker -v</code> 以检查安装是否成功。</p>
+
+<p>3.新建一个文件夹，打开它 <code>mkdir myDocker; cd myDocker</code>。</p>
+
+<p>4.随便在里面建点啥，比如计算数列均值：</p>
+
+<pre><code># calc.py
+# pip install numpy
+
+import numpy as np
+
+lst = np.array([2 ** i for i in range(5)])
+print('list:', *lst, seq=',')
+print('mean:', np.mean(lst))
+</code></pre>
+
+<p>5.记录当前的依赖库及其版本。</p>
+
+<pre><code class="language-shell">pip freeze &gt; requirements.txt
+</code></pre>
+
+<p>6.然后我们创建一个 Dockerfile，它相当于 Docker 的配置文件。</p>
+
+<pre><code># Dockerfile
+  
+# Specify Python version
+FROM python:3.8.5-buster
+
+# Make a directory for our application
+WORKDIR /app
+
+# Install Dependences
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+# Copy our source code
+COPY calc.py .
+
+# Run the application
+CMD [&quot;python&quot;, &quot;calc.py&quot;]
+</code></pre>
+
+<p>Dockerfile 中需要指定 Python 的版本，Python 版本可以在 <a href="https://hub.docker.com/_/python">Docker Hub</a> 中找。</p>
+
+<p>7.运行 Dokcer 以创造容器。</p>
+
+<pre><code class="language-shell">docker build -t dockerproject .
+</code></pre>
+
+<p>8.运行容器中的应用。</p>
+
+<pre><code class="language-shell">docker run dockerproject
+</code></pre>
+
+<p>运行结果如下：</p>
+
+<p><img src="/img/python-practice-1.png" alt="" /></p>
 
 <blockquote>
-<p>推荐的视频教程：</p>
+<p>视频教程：</p>
 
 <ol>
-<li><a href="https://youtu.be/8XrDSNnesEQ">别问，问就先干</a> &ndash; 基于node.js</li>
-<li><a href="https://youtu.be/gHaFqYRJ_aw">How To Containerize Your Python Application using Docker</a> &ndash; 基于Flask</li>
+<li>基于node.js：<a href="https://youtu.be/8XrDSNnesEQ">别问，问就先干</a></li>
+<li>基于Flask：<a href="https://youtu.be/gHaFqYRJ_aw">How To Containerize Your Python Application using Docker</a> (本章节基于此教程改编)</li>
 </ol>
 
-<p>推荐的文字教程：</p>
+<p>文字教程：</p>
 
 <ol>
 <li><a href="https://www.runoob.com/docker/docker-tutorial.html">菜鸟教程</a></li>
