@@ -803,9 +803,9 @@ $ conda update [package_name]  # 升级conda环境中的某个包
 
 <p>2.安装 Docker，装完后执行 <code>docker -v</code> 以检查安装是否成功。</p>
 
-<p>3.新建一个文件夹，打开它 <code>mkdir myDocker; cd myDocker</code>。</p>
+<p>3.新建一个文件夹，然后打开它 <code>mkdir myDocker; cd myDocker</code>。</p>
 
-<p>4.随便在里面建点啥，比如计算数列均值：</p>
+<p>4.随便在里面建点啥，比如计算数列元素的平均值：</p>
 
 <pre><code># calc.py
 # pip install numpy
@@ -813,19 +813,19 @@ $ conda update [package_name]  # 升级conda环境中的某个包
 import numpy as np
 
 lst = np.array([2 ** i for i in range(5)])
-print('list:', *lst, seq=',')
+print('list:', *lst)
 print('mean:', np.mean(lst))
 </code></pre>
 
-<p>5.记录当前的依赖库及其版本。</p>
+<p>5.记录当前的依赖库及其版本，输出到 <code>requirements.txt</code> 文件上。</p>
 
 <pre><code class="language-shell">pip freeze &gt; requirements.txt
 </code></pre>
 
-<p>6.然后我们创建一个 Dockerfile，它相当于 Docker 的配置文件。</p>
+<p>6.然后，我们新建一个 Dockerfile，它相当于 Docker 的配置文件。</p>
 
 <pre><code># Dockerfile
-  
+
 # Specify Python version
 FROM python:3.8.5-buster
 
@@ -843,9 +843,9 @@ COPY calc.py .
 CMD [&quot;python&quot;, &quot;calc.py&quot;]
 </code></pre>
 
-<p>Dockerfile 中需要指定 Python 的版本，Python 版本可以在 <a href="https://hub.docker.com/_/python">Docker Hub</a> 中找。</p>
+<p>PS: Python 版本名可以在 <a href="https://hub.docker.com/_/python">Docker Hub</a> 中找。</p>
 
-<p>7.运行 Dokcer 以创造容器。</p>
+<p>7.运行 Dokcer 以创建容器。</p>
 
 <pre><code class="language-shell">docker build -t dockerproject .
 </code></pre>
@@ -855,7 +855,7 @@ CMD [&quot;python&quot;, &quot;calc.py&quot;]
 <pre><code class="language-shell">docker run dockerproject
 </code></pre>
 
-<p>运行结果如下：</p>
+<p>如果显示如下结果，说明容器构建成功！</p>
 
 <p><img src="/img/python-practice-1.png" alt="" /></p>
 
@@ -864,7 +864,7 @@ CMD [&quot;python&quot;, &quot;calc.py&quot;]
 
 <ol>
 <li>基于node.js：<a href="https://youtu.be/8XrDSNnesEQ">别问，问就先干</a></li>
-<li>基于Flask：<a href="https://youtu.be/gHaFqYRJ_aw">How To Containerize Your Python Application using Docker</a> (本章节基于此教程改编)</li>
+<li>基于Flask：<a href="https://youtu.be/gHaFqYRJ_aw">How To Containerize Your Python Application using Docker</a> (本章基于此教程改编)</li>
 </ol>
 
 <p>文字教程：</p>
