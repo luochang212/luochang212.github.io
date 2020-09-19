@@ -22,10 +22,10 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="泊松分布的仿真与应用"/>
-<meta name="twitter:description" content="--"/>
+<meta name="twitter:description" content="本文尝试通过 Python 仿真来阐释泊松分布的本质；然后用一个生活化的例子，提供一些如何在生活中使用泊松分布的思路。"/>
 
 <meta property="og:title" content="泊松分布的仿真与应用" />
-<meta property="og:description" content="--" />
+<meta property="og:description" content="本文尝试通过 Python 仿真来阐释泊松分布的本质；然后用一个生活化的例子，提供一些如何在生活中使用泊松分布的思路。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/poisson/" />
 <meta property="article:published_time" content="2020-09-19T00:00:00&#43;00:00"/>
@@ -537,47 +537,47 @@
     
 
 <blockquote>
-<p>本文尝试通过 Python 仿真来阐述泊松分布的本质；然后用一些生活化的例子，给大家提供一些关于如何利用泊松分布的思路。</p>
+<p>本文尝试通过 Python 仿真来阐释泊松分布的本质；然后用一个生活化的例子，提供一些如何在生活中使用泊松分布的思路。</p>
 </blockquote>
 
 <p>GitHub项目地址：<a href="https://github.com/luochang212/python-tips/blob/master/poisson/poisson.py" target="_blank">python-tips/poisson</a></p>
 
 <h3 id="从泊松函数讲起">从泊松函数讲起</h3>
 
-<p><a href="https://en.wikipedia.org/wiki/Poisson_distribution">泊松分布</a> 表示在<strong>给定时间段</strong>内发生<strong>给定数量的事件</strong>的概率。这个定义比较抽象。举个例子，比如你在接下来 20 分钟内接到电话的个数的概率，就服从泊松分布:</p>
+<p><a href="https://en.wikipedia.org/wiki/Poisson_distribution">泊松分布</a> 表示在<strong>给定时间段</strong>内发生<strong>给定数量的事件</strong>的概率。这个定义比较抽象。举个具体的例子，假设你每小时接到电话的概率是固定的，比如每小时 0.05 个，那么你在接下来 1 小时内接到电话个数的概率，就服从泊松分布:</p>
 
-<p>20 分钟内接到 0 个电话，有一个概率值 <code>$P_1$</code>；</p>
+<p>20 分钟内接到 0 个电话，对应一个概率值 <code>$P_1$</code>；</p>
 
-<p>20 分钟内接到 1 个电话，有一个概率值 <code>$P_2$</code>；</p>
+<p>20 分钟内接到 1 个电话，对应一个概率值 <code>$P_2$</code>；</p>
 
 <p>&hellip; &hellip;</p>
 
-<p>20 分钟内接到 n 个电话，也有一个概率值<code>$P_n$</code>。</p>
+<p>20 分钟内接到 n 个电话，也对应一个概率值<code>$P_n$</code>。</p>
 
-<p>这些概率值组成一个概率分布列，它的值  <code>$(n, P_n)$</code>  在二维坐标下连成一条<strong>曲线</strong>。这条曲线所在的函数就是<strong>泊松分布的概率密度函数</strong>，其表达式及图像如下：</p>
+<p>这些概率值组成一个概率分布列，它的值  <code>$(n, P_n)$</code>  在二维坐标下连成一条<strong>曲线</strong>。这条曲线所在的函数就是<strong>泊松分布的概率密度函数</strong>。其公式和图像如下：</p>
 
 <p><code>$$\boxed{P(k | t, \lambda)=\frac{(\lambda t)^{k}}{k !} \exp (-\lambda t)}$$</code></p>
 
 <p><img src="/img/The-Poisson-distribution.png" alt="" /></p>
 
-<p>从公式中，我们可以看出：只要确定了 <code>$\lambda$</code> 和 <code>t</code>，该式就退化成概率<code>$P$</code> 关于事件发生次数 <code>k</code> 的函数。 因此，确定 <code>$\lambda$</code> 和 <code>t</code> 对我们至关重要。</p>
+<p>从公式中，我们可以看出：只要确定了 <code>$\lambda$</code> 和 <code>$t$</code>，该式就退化成了概率<code>$P$</code> 关于事件发生次数 <code>$k$</code> 的函数。 因此，如果我们对不同 <code>$k$</code> 对 <code>$P$</code> 值的影响感兴趣，那么确定 <code>$\lambda$</code> 和 <code>$t$</code> 的值就至关重要。</p>
 
-<p><code>$\lambda$</code>, <code>k</code>, <code>t</code> 的定义：</p>
+<p><code>$\lambda$</code>, <code>$k$</code>, <code>$t$</code> 的定义：</p>
 
 <ul>
 <li><code>$\lambda$</code>: 单位时间内，事件发生的频率。
 <!-- 例如：某事件一分钟发生两次，则 `$\lambda$ = 2 次/分钟`。 --></li>
-<li><code>k</code>: 事件发生的次数。</li>
-<li><code>t</code>: 时间长度。
-<!-- `t` 的量纲必须和 `$\lambda$` 相符。如果 `$\lambda$` 的单位为 `次/分钟`，则 `t` 的单位应为 `分钟`。 --></li>
+<li><code>$k$</code>: 事件发生的次数。</li>
+<li><code>$t$</code>: 时间长度。
+<!-- `$t$` 的量纲必须和 `$\lambda$` 相符。如果 `$\lambda$` 的单位为 `次/分钟`，则 `$t$` 的单位应为 `分钟`。 --></li>
 </ul>
 
-<p><code>$\lambda$</code>, <code>k</code>, <code>t</code> 三者的关系：</p>
+<p><code>$\lambda$</code>, <code>$k$</code>, <code>$t$</code> 三者的关系：</p>
 
-<p>泊松分布衡量的是多长时间，某事件发生多少次的概率。这里的<strong>多长时间</strong>指的是 <code>t</code>；<strong>事件发生多少次</strong>指的是 <code>k</code>。<code>$\lambda$</code> 则类似该事件的一个<strong>固有属性</strong>，<code>$\lambda$</code> 越大，说明该事件发生的可能性越大。</p>
+<p>泊松分布衡量的是多长时间，某事件发生多少次的概率。这里的<strong>多长时间</strong>指的是 <code>$t$</code>；<strong>事件发生多少次</strong>指的是 <code>$k$</code>。<code>$\lambda$</code> 则类似该事件的一个<strong>固有属性</strong>，<code>$\lambda$</code> 越大，说明该事件发生的可能性越大。</p>
 
 <blockquote>
-<p><strong>Note</strong>: <code>t</code> 的量纲必须和 <code>$\lambda$</code>的量纲相符。如果 <code>$\lambda$</code> 的单位为 <code>次/小时</code>，则 <code>t</code> 也应该取 <code>小时</code> 为单位。</p>
+<p><strong>Note</strong>: <code>$t$</code> 的量纲必须和 <code>$\lambda$</code>的量纲相符。如果 <code>$\lambda$</code> 的单位为 <code>次/小时</code>，则 <code>$t$</code> 也应该取 <code>小时</code> 为单位。</p>
 </blockquote>
 
 <h3 id="引入一个实例">引入一个实例</h3>
@@ -600,7 +600,7 @@
 
 <h3 id="泊松分布的仿真">泊松分布的仿真</h3>
 
-<p>这也就是说，我们只需要用到这个简单公式，就可以对泊松分布做仿真。但是这里有一个技巧。因为在假设中，<code>t</code> 代表无限小的时间间隔，但实际上我们没法用代码编写出无限小这种东西。因此我们只能量力而行。比如说，如果 <code>t</code> 代表一个小时，而 <code>$\lambda$</code> 表示 20 次没小时，那么我们的时间间隔只要切到比 20 这个数字大一到两个数量级即可。这里我们把一小时分成 1000 个小的时间片，那么每个时间片发生事件的概率就是 <sup>20</sup>&frasl;<sub>1000</sub> 。当然时间片切得越细越好，但是 1000 个时间片在这里也够用了。</p>
+<p>这也就是说，我们只需要用到这个简单公式，就可以对泊松分布做仿真。但是这里有一个技巧。因为在假设中，<code>$t$</code> 代表无限小的时间间隔，但实际上我们没法用代码编写出无限小这种东西。因此我们只能量力而行。比如说，如果 <code>$t$</code> 代表一个小时，而 <code>$\lambda$</code> 表示 20 次没小时，那么我们的时间间隔只要切到比 20 这个数字大一到两个数量级即可。这里我们把一小时分成 1000 个小的时间片，那么每个时间片发生事件的概率就是 <sup>20</sup>&frasl;<sub>1000</sub> 。当然时间片切得越细越好，但是 1000 个时间片在这里也够用了。</p>
 
 <p>OK，闲言少叙，我们这就开始仿真建模。</p>
 
