@@ -6,7 +6,7 @@
     <description>Recent content in Categories on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 25 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 19 Sep 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://luochang212.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,18 @@
     <item>
       <title>Development</title>
       <link>http://luochang212.github.io/categories/development/</link>
-      <pubDate>Sat, 25 Jul 2020 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 19 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/categories/development/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>math</title>
+      <link>http://luochang212.github.io/categories/math/</link>
+      <pubDate>Sat, 19 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/categories/math/</guid>
       <description></description>
     </item>
     
@@ -71,15 +80,6 @@
       <pubDate>Fri, 12 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/categories/golang/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Math</title>
-      <link>http://luochang212.github.io/categories/math/</link>
-      <pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/categories/math/</guid>
       <description></description>
     </item>
     

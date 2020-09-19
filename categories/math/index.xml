@@ -1,15 +1,35 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Math on Chang Luo</title>
+    <title>math on Chang Luo</title>
     <link>http://luochang212.github.io/categories/math/</link>
-    <description>Recent content in Math on Chang Luo</description>
+    <description>Recent content in math on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 04 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 19 Sep 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://luochang212.github.io/categories/math/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>泊松分布的仿真与应用</title>
+      <link>http://luochang212.github.io/posts/poisson/</link>
+      <pubDate>Sat, 19 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/posts/poisson/</guid>
+      <description>本文尝试通过 Python 仿真来阐述泊松分布的本质；然后用一些生活化的例子，给大家提供一些关于如何利用泊松分布的思路。
+ GitHub项目地址：python-tips/poisson
+从泊松函数讲起 泊松分布 表示在给定时间段内发生给定数量的事件的概率。这个定义比较抽象。举个例子，比如你在接下来 20 分钟内接到电话的个数的概率，就服从泊松分布:
+20 分钟内接到 0 个电话，有一个概率值 $P_1$；
+20 分钟内接到 1 个电话，有一个概率值 $P_2$；
+&amp;hellip; &amp;hellip;
+20 分钟内接到 n 个电话，也有一个概率值$P_n$。
+这些概率值组成一个概率分布列，它的值 $(n, P_n)$ 在二维坐标下连成一条曲线。这条曲线所在的函数就是泊松分布的概率密度函数，其表达式及图像如下：
+$$\boxed{P(k | t, \lambda)=\frac{(\lambda t)^{k}}{k !} \exp (-\lambda t)}$$
+从公式中，我们可以看出：只要确定了 $\lambda$ 和 t，该式就退化成概率$P$ 关于事件发生次数 k 的函数。 因此，确定 $\lambda$ 和 t 对我们至关重要。
+$\lambda$, k, t 的定义：
+ $\lambda$: 单位时间内，事件发生的频率。  k: 事件发生的次数。 t: 时间长度。   $\lambda$, k, t 三者的关系：</description>
+    </item>
     
     <item>
       <title>排队论在网络性能分析中的应用</title>

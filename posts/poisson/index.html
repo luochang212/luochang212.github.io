@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.55.6" />
+
+    
+    
+    
+
+<title>泊松分布的仿真与应用 • Chang Luo</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="泊松分布的仿真与应用"/>
+<meta name="twitter:description" content="--"/>
+
+<meta property="og:title" content="泊松分布的仿真与应用" />
+<meta property="og:description" content="--" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://luochang212.github.io/posts/poisson/" />
+<meta property="article:published_time" content="2020-09-19T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2020-09-19T00:00:00&#43;00:00"/><meta property="og:site_name" content="Title" />
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.6a83d62c39a364f036df4db1ecd564645635d6c7fc182425cb501218fec485f5.css" integrity="sha256-aoPWLDmjZPA2302x7NVkZFY11sf8GCQly1ASGP7EhfU=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+
+<link rel="stylesheet" href="/scss/hugo-toc.8549a64d301421b4256ea9a0d5ca8b99178799f569d5d2daeb95f24cef3ce6b7.css" integrity="sha256-hUmmTTAUIbQlbqmg1cqLmReHmfVp1dLa65XyTO885rc=">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+</head>
+
+
+    <body class=" ">
+    <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://upcdn.b0.upaiyun.com/libs/jquery/jquery-1.9.0.min.js"></script>
+
+  <style>
+    body {
+      transition: background-color .5s;
+    }
+
+    #overlay {
+      position: fixed;
+      display: none;
+      width: calc(100vw - 580px);
+      height: 100%;
+      top: 0;
+      left: 0;
+       
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      right: 0;
+      background-color: #FFF;
+       
+      overflow-x: hidden;
+      transition: 0.5s;
+       
+       
+    }
+
+    #main {
+      transition: margin-left .5s;
+       
+      padding: 16px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      overflow: hidden;
+    }
+
+     
+    .tab {
+      overflow: hidden;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+    }
+
+     
+    .tab button {
+      background-color: inherit;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      transition: 0.3s;
+      font-size: 17px;
+    }
+
+     
+    .tab button:hover {
+      background-color: #ddd;
+    }
+
+     
+    .tab button.active {
+      background-color: #ccc;
+    }
+
+     
+    .tabcontent {
+      display: none;
+      padding: 12px 12px;
+      margin: 0;
+      border: 1px solid #ccc;
+      border-top: none;
+    }
+
+    .dropbtn {
+      background-color: #3498DB;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+    }
+
+    .dropup {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropup-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      bottom: 50px;
+      z-index: 1;
+    }
+
+    .dropup-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropup-content a:hover {
+      background-color: #ccc
+    }
+
+    .dropup:hover .dropup-content {
+      display: block;
+    }
+
+    .dropup:hover .dropbtn {
+      background-color: #2980B9;
+    }
+
+    #video2,
+    #video3 {
+      display: none;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  
+  <div class="sidebar">
+    <div class="container ">
+      <div class="sidebar-about">
+        <span class="site__title">
+          <a href="http://luochang212.github.io">Chang Luo</a>
+        </span>
+        
+        
+        
+        <div class="author-image">
+          <a href="#" class="load-iframe" onclick="openNav()"><img src="http://luochang212.github.io/images/profile.png" id="author-iamge"
+              alt="Author Image" class="img--circle img--headshot element--center"></a>
+        </div>
+        
+        <p class="site__description">
+          
+        </p>
+      </div>
+      <div class="collapsible-menu">
+        <input type="checkbox" id="menuToggle">
+        <label for="menuToggle">Chang Luo</label>
+        <div class="menu-content">
+          <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/portfolio/">
+						<span>Projects</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+		</li>
+	</ul>
+</div>
+
+          <section class="social">
+	
+	<a href="https://twitter.com/MinosPalace" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	<a href="https://instagram.com/icstocs" rel="me"><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></a>
+	
+	
+	<a href="https://github.com/luochang212" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://linkedin.com/in/bupt-luochang" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+</section>
+
+        </div>
+      </div>
+      
+<div class="copyright">
+  &copy; 2020 Chang Luo
+  
+</div>
+
+
+
+    </div>
+  </div>
+
+  
+  
+
+  <div id="overlay" onclick="off()"></div>
+
+  <div id="mySidenav" class="sidenav">
+
+    <div id="main">
+      <div class="tab">
+        <button id="default-tab" class="tablinks" onclick="openItem(event, 'Resources')">Resources</button>
+        <button class="tablinks" onclick="openItem(event, 'netease-player')">Music</button>
+        <button class="tablinks" onclick="openItem(event, 'Video-player')">Video</button>
+        <button class="tablinks" onclick="openItem(event, 'gallery')">Gallery</button>
+        <button class="tablinks" onclick="openItem(event, 'gadget')">Gadget</button>
+      </div>
+
+      <div id="Resources" class="tabcontent">
+        <iframe src="about:blank" data-src="/resources/" frameborder="0" height="560" width="100%" marginheight="0"
+          marginwidth="0" scrolling="yes"></iframe>
+      </div>
+
+      <div id="netease-player" class="tabcontent">
+        <iframe src="about:blank" data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
+          frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=450></iframe>
+      </div>
+
+      <div id="Video-player" class="tabcontent">
+
+        <div id="video1">
+          <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=455023331&bvid=BV1X541167RE&cid=170542054&page=1&high_quality=1&danmaku=0"
+            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+        <div id="video2">
+          <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=65042716&bvid=BV1M4411r7yu&cid=112895137&page=1&high_quality=1&high_quality=1&danmaku=0"
+            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+        <div id="video3">
+          <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=20535616&bvid=BV1zW411W75L&cid=33582726&page=1//player.bilibili.com/player.html?aid=15159845&cid=24679968&page=1&high_quality=1&danmaku=0"
+            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+
+        
+
+        
+
+        <br>
+        <div class="dropup">
+          <button class="dropbtn">更多视频</button>
+          <div class="dropup-content">
+            <a onclick="link1()">1</a>
+            <a onclick="link2()">2</a>
+            <a onclick="link3()">3</a>
+          </div>
+        </div>
+      </div>
+
+      <div id="gallery" class="tabcontent">
+        <iframe src="about:blank" data-src="/gadget/gallery/#two" frameborder="0" height="560" width="100%"
+          scrolling="yes"></iframe>
+      </div>
+
+      <div id="gadget" class="tabcontent">
+        <iframe src="about:blank" data-src="/gadget/" frameborder="0" height="560" width="100%"
+          scrolling="yes"></iframe>
+      </div>
+
+    </div>
+  </div>
+
+  
+  <script>
+    'use strict'
+    
+    function openNav() {
+      on();
+      document.getElementById("mySidenav").style.width = "580px";
+      document.body.style.backgroundColor = "rgba(0,0,0,0.5)";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.body.style.backgroundColor = "white";
+    }
+
+    function on() {
+      document.getElementById("overlay").style.display = "block";
+    }
+
+    function off() {
+      closeNav();
+      document.getElementById("overlay").style.display = "none";
+    }
+
+    
+    document.getElementById('default-tab').click();
+
+    function openItem(evt, itemName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(itemName).style.display = "block";
+      evt.currentTarget.className += "active";
+    }
+
+    function link1() {
+      document.getElementById("video1").style.display = "block";
+      document.getElementById("video2").style.display = "none";
+      document.getElementById("video3").style.display = "none";
+    }
+
+    function link2() {
+      document.getElementById("video1").style.display = "none";
+      document.getElementById("video2").style.display = "block";
+      document.getElementById("video3").style.display = "none";
+    }
+
+    function link3() {
+      document.getElementById("video1").style.display = "none";
+      document.getElementById("video2").style.display = "none";
+      document.getElementById("video3").style.display = "block";
+    }
+
+     
+    var flag = 0;
+
+     
+    $(".load-iframe").click(function () {
+      if (flag < 1) {
+        $("iframe").each(function () {
+          $(this).attr("src", $(this).data("src"));
+        });
+        flag = flag + 1;
+      }
+    });
+  </script>
+
+</body>
+
+
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>泊松分布的仿真与应用</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Sep 19, 2020
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/development">DEVELOPMENT</a>
+              •
+          
+              <a class="badge badge-category" href="/categories/math">MATH</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/statistics">statistics</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/python">python</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/poisson-distribution">poisson distribution</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 2 min read
+</div>
+
+
+  </header>
+  
+  
+  
+    <div class="toc-wrapper">
+      <input type="checkbox" id="tocToggle">
+      <label for="tocToggle">目录</label>
+      
+          <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#从泊松函数讲起">从泊松函数讲起</a></li>
+<li><a href="#引入一个实例">引入一个实例</a></li>
+<li><a href="#泊松分布的本质">泊松分布的本质</a></li>
+<li><a href="#泊松分布的仿真">泊松分布的仿真</a></li>
+<li><a href="#泊松分布在生活中的应用">泊松分布在生活中的应用</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+      
+    </div>
+  
+  
+  <div class="post">
+    
+
+<blockquote>
+<p>本文尝试通过 Python 仿真来阐述泊松分布的本质；然后用一些生活化的例子，给大家提供一些关于如何利用泊松分布的思路。</p>
+</blockquote>
+
+<p>GitHub项目地址：<a href="https://github.com/luochang212/python-tips/blob/master/poisson/poisson.py" target="_blank">python-tips/poisson</a></p>
+
+<h3 id="从泊松函数讲起">从泊松函数讲起</h3>
+
+<p><a href="https://en.wikipedia.org/wiki/Poisson_distribution">泊松分布</a> 表示在<strong>给定时间段</strong>内发生<strong>给定数量的事件</strong>的概率。这个定义比较抽象。举个例子，比如你在接下来 20 分钟内接到电话的个数的概率，就服从泊松分布:</p>
+
+<p>20 分钟内接到 0 个电话，有一个概率值 <code>$P_1$</code>；</p>
+
+<p>20 分钟内接到 1 个电话，有一个概率值 <code>$P_2$</code>；</p>
+
+<p>&hellip; &hellip;</p>
+
+<p>20 分钟内接到 n 个电话，也有一个概率值<code>$P_n$</code>。</p>
+
+<p>这些概率值组成一个概率分布列，它的值  <code>$(n, P_n)$</code>  在二维坐标下连成一条<strong>曲线</strong>。这条曲线所在的函数就是<strong>泊松分布的概率密度函数</strong>，其表达式及图像如下：</p>
+
+<p><code>$$\boxed{P(k | t, \lambda)=\frac{(\lambda t)^{k}}{k !} \exp (-\lambda t)}$$</code></p>
+
+<p><img src="/img/The-Poisson-distribution.png" alt="" /></p>
+
+<p>从公式中，我们可以看出：只要确定了 <code>$\lambda$</code> 和 <code>t</code>，该式就退化成概率<code>$P$</code> 关于事件发生次数 <code>k</code> 的函数。 因此，确定 <code>$\lambda$</code> 和 <code>t</code> 对我们至关重要。</p>
+
+<p><code>$\lambda$</code>, <code>k</code>, <code>t</code> 的定义：</p>
+
+<ul>
+<li><code>$\lambda$</code>: 单位时间内，事件发生的频率。
+<!-- 例如：某事件一分钟发生两次，则 `$\lambda$ = 2 次/分钟`。 --></li>
+<li><code>k</code>: 事件发生的次数。</li>
+<li><code>t</code>: 时间长度。
+<!-- `t` 的量纲必须和 `$\lambda$` 相符。如果 `$\lambda$` 的单位为 `次/分钟`，则 `t` 的单位应为 `分钟`。 --></li>
+</ul>
+
+<p><code>$\lambda$</code>, <code>k</code>, <code>t</code> 三者的关系：</p>
+
+<p>泊松分布衡量的是多长时间，某事件发生多少次的概率。这里的<strong>多长时间</strong>指的是 <code>t</code>；<strong>事件发生多少次</strong>指的是 <code>k</code>。<code>$\lambda$</code> 则类似该事件的一个<strong>固有属性</strong>，<code>$\lambda$</code> 越大，说明该事件发生的可能性越大。</p>
+
+<blockquote>
+<p><strong>Note</strong>: <code>t</code> 的量纲必须和 <code>$\lambda$</code>的量纲相符。如果 <code>$\lambda$</code> 的单位为 <code>次/小时</code>，则 <code>t</code> 也应该取 <code>小时</code> 为单位。</p>
+</blockquote>
+
+<h3 id="引入一个实例">引入一个实例</h3>
+
+<p>我们用一个实例，解释泊松分布是如何运用的。</p>
+
+<p>一个淘宝客服，平均每 10 分钟接听一个电话，那么他连续一小时没接到电话的概率是多少？</p>
+
+<p><code>$$P\left(k=0 | t=1, \lambda=6\right)=\exp \left(-6\right)=0.0024$$</code></p>
+
+<p>其中，<code>$t = 1 小时，\lambda = 6 次/小时$</code>。这个概率是极低的，这说明这位客服可能正在加夜班，或者他的电话是坏的。否则在正常情况下，这种事件发生的概率只有千分之二左右，是极为稀罕的。</p>
+
+<h3 id="泊松分布的本质">泊松分布的本质</h3>
+
+<p>尽管泊松分布的函数看起来很复杂，但它的本其实质非常简单。泊松函数的推导可以追溯到一个简单的等式：</p>
+
+<p><code>$$\boxed{P = \lambda t}$$</code></p>
+
+<p>这看起来太过简单，以至于你可能不相信它能推导出上面我们见到的那个复杂公式。如果你希望了解推导的具体细节，在我之前写的一篇博客中有详细证明 <a href="http://localhost:1313/posts/network_performance_analysis/#%E6%9F%8F%E6%9D%BE%E8%BF%87%E7%A8%8B%E7%9A%84%E6%8E%A8%E5%AF%BC">排队论在网络性能分析中的应用</a>。</p>
+
+<h3 id="泊松分布的仿真">泊松分布的仿真</h3>
+
+<p>这也就是说，我们只需要用到这个简单公式，就可以对泊松分布做仿真。但是这里有一个技巧。因为在假设中，<code>t</code> 代表无限小的时间间隔，但实际上我们没法用代码编写出无限小这种东西。因此我们只能量力而行。比如说，如果 <code>t</code> 代表一个小时，而 <code>$\lambda$</code> 表示 20 次没小时，那么我们的时间间隔只要切到比 20 这个数字大一到两个数量级即可。这里我们把一小时分成 1000 个小的时间片，那么每个时间片发生事件的概率就是 <sup>20</sup>&frasl;<sub>1000</sub> 。当然时间片切得越细越好，但是 1000 个时间片在这里也够用了。</p>
+
+<p>OK，闲言少叙，我们这就开始仿真建模。</p>
+
+<pre><code class="language-python"># -*- coding: utf-8 -*-
+&quot;&quot;&quot;泊松仿真
+   author: github@luochang212
+   usage: python poisson.py [RATE] {TIME}
+&quot;&quot;&quot;
+
+import sys
+import random
+import collections
+import matplotlib.pyplot as plt
+
+
+class Poisson:
+    def __init__(self, rate=sys.argv[1]):
+        &quot;&quot;&quot;init&quot;&quot;&quot;
+        self.rate = int(rate)
+
+        self.time = 1  # 单位时间
+        if len(sys.argv) &gt; 2 and sys.argv[2] != &quot;&quot;:
+            self.time = int(sys.argv[2])  # 手动指定时间范围
+
+        self.EXP_NUM = 100000  # 实验次数
+        self.NUM_LEVEL = 2  # 数量级
+
+    def generator(self, prob):
+        &quot;&quot;&quot;仿真结果生成器&quot;&quot;&quot;
+        while True:
+            if random.random() &lt; prob:
+                yield 1
+            else:
+                yield 0
+
+    def conduct_one_experiment(self, rate, time):
+        &quot;&quot;&quot;进行一次实验
+           每次实验中，时间分片的数量比rate高两个数量级
+           return: 本次实验中，事件发生的次数
+        &quot;&quot;&quot;
+        level = len(str(rate))
+        shard_num = 10 ** (level + self.NUM_LEVEL)  # 计算时间分片的数量
+
+        gen = self.generator(rate / shard_num)
+
+        cnt = 0
+        for _ in range(time * shard_num):
+            cnt += next(gen)
+        return cnt
+
+    def get_distribution(self, exp_num, rate, time):
+        &quot;&quot;&quot;多次实验，得到分布
+           exp_num: 实验次数
+        &quot;&quot;&quot;
+        lst = []
+        for _ in range(exp_num):
+            lst.append(self.conduct_one_experiment(rate, time))
+
+        return sorted(collections.Counter(lst).items(), key=lambda e: e[0])
+
+    def draw(self, sorted_list):
+        &quot;&quot;&quot;画图&quot;&quot;&quot;
+        s = sum([e[1] for e in sorted_list])
+        x = [e[0] for e in sorted_list]
+        y = [e[1] / s for e in sorted_list]
+
+        plt.plot(x, y)
+        
+        plt.xlabel(&quot;k&quot;)
+        plt.ylabel(&quot;P(k)&quot;)
+        plt.show()
+
+    def main(self):
+        &quot;&quot;&quot;main&quot;&quot;&quot;
+        sorted_list = self.get_distribution(self.EXP_NUM, self.rate, self.time)
+        self.draw(sorted_list)
+
+    @staticmethod
+    def calculator(rate, t, k):
+        &quot;&quot;&quot;用于计算泊松函数的概率 P(k|t,lambda)
+           rate: lambda
+           t: t
+           k: k
+        &quot;&quot;&quot;
+        import math
+        return (rate * t) ** k / math.factorial(k) * math.exp(-rate * t)
+
+
+if __name__ == '__main__':
+    p = Poisson()
+    p.main()
+
+</code></pre>
+
+<p>如果你想知道 <code>$\lambda = 3, t = 2$</code> 情况下泊松函数的图像，在命令行运行：</p>
+
+<pre><code class="language-shell">python poisson.py 3 2
+</code></pre>
+
+<p>如果不设置 <code>$t$</code> 的值，则 <code>$t$</code> 默认为 1。</p>
+
+<p>下面放几张仿真结果：</p>
+
+<ol>
+<li><code>$\lambda = 2, t = 1$</code>
+<img src="/img/poisson_2.png" alt="" /></li>
+<li><code>$\lambda = 5, t = 1$</code>
+<img src="/img/poisson_5.png" alt="" /></li>
+<li><code>$\lambda = 10, t = 1$</code>
+<img src="/img/poisson_10.png" alt="" /></li>
+<li><code>$\lambda = 80, t = 1$</code>
+<img src="/img/poisson_80.png" alt="" /></li>
+</ol>
+
+<h3 id="泊松分布在生活中的应用">泊松分布在生活中的应用</h3>
+
+<p>停车问题</p>
+
+<blockquote>
+<p>公司后门有片停车场，到晚了是这么一副光景👇 想把车停进去可太难了。</p>
+
+<p><img src="/img/poisson_parking.PNG" alt="" />
+全是车！</p>
+</blockquote>
+
+<p>如果遇到一个好车位，停进去也就罢了。但有时候车位挺多的，但因为害怕走完全程都遇不到一个好车位，还要回头！所以随便找个车位就把车停了。巨亏！</p>
+
+<p>这时候泊松分布就能帮大忙了。我们可以制定这样一种策略：我们把这条路平均分为 2 段。前半段用来观测，后半段用来停车。
+<!-- 假设所有车位在这条路上是均匀分布的。 --></p>
+
+<p>假如我们走完前半段路，发现有 5 个车位看起来勉强能把车停进去。那么我们就可以<strong>非常粗略</strong>地估计，后半段路中车位的数量服从 <code>$\lambda = 5$</code> 的泊松分布。通过查阅上面图像，我们发现 <code>$k = 0$</code> 即后半段路中完全遇不到类似车位的概率，只有千分之七左右。</p>
+
+<p>这是非常低的概率，那么我们就有信心在后半段路中找到一个好车位了。这时我们对车位的标准就可以相应提高，非好车位不停！</p>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/hadoop_intro/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">漫谈 Hadoop Streaming</span>
+    </a>
+    
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+<style>
+  .my-emoji {
+    height: 25px;
+    display: inline-block;
+    margin: 0;
+    vertical-align: text-bottom;
+  }
+</style>
+
+
+        </div>
+        
+    <script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
+
+
+
+<script defer src="/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+
+    
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+
+
+
+    
+
+
+
+    </body>
+</html>
