@@ -502,7 +502,7 @@
     
     
     <br/>
-    <i class="fas fa-clock"></i> 2 min read
+    <i class="fas fa-clock"></i> 3 min read
 </div>
 
 
@@ -520,11 +520,11 @@
 <ul>
 <li>
 <ul>
-<li><a href="#从泊松函数讲起">从泊松函数讲起</a></li>
-<li><a href="#引入一个实例">引入一个实例</a></li>
-<li><a href="#泊松分布的本质">泊松分布的本质</a></li>
-<li><a href="#泊松分布的仿真">泊松分布的仿真</a></li>
-<li><a href="#泊松分布在生活中的应用">泊松分布在生活中的应用</a></li>
+<li><a href="#1-从泊松函数讲起">1. 从泊松函数讲起</a></li>
+<li><a href="#2-引入一个实例">2. 引入一个实例</a></li>
+<li><a href="#3-泊松分布的本质">3. 泊松分布的本质</a></li>
+<li><a href="#4-泊松分布的仿真">4. 泊松分布的仿真</a></li>
+<li><a href="#5-泊松分布在生活中的应用">5. 泊松分布在生活中的应用</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -542,7 +542,7 @@
 
 <p>GitHub项目地址：<a href="https://github.com/luochang212/python-tips/blob/master/poisson/poisson.py" target="_blank">python-tips/poisson</a></p>
 
-<h3 id="从泊松函数讲起">从泊松函数讲起</h3>
+<h3 id="1-从泊松函数讲起">1. 从泊松函数讲起</h3>
 
 <p><a href="https://en.wikipedia.org/wiki/Poisson_distribution">泊松分布</a> 表示在<strong>给定时间段</strong>内发生<strong>给定数量的事件</strong>的概率。这个定义比较抽象。举个具体的例子，假设你每小时接到电话的概率是固定的，比如每小时 0.05 个，那么你在接下来 1 小时内接到电话个数的概率，就服从泊松分布:</p>
 
@@ -560,7 +560,9 @@
 
 <p><img src="/img/The-Poisson-distribution.png" alt="" /></p>
 
-<p>从公式中，我们可以看出：只要确定了 <code>$\lambda$</code> 和 <code>$t$</code>，该式就退化成了概率<code>$P$</code> 关于事件发生次数 <code>$k$</code> 的函数。 因此，如果我们对不同 <code>$k$</code> 对 <code>$P$</code> 值的影响感兴趣，那么确定 <code>$\lambda$</code> 和 <code>$t$</code> 的值就至关重要。</p>
+<p>从公式中，我们可以看出：只要确定了 <code>$\lambda$</code> 和 <code>$t$</code>，该式就退化成了概率 <code>$P$</code> 关于事件发生次数 <code>$k$</code> 的函数。 类似地，如果我们确定了 <code>$\lambda$</code> 和 <code>$k$</code>，则该式退化成概率<code>$P$</code> 关于时间范围 <code>$t$</code> 的函数。</p>
+
+<p>“确定哪些参数，让函数最终退化成哪些参数的函数”，这个选择和我们的研究目的有关。如果你对不同 <code>$k$</code> 如何影响 <code>$P$</code> 值感兴趣，那么就应该确定参数 <code>$\lambda$</code> 和 <code>$t$</code>。如果对 <code>$t$</code> 和 <code>$P$</code> 之间的关系感兴趣，那么就应该确定参数 <code>$\lambda$</code> 和 <code>$k$</code>。</p>
 
 <p><code>$\lambda$</code>, <code>$k$</code>, <code>$t$</code> 的定义：</p>
 
@@ -574,37 +576,42 @@
 
 <p><code>$\lambda$</code>, <code>$k$</code>, <code>$t$</code> 三者的关系：</p>
 
-<p>泊松分布衡量的是多长时间内，某事件发生多少次的概率。这里的<strong>多长时间</strong>指代的是 <code>$t$</code>；<strong>事件发生多少次</strong>指代的是 <code>$k$</code>。<code>$\lambda$</code> 则类似该事件的一个<strong>固有属性</strong>，<code>$\lambda$</code> 越大，可以简单理解为该事件在一段时间内发生的概率越大。</p>
+<p>泊松分布衡量的是<strong>多长时间</strong>内，<strong>某事件发生多少次</strong>的概率。这里 <code>$t$</code> 指代的是<strong>多长时间</strong>；<code>$k$</code> 指代的是<strong>某事件发生多少次</strong>。<code>$\lambda$</code> 则类似该事件的一个<strong>固有属性</strong>，<code>$\lambda$</code> 越大，可以简单理解为该事件在一段时间内发生的概率越大。</p>
 
 <blockquote>
-<p><strong>Note</strong>: <code>$t$</code> 的量纲必须和 <code>$\lambda$</code>的量纲相对应。如果 <code>$\lambda$</code> 的单位是 <code>次/小时</code>，则 <code>$t$</code> 也应该取 <code>小时</code> 为单位。</p>
+<p><strong>Note</strong>: <code>$t$</code> 的量纲必须和 <code>$\lambda$</code>的量纲相对应。如果 <code>$\lambda$</code> 的单位是 <code>次/小时</code>，则 <code>$t$</code> 应该取 <code>小时</code> 为单位；如果 <code>$\lambda$</code> 的单位是 <code>次/分钟</code>，则 <code>$t$</code> 也应该取 <code>分钟</code> 为单位。</p>
 </blockquote>
 
-<h3 id="引入一个实例">引入一个实例</h3>
+<h3 id="2-引入一个实例">2. 引入一个实例</h3>
 
-<p>接下来我们用一个实例，解释泊松分布是如何运用的。</p>
+<p>接下来我们用一个直观的实例，解释泊松分布在实际问题中是如何运用的。</p>
 
-<p>一个淘宝客服，平均每 10 分钟接听 1 个电话，那么他连续 1 小时没接到电话的概率是多少？</p>
+<p><strong>Q</strong>: 一个淘宝客服，平均每 10 分钟接听 1 个电话，那么他连续 1 小时没接到任何电话的概率是多少？</p>
 
-<p><code>$$P\left(k=0 | t=1, \lambda=6\right)=\exp \left(-6\right)=0.0024$$</code></p>
+<p><strong>A</strong>:</p>
 
-<p>其中，<code>$t = 1 小时，\lambda = 6 次/小时$</code>。我们发现，这个概率是极低的。这说明这位客服也许正在加夜班，或者他的电话坏了。否则正常情况下，该事件发生的概率只有千分之二，是极其稀罕的。</p>
+<p><code>$P\left(k=0 | t=1, \lambda=6\right)=\exp \left(-6\right)=0.0024$</code></p>
 
-<h3 id="泊松分布的本质">泊松分布的本质</h3>
+<p>其中，<code>$t = 1 小时，\lambda = 6 次/小时$</code>。</p>
 
-<p>尽管泊松分布的形式看起来很复杂，但它本质上其实非常简单。泊松函数的隐含假设可以追溯到一个简单的公式：</p>
+<p>我们发现，这个概率是极低的。这说明该客服也许正在上夜班，或者电话断线了，总之他很可能处在一种非正常的状况下。否则在正常情况下，连续 1 小时没接到任何电话的概率仅有千分之二，是极其罕见的。</p>
+
+<h3 id="3-泊松分布的本质">3. 泊松分布的本质</h3>
+
+<p>尽管泊松分布的函数形式看起来很复杂，但它本质上其实很简单。泊松函数的本质，也就是它的基本假设，可以追溯到一个简单的公式：</p>
 
 <p><code>$$\boxed{P = \lambda \Delta t}$$</code></p>
 
-<p>这个公式看起来太过简单，以至于你可能不相信它能推导出上文中那个复杂的泊松分布函数。如果你想了解推导过程，可以看我之前写的一篇博客，里面有详细证明 <a href="http://localhost:1313/posts/network_performance_analysis/#%E6%9F%8F%E6%9D%BE%E8%BF%87%E7%A8%8B%E7%9A%84%E6%8E%A8%E5%AF%BC">排队论在网络性能分析中的应用</a>。本文的主题不在此，就不展开讲了。</p>
+<p>这个公式看起来太过简单，以至于你可能不相信它能推导出上文那个复杂的泊松分布函数。如果你想了解推导过程，可以看我之前写的博客 <a href="http://localhost:1313/posts/network_performance_analysis/#%E6%9F%8F%E6%9D%BE%E8%BF%87%E7%A8%8B%E7%9A%84%E6%8E%A8%E5%AF%BC">排队论在网络性能分析中的应用</a>，里面有详细证明。本文的主题不在与于，就不展开讲了。</p>
 
-<h3 id="泊松分布的仿真">泊松分布的仿真</h3>
+<h3 id="4-泊松分布的仿真">4. 泊松分布的仿真</h3>
 
-<p>这个简单公式，就已经包含了泊松分布的核心假设。也就是说，我们只需要用到这个简单公式，就可以对泊松分布做仿真了。</p>
+<p>这个简单公式，就是泊松分布的核心假设。也就是说，我们只需要用这个公式，就能对泊松分布做仿真了。</p>
 
-<p>但是这里有一个技巧。因为在假设中，<code>$\Delta t$</code> 代表无限小的时间间隔，但实际上我们没法用代码编写出无限小这种东西。因此只能量力而行。比如说，如果 <code>$t$</code> 代表一个小时，而 <code>$\lambda$</code> 表示 20 次每小时，那么我们的时间间隔只要切到比 20 这个数字大一到两个数量级即可。20 是十这个数量级的，这里我们把一小时切分为一千个小时间片，并将每个时间片内事件发生的概率设为 <sup>20</sup>&frasl;<sub>1000</sub> ，就满足能<code>$P = \lambda \Delta t$</code>这个公式了。时间片当然是分得越细越好，这里的一到两个数量级，也只是个人之见，具体效果可以自行试验。</p>
+<p>这里还有个技巧。因为在假设中，<code>$\Delta t$</code> 代表无限小的时间间隔，但在编程中，我们没法写出无限小这种东西（其实可以，求别杠）。因此只能量力而行。比如，如果 <code>$t$</code> 代表一个小时，而 <code>$\lambda$</code> 表示 20 次每小时，则我们的时间片只要切到比 20 这个数字大一到两个数量级即可。20 是的数量级是十，大两个数量级是千。这里我们把一小时时间切割为一千个时间片，并将每个时间片内事件发生的概率设为 <sup>20</sup>&frasl;<sub>1000</sub> ，就保证了一小时内，事件发生次数的期望是 20 了。也就在千分之一小时的精度内，满足了 <code>$P = \lambda \Delta t$</code> 这个公式。
+<!-- 时间片当然是分得越细越好，这里一到两个数量级也只是个人之见，具体效果可以自行试验。 --></p>
 
-<p>OK，闲言少叙，我们这就开始仿真建模。</p>
+<p>OK，闲言少叙，我们这就开始建模仿真。</p>
 
 <pre><code class="language-python"># -*- coding: utf-8 -*-
 &quot;&quot;&quot;泊松仿真
@@ -697,12 +704,16 @@ if __name__ == '__main__':
 
 </code></pre>
 
+<p>（不是我懒，你已经是一个成熟的代码了，应该学会自己解释自己.jpg）</p>
+
+<p>看完代码，聪明的你一定已经知道这段代码它在做什么了。那我们直接来说怎么用吧！</p>
+
 <p>如果你想知道 <code>$\lambda = 3, t = 2$</code> 情况下泊松函数的图像，在命令行运行：</p>
 
 <pre><code class="language-shell">python poisson.py 3 2
 </code></pre>
 
-<p>如果不设置 <code>$t$</code> 的值，则 <code>$t$</code> 默认为 1。</p>
+<p>如果不设置 <code>$t$</code> 的值，则 <code>$t$</code> 的值默认为 1。</p>
 
 <p>下面放几张仿真结果：</p>
 
@@ -717,7 +728,7 @@ if __name__ == '__main__':
 <img src="/img/poisson_80.png" alt="" /></li>
 </ol>
 
-<h3 id="泊松分布在生活中的应用">泊松分布在生活中的应用</h3>
+<h3 id="5-泊松分布在生活中的应用">5. 泊松分布在生活中的应用</h3>
 
 <p>停车问题</p>
 
