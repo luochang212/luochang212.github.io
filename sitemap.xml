@@ -141,13 +141,13 @@
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/categories/math/</loc>
+    <loc>http://luochang212.github.io/posts/</loc>
     <lastmod>2020-09-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/posts/</loc>
+    <loc>http://luochang212.github.io/tags/python/</loc>
     <lastmod>2020-09-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -159,13 +159,13 @@
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/tags/poisson-distribution/</loc>
+    <loc>http://luochang212.github.io/categories/math/</loc>
     <lastmod>2020-09-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/tags/python/</loc>
+    <loc>http://luochang212.github.io/tags/poisson-distribution/</loc>
     <lastmod>2020-09-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -279,6 +279,12 @@
   </url>
   
   <url>
+    <loc>http://luochang212.github.io/tags/api/</loc>
+    <lastmod>2019-10-07T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://luochang212.github.io/categories/javascript/</loc>
     <lastmod>2019-10-07T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -286,12 +292,6 @@
   
   <url>
     <loc>http://luochang212.github.io/tags/monaco-editor/</loc>
-    <lastmod>2019-10-07T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://luochang212.github.io/tags/api/</loc>
     <lastmod>2019-10-07T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
