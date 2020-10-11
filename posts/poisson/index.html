@@ -17,15 +17,15 @@
     
     
 
-<title>泊松分布的仿真与应用 • Chang Luo</title>
+<title>泊松分布的仿真及可视化 • Chang Luo</title>
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="泊松分布的仿真与应用"/>
-<meta name="twitter:description" content="本文尝试通过 Python 仿真来阐释泊松分布的本质；然后用一个生活化的例子，提供一些如何在生活中使用泊松分布的思路。"/>
+<meta name="twitter:title" content="泊松分布的仿真及可视化"/>
+<meta name="twitter:description" content="本文尝试通过 Python 仿真来揭示泊松分布的本质，并对泊松分布做三维可视化；然后用一个生活化的例子，提供一些在生活中使用泊松分布的思路。"/>
 
-<meta property="og:title" content="泊松分布的仿真与应用" />
-<meta property="og:description" content="本文尝试通过 Python 仿真来阐释泊松分布的本质；然后用一个生活化的例子，提供一些如何在生活中使用泊松分布的思路。" />
+<meta property="og:title" content="泊松分布的仿真及可视化" />
+<meta property="og:description" content="本文尝试通过 Python 仿真来揭示泊松分布的本质，并对泊松分布做三维可视化；然后用一个生活化的例子，提供一些在生活中使用泊松分布的思路。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/poisson/" />
 <meta property="article:published_time" content="2020-09-19T00:00:00&#43;00:00"/>
@@ -460,7 +460,7 @@
     
 <article>
   <header>
-    <h1>泊松分布的仿真与应用</h1>
+    <h1>泊松分布的仿真及可视化</h1>
     
     
 <div class="post__meta">
@@ -524,8 +524,8 @@
 <li><a href="#2-引入一个实例">2. 引入一个实例</a></li>
 <li><a href="#3-泊松分布的本质">3. 泊松分布的本质</a></li>
 <li><a href="#4-建模仿真">4. 建模仿真</a></li>
-<li><a href="#5-3d-可视化">5. 3D 可视化</a></li>
-<li><a href="#6-生活小妙招">6. 生活小妙招</a></li>
+<li><a href="#5-三维可视化">5. 三维可视化</a></li>
+<li><a href="#6-泊松的应用">6. 泊松的应用</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -538,7 +538,7 @@
     
 
 <blockquote>
-<p>本文尝试通过 Python 仿真来阐释泊松分布的本质；然后用一个生活化的例子，提供一些如何在生活中使用泊松分布的思路。</p>
+<p>本文尝试通过 Python 仿真来揭示泊松分布的本质，并对泊松分布做三维可视化；然后用一个生活化的例子，提供一些在生活中使用泊松分布的思路。</p>
 </blockquote>
 
 <p>GitHub项目地址：<a href="https://github.com/luochang212/python-tips/blob/master/poisson/poisson.py" target="_blank">python-tips/poisson</a></p>
@@ -615,6 +615,7 @@
 <p>OK，闲言少叙，我们这就开始建模仿真。</p>
 
 <pre><code class="language-python"># -*- coding: utf-8 -*-
+
 &quot;&quot;&quot;泊松仿真
    author: github@luochang212
    usage: python poisson.py [RATE] {TIME}
@@ -628,7 +629,6 @@ import matplotlib.pyplot as plt
 
 class Poisson:
     def __init__(self, rate=sys.argv[1]):
-        &quot;&quot;&quot;init&quot;&quot;&quot;
         self.rate = int(rate)
 
         self.time = 1  # 单位时间
@@ -646,10 +646,9 @@ class Poisson:
             else:
                 yield 0
 
-    def conduct_one_experiment(self, rate, time):
+    def perform_exp(self, rate, time):
         &quot;&quot;&quot;进行一次实验
-           每次实验中，时间分片的数量比rate高两个数量级
-           return: 本次实验中，事件发生的次数
+        每次实验中，时间分片的数量比rate高两个数量级
         &quot;&quot;&quot;
         level = len(str(rate))
         shard_num = 10 ** (level + self.NUM_LEVEL)  # 计算时间分片的数量
@@ -659,15 +658,14 @@ class Poisson:
         cnt = 0
         for _ in range(time * shard_num):
             cnt += next(gen)
+        
         return cnt
 
-    def get_distribution(self, exp_num, rate, time):
-        &quot;&quot;&quot;多次实验，得到分布
-           exp_num: 实验次数
-        &quot;&quot;&quot;
+    def perform_exps(self, exp_num, rate, time):
+        &quot;&quot;&quot;多次实验，得到分布&quot;&quot;&quot;
         lst = []
         for _ in range(exp_num):
-            lst.append(self.conduct_one_experiment(rate, time))
+            lst.append(self.perform_exp(rate, time))
 
         return sorted(collections.Counter(lst).items(), key=lambda e: e[0])
 
@@ -684,8 +682,7 @@ class Poisson:
         plt.show()
 
     def main(self):
-        &quot;&quot;&quot;main&quot;&quot;&quot;
-        sorted_list = self.get_distribution(self.EXP_NUM, self.rate, self.time)
+        sorted_list = self.perform_exps(self.EXP_NUM, self.rate, self.time)
         self.draw(sorted_list)
 
     @staticmethod
@@ -716,7 +713,7 @@ if __name__ == '__main__':
 
 <p>如果不设置 <code>$t$</code> 的值，则 <code>$t$</code> 的值默认为 1。</p>
 
-<p>下面放几张仿真结果：</p>
+<p>下面放一些仿真结果：</p>
 
 <ol>
 <li><code>$\lambda = 2, t = 1$</code>
@@ -729,7 +726,7 @@ if __name__ == '__main__':
 <img src="/img/poisson_80.png" alt="" /></li>
 </ol>
 
-<h3 id="5-3d-可视化">5. 3D 可视化</h3>
+<h3 id="5-三维可视化">5. 三维可视化</h3>
 
 <p>泊松分布有三个自变量，一个因变量，需要四维空间才能把它完整地绘制出来。但幸好，通过观察我们发现 <code>$\lambda$</code> 和 <code>$t$</code> 的关系很近，可以归约成一个变量 <code>$\mu$</code>。我们设 <code>$\mu = \lambda t$</code>，则绘制 <code>$P =  f(\mu, k)$</code> 的图像，就足以表达泊松函数四个变量间的函数关系了。</p>
 
@@ -741,26 +738,31 @@ if __name__ == '__main__':
 <p><strong>Note</strong>: 绘图代码见 <a href="https://github.com/luochang212/python-tips/blob/master/poisson/3dplot.py">3dplot.py</a></p>
 </blockquote>
 
-<h3 id="6-生活小妙招">6. 生活小妙招</h3>
-
-<p>停车问题</p>
+<h3 id="6-泊松的应用">6. 泊松的应用</h3>
 
 <blockquote>
-<p>公司后门有片停车场，到晚了是这么一副光景👇 想把车停进去可太难了。</p>
-
-<p><img src="/img/poisson_parking.PNG" alt="" />
-全是车！</p>
+<p>泊松分布在生活中也有很多应用，下面我举一个也许不是特别恰当，但是比较贴近生活的例子。</p>
 </blockquote>
 
-<p>如果遇到一个好车位，停进去倒也罢了。但有时候车位挺多，但却害怕走完全程都遇不到一个好车位，还要回头。于是随便找个车位就停了，巨亏！</p>
+<p><strong>停车问题</strong>：公司有个自行车停车场，临近上班就停满了车。停车区域是一个长条形，从这头走到那头的过程中，我们需要找到合适的车位将车停入。但是，车位有宽有窄，我们倾向于选择比较宽的车位。我们需要一种判断方式，来决定何时将车停入是合适的。</p>
 
-<p>这时候泊松分布就帮大忙了。我们可以制定这样一种策略：将这条路平均分为 2 段，前半段用来观测，后半段用来停车。
-<!-- 假设1: 车位在这条路上是均匀分布的，即前半段车位和后半段车位之间没有显著差异。假设2: 车辆的到达符合泊松分布假设，即车辆到达的速率是常数lambda。--></p>
+<p><img src="/img/poisson_parking.PNG" alt="" /></p>
 
-<p>假设我们走完前半段路，发现有 5 个车位看起来勉强能把车停进去。那么我们就可以<strong>非常粗略</strong>地估计<!--这里是最大似然的思想，有赌的成分。也可以精确去算啦，但俺懒。-->，后半段路中车位的数量服从 <code>$\lambda t = 5$</code> 的泊松分布。通过查阅上面图像，我们发现后半段路中完全遇不到类似车位（即 <code>$k = 0$</code>）的概率，只有千分之七左右。
-<!--这个证明并不显然，但如果你看了诺兰最新的电影《信条》的话，也许你会受到一些启发。--></p>
+<p>为了简化问题，我们做出如下假设：</p>
 
-<p>这真的是非常低的概率，因此我们有信心找到一个好车位。于是我们寻找车位的标准就可以相应地提高：非好车位不停！</p>
+<ul>
+<li>假设1：车辆在停车区域内均匀分布</li>
+<li>假设2：车辆到达的速率是一个常数 <code>$\lambda$</code></li>
+<li>假设3：假设在某个时间点 <code>T</code>，停车场被停满。此刻，我们让时间倒流，由于车辆停放的逆过程是车辆离开。因此对于时间 <code>T - x</code>，车辆离开的过程可视作时间为 <code>x</code> 离开速率为 <code>$\lambda$</code> 的泊松过程。</li>
+</ul>
+
+<p>现在我们提出某种策略：首先将长条停车场均分为前后两段。前段用于观察车辆的分布，后段用于实际停放车辆。假设我们在前段发现有 5 个勉强能将车停入的车位，则<strong>大胆估计</strong>前段停车场的车位数量服从 <code>$\lambda t = 5$</code> 的泊松分布。由于存在假设1，因此我们可以<strong>近似认为</strong>后段停车场的车位数量也服从 <code>$\lambda t = 5$</code> 泊松分布。</p>
+
+<p><code>$\lambda t = 5$</code> 泊松分布在前文中已经出现过了，它的图像如下：</p>
+
+<p><img src="/img/poisson_5.png" alt="" /></p>
+
+<p>由上图可知，在后段停车场中，遇不见类似之前 5 个车位那样，能将车勉强停入的车位的概率仅为 <strong>0.7%</strong> 左右，这是真的是非常低的概率。<strong>尽管这是一个近似的结果</strong>，但也能帮助我们判断，停车场目前的车位状况是比较宽松的。这时我们就可以有信心找个好停的车位停车，而不是找个狭窄的位置硬挤。</p>
 
   </div>
   

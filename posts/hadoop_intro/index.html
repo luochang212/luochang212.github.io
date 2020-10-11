@@ -22,10 +22,10 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="漫谈 Hadoop Streaming"/>
-<meta name="twitter:description" content="Hadoop 是一个分布式计算框架。众所周知，实现分布式计算是一个繁琐的过程，Hadoop 通过一个标准化的数据处理流程，简化操作步骤，让没有分布式计算背景的程序员也能轻松写出分布式程序。本文聚焦如何用 Hadoop Streaming &#43; Python 来编写 Hadoop 程序。"/>
+<meta name="twitter:description" content="实现分布式计算是一个繁琐的过程，Hadoop 简化了数据处理的难度，让没有分布式计算背景的程序员也能轻松写出分布式程序。本文聚焦如何通过 Hadoop Streaming 用 Python 编写 Hadoop 程序。"/>
 
 <meta property="og:title" content="漫谈 Hadoop Streaming" />
-<meta property="og:description" content="Hadoop 是一个分布式计算框架。众所周知，实现分布式计算是一个繁琐的过程，Hadoop 通过一个标准化的数据处理流程，简化操作步骤，让没有分布式计算背景的程序员也能轻松写出分布式程序。本文聚焦如何用 Hadoop Streaming &#43; Python 来编写 Hadoop 程序。" />
+<meta property="og:description" content="实现分布式计算是一个繁琐的过程，Hadoop 简化了数据处理的难度，让没有分布式计算背景的程序员也能轻松写出分布式程序。本文聚焦如何通过 Hadoop Streaming 用 Python 编写 Hadoop 程序。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/hadoop_intro/" />
 <meta property="article:published_time" content="2020-07-25T00:00:00&#43;00:00"/>
@@ -548,14 +548,14 @@
     
 
 <blockquote>
-<p>本文聚焦如何用 Hadoop Streaming + Python 来编写 Hadoop 程序。</p>
+<p>本文聚焦如何通过 Hadoop Streaming + Python 编写 Hadoop 程序。</p>
 </blockquote>
 
 <p><a href="https://hadoop.apache.org/">Hadoop</a> 是一个用于大数据处理的分布式计算框架。</p>
 
 <p>众所周知，实现分布式计算是一个繁琐的过程，Hadoop 通过一个标准化的数据处理流程，简化操作步骤，让没有分布式计算背景的程序员也能轻松写出分布式程序。Hadoop 本身是用 Java 写就的，因此对于非 Java 程序员来说，学 Hadoop 必须先学 Java，这大大降低了 Hadoop 的友好程度。</p>
 
-<p><a href="https://hadoop.apache.org/docs/current/hadoop-streaming/HadoopStreaming.html">Hadoop Streaming</a> 就是为了解决这个问题的，它支持用其他编程语言编写 Hadoop 程序。</p>
+<p><a href="https://hadoop.apache.org/docs/current/hadoop-streaming/HadoopStreaming.html">Hadoop Streaming</a> 就是为了解决这个问题而生的，它支持用其他编程语言编写 Hadoop 程序。</p>
 
 <h3 id="1-分布式系统的由来">1. 分布式系统的由来</h3>
 
@@ -567,7 +567,7 @@
 
 <h3 id="2-hadoop-基本介绍">2. Hadoop 基本介绍</h3>
 
-<p>Hadoop 是一个分布式计算框架，它由两个重要部分组成：HDFS 和 MapReduce。</p>
+<p>Hadoop 有两个重要的组成部分：HDFS 和 MapReduce。</p>
 
 <p><strong>HDFS</strong> 是一个分布式存储系统，它负责将文件切割成分片，然后分发到集群中的目标机器上进行存储；<strong>MapReduce</strong> 负责构建一个标准化的数据处理流程，在完成其规定的几道数据处理流程之后，用户将得到他们期望的结果。</p>
 
@@ -890,7 +890,7 @@ hadoop fs -rm [hdfs路径]
     
     
     <a href="/posts/poisson/" class="navigation-next">
-      <span class="navigation-tittle">泊松分布的仿真与应用</span>
+      <span class="navigation-tittle">泊松分布的仿真及可视化</span>
       <i aria-hidden="true" class="fa fa-chevron-right"></i>
     </a>
     
