@@ -460,146 +460,169 @@
 
 <h1>About me</h1>
 
-<p><head>
-    <link rel="stylesheet" href="/gadget/live2d/live2d/css/live2d.css" />
-    <style>
-        @media screen and (max-width: 1300px) {
-            #landlord {
-                display: none;
-            }
-        }
-    </style>
-</head></p>
+
+<head>
+	<link rel="stylesheet" href="/gadget/live2d/live2d/css/live2d.css" />
+	<style>
+		@media screen and (max-width: 1300px) {
+			#landlord {
+				display: none;
+			}
+		}
+	</style>
+</head>
 
 <div id="landlord">
-    <div class="message" style="opacity:0"></div>
-    <canvas id="live2d" width="280" height="525" class="live2d"></canvas> <!-- 40/75 -->
-    <div class="hide-button">隐藏</div>
+	<div class="message" style="opacity:0"></div>
+	<canvas id="live2d" width="280" height="525" class="live2d"></canvas> <!-- 40/75 -->
+	<div class="hide-button">隐藏</div>
 </div>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
-    var message_Path = '/live2d/'
+	var message_Path = '/live2d/';
 </script>
 <script type="text/javascript" src="/gadget/live2d/live2d/js/live2d.js"></script>
 <script type="text/javascript" src="/gadget/live2d/live2d/js/message.js"></script>
 <script type="text/javascript">
-    loadlive2d("live2d", "/gadget/live2d/live2d/model/live2d-widget-model-shizuku/assets/shizuku.model.json");
+	loadlive2d("live2d", "/gadget/live2d/live2d/model/live2d-widget-model-shizuku/assets/shizuku.model.json");
 </script>
 
 
 
 <div class="language-space">
-    <br>
+	<br>
 </div>
 
 <div class="language">
 
-    <ul>
-        <li><button onclick="showZh()">中文 &nbsp &nbsp</button></li>
-        <li><button onclick="showEn()">English</button></li>
-    </ul>
+	<ul>
+		<li><button onclick="showZh()">中文 &nbsp &nbsp</button></li>
+		<li><button onclick="showEn()">English</button></li>
+	</ul>
 </div>
 
 <hr>
 
 <div id="about-content-en">
-    <p>
-        Hi there!
-    </p>
-    <p>
-        I am an ACS student who met NLP in 2019 and worked very hard to learn it from then on. I’m especially interested
-        in NLP.
-    </p>
-    <p>
-        I’m looking for internships in Computer Science and Machine Learning, so if you are interested feel free to
-        contact me at luochang212@gmail.com or on social media.
-    </p>
-    <p>
-        For more info, please take a look at my resume:
-    </p>
-    <!-- <p>
-        <ul>
-            <li><a href="/pdf/resume_en-GB.pdf">English version</a></li>
-            <li><a href="/pdf/resume_zh-CN.pdf">Chinese version</a></li>
-        </ul>
-    </p> -->
+	<p>
+		Hi there!
+	</p>
+	<p>
+		Welcome to my blog! The main content of my blog is about MATH and CS. My ambition to build this place is for collecting knowledge to satisfy my desire for collection (like a hamster).
+	</p>
+	<p>
+		This website was built at 2019/05/09, adopting <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a> under <a href="https://gohugo.io/">Hugo</a> framework. This is the <span id='days_en'></span>th day since I built it.
+	</p>
+	<!-- <p>
+		I’m looking for internships in Computer Science and Machine Learning, so if you are interested feel free to
+		contact me at luochang212@gmail.com or on social media.
+	</p>
+	<p>
+		For more info, please take a look at my resume:
+	</p> 
+	<p>
+		<ul>
+			<li><a href="/pdf/resume_en-GB.pdf">English version</a></li>
+			<li><a href="/pdf/resume_zh-CN.pdf">Chinese version</a></li>
+		</ul>
+	</p> -->
 </div>
 
 <div id="about-content-zh">
-    <p>
-        你好！
-    </p>
-    <p>
-        我是一名 95 后。
-    </p>
-    <p>
-        搭建这样一个地方，主要是为了记录和分享学习经验，也偶有生活片段掉落。本站点开始于2019-05-09，采用 <a href="https://gohugo.io/">Hugo</a> 框架下的 <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a> 主题搭建。
-    </p>
-    <p>
-        目前，我正在寻找数据分析 / 数据开发 / 算法 / 机器学习相关的岗位。下面是我的简历，如果你对我的项目感兴趣，请随时联系我。
-    </p>
-    <p>
-        <ul>
-            <li><a href="/pdf/resume_zh-CN.pdf">中文版本</a></li>
-            <li><a href="/pdf/resume_en-GB.pdf">英文版本</a></li>
-        </ul>
-    </p>
+	<p>
+		Hi，欢迎来到我的博客
+	</p>
+	<p>
+		这是一个聚焦数学和计算机的自留地。搭建这个地方的初衷是给自己一个总结归纳知识的地方。好记忆不如烂笔头，把知识以自己的方式梳理一遍，看起来就更像是自己的知识了 <img src="/img/quyin/huaji.png" class="my-emoji" style="height: 28px;">
+	</p>
+	<p>
+		本站始建于 2019 年 5 月 9 日，采用 <a href="https://gohugo.io/">Hugo</a> 框架下的 <a
+			href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a> 主题搭建。今天是本站创建的第 <span id='days_zh'></span> 天。
+	</p>
+	<!-- <p>
+		<ul>
+			<li><a href="/pdf/resume_zh-CN.pdf">中文版本</a></li>
+			<li><a href="/pdf/resume_en-GB.pdf">英文版本</a></li>
+		</ul>
+	</p> -->
 </div>
 
 <script>
-    /* 默认显示中文 */
-    document.getElementById("about-content-zh").style.display = "block";
-    document.getElementById("about-content-en").style.display = "none";
+	/* 默认显示中文 */
+	document.getElementById("about-content-zh").style.display = "block";
+	document.getElementById("about-content-en").style.display = "none";
 
-    function showEn() {
-        var x = document.getElementById("about-content-en");
-        var y = document.getElementById("about-content-zh");
-        x.style.display = "block";
-        y.style.display = "none";
-    }
+	function showEn() {
+		var x = document.getElementById("about-content-en");
+		var y = document.getElementById("about-content-zh");
+		x.style.display = "block";
+		y.style.display = "none";
+	}
 
-    function showZh() {
-        var x = document.getElementById("about-content-en");
-        var y = document.getElementById("about-content-zh");
-        y.style.display = "block";
-        x.style.display = "none";
-    }
+	function showZh() {
+		var x = document.getElementById("about-content-en");
+		var y = document.getElementById("about-content-zh");
+		y.style.display = "block";
+		x.style.display = "none";
+	}
+
+	var last = new Date('2019', '4', '9');
+  	var today = new Date();
+
+  	function datediff(first, second) {
+    	return Math.round((second - first) / (1000 * 60 * 60 * 24));
+  	}
+
+	const DAYS_EN = document.getElementById("days_en");
+	const DAYS_ZH = document.getElementById("days_zh");
+
+	var diff = datediff(last, today)
+
+	DAYS_EN.innerText = diff
+	DAYS_ZH.innerText = diff
 </script>
 
 <style type="text/css">
-    .language button {
-        background: none;
-        color: inherit;
-        border: none;
-        padding: 0 !important;
-        font: inherit;
-        /*border is optional*/
-        cursor: pointer;
-        outline: none;
-    }
+	.language li button {
+		background: none;
+		/* color: inherit; */
+		/* color: #000; */
+		border: none;
+		padding: 0 !important;
+		font: inherit;
+		/*border is optional*/
+		cursor: pointer;
+		outline: none;
+	}
 
-    .language-space {
-        line-height: .6rem;
-    }
+	.language-space {
+		line-height: .6rem;
+	}
 
-    .language ul {
-        padding: 0px;
-    }
+	.language ul {
+		padding: 0px;
+	}
 
-    .language li {
-        display: inline;
-        font-size: 20px;
-    }
+	.language li {
+		display: inline;
+		font-size: 20px;
+	}
 
-    .language li button {
-        color: #000;
-    }
+	.language li button {
+		color: #000;
+	}
 
-    .language li button:hover {
-        color: #666;
-    }
+	.language li button:hover {
+		color: #666;
+	}
+
+	.my-emoji {
+		height: 25px;
+		display: inline-block;
+		margin: 0;
+		vertical-align: text-bottom;
+	}
 </style>
-
 
 <style type="text/css">
 .title-space {

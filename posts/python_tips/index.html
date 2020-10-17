@@ -533,6 +533,8 @@
 <li><a href="#numpy">NumPy</a></li>
 <li><a href="#pandas">pandas</a></li>
 <li><a href="#datetime">datetime</a></li>
+<li><a href="#logging">logging</a></li>
+<li><a href="#argparse">argparse</a></li>
 </ul></li>
 <li><a href="#代码模版">代码模版</a>
 <ul>
@@ -963,6 +965,56 @@ def func_name():
 
 <p><center>
 <button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/datetime.ipynb')">查看示例</button>
+</center></p>
+
+<h3 id="logging">logging</h3>
+
+<p>logging 是用于打印日志的 Python 内置库。</p>
+
+<p>logging 和普通的 print 函数的区别在于，使用 logging 一般是为了报告代码运行的状态，而非输出结果。logging 提供了一系列功能，使打印日志更加方便快捷，比如使用 formatter 可以轻松定制日志的打印格式。</p>
+
+<p>本文目录：</p>
+
+<ol>
+<li>简单使用</li>
+<li>在单个脚本中使用
+
+<ul>
+<li>威胁等级 - level</li>
+<li>日志打印格式 - format</li>
+</ul></li>
+<li>涉及多个模块的使用
+
+<ul>
+<li>无法被重写</li>
+<li>Logger</li>
+</ul></li>
+</ol>
+
+<p><center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/logging.ipynb')">查看示例</button>
+</center></p>
+
+<h3 id="argparse">argparse</h3>
+
+<p>本文目录：</p>
+
+<ol>
+<li>help 参数</li>
+<li>add_argument
+
+<ul>
+<li>位置参数</li>
+<li>可选参数</li>
+<li>同时使用位置参数与可选参数</li>
+<li>具有flag功能的参数</li>
+<li>更具普适性的方法：const 和 default 的组合</li>
+<li>重命名</li>
+</ul></li>
+</ol>
+
+<p><center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/argparse.ipynb')">查看示例</button>
 </center></p>
 
 <h2 id="代码模版">代码模版</h2>
