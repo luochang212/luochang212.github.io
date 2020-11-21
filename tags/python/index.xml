@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>python on Chang Luo</title>
+    <title>Python on Chang Luo</title>
     <link>http://luochang212.github.io/tags/python/</link>
-    <description>Recent content in python on Chang Luo</description>
+    <description>Recent content in Python on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 19 Sep 2020 00:00:00 +0000</lastBuildDate>
@@ -55,7 +55,7 @@ HDFS 是一个分布式存储系统，它负责将文件切割成分片，然后
       <pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/python_practice/</guid>
-      <description>学 Python 不应仅限于学习程序设计，在工程实践中同样存在大量知识，比如虚拟环境的搭建、编码风格的养成以及如何编写单测等等。本文致力于介绍 Python 走向工程化所需的前置知识。
+      <description>学 Python 不应仅限于学编程，同样应该学习工程知识，比如虚拟环境、编码风格以及单元测试等。本文致力于介绍 Python 工程化所需的前置知识。
  ⚠️ 注意：以下教程适用于 MacOS。
 部署环境 1. Anaconda Anaconda 是一个包管理器，它能让你方便的管理 Python 版本和包版本。并且， Anaconda 聚合了 Jupyter notebook，使其大受数据科学家和人工智能工程师的欢迎。下面我们来介绍如何用 Anaconda 管理我们的 Python 环境。
 如果你还没有 Anaconda，安装一个：

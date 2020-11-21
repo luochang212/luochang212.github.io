@@ -17,7 +17,7 @@
       <pubDate>Sat, 21 Nov 2020 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/fastapi/</guid>
-      <description>从零开始，用 FastAPI 搭建一个简单的 API.
+      <description>从零开始，用 FastAPI 搭建一个简单 API.
  GitHub项目地址：calendar-api
 API (application programming interface, 应用编程接口) 是软件间相互交流信息的接口。通常来说，API 服务架设在一台机器 (server) 上，另一台机器 (client) 通过访问其网络接口实现通信。其中，server 还可能拥有数据库 (database)，以存储服务中产生的数据。
 API 本身是高度定制化的，软件间可以用任意数据类型进行通信。但如果 API 是面向大众的，定制化将导致软件间沟通成本高企。因此需要有一些规范来约束软件间的沟通方式。REST API 就是其中一种规范，只要符合它提出的六项指导原则，就可称为是符合 REST 风格的 API。
@@ -36,7 +36,7 @@ Let&amp;rsquo;s start!!!
       <pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/python_practice/</guid>
-      <description>学 Python 不应仅限于学习程序设计，在工程实践中同样存在大量知识，比如虚拟环境的搭建、编码风格的养成以及如何编写单测等等。本文致力于介绍 Python 走向工程化所需的前置知识。
+      <description>学 Python 不应仅限于学编程，同样应该学习工程知识，比如虚拟环境、编码风格以及单元测试等。本文致力于介绍 Python 工程化所需的前置知识。
  ⚠️ 注意：以下教程适用于 MacOS。
 部署环境 1. Anaconda Anaconda 是一个包管理器，它能让你方便的管理 Python 版本和包版本。并且， Anaconda 聚合了 Jupyter notebook，使其大受数据科学家和人工智能工程师的欢迎。下面我们来介绍如何用 Anaconda 管理我们的 Python 环境。
 如果你还没有 Anaconda，安装一个：
