@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.55.6" />
+
+    
+    
+    
+
+<title>FastAPI 初见 • Chang Luo</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="FastAPI 初见"/>
+<meta name="twitter:description" content="从零开始，用 FastAPI 搭建一个简单的 API."/>
+
+<meta property="og:title" content="FastAPI 初见" />
+<meta property="og:description" content="从零开始，用 FastAPI 搭建一个简单的 API." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://luochang212.github.io/posts/fastapi/" />
+<meta property="article:published_time" content="2020-11-21T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2020-11-21T00:00:00&#43;00:00"/><meta property="og:site_name" content="Title" />
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.6a83d62c39a364f036df4db1ecd564645635d6c7fc182425cb501218fec485f5.css" integrity="sha256-aoPWLDmjZPA2302x7NVkZFY11sf8GCQly1ASGP7EhfU=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+
+<link rel="stylesheet" href="/scss/hugo-toc.8549a64d301421b4256ea9a0d5ca8b99178799f569d5d2daeb95f24cef3ce6b7.css" integrity="sha256-hUmmTTAUIbQlbqmg1cqLmReHmfVp1dLa65XyTO885rc=">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+</head>
+
+
+    <body class=" ">
+    <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://upcdn.b0.upaiyun.com/libs/jquery/jquery-1.9.0.min.js"></script>
+
+  <style>
+    body {
+      transition: background-color .5s;
+    }
+
+    #overlay {
+      position: fixed;
+      display: none;
+      width: calc(100vw - 580px);
+      height: 100%;
+      top: 0;
+      left: 0;
+       
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      right: 0;
+      background-color: #FFF;
+       
+      overflow-x: hidden;
+      transition: 0.5s;
+       
+       
+    }
+
+    #main {
+      transition: margin-left .5s;
+       
+      padding: 16px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      overflow: hidden;
+    }
+
+     
+    .tab {
+      overflow: hidden;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+    }
+
+     
+    .tab button {
+      background-color: inherit;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      transition: 0.3s;
+      font-size: 17px;
+    }
+
+     
+    .tab button:hover {
+      background-color: #ddd;
+    }
+
+     
+    .tab button.active {
+      background-color: #ccc;
+    }
+
+     
+    .tabcontent {
+      display: none;
+      padding: 12px 12px;
+      margin: 0;
+      border: 1px solid #ccc;
+      border-top: none;
+    }
+
+    .dropbtn {
+      background-color: #3498DB;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+    }
+
+    .dropup {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropup-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      bottom: 50px;
+      z-index: 1;
+    }
+
+    .dropup-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropup-content a:hover {
+      background-color: #ccc
+    }
+
+    .dropup:hover .dropup-content {
+      display: block;
+    }
+
+    .dropup:hover .dropbtn {
+      background-color: #2980B9;
+    }
+
+    #video2,
+    #video3 {
+      display: none;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  
+  <div class="sidebar">
+    <div class="container ">
+      <div class="sidebar-about">
+        <span class="site__title">
+          <a href="http://luochang212.github.io">Chang Luo</a>
+        </span>
+        
+        
+        
+        <div class="author-image">
+          <a href="#" class="load-iframe" onclick="openNav()"><img src="http://luochang212.github.io/images/profile.png" id="author-iamge"
+              alt="Author Image" class="img--circle img--headshot element--center"></a>
+        </div>
+        
+        <p class="site__description">
+          
+        </p>
+      </div>
+      <div class="collapsible-menu">
+        <input type="checkbox" id="menuToggle">
+        <label for="menuToggle">Chang Luo</label>
+        <div class="menu-content">
+          <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/portfolio/">
+						<span>Projects</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+		</li>
+	</ul>
+</div>
+
+          <section class="social">
+	
+	<a href="https://twitter.com/MinosPalace" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	<a href="https://instagram.com/icstocs" rel="me"><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></a>
+	
+	
+	<a href="https://github.com/luochang212" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://linkedin.com/in/bupt-luochang" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+</section>
+
+        </div>
+      </div>
+      
+<div class="copyright">
+  &copy; 2020 Chang Luo
+  
+</div>
+
+
+
+    </div>
+  </div>
+
+  
+  
+
+  <div id="overlay" onclick="off()"></div>
+
+  <div id="mySidenav" class="sidenav">
+
+    <div id="main">
+      <div class="tab">
+        <button id="default-tab" class="tablinks" onclick="openItem(event, 'Resources')">Resources</button>
+        <button class="tablinks" onclick="openItem(event, 'netease-player')">Music</button>
+        <button class="tablinks" onclick="openItem(event, 'Video-player')">Video</button>
+        <button class="tablinks" onclick="openItem(event, 'gallery')">Gallery</button>
+        <button class="tablinks" onclick="openItem(event, 'gadget')">Gadget</button>
+      </div>
+
+      <div id="Resources" class="tabcontent">
+        <iframe src="about:blank" data-src="/resources/" frameborder="0" height="560" width="100%" marginheight="0"
+          marginwidth="0" scrolling="yes"></iframe>
+      </div>
+
+      <div id="netease-player" class="tabcontent">
+        <iframe src="about:blank" data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
+          frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=450></iframe>
+      </div>
+
+      <div id="Video-player" class="tabcontent">
+
+        <div id="video1">
+          <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=455023331&bvid=BV1X541167RE&cid=170542054&page=1&high_quality=1&danmaku=0"
+            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+        <div id="video2">
+          <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=65042716&bvid=BV1M4411r7yu&cid=112895137&page=1&high_quality=1&high_quality=1&danmaku=0"
+            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+        <div id="video3">
+          <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=20535616&bvid=BV1zW411W75L&cid=33582726&page=1//player.bilibili.com/player.html?aid=15159845&cid=24679968&page=1&high_quality=1&danmaku=0"
+            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+
+        
+
+        
+
+        <br>
+        <div class="dropup">
+          <button class="dropbtn">更多视频</button>
+          <div class="dropup-content">
+            <a onclick="link1()">1</a>
+            <a onclick="link2()">2</a>
+            <a onclick="link3()">3</a>
+          </div>
+        </div>
+      </div>
+
+      <div id="gallery" class="tabcontent">
+        <iframe src="about:blank" data-src="/gadget/gallery/#two" frameborder="0" height="560" width="100%"
+          scrolling="yes"></iframe>
+      </div>
+
+      <div id="gadget" class="tabcontent">
+        <iframe src="about:blank" data-src="/gadget/" frameborder="0" height="560" width="100%"
+          scrolling="yes"></iframe>
+      </div>
+
+    </div>
+  </div>
+
+  
+  <script>
+    'use strict'
+    
+    function openNav() {
+      on();
+      document.getElementById("mySidenav").style.width = "580px";
+      document.body.style.backgroundColor = "rgba(0,0,0,0.5)";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.body.style.backgroundColor = "white";
+    }
+
+    function on() {
+      document.getElementById("overlay").style.display = "block";
+    }
+
+    function off() {
+      closeNav();
+      document.getElementById("overlay").style.display = "none";
+    }
+
+    
+    document.getElementById('default-tab').click();
+
+    function openItem(evt, itemName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(itemName).style.display = "block";
+      evt.currentTarget.className += "active";
+    }
+
+    function link1() {
+      document.getElementById("video1").style.display = "block";
+      document.getElementById("video2").style.display = "none";
+      document.getElementById("video3").style.display = "none";
+    }
+
+    function link2() {
+      document.getElementById("video1").style.display = "none";
+      document.getElementById("video2").style.display = "block";
+      document.getElementById("video3").style.display = "none";
+    }
+
+    function link3() {
+      document.getElementById("video1").style.display = "none";
+      document.getElementById("video2").style.display = "none";
+      document.getElementById("video3").style.display = "block";
+    }
+
+     
+    var flag = 0;
+
+     
+    $(".load-iframe").click(function () {
+      if (flag < 1) {
+        $("iframe").each(function () {
+          $(this).attr("src", $(this).data("src"));
+        });
+        flag = flag + 1;
+      }
+    });
+  </script>
+
+</body>
+
+
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>FastAPI 初见</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Nov 21, 2020
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/development">DEVELOPMENT</a>
+              •
+          
+              <a class="badge badge-category" href="/categories/python">PYTHON</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/api">api</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/fastapi">fastapi</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 7 min read
+</div>
+
+
+  </header>
+  
+  
+  
+    <div class="toc-wrapper">
+      <input type="checkbox" id="tocToggle">
+      <label for="tocToggle">目录</label>
+      
+          <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#1-安装-fastapi">1. 安装 FastAPI</a></li>
+<li><a href="#2-测试安装是否成功">2. 测试安装是否成功</a></li>
+<li><a href="#3-搭建一个日程-api">3. 搭建一个日程 API</a>
+<ul>
+<li><a href="#3-1-消息格式的设计">3.1 消息格式的设计</a></li>
+<li><a href="#3-2-数据库">3.2 数据库</a></li>
+<li><a href="#3-3-服务端">3.3 服务端</a></li>
+<li><a href="#3-4-客户端">3.4 客户端</a></li>
+</ul></li>
+<li><a href="#4-使用方法">4. 使用方法</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+      
+    </div>
+  
+  
+  <div class="post">
+    
+
+<blockquote>
+<p>从零开始，用 FastAPI 搭建一个简单的 API.</p>
+</blockquote>
+
+<p>GitHub项目地址：<a href="https://github.com/luochang212/calendar-api" target="_blank">calendar-api</a></p>
+
+<p><a href="https://en.wikipedia.org/wiki/API">API</a> (application programming interface, 应用编程接口) 是软件间相互交流信息的接口。通常来说，API 服务架设在一台机器 (server) 上，另一台机器 (client) 通过访问其网络接口实现通信。其中，server 还可能拥有数据库 (database)，以存储服务中产生的数据。</p>
+
+<p><img src="/img/fastapi-2.PNG" alt="" /></p>
+
+<p>API 本身是高度定制化的，软件间可以用任意数据类型进行通信。但如果 API 是面向大众的，定制化将导致软件间沟通成本高企。因此需要有一些规范来约束软件间的沟通方式。<a href="https://restfulapi.net/">REST API</a> 就是其中一种规范，只要符合它提出的六项指导原则，就可称为是符合 REST 风格的 API。</p>
+
+<blockquote>
+<p>REST API 提出的六项指导原则分别是：</p>
+
+<ul>
+<li>Client–server</li>
+<li>Stateless</li>
+<li>Cacheable</li>
+<li>Uniform interface</li>
+<li>Layered system</li>
+<li>Code on demand (optional)</li>
+</ul>
+
+<p>[<a href="https://restfulapi.net/">了解更多</a>]</p>
+</blockquote>
+
+<p><a href="https://fastapi.tiangolo.com/">FastAPI</a> 对搭建 REST 风格的 API 提供良好的支持，这也是本文选择 FastAPI 的原因之一。</p>
+
+<p>Let&rsquo;s start!!!</p>
+
+<!-- ### 1. 技术选型
+
+API 是一种后端服务，很多后端编程语言都支持构建 API，并拥有各自的轮子。下面列举了一些后端语言构建 API 的包：
+
+- Golang, Node.js, Rust, Python
+
+由于我个人能力有限，以上选项只是作为一种参考背景。本文实际上只考虑了 Python 下的技术选择。那么可选的范围就缩小了：
+
+- Django
+- Flask
+- FastAPI
+
+**Django** 是一个强大的网络编程框架。但是 Django 太大了，用 Django 构建 API，有点杀鸡用牛刀的感觉。你需要付出额外的成本，来学习非 API 构建的知识，使你得以驾驭 Django。
+
+**Flask** 和 Django 很像，你可以把它想象成是精华版 Django。如果搭建的网站很简单，不需要定制插件，不需要复杂的功能，那么 Flask 是一个很 Geek 的选择。它简单干练，适合敏捷开发。你可以用它来开发 API，完全没问题。
+
+**FastAPI** 呢？
+
+FastAPI 和以上两者的区别是：它就是被设计成用来开发 API 的。代码精简，服务快速且稳定，支持异步。并且无需学习任何额外的知识，你需要的只是专心构建 API。 -->
+
+<h3 id="1-安装-fastapi">1. 安装 FastAPI</h3>
+
+<blockquote>
+<p>详情参见 <a href="https://fastapi.tiangolo.com/#installation">fastapi-installation</a>.</p>
+</blockquote>
+
+<p>使用 FastAPI 前，我们只需要安装两个包。</p>
+
+<p>1.<code>fastapi</code></p>
+
+<pre><code class="language-shell">pip install fastapi
+</code></pre>
+
+<p>2.<code>uvicorn</code> (或 <code>hypercorn</code>)</p>
+
+<pre><code class="language-shell">pip install uvicorn
+</code></pre>
+
+<blockquote>
+<p>❓ 什么是 <code>uvicorn</code>？</p>
+
+<p>Uvicorn is a lightning-fast ASGI server implementation, using uvloop and httptools. [<a href="https://www.uvicorn.org/">reference</a>]</p>
+
+<p>❓ 什么是 <code>ASGI server</code>？</p>
+
+<p>ASGI (Asynchronous Server Gateway Interface) is a spiritual successor to WSGI, intended to provide a standard interface between async-capable Python web servers, frameworks, and applications.</p>
+
+<p>Where WSGI provided a standard for synchronous Python apps, ASGI provides one for both asynchronous and synchronous apps, with a WSGI backwards-compatibility implementation and multiple servers and application frameworks. [<a href="https://asgi.readthedocs.io/en/latest/">reference</a>]</p>
+</blockquote>
+
+<h3 id="2-测试安装是否成功">2. 测试安装是否成功</h3>
+
+<p>我们搭建一个简单的 API 来测试安装是否成功。它简单到只能返回一条简单的 JSON: <code>{'key': 'value'}</code>。</p>
+
+<p>让我们来实现它。</p>
+
+<p>首先，新建 <code>main.py</code> 文件。</p>
+
+<pre><code class="language-python"># main.py
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get('/')
+def index():
+    return {'key': 'value'}
+</code></pre>
+
+<p>然后，在当前目录下，执行以下命令。在这条命令中，<code>main</code> 是我们脚本的名字（我们的脚本名为 <code>main.py</code>）。<code>--reload</code> 意味着在每次更新脚本时重启 ASGI 服务。</p>
+
+<pre><code class="language-shell">uvicorn main:app --reload
+</code></pre>
+
+<p>在浏览器中打开 <code>http://127.0.0.1:8000</code>，如果网页显示 <code>{'key': 'value'}</code> 的话，就说明我们的 API 搭建成功啦～</p>
+
+<p><img src="/img/fastapi-1.png" alt="" /></p>
+
+<h3 id="3-搭建一个日程-api">3. 搭建一个日程 API</h3>
+
+<p>接下来就是今天的主菜了。</p>
+
+<p>为了介绍 FastAPI，我们需要构建一个具体的应用。我的计划是搭建一个<strong>日程 API</strong>。它具备一个日程应用的基本功能，包括对日程进行增、删、改、查操作。</p>
+
+<p>计划通。</p>
+
+<h4 id="3-1-消息格式的设计">3.1 消息格式的设计</h4>
+
+<p>首先，我们来设计日程消息的格式，包括数据类型和字段信息。下面我粗略写了一个方案。消息将以 JSON 传输，各字段的数据类型及具体含义如下：</p>
+
+<pre><code class="language-json">{
+    sid: str  # 日程 ID
+    name: str  # 名称
+    content: str  # 内容
+    category: str  # 分类
+    level: int  # 重要程度, 0: 未定义  1: 低  2: 中  3: 高 
+    status: float  # 当前进度, 0 &lt;= status &lt;= 1
+    creation_time: str  # 创建时间
+    start_time: str  # 开始时间
+    end_time: str  # 结束时间
+}
+</code></pre>
+
+<p><code>sid</code> 是 schedule id 的缩写。它作为主键，是一条日程信息的唯一标识。</p>
+
+<p><code>creation_time</code>, <code>start_time</code>, <code>end_time</code> 是 <code>str</code> 类型而不是 <code>datetime</code>，主要是考虑到这些字段存储上方便。在服务端读取这些字段时，我们希望加一道校验，使得不符合日期格式的消息被过滤掉。</p>
+
+<h4 id="3-2-数据库">3.2 数据库</h4>
+
+<p>有了日程消息的格式以后，我们就可以着手搭建数据库 (database) 了。</p>
+
+<p>有非常多的数据库搭建方案，但是这里我们选择 <code>SQLite</code>。因为这是 Python 自带的数据库，无需安装。它满足我们希望本教程是“包含 FastAPI 的最小子集”的期望。</p>
+
+<blockquote>
+<p>有关在 <code>Python3</code> 中使用 <code>SQLite</code> 的介绍请看<a href="https://docs.python.org/3/library/sqlite3.html">这里</a>。</p>
+</blockquote>
+
+<p>我们编写了两个关于数据库的脚本。<code>build.py</code> 在第一次开启服务前运行，它用于新建 <code>SQLite</code> 数据库；<code>database_handler.py</code> 是一个数据库操作类，它能帮助我们处理<a href="https://en.wikipedia.org/wiki/Database_transaction">数据库事务</a>。</p>
+
+<blockquote>
+<p>数据库事务的 ACID 特性：</p>
+
+<ul>
+<li>原子性 (atomicity)</li>
+<li>一致性 (consistency)</li>
+<li>隔离性 (isolation)</li>
+<li>持久性 (durability)</li>
+</ul>
+
+<p>了解更多：[<a href="https://baike.baidu.com/item/acid/10738">百度</a>] [<a href="https://en.wikipedia.org/wiki/ACID">维基</a>]</p>
+</blockquote>
+
+<pre><code class="language-python"># -*- coding:utf-8 -*-
+# build.py
+
+import configparser
+import json
+import database_handler
+
+
+def build_bd():
+    &quot;&quot;&quot;创建数据库&quot;&quot;&quot;
+    config = configparser.ConfigParser()
+    config.read('db.conf')
+    info = config['DEFAULT']
+
+    dbh = database_handler.DatabaseHandler(db_name=info['db_name'])
+    
+    dbh.create_table(
+        table_name=info['table_name'],
+        columns=json.loads(info['columns']))
+
+
+if __name__ == '__main__':
+    build_bd()
+
+</code></pre>
+
+<pre><code class="language-python"># -*- coding:utf-8 -*-
+# database_handler.py
+
+import sqlite3
+
+
+class DatabaseHandler:
+    &quot;&quot;&quot;database handler&quot;&quot;&quot;
+
+    def __init__(self, db_name: str, check_same_thread: bool = True):
+        &quot;&quot;&quot;init&quot;&quot;&quot;
+        self.db_name = db_name
+        self.conn = sqlite3.connect(
+            '{}.db'.format(db_name), check_same_thread=check_same_thread)
+        self.c = self.conn.cursor()
+
+    def execute(self, cmd: str):
+        &quot;&quot;&quot;Execute command&quot;&quot;&quot;
+        self.c.execute(cmd)
+        self.conn.commit()
+
+    def create_table(self, table_name: str, columns: dict):
+        &quot;&quot;&quot;Create table&quot;&quot;&quot;
+        lst = [str(k) + ' ' + str(v) for k, v in columns.items()]
+        columns_str = ','.join(lst)
+
+        cmd = 'CREATE TABLE {table_name}({columns_str})'
+
+        self.execute(cmd.format(
+            table_name=table_name,
+            columns_str=columns_str))
+
+    def insert_data(self, table_name: str, columns: dict, data: dict):
+        &quot;&quot;&quot;Insert a row of data&quot;&quot;&quot;
+        lst = [&quot;'&quot; + str(v) + &quot;'&quot; if columns[k] == 'TEXT' else str(v)
+               for k, v in data.items()]
+        data_str = ','.join(lst)
+
+        cmd = 'INSERT INTO {table_name} VALUES ({data_str})'
+
+        self.execute(cmd.format(
+            table_name=table_name,
+            data_str=data_str))
+
+    def update_data(self, table_name: str, columns: dict, data: dict, condition: dict):
+        &quot;&quot;&quot;Update data&quot;&quot;&quot;
+        lst1 = [str(k) + '=' + &quot;'&quot; + str(v) + &quot;'&quot; if columns[k] == 'TEXT'
+                else str(k) + '=' + str(v)
+                for k, v in data.items()]
+        value_str = ','.join(lst1)
+
+        lst2 = [str(k) + '=' + &quot;'&quot; + str(v) + &quot;'&quot; if columns[k] == 'TEXT'
+                else str(k) + '=' + str(v)
+                for k, v in condition.items()]
+        condition_str = ' AND '.join(lst2)
+
+        cmd = 'UPDATE {table_name} SET {value_str} WHERE {condition_str}'
+
+        self.execute(cmd.format(
+            table_name=table_name,
+            value_str=value_str,
+            condition_str=condition_str))
+
+    def delete_data(self, table_name: str, columns: dict, condition: dict):
+        &quot;&quot;&quot;Delete data&quot;&quot;&quot;
+        lst = [str(k) + '=' + &quot;'&quot; + str(v) + &quot;'&quot; if columns[k] == 'TEXT'
+               else str(k) + '=' + str(v)
+               for k, v in condition.items()]
+        condition_str = ' AND '.join(lst)
+
+        cmd = 'DELETE FROM {table_name} WHERE {condition_str}'
+
+        self.execute(cmd.format(
+            table_name=table_name,
+            condition_str=condition_str))
+
+    def fetch_data(self, table_name: str, columns: dict, condition: dict):
+        &quot;&quot;&quot;Fetch data&quot;&quot;&quot;
+        lst = [str(k) + '=' + &quot;'&quot; + str(v) + &quot;'&quot; if columns[k] == 'TEXT'
+               else str(k) + '=' + str(v)
+               for k, v in condition.items()]
+        condition_str = ' AND '.join(lst)
+
+        cmd = 'SELECT * FROM {table_name} WHERE {condition_str}'
+
+        self.execute(cmd.format(
+            table_name=table_name,
+            condition_str=condition_str))
+
+        return self.c.fetchall()
+
+    def fetch_all(self, table_name: str):
+        &quot;&quot;&quot;Fetch data&quot;&quot;&quot;
+        cmd = 'SELECT * FROM {table_name}'
+
+        self.execute(cmd.format(
+            table_name=table_name))
+
+        return self.c.fetchall()
+
+    def check_existence(self, table_name: str, columns: dict, condition: dict):
+        &quot;&quot;&quot;check the existence of item&quot;&quot;&quot;
+        try:
+            res = self.fetch_data(table_name, columns, condition)
+            if len(res) == 0:
+                return False
+        except Exception:
+            return False
+        return True
+
+
+if __name__ == '__main__':
+    dbh = DatabaseHandler(db_name=&quot;CalendarDB&quot;)
+    print(dbh.check_existence(
+        'calendar',
+        {&quot;sid&quot;: &quot;TEXT&quot;, &quot;name&quot;: &quot;TEXT&quot;, &quot;content&quot;: &quot;TEXT&quot;, &quot;category&quot;: &quot;TEXT&quot;, &quot;level&quot;: &quot;INTEGER&quot;, &quot;status&quot;: &quot;REAL&quot;, &quot;creation_time&quot;: &quot;TEXT&quot;, &quot;start_time&quot;: &quot;TEXT&quot;, &quot;end_time&quot;: &quot;TEXT&quot;},
+        {&quot;sid&quot;: &quot;22&quot;}
+    ))
+
+</code></pre>
+
+<h4 id="3-3-服务端">3.3 服务端</h4>
+
+<p>服务端 (server) 包含搭建 API 的主程序。它主要有两项功能：一是提供 API 接口，供用户连接之用；二是根据用户请求，处理数据库中的数据。</p>
+
+<p>搭建 FastAPI 应用，最重要的就是定义 post, delete, put, get 四个方法。这四个方法分别对应增、删、改、查四种行为。在 FastAPI 中，四个方法的函数名可以随意取，但是必须用装饰器进行标记。</p>
+
+<p>一共有两个脚本用于搭建服务端，分别是 <code>method.py</code> 和 <code>server.py</code>。 <code>method.py</code> 定义了 API 增、删、改、查的具体操作方法；<code>server.py</code> 定义了 FastAPI 中的 post, delete, put, get 四个方法。<code>method.py</code> 和 上节中提到的 <code>database_handler.py</code> 作为模块，在 <code>server.py</code> 中被调用。</p>
+
+<pre><code class="language-python"># -*- coding:utf-8 -*-
+# method.py
+
+import configparser
+import json
+import datetime
+
+
+class Method:
+    &quot;&quot;&quot;API 操作方法&quot;&quot;&quot;
+
+    def __init__(self, conf_file):
+        &quot;&quot;&quot;init&quot;&quot;&quot;
+        self.config = configparser.ConfigParser()
+        self.config.read(conf_file)  # 'db.conf'
+
+        self.info = self.config['DEFAULT']
+        self.columns = json.loads(self.info['columns'])
+
+    def check_params(self, jsn):
+        &quot;&quot;&quot;检查参数值&quot;&quot;&quot;
+        if jsn['level'] not in [0, 1, 2, 3]:
+            return False
+
+        if jsn['status'] &lt; 0 or jsn['status'] &gt; 1:
+            return False
+
+        try:
+            lst = [
+                jsn['creation_time'],
+                jsn['start_time'],
+                jsn['end_time']
+            ]
+
+            for t in lst:
+                # 尝试解析时间
+                _ = datetime.datetime.strptime(t, '%Y-%m-%d %H:%M:%S')
+
+        except Exception:
+            return False
+
+        return True
+
+    def get(self, dbh, schedule_id):
+        return dbh.fetch_data(
+            table_name=self.info['table_name'],
+            columns=self.columns,
+            condition={'sid': schedule_id})
+
+    def post(self, dbh, schedule):
+        # 检查item是否存在
+        schedule_id = schedule.dict()['sid']
+        if dbh.check_existence(self.info['table_name'], self.columns, {'sid': schedule_id}):
+            # 如果存在
+            return False
+
+        # 检查参数值是否符合规范
+        if not self.check_params(schedule.dict()):
+            return False
+
+        dbh.insert_data(
+            table_name=self.info['table_name'],
+            columns=self.columns,
+            data=schedule.dict())
+
+        return True
+
+    def update(self, dbh, schedule_id, schedule):
+        # 检查item是否存在
+        if not dbh.check_existence(self.info['table_name'], self.columns, {'sid': schedule_id}):
+            # 如果不存在
+            return False
+
+        # 检查参数值是否符合规范
+        if not self.check_params(schedule.dict()):
+            return False
+
+        dbh.update_data(
+            table_name=self.info['table_name'],
+            columns=self.columns,
+            data=schedule.dict(),
+            condition={'sid': schedule_id})
+
+        return True
+
+    def delete(self, dbh, schedule_id):
+        # 检查item是否存在
+        if not dbh.check_existence(self.info['table_name'], self.columns, {'sid': schedule_id}):
+            # 如果不存在
+            return False
+
+        dbh.delete_data(
+            table_name=self.info['table_name'],
+            columns=self.columns,
+            condition={'sid': schedule_id})
+
+        return True
+
+
+if __name__ == '__main__':
+    pass
+
+</code></pre>
+
+<pre><code class="language-python"># -*- coding:utf-8 -*-
+# server.py
+
+from fastapi import FastAPI
+from pydantic import BaseModel
+import configparser
+import json
+
+import database_handler
+import method
+
+
+app = FastAPI()
+
+
+config = configparser.ConfigParser()
+config.read('db.conf')
+info = config['DEFAULT']
+
+dbh = database_handler.DatabaseHandler(
+    db_name=info['db_name'],
+    check_same_thread=False)
+m = method.Method(conf_file='db.conf')
+
+
+class Schedule(BaseModel):
+    sid: str  # ID
+    name: str  # 名称
+    content: str  # 内容
+    category: str  # 分类
+    level: int  # 重要程度, 0: 未定义  1: 低  2: 中  3: 高
+    status: float  # 当前进度, 0 &lt;= status &lt;= 1
+    creation_time: str  # 创建时间
+    start_time: str  # 开始时间
+    end_time: str  # 结束时间
+
+
+@app.get('/')
+def index():
+    return {'app_name': 'calendar'}
+
+
+@app.get('/schedules')
+def get_schedules():
+    return dbh.fetch_all(
+        table_name=info['table_name'])
+
+
+@app.get('/schedules/{schedule_id}')
+def get_schedule(schedule_id: str):
+    return m.get(dbh, schedule_id)
+
+
+@app.post('/schedules')
+def create_schedule(schedule: Schedule):
+    if m.post(dbh, schedule):
+        return schedule
+    else:
+        return {&quot;errno&quot;: &quot;1&quot;}
+
+
+@app.put('/schedules/{schedule_id}')
+def update_schedule(schedule_id: str, schedule: Schedule):
+    if m.update(dbh, schedule_id, schedule):
+        return schedule
+    else:
+        return {&quot;errno&quot;: &quot;2&quot;}
+
+
+@app.delete('/schedules/{schedule_id}')
+def delete_schedule(schedule_id: str):
+    if m.delete(dbh, schedule_id):
+        return {&quot;msg&quot;: &quot;success&quot;}
+    else:
+        return {&quot;errno&quot;: &quot;3&quot;}
+
+</code></pre>
+
+<h4 id="3-4-客户端">3.4 客户端</h4>
+
+<p>客户端 (client) 需要在其他功能完备以后才能开始测试，因此置于末尾。</p>
+
+<p>客户端通过向服务端的 API 接口发起请求，告诉 API 自己的需求，如果 API 完成了客户端的请求，就会正确执行的回执信息；如果 API 无法完成客户端的请求，就会返回错误信息。</p>
+
+<p>向 API 发送请求需要用到 <a href="https://requests.readthedocs.io/en/master/">requests</a> 包。requests 是 Python 下的一个 HTTP library。它封装了 HTTP 的 get, post, put, delete 等方法。大大降低了 Python 下使用 HTTP 协议的难度。</p>
+
+<blockquote>
+<p>HTTP 方法:</p>
+
+<ul>
+<li>HTTP GET: Use GET requests to retrieve resource representation/information only – and not to modify it in any way.</li>
+<li>HTTP POST: Use POST APIs to create new subordinate resources.</li>
+<li>HTTP PUT: Use PUT APIs primarily to update existing resource.</li>
+<li>HTTP DELETE: As the name applies, DELETE APIs are used to delete resources.</li>
+<li>HTTP PATCH: HTTP PATCH requests are to make partial update on a resource.</li>
+</ul>
+
+<p>[<a href="https://restfulapi.net/http-methods/">了解更多</a>]</p>
+</blockquote>
+
+<p><code>client.py</code> 是客户端脚本。请务必确保以正确的方式使用 <code>client</code>. 如果你尝试删除一条数据库中不存在的数据，或者未按 <code>db.conf</code> 配置文件 和 <code>Schedule</code> 类定义的数据类型向 API 发送请求，则可能导致请求失败。</p>
+
+<p>如果你遭遇此类困难，可以在 <code>http://127.0.0.1:8000/docs</code> 中测试 API 是如何运作的。</p>
+
+<pre><code class="language-python"># -*- coding:utf-8 -*-
+# client.py
+
+&quot;&quot;&quot;客户端
+    Author: github@luochang212
+    Date: 2020-11-15
+    Usage: python client.py
+&quot;&quot;&quot;
+
+import requests
+import json
+
+
+class Interface:
+    &quot;&quot;&quot;client interface&quot;&quot;&quot;
+
+    def __init__(self, url, app_name):
+        self.url = url
+        self.app_url = url + '/' + app_name
+
+    def get(self, url, sid):
+        &quot;&quot;&quot;get schedule&quot;&quot;&quot;
+        url = url + '/' + sid
+        return requests.get(url)
+
+    def get_all(self, url, payload=None):
+        &quot;&quot;&quot;get schedules&quot;&quot;&quot;
+        return requests.get(url, params=payload)
+
+    def post(self, url, data):
+        &quot;&quot;&quot;post schedule&quot;&quot;&quot;
+        return requests.post(url, data=json.dumps(data))
+
+    def update(self, url, data):
+        &quot;&quot;&quot;update schedule&quot;&quot;&quot;
+        sid = data['sid']
+        url = url + '/' + sid
+        return requests.put(url, data=json.dumps(data))
+
+    def delete(self, url, sid):
+        &quot;&quot;&quot;delete schedule&quot;&quot;&quot;
+        url = url + '/' + sid
+        return requests.delete(url)
+
+
+if __name__ == '__main__':
+    url = &quot;http://127.0.0.1:8000&quot;
+    i = Interface(url, 'schedules')
+
+</code></pre>
+
+<h3 id="4-使用方法">4. 使用方法</h3>
+
+<ol>
+<li>从 GitHub 上克隆本项目的<a href="https://github.com/luochang212/calendar-api">代码仓库</a></li>
+<li>安装 FastAPI 所需组件，参考本文1, 2节</li>
+<li>运行 <code>python build.py</code> 以创建 SQLite 数据库（仅需第一次使用时执行）</li>
+<li>运行 <code>uvicorn server:app --reload</code> 以启用 API 服务</li>
+<li>运行 <code>client.py</code> 中的测试代码，或者在 <code>http://127.0.0.1:8000/docs</code> 中进行调试</li>
+</ol>
+
+<!-- # todo: FastAPI 异步 -->
+
+<!-- ```shell
+pip install requests
+```
+
+```
+pip install python-multipart
+``` -->
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/poisson/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">泊松分布的仿真及可视化</span>
+    </a>
+    
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+<style>
+  .my-emoji {
+    height: 25px;
+    display: inline-block;
+    margin: 0;
+    vertical-align: text-bottom;
+  }
+</style>
+
+
+        </div>
+        
+    <script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
+
+
+
+<script defer src="/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+
+    
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+
+
+
+    
+
+
+
+    </body>
+</html>

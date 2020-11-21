@@ -6,10 +6,28 @@
     <description>Recent content in Tags on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 19 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 21 Nov 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://luochang212.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>API</title>
+      <link>http://luochang212.github.io/tags/api/</link>
+      <pubDate>Sat, 21 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/tags/api/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>FastAPI</title>
+      <link>http://luochang212.github.io/tags/fastapi/</link>
+      <pubDate>Sat, 21 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/tags/fastapi/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>poisson distribution</title>
@@ -161,15 +179,6 @@
       <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/tags/monaco-editor/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>api</title>
-      <link>http://luochang212.github.io/tags/api/</link>
-      <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/tags/api/</guid>
       <description></description>
     </item>
     

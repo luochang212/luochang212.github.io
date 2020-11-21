@@ -12,21 +12,22 @@
     
     
     <item>
-      <title>我的 Python 不可能这么可爱</title>
+      <title>我的 Python 教程</title>
       <link>http://luochang212.github.io/posts/python_tips/</link>
       <pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/python_tips/</guid>
       <description>Python 学习笔记，如有错误，欢迎指正  GitHub项目地址：python-tips
+教我武术的师傅，姓张。张师傅说，教人武术也是练习武术的一种方式。这就不难解释 Python 新人为何总是喜欢写各式各样的 Python 教程。因为系统地将一门知识按自己的方式理解，并尝试向别人解释的时候，我们是在深化自己对知识的理解。
+这也许不是一个好的教程。大多数时候，写作的对象是我自己。但是，本文拥有大量实例，并且较为系统地陈列了 Python 的基础知识。
+值得一提的是，本页面经过专门设计。页面内容完全是目录。如需查看正文，请在每一节底部，点击“查看示例”。
 语言基础 列表 本文从以下几个方面介绍列表：
  创建 获取 修改 添加 插入 删除 排序 逆序 索引 循环 列表推导 切片 复制 去重 计数 查找   查看示例 
 字典 鉴于 JSON 在数据处理中的大量使用，字典的重要性也不言而喻。
 本文从以下几个方面介绍字典：
  创建 获取 更新 遍历 排序 删除 字典与JSON collections.defaultdict() setdefault()   查看示例 
 字符串 除了列表和字典，字符串也是 Python 中一种非常重要的数据类型。
- 基本操作 格式化 字符串方法   查看示例 
-函数 本文目录：
- 形参和实参 位置实参 关键字实参 默认值 位置实参和关键字实参的混用 默认值、位置实参和关键字实参的混用 传递任意数量的位置实参 传递任意数量的关键字实参 由字符串函数名生成可调用的函数   查看示例</description>
+ 基本操作 格式化 字符串方法   查看示例</description>
     </item>
     
   </channel>

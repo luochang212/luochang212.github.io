@@ -6,10 +6,29 @@
     <description>Recent content in Python on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 14 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 21 Nov 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://luochang212.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>FastAPI 初见</title>
+      <link>http://luochang212.github.io/posts/fastapi/</link>
+      <pubDate>Sat, 21 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/posts/fastapi/</guid>
+      <description>从零开始，用 FastAPI 搭建一个简单的 API.
+ GitHub项目地址：calendar-api
+API (application programming interface, 应用编程接口) 是软件间相互交流信息的接口。通常来说，API 服务架设在一台机器 (server) 上，另一台机器 (client) 通过访问其网络接口实现通信。其中，server 还可能拥有数据库 (database)，以存储服务中产生的数据。
+API 本身是高度定制化的，软件间可以用任意数据类型进行通信。但如果 API 是面向大众的，定制化将导致软件间沟通成本高企。因此需要有一些规范来约束软件间的沟通方式。REST API 就是其中一种规范，只要符合它提出的六项指导原则，就可称为是符合 REST 风格的 API。
+ REST API 提出的六项指导原则分别是：
+ Client–server Stateless Cacheable Uniform interface Layered system Code on demand (optional)  [了解更多]
+ FastAPI 对搭建 REST 风格的 API 提供良好的支持，这也是本文选择 FastAPI 的原因之一。
+Let&amp;rsquo;s start!!!
+1. 安装 FastAPI  详情参见 fastapi-installation.
+ 使用 FastAPI 前，我们只需要安装两个包。
+1.fastapi</description>
+    </item>
     
     <item>
       <title>Python 工程化实践</title>
@@ -73,21 +92,22 @@ $ P(cancer) = 0.008, P(normal) = 0.992 \\ P(+ | cancer) = 0.98, P(- | cancer) = 
     </item>
     
     <item>
-      <title>我的 Python 不可能这么可爱</title>
+      <title>我的 Python 教程</title>
       <link>http://luochang212.github.io/posts/python_tips/</link>
       <pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/python_tips/</guid>
       <description>Python 学习笔记，如有错误，欢迎指正  GitHub项目地址：python-tips
+教我武术的师傅，姓张。张师傅说，教人武术也是练习武术的一种方式。这就不难解释 Python 新人为何总是喜欢写各式各样的 Python 教程。因为系统地将一门知识按自己的方式理解，并尝试向别人解释的时候，我们是在深化自己对知识的理解。
+这也许不是一个好的教程。大多数时候，写作的对象是我自己。但是，本文拥有大量实例，并且较为系统地陈列了 Python 的基础知识。
+值得一提的是，本页面经过专门设计。页面内容完全是目录。如需查看正文，请在每一节底部，点击“查看示例”。
 语言基础 列表 本文从以下几个方面介绍列表：
  创建 获取 修改 添加 插入 删除 排序 逆序 索引 循环 列表推导 切片 复制 去重 计数 查找   查看示例 
 字典 鉴于 JSON 在数据处理中的大量使用，字典的重要性也不言而喻。
 本文从以下几个方面介绍字典：
  创建 获取 更新 遍历 排序 删除 字典与JSON collections.defaultdict() setdefault()   查看示例 
 字符串 除了列表和字典，字符串也是 Python 中一种非常重要的数据类型。
- 基本操作 格式化 字符串方法   查看示例 
-函数 本文目录：
- 形参和实参 位置实参 关键字实参 默认值 位置实参和关键字实参的混用 默认值、位置实参和关键字实参的混用 传递任意数量的位置实参 传递任意数量的关键字实参 由字符串函数名生成可调用的函数   查看示例</description>
+ 基本操作 格式化 字符串方法   查看示例</description>
     </item>
     
   </channel>

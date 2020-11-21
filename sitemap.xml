@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://luochang212.github.io/posts/fastapi/</loc>
+    <lastmod>2020-11-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://luochang212.github.io/posts/poisson/</loc>
     <lastmod>2020-09-19T00:00:00+00:00</lastmod>
   </url>
@@ -123,32 +128,50 @@
   </url>
   
   <url>
+    <loc>http://luochang212.github.io/tags/api/</loc>
+    <lastmod>2020-11-21T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://luochang212.github.io/categories/</loc>
-    <lastmod>2020-09-19T00:00:00+00:00</lastmod>
+    <lastmod>2020-11-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://luochang212.github.io/</loc>
-    <lastmod>2020-09-19T00:00:00+00:00</lastmod>
+    <lastmod>2020-11-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://luochang212.github.io/categories/development/</loc>
-    <lastmod>2020-09-19T00:00:00+00:00</lastmod>
+    <lastmod>2020-11-21T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/tags/fastapi/</loc>
+    <lastmod>2020-11-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://luochang212.github.io/posts/</loc>
-    <lastmod>2020-09-19T00:00:00+00:00</lastmod>
+    <lastmod>2020-11-21T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/categories/python/</loc>
+    <lastmod>2020-11-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://luochang212.github.io/tags/</loc>
-    <lastmod>2020-09-19T00:00:00+00:00</lastmod>
+    <lastmod>2020-11-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -197,12 +220,6 @@
   <url>
     <loc>http://luochang212.github.io/tags/mapreduce/</loc>
     <lastmod>2020-07-25T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://luochang212.github.io/categories/python/</loc>
-    <lastmod>2020-06-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -286,12 +303,6 @@
   
   <url>
     <loc>http://luochang212.github.io/tags/monaco-editor/</loc>
-    <lastmod>2019-10-07T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://luochang212.github.io/tags/api/</loc>
     <lastmod>2019-10-07T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
