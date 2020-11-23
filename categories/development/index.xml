@@ -20,7 +20,7 @@
       <description>从零开始，用 FastAPI 搭建一个简单 API.
  GitHub项目地址：calendar-api
 API (application programming interface, 应用编程接口) 是软件间相互交流信息的接口。通常来说，API 服务架设在一台机器 (server) 上，另一台机器 (client) 通过访问其网络接口实现通信。其中，server 还可能拥有数据库 (database)，以存储服务中产生的数据。
-API 本身是高度定制化的，软件间可以用任意数据类型进行通信。但如果 API 是面向大众的，定制化将导致软件间沟通成本高企。因此需要有一些规范来约束软件间的沟通方式。REST API 就是其中一种规范，只要符合它提出的六项指导原则，就可称为是符合 REST 风格的 API。
+API 本身是高度定制化的，软件间可以用任意数据类型进行通信。但如果 API 是面向大众的，定制化将导致软件间沟通成本高企。因此需要有一些规范来约束软件间的沟通方式。REST API 就是其中一种规范，只要符合它提出的六项指导原则，就可称之为是符合 REST 风格的 API。
  REST API 提出的六项指导原则分别是：
  Client–server Stateless Cacheable Uniform interface Layered system Code on demand (optional)  [了解更多]
  FastAPI 对搭建 REST 风格的 API 提供良好的支持，这也是本文选择 FastAPI 的原因之一。
@@ -130,22 +130,20 @@ $ P(cancer) = 0.008, P(normal) = 0.992 \\ P(+ | cancer) = 0.98, P(- | cancer) = 
     </item>
     
     <item>
-      <title>我的 Python 教程</title>
+      <title>我的 Python 不可能这么可爱</title>
       <link>http://luochang212.github.io/posts/python_tips/</link>
       <pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/python_tips/</guid>
       <description>Python 学习笔记，如有错误，欢迎指正  GitHub项目地址：python-tips
-教我武术的师傅，姓张。张师傅说，教人武术也是练习武术的一种方式。这就不难解释 Python 新人为何总是喜欢写各式各样的 Python 教程。因为系统地将一门知识按自己的方式理解，并尝试向别人解释的时候，我们是在深化自己对知识的理解。
-这也许不是一个好的教程。大多数时候，写作的对象是我自己。但是，本文拥有大量实例，并且较为系统地陈列了 Python 的基础知识。
-值得一提的是，本页面经过专门设计。页面内容完全是目录。如需查看正文，请在每一节底部，点击“查看示例”。
-语言基础 列表 本文从以下几个方面介绍列表：
- 创建 获取 修改 添加 插入 删除 排序 逆序 索引 循环 列表推导 切片 复制 去重 计数 查找   查看示例 
-字典 鉴于 JSON 在数据处理中的大量使用，字典的重要性也不言而喻。
-本文从以下几个方面介绍字典：
- 创建 获取 更新 遍历 排序 删除 字典与JSON collections.defaultdict() setdefault()   查看示例 
-字符串 除了列表和字典，字符串也是 Python 中一种非常重要的数据类型。
- 基本操作 格式化 字符串方法   查看示例</description>
+本文从 2019 年 11 月一路更新到了 2020 年 11 月，我也从实习转向了正式工作。一年前，我尚未将 Python 作为我的主力编程语言。但今天，它毫无疑问已是我最熟稔的伙伴之一。
+Python 有许多缺点，但是它在机器学习、科学计算、可视化、网络编程等方面的优势，几乎无可匹敌。它的身影在一些不追求高性能的、离线低频次的场景下已经非常常见，比如数据分析、算法预研、仿真建模 …… 都以 Python 作为首选语言。
+但是，入门 Python 并不容易，因为它有大量额外知识需要学习：学习编程几乎只占学习 Python 这件事的一半。例如，除了会写代码，你还要理解 Python 其实是把文件视作模块 (module) 的。而要具体地理解这件事，你还需要理解 import 、 if __name__ == &amp;quot;__main__&amp;quot; 和 __init__.py 的含义。
+Python 语言就像一棵枝叶繁茂的树。如果你找不到枝干，就会被无数琐碎细节难住，无从入手。《大学》云，知所先后则近道矣，正是其意。希望本文能成为你学习 Python 的“枝干”和“抓手”。
+ 书目推荐：
+ 入门：《Python编程从入门到实践》 [豆瓣链接] 初级：《Python学习手册》(英文名 Learning Python) [豆瓣链接] 中级：《流畅的Python》[豆瓣链接]  PS: 针对每个阶段，我推荐的是我认为最好的那本书。
+ 语言基础 列表 本文从以下几个方面介绍列表：
+ 创建 获取 修改 添加 插入 删除 排序 逆序 索引 循环 列表推导 切片 复制 去重 计数 查找   查看示例</description>
     </item>
     
     <item>
