@@ -598,7 +598,7 @@ FastAPI 和以上两者的区别是：它就是被设计成用来开发 API 的�
 
 <h3 id="2-安装-fastapi">2. 安装 FastAPI</h3>
 
-<p><a href="https://fastapi.tiangolo.com/">FastAPI</a> 是 Python 下专门用于构建 API 的一个包。它代码精简、响应快速、服务稳定、支持异步，是快速开发的不二之选。吹牛也是白吹，反正今天无论如何就是要学它。</p>
+<p><a href="https://fastapi.tiangolo.com/">FastAPI</a> 是 Python 下专门用于构建 API 的一个包。它代码精简、响应快速、服务稳定、支持异步，是快速开发的不二之选。吹牛也是白吹，反正今天无论如何都要学它。</p>
 
 <p>Let&rsquo;s start!!!</p>
 
@@ -630,7 +630,7 @@ FastAPI 和以上两者的区别是：它就是被设计成用来开发 API 的�
 
 <h3 id="3-测试安装是否成功">3. 测试安装是否成功</h3>
 
-<p>我们构建一个简单 API，来验证安装是否成功。这个 API 简单到只返回一条 JSON: <code>{'key': 'value'}</code>。下面让我们来实现它。</p>
+<p>安装完成以后，我们来构建一个简单 API，验证是否安装成功。这个 API 简单到只返回一条 JSON: <code>{'key': 'value'}</code>。下面让我们来实现它。</p>
 
 <p>首先，新建 <code>main.py</code> 文件，并写入如下内容。</p>
 
@@ -659,11 +659,11 @@ def index():
 
 <p>接下来就是今天的主菜了。</p>
 
-<p>我们要做一个稍微复杂一点的 API 来练手。选择做何种 API 是一件自由度极大的事。这里我希望构建一个<strong>日程 API</strong>，它具备一个日程应用基本的功能，能进行增、删、改、查操作。</p>
+<p>我们要做一个稍微复杂一点的 API 来练手。选择做何种 API 是一件自由度极大的事。这里我希望构建一个<strong>日程 API</strong>，它具备一个日程应用的基本功能，能进行增、删、改、查操作。</p>
 
 <h4 id="4-1-消息格式的设计">4.1 消息格式的设计</h4>
 
-<p>在开始写任何具体的代码之前，我们需要先设计消息的格式。消息的格式决定了未来“什么样的信息”在 API 中流动。</p>
+<p>在开始写任何具体代码之前，我们需要把消息格式先设计好。消息格式决定了未来“什么样的信息”在 API 中流动。</p>
 
 <p>设计范围包括消息的字段和数据类型。以下是我的方案，各字段的数据类型及具体含义如下：</p>
 
@@ -1055,7 +1055,7 @@ def delete_schedule(schedule_id: str):
 
 <p>因为客户端 (client) 需要在其他功能开发完以后才能进行测试，因此最后开发。</p>
 
-<p>客户端通过 HTTP 协议与 API 服务通信。HTTP 协议定义了多种 HTTP 方法，其中比较常用的四种是：get, post, put, delete.
+<p>客户端通过 HTTP 协议与 API 服务通信。HTTP 协议定义了多种 HTTP 方法，其中比较常用的是四种：get, post, put, delete.
 客户端的主要功能就是正确实现这四种 HTTP 方法，并以正确的数据格式向接口发送请求，最后处理服务端返回的内容，以确认请求是否被成功执行。</p>
 
 <p>使用 HTTP 协议与服务端通信需要用到 <a href="https://requests.readthedocs.io/en/master/">requests</a> 包。requests 是 Python 下的一个 HTTP 库，让我们无需了解 HTTP 协议的内部细节，也能正确地与服务端通信。</p>
@@ -1074,9 +1074,9 @@ def delete_schedule(schedule_id: str):
 <p>[<a href="https://restfulapi.net/http-methods/">了解更多</a>]</p>
 </blockquote>
 
-<p>用于构建客户端的脚本仅有一个：<code>client.py</code>。运行 <code>client.py</code> 时，请务必确保操作顺序符合逻辑：如果你需要删除一条数据，那么必须先添加它；如果你要更新/删除一条数据，那么它必须已经存在。此外，如果你发送的 POST 和 PUT 请求中包含 JSON，请务必遵循 <code>db.conf</code> 配置文件或 <code>Schedule</code> 类定义的数据类型规范，否则将导致请求失败。</p>
+<p>用于构建客户端的脚本仅有一个：<code>client.py</code>。运行 <code>client.py</code> 时，请务必确保操作顺序符合逻辑：如果你要删除一条数据，那么必须先添加它；如果你要更新/删除一条数据，那么它必须已经存在于数据库中。另外，如果你发送的 POST 和 PUT 请求中包含 JSON，请务必遵循 <code>db.conf</code> 配置文件或 <code>Schedule</code> 类定义的数据类型规范，否则将导致请求失败。</p>
 
-<p>若这是你第一次接触 FastAPI，建议先在 <code>http://127.0.0.1:8000/docs</code> 中调试。对 FastAPI 的行为有了概念以后再运行 <code>client.py</code> 会顺利很多。</p>
+<p>若这是你第一次接触 FastAPI，建议先在 <code>http://127.0.0.1:8000/docs</code> 中调试。在对 FastAPI 的行为有了概念之后再运行 <code>client.py</code> 会顺利很多。</p>
 
 <pre><code class="language-python"># -*- coding:utf-8 -*-
 # client.py
