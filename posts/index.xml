@@ -19,12 +19,13 @@
       <guid>http://luochang212.github.io/posts/fastapi/</guid>
       <description>从零开始，用 FastAPI 构建一个简单 API.
  GitHub项目地址：calendar-api
-API (application programming interface, 应用编程接口) 是软件间交流信息的接口。通常来说，API 服务架设在一台机器 (server) 上，另一台机器 (client) 通过访问其网络接口实现通信。除了以上两者之外，这个系统中还可能存在数据库 (database) 以存储 server 产生的数据。
-1. REST API API 本身是高度定制化的，软件间可以用任意数据类型进行通信。但如果 API 是面向大众的，定制化将导致软件间沟通成本高企。这就需要有规范来约束软件间的沟通方式。REST API 就是其中之一。REST API 提出了六项指导原则，只要符合它提出的六项指导原则，就是符合 REST 风格的 API。
-FastAPI 对构建 REST 风格的 API 提供良好的支持，这也是本文选用 FastAPI 的原因之一。
+API (application programming interface, 应用编程接口) 是软件间交流信息的接口。通常来说，API 服务架设在一台机器 (server) 上，另一台机器 (client) 通过其网络接口进行访问。此外，server 可以跟远程数据库 (database) 连接，以存储请求过程中产生的数据。
+如图，可以看出是一个三方游戏。服务端被动地接受客户端发来的请求。如果请求通过校验且被正确执行，运行结果将被更新进数据库，然后回调给用户；如果请求未通过校验或执行不正确，则将错误信息回调给用户，以告知服务未能正确执行。
+在某些情况下可能无需数据库，比如客户端要求返回 x + y 等于几，这样就由三方退化为两方。
+1. REST API API 本身是高度定制化的，软件间可以用任意数据类型进行通信。但如果 API 是面向大众的，定制化将导致软件间沟通成本高企。这就需要有规范来约束其沟通方式。REST API 就是其中一种规范。REST API 提出了六项指导原则，只要 API 符合这六项指导原则，就能称之为“符合 REST 风格的 API”。
  REST API 提出的六项指导原则分别是：
  Client–server Stateless Cacheable Uniform interface Layered system Code on demand (optional)  [了解更多]
- 1. 安装 FastAPI FastAPI 是 Python 下专门用于构建 API 的一个包。它代码精简、响应快速、服务稳定、支持异步，是快速开发的不二之选。吹牛也是白吹，反正我们今天就是要学它。</description>
+ PS: FastAPI 对构建 REST 风格的 API 提供良好的支持，这也是本文选用 FastAPI 的原因之一。</description>
     </item>
     
     <item>
