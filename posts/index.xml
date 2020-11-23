@@ -17,7 +17,7 @@
       <pubDate>Sat, 21 Nov 2020 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/fastapi/</guid>
-      <description>从零开始，用 FastAPI 构建一个简单 API.
+      <description>从零开始，用 FastAPI 构建一个日程 API.
  GitHub项目地址：calendar-api
 API (application programming interface, 应用编程接口) 是软件间交流信息的接口。通常来说，API 服务架设在一台机器 (server) 上，另一台机器 (client) 通过其网络接口进行访问。此外，server 可以跟远程数据库 (database) 连接，以存储请求过程中产生的数据。
 如图，可以看出是一个三方游戏。服务端被动地接受客户端发来的请求。如果请求通过校验且被正确执行，运行结果将被更新进数据库，然后回调给用户；如果请求未通过校验或执行不正确，则将错误信息回调给用户，以告知服务未能正确执行。
