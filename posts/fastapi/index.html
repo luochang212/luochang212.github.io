@@ -22,10 +22,10 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="FastAPI 初见"/>
-<meta name="twitter:description" content="从零开始，用 FastAPI 搭建一个简单 API."/>
+<meta name="twitter:description" content="从零开始，用 FastAPI 构建一个简单 API."/>
 
 <meta property="og:title" content="FastAPI 初见" />
-<meta property="og:description" content="从零开始，用 FastAPI 搭建一个简单 API." />
+<meta property="og:description" content="从零开始，用 FastAPI 构建一个简单 API." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/fastapi/" />
 <meta property="article:published_time" content="2020-11-21T00:00:00&#43;00:00"/>
@@ -517,9 +517,10 @@
 <ul>
 <li>
 <ul>
+<li><a href="#1-rest-api">1. REST API</a></li>
 <li><a href="#1-安装-fastapi">1. 安装 FastAPI</a></li>
 <li><a href="#2-测试安装是否成功">2. 测试安装是否成功</a></li>
-<li><a href="#3-搭建一个日程-api">3. 搭建一个日程 API</a>
+<li><a href="#3-构建一个日程-api">3. 构建一个日程 API</a>
 <ul>
 <li><a href="#3-1-消息格式的设计">3.1 消息格式的设计</a></li>
 <li><a href="#3-2-数据库">3.2 数据库</a></li>
@@ -539,16 +540,20 @@
     
 
 <blockquote>
-<p>从零开始，用 FastAPI 搭建一个简单 API.</p>
+<p>从零开始，用 FastAPI 构建一个简单 API.</p>
 </blockquote>
 
 <p>GitHub项目地址：<a href="https://github.com/luochang212/calendar-api" target="_blank">calendar-api</a></p>
 
-<p><a href="https://en.wikipedia.org/wiki/API">API</a> (application programming interface, 应用编程接口) 是软件间相互交流信息的接口。通常来说，API 服务架设在一台机器 (server) 上，另一台机器 (client) 通过访问其网络接口实现通信。其中，server 还可能拥有数据库 (database)，以存储服务中产生的数据。</p>
+<p><a href="https://en.wikipedia.org/wiki/API">API</a> (application programming interface, 应用编程接口) 是软件间交流信息的接口。通常来说，API 服务架设在一台机器 (server) 上，另一台机器 (client) 通过访问其网络接口实现通信。除了以上两者之外，这个系统中还可能存在数据库 (database) 以存储 server 产生的数据。</p>
 
 <p><img src="/img/fastapi-2.PNG" alt="" /></p>
 
-<p>API 本身是高度定制化的，软件间可以用任意数据类型进行通信。但如果 API 是面向大众的，定制化将导致软件间沟通成本高企。因此需要有一些规范来约束软件间的沟通方式。<a href="https://restfulapi.net/">REST API</a> 就是其中一种规范，只要符合它提出的六项指导原则，就可称之为是符合 REST 风格的 API。</p>
+<h3 id="1-rest-api">1. REST API</h3>
+
+<p>API 本身是高度定制化的，软件间可以用任意数据类型进行通信。但如果 API 是面向大众的，定制化将导致软件间沟通成本高企。这就需要有规范来约束软件间的沟通方式。<a href="https://restfulapi.net/">REST API</a> 就是其中之一。REST API 提出了六项指导原则，只要符合它提出的六项指导原则，就是符合 REST 风格的 API。</p>
+
+<p><a href="https://fastapi.tiangolo.com/">FastAPI</a> 对构建 REST 风格的 API 提供良好的支持，这也是本文选用 FastAPI 的原因之一。</p>
 
 <blockquote>
 <p>REST API 提出的六项指导原则分别是：</p>
@@ -564,10 +569,6 @@
 
 <p>[<a href="https://restfulapi.net/">了解更多</a>]</p>
 </blockquote>
-
-<p><a href="https://fastapi.tiangolo.com/">FastAPI</a> 对搭建 REST 风格的 API 提供良好的支持，这也是本文选择 FastAPI 的原因之一。</p>
-
-<p>Let&rsquo;s start!!!</p>
 
 <!-- ### 1. 技术选型
 
@@ -591,11 +592,11 @@ FastAPI 和以上两者的区别是：它就是被设计成用来开发 API 的�
 
 <h3 id="1-安装-fastapi">1. 安装 FastAPI</h3>
 
-<blockquote>
-<p>详情参见 <a href="https://fastapi.tiangolo.com/#installation">fastapi-installation</a>.</p>
-</blockquote>
+<p><a href="https://fastapi.tiangolo.com/">FastAPI</a> 是 Python 下专门用于构建 API 的一个包。它代码精简、响应快速、服务稳定、支持异步，是快速开发的不二之选。吹牛也是白吹，反正我们今天就是要学它。</p>
 
-<p>使用 FastAPI 前，我们只需要安装两个包。</p>
+<p>Let&rsquo;s start!!!</p>
+
+<p>使用 FastAPI 前，我们需要安装两个包。有关安装的详细信息，参见<a href="https://fastapi.tiangolo.com/#installation">这里</a>。</p>
 
 <p>1.<code>fastapi</code></p>
 
@@ -608,6 +609,8 @@ FastAPI 和以上两者的区别是：它就是被设计成用来开发 API 的�
 </code></pre>
 
 <blockquote>
+<p><strong>FAQ:</strong></p>
+
 <p>❓ 什么是 <code>uvicorn</code>？</p>
 
 <p>Uvicorn is a lightning-fast ASGI server implementation, using uvloop and httptools. [<a href="https://www.uvicorn.org/">reference</a>]</p>
@@ -621,11 +624,9 @@ FastAPI 和以上两者的区别是：它就是被设计成用来开发 API 的�
 
 <h3 id="2-测试安装是否成功">2. 测试安装是否成功</h3>
 
-<p>我们搭建一个简单的 API 来测试安装是否成功。它简单到只能返回一条简单的 JSON: <code>{'key': 'value'}</code>。</p>
+<p>让我们构建一个简单 API，来验证安装是否成功。这个 API 简单到只能返回一条 JSON: <code>{'key': 'value'}</code>。下面我们来实现它。</p>
 
-<p>让我们来实现它。</p>
-
-<p>首先，新建 <code>main.py</code> 文件。</p>
+<p>首先，新建 <code>main.py</code> 文件，写入如下内容。</p>
 
 <pre><code class="language-python"># main.py
 from fastapi import FastAPI
@@ -637,26 +638,28 @@ def index():
     return {'key': 'value'}
 </code></pre>
 
-<p>然后，在当前目录下，执行以下命令。在这条命令中，<code>main</code> 是我们脚本的名字（我们的脚本名为 <code>main.py</code>）。<code>--reload</code> 意味着在每次更新脚本时重启 ASGI 服务。</p>
+<p>然后，在命令行中，打开当前目录，执行以下命令。</p>
 
 <pre><code class="language-shell">uvicorn main:app --reload
 </code></pre>
 
-<p>在浏览器中打开 <code>http://127.0.0.1:8000</code>，如果网页显示 <code>{'key': 'value'}</code> 的话，就说明我们的 API 搭建成功啦～</p>
+<p>注：在此命令中，<code>main</code> 是脚本的名称（脚本名为 <code>main.py</code>），<code>--reload</code> 代表在每次脚本更新时重启 ASGI 服务。</p>
+
+<p>在浏览器中打开 <code>http://127.0.0.1:8000</code>，如果网页显示 <code>{'key': 'value'}</code> 的话，就说明我们的 API 构建成功啦！</p>
 
 <p><img src="/img/fastapi-1.png" alt="" /></p>
 
-<h3 id="3-搭建一个日程-api">3. 搭建一个日程 API</h3>
+<h3 id="3-构建一个日程-api">3. 构建一个日程 API</h3>
 
 <p>接下来就是今天的主菜了。</p>
 
-<p>为了介绍 FastAPI，我们需要构建一个具体的应用。我的计划是搭建一个<strong>日程 API</strong>。它具备一个日程应用的基本功能，包括对日程进行增、删、改、查操作。</p>
-
-<p>计划通。</p>
+<p>我们要做一个稍微复杂一点的 API 来练练手。这是一个自由度极大的事情。这里我希望构建一个<strong>日程 API</strong>，它具备一个日程应用基本的功能，比如增、删、改、查等操作。</p>
 
 <h4 id="3-1-消息格式的设计">3.1 消息格式的设计</h4>
 
-<p>首先，我们来设计日程消息的格式，包括数据类型和字段信息。下面我粗略写了一个方案。消息将以 JSON 传输，各字段的数据类型及具体含义如下：</p>
+<p>在开始具体写代码之前，我需要先设计消息的格式。这决定了将来“什么样的信息”在 API 中流动。</p>
+
+<p>设计包括设计消息的字段信息和数据类型。以下是我的方案。消息以 JSON 传输，各字段的数据类型及具体含义如下：</p>
 
 <pre><code class="language-json">{
     sid: str  # 日程 ID
@@ -671,24 +674,24 @@ def index():
 }
 </code></pre>
 
-<p><code>sid</code> 是 schedule id 的缩写。它作为主键，是一条日程信息的唯一标识。</p>
+<p>其中，<code>sid</code> 是 schedule id 的缩写。它作为主键，是一条日程信息的唯一标识。</p>
 
-<p><code>creation_time</code>, <code>start_time</code>, <code>end_time</code> 是 <code>str</code> 类型而不是 <code>datetime</code>，主要是考虑到这些字段存储上方便。在服务端读取这些字段时，我们希望加一道校验，使得不符合日期格式的消息被过滤掉。</p>
+<p><code>creation_time</code>, <code>start_time</code>, <code>end_time</code> 被设计为 <code>str</code> 而非 <code>datetime</code>，主要是为了存储上的方便。与之相对，为了防止用户输入不符合预期的值，后续将在服务端读取这些字段时加一道校验，将不符合日期格式的消息过滤掉。</p>
 
 <h4 id="3-2-数据库">3.2 数据库</h4>
 
-<p>有了日程消息的格式以后，我们就可以着手搭建数据库 (database) 了。</p>
+<p>设计完消息格式以后，我们来搭建数据库 (database)。目前先搭建数据库而非先搭建客户端、服务端的原因是：客户端依赖于服务端，而服务端又依赖于数据库。我们总是先将依赖写完，然后再写服务的主体部分。</p>
 
-<p>有非常多的数据库搭建方案，但是这里我们选择 <code>SQLite</code>。因为这是 Python 自带的数据库，无需安装。它满足我们希望本教程是“包含 FastAPI 的最小子集”的期望。</p>
+<p>搭建数据库，有许多方案，但是我们选择 <code>SQLite</code>。因为它是 Python 自带的，无需安装，因此符合我们对本教程是“包含 FastAPI 的最小子集”的期待。</p>
 
 <blockquote>
-<p>有关在 <code>Python3</code> 中使用 <code>SQLite</code> 的介绍请看<a href="https://docs.python.org/3/library/sqlite3.html">这里</a>。</p>
+<p>有关如何在 <code>Python3</code> 中使用 <code>SQLite</code> 的介绍请看<a href="https://docs.python.org/3/library/sqlite3.html">这里</a>。</p>
 </blockquote>
 
-<p>我们编写了两个关于数据库的脚本。<code>build.py</code> 在第一次开启服务前运行，它用于新建 <code>SQLite</code> 数据库；<code>database_handler.py</code> 是一个数据库操作类，它能帮助我们处理<a href="https://en.wikipedia.org/wiki/Database_transaction">数据库事务</a>。</p>
+<p>有两个关于数据库的脚本。<code>build.py</code> 用于新建 <code>SQLite</code> 数据库，它仅需在第一次启动服务时运行一次；<code>database_handler.py</code> 是一个数据库操作类，它能方便我们处理<a href="https://en.wikipedia.org/wiki/Database_transaction">数据库事务</a>。</p>
 
 <blockquote>
-<p>数据库事务的 ACID 特性：</p>
+<p><strong>Note</strong>: 数据库事务的 ACID 特性</p>
 
 <ul>
 <li>原子性 (atomicity)</li>
@@ -849,11 +852,16 @@ if __name__ == '__main__':
 
 <h4 id="3-3-服务端">3.3 服务端</h4>
 
-<p>服务端 (server) 包含搭建 API 的主程序。它主要有两项功能：一是提供 API 接口，供用户连接之用；二是根据用户请求，处理数据库中的数据。</p>
+<p>服务端 (server) 主要有两项功能：</p>
 
-<p>搭建 FastAPI 应用，最重要的就是定义 post, delete, put, get 四个方法。这四个方法分别对应增、删、改、查四种行为。在 FastAPI 中，四个方法的函数名可以随意取，但是必须用装饰器进行标记。</p>
+<ol>
+<li>为客户端提供 API 接口</li>
+<li>根据用户请求，对数据库的数据进行处理</li>
+</ol>
 
-<p>一共有两个脚本用于搭建服务端，分别是 <code>method.py</code> 和 <code>server.py</code>。 <code>method.py</code> 定义了 API 增、删、改、查的具体操作方法；<code>server.py</code> 定义了 FastAPI 中的 post, delete, put, get 四个方法。<code>method.py</code> 和 上节中提到的 <code>database_handler.py</code> 作为模块，在 <code>server.py</code> 中被调用。</p>
+<p>为完成 1 中的目标，服务端需要定义 post, delete, put, get 四种方法。这四种方法分别对应于增、删、改、查四种操作。在 FastAPI 中，四种方法的函数名可以随意取，但是必须用特定的装饰器进行标记。</p>
+
+<p>有两个脚本用于构建服务端，分别是 <code>method.py</code> 和 <code>server.py</code>。 <code>method.py</code> 定义了数据库增、删、改、查的具体操作细节；而 <code>server.py</code> 则定义了 post, delete, put, get 四个方法在网络层的行为以及它们如何与具体的数据库操作进行连接。其中，<code>method.py</code> 和上节中出现的 <code>database_handler.py</code> 作为模块被 <code>server.py</code> 调用。</p>
 
 <pre><code class="language-python"># -*- coding:utf-8 -*-
 # method.py
@@ -1039,29 +1047,30 @@ def delete_schedule(schedule_id: str):
 
 <h4 id="3-4-客户端">3.4 客户端</h4>
 
-<p>客户端 (client) 需要在其他功能完备以后才能开始测试，因此置于末尾。</p>
+<p>客户端 (client) 需要在其他功能开发完以后才能进行测试，因此置于本文末尾。</p>
 
-<p>客户端通过向服务端的 API 接口发起请求，告诉 API 自己的需求，如果 API 完成了客户端的请求，就会正确执行的回执信息；如果 API 无法完成客户端的请求，就会返回错误信息。</p>
+<p>客户端通过 HTTP 协议与 API 服务进行通信。HTTP 协议定义了多种 HTTP 方法，其中比较常用的有四种：GET, POST, PUT, DELETE.
+客户端的主要功能就是正确实现这四种方法，并以正确的数据格式向接口发送请求，然后处理服务端返回的内容，以确认请求是否被成功执行。</p>
 
-<p>向 API 发送请求需要用到 <a href="https://requests.readthedocs.io/en/master/">requests</a> 包。requests 是 Python 下的一个 HTTP library。它封装了 HTTP 的 get, post, put, delete 等方法。大大降低了 Python 下使用 HTTP 协议的难度。</p>
+<p>与服务器以 HTTP 协议通信需要用到 <a href="https://requests.readthedocs.io/en/master/">requests</a> 包。requests 让我们无需了解 HTTP 协议的内部细节，也能正确地与服务端通信。</p>
 
 <blockquote>
-<p>HTTP 方法:</p>
+<p><strong>Note</strong>: HTTP methods</p>
 
 <ul>
-<li>HTTP GET: Use GET requests to retrieve resource representation/information only – and not to modify it in any way.</li>
-<li>HTTP POST: Use POST APIs to create new subordinate resources.</li>
-<li>HTTP PUT: Use PUT APIs primarily to update existing resource.</li>
-<li>HTTP DELETE: As the name applies, DELETE APIs are used to delete resources.</li>
-<li>HTTP PATCH: HTTP PATCH requests are to make partial update on a resource.</li>
+<li>GET: Use GET requests to retrieve resource representation/information only – and not to modify it in any way.</li>
+<li>POST: Use POST APIs to create new subordinate resources.</li>
+<li>PUT: Use PUT APIs primarily to update existing resource.</li>
+<li>DELETE: As the name applies, DELETE APIs are used to delete resources.</li>
+<li>PATCH: HTTP PATCH requests are to make partial update on a resource.</li>
 </ul>
 
 <p>[<a href="https://restfulapi.net/http-methods/">了解更多</a>]</p>
 </blockquote>
 
-<p><code>client.py</code> 是客户端脚本。请务必确保以正确的方式使用 <code>client</code>. 如果你尝试删除一条数据库中不存在的数据，或者未按 <code>db.conf</code> 配置文件 和 <code>Schedule</code> 类定义的数据类型向 API 发送请求，则可能导致请求失败。</p>
+<p>用于构建客户端的脚本仅有一个：<code>client.py</code>。请务必确保以正确的方式使用 <code>client.py</code>. 如果你需要删除一条数据，请先添加它；如果你要更新/删除一条数据，请确保它已经存在。此外，如果你发送的请求中包含 JSON，请务必遵循 <code>db.conf</code> 配置文件或 <code>Schedule</code> 类定义的数据类型规范，否则将导致请求失败。</p>
 
-<p>如果你遭遇此类困难，可以在 <code>http://127.0.0.1:8000/docs</code> 中测试 API 是如何运作的。</p>
+<p>如果这是你第一次接触 FastAPI，建议先在 <code>http://127.0.0.1:8000/docs</code> 中调试。在对 FastAPI 的行为有了概念以后再运行 <code>client.py</code> 会顺利得多。</p>
 
 <pre><code class="language-python"># -*- coding:utf-8 -*-
 # client.py

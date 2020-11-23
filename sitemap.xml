@@ -128,12 +128,6 @@
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/tags/api/</loc>
-    <lastmod>2020-11-21T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://luochang212.github.io/categories/</loc>
     <lastmod>2020-11-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -176,13 +170,19 @@
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/tags/python/</loc>
-    <lastmod>2020-09-19T00:00:00+00:00</lastmod>
+    <loc>http://luochang212.github.io/tags/api/</loc>
+    <lastmod>2020-11-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://luochang212.github.io/categories/math/</loc>
+    <lastmod>2020-09-19T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://luochang212.github.io/tags/python/</loc>
     <lastmod>2020-09-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -200,13 +200,13 @@
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/categories/hadoop/</loc>
+    <loc>http://luochang212.github.io/tags/hadoop/</loc>
     <lastmod>2020-07-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/tags/hadoop/</loc>
+    <loc>http://luochang212.github.io/categories/hadoop/</loc>
     <lastmod>2020-07-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -320,13 +320,13 @@
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/categories/golang/</loc>
+    <loc>http://luochang212.github.io/tags/golang/</loc>
     <lastmod>2019-07-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/tags/golang/</loc>
+    <loc>http://luochang212.github.io/categories/golang/</loc>
     <lastmod>2019-07-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -350,13 +350,13 @@
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/categories/queuing-theory/</loc>
+    <loc>http://luochang212.github.io/tags/queuing-theory/</loc>
     <lastmod>2019-07-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/tags/queuing-theory/</loc>
+    <loc>http://luochang212.github.io/categories/queuing-theory/</loc>
     <lastmod>2019-07-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -491,13 +491,13 @@
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/categories/jupyter-notebook/</loc>
+    <loc>http://luochang212.github.io/tags/jupyter-notebook/</loc>
     <lastmod>2019-04-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://luochang212.github.io/tags/jupyter-notebook/</loc>
+    <loc>http://luochang212.github.io/categories/jupyter-notebook/</loc>
     <lastmod>2019-04-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
