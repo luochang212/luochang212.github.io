@@ -17,19 +17,19 @@
     
     
 
-<title>基于蚁群算法的证券投资组合优化 • Chang Luo</title>
+<title>统计学补完计划 • Chang Luo</title>
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="基于蚁群算法的证券投资组合优化"/>
-<meta name="twitter:description" content="比金融工具箱精度更高的近似方法"/>
+<meta name="twitter:title" content="统计学补完计划"/>
+<meta name="twitter:description" content="统计学绝非一门生硬无趣的学科，它有着鲜活的案例和丰富的实验，让我们循着字符乘着代码在统计的海洋里尽情摇摆叭。"/>
 
-<meta property="og:title" content="基于蚁群算法的证券投资组合优化" />
-<meta property="og:description" content="比金融工具箱精度更高的近似方法" />
+<meta property="og:title" content="统计学补完计划" />
+<meta property="og:description" content="统计学绝非一门生硬无趣的学科，它有着鲜活的案例和丰富的实验，让我们循着字符乘着代码在统计的海洋里尽情摇摆叭。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://luochang212.github.io/portfolio/1/" />
-<meta property="article:published_time" content="2019-06-01T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2019-06-01T00:00:00&#43;00:00"/><meta property="og:site_name" content="Title" />
+<meta property="og:url" content="http://luochang212.github.io/posts/learning_statistics/" />
+<meta property="article:published_time" content="2021-05-01T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2021-05-01T00:00:00&#43;00:00"/><meta property="og:site_name" content="Title" />
 
 
     
@@ -460,20 +460,46 @@
     
 <article>
   <header>
-    <h1>基于蚁群算法的证券投资组合优化</h1>
+    <h1>统计学补完计划</h1>
     
     
 <div class="post__meta">
     
     
-      <i class="fas fa-calendar-alt"></i> Jun 1, 2019
+      <i class="fas fa-calendar-alt"></i> May 1, 2021
     
     
     
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/development">DEVELOPMENT</a>
+              •
+          
+              <a class="badge badge-category" href="/categories/math">MATH</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/python">python</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/statistics">statistics</a>
+          
+      
     
     
     <br/>
-    <i class="fas fa-clock"></i> 1 min read
+    <i class="fas fa-clock"></i> 2 min read
 </div>
 
 
@@ -485,24 +511,172 @@
       <input type="checkbox" id="tocToggle">
       <label for="tocToggle">目录</label>
       
-          
+          <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#1-回归分析">1. 回归分析</a>
+<ul>
+<li><a href="#1-1-简单线性回归模型">1.1 简单线性回归模型</a>
+<ul>
+<li><a href="#1-回归方程">(1) 回归方程</a></li>
+<li><a href="#2-零条件均值假设">(2) 零条件均值假设</a></li>
+<li><a href="#3-普通最小二乘法的推导">(3) 普通最小二乘法的推导</a></li>
+<li><a href="#4-拟合值和残差">(4) 拟合值和残差</a></li>
+<li><a href="#5-拟合优度">(5) 拟合优度</a></li>
+<li><a href="#6-探索-最小化残差平方和">(6) 探索：最小化残差平方和</a></li>
+<li><a href="#7-探索-关于拟合优度的经验性探索">(7) 探索：关于拟合优度的经验性探索</a></li>
+</ul></li>
+<li><a href="#1-2-多元回归分析-估计">1.2 多元回归分析：估计</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
       
     </div>
   
   
   <div class="post">
-    <p>在证券交易中，为了降低风险，经常使用一笔资金购买多支股票。那么，如何合理地选择证券组合，并确定每支证券的资金分配系数，以使预期风险最低，预期收益最高，就成了一种经典的金融问题 &ndash; 证券投资组合优化问题。</p>
+    
 
-<p><strong>马科维茨均值-方差模型</strong>(Markowitz Mean-Variance Model)是一种用于求解证券投资组合优化问题的数学模型。本文改进了一种多元函数连续域蚁群算法，用于求解马科维茨均值-方差模型。</p>
+<blockquote>
+<p>统计学绝非一门生硬无趣的学科，它有着鲜活的案例和丰富的实验，让我们循着字符乘着代码在统计的海洋里尽情摇摆叭 <img src="/img/quyin/maimeng.png" class="my-emoji" style = "height: 32px;"></p>
+</blockquote>
+
+<h3 id="1-回归分析">1. 回归分析</h3>
+
+<h4 id="1-1-简单线性回归模型">1.1 简单线性回归模型</h4>
+
+<h5 id="1-回归方程">(1) 回归方程</h5>
+
+<p>许多回归分析都是在如下假设前提下开始的：<code>$y$</code> 和 <code>$x$</code> 是两个代表某个总体的变量，我们希望用 <code>$x$</code> 解释 <code>$y$</code>，通过一个线性方程，我们可以刻画 <code>$y$</code> 和 <code>$x$</code> 之间的关系：
+<code>$$y=\beta_{0}+\beta_{1} x+u \quad (1.1)$$</code>
+假定方程 (1.1) 在我们所关注的总体中成立，它便定义了一个<strong>简单线性回归模型</strong> (simple linear regression model).</p>
+
+<p>其中，各符号含义如下：</p>
+
+<ul>
+<li><code>$y$</code>: 因变量(或被解释变量、回归子)</li>
+<li><code>$x$</code>: 自变量(或解释变量、回归元)</li>
+<li><code>$u$</code>: 误差项(或干扰项)</li>
+<li><code>$\beta_{1}$</code>: 斜率参数</li>
+<li><code>$\beta_{0}$</code>: 截距参数</li>
+</ul>
+
+<p>举例来说，假设我们用方程 (1.1) 来刻画大豆收成：<code>$y$</code> 表示收成，<code>$x$</code> 表示施肥量，<code>$u$</code> 则包括了诸如土地质量、降水量等因素。</p>
+
+<h5 id="2-零条件均值假设">(2) 零条件均值假设</h5>
+
+<p>只有在我们对 <code>$x$</code> 和 <code>$u$</code> 之间的关系做出<strong>某种约束</strong>时，我们才能计算出 <code>$\beta_{1}$</code> 和 <code>$\beta_{0}$</code> 的可靠估计量。</p>
+
+<p>🌟 零条件均值假定：
+<code>$$\begin{aligned} &amp;\mathrm{E}(u)=0 \quad (1.2)\\ &amp;\mathrm{E}(u \mid x)=\mathrm{E}(u) \quad (1.3)\end{aligned}$$</code>
+方程 (1.2) 和 (1.3) 称作<strong>零条件均值假定</strong> (zero conditional mean assumption). 有了这两个约束，我们就能计算 <code>$\beta_{1}$</code> 和 <code>$\beta_{0}$</code> 了。</p>
+
+<blockquote>
+<p><strong>Note:</strong> 尽管 <code>$\mathrm{E}(u)=0 \quad (1.2)$</code> 未必成立，但是只要方程中包含 <code>$\beta_{0}$</code>，那么我们假设方程 (1.2) 成立也不会失掉什么。</p>
+
+<p>方程 <code>$\mathrm{E}(u \mid x)=\mathrm{E}(u) \quad (1.3)$</code> 说的是 <code>$u$</code> 的平均值和 <code>$x$</code> 无关。在统计概率中，当 (1.3) 式成立时，我们称 <code>$u$</code> 均值独立 (mean independent) 于 <code>$x$</code>.</p>
+
+<p>当 (1.2) 与 (1.3) 式均成立时，我们便得到了零条件均值假定。</p>
+</blockquote>
+
+<h5 id="3-普通最小二乘法的推导">(3) 普通最小二乘法的推导</h5>
+
+<p>普通最小二乘法推导的核心就是计算 <code>$\beta_{1}$</code> 和 <code>$\beta_{0}$</code>. 为此，我们需要从总体中抽取一个<strong>容量为 n 的随机样本</strong>：
+<code>$$\{(x_{i}, y_{i}):(i=1,2, \cdots, n)\}$$</code>
+由于我们采用了简单线性回归模型，因此对每个 <code>$i$</code>，我们都可以写为：
+<code>$$y_{i}=\beta_{0}+\beta_{1}x_{i}+u_{i} \quad (1.4)$$</code>
+根据方程 (1.2) 和 (1.3), 我们有：
+<code>$$\begin{aligned} &amp;\mathrm{E}(u)=0 \quad (1.5) \\ &amp;Cov(x, u)=\mathrm{E}(xu) - \mathrm{E}(x)\mathrm{E}(u)=\mathrm{E}(xu)=\mathrm{E}(u \mid x)\mathrm{E}(x)=\mathrm{E}(u)\mathrm{E}(x)=0 \quad (1.6) \end{aligned}$$</code>
+以上两个方程可分别写作：
+<code>$$\begin{aligned} &amp;\mathrm{E}(y-\beta_{0}-\beta_{1}x)=0 \quad (1.7) \\ &amp;\mathrm{E}[x(y-\beta_{0}-\beta_{1}x)]=0  \quad (1.8) \end{aligned}$$</code>
+将样本数据代入上式得：
+<code>$$\begin{aligned} &amp;n^{-1} \sum_{i=1}^{n}(y_{i}-\hat{\beta}_{0}-\hat{\beta}_{1} x_{i})=0 \quad (1.9) \\ &amp;n^{-1} \sum_{i=1}^{n} x_{i}\left(y_{i}-\hat{\beta}_{0}-\hat{\beta}_{1} x_{i}\right)=0  \quad (1.10) \end{aligned}$$</code>
+由 (1.9) 得：
+<code>$$\bar{y}=\hat{\beta}_{0}+\hat{\beta}_{1} \bar{x} \quad (1.11)$$</code>
+将 (1.11) 代入 (1.10) 得：
+<code>$$\sum_{i=1}^{n} x_{i}\left(y_{i}-(\bar{y}-\hat{\beta_{1}}\bar{x})-\hat{\beta}_{1} x_{i}\right)=0 \quad (1.12)$$</code>
+整理后得到：
+<code>$$\sum_{i=1}^{n} x_{i}(y_{i}-\bar{y})=\hat{\beta}_{1} \sum_{i=1}^{n} x_{i}(x_{i}-\bar{x}) \quad (1.13)$$</code>
+又由于：
+<code>$$\begin{aligned} &amp;\sum_{i=1}^{n} x_{i}(x_{i}-\bar{x})=\sum_{i=1}^{n}(x_{i}-\bar{x})^{2} \quad (1.14)\\ &amp;\sum_{i=1}^{n} x_{i}(y_{i}-\bar{y})=\sum_{i=1}^{n}(x_{i}-\bar{x})(y_{i}-\bar{y})  \quad (1.15)\end{aligned}$$</code>
+因此，只要满足：
+<code>$$\sum_{i=1}^{n}(x_{i}-\bar{x})^{2}&gt;0 \quad (1.16)$$</code>
+估计的斜率就为：
+<code>$$\hat{\beta}_{1}=\frac{\sum_{i=1}^{n}(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sum_{i=1}^{n}(x_{i}-\bar{x})^{2}}  \quad (1.17)$$</code>
+(1.11) 和 (1.17) 给出的估计值叫作 <code>$\beta_{0}$</code> 和 <code>$\beta_{1}$</code> 的普通最小二乘法 (ordinary least squares, OLS) 估计值。</p>
+
+<h5 id="4-拟合值和残差">(4) 拟合值和残差</h5>
+
+<p>给定 <code>$\beta_{0}$</code> 和 <code>$\beta_{1}$</code>, 我们能够获得每次观测的<strong>拟合值</strong> <code>$\hat{y}_{i}$</code>.</p>
+
+<p>第 <code>$i$</code> 次观测的OLS<strong>残差</strong> <code>$\hat{u}_{i}$</code> 是 <code>$y_{i}$</code> 与其拟合值之差：<code>$\hat{u}_{i}=y_{i}-\hat{y}_{i}$</code>.</p>
+
+<h5 id="5-拟合优度">(5) 拟合优度</h5>
+
+<p>我们定义：</p>
+
+<ul>
+<li>总和平方和 (total sum of squares, SST): <code>$SST = \sum_{i=1}^{n} (y_{i} - \bar{y})^{2}$</code></li>
+<li>解释平方和 (explained sum of squares, SSE): <code>$SSE = \sum_{i=1}^{n} (\hat{y}_{i} - \bar{y})^{2}$</code></li>
+<li>残差平方和 (residual sum of squares, SSR): <code>$SSR = \sum_{i=1}^{n} \hat{u}_{i}^{2}$</code></li>
+</ul>
+
+<p>可以证明：</p>
+
+<p><code>$$SST = SSE + SSR$$</code></p>
+
+<p>迄今为止，我们还没有办法衡量解释变量或自变量 <code>$x$</code> 究竟多好地解释了因变量 <code>$y$</code>。如果能计算出一个数值，用以概括OLS曲线对数据拟合得有多好，对我们就非常有帮助。回归的 <code>$R^{2}$</code> (R-squared)，有时又称为<strong>判定系数</strong> (coefficient of determination)，被定义为：</p>
+
+<p><code>$$R^{2}=SSE/SST=1-SSR/SST$$</code></p>
+
+<p><code>$R^{2}$</code> 是可解释波动与总波动之比，因此被解释成 <code>$y$</code> 的样本波动中被 <code>$x$</code> 解释的部分。因为 <code>$SSE$</code> 不可能大于 <code>$SST$</code>，所以 <code>$R^{2}$</code> 的值总是介于 0 和 1 之间。</p>
+
+<h5 id="6-探索-最小化残差平方和">(6) 探索：最小化残差平方和</h5>
+
+<p>本节中，我们将尝试用遗传算法通过最小化残差平方和来计算 <code>$\beta_{0}$</code> 和 <code>$\beta_{1}$</code> 的估计值。然后将此估计值与<a href="/posts/learning_statistics/#3-普通最小二乘法的推导">第3节</a>中利用公式计算的OLS估计值进行比较。</p>
+
+<p>一般认为，推导出OLS估计值的两个方程 (1.5) 和 (1.6) 是最小化残差平方和的必要条件。因此如果“通过最小化残差平方和”得到的参数估计值和OLS估计值几近相等，则我们可以从直觉上认定上述关于必要条件的说法大约是成立的。</p>
+
+<p>下面，我们就通过两种计算方法估计 <code>$\beta_{0}$</code> 和 <code>$\beta_{1}$</code> 的估计值，来看看最终结果是否符合我们的预期和直觉！</p>
+
+<p><center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/learning-statistics/blob/main/genetic_algorithm.ipynb')">查看示例</button>
+</center></p>
+
+<h5 id="7-探索-关于拟合优度的经验性探索">(7) 探索：关于拟合优度的经验性探索</h5>
+
+<p>我们构造几组样本数据，并作出其对应的 OLS 曲线，来观测拟合优度值的变化方向是否符合预期。</p>
+
+<blockquote>
+<p>todo</p>
+</blockquote>
+
+<h4 id="1-2-多元回归分析-估计">1.2 多元回归分析：估计</h4>
+
+<blockquote>
+<p>todo</p>
+</blockquote>
+
+<p><div id="mini-overlay" onclick="overlay_off()"></div>
+<div id="mini-window"><iframe id="mini-iframe" frameBorder="0"></iframe></div>
+<button id="btn-close" onclick="overlay_off()">×</button></p>
+
+<p><script src="/python-tips/overlay.js"></script>
+<link rel="stylesheet" href="/python-tips/style.css"></p>
 
   </div>
   
 
 <div class="navigation navigation-single">
     
-    <a href="/portfolio/2/" class="navigation-prev">
+    <a href="/posts/fastapi/" class="navigation-prev">
       <i aria-hidden="true" class="fa fa-chevron-left"></i>
-      <span class="navigation-tittle">TSP旅行路线规划</span>
+      <span class="navigation-tittle">FastAPI 初见</span>
     </a>
     
     
