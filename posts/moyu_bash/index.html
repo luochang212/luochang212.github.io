@@ -553,7 +553,7 @@
 <h3 id="1-缘起">1. 缘起</h3>
 <p>最近刷到一个微信小程序，叫 “摸鱼侠”，它长这样：</p>
 <p><img src="/img/moyuxia-demo.PNG" alt="nature system"></p>
-<p>这里面有个栏目叫 “今日已摸到”，还挺有意思，它会计算今日截至当前为止挣到的工资。</p>
+<p>这里面有个栏目叫 “今日已摸到”，还挺有意思的，它会计算今日截至当前为止挣到的工资。</p>
 <p>我寻思这小程序颜色太过艳丽，容易被老板抓包，便计上心来，打算写个 <strong>bash 版摸鱼侠</strong>。和生产环境融为一体，纯键盘操控，老板来了一个 <code>ctrl c</code> 便能毁尸灭迹，大大滴方便。</p>
 <h3 id="2-出生">2. 出生</h3>
 <p>这要实现起来也不难，只要把 <code>(工作秒数 - 休息秒数) * 每秒工资</code> 就好嘛。</p>
@@ -561,10 +561,10 @@
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Author: github@luochang212</span>
 
 work_start<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;10:00:00&#34;</span>
-lunch_start<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;12:00:00&#34;</span>;
-lunch_end<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;13:00:00&#34;</span>;
-dinner_start<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;18:00:00&#34;</span>;
-dinner_end<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;19:00:00&#34;</span>;
+lunch_start<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;12:00:00&#34;</span>
+lunch_end<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;13:00:00&#34;</span>
+dinner_start<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;18:00:00&#34;</span>
+dinner_end<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;19:00:00&#34;</span>
 work_end<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;20:00:00&#34;</span>
 salary<span style="color:#f92672">=</span><span style="color:#ae81ff">40000</span>
 day<span style="color:#f92672">=</span><span style="color:#ae81ff">22</span>
