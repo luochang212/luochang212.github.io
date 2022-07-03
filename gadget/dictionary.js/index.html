@@ -35,7 +35,7 @@
 
     <script>
 
-        
+        // 获取被选中的文本
         var selectedTxt = '';
 
         function getSelectedTxt() {
@@ -49,7 +49,7 @@
         }
 
 
-        
+        // 从JSON文件导入汉字单词
         function compareWords() {
             $.getJSON("./src/chinese-xinhua/data/word.json", function (data) {
                 $.each(data, (key, val) => {

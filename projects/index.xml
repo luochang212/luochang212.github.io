@@ -1,86 +1,10 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects on Chang Luo</title>
     <link>http://luochang212.github.io/projects/</link>
     <description>Recent content in Projects on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    
-	<atom:link href="http://luochang212.github.io/projects/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title></title>
-      <link>http://luochang212.github.io/projects/3d_scene/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/projects/3d_scene/</guid>
-      <description> 3D场景建模  更多项目 目录--  3D场景建模	 用OpenGL搭建3D室内场景模型  博客全文 --  效果展示  © 2019 Chang Luo   </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://luochang212.github.io/projects/machine_learning/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/projects/machine_learning/</guid>
-      <description> 机器学习  更多项目 目录--  机器学习	 用主成分分析法实现MNIST数据集下的图像分类  博客全文 --  GitHub   © 2019 Chang Luo   </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://luochang212.github.io/projects/markowitz_model/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/projects/markowitz_model/</guid>
-      <description>基于蚁群算法的证券投资组合优化 body { background: #FFF; font-family: Georgia, Times New Roman, Times, serif; font-size: 30px; text-align: center; margin: 0; padding: 0; } h1 { font-size: 60px; font-weight: normal; margin: 0; font-family: &#39;Chelsea Market&#39;, Georgia, serif; color: #000; line-height: 1; } h2 { font-size: 70px; font-weight: normal; margin: 0; color: #FFB000; font-family: &#39;Chelsea Market&#39;, Georgia, serif; text-transform: lowercase; } h3 { font-size: 40px; font-weight: normal; margin: 0; margin-top: 40px; text-transform: lowercase; } p { width: 960px; margin: 40px auto; color: #000; line-height: 200%; } a, a:visited { color: #000; font-size: 14px; text-decoration: none; } a:hover { text-decoration: underline; } ul { list-style: none; } .</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://luochang212.github.io/projects/monaco_speech_editor/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/projects/monaco_speech_editor/</guid>
-      <description> Monaco Speech Editor  更多项目 目录--   Monaco Speech Editor 	 适用于视障人群的在线代码编辑器   博客全文  Demo  © 2019 Chang Luo   </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://luochang212.github.io/projects/my_weibo/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/projects/my_weibo/</guid>
-      <description> 微博数据可视化  更多项目 目录--  微博数据可视化	 基于Pandas和seaborn实现的新浪微博数据可视化   博客全文  GitHub   © 2019 Chang Luo   </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://luochang212.github.io/projects/nature_system/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/projects/nature_system/</guid>
-      <description> 自然系统的建模与仿真  更多项目 目录--  自然系统的建模与仿真	 用MATLAB面向对象编程建立了狼、麋鹿、草生态系统模型   博客全文  GitHub   © 2019 Chang Luo   </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://luochang212.github.io/projects/team_software_project/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/projects/team_software_project/</guid>
-      <description> 团队软件项目  更多项目 目录--  团队软件项目	 基于PyQt5编写的课程管理软件   项目报告  项目PPT  © 2019 Chang Luo   </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://luochang212.github.io/projects/tsp_route/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/projects/tsp_route/</guid>
-      <description> TSP旅行路线规划  更多项目 目录--  TSP旅行路线规划	 用 Google Map Api 在谷歌地图上绘制TSP旅行路线   博客全文  GitHub   © 2019 Chang Luo   </description>
-    </item>
-    
+    <language>en-us</language><atom:link href="http://luochang212.github.io/projects/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

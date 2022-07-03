@@ -6,12 +6,14 @@
 
     <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://luochang212.github.io/posts/poisson/">
+    
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.55.6" />
+<meta name="generator" content="Hugo 0.84.1" />
 
     
     
@@ -27,9 +29,10 @@
 <meta property="og:title" content="泊松分布的仿真及可视化" />
 <meta property="og:description" content="本文介绍泊松分布和泊松函数的定义，并通过 Python random 库对泊松分布进行仿真，带你触摸复杂表象下的简单本质。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://luochang212.github.io/posts/poisson/" />
-<meta property="article:published_time" content="2020-09-19T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2020-09-19T00:00:00&#43;00:00"/><meta property="og:site_name" content="Title" />
+<meta property="og:url" content="http://luochang212.github.io/posts/poisson/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-09-19T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2020-09-19T00:00:00&#43;00:00" /><meta property="og:site_name" content="Title" />
+
 
 
     
@@ -44,7 +47,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.6a83d62c39a364f036df4db1ecd564645635d6c7fc182425cb501218fec485f5.css" integrity="sha256-aoPWLDmjZPA2302x7NVkZFY11sf8GCQly1ASGP7EhfU=">
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -52,7 +55,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hugo-toc.8549a64d301421b4256ea9a0d5ca8b99178799f569d5d2daeb95f24cef3ce6b7.css" integrity="sha256-hUmmTTAUIbQlbqmg1cqLmReHmfVp1dLa65XyTO885rc=">
+<link rel="stylesheet" href="/scss/hugo-toc.0873834b0f2e9fdc9e1d0301e8ebce21fc10383882a41e9373f29b90e85a9987.css" integrity="sha256-CHODSw8un9yeHQMB6OvOIfwQODiCpB6Tc/KbkOhamYc=">
 
 
 
@@ -65,6 +68,8 @@
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
     <link rel="shortcut icon" href="/favicon.png">
     
+    
+
 </head>
 
 
@@ -235,7 +240,7 @@
 		 
 			 
 				<li>
-					<a href="/">
+					<a href="/posts/">
 						<span>Posts</span>
 					</a>
 				</li>
@@ -257,7 +262,6 @@
 				</li>
 			 
 		
-		</li>
 	</ul>
 </div>
 
@@ -267,8 +271,6 @@
 	
 	
 	
-	<a href="https://instagram.com/icstocs" rel="me"><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></a>
-	
 	
 	<a href="https://github.com/luochang212" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
 	
@@ -277,12 +279,15 @@
 	
 	
 	
-	
-	
-	
+	<a href="https://instagram.com/suphenshin" rel="me"><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></a>
 	
 	
 	<a href="https://linkedin.com/in/bupt-luochang" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
 	
 	
 	
@@ -297,7 +302,7 @@
       </div>
       
 <div class="copyright">
-  &copy; 2021 Chang Luo
+  &copy; 2022 Chang Luo
   
 </div>
 
@@ -335,17 +340,20 @@
       <div id="Video-player" class="tabcontent">
 
         <div id="video1">
-          <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=455023331&bvid=BV1X541167RE&cid=170542054&page=1&high_quality=1&danmaku=0"
+          <iframe src="about:blank"
+            data-src="//player.bilibili.com/player.html?aid=455023331&bvid=BV1X541167RE&cid=170542054&page=1&high_quality=1&danmaku=0"
             style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
             allowfullscreen="true"></iframe>
         </div>
         <div id="video2">
-          <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=65042716&bvid=BV1M4411r7yu&cid=112895137&page=1&high_quality=1&high_quality=1&danmaku=0"
+          <iframe src="about:blank"
+            data-src="//player.bilibili.com/player.html?aid=65042716&bvid=BV1M4411r7yu&cid=112895137&page=1&high_quality=1&high_quality=1&danmaku=0"
             style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
             allowfullscreen="true"></iframe>
         </div>
         <div id="video3">
-          <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=20535616&bvid=BV1zW411W75L&cid=33582726&page=1//player.bilibili.com/player.html?aid=15159845&cid=24679968&page=1&high_quality=1&danmaku=0"
+          <iframe src="about:blank"
+            data-src="//player.bilibili.com/player.html?aid=20535616&bvid=BV1zW411W75L&cid=33582726&page=1//player.bilibili.com/player.html?aid=15159845&cid=24679968&page=1&high_quality=1&danmaku=0"
             style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
             allowfullscreen="true"></iframe>
         </div>
@@ -366,7 +374,7 @@
       </div>
 
       <div id="gallery" class="tabcontent">
-        <iframe src="about:blank" data-src="/gadget/gallery/#two" frameborder="0" height="560" width="100%"
+        <iframe src="about:blank" data-src="/gadget/gallery.html#two" frameborder="0" height="560" width="100%"
           scrolling="yes"></iframe>
       </div>
 
@@ -381,7 +389,7 @@
   
   <script>
     'use strict'
-    
+
     function openNav() {
       on();
       document.getElementById("mySidenav").style.width = "580px";
@@ -457,7 +465,17 @@
 
         <div class="content container">
             
-    
+    <style>
+  .my-emoji {
+    height: 25px;
+    display: inline-block;
+    margin: 0;
+    vertical-align: text-bottom;
+  }
+</style>
+
+
+
 <article>
   <header>
     <h1>泊松分布的仿真及可视化</h1>
@@ -510,259 +528,202 @@
   
   
   
-    <div class="toc-wrapper">
-      <input type="checkbox" id="tocToggle">
-      <label for="tocToggle">目录</label>
-      
-          <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#1-从泊松函数讲起">1. 从泊松函数讲起</a></li>
-<li><a href="#2-引入一个实例">2. 引入一个实例</a></li>
-<li><a href="#3-泊松分布的本质">3. 泊松分布的本质</a></li>
-<li><a href="#4-建模仿真">4. 建模仿真</a></li>
-<li><a href="#5-三维可视化">5. 三维可视化</a></li>
-<li><a href="#6-泊松的应用">6. 泊松的应用</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <div class="toc-wrapper">
+    <input type="checkbox" id="tocToggle">
+    <label for="tocToggle">目录</label>
+    
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-从泊松函数讲起">1. 从泊松函数讲起</a></li>
+        <li><a href="#2-引入一个实例">2. 引入一个实例</a></li>
+        <li><a href="#3-泊松分布的本质">3. 泊松分布的本质</a></li>
+        <li><a href="#4-建模仿真">4. 建模仿真</a></li>
+        <li><a href="#5-三维可视化">5. 三维可视化</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
-      
-    </div>
+    
+  </div>
   
   
   <div class="post">
-    
-
-<blockquote>
+    <blockquote>
 <p>本文介绍泊松分布和泊松函数的定义，并通过 Python random 库对泊松分布进行仿真，带你触摸复杂表象下的简单本质。</p>
 </blockquote>
-
 <p>GitHub项目地址：<a href="https://github.com/luochang212/python-tips/blob/master/poisson/poisson.py" target="_blank">python-tips/poisson</a></p>
-
 <h3 id="1-从泊松函数讲起">1. 从泊松函数讲起</h3>
-
 <p><a href="https://en.wikipedia.org/wiki/Poisson_distribution">泊松分布</a> 表示在<strong>给定时间段</strong>内发生<strong>给定数量的事件</strong>的概率。这个定义比较抽象。举个具体的例子，假设你每小时接到电话的概率是固定的，比如每小时 0.05 个，那么你在接下来 1 小时内接到电话个数的概率，就服从泊松分布:</p>
-
 <p>1 小时内接到 0 个电话，对应一个概率值 <code>$P_0$</code>；</p>
-
 <p>1 小时内接到 1 个电话，对应一个概率值 <code>$P_1$</code>；</p>
-
 <p>&hellip; &hellip;</p>
-
 <p>1 小时内接到 n 个电话，也对应一个概率值<code>$P_n$</code>。</p>
-
 <p>这些概率值组成一个概率分布列，它们的值  <code>$(n, P_n)$</code>  在二维坐标下连成一条<strong>曲线</strong>。这条曲线所在的函数就是<strong>泊松分布的概率密度函数</strong>。其公式及图像如下：</p>
-
 <p><code>$$\boxed{P(k | t, \lambda)=\frac{(\lambda t)^{k}}{k !} \exp (-\lambda t)}$$</code></p>
-
-<p><img src="/img/The-Poisson-distribution.png" alt="" /></p>
-
+<p><img src="/img/The-Poisson-distribution.png" alt=""></p>
 <p>从公式中，我们可以看出：只要确定了 <code>$\lambda$</code> 和 <code>$t$</code>，该式就退化成了概率 <code>$P$</code> 关于事件发生次数 <code>$k$</code> 的函数。 类似地，如果我们确定了 <code>$\lambda$</code> 和 <code>$k$</code>，则该式退化成概率<code>$P$</code> 关于时间范围 <code>$t$</code> 的函数。</p>
-
 <p>“确定哪些参数，让函数最终退化成哪些参数的函数”，这个选择和我们的研究目的有关。如果你对不同 <code>$k$</code> 如何影响 <code>$P$</code> 值感兴趣，那么就应该确定参数 <code>$\lambda$</code> 和 <code>$t$</code>。如果对 <code>$t$</code> 和 <code>$P$</code> 之间的关系感兴趣，那么就应该确定参数 <code>$\lambda$</code> 和 <code>$k$</code>。</p>
-
 <p><code>$\lambda$</code>, <code>$k$</code>, <code>$t$</code> 的定义：</p>
-
+<!-- 例如：某事件一分钟发生两次，则 `$\lambda$ = 2 次/分钟`。 -->
 <ul>
-<li><code>$\lambda$</code>: 单位时间内，事件发生的频率。
-<!-- 例如：某事件一分钟发生两次，则 `$\lambda$ = 2 次/分钟`。 --></li>
-<li><code>$k$</code>: 事件发生次数。</li>
-<li><code>$t$</code>: 观测事件发生次数的时间范围。
-<!-- `$t$` 的量纲必须和 `$\lambda$` 相符。如果 `$\lambda$` 的单位为 `次/分钟`，则 `$t$` 的单位应为 `分钟`。 --></li>
+<li><code>$\lambda$</code>: 单位时间内，事件发生的频率</li>
+<li><code>$k$</code>: 事件发生次数</li>
+<li><code>$t$</code>: 观测事件发生次数的时间范围</li>
 </ul>
-
+<!-- `$t$` 的量纲必须和 `$\lambda$` 相符。如果 `$\lambda$` 的单位为 `次/分钟`，则 `$t$` 的单位应为 `分钟`。 -->
 <p><code>$\lambda$</code>, <code>$k$</code>, <code>$t$</code> 三者的关系：</p>
-
 <p>泊松分布衡量的是<strong>多长时间</strong>内，<strong>某事件发生多少次</strong>的概率。这里 <code>$t$</code> 指代的是<strong>多长时间</strong>；<code>$k$</code> 指代的是<strong>某事件发生多少次</strong>。<code>$\lambda$</code> 则类似该事件的一个<strong>固有属性</strong>，<code>$\lambda$</code> 越大，可以简单理解为该事件在一段时间内发生的概率越大。</p>
-
 <blockquote>
 <p><strong>Note</strong>: <code>$t$</code> 的量纲必须和 <code>$\lambda$</code>的量纲相对应。如果 <code>$\lambda$</code> 的单位是 <code>次/小时</code>，则 <code>$t$</code> 应该取 <code>小时</code> 为单位；如果 <code>$\lambda$</code> 的单位是 <code>次/分钟</code>，则 <code>$t$</code> 也应该取 <code>分钟</code> 为单位。</p>
 </blockquote>
-
 <h3 id="2-引入一个实例">2. 引入一个实例</h3>
-
 <p>接下来我们用一个直观的实例，解释泊松分布在实际问题中是如何运用的。</p>
-
 <p><strong>Q</strong>: 一个淘宝客服，平均每 10 分钟接听 1 个电话，那么他连续 1 小时没接到任何电话的概率是多少？</p>
-
-<p><strong>A</strong>:</p>
-
-<p><code>$P\left(k=0 | t=1, \lambda=6\right)=\exp \left(-6\right)=0.0024$</code></p>
-
+<p><strong>A</strong>: <code>$P\left(k=0 | t=1, \lambda=6\right)=\exp \left(-6\right)=0.0024$</code></p>
 <p>其中，<code>$t = 1 小时，\lambda = 6 次/小时$</code>。</p>
-
 <p>我们发现，这个概率是极低的。这说明该客服也许正在上夜班，或者电话断线了，总之他很可能处在一种非正常的状况下。否则在正常情况下，连续 1 小时没接到任何电话的概率仅有千分之二，是极其罕见的。</p>
-
 <h3 id="3-泊松分布的本质">3. 泊松分布的本质</h3>
-
 <p>尽管泊松分布的函数形式看起来很复杂，但它本质上其实很简单。泊松函数的本质，也就是它的基本假设，可以追溯到一个简单的公式：</p>
-
 <p><code>$$\boxed{P = \lambda \Delta t}$$</code></p>
-
 <p>这个公式看起来太过简单，以至于你可能不相信它能推导出上文那个复杂的泊松分布函数。如果你想了解推导过程，可以看我之前写的博客 <a href="/posts/network_performance_analysis/#%E6%9F%8F%E6%9D%BE%E8%BF%87%E7%A8%8B%E7%9A%84%E6%8E%A8%E5%AF%BC">排队论在网络性能分析中的应用</a>，里面有详细证明。本文的主题不在与于，就不展开讲了。</p>
-
 <h3 id="4-建模仿真">4. 建模仿真</h3>
-
 <p>这个简单公式，就是泊松分布的核心假设。也就是说，我们只需要用这个公式，就能对泊松分布做仿真了。</p>
-
-<p>这里还有个技巧。因为在假设中，<code>$\Delta t$</code> 代表无限小的时间间隔，但在编程中，我们没法写出无限小这种东西（其实可以，求别杠）。因此只能量力而行。比如，如果 <code>$t$</code> 代表一个小时，而 <code>$\lambda$</code> 表示 20 次每小时，则我们的时间片只要切到比 20 这个数字大一到两个数量级即可。20 是的数量级是十，大两个数量级是千。这里我们把一小时时间切割为一千个时间片，并将每个时间片内事件发生的概率设为 <sup>20</sup>&frasl;<sub>1000</sub> ，就保证了一小时内，事件发生次数的期望是 20 了。也就在千分之一小时的精度内，满足了 <code>$P = \lambda \Delta t$</code> 这个公式。
-<!-- 时间片当然是分得越细越好，这里一到两个数量级也只是个人之见，具体效果可以自行试验。 --></p>
-
+<p>这里还有个技巧。因为在假设中，<code>$\Delta t$</code> 代表无限小的时间间隔，但在编程中，我们没法写出无限小这种东西（其实可以，求别杠）。因此只能量力而行。比如，如果 <code>$t$</code> 代表一个小时，而 <code>$\lambda$</code> 表示 20 次每小时，则我们的时间片只要切到比 20 这个数字大一到两个数量级即可。20 是的数量级是十，大两个数量级是千。这里我们把一小时时间切割为一千个时间片，并将每个时间片内事件发生的概率设为 <sup>20</sup>⁄<sub>1000</sub>，就保证了一小时内，事件发生次数的期望是 20 了。也就在千分之一小时的精度内，满足了 <code>$P = \lambda \Delta t$</code> 这个公式。</p>
+<!-- 时间片当然是分得越细越好，这里一到两个数量级也只是个人之见，具体效果可以自行试验。 -->
 <p>OK，闲言少叙，我们这就开始建模仿真。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -*- coding: utf-8 -*-</span>
 
-<pre><code class="language-python"># -*- coding: utf-8 -*-
+<span style="color:#e6db74">&#34;&#34;&#34;泊松仿真
+</span><span style="color:#e6db74">   author: github@luochang212
+</span><span style="color:#e6db74">   usage: python poisson.py [RATE] </span><span style="color:#e6db74">{TIME}</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">&#34;&#34;&#34;</span>
 
-&quot;&quot;&quot;泊松仿真
-   author: github@luochang212
-   usage: python poisson.py [RATE] {TIME}
-&quot;&quot;&quot;
-
-import sys
-import random
-import collections
-import matplotlib.pyplot as plt
+<span style="color:#f92672">import</span> sys
+<span style="color:#f92672">import</span> random
+<span style="color:#f92672">import</span> collections
+<span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
 
 
-class Poisson:
-    def __init__(self, rate=sys.argv[1]):
-        self.rate = int(rate)
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Poisson</span>:
+    <span style="color:#66d9ef">def</span> __init__(self, rate<span style="color:#f92672">=</span>sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">1</span>]):
+        self<span style="color:#f92672">.</span>rate <span style="color:#f92672">=</span> int(rate)
 
-        self.time = 1  # 单位时间
-        if len(sys.argv) &gt; 2 and sys.argv[2] != &quot;&quot;:
-            self.time = int(sys.argv[2])  # 手动指定时间范围
+        self<span style="color:#f92672">.</span>time <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>  <span style="color:#75715e"># 单位时间</span>
+        <span style="color:#66d9ef">if</span> len(sys<span style="color:#f92672">.</span>argv) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">and</span> sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;&#34;</span>:
+            self<span style="color:#f92672">.</span>time <span style="color:#f92672">=</span> int(sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">2</span>])  <span style="color:#75715e"># 手动指定时间范围</span>
 
-        self.EXP_NUM = 100000  # 实验次数
-        self.NUM_LEVEL = 2  # 数量级
+        self<span style="color:#f92672">.</span>EXP_NUM <span style="color:#f92672">=</span> <span style="color:#ae81ff">100000</span>  <span style="color:#75715e"># 实验次数</span>
+        self<span style="color:#f92672">.</span>NUM_LEVEL <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>  <span style="color:#75715e"># 数量级</span>
 
-    def generator(self, prob):
-        &quot;&quot;&quot;仿真结果生成器&quot;&quot;&quot;
-        while True:
-            if random.random() &lt; prob:
-                yield 1
-            else:
-                yield 0
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">generator</span>(self, prob):
+        <span style="color:#e6db74">&#34;&#34;&#34;仿真结果生成器&#34;&#34;&#34;</span>
+        <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+            <span style="color:#66d9ef">if</span> random<span style="color:#f92672">.</span>random() <span style="color:#f92672">&lt;</span> prob:
+                <span style="color:#66d9ef">yield</span> <span style="color:#ae81ff">1</span>
+            <span style="color:#66d9ef">else</span>:
+                <span style="color:#66d9ef">yield</span> <span style="color:#ae81ff">0</span>
 
-    def perform_exp(self, rate, time):
-        &quot;&quot;&quot;进行一次实验
-        每次实验中，时间分片的数量比rate高两个数量级
-        &quot;&quot;&quot;
-        level = len(str(rate))
-        shard_num = 10 ** (level + self.NUM_LEVEL)  # 计算时间分片的数量
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">perform_exp</span>(self, rate, time):
+        <span style="color:#e6db74">&#34;&#34;&#34;进行一次实验
+</span><span style="color:#e6db74">        每次实验中，时间分片的数量比rate高两个数量级
+</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
+        level <span style="color:#f92672">=</span> len(str(rate))
+        shard_num <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">**</span> (level <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>NUM_LEVEL)  <span style="color:#75715e"># 计算时间分片的数量</span>
 
-        gen = self.generator(rate / shard_num)
+        gen <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>generator(rate <span style="color:#f92672">/</span> shard_num)
 
-        cnt = 0
-        for _ in range(time * shard_num):
-            cnt += next(gen)
+        cnt <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+        <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(time <span style="color:#f92672">*</span> shard_num):
+            cnt <span style="color:#f92672">+=</span> next(gen)
         
-        return cnt
+        <span style="color:#66d9ef">return</span> cnt
 
-    def perform_exps(self, exp_num, rate, time):
-        &quot;&quot;&quot;多次实验，得到分布&quot;&quot;&quot;
-        lst = []
-        for _ in range(exp_num):
-            lst.append(self.perform_exp(rate, time))
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">perform_exps</span>(self, exp_num, rate, time):
+        <span style="color:#e6db74">&#34;&#34;&#34;多次实验，得到分布&#34;&#34;&#34;</span>
+        lst <span style="color:#f92672">=</span> []
+        <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(exp_num):
+            lst<span style="color:#f92672">.</span>append(self<span style="color:#f92672">.</span>perform_exp(rate, time))
 
-        return sorted(collections.Counter(lst).items(), key=lambda e: e[0])
+        <span style="color:#66d9ef">return</span> sorted(collections<span style="color:#f92672">.</span>Counter(lst)<span style="color:#f92672">.</span>items(), key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> e: e[<span style="color:#ae81ff">0</span>])
 
-    def draw(self, sorted_list):
-        &quot;&quot;&quot;画图&quot;&quot;&quot;
-        s = sum([e[1] for e in sorted_list])
-        x = [e[0] for e in sorted_list]
-        y = [e[1] / s for e in sorted_list]
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">draw</span>(self, sorted_list):
+        <span style="color:#e6db74">&#34;&#34;&#34;画图&#34;&#34;&#34;</span>
+        s <span style="color:#f92672">=</span> sum([e[<span style="color:#ae81ff">1</span>] <span style="color:#66d9ef">for</span> e <span style="color:#f92672">in</span> sorted_list])
+        x <span style="color:#f92672">=</span> [e[<span style="color:#ae81ff">0</span>] <span style="color:#66d9ef">for</span> e <span style="color:#f92672">in</span> sorted_list]
+        y <span style="color:#f92672">=</span> [e[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">/</span> s <span style="color:#66d9ef">for</span> e <span style="color:#f92672">in</span> sorted_list]
 
-        plt.plot(x, y)
+        plt<span style="color:#f92672">.</span>plot(x, y)
         
-        plt.xlabel(&quot;k&quot;)
-        plt.ylabel(&quot;P(k)&quot;)
-        plt.show()
+        plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#34;k&#34;</span>)
+        plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#34;P(k)&#34;</span>)
+        plt<span style="color:#f92672">.</span>show()
 
-    def main(self):
-        sorted_list = self.perform_exps(self.EXP_NUM, self.rate, self.time)
-        self.draw(sorted_list)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>(self):
+        sorted_list <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>perform_exps(self<span style="color:#f92672">.</span>EXP_NUM, self<span style="color:#f92672">.</span>rate, self<span style="color:#f92672">.</span>time)
+        self<span style="color:#f92672">.</span>draw(sorted_list)
 
-    @staticmethod
-    def calculator(rate, t, k):
-        &quot;&quot;&quot;用于计算泊松函数的概率 P(k|t,lambda)
-           rate: lambda
-           t: t
-           k: k
-        &quot;&quot;&quot;
-        import math
-        return (rate * t) ** k / math.factorial(k) * math.exp(-rate * t)
+    <span style="color:#a6e22e">@staticmethod</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculator</span>(rate, t, k):
+        <span style="color:#e6db74">&#34;&#34;&#34;用于计算泊松函数的概率 P(k|t,lambda)
+</span><span style="color:#e6db74">           rate: lambda
+</span><span style="color:#e6db74">           t: t
+</span><span style="color:#e6db74">           k: k
+</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
+        <span style="color:#f92672">import</span> math
+        <span style="color:#66d9ef">return</span> (rate <span style="color:#f92672">*</span> t) <span style="color:#f92672">**</span> k <span style="color:#f92672">/</span> math<span style="color:#f92672">.</span>factorial(k) <span style="color:#f92672">*</span> math<span style="color:#f92672">.</span>exp(<span style="color:#f92672">-</span>rate <span style="color:#f92672">*</span> t)
 
 
-if __name__ == '__main__':
-    p = Poisson()
-    p.main()
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    p <span style="color:#f92672">=</span> Poisson()
+    p<span style="color:#f92672">.</span>main()
 
-</code></pre>
-
-<p>看完代码，聪明的你一定已经知道这段代码在干什么了 <img src="/img/hanser/motou.JPG" class="my-emoji" style = "height: 64px;"></p>
-
+</code></pre></div><p>看完代码，聪明的你一定已经知道这段代码在干什么了 <img src="/img/hanser/motou.JPG" class="my-emoji" style = "height: 64px;"></p>
 <p>那我们直接来说如何使用代码吧！</p>
-
 <p>如果你想知道 <code>$\lambda = 3, t = 2$</code> 情况下泊松函数的图像，在命令行执行：</p>
-
-<pre><code class="language-shell">python poisson.py 3 2
-</code></pre>
-
-<p>如果不设置 <code>$t$</code> 的值，则 <code>$t$</code> 的值默认为 1。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">python poisson.py <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">2</span>
+</code></pre></div><p>如果不设置 <code>$t$</code> 的值，则 <code>$t$</code> 的值默认为 1。</p>
 <p>下面放一些仿真结果：</p>
-
 <ol>
 <li><code>$\lambda = 2, t = 1$</code>
-<img src="/img/poisson_2.png" alt="" /></li>
+<img src="/img/poisson_2.png" alt=""></li>
 <li><code>$\lambda = 5, t = 1$</code>
-<img src="/img/poisson_5.png" alt="" /></li>
+<img src="/img/poisson_5.png" alt=""></li>
 <li><code>$\lambda = 10, t = 1$</code>
-<img src="/img/poisson_10.png" alt="" /></li>
+<img src="/img/poisson_10.png" alt=""></li>
 <li><code>$\lambda = 80, t = 1$</code>
-<img src="/img/poisson_80.png" alt="" /></li>
+<img src="/img/poisson_80.png" alt=""></li>
 </ol>
-
 <h3 id="5-三维可视化">5. 三维可视化</h3>
-
 <p>泊松分布有三个自变量，一个因变量，需要四维空间才能把它完整地绘制出来。但幸好，通过观察我们发现 <code>$\lambda$</code> 和 <code>$t$</code> 的关系很近，可以归约成一个变量 <code>$\mu$</code>。我们设 <code>$\mu = \lambda t$</code>，则绘制 <code>$P =  f(\mu, k)$</code> 的图像，就足以表达泊松函数四个变量间的函数关系了。</p>
-
-<p><img src="/img/poisson_3d.png" alt="" /></p>
-
+<p><img src="/img/poisson_3d.png" alt=""></p>
 <!-- ![](/img/poisson_3d_dynamic.gif) -->
-
 <blockquote>
 <p><strong>Note</strong>: 绘图代码见 <a href="https://github.com/luochang212/python-tips/blob/master/poisson/3dplot.py">3dplot.py</a></p>
 </blockquote>
+<!-- 
+### 6. 泊松的应用
 
-<h3 id="6-泊松的应用">6. 泊松的应用</h3>
+> 泊松分布在生活中也有很多应用，下面我举一个比较贴近生活的例子。
 
-<blockquote>
-<p>泊松分布在生活中也有很多应用，下面我举一个比较贴近生活的例子。</p>
-</blockquote>
+**停车问题**：公司有个自行车停车场，临近上班就停满了车。停车区域是一个长条形，从这头走到那头的过程中，我们需要找到合适的车位将车停入。但是，车位有宽有窄，我们倾向于选择比较宽的车位。我们需要一种判断方式，来决定何时将车停入是合适的。
 
-<p><strong>停车问题</strong>：公司有个自行车停车场，临近上班就停满了车。停车区域是一个长条形，从这头走到那头的过程中，我们需要找到合适的车位将车停入。但是，车位有宽有窄，我们倾向于选择比较宽的车位。我们需要一种判断方式，来决定何时将车停入是合适的。</p>
+![](/img/poisson_parking.PNG)
 
-<p><img src="/img/poisson_parking.PNG" alt="" /></p>
+为了简化问题，我们做出如下假设：
 
-<p>为了简化问题，我们做出如下假设：</p>
+- 假设1：车辆在停车区域内均匀分布
+- 假设2：车辆到达的速率是一个常数 `$\lambda$`
+- 假设3：假设在某个时间点 `T`，停车场被停满。此刻，我们让时间倒流，由于车辆停放的逆过程是车辆离开。因此对于时间 `T - x`，车辆离开的过程可视作时间为 `x` 离开速率为 `$\lambda$` 的泊松过程。
 
-<ul>
-<li>假设1：车辆在停车区域内均匀分布</li>
-<li>假设2：车辆到达的速率是一个常数 <code>$\lambda$</code></li>
-<li>假设3：假设在某个时间点 <code>T</code>，停车场被停满。此刻，我们让时间倒流，由于车辆停放的逆过程是车辆离开。因此对于时间 <code>T - x</code>，车辆离开的过程可视作时间为 <code>x</code> 离开速率为 <code>$\lambda$</code> 的泊松过程。</li>
-</ul>
+现在我们提出某种策略：首先将长条停车场均分为前后两段。前段用于观察车辆的分布，后段用于实际停放车辆。假设我们在前段发现有 5 个勉强能将车停入的车位，则**大胆估计**前段停车场的车位数量服从 `$\lambda t = 5$` 的泊松分布。由于存在假设1，因此我们可以**近似认为**后段停车场的车位数量也服从 `$\lambda t = 5$` 泊松分布。
 
-<p>现在我们提出某种策略：首先将长条停车场均分为前后两段。前段用于观察车辆的分布，后段用于实际停放车辆。假设我们在前段发现有 5 个勉强能将车停入的车位，则<strong>大胆估计</strong>前段停车场的车位数量服从 <code>$\lambda t = 5$</code> 的泊松分布。由于存在假设1，因此我们可以<strong>近似认为</strong>后段停车场的车位数量也服从 <code>$\lambda t = 5$</code> 泊松分布。</p>
+`$\lambda t = 5$` 泊松分布在前文中已经出现过了，它的图像如下：
 
-<p><code>$\lambda t = 5$</code> 泊松分布在前文中已经出现过了，它的图像如下：</p>
+![](/img/poisson_5.png)
 
-<p><img src="/img/poisson_5.png" alt="" /></p>
-
-<p>由上图可知，在后段停车场中，遇不见类似之前 5 个车位那样，能将车勉强停入的车位的概率仅为 <strong>0.7%</strong> 左右，这是真的是非常低的概率。<strong>尽管这是一个近似的结果</strong>，但也能帮助我们判断，目前停车场的车位状况是比较宽松的。这时我们就可以有信心找个好车位停车，而不是找个狭窄的位置硬挤。</p>
+由上图可知，在后段停车场中，遇不见类似之前 5 个车位那样，能将车勉强停入的车位的概率仅为 **0.7%** 左右，这是真的是非常低的概率。**尽管这是一个近似的结果**，但也能帮助我们判断，目前停车场的车位状况是比较宽松的。这时我们就可以有信心找个好车位停车，而不是找个狭窄的位置硬挤。 -->
 
   </div>
   
@@ -790,16 +751,6 @@ if __name__ == '__main__':
 
 
 </article>
-
-<style>
-  .my-emoji {
-    height: 25px;
-    display: inline-block;
-    margin: 0;
-    vertical-align: text-bottom;
-  }
-</style>
-
 
         </div>
         
@@ -833,20 +784,17 @@ if __name__ == '__main__':
 </script>
 
 
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
 
-<script defer src="/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
 
     
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
         
-    
     <script type="text/javascript">
         
         hljs.initHighlightingOnLoad();
     </script>
     
-
 
 
 

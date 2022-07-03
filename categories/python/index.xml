@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Python on Chang Luo</title>
@@ -6,27 +6,22 @@
     <description>Recent content in Python on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 21 Nov 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://luochang212.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 21 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>FastAPI 初见</title>
       <link>http://luochang212.github.io/posts/fastapi/</link>
       <pubDate>Sat, 21 Nov 2020 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/fastapi/</guid>
-      <description>什么是 API？API 有什么用？本文从零开始教你搭建 API，认识 API 服务中的组件和 FastAPI 的使用细节。
- GitHub项目地址：calendar-api
+      <description>什么是 API？如何从零开始，搭建自己的第一个API？本文带你搭建一个 API 小应用以带你了解 FastAPI 的使用细节
+ 什么是 API？API 有什么用？本文从零开始教你搭建 API，认识 API 服务中的组件和 FastAPI 的使用细节。 -- GitHub项目地址：calendar-api
 什么是 API？
 简单来说，API 是软件间相互传输数据的接口。它在生活中十分常见，比如博物馆订票系统中就使用了 API. 当你在手机应用上订票时，手机实际上发送了一个 HTTP 请求给远程服务器。远程服务器解析该请求。当确认所有字段信息均准确无误后，它才会把你的订票信息录入数据库，并回调成功标识。只有当上述操作全都被正确执行时，你的手机才会显示订票成功。
 API 程序通常运行在服务端 (server) 上。客户端 (client) 通过向 API 提供的网络接口发送请求，以实现对服务端的通信。服务端收到请求后，对请求进行解析。如果请求是合法的，则执行该请求，并将请求结果回调给客户端。一次典型的 API 请求大体上是这么个过程。
-但是，在业务中，我们经常需要记录每次请求产生的中间状态、运行结果和日志信息等数据，那么就需要数据库的参与。服务端调用 数据库 (database) 以存储业务中产生的各种信息。
-1. REST API API 本身是高度个性化的，软件间可以用任意数据类型进行通信。但如果 API 是面向大众的，个性化将导致软件间沟通成本高企。这就需要有规范来约束其沟通方式。REST API 就是其中一种规范。REST API 提出了六项指导原则，只要 API 符合这六项指导原则，就能称之为“符合 REST 风格的 API”。
+在业务中，有时需要记录每次请求产生的中间状态、运行结果和日志数据。这时就需要 服务端 调用 数据库 (database) 以存储业务中产生的各种信息。
+1. REST API API 本身是高度个性化的，软件间可以用任意数据类型进行通信。但如果 API 缺少规范、各行其是，就会导致软件间沟通成本高企。REST API 就是其中一种规范。REST API 提出了六项指导原则，只要 API 符合这六项指导原则，就可称之为“符合 REST 风格的 API”。
  REST API 提出的六项指导原则分别是：
- Client–server Stateless Cacheable Uniform interface Layered system Code on demand (optional)  [了解更多]
- PS: FastAPI 对构建 REST 风格的 API 提供良好的支持，这也是本文选用 FastAPI 的原因之一。</description>
+ Client–server Stateless Cacheable Uniform interface Layered system Code on demand (optional)  [了解更多]</description>
     </item>
     
     <item>
@@ -41,7 +36,7 @@ API 程序通常运行在服务端 (server) 上。客户端 (client) 通过向 A
 如果你还没有 Anaconda，安装一个：
  海外用户直接访问 Anaconda 官网 下载即可 国内用户无法访问Anaconda 官网(被墙)，建议选择清华镜像替代。  安装完以后，在命令行界面输入 conda，会打印一个帮助文档。
 帮助文档大概是说 conda 有哪些常用命令，比如下面这些：
-$ conda help # 打印帮助文档 $ conda info # 查看conda信息，包括当前在哪个环境，环境路径，Python版本等信息 $ conda list # 列出conda下安装了哪些包 $ conda install [package_name] # 在conda环境中安装某个包 $ conda update [package_name] # 升级conda环境中的某个包   Note：后文仅专注介绍虚拟环境相关内容，更多内容请在 Anaconda 官方文档 中查看。</description>
+$ conda help # 打印帮助文档 $ conda info # 查看conda信息，包括当前在哪个环境，环境路径，Python版本等信息 $ conda list # 列出conda下安装了哪些包 $ conda install [package_name] # 在conda环境中安装某个包 $ conda update [package_name] # 升级conda环境中的某个包  Note：后文仅专注介绍虚拟环境相关内容，更多内容请在 Anaconda 官方文档 中查看。</description>
     </item>
     
     <item>
@@ -50,9 +45,9 @@ $ conda help # 打印帮助文档 $ conda info # 查看conda信息，包括当�
       <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/algorithms/</guid>
-      <description>算法学习笔记，长期更新  GitHub项目地址：python-tips/algorithms
+      <description> 算法学习笔记，长期更新  GitHub项目地址：python-tips/algorithms
 target: right = mid return -1 ``` （2）100 以内质数 统计 100 以内质数的数量。 ```python class Solution: def prime(self): ans = [2] for i in range(3, 100): flag = True for j in ans: if i % j == 0: flag = False if flag: ans.append(i) return ans ``` （3）计数质数 LeetCode 204 统计所有小于非负整数 n 的质数的数量。 ```python class Solution: def countPrimes(self, n): if n 排序 本节介绍各种排序算法的思路和特点，并提供了示例代码。
- 插入排序  直接插入排序 希尔排序  交换排序  冒泡排序 快速排序  选择排序  简单选择排序 堆排序  归并排序  二路归并排序    查看示例</description>
+ 插入排序  直接插入排序 希尔排序   交换排序  冒泡排序 快速排序   选择排序  简单选择排序 堆排序   归并排序  二路归并排序     查看示例  排列组合  排列 组合 子集   查看示例    ×  </description>
     </item>
     
     <item>
@@ -68,7 +63,8 @@ Chico 和 Dico 的魔术 Chico 和 Dico 是两位魔术师，他们经常表演�
 关键在于如何实现这种协议。
 数学模型 在进行分析之前，我们需要把 Chico 和 Dico 的魔术抽象成一个数学模型。
 魔术本身已经提供了一些建模信息。我们可以假设一共有 n 张牌，抽取其中的 k 张。在对牌组进行某种排序之后，我们需要利用前 (k - j) 张牌的信息，推测后 j 张牌是什么。
-现在我们有 n, j, k 三个变量，下面我们来进一步探究三个变量之间究竟服从何种关系。</description>
+现在我们有 n, j, k 三个变量，下面我们来进一步探究三个变量之间究竟服从何种关系。
+首先，我们知道从 n 张牌中抽取 k 张牌一共有 C(n, k) 种组合方式，而 (k - j) 张牌的排列方式则有 A(n, k-j) 种。按照模型的要求，我们要用后者对前者的信息进行编码。根据信息论中的信源编码理论，至少有：C(n, k) &amp;lt;= A(n, k-j)。</description>
     </item>
     
     <item>
@@ -104,7 +100,7 @@ Python 语言就像一棵枝叶繁茂的树。如果你找不到枝干，就会�
  书目推荐：
  入门：《Python编程从入门到实践》 [豆瓣链接] 初级：《Python学习手册》(英文名 Learning Python) [豆瓣链接] 中级：《流畅的Python》[豆瓣链接]  PS: 针对每个阶段，我推荐的是我认为最好的那本书。
  语言基础 列表 本文从以下几个方面介绍列表：
- 创建 获取 修改 添加 插入 删除 排序 逆序 索引 循环 列表推导 切片 复制 去重 计数 查找   查看示例</description>
+ 创建 获取 修改 添加 插入 删除 排序 逆序 索引 循环 列表推导 切片 复制 去重 计数 查找   查看示例  字典 鉴于 JSON 在数据处理中的大量使用，字典的重要性也不言而喻。</description>
     </item>
     
   </channel>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ant colony qlgorithm on Chang Luo</title>
@@ -6,11 +6,7 @@
     <description>Recent content in ant colony qlgorithm on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 15 May 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://luochang212.github.io/tags/ant-colony-qlgorithm/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 15 May 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/tags/ant-colony-qlgorithm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>【项目】基于蚁群算法的证券投资组合优化</title>
       <link>http://luochang212.github.io/posts/markowitz_model/</link>
@@ -21,18 +17,18 @@
  1952年，马科维茨首次提出均值-方差模型(Markowitz Mean-Variance Model)。该模型利用股票的历史交易数据，定义了股票的预期风险与收益，并引入“无差异曲线”和“有效市场边界”的概念，最终导出了最佳投资组合的计算公式。
 本文利用蚁群算法，求解马科维茨均值-方差模型。蚁群算法是一个群体智能算法，因其较强的鲁棒性和适用性，被广泛应用于工业界，是一种研究较为成熟的算法。
 研究背景 一个证券投资组合，简单来说就是一组证券及其选购系数的组合。选购系数均大于零（不允许做空），且和为1。
-余超在《基于蚁群算法的投资组合优化研究》中给出了完整的模型假设。概括如下：
+余超在**《基于蚁群算法的投资组合优化研究》**中给出了完整的模型假设。概括如下：
  一只蚂蚁代表了一个投资组合； 在投资组合优化问题中的蚁群算法要采用连续域优化； 相较于传统蚁群问题，该算法中信息素应该在城市而非路径上积累； 可在蚂蚁移动过程中加入随机扰动以增加全局搜索能力。  余超在模型基础上已经做了非常完整的工作，但是没能求出完整的有效市场边界。
-于是，卞蓓丽在《蚁群算法在多目标优化的证券投资组合中的应用研究》中指出，多目标优化的证券投资组合问题是没有绝对最优解的，而是有一群无法相互支配的解形成的有效边界。对多目标优化问题而言，最重要的是求出有效边界，而不仅仅是求出一两个更优解，后者用单目标就可以完成。余超的多目标研究没有求出有效边界。”
+于是，卞蓓丽在**《蚁群算法在多目标优化的证券投资组合中的应用研究》**中指出，多目标优化的证券投资组合问题是没有绝对最优解的，而是有一群无法相互支配的解形成的有效边界。对多目标优化问题而言，最重要的是求出有效边界，而不仅仅是求出一两个更优解，后者用单目标就可以完成。余超的多目标研究没有求出有效边界。”
 卞蓓丽提示我们：因为，投资组合问题，本质上是一个多目标优化问题。所以，我们要计算出完整的有效边界曲线，才算达成预期目标。
 余超建立了基础模型，而卞蓓丽在余超的基础上进行了改进。本文借鉴他们二人建立的数学模型，利用多元函数连续域蚁群算法，求解马科维茨均值-方差模型。
 研究方法 （一）马科维茨投资组合理论简介
 投资组合的预期收益($𝒓_𝒑$)：单一证券i的预期收益为$E\left(r_{i}\right) $，式中$r_{i s}$为针对状况s证券i的收益率，$P_{s}$是状态s出现的概率；在计算了所有N个证券的预期收益率后，就可以计算出证券组合的预期收益率$𝒓_𝒑$，式中$x_{i}$表示组合中证券i所占的比例，即加权系数。
- 单一证券i的预期收益: $E\left(r_{i}\right)=\sum_{s=1}^{n} r_{i s} * P_{s}$
- 证券组合的预期收益: $\overline{r_{p}}=\sum_{i=1}^{N} x_{i} * E\left(r_{i}\right)$
-  投资组合的预期风险($𝝈_{𝒑}$)：单一证券i的预期风险为$\sigma_{\mathrm{i}} $，式中$r_{i s}$为针对状况s证券i的收益率，$P_{S}$是状态s出现的概率，$E\left(r_{i}\right) $为证券i的预期收益率 ；在计算了所有N个证券的预期风险后，就可以计算出证券组合的预期风险$\sigma_{\mathrm{p}}$，式中$\operatorname{cov}_{i j}$表示证券i和证券j的协方差，$x_{i}$和$x_{j}$表示组合中证券i和证券j所占的比例，即加权系数。
- 单一证券i的预期风险: $\sigma_{\mathrm{i}}=\left(\sum_{s=1}^{n}\left[r_{i s}-E\left(r_{i}\right)\right]^{2} * P_{S}\right)^{\frac{1}{2}}$
- 证券组合的预期风险: $\sigma_{\mathrm{p}}=\left(\sum_{i=1}^{N} \sum_{j=1}^{N} \operatorname{cov}_{i j} * x_{i} * x_{j}\right)^{\frac{1}{2}}$
+  单一证券i的预期收益: $E\left(r_{i}\right)=\sum_{s=1}^{n} r_{i s} * P_{s}$
+  证券组合的预期收益: $\overline{r_{p}}=\sum_{i=1}^{N} x_{i} * E\left(r_{i}\right)$
+  投资组合的预期风险($𝝈_{𝒑}$)：单一证券i的预期风险为$\sigma_{\mathrm{i}} $，式中$r_{i s}$为针对状况s证券i的收益率，$P_{S}$是状态s出现的概率，$E\left(r_{i}\right) $为证券i的预期收益率 ；在计算了所有N个证券的预期风险后，就可以计算出证券组合的预期风险$\sigma_{\mathrm{p}}$ ，式中$\operatorname{cov}_{i j}$表示证券i和证券j的协方差，$x_{i}$和$x_{j}$表示组合中证券i和证券j所占的比例，即加权系数。
+  单一证券i的预期风险: $\sigma_{\mathrm{i}}=\left(\sum_{s=1}^{n}\left[r_{i s}-E\left(r_{i}\right)\right]^{2} * P_{S}\right)^{\frac{1}{2}}$
+  证券组合的预期风险: $\sigma_{\mathrm{p}}=\left(\sum_{i=1}^{N} \sum_{j=1}^{N} \operatorname{cov}_{i j} * x_{i} * x_{j}\right)^{\frac{1}{2}}$
   有效市场边界: 有效市场边界是所有最佳投资组合(Efficient Portfolio)的集合。有效前沿曲线上面的每一点都代表一个最佳投资组合。下图曲线就是有效市场边界，有效市场边界满足以下两个条件：</description>
     </item>
     

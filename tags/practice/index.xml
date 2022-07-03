@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>practice on Chang Luo</title>
@@ -6,11 +6,7 @@
     <description>Recent content in practice on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 14 Jun 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://luochang212.github.io/tags/practice/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 14 Jun 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/tags/practice/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Python 工程化实践</title>
       <link>http://luochang212.github.io/posts/python_practice/</link>
@@ -23,7 +19,7 @@
 如果你还没有 Anaconda，安装一个：
  海外用户直接访问 Anaconda 官网 下载即可 国内用户无法访问Anaconda 官网(被墙)，建议选择清华镜像替代。  安装完以后，在命令行界面输入 conda，会打印一个帮助文档。
 帮助文档大概是说 conda 有哪些常用命令，比如下面这些：
-$ conda help # 打印帮助文档 $ conda info # 查看conda信息，包括当前在哪个环境，环境路径，Python版本等信息 $ conda list # 列出conda下安装了哪些包 $ conda install [package_name] # 在conda环境中安装某个包 $ conda update [package_name] # 升级conda环境中的某个包   Note：后文仅专注介绍虚拟环境相关内容，更多内容请在 Anaconda 官方文档 中查看。</description>
+$ conda help # 打印帮助文档 $ conda info # 查看conda信息，包括当前在哪个环境，环境路径，Python版本等信息 $ conda list # 列出conda下安装了哪些包 $ conda install [package_name] # 在conda环境中安装某个包 $ conda update [package_name] # 升级conda环境中的某个包  Note：后文仅专注介绍虚拟环境相关内容，更多内容请在 Anaconda 官方文档 中查看。</description>
     </item>
     
   </channel>

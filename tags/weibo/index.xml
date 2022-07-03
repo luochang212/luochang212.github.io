@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>weibo on Chang Luo</title>
@@ -6,11 +6,7 @@
     <description>Recent content in weibo on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 20 Apr 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://luochang212.github.io/tags/weibo/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 20 Apr 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/tags/weibo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>微博数据可视化</title>
       <link>http://luochang212.github.io/posts/my_weibo/</link>
@@ -26,10 +22,10 @@ Step 2. 分割raw data. 先用split函数进行粗略分割，再用find函数�
 经过上述两步，数据的整理工作就做完啦。
 可视化微博数据 有了csv文件，做数据可视化是分分钟的事。此时我把工作平台从PyCharm搬到了Jupyter Notebook。这是因为Jupyter Notebook可以制作的各式各样的可视化图表和窗口小工具(widget), 比PyCharm更适合数据处理。至于工具包，这里我选的是pandas和seaborn.
 首先是需求分析，我的目标如下:
- 绘制日期分布热力图，观察今年使用微博频率的趋势
- 绘制设备使用直方图，看看平时最常用什么平台发博
- 绘制时间分布直方图，观察一天之中各时段的发博频率
- 使用窗口滑块小部件，拖动查看各个时间段都发了什么内容
+  绘制日期分布热力图，观察今年使用微博频率的趋势
+  绘制设备使用直方图，看看平时最常用什么平台发博
+  绘制时间分布直方图，观察一天之中各时段的发博频率
+  使用窗口滑块小部件，拖动查看各个时间段都发了什么内容
   这里不描述具体过程，详见GitHub Repository.
 分析结果如下:
 热力图总体来说颜色逐年加深，说明我正在逐渐成为一个微博控。而且注意到往年年初我是不怎么玩微博的，但随着年纪渐长，1-3月份我玩微博的频率越来越高，这意味着过年可能越来越无聊，没有年味，从而加长了我混迹微博的时间。

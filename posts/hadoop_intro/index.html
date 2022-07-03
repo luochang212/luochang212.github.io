@@ -6,12 +6,14 @@
 
     <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://luochang212.github.io/posts/hadoop_intro/">
+    
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.55.6" />
+<meta name="generator" content="Hugo 0.84.1" />
 
     
     
@@ -27,9 +29,10 @@
 <meta property="og:title" content="漫谈 Hadoop Streaming" />
 <meta property="og:description" content="Hadoop 简化了分布式计算的难度，让没有分布式背景的程序员也能轻松写出分布式程序。本文介绍如何用 Python 编写 Hadoop 程序。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://luochang212.github.io/posts/hadoop_intro/" />
-<meta property="article:published_time" content="2020-07-25T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2020-07-25T00:00:00&#43;00:00"/><meta property="og:site_name" content="Title" />
+<meta property="og:url" content="http://luochang212.github.io/posts/hadoop_intro/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-07-25T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2020-07-25T00:00:00&#43;00:00" /><meta property="og:site_name" content="Title" />
+
 
 
     
@@ -44,7 +47,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.6a83d62c39a364f036df4db1ecd564645635d6c7fc182425cb501218fec485f5.css" integrity="sha256-aoPWLDmjZPA2302x7NVkZFY11sf8GCQly1ASGP7EhfU=">
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -52,7 +55,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hugo-toc.8549a64d301421b4256ea9a0d5ca8b99178799f569d5d2daeb95f24cef3ce6b7.css" integrity="sha256-hUmmTTAUIbQlbqmg1cqLmReHmfVp1dLa65XyTO885rc=">
+<link rel="stylesheet" href="/scss/hugo-toc.0873834b0f2e9fdc9e1d0301e8ebce21fc10383882a41e9373f29b90e85a9987.css" integrity="sha256-CHODSw8un9yeHQMB6OvOIfwQODiCpB6Tc/KbkOhamYc=">
 
 
 
@@ -65,6 +68,8 @@
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
     <link rel="shortcut icon" href="/favicon.png">
     
+    
+
 </head>
 
 
@@ -235,7 +240,7 @@
 		 
 			 
 				<li>
-					<a href="/">
+					<a href="/posts/">
 						<span>Posts</span>
 					</a>
 				</li>
@@ -257,7 +262,6 @@
 				</li>
 			 
 		
-		</li>
 	</ul>
 </div>
 
@@ -267,8 +271,6 @@
 	
 	
 	
-	<a href="https://instagram.com/icstocs" rel="me"><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></a>
-	
 	
 	<a href="https://github.com/luochang212" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
 	
@@ -277,12 +279,15 @@
 	
 	
 	
-	
-	
-	
+	<a href="https://instagram.com/suphenshin" rel="me"><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></a>
 	
 	
 	<a href="https://linkedin.com/in/bupt-luochang" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
 	
 	
 	
@@ -297,7 +302,7 @@
       </div>
       
 <div class="copyright">
-  &copy; 2021 Chang Luo
+  &copy; 2022 Chang Luo
   
 </div>
 
@@ -335,17 +340,20 @@
       <div id="Video-player" class="tabcontent">
 
         <div id="video1">
-          <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=455023331&bvid=BV1X541167RE&cid=170542054&page=1&high_quality=1&danmaku=0"
+          <iframe src="about:blank"
+            data-src="//player.bilibili.com/player.html?aid=455023331&bvid=BV1X541167RE&cid=170542054&page=1&high_quality=1&danmaku=0"
             style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
             allowfullscreen="true"></iframe>
         </div>
         <div id="video2">
-          <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=65042716&bvid=BV1M4411r7yu&cid=112895137&page=1&high_quality=1&high_quality=1&danmaku=0"
+          <iframe src="about:blank"
+            data-src="//player.bilibili.com/player.html?aid=65042716&bvid=BV1M4411r7yu&cid=112895137&page=1&high_quality=1&high_quality=1&danmaku=0"
             style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
             allowfullscreen="true"></iframe>
         </div>
         <div id="video3">
-          <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=20535616&bvid=BV1zW411W75L&cid=33582726&page=1//player.bilibili.com/player.html?aid=15159845&cid=24679968&page=1&high_quality=1&danmaku=0"
+          <iframe src="about:blank"
+            data-src="//player.bilibili.com/player.html?aid=20535616&bvid=BV1zW411W75L&cid=33582726&page=1//player.bilibili.com/player.html?aid=15159845&cid=24679968&page=1&high_quality=1&danmaku=0"
             style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
             allowfullscreen="true"></iframe>
         </div>
@@ -366,7 +374,7 @@
       </div>
 
       <div id="gallery" class="tabcontent">
-        <iframe src="about:blank" data-src="/gadget/gallery/#two" frameborder="0" height="560" width="100%"
+        <iframe src="about:blank" data-src="/gadget/gallery.html#two" frameborder="0" height="560" width="100%"
           scrolling="yes"></iframe>
       </div>
 
@@ -381,7 +389,7 @@
   
   <script>
     'use strict'
-    
+
     function openNav() {
       on();
       document.getElementById("mySidenav").style.width = "580px";
@@ -457,7 +465,17 @@
 
         <div class="content container">
             
-    
+    <style>
+  .my-emoji {
+    height: 25px;
+    display: inline-block;
+    margin: 0;
+    vertical-align: text-bottom;
+  }
+</style>
+
+
+
 <article>
   <header>
     <h1>漫谈 Hadoop Streaming</h1>
@@ -513,153 +531,107 @@
   
   
   
-    <div class="toc-wrapper">
-      <input type="checkbox" id="tocToggle">
-      <label for="tocToggle">目录</label>
-      
-          <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#1-分布式系统的由来">1. 分布式系统的由来</a></li>
-<li><a href="#2-hadoop-基本介绍">2. Hadoop 基本介绍</a></li>
-<li><a href="#3-mapreduce">3. MapReduce</a>
-<ul>
-<li><a href="#3-1-map-shuffle-和-reduce">3.1 Map, Shuffle 和 Reduce</a></li>
-<li><a href="#3-2-kv-表-数据传输的格式">3.2 kv 表：数据传输的格式</a></li>
-<li><a href="#3-3-实例-wordcount">3.3 实例：WordCount</a></li>
-</ul></li>
-<li><a href="#4-用-python-开发-mapreduce">4. 用 Python 开发 MapReduce</a></li>
-<li><a href="#5-启动脚本">5. 启动脚本</a></li>
-<li><a href="#6-测试">6. 测试</a></li>
-<li><a href="#7-文件操作">7. 文件操作</a></li>
-<li><a href="#8-只言片语">8. 只言片语</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <div class="toc-wrapper">
+    <input type="checkbox" id="tocToggle">
+    <label for="tocToggle">目录</label>
+    
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-分布式系统的由来">1. 分布式系统的由来</a></li>
+        <li><a href="#2-hadoop-基本介绍">2. Hadoop 基本介绍</a></li>
+        <li><a href="#3-mapreduce">3. MapReduce</a></li>
+        <li><a href="#4-用-python-开发-mapreduce">4. 用 Python 开发 MapReduce</a></li>
+        <li><a href="#5-启动脚本">5. 启动脚本</a></li>
+        <li><a href="#6-测试">6. 测试</a></li>
+        <li><a href="#7-文件操作">7. 文件操作</a></li>
+        <li><a href="#8-只言片语">8. 只言片语</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
-      
-    </div>
+    
+  </div>
   
   
   <div class="post">
-    
-
-<blockquote>
+    <blockquote>
 <p>本文聚焦如何通过 Hadoop Streaming + Python 编写 Hadoop 程序。</p>
 </blockquote>
-
 <p><a href="https://hadoop.apache.org/">Hadoop</a> 是一个用于大数据处理的分布式计算框架。</p>
-
 <p>众所周知，实现分布式计算是一个繁琐的过程，Hadoop 通过一个标准化的数据处理流程，简化操作步骤，让没有分布式计算背景的程序员也能轻松写出分布式程序。Hadoop 本身是用 Java 写就的，因此对于非 Java 程序员来说，学 Hadoop 必须先学 Java，这大大降低了 Hadoop 的友好程度。</p>
-
 <p><a href="https://hadoop.apache.org/docs/current/hadoop-streaming/HadoopStreaming.html">Hadoop Streaming</a> 就是为了解决这个问题而生的，它支持用其他编程语言编写 Hadoop 程序。</p>
-
 <h3 id="1-分布式系统的由来">1. 分布式系统的由来</h3>
-
 <p>经历半个多世纪的高速增长，半导体工业在本世纪初触及了它的物理瓶颈，摩尔定律失灵，硬件算力不再高速增长，人们开始关注利用软件方法来提升算力。</p>
-
 <p>2003年，两名谷歌工程师开发了一个分布式存储系统，这是它的前身。经过几位后来者添枝加叶，该系统在 2006 年开源，并发展成为今天我们熟知的 Hadoop。</p>
-
 <p>使用分布式系统，显而易见的好处是能够缩短程序运行的时间。在常规时间就能跑完的程序上使用 Hadoop 无异于画蛇添足。但是对大数据开发人员来说，使用 Hadoop 意味着不必坐在电脑前为了结果等上一整天。如果集群效率够高，完全可能在几分钟内完成单机一天的计算量。</p>
-
 <h3 id="2-hadoop-基本介绍">2. Hadoop 基本介绍</h3>
-
 <p>Hadoop 有两个重要的组成部分：HDFS 和 MapReduce。</p>
-
 <p><strong>HDFS</strong> 是一个分布式存储系统，它负责将文件切割成分片，然后分发到集群中的目标机器上进行存储；<strong>MapReduce</strong> 负责构建一个标准化的数据处理流程，在完成其规定的几道数据处理流程之后，用户将得到他们期望的结果。</p>
-
 <p>这意味着 Hadoop 的学习至少包括两个部分。要掌握 HDFS，你需要掌握 Hadoop 命令行命令，这将在第7节详细介绍。要掌握 MapReduce，如果你是 Python 开发者，你需要掌握 Hadoop Streaming，这将在下一节中介绍。</p>
-
 <h3 id="3-mapreduce">3. MapReduce</h3>
-
 <p>MapReduce 的重要性不言而喻，它定义了数据在 Hadoop 中被如何处理。MapReduce 包含三个重要过程：Map, Shuffle 和 Reduce。其中，Map 和 Reduce 由我们来编写，Shuffle 则由系统自动完成。</p>
-
-<h4 id="3-1-map-shuffle-和-reduce">3.1 Map, Shuffle 和 Reduce</h4>
-
+<h4 id="31-map-shuffle-和-reduce">3.1 Map, Shuffle 和 Reduce</h4>
 <p>下面这张流程图展示了这三道数据处理工序在整个数据处理流中的位置。</p>
-
-<p><img src="/img//hadoop-streaming.png" alt="" /></p>
-
+<p><img src="/img//hadoop-streaming.png" alt=""></p>
 <p>观察这张图，我们发现数据首先被切割 (split)，然后被分发到 Map，之后又经历 sort 和 merge 步骤，接着来到 Reduce，最后输出到 HDFS 上。</p>
-
 <p>这种工序经过了严密设计，是为了尽可能多地保持适应力，使其在能够适应各种数据处理需求的同时，又能兼顾效率。它保证了多数需求，在这种框架下，都能被适当处理。</p>
-
 <p>Map, Shuffle 和 Reduce 三阶段的作用分别是：</p>
-
 <ul>
-<li><p><strong>Map</strong>：预处理。Shuffle 通常要耗费大量计算资源，因此传给 Shuffle 的数据越精简越好，这就要求我们在 Mapper 阶段把和研究问题无关的数据都丢掉。在本阶段的输出中，我们必须定义好主键。</p></li>
-
-<li><p><strong>Shuffle</strong>：Shuffle 的内涵包括两个部分：排序 (merge) 和 分桶 (merge)。Shuffle 首先对 Mapper 传来的数据按主键进行排序，继而将其分桶。分桶指将已排数据切割成分片，并将其发送给 Reducer。</p></li>
+<li>
+<p><strong>Map</strong>：预处理。Shuffle 通常要耗费大量计算资源，因此传给 Shuffle 的数据越精简越好，这就要求我们在 Mapper 阶段把和研究问题无关的数据都丢掉。在本阶段的输出中，我们必须定义好主键。</p>
+</li>
+<li>
+<p><strong>Shuffle</strong>：Shuffle 的内涵包括两个部分：排序 (merge) 和 分桶 (merge)。Shuffle 首先对 Mapper 传来的数据按主键进行排序，继而将其分桶。分桶指将已排数据切割成分片，并将其发送给 Reducer。</p>
+</li>
 </ul>
-
 <!-- 分桶指的是将已排序数据切割，然后分发给 reducer 的过程。 （我有个疑问：主键相同的数据是否一定会被分入同一个桶中？懂的大神请告我一声） -->
-
 <ul>
 <li><strong>Reduce</strong>: 不知道怎么翻译，我翻译成“规约”。它就是将冗杂的数据，规约成用户期望、感兴趣的数据结果。这种数据结果可能是一个或者一组统计量，也可能是输入数据的处理结果。</li>
 </ul>
-
-<h4 id="3-2-kv-表-数据传输的格式">3.2 kv 表：数据传输的格式</h4>
-
+<h4 id="32-kv-表数据传输的格式">3.2 kv 表：数据传输的格式</h4>
 <p>数据在上述三个处理阶段之间，是以 <strong>kv表</strong> 为数据传输格式的。kv 表由 key（主键）和 value 组成，key 和 value 都可以包含一个或多个字段。</p>
-
-<p>kv 表在 Unix 中长这样👇。每行数据中的各字段以制表符 <code>\t</code> 为分隔。
-<!-- 当然 Hadoop 也接受其他分割符，自己去参数里设就好啦。 --></p>
-
-<pre><code class="language-html">dogs    1    happy
+<p>kv 表在 Unix 中长这样👇。每行数据中的各字段以制表符 <code>\t</code> 为分隔。</p>
+<!-- 当然 Hadoop 也接受其他分割符，自己去参数里设就好啦。 -->
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">dogs    1    happy
 cats    3    happy
 pigs    2    sleeping
 cats    1    sad
-</code></pre>
-
-<!-- 生产环境下日志肯定不止这几列，有时会有三四十列之多，颇有乱花迷人眼的阵势。 -->
-
-<h4 id="3-3-实例-wordcount">3.3 实例：WordCount</h4>
-
+</code></pre></div><!-- 生产环境下日志肯定不止这几列，有时会有三四十列之多，颇有乱花迷人眼的阵势。 -->
+<h4 id="33-实例wordcount">3.3 实例：WordCount</h4>
 <p>为了说明数据在 Hadoop 中是如何被处理的。我们引入一个实例 WordCount 来讲解。WordCount 是一个简单的数据处理任务，它要求我们统计文章中每个单词出现的频率。</p>
-
 <p>本来我们只要几行 Python 代码就能完成 👇</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># word_count.py</span>
+<span style="color:#75715e"># usage: cat test_file.txt | python word_count.py</span>
+<span style="color:#f92672">import</span> sys
+<span style="color:#f92672">import</span> collections
 
-<pre><code class="language-python"># word_count.py
-# usage: cat test_file.txt | python word_count.py
-import sys
-import collections
 
+words_dict <span style="color:#f92672">=</span> collections<span style="color:#f92672">.</span>defaultdict(int)
 
-words_dict = collections.defaultdict(int)
-
-for line in sys.stdin:
-    line = line.strip().split(' ')
+<span style="color:#66d9ef">for</span> line <span style="color:#f92672">in</span> sys<span style="color:#f92672">.</span>stdin:
+    line <span style="color:#f92672">=</span> line<span style="color:#f92672">.</span>strip()<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)
     
-    if not line:
-        continue
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> line:
+        <span style="color:#66d9ef">continue</span>
     
-    for word in line:
-        words_dict[word] += 1
+    <span style="color:#66d9ef">for</span> word <span style="color:#f92672">in</span> line:
+        words_dict[word] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
 
-for k, v in words_dict.items():
-    print('{}: {}'.format(k, v))
-</code></pre>
-
-<p>换成 Hadoop 的写法，它会变得很冗长。但回馈就是，在数据量庞大的情况下，原本需要巨量时间的任务，现在能在短时间内完成。</p>
-
+<span style="color:#66d9ef">for</span> k, v <span style="color:#f92672">in</span> words_dict<span style="color:#f92672">.</span>items():
+    print(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">.</span>format(k, v))
+</code></pre></div><p>换成 Hadoop 的写法，它会变得很冗长。但回馈就是，在数据量庞大的情况下，原本需要巨量时间的任务，现在能在短时间内完成。</p>
 <p>☆ <strong>Hadoop 方法</strong>：</p>
-
 <p>在贴上代码之前，我们先来看看 Hadoop 是如何一步步将数据改造成我们期望的模样的。</p>
-
 <ol>
-<li><p>这是原始数据。</p>
-
+<li>这是原始数据。
 <pre><code>i love you
 you love him
 he loves her
 she loves him
 </code></pre></li>
-
-<li><p>首先将数据切割成多个分片 (split 阶段)。</p>
-
+<li>首先将数据切割成多个分片 (split 阶段)。
 <pre><code># part_1
 i love you
 you love him
@@ -668,9 +640,7 @@ you love him
 he loves her
 she loves him
 </code></pre></li>
-
-<li><p>将各个分片分别送入各自的 Mapper 中做预处理，然后返回以单词为主键的 kv 表 (map 阶段)。</p>
-
+<li>将各个分片分别送入各自的 Mapper 中做预处理，然后返回以单词为主键的 kv 表 (map 阶段)。
 <pre><code># part_1
 i    1
 love    1
@@ -687,9 +657,7 @@ she    1
 loves    1
 him    1
 </code></pre></li>
-
-<li><p>按主键排序后分桶 (shuffle 阶段)。</p>
-
+<li>按主键排序后分桶 (shuffle 阶段)。
 <pre><code># part_1
 he    1
 her    1
@@ -706,9 +674,7 @@ she    1
 you    1
 you    1
 </code></pre></li>
-
-<li><p>将数据捏成我们想要的形状 (reduce 阶段)。</p>
-
+<li>将数据捏成我们想要的形状 (reduce 阶段)。
 <pre><code># part-00000
 he    1
 her    1
@@ -722,17 +688,11 @@ she    1
 you    2
 </code></pre></li>
 </ol>
-
 <p>经历上述步骤后，我们会得到两个文件：<code>part-00000</code> 和 <code>part-00001</code>。得到文件的数量和 reducer 数相同。因本例有两个 reducer，故我们最终得到两个输出文件。</p>
-
 <h3 id="4-用-python-开发-mapreduce">4. 用 Python 开发 MapReduce</h3>
-
 <p>嘟噜噜，下面开始写 MapReduce 代码。</p>
-
 <p>因为我懒，不想重复写代码，所以这里贴上 <a href="https://www.michael-noll.com/tutorials/writing-an-hadoop-mapreduce-program-in-python/"><em>Writing An Hadoop MapReduce Program In Python</em></a> 的代码原文。这篇文章本身也非常好，推荐大家看看 <img src="/img/quyin/OK.png" class="my-emoji" style = "height: 32px;"></p>
-
 <p>mapper</p>
-
 <pre><code>#!/usr/bin/env python
 &quot;&quot;&quot;mapper.py&quot;&quot;&quot;
 
@@ -752,10 +712,7 @@ for line in sys.stdin:
         #
         # tab-delimited; the trivial word count is 1
         print '%s\t%s' % (word, 1)
-</code></pre>
-
-<p>reducer</p>
-
+</code></pre><p>reducer</p>
 <pre><code>#!/usr/bin/env python
 &quot;&quot;&quot;reducer.py&quot;&quot;&quot;
 
@@ -796,79 +753,56 @@ for line in sys.stdin:
 # do not forget to output the last word if needed!
 if current_word == word:
     print '%s\t%s' % (current_word, current_count)
-</code></pre>
-
-<h3 id="5-启动脚本">5. 启动脚本</h3>
-
+</code></pre><h3 id="5-启动脚本">5. 启动脚本</h3>
 <p>只有 Mapper 和 Reducer 没用啊，Hadoop 要从命令行启动，因此我们还需要一个 bash 脚本帮我们启动 Hadoop。</p>
-
-<pre><code class="language-bash">hadoop streaming \
-  -D mapred.job.priority=VERY_HIGH  \
-  -D stream.num.map.output.key.fields=4 \
-  -D num.key.fields.for.partition=1 \
-  -input myInputDirs \
-  -output myOutputDir \
-  -mapper &quot;python mapper.py&quot; \
-  -reducer &quot;python reducer.py&quot; \
-  -file &quot;./mapper.py&quot; \
-  -file &quot;./reducer.py&quot; \
-  -file &quot;./additional_file.txt&quot; \
-  -jobconf mapred.job.name=&quot;yourJobName&quot; \
-  -jobconf mapred.reduce.tasks=100 \
-  -jobconf mapred.job.map.capacity=2000 \
-  -jobconf mapred.job.reduce.capacity=300 \
-  -jobconf mapred.map.over.capacity.allowed=true \
-  -jobconf mapred.reduce.over.capacity.allowed=true \
-</code></pre>
-
-<p>参数 reduce.tasks 有时设为 1 (<code>-jobconf mapred.reduce.tasks=1</code>)，这样最终输出的文件数也为1。虽然这个设置会影响性能，但由于输出文件只有1个的缘故，输出文件不需要额外的 merge 处理，在 reducer 压力不大时可以考虑。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hadoop streaming <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -D mapred.job.priority<span style="color:#f92672">=</span>VERY_HIGH  <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -D stream.num.map.output.key.fields<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -D num.key.fields.for.partition<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -input myInputDirs <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -output myOutputDir <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -mapper <span style="color:#e6db74">&#34;python mapper.py&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -reducer <span style="color:#e6db74">&#34;python reducer.py&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -file <span style="color:#e6db74">&#34;./mapper.py&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -file <span style="color:#e6db74">&#34;./reducer.py&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -file <span style="color:#e6db74">&#34;./additional_file.txt&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -jobconf mapred.job.name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;yourJobName&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -jobconf mapred.reduce.tasks<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -jobconf mapred.job.map.capacity<span style="color:#f92672">=</span><span style="color:#ae81ff">2000</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -jobconf mapred.job.reduce.capacity<span style="color:#f92672">=</span><span style="color:#ae81ff">300</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -jobconf mapred.map.over.capacity.allowed<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -jobconf mapred.reduce.over.capacity.allowed<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
+</span></code></pre></div><p>参数 reduce.tasks 有时设为 1 (<code>-jobconf mapred.reduce.tasks=1</code>)，这样最终输出的文件数也为1。虽然这个设置会影响性能，但由于输出文件只有1个的缘故，输出文件不需要额外的 merge 处理，在 reducer 压力不大时可以考虑。</p>
 <h3 id="6-测试">6. 测试</h3>
-
 <p>即使是 Hadoop 集群，在处理超大数据集的时候，跑一两个小时也是惯常现象。如果你的程序因为有 bug 运行中止，那你就亏大了。因为你又得 debug，然后重跑。</p>
-
 <p>为了避免这种情况出现，测试是必要的。我一般会按照这个流程进行测试：</p>
-
 <ol>
 <li>code review</li>
 <li>local test</li>
 <li>check try except</li>
 </ol>
-
 <p>Code review 的作用就是，看一样程序，然后确认“这个程序看起来没什么问题”。这能有效阻挡大部分显而易见的错误。</p>
-
 <p>Local test 是本地小数据集测试。开始前要先构造数据文件 <code>test_file</code>，然后用 <code>cat test_file | python mapper.py | sort | python reducer.py</code> 命令在本地运行测试。这主要是为了测试语法的正确性；</p>
-
 <p>Check try except 指检查是否写了充分的 try except 语句来处理可能出现的异常，例如字段缺失、数据类型异常、数值异常等等。因为代码需要经受住大数据量的考验，因此对健壮性的要求很高。</p>
-
 <h3 id="7-文件操作">7. 文件操作</h3>
-
 <p>Hadoop 通过 <a href="https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html">HDFS</a> (Hadoop Distributed File System) 来管理集群上的文件。</p>
-
 <p>常见的文件操作命令：</p>
-
-<pre><code class="language-bash"># 查看帮助文档
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 查看帮助文档</span>
 hadoop fs -help
-# 查看当前文件夹的文件
+<span style="color:#75715e"># 查看当前文件夹的文件</span>
 hadoop fs -ls
-# 下载文件到本地
-hadoop fs -copyToLocal [hdfs路径] [本地路径]
-# 上传文件到HDFS
-hadoop fs -copyFromLocal [本地路径] [hdfs路径]
-# 新建HDFS目录
-hadoop fs -mkdir [hdfs路径]
-# 删除HDFS文件
-hadoop fs -rm [hdfs路径]
-</code></pre>
-
-<h3 id="8-只言片语">8. 只言片语</h3>
-
+<span style="color:#75715e"># 下载文件到本地</span>
+hadoop fs -copyToLocal <span style="color:#f92672">[</span>hdfs路径<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>本地路径<span style="color:#f92672">]</span>
+<span style="color:#75715e"># 上传文件到HDFS</span>
+hadoop fs -copyFromLocal <span style="color:#f92672">[</span>本地路径<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>hdfs路径<span style="color:#f92672">]</span>
+<span style="color:#75715e"># 新建HDFS目录</span>
+hadoop fs -mkdir <span style="color:#f92672">[</span>hdfs路径<span style="color:#f92672">]</span>
+<span style="color:#75715e"># 删除HDFS文件</span>
+hadoop fs -rm <span style="color:#f92672">[</span>hdfs路径<span style="color:#f92672">]</span>
+</code></pre></div><h3 id="8-只言片语">8. 只言片语</h3>
 <p>Hadoop MapReduce 是一套编程模型，基本思路是先把数据切成不同分片，然后基于键值对排序并在机器间交换一次数据，再然后按主键对数据分桶，最后规约到结果。这套模式是死的，也就是你只能按照既定的运算框架和运算顺序来处理数据。</p>
-
 <p>既然模式是死的，就一定存在一部分问题天然不适合用 Hadoop 解决。具体到每个问题，Hadoop 的适用程度都是不一样的。有些本来不合适但又不得不用的项目，我们还是得拆分需求、设计运算流程，尽量地去贴合 MapReduce 这套模型。需求拆得对不对，流程设计得好不好，在很大程度上会影响程序的运行效率。</p>
-
 <p>参考文献：</p>
-
 <ol>
 <li><a href="https://hadoop.apache.org/">Hadoop 官网</a></li>
 <li><a href="https://hadoop.apache.org/docs/current/">Apache Hadoop Documentation</a></li>
@@ -905,16 +839,6 @@ hadoop fs -rm [hdfs路径]
 
 </article>
 
-<style>
-  .my-emoji {
-    height: 25px;
-    display: inline-block;
-    margin: 0;
-    vertical-align: text-bottom;
-  }
-</style>
-
-
         </div>
         
     <script type="text/javascript" async
@@ -947,20 +871,17 @@ hadoop fs -rm [hdfs路径]
 </script>
 
 
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
 
-<script defer src="/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
 
     
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
         
-    
     <script type="text/javascript">
         
         hljs.initHighlightingOnLoad();
     </script>
     
-
 
 
 

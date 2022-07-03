@@ -6,12 +6,14 @@
 
     <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://luochang212.github.io/posts/fastapi/">
+    
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.55.6" />
+<meta name="generator" content="Hugo 0.84.1" />
 
     
     
@@ -22,14 +24,15 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="FastAPI 初见"/>
-<meta name="twitter:description" content="什么是 API？API 有什么用？本文从零开始教你搭建 API，认识 API 服务中的组件和 FastAPI 的使用细节。"/>
+<meta name="twitter:description" content="什么是 API？如何从零开始，搭建自己的第一个API？本文带你搭建一个 API 小应用以带你了解 FastAPI 的使用细节"/>
 
 <meta property="og:title" content="FastAPI 初见" />
-<meta property="og:description" content="什么是 API？API 有什么用？本文从零开始教你搭建 API，认识 API 服务中的组件和 FastAPI 的使用细节。" />
+<meta property="og:description" content="什么是 API？如何从零开始，搭建自己的第一个API？本文带你搭建一个 API 小应用以带你了解 FastAPI 的使用细节" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://luochang212.github.io/posts/fastapi/" />
-<meta property="article:published_time" content="2020-11-21T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2020-11-21T00:00:00&#43;00:00"/><meta property="og:site_name" content="Title" />
+<meta property="og:url" content="http://luochang212.github.io/posts/fastapi/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-11-21T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2020-11-21T00:00:00&#43;00:00" /><meta property="og:site_name" content="Title" />
+
 
 
     
@@ -44,7 +47,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.6a83d62c39a364f036df4db1ecd564645635d6c7fc182425cb501218fec485f5.css" integrity="sha256-aoPWLDmjZPA2302x7NVkZFY11sf8GCQly1ASGP7EhfU=">
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -52,7 +55,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hugo-toc.8549a64d301421b4256ea9a0d5ca8b99178799f569d5d2daeb95f24cef3ce6b7.css" integrity="sha256-hUmmTTAUIbQlbqmg1cqLmReHmfVp1dLa65XyTO885rc=">
+<link rel="stylesheet" href="/scss/hugo-toc.0873834b0f2e9fdc9e1d0301e8ebce21fc10383882a41e9373f29b90e85a9987.css" integrity="sha256-CHODSw8un9yeHQMB6OvOIfwQODiCpB6Tc/KbkOhamYc=">
 
 
 
@@ -65,6 +68,8 @@
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
     <link rel="shortcut icon" href="/favicon.png">
     
+    
+
 </head>
 
 
@@ -235,7 +240,7 @@
 		 
 			 
 				<li>
-					<a href="/">
+					<a href="/posts/">
 						<span>Posts</span>
 					</a>
 				</li>
@@ -257,7 +262,6 @@
 				</li>
 			 
 		
-		</li>
 	</ul>
 </div>
 
@@ -267,8 +271,6 @@
 	
 	
 	
-	<a href="https://instagram.com/icstocs" rel="me"><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></a>
-	
 	
 	<a href="https://github.com/luochang212" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
 	
@@ -277,12 +279,15 @@
 	
 	
 	
-	
-	
-	
+	<a href="https://instagram.com/suphenshin" rel="me"><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></a>
 	
 	
 	<a href="https://linkedin.com/in/bupt-luochang" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
 	
 	
 	
@@ -297,7 +302,7 @@
       </div>
       
 <div class="copyright">
-  &copy; 2021 Chang Luo
+  &copy; 2022 Chang Luo
   
 </div>
 
@@ -335,17 +340,20 @@
       <div id="Video-player" class="tabcontent">
 
         <div id="video1">
-          <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=455023331&bvid=BV1X541167RE&cid=170542054&page=1&high_quality=1&danmaku=0"
+          <iframe src="about:blank"
+            data-src="//player.bilibili.com/player.html?aid=455023331&bvid=BV1X541167RE&cid=170542054&page=1&high_quality=1&danmaku=0"
             style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
             allowfullscreen="true"></iframe>
         </div>
         <div id="video2">
-          <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=65042716&bvid=BV1M4411r7yu&cid=112895137&page=1&high_quality=1&high_quality=1&danmaku=0"
+          <iframe src="about:blank"
+            data-src="//player.bilibili.com/player.html?aid=65042716&bvid=BV1M4411r7yu&cid=112895137&page=1&high_quality=1&high_quality=1&danmaku=0"
             style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
             allowfullscreen="true"></iframe>
         </div>
         <div id="video3">
-          <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=20535616&bvid=BV1zW411W75L&cid=33582726&page=1//player.bilibili.com/player.html?aid=15159845&cid=24679968&page=1&high_quality=1&danmaku=0"
+          <iframe src="about:blank"
+            data-src="//player.bilibili.com/player.html?aid=20535616&bvid=BV1zW411W75L&cid=33582726&page=1//player.bilibili.com/player.html?aid=15159845&cid=24679968&page=1&high_quality=1&danmaku=0"
             style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
             allowfullscreen="true"></iframe>
         </div>
@@ -366,7 +374,7 @@
       </div>
 
       <div id="gallery" class="tabcontent">
-        <iframe src="about:blank" data-src="/gadget/gallery/#two" frameborder="0" height="560" width="100%"
+        <iframe src="about:blank" data-src="/gadget/gallery.html#two" frameborder="0" height="560" width="100%"
           scrolling="yes"></iframe>
       </div>
 
@@ -381,7 +389,7 @@
   
   <script>
     'use strict'
-    
+
     function openNav() {
       on();
       document.getElementById("mySidenav").style.width = "580px";
@@ -457,7 +465,17 @@
 
         <div class="content container">
             
-    
+    <style>
+  .my-emoji {
+    height: 25px;
+    display: inline-block;
+    margin: 0;
+    vertical-align: text-bottom;
+  }
+</style>
+
+
+
 <article>
   <header>
     <h1>FastAPI 初见</h1>
@@ -507,63 +525,42 @@
   
   
   
-    <div class="toc-wrapper">
-      <input type="checkbox" id="tocToggle">
-      <label for="tocToggle">目录</label>
-      
-          <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#1-rest-api">1. REST API</a></li>
-<li><a href="#2-安装-fastapi">2. 安装 FastAPI</a></li>
-<li><a href="#3-测试安装是否成功">3. 测试安装是否成功</a></li>
-<li><a href="#4-用-fastapi-搭建一个日程-api">4. 用 FastAPI 搭建一个日程 API</a>
-<ul>
-<li><a href="#4-1-消息格式的设计">4.1 消息格式的设计</a></li>
-<li><a href="#4-2-数据库">4.2 数据库</a></li>
-<li><a href="#4-3-服务端">4.3 服务端</a></li>
-<li><a href="#4-4-客户端">4.4 客户端</a></li>
-</ul></li>
-<li><a href="#5-日程-api-的食用方法">5. 日程 API 的食用方法</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <div class="toc-wrapper">
+    <input type="checkbox" id="tocToggle">
+    <label for="tocToggle">目录</label>
+    
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-rest-api">1. REST API</a></li>
+        <li><a href="#2-安装-fastapi">2. 安装 FastAPI</a></li>
+        <li><a href="#3-测试安装是否成功">3. 测试安装是否成功</a></li>
+        <li><a href="#4-搭建一个日程-api">4. 搭建一个日程 API</a></li>
+        <li><a href="#5-日程-api-食用方法">5. 日程 API 食用方法</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
-      
-    </div>
+    
+  </div>
   
   
   <div class="post">
-    
-
-<blockquote>
-<p>什么是 API？API 有什么用？本文从零开始教你搭建 API，认识 API 服务中的组件和 FastAPI 的使用细节。</p>
+    <blockquote>
+<p>什么是 API？如何从零开始，搭建自己的第一个API？本文带你搭建一个 API 小应用以带你了解 FastAPI 的使用细节</p>
 </blockquote>
-
+<!-- > 什么是 API？API 有什么用？本文从零开始教你搭建 API，认识 API 服务中的组件和 FastAPI 的使用细节。 -->
 <p>GitHub项目地址：<a href="https://github.com/luochang212/calendar-api" target="_blank">calendar-api</a></p>
-
 <p>什么是 API？</p>
-
-<p>简单来说，<a href="https://en.wikipedia.org/wiki/API">API</a>
-<!-- (application programming interface, 应用编程接口)  -->
-是软件间相互传输数据的接口。它在生活中十分常见，比如博物馆订票系统中就使用了 API. 当你在手机应用上订票时，手机实际上发送了一个 HTTP 请求给远程服务器。远程服务器解析该请求。当确认所有字段信息均准确无误后，它才会把你的订票信息录入数据库，并回调成功标识。只有当上述操作全都被正确执行时，你的手机才会显示订票成功。</p>
-
-<p><img src="/img/fastapi-2.PNG" alt="" /></p>
-
+<p>简单来说，<a href="https://en.wikipedia.org/wiki/API">API</a> <!-- (application programming interface, 应用编程接口)  -->是软件间相互传输数据的接口。它在生活中十分常见，比如博物馆订票系统中就使用了 API. 当你在手机应用上订票时，手机实际上发送了一个 HTTP 请求给远程服务器。远程服务器解析该请求。当确认所有字段信息均准确无误后，它才会把你的订票信息录入数据库，并回调成功标识。只有当上述操作全都被正确执行时，你的手机才会显示订票成功。</p>
+<p><img src="/img/fastapi-2.PNG" alt=""></p>
 <p>API 程序通常运行在服务端 (server) 上。<strong>客户端</strong> (client) 通过向 API 提供的网络接口发送请求，以实现对<strong>服务端</strong>的通信。服务端收到请求后，对请求进行解析。如果请求是合法的，则执行该请求，并将请求结果回调给客户端。一次典型的 API 请求大体上是这么个过程。</p>
-
-<p>但是，在业务中，我们经常需要记录每次请求产生的中间状态、运行结果和日志信息等数据，那么就需要数据库的参与。<strong>服务端</strong>调用 <strong>数据库</strong> (database) 以存储业务中产生的各种信息。</p>
-
+<p>在业务中，有时需要记录每次请求产生的中间状态、运行结果和日志数据。这时就需要 <strong>服务端</strong> 调用 <strong>数据库</strong> (database) 以存储业务中产生的各种信息。</p>
 <h3 id="1-rest-api">1. REST API</h3>
-
-<p>API 本身是高度个性化的，软件间可以用任意数据类型进行通信。但如果 API 是面向大众的，个性化将导致软件间沟通成本高企。这就需要有规范来约束其沟通方式。<a href="https://restfulapi.net/">REST API</a> 就是其中一种规范。REST API 提出了六项指导原则，只要 API 符合这六项指导原则，就能称之为“符合 REST 风格的 API”。</p>
-
+<p>API 本身是高度个性化的，软件间可以用任意数据类型进行通信。但如果 API 缺少规范、各行其是，就会导致软件间沟通成本高企。<a href="https://restfulapi.net/">REST API</a> 就是其中一种规范。REST API 提出了六项指导原则，只要 API 符合这六项指导原则，就可称之为“符合 REST 风格的 API”。</p>
 <blockquote>
 <p>REST API 提出的六项指导原则分别是：</p>
-
 <ul>
 <li>Client–server</li>
 <li>Stateless</li>
@@ -572,12 +569,9 @@
 <li>Layered system</li>
 <li>Code on demand (optional)</li>
 </ul>
-
 <p>[<a href="https://restfulapi.net/">了解更多</a>]</p>
 </blockquote>
-
-<p>PS: FastAPI 对构建 REST 风格的 API 提供良好的支持，这也是本文选用 FastAPI 的原因之一。</p>
-
+<p>FastAPI 对构建 REST 风格的 API 提供了良好的支持。</p>
 <!-- ### 1. 技术选型
 
 API 是一种后端服务，很多后端编程语言都支持构建 API，并拥有各自的轮子。下面列举了一些后端语言构建 API 的包：
@@ -597,81 +591,47 @@ API 是一种后端服务，很多后端编程语言都支持构建 API，并拥
 **FastAPI** 呢？
 
 FastAPI 和以上两者的区别是：它就是被设计成用来开发 API 的。代码精简，服务快速且稳定，支持异步。并且无需学习任何额外的知识，你需要的只是专心构建 API。 -->
-
 <h3 id="2-安装-fastapi">2. 安装 FastAPI</h3>
-
-<p><a href="https://fastapi.tiangolo.com/">FastAPI</a> 是 Python 下用于构建 API 的一个包。它的代码量少适合敏捷开发、服务稳定、支持异步，是目前搭建 API 的不二之选。</p>
-
+<p><a href="https://fastapi.tiangolo.com/">FastAPI</a> 是 Python 下用于开发 API 的一个包。它有代码量少、服务稳定、支持异步等特点。</p>
 <p>Let&rsquo;s start!!!</p>
-
-<p>使用 FastAPI 需要先安装两个包。有关安装的详细信息，参见<a href="https://fastapi.tiangolo.com/#installation">这里</a>。</p>
-
+<p>安装 FastAPI 之前，需要先安装两个依赖包。有关这步的详细信息，参见<a href="https://fastapi.tiangolo.com/#installation">这里</a>。</p>
 <p>1.安装 <code>fastapi</code></p>
-
-<pre><code class="language-shell">pip install fastapi
-</code></pre>
-
-<p>2.安装 <code>uvicorn</code> (或 <code>hypercorn</code>)</p>
-
-<pre><code class="language-shell">pip install uvicorn
-</code></pre>
-
-<blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pip install fastapi
+</code></pre></div><p>2.安装 <code>uvicorn</code> (或 <code>hypercorn</code>)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pip install uvicorn
+</code></pre></div><blockquote>
 <p><strong>FAQ:</strong></p>
-
 <p>❓ 什么是 <code>uvicorn</code>？</p>
-
 <p>Uvicorn is a lightning-fast ASGI server implementation, using uvloop and httptools. [<a href="https://www.uvicorn.org/">reference</a>]</p>
-
 <p>❓ 什么是 <code>ASGI server</code>？</p>
-
 <p>ASGI (Asynchronous Server Gateway Interface) is a spiritual successor to WSGI, intended to provide a standard interface between async-capable Python web servers, frameworks, and applications.</p>
-
 <p>Where WSGI provided a standard for synchronous Python apps, ASGI provides one for both asynchronous and synchronous apps, with a WSGI backwards-compatibility implementation and multiple servers and application frameworks. [<a href="https://asgi.readthedocs.io/en/latest/">reference</a>]</p>
 </blockquote>
-
 <h3 id="3-测试安装是否成功">3. 测试安装是否成功</h3>
-
 <p>安装完后，我们来搭一个超级简单的 API，来验证安装是否成功。调用此 API，它将回调一条 JSON 信息: <code>{'key': 'value'}</code>。下面的代码实现了这个功能。</p>
-
 <p>首先，新建 <code>main.py</code> 文件，并在文件中写入如下内容。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># main.py</span>
+<span style="color:#f92672">from</span> fastapi <span style="color:#f92672">import</span> FastAPI
 
-<pre><code class="language-python"># main.py
-from fastapi import FastAPI
+app <span style="color:#f92672">=</span> FastAPI()
 
-app = FastAPI()
-
-@app.get('/')
-def index():
-    return {'key': 'value'}
-</code></pre>
-
-<p>然后，在命令行界面中，来到当前目录下，执行如下命令。</p>
-
-<pre><code class="language-shell">uvicorn main:app --reload
-</code></pre>
-
-<p>注：在此命令中，<code>main</code> 是脚本的名称（脚本名为 <code>main.py</code>），<code>--reload</code> 代表在每次脚本更新时重启 ASGI 服务。</p>
-
-<p>最后，在浏览器中打开 <code>http://127.0.0.1:8000</code>，如果网页显示 <code>{'key': 'value'}</code> 的话，就说明我们的 API 搭建成功啦！</p>
-
-<p><img src="/img/fastapi-1.png" alt="" /></p>
-
-<h3 id="4-用-fastapi-搭建一个日程-api">4. 用 FastAPI 搭建一个日程 API</h3>
-
+<span style="color:#a6e22e">@app</span><span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;/&#39;</span>)
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">index</span>():
+    <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#39;key&#39;</span>: <span style="color:#e6db74">&#39;value&#39;</span>}
+</code></pre></div><p>然后，打开命令行界面，在 <code>main.py</code> 的同级目录下，执行如下命令。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">uvicorn main:app --reload
+</code></pre></div><p>PS: 此命令中，<code>main</code> 是脚本的名称（脚本名为 <code>main.py</code>），<code>--reload</code> 代表在每次脚本更新时重启 ASGI 服务。</p>
+<p>最后，在浏览器中打开 <code>http://127.0.0.1:8000</code>，如果网页显示 <code>{'key': 'value'}</code>，就说明我们的 API 搭建成功啦！</p>
+<p><img src="/img/fastapi-1.png" alt=""></p>
+<h3 id="4-搭建一个日程-api">4. 搭建一个日程 API</h3>
 <p>为了能展开介绍 API 的组件和 FastAPI 的细节。接下来我打算写点有用的代码。</p>
+<p>我的计划是写一个 <strong>日程 API</strong>。想象一下，一台服务器的数据库中存储着你的日程信息，服务器同时开着一个 server，你在 server 上开启一个 api 服务，然后在本地 client 上，通过 api 对日程数据库进行增、删、改、查等操作。</p>
+<h4 id="41-消息格式的设计">4.1 消息格式的设计</h4>
+<p>在开始动工前，我们首先要把日程的数据格式设计好。字段名及其数据类型如下：</p>
+<!-- 这就像是在搭建管道前，你得决定管道里将来流的是自来水还是石油。API 就像管道，数据就像流淌在管子里的内容物。因此在决定造什么管子之前，我们得先搞清楚我们的运输对象。 
 
-<p>有用意味着它是围绕着某一项功能展开的。由于我的个人偏好，我决定写一个<strong>日程 API</strong>。它具有增、删、改、查等功能。</p>
-
-<h4 id="4-1-消息格式的设计">4.1 消息格式的设计</h4>
-
-<p>在开始动工前，我们首先要把消息格式设计好。</p>
-
-<p>这就像是在搭建管道前，你得决定管道里将来流的是自来水还是石油。API 就像管道，数据就像流淌在管子里的内容物。因此在决定造什么管子之前，我们得先搞清楚我们的运输对象。</p>
-
-<p>以下是我的设计方案，各字段的数据类型和含义如下：</p>
-
-<pre><code class="language-json">{
+以下是我的设计方案，各字段的数据类型和含义如下： -->
+<pre><code>{
     sid: str  # 日程 ID
     name: str  # 名称
     content: str  # 内容
@@ -682,388 +642,360 @@ def index():
     start_time: str  # 开始时间
     end_time: str  # 结束时间
 }
-</code></pre>
-
-<p>其中，<code>sid</code> 是 schedule id 的缩写。它作为主键，是一条日程信息的唯一标识。</p>
-
-<p><code>creation_time</code>, <code>start_time</code>, <code>end_time</code> 被设计为 <code>str</code> 而非 <code>datetime</code>，是为了方便存储。与之相对应，为了防止用户在上述三个字段中输入不合法的值，后续服务端在读取这些字段时将会加一道校验，将不符合日期和时间规范的消息过滤出去。</p>
-
-<h4 id="4-2-数据库">4.2 数据库</h4>
-
-<p>设计完消息格式以后，我们来建数据库 (database)。因为依赖关系是：客户端依赖服务端，而服务端依赖数据库。因此我们的编写顺序是：数据库 &ndash;&gt; 服务端 &ndash;&gt; 客户端。</p>
-
-<p>有很多数据库可供选择，这里我们采用 <code>SQLite</code>。因为它是 Python 自带的，无需安装，符合我们希望本文是“包含 FastAPI 的最小子集”的愿望。而且本文不打算搭建一个正经的 API，所以没必要采用正经的数据库，比如 MySQL.</p>
-
+</code></pre><p>我们把 <code>sid</code> 作为主键，sid 是 schedule id 的缩写。</p>
+<p><code>creation_time</code>, <code>start_time</code>, <code>end_time</code> 被设计为 <code>str</code> 而非 <code>datetime</code>，是为了方便存储。为防止用户在上述三个字段中输入不合法的值，服务端在读取这些字段时会加一道校验，将不符合日期和时间规范的消息过滤掉。</p>
+<h4 id="42-数据库">4.2 数据库</h4>
+<p>接下来，我们来建数据库 (database)。由于依赖顺序是：客户端 &ndash;&gt; 服务端 &ndash;&gt; 数据库。因此编写顺序是：数据库 –&gt; 服务端 –&gt; 客户端。</p>
+<p>这里数据库采用 <code>SQLite</code>。</p>
+<!-- 有很多数据库可供选择，这里我们采用 `SQLite`。因为它是 Python 自带的，无需安装，符合我们希望本文是“包含 FastAPI 的最小子集”的愿望。而且本文不打算搭建一个正经的 API，所以没必要采用正经的数据库，比如 MySQL. -->
 <blockquote>
-<p>关于在 <code>Python3</code> 中使用 <code>SQLite</code> 的介绍请看<a href="https://docs.python.org/3/library/sqlite3.html">这里</a>。</p>
+<p><strong>Note</strong>: <code>Python3</code> 下使用 <code>SQLite</code> 的介绍可以看 <a href="https://docs.python.org/3/library/sqlite3.html">这里</a>。</p>
 </blockquote>
-
-<p>以下提供了有关<a href="https://en.wikipedia.org/wiki/Database_transaction">数据库事务</a>的额外知识，它们是操作数据库的指导性原则。我相信事先了解它们将对搭建服务有所帮助。</p>
-
+<p>以下提供了有关<a href="https://en.wikipedia.org/wiki/Database_transaction">数据库事务</a>的额外知识，它们是操作数据库的指导性原则。事先了解它们对搭建服务有帮助。</p>
 <blockquote>
 <p><strong>Note</strong>: 数据库事务的 ACID 特性</p>
-
 <ul>
 <li>原子性 (atomicity)</li>
 <li>一致性 (consistency)</li>
 <li>隔离性 (isolation)</li>
 <li>持久性 (durability)</li>
 </ul>
-
 <p>了解更多：[<a href="https://baike.baidu.com/item/acid/10738">百度</a>] [<a href="https://en.wikipedia.org/wiki/ACID">维基</a>]</p>
 </blockquote>
+<p>本文一共有两个数据库相关的脚本。<code>build.py</code> 用于新建 <code>SQLite</code> 数据库，它只需在首次启动服务前执行一次。<code>database_handler.py</code> 是一个数据库操作类，集成了一些常用数据库操作。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -*- coding:utf-8 -*-</span>
+<span style="color:#75715e"># build.py</span>
 
-<p>本文一共有两个数据库相关的脚本。<code>build.py</code> 用于新建 <code>SQLite</code> 数据库，它只需在第一次启动服务前运行一次；<code>database_handler.py</code> 是一个数据库操作类，它为我们操作数据库提供帮助。</p>
-
-<pre><code class="language-python"># -*- coding:utf-8 -*-
-# build.py
-
-import configparser
-import json
-import database_handler
+<span style="color:#f92672">import</span> configparser
+<span style="color:#f92672">import</span> json
+<span style="color:#f92672">import</span> database_handler
 
 
-def build_bd():
-    &quot;&quot;&quot;创建数据库&quot;&quot;&quot;
-    config = configparser.ConfigParser()
-    config.read('db.conf')
-    info = config['DEFAULT']
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">build_bd</span>():
+    <span style="color:#e6db74">&#34;&#34;&#34;创建数据库&#34;&#34;&#34;</span>
+    config <span style="color:#f92672">=</span> configparser<span style="color:#f92672">.</span>ConfigParser()
+    config<span style="color:#f92672">.</span>read(<span style="color:#e6db74">&#39;db.conf&#39;</span>)
+    info <span style="color:#f92672">=</span> config[<span style="color:#e6db74">&#39;DEFAULT&#39;</span>]
 
-    dbh = database_handler.DatabaseHandler(db_name=info['db_name'])
+    dbh <span style="color:#f92672">=</span> database_handler<span style="color:#f92672">.</span>DatabaseHandler(db_name<span style="color:#f92672">=</span>info[<span style="color:#e6db74">&#39;db_name&#39;</span>])
     
-    dbh.create_table(
-        table_name=info['table_name'],
-        columns=json.loads(info['columns']))
+    dbh<span style="color:#f92672">.</span>create_table(
+        table_name<span style="color:#f92672">=</span>info[<span style="color:#e6db74">&#39;table_name&#39;</span>],
+        columns<span style="color:#f92672">=</span>json<span style="color:#f92672">.</span>loads(info[<span style="color:#e6db74">&#39;columns&#39;</span>]))
 
 
-if __name__ == '__main__':
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
     build_bd()
 
-</code></pre>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -*- coding:utf-8 -*-</span>
+<span style="color:#75715e"># database_handler.py</span>
 
-<pre><code class="language-python"># -*- coding:utf-8 -*-
-# database_handler.py
-
-import sqlite3
+<span style="color:#f92672">import</span> sqlite3
 
 
-class DatabaseHandler:
-    &quot;&quot;&quot;database handler&quot;&quot;&quot;
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DatabaseHandler</span>:
+    <span style="color:#e6db74">&#34;&#34;&#34;database handler&#34;&#34;&#34;</span>
 
-    def __init__(self, db_name: str, check_same_thread: bool = True):
-        &quot;&quot;&quot;init&quot;&quot;&quot;
-        self.db_name = db_name
-        self.conn = sqlite3.connect(
-            '{}.db'.format(db_name), check_same_thread=check_same_thread)
-        self.c = self.conn.cursor()
+    <span style="color:#66d9ef">def</span> __init__(self, db_name: str, check_same_thread: bool <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>):
+        <span style="color:#e6db74">&#34;&#34;&#34;init&#34;&#34;&#34;</span>
+        self<span style="color:#f92672">.</span>db_name <span style="color:#f92672">=</span> db_name
+        self<span style="color:#f92672">.</span>conn <span style="color:#f92672">=</span> sqlite3<span style="color:#f92672">.</span>connect(
+            <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">.db&#39;</span><span style="color:#f92672">.</span>format(db_name), check_same_thread<span style="color:#f92672">=</span>check_same_thread)
+        self<span style="color:#f92672">.</span>c <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>conn<span style="color:#f92672">.</span>cursor()
 
-    def execute(self, cmd: str):
-        &quot;&quot;&quot;Execute command&quot;&quot;&quot;
-        self.c.execute(cmd)
-        self.conn.commit()
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">execute</span>(self, cmd: str):
+        <span style="color:#e6db74">&#34;&#34;&#34;Execute command&#34;&#34;&#34;</span>
+        self<span style="color:#f92672">.</span>c<span style="color:#f92672">.</span>execute(cmd)
+        self<span style="color:#f92672">.</span>conn<span style="color:#f92672">.</span>commit()
 
-    def create_table(self, table_name: str, columns: dict):
-        &quot;&quot;&quot;Create table&quot;&quot;&quot;
-        lst = [str(k) + ' ' + str(v) for k, v in columns.items()]
-        columns_str = ','.join(lst)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">create_table</span>(self, table_name: str, columns: dict):
+        <span style="color:#e6db74">&#34;&#34;&#34;Create table&#34;&#34;&#34;</span>
+        lst <span style="color:#f92672">=</span> [str(k) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; &#39;</span> <span style="color:#f92672">+</span> str(v) <span style="color:#66d9ef">for</span> k, v <span style="color:#f92672">in</span> columns<span style="color:#f92672">.</span>items()]
+        columns_str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;,&#39;</span><span style="color:#f92672">.</span>join(lst)
 
-        cmd = 'CREATE TABLE {table_name}({columns_str})'
+        cmd <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CREATE TABLE </span><span style="color:#e6db74">{table_name}</span><span style="color:#e6db74">(</span><span style="color:#e6db74">{columns_str}</span><span style="color:#e6db74">)&#39;</span>
 
-        self.execute(cmd.format(
-            table_name=table_name,
-            columns_str=columns_str))
+        self<span style="color:#f92672">.</span>execute(cmd<span style="color:#f92672">.</span>format(
+            table_name<span style="color:#f92672">=</span>table_name,
+            columns_str<span style="color:#f92672">=</span>columns_str))
 
-    def insert_data(self, table_name: str, columns: dict, data: dict):
-        &quot;&quot;&quot;Insert a row of data&quot;&quot;&quot;
-        lst = [&quot;'&quot; + str(v) + &quot;'&quot; if columns[k] == 'TEXT' else str(v)
-               for k, v in data.items()]
-        data_str = ','.join(lst)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">insert_data</span>(self, table_name: str, columns: dict, data: dict):
+        <span style="color:#e6db74">&#34;&#34;&#34;Insert a row of data&#34;&#34;&#34;</span>
+        lst <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;&#39;&#34;</span> <span style="color:#f92672">+</span> str(v) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&#39;&#34;</span> <span style="color:#66d9ef">if</span> columns[k] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;TEXT&#39;</span> <span style="color:#66d9ef">else</span> str(v)
+               <span style="color:#66d9ef">for</span> k, v <span style="color:#f92672">in</span> data<span style="color:#f92672">.</span>items()]
+        data_str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;,&#39;</span><span style="color:#f92672">.</span>join(lst)
 
-        cmd = 'INSERT INTO {table_name} VALUES ({data_str})'
+        cmd <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;INSERT INTO </span><span style="color:#e6db74">{table_name}</span><span style="color:#e6db74"> VALUES (</span><span style="color:#e6db74">{data_str}</span><span style="color:#e6db74">)&#39;</span>
 
-        self.execute(cmd.format(
-            table_name=table_name,
-            data_str=data_str))
+        self<span style="color:#f92672">.</span>execute(cmd<span style="color:#f92672">.</span>format(
+            table_name<span style="color:#f92672">=</span>table_name,
+            data_str<span style="color:#f92672">=</span>data_str))
 
-    def update_data(self, table_name: str, columns: dict, data: dict, condition: dict):
-        &quot;&quot;&quot;Update data&quot;&quot;&quot;
-        lst1 = [str(k) + '=' + &quot;'&quot; + str(v) + &quot;'&quot; if columns[k] == 'TEXT'
-                else str(k) + '=' + str(v)
-                for k, v in data.items()]
-        value_str = ','.join(lst1)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">update_data</span>(self, table_name: str, columns: dict, data: dict, condition: dict):
+        <span style="color:#e6db74">&#34;&#34;&#34;Update data&#34;&#34;&#34;</span>
+        lst1 <span style="color:#f92672">=</span> [str(k) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;=&#39;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&#39;&#34;</span> <span style="color:#f92672">+</span> str(v) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&#39;&#34;</span> <span style="color:#66d9ef">if</span> columns[k] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;TEXT&#39;</span>
+                <span style="color:#66d9ef">else</span> str(k) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;=&#39;</span> <span style="color:#f92672">+</span> str(v)
+                <span style="color:#66d9ef">for</span> k, v <span style="color:#f92672">in</span> data<span style="color:#f92672">.</span>items()]
+        value_str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;,&#39;</span><span style="color:#f92672">.</span>join(lst1)
 
-        lst2 = [str(k) + '=' + &quot;'&quot; + str(v) + &quot;'&quot; if columns[k] == 'TEXT'
-                else str(k) + '=' + str(v)
-                for k, v in condition.items()]
-        condition_str = ' AND '.join(lst2)
+        lst2 <span style="color:#f92672">=</span> [str(k) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;=&#39;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&#39;&#34;</span> <span style="color:#f92672">+</span> str(v) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&#39;&#34;</span> <span style="color:#66d9ef">if</span> columns[k] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;TEXT&#39;</span>
+                <span style="color:#66d9ef">else</span> str(k) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;=&#39;</span> <span style="color:#f92672">+</span> str(v)
+                <span style="color:#66d9ef">for</span> k, v <span style="color:#f92672">in</span> condition<span style="color:#f92672">.</span>items()]
+        condition_str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39; AND &#39;</span><span style="color:#f92672">.</span>join(lst2)
 
-        cmd = 'UPDATE {table_name} SET {value_str} WHERE {condition_str}'
+        cmd <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;UPDATE </span><span style="color:#e6db74">{table_name}</span><span style="color:#e6db74"> SET </span><span style="color:#e6db74">{value_str}</span><span style="color:#e6db74"> WHERE </span><span style="color:#e6db74">{condition_str}</span><span style="color:#e6db74">&#39;</span>
 
-        self.execute(cmd.format(
-            table_name=table_name,
-            value_str=value_str,
-            condition_str=condition_str))
+        self<span style="color:#f92672">.</span>execute(cmd<span style="color:#f92672">.</span>format(
+            table_name<span style="color:#f92672">=</span>table_name,
+            value_str<span style="color:#f92672">=</span>value_str,
+            condition_str<span style="color:#f92672">=</span>condition_str))
 
-    def delete_data(self, table_name: str, columns: dict, condition: dict):
-        &quot;&quot;&quot;Delete data&quot;&quot;&quot;
-        lst = [str(k) + '=' + &quot;'&quot; + str(v) + &quot;'&quot; if columns[k] == 'TEXT'
-               else str(k) + '=' + str(v)
-               for k, v in condition.items()]
-        condition_str = ' AND '.join(lst)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">delete_data</span>(self, table_name: str, columns: dict, condition: dict):
+        <span style="color:#e6db74">&#34;&#34;&#34;Delete data&#34;&#34;&#34;</span>
+        lst <span style="color:#f92672">=</span> [str(k) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;=&#39;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&#39;&#34;</span> <span style="color:#f92672">+</span> str(v) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&#39;&#34;</span> <span style="color:#66d9ef">if</span> columns[k] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;TEXT&#39;</span>
+               <span style="color:#66d9ef">else</span> str(k) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;=&#39;</span> <span style="color:#f92672">+</span> str(v)
+               <span style="color:#66d9ef">for</span> k, v <span style="color:#f92672">in</span> condition<span style="color:#f92672">.</span>items()]
+        condition_str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39; AND &#39;</span><span style="color:#f92672">.</span>join(lst)
 
-        cmd = 'DELETE FROM {table_name} WHERE {condition_str}'
+        cmd <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;DELETE FROM </span><span style="color:#e6db74">{table_name}</span><span style="color:#e6db74"> WHERE </span><span style="color:#e6db74">{condition_str}</span><span style="color:#e6db74">&#39;</span>
 
-        self.execute(cmd.format(
-            table_name=table_name,
-            condition_str=condition_str))
+        self<span style="color:#f92672">.</span>execute(cmd<span style="color:#f92672">.</span>format(
+            table_name<span style="color:#f92672">=</span>table_name,
+            condition_str<span style="color:#f92672">=</span>condition_str))
 
-    def fetch_data(self, table_name: str, columns: dict, condition: dict):
-        &quot;&quot;&quot;Fetch data&quot;&quot;&quot;
-        lst = [str(k) + '=' + &quot;'&quot; + str(v) + &quot;'&quot; if columns[k] == 'TEXT'
-               else str(k) + '=' + str(v)
-               for k, v in condition.items()]
-        condition_str = ' AND '.join(lst)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fetch_data</span>(self, table_name: str, columns: dict, condition: dict):
+        <span style="color:#e6db74">&#34;&#34;&#34;Fetch data&#34;&#34;&#34;</span>
+        lst <span style="color:#f92672">=</span> [str(k) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;=&#39;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&#39;&#34;</span> <span style="color:#f92672">+</span> str(v) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&#39;&#34;</span> <span style="color:#66d9ef">if</span> columns[k] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;TEXT&#39;</span>
+               <span style="color:#66d9ef">else</span> str(k) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;=&#39;</span> <span style="color:#f92672">+</span> str(v)
+               <span style="color:#66d9ef">for</span> k, v <span style="color:#f92672">in</span> condition<span style="color:#f92672">.</span>items()]
+        condition_str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39; AND &#39;</span><span style="color:#f92672">.</span>join(lst)
 
-        cmd = 'SELECT * FROM {table_name} WHERE {condition_str}'
+        cmd <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;SELECT * FROM </span><span style="color:#e6db74">{table_name}</span><span style="color:#e6db74"> WHERE </span><span style="color:#e6db74">{condition_str}</span><span style="color:#e6db74">&#39;</span>
 
-        self.execute(cmd.format(
-            table_name=table_name,
-            condition_str=condition_str))
+        self<span style="color:#f92672">.</span>execute(cmd<span style="color:#f92672">.</span>format(
+            table_name<span style="color:#f92672">=</span>table_name,
+            condition_str<span style="color:#f92672">=</span>condition_str))
 
-        return self.c.fetchall()
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>c<span style="color:#f92672">.</span>fetchall()
 
-    def fetch_all(self, table_name: str):
-        &quot;&quot;&quot;Fetch data&quot;&quot;&quot;
-        cmd = 'SELECT * FROM {table_name}'
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fetch_all</span>(self, table_name: str):
+        <span style="color:#e6db74">&#34;&#34;&#34;Fetch data&#34;&#34;&#34;</span>
+        cmd <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;SELECT * FROM </span><span style="color:#e6db74">{table_name}</span><span style="color:#e6db74">&#39;</span>
 
-        self.execute(cmd.format(
-            table_name=table_name))
+        self<span style="color:#f92672">.</span>execute(cmd<span style="color:#f92672">.</span>format(
+            table_name<span style="color:#f92672">=</span>table_name))
 
-        return self.c.fetchall()
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>c<span style="color:#f92672">.</span>fetchall()
 
-    def check_existence(self, table_name: str, columns: dict, condition: dict):
-        &quot;&quot;&quot;check the existence of item&quot;&quot;&quot;
-        try:
-            res = self.fetch_data(table_name, columns, condition)
-            if len(res) == 0:
-                return False
-        except Exception:
-            return False
-        return True
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">check_existence</span>(self, table_name: str, columns: dict, condition: dict):
+        <span style="color:#e6db74">&#34;&#34;&#34;check the existence of item&#34;&#34;&#34;</span>
+        <span style="color:#66d9ef">try</span>:
+            res <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>fetch_data(table_name, columns, condition)
+            <span style="color:#66d9ef">if</span> len(res) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
+        <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span>:
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">True</span>
 
 
-if __name__ == '__main__':
-    dbh = DatabaseHandler(db_name=&quot;CalendarDB&quot;)
-    print(dbh.check_existence(
-        'calendar',
-        {&quot;sid&quot;: &quot;TEXT&quot;, &quot;name&quot;: &quot;TEXT&quot;, &quot;content&quot;: &quot;TEXT&quot;, &quot;category&quot;: &quot;TEXT&quot;, &quot;level&quot;: &quot;INTEGER&quot;, &quot;status&quot;: &quot;REAL&quot;, &quot;creation_time&quot;: &quot;TEXT&quot;, &quot;start_time&quot;: &quot;TEXT&quot;, &quot;end_time&quot;: &quot;TEXT&quot;},
-        {&quot;sid&quot;: &quot;22&quot;}
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    dbh <span style="color:#f92672">=</span> DatabaseHandler(db_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;CalendarDB&#34;</span>)
+    print(dbh<span style="color:#f92672">.</span>check_existence(
+        <span style="color:#e6db74">&#39;calendar&#39;</span>,
+        {<span style="color:#e6db74">&#34;sid&#34;</span>: <span style="color:#e6db74">&#34;TEXT&#34;</span>, <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;TEXT&#34;</span>, <span style="color:#e6db74">&#34;content&#34;</span>: <span style="color:#e6db74">&#34;TEXT&#34;</span>, <span style="color:#e6db74">&#34;category&#34;</span>: <span style="color:#e6db74">&#34;TEXT&#34;</span>, <span style="color:#e6db74">&#34;level&#34;</span>: <span style="color:#e6db74">&#34;INTEGER&#34;</span>, <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;REAL&#34;</span>, <span style="color:#e6db74">&#34;creation_time&#34;</span>: <span style="color:#e6db74">&#34;TEXT&#34;</span>, <span style="color:#e6db74">&#34;start_time&#34;</span>: <span style="color:#e6db74">&#34;TEXT&#34;</span>, <span style="color:#e6db74">&#34;end_time&#34;</span>: <span style="color:#e6db74">&#34;TEXT&#34;</span>},
+        {<span style="color:#e6db74">&#34;sid&#34;</span>: <span style="color:#e6db74">&#34;22&#34;</span>}
     ))
 
-</code></pre>
-
-<h4 id="4-3-服务端">4.3 服务端</h4>
-
+</code></pre></div><h4 id="43-服务端">4.3 服务端</h4>
 <p>服务端 (server) 程序负责两项功能：</p>
-
 <ol>
 <li>提供 API 接口</li>
 <li>处理用户请求</li>
 </ol>
+<p>为了实现 1，服务端需要定义 post, delete, put, get 四种方法的响应方式。在 FastAPI 中，四种方法分别由四个函数定义。这四个函数的函数名可以随便取，但必须用装饰器标记该函数是用于何种方法的响应。下文的 <code>server.py</code> 中定义了 post, delete, put, get 的响应方式。</p>
+<p>在本文实现的日程 API 中，post, delete, put, get 四种方法又操纵了数据库的增、删、改、查操作，这些数据库操作细节在 <code>method.py</code> 中定义。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -*- coding:utf-8 -*-</span>
+<span style="color:#75715e"># method.py</span>
 
-<p>为了实现 1，服务端需要定义 post, delete, put, get 四种方法的响应方式。在 FastAPI 中，四种方法分别由四个函数定义。这四个函数的函数名可以随便取，但必须用装饰器标记该函数用于何种方法的响应。下文的 <code>server.py</code> 中定义了 post, delete, put, get 的响应方式。</p>
-
-<p>在本文实现的日程 API 中，post, delete, put, get 四种方法又分别对应于数据库的增、删、改、查操作，这些数据库操作的操作细节在 <code>method.py</code> 中定义。</p>
-
-<pre><code class="language-python"># -*- coding:utf-8 -*-
-# method.py
-
-import configparser
-import json
-import datetime
+<span style="color:#f92672">import</span> configparser
+<span style="color:#f92672">import</span> json
+<span style="color:#f92672">import</span> datetime
 
 
-class Method:
-    &quot;&quot;&quot;API 操作方法&quot;&quot;&quot;
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Method</span>:
+    <span style="color:#e6db74">&#34;&#34;&#34;API 操作方法&#34;&#34;&#34;</span>
 
-    def __init__(self, conf_file):
-        &quot;&quot;&quot;init&quot;&quot;&quot;
-        self.config = configparser.ConfigParser()
-        self.config.read(conf_file)  # 'db.conf'
+    <span style="color:#66d9ef">def</span> __init__(self, conf_file):
+        <span style="color:#e6db74">&#34;&#34;&#34;init&#34;&#34;&#34;</span>
+        self<span style="color:#f92672">.</span>config <span style="color:#f92672">=</span> configparser<span style="color:#f92672">.</span>ConfigParser()
+        self<span style="color:#f92672">.</span>config<span style="color:#f92672">.</span>read(conf_file)  <span style="color:#75715e"># &#39;db.conf&#39;</span>
 
-        self.info = self.config['DEFAULT']
-        self.columns = json.loads(self.info['columns'])
+        self<span style="color:#f92672">.</span>info <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>config[<span style="color:#e6db74">&#39;DEFAULT&#39;</span>]
+        self<span style="color:#f92672">.</span>columns <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>loads(self<span style="color:#f92672">.</span>info[<span style="color:#e6db74">&#39;columns&#39;</span>])
 
-    def check_params(self, jsn):
-        &quot;&quot;&quot;检查参数值&quot;&quot;&quot;
-        if jsn['level'] not in [0, 1, 2, 3]:
-            return False
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">check_params</span>(self, jsn):
+        <span style="color:#e6db74">&#34;&#34;&#34;检查参数值&#34;&#34;&#34;</span>
+        <span style="color:#66d9ef">if</span> jsn[<span style="color:#e6db74">&#39;level&#39;</span>] <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]:
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
 
-        if jsn['status'] &lt; 0 or jsn['status'] &gt; 1:
-            return False
+        <span style="color:#66d9ef">if</span> jsn[<span style="color:#e6db74">&#39;status&#39;</span>] <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">or</span> jsn[<span style="color:#e6db74">&#39;status&#39;</span>] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>:
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
 
-        try:
-            lst = [
-                jsn['creation_time'],
-                jsn['start_time'],
-                jsn['end_time']
+        <span style="color:#66d9ef">try</span>:
+            lst <span style="color:#f92672">=</span> [
+                jsn[<span style="color:#e6db74">&#39;creation_time&#39;</span>],
+                jsn[<span style="color:#e6db74">&#39;start_time&#39;</span>],
+                jsn[<span style="color:#e6db74">&#39;end_time&#39;</span>]
             ]
 
-            for t in lst:
-                # 尝试解析时间
-                _ = datetime.datetime.strptime(t, '%Y-%m-%d %H:%M:%S')
+            <span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> lst:
+                <span style="color:#75715e"># 尝试解析时间</span>
+                _ <span style="color:#f92672">=</span> datetime<span style="color:#f92672">.</span>datetime<span style="color:#f92672">.</span>strptime(t, <span style="color:#e6db74">&#39;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74"> %H:%M:%S&#39;</span>)
 
-        except Exception:
-            return False
+        <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span>:
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
 
-        return True
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">True</span>
 
-    def get(self, dbh, schedule_id):
-        return dbh.fetch_data(
-            table_name=self.info['table_name'],
-            columns=self.columns,
-            condition={'sid': schedule_id})
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get</span>(self, dbh, schedule_id):
+        <span style="color:#66d9ef">return</span> dbh<span style="color:#f92672">.</span>fetch_data(
+            table_name<span style="color:#f92672">=</span>self<span style="color:#f92672">.</span>info[<span style="color:#e6db74">&#39;table_name&#39;</span>],
+            columns<span style="color:#f92672">=</span>self<span style="color:#f92672">.</span>columns,
+            condition<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;sid&#39;</span>: schedule_id})
 
-    def post(self, dbh, schedule):
-        # 检查item是否存在
-        schedule_id = schedule.dict()['sid']
-        if dbh.check_existence(self.info['table_name'], self.columns, {'sid': schedule_id}):
-            # 如果存在
-            return False
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">post</span>(self, dbh, schedule):
+        <span style="color:#75715e"># 检查item是否存在</span>
+        schedule_id <span style="color:#f92672">=</span> schedule<span style="color:#f92672">.</span>dict()[<span style="color:#e6db74">&#39;sid&#39;</span>]
+        <span style="color:#66d9ef">if</span> dbh<span style="color:#f92672">.</span>check_existence(self<span style="color:#f92672">.</span>info[<span style="color:#e6db74">&#39;table_name&#39;</span>], self<span style="color:#f92672">.</span>columns, {<span style="color:#e6db74">&#39;sid&#39;</span>: schedule_id}):
+            <span style="color:#75715e"># 如果存在</span>
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
 
-        # 检查参数值是否符合规范
-        if not self.check_params(schedule.dict()):
-            return False
+        <span style="color:#75715e"># 检查参数值是否符合规范</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> self<span style="color:#f92672">.</span>check_params(schedule<span style="color:#f92672">.</span>dict()):
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
 
-        dbh.insert_data(
-            table_name=self.info['table_name'],
-            columns=self.columns,
-            data=schedule.dict())
+        dbh<span style="color:#f92672">.</span>insert_data(
+            table_name<span style="color:#f92672">=</span>self<span style="color:#f92672">.</span>info[<span style="color:#e6db74">&#39;table_name&#39;</span>],
+            columns<span style="color:#f92672">=</span>self<span style="color:#f92672">.</span>columns,
+            data<span style="color:#f92672">=</span>schedule<span style="color:#f92672">.</span>dict())
 
-        return True
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">True</span>
 
-    def update(self, dbh, schedule_id, schedule):
-        # 检查item是否存在
-        if not dbh.check_existence(self.info['table_name'], self.columns, {'sid': schedule_id}):
-            # 如果不存在
-            return False
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">update</span>(self, dbh, schedule_id, schedule):
+        <span style="color:#75715e"># 检查item是否存在</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> dbh<span style="color:#f92672">.</span>check_existence(self<span style="color:#f92672">.</span>info[<span style="color:#e6db74">&#39;table_name&#39;</span>], self<span style="color:#f92672">.</span>columns, {<span style="color:#e6db74">&#39;sid&#39;</span>: schedule_id}):
+            <span style="color:#75715e"># 如果不存在</span>
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
 
-        # 检查参数值是否符合规范
-        if not self.check_params(schedule.dict()):
-            return False
+        <span style="color:#75715e"># 检查参数值是否符合规范</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> self<span style="color:#f92672">.</span>check_params(schedule<span style="color:#f92672">.</span>dict()):
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
 
-        dbh.update_data(
-            table_name=self.info['table_name'],
-            columns=self.columns,
-            data=schedule.dict(),
-            condition={'sid': schedule_id})
+        dbh<span style="color:#f92672">.</span>update_data(
+            table_name<span style="color:#f92672">=</span>self<span style="color:#f92672">.</span>info[<span style="color:#e6db74">&#39;table_name&#39;</span>],
+            columns<span style="color:#f92672">=</span>self<span style="color:#f92672">.</span>columns,
+            data<span style="color:#f92672">=</span>schedule<span style="color:#f92672">.</span>dict(),
+            condition<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;sid&#39;</span>: schedule_id})
 
-        return True
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">True</span>
 
-    def delete(self, dbh, schedule_id):
-        # 检查item是否存在
-        if not dbh.check_existence(self.info['table_name'], self.columns, {'sid': schedule_id}):
-            # 如果不存在
-            return False
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">delete</span>(self, dbh, schedule_id):
+        <span style="color:#75715e"># 检查item是否存在</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> dbh<span style="color:#f92672">.</span>check_existence(self<span style="color:#f92672">.</span>info[<span style="color:#e6db74">&#39;table_name&#39;</span>], self<span style="color:#f92672">.</span>columns, {<span style="color:#e6db74">&#39;sid&#39;</span>: schedule_id}):
+            <span style="color:#75715e"># 如果不存在</span>
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
 
-        dbh.delete_data(
-            table_name=self.info['table_name'],
-            columns=self.columns,
-            condition={'sid': schedule_id})
+        dbh<span style="color:#f92672">.</span>delete_data(
+            table_name<span style="color:#f92672">=</span>self<span style="color:#f92672">.</span>info[<span style="color:#e6db74">&#39;table_name&#39;</span>],
+            columns<span style="color:#f92672">=</span>self<span style="color:#f92672">.</span>columns,
+            condition<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;sid&#39;</span>: schedule_id})
 
-        return True
-
-
-if __name__ == '__main__':
-    pass
-
-</code></pre>
-
-<pre><code class="language-python"># -*- coding:utf-8 -*-
-# server.py
-
-from fastapi import FastAPI
-from pydantic import BaseModel
-import configparser
-import json
-
-import database_handler
-import method
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">True</span>
 
 
-app = FastAPI()
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    <span style="color:#66d9ef">pass</span>
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -*- coding:utf-8 -*-</span>
+<span style="color:#75715e"># server.py</span>
+
+<span style="color:#f92672">from</span> fastapi <span style="color:#f92672">import</span> FastAPI
+<span style="color:#f92672">from</span> pydantic <span style="color:#f92672">import</span> BaseModel
+<span style="color:#f92672">import</span> configparser
+<span style="color:#f92672">import</span> json
+
+<span style="color:#f92672">import</span> database_handler
+<span style="color:#f92672">import</span> method
 
 
-config = configparser.ConfigParser()
-config.read('db.conf')
-info = config['DEFAULT']
-
-dbh = database_handler.DatabaseHandler(
-    db_name=info['db_name'],
-    check_same_thread=False)
-m = method.Method(conf_file='db.conf')
+app <span style="color:#f92672">=</span> FastAPI()
 
 
-class Schedule(BaseModel):
-    sid: str  # ID
-    name: str  # 名称
-    content: str  # 内容
-    category: str  # 分类
-    level: int  # 重要程度, 0: 未定义  1: 低  2: 中  3: 高
-    status: float  # 当前进度, 0 &lt;= status &lt;= 1
-    creation_time: str  # 创建时间
-    start_time: str  # 开始时间
-    end_time: str  # 结束时间
+config <span style="color:#f92672">=</span> configparser<span style="color:#f92672">.</span>ConfigParser()
+config<span style="color:#f92672">.</span>read(<span style="color:#e6db74">&#39;db.conf&#39;</span>)
+info <span style="color:#f92672">=</span> config[<span style="color:#e6db74">&#39;DEFAULT&#39;</span>]
+
+dbh <span style="color:#f92672">=</span> database_handler<span style="color:#f92672">.</span>DatabaseHandler(
+    db_name<span style="color:#f92672">=</span>info[<span style="color:#e6db74">&#39;db_name&#39;</span>],
+    check_same_thread<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+m <span style="color:#f92672">=</span> method<span style="color:#f92672">.</span>Method(conf_file<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;db.conf&#39;</span>)
 
 
-@app.get('/')
-def index():
-    return {'app_name': 'calendar'}
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Schedule</span>(BaseModel):
+    sid: str  <span style="color:#75715e"># ID</span>
+    name: str  <span style="color:#75715e"># 名称</span>
+    content: str  <span style="color:#75715e"># 内容</span>
+    category: str  <span style="color:#75715e"># 分类</span>
+    level: int  <span style="color:#75715e"># 重要程度, 0: 未定义  1: 低  2: 中  3: 高</span>
+    status: float  <span style="color:#75715e"># 当前进度, 0 &lt;= status &lt;= 1</span>
+    creation_time: str  <span style="color:#75715e"># 创建时间</span>
+    start_time: str  <span style="color:#75715e"># 开始时间</span>
+    end_time: str  <span style="color:#75715e"># 结束时间</span>
 
 
-@app.get('/schedules')
-def get_schedules():
-    return dbh.fetch_all(
-        table_name=info['table_name'])
+<span style="color:#a6e22e">@app</span><span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;/&#39;</span>)
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">index</span>():
+    <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#39;app_name&#39;</span>: <span style="color:#e6db74">&#39;calendar&#39;</span>}
 
 
-@app.get('/schedules/{schedule_id}')
-def get_schedule(schedule_id: str):
-    return m.get(dbh, schedule_id)
+<span style="color:#a6e22e">@app</span><span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;/schedules&#39;</span>)
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_schedules</span>():
+    <span style="color:#66d9ef">return</span> dbh<span style="color:#f92672">.</span>fetch_all(
+        table_name<span style="color:#f92672">=</span>info[<span style="color:#e6db74">&#39;table_name&#39;</span>])
 
 
-@app.post('/schedules')
-def create_schedule(schedule: Schedule):
-    if m.post(dbh, schedule):
-        return schedule
-    else:
-        return {&quot;errno&quot;: &quot;1&quot;}
+<span style="color:#a6e22e">@app</span><span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;/schedules/</span><span style="color:#e6db74">{schedule_id}</span><span style="color:#e6db74">&#39;</span>)
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_schedule</span>(schedule_id: str):
+    <span style="color:#66d9ef">return</span> m<span style="color:#f92672">.</span>get(dbh, schedule_id)
 
 
-@app.put('/schedules/{schedule_id}')
-def update_schedule(schedule_id: str, schedule: Schedule):
-    if m.update(dbh, schedule_id, schedule):
-        return schedule
-    else:
-        return {&quot;errno&quot;: &quot;2&quot;}
+<span style="color:#a6e22e">@app</span><span style="color:#f92672">.</span>post(<span style="color:#e6db74">&#39;/schedules&#39;</span>)
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">create_schedule</span>(schedule: Schedule):
+    <span style="color:#66d9ef">if</span> m<span style="color:#f92672">.</span>post(dbh, schedule):
+        <span style="color:#66d9ef">return</span> schedule
+    <span style="color:#66d9ef">else</span>:
+        <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#34;errno&#34;</span>: <span style="color:#e6db74">&#34;1&#34;</span>}
 
 
-@app.delete('/schedules/{schedule_id}')
-def delete_schedule(schedule_id: str):
-    if m.delete(dbh, schedule_id):
-        return {&quot;msg&quot;: &quot;success&quot;}
-    else:
-        return {&quot;errno&quot;: &quot;3&quot;}
+<span style="color:#a6e22e">@app</span><span style="color:#f92672">.</span>put(<span style="color:#e6db74">&#39;/schedules/</span><span style="color:#e6db74">{schedule_id}</span><span style="color:#e6db74">&#39;</span>)
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">update_schedule</span>(schedule_id: str, schedule: Schedule):
+    <span style="color:#66d9ef">if</span> m<span style="color:#f92672">.</span>update(dbh, schedule_id, schedule):
+        <span style="color:#66d9ef">return</span> schedule
+    <span style="color:#66d9ef">else</span>:
+        <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#34;errno&#34;</span>: <span style="color:#e6db74">&#34;2&#34;</span>}
 
-</code></pre>
 
-<h4 id="4-4-客户端">4.4 客户端</h4>
+<span style="color:#a6e22e">@app</span><span style="color:#f92672">.</span>delete(<span style="color:#e6db74">&#39;/schedules/</span><span style="color:#e6db74">{schedule_id}</span><span style="color:#e6db74">&#39;</span>)
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">delete_schedule</span>(schedule_id: str):
+    <span style="color:#66d9ef">if</span> m<span style="color:#f92672">.</span>delete(dbh, schedule_id):
+        <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#34;msg&#34;</span>: <span style="color:#e6db74">&#34;success&#34;</span>}
+    <span style="color:#66d9ef">else</span>:
+        <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#34;errno&#34;</span>: <span style="color:#e6db74">&#34;3&#34;</span>}
 
+</code></pre></div><h4 id="44-客户端">4.4 客户端</h4>
 <p>客户端负责发送 HTTP 请求。HTTP 请求包含多种 HTTP 方法，其中 get, post, put, delete 四种方法最为常用。</p>
-
 <blockquote>
 <p><strong>Note</strong>: HTTP methods</p>
-
 <ul>
 <li>GET: Use GET requests to retrieve resource representation/information only – and not to modify it in any way.</li>
 <li>POST: Use POST APIs to create new subordinate resources.</li>
@@ -1071,93 +1003,83 @@ def delete_schedule(schedule_id: str):
 <li>DELETE: As the name applies, DELETE APIs are used to delete resources.</li>
 <li>PATCH: HTTP PATCH requests are to make partial update on a resource.</li>
 </ul>
-
 <p>[<a href="https://restfulapi.net/http-methods/">了解更多</a>]</p>
 </blockquote>
-
 <p>客户端的职责就是用正确的 HTTP 方法，向服务端发送格式正确的请求信息。然后待服务端处理完成后，解析回调信息，以确认请求是否被成功执行。</p>
-
 <p>使用 HTTP 协议与服务端通信需要用到 requests.</p>
-
 <blockquote>
 <p>关于在 Python3 中使用 requests 的介绍请看<a href="https://requests.readthedocs.io/en/master/">这里</a>。</p>
 </blockquote>
-
-<p>用于构建客户端的脚本仅有一个：<code>client.py</code>。调试 <code>client.py</code> 时，请务必确保操作顺序符合逻辑。如果你要删除一条数据，那么必须先添加它；如果你要更新/删除一条数据，那么它必须已经存在于数据库中。另外，请求 JSON 的格式同时在 <code>db.conf</code> 文件和 <code>Schedule</code> 类中定义。如果你需要修改消息格式，请修改这两处地方。</p>
-
-<p>PS: 如果在调试 <code>client.py</code> 时遭遇障碍，可以先在 FastAPI
+<p>用于构建客户端的脚本仅有一个：<code>client.py</code>。调试 <code>client.py</code> 时，请务必确保操作顺序符合逻辑。比如，如果要删除一条数据，那么必须先添加它；如果要更新/删除一条数据，那么它必须已经存在于数据库中。另外，请求 JSON 的格式同时在 <code>db.conf</code> 文件和 <code>Schedule</code> 类中定义。如果你需要修改消息格式，请同时修改这两处地方。</p>
+<p>PS: 如果调试 <code>client.py</code> 时遭遇障碍，可先在 FastAPI
 提供的单页应用 <code>http://127.0.0.1:8000/docs</code> 上进行调试。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -*- coding:utf-8 -*-</span>
+<span style="color:#75715e"># client.py</span>
 
-<pre><code class="language-python"># -*- coding:utf-8 -*-
-# client.py
+<span style="color:#e6db74">&#34;&#34;&#34;客户端
+</span><span style="color:#e6db74">    Author: github@luochang212
+</span><span style="color:#e6db74">    Date: 2020-11-15
+</span><span style="color:#e6db74">    Usage: python client.py
+</span><span style="color:#e6db74">&#34;&#34;&#34;</span>
 
-&quot;&quot;&quot;客户端
-    Author: github@luochang212
-    Date: 2020-11-15
-    Usage: python client.py
-&quot;&quot;&quot;
-
-import requests
-import json
-
-
-class Interface:
-    &quot;&quot;&quot;client interface&quot;&quot;&quot;
-
-    def __init__(self, url, app_name):
-        self.url = url
-        self.app_url = url + '/' + app_name
-
-    def get(self, url, sid):
-        &quot;&quot;&quot;get schedule&quot;&quot;&quot;
-        url = url + '/' + sid
-        return requests.get(url)
-
-    def get_all(self, url, payload=None):
-        &quot;&quot;&quot;get schedules&quot;&quot;&quot;
-        return requests.get(url, params=payload)
-
-    def post(self, url, data):
-        &quot;&quot;&quot;post schedule&quot;&quot;&quot;
-        return requests.post(url, data=json.dumps(data))
-
-    def update(self, url, data):
-        &quot;&quot;&quot;update schedule&quot;&quot;&quot;
-        sid = data['sid']
-        url = url + '/' + sid
-        return requests.put(url, data=json.dumps(data))
-
-    def delete(self, url, sid):
-        &quot;&quot;&quot;delete schedule&quot;&quot;&quot;
-        url = url + '/' + sid
-        return requests.delete(url)
+<span style="color:#f92672">import</span> requests
+<span style="color:#f92672">import</span> json
 
 
-if __name__ == '__main__':
-    url = &quot;http://127.0.0.1:8000&quot;
-    i = Interface(url, 'schedules')
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Interface</span>:
+    <span style="color:#e6db74">&#34;&#34;&#34;client interface&#34;&#34;&#34;</span>
 
-</code></pre>
+    <span style="color:#66d9ef">def</span> __init__(self, url, app_name):
+        self<span style="color:#f92672">.</span>url <span style="color:#f92672">=</span> url
+        self<span style="color:#f92672">.</span>app_url <span style="color:#f92672">=</span> url <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;/&#39;</span> <span style="color:#f92672">+</span> app_name
 
-<h3 id="5-日程-api-的食用方法">5. 日程 API 的食用方法</h3>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get</span>(self, url, sid):
+        <span style="color:#e6db74">&#34;&#34;&#34;get schedule&#34;&#34;&#34;</span>
+        url <span style="color:#f92672">=</span> url <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;/&#39;</span> <span style="color:#f92672">+</span> sid
+        <span style="color:#66d9ef">return</span> requests<span style="color:#f92672">.</span>get(url)
 
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_all</span>(self, url, payload<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+        <span style="color:#e6db74">&#34;&#34;&#34;get schedules&#34;&#34;&#34;</span>
+        <span style="color:#66d9ef">return</span> requests<span style="color:#f92672">.</span>get(url, params<span style="color:#f92672">=</span>payload)
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">post</span>(self, url, data):
+        <span style="color:#e6db74">&#34;&#34;&#34;post schedule&#34;&#34;&#34;</span>
+        <span style="color:#66d9ef">return</span> requests<span style="color:#f92672">.</span>post(url, data<span style="color:#f92672">=</span>json<span style="color:#f92672">.</span>dumps(data))
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">update</span>(self, url, data):
+        <span style="color:#e6db74">&#34;&#34;&#34;update schedule&#34;&#34;&#34;</span>
+        sid <span style="color:#f92672">=</span> data[<span style="color:#e6db74">&#39;sid&#39;</span>]
+        url <span style="color:#f92672">=</span> url <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;/&#39;</span> <span style="color:#f92672">+</span> sid
+        <span style="color:#66d9ef">return</span> requests<span style="color:#f92672">.</span>put(url, data<span style="color:#f92672">=</span>json<span style="color:#f92672">.</span>dumps(data))
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">delete</span>(self, url, sid):
+        <span style="color:#e6db74">&#34;&#34;&#34;delete schedule&#34;&#34;&#34;</span>
+        url <span style="color:#f92672">=</span> url <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;/&#39;</span> <span style="color:#f92672">+</span> sid
+        <span style="color:#66d9ef">return</span> requests<span style="color:#f92672">.</span>delete(url)
+
+
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://127.0.0.1:8000&#34;</span>
+    i <span style="color:#f92672">=</span> Interface(url, <span style="color:#e6db74">&#39;schedules&#39;</span>)
+
+</code></pre></div><h3 id="5-日程-api-食用方法">5. 日程 API 食用方法</h3>
 <ol>
-<li>从 GitHub 上克隆本项目的<a href="https://github.com/luochang212/calendar-api">代码仓库</a></li>
+<li>从 GitHub 上克隆本项目的 <a href="https://github.com/luochang212/calendar-api">代码仓库</a></li>
 <li>安装 FastAPI 的依赖包，参考本文第 1 节</li>
 <li>运行 <code>python build.py</code> 以创建 SQLite 数据库（仅需第一次使用时执行）</li>
 <li>运行 <code>uvicorn server:app --reload</code> 以启用 API 服务</li>
 <li>运行 <code>client.py</code> 中的测试代码，或在 <code>http://127.0.0.1:8000/docs</code> 中进行调试</li>
 </ol>
+<!-- todo: FastAPI 异步
 
-<!-- # todo: FastAPI 异步 -->
-
-<!-- ```shell
+```shell
 pip install requests
 ```
 
 ```
 pip install python-multipart
-``` -->
+```  
+-->
 
   </div>
   
@@ -1185,16 +1107,6 @@ pip install python-multipart
 
 
 </article>
-
-<style>
-  .my-emoji {
-    height: 25px;
-    display: inline-block;
-    margin: 0;
-    vertical-align: text-bottom;
-  }
-</style>
-
 
         </div>
         
@@ -1228,20 +1140,17 @@ pip install python-multipart
 </script>
 
 
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
 
-<script defer src="/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
 
     
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
         
-    
     <script type="text/javascript">
         
         hljs.initHighlightingOnLoad();
     </script>
     
-
 
 
 

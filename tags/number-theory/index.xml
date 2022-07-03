@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>number theory on Chang Luo</title>
@@ -6,11 +6,7 @@
     <description>Recent content in number theory on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 21 Feb 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://luochang212.github.io/tags/number-theory/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 21 Feb 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/tags/number-theory/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>用魔法打败魔法！</title>
       <link>http://luochang212.github.io/posts/chico_and_dico/</link>
@@ -24,7 +20,8 @@ Chico 和 Dico 的魔术 Chico 和 Dico 是两位魔术师，他们经常表演�
 关键在于如何实现这种协议。
 数学模型 在进行分析之前，我们需要把 Chico 和 Dico 的魔术抽象成一个数学模型。
 魔术本身已经提供了一些建模信息。我们可以假设一共有 n 张牌，抽取其中的 k 张。在对牌组进行某种排序之后，我们需要利用前 (k - j) 张牌的信息，推测后 j 张牌是什么。
-现在我们有 n, j, k 三个变量，下面我们来进一步探究三个变量之间究竟服从何种关系。</description>
+现在我们有 n, j, k 三个变量，下面我们来进一步探究三个变量之间究竟服从何种关系。
+首先，我们知道从 n 张牌中抽取 k 张牌一共有 C(n, k) 种组合方式，而 (k - j) 张牌的排列方式则有 A(n, k-j) 种。按照模型的要求，我们要用后者对前者的信息进行编码。根据信息论中的信源编码理论，至少有：C(n, k) &amp;lt;= A(n, k-j)。</description>
     </item>
     
   </channel>

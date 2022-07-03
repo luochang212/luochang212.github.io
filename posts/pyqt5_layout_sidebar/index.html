@@ -6,12 +6,14 @@
 
     <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://luochang212.github.io/posts/pyqt5_layout_sidebar/">
+    
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.55.6" />
+<meta name="generator" content="Hugo 0.84.1" />
 
     
     
@@ -27,9 +29,10 @@
 <meta property="og:title" content="PyQt5 侧边栏布局" />
 <meta property="og:description" content="主流软件如网易云音乐、腾讯电脑管家，都有侧边栏。侧边栏能有效扩展应用空间，使软件功能的层次更加分明。但PyQt5并没有一个专门的方法实现侧边栏。要实现侧边栏，主要有两种技术路线。一是从标签部件(QTabWidget)改造而来，二是用网格布局(QGridLayout)画出来。本文采用第一种技术路线，制作一个简单的侧边栏应用。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://luochang212.github.io/posts/pyqt5_layout_sidebar/" />
-<meta property="article:published_time" content="2019-05-10T21:43:09&#43;01:00"/>
-<meta property="article:modified_time" content="2019-05-10T21:43:09&#43;01:00"/><meta property="og:site_name" content="Title" />
+<meta property="og:url" content="http://luochang212.github.io/posts/pyqt5_layout_sidebar/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2019-05-10T21:43:09&#43;01:00" />
+<meta property="article:modified_time" content="2019-05-10T21:43:09&#43;01:00" /><meta property="og:site_name" content="Title" />
+
 
 
     
@@ -44,7 +47,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.6a83d62c39a364f036df4db1ecd564645635d6c7fc182425cb501218fec485f5.css" integrity="sha256-aoPWLDmjZPA2302x7NVkZFY11sf8GCQly1ASGP7EhfU=">
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -52,7 +55,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hugo-toc.8549a64d301421b4256ea9a0d5ca8b99178799f569d5d2daeb95f24cef3ce6b7.css" integrity="sha256-hUmmTTAUIbQlbqmg1cqLmReHmfVp1dLa65XyTO885rc=">
+<link rel="stylesheet" href="/scss/hugo-toc.0873834b0f2e9fdc9e1d0301e8ebce21fc10383882a41e9373f29b90e85a9987.css" integrity="sha256-CHODSw8un9yeHQMB6OvOIfwQODiCpB6Tc/KbkOhamYc=">
 
 
 
@@ -65,6 +68,8 @@
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
     <link rel="shortcut icon" href="/favicon.png">
     
+    
+
 </head>
 
 
@@ -235,7 +240,7 @@
 		 
 			 
 				<li>
-					<a href="/">
+					<a href="/posts/">
 						<span>Posts</span>
 					</a>
 				</li>
@@ -257,7 +262,6 @@
 				</li>
 			 
 		
-		</li>
 	</ul>
 </div>
 
@@ -267,8 +271,6 @@
 	
 	
 	
-	<a href="https://instagram.com/icstocs" rel="me"><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></a>
-	
 	
 	<a href="https://github.com/luochang212" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
 	
@@ -277,12 +279,15 @@
 	
 	
 	
-	
-	
-	
+	<a href="https://instagram.com/suphenshin" rel="me"><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></a>
 	
 	
 	<a href="https://linkedin.com/in/bupt-luochang" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
 	
 	
 	
@@ -297,7 +302,7 @@
       </div>
       
 <div class="copyright">
-  &copy; 2021 Chang Luo
+  &copy; 2022 Chang Luo
   
 </div>
 
@@ -335,17 +340,20 @@
       <div id="Video-player" class="tabcontent">
 
         <div id="video1">
-          <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=455023331&bvid=BV1X541167RE&cid=170542054&page=1&high_quality=1&danmaku=0"
+          <iframe src="about:blank"
+            data-src="//player.bilibili.com/player.html?aid=455023331&bvid=BV1X541167RE&cid=170542054&page=1&high_quality=1&danmaku=0"
             style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
             allowfullscreen="true"></iframe>
         </div>
         <div id="video2">
-          <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=65042716&bvid=BV1M4411r7yu&cid=112895137&page=1&high_quality=1&high_quality=1&danmaku=0"
+          <iframe src="about:blank"
+            data-src="//player.bilibili.com/player.html?aid=65042716&bvid=BV1M4411r7yu&cid=112895137&page=1&high_quality=1&high_quality=1&danmaku=0"
             style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
             allowfullscreen="true"></iframe>
         </div>
         <div id="video3">
-          <iframe src="about:blank" data-src="//player.bilibili.com/player.html?aid=20535616&bvid=BV1zW411W75L&cid=33582726&page=1//player.bilibili.com/player.html?aid=15159845&cid=24679968&page=1&high_quality=1&danmaku=0"
+          <iframe src="about:blank"
+            data-src="//player.bilibili.com/player.html?aid=20535616&bvid=BV1zW411W75L&cid=33582726&page=1//player.bilibili.com/player.html?aid=15159845&cid=24679968&page=1&high_quality=1&danmaku=0"
             style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
             allowfullscreen="true"></iframe>
         </div>
@@ -366,7 +374,7 @@
       </div>
 
       <div id="gallery" class="tabcontent">
-        <iframe src="about:blank" data-src="/gadget/gallery/#two" frameborder="0" height="560" width="100%"
+        <iframe src="about:blank" data-src="/gadget/gallery.html#two" frameborder="0" height="560" width="100%"
           scrolling="yes"></iframe>
       </div>
 
@@ -381,7 +389,7 @@
   
   <script>
     'use strict'
-    
+
     function openNav() {
       on();
       document.getElementById("mySidenav").style.width = "580px";
@@ -457,7 +465,17 @@
 
         <div class="content container">
             
-    
+    <style>
+  .my-emoji {
+    height: 25px;
+    display: inline-block;
+    margin: 0;
+    vertical-align: text-bottom;
+  }
+</style>
+
+
+
 <article>
   <header>
     <h1>PyQt5 侧边栏布局</h1>
@@ -516,382 +534,331 @@
   
   
   
-    <div class="toc-wrapper">
-      <input type="checkbox" id="tocToggle">
-      <label for="tocToggle">目录</label>
-      
-          <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#步骤分析">步骤分析</a></li>
-<li><a href="#添加部件并设置布局">添加部件并设置布局</a></li>
-<li><a href="#为标签部件添加内容页">为标签部件添加内容页</a></li>
-<li><a href="#改造标签部件">改造标签部件</a></li>
-<li><a href="#通过按钮实现页面跳转">通过按钮实现页面跳转</a></li>
-<li><a href="#附录-本教程完整代码">附录：本教程完整代码</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <div class="toc-wrapper">
+    <input type="checkbox" id="tocToggle">
+    <label for="tocToggle">目录</label>
+    
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#步骤分析">步骤分析</a></li>
+        <li><a href="#添加部件并设置布局">添加部件并设置布局</a></li>
+        <li><a href="#为标签部件添加内容页">为标签部件添加内容页</a></li>
+        <li><a href="#改造标签部件">改造标签部件</a></li>
+        <li><a href="#通过按钮实现页面跳转">通过按钮实现页面跳转</a></li>
+        <li><a href="#附录本教程完整代码">附录：本教程完整代码</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
-      
-    </div>
+    
+  </div>
   
   
   <div class="post">
-    
-
-<p>GitHub项目地址：<a href="https://github.com/luochang212/pyqt5-demo" target="_blank">pyqt5-demo</a></p>
-
+    <p>GitHub项目地址：<a href="https://github.com/luochang212/pyqt5-demo" target="_blank">pyqt5-demo</a></p>
 <p>主流软件如网易云音乐、腾讯电脑管家，都有侧边栏。侧边栏能有效扩展应用空间，使软件功能的层次更加分明。</p>
-
 <p>但PyQt5并没有一个专门的方法实现侧边栏。要实现侧边栏，主要有两种技术路线。一是从标签部件(QTabWidget)改造而来，二是用网格布局(QGridLayout)画出来。本文采用第一种技术路线，制作一个简单的侧边栏应用。</p>
-
 <blockquote>
 <p><strong>Note:</strong> 两种技术路线制作的侧边栏有细微的差别。如果采用第二种技术路线(QGridLayout)，侧边栏和内容页之间没有明显的分界。所以需要额外地在侧边栏和内容页之间加一条线，来突出两者属于不同的组件。而第一种技术路线(QTabWidget)不需要，创建的侧边栏和内容页之间的区别明显。</p>
-
-<p>下图是一个用第二种技术路线(QGridLayout)制作的应用，可以看到侧边栏和内容页中间画了一条线，以突出两个组件的分界。</p>
-
-<p><img src="/img/QGridLayout.png" alt="QGridLayout" /></p>
 </blockquote>
-
+<blockquote>
+<p>下图是一个用第二种技术路线(QGridLayout)制作的应用，可以看到侧边栏和内容页中间画了一条线，以突出两个组件的分界。</p>
+</blockquote>
+<blockquote>
+<p><img src="/img/QGridLayout.png" alt="QGridLayout"></p>
+</blockquote>
 <h3 id="步骤分析">步骤分析</h3>
-
 <p>在开始写代码之前，我们先分析一下制作侧边栏需要几个步骤。</p>
-
 <ol>
 <li>添加部件</li>
 <li>为部件设置布局</li>
 <li>将标签部件改造成侧边栏的内容页</li>
 <li>为侧边栏按钮编写函数，实现内容页之间的跳转</li>
 </ol>
-
 <h3 id="添加部件并设置布局">添加部件并设置布局</h3>
-
 <p>此段不详述。关于部件和布局的基础知识，在上一篇中有介绍，详见<a href="https://www.luochang.ink/posts/pyqt5_layout/">PyQt5 布局浅析</a>。</p>
-
 <p><strong>下面这段代码添加了部件且设置了布局。</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> PyQt5.QtWidgets <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">import</span> sys
 
-<pre><code class="language-python">from PyQt5.QtWidgets import *
-import sys
 
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Window</span>(QMainWindow):
+    <span style="color:#66d9ef">def</span> __init__(self):
+        super()<span style="color:#f92672">.</span>__init__()
 
-class Window(QMainWindow):
-    def __init__(self):
-        super().__init__()
+        <span style="color:#75715e"># set the title of main window</span>
+        self<span style="color:#f92672">.</span>setWindowTitle(<span style="color:#e6db74">&#39;Sidebar layout - www.luochang.ink&#39;</span>)
 
-        # set the title of main window
-        self.setWindowTitle('Sidebar layout - www.luochang.ink')
-
-        # set the size of window
-        self.Width = 800
-        self.height = int(0.618 * self.Width)
-        self.resize(self.Width, self.height)
+        <span style="color:#75715e"># set the size of window</span>
+        self<span style="color:#f92672">.</span>Width <span style="color:#f92672">=</span> <span style="color:#ae81ff">800</span>
+        self<span style="color:#f92672">.</span>height <span style="color:#f92672">=</span> int(<span style="color:#ae81ff">0.618</span> <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>Width)
+        self<span style="color:#f92672">.</span>resize(self<span style="color:#f92672">.</span>Width, self<span style="color:#f92672">.</span>height)
 		
-		# add all widgets
-        self.btn_1 = QPushButton('1', self)
-        self.btn_2 = QPushButton('2', self)
-        self.btn_3 = QPushButton('3', self)
-        self.btn_4 = QPushButton('4', self)
+		<span style="color:#75715e"># add all widgets</span>
+        self<span style="color:#f92672">.</span>btn_1 <span style="color:#f92672">=</span> QPushButton(<span style="color:#e6db74">&#39;1&#39;</span>, self)
+        self<span style="color:#f92672">.</span>btn_2 <span style="color:#f92672">=</span> QPushButton(<span style="color:#e6db74">&#39;2&#39;</span>, self)
+        self<span style="color:#f92672">.</span>btn_3 <span style="color:#f92672">=</span> QPushButton(<span style="color:#e6db74">&#39;3&#39;</span>, self)
+        self<span style="color:#f92672">.</span>btn_4 <span style="color:#f92672">=</span> QPushButton(<span style="color:#e6db74">&#39;4&#39;</span>, self)
 
-        self.initUI()
+        self<span style="color:#f92672">.</span>initUI()
 
-    def initUI(self):
-        left_layout = QVBoxLayout()
-        left_layout.addWidget(self.btn_1)
-        left_layout.addWidget(self.btn_2)
-        left_layout.addWidget(self.btn_3)
-        left_layout.addWidget(self.btn_4)
-        left_layout.addStretch(5)
-        left_layout.setSpacing(20)
-        left_widget = QWidget()
-        left_widget.setLayout(left_layout)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">initUI</span>(self):
+        left_layout <span style="color:#f92672">=</span> QVBoxLayout()
+        left_layout<span style="color:#f92672">.</span>addWidget(self<span style="color:#f92672">.</span>btn_1)
+        left_layout<span style="color:#f92672">.</span>addWidget(self<span style="color:#f92672">.</span>btn_2)
+        left_layout<span style="color:#f92672">.</span>addWidget(self<span style="color:#f92672">.</span>btn_3)
+        left_layout<span style="color:#f92672">.</span>addWidget(self<span style="color:#f92672">.</span>btn_4)
+        left_layout<span style="color:#f92672">.</span>addStretch(<span style="color:#ae81ff">5</span>)
+        left_layout<span style="color:#f92672">.</span>setSpacing(<span style="color:#ae81ff">20</span>)
+        left_widget <span style="color:#f92672">=</span> QWidget()
+        left_widget<span style="color:#f92672">.</span>setLayout(left_layout)
 
-        self.right_widget = QTabWidget()
-        self.right_widget.tabBar().setObjectName(&quot;mainTab&quot;)
+        self<span style="color:#f92672">.</span>right_widget <span style="color:#f92672">=</span> QTabWidget()
+        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>tabBar()<span style="color:#f92672">.</span>setObjectName(<span style="color:#e6db74">&#34;mainTab&#34;</span>)
 
-        main_layout = QHBoxLayout()
-        main_layout.addWidget(left_widget)
-        main_layout.addWidget(self.right_widget)
-        main_layout.setStretch(0, 40)
-        main_layout.setStretch(1, 200)
-        main_widget = QWidget()
-        main_widget.setLayout(main_layout)
-        self.setCentralWidget(main_widget)
+        main_layout <span style="color:#f92672">=</span> QHBoxLayout()
+        main_layout<span style="color:#f92672">.</span>addWidget(left_widget)
+        main_layout<span style="color:#f92672">.</span>addWidget(self<span style="color:#f92672">.</span>right_widget)
+        main_layout<span style="color:#f92672">.</span>setStretch(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">40</span>)
+        main_layout<span style="color:#f92672">.</span>setStretch(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">200</span>)
+        main_widget <span style="color:#f92672">=</span> QWidget()
+        main_widget<span style="color:#f92672">.</span>setLayout(main_layout)
+        self<span style="color:#f92672">.</span>setCentralWidget(main_widget)
 
 
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    ex = Window()
-    ex.show()
-    sys.exit(app.exec_())
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    app <span style="color:#f92672">=</span> QApplication(sys<span style="color:#f92672">.</span>argv)
+    ex <span style="color:#f92672">=</span> Window()
+    ex<span style="color:#f92672">.</span>show()
+    sys<span style="color:#f92672">.</span>exit(app<span style="color:#f92672">.</span>exec_())
 
-</code></pre>
-
-<p><img src="/img/sidebar_basic.JPG" alt="sidebar_basic" /></p>
-
+</code></pre></div><p><img src="/img/sidebar_basic.JPG" alt="sidebar_basic"></p>
 <p>上述代码，在<code>__init__</code>内添加了部件，在<code>initUI</code>里设置了部件的布局。但因为我们并没有给标签部件(QTabWidget)添加页面，所以现在标签页面正好是没有标签的。后续加上内容页之后，标签(Tab)又会出现，到那是我们要用技巧再把标签隐去。</p>
-
 <p>布局都好了，但这时的标签部件还没有内容页。没有内容页的标签部件是没有灵魂的，所以下面，我们给标签部件添加内容页。</p>
-
 <h3 id="为标签部件添加内容页">为标签部件添加内容页</h3>
-
 <p><strong>添加标签的三个步骤：</strong></p>
-
 <ol>
 <li>定义内容页函数</li>
 <li>调用内容页函数以生成内容页</li>
 <li>将内容页依次加入标签部件</li>
 </ol>
-
 <p>我们首先编写定义内容页的函数。</p>
-
 <p><strong>下面这段代码定义了内容页。</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ui1</span>(self):
+		main_layout <span style="color:#f92672">=</span> QVBoxLayout()
+		main_layout<span style="color:#f92672">.</span>addWidget(QLabel(<span style="color:#e6db74">&#39;page 1&#39;</span>))
+		main_layout<span style="color:#f92672">.</span>addStretch(<span style="color:#ae81ff">5</span>)
+		main <span style="color:#f92672">=</span> QWidget()
+		main<span style="color:#f92672">.</span>setLayout(main_layout)
+		<span style="color:#66d9ef">return</span> main
 
-<pre><code class="language-python">	def ui1(self):
-		main_layout = QVBoxLayout()
-		main_layout.addWidget(QLabel('page 1'))
-		main_layout.addStretch(5)
-		main = QWidget()
-		main.setLayout(main_layout)
-		return main
-
-	def ui2(self):
-		main_layout = QVBoxLayout()
-		main_layout.addWidget(QLabel('page 2'))
-		main_layout.addStretch(5)
-		main = QWidget()
-		main.setLayout(main_layout)
-		return main
+	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ui2</span>(self):
+		main_layout <span style="color:#f92672">=</span> QVBoxLayout()
+		main_layout<span style="color:#f92672">.</span>addWidget(QLabel(<span style="color:#e6db74">&#39;page 2&#39;</span>))
+		main_layout<span style="color:#f92672">.</span>addStretch(<span style="color:#ae81ff">5</span>)
+		main <span style="color:#f92672">=</span> QWidget()
+		main<span style="color:#f92672">.</span>setLayout(main_layout)
+		<span style="color:#66d9ef">return</span> main
 			
-	def ui3(self):
-		main_layout = QVBoxLayout()
-		main_layout.addWidget(QLabel('page 3'))
-		main_layout.addStretch(5)
-		main = QWidget()
-		main.setLayout(main_layout)
-		return main
+	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ui3</span>(self):
+		main_layout <span style="color:#f92672">=</span> QVBoxLayout()
+		main_layout<span style="color:#f92672">.</span>addWidget(QLabel(<span style="color:#e6db74">&#39;page 3&#39;</span>))
+		main_layout<span style="color:#f92672">.</span>addStretch(<span style="color:#ae81ff">5</span>)
+		main <span style="color:#f92672">=</span> QWidget()
+		main<span style="color:#f92672">.</span>setLayout(main_layout)
+		<span style="color:#66d9ef">return</span> main
 
-	def ui4(self):
-		main_layout = QVBoxLayout()
-		main_layout.addWidget(QLabel('page 4'))
-		main_layout.addStretch(5)
-		main = QWidget()
-		main.setLayout(main_layout)
-		return main
-</code></pre>
-
-<p>下一步，在<code>__init__</code>里调用上述函数以生成内容页。</p>
-
+	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ui4</span>(self):
+		main_layout <span style="color:#f92672">=</span> QVBoxLayout()
+		main_layout<span style="color:#f92672">.</span>addWidget(QLabel(<span style="color:#e6db74">&#39;page 4&#39;</span>))
+		main_layout<span style="color:#f92672">.</span>addStretch(<span style="color:#ae81ff">5</span>)
+		main <span style="color:#f92672">=</span> QWidget()
+		main<span style="color:#f92672">.</span>setLayout(main_layout)
+		<span style="color:#66d9ef">return</span> main
+</code></pre></div><p>下一步，在<code>__init__</code>里调用上述函数以生成内容页。</p>
 <p><strong>下面这段代码生成了内容页。</strong></p>
-
-<pre><code class="language-python">    # def __init__(self):
-    #     super().__init__()
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">    <span style="color:#75715e"># def __init__(self):</span>
+    <span style="color:#75715e">#     super().__init__()</span>
 	
-        # add tabs
-        self.tab1 = self.ui1()
-        self.tab2 = self.ui2()
-        self.tab3 = self.ui3()
-        self.tab4 = self.ui4()
-</code></pre>
-
-<p>在<code>initUI</code>函数里，将内容页加入标签部件。请注意下面这段代码添加的位置，它必须在语句<code>main_layout.addWidget(self.right_widget)</code>之前，否则程序有可能出错。</p>
-
+        <span style="color:#75715e"># add tabs</span>
+        self<span style="color:#f92672">.</span>tab1 <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>ui1()
+        self<span style="color:#f92672">.</span>tab2 <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>ui2()
+        self<span style="color:#f92672">.</span>tab3 <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>ui3()
+        self<span style="color:#f92672">.</span>tab4 <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>ui4()
+</code></pre></div><p>在<code>initUI</code>函数里，将内容页加入标签部件。请注意下面这段代码添加的位置，它必须在语句<code>main_layout.addWidget(self.right_widget)</code>之前，否则程序有可能出错。</p>
 <p><strong>下面这段代码将内容页加入标签部件。</strong></p>
-
-<pre><code class="language-python">    # def initUI(self):
-        self.right_widget.addTab(self.tab1, '')
-        self.right_widget.addTab(self.tab2, '')
-        self.right_widget.addTab(self.tab3, '')
-        self.right_widget.addTab(self.tab4, '')
-</code></pre>
-
-<p><img src="/img/sidebar_tab.JPG" alt="sidebar_tab" /></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">    <span style="color:#75715e"># def initUI(self):</span>
+        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>addTab(self<span style="color:#f92672">.</span>tab1, <span style="color:#e6db74">&#39;&#39;</span>)
+        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>addTab(self<span style="color:#f92672">.</span>tab2, <span style="color:#e6db74">&#39;&#39;</span>)
+        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>addTab(self<span style="color:#f92672">.</span>tab3, <span style="color:#e6db74">&#39;&#39;</span>)
+        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>addTab(self<span style="color:#f92672">.</span>tab4, <span style="color:#e6db74">&#39;&#39;</span>)
+</code></pre></div><p><img src="/img/sidebar_tab.JPG" alt="sidebar_tab"></p>
 <p>在上图中可以看见，标签部件的顶上冒出了小方头，在第二节中提到的<strong>标签</strong>(Tab)出现了。这时我们需要改造标签部件，隐去标签，并将原先点击标签触发的页面跳转功能，迁移到侧边栏按钮上。</p>
-
 <h3 id="改造标签部件">改造标签部件</h3>
-
 <p>隐藏标签部件的标签，其实只需要一行。下面用QSS隐去标签。<!--所谓QSS，就是下述`setStyleSheet`函数内的语句。--></p>
-
 <p><strong>下面这段代码隐藏了标签部件的标签并初始化显示页面。</strong></p>
-
-<pre><code class="language-python">    # def initUI(self):
-        self.right_widget.setCurrentIndex(0)
-        self.right_widget.setStyleSheet('''QTabBar::tab{width: 0; \
-            height: 0; margin: 0; padding: 0; border: none;}''')
-</code></pre>
-
-<h3 id="通过按钮实现页面跳转">通过按钮实现页面跳转</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">    <span style="color:#75715e"># def initUI(self):</span>
+        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>setCurrentIndex(<span style="color:#ae81ff">0</span>)
+        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>setStyleSheet(<span style="color:#e6db74">&#39;&#39;&#39;QTabBar::tab{width: 0; </span><span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span><span style="color:#e6db74">            height: 0; margin: 0; padding: 0; border: none;}&#39;&#39;&#39;</span>)
+</code></pre></div><h3 id="通过按钮实现页面跳转">通过按钮实现页面跳转</h3>
 <p>页面跳转功能本质上是通过<code>QTabWidget</code>的<code>setCurrentIndex(int)</code>函数实现的，知道这一点就好办了。把按钮代表的页面的索引作为<code>setCurrentIndex(int)</code>函数的输入，为每个按钮设定如下，即可实现页面跳转。</p>
-
 <p><strong>下面这段代码定义了按钮函数。</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">button1</span>(self):
+        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>setCurrentIndex(<span style="color:#ae81ff">0</span>)
 
-<pre><code class="language-python">    def button1(self):
-        self.right_widget.setCurrentIndex(0)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">button2</span>(self):
+        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>setCurrentIndex(<span style="color:#ae81ff">1</span>)
 
-    def button2(self):
-        self.right_widget.setCurrentIndex(1)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">button3</span>(self):
+        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>setCurrentIndex(<span style="color:#ae81ff">2</span>)
 
-    def button3(self):
-        self.right_widget.setCurrentIndex(2)
-
-    def button4(self):
-        self.right_widget.setCurrentIndex(3)
-</code></pre>
-
-<p>最后，在<code>__init__</code>函数里，将按钮部件和函数绑定，一个简单的侧边栏就大功告成了！</p>
-
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">button4</span>(self):
+        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>setCurrentIndex(<span style="color:#ae81ff">3</span>)
+</code></pre></div><p>最后，在<code>__init__</code>函数里，将按钮部件和函数绑定，一个简单的侧边栏就大功告成了！</p>
 <p><strong>下面这段代码为按钮部件绑定函数。</strong></p>
-
-<pre><code class="language-python">    # def __init__(self):
-    #     super().__init__()
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">    <span style="color:#75715e"># def __init__(self):</span>
+    <span style="color:#75715e">#     super().__init__()</span>
 	
-        self.btn_1.clicked.connect(self.button1)
-        self.btn_2.clicked.connect(self.button2)
-        self.btn_3.clicked.connect(self.button3)
-        self.btn_4.clicked.connect(self.button4)
-</code></pre>
-
-<p><img src="/img/sidebar_hidetab.JPG" alt="sidebar_tab" /></p>
-
+        self<span style="color:#f92672">.</span>btn_1<span style="color:#f92672">.</span>clicked<span style="color:#f92672">.</span>connect(self<span style="color:#f92672">.</span>button1)
+        self<span style="color:#f92672">.</span>btn_2<span style="color:#f92672">.</span>clicked<span style="color:#f92672">.</span>connect(self<span style="color:#f92672">.</span>button2)
+        self<span style="color:#f92672">.</span>btn_3<span style="color:#f92672">.</span>clicked<span style="color:#f92672">.</span>connect(self<span style="color:#f92672">.</span>button3)
+        self<span style="color:#f92672">.</span>btn_4<span style="color:#f92672">.</span>clicked<span style="color:#f92672">.</span>connect(self<span style="color:#f92672">.</span>button4)
+</code></pre></div><p><img src="/img/sidebar_hidetab.JPG" alt="sidebar_tab"></p>
 <blockquote>
 <p><strong>Note1:</strong> 为了让代码结构清晰，易于理解，本例只有最简单的功能和布局。如果你对进一步完善侧边栏感兴趣，请参阅<a href="https://github.com/luochang212/pyqt5-demo/blob/master/Demo/sidebar.py" target="_blank">sidebar.py</a>。</p>
-
+</blockquote>
+<blockquote>
 <p><strong>Note2:</strong> 此外，我在网络上搜了很久，没有搜到一篇关于制作侧边栏的文章。一番折腾后，我在GitHub找到了开源项目<a href="https://github.com/HuberTRoy/MusicBox" target="_blank">MusicBox</a>，然后才从中学会了这个构建侧边栏的方法。这个项目不错，在里面我学到了很多PyQt5的使用方法。在此感谢作者，并默默替他安利一波。</p>
 </blockquote>
-
-<h3 id="附录-本教程完整代码">附录：本教程完整代码</h3>
-
-<pre><code class="language-python">from PyQt5.QtWidgets import *
-import sys
+<h3 id="附录本教程完整代码">附录：本教程完整代码</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> PyQt5.QtWidgets <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">import</span> sys
 
 
-class Window(QMainWindow):
-    def __init__(self):
-        super().__init__()
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Window</span>(QMainWindow):
+    <span style="color:#66d9ef">def</span> __init__(self):
+        super()<span style="color:#f92672">.</span>__init__()
 
-        # set the title of main window
-        self.setWindowTitle('Sidebar layout - www.luochang.ink')
+        <span style="color:#75715e"># set the title of main window</span>
+        self<span style="color:#f92672">.</span>setWindowTitle(<span style="color:#e6db74">&#39;Sidebar layout - www.luochang.ink&#39;</span>)
 
-        # set the size of window
-        self.Width = 800
-        self.height = int(0.618 * self.Width)
-        self.resize(self.Width, self.height)
+        <span style="color:#75715e"># set the size of window</span>
+        self<span style="color:#f92672">.</span>Width <span style="color:#f92672">=</span> <span style="color:#ae81ff">800</span>
+        self<span style="color:#f92672">.</span>height <span style="color:#f92672">=</span> int(<span style="color:#ae81ff">0.618</span> <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>Width)
+        self<span style="color:#f92672">.</span>resize(self<span style="color:#f92672">.</span>Width, self<span style="color:#f92672">.</span>height)
 		
-		# add all widgets
-        self.btn_1 = QPushButton('1', self)
-        self.btn_2 = QPushButton('2', self)
-        self.btn_3 = QPushButton('3', self)
-        self.btn_4 = QPushButton('4', self)
+		<span style="color:#75715e"># add all widgets</span>
+        self<span style="color:#f92672">.</span>btn_1 <span style="color:#f92672">=</span> QPushButton(<span style="color:#e6db74">&#39;1&#39;</span>, self)
+        self<span style="color:#f92672">.</span>btn_2 <span style="color:#f92672">=</span> QPushButton(<span style="color:#e6db74">&#39;2&#39;</span>, self)
+        self<span style="color:#f92672">.</span>btn_3 <span style="color:#f92672">=</span> QPushButton(<span style="color:#e6db74">&#39;3&#39;</span>, self)
+        self<span style="color:#f92672">.</span>btn_4 <span style="color:#f92672">=</span> QPushButton(<span style="color:#e6db74">&#39;4&#39;</span>, self)
 
-        self.btn_1.clicked.connect(self.button1)
-        self.btn_2.clicked.connect(self.button2)
-        self.btn_3.clicked.connect(self.button3)
-        self.btn_4.clicked.connect(self.button4)
+        self<span style="color:#f92672">.</span>btn_1<span style="color:#f92672">.</span>clicked<span style="color:#f92672">.</span>connect(self<span style="color:#f92672">.</span>button1)
+        self<span style="color:#f92672">.</span>btn_2<span style="color:#f92672">.</span>clicked<span style="color:#f92672">.</span>connect(self<span style="color:#f92672">.</span>button2)
+        self<span style="color:#f92672">.</span>btn_3<span style="color:#f92672">.</span>clicked<span style="color:#f92672">.</span>connect(self<span style="color:#f92672">.</span>button3)
+        self<span style="color:#f92672">.</span>btn_4<span style="color:#f92672">.</span>clicked<span style="color:#f92672">.</span>connect(self<span style="color:#f92672">.</span>button4)
 
-        # add tabs
-        self.tab1 = self.ui1()
-        self.tab2 = self.ui2()
-        self.tab3 = self.ui3()
-        self.tab4 = self.ui4()
+        <span style="color:#75715e"># add tabs</span>
+        self<span style="color:#f92672">.</span>tab1 <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>ui1()
+        self<span style="color:#f92672">.</span>tab2 <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>ui2()
+        self<span style="color:#f92672">.</span>tab3 <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>ui3()
+        self<span style="color:#f92672">.</span>tab4 <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>ui4()
 
-        self.initUI()
+        self<span style="color:#f92672">.</span>initUI()
 
-    def initUI(self):
-        left_layout = QVBoxLayout()
-        left_layout.addWidget(self.btn_1)
-        left_layout.addWidget(self.btn_2)
-        left_layout.addWidget(self.btn_3)
-        left_layout.addWidget(self.btn_4)
-        left_layout.addStretch(5)
-        left_layout.setSpacing(20)
-        left_widget = QWidget()
-        left_widget.setLayout(left_layout)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">initUI</span>(self):
+        left_layout <span style="color:#f92672">=</span> QVBoxLayout()
+        left_layout<span style="color:#f92672">.</span>addWidget(self<span style="color:#f92672">.</span>btn_1)
+        left_layout<span style="color:#f92672">.</span>addWidget(self<span style="color:#f92672">.</span>btn_2)
+        left_layout<span style="color:#f92672">.</span>addWidget(self<span style="color:#f92672">.</span>btn_3)
+        left_layout<span style="color:#f92672">.</span>addWidget(self<span style="color:#f92672">.</span>btn_4)
+        left_layout<span style="color:#f92672">.</span>addStretch(<span style="color:#ae81ff">5</span>)
+        left_layout<span style="color:#f92672">.</span>setSpacing(<span style="color:#ae81ff">20</span>)
+        left_widget <span style="color:#f92672">=</span> QWidget()
+        left_widget<span style="color:#f92672">.</span>setLayout(left_layout)
 
-        self.right_widget = QTabWidget()
-        self.right_widget.tabBar().setObjectName(&quot;mainTab&quot;)
+        self<span style="color:#f92672">.</span>right_widget <span style="color:#f92672">=</span> QTabWidget()
+        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>tabBar()<span style="color:#f92672">.</span>setObjectName(<span style="color:#e6db74">&#34;mainTab&#34;</span>)
 
-        self.right_widget.addTab(self.tab1, '')
-        self.right_widget.addTab(self.tab2, '')
-        self.right_widget.addTab(self.tab3, '')
-        self.right_widget.addTab(self.tab4, '')
+        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>addTab(self<span style="color:#f92672">.</span>tab1, <span style="color:#e6db74">&#39;&#39;</span>)
+        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>addTab(self<span style="color:#f92672">.</span>tab2, <span style="color:#e6db74">&#39;&#39;</span>)
+        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>addTab(self<span style="color:#f92672">.</span>tab3, <span style="color:#e6db74">&#39;&#39;</span>)
+        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>addTab(self<span style="color:#f92672">.</span>tab4, <span style="color:#e6db74">&#39;&#39;</span>)
 
-        self.right_widget.setCurrentIndex(0)
-        self.right_widget.setStyleSheet('''QTabBar::tab{width: 0; \
-            height: 0; margin: 0; padding: 0; border: none;}''')
+        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>setCurrentIndex(<span style="color:#ae81ff">0</span>)
+        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>setStyleSheet(<span style="color:#e6db74">&#39;&#39;&#39;QTabBar::tab{width: 0; </span><span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span><span style="color:#e6db74">            height: 0; margin: 0; padding: 0; border: none;}&#39;&#39;&#39;</span>)
 
-        main_layout = QHBoxLayout()
-        main_layout.addWidget(left_widget)
-        main_layout.addWidget(self.right_widget)
-        main_layout.setStretch(0, 40)
-        main_layout.setStretch(1, 200)
-        main_widget = QWidget()
-        main_widget.setLayout(main_layout)
-        self.setCentralWidget(main_widget)
+        main_layout <span style="color:#f92672">=</span> QHBoxLayout()
+        main_layout<span style="color:#f92672">.</span>addWidget(left_widget)
+        main_layout<span style="color:#f92672">.</span>addWidget(self<span style="color:#f92672">.</span>right_widget)
+        main_layout<span style="color:#f92672">.</span>setStretch(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">40</span>)
+        main_layout<span style="color:#f92672">.</span>setStretch(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">200</span>)
+        main_widget <span style="color:#f92672">=</span> QWidget()
+        main_widget<span style="color:#f92672">.</span>setLayout(main_layout)
+        self<span style="color:#f92672">.</span>setCentralWidget(main_widget)
 
-    # ----------------- 
-    # buttons
+    <span style="color:#75715e"># ----------------- </span>
+    <span style="color:#75715e"># buttons</span>
 
-    def button1(self):
-        self.right_widget.setCurrentIndex(0)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">button1</span>(self):
+        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>setCurrentIndex(<span style="color:#ae81ff">0</span>)
 
-    def button2(self):
-        self.right_widget.setCurrentIndex(1)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">button2</span>(self):
+        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>setCurrentIndex(<span style="color:#ae81ff">1</span>)
 
-    def button3(self):
-        self.right_widget.setCurrentIndex(2)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">button3</span>(self):
+        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>setCurrentIndex(<span style="color:#ae81ff">2</span>)
 
-    def button4(self):
-        self.right_widget.setCurrentIndex(3)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">button4</span>(self):
+        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>setCurrentIndex(<span style="color:#ae81ff">3</span>)
 	
-	# ----------------- 
-    # pages
+	<span style="color:#75715e"># ----------------- </span>
+    <span style="color:#75715e"># pages</span>
 
-    def ui1(self):
-        main_layout = QVBoxLayout()
-        main_layout.addWidget(QLabel('page 1'))
-        main_layout.addStretch(5)
-        main = QWidget()
-        main.setLayout(main_layout)
-        return main
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ui1</span>(self):
+        main_layout <span style="color:#f92672">=</span> QVBoxLayout()
+        main_layout<span style="color:#f92672">.</span>addWidget(QLabel(<span style="color:#e6db74">&#39;page 1&#39;</span>))
+        main_layout<span style="color:#f92672">.</span>addStretch(<span style="color:#ae81ff">5</span>)
+        main <span style="color:#f92672">=</span> QWidget()
+        main<span style="color:#f92672">.</span>setLayout(main_layout)
+        <span style="color:#66d9ef">return</span> main
 
-    def ui2(self):
-        main_layout = QVBoxLayout()
-        main_layout.addWidget(QLabel('page 2'))
-        main_layout.addStretch(5)
-        main = QWidget()
-        main.setLayout(main_layout)
-        return main
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ui2</span>(self):
+        main_layout <span style="color:#f92672">=</span> QVBoxLayout()
+        main_layout<span style="color:#f92672">.</span>addWidget(QLabel(<span style="color:#e6db74">&#39;page 2&#39;</span>))
+        main_layout<span style="color:#f92672">.</span>addStretch(<span style="color:#ae81ff">5</span>)
+        main <span style="color:#f92672">=</span> QWidget()
+        main<span style="color:#f92672">.</span>setLayout(main_layout)
+        <span style="color:#66d9ef">return</span> main
         
-    def ui3(self):
-        main_layout = QVBoxLayout()
-        main_layout.addWidget(QLabel('page 3'))
-        main_layout.addStretch(5)
-        main = QWidget()
-        main.setLayout(main_layout)
-        return main
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ui3</span>(self):
+        main_layout <span style="color:#f92672">=</span> QVBoxLayout()
+        main_layout<span style="color:#f92672">.</span>addWidget(QLabel(<span style="color:#e6db74">&#39;page 3&#39;</span>))
+        main_layout<span style="color:#f92672">.</span>addStretch(<span style="color:#ae81ff">5</span>)
+        main <span style="color:#f92672">=</span> QWidget()
+        main<span style="color:#f92672">.</span>setLayout(main_layout)
+        <span style="color:#66d9ef">return</span> main
 
-    def ui4(self):
-        main_layout = QVBoxLayout()
-        main_layout.addWidget(QLabel('page 4'))
-        main_layout.addStretch(5)
-        main = QWidget()
-        main.setLayout(main_layout)
-        return main
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ui4</span>(self):
+        main_layout <span style="color:#f92672">=</span> QVBoxLayout()
+        main_layout<span style="color:#f92672">.</span>addWidget(QLabel(<span style="color:#e6db74">&#39;page 4&#39;</span>))
+        main_layout<span style="color:#f92672">.</span>addStretch(<span style="color:#ae81ff">5</span>)
+        main <span style="color:#f92672">=</span> QWidget()
+        main<span style="color:#f92672">.</span>setLayout(main_layout)
+        <span style="color:#66d9ef">return</span> main
 
 
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    ex = Window()
-    ex.show()
-    sys.exit(app.exec_())
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    app <span style="color:#f92672">=</span> QApplication(sys<span style="color:#f92672">.</span>argv)
+    ex <span style="color:#f92672">=</span> Window()
+    ex<span style="color:#f92672">.</span>show()
+    sys<span style="color:#f92672">.</span>exit(app<span style="color:#f92672">.</span>exec_())
 
-</code></pre>
-
+</code></pre></div>
   </div>
   
 
@@ -918,16 +885,6 @@ if __name__ == '__main__':
 
 
 </article>
-
-<style>
-  .my-emoji {
-    height: 25px;
-    display: inline-block;
-    margin: 0;
-    vertical-align: text-bottom;
-  }
-</style>
-
 
         </div>
         
@@ -961,20 +918,17 @@ if __name__ == '__main__':
 </script>
 
 
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
 
-<script defer src="/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
 
     
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
         
-    
     <script type="text/javascript">
         
         hljs.initHighlightingOnLoad();
     </script>
     
-
 
 
 

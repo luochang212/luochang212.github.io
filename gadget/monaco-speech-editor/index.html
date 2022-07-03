@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/style.css">
     <link rel="shortcut icon" type="image/png" href="./images/logo-1.jpeg">
-    
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
     <script src="https://upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.3.min.js"></script>
 </head>
 
@@ -245,7 +245,11 @@
                     </label>
                 </span>
 
-                
+                <!-- <span id="font-size" class="navbar-toggle">
+                    Font Size
+                    <input type="number" id="font-size-input" value="12"
+                        style="width: 25px; max-height:20px; text-align:left; position: relative; left: 135px; font-style: oblique; border-radius: 3px; overflow: hidden;">
+                </span> -->
 
                 <span id="mute" class="navbar-toggle" style="display: none;">
                     Mute
@@ -362,26 +366,26 @@
             <option>yaml</option>
         </select>
 
-        
+        <!-- <input type="button" value="test" onclick="testFun()"/> -->
 
         <div class="voice-controller">
-            
+            <!-- <button onclick="backward();"> -->
             <button id="backward">
                 <img src="./images/step-backward-solid.svg" alt="step-backward-solid" height="20px">
             </button>
 
-            
+            <!-- <button onclick="play();" style="padding:4px 7px 0 10px;"> -->
             <button id="play" style="padding:4px 7px 0 10px;">
                 <img id="play-pause" src="./images/play-solid.svg" alt="pause-solid" height="18px"
                     style="padding-bottom:1px;">
             </button>
 
-            
+            <!-- <button onclick="forward();"> -->
             <button id="forward">
                 <img src="./images/step-forward-solid.svg" alt="step-forward-solid" height="20px">
             </button>
 
-            
+            <!-- <button onclick="hideHeader();" id="hide-header"> -->
             <button id="hide-header">
                 <img src="./images/compress-solid.svg" alt="compress-solid" height="20px">
             </button>

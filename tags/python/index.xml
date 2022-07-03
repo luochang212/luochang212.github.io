@@ -1,27 +1,23 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>python on Chang Luo</title>
+    <title>Python on Chang Luo</title>
     <link>http://luochang212.github.io/tags/python/</link>
-    <description>Recent content in python on Chang Luo</description>
+    <description>Recent content in Python on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 01 May 2021 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://luochang212.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 01 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>统计学补完计划</title>
       <link>http://luochang212.github.io/posts/learning_statistics/</link>
       <pubDate>Sat, 01 May 2021 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/learning_statistics/</guid>
-      <description>统计学绝非一门生硬无趣的学科，它有着鲜活的案例和丰富的实验，让我们循着字符乘着代码在统计的海洋里尽情摇摆叭  1. 回归分析 1.1 简单线性回归模型 (1) 回归方程 许多回归分析都是在如下假设前提下开始的：$y$ 和 $x$ 是两个代表某个总体的变量，我们希望用 $x$ 解释 $y$，通过一个线性方程，我们可以刻画 $y$ 和 $x$ 之间的关系： $$y=\beta_{0}+\beta_{1} x+u \quad (1.1)$$ 假定方程 (1.1) 在我们所关注的总体中成立，它便定义了一个简单线性回归模型 (simple linear regression model).
+      <description>统计并非抽象的学科。虽然派生了推断、估计等抽象概念，但它并非为抽象而抽象，为思辩而思辨。   统计发展抽象概念，通常是为了解决现实中的问题。举个例子，一根头发也没有的人是秃子。那么有十根头发的人呢？有二十根头发的人呢？在一般的认识里，我们认为他们也是秃子。那么究竟要达到多少根毛，才能不被称为秃子呢？统计推断可以利用样本的分布信息，给这个问题一个量化的解答。这就是统计的魅力所在。 --  统计学绝非一门生硬无趣的学科，它有着鲜活的案例和丰富的实验，让我们循着公式乘着代码在统计的海洋里尽情摇摆叭  1. 回归分析 1.1 简单线性回归模型 (1) 回归方程 许多回归分析都是在如下假设前提下开始的：$y$ 和 $x$ 是两个代表某个总体的变量，我们希望用 $x$ 解释 $y$，通过一个线性方程，我们可以刻画 $y$ 和 $x$ 之间的关系： $$y=\beta_{0}+\beta_{1} x+u \quad (1.1)$$ 假定方程 (1.1) 在我们所关注的总体中成立，它便定义了一个简单线性回归模型 (simple linear regression model).
 其中，各符号含义如下：
- $y$: 因变量(或被解释变量、回归子) $x$: 自变量(或解释变量、回归元) $u$: 误差项(或干扰项) $\beta_{1}$: 斜率参数 $\beta_{0}$: 截距参数  举例来说，假设我们用方程 (1.1) 来刻画大豆收成：$y$ 表示收成，$x$ 表示施肥量，$u$ 则包括了诸如土地质量、降水量等因素。
+ $y$: 因变量（或被解释变量、回归子） $x$: 自变量（或解释变量、回归元） $u$: 误差项（或干扰项） $\beta_{1}$: 斜率参数 $\beta_{0}$: 截距参数  举例来说，假设我们用方程 (1.1) 来刻画大豆收成：$y$ 表示收成，$x$ 表示施肥量，$u$ 则包括了诸如土地质量、降水量等因素。
 (2) 零条件均值假设 只有在我们对 $x$ 和 $u$ 之间的关系做出某种约束时，我们才能计算出 $\beta_{1}$ 和 $\beta_{0}$ 的可靠估计量。
-🌟 零条件均值假定： $$\begin{aligned} &amp;amp;\mathrm{E}(u)=0 \quad (1.2)\\ &amp;amp;\mathrm{E}(u \mid x)=\mathrm{E}(u) \quad (1.</description>
+🌟 零条件均值假定： $$\begin{aligned} &amp;amp;\mathrm{E}(u)=0 \quad (1.</description>
     </item>
     
     <item>
@@ -74,7 +70,7 @@ HDFS 是一个分布式存储系统，它负责将文件切割成分片，然后
 如果你还没有 Anaconda，安装一个：
  海外用户直接访问 Anaconda 官网 下载即可 国内用户无法访问Anaconda 官网(被墙)，建议选择清华镜像替代。  安装完以后，在命令行界面输入 conda，会打印一个帮助文档。
 帮助文档大概是说 conda 有哪些常用命令，比如下面这些：
-$ conda help # 打印帮助文档 $ conda info # 查看conda信息，包括当前在哪个环境，环境路径，Python版本等信息 $ conda list # 列出conda下安装了哪些包 $ conda install [package_name] # 在conda环境中安装某个包 $ conda update [package_name] # 升级conda环境中的某个包   Note：后文仅专注介绍虚拟环境相关内容，更多内容请在 Anaconda 官方文档 中查看。</description>
+$ conda help # 打印帮助文档 $ conda info # 查看conda信息，包括当前在哪个环境，环境路径，Python版本等信息 $ conda list # 列出conda下安装了哪些包 $ conda install [package_name] # 在conda环境中安装某个包 $ conda update [package_name] # 升级conda环境中的某个包  Note：后文仅专注介绍虚拟环境相关内容，更多内容请在 Anaconda 官方文档 中查看。</description>
     </item>
     
     <item>
@@ -83,9 +79,9 @@ $ conda help # 打印帮助文档 $ conda info # 查看conda信息，包括当�
       <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/algorithms/</guid>
-      <description>算法学习笔记，长期更新  GitHub项目地址：python-tips/algorithms
+      <description> 算法学习笔记，长期更新  GitHub项目地址：python-tips/algorithms
 target: right = mid return -1 ``` （2）100 以内质数 统计 100 以内质数的数量。 ```python class Solution: def prime(self): ans = [2] for i in range(3, 100): flag = True for j in ans: if i % j == 0: flag = False if flag: ans.append(i) return ans ``` （3）计数质数 LeetCode 204 统计所有小于非负整数 n 的质数的数量。 ```python class Solution: def countPrimes(self, n): if n 排序 本节介绍各种排序算法的思路和特点，并提供了示例代码。
- 插入排序  直接插入排序 希尔排序  交换排序  冒泡排序 快速排序  选择排序  简单选择排序 堆排序  归并排序  二路归并排序    查看示例</description>
+ 插入排序  直接插入排序 希尔排序   交换排序  冒泡排序 快速排序   选择排序  简单选择排序 堆排序   归并排序  二路归并排序     查看示例  排列组合  排列 组合 子集   查看示例    ×  </description>
     </item>
     
     <item>
@@ -101,7 +97,8 @@ Chico 和 Dico 的魔术 Chico 和 Dico 是两位魔术师，他们经常表演�
 关键在于如何实现这种协议。
 数学模型 在进行分析之前，我们需要把 Chico 和 Dico 的魔术抽象成一个数学模型。
 魔术本身已经提供了一些建模信息。我们可以假设一共有 n 张牌，抽取其中的 k 张。在对牌组进行某种排序之后，我们需要利用前 (k - j) 张牌的信息，推测后 j 张牌是什么。
-现在我们有 n, j, k 三个变量，下面我们来进一步探究三个变量之间究竟服从何种关系。</description>
+现在我们有 n, j, k 三个变量，下面我们来进一步探究三个变量之间究竟服从何种关系。
+首先，我们知道从 n 张牌中抽取 k 张牌一共有 C(n, k) 种组合方式，而 (k - j) 张牌的排列方式则有 A(n, k-j) 种。按照模型的要求，我们要用后者对前者的信息进行编码。根据信息论中的信源编码理论，至少有：C(n, k) &amp;lt;= A(n, k-j)。</description>
     </item>
     
     <item>
@@ -137,7 +134,7 @@ Python 语言就像一棵枝叶繁茂的树。如果你找不到枝干，就会�
  书目推荐：
  入门：《Python编程从入门到实践》 [豆瓣链接] 初级：《Python学习手册》(英文名 Learning Python) [豆瓣链接] 中级：《流畅的Python》[豆瓣链接]  PS: 针对每个阶段，我推荐的是我认为最好的那本书。
  语言基础 列表 本文从以下几个方面介绍列表：
- 创建 获取 修改 添加 插入 删除 排序 逆序 索引 循环 列表推导 切片 复制 去重 计数 查找   查看示例</description>
+ 创建 获取 修改 添加 插入 删除 排序 逆序 索引 循环 列表推导 切片 复制 去重 计数 查找   查看示例  字典 鉴于 JSON 在数据处理中的大量使用，字典的重要性也不言而喻。</description>
     </item>
     
     <item>
@@ -150,11 +147,11 @@ Python 语言就像一棵枝叶繁茂的树。如果你找不到枝干，就会�
 主流软件如网易云音乐、腾讯电脑管家，都有侧边栏。侧边栏能有效扩展应用空间，使软件功能的层次更加分明。
 但PyQt5并没有一个专门的方法实现侧边栏。要实现侧边栏，主要有两种技术路线。一是从标签部件(QTabWidget)改造而来，二是用网格布局(QGridLayout)画出来。本文采用第一种技术路线，制作一个简单的侧边栏应用。
  Note: 两种技术路线制作的侧边栏有细微的差别。如果采用第二种技术路线(QGridLayout)，侧边栏和内容页之间没有明显的分界。所以需要额外地在侧边栏和内容页之间加一条线，来突出两者属于不同的组件。而第一种技术路线(QTabWidget)不需要，创建的侧边栏和内容页之间的区别明显。
-下图是一个用第二种技术路线(QGridLayout)制作的应用，可以看到侧边栏和内容页中间画了一条线，以突出两个组件的分界。
- 步骤分析 在开始写代码之前，我们先分析一下制作侧边栏需要几个步骤。
+  下图是一个用第二种技术路线(QGridLayout)制作的应用，可以看到侧边栏和内容页中间画了一条线，以突出两个组件的分界。
+   步骤分析 在开始写代码之前，我们先分析一下制作侧边栏需要几个步骤。
  添加部件 为部件设置布局 将标签部件改造成侧边栏的内容页 为侧边栏按钮编写函数，实现内容页之间的跳转  添加部件并设置布局 此段不详述。关于部件和布局的基础知识，在上一篇中有介绍，详见PyQt5 布局浅析。
 下面这段代码添加了部件且设置了布局。
-from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__(self): super().__init__() # set the title of main window self.setWindowTitle(&#39;Sidebar layout - www.luochang.ink&#39;) # set the size of window self.Width = 800 self.height = int(0.618 * self.Width) self.resize(self.Width, self.height) # add all widgets self.btn_1 = QPushButton(&#39;1&#39;, self) self.btn_2 = QPushButton(&#39;2&#39;, self) self.</description>
+from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__(self): super().__init__() # set the title of main window self.setWindowTitle(&amp;#39;Sidebar layout - www.luochang.ink&amp;#39;) # set the size of window self.Width = 800 self.height = int(0.618 * self.Width) self.resize(self.Width, self.height) # add all widgets self.btn_1 = QPushButton(&amp;#39;1&amp;#39;, self) self.</description>
     </item>
     
     <item>
@@ -167,7 +164,7 @@ from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__
  GitHub项目地址：pyqt5-demo
 创建第一个窗口 一般来说，桌面应用都以窗口(window)形式呈现。因此，要搭建桌面应用，首先要创建窗口。
 下面这段代码创建了一个空的窗口。
-from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__(self): super().__init__() # set the title of main window self.setWindowTitle(&#39;My first window - www.luochang.ink&#39;) # set the size of window self.Width = 500 self.height = int(0.618 * self.Width) self.resize(self.Width, self.height) if __name__ == &#39;__main__&#39;: app = QApplication(sys.argv) ex = Window() ex.show() sys.exit(app.exec_())  这段代码仅仅设置了窗口的标题和大小。下一步，我们要往这个空的窗口里添加部件(widget). 为了规范性，我们在Window类里新建一个函数initUI, 然后在initUI里为窗口添加部件。
+from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__(self): super().__init__() # set the title of main window self.setWindowTitle(&amp;#39;My first window - www.luochang.ink&amp;#39;) # set the size of window self.Width = 500 self.height = int(0.618 * self.Width) self.resize(self.Width, self.height) if __name__ == &amp;#39;__main__&amp;#39;: app = QApplication(sys.argv) ex = Window() ex.show() sys.exit(app.exec_()) 这段代码仅仅设置了窗口的标题和大小。下一步，我们要往这个空的窗口里添加部件(widget). 为了规范性，我们在Window类里新建一个函数initUI, 然后在initUI里为窗口添加部件。
 为窗口添加部件 下面这段代码为窗口添加了一个按钮部件(QPushButton).
 from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__(self): super().</description>
     </item>
@@ -187,10 +184,10 @@ Step 2. 分割raw data. 先用split函数进行粗略分割，再用find函数�
 经过上述两步，数据的整理工作就做完啦。
 可视化微博数据 有了csv文件，做数据可视化是分分钟的事。此时我把工作平台从PyCharm搬到了Jupyter Notebook。这是因为Jupyter Notebook可以制作的各式各样的可视化图表和窗口小工具(widget), 比PyCharm更适合数据处理。至于工具包，这里我选的是pandas和seaborn.
 首先是需求分析，我的目标如下:
- 绘制日期分布热力图，观察今年使用微博频率的趋势
- 绘制设备使用直方图，看看平时最常用什么平台发博
- 绘制时间分布直方图，观察一天之中各时段的发博频率
- 使用窗口滑块小部件，拖动查看各个时间段都发了什么内容
+  绘制日期分布热力图，观察今年使用微博频率的趋势
+  绘制设备使用直方图，看看平时最常用什么平台发博
+  绘制时间分布直方图，观察一天之中各时段的发博频率
+  使用窗口滑块小部件，拖动查看各个时间段都发了什么内容
   这里不描述具体过程，详见GitHub Repository.
 分析结果如下:
 热力图总体来说颜色逐年加深，说明我正在逐渐成为一个微博控。而且注意到往年年初我是不怎么玩微博的，但随着年纪渐长，1-3月份我玩微博的频率越来越高，这意味着过年可能越来越无聊，没有年味，从而加长了我混迹微博的时间。
@@ -210,7 +207,7 @@ def classification(self, txt_array, file_index): id = np.array([]) date = np.arr
 对于在欧洲的小伙伴们，复活节假在这一周就正式开始啦。大家都是怎么计划旅行的呢？
 我的习惯是在出发前最后一晚，花上半小时，搜索目的地景点 (Point of interest, POI), 然后在Google Maps上为它们点上小星星，以免和它们擦肩而过。我的地图经过一番操作，就成了下面这副模样。
 此时此刻，望着这些密集的星星，我不禁自问：如何才能走最少的路，遍历所有景点呢?
-搜索了谷歌和百度，都没找到我要路径规划功能。最接近需求的是谷歌地图的&amp;rdquo;Add destination&amp;rdquo;功能。然而这个功能只是依次连接你点选的地点。并不能由一组地点，确定连接它们的一条全局最短路径。
+搜索了谷歌和百度，都没找到我要路径规划功能。最接近需求的是谷歌地图的&amp;quot;Add destination&amp;quot;功能。然而这个功能只是依次连接你点选的地点。并不能由一组地点，确定连接它们的一条全局最短路径。
 没有现成应用怎么办，我打算自己动手写一个。
 下图是Google Add destination功能。
 适用模型：TSP 模型 用一句话概括需求就是：我们需要一条从某地方出发，遍历所有地点，最终回到起点的最短路径。
@@ -220,7 +217,7 @@ def classification(self, txt_array, file_index): id = np.array([]) date = np.arr
 在运行代码之前，你需要以下配置：
  一个Jupyter Notebook.  你需要安装这些包：googleplaces, googlemaps, gmaps, ortools. 你需要一个Google Maps API key, 从这里获取API.  完成配置等于成功的一半。在Jupyter notebook打开TSPSolver.ipynb，将第二个代码块的所有变量，改成自己的，比如自己的目的地自己的区域和自己的API密码……最后从头到尾运行所有代码块，你就可以得到自己的定制路线辣~
 配置代码如下。
-# input the places of interest (POI) places = &#39;YHA London Central Hostel&#39;, &#39;Coca-Cola London Eye&#39;, &#39;St. Paul\&#39;s Cathedral&#39;, &#39;Leadenhall Market&#39;, &#39;The National Gallery&#39; \ &#39;Big Ben&#39;, &#39;Buckingham Palace&#39;, &#39;Waterloo Station&#39; # the region Location=&#39;London&#39; # choose a mode Mode = &amp;quot;walking&amp;quot; # &amp;quot;driving&amp;quot;, &amp;quot;walking&amp;quot;, &amp;quot;bicycling&amp;quot;, &amp;quot;transit&amp;quot; # get Google API key from following website: # https://developers.</description>
+# input the places of interest (POI) places = &amp;#39;YHA London Central Hostel&amp;#39;, &amp;#39;Coca-Cola London Eye&amp;#39;, &amp;#39;St. Paul\&amp;#39;s Cathedral&amp;#39;, &amp;#39;Leadenhall Market&amp;#39;, &amp;#39;The National Gallery&amp;#39; \ &amp;#39;Big Ben&amp;#39;, &amp;#39;Buckingham Palace&amp;#39;, &amp;#39;Waterloo Station&amp;#39; # the region Location=&amp;#39;London&amp;#39; # choose a mode Mode = &amp;#34;walking&amp;#34; # &amp;#34;driving&amp;#34;, &amp;#34;walking&amp;#34;, &amp;#34;bicycling&amp;#34;, &amp;#34;transit&amp;#34; # get Google API key from following website:  # https://developers.</description>
     </item>
     
     <item>
@@ -231,7 +228,7 @@ def classification(self, txt_array, file_index): id = np.array([]) date = np.arr
       <guid>http://luochang212.github.io/posts/python_math_problem/</guid>
       <description>室友问我一个问题，把我难住了。
 想不出解法，遂写了个程序暴力求解。
- 题目：A permutation is applied to the string SUPERBGOLDHAT. The same permutation is applied to the output from this operation. The second output is OGTHLEPDSUARB. What was the first output? (Note: as an example, the permutation(1 3 4) applied to WOLF gives FOWL. Write your answer in capital letters inside quotation marks, e.g. &amp;ldquo;BEARDPLUGHOST&amp;rdquo;.)
+ **题目：**A permutation is applied to the string SUPERBGOLDHAT. The same permutation is applied to the output from this operation. The second output is OGTHLEPDSUARB. What was the first output? (Note: as an example, the permutation(1 3 4) applied to WOLF gives FOWL. Write your answer in capital letters inside quotation marks, e.g. &amp;ldquo;BEARDPLUGHOST&amp;rdquo;.)
  把它译成中文就是：已知将某个置换作用于字符串SUPERBGOLDHAT两次，生成字符串OGTHLEPDSUARB. 求该置换作用于字符串SUPERBGOLDHAT一次时，生成的结果。
  Note: 作用两次的意思就是，当一个置换规则作用于字符串一次时，会生成一个新字符串。将这个规则作用在这个新字符串上，又会生成一个字符串，这个字符串就是两次作用的结果。
  近世代数基础 如果你不知道什么是置换的话，可以看一下本节。学过近世代数的同学请自觉跳过这部分ꉂ(ˊᗜˋ*)

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>demo on Chang Luo</title>
@@ -6,11 +6,7 @@
     <description>Recent content in demo on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 07 Oct 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://luochang212.github.io/tags/demo/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 07 Oct 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/tags/demo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Monaco Editor 入门指南</title>
       <link>http://luochang212.github.io/posts/monaco_editor_tutorial/</link>
@@ -21,7 +17,7 @@
   var i = 0; function show_name(id) { i += 1; if (i%2 == 0) { document.getElementById(id).style.display = &#34;none&#34;; } else { document.getElementById(id).style.display = &#34;inline&#34;; } }  GitHub项目链接：monaco-editor-demos
 在学习 Monaco Editor 的过程中，我发现网络上的中文教程很少。为了填补这部分空白，我决定写一份入门教程，帮助初学者快速熟悉 Monaco Editor。通过阅读本文，你可以了解以下内容：
  如何安装 如何搭建 如何调用常用 API 如何寻找学习资源  安装 新建项目文件夹，打开它：
-$ mkdir my-application $ cd my-application  确保你已经下载了 npm，然后安装 Monaco Editor：$ npm install monaco-editor  搭建  本文提供了搭建 Monaco Editor 的一种方法，此方法的特点是能够兼容文件系统。如果你希望为后续应用添加文件管理系统，那么参考本文的搭建流程可以避免不必要的踩坑。添加文件系统的具体方法参见 monaco-speech-editor。</description>
+$ mkdir my-application $ cd my-application 确保你已经下载了 npm，然后安装 Monaco Editor：$ npm install monaco-editor 搭建  本文提供了搭建 Monaco Editor 的一种方法，此方法的特点是能够兼容文件系统。如果你希望为后续应用添加文件管理系统，那么参考本文的搭建流程可以避免不必要的踩坑。添加文件系统的具体方法参见 monaco-speech-editor。</description>
     </item>
     
   </channel>

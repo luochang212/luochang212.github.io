@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Chang Luo</title>
@@ -6,22 +6,18 @@
     <description>Recent content in Posts on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 01 May 2021 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://luochang212.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 01 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>统计学补完计划</title>
       <link>http://luochang212.github.io/posts/learning_statistics/</link>
       <pubDate>Sat, 01 May 2021 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/learning_statistics/</guid>
-      <description>统计学绝非一门生硬无趣的学科，它有着鲜活的案例和丰富的实验，让我们循着字符乘着代码在统计的海洋里尽情摇摆叭  1. 回归分析 1.1 简单线性回归模型 (1) 回归方程 许多回归分析都是在如下假设前提下开始的：$y$ 和 $x$ 是两个代表某个总体的变量，我们希望用 $x$ 解释 $y$，通过一个线性方程，我们可以刻画 $y$ 和 $x$ 之间的关系： $$y=\beta_{0}+\beta_{1} x+u \quad (1.1)$$ 假定方程 (1.1) 在我们所关注的总体中成立，它便定义了一个简单线性回归模型 (simple linear regression model).
+      <description>统计并非抽象的学科。虽然派生了推断、估计等抽象概念，但它并非为抽象而抽象，为思辩而思辨。   统计发展抽象概念，通常是为了解决现实中的问题。举个例子，一根头发也没有的人是秃子。那么有十根头发的人呢？有二十根头发的人呢？在一般的认识里，我们认为他们也是秃子。那么究竟要达到多少根毛，才能不被称为秃子呢？统计推断可以利用样本的分布信息，给这个问题一个量化的解答。这就是统计的魅力所在。 --  统计学绝非一门生硬无趣的学科，它有着鲜活的案例和丰富的实验，让我们循着公式乘着代码在统计的海洋里尽情摇摆叭  1. 回归分析 1.1 简单线性回归模型 (1) 回归方程 许多回归分析都是在如下假设前提下开始的：$y$ 和 $x$ 是两个代表某个总体的变量，我们希望用 $x$ 解释 $y$，通过一个线性方程，我们可以刻画 $y$ 和 $x$ 之间的关系： $$y=\beta_{0}+\beta_{1} x+u \quad (1.1)$$ 假定方程 (1.1) 在我们所关注的总体中成立，它便定义了一个简单线性回归模型 (simple linear regression model).
 其中，各符号含义如下：
- $y$: 因变量(或被解释变量、回归子) $x$: 自变量(或解释变量、回归元) $u$: 误差项(或干扰项) $\beta_{1}$: 斜率参数 $\beta_{0}$: 截距参数  举例来说，假设我们用方程 (1.1) 来刻画大豆收成：$y$ 表示收成，$x$ 表示施肥量，$u$ 则包括了诸如土地质量、降水量等因素。
+ $y$: 因变量（或被解释变量、回归子） $x$: 自变量（或解释变量、回归元） $u$: 误差项（或干扰项） $\beta_{1}$: 斜率参数 $\beta_{0}$: 截距参数  举例来说，假设我们用方程 (1.1) 来刻画大豆收成：$y$ 表示收成，$x$ 表示施肥量，$u$ 则包括了诸如土地质量、降水量等因素。
 (2) 零条件均值假设 只有在我们对 $x$ 和 $u$ 之间的关系做出某种约束时，我们才能计算出 $\beta_{1}$ 和 $\beta_{0}$ 的可靠估计量。
-🌟 零条件均值假定： $$\begin{aligned} &amp;amp;\mathrm{E}(u)=0 \quad (1.2)\\ &amp;amp;\mathrm{E}(u \mid x)=\mathrm{E}(u) \quad (1.</description>
+🌟 零条件均值假定： $$\begin{aligned} &amp;amp;\mathrm{E}(u)=0 \quad (1.</description>
     </item>
     
     <item>
@@ -30,16 +26,15 @@
       <pubDate>Sat, 21 Nov 2020 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/fastapi/</guid>
-      <description>什么是 API？API 有什么用？本文从零开始教你搭建 API，认识 API 服务中的组件和 FastAPI 的使用细节。
- GitHub项目地址：calendar-api
+      <description>什么是 API？如何从零开始，搭建自己的第一个API？本文带你搭建一个 API 小应用以带你了解 FastAPI 的使用细节
+ 什么是 API？API 有什么用？本文从零开始教你搭建 API，认识 API 服务中的组件和 FastAPI 的使用细节。 -- GitHub项目地址：calendar-api
 什么是 API？
 简单来说，API 是软件间相互传输数据的接口。它在生活中十分常见，比如博物馆订票系统中就使用了 API. 当你在手机应用上订票时，手机实际上发送了一个 HTTP 请求给远程服务器。远程服务器解析该请求。当确认所有字段信息均准确无误后，它才会把你的订票信息录入数据库，并回调成功标识。只有当上述操作全都被正确执行时，你的手机才会显示订票成功。
 API 程序通常运行在服务端 (server) 上。客户端 (client) 通过向 API 提供的网络接口发送请求，以实现对服务端的通信。服务端收到请求后，对请求进行解析。如果请求是合法的，则执行该请求，并将请求结果回调给客户端。一次典型的 API 请求大体上是这么个过程。
-但是，在业务中，我们经常需要记录每次请求产生的中间状态、运行结果和日志信息等数据，那么就需要数据库的参与。服务端调用 数据库 (database) 以存储业务中产生的各种信息。
-1. REST API API 本身是高度个性化的，软件间可以用任意数据类型进行通信。但如果 API 是面向大众的，个性化将导致软件间沟通成本高企。这就需要有规范来约束其沟通方式。REST API 就是其中一种规范。REST API 提出了六项指导原则，只要 API 符合这六项指导原则，就能称之为“符合 REST 风格的 API”。
+在业务中，有时需要记录每次请求产生的中间状态、运行结果和日志数据。这时就需要 服务端 调用 数据库 (database) 以存储业务中产生的各种信息。
+1. REST API API 本身是高度个性化的，软件间可以用任意数据类型进行通信。但如果 API 缺少规范、各行其是，就会导致软件间沟通成本高企。REST API 就是其中一种规范。REST API 提出了六项指导原则，只要 API 符合这六项指导原则，就可称之为“符合 REST 风格的 API”。
  REST API 提出的六项指导原则分别是：
- Client–server Stateless Cacheable Uniform interface Layered system Code on demand (optional)  [了解更多]
- PS: FastAPI 对构建 REST 风格的 API 提供良好的支持，这也是本文选用 FastAPI 的原因之一。</description>
+ Client–server Stateless Cacheable Uniform interface Layered system Code on demand (optional)  [了解更多]</description>
     </item>
     
     <item>
@@ -92,7 +87,7 @@ HDFS 是一个分布式存储系统，它负责将文件切割成分片，然后
 如果你还没有 Anaconda，安装一个：
  海外用户直接访问 Anaconda 官网 下载即可 国内用户无法访问Anaconda 官网(被墙)，建议选择清华镜像替代。  安装完以后，在命令行界面输入 conda，会打印一个帮助文档。
 帮助文档大概是说 conda 有哪些常用命令，比如下面这些：
-$ conda help # 打印帮助文档 $ conda info # 查看conda信息，包括当前在哪个环境，环境路径，Python版本等信息 $ conda list # 列出conda下安装了哪些包 $ conda install [package_name] # 在conda环境中安装某个包 $ conda update [package_name] # 升级conda环境中的某个包   Note：后文仅专注介绍虚拟环境相关内容，更多内容请在 Anaconda 官方文档 中查看。</description>
+$ conda help # 打印帮助文档 $ conda info # 查看conda信息，包括当前在哪个环境，环境路径，Python版本等信息 $ conda list # 列出conda下安装了哪些包 $ conda install [package_name] # 在conda环境中安装某个包 $ conda update [package_name] # 升级conda环境中的某个包  Note：后文仅专注介绍虚拟环境相关内容，更多内容请在 Anaconda 官方文档 中查看。</description>
     </item>
     
     <item>
@@ -101,9 +96,9 @@ $ conda help # 打印帮助文档 $ conda info # 查看conda信息，包括当�
       <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/algorithms/</guid>
-      <description>算法学习笔记，长期更新  GitHub项目地址：python-tips/algorithms
+      <description> 算法学习笔记，长期更新  GitHub项目地址：python-tips/algorithms
 target: right = mid return -1 ``` （2）100 以内质数 统计 100 以内质数的数量。 ```python class Solution: def prime(self): ans = [2] for i in range(3, 100): flag = True for j in ans: if i % j == 0: flag = False if flag: ans.append(i) return ans ``` （3）计数质数 LeetCode 204 统计所有小于非负整数 n 的质数的数量。 ```python class Solution: def countPrimes(self, n): if n 排序 本节介绍各种排序算法的思路和特点，并提供了示例代码。
- 插入排序  直接插入排序 希尔排序  交换排序  冒泡排序 快速排序  选择排序  简单选择排序 堆排序  归并排序  二路归并排序    查看示例</description>
+ 插入排序  直接插入排序 希尔排序   交换排序  冒泡排序 快速排序   选择排序  简单选择排序 堆排序   归并排序  二路归并排序     查看示例  排列组合  排列 组合 子集   查看示例    ×  </description>
     </item>
     
     <item>
@@ -119,7 +114,8 @@ Chico 和 Dico 的魔术 Chico 和 Dico 是两位魔术师，他们经常表演�
 关键在于如何实现这种协议。
 数学模型 在进行分析之前，我们需要把 Chico 和 Dico 的魔术抽象成一个数学模型。
 魔术本身已经提供了一些建模信息。我们可以假设一共有 n 张牌，抽取其中的 k 张。在对牌组进行某种排序之后，我们需要利用前 (k - j) 张牌的信息，推测后 j 张牌是什么。
-现在我们有 n, j, k 三个变量，下面我们来进一步探究三个变量之间究竟服从何种关系。</description>
+现在我们有 n, j, k 三个变量，下面我们来进一步探究三个变量之间究竟服从何种关系。
+首先，我们知道从 n 张牌中抽取 k 张牌一共有 C(n, k) 种组合方式，而 (k - j) 张牌的排列方式则有 A(n, k-j) 种。按照模型的要求，我们要用后者对前者的信息进行编码。根据信息论中的信源编码理论，至少有：C(n, k) &amp;lt;= A(n, k-j)。</description>
     </item>
     
     <item>
@@ -146,9 +142,9 @@ Chico 和 Dico 的魔术 Chico 和 Dico 是两位魔术师，他们经常表演�
 众多的水系、桥梁、公园组成了这座小镇迥异的风景线。
 一条凶狠霸道的链子！
 后记 英国城市的优点可以归结为以下三点：
- 英国的主要产业是金融、教育和文化产业。这些行业污染低利润高，所以英伦三岛才有如此美丽的自然风光。
- 近代城市文明是英国率先建立起来的。无论是建筑技术还是审美都是一脉相承。所以英国的古建筑和现代建筑之间能够相处融洽、相得益彰。
- 英国的城市一般规模小车流小，很少有建宽大主干道的需求。客观上道路对行人通行的切割和限制就少了很多，于是更加 walkable。
+  英国的主要产业是金融、教育和文化产业。这些行业污染低利润高，所以英伦三岛才有如此美丽的自然风光。
+  近代城市文明是英国率先建立起来的。无论是建筑技术还是审美都是一脉相承。所以英国的古建筑和现代建筑之间能够相处融洽、相得益彰。
+  英国的城市一般规模小车流小，很少有建宽大主干道的需求。客观上道路对行人通行的切割和限制就少了很多，于是更加 walkable。
   这些因素共同造就了英国独特的城市风貌和交通格局。其中的某些优点中国还无法复制。但有些经验，或许可以启发当代中国的建设者。尤其是和英国城市格局相近的中国县城和小镇，他们颇能借鉴英国在城市交通、景观园林、商业布局等方面的设计。</description>
     </item>
     
@@ -185,7 +181,7 @@ Python 语言就像一棵枝叶繁茂的树。如果你找不到枝干，就会�
  书目推荐：
  入门：《Python编程从入门到实践》 [豆瓣链接] 初级：《Python学习手册》(英文名 Learning Python) [豆瓣链接] 中级：《流畅的Python》[豆瓣链接]  PS: 针对每个阶段，我推荐的是我认为最好的那本书。
  语言基础 列表 本文从以下几个方面介绍列表：
- 创建 获取 修改 添加 插入 删除 排序 逆序 索引 循环 列表推导 切片 复制 去重 计数 查找   查看示例</description>
+ 创建 获取 修改 添加 插入 删除 排序 逆序 索引 循环 列表推导 切片 复制 去重 计数 查找   查看示例  字典 鉴于 JSON 在数据处理中的大量使用，字典的重要性也不言而喻。</description>
     </item>
     
     <item>
@@ -195,14 +191,12 @@ Python 语言就像一棵枝叶繁茂的树。如果你找不到枝干，就会�
       
       <guid>http://luochang212.github.io/posts/elastic_search/</guid>
       <description>Elasticsearch 是一个开源分布式全文搜索引擎。它建立在当前最先进有效的搜索引擎库 Lucene 之上。Elasticsearch 集成了 Lucene 的检索功能，并通过一套简单的 API 隐藏了 Lucene 的复杂性，使之简单易用。
- 初识 ES 的初步介绍
-本节将介绍 ES 的几个特性。这些介绍能帮助我们理解 ES 是应什么需求诞生的？它解决了什么问题？它为何如此架构？以及这种架构方式为它带来哪些性能上的提升？这些信息虽然不能直接提升我们使用 ES 的能力，但能从更深的维度帮助我们使用好它。
+ 初识 ES 的初步介绍 本节将介绍 ES 的几个特性。这些介绍能帮助我们理解 ES 是应什么需求诞生的？它解决了什么问题？它为何如此架构？以及这种架构方式为它带来哪些性能上的提升？这些信息虽然不能直接提升我们使用 ES 的能力，但能从更深的维度帮助我们使用好它。
 不仅仅是搜索 ES 不仅能够搜索，它还提供一套分布式实时存储文档的解决方案。 ES 允许用户将数据存储在多个服务器节点上。这些节点能实时共享数据。一旦主节点的内容发生改变，这些改变会实时传递到副节点上，以保证主副节点的内容一致。如果主节点掉线，ES 能立即选举出一个副节点充当主节点。选举过程就像切换开关一样，能够在瞬间完成，从而保证了 ES 的可靠性。
 分布式的存储方案不仅仅是基于数据安全的考量，同时也是为了加快检索的速度。利用 MapReduce，ES 可以在多个节点上并行地检索数据，大大缩短了海量数据处理的时间。
 领域专用语言 为了统一查询语法，ES 设计了一套领域专用语言 (DSL, domain specific language)。这套语言基于 JSON，优点是简单易学，缺点是在表达复杂的查询时，会显得格外冗长，阅读起来也不太友好。
 SQL 和 NoSQL SQL 全称 Structured Query Language。SQL 中的 Structured 突出了它是结构化的查询语言。结构化即受字段限制。SQL 数据库中的每条数据都具有相同的长度，因此可以被视作一张数据表。相比于 SQL，NoSQL 能表达更复杂的内部数据结构。字段之间不相互影响，可以拥有各自的层级结构。因此 NoSQL 数据库要比 SQL 数据库更加灵活且易于拓展。NoSQL 数据库中的数据通常用 JSON 表示。
-入门 一些简单概念
-文档 在 ES 中，文档是一个特定的术语。它表示用来存储对象的存储单元。一个对象通常不会是简单的键值对，它可能包含更复杂的数据结构，比如日期、地理数据、数组等。为表达这种复杂的、多层次的数据，ES 将 JSON 作为文档存储的固定格式。也就是说在 ES 里，一个文档被存成一个 JSON 值。</description>
+入门 一些简单概念 文档 在 ES 中，文档是一个特定的术语。它表示用来存储对象的存储单元。一个对象通常不会是简单的键值对，它可能包含更复杂的数据结构，比如日期、地理数据、数组等。为表达这种复杂的、多层次的数据，ES 将 JSON 作为文档存储的固定格式。也就是说在 ES 里，一个文档被存成一个 JSON 值。</description>
     </item>
     
     <item>
@@ -215,7 +209,7 @@ SQL 和 NoSQL SQL 全称 Structured Query Language。SQL 中的 Structured 突�
   var i = 0; function show_name(id) { i += 1; if (i%2 == 0) { document.getElementById(id).style.display = &#34;none&#34;; } else { document.getElementById(id).style.display = &#34;inline&#34;; } }  GitHub项目链接：monaco-editor-demos
 在学习 Monaco Editor 的过程中，我发现网络上的中文教程很少。为了填补这部分空白，我决定写一份入门教程，帮助初学者快速熟悉 Monaco Editor。通过阅读本文，你可以了解以下内容：
  如何安装 如何搭建 如何调用常用 API 如何寻找学习资源  安装 新建项目文件夹，打开它：
-$ mkdir my-application $ cd my-application  确保你已经下载了 npm，然后安装 Monaco Editor：$ npm install monaco-editor  搭建  本文提供了搭建 Monaco Editor 的一种方法，此方法的特点是能够兼容文件系统。如果你希望为后续应用添加文件管理系统，那么参考本文的搭建流程可以避免不必要的踩坑。添加文件系统的具体方法参见 monaco-speech-editor。</description>
+$ mkdir my-application $ cd my-application 确保你已经下载了 npm，然后安装 Monaco Editor：$ npm install monaco-editor 搭建  本文提供了搭建 Monaco Editor 的一种方法，此方法的特点是能够兼容文件系统。如果你希望为后续应用添加文件管理系统，那么参考本文的搭建流程可以避免不必要的踩坑。添加文件系统的具体方法参见 monaco-speech-editor。</description>
     </item>
     
     <item>
@@ -230,8 +224,7 @@ $ mkdir my-application $ cd my-application  确保你已经下载了 npm，然�
 项目背景 根据世界卫生组织2010年的数据，全盲者在全年龄段人口中所占比例为0.58%。在全盲人口中，大部分是中老年人口。从下图可以看出，致盲风险随着年龄快速升高。在0～14岁人群中，全盲比例仅有0.07%；在15～49岁人群中，全盲比例稍高一些，为0.16%；而在50岁以上人群中，全盲比例则达到了2.39%。
 全盲人口的比例不大，但从绝对数值来看却是非常可观的。2010年，世界全盲人口比例为0.58%，但全盲人口数却达到了3936.5万。即使14岁以下人口的全盲比例仅有0.07%，但考虑绝对数值，也达到了142.1万人。
 而且并非只有全盲者才需要语音辅助。有相当比例的视力障碍者，即使使用眼镜，也无法矫正到正常视力。这部分的视障者，也是需要语音辅助的。相比于全盲者，视力障碍者的人口则更为庞大，达到了惊人的2亿8538万。
-在提倡公平的原则下，我们希望视障者和视力正常的人一样，也能自由地选择职业。事实上现在已经有部分视障工程师，出现在程序员岗位上，证明着他们的实力。本项目旨在为视障程序员编程无障碍化做一些贡献，项目源代码现已在GitHub上以MIT许可证开源。
-技术选择 本编辑器是用JavaScript编写的网络应用 (web application)。它只有两项功能需要外部依赖，一个是在线代码编辑器模块，一个是文字转语音模块。
+在提倡公平的原则下，我们希望视障者和视力正常的人一样，也能自由地选择职业。事实上现在已经有[部分视障工程师](http://www.xinhuanet.com/2018-01/04/c_1122206710.htm)，出现在程序员岗位上，证明着他们的实力。本项目旨在为视障程序员编程无障碍化做一些贡献，[项目源代码](https://github.com/luochang212/monaco-speech-editor)现已在GitHub上以MIT许可证开源。 技术选择 本编辑器是用JavaScript编写的网络应用 (web application)。它只有两项功能需要外部依赖，一个是在线代码编辑器模块，一个是文字转语音模块。
 （一）在线代码编辑器
 开源的在线代码编辑器还是挺多的，比如：
  Ace CodeMirror Monaco Editor  它们对语法高亮、缩进、代码补全等基础功能都有比较好的支持，用起来大同小异。选择Monaco Editor是因为用惯了VSCode。毕竟Monaco Editor的源代码就是直接从VSCode贴过去的，两者的界面风格和操作方式都极其相似，对VSCode用户比较友好。但后来使用过程中发现打脸了，当然这是后话。
@@ -255,14 +248,8 @@ $ mkdir my-application $ cd my-application  确保你已经下载了 npm，然�
 环境配置 （一）在终端运行
 在命令行运行程序几乎不需要配置。只要下载Golang，然后按官方建议，创建一个名为gocode的文件夹，直接在里面写代码就可以了。为了防止以后import其他包发生错误，建议把gocode文件夹放在GOPATH下。如何知道Golang的工作路径(GOPATH)在哪里呢？打开命令行，输入go env，就能在输出里找到工作路径了（注意区别安装路径和工作路径，它们是两个不同的路径）。
 下面是Golang在命令行运行时的一些常用命令：
- Linux系统下的常用命令（点击展开） 新建目录
-$ mkdir foldername  
-打开目录
-$ cd foldername  
-返回上一级目录
-$ cd ..  
-新建go文件
-$ touch filename.</description>
+ Linux系统下的常用命令（点击展开） 新建目录 $ mkdir foldername 
+打开目录 ``` $ cd foldername ``` 返回上一级目录 ``` $ cd .. ``` 新建go文件 ``` $ touch filename.go ``` 删除go文件 ``` $ rm filename.</description>
     </item>
     
     <item>
@@ -272,15 +259,15 @@ $ touch filename.</description>
       
       <guid>http://luochang212.github.io/posts/network_performance_analysis/</guid>
       <description>排队论(queueing theory)也称随机服务系统理论，它研究的内容有三部分：性态问题、最优化问题和统计推断问题。（《运筹学》清华大学出版社）
-下图描述了排队过程的一般流程：
-现实中的排队问题是多种多样的，对上述“顾客源”和“服务机构”应该作宽泛的理解。顾客和服务机构可以是生物，也可以是非生物；排队结构可以是有形的，也可以是无形的，比如向交换台要求通话的请求；顾客可以走向服务机构，也可以相反，比如送货上门。
+  下图描述了排队过程的一般流程：
+    现实中的排队问题是多种多样的，对上述“顾客源”和“服务机构”应该作宽泛的理解。顾客和服务机构可以是生物，也可以是非生物；排队结构可以是有形的，也可以是无形的，比如向交换台要求通话的请求；顾客可以走向服务机构，也可以相反，比如送货上门。
  在网络中，服务器和用户之间相互传送数据包。数据包的传送需要时间，因此或多或少都会产生延迟。为了分析这些延迟，我们引入了一系列假设，并利用排队论对网络延迟进行建模分析。
 本文将着重介绍网络性能分析(Network performance analysis)中几种常见的排队模型。它们是：
- The M/M/1 queuing system The birth-death process The M/M/m queuing system The M/M/1/m queuing system The M/M/∞ queuing system The M/M/m/m queuing system  另外，作为以上模型的理论基础，本文将首先介绍柏松过程(Poisson process)。
-柏松过程的推导 柏松过程是马尔可夫过程的一个特例，在排队论中经常被用来估计顾客到达的概率分布。
-（一）柏松过程的假设
- 在时间间隔$\Delta t$内，有且仅有一位顾客到达的概率$P$和$\Delta t$成比例，比例系数为$\lambda$
- 在时间间隔$\Delta t$内，至多只允许一位顾客到达（否则应该选取一个更短的时间间隔） $$\begin{aligned} P(\text { 在时间间隔 }[t, t+\Delta t] \text { 内，有且仅有一位顾客到达 }) &amp;amp;=\lambda \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，没有顾客到达 }) &amp;amp;=1-\lambda \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，多于一位顾客到达 }) &amp;amp;=0 \end{aligned}$$</description>
+ The M/M/1 queuing system The birth-death process The M/M/m queuing system The M/M/1/m queuing system The M/M/∞ queuing system The M/M/m/m queuing system  另外，作为以上模型的理论基础，本文将首先介绍泊松过程(Poisson process)。
+泊松过程的推导 泊松过程是马尔可夫过程的一个特例，在排队论中经常被用来估计顾客到达的概率分布。
+（一）泊松过程的假设
+  在时间间隔$\Delta t$内，有且仅有一位顾客到达的概率$P$和$\Delta t$成比例，比例系数为$\lambda$
+  在时间间隔$\Delta t$内，至多只允许一位顾客到达（否则应该选取一个更短的时间间隔） $$\begin{aligned} P(\text { 在时间间隔 }[t, t+\Delta t] \text { 内，有且仅有一位顾客到达 }) &amp;amp;=\lambda \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，没有顾客到达 }) &amp;amp;=1-\lambda \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，多于一位顾客到达 }) &amp;amp;=0 \end{aligned}$$</description>
     </item>
     
     <item>
@@ -289,41 +276,31 @@ $ touch filename.</description>
       <pubDate>Tue, 02 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/kitchen_time_2/</guid>
-      <description>做饭累不累？如果你只是偶尔做一顿饭以娱身心，还是挺快乐的。但要是餐餐下厨，就没那么好玩了。一日三餐，少说也要花费两三个小时的光景，不但耗损精力，还挤占学习时间。日复一日地做下来，不累才怪。因此，长期做饭的留学生往往会体现三种趋势：做饭价格向便宜收敛，做饭速度向手快收敛，做饭味道向好吃收敛。因为咱追求的就是便宜美味的同时，又省时省力不麻烦。那么下面就由我来给大家盘点一下那些好吃又方便的快手菜吧 
-牛肉丸子汤 原料：牛肉丸、醋、香油、白胡椒粉、辣椒粉、葱
+      <description>做饭累不累？如果你只是偶尔做一顿饭以娱身心，还是挺快乐的。但要是餐餐下厨，就没那么好玩了。一日三餐，少说也要花费两三个小时的光景，不但耗损精力，还挤占学习时间。日复一日地做下来，不累才怪。因此，长期做饭的留学生往往会体现三种趋势：做饭价格向便宜收敛，做饭速度向手快收敛，做饭味道向好吃收敛。因为咱追求的就是便宜美味的同时，又省时省力不麻烦。那么下面就由我来给大家盘点一下那些好吃又方便的快手菜吧 牛肉丸子汤 原料：牛肉丸、醋、香油、白胡椒粉、辣椒粉、葱
 做法：
- 锅内放牛肉丸，加水至没过牛肉丸，火开到最大。
- 等水煮开的同时，把葱切成葱花备用。
- 待水煮开，调成中火，保持水面沸腾。然后开始调味，按个人口味加醋和辣椒粉。加白胡椒半勺，香油数滴。
- 牛肉丸还是比较易熟的，水开后再煮五至七分钟，加葱花，稍微再煮一分钟，即可起锅。
-  
-炸三文鱼 原料：三文鱼片、面粉、盐
+  锅内放牛肉丸，加水至没过牛肉丸，火开到最大。
+  等水煮开的同时，把葱切成葱花备用。
+  待水煮开，调成中火，保持水面沸腾。然后开始调味，按个人口味加醋和辣椒粉。加白胡椒半勺，香油数滴。
+  牛肉丸还是比较易熟的，水开后再煮五至七分钟，加葱花，稍微再煮一分钟，即可起锅。
+  炸三文鱼 原料：三文鱼片、面粉、盐
 做法：
- TESCO买的厚三文鱼片，均匀地敷上面粉，直至表面摸不到水分。
- 锅里倒少量油铺匀锅底，开中火将油烧热。
- 注意三文鱼易焦，只能开小火煎。翻面也不能太勤，否则鱼容易碎。大概三分钟左右翻一次面，反复翻面直至两面煎至金黄。
- 煎十分种左右起锅。注意火候，煎得太短里面不熟，煎得太久肉会变柴。
-  
-烤羊排 原料：羊排、酱油、孜然、黑胡椒、盐、芝麻
+  TESCO买的厚三文鱼片，均匀地敷上面粉，直至表面摸不到水分。
+  锅里倒少量油铺匀锅底，开中火将油烧热。
+  注意三文鱼易焦，只能开小火煎。翻面也不能太勤，否则鱼容易碎。大概三分钟左右翻一次面，反复翻面直至两面煎至金黄。
+  煎十分种左右起锅。注意火候，煎得太短里面不熟，煎得太久肉会变柴。
+  烤羊排 原料：羊排、酱油、孜然、黑胡椒、盐、芝麻
 做法：
- 羊排切段，加黑胡椒，加酱油，加孜然，加盐腌二十分钟。
- 放入烤箱，开170度，烤四十分钟。
- 出烤箱后撒点芝麻点缀。
-  
-淡菜排骨汤 原料：排骨、淡菜、豆腐、生姜、蒜
+  羊排切段，加黑胡椒，加酱油，加孜然，加盐腌二十分钟。
+  放入烤箱，开170度，烤四十分钟。
+  出烤箱后撒点芝麻点缀。
+  淡菜排骨汤 原料：排骨、淡菜、豆腐、生姜、蒜
 做法：
- 烧一锅水，同时把豆腐切块，淡菜洗干净备用。
- 下排骨，煮出浮沫后，将排骨捞出，用冷水把排骨冲洗干净。
- 再烧一锅水，下淡菜、排骨、豆腐、两瓣蒜、几片生姜，盖上锅盖煮十分钟。
- 淡菜有自身的鲜味，不用调味，起锅即食。
-  
-炒鸡蛋 原料：鸡蛋、葱、洋葱、猪油
-做法：
- 葱和洋葱切段备用。蛋打成蛋液，加盐备用。
- 把葱白和洋葱下锅炒香，剩余葱段放入蛋液中拌匀，待锅内葱香味溢出，下鸡蛋液。
- 鸡蛋液微微凝固时，立刻用筷子从四周向中间拨动，使蛋液凝固过程中均匀受热。注意拨动的节奏，不需要拨得太勤或者太缓。
- 当鸡蛋熟了以后，应该还是一整块的，而且比较滑嫩。此时，把筷子插入鸡蛋块中，画圆圈将鸡蛋块打散。
- 把打散的鸡蛋再翻炒几下，当鸡蛋表面微焦、香味溢出时即可出锅。</description>
+  烧一锅水，同时把豆腐切块，淡菜洗干净备用。
+  下排骨，煮出浮沫后，将排骨捞出，用冷水把排骨冲洗干净。
+  再烧一锅水，下淡菜、排骨、豆腐、两瓣蒜、几片生姜，盖上锅盖煮十分钟。
+  淡菜有自身的鲜味，不用调味，起锅即食。
+  炒鸡蛋 原料：鸡蛋、葱、洋葱、猪油
+做法：</description>
     </item>
     
     <item>
@@ -339,7 +316,7 @@ Agent指个体，Agent-base model即基于个体的模型。在Agent-based model
  Note: 除了Agent-base model之外，Equation-based model也是一种比较常见的建模方式。Agent-based model适合表达每个个体身上发生了什么，比如个体的速度、位置的变化等。Equation-based model则而更适合表达系统平均发生了什么，比如人口模型中人口数量变化就更适合用Equation-based model建模。
  模型假设 （一）生物的属性
 模型内有三种生物：狼(wolf)、麋鹿(moose)、草(grass)。此外，狼还分为头狼和普通狼。下面这张表展示了头狼、普通狼、麋鹿的属性：
-   # age food pos speed last_breed population packNo range eaten     头狼 &amp;radic; &amp;radic; &amp;radic; &amp;radic; &amp;radic; &amp;radic;  &amp;radic; &amp;radic;   普通狼 &amp;radic; &amp;radic; &amp;radic; &amp;radic;   &amp;radic;     麋鹿 &amp;radic; &amp;radic; &amp;radic; &amp;radic; &amp;radic;        从上表可以看出，年龄、食物、位置、速度是头狼、普通狼和麋鹿的共有属性。last_breed指和上一次生育的时间间隔，在模型内用一次迭代表示一次时间间隔，因为迭代必须是整数，因此last_breed也是整型变量。头狼特有population属性，用来表示该头狼所在狼群中狼的数量；头狼特有range属性，表示该狼群活动的范围；头狼特有eaten属性，表示狼群在一次迭代中，全体成员吃到的麋鹿的总数。普通狼特有packNo属性，用来标记其所属狼群的头狼在列表中的索引号。普通狼没有last_breed属性，是因为其生育是以整个狼群为单位的。由于狼群是由头狼定义的，狼群相关的属性和行为也绑定在头狼身上，因此在代码实现上，狼群的生育是通过头狼实现的。</description>
+   # age food pos speed last_breed population packNo range eaten     头狼 √ √ √ √ √ √  √ √   普通狼 √ √ √ √   √     麋鹿 √ √ √ √ √        从上表可以看出，年龄、食物、位置、速度是头狼、普通狼和麋鹿的共有属性。last_breed指和上一次生育的时间间隔，在模型内用一次迭代表示一次时间间隔，因为迭代必须是整数，因此last_breed也是整型变量。头狼特有population属性，用来表示该头狼所在狼群中狼的数量；头狼特有range属性，表示该狼群活动的范围；头狼特有eaten属性，表示狼群在一次迭代中，全体成员吃到的麋鹿的总数。普通狼特有packNo属性，用来标记其所属狼群的头狼在列表中的索引号。普通狼没有last_breed属性，是因为其生育是以整个狼群为单位的。由于狼群是由头狼定义的，狼群相关的属性和行为也绑定在头狼身上，因此在代码实现上，狼群的生育是通过头狼实现的。</description>
     </item>
     
     <item>
@@ -350,7 +327,7 @@ Agent指个体，Agent-base model即基于个体的模型。在Agent-based model
       <guid>http://luochang212.github.io/posts/to_do_list/</guid>
       <description>初次学习JavaScript，用JS写了一个计划表生成工具。
  项目链接：计划表生成工具
-JavaScript是一个神奇的语言。它既不像Java原生地支持类和继承，也不如Python声明变量方便，更兼闹出&amp;rdquo;===&amp;ldquo;这样的麻烦。但我依旧深知它的强大，尤其是在可视化这一方面，在接触qtwebengine的时候已经感受过一次了。目前，我学习JS的平台是W3Schools 和廖雪峰的网站。
+JavaScript是一个神奇的语言。它既不像Java原生地支持类和继承，也不如Python声明变量方便，更兼闹出&amp;quot;===&amp;ldquo;这样的麻烦。但我依旧深知它的强大，尤其是在可视化这一方面，在接触qtwebengine的时候已经感受过一次了。目前，我学习JS的平台是W3Schools 和廖雪峰的网站。
 话说这是我自学JS以来写的第一个程序，求轻虐(￣▽￣)
 我的初衷 我的初衷是制作一个习惯统计工具，用来分析我在长期计划上的坚持能力。于是照例我对它做了一个需求分析。
 习惯统计工具的需求分析：
@@ -361,12 +338,12 @@ JavaScript是一个神奇的语言。它既不像Java原生地支持类和继承
 步骤分析 （一）添加计划
 对于前端UI，首先我们需要一个textarea，用来接收每项计划的内容。还需要一个按钮，点下这个按钮时，将文本框内的信息添加到计划列表。为了便于存储，我为计划(item)设计了一个类。
 这个类的声明如下：
-var Items = { name: &amp;quot;&amp;quot;, isCheck: &amp;quot;false&amp;quot;, isDelete: &amp;quot;false&amp;quot; };  可以看出这个类有三个值。它们分别表示该对象的名称，是否完成，以及是否删除。每次添加计划，用以下代码实例化这个类(items)，生成一个对象(item)：
-var item = Object.create(Items);  （二）生成表格
+var Items = { name: &amp;#34;&amp;#34;, isCheck: &amp;#34;false&amp;#34;, isDelete: &amp;#34;false&amp;#34; }; 可以看出这个类有三个值。它们分别表示该对象的名称，是否完成，以及是否删除。每次添加计划，用以下代码实例化这个类(items)，生成一个对象(item)：
+var item = Object.create(Items); （二）生成表格
 这一步要把复选框(checkbox)和按钮(button)都和每一行的计划绑定。那么如何绑定呢？
 要知道，用for loop遍历subArray的过程，就是生成表格内容的过程。所以，checkbox和button也都是在这次遍历中生成的。那么，我们就可以在它们的生成过程中，创建它们的id，并把id和计划对应起来。
-具体到代码中，我用了i.toString(10)将循环数转成string类型，然后加到id上。于是，第一项计划对应的checkbox的id就是&amp;rdquo;cb0&amp;rdquo;, 对应的button的id就是&amp;rdquo;btn0&amp;rdquo;, 以此类推。
-for (i = 0; i &amp;lt; subArray.length; i++) { var index = i+1; body += &#39;&amp;lt;tr&amp;gt;&#39;; body += &#39;&amp;lt;td&amp;gt;&#39; + index.</description>
+具体到代码中，我用了i.toString(10)将循环数转成string类型，然后加到id上。于是，第一项计划对应的checkbox的id就是&amp;quot;cb0&amp;rdquo;, 对应的button的id就是&amp;quot;btn0&amp;quot;, 以此类推。
+for (i = 0; i &amp;lt; subArray.length; i++) { var index = i+1; body += &amp;#39;&amp;lt;tr&amp;gt;&amp;#39;; body += &amp;#39;&amp;lt;td&amp;gt;&amp;#39; + index.</description>
     </item>
     
     <item>
@@ -379,11 +356,11 @@ for (i = 0; i &amp;lt; subArray.length; i++) { var index = i+1; body += &#39;&am
 主流软件如网易云音乐、腾讯电脑管家，都有侧边栏。侧边栏能有效扩展应用空间，使软件功能的层次更加分明。
 但PyQt5并没有一个专门的方法实现侧边栏。要实现侧边栏，主要有两种技术路线。一是从标签部件(QTabWidget)改造而来，二是用网格布局(QGridLayout)画出来。本文采用第一种技术路线，制作一个简单的侧边栏应用。
  Note: 两种技术路线制作的侧边栏有细微的差别。如果采用第二种技术路线(QGridLayout)，侧边栏和内容页之间没有明显的分界。所以需要额外地在侧边栏和内容页之间加一条线，来突出两者属于不同的组件。而第一种技术路线(QTabWidget)不需要，创建的侧边栏和内容页之间的区别明显。
-下图是一个用第二种技术路线(QGridLayout)制作的应用，可以看到侧边栏和内容页中间画了一条线，以突出两个组件的分界。
- 步骤分析 在开始写代码之前，我们先分析一下制作侧边栏需要几个步骤。
+  下图是一个用第二种技术路线(QGridLayout)制作的应用，可以看到侧边栏和内容页中间画了一条线，以突出两个组件的分界。
+   步骤分析 在开始写代码之前，我们先分析一下制作侧边栏需要几个步骤。
  添加部件 为部件设置布局 将标签部件改造成侧边栏的内容页 为侧边栏按钮编写函数，实现内容页之间的跳转  添加部件并设置布局 此段不详述。关于部件和布局的基础知识，在上一篇中有介绍，详见PyQt5 布局浅析。
 下面这段代码添加了部件且设置了布局。
-from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__(self): super().__init__() # set the title of main window self.setWindowTitle(&#39;Sidebar layout - www.luochang.ink&#39;) # set the size of window self.Width = 800 self.height = int(0.618 * self.Width) self.resize(self.Width, self.height) # add all widgets self.btn_1 = QPushButton(&#39;1&#39;, self) self.btn_2 = QPushButton(&#39;2&#39;, self) self.</description>
+from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__(self): super().__init__() # set the title of main window self.setWindowTitle(&amp;#39;Sidebar layout - www.luochang.ink&amp;#39;) # set the size of window self.Width = 800 self.height = int(0.618 * self.Width) self.resize(self.Width, self.height) # add all widgets self.btn_1 = QPushButton(&amp;#39;1&amp;#39;, self) self.</description>
     </item>
     
     <item>
@@ -396,7 +373,7 @@ from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__
  GitHub项目地址：pyqt5-demo
 创建第一个窗口 一般来说，桌面应用都以窗口(window)形式呈现。因此，要搭建桌面应用，首先要创建窗口。
 下面这段代码创建了一个空的窗口。
-from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__(self): super().__init__() # set the title of main window self.setWindowTitle(&#39;My first window - www.luochang.ink&#39;) # set the size of window self.Width = 500 self.height = int(0.618 * self.Width) self.resize(self.Width, self.height) if __name__ == &#39;__main__&#39;: app = QApplication(sys.argv) ex = Window() ex.show() sys.exit(app.exec_())  这段代码仅仅设置了窗口的标题和大小。下一步，我们要往这个空的窗口里添加部件(widget). 为了规范性，我们在Window类里新建一个函数initUI, 然后在initUI里为窗口添加部件。
+from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__(self): super().__init__() # set the title of main window self.setWindowTitle(&amp;#39;My first window - www.luochang.ink&amp;#39;) # set the size of window self.Width = 500 self.height = int(0.618 * self.Width) self.resize(self.Width, self.height) if __name__ == &amp;#39;__main__&amp;#39;: app = QApplication(sys.argv) ex = Window() ex.show() sys.exit(app.exec_()) 这段代码仅仅设置了窗口的标题和大小。下一步，我们要往这个空的窗口里添加部件(widget). 为了规范性，我们在Window类里新建一个函数initUI, 然后在initUI里为窗口添加部件。
 为窗口添加部件 下面这段代码为窗口添加了一个按钮部件(QPushButton).
 from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__(self): super().</description>
     </item>
@@ -416,10 +393,10 @@ Step 2. 分割raw data. 先用split函数进行粗略分割，再用find函数�
 经过上述两步，数据的整理工作就做完啦。
 可视化微博数据 有了csv文件，做数据可视化是分分钟的事。此时我把工作平台从PyCharm搬到了Jupyter Notebook。这是因为Jupyter Notebook可以制作的各式各样的可视化图表和窗口小工具(widget), 比PyCharm更适合数据处理。至于工具包，这里我选的是pandas和seaborn.
 首先是需求分析，我的目标如下:
- 绘制日期分布热力图，观察今年使用微博频率的趋势
- 绘制设备使用直方图，看看平时最常用什么平台发博
- 绘制时间分布直方图，观察一天之中各时段的发博频率
- 使用窗口滑块小部件，拖动查看各个时间段都发了什么内容
+  绘制日期分布热力图，观察今年使用微博频率的趋势
+  绘制设备使用直方图，看看平时最常用什么平台发博
+  绘制时间分布直方图，观察一天之中各时段的发博频率
+  使用窗口滑块小部件，拖动查看各个时间段都发了什么内容
   这里不描述具体过程，详见GitHub Repository.
 分析结果如下:
 热力图总体来说颜色逐年加深，说明我正在逐渐成为一个微博控。而且注意到往年年初我是不怎么玩微博的，但随着年纪渐长，1-3月份我玩微博的频率越来越高，这意味着过年可能越来越无聊，没有年味，从而加长了我混迹微博的时间。
@@ -439,7 +416,7 @@ def classification(self, txt_array, file_index): id = np.array([]) date = np.arr
 对于在欧洲的小伙伴们，复活节假在这一周就正式开始啦。大家都是怎么计划旅行的呢？
 我的习惯是在出发前最后一晚，花上半小时，搜索目的地景点 (Point of interest, POI), 然后在Google Maps上为它们点上小星星，以免和它们擦肩而过。我的地图经过一番操作，就成了下面这副模样。
 此时此刻，望着这些密集的星星，我不禁自问：如何才能走最少的路，遍历所有景点呢?
-搜索了谷歌和百度，都没找到我要路径规划功能。最接近需求的是谷歌地图的&amp;rdquo;Add destination&amp;rdquo;功能。然而这个功能只是依次连接你点选的地点。并不能由一组地点，确定连接它们的一条全局最短路径。
+搜索了谷歌和百度，都没找到我要路径规划功能。最接近需求的是谷歌地图的&amp;quot;Add destination&amp;quot;功能。然而这个功能只是依次连接你点选的地点。并不能由一组地点，确定连接它们的一条全局最短路径。
 没有现成应用怎么办，我打算自己动手写一个。
 下图是Google Add destination功能。
 适用模型：TSP 模型 用一句话概括需求就是：我们需要一条从某地方出发，遍历所有地点，最终回到起点的最短路径。
@@ -449,7 +426,7 @@ def classification(self, txt_array, file_index): id = np.array([]) date = np.arr
 在运行代码之前，你需要以下配置：
  一个Jupyter Notebook.  你需要安装这些包：googleplaces, googlemaps, gmaps, ortools. 你需要一个Google Maps API key, 从这里获取API.  完成配置等于成功的一半。在Jupyter notebook打开TSPSolver.ipynb，将第二个代码块的所有变量，改成自己的，比如自己的目的地自己的区域和自己的API密码……最后从头到尾运行所有代码块，你就可以得到自己的定制路线辣~
 配置代码如下。
-# input the places of interest (POI) places = &#39;YHA London Central Hostel&#39;, &#39;Coca-Cola London Eye&#39;, &#39;St. Paul\&#39;s Cathedral&#39;, &#39;Leadenhall Market&#39;, &#39;The National Gallery&#39; \ &#39;Big Ben&#39;, &#39;Buckingham Palace&#39;, &#39;Waterloo Station&#39; # the region Location=&#39;London&#39; # choose a mode Mode = &amp;quot;walking&amp;quot; # &amp;quot;driving&amp;quot;, &amp;quot;walking&amp;quot;, &amp;quot;bicycling&amp;quot;, &amp;quot;transit&amp;quot; # get Google API key from following website: # https://developers.</description>
+# input the places of interest (POI) places = &amp;#39;YHA London Central Hostel&amp;#39;, &amp;#39;Coca-Cola London Eye&amp;#39;, &amp;#39;St. Paul\&amp;#39;s Cathedral&amp;#39;, &amp;#39;Leadenhall Market&amp;#39;, &amp;#39;The National Gallery&amp;#39; \ &amp;#39;Big Ben&amp;#39;, &amp;#39;Buckingham Palace&amp;#39;, &amp;#39;Waterloo Station&amp;#39; # the region Location=&amp;#39;London&amp;#39; # choose a mode Mode = &amp;#34;walking&amp;#34; # &amp;#34;driving&amp;#34;, &amp;#34;walking&amp;#34;, &amp;#34;bicycling&amp;#34;, &amp;#34;transit&amp;#34; # get Google API key from following website:  # https://developers.</description>
     </item>
     
     <item>
@@ -460,7 +437,7 @@ def classification(self, txt_array, file_index): id = np.array([]) date = np.arr
       <guid>http://luochang212.github.io/posts/python_math_problem/</guid>
       <description>室友问我一个问题，把我难住了。
 想不出解法，遂写了个程序暴力求解。
- 题目：A permutation is applied to the string SUPERBGOLDHAT. The same permutation is applied to the output from this operation. The second output is OGTHLEPDSUARB. What was the first output? (Note: as an example, the permutation(1 3 4) applied to WOLF gives FOWL. Write your answer in capital letters inside quotation marks, e.g. &amp;ldquo;BEARDPLUGHOST&amp;rdquo;.)
+ **题目：**A permutation is applied to the string SUPERBGOLDHAT. The same permutation is applied to the output from this operation. The second output is OGTHLEPDSUARB. What was the first output? (Note: as an example, the permutation(1 3 4) applied to WOLF gives FOWL. Write your answer in capital letters inside quotation marks, e.g. &amp;ldquo;BEARDPLUGHOST&amp;rdquo;.)
  把它译成中文就是：已知将某个置换作用于字符串SUPERBGOLDHAT两次，生成字符串OGTHLEPDSUARB. 求该置换作用于字符串SUPERBGOLDHAT一次时，生成的结果。
  Note: 作用两次的意思就是，当一个置换规则作用于字符串一次时，会生成一个新字符串。将这个规则作用在这个新字符串上，又会生成一个字符串，这个字符串就是两次作用的结果。
  近世代数基础 如果你不知道什么是置换的话，可以看一下本节。学过近世代数的同学请自觉跳过这部分ꉂ(ˊᗜˋ*)
@@ -474,40 +451,30 @@ def classification(self, txt_array, file_index): id = np.array([]) date = np.arr
       
       <guid>http://luochang212.github.io/posts/kitchen_time_1/</guid>
       <description>刚到英国那会儿，做饭的兴致很高。每天都跟过家家似的，买菜，钻研菜谱，然后做饭，在厨房里待上四五个小时也不觉得累。大概这就是“人生若只如初见”吧。
- 
- 拌牛肉 原料：牛肉3两，猪油，葱，酱油，地瓜粉1匙半，盐
+  拌牛肉 原料：牛肉3两，猪油，葱，酱油，地瓜粉1匙半，盐
 做法：
- 牛肉顺纹路切成宽约一寸的肉条，肉条逆纹路切片，装碗，用自来水清洗，沥干，加入一匙猪油和适量的盐与酱油，用手抓揉片刻后，加入一匙半的地瓜粉，继续抓握揉捏约3分钟即可，葱切好备用；
- 五匙猪油下锅，至微热，放入适量葱头和小半葱段，煎至略有香味溢出，起锅备用；
- 水烧沸，调至小火，牛肉下锅，先不要搅动，待地瓜粉固结后，可用筷子将牛肉摊开，当水再次沸腾时，用漏勺将肉舀出，趁热放入煎好的猪油中搅拌，菜即成。
-  
-亲子丼 原料：米饭，鸡肉，洋葱，鸡蛋，酱油，盐，糖，料酒
+  牛肉顺纹路切成宽约一寸的肉条，肉条逆纹路切片，装碗，用自来水清洗，沥干，加入一匙猪油和适量的盐与酱油，用手抓揉片刻后，加入一匙半的地瓜粉，继续抓握揉捏约3分钟即可，葱切好备用；
+  五匙猪油下锅，至微热，放入适量葱头和小半葱段，煎至略有香味溢出，起锅备用；
+  水烧沸，调至小火，牛肉下锅，先不要搅动，待地瓜粉固结后，可用筷子将牛肉摊开，当水再次沸腾时，用漏勺将肉舀出，趁热放入煎好的猪油中搅拌，菜即成。
+  亲子丼 原料：米饭，鸡肉，洋葱，鸡蛋，酱油，盐，糖，料酒
 做法：
- 米饭下锅煮，可弃之不顾。
- 鸡肉切小块，放酱油、盐、料酒腌一下；洋葱切短条；鸡蛋稍稍打散。
- 鸡肉下锅煎至出油，起锅。此时锅不必洗，放半碗水，加酱油、少量料酒和糖。
- 待水烧开，放入鸡肉和洋葱。盖锅盖将鸡肉焖熟，然后倒入一半蛋液，盖锅盖小火焖3分钟。
- 起锅盖，倒入剩下一半蛋液。菜即成。
-  
-红烧肉 原料：五花肉，葱，姜，蒜，大料，老抽，生抽，糖，油
+  米饭下锅煮，可弃之不顾。
+  鸡肉切小块，放酱油、盐、料酒腌一下；洋葱切短条；鸡蛋稍稍打散。
+  鸡肉下锅煎至出油，起锅。此时锅不必洗，放半碗水，加酱油、少量料酒和糖。
+  待水烧开，放入鸡肉和洋葱。盖锅盖将鸡肉焖熟，然后倒入一半蛋液，盖锅盖小火焖3分钟。
+  起锅盖，倒入剩下一半蛋液。菜即成。
+  红烧肉 原料：五花肉，葱，姜，蒜，大料，老抽，生抽，糖，油
 做法：
- 五花肉切块，葱切段，蒜切末，姜切条。
- 倒油，加葱头、姜条、蒜末、大料，小火熬油。油熬出香味后，放五花肉翻炒，闻香即可起锅。
- 另起一锅油，倒六七小勺糖，中火将糖煮化。倒入五花肉，翻炒片刻后，加少量水、老抽、生抽。
- 时不时搅拌，尝肉汁甜度，不够可加糖。待锅内汤汁收浓稠，起锅享用。
-  
-牛肉丸意大利面 原料：意面、牛肉丸、葱、蒜、番茄、番茄酱
+  五花肉切块，葱切段，蒜切末，姜切条。
+  倒油，加葱头、姜条、蒜末、大料，小火熬油。油熬出香味后，放五花肉翻炒，闻香即可起锅。
+  另起一锅油，倒六七小勺糖，中火将糖煮化。倒入五花肉，翻炒片刻后，加少量水、老抽、生抽。
+  时不时搅拌，尝肉汁甜度，不够可加糖。待锅内汤汁收浓稠，起锅享用。
+  牛肉丸意大利面 原料：意面、牛肉丸、葱、蒜、番茄、番茄酱
 做法：
- 烧一壶开水，倒入电饭锅，加两勺盐，放入螺旋意大利面。面煮不烂，可以弃之不顾。
- 切葱头，剁蒜泥，番茄切小块备用。
- 烧一锅油，放入丸子，翻面煎至定型。
- 起锅后油不倒，加入蒜泥葱头炒香。番茄块倒入锅中炒软，然后加大量番茄酱，继续翻炒，以防番茄酱烧焦。
- 捞面放入锅中和酱汁搅和搅和，放入丸子，起锅开吃。
-  
-葱油鸡 原料：大鸡腿、葱、姜、蒜、料酒
-做法：
- 鸡肉处理干净后，用盐给它来个大宝剑。盘中先放葱结、姜片、鸡肉，次淋白葡萄酒。
- 鸡肉盛于盘内，冷水入锅，小火蒸20分钟。</description>
+  烧一壶开水，倒入电饭锅，加两勺盐，放入螺旋意大利面。面煮不烂，可以弃之不顾。
+  切葱头，剁蒜泥，番茄切小块备用。
+  烧一锅油，放入丸子，翻面煎至定型。
+  起锅后油不倒，加入蒜泥葱头炒香。番茄块倒入锅中炒软，然后加大量番茄酱，继续翻炒，以防番茄酱烧焦。</description>
     </item>
     
     <item>
@@ -520,18 +487,18 @@ def classification(self, txt_array, file_index): id = np.array([]) date = np.arr
  1952年，马科维茨首次提出均值-方差模型(Markowitz Mean-Variance Model)。该模型利用股票的历史交易数据，定义了股票的预期风险与收益，并引入“无差异曲线”和“有效市场边界”的概念，最终导出了最佳投资组合的计算公式。
 本文利用蚁群算法，求解马科维茨均值-方差模型。蚁群算法是一个群体智能算法，因其较强的鲁棒性和适用性，被广泛应用于工业界，是一种研究较为成熟的算法。
 研究背景 一个证券投资组合，简单来说就是一组证券及其选购系数的组合。选购系数均大于零（不允许做空），且和为1。
-余超在《基于蚁群算法的投资组合优化研究》中给出了完整的模型假设。概括如下：
+余超在**《基于蚁群算法的投资组合优化研究》**中给出了完整的模型假设。概括如下：
  一只蚂蚁代表了一个投资组合； 在投资组合优化问题中的蚁群算法要采用连续域优化； 相较于传统蚁群问题，该算法中信息素应该在城市而非路径上积累； 可在蚂蚁移动过程中加入随机扰动以增加全局搜索能力。  余超在模型基础上已经做了非常完整的工作，但是没能求出完整的有效市场边界。
-于是，卞蓓丽在《蚁群算法在多目标优化的证券投资组合中的应用研究》中指出，多目标优化的证券投资组合问题是没有绝对最优解的，而是有一群无法相互支配的解形成的有效边界。对多目标优化问题而言，最重要的是求出有效边界，而不仅仅是求出一两个更优解，后者用单目标就可以完成。余超的多目标研究没有求出有效边界。”
+于是，卞蓓丽在**《蚁群算法在多目标优化的证券投资组合中的应用研究》**中指出，多目标优化的证券投资组合问题是没有绝对最优解的，而是有一群无法相互支配的解形成的有效边界。对多目标优化问题而言，最重要的是求出有效边界，而不仅仅是求出一两个更优解，后者用单目标就可以完成。余超的多目标研究没有求出有效边界。”
 卞蓓丽提示我们：因为，投资组合问题，本质上是一个多目标优化问题。所以，我们要计算出完整的有效边界曲线，才算达成预期目标。
 余超建立了基础模型，而卞蓓丽在余超的基础上进行了改进。本文借鉴他们二人建立的数学模型，利用多元函数连续域蚁群算法，求解马科维茨均值-方差模型。
 研究方法 （一）马科维茨投资组合理论简介
 投资组合的预期收益($𝒓_𝒑$)：单一证券i的预期收益为$E\left(r_{i}\right) $，式中$r_{i s}$为针对状况s证券i的收益率，$P_{s}$是状态s出现的概率；在计算了所有N个证券的预期收益率后，就可以计算出证券组合的预期收益率$𝒓_𝒑$，式中$x_{i}$表示组合中证券i所占的比例，即加权系数。
- 单一证券i的预期收益: $E\left(r_{i}\right)=\sum_{s=1}^{n} r_{i s} * P_{s}$
- 证券组合的预期收益: $\overline{r_{p}}=\sum_{i=1}^{N} x_{i} * E\left(r_{i}\right)$
-  投资组合的预期风险($𝝈_{𝒑}$)：单一证券i的预期风险为$\sigma_{\mathrm{i}} $，式中$r_{i s}$为针对状况s证券i的收益率，$P_{S}$是状态s出现的概率，$E\left(r_{i}\right) $为证券i的预期收益率 ；在计算了所有N个证券的预期风险后，就可以计算出证券组合的预期风险$\sigma_{\mathrm{p}}$，式中$\operatorname{cov}_{i j}$表示证券i和证券j的协方差，$x_{i}$和$x_{j}$表示组合中证券i和证券j所占的比例，即加权系数。
- 单一证券i的预期风险: $\sigma_{\mathrm{i}}=\left(\sum_{s=1}^{n}\left[r_{i s}-E\left(r_{i}\right)\right]^{2} * P_{S}\right)^{\frac{1}{2}}$
- 证券组合的预期风险: $\sigma_{\mathrm{p}}=\left(\sum_{i=1}^{N} \sum_{j=1}^{N} \operatorname{cov}_{i j} * x_{i} * x_{j}\right)^{\frac{1}{2}}$
+  单一证券i的预期收益: $E\left(r_{i}\right)=\sum_{s=1}^{n} r_{i s} * P_{s}$
+  证券组合的预期收益: $\overline{r_{p}}=\sum_{i=1}^{N} x_{i} * E\left(r_{i}\right)$
+  投资组合的预期风险($𝝈_{𝒑}$)：单一证券i的预期风险为$\sigma_{\mathrm{i}} $，式中$r_{i s}$为针对状况s证券i的收益率，$P_{S}$是状态s出现的概率，$E\left(r_{i}\right) $为证券i的预期收益率 ；在计算了所有N个证券的预期风险后，就可以计算出证券组合的预期风险$\sigma_{\mathrm{p}}$ ，式中$\operatorname{cov}_{i j}$表示证券i和证券j的协方差，$x_{i}$和$x_{j}$表示组合中证券i和证券j所占的比例，即加权系数。
+  单一证券i的预期风险: $\sigma_{\mathrm{i}}=\left(\sum_{s=1}^{n}\left[r_{i s}-E\left(r_{i}\right)\right]^{2} * P_{S}\right)^{\frac{1}{2}}$
+  证券组合的预期风险: $\sigma_{\mathrm{p}}=\left(\sum_{i=1}^{N} \sum_{j=1}^{N} \operatorname{cov}_{i j} * x_{i} * x_{j}\right)^{\frac{1}{2}}$
   有效市场边界: 有效市场边界是所有最佳投资组合(Efficient Portfolio)的集合。有效前沿曲线上面的每一点都代表一个最佳投资组合。下图曲线就是有效市场边界，有效市场边界满足以下两个条件：</description>
     </item>
     

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>tips on Chang Luo</title>
@@ -6,11 +6,7 @@
     <description>Recent content in tips on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 14 Nov 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://luochang212.github.io/tags/tips/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 14 Nov 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/tags/tips/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>我的 Python 不可能这么可爱</title>
       <link>http://luochang212.github.io/posts/python_tips/</link>
@@ -25,7 +21,7 @@ Python 语言就像一棵枝叶繁茂的树。如果你找不到枝干，就会�
  书目推荐：
  入门：《Python编程从入门到实践》 [豆瓣链接] 初级：《Python学习手册》(英文名 Learning Python) [豆瓣链接] 中级：《流畅的Python》[豆瓣链接]  PS: 针对每个阶段，我推荐的是我认为最好的那本书。
  语言基础 列表 本文从以下几个方面介绍列表：
- 创建 获取 修改 添加 插入 删除 排序 逆序 索引 循环 列表推导 切片 复制 去重 计数 查找   查看示例</description>
+ 创建 获取 修改 添加 插入 删除 排序 逆序 索引 循环 列表推导 切片 复制 去重 计数 查找   查看示例  字典 鉴于 JSON 在数据处理中的大量使用，字典的重要性也不言而喻。</description>
     </item>
     
   </channel>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Golang on Chang Luo</title>
@@ -6,11 +6,7 @@
     <description>Recent content in Golang on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 12 Jul 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://luochang212.github.io/categories/golang/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 12 Jul 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/categories/golang/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Golang 学习笔记</title>
       <link>http://luochang212.github.io/posts/learning_golang/</link>
@@ -24,14 +20,8 @@
 环境配置 （一）在终端运行
 在命令行运行程序几乎不需要配置。只要下载Golang，然后按官方建议，创建一个名为gocode的文件夹，直接在里面写代码就可以了。为了防止以后import其他包发生错误，建议把gocode文件夹放在GOPATH下。如何知道Golang的工作路径(GOPATH)在哪里呢？打开命令行，输入go env，就能在输出里找到工作路径了（注意区别安装路径和工作路径，它们是两个不同的路径）。
 下面是Golang在命令行运行时的一些常用命令：
- Linux系统下的常用命令（点击展开） 新建目录
-$ mkdir foldername  
-打开目录
-$ cd foldername  
-返回上一级目录
-$ cd ..  
-新建go文件
-$ touch filename.</description>
+ Linux系统下的常用命令（点击展开） 新建目录 $ mkdir foldername 
+打开目录 ``` $ cd foldername ``` 返回上一级目录 ``` $ cd .. ``` 新建go文件 ``` $ touch filename.go ``` 删除go文件 ``` $ rm filename.</description>
     </item>
     
   </channel>
