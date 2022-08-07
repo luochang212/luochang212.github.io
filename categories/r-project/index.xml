@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R-Project on Chang Luo</title>
+    <link>http://luochang212.github.io/categories/r-project/</link>
+    <description>Recent content in R-Project on Chang Luo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 16 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/categories/r-project/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>因果推断笔记</title>
+      <link>http://luochang212.github.io/posts/causal_inference/</link>
+      <pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/posts/causal_inference/</guid>
+      <description>不谜语人的因果推断笔记！
+学习统计最好还是学习一下 R 语言。相比 Python，R 是专门用于统计的语言，它提供了更细致的函数和更标准的实现方法。
+ GitHub项目地址：
+1. 因果推断入门 小朋友感冒，家长给他吃药，一个星期后就痊愈了。那么“吃药”和“痊愈”是否有因果关系呢？
+我们知道普通的小感冒，即使不吃药，一个星期后也会痊愈。因此未必是因为吃药才痊愈的，也有可能是小朋友凭借抵抗力恢复了健康。此时，要进一步分析“吃药”与“痊愈”的因果关系，就要用到因果推断技术。
+注意在上述例子中，原因存在两种状态：吃药/不吃药。结果也存在两种状态：痊愈/未痊愈。为了描述方便，我们把：
+ 作为原因的变量：x 叫做控制变量 (control variable)，或解释变量 (explanatory variable) 作为结果的变量：y 叫做响应变量 (response variable)，或被解释变量 (explained variable)  1.1 如何测量因果关系 反事实因果分析框架 是统计学中分析因果关系的一种常见思路。这种思路把一种“状态”与其“反事实状态”造成结果的差异当作因果效应。对于小朋友 $i$，反事实因果分析框架反映的因果效应 $\tau_{i}$ 表示为： $$\tau_{i} = Y_{i}(1) - Y_{i}(0)$$ 这里 $Y_{i}(1)$ 代表吃药，$Y_{i}(0)$ 代表不吃药，它们都是观测值。
+不难发现，$Y_{i}(1)$ 和 $Y_{i}(0)$ 是无法同时观测到的。这被称为 因果推断的根本性问题 (Holland, 1986)。正如“人不能两次踏入同一条河流”，一旦做出某种选择，其他选择的结果就无从观测了。
+由于此“根本性问题”的存在，对 $\tau$ 算不了真实值，只能估计。因果效应 $\tau$ 有三种常见的估计值：
+ 我们约定：是否吃药用 $X$ 表示，$X = 0 \space or \space 1$，其中 1 代表吃药，0 代表不吃药。这里有必要区分下，$Y_{i}|X=1$ 是指那些真的吃了药的人的 $Y$ 值。$Y_{i}(1)$、$Y_{i}(0)$ 则是看不到的一个潜在状态，可能是用统计方法算出的估计值，也可能是模型的外推。</description>
+    </item>
+    
+  </channel>
+</rss>
