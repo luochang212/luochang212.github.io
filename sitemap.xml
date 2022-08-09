@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://luochang212.github.io/posts/r_project/</loc>
+    <lastmod>2022-08-07T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://luochang212.github.io/posts/causal_inference/</loc>
     <lastmod>2022-07-16T00:00:00+00:00</lastmod>
   </url><url>
@@ -87,15 +90,30 @@
     <lastmod>2017-07-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://luochang212.github.io/categories/</loc>
-    <lastmod>2022-07-16T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://luochang212.github.io/</loc>
-    <lastmod>2022-07-16T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://luochang212.github.io/categories/math/</loc>
-    <lastmod>2022-07-16T00:00:00+00:00</lastmod>
+    <loc>http://luochang212.github.io/categories/development/</loc>
+    <lastmod>2022-08-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://luochang212.github.io/posts/</loc>
+    <lastmod>2022-08-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://luochang212.github.io/tags/r/</loc>
+    <lastmod>2022-08-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://luochang212.github.io/categories/r/</loc>
+    <lastmod>2022-08-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://luochang212.github.io/tags/</loc>
+    <lastmod>2022-08-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://luochang212.github.io/tags/tutorial/</loc>
+    <lastmod>2022-08-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://luochang212.github.io/categories/math/</loc>
     <lastmod>2022-07-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://luochang212.github.io/tags/r-project/</loc>
@@ -107,9 +125,6 @@
     <loc>http://luochang212.github.io/tags/statistics/</loc>
     <lastmod>2022-07-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://luochang212.github.io/tags/</loc>
-    <lastmod>2022-07-16T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://luochang212.github.io/tags/app/</loc>
     <lastmod>2022-07-03T00:00:00+00:00</lastmod>
   </url><url>
@@ -117,9 +132,6 @@
     <lastmod>2022-07-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://luochang212.github.io/categories/bash/</loc>
-    <lastmod>2022-07-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://luochang212.github.io/categories/development/</loc>
     <lastmod>2022-07-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://luochang212.github.io/tags/python/</loc>
@@ -201,9 +213,6 @@
     <lastmod>2019-07-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://luochang212.github.io/categories/golang/</loc>
-    <lastmod>2019-07-12T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://luochang212.github.io/tags/tutorial/</loc>
     <lastmod>2019-07-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://luochang212.github.io/tags/network-performance-analysis/</loc>
