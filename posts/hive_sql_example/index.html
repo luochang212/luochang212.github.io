@@ -683,7 +683,21 @@ FROM std.std_student_score
     `id`,
     CAST(ttl_score/10 AS BIGINT) AS ttl_score
 FROM std.std_student_score
-</code></pre><h3 id="4-行处理函数">4. 行处理函数</h3>
+</code></pre><h4 id="33-string类型数据处理">3.3 STRING类型数据处理</h4>
+<p>1）替换字符串</p>
+<pre><code>SELECT
+    REGEXP_REPLACE(&quot;abcdeffecmn&quot;, &quot;ef|cm&quot;, &quot;%&quot;)
+</code></pre><p>output: <code>abcd%fe%n</code></p>
+<p>2）替换符号：需使用 <code>\\</code> 转义</p>
+<pre><code>SELECT
+    REGEXP_REPLACE(&quot;abcd:effe(eee)cmn&quot;, &quot;\\:|\\(|\\)&quot;, &quot; &quot;)
+</code></pre><p>output: <code>abcd effe eee cmn</code></p>
+<h4 id="34-double类型数据处理">3.4 DOUBLE类型数据处理</h4>
+<p>精确到小数点后n位</p>
+<pre><code>SELECT
+    ROUND(1.232812, 3)
+</code></pre><p>output: <code>1.233</code></p>
+<h3 id="4-行处理函数">4. 行处理函数</h3>
 <p>Hive sql中的函数大抵可以分为两种。一种是做行处理的，输入是一行，输出也是一行；另一种是做聚合的，输入是多行，但输出只有一行。</p>
 <p>本节列举一些常用的行处理函数。</p>
 <h4 id="41-if函数">4.1 if函数</h4>
