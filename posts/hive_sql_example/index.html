@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://luochang212.github.io/posts/hive_sql_example/">
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.84.1" />
+
+    
+    
+    
+
+<title>Hive SQL 代码示例 • Chang Luo</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Hive SQL 代码示例"/>
+<meta name="twitter:description" content="Hive SQL功能很多，但常用的不多。而且Hive SQL并不复杂，代码范例&#43;对代码功能三言两语的介绍，足以帮助理解。本文介绍一些常用功能的代码示例"/>
+
+<meta property="og:title" content="Hive SQL 代码示例" />
+<meta property="og:description" content="Hive SQL功能很多，但常用的不多。而且Hive SQL并不复杂，代码范例&#43;对代码功能三言两语的介绍，足以帮助理解。本文介绍一些常用功能的代码示例" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://luochang212.github.io/posts/hive_sql_example/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-12-25T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2022-12-25T00:00:00&#43;00:00" /><meta property="og:site_name" content="Title" />
+
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+
+<link rel="stylesheet" href="/scss/hugo-toc.0873834b0f2e9fdc9e1d0301e8ebce21fc10383882a41e9373f29b90e85a9987.css" integrity="sha256-CHODSw8un9yeHQMB6OvOIfwQODiCpB6Tc/KbkOhamYc=">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    
+
+</head>
+
+
+    <body class=" ">
+    <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://upcdn.b0.upaiyun.com/libs/jquery/jquery-1.9.0.min.js"></script>
+
+  <style>
+    body {
+      transition: background-color .5s;
+    }
+
+    #overlay {
+      position: fixed;
+      display: none;
+      width: calc(100vw - 580px);
+      height: 100%;
+      top: 0;
+      left: 0;
+       
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      right: 0;
+      background-color: #FFF;
+       
+      overflow-x: hidden;
+      transition: 0.5s;
+       
+       
+    }
+
+    #main {
+      transition: margin-left .5s;
+       
+      padding: 16px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      overflow: hidden;
+    }
+
+     
+    .tab {
+      overflow: hidden;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+    }
+
+     
+    .tab button {
+      background-color: inherit;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      transition: 0.3s;
+      font-size: 17px;
+    }
+
+     
+    .tab button:hover {
+      background-color: #ddd;
+    }
+
+     
+    .tab button.active {
+      background-color: #ccc;
+    }
+
+     
+    .tabcontent {
+      display: none;
+      padding: 12px 12px;
+      margin: 0;
+      border: 1px solid #ccc;
+      border-top: none;
+    }
+
+    .dropbtn {
+      background-color: #3498DB;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+    }
+
+    .dropup {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropup-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      bottom: 50px;
+      z-index: 1;
+    }
+
+    .dropup-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropup-content a:hover {
+      background-color: #ccc
+    }
+
+    .dropup:hover .dropup-content {
+      display: block;
+    }
+
+    .dropup:hover .dropbtn {
+      background-color: #2980B9;
+    }
+
+    #video2,
+    #video3 {
+      display: none;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  
+  <div class="sidebar">
+    <div class="container ">
+      <div class="sidebar-about">
+        <span class="site__title">
+          <a href="http://luochang212.github.io">Chang Luo</a>
+        </span>
+        
+        
+        
+        <div class="author-image">
+          <a href="#" class="load-iframe" onclick="openNav()"><img src="http://luochang212.github.io/images/profile.png" id="author-iamge"
+              alt="Author Image" class="img--circle img--headshot element--center"></a>
+        </div>
+        
+        <p class="site__description">
+          
+        </p>
+      </div>
+      <div class="collapsible-menu">
+        <input type="checkbox" id="menuToggle">
+        <label for="menuToggle">Chang Luo</label>
+        <div class="menu-content">
+          <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/portfolio/">
+						<span>Projects</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+          <section class="social">
+	
+	<a href="https://twitter.com/MinosPalace" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	<a href="https://github.com/luochang212" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	<a href="https://instagram.com/suphenshin" rel="me"><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></a>
+	
+	
+	<a href="https://linkedin.com/in/bupt-luochang" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</section>
+
+        </div>
+      </div>
+      
+<div class="copyright">
+  &copy; 2022 Chang Luo
+  
+</div>
+
+
+
+    </div>
+  </div>
+
+  
+  
+
+  <div id="overlay" onclick="off()"></div>
+
+  <div id="mySidenav" class="sidenav">
+
+    <div id="main">
+      <div class="tab">
+        <button id="default-tab" class="tablinks" onclick="openItem(event, 'Resources')">Resources</button>
+        <button class="tablinks" onclick="openItem(event, 'netease-player')">Music</button>
+        <button class="tablinks" onclick="openItem(event, 'Video-player')">Video</button>
+        <button class="tablinks" onclick="openItem(event, 'gallery')">Gallery</button>
+        <button class="tablinks" onclick="openItem(event, 'gadget')">Gadget</button>
+      </div>
+
+      <div id="Resources" class="tabcontent">
+        <iframe src="about:blank" data-src="/resources/" frameborder="0" height="560" width="100%" marginheight="0"
+          marginwidth="0" scrolling="yes"></iframe>
+      </div>
+
+      <div id="netease-player" class="tabcontent">
+        <iframe src="about:blank" data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
+          frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=450></iframe>
+      </div>
+
+      <div id="Video-player" class="tabcontent">
+
+        <div id="video1">
+          <iframe src="about:blank"
+            data-src="//player.bilibili.com/player.html?aid=455023331&bvid=BV1X541167RE&cid=170542054&page=1&high_quality=1&danmaku=0"
+            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+        <div id="video2">
+          <iframe src="about:blank"
+            data-src="//player.bilibili.com/player.html?aid=65042716&bvid=BV1M4411r7yu&cid=112895137&page=1&high_quality=1&high_quality=1&danmaku=0"
+            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+        <div id="video3">
+          <iframe src="about:blank"
+            data-src="//player.bilibili.com/player.html?aid=20535616&bvid=BV1zW411W75L&cid=33582726&page=1//player.bilibili.com/player.html?aid=15159845&cid=24679968&page=1&high_quality=1&danmaku=0"
+            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+
+        
+
+        
+
+        <br>
+        <div class="dropup">
+          <button class="dropbtn">更多视频</button>
+          <div class="dropup-content">
+            <a onclick="link1()">1</a>
+            <a onclick="link2()">2</a>
+            <a onclick="link3()">3</a>
+          </div>
+        </div>
+      </div>
+
+      <div id="gallery" class="tabcontent">
+        <iframe src="about:blank" data-src="/gadget/gallery.html#two" frameborder="0" height="560" width="100%"
+          scrolling="yes"></iframe>
+      </div>
+
+      <div id="gadget" class="tabcontent">
+        <iframe src="about:blank" data-src="/gadget/" frameborder="0" height="560" width="100%"
+          scrolling="yes"></iframe>
+      </div>
+
+    </div>
+  </div>
+
+  
+  <script>
+    'use strict'
+
+    function openNav() {
+      on();
+      document.getElementById("mySidenav").style.width = "580px";
+      document.body.style.backgroundColor = "rgba(0,0,0,0.5)";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.body.style.backgroundColor = "white";
+    }
+
+    function on() {
+      document.getElementById("overlay").style.display = "block";
+    }
+
+    function off() {
+      closeNav();
+      document.getElementById("overlay").style.display = "none";
+    }
+
+    
+    document.getElementById('default-tab').click();
+
+    function openItem(evt, itemName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(itemName).style.display = "block";
+      evt.currentTarget.className += "active";
+    }
+
+    function link1() {
+      document.getElementById("video1").style.display = "block";
+      document.getElementById("video2").style.display = "none";
+      document.getElementById("video3").style.display = "none";
+    }
+
+    function link2() {
+      document.getElementById("video1").style.display = "none";
+      document.getElementById("video2").style.display = "block";
+      document.getElementById("video3").style.display = "none";
+    }
+
+    function link3() {
+      document.getElementById("video1").style.display = "none";
+      document.getElementById("video2").style.display = "none";
+      document.getElementById("video3").style.display = "block";
+    }
+
+     
+    var flag = 0;
+
+     
+    $(".load-iframe").click(function () {
+      if (flag < 1) {
+        $("iframe").each(function () {
+          $(this).attr("src", $(this).data("src"));
+        });
+        flag = flag + 1;
+      }
+    });
+  </script>
+
+</body>
+
+
+
+        <div class="content container">
+            
+    <style>
+  .my-emoji {
+    height: 25px;
+    display: inline-block;
+    margin: 0;
+    vertical-align: text-bottom;
+  }
+</style>
+
+
+
+<article>
+  <header>
+    <h1>Hive SQL 代码示例</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Dec 25, 2022
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/development">DEVELOPMENT</a>
+              •
+          
+              <a class="badge badge-category" href="/categories/hive">HIVE</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/sql">sql</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/tutorial">tutorial</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 9 min read
+</div>
+
+
+  </header>
+  
+  
+  
+  <div class="toc-wrapper">
+    <input type="checkbox" id="tocToggle">
+    <label for="tocToggle">目录</label>
+    
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-表操作">1. 表操作</a></li>
+        <li><a href="#2-构建测试用例">2. 构建测试用例</a></li>
+        <li><a href="#3-数据类型">3. 数据类型</a></li>
+        <li><a href="#4-行处理函数">4. 行处理函数</a></li>
+        <li><a href="#5-聚合">5. 聚合</a></li>
+        <li><a href="#6-聚合函数">6. 聚合函数</a></li>
+        <li><a href="#7-join-相关">7. join 相关</a></li>
+        <li><a href="#8-array-相关">8. array 相关</a></li>
+        <li><a href="#9-map-相关">9. map 相关</a></li>
+        <li><a href="#10-lateral-view-outer-explode">10. lateral view outer explode</a></li>
+        <li><a href="#11-窗口函数">11. 窗口函数</a></li>
+        <li><a href="#12-尾缀方法">12. 尾缀方法</a></li>
+        <li><a href="#13-transform">13. transform</a></li>
+        <li><a href="#14-空值处理">14. 空值处理</a></li>
+        <li><a href="#15-udf">15. UDF</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    
+  </div>
+  
+  
+  <div class="post">
+    <h3 id="1-表操作">1. 表操作</h3>
+<h4 id="11-建表">1.1 建表</h4>
+<pre><code>CREATE TABLE [DATABASE].[TABLE_NAME] (
+    `id`    BIGINT    COMMENT '学号',
+    name    STRING    COMMENT '姓名',
+    ttl_score    DOUBLE    COMMENT '总分'
+)
+COMMENT '枝江中学五年级学生成绩明细表'
+PARTITIONED BY (day STRING COMMENT 'day', hour STRING COMMENT 'hour')
+ROW FORMAT [row_format]
+STORED AS [file_format];
+</code></pre><blockquote>
+<p><strong>Note</strong>: 了解更多，请参考 <a href="https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/sql-ref-syntax-ddl-create-table-hiveformat">CREATE TABLE with Hive format</a></p>
+</blockquote>
+<h4 id="12-在原表基础上新增列">1.2 （在原表基础上）新增列</h4>
+<pre><code>ALTER TABLE [DATABASE].[TABLE_NAME] ADD COLUMNS (
+    sub_score    ARRAY&lt;DOUBLE&gt;    COMMENT '分科成绩',
+    sub_score_map    MAP&lt;STRING,DOUBLE&gt;    COMMENT '分科成绩map',
+    `rank`    BIGINT    COMMENT '年段排名',
+    update_time    STRING    COMMENT '更新时间'
+);
+</code></pre><h4 id="13-删除表">1.3 删除表</h4>
+<pre><code>DROP TABLE [DATABASE].[TABLE_NAME];
+</code></pre><pre><code>DROP TABLE IF EXISTS [DATABASE].[TABLE_NAME];
+</code></pre><h4 id="14-查看表结构">1.4 查看表结构</h4>
+<pre><code>DESC [DATABASE].[TABLE_NAME];
+</code></pre><h4 id="15-建临时表">1.5 建临时表</h4>
+<pre><code>CREATE TEMPORARY TABLE std.std_temp_high_score AS
+SELECT
+    name,
+    ttl_score
+FROM [DATABASE].[TABLE_NAME]
+WHERE ttl_score &gt;= 10
+    AND LENGTH(name) &gt; 1;
+</code></pre><h3 id="2-构建测试用例">2. 构建测试用例</h3>
+<h4 id="21-利用union-all建多行用例">2.1 利用UNION ALL建多行用例</h4>
+<pre><code>SELECT
+    `id`,
+    name,
+    ttl_score
+FROM
+(
+    SELECT 1 AS `id`, '小岁' AS name, 90.5 AS ttl_score
+    UNION ALL
+    SELECT 2 AS `id`, '大深' AS name, 91.5 AS ttl_score
+    UNION ALL
+    SELECT 3 AS `id`, '阿弥' AS name, 93 AS ttl_score
+) t
+</code></pre><h4 id="22-后文会用到的用例">2.2 后文会用到的用例</h4>
+<p>1）学生分数表：</p>
+<pre><code>CREATE TABLE std.std_student_score AS
+SELECT
+    `id`,
+    name,
+    ttl_score
+FROM
+(
+    SELECT 1 AS `id`, '小岁' AS name, 89.5 AS ttl_score
+    UNION ALL
+    SELECT 2 AS `id`, '大深' AS name, 91.5 AS ttl_score
+    UNION ALL
+    SELECT 3 AS `id`, '阿弥' AS name, 93 AS ttl_score
+) t
+</code></pre><p>2）学生基础信息表：</p>
+<pre><code>CREATE TABLE std.std_student_info AS
+SELECT
+    `id`,
+    gender,
+    age
+FROM
+(
+    SELECT 1 AS `id`, 'P' AS gender, 13 AS age
+    UNION ALL
+    SELECT 2 AS `id`, 'P' AS gender, 15 AS age
+    UNION ALL
+    SELECT 3 AS `id`, 'T' AS gender, 18 AS age
+) t
+</code></pre><h3 id="3-数据类型">3. 数据类型</h3>
+<h4 id="31-常用数据类型">3.1 常用数据类型</h4>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>示例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BIGINT</td>
+<td><code>3</code></td>
+<td>整型</td>
+</tr>
+<tr>
+<td>DOUBLE</td>
+<td><code>3.5</code></td>
+<td>双精度浮点型</td>
+</tr>
+<tr>
+<td>STRING</td>
+<td><code>Alpha</code></td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>ARRAY&lt;BIGINT&gt;</td>
+<td><code>[1,2,3]</code></td>
+<td>列表，列表元素可以是BIGINT, DOUBLE, STRING等</td>
+</tr>
+<tr>
+<td>MAP&lt;BIGINT,STRING&gt;</td>
+<td><code>{1:'A+',2:'B'}</code></td>
+<td>字典，字典的key和value可以是BIGINT, DOUBLE, STRING等</td>
+</tr>
+</tbody>
+</table>
+<h4 id="32-数据类型转换">3.2 数据类型转换</h4>
+<p>1）分数从DOUBLE转成STRING</p>
+<pre><code>SELECT
+    `id`,
+    CAST(ttl_score AS STRING) AS ttl_score
+FROM std.std_student_score
+</code></pre><p>2）分数除10取整，并转为BIGINT</p>
+<pre><code>SELECT
+    `id`,
+    CAST(ttl_score/10 AS BIGINT) AS ttl_score
+FROM std.std_student_score
+</code></pre><h3 id="4-行处理函数">4. 行处理函数</h3>
+<p>Hive sql中的函数大抵可以分为两种。一种是做行处理的，输入是一行，输出也是一行；另一种是做聚合的，输入是多行，但输出只有一行。</p>
+<p>本节列举一些常用的行处理函数。</p>
+<h4 id="41-if函数">4.1 if函数</h4>
+<pre><code>SELECT
+    `id`,
+    if(ttl_score &gt; 90, 1, 0) AS is_high
+FROM std.std_student_score
+</code></pre><h4 id="42-case函数">4.2 case函数</h4>
+<pre><code>SELECT
+    `id`,
+    CASE WHEN ttl_score &gt;= 90 THEN 'A+'
+        WHEN ttl_score &gt;= 80 THEN 'A'
+        WHEN ttl_score &gt;= 70 THEN 'B'
+        WHEN ttl_score &gt;= 60 THEN 'C'
+        ELSE 'C-'
+    END AS `level`
+FROM std.std_student_score
+</code></pre><h4 id="43-concat函数">4.3 concat函数</h4>
+<pre><code>SELECT
+    CONCAT('a', '-', 'b')
+</code></pre><p>output: <code>a-b</code></p>
+<h4 id="44-concat_ws函数">4.4 concat_ws函数</h4>
+<p>以下两种写法都可以：</p>
+<pre><code>SELECT
+    CONCAT_WS(',',
+        ARRAY('1','2','3')
+    )
+</code></pre><pre><code>SELECT
+    CONCAT_WS(',', '1', '2', '3')
+</code></pre><p>output: <code>1,2,3</code></p>
+<h4 id="45-split函数">4.5 split函数</h4>
+<pre><code>SELECT
+    SPLIT('1,2,3', ',')
+</code></pre><p>output: <code>[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;]</code></p>
+<h3 id="5-聚合">5. 聚合</h3>
+<p>1）聚合语句group by，单独使用有去重的效果</p>
+<pre><code>SELECT gender
+FROM std.std_student_info
+GROUP BY gender
+</code></pre><p>2）计算每个gender值对应的记录条数</p>
+<pre><code>SELECT
+    gender,
+    COUNT(*) AS cnt
+FROM std.std_student_info
+GROUP BY gender
+</code></pre><h3 id="6-聚合函数">6. 聚合函数</h3>
+<h4 id="61-行数count">6.1 行数COUNT</h4>
+<pre><code>SELECT COUNT(*) AS row_num
+FROM std.std_student_info
+</code></pre><h4 id="62-去重distinct">6.2 去重DISTINCT</h4>
+<pre><code>SELECT COUNT(DISTINCT gender) AS gender_cnt
+FROM std.std_student_info
+</code></pre><h4 id="63-求和最大值最小值均值方差">6.3 求和、最大值、最小值、均值、方差</h4>
+<pre><code>SELECT
+    gender,
+    SUM(age) AS sum_age,    -- 求和
+    MAX(age) AS max_age,    -- 最大值
+    MIN(age) AS min_age,    -- 最小值
+    AVG(age) AS avg_age,    -- 均值
+    VARIANCE(age) AS var_age    -- 方差
+FROM std.std_student_info
+GROUP BY gender
+</code></pre><h3 id="7-join-相关">7. join 相关</h3>
+<p>常用的join方法有：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>left join</code></td>
+<td>保留左表所有记录，保留右表与左表连接键相同的记录，连接键有多值时做笛卡尔积</td>
+</tr>
+<tr>
+<td><code>inner join</code></td>
+<td>保留左表与右表连接键存在且相同的记录，连接键有多值时做笛卡尔积</td>
+</tr>
+<tr>
+<td><code>full outer join</code></td>
+<td>保留左表与右表所有记录，连接键值相等时连接，连接键有多值时做笛卡尔积</td>
+</tr>
+</tbody>
+</table>
+<p>left join示例：</p>
+<pre><code>SELECT
+    a.id,
+    ttl_score,
+    age
+FROM
+(
+    SELECT
+        id,
+        ttl_score
+    FROM std.std_student_score
+) a
+LEFT JOIN
+(
+    SELECT
+        id,
+        age
+    FROM std.std_student_info
+) b ON a.id = b.id;
+</code></pre><h3 id="8-array-相关">8. array 相关</h3>
+<h4 id="81-聚合成array-collect_list">8.1 聚合成ARRAY: COLLECT_LIST</h4>
+<pre><code>SELECT
+    gender,
+    COLLECT_LIST(age) AS age_list
+FROM std.std_student_info
+GROUP BY gender
+</code></pre><h4 id="82-聚合成array且去重-collect_set">8.2 聚合成ARRAY且去重: COLLECT_SET</h4>
+<pre><code>SELECT
+    gender,
+    COLLECT_SET(age) AS age_set
+FROM std.std_student_info
+GROUP BY gender
+</code></pre><h4 id="83-用逗号拼接array生成string">8.3 用逗号拼接ARRAY生成STRING</h4>
+<pre><code>SELECT
+    gender,
+    CONCAT_WS(',',
+        COLLECT_SET(CAST(age AS STRING))
+    ) AS age_set
+FROM std.std_student_info
+GROUP BY gender
+</code></pre><h4 id="84-判断array中是否包含某元素-array_contains">8.4 判断ARRAY中是否包含某元素: ARRAY_CONTAINS</h4>
+<pre><code>SELECT
+    id,
+    age_list
+FROM
+(
+    SELECT 1 AS id, array(1,2,3) AS age_list
+    UNION ALL
+    SELECT 2 AS id, array(6,7,8) AS age_list
+) t
+WHERE ARRAY_CONTAINS(age_list, 3) 
+</code></pre><h4 id="85-元素排序-sort_array">8.5 元素排序: SORT_ARRAY</h4>
+<pre><code>SELECT
+    SORT_ARRAY(lst) AS sorted_lst
+FROM
+(
+    SELECT ARRAY(3,2,4,1) AS lst
+) t
+</code></pre><h3 id="9-map-相关">9. map 相关</h3>
+<h4 id="91-从string生成map-str_to_map函数">9.1 从STRING生成MAP: STR_TO_MAP函数</h4>
+<p>可以写成</p>
+<pre><code>SELECT
+    STR_TO_MAP(
+        CONCAT_WS(',',
+            CONCAT('key_1', ':', 'value_1'),
+            CONCAT('key_2', ':', 'value_2')
+        ), ',', ':'
+    ) AS my_map
+</code></pre><p>或者</p>
+<pre><code>SELECT
+    STR_TO_MAP(
+        CONCAT_WS(',', ARRAY(
+            CONCAT('key_1', ':', 'value_1'),
+            CONCAT('key_2', ':', 'value_2')
+            )
+        ), ',', ':'
+    ) AS my_map
+</code></pre><p>output: {&ldquo;key_1&rdquo;:&ldquo;value_1&rdquo;,&ldquo;key_2&rdquo;:&ldquo;value_2&rdquo;}</p>
+<h4 id="92-通过key读取value">9.2 通过KEY读取VALUE</h4>
+<pre><code>SELECT
+    my_map['A']
+FROM
+(
+    SELECT
+        STR_TO_MAP(
+            CONCAT_WS(',', ARRAY(
+                CONCAT('A', ':', 'A1'),
+                CONCAT('B', ':', 'B1')
+                )
+            ), ',', ':'
+        ) AS my_map
+) t
+</code></pre><p>output: <code>A1</code></p>
+<h4 id="93-把字典中的key转为key的array">9.3 把字典中的KEY转为KEY的ARRAY</h4>
+<p>📖 为了后文演示方便，这里创建一个通用示例：</p>
+<pre><code>CREATE TABLE std.std_level_map AS
+SELECT
+    `id`,
+    sub_score
+FROM
+(
+    SELECT
+        1 AS `id`,
+        STR_TO_MAP(
+            CONCAT_WS(',',
+                CONCAT('语文:', '80'),
+                CONCAT('数学:', '85'),
+                CONCAT('英语:', '95'),
+                CONCAT('政治:', '90')
+            ), ',', ':'
+        ) AS sub_score
+    UNION ALL
+    SELECT
+        2 AS `id`,
+        STR_TO_MAP(
+            CONCAT_WS(',',
+                CONCAT('法律:', '90'),
+                CONCAT('英语:', '75'),
+                CONCAT('政治:', '92')
+            ), ',', ':'
+        ) AS sub_score
+) t
+</code></pre><p>使用MAP_KEYS函数将字典的KEY转为KEY的ARRAY</p>
+<pre><code>SELECT
+    `id`,
+    MAP_KEYS(sub_score) AS sub_list
+FROM std.std_level_map
+</code></pre><h4 id="94-把字典中的value转为value的array">9.4 把字典中的VALUE转为VALUE的ARRAY</h4>
+<p>与MAP_KEYS类似，用MAP_VALUES可以把MAP的VALUE转为ARRAY</p>
+<pre><code>SELECT
+    `id`,
+    MAP_VALUES(sub_score) AS score_list
+FROM std.std_level_map
+</code></pre><h4 id="95-构造json">9.5 构造JSON</h4>
+<p>1）构造最简JSON</p>
+<pre><code>SELECT
+    CONCAT('{&quot;',
+        CONCAT_WS('&quot;,&quot;',
+            CONCAT('语文:', '80'),
+            CONCAT('数学:', '90')
+        ), '&quot;}'
+    ) AS my_map
+</code></pre><p>output: <code>{&quot;语文:80&quot;,&quot;数学:90&quot;}</code></p>
+<p>2）将MAP转为JSON</p>
+<pre><code>SELECT
+    `id`,
+    CONCAT('{&quot;',
+        CONCAT_WS('&quot;,&quot;',
+            COLLECT_SET(
+                CONCAT(k, '&quot;:&quot;', v)
+            )
+        ), '&quot;}'
+    ) AS my_map
+FROM std.std_level_map
+LATERAL VIEW OUTER EXPLODE(sub_score) e AS k, v
+GROUP BY `id`
+</code></pre><p>output:</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>my_map</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>{&quot;语文&quot;:&quot;80&quot;,&quot;数学&quot;:&quot;85&quot;,&quot;英语&quot;:&quot;95&quot;,&quot;政治&quot;:&quot;90&quot;}</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>{&quot;法律&quot;:&quot;90&quot;,&quot;英语&quot;:&quot;75&quot;,&quot;政治&quot;:&quot;92&quot;}</code></td>
+</tr>
+</tbody>
+</table>
+<p>3）构造形如<code>ARRAY&lt;MAP&lt;STRING,STRING&gt;&gt;</code>的STRING</p>
+<pre><code>SELECT
+    CONCAT(
+        '[',
+        CONCAT_WS(',',
+            CONCAT('{&quot;',
+                CONCAT_WS('&quot;,&quot;',
+                    CONCAT('语文:', '80'),
+                    CONCAT('数学:', '90')
+                ), '&quot;}'
+            )
+        ), ']'
+    ) AS my_map
+</code></pre><p>output: <code>[{&quot;语文:80&quot;,&quot;数学:90&quot;}]</code></p>
+<p>4）从已有MAP中构造<code>ARRAY&lt;MAP&lt;STRING,STRING&gt;&gt;</code>型的STRING</p>
+<pre><code>SELECT
+    IF(SUM(IF(ARRAY_CONTAINS(MAP_KEYS(sub_score), '英语') AND ARRAY_CONTAINS(MAP_KEYS(sub_score), '政治'), 1, 0)) = 0, '',
+        CONCAT('[',
+            CONCAT_WS(',',
+                COLLECT_SET(
+                    CONCAT('{&quot;',
+                        CONCAT_WS('&quot;,&quot;',
+                            CONCAT('英语', '&quot;:&quot;', CAST(sub_score['英语'] AS STRING)),
+                            CONCAT('政治', '&quot;:&quot;', CAST(sub_score['政治'] AS STRING))
+                        ), '&quot;}'
+                    )
+                )
+            ), ']'
+        )
+    ) AS my_map
+FROM std.std_level_map
+</code></pre><p>output: <code>[{&quot;英语&quot;:&quot;95&quot;,&quot;政治&quot;:&quot;90&quot;},{&quot;英语&quot;:&quot;75&quot;,&quot;政治&quot;:&quot;92&quot;}]</code></p>
+<blockquote>
+<p><strong>Note</strong>: 如果原MAP中不包含任何选定数据，应该返回空字符串，为了实现这个效果，需要在外层套一个IF函数来判断。常用的判断条件有：</p>
+<ul>
+<li><code>ARRAY_CONTAINS(MAP_KEYS(sub_score), '[YOUR_KEY_HERE]')</code></li>
+<li><code>SIZE(MAP_KEYS(sub_score)) &gt; 0</code></li>
+</ul>
+</blockquote>
+<p>5）跨行构造JSON</p>
+<blockquote>
+<p><strong>Note</strong>: 凡是有CONCAT_WS的地方，里面都可以套一层COLLECT_SET或者COLLECT_LIST做跨行处理。</p>
+<p>可以参考 <code>2）</code> 和 <code>4）</code>，这两条代码实际都有跨行处理能力</p>
+</blockquote>
+<h3 id="10-lateral-view-outer-explode">10. lateral view outer explode</h3>
+<p><code>lateral view outer explode</code> 用于把ARRAY或MAP展开。在SQL中的位置一般在 <code>FROM</code> 之后，<code>WHERE</code> 之前。比如👇</p>
+<p>1）展开ARRAY</p>
+<pre><code>SELECT
+    `id`,
+    gid
+FROM
+(
+    SELECT
+        1 AS `id`,
+        ARRAY(1,2,3,5,5) AS group_id
+) t
+LATERAL VIEW OUTER EXPLODE(group_id) g AS gid
+</code></pre><p>output:</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>gid</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>5</td>
+</tr>
+<tr>
+<td>1</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p>2）展开ARRAY：一个更复杂的例子</p>
+<pre><code>SELECT
+    gid,
+    CONCAT_WS(',', COLLECT_SET(CAST(id AS STRING))) AS id_list
+FROM
+(
+    SELECT
+        1 AS `id`,
+        ARRAY(1,2,3,4,5,5) AS group_id
+    UNION ALL
+    SELECT
+        2 AS `id`,
+        ARRAY(2,4,4,3) AS group_id
+) t
+LATERAL VIEW OUTER EXPLODE(group_id) g AS gid
+WHERE gid &gt; 1
+GROUP BY gid
+</code></pre><p>output:</p>
+<table>
+<thead>
+<tr>
+<th>gid</th>
+<th>id_list</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>1,2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1,2</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1,2</td>
+</tr>
+<tr>
+<td>5</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>3）展开多个ARRAY：会展成笛卡尔积</p>
+<pre><code>SELECT
+    `id`,
+    gid,
+    lvl
+FROM
+(
+    SELECT
+        1 AS `id`,
+        ARRAY(1,2) AS group_id,
+        ARRAY('A','B') AS level
+) t
+LATERAL VIEW OUTER EXPLODE(group_id) g AS gid
+LATERAL VIEW OUTER EXPLODE(level) l AS lvl
+</code></pre><p>output:</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>gid</th>
+<th>lvl</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>A</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>B</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>A</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>B</td>
+</tr>
+</tbody>
+</table>
+<p>4）展开MAP</p>
+<blockquote>
+<p><strong>Note</strong>: 请看 <a href="/posts/hive_sql/#9-map-%E7%9B%B8%E5%85%B3">9. map相关</a> 中 <code>9.5</code> 的示例 <code>2）</code>。多个MAP也能像多个ARRAY一样展开，这里就不多演示了。</p>
+</blockquote>
+<h3 id="11-窗口函数">11. 窗口函数</h3>
+<p>窗口函数的处理效果，是输入n行，输出n行。但这不意味窗口函数是行处理的，它可以综合其他行的信息对当前行做运算。</p>
+<p>1）找同班同学</p>
+<ul>
+<li>输入是 <code>id</code>（学号）和 <code>class</code>（班级）</li>
+<li>输出是 <code>id</code>（学号）和 <code>class</code>（班级）和 <code>id_list</code>（同班同学学号列表）</li>
+</ul>
+<pre><code>SELECT
+    id,
+    class,
+    COLLECT_SET(id) OVER(PARTITION BY class) AS id_list
+FROM
+(
+    SELECT 1 AS id, 'A' AS class
+    UNION ALL
+    SELECT 2 AS id, 'A' AS class
+    UNION ALL
+    SELECT 3 AS id, 'B' AS class
+) t
+</code></pre><p>output:</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>class</th>
+<th>id_list</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A</td>
+<td>[1,2]</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A</td>
+<td>[1,2]</td>
+</tr>
+<tr>
+<td>3</td>
+<td>B</td>
+<td>[3]</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Note</strong>: 常用的聚合函数，都可以替换本例中的 <code>COLLECT_SET(id)</code>，比如：</p>
+<ul>
+<li><code>SUM()</code></li>
+<li><code>COUNT()</code></li>
+<li><code>MAX()</code></li>
+</ul>
+<p>等等&hellip;&hellip;</p>
+</blockquote>
+<p>2）生成序号ROW_NUMBER</p>
+<pre><code>SELECT
+    id,
+    class,
+    score,
+    ROW_NUMBER() OVER(PARTITION BY class ORDER BY score DESC) AS class_no
+FROM
+(
+    SELECT 1 AS id, 'A' AS class, 90 AS score
+    UNION ALL
+    SELECT 2 AS id, 'A' AS class, 91 AS score
+    UNION ALL
+    SELECT 3 AS id, 'A' AS class, 91 AS score
+    UNION ALL
+    SELECT 4 AS id, 'B' AS class, 100 AS score
+) t
+</code></pre><p>output:</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>class</th>
+<th>score</th>
+<th>class_no</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A</td>
+<td>90</td>
+<td>3</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A</td>
+<td>91</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A</td>
+<td>91</td>
+<td>2</td>
+</tr>
+<tr>
+<td>4</td>
+<td>B</td>
+<td>100</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Note</strong>: 注意到虽然学生2和学生3分数都是91分，但他们的班级序号（class_no）不重叠。2号学生班级序号是1，3号学生班级序号是2</p>
+</blockquote>
+<p>2）排名RANK</p>
+<pre><code>SELECT
+    id,
+    class,
+    score,
+    RANK() OVER(PARTITION BY class ORDER BY score DESC) AS class_rk
+FROM
+(
+    SELECT 1 AS id, 'A' AS class, 90 AS score
+    UNION ALL
+    SELECT 2 AS id, 'A' AS class, 91 AS score
+    UNION ALL
+    SELECT 3 AS id, 'A' AS class, 91 AS score
+    UNION ALL
+    SELECT 4 AS id, 'B' AS class, 100 AS score
+) t
+</code></pre><p>output:</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>class</th>
+<th>score</th>
+<th>class_rk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A</td>
+<td>90</td>
+<td>3</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A</td>
+<td>91</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A</td>
+<td>91</td>
+<td>1</td>
+</tr>
+<tr>
+<td>4</td>
+<td>B</td>
+<td>100</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Note</strong>: 注意看，虽然学生2和学生3分数都是91分，但他们的班级排名（class_rk）是相同的。2号同学与3号同学并列第一，1号学生由于有2位同学排在他前面，直接变成第3名。</p>
+</blockquote>
+<p>3）不计人头排名DENSE_RANK</p>
+<p>DENSE_RANK是不计人头，纯计分数的排名方式。</p>
+<p>上例中的1号同学，在考试中获得了90分，虽然按人头数计，有两位同学排在他前面，因此成为了第三名。但如果纯以分数计，他的90分是仅次于91分的班级第二好名次。如果我们希望不考虑人头数，仅考虑分数在排序中的位置，那么可以使用DENSE_RANK函数。</p>
+<pre><code>SELECT
+    id,
+    class,
+    score,
+    DENSE_RANK() OVER(PARTITION BY class ORDER BY score DESC) AS class_rk
+FROM
+(
+    SELECT 1 AS id, 'A' AS class, 90 AS score
+    UNION ALL
+    SELECT 2 AS id, 'A' AS class, 91 AS score
+    UNION ALL
+    SELECT 3 AS id, 'A' AS class, 91 AS score
+    UNION ALL
+    SELECT 4 AS id, 'B' AS class, 100 AS score
+) t
+</code></pre><p>output:</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>class</th>
+<th>score</th>
+<th>class_rk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A</td>
+<td>90</td>
+<td>2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A</td>
+<td>91</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A</td>
+<td>91</td>
+<td>1</td>
+</tr>
+<tr>
+<td>4</td>
+<td>B</td>
+<td>100</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="12-尾缀方法">12. 尾缀方法</h3>
+<p>1）对结果排序ORDER BY</p>
+<p>寻找分数TOP2的两位同学：</p>
+<pre><code>SELECT
+    id,
+    score
+FROM
+(
+    SELECT 1 AS id, 70 AS score
+    UNION ALL 
+    SELECT 2 AS id, 60 AS score
+    UNION ALL 
+    SELECT 3 AS id, 90 AS score
+) t
+ORDER BY score DESC
+LIMIT 2
+</code></pre><p>ORDER BY也常用于随机抽样：</p>
+<pre><code>ORDER BY RAND()
+</code></pre><p>2）组筛选HAVING</p>
+<p>HAVING语句能对GROUP BY的结果做筛选。以下SQL选出班级人数大于1的班级：</p>
+<pre><code>SELECT
+    class,
+    COUNT(DISTINCT id) AS id_cnt
+FROM
+(
+    SELECT 1 AS id, 'A' AS class
+    UNION ALL
+    SELECT 2 AS id, 'A' AS class
+    UNION ALL
+    SELECT 3 AS id, 'B' AS class
+) t
+GROUP BY class
+HAVING id_cnt &gt; 1
+</code></pre><p>3）CLUSTER BY, DISTRIBUTE BY, SORT BY</p>
+<p>这三个语句是控制reducer的。<code>DISTRIBUTE BY [YOUR_COLUMN_HERE]</code> 用于控制数据如何进入reducer，比如：</p>
+<pre><code>SELECT
+    class,
+    COUNT(DISTINCT id) AS id_cnt
+FROM
+(
+    SELECT 1 AS id, 'A' AS class
+    UNION ALL
+    SELECT 2 AS id, 'A' AS class
+    UNION ALL
+    SELECT 3 AS id, 'B' AS class
+) t
+DISTRIBUTE BY class
+</code></pre><p>如上，则拥有相同class值的记录，会进入同一个reducer。</p>
+<p><code>SORT BY [YOUR_COLUMN_HERE]</code> 用于控制reducer中数据的排序，比如：</p>
+<pre><code>SELECT
+    class,
+    COUNT(DISTINCT id) AS id_cnt
+FROM
+(
+    SELECT 1 AS id, 'A' AS class
+    UNION ALL
+    SELECT 2 AS id, 'A' AS class
+    UNION ALL
+    SELECT 3 AS id, 'B' AS class
+) t
+DISTRIBUTE BY class
+SORT BY id
+</code></pre><p>如上例，在每个reducer中，会用id字段做reducer内的排序。</p>
+<p>对某字段使用 <code>CLUSTER BY</code>，等于对该字段既使用DISTRIBUTE BY，又使用SORT BY，一种语法糖了属于是。</p>
+<blockquote>
+<p><strong>Note</strong>: 这三个语句日常不太常见，什么场景能用上呢？</p>
+<p>举个例子，用户 (uid) 的购物车订单 (oid) 有时候会被拆成多个包裹，这时每个包裹会对应一个子单 (sub_oid)。这种情况下，一个订单就会对应多个子单。假设我们只知道 <code>uid - oid</code> 的关系与 <code>uid - sub_oid</code> 的关系。如果已知 sub_oid 是 oid 后加下划线加子单单号，我们希望获取 <code>oid - sub_oid</code> 的关系。这种情况就可以使用 <code>DISTRIBUTE BY uid</code>，这可以大幅节省算力。</p>
+</blockquote>
+<h3 id="13-transform">13. transform</h3>
+<p>SQL部分：</p>
+<pre><code>SELECT TRANSFORM
+-- PYTHON文件的输入
+(
+    COL_1,
+    COL_2
+)
+USING '[PYTHON_ENV_PATH_HERE] [YOUR_PYTHON_FILE_HERE]' AS
+-- PYTHON文件的输出，输出的行数和内容取决于PYTHON怎么写
+(
+    OUTPUT_1,
+    OUTPUT_2,
+    OUTPUT_3
+)
+FROM
+-- 数据源，会传给PYTHON文件的输入
+(
+    SELECT
+        COL_1,
+        COL_2
+    FROM [DB_NAME].[SOURCE_TABLE]
+    WHERE [CONDITIONS]
+    DISTRIBUTE BY [YOUR_KEY]
+) t
+</code></pre><p>PYTHON部分：</p>
+<pre><code>import sys
+
+
+class Processor:
+
+    @staticmethod
+    def add(lst):
+        nlst = list()
+        for col_1, col_2 in lst:
+            nlst.append((col_1, col_2, col_1+'-'+col_2))
+
+        return nlst
+
+    def main(self):
+        lst = list()
+        for line in sys.stdin:
+            col_1, col_2 = line.strip().split('\t')[:2]
+            lst.append((col_1, col_2))
+
+        for col_1, col_2, col_3 in self.add(lst):
+            print('{}\t{}\t{}'.format(col_1, col_2, col_3))
+
+
+if __name__ == '__main__':
+    p = Processor()
+    p.main()
+</code></pre><h3 id="14-空值处理">14. 空值处理</h3>
+<p>1）COALESCE函数：接受多个参数。从左到右遍历参数，返回第一个遇到的非NULL参数</p>
+<pre><code>SELECT
+    COALESCE(col_1, col_2, 0) AS res
+FROM
+(
+    SELECT NULL AS col_1, 10 AS col_2
+    UNION ALL
+    SELECT NULL AS col_1, NULL AS col_2
+) t
+</code></pre><p>output:</p>
+<table>
+<thead>
+<tr>
+<th>res</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10</td>
+</tr>
+<tr>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>2）NVL函数：接受两个参数。如果第一个参数为NULL，返回第二个参数，否则返回第一个参数</p>
+<pre><code>SELECT
+    NVL(col_1, col_2) AS res
+FROM
+(
+    SELECT NULL AS col_1, 10 AS col_2
+    UNION ALL
+    SELECT NULL AS col_1, NULL AS col_2
+    UNION ALL
+    SELECT 100 AS col_1, 200 AS col_2
+) t
+</code></pre><p>output:</p>
+<table>
+<thead>
+<tr>
+<th>res</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10</td>
+</tr>
+<tr>
+<td>NULL</td>
+</tr>
+<tr>
+<td>100</td>
+</tr>
+</tbody>
+</table>
+<h3 id="15-udf">15. UDF</h3>
+<p>todo</p>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/r_project/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">R语言学习笔记</span>
+    </a>
+    
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+        </div>
+        
+    <script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
+
+
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+
+
+    
+
+
+
+    </body>
+</html>
