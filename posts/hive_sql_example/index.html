@@ -24,10 +24,10 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Hive SQL 代码示例"/>
-<meta name="twitter:description" content="Hive SQL功能很多，但常用的不多。而且Hive SQL并不复杂，代码范例&#43;对代码功能三言两语的介绍，足以帮助理解。本文介绍一些常用功能的代码示例"/>
+<meta name="twitter:description" content="本文用“简短说明 &#43; 代码示例”的方式，介绍Hive SQL的常用功能"/>
 
 <meta property="og:title" content="Hive SQL 代码示例" />
-<meta property="og:description" content="Hive SQL功能很多，但常用的不多。而且Hive SQL并不复杂，代码范例&#43;对代码功能三言两语的介绍，足以帮助理解。本文介绍一些常用功能的代码示例" />
+<meta property="og:description" content="本文用“简短说明 &#43; 代码示例”的方式，介绍Hive SQL的常用功能" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/hive_sql_example/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-12-25T00:00:00&#43;00:00" />
@@ -605,7 +605,7 @@ FROM
     UNION ALL
     SELECT 3 AS `id`, '阿弥' AS name, 93 AS ttl_score
 ) t
-</code></pre><h4 id="22-后文会用到的用例">2.2 后文会用到的用例</h4>
+</code></pre><h4 id="22-后文会用到的示例">2.2 后文会用到的示例</h4>
 <p>1）学生分数表：</p>
 <pre><code>CREATE TABLE std.std_student_score AS
 SELECT
@@ -693,10 +693,14 @@ FROM std.std_student_score
     REGEXP_REPLACE(&quot;abcd:effe(eee)cmn&quot;, &quot;\\:|\\(|\\)&quot;, &quot; &quot;)
 </code></pre><p>output: <code>abcd effe eee cmn</code></p>
 <h4 id="34-double类型数据处理">3.4 DOUBLE类型数据处理</h4>
-<p>精确到小数点后n位</p>
+<p>精确到小数点后3位</p>
 <pre><code>SELECT
-    ROUND(1.232812, 3)
-</code></pre><p>output: <code>1.233</code></p>
+    ROUND(ratio, 3)
+FROM
+(
+    SELECT 0.232812 AS ratio
+) t
+</code></pre><p>output: <code>0.233</code></p>
 <h3 id="4-行处理函数">4. 行处理函数</h3>
 <p>Hive sql中的函数大抵可以分为两种。一种是做行处理的，输入是一行，输出也是一行；另一种是做聚合的，输入是多行，但输出只有一行。</p>
 <p>本节列举一些常用的行处理函数。</p>
