@@ -8,21 +8,21 @@
     <language>en-us</language>
     <lastBuildDate>Sat, 16 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/categories/math/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>因果推断笔记</title>
+      <title>《应用统计因果推论》学习笔记</title>
       <link>http://luochang212.github.io/posts/causal_inference/</link>
       <pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/causal_inference/</guid>
       <description>不谜语人的因果推断笔记！
 学习统计最好还是学习一下 R 语言。相比 Python，R 是专门用于统计的语言，它提供了更细致的函数和更标准的实现方法。
- GitHub项目地址：
-1. 因果推断入门 小朋友感冒，家长给他吃药，一个星期后就痊愈了。那么“吃药”和“痊愈”是否有因果关系呢？
+GitHub项目地址： 1. 因果推断入门 小朋友感冒，家长给他吃药，一个星期后就痊愈了。那么“吃药”和“痊愈”是否有因果关系呢？
 我们知道普通的小感冒，即使不吃药，一个星期后也会痊愈。因此未必是因为吃药才痊愈的，也有可能是小朋友凭借抵抗力恢复了健康。此时，要进一步分析“吃药”与“痊愈”的因果关系，就要用到因果推断技术。
 注意在上述例子中，原因存在两种状态：吃药/不吃药。结果也存在两种状态：痊愈/未痊愈。为了描述方便，我们把：
- 作为原因的变量：x 叫做控制变量 (control variable)，或解释变量 (explanatory variable) 作为结果的变量：y 叫做响应变量 (response variable)，或被解释变量 (explained variable)  1.1 如何测量因果关系 反事实因果分析框架 是统计学中分析因果关系的一种常见思路。这种思路把一种“状态”与其“反事实状态”造成结果的差异当作因果效应。对于小朋友 $i$，反事实因果分析框架反映的因果效应 $\tau_{i}$ 表示为： $$\tau_{i} = Y_{i}(1) - Y_{i}(0)$$ 这里 $Y_{i}(1)$ 代表吃药，$Y_{i}(0)$ 代表不吃药，它们都是观测值。
+作为原因的变量：x 叫做控制变量 (control variable)，或解释变量 (explanatory variable) 作为结果的变量：y 叫做响应变量 (response variable)，或被解释变量 (explained variable) 1.1 如何测量因果关系 反事实因果分析框架 是统计学中分析因果关系的一种常见思路。这种思路把一种“状态”与其“反事实状态”造成结果的差异当作因果效应。对于小朋友 $i$，反事实因果分析框架反映的因果效应 $\tau_{i}$ 表示为： $$\tau_{i} = Y_{i}(1) - Y_{i}(0)$$ 这里 $Y_{i}(1)$ 代表吃药，$Y_{i}(0)$ 代表不吃药，它们都是观测值。
 不难发现，$Y_{i}(1)$ 和 $Y_{i}(0)$ 是无法同时观测到的。这被称为 因果推断的根本性问题 (Holland, 1986)。正如“人不能两次踏入同一条河流”，一旦做出某种选择，其他选择的结果就无从观测了。
 由于此“根本性问题”的存在，对 $\tau$ 算不了真实值，只能估计。因果效应 $\tau$ 有三种常见的估计值：
- 我们约定：是否吃药用 $X$ 表示，$X = 0 \space or \space 1$，其中 1 代表吃药，0 代表不吃药。这里有必要区分下，$Y_{i}|X=1$ 是指那些真的吃了药的人的 $Y$ 值。$Y_{i}(1)$、$Y_{i}(0)$ 则是看不到的一个潜在状态，可能是用统计方法算出的估计值，也可能是模型的外推。</description>
+我们约定：是否吃药用 $X$ 表示，$X = 0 \space or \space 1$，其中 1 代表吃药，0 代表不吃药。这里有必要区分下，$Y_{i}|X=1$ 是指那些真的吃了药的人的 $Y$ 值。$Y_{i}(1)$、$Y_{i}(0)$ 则是看不到的一个潜在状态，可能是用统计方法算出的估计值，也可能是模型的外推。
+1.ATT (average treatment effect on treated)：实验组平均因果效应 $$\tau_{ATT} = E( \space (Y_{i}|X=1) - Y_{i}(0) \space )$$ 2.</description>
     </item>
     
     <item>
@@ -31,11 +31,11 @@
       <pubDate>Sat, 01 May 2021 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/learning_statistics/</guid>
-      <description>统计并非抽象的学科。虽然派生了推断、估计等抽象概念，但它并非为抽象而抽象，为思辩而思辨。   统计发展抽象概念，通常是为了解决现实中的问题。举个例子，一根头发也没有的人是秃子。那么有十根头发的人呢？有二十根头发的人呢？在一般的认识里，我们认为他们也是秃子。那么究竟要达到多少根毛，才能不被称为秃子呢？统计推断可以利用样本的分布信息，给这个问题一个量化的解答。这就是统计的魅力所在。 --  统计学绝非一门生硬无趣的学科，它有着鲜活的案例和丰富的实验，让我们循着公式乘着代码在统计的海洋里尽情摇摆叭  1. 回归分析 1.1 简单线性回归模型 (1) 回归方程 许多回归分析都是在如下假设前提下开始的：$y$ 和 $x$ 是两个代表某个总体的变量，我们希望用 $x$ 解释 $y$，通过一个线性方程，我们可以刻画 $y$ 和 $x$ 之间的关系： $$y=\beta_{0}+\beta_{1} x+u \quad (1.1)$$ 假定方程 (1.1) 在我们所关注的总体中成立，它便定义了一个简单线性回归模型 (simple linear regression model).
+      <description>统计学绝非一门生硬无趣的学科，它有着鲜活的案例和丰富的实验，让我们循着公式乘着代码在统计的海洋里尽情摇摆叭 1. 回归分析 1.1 简单线性回归模型 (1) 回归方程 许多回归分析都是在如下假设前提下开始的：$y$ 和 $x$ 是两个代表某个总体的变量，我们希望用 $x$ 解释 $y$，通过一个线性方程，我们可以刻画 $y$ 和 $x$ 之间的关系： $$y=\beta_{0}+\beta_{1} x+u \quad (1.1)$$ 假定方程 (1.1) 在我们所关注的总体中成立，它便定义了一个简单线性回归模型 (simple linear regression model).
 其中，各符号含义如下：
- $y$: 因变量（或被解释变量、回归子） $x$: 自变量（或解释变量、回归元） $u$: 误差项（或干扰项） $\beta_{1}$: 斜率参数 $\beta_{0}$: 截距参数  举例来说，假设我们用方程 (1.1) 来刻画大豆收成：$y$ 表示收成，$x$ 表示施肥量，$u$ 则包括了诸如土地质量、降水量等因素。
+$y$: 因变量（或被解释变量、回归子） $x$: 自变量（或解释变量、回归元） $u$: 误差项（或干扰项） $\beta_{1}$: 斜率参数 $\beta_{0}$: 截距参数 举例来说，假设我们用方程 (1.1) 来刻画大豆收成：$y$ 表示收成，$x$ 表示施肥量，$u$ 则包括了诸如土地质量、降水量等因素。
 (2) 零条件均值假设 只有在我们对 $x$ 和 $u$ 之间的关系做出某种约束时，我们才能计算出 $\beta_{1}$ 和 $\beta_{0}$ 的可靠估计量。
-🌟 零条件均值假定： $$\begin{aligned} &amp;amp;\mathrm{E}(u)=0 \quad (1.</description>
+🌟 零条件均值假定： $$\begin{aligned} &amp;amp;\mathrm{E}(u)=0 \quad (1.2) \\ &amp;amp;\mathrm{E}(u \mid x)=\mathrm{E}(u) \quad (1.3) \end{aligned}$$ 方程 (1.</description>
     </item>
     
     <item>
@@ -45,7 +45,7 @@
       
       <guid>http://luochang212.github.io/posts/poisson/</guid>
       <description>本文介绍泊松分布和泊松函数的定义，并通过 Python random 库对泊松分布进行仿真，带你触摸复杂表象下的简单本质。
- GitHub项目地址：python-tips/poisson
+GitHub项目地址：python-tips/poisson
 1. 从泊松函数讲起 泊松分布 表示在给定时间段内发生给定数量的事件的概率。这个定义比较抽象。举个具体的例子，假设你每小时接到电话的概率是固定的，比如每小时 0.05 个，那么你在接下来 1 小时内接到电话个数的概率，就服从泊松分布:
 1 小时内接到 0 个电话，对应一个概率值 $P_0$；
 1 小时内接到 1 个电话，对应一个概率值 $P_1$；
@@ -64,15 +64,15 @@ $$\boxed{P(k | t, \lambda)=\frac{(\lambda t)^{k}}{k !} \exp (-\lambda t)}$$
       
       <guid>http://luochang212.github.io/posts/network_performance_analysis/</guid>
       <description>排队论(queueing theory)也称随机服务系统理论，它研究的内容有三部分：性态问题、最优化问题和统计推断问题。（《运筹学》清华大学出版社）
-  下图描述了排队过程的一般流程：
-    现实中的排队问题是多种多样的，对上述“顾客源”和“服务机构”应该作宽泛的理解。顾客和服务机构可以是生物，也可以是非生物；排队结构可以是有形的，也可以是无形的，比如向交换台要求通话的请求；顾客可以走向服务机构，也可以相反，比如送货上门。
- 在网络中，服务器和用户之间相互传送数据包。数据包的传送需要时间，因此或多或少都会产生延迟。为了分析这些延迟，我们引入了一系列假设，并利用排队论对网络延迟进行建模分析。
+下图描述了排队过程的一般流程：
+现实中的排队问题是多种多样的，对上述“顾客源”和“服务机构”应该作宽泛的理解。顾客和服务机构可以是生物，也可以是非生物；排队结构可以是有形的，也可以是无形的，比如向交换台要求通话的请求；顾客可以走向服务机构，也可以相反，比如送货上门。
+在网络中，服务器和用户之间相互传送数据包。数据包的传送需要时间，因此或多或少都会产生延迟。为了分析这些延迟，我们引入了一系列假设，并利用排队论对网络延迟进行建模分析。
 本文将着重介绍网络性能分析(Network performance analysis)中几种常见的排队模型。它们是：
- The M/M/1 queuing system The birth-death process The M/M/m queuing system The M/M/1/m queuing system The M/M/∞ queuing system The M/M/m/m queuing system  另外，作为以上模型的理论基础，本文将首先介绍泊松过程(Poisson process)。
+The M/M/1 queuing system The birth-death process The M/M/m queuing system The M/M/1/m queuing system The M/M/∞ queuing system The M/M/m/m queuing system 另外，作为以上模型的理论基础，本文将首先介绍泊松过程(Poisson process)。
 泊松过程的推导 泊松过程是马尔可夫过程的一个特例，在排队论中经常被用来估计顾客到达的概率分布。
 （一）泊松过程的假设
-  在时间间隔$\Delta t$内，有且仅有一位顾客到达的概率$P$和$\Delta t$成比例，比例系数为$\lambda$
-  在时间间隔$\Delta t$内，至多只允许一位顾客到达（否则应该选取一个更短的时间间隔） $$\begin{aligned} P(\text { 在时间间隔 }[t, t+\Delta t] \text { 内，有且仅有一位顾客到达 }) &amp;amp;=\lambda \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，没有顾客到达 }) &amp;amp;=1-\lambda \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，多于一位顾客到达 }) &amp;amp;=0 \end{aligned}$$</description>
+在时间间隔$\Delta t$内，有且仅有一位顾客到达的概率$P$和$\Delta t$成比例，比例系数为$\lambda$
+在时间间隔$\Delta t$内，至多只允许一位顾客到达（否则应该选取一个更短的时间间隔） $$\begin{aligned} P(\text { 在时间间隔 }[t, t+\Delta t] \text { 内，有且仅有一位顾客到达 }) &amp;amp;=\lambda \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，没有顾客到达 }) &amp;amp;=1-\lambda \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，多于一位顾客到达 }) &amp;amp;=0 \end{aligned}$$</description>
     </item>
     
   </channel>

@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.84.1" />
+<meta name="generator" content="Hugo 0.118.2">
 
     
     
@@ -30,9 +30,8 @@
 <meta property="og:description" content="JavaScript是一个神奇的语言。它既不像Java原生地支持类和继承，也不如Python声明变量方便，更兼闹出&#34;===&#34;这样的麻烦。但我依旧深知它的强大，尤其是在可视化这一方面，在接触`qtwebengine`的时候已经感受过一次了。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/to_do_list/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2019-05-24T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2019-05-24T00:00:00&#43;00:00" /><meta property="og:site_name" content="Title" />
-
+<meta property="article:published_time" content="2019-05-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-05-24T00:00:00+00:00" /><meta property="og:site_name" content="Title" />
 
 
     
@@ -302,7 +301,7 @@
       </div>
       
 <div class="copyright">
-  &copy; 2022 Chang Luo
+  &copy; 2023 Chang Luo
   
 </div>
 
@@ -581,41 +580,41 @@
 <p><strong>（一）添加计划</strong></p>
 <p>对于前端UI，首先我们需要一个textarea，用来接收每项计划的内容。还需要一个按钮，点下这个按钮时，将文本框内的信息添加到计划列表。为了便于存储，我为计划(item)设计了一个类。</p>
 <p>这个类的声明如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">Items</span> <span style="color:#f92672">=</span> {
-　　　　	<span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
-　　　　	<span style="color:#a6e22e">isCheck</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;false&#34;</span>,
-		   <span style="color:#a6e22e">isDelete</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;false&#34;</span>
-	};
-</code></pre></div><p>可以看出这个类有三个值。它们分别表示该对象的名称，是否完成，以及是否删除。每次添加计划，用以下代码实例化这个类(items)，生成一个对象(item)：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">item</span> <span style="color:#f92672">=</span> Object.<span style="color:#a6e22e">create</span>(<span style="color:#a6e22e">Items</span>);
-</code></pre></div><p><strong>（二）生成表格</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">Items</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>　　　　	<span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>　　　　	<span style="color:#a6e22e">isCheck</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;false&#34;</span>,
+</span></span><span style="display:flex;"><span>		   <span style="color:#a6e22e">isDelete</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;false&#34;</span>
+</span></span><span style="display:flex;"><span>	};
+</span></span></code></pre></div><p>可以看出这个类有三个值。它们分别表示该对象的名称，是否完成，以及是否删除。每次添加计划，用以下代码实例化这个类(items)，生成一个对象(item)：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">item</span> <span style="color:#f92672">=</span> Object.<span style="color:#a6e22e">create</span>(<span style="color:#a6e22e">Items</span>);
+</span></span></code></pre></div><p><strong>（二）生成表格</strong></p>
 <p>这一步要把复选框(checkbox)和按钮(button)都和每一行的计划绑定。那么如何绑定呢？</p>
 <p>要知道，用for loop遍历subArray的过程，就是生成表格内容的过程。所以，checkbox和button也都是在这次遍历中生成的。那么，我们就可以在它们的生成过程中，创建它们的id，并把id和计划对应起来。</p>
 <p>具体到代码中，我用了<code>i.toString(10)</code>将循环数转成string类型，然后加到id上。于是，第一项计划对应的checkbox的id就是&quot;cb0&rdquo;, 对应的button的id就是&quot;btn0&quot;, 以此类推。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">for</span> (<span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">subArray</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
-	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">index</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">i</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>;
-	<span style="color:#a6e22e">body</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#39;&lt;tr&gt;&#39;</span>;
-	<span style="color:#a6e22e">body</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#39;&lt;td&gt;&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">index</span>.<span style="color:#a6e22e">toString</span>(<span style="color:#ae81ff">10</span>) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;&lt;/td&gt;&#39;</span>;
-	<span style="color:#a6e22e">body</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#39;&lt;td&gt;&#39;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;&lt;input type=&#34;checkbox&#34; id=\&#34;cb&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">i</span>.<span style="color:#a6e22e">toString</span>(<span style="color:#ae81ff">10</span>) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;\&#34; onclick=&#34;isChecked(this);&#34;&gt;&#39;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;&lt;/td&gt;&#39;</span>;
-	<span style="color:#a6e22e">body</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#39;&lt;td&gt;&#39;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;&lt;input type=&#34;button&#34; id=\&#34;btn&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">i</span>.<span style="color:#a6e22e">toString</span>(<span style="color:#ae81ff">10</span>) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;\&#34; onclick=&#34;isDeleted(this);&#34;&gt;&#39;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;&lt;/td&gt;&#39;</span>;
-	<span style="color:#a6e22e">body</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#39;&lt;/tr&gt;&#39;</span>;
-}
-</code></pre></div><p>然后在勾选复选框或者删除的时候，只需要把前面的&quot;cb&quot;和&quot;btn&quot;去掉，剩下的数字<code>i</code>带入<code>subArray()</code>，得到的<code>subArray(i)</code>就表示着该checkbox或者button对应的计划。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">subArray</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">index</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">i</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">body</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#39;&lt;tr&gt;&#39;</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">body</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#39;&lt;td&gt;&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">index</span>.<span style="color:#a6e22e">toString</span>(<span style="color:#ae81ff">10</span>) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;&lt;/td&gt;&#39;</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">body</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#39;&lt;td&gt;&#39;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;&lt;input type=&#34;checkbox&#34; id=\&#34;cb&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">i</span>.<span style="color:#a6e22e">toString</span>(<span style="color:#ae81ff">10</span>) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;\&#34; onclick=&#34;isChecked(this);&#34;&gt;&#39;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;&lt;/td&gt;&#39;</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">body</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#39;&lt;td&gt;&#39;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;&lt;input type=&#34;button&#34; id=\&#34;btn&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">i</span>.<span style="color:#a6e22e">toString</span>(<span style="color:#ae81ff">10</span>) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;\&#34; onclick=&#34;isDeleted(this);&#34;&gt;&#39;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;&lt;/td&gt;&#39;</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">body</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#39;&lt;/tr&gt;&#39;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>然后在勾选复选框或者删除的时候，只需要把前面的&quot;cb&quot;和&quot;btn&quot;去掉，剩下的数字<code>i</code>带入<code>subArray()</code>，得到的<code>subArray(i)</code>就表示着该checkbox或者button对应的计划。</p>
 <p><strong>（三）下载表格</strong></p>
 <p>这一步在我编程之前，还不知道用什么方法实现。最后被我查到了一段代码，它能在静态网页下生成文件并提供下载。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">	<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">download</span>(<span style="color:#a6e22e">filename</span>, <span style="color:#a6e22e">text</span>) {
-		<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">element</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#39;a&#39;</span>);
-		<span style="color:#a6e22e">element</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#39;href&#39;</span>, <span style="color:#e6db74">&#39;data:text/plain;charset=utf-8,&#39;</span> <span style="color:#f92672">+</span> encodeURIComponent(<span style="color:#a6e22e">text</span>));
-		<span style="color:#a6e22e">element</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#39;download&#39;</span>, <span style="color:#a6e22e">filename</span>);
-
-		<span style="color:#a6e22e">element</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">display</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;none&#39;</span>;
-		document.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">element</span>);
-
-		<span style="color:#a6e22e">element</span>.<span style="color:#a6e22e">click</span>();
-
-		document.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">removeChild</span>(<span style="color:#a6e22e">element</span>);
-	}
-</code></pre></div><h3 id="技术总结">技术总结</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>	<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">download</span>(<span style="color:#a6e22e">filename</span>, <span style="color:#a6e22e">text</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">element</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#39;a&#39;</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">element</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#39;href&#39;</span>, <span style="color:#e6db74">&#39;data:text/plain;charset=utf-8,&#39;</span> <span style="color:#f92672">+</span> encodeURIComponent(<span style="color:#a6e22e">text</span>));
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">element</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#39;download&#39;</span>, <span style="color:#a6e22e">filename</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">element</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">display</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;none&#39;</span>;
+</span></span><span style="display:flex;"><span>		document.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">element</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">element</span>.<span style="color:#a6e22e">click</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		document.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">removeChild</span>(<span style="color:#a6e22e">element</span>);
+</span></span><span style="display:flex;"><span>	}
+</span></span></code></pre></div><h3 id="技术总结">技术总结</h3>
 <p>总体来说，这三步都不困难。我花了大约8小时写这个project，其实还是吃亏在初学。前期两小时左右，在画图、规划、分析、简化功能&hellip;&hellip;直到把野心降低到我能完成的程度。接着连续编了四小时的程序，整个项目就从无到有做出来了。然后又花了一些时间修改CSS，美化页面。第二天上午又花了近两小时，把<code>Enter</code>键变成“添加计划”的快捷键，并用<code>Shift + Enter</code>替代原本<code>Enter</code>键的功能。这是easy to use上的改进。</p>
 <h3 id="食用指南">食用指南</h3>
 <p><a href="/gadget/to-do-list">点这里打开工具。</a></p>

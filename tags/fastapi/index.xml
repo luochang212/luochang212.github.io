@@ -14,14 +14,16 @@
       
       <guid>http://luochang212.github.io/posts/fastapi/</guid>
       <description>什么是 API？如何从零开始，搭建自己的第一个API？本文带你搭建一个 API 小应用以带你了解 FastAPI 的使用细节
- 什么是 API？API 有什么用？本文从零开始教你搭建 API，认识 API 服务中的组件和 FastAPI 的使用细节。 -- GitHub项目地址：calendar-api
+GitHub项目地址：calendar-api
 什么是 API？
 简单来说，API 是软件间相互传输数据的接口。它在生活中十分常见，比如博物馆订票系统中就使用了 API. 当你在手机应用上订票时，手机实际上发送了一个 HTTP 请求给远程服务器。远程服务器解析该请求。当确认所有字段信息均准确无误后，它才会把你的订票信息录入数据库，并回调成功标识。只有当上述操作全都被正确执行时，你的手机才会显示订票成功。
 API 程序通常运行在服务端 (server) 上。客户端 (client) 通过向 API 提供的网络接口发送请求，以实现对服务端的通信。服务端收到请求后，对请求进行解析。如果请求是合法的，则执行该请求，并将请求结果回调给客户端。一次典型的 API 请求大体上是这么个过程。
 在业务中，有时需要记录每次请求产生的中间状态、运行结果和日志数据。这时就需要 服务端 调用 数据库 (database) 以存储业务中产生的各种信息。
 1. REST API API 本身是高度个性化的，软件间可以用任意数据类型进行通信。但如果 API 缺少规范、各行其是，就会导致软件间沟通成本高企。REST API 就是其中一种规范。REST API 提出了六项指导原则，只要 API 符合这六项指导原则，就可称之为“符合 REST 风格的 API”。
- REST API 提出的六项指导原则分别是：
- Client–server Stateless Cacheable Uniform interface Layered system Code on demand (optional)  [了解更多]</description>
+REST API 提出的六项指导原则分别是：
+Client–server Stateless Cacheable Uniform interface Layered system Code on demand (optional) [了解更多]
+FastAPI 对构建 REST 风格的 API 提供了良好的支持。
+2. 安装 FastAPI FastAPI 是 Python 下用于开发 API 的一个包。它有代码量少、服务稳定、支持异步等特点。</description>
     </item>
     
   </channel>

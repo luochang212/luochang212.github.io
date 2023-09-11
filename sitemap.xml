@@ -2,8 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://luochang212.github.io/posts/java_project/</loc>
+    <lastmod>2022-12-30T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://luochang212.github.io/posts/hive_sql_example/</loc>
     <lastmod>2022-12-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://luochang212.github.io/posts/learning_nlp/</loc>
+    <lastmod>2022-08-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://luochang212.github.io/posts/r_project/</loc>
     <lastmod>2022-08-07T00:00:00+00:00</lastmod>
@@ -93,28 +99,40 @@
     <lastmod>2017-07-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://luochang212.github.io/categories/</loc>
-    <lastmod>2022-12-25T00:00:00+00:00</lastmod>
+    <lastmod>2022-12-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://luochang212.github.io/</loc>
-    <lastmod>2022-12-25T00:00:00+00:00</lastmod>
+    <lastmod>2022-12-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://luochang212.github.io/categories/development/</loc>
-    <lastmod>2022-12-25T00:00:00+00:00</lastmod>
+    <lastmod>2022-12-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://luochang212.github.io/categories/hive/</loc>
-    <lastmod>2022-12-25T00:00:00+00:00</lastmod>
+    <loc>http://luochang212.github.io/tags/java/</loc>
+    <lastmod>2022-12-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://luochang212.github.io/categories/java/</loc>
+    <lastmod>2022-12-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://luochang212.github.io/posts/</loc>
+    <lastmod>2022-12-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://luochang212.github.io/tags/</loc>
+    <lastmod>2022-12-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://luochang212.github.io/tags/tutorial/</loc>
+    <lastmod>2022-12-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://luochang212.github.io/categories/hive/</loc>
     <lastmod>2022-12-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://luochang212.github.io/tags/sql/</loc>
     <lastmod>2022-12-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://luochang212.github.io/tags/</loc>
-    <lastmod>2022-12-25T00:00:00+00:00</lastmod>
+    <loc>http://luochang212.github.io/tags/nlp/</loc>
+    <lastmod>2022-08-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://luochang212.github.io/tags/tutorial/</loc>
-    <lastmod>2022-12-25T00:00:00+00:00</lastmod>
+    <loc>http://luochang212.github.io/categories/python/</loc>
+    <lastmod>2022-08-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://luochang212.github.io/tags/r/</loc>
     <lastmod>2022-08-07T00:00:00+00:00</lastmod>
@@ -150,9 +168,6 @@
     <lastmod>2020-11-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://luochang212.github.io/tags/fastapi/</loc>
-    <lastmod>2020-11-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://luochang212.github.io/categories/python/</loc>
     <lastmod>2020-11-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://luochang212.github.io/tags/poisson-distribution/</loc>
@@ -284,10 +299,10 @@
     <loc>http://luochang212.github.io/tags/layout/</loc>
     <lastmod>2019-05-10T21:43:09+01:00</lastmod>
   </url><url>
-    <loc>http://luochang212.github.io/categories/pycharm/</loc>
+    <loc>http://luochang212.github.io/tags/pycharm/</loc>
     <lastmod>2019-05-10T21:43:09+01:00</lastmod>
   </url><url>
-    <loc>http://luochang212.github.io/tags/pycharm/</loc>
+    <loc>http://luochang212.github.io/categories/pycharm/</loc>
     <lastmod>2019-05-10T21:43:09+01:00</lastmod>
   </url><url>
     <loc>http://luochang212.github.io/tags/pyqt5/</loc>

@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.84.1" />
+<meta name="generator" content="Hugo 0.118.2">
 
     
     
@@ -30,9 +30,8 @@
 <meta property="og:description" content="Golang是2009年由谷歌的三位大佬创造的一门新语言。Goalng有很多优点。比如，作为静态类型语言，Golang的依赖少，易于部署。此外，它还支持协程并发，支持垃圾回收，可跨平台编译。Golang兼具动态语言的强大表达能力和C的执行效率，被誉为21世纪的C语言。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/learning_golang/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2019-07-12T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2019-07-12T00:00:00&#43;00:00" /><meta property="og:site_name" content="Title" />
-
+<meta property="article:published_time" content="2019-07-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-07-12T00:00:00+00:00" /><meta property="og:site_name" content="Title" />
 
 
     
@@ -302,7 +301,7 @@
       </div>
       
 <div class="copyright">
-  &copy; 2022 Chang Luo
+  &copy; 2023 Chang Luo
   
 </div>
 
@@ -572,7 +571,7 @@
 <summary><font color='red'>Linux系统下的常用命令（点击展开）</font></summary>
 <br>
 新建目录
-<pre><code>$ mkdir foldername
+<pre tabindex="0"><code>$ mkdir foldername
 </code></pre><br>
 打开目录
 ```
@@ -645,10 +644,10 @@ $ ./filename
 <details>
 <summary>详细代码（点击展开）</summary>
 <p>首先打开命令行，为项目创建目录。</p>
-<pre><code>$ mkdir to-do-list
+<pre tabindex="0"><code>$ mkdir to-do-list
 $ cd to-do-list
 </code></pre><p>除了在app.go中放置我们的代码，我们还需要创建static文件夹放置网页内容，templates文件夹放置模版。</p>
-<pre><code>$ touch app.go
+<pre tabindex="0"><code>$ touch app.go
 
 $ mkdir -p static/stylesheets
 $ touch static/example.html static/stylesheets/style.css
@@ -684,8 +683,8 @@ fp := filepath.Join(&ldquo;templates&rdquo;, filepath.Clean(r.URL.Path))</p>
 info, err := os.Stat(fp)
 if err != nil {
 	if os.IsNotExist(err) {
-        http.NotFound(w, r)
-        return
+		http.NotFound(w, r)
+		return
 	}
 }
 
@@ -710,7 +709,7 @@ if err := tmpl.ExecuteTemplate(w, &quot;layout&quot;, nil); err != nil {
 }
 </code></pre>
 <p>}</p>
-<pre><code>&lt;br&gt;
+<pre tabindex="0"><code>&lt;br&gt;
 File: static/stylesheets/style.css
 </code></pre><p>body {
 font-family: &ldquo;Source Han Sans&rdquo;, &ldquo;San Francisco&rdquo;, &ldquo;PingFang SC&rdquo;, &ldquo;Hiragino Sans GB&rdquo;, &ldquo;Droid Sans Fallback&rdquo;, &ldquo;Microsoft YaHei&rdquo;, sans-serif;
@@ -803,7 +802,7 @@ padding: 5px;
 th {
 text-align: left;
 }</p>
-<pre><code>&lt;br&gt;
+<pre tabindex="0"><code>&lt;br&gt;
 File: static/javascript/main.js
 </code></pre><p>&ldquo;use strict&rdquo;;
 var Items = {
@@ -899,10 +898,10 @@ addElement();
 }
 }</p>
 <p>function clearText() {
-document.getElementById(&ldquo;myTextarea&rdquo;).value = &lsquo;';
+document.getElementById(&ldquo;myTextarea&rdquo;).value = &lsquo;&rsquo;;
 }</p>
 <p>function clearContents(element) {
-element.value = &lsquo;';
+element.value = &lsquo;&rsquo;;
 }</p>
 <p>function isChecked(element) {
 var id_str = element.id
@@ -941,7 +940,7 @@ element.click();
 document.body.removeChild(element);
 </code></pre>
 <p>}</p>
-<pre><code>&lt;br&gt;
+<pre tabindex="0"><code>&lt;br&gt;
 File: templates/layout.html
 </code></pre><p>{{define &ldquo;layout&rdquo;}}</p>
 <!DOCTYPE html>

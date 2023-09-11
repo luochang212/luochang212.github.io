@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Java on Chang Luo</title>
+    <link>http://luochang212.github.io/categories/java/</link>
+    <description>Recent content in Java on Chang Luo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 30 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/categories/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JAVA 补完计划</title>
+      <link>http://luochang212.github.io/posts/java_project/</link>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/posts/java_project/</guid>
+      <description>复习time</description>
+    </item>
+    
+  </channel>
+</rss>

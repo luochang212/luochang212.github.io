@@ -13,26 +13,25 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.84.1" />
+<meta name="generator" content="Hugo 0.118.2">
 
     
     
     
 
-<title>Hive SQL 代码示例（自用） • Chang Luo</title>
+<title>[自用]Hive SQL代码示例 • Chang Luo</title>
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Hive SQL 代码示例（自用）"/>
-<meta name="twitter:description" content="自用的 Hive SQL 代码示例，没有想给别人看，所以几乎没有什么说明"/>
+<meta name="twitter:title" content="[自用]Hive SQL代码示例"/>
+<meta name="twitter:description" content="写给自己看的 Hive SQL 代码示例，几乎没有说明"/>
 
-<meta property="og:title" content="Hive SQL 代码示例（自用）" />
-<meta property="og:description" content="自用的 Hive SQL 代码示例，没有想给别人看，所以几乎没有什么说明" />
+<meta property="og:title" content="[自用]Hive SQL代码示例" />
+<meta property="og:description" content="写给自己看的 Hive SQL 代码示例，几乎没有说明" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/hive_sql_example/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-12-25T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2022-12-25T00:00:00&#43;00:00" /><meta property="og:site_name" content="Title" />
-
+<meta property="article:published_time" content="2022-12-25T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-12-25T00:00:00+00:00" /><meta property="og:site_name" content="Title" />
 
 
     
@@ -302,7 +301,7 @@
       </div>
       
 <div class="copyright">
-  &copy; 2022 Chang Luo
+  &copy; 2023 Chang Luo
   
 </div>
 
@@ -478,7 +477,7 @@
 
 <article>
   <header>
-    <h1>Hive SQL 代码示例（自用）</h1>
+    <h1>[自用]Hive SQL代码示例</h1>
     
     
 <div class="post__meta">
@@ -517,7 +516,7 @@
     
     
     <br/>
-    <i class="fas fa-clock"></i> 9 min read
+    <i class="fas fa-clock"></i> 11 min read
 </div>
 
 
@@ -547,7 +546,10 @@
         <li><a href="#12-尾缀方法">12. 尾缀方法</a></li>
         <li><a href="#13-transform">13. transform</a></li>
         <li><a href="#14-空值处理">14. 空值处理</a></li>
-        <li><a href="#15-udf">15. UDF</a></li>
+        <li><a href="#15场景1同数据行跨字段计算最大最小值">15.【场景1】同数据行跨字段计算最大/最小值</a></li>
+        <li><a href="#16场景2计算分位数">16.【场景2】计算分位数</a></li>
+        <li><a href="#17-udf">17. UDF</a></li>
+        <li><a href="#附录">附录</a></li>
       </ul>
     </li>
   </ul>
@@ -559,32 +561,32 @@
   <div class="post">
     <h3 id="1-表操作">1. 表操作</h3>
 <h4 id="11-建表">1.1 建表</h4>
-<pre><code>CREATE TABLE [DATABASE].[TABLE_NAME] (
-    `id`    BIGINT    COMMENT '学号',
-    name    STRING    COMMENT '姓名',
-    ttl_score    DOUBLE    COMMENT '总分'
+<pre tabindex="0"><code>CREATE TABLE [DATABASE].[TABLE_NAME] (
+    `id`    BIGINT    COMMENT &#39;学号&#39;,
+    name    STRING    COMMENT &#39;姓名&#39;,
+    ttl_score    DOUBLE    COMMENT &#39;总分&#39;
 )
-COMMENT '枝江中学五年级学生成绩明细表'
-PARTITIONED BY (day STRING COMMENT 'day', hour STRING COMMENT 'hour')
+COMMENT &#39;枝江中学五年级学生成绩明细表&#39;
+PARTITIONED BY (day STRING COMMENT &#39;day&#39;, hour STRING COMMENT &#39;hour&#39;)
 ROW FORMAT [row_format]
 STORED AS [file_format];
 </code></pre><blockquote>
 <p><strong>Note</strong>: 了解更多，请参考 <a href="https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/sql-ref-syntax-ddl-create-table-hiveformat">CREATE TABLE with Hive format</a></p>
 </blockquote>
 <h4 id="12-删表">1.2 删表</h4>
-<pre><code>DROP TABLE [DATABASE].[TABLE_NAME];
-</code></pre><pre><code>DROP TABLE IF EXISTS [DATABASE].[TABLE_NAME];
+<pre tabindex="0"><code>DROP TABLE [DATABASE].[TABLE_NAME];
+</code></pre><pre tabindex="0"><code>DROP TABLE IF EXISTS [DATABASE].[TABLE_NAME];
 </code></pre><h4 id="13-在原表上新增列">1.3 在原表上新增列</h4>
-<pre><code>ALTER TABLE [DATABASE].[TABLE_NAME] ADD COLUMNS (
-    sub_score    ARRAY&lt;DOUBLE&gt;    COMMENT '分科成绩',
-    sub_score_map    MAP&lt;STRING,DOUBLE&gt;    COMMENT '分科成绩map',
-    `rank`    BIGINT    COMMENT '年段排名',
-    update_time    STRING    COMMENT '更新时间'
+<pre tabindex="0"><code>ALTER TABLE [DATABASE].[TABLE_NAME] ADD COLUMNS (
+    sub_score    ARRAY&lt;DOUBLE&gt;    COMMENT &#39;分科成绩&#39;,
+    sub_score_map    MAP&lt;STRING,DOUBLE&gt;    COMMENT &#39;分科成绩map&#39;,
+    `rank`    BIGINT    COMMENT &#39;年段排名&#39;,
+    update_time    STRING    COMMENT &#39;更新时间&#39;
 );
 </code></pre><h4 id="14-查表结构">1.4 查表结构</h4>
-<pre><code>DESC [DATABASE].[TABLE_NAME];
+<pre tabindex="0"><code>DESC [DATABASE].[TABLE_NAME];
 </code></pre><h4 id="15-建临时表">1.5 建临时表</h4>
-<pre><code>CREATE TEMPORARY TABLE std.std_temp_high_score AS
+<pre tabindex="0"><code>CREATE TEMPORARY TABLE std.std_temp_high_score AS
 SELECT
     name,
     ttl_score
@@ -593,47 +595,47 @@ WHERE ttl_score &gt;= 10
     AND LENGTH(name) &gt; 1;
 </code></pre><h3 id="2-构建测试用例">2. 构建测试用例</h3>
 <h4 id="21-利用union-all建多行测试用例">2.1 利用union all建多行测试用例</h4>
-<pre><code>SELECT
+<pre tabindex="0"><code>SELECT
     `id`,
     name,
     ttl_score
 FROM
 (
-    SELECT 1 AS `id`, '小岁' AS name, 90.5 AS ttl_score
+    SELECT 1 AS `id`, &#39;小岁&#39; AS name, 90.5 AS ttl_score
     UNION ALL
-    SELECT 2 AS `id`, '大深' AS name, 91.5 AS ttl_score
+    SELECT 2 AS `id`, &#39;大深&#39; AS name, 91.5 AS ttl_score
     UNION ALL
-    SELECT 3 AS `id`, '阿弥' AS name, 93 AS ttl_score
+    SELECT 3 AS `id`, &#39;阿弥&#39; AS name, 93 AS ttl_score
 ) t
 </code></pre><h4 id="22-后文用到的示例">2.2 后文用到的示例</h4>
 <p>为了方便后文说明，建两个可复用的测试用例_(┐「ε:)_</p>
 <p>1）学生分数表：</p>
-<pre><code>CREATE TABLE std.std_student_score AS
+<pre tabindex="0"><code>CREATE TABLE std.std_student_score AS
 SELECT
     `id`,
     name,
     ttl_score
 FROM
 (
-    SELECT 1 AS `id`, '小岁' AS name, 89.5 AS ttl_score
+    SELECT 1 AS `id`, &#39;小岁&#39; AS name, 89.5 AS ttl_score
     UNION ALL
-    SELECT 2 AS `id`, '大深' AS name, 91.5 AS ttl_score
+    SELECT 2 AS `id`, &#39;大深&#39; AS name, 91.5 AS ttl_score
     UNION ALL
-    SELECT 3 AS `id`, '阿弥' AS name, 93 AS ttl_score
+    SELECT 3 AS `id`, &#39;阿弥&#39; AS name, 93 AS ttl_score
 ) t
 </code></pre><p>2）学生基础信息表：</p>
-<pre><code>CREATE TABLE std.std_student_info AS
+<pre tabindex="0"><code>CREATE TABLE std.std_student_info AS
 SELECT
     `id`,
     gender,
     age
 FROM
 (
-    SELECT 1 AS `id`, 'P' AS gender, 13 AS age
+    SELECT 1 AS `id`, &#39;P&#39; AS gender, 13 AS age
     UNION ALL
-    SELECT 2 AS `id`, 'P' AS gender, 15 AS age
+    SELECT 2 AS `id`, &#39;P&#39; AS gender, 15 AS age
     UNION ALL
-    SELECT 3 AS `id`, 'T' AS gender, 18 AS age
+    SELECT 3 AS `id`, &#39;T&#39; AS gender, 18 AS age
 ) t
 </code></pre><h3 id="3-数据类型">3. 数据类型</h3>
 <h4 id="31-常用的数据类型">3.1 常用的数据类型</h4>
@@ -675,40 +677,48 @@ FROM
 </table>
 <h4 id="32-数据类型转换">3.2 数据类型转换</h4>
 <p>1）把分数从double转成string</p>
-<pre><code>SELECT
+<pre tabindex="0"><code>SELECT
     `id`,
     CAST(ttl_score AS STRING) AS ttl_score
 FROM std.std_student_score
 </code></pre><p>2）分数除10，然后转为bigint，有取整效果</p>
-<pre><code>SELECT
+<pre tabindex="0"><code>SELECT
     `id`,
     CAST(ttl_score/10 AS BIGINT) AS ttl_score
 FROM std.std_student_score
 </code></pre><h4 id="33-string型数据的常用函数">3.3 string型数据的常用函数</h4>
 <p>1）替换字符串</p>
-<pre><code>SELECT
-    REGEXP_REPLACE(&quot;abcdeffecmn&quot;, &quot;ef|cm&quot;, &quot;%&quot;)
+<pre tabindex="0"><code>SELECT
+    REGEXP_REPLACE(&#34;abcdeffecmn&#34;, &#34;ef|cm&#34;, &#34;%&#34;)
 </code></pre><p>output: <code>abcd%fe%n</code></p>
 <p>2）替换符号：需使用 <code>\\</code> 转义</p>
-<pre><code>SELECT
-    REGEXP_REPLACE(&quot;abcd:effe(eee)cmn&quot;, &quot;\\:|\\(|\\)&quot;, &quot; &quot;)
+<pre tabindex="0"><code>SELECT
+    REGEXP_REPLACE(&#34;abcd:effe(eee)cmn&#34;, &#34;\\:|\\(|\\)&#34;, &#34; &#34;)
 </code></pre><p>output: <code>abcd effe eee cmn</code></p>
 <p>3）取字符串的子串</p>
-<pre><code>SELECT
-    SUBSTR('abcedf', 3) AS sub_str
+<pre tabindex="0"><code>SELECT
+    SUBSTR(&#39;abcedf&#39;, 3) AS sub_str
 </code></pre><p>output: <code>cedf</code></p>
-<pre><code>SELECT
-    SUBSTR('abcedf', 3, 2) AS sub_str
+<pre tabindex="0"><code>SELECT
+    SUBSTR(&#39;abcedf&#39;, 3, 2) AS sub_str
 </code></pre><p>output: <code>ce</code></p>
-<pre><code>SELECT
-    SUBSTR('abcedf', -3, 2) AS sub_str
+<pre tabindex="0"><code>SELECT
+    SUBSTR(&#39;abcedf&#39;, -3, 2) AS sub_str
 </code></pre><p>output: <code>ed</code></p>
-<pre><code>SELECT
-    SUBSTR('abcedf', -3, 5) AS sub_str
+<pre tabindex="0"><code>SELECT
+    SUBSTR(&#39;abcedf&#39;, -3, 5) AS sub_str
 </code></pre><p>output: <code>edf</code></p>
+<p>4）找到特定字符在用英文逗号分隔的字符串列表中的位置</p>
+<pre tabindex="0"><code>SELECT
+    FIND_IN_SET(&#39;a&#39;, &#39;c,b,a,d&#39;)
+</code></pre><p>output: <code>3</code></p>
+<pre tabindex="0"><code>SELECT
+    FIND_IN_SET(&#39;m&#39;, &#39;c,b,a,d&#39;)
+</code></pre><p>output: <code>0</code></p>
+<p>找不到会返回 <code>0</code> 所以它也可以通过是否为零来判断字符在列表中是否存在</p>
 <h4 id="34-double型数据的常用函数">3.4 double型数据的常用函数</h4>
 <p>1）保留小数点后n位有效数字: round函数</p>
-<pre><code>SELECT
+<pre tabindex="0"><code>SELECT
     ROUND(ratio, 3)
 FROM
 (
@@ -719,57 +729,57 @@ FROM
 <p>Hive SQL中的函数大抵可以分为两种。一种是做行处理的，输入是一行，输出也是一行；另一种是做聚合的，输入是多行，但输出只有一行。</p>
 <p>本节列举一些常用的行处理函数。</p>
 <h4 id="41-if函数">4.1 if函数</h4>
-<pre><code>SELECT
+<pre tabindex="0"><code>SELECT
     `id`,
     if(ttl_score &gt; 90, 1, 0) AS is_high
 FROM std.std_student_score
 </code></pre><h4 id="42-case函数">4.2 case函数</h4>
-<pre><code>SELECT
+<pre tabindex="0"><code>SELECT
     `id`,
-    CASE WHEN ttl_score &gt;= 90 THEN 'A+'
-        WHEN ttl_score &gt;= 80 THEN 'A'
-        WHEN ttl_score &gt;= 70 THEN 'B'
-        WHEN ttl_score &gt;= 60 THEN 'C'
-        ELSE 'C-'
+    CASE WHEN ttl_score &gt;= 90 THEN &#39;A+&#39;
+        WHEN ttl_score &gt;= 80 THEN &#39;A&#39;
+        WHEN ttl_score &gt;= 70 THEN &#39;B&#39;
+        WHEN ttl_score &gt;= 60 THEN &#39;C&#39;
+        ELSE &#39;C-&#39;
     END AS `level`
 FROM std.std_student_score
 </code></pre><h4 id="43-concat函数">4.3 concat函数</h4>
-<pre><code>SELECT
-    CONCAT('a', '-', 'b')
+<pre tabindex="0"><code>SELECT
+    CONCAT(&#39;a&#39;, &#39;-&#39;, &#39;b&#39;)
 </code></pre><p>output: <code>a-b</code></p>
 <h4 id="44-concat_ws函数">4.4 concat_ws函数</h4>
 <p>以下两种写法都可以：</p>
-<pre><code>SELECT
-    CONCAT_WS(',',
-        ARRAY('1','2','3')
+<pre tabindex="0"><code>SELECT
+    CONCAT_WS(&#39;,&#39;,
+        ARRAY(&#39;1&#39;,&#39;2&#39;,&#39;3&#39;)
     )
-</code></pre><pre><code>SELECT
-    CONCAT_WS(',', '1', '2', '3')
+</code></pre><pre tabindex="0"><code>SELECT
+    CONCAT_WS(&#39;,&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;)
 </code></pre><p>output: <code>1,2,3</code></p>
 <h4 id="45-split函数">4.5 split函数</h4>
-<pre><code>SELECT
-    SPLIT('1,2,3', ',')
+<pre tabindex="0"><code>SELECT
+    SPLIT(&#39;1,2,3&#39;, &#39;,&#39;)
 </code></pre><p>output: <code>[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;]</code></p>
 <h3 id="5-聚合">5. 聚合</h3>
 <p>1）聚合语句group by，单独使用有去重的效果</p>
-<pre><code>SELECT gender
+<pre tabindex="0"><code>SELECT gender
 FROM std.std_student_info
 GROUP BY gender
 </code></pre><p>2）计算每个gender值对应的记录条数</p>
-<pre><code>SELECT
+<pre tabindex="0"><code>SELECT
     gender,
     COUNT(*) AS cnt
 FROM std.std_student_info
 GROUP BY gender
 </code></pre><h3 id="6-聚合函数">6. 聚合函数</h3>
 <h4 id="61-计算数据行数count函数">6.1 计算数据行数：count函数</h4>
-<pre><code>SELECT COUNT(*) AS row_num
+<pre tabindex="0"><code>SELECT COUNT(*) AS row_num
 FROM std.std_student_info
 </code></pre><h4 id="62-对字段去重distinct">6.2 对字段去重：distinct</h4>
-<pre><code>SELECT COUNT(DISTINCT gender) AS gender_cnt
+<pre tabindex="0"><code>SELECT COUNT(DISTINCT gender) AS gender_cnt
 FROM std.std_student_info
 </code></pre><h4 id="63-求和最大值最小值均值方差">6.3 求和、最大值、最小值、均值、方差</h4>
-<pre><code>SELECT
+<pre tabindex="0"><code>SELECT
     gender,
     SUM(age) AS sum_age,    -- 求和
     MAX(age) AS max_age,    -- 最大值
@@ -803,7 +813,7 @@ GROUP BY gender
 </tbody>
 </table>
 <p>left join示例：</p>
-<pre><code>SELECT
+<pre tabindex="0"><code>SELECT
     a.id,
     ttl_score,
     age
@@ -823,27 +833,27 @@ LEFT JOIN
 ) b ON a.id = b.id;
 </code></pre><h3 id="8-array-相关函数">8. array 相关函数</h3>
 <h4 id="81-将来自多行的某字段值聚合成array-collect_list函数">8.1 将来自多行的某字段值聚合成array: collect_list函数</h4>
-<pre><code>SELECT
+<pre tabindex="0"><code>SELECT
     gender,
     COLLECT_LIST(age) AS age_list
 FROM std.std_student_info
 GROUP BY gender
 </code></pre><h4 id="82-将来自多行的某字段值聚合成array并去重-collect_set函数">8.2 将来自多行的某字段值聚合成array并去重: collect_set函数</h4>
-<pre><code>SELECT
+<pre tabindex="0"><code>SELECT
     gender,
     COLLECT_SET(age) AS age_set
 FROM std.std_student_info
 GROUP BY gender
 </code></pre><h4 id="83-用分隔符拼接array并生成string">8.3 用分隔符拼接array并生成string</h4>
-<pre><code>SELECT
+<pre tabindex="0"><code>SELECT
     gender,
-    CONCAT_WS(',',
+    CONCAT_WS(&#39;,&#39;,
         COLLECT_SET(CAST(age AS STRING))
     ) AS age_set
 FROM std.std_student_info
 GROUP BY gender
 </code></pre><h4 id="84-判断array中是否包含某元素-array_contains函数">8.4 判断array中是否包含某元素: array_contains函数</h4>
-<pre><code>SELECT
+<pre tabindex="0"><code>SELECT
     id,
     age_list
 FROM
@@ -854,7 +864,7 @@ FROM
 ) t
 WHERE ARRAY_CONTAINS(age_list, 3) 
 </code></pre><h4 id="85-元素排序-sort_array函数">8.5 元素排序: sort_array函数</h4>
-<pre><code>SELECT
+<pre tabindex="0"><code>SELECT
     SORT_ARRAY(lst) AS sorted_lst
 FROM
 (
@@ -863,41 +873,41 @@ FROM
 </code></pre><h3 id="9-map-相关函数">9. map 相关函数</h3>
 <h4 id="91-将固定格式的string转成map-str_to_map函数">9.1 将固定格式的string转成map: str_to_map函数</h4>
 <p>可以写成</p>
-<pre><code>SELECT
+<pre tabindex="0"><code>SELECT
     STR_TO_MAP(
-        CONCAT_WS(',',
-            CONCAT('key_1', ':', 'value_1'),
-            CONCAT('key_2', ':', 'value_2')
-        ), ',', ':'
+        CONCAT_WS(&#39;,&#39;,
+            CONCAT(&#39;key_1&#39;, &#39;:&#39;, &#39;value_1&#39;),
+            CONCAT(&#39;key_2&#39;, &#39;:&#39;, &#39;value_2&#39;)
+        ), &#39;,&#39;, &#39;:&#39;
     ) AS my_map
 </code></pre><p>或者</p>
-<pre><code>SELECT
+<pre tabindex="0"><code>SELECT
     STR_TO_MAP(
-        CONCAT_WS(',', ARRAY(
-            CONCAT('key_1', ':', 'value_1'),
-            CONCAT('key_2', ':', 'value_2')
+        CONCAT_WS(&#39;,&#39;, ARRAY(
+            CONCAT(&#39;key_1&#39;, &#39;:&#39;, &#39;value_1&#39;),
+            CONCAT(&#39;key_2&#39;, &#39;:&#39;, &#39;value_2&#39;)
             )
-        ), ',', ':'
+        ), &#39;,&#39;, &#39;:&#39;
     ) AS my_map
 </code></pre><p>output: {&ldquo;key_1&rdquo;:&ldquo;value_1&rdquo;,&ldquo;key_2&rdquo;:&ldquo;value_2&rdquo;}</p>
 <h4 id="92-通过map的key读取value">9.2 通过map的key读取value</h4>
-<pre><code>SELECT
-    my_map['A']
+<pre tabindex="0"><code>SELECT
+    my_map[&#39;A&#39;]
 FROM
 (
     SELECT
         STR_TO_MAP(
-            CONCAT_WS(',', ARRAY(
-                CONCAT('A', ':', 'A1'),
-                CONCAT('B', ':', 'B1')
+            CONCAT_WS(&#39;,&#39;, ARRAY(
+                CONCAT(&#39;A&#39;, &#39;:&#39;, &#39;A1&#39;),
+                CONCAT(&#39;B&#39;, &#39;:&#39;, &#39;B1&#39;)
                 )
-            ), ',', ':'
+            ), &#39;,&#39;, &#39;:&#39;
         ) AS my_map
 ) t
 </code></pre><p>output: <code>A1</code></p>
 <h4 id="93-提取map中的key生成由key组成的array">9.3 提取map中的key，生成由key组成的array</h4>
 <p>📖 为了后文演示方便，这里创建一个通用示例：</p>
-<pre><code>CREATE TABLE std.std_level_map AS
+<pre tabindex="0"><code>CREATE TABLE std.std_level_map AS
 SELECT
     `id`,
     sub_score
@@ -906,54 +916,54 @@ FROM
     SELECT
         1 AS `id`,
         STR_TO_MAP(
-            CONCAT_WS(',',
-                CONCAT('语文:', '80'),
-                CONCAT('数学:', '85'),
-                CONCAT('英语:', '95'),
-                CONCAT('政治:', '90')
-            ), ',', ':'
+            CONCAT_WS(&#39;,&#39;,
+                CONCAT(&#39;语文:&#39;, &#39;80&#39;),
+                CONCAT(&#39;数学:&#39;, &#39;85&#39;),
+                CONCAT(&#39;英语:&#39;, &#39;95&#39;),
+                CONCAT(&#39;政治:&#39;, &#39;90&#39;)
+            ), &#39;,&#39;, &#39;:&#39;
         ) AS sub_score
     UNION ALL
     SELECT
         2 AS `id`,
         STR_TO_MAP(
-            CONCAT_WS(',',
-                CONCAT('法律:', '90'),
-                CONCAT('英语:', '75'),
-                CONCAT('政治:', '92')
-            ), ',', ':'
+            CONCAT_WS(&#39;,&#39;,
+                CONCAT(&#39;法律:&#39;, &#39;90&#39;),
+                CONCAT(&#39;英语:&#39;, &#39;75&#39;),
+                CONCAT(&#39;政治:&#39;, &#39;92&#39;)
+            ), &#39;,&#39;, &#39;:&#39;
         ) AS sub_score
 ) t
 </code></pre><p>使用map_keys函数将字典的key转为key的array</p>
-<pre><code>SELECT
+<pre tabindex="0"><code>SELECT
     `id`,
     MAP_KEYS(sub_score) AS sub_list
 FROM std.std_level_map
 </code></pre><h4 id="94-把map中的value转为value的array">9.4 把map中的value转为value的array</h4>
 <p>与map_keys类似，用map_values可以把map的value转为value的array</p>
-<pre><code>SELECT
+<pre tabindex="0"><code>SELECT
     `id`,
     MAP_VALUES(sub_score) AS score_list
 FROM std.std_level_map
 </code></pre><h4 id="95-构造json">9.5 构造JSON</h4>
 <p>1）构造简单的JSON</p>
-<pre><code>SELECT
-    CONCAT('{&quot;',
-        CONCAT_WS('&quot;,&quot;',
-            CONCAT('语文:', '80'),
-            CONCAT('数学:', '90')
-        ), '&quot;}'
+<pre tabindex="0"><code>SELECT
+    CONCAT(&#39;{&#34;&#39;,
+        CONCAT_WS(&#39;&#34;,&#34;&#39;,
+            CONCAT(&#39;语文:&#39;, &#39;80&#39;),
+            CONCAT(&#39;数学:&#39;, &#39;90&#39;)
+        ), &#39;&#34;}&#39;
     ) AS my_map
 </code></pre><p>output: <code>{&quot;语文:80&quot;,&quot;数学:90&quot;}</code></p>
 <p>2）将map转换成JSON格式的string</p>
-<pre><code>SELECT
+<pre tabindex="0"><code>SELECT
     `id`,
-    CONCAT('{&quot;',
-        CONCAT_WS('&quot;,&quot;',
+    CONCAT(&#39;{&#34;&#39;,
+        CONCAT_WS(&#39;&#34;,&#34;&#39;,
             COLLECT_SET(
-                CONCAT(k, '&quot;:&quot;', v)
+                CONCAT(k, &#39;&#34;:&#34;&#39;, v)
             )
-        ), '&quot;}'
+        ), &#39;&#34;}&#39;
     ) AS my_map
 FROM std.std_level_map
 LATERAL VIEW OUTER EXPLODE(sub_score) e AS k, v
@@ -978,33 +988,33 @@ GROUP BY `id`
 </tbody>
 </table>
 <p>3）构造形如<code>ARRAY&lt;MAP&lt;STRING,STRING&gt;&gt;</code>的string</p>
-<pre><code>SELECT
+<pre tabindex="0"><code>SELECT
     CONCAT(
-        '[',
-        CONCAT_WS(',',
-            CONCAT('{&quot;',
-                CONCAT_WS('&quot;,&quot;',
-                    CONCAT('语文:', '80'),
-                    CONCAT('数学:', '90')
-                ), '&quot;}'
+        &#39;[&#39;,
+        CONCAT_WS(&#39;,&#39;,
+            CONCAT(&#39;{&#34;&#39;,
+                CONCAT_WS(&#39;&#34;,&#34;&#39;,
+                    CONCAT(&#39;语文:&#39;, &#39;80&#39;),
+                    CONCAT(&#39;数学:&#39;, &#39;90&#39;)
+                ), &#39;&#34;}&#39;
             )
-        ), ']'
+        ), &#39;]&#39;
     ) AS my_map
 </code></pre><p>output: <code>[{&quot;语文:80&quot;,&quot;数学:90&quot;}]</code></p>
 <p>4）基于map，构造形如<code>ARRAY&lt;MAP&lt;STRING,STRING&gt;&gt;</code>的string</p>
-<pre><code>SELECT
-    IF(SUM(IF(ARRAY_CONTAINS(MAP_KEYS(sub_score), '英语') AND ARRAY_CONTAINS(MAP_KEYS(sub_score), '政治'), 1, 0)) = 0, '',
-        CONCAT('[',
-            CONCAT_WS(',',
+<pre tabindex="0"><code>SELECT
+    IF(SUM(IF(ARRAY_CONTAINS(MAP_KEYS(sub_score), &#39;英语&#39;) AND ARRAY_CONTAINS(MAP_KEYS(sub_score), &#39;政治&#39;), 1, 0)) = 0, &#39;&#39;,
+        CONCAT(&#39;[&#39;,
+            CONCAT_WS(&#39;,&#39;,
                 COLLECT_SET(
-                    CONCAT('{&quot;',
-                        CONCAT_WS('&quot;,&quot;',
-                            CONCAT('英语', '&quot;:&quot;', CAST(sub_score['英语'] AS STRING)),
-                            CONCAT('政治', '&quot;:&quot;', CAST(sub_score['政治'] AS STRING))
-                        ), '&quot;}'
+                    CONCAT(&#39;{&#34;&#39;,
+                        CONCAT_WS(&#39;&#34;,&#34;&#39;,
+                            CONCAT(&#39;英语&#39;, &#39;&#34;:&#34;&#39;, CAST(sub_score[&#39;英语&#39;] AS STRING)),
+                            CONCAT(&#39;政治&#39;, &#39;&#34;:&#34;&#39;, CAST(sub_score[&#39;政治&#39;] AS STRING))
+                        ), &#39;&#34;}&#39;
                     )
                 )
-            ), ']'
+            ), &#39;]&#39;
         )
     ) AS my_map
 FROM std.std_level_map
@@ -1024,7 +1034,7 @@ FROM std.std_level_map
 <h3 id="10-lateral-view-outer-explode">10. lateral view outer explode()</h3>
 <p><code>LATERAL VIEW OUTER EXPLODE()</code> 用于把array或者map中的元素展成多行。该语句一般放在 <code>FROM</code> 之后，<code>WHERE</code> 之前。示例如下👇</p>
 <p>1）将array展成多行</p>
-<pre><code>SELECT
+<pre tabindex="0"><code>SELECT
     `id`,
     gid
 FROM
@@ -1071,9 +1081,9 @@ WHERE id IN (1,3)
 </tbody>
 </table>
 <p>2）将array展成多行：一个更复杂的例子</p>
-<pre><code>SELECT
+<pre tabindex="0"><code>SELECT
     gid,
-    CONCAT_WS(',', COLLECT_SET(CAST(id AS STRING))) AS id_list
+    CONCAT_WS(&#39;,&#39;, COLLECT_SET(CAST(id AS STRING))) AS id_list
 FROM
 (
     SELECT
@@ -1115,7 +1125,7 @@ GROUP BY gid
 </tbody>
 </table>
 <p>3）展开多个array：<code>id</code>与<code>group_id</code>的各元素间做笛卡尔积</p>
-<pre><code>SELECT
+<pre tabindex="0"><code>SELECT
     `id`,
     gid,
     lvl
@@ -1124,7 +1134,7 @@ FROM
     SELECT
         1 AS `id`,
         ARRAY(1,2) AS group_id,
-        ARRAY('A','B') AS level
+        ARRAY(&#39;A&#39;,&#39;B&#39;) AS level
 ) t
 LATERAL VIEW OUTER EXPLODE(group_id) g AS gid
 LATERAL VIEW OUTER EXPLODE(level) l AS lvl
@@ -1171,17 +1181,17 @@ LATERAL VIEW OUTER EXPLODE(level) l AS lvl
 <li>输入是 <code>id</code>（学号）和 <code>class</code>（班级）</li>
 <li>输出是 <code>id</code>（学号）和 <code>class</code>（班级）和 <code>id_list</code>（同班同学学号列表）</li>
 </ul>
-<pre><code>SELECT
+<pre tabindex="0"><code>SELECT
     id,
     class,
     COLLECT_SET(id) OVER(PARTITION BY class) AS id_list
 FROM
 (
-    SELECT 1 AS id, 'A' AS class
+    SELECT 1 AS id, &#39;A&#39; AS class
     UNION ALL
-    SELECT 2 AS id, 'A' AS class
+    SELECT 2 AS id, &#39;A&#39; AS class
     UNION ALL
-    SELECT 3 AS id, 'B' AS class
+    SELECT 3 AS id, &#39;B&#39; AS class
 ) t
 </code></pre><p>output:</p>
 <table>
@@ -1220,20 +1230,20 @@ FROM
 <p>等等&hellip;&hellip;</p>
 </blockquote>
 <p>2）为每个数据行生成序号: row_number函数</p>
-<pre><code>SELECT
+<pre tabindex="0"><code>SELECT
     id,
     class,
     score,
     ROW_NUMBER() OVER(PARTITION BY class ORDER BY score DESC) AS class_no
 FROM
 (
-    SELECT 1 AS id, 'A' AS class, 90 AS score
+    SELECT 1 AS id, &#39;A&#39; AS class, 90 AS score
     UNION ALL
-    SELECT 2 AS id, 'A' AS class, 91 AS score
+    SELECT 2 AS id, &#39;A&#39; AS class, 91 AS score
     UNION ALL
-    SELECT 3 AS id, 'A' AS class, 91 AS score
+    SELECT 3 AS id, &#39;A&#39; AS class, 91 AS score
     UNION ALL
-    SELECT 4 AS id, 'B' AS class, 100 AS score
+    SELECT 4 AS id, &#39;B&#39; AS class, 100 AS score
 ) t
 </code></pre><p>output:</p>
 <table>
@@ -1276,20 +1286,20 @@ FROM
 <p><strong>Note</strong>: 注意到虽然学生2和学生3分数都是91分，但他们的班级序号（class_no）不重叠。2号学生班级序号是1，3号学生班级序号是2</p>
 </blockquote>
 <p>2）排名: rank函数</p>
-<pre><code>SELECT
+<pre tabindex="0"><code>SELECT
     id,
     class,
     score,
     RANK() OVER(PARTITION BY class ORDER BY score DESC) AS class_rk
 FROM
 (
-    SELECT 1 AS id, 'A' AS class, 90 AS score
+    SELECT 1 AS id, &#39;A&#39; AS class, 90 AS score
     UNION ALL
-    SELECT 2 AS id, 'A' AS class, 91 AS score
+    SELECT 2 AS id, &#39;A&#39; AS class, 91 AS score
     UNION ALL
-    SELECT 3 AS id, 'A' AS class, 91 AS score
+    SELECT 3 AS id, &#39;A&#39; AS class, 91 AS score
     UNION ALL
-    SELECT 4 AS id, 'B' AS class, 100 AS score
+    SELECT 4 AS id, &#39;B&#39; AS class, 100 AS score
 ) t
 </code></pre><p>output:</p>
 <table>
@@ -1334,20 +1344,20 @@ FROM
 <p>3）不计人头排名: dense_rank函数</p>
 <p><code>DENSE_RANK()</code> 是不计人头，纯计分数的排名方式。</p>
 <p>上例中的1号同学，在考试中获得了90分，虽然按人头数计，有两位同学排在他前面，因此成为了第三名。但如果纯以分数计，他的90分是仅次于91分的班级第二好名次。如果我们希望不考虑人头数，仅考虑分数在排序中的位置，那么可以使用DENSE_RANK函数。</p>
-<pre><code>SELECT
+<pre tabindex="0"><code>SELECT
     id,
     class,
     score,
     DENSE_RANK() OVER(PARTITION BY class ORDER BY score DESC) AS class_rk
 FROM
 (
-    SELECT 1 AS id, 'A' AS class, 90 AS score
+    SELECT 1 AS id, &#39;A&#39; AS class, 90 AS score
     UNION ALL
-    SELECT 2 AS id, 'A' AS class, 91 AS score
+    SELECT 2 AS id, &#39;A&#39; AS class, 91 AS score
     UNION ALL
-    SELECT 3 AS id, 'A' AS class, 91 AS score
+    SELECT 3 AS id, &#39;A&#39; AS class, 91 AS score
     UNION ALL
-    SELECT 4 AS id, 'B' AS class, 100 AS score
+    SELECT 4 AS id, &#39;B&#39; AS class, 100 AS score
 ) t
 </code></pre><p>output:</p>
 <table>
@@ -1389,7 +1399,7 @@ FROM
 <h3 id="12-尾缀方法">12. 尾缀方法</h3>
 <p>1）对结果排序: order by</p>
 <p>寻找分数TOP2的两位同学：</p>
-<pre><code>SELECT
+<pre tabindex="0"><code>SELECT
     id,
     score
 FROM
@@ -1403,48 +1413,48 @@ FROM
 ORDER BY score DESC
 LIMIT 2
 </code></pre><p>ORDER BY也常用于随机抽样：</p>
-<pre><code>ORDER BY RAND()
+<pre tabindex="0"><code>ORDER BY RAND()
 </code></pre><p>2）组筛选: having</p>
 <p>HAVING语句能对GROUP BY的结果做筛选。以下SQL选出班级人数大于1的班级：</p>
-<pre><code>SELECT
+<pre tabindex="0"><code>SELECT
     class,
     COUNT(DISTINCT id) AS id_cnt
 FROM
 (
-    SELECT 1 AS id, 'A' AS class
+    SELECT 1 AS id, &#39;A&#39; AS class
     UNION ALL
-    SELECT 2 AS id, 'A' AS class
+    SELECT 2 AS id, &#39;A&#39; AS class
     UNION ALL
-    SELECT 3 AS id, 'B' AS class
+    SELECT 3 AS id, &#39;B&#39; AS class
 ) t
 GROUP BY class
 HAVING id_cnt &gt; 1
 </code></pre><p>3）<code>CLUSTER BY</code>, <code>DISTRIBUTE BY</code> 和 <code>SORT BY</code></p>
 <p>这三个语句是控制reducer的。<code>DISTRIBUTE BY [YOUR_COLUMN_HERE]</code> 用于控制数据如何进入reducer，比如：</p>
-<pre><code>SELECT
+<pre tabindex="0"><code>SELECT
     class,
-    COUNT(DISTINCT id) AS id_cnt
+    id
 FROM
 (
-    SELECT 1 AS id, 'A' AS class
+    SELECT 1 AS id, &#39;A&#39; AS class
     UNION ALL
-    SELECT 2 AS id, 'A' AS class
+    SELECT 2 AS id, &#39;A&#39; AS class
     UNION ALL
-    SELECT 3 AS id, 'B' AS class
+    SELECT 3 AS id, &#39;B&#39; AS class
 ) t
 DISTRIBUTE BY class
 </code></pre><p>如上，则拥有相同class值的记录，会进入同一个reducer。</p>
 <p><code>SORT BY [YOUR_COLUMN_HERE]</code> 用于控制reducer中数据的排序，比如：</p>
-<pre><code>SELECT
+<pre tabindex="0"><code>SELECT
     class,
-    COUNT(DISTINCT id) AS id_cnt
+    id
 FROM
 (
-    SELECT 1 AS id, 'A' AS class
+    SELECT 1 AS id, &#39;A&#39; AS class
     UNION ALL
-    SELECT 2 AS id, 'A' AS class
+    SELECT 2 AS id, &#39;A&#39; AS class
     UNION ALL
-    SELECT 3 AS id, 'B' AS class
+    SELECT 3 AS id, &#39;B&#39; AS class
 ) t
 DISTRIBUTE BY class
 SORT BY id
@@ -1456,13 +1466,13 @@ SORT BY id
 </blockquote>
 <h3 id="13-transform">13. transform</h3>
 <p>SQL部分：</p>
-<pre><code>SELECT TRANSFORM
+<pre tabindex="0"><code>SELECT TRANSFORM
 -- PYTHON文件的输入
 (
     COL_1,
     COL_2
 )
-USING '[PYTHON_ENV_PATH_HERE] [YOUR_PYTHON_FILE_HERE]' AS
+USING &#39;[PYTHON_ENV_PATH_HERE] [YOUR_PYTHON_FILE_HERE]&#39; AS
 -- PYTHON文件的输出，输出的行数和内容取决于PYTHON怎么写
 (
     OUTPUT_1,
@@ -1480,7 +1490,7 @@ FROM
     DISTRIBUTE BY [YOUR_KEY]
 ) t
 </code></pre><p>PYTHON部分：</p>
-<pre><code>import sys
+<pre tabindex="0"><code>import sys
 
 
 class Processor:
@@ -1489,26 +1499,26 @@ class Processor:
     def add(lst):
         nlst = list()
         for col_1, col_2 in lst:
-            nlst.append((col_1, col_2, col_1+'-'+col_2))
+            nlst.append((col_1, col_2, col_1+&#39;-&#39;+col_2))
 
         return nlst
 
     def main(self):
         lst = list()
         for line in sys.stdin:
-            col_1, col_2 = line.strip().split('\t')[:2]
+            col_1, col_2 = line.strip().split(&#39;\t&#39;)[:2]
             lst.append((col_1, col_2))
 
         for col_1, col_2, col_3 in self.add(lst):
-            print('{}\t{}\t{}'.format(col_1, col_2, col_3))
+            print(&#39;{}\t{}\t{}&#39;.format(col_1, col_2, col_3))
 
 
-if __name__ == '__main__':
+if __name__ == &#39;__main__&#39;:
     p = Processor()
     p.main()
 </code></pre><h3 id="14-空值处理">14. 空值处理</h3>
 <p>1）coalesce函数：接受多个参数。从左到右遍历参数，返回第一个遇到的非<code>NULL</code>参数</p>
-<pre><code>SELECT
+<pre tabindex="0"><code>SELECT
     COALESCE(col_1, col_2, 0) AS res
 FROM
 (
@@ -1533,7 +1543,7 @@ FROM
 </tbody>
 </table>
 <p>2）nvl函数：接受两个参数。如果第一个参数为<code>NULL</code>，返回第二个参数，否则返回第一个参数</p>
-<pre><code>SELECT
+<pre tabindex="0"><code>SELECT
     NVL(col_1, col_2) AS res
 FROM
 (
@@ -1562,19 +1572,165 @@ FROM
 </tr>
 </tbody>
 </table>
-<h3 id="15-udf">15. UDF</h3>
+<h3 id="15场景1同数据行跨字段计算最大最小值">15.【场景1】同数据行跨字段计算最大/最小值</h3>
+<p>原始用法：</p>
+<pre tabindex="0"><code>SELECT
+    GREATEST(3,1,2) AS greatest_num
+    LEAST(6,5,7) AS least_num
+</code></pre><p>output:</p>
+<table>
+<thead>
+<tr>
+<th>greatest_num</th>
+<th>least_num</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p>场景：计算一天中最贵/最便宜的一餐</p>
+<pre tabindex="0"><code>SELECT
+    LEAST(breakfast, lunch, dinner) AS cheapest_meal,
+    GREATEST(breakfast, lunch, dinner) AS expensive_meal
+FROM
+(
+    SELECT 3 AS breakfast, 25 AS lunch, 15 AS dinner
+    UNION ALL
+    SELECT 8 AS breakfast, 0 AS lunch, 20 AS dinner
+    UNION ALL
+    SELECT 0 AS breakfast, 35 AS lunch, 22 AS dinner
+) t
+</code></pre><p>output:</p>
+<table>
+<thead>
+<tr>
+<th>cheapest_meal</th>
+<th>expensive_meal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>25</td>
+</tr>
+<tr>
+<td>0</td>
+<td>20</td>
+</tr>
+<tr>
+<td>0</td>
+<td>35</td>
+</tr>
+</tbody>
+</table>
+<h3 id="16场景2计算分位数">16.【场景2】计算分位数</h3>
+<p>场景：计算学生分数的95分位数</p>
+<pre tabindex="0"><code>SELECT
+	ttl_score,
+    quantile,
+    distance,
+	ROUND(quantile, 3) AS quantile_round, -- 精确到小数点后三位便于展示
+	ROUND(distance, 3) AS distance_round
+FROM
+(
+	SELECT
+		ttl_score,
+		id_cnt_accumulation / all_cnt AS quantile,    -- 实际的分位数值
+		ABS((id_cnt_accumulation / all_cnt) - 0.05) AS distance    -- 与标准95分位数的距离
+	FROM
+	(
+		SELECT
+			ttl_score,
+			SUM(id_cnt) OVER(ORDER BY ttl_score DESC ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS id_cnt_accumulation,
+			SUM(id_cnt) OVER() AS all_cnt
+		FROM
+		(
+			SELECT
+				ttl_score,
+				COUNT(DISTINCT `id`) AS id_cnt
+			FROM std.std_student_score
+			GROUP BY ttl_score
+		) t1
+	) t2
+) t3
+ORDER BY distance
+LIMIT 1
+</code></pre><p>场景：计算多组学生分数的分位数：25/50/75分位数</p>
+<pre tabindex="0"><code>SELECT
+	ttl_score,
+    quantile,
+	ROUND(quantile, 3) AS quantile_round, -- 精确到小数点后三位便于展示
+    CONCAT_WS(&#39;,&#39;,
+        IF(rk_25 = 1, &#39;25&#39;, null),
+        IF(rk_50 = 1, &#39;50&#39;, null),
+        IF(rk_75 = 1, &#39;75&#39;, null)
+    ) AS prompt, -- 提示是哪一种分位数，可能存在同一个ttl_score值为多个分位数的情况
+    distance_25,
+    distance_50,
+    distance_75
+FROM
+(
+    SELECT
+        ttl_score,
+        quantile,
+        ABS(quantile - 0.25) AS distance_25,
+        ABS(quantile - 0.5) AS distance_50,
+        ABS(quantile - 0.75) AS distance_75,
+        row_number() over(order by ABS(quantile - 0.25)) AS rk_25,
+        row_number() over(order by ABS(quantile - 0.5)) AS rk_50,
+        row_number() over(order by ABS(quantile - 0.75)) AS rk_75
+    FROM
+    (
+        SELECT
+            ttl_score,
+            id_cnt_accumulation / all_cnt AS quantile    -- 实际的分位数值
+        FROM
+        (
+            SELECT
+                ttl_score,
+                SUM(id_cnt) OVER(ORDER BY ttl_score ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS id_cnt_accumulation,
+                SUM(id_cnt) OVER() AS all_cnt
+            FROM
+            (
+                SELECT
+                    ttl_score,
+                    COUNT(DISTINCT `id`) AS id_cnt
+                FROM std.std_student_score
+                GROUP BY ttl_score
+            ) t1
+        ) t2
+    ) t3
+) t4
+WHERE rk_25 = 1
+    OR rk_50 = 1
+    OR rk_75 = 1;
+</code></pre><h3 id="17-udf">17. UDF</h3>
 <p>todo</p>
+<h3 id="附录">附录</h3>
+<ul>
+<li>在线练习工具: <a href="https://demo.gethue.com/hue/editor/?type=6">hue</a></li>
+<li>Hive UDF库: <a href="https://github.com/klout/brickhouse">brickhouse</a></li>
+</ul>
 
   </div>
   
 
 <div class="navigation navigation-single">
     
-    <a href="/posts/r_project/" class="navigation-prev">
+    <a href="/posts/learning_nlp/" class="navigation-prev">
       <i aria-hidden="true" class="fa fa-chevron-left"></i>
-      <span class="navigation-tittle">R语言学习笔记</span>
+      <span class="navigation-tittle">NLP 学习笔记</span>
     </a>
     
+    
+    <a href="/posts/java_project/" class="navigation-next">
+      <span class="navigation-tittle">JAVA 补完计划</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
     
 </div>
 

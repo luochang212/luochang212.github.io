@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.84.1" />
+<meta name="generator" content="Hugo 0.118.2">
 
     
     
@@ -30,9 +30,8 @@
 <meta property="og:description" content="最近刷到一个微信小程序，叫摸鱼侠。用 bash 复刻了它的一个功能 “今日已摸到”。这下摸鱼更隐蔽了，老板连呼：退退退！" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/moyu_bash/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-07-03T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2022-07-03T00:00:00&#43;00:00" /><meta property="og:site_name" content="Title" />
-
+<meta property="article:published_time" content="2022-07-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-07-03T00:00:00+00:00" /><meta property="og:site_name" content="Title" />
 
 
     
@@ -302,7 +301,7 @@
       </div>
       
 <div class="copyright">
-  &copy; 2022 Chang Luo
+  &copy; 2023 Chang Luo
   
 </div>
 
@@ -558,104 +557,104 @@
 <h3 id="2-出生">2. 出生</h3>
 <p>这要实现起来也不难，只要把 <code>(工作秒数 - 休息秒数) * 每秒工资</code> 就好嘛。</p>
 <p>我纯纯的 bash 新手，不对之处大家批评。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Author: github@luochang212</span>
-
-work_start<span style="color:#f92672">=</span>10:00:00    <span style="color:#75715e"># 上班时间</span>
-lunch_start<span style="color:#f92672">=</span>12:00:00    <span style="color:#75715e"># 午饭开始</span>
-lunch_end<span style="color:#f92672">=</span>13:00:00    <span style="color:#75715e"># 午饭结束</span>
-dinner_start<span style="color:#f92672">=</span>18:00:00    <span style="color:#75715e"># 晚饭开始</span>
-dinner_end<span style="color:#f92672">=</span>19:00:00    <span style="color:#75715e"># 晚饭结束</span>
-work_end<span style="color:#f92672">=</span>20:00:00    <span style="color:#75715e"># 下班时间</span>
-salary<span style="color:#f92672">=</span><span style="color:#ae81ff">40000</span>    <span style="color:#75715e"># 月薪</span>
-day<span style="color:#f92672">=</span><span style="color:#ae81ff">22</span>    <span style="color:#75715e"># 每月工作天数</span>
-
-
-CURRENT_TIME<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>date +<span style="color:#e6db74">&#34;%T&#34;</span><span style="color:#66d9ef">)</span>
-EMOJI_ARRAY<span style="color:#f92672">=(</span><span style="color:#e6db74">&#34;(・▽ &lt; )★&#34;</span> <span style="color:#e6db74">&#34;─=≡Σ((( つ•̀ 3 •́)つ&#34;</span> <span style="color:#e6db74">&#34;┗|｀O′|┛&#34;</span> <span style="color:#e6db74">&#34;_(┐「ε:)_&#34;</span> <span style="color:#e6db74">&#34;ヽ( ˘ω˘ )ゝ&#34;</span><span style="color:#f92672">)</span>
-
-get_second<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-    read -r h m s <span style="color:#f92672">&lt;&lt;&lt;</span> <span style="color:#66d9ef">$(</span>echo $1 | tr <span style="color:#e6db74">&#39;:&#39;</span> <span style="color:#e6db74">&#39; &#39;</span><span style="color:#66d9ef">)</span>
-    echo <span style="color:#66d9ef">$((</span><span style="color:#f92672">(</span><span style="color:#ae81ff">10#</span>$h<span style="color:#f92672">*</span><span style="color:#ae81ff">60</span><span style="color:#f92672">*</span><span style="color:#ae81ff">60</span><span style="color:#f92672">)+(</span><span style="color:#ae81ff">10#</span>$m<span style="color:#f92672">*</span><span style="color:#ae81ff">60</span><span style="color:#f92672">)+</span><span style="color:#ae81ff">10#</span>$s<span style="color:#66d9ef">))</span>
-<span style="color:#f92672">}</span>
-
-calc_duration<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-    local start<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>get_second $1<span style="color:#66d9ef">)</span>
-    local end<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>get_second $2<span style="color:#66d9ef">)</span>
-    echo <span style="color:#66d9ef">$((</span>end-start<span style="color:#66d9ef">))</span>
-<span style="color:#f92672">}</span>
-
-calc_work_time<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-    local lunch_time<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>calc_duration $lunch_start $lunch_end<span style="color:#66d9ef">)</span>
-    local dinner_time<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>calc_duration $dinner_start $dinner_end<span style="color:#66d9ef">)</span>
-    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#66d9ef">$(</span>calc_duration $CURRENT_TIME $work_start<span style="color:#66d9ef">)</span> -gt <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
-        echo <span style="color:#ae81ff">0</span>
-    <span style="color:#66d9ef">elif</span> <span style="color:#f92672">[</span> <span style="color:#66d9ef">$(</span>calc_duration $CURRENT_TIME $lunch_start<span style="color:#66d9ef">)</span> -gt <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
-        echo <span style="color:#66d9ef">$(</span>calc_duration $work_start $CURRENT_TIME<span style="color:#66d9ef">)</span>
-    <span style="color:#66d9ef">elif</span> <span style="color:#f92672">[</span> <span style="color:#66d9ef">$(</span>calc_duration $CURRENT_TIME $lunch_end<span style="color:#66d9ef">)</span> -gt <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
-        echo <span style="color:#66d9ef">$(</span>calc_duration $work_start $lunch_start<span style="color:#66d9ef">)</span>
-    <span style="color:#66d9ef">elif</span> <span style="color:#f92672">[</span> <span style="color:#66d9ef">$(</span>calc_duration $CURRENT_TIME $dinner_start<span style="color:#66d9ef">)</span> -gt <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
-        echo <span style="color:#66d9ef">$(($(</span>calc_duration $work_start $CURRENT_TIME<span style="color:#66d9ef">)</span> <span style="color:#f92672">-</span> lunch_time<span style="color:#66d9ef">))</span>
-    <span style="color:#66d9ef">elif</span> <span style="color:#f92672">[</span> <span style="color:#66d9ef">$(</span>calc_duration $CURRENT_TIME $dinner_end<span style="color:#66d9ef">)</span> -gt <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
-        echo <span style="color:#66d9ef">$(($(</span>calc_duration $work_start $dinner_start<span style="color:#66d9ef">)</span> <span style="color:#f92672">-</span> lunch_time<span style="color:#66d9ef">))</span>
-    <span style="color:#66d9ef">elif</span> <span style="color:#f92672">[</span> <span style="color:#66d9ef">$(</span>calc_duration $CURRENT_TIME $work_end<span style="color:#66d9ef">)</span> -gt <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
-        echo <span style="color:#66d9ef">$(($(</span>calc_duration $work_start $CURRENT_TIME<span style="color:#66d9ef">)</span> <span style="color:#f92672">-</span> lunch_time <span style="color:#f92672">-</span> dinner_time<span style="color:#66d9ef">))</span>
-    <span style="color:#66d9ef">else</span>
-        echo <span style="color:#66d9ef">$(($(</span>calc_duration $work_start $work_end<span style="color:#66d9ef">)</span> <span style="color:#f92672">-</span> lunch_time <span style="color:#f92672">-</span> dinner_time<span style="color:#66d9ef">))</span>
-    <span style="color:#66d9ef">fi</span>
-<span style="color:#f92672">}</span>
-
-show_work_time<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-    local work_sec<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>calc_work_time<span style="color:#66d9ef">)</span>
-    echo <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$((</span>$work_sec <span style="color:#f92672">/</span> <span style="color:#ae81ff">3600</span><span style="color:#66d9ef">))</span><span style="color:#e6db74"> hours and </span><span style="color:#66d9ef">$((</span>$work_sec <span style="color:#f92672">%</span> <span style="color:#ae81ff">3600</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">60</span><span style="color:#66d9ef">))</span><span style="color:#e6db74"> minutes and </span><span style="color:#66d9ef">$((</span>$work_sec <span style="color:#f92672">%</span> <span style="color:#ae81ff">60</span><span style="color:#66d9ef">))</span><span style="color:#e6db74"> seconds&#34;</span>
-<span style="color:#f92672">}</span>
-
-calc_money<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-    local lunch_time<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>calc_duration $lunch_start $lunch_end<span style="color:#66d9ef">)</span>
-    local dinner_time<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>calc_duration $dinner_start $dinner_end<span style="color:#66d9ef">)</span>
-    local mnt<span style="color:#f92672">=</span><span style="color:#66d9ef">$((</span><span style="color:#f92672">(</span><span style="color:#66d9ef">$(</span>calc_duration $work_start $work_end<span style="color:#66d9ef">)</span> <span style="color:#f92672">-</span> lunch_time <span style="color:#f92672">-</span> dinner_time<span style="color:#f92672">)</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">60</span><span style="color:#66d9ef">))</span>
-    local salary_per_mnt<span style="color:#f92672">=</span><span style="color:#66d9ef">$((</span>$salary <span style="color:#f92672">*</span> <span style="color:#ae81ff">100000000</span> <span style="color:#f92672">/</span> $day <span style="color:#f92672">/</span> $mnt<span style="color:#66d9ef">))</span>
-    local work_sec<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>calc_work_time<span style="color:#66d9ef">)</span>
-    local money<span style="color:#f92672">=</span><span style="color:#66d9ef">$((</span>salary_per_mnt <span style="color:#f92672">*</span> <span style="color:#f92672">(</span>work_sec <span style="color:#f92672">/</span> <span style="color:#ae81ff">60</span><span style="color:#f92672">)</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">1000000</span><span style="color:#66d9ef">))</span>
-    echo $money
-<span style="color:#f92672">}</span>
-
-show_money<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-    local money<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>calc_money<span style="color:#66d9ef">)</span>
-    echo <span style="color:#e6db74">&#34;已挣到：</span><span style="color:#66d9ef">$((</span>$money <span style="color:#f92672">/</span> <span style="color:#ae81ff">100</span><span style="color:#66d9ef">))</span><span style="color:#e6db74">.</span><span style="color:#66d9ef">$((</span>$money <span style="color:#f92672">%</span> <span style="color:#ae81ff">100</span><span style="color:#66d9ef">))</span><span style="color:#e6db74"> 元&#34;</span>
-<span style="color:#f92672">}</span>
-
-calc_work_end<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#66d9ef">$(</span>calc_duration $CURRENT_TIME $work_start<span style="color:#66d9ef">)</span> -gt <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
-        echo <span style="color:#e6db74">&#34;距离下班还有：[还没开始上班]&#34;</span>
-    <span style="color:#66d9ef">elif</span> <span style="color:#f92672">[</span> <span style="color:#66d9ef">$(</span>calc_duration $CURRENT_TIME $work_end<span style="color:#66d9ef">)</span> -gt <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
-        local time_left<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>calc_duration $CURRENT_TIME $work_end<span style="color:#66d9ef">)</span>
-        echo <span style="color:#e6db74">&#34;距离下班还有：</span><span style="color:#66d9ef">$((</span>$time_left <span style="color:#f92672">/</span> <span style="color:#ae81ff">3600</span><span style="color:#66d9ef">))</span><span style="color:#e6db74"> 小时 </span><span style="color:#66d9ef">$((</span>$time_left <span style="color:#f92672">%</span> <span style="color:#ae81ff">3600</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">60</span><span style="color:#66d9ef">))</span><span style="color:#e6db74"> 分钟 </span><span style="color:#66d9ef">$((</span>$time_left <span style="color:#f92672">%</span> <span style="color:#ae81ff">60</span><span style="color:#66d9ef">))</span><span style="color:#e6db74"> 秒&#34;</span>
-    <span style="color:#66d9ef">else</span>
-        echo <span style="color:#e6db74">&#34;距离下班还有：[下班啦]&#34;</span>
-    <span style="color:#66d9ef">fi</span>
-<span style="color:#f92672">}</span>
-
-random_emoji<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-    local len<span style="color:#f92672">=</span><span style="color:#e6db74">${#</span>EMOJI_ARRAY[*]<span style="color:#e6db74">}</span>
-    echo <span style="color:#e6db74">${</span>EMOJI_ARRAY[RANDOM % $len]<span style="color:#e6db74">}</span>
-<span style="color:#f92672">}</span>
-
-
-random_emoji
-show_money
-calc_work_end
-</code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Author: github@luochang212</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>work_start<span style="color:#f92672">=</span>10:00:00    <span style="color:#75715e"># 上班时间</span>
+</span></span><span style="display:flex;"><span>lunch_start<span style="color:#f92672">=</span>12:00:00    <span style="color:#75715e"># 午饭开始</span>
+</span></span><span style="display:flex;"><span>lunch_end<span style="color:#f92672">=</span>13:00:00    <span style="color:#75715e"># 午饭结束</span>
+</span></span><span style="display:flex;"><span>dinner_start<span style="color:#f92672">=</span>18:00:00    <span style="color:#75715e"># 晚饭开始</span>
+</span></span><span style="display:flex;"><span>dinner_end<span style="color:#f92672">=</span>19:00:00    <span style="color:#75715e"># 晚饭结束</span>
+</span></span><span style="display:flex;"><span>work_end<span style="color:#f92672">=</span>20:00:00    <span style="color:#75715e"># 下班时间</span>
+</span></span><span style="display:flex;"><span>salary<span style="color:#f92672">=</span><span style="color:#ae81ff">40000</span>    <span style="color:#75715e"># 月薪</span>
+</span></span><span style="display:flex;"><span>day<span style="color:#f92672">=</span><span style="color:#ae81ff">22</span>    <span style="color:#75715e"># 每月工作天数</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>CURRENT_TIME<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>date +<span style="color:#e6db74">&#34;%T&#34;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>EMOJI_ARRAY<span style="color:#f92672">=(</span><span style="color:#e6db74">&#34;(・▽ &lt; )★&#34;</span> <span style="color:#e6db74">&#34;─=≡Σ((( つ•̀ 3 •́)つ&#34;</span> <span style="color:#e6db74">&#34;┗|｀O′|┛&#34;</span> <span style="color:#e6db74">&#34;_(┐「ε:)_&#34;</span> <span style="color:#e6db74">&#34;ヽ( ˘ω˘ )ゝ&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>get_second<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    read -r h m s <span style="color:#f92672">&lt;&lt;&lt;</span> <span style="color:#66d9ef">$(</span>echo $1 | tr <span style="color:#e6db74">&#39;:&#39;</span> <span style="color:#e6db74">&#39; &#39;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#66d9ef">$((</span><span style="color:#f92672">(</span><span style="color:#ae81ff">10#</span>$h<span style="color:#f92672">*</span><span style="color:#ae81ff">60</span><span style="color:#f92672">*</span><span style="color:#ae81ff">60</span><span style="color:#f92672">)+(</span><span style="color:#ae81ff">10#</span>$m<span style="color:#f92672">*</span><span style="color:#ae81ff">60</span><span style="color:#f92672">)+</span><span style="color:#ae81ff">10#</span>$s<span style="color:#66d9ef">))</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>calc_duration<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    local start<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>get_second $1<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>    local end<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>get_second $2<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#66d9ef">$((</span>end-start<span style="color:#66d9ef">))</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>calc_work_time<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    local lunch_time<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>calc_duration $lunch_start $lunch_end<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>    local dinner_time<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>calc_duration $dinner_start $dinner_end<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#66d9ef">$(</span>calc_duration $CURRENT_TIME $work_start<span style="color:#66d9ef">)</span> -gt <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>        echo <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> <span style="color:#f92672">[</span> <span style="color:#66d9ef">$(</span>calc_duration $CURRENT_TIME $lunch_start<span style="color:#66d9ef">)</span> -gt <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>        echo <span style="color:#66d9ef">$(</span>calc_duration $work_start $CURRENT_TIME<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> <span style="color:#f92672">[</span> <span style="color:#66d9ef">$(</span>calc_duration $CURRENT_TIME $lunch_end<span style="color:#66d9ef">)</span> -gt <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>        echo <span style="color:#66d9ef">$(</span>calc_duration $work_start $lunch_start<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> <span style="color:#f92672">[</span> <span style="color:#66d9ef">$(</span>calc_duration $CURRENT_TIME $dinner_start<span style="color:#66d9ef">)</span> -gt <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>        echo <span style="color:#66d9ef">$(($(</span>calc_duration $work_start $CURRENT_TIME<span style="color:#66d9ef">)</span> <span style="color:#f92672">-</span> lunch_time<span style="color:#66d9ef">))</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> <span style="color:#f92672">[</span> <span style="color:#66d9ef">$(</span>calc_duration $CURRENT_TIME $dinner_end<span style="color:#66d9ef">)</span> -gt <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>        echo <span style="color:#66d9ef">$(($(</span>calc_duration $work_start $dinner_start<span style="color:#66d9ef">)</span> <span style="color:#f92672">-</span> lunch_time<span style="color:#66d9ef">))</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> <span style="color:#f92672">[</span> <span style="color:#66d9ef">$(</span>calc_duration $CURRENT_TIME $work_end<span style="color:#66d9ef">)</span> -gt <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>        echo <span style="color:#66d9ef">$(($(</span>calc_duration $work_start $CURRENT_TIME<span style="color:#66d9ef">)</span> <span style="color:#f92672">-</span> lunch_time <span style="color:#f92672">-</span> dinner_time<span style="color:#66d9ef">))</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>        echo <span style="color:#66d9ef">$(($(</span>calc_duration $work_start $work_end<span style="color:#66d9ef">)</span> <span style="color:#f92672">-</span> lunch_time <span style="color:#f92672">-</span> dinner_time<span style="color:#66d9ef">))</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>show_work_time<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    local work_sec<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>calc_work_time<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$((</span>$work_sec <span style="color:#f92672">/</span> <span style="color:#ae81ff">3600</span><span style="color:#66d9ef">))</span><span style="color:#e6db74"> hours and </span><span style="color:#66d9ef">$((</span>$work_sec <span style="color:#f92672">%</span> <span style="color:#ae81ff">3600</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">60</span><span style="color:#66d9ef">))</span><span style="color:#e6db74"> minutes and </span><span style="color:#66d9ef">$((</span>$work_sec <span style="color:#f92672">%</span> <span style="color:#ae81ff">60</span><span style="color:#66d9ef">))</span><span style="color:#e6db74"> seconds&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>calc_money<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    local lunch_time<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>calc_duration $lunch_start $lunch_end<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>    local dinner_time<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>calc_duration $dinner_start $dinner_end<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>    local mnt<span style="color:#f92672">=</span><span style="color:#66d9ef">$((</span><span style="color:#f92672">(</span><span style="color:#66d9ef">$(</span>calc_duration $work_start $work_end<span style="color:#66d9ef">)</span> <span style="color:#f92672">-</span> lunch_time <span style="color:#f92672">-</span> dinner_time<span style="color:#f92672">)</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">60</span><span style="color:#66d9ef">))</span>
+</span></span><span style="display:flex;"><span>    local salary_per_mnt<span style="color:#f92672">=</span><span style="color:#66d9ef">$((</span>$salary <span style="color:#f92672">*</span> <span style="color:#ae81ff">100000000</span> <span style="color:#f92672">/</span> $day <span style="color:#f92672">/</span> $mnt<span style="color:#66d9ef">))</span>
+</span></span><span style="display:flex;"><span>    local work_sec<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>calc_work_time<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>    local money<span style="color:#f92672">=</span><span style="color:#66d9ef">$((</span>salary_per_mnt <span style="color:#f92672">*</span> <span style="color:#f92672">(</span>work_sec <span style="color:#f92672">/</span> <span style="color:#ae81ff">60</span><span style="color:#f92672">)</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">1000000</span><span style="color:#66d9ef">))</span>
+</span></span><span style="display:flex;"><span>    echo $money
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>show_money<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    local money<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>calc_money<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;已挣到：</span><span style="color:#66d9ef">$((</span>$money <span style="color:#f92672">/</span> <span style="color:#ae81ff">100</span><span style="color:#66d9ef">))</span><span style="color:#e6db74">.</span><span style="color:#66d9ef">$((</span>$money <span style="color:#f92672">%</span> <span style="color:#ae81ff">100</span><span style="color:#66d9ef">))</span><span style="color:#e6db74"> 元&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>calc_work_end<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#66d9ef">$(</span>calc_duration $CURRENT_TIME $work_start<span style="color:#66d9ef">)</span> -gt <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>        echo <span style="color:#e6db74">&#34;距离下班还有：[还没开始上班]&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> <span style="color:#f92672">[</span> <span style="color:#66d9ef">$(</span>calc_duration $CURRENT_TIME $work_end<span style="color:#66d9ef">)</span> -gt <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>        local time_left<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>calc_duration $CURRENT_TIME $work_end<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>        echo <span style="color:#e6db74">&#34;距离下班还有：</span><span style="color:#66d9ef">$((</span>$time_left <span style="color:#f92672">/</span> <span style="color:#ae81ff">3600</span><span style="color:#66d9ef">))</span><span style="color:#e6db74"> 小时 </span><span style="color:#66d9ef">$((</span>$time_left <span style="color:#f92672">%</span> <span style="color:#ae81ff">3600</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">60</span><span style="color:#66d9ef">))</span><span style="color:#e6db74"> 分钟 </span><span style="color:#66d9ef">$((</span>$time_left <span style="color:#f92672">%</span> <span style="color:#ae81ff">60</span><span style="color:#66d9ef">))</span><span style="color:#e6db74"> 秒&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>        echo <span style="color:#e6db74">&#34;距离下班还有：[下班啦]&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>random_emoji<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    local len<span style="color:#f92672">=</span><span style="color:#e6db74">${#</span>EMOJI_ARRAY[*]<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">${</span>EMOJI_ARRAY[RANDOM % $len]<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>random_emoji
+</span></span><span style="display:flex;"><span>show_money
+</span></span><span style="display:flex;"><span>calc_work_end
+</span></span></code></pre></div><blockquote>
 <p><strong>Note</strong>:
 为了让界面可爱一点，我用颜文字润色了一下！</p>
 <p>如果你还想添加其他颜文字，可以逛逛我的颜文字库 <a href="https://github.com/luochang212/emoticon-dict" target="_blank">emoticon-dict</a></p>
 </blockquote>
 <h3 id="3-显形">3. 显形</h3>
 <p>bash 版摸鱼侠的成品效果大概是这样：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">&gt; moyu
-ヽ<span style="color:#f92672">(</span> ˘ω˘ <span style="color:#f92672">)</span>ゝ
-已挣到：265.15 元
-距离下班还有：1 小时 <span style="color:#ae81ff">49</span> 分 <span style="color:#ae81ff">9</span> 秒
-</code></pre></div><p>很可爱滴！快来用啊</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; moyu
+</span></span><span style="display:flex;"><span>ヽ<span style="color:#f92672">(</span> ˘ω˘ <span style="color:#f92672">)</span>ゝ
+</span></span><span style="display:flex;"><span>已挣到：265.15 元
+</span></span><span style="display:flex;"><span>距离下班还有：1 小时 <span style="color:#ae81ff">49</span> 分 <span style="color:#ae81ff">9</span> 秒
+</span></span></code></pre></div><p>很可爱滴！快来用啊</p>
 <h3 id="4-致用">4. 致用</h3>
 <p>那么这时候有人要问了：这么可爱的命令行输出，我要怎么才能获得呢？</p>
 <ol>
@@ -680,7 +679,7 @@ calc_work_end
     
     
     <a href="/posts/causal_inference/" class="navigation-next">
-      <span class="navigation-tittle">因果推断笔记</span>
+      <span class="navigation-tittle">《应用统计因果推论》学习笔记</span>
       <i aria-hidden="true" class="fa fa-chevron-right"></i>
     </a>
     

@@ -14,7 +14,7 @@
       
       <guid>http://luochang212.github.io/posts/poisson/</guid>
       <description>本文介绍泊松分布和泊松函数的定义，并通过 Python random 库对泊松分布进行仿真，带你触摸复杂表象下的简单本质。
- GitHub项目地址：python-tips/poisson
+GitHub项目地址：python-tips/poisson
 1. 从泊松函数讲起 泊松分布 表示在给定时间段内发生给定数量的事件的概率。这个定义比较抽象。举个具体的例子，假设你每小时接到电话的概率是固定的，比如每小时 0.05 个，那么你在接下来 1 小时内接到电话个数的概率，就服从泊松分布:
 1 小时内接到 0 个电话，对应一个概率值 $P_0$；
 1 小时内接到 1 个电话，对应一个概率值 $P_1$；

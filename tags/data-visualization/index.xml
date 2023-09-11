@@ -22,17 +22,17 @@ Step 2. 分割raw data. 先用split函数进行粗略分割，再用find函数�
 经过上述两步，数据的整理工作就做完啦。
 可视化微博数据 有了csv文件，做数据可视化是分分钟的事。此时我把工作平台从PyCharm搬到了Jupyter Notebook。这是因为Jupyter Notebook可以制作的各式各样的可视化图表和窗口小工具(widget), 比PyCharm更适合数据处理。至于工具包，这里我选的是pandas和seaborn.
 首先是需求分析，我的目标如下:
-  绘制日期分布热力图，观察今年使用微博频率的趋势
-  绘制设备使用直方图，看看平时最常用什么平台发博
-  绘制时间分布直方图，观察一天之中各时段的发博频率
-  使用窗口滑块小部件，拖动查看各个时间段都发了什么内容
-  这里不描述具体过程，详见GitHub Repository.
+绘制日期分布热力图，观察今年使用微博频率的趋势
+绘制设备使用直方图，看看平时最常用什么平台发博
+绘制时间分布直方图，观察一天之中各时段的发博频率
+使用窗口滑块小部件，拖动查看各个时间段都发了什么内容
+这里不描述具体过程，详见GitHub Repository.
 分析结果如下:
 热力图总体来说颜色逐年加深，说明我正在逐渐成为一个微博控。而且注意到往年年初我是不怎么玩微博的，但随着年纪渐长，1-3月份我玩微博的频率越来越高，这意味着过年可能越来越无聊，没有年味，从而加长了我混迹微博的时间。
 是你吗？华为的舔狗~
 晚上2点不睡的坏小孩，早上10点起的偷懒者。（此处是一个卑微的笑容）
 附录：部分代码 下面这段代码分割了文本。
-def classification(self, txt_array, file_index): id = np.array([]) date = np.array([]) time = np.array([]) device = np.array([]) content = np.array([]) count = 0 for ite in range(1, np.</description>
+def classification(self, txt_array, file_index): id = np.array([]) date = np.array([]) time = np.array([]) device = np.array([]) content = np.array([]) count = 0 for ite in range(1, np.size(txt_array), 1): if txt_array[ite].find(&amp;#34;\n&amp;#34;+&amp;#34;YOUR_NAME&amp;#34;) !</description>
     </item>
     
   </channel>

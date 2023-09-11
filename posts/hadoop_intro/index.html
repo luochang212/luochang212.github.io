@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.84.1" />
+<meta name="generator" content="Hugo 0.118.2">
 
     
     
@@ -30,9 +30,8 @@
 <meta property="og:description" content="Hadoop 简化了分布式计算的难度，让没有分布式背景的程序员也能轻松写出分布式程序。本文介绍如何用 Python 编写 Hadoop 程序。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/hadoop_intro/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-07-25T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2020-07-25T00:00:00&#43;00:00" /><meta property="og:site_name" content="Title" />
-
+<meta property="article:published_time" content="2020-07-25T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-07-25T00:00:00+00:00" /><meta property="og:site_name" content="Title" />
 
 
     
@@ -302,7 +301,7 @@
       </div>
       
 <div class="copyright">
-  &copy; 2022 Chang Luo
+  &copy; 2023 Chang Luo
   
 </div>
 
@@ -594,45 +593,45 @@
 <p>数据在上述三个处理阶段之间，是以 <strong>kv表</strong> 为数据传输格式的。kv 表由 key（主键）和 value 组成，key 和 value 都可以包含一个或多个字段。</p>
 <p>kv 表在 Unix 中长这样👇。每行数据中的各字段以制表符 <code>\t</code> 为分隔。</p>
 <!-- 当然 Hadoop 也接受其他分割符，自己去参数里设就好啦。 -->
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">dogs    1    happy
-cats    3    happy
-pigs    2    sleeping
-cats    1    sad
-</code></pre></div><!-- 生产环境下日志肯定不止这几列，有时会有三四十列之多，颇有乱花迷人眼的阵势。 -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>dogs    1    happy
+</span></span><span style="display:flex;"><span>cats    3    happy
+</span></span><span style="display:flex;"><span>pigs    2    sleeping
+</span></span><span style="display:flex;"><span>cats    1    sad
+</span></span></code></pre></div><!-- 生产环境下日志肯定不止这几列，有时会有三四十列之多，颇有乱花迷人眼的阵势。 -->
 <h4 id="33-实例wordcount">3.3 实例：WordCount</h4>
 <p>为了说明数据在 Hadoop 中是如何被处理的。我们引入一个实例 WordCount 来讲解。WordCount 是一个简单的数据处理任务，它要求我们统计文章中每个单词出现的频率。</p>
 <p>本来我们只要几行 Python 代码就能完成 👇</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># word_count.py</span>
-<span style="color:#75715e"># usage: cat test_file.txt | python word_count.py</span>
-<span style="color:#f92672">import</span> sys
-<span style="color:#f92672">import</span> collections
-
-
-words_dict <span style="color:#f92672">=</span> collections<span style="color:#f92672">.</span>defaultdict(int)
-
-<span style="color:#66d9ef">for</span> line <span style="color:#f92672">in</span> sys<span style="color:#f92672">.</span>stdin:
-    line <span style="color:#f92672">=</span> line<span style="color:#f92672">.</span>strip()<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)
-    
-    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> line:
-        <span style="color:#66d9ef">continue</span>
-    
-    <span style="color:#66d9ef">for</span> word <span style="color:#f92672">in</span> line:
-        words_dict[word] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-
-<span style="color:#66d9ef">for</span> k, v <span style="color:#f92672">in</span> words_dict<span style="color:#f92672">.</span>items():
-    print(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">.</span>format(k, v))
-</code></pre></div><p>换成 Hadoop 的写法，它会变得很冗长。但回馈就是，在数据量庞大的情况下，原本需要巨量时间的任务，现在能在短时间内完成。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># word_count.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># usage: cat test_file.txt | python word_count.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> collections
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>words_dict <span style="color:#f92672">=</span> collections<span style="color:#f92672">.</span>defaultdict(int)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> line <span style="color:#f92672">in</span> sys<span style="color:#f92672">.</span>stdin:
+</span></span><span style="display:flex;"><span>    line <span style="color:#f92672">=</span> line<span style="color:#f92672">.</span>strip()<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> line:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> word <span style="color:#f92672">in</span> line:
+</span></span><span style="display:flex;"><span>        words_dict[word] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> k, v <span style="color:#f92672">in</span> words_dict<span style="color:#f92672">.</span>items():
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">.</span>format(k, v))
+</span></span></code></pre></div><p>换成 Hadoop 的写法，它会变得很冗长。但回馈就是，在数据量庞大的情况下，原本需要巨量时间的任务，现在能在短时间内完成。</p>
 <p>☆ <strong>Hadoop 方法</strong>：</p>
 <p>在贴上代码之前，我们先来看看 Hadoop 是如何一步步将数据改造成我们期望的模样的。</p>
 <ol>
 <li>这是原始数据。
-<pre><code>i love you
+<pre tabindex="0"><code>i love you
 you love him
 he loves her
 she loves him
 </code></pre></li>
 <li>首先将数据切割成多个分片 (split 阶段)。
-<pre><code># part_1
+<pre tabindex="0"><code># part_1
 i love you
 you love him
 ✄ -----------------
@@ -641,7 +640,7 @@ he loves her
 she loves him
 </code></pre></li>
 <li>将各个分片分别送入各自的 Mapper 中做预处理，然后返回以单词为主键的 kv 表 (map 阶段)。
-<pre><code># part_1
+<pre tabindex="0"><code># part_1
 i    1
 love    1
 you    1
@@ -658,7 +657,7 @@ loves    1
 him    1
 </code></pre></li>
 <li>按主键排序后分桶 (shuffle 阶段)。
-<pre><code># part_1
+<pre tabindex="0"><code># part_1
 he    1
 her    1
 him    1
@@ -675,7 +674,7 @@ you    1
 you    1
 </code></pre></li>
 <li>将数据捏成我们想要的形状 (reduce 阶段)。
-<pre><code># part-00000
+<pre tabindex="0"><code># part-00000
 he    1
 her    1
 him    2
@@ -693,8 +692,8 @@ you    2
 <p>嘟噜噜，下面开始写 MapReduce 代码。</p>
 <p>因为我懒，不想重复写代码，所以这里贴上 <a href="https://www.michael-noll.com/tutorials/writing-an-hadoop-mapreduce-program-in-python/"><em>Writing An Hadoop MapReduce Program In Python</em></a> 的代码原文。这篇文章本身也非常好，推荐大家看看 <img src="/img/quyin/OK.png" class="my-emoji" style = "height: 32px;"></p>
 <p>mapper</p>
-<pre><code>#!/usr/bin/env python
-&quot;&quot;&quot;mapper.py&quot;&quot;&quot;
+<pre tabindex="0"><code>#!/usr/bin/env python
+&#34;&#34;&#34;mapper.py&#34;&#34;&#34;
 
 import sys
 
@@ -711,10 +710,10 @@ for line in sys.stdin:
         # Reduce step, i.e. the input for reducer.py
         #
         # tab-delimited; the trivial word count is 1
-        print '%s\t%s' % (word, 1)
+        print &#39;%s\t%s&#39; % (word, 1)
 </code></pre><p>reducer</p>
-<pre><code>#!/usr/bin/env python
-&quot;&quot;&quot;reducer.py&quot;&quot;&quot;
+<pre tabindex="0"><code>#!/usr/bin/env python
+&#34;&#34;&#34;reducer.py&#34;&#34;&#34;
 
 from operator import itemgetter
 import sys
@@ -729,7 +728,7 @@ for line in sys.stdin:
     line = line.strip()
 
     # parse the input we got from mapper.py
-    word, count = line.split('\t', 1)
+    word, count = line.split(&#39;\t&#39;, 1)
 
     # convert count (currently a string) to int
     try:
@@ -746,33 +745,33 @@ for line in sys.stdin:
     else:
         if current_word:
             # write result to STDOUT
-            print '%s\t%s' % (current_word, current_count)
+            print &#39;%s\t%s&#39; % (current_word, current_count)
         current_count = count
         current_word = word
 
 # do not forget to output the last word if needed!
 if current_word == word:
-    print '%s\t%s' % (current_word, current_count)
+    print &#39;%s\t%s&#39; % (current_word, current_count)
 </code></pre><h3 id="5-启动脚本">5. 启动脚本</h3>
 <p>只有 Mapper 和 Reducer 没用啊，Hadoop 要从命令行启动，因此我们还需要一个 bash 脚本帮我们启动 Hadoop。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hadoop streaming <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  -D mapred.job.priority<span style="color:#f92672">=</span>VERY_HIGH  <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  -D stream.num.map.output.key.fields<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  -D num.key.fields.for.partition<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  -input myInputDirs <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  -output myOutputDir <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  -mapper <span style="color:#e6db74">&#34;python mapper.py&#34;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  -reducer <span style="color:#e6db74">&#34;python reducer.py&#34;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  -file <span style="color:#e6db74">&#34;./mapper.py&#34;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  -file <span style="color:#e6db74">&#34;./reducer.py&#34;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  -file <span style="color:#e6db74">&#34;./additional_file.txt&#34;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  -jobconf mapred.job.name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;yourJobName&#34;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  -jobconf mapred.reduce.tasks<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  -jobconf mapred.job.map.capacity<span style="color:#f92672">=</span><span style="color:#ae81ff">2000</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  -jobconf mapred.job.reduce.capacity<span style="color:#f92672">=</span><span style="color:#ae81ff">300</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  -jobconf mapred.map.over.capacity.allowed<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  -jobconf mapred.reduce.over.capacity.allowed<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
-</span></code></pre></div><p>参数 reduce.tasks 有时设为 1 (<code>-jobconf mapred.reduce.tasks=1</code>)，这样最终输出的文件数也为1。虽然这个设置会影响性能，但由于输出文件只有1个的缘故，输出文件不需要额外的 merge 处理，在 reducer 压力不大时可以考虑。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hadoop streaming <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -D mapred.job.priority<span style="color:#f92672">=</span>VERY_HIGH  <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -D stream.num.map.output.key.fields<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -D num.key.fields.for.partition<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -input myInputDirs <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -output myOutputDir <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -mapper <span style="color:#e6db74">&#34;python mapper.py&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -reducer <span style="color:#e6db74">&#34;python reducer.py&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -file <span style="color:#e6db74">&#34;./mapper.py&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -file <span style="color:#e6db74">&#34;./reducer.py&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -file <span style="color:#e6db74">&#34;./additional_file.txt&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -jobconf mapred.job.name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;yourJobName&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -jobconf mapred.reduce.tasks<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -jobconf mapred.job.map.capacity<span style="color:#f92672">=</span><span style="color:#ae81ff">2000</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -jobconf mapred.job.reduce.capacity<span style="color:#f92672">=</span><span style="color:#ae81ff">300</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -jobconf mapred.map.over.capacity.allowed<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -jobconf mapred.reduce.over.capacity.allowed<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
+</span></span></span></code></pre></div><p>参数 reduce.tasks 有时设为 1 (<code>-jobconf mapred.reduce.tasks=1</code>)，这样最终输出的文件数也为1。虽然这个设置会影响性能，但由于输出文件只有1个的缘故，输出文件不需要额外的 merge 处理，在 reducer 压力不大时可以考虑。</p>
 <h3 id="6-测试">6. 测试</h3>
 <p>即使是 Hadoop 集群，在处理超大数据集的时候，跑一两个小时也是惯常现象。如果你的程序因为有 bug 运行中止，那你就亏大了。因为你又得 debug，然后重跑。</p>
 <p>为了避免这种情况出现，测试是必要的。我一般会按照这个流程进行测试：</p>
@@ -787,19 +786,19 @@ if current_word == word:
 <h3 id="7-文件操作">7. 文件操作</h3>
 <p>Hadoop 通过 <a href="https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html">HDFS</a> (Hadoop Distributed File System) 来管理集群上的文件。</p>
 <p>常见的文件操作命令：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 查看帮助文档</span>
-hadoop fs -help
-<span style="color:#75715e"># 查看当前文件夹的文件</span>
-hadoop fs -ls
-<span style="color:#75715e"># 下载文件到本地</span>
-hadoop fs -copyToLocal <span style="color:#f92672">[</span>hdfs路径<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>本地路径<span style="color:#f92672">]</span>
-<span style="color:#75715e"># 上传文件到HDFS</span>
-hadoop fs -copyFromLocal <span style="color:#f92672">[</span>本地路径<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>hdfs路径<span style="color:#f92672">]</span>
-<span style="color:#75715e"># 新建HDFS目录</span>
-hadoop fs -mkdir <span style="color:#f92672">[</span>hdfs路径<span style="color:#f92672">]</span>
-<span style="color:#75715e"># 删除HDFS文件</span>
-hadoop fs -rm <span style="color:#f92672">[</span>hdfs路径<span style="color:#f92672">]</span>
-</code></pre></div><h3 id="8-只言片语">8. 只言片语</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 查看帮助文档</span>
+</span></span><span style="display:flex;"><span>hadoop fs -help
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看当前文件夹的文件</span>
+</span></span><span style="display:flex;"><span>hadoop fs -ls
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 下载文件到本地</span>
+</span></span><span style="display:flex;"><span>hadoop fs -copyToLocal <span style="color:#f92672">[</span>hdfs路径<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>本地路径<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 上传文件到HDFS</span>
+</span></span><span style="display:flex;"><span>hadoop fs -copyFromLocal <span style="color:#f92672">[</span>本地路径<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>hdfs路径<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 新建HDFS目录</span>
+</span></span><span style="display:flex;"><span>hadoop fs -mkdir <span style="color:#f92672">[</span>hdfs路径<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 删除HDFS文件</span>
+</span></span><span style="display:flex;"><span>hadoop fs -rm <span style="color:#f92672">[</span>hdfs路径<span style="color:#f92672">]</span>
+</span></span></code></pre></div><h3 id="8-只言片语">8. 只言片语</h3>
 <p>Hadoop MapReduce 是一套编程模型，基本思路是先把数据切成不同分片，然后基于键值对排序并在机器间交换一次数据，再然后按主键对数据分桶，最后规约到结果。这套模式是死的，也就是你只能按照既定的运算框架和运算顺序来处理数据。</p>
 <p>既然模式是死的，就一定存在一部分问题天然不适合用 Hadoop 解决。具体到每个问题，Hadoop 的适用程度都是不一样的。有些本来不合适但又不得不用的项目，我们还是得拆分需求、设计运算流程，尽量地去贴合 MapReduce 这套模型。需求拆得对不对，流程设计得好不好，在很大程度上会影响程序的运行效率。</p>
 <p>参考文献：</p>

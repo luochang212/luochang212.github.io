@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.84.1" />
+<meta name="generator" content="Hugo 0.118.2">
 
     
     
@@ -30,9 +30,8 @@
 <meta property="og:description" content="对于在欧洲的小伙伴们，复活节假在这一周就正式开始啦。大家都是怎么计划旅行的呢？我的习惯是在出发前最后一晚，花上半小时，搜索目的地景点 (Point of interest, POI), 然后在Google Maps上为它们点上小星星，以免和它们擦肩而过。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/tsp_route/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2019-04-10T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2019-04-10T00:00:00&#43;00:00" /><meta property="og:site_name" content="Title" />
-
+<meta property="article:published_time" content="2019-04-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-04-10T00:00:00+00:00" /><meta property="og:site_name" content="Title" />
 
 
     
@@ -302,7 +301,7 @@
       </div>
       
 <div class="copyright">
-  &copy; 2022 Chang Luo
+  &copy; 2023 Chang Luo
   
 </div>
 
@@ -582,20 +581,20 @@
 <p>完成配置等于成功的一半。在Jupyter notebook打开<code>TSPSolver.ipynb</code>，将第二个代码块的所有变量，改成自己的，比如自己的目的地自己的区域和自己的API密码……最后从头到尾运行所有代码块，你就可以得到自己的定制路线辣~</p>
 <p><img src="/img/my_route.JPG" alt="my route"></p>
 <p><strong>配置代码如下。</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># input the places of interest (POI)</span>
-places <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;YHA London Central Hostel&#39;</span>, <span style="color:#e6db74">&#39;Coca-Cola London Eye&#39;</span>, <span style="color:#e6db74">&#39;St. Paul</span><span style="color:#ae81ff">\&#39;</span><span style="color:#e6db74">s Cathedral&#39;</span>, <span style="color:#e6db74">&#39;Leadenhall Market&#39;</span>, <span style="color:#e6db74">&#39;The National Gallery&#39;</span> \
-          <span style="color:#e6db74">&#39;Big Ben&#39;</span>, <span style="color:#e6db74">&#39;Buckingham Palace&#39;</span>, <span style="color:#e6db74">&#39;Waterloo Station&#39;</span>
-
-<span style="color:#75715e"># the region</span>
-Location<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;London&#39;</span>
-
-<span style="color:#75715e"># choose a mode</span>
-Mode <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;walking&#34;</span>  <span style="color:#75715e"># &#34;driving&#34;, &#34;walking&#34;, &#34;bicycling&#34;, &#34;transit&#34;</span>
-
-<span style="color:#75715e"># get Google API key from following website: </span>
-<span style="color:#75715e"># https://developers.google.com/maps/documentation/distance-matrix/start#get-a-key</span>
-password <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;YOUR_GOOGLE_API_KEY_HERE&#34;</span>
-</code></pre></div><br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># input the places of interest (POI)</span>
+</span></span><span style="display:flex;"><span>places <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;YHA London Central Hostel&#39;</span>, <span style="color:#e6db74">&#39;Coca-Cola London Eye&#39;</span>, <span style="color:#e6db74">&#39;St. Paul</span><span style="color:#ae81ff">\&#39;</span><span style="color:#e6db74">s Cathedral&#39;</span>, <span style="color:#e6db74">&#39;Leadenhall Market&#39;</span>, <span style="color:#e6db74">&#39;The National Gallery&#39;</span> \
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#39;Big Ben&#39;</span>, <span style="color:#e6db74">&#39;Buckingham Palace&#39;</span>, <span style="color:#e6db74">&#39;Waterloo Station&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># the region</span>
+</span></span><span style="display:flex;"><span>Location<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;London&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># choose a mode</span>
+</span></span><span style="display:flex;"><span>Mode <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;walking&#34;</span>  <span style="color:#75715e"># &#34;driving&#34;, &#34;walking&#34;, &#34;bicycling&#34;, &#34;transit&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># get Google API key from following website: </span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># https://developers.google.com/maps/documentation/distance-matrix/start#get-a-key</span>
+</span></span><span style="display:flex;"><span>password <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;YOUR_GOOGLE_API_KEY_HERE&#34;</span>
+</span></span></code></pre></div><br>
 <center> 欢迎Star, Pull, Pr.</center>
   </div>
   

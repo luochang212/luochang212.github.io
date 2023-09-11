@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>NLP on Chang Luo</title>
+    <link>http://luochang212.github.io/tags/nlp/</link>
+    <description>Recent content in NLP on Chang Luo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 29 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/tags/nlp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NLP 学习笔记</title>
+      <link>http://luochang212.github.io/posts/learning_nlp/</link>
+      <pubDate>Mon, 29 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/posts/learning_nlp/</guid>
+      <description>PyTorch 环境准备 安装 PyTorch：MacOS，使用Anaconda安装
+conda install pytorch torchvision -c pytorch 其他系统的安装方法见：官网安装教程
+安好后，在命令行简单验证一下
+python -c &amp;#34;import torch;x = torch.rand(5, 3);print(x)&amp;#34; 查看版本号
+python -c &amp;#34;import torch;print(torch.__version__)&amp;#34; </description>
+    </item>
+    
+  </channel>
+</rss>

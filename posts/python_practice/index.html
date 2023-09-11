@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.84.1" />
+<meta name="generator" content="Hugo 0.118.2">
 
     
     
@@ -30,9 +30,8 @@
 <meta property="og:description" content="学 Python 不应仅限于学编程，同样应该学习工程知识，比如虚拟环境、编码风格以及单元测试等。本文致力于介绍 Python 工程化所需的前置知识。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/python_practice/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-06-14T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2020-06-14T00:00:00&#43;00:00" /><meta property="og:site_name" content="Title" />
-
+<meta property="article:published_time" content="2020-06-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-06-14T00:00:00+00:00" /><meta property="og:site_name" content="Title" />
 
 
     
@@ -302,7 +301,7 @@
       </div>
       
 <div class="copyright">
-  &copy; 2022 Chang Luo
+  &copy; 2023 Chang Luo
   
 </div>
 
@@ -580,59 +579,59 @@
 <p>安装完以后，在命令行界面输入 <code>conda</code>，会打印一个帮助文档。</p>
 <p><img src="/img/conda-command.png" alt=""></p>
 <p>帮助文档大概是说 conda 有哪些常用命令，比如下面这些：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ conda help  <span style="color:#75715e"># 打印帮助文档</span>
-$ conda info  <span style="color:#75715e"># 查看conda信息，包括当前在哪个环境，环境路径，Python版本等信息</span>
-$ conda list  <span style="color:#75715e"># 列出conda下安装了哪些包</span>
-$ conda install <span style="color:#f92672">[</span>package_name<span style="color:#f92672">]</span>  <span style="color:#75715e"># 在conda环境中安装某个包</span>
-$ conda update <span style="color:#f92672">[</span>package_name<span style="color:#f92672">]</span>  <span style="color:#75715e"># 升级conda环境中的某个包</span>
-</code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ conda help  <span style="color:#75715e"># 打印帮助文档</span>
+</span></span><span style="display:flex;"><span>$ conda info  <span style="color:#75715e"># 查看conda信息，包括当前在哪个环境，环境路径，Python版本等信息</span>
+</span></span><span style="display:flex;"><span>$ conda list  <span style="color:#75715e"># 列出conda下安装了哪些包</span>
+</span></span><span style="display:flex;"><span>$ conda install <span style="color:#f92672">[</span>package_name<span style="color:#f92672">]</span>  <span style="color:#75715e"># 在conda环境中安装某个包</span>
+</span></span><span style="display:flex;"><span>$ conda update <span style="color:#f92672">[</span>package_name<span style="color:#f92672">]</span>  <span style="color:#75715e"># 升级conda环境中的某个包</span>
+</span></span></code></pre></div><blockquote>
 <p><strong>Note</strong>：后文仅专注介绍虚拟环境相关内容，更多内容请在 <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">Anaconda 官方文档</a> 中查看。</p>
 </blockquote>
 <p>Python 环境分为本地环境(lcoal env) 和全局环境 (global env) 。为一个项目配置环境，应该配置本地环境；为本机所有项目配置环境，则应该配置全局环境。</p>
 <h4 id="-部署全局环境">① 部署全局环境</h4>
 <p>📖 新建环境</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ conda create --name myenv
-</code></pre></div><p>上述命令新建一个名为 <code>myenv</code> 的全局环境.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ conda create -n myenv python<span style="color:#f92672">=</span>2.7
-</code></pre></div><p>上述命令用于指定新建环境的 Python 版本，本例指定 Python 版本为 2.7。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ conda create -n myenv python<span style="color:#f92672">=</span>2.7 <span style="color:#f92672">[</span>package1<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>package2<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>package3<span style="color:#f92672">]</span>  ...
-</code></pre></div><p>上述命令指定新建环境下初始安装包。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ conda create --name myenv
+</span></span></code></pre></div><p>上述命令新建一个名为 <code>myenv</code> 的全局环境.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ conda create -n myenv python<span style="color:#f92672">=</span>2.7
+</span></span></code></pre></div><p>上述命令用于指定新建环境的 Python 版本，本例指定 Python 版本为 2.7。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ conda create -n myenv python<span style="color:#f92672">=</span>2.7 <span style="color:#f92672">[</span>package1<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>package2<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>package3<span style="color:#f92672">]</span>  ...
+</span></span></code></pre></div><p>上述命令指定新建环境下初始安装包。</p>
 <p>👀 查看环境</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ conda info --envs
-</code></pre></div><p>上述命令打印所有 Python 环境，包括全局环境和局域环境，在当前环境前会有一个 <code>*</code> 号。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ conda info --envs
+</span></span></code></pre></div><p>上述命令打印所有 Python 环境，包括全局环境和局域环境，在当前环境前会有一个 <code>*</code> 号。</p>
 <p>🏀 激活环境</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ conda activate myenv
-</code></pre></div><p>环境需要激活才能使用。上述命令将名为 <code>myenv</code> 的 conda 环境激活。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ conda activate myenv
+</span></span></code></pre></div><p>环境需要激活才能使用。上述命令将名为 <code>myenv</code> 的 conda 环境激活。</p>
 <p>⚽️ 退出环境</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ conda deactivate
-</code></pre></div><p>上述命令用于退出当前 conda 环境。在非 base 环境里，会退出到 base 环境；而在 base 环境里，则会退出到系统环境。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ conda deactivate
+</span></span></code></pre></div><p>上述命令用于退出当前 conda 环境。在非 base 环境里，会退出到 base 环境；而在 base 环境里，则会退出到系统环境。</p>
 <blockquote>
 <p><strong>Note</strong>: 退到系统环境以后，在命令行输入 <code>which python</code> 会打印系统 Python 的路径。再次进入 conda 环境以后，输入 <code>which python</code> 则会打印 conda 下的 Python 路径。</p>
 <p>鉴于今年（2020年）的 MacOS 系统依旧默认安装 Python2.7，因此建议把 conda 作为默认运行环境以享受 Python3 的便利！</p>
 </blockquote>
 <p>🚮 移除环境</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ conda env remove --name myenv
-</code></pre></div><p>上述命令移除名为 <code>myenv</code> 的全局环境。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ conda env remove --name myenv
+</span></span></code></pre></div><p>上述命令移除名为 <code>myenv</code> 的全局环境。</p>
 <h4 id="-部署局域环境">② 部署局域环境</h4>
 <p>如果我们需要为某个项目配置特定的 Python 版本或包版本，就需要搭建局域环境(local environment)。</p>
 <p>📖 新建环境</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ conda create --prefix ./envs python<span style="color:#f92672">=</span>2.7
-</code></pre></div><p>上述命令在当前工作目录下，新建了一个名为 <code>envs</code> 的子目录。并在该子目录下新建了一个虚拟环境，并指定该环境的 Python 版本为 2.7。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ conda create --prefix ./envs python<span style="color:#f92672">=</span>2.7
+</span></span></code></pre></div><p>上述命令在当前工作目录下，新建了一个名为 <code>envs</code> 的子目录。并在该子目录下新建了一个虚拟环境，并指定该环境的 Python 版本为 2.7。</p>
 <p>🏀 激活环境</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ conda activate ./envs
-</code></pre></div><p>⚽️ 退出环境</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ conda deactivate
-</code></pre></div><p>⏬ 安装依赖</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ conda install <span style="color:#f92672">[</span>package_name<span style="color:#f92672">]</span>
-</code></pre></div><p>上述命令用于为此环境安装各种包。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ pip install <span style="color:#f92672">[</span>package_name<span style="color:#f92672">]</span>
-</code></pre></div><p>有些包 conda 安装不了，可以<a href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#using-pip-in-an-environment">使用 pip 安装</a>。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ conda activate ./envs
+</span></span></code></pre></div><p>⚽️ 退出环境</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ conda deactivate
+</span></span></code></pre></div><p>⏬ 安装依赖</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ conda install <span style="color:#f92672">[</span>package_name<span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>上述命令用于为此环境安装各种包。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ pip install <span style="color:#f92672">[</span>package_name<span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>有些包 conda 安装不了，可以<a href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#using-pip-in-an-environment">使用 pip 安装</a>。</p>
 <blockquote>
 <p><strong>Note</strong>: conda 集成了 pip，所以在 conda 环境下也可以使用 pip 命令。在 conda 环境下，试试 <code>pip list</code> 吧～</p>
 </blockquote>
 <p>🚮 移除环境</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ rm -rf ./envs
-</code></pre></div><p>移除环境只需要删除对应的安装目录就可以了。注意，<code>rm -rf</code> 是一个极其危险的命令，使用时请务必小心。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ rm -rf ./envs
+</span></span></code></pre></div><p>移除环境只需要删除对应的安装目录就可以了。注意，<code>rm -rf</code> 是一个极其危险的命令，使用时请务必小心。</p>
 <h3 id="2-virtualenv">2. Virtualenv</h3>
 <blockquote>
 <p><strong>Note</strong>: Virtualenv 的好处在于体积小，适合开发机之类的环境。如果我们在笔记本电脑上做开发，还是用 conda 部署环境更方便～</p>
@@ -643,39 +642,39 @@ $ conda update <span style="color:#f92672">[</span>package_name<span style="colo
 <p>更多细节参见 <a href="https://docs.python.org/3/library/venv.html">Virtualenv 文档</a>。</p>
 <!-- > 注：以下教程适用于 MacOS。 -->
 <p>如果你还没有 Virtualenv，打开命令行窗口，下载一个。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ pip install virtualenv
-</code></pre></div><p>📖 新建环境</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ pip install virtualenv
+</span></span></code></pre></div><p>📖 新建环境</p>
 <p>安装好之后，如果你想在当前目录创建一个虚拟环境，只需要一行代码。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ virtualenv my_project  <span style="color:#75715e"># my_project 可替换为你项目的名称</span>
-</code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ virtualenv my_project  <span style="color:#75715e"># my_project 可替换为你项目的名称</span>
+</span></span></code></pre></div><blockquote>
 <p><strong>Note</strong>: 如果需要安装特定版本的 Python，可使用 <code>-p</code> 选项指定 Python 版本。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ virtualenv -p /usr/bin/python2.6 my_project
-</code></pre></div></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ virtualenv -p /usr/bin/python2.6 my_project
+</span></span></code></pre></div></blockquote>
 <p>🏀 激活环境</p>
 <p>用 <code>ls</code> 命令检查，你可以发现当前目录下创建了一个名为 <code>my_project</code> 的文件夹。但虚拟环境仅仅是被创建，要激活该环境，请使用如下命令：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ source my_project/bin/activate
-</code></pre></div><p>激活完以后，使用以下命令可看当前的 Python 路径：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ which Python
-</code></pre></div><p>使用以下命令可查看当前的 pip 路径。如果你的虚拟环境创建成功了，那么路径应当会变更到虚拟环境目录下。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ which pip
-</code></pre></div><p>使用命令</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ pip list
-</code></pre></div><p>可查看当前 pip 安装的所有包。你会发现当前环境下仅仅只剩少数几个包，因为这是一个全新的环境。现在你可以在这个新环境下配置项目所需的包版本了！</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ source my_project/bin/activate
+</span></span></code></pre></div><p>激活完以后，使用以下命令可看当前的 Python 路径：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ which Python
+</span></span></code></pre></div><p>使用以下命令可查看当前的 pip 路径。如果你的虚拟环境创建成功了，那么路径应当会变更到虚拟环境目录下。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ which pip
+</span></span></code></pre></div><p>使用命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ pip list
+</span></span></code></pre></div><p>可查看当前 pip 安装的所有包。你会发现当前环境下仅仅只剩少数几个包，因为这是一个全新的环境。现在你可以在这个新环境下配置项目所需的包版本了！</p>
 <p>在为你的项目安装完一系列库依赖之后，你可能想记录当前的环境配置，使用 pip 的 freeze 命令可以帮你做到这一点。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ pip freeze --local &gt; requirements.txt
-</code></pre></div><p>这将把当前已安装的包和对应包版本记录在当前目录下的 <code>requirements.txt</code> 文件中。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ pip freeze --local &gt; requirements.txt
+</span></span></code></pre></div><p>这将把当前已安装的包和对应包版本记录在当前目录下的 <code>requirements.txt</code> 文件中。</p>
 <blockquote>
 <p><strong>Note</strong>: 在将来构建新环境时，只要使用如下命令，就可以移植该 txt 文件指定的环境配置。</p>
-<pre><code>$ pip install -r requirements.txt
+<pre tabindex="0"><code>$ pip install -r requirements.txt
 </code></pre></blockquote>
 <p>⚽️ 退出环境</p>
 <p>最后，当你想退出虚拟环境，回到全局环境时，可使用如下命令：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ deactivate
-</code></pre></div><p>通过 <code>which Python</code> 或者 <code>which pip</code> 检查一下是否回到了全局环境吧～</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ deactivate
+</span></span></code></pre></div><p>通过 <code>which Python</code> 或者 <code>which pip</code> 检查一下是否回到了全局环境吧～</p>
 <p>🚮 移除环境</p>
 <p>在 <code>my_project</code> 所在目录下执行：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ rm -rf my_project
-</code></pre></div><p>请谨慎使用 <code>rm -rf</code>。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ rm -rf my_project
+</span></span></code></pre></div><p>请谨慎使用 <code>rm -rf</code>。</p>
 <h3 id="3-docker">3. Docker</h3>
 <p><a href="https://www.docker.com/">Docker</a> 是什么？</p>
 <p>Docker 是一项虚拟化技术，它将软件和配置文件、依赖库封装在一起，放到一个操作系统级别的虚拟化环境中。这个环境我们称作容器 (container)。容器和容器之前是相互隔离的，但是也能通过优良定义的接口进行交互。因为容器运行在一个单独的操作系统内核上，因此它占用的资源比虚拟机更少。</p>
@@ -687,18 +686,18 @@ $ conda update <span style="color:#f92672">[</span>package_name<span style="colo
 <p>2.安装 Docker，装完后执行 <code>docker -v</code> 以检查安装是否成功。</p>
 <p>3.新建一个文件夹，然后打开它 <code>mkdir myDocker; cd myDocker</code>。</p>
 <p>4.随便在里面建点啥，比如计算数列元素的平均值：</p>
-<pre><code># calc.py
+<pre tabindex="0"><code># calc.py
 # pip install numpy
 
 import numpy as np
 
 lst = np.array([2 ** i for i in range(5)])
-print('list:', *lst)
-print('mean:', np.mean(lst))
+print(&#39;list:&#39;, *lst)
+print(&#39;mean:&#39;, np.mean(lst))
 </code></pre><p>5.记录当前的依赖库及其版本，输出到 <code>requirements.txt</code> 文件上。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pip freeze &gt; requirements.txt
-</code></pre></div><p>6.然后，我们新建一个 Dockerfile，它相当于 Docker 的配置文件。</p>
-<pre><code># Dockerfile
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>pip freeze &gt; requirements.txt
+</span></span></code></pre></div><p>6.然后，我们新建一个 Dockerfile，它相当于 Docker 的配置文件。</p>
+<pre tabindex="0"><code># Dockerfile
 
 # Specify Python version
 FROM python:3.8.5-buster
@@ -714,13 +713,13 @@ RUN pip install -r requirements.txt
 COPY calc.py .
 
 # Run the application
-CMD [&quot;python&quot;, &quot;calc.py&quot;]
+CMD [&#34;python&#34;, &#34;calc.py&#34;]
 </code></pre><p>PS: Python 版本名可以在 <a href="https://hub.docker.com/_/python">Docker Hub</a> 中找。</p>
 <p>7.运行 Dokcer 以创建容器。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker build -t dockerproject .
-</code></pre></div><p>8.运行容器中的应用。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker run dockerproject
-</code></pre></div><p>如果显示如下结果，说明容器构建成功！</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker build -t dockerproject .
+</span></span></code></pre></div><p>8.运行容器中的应用。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker run dockerproject
+</span></span></code></pre></div><p>如果显示如下结果，说明容器构建成功！</p>
 <p><img src="/img/python-practice-1.png" alt=""></p>
 <blockquote>
 <p>视频教程：</p>
@@ -747,12 +746,12 @@ CMD [&quot;python&quot;, &quot;calc.py&quot;]
 <p>下面列几条我认为重要的代码风格建议：</p>
 <h3 id="1-docstrings">1. Docstrings</h3>
 <p>docstring 是 Python 为模块、类、函数书写帮助文档的一种方法。按约定，写在模块、类、函数之下的第一条声明就是 docstring.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">foo</span>():
-    <span style="color:#e6db74">&#34;&#34;&#34;docstring here.&#34;&#34;&#34;</span>
-    <span style="color:#66d9ef">pass</span>
-</code></pre></div><p>可以通过对象的<code>__doc__</code>成员查看该对象的 docstring。假如你已经为函数<code>foo()</code>写好了 docstring，那么你可以使用如下命令查看它。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">print(foo<span style="color:#f92672">.</span>__doc__)
-</code></pre></div><p>关于书写docstring的具体规范，请参见 <a href="http://google.github.io/styleguide/pyguide.html">Google Python Style Guide</a>，这里就不过分拾人牙慧了。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">foo</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;docstring here.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pass</span>
+</span></span></code></pre></div><p>可以通过对象的<code>__doc__</code>成员查看该对象的 docstring。假如你已经为函数<code>foo()</code>写好了 docstring，那么你可以使用如下命令查看它。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(foo<span style="color:#f92672">.</span>__doc__)
+</span></span></code></pre></div><p>关于书写docstring的具体规范，请参见 <a href="http://google.github.io/styleguide/pyguide.html">Google Python Style Guide</a>，这里就不过分拾人牙慧了。</p>
 <h3 id="2-none-的判断">2. None 的判断</h3>
 <p>判断一个变量是否为空，请使用 <code>if foo is None</code> (或者 <code>if foo is not None</code> ). 避免使用 <code>==</code> 判断。</p>
 <p>为什么这里要用 <code>is</code> 呢？下面是 <em>Fluent Python</em> 一书中的解释：</p>
@@ -762,10 +761,10 @@ CMD [&quot;python&quot;, &quot;calc.py&quot;]
 <p>The <code>==</code> operator compares the values of objects (the data they hold), while is compares their identities.</p>
 <p>We often care about values and not identities, so == appears more frequently than is in Python code.</p>
 <p>However, if you are comparing a variable to a singleton, then it makes sense to use is. By far, the most common case is checking whether a variable is bound to None. This is the recommended way to do it:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">x <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>
-</code></pre></div><p>And the proper way to write its negation is:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">x <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>
-</code></pre></div><p>The <code>is</code> operator is faster than <code>==</code>, because it cannot be overloaded, so Python does not have to find and invoke special methods to evaluate it, and computing is as simple as comparing two integer IDs. In contrast, <code>a == b</code> is syntactic sugar for <code>a.__eq__(b)</code>. The <code>__eq__</code> method inherited from object compares object IDs, so it produces the same result as is. But most built-in types override <code>__eq__</code> with more meaningful implementations that actually take into account the values of the object attributes. Equality may involve a lot of processing —- for example, when comparing large collections or deeply nested structures.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>x <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>
+</span></span></code></pre></div><p>And the proper way to write its negation is:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>x <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>
+</span></span></code></pre></div><p>The <code>is</code> operator is faster than <code>==</code>, because it cannot be overloaded, so Python does not have to find and invoke special methods to evaluate it, and computing is as simple as comparing two integer IDs. In contrast, <code>a == b</code> is syntactic sugar for <code>a.__eq__(b)</code>. The <code>__eq__</code> method inherited from object compares object IDs, so it produces the same result as is. But most built-in types override <code>__eq__</code> with more meaningful implementations that actually take into account the values of the object attributes. Equality may involve a lot of processing —- for example, when comparing large collections or deeply nested structures.</p>
 <p>摘自 <em>Fluent Python</em> CHAPTER 8</p>
 </blockquote>
 </details>
@@ -849,17 +848,17 @@ CMD [&quot;python&quot;, &quot;calc.py&quot;]
 <p>当然言归正传，我们还是得正经地学习一下单测的。单测可以确保每个函数每个模块都按照我们预期的方式运行。如果你不是在写完代码以后，才写单测代码，而是一边开发一边测试，那么你其实遵循了<strong>测试驱动开发</strong>(Test-Driven Development)的开发方式。这种开发方式的好处是，在开发的全生命周期内，我们都能确保代码正确运行。</p>
 <h3 id="unittest">unittest</h3>
 <p>unittest 是 Python 原生支持(natively supported)的单元测试库。在使用这个库的时候，我们按照模版写就好了。模版可以参考 <a href="https://docs.python.org/3/library/unittest.html">unittest 文档</a> 中的 basic example 一节。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># file name: test_upper.py</span>
-<span style="color:#f92672">import</span> unittest
-
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TestStringMethods</span>(unittest<span style="color:#f92672">.</span>TestCase):  <span style="color:#75715e"># 继承 unittest.TestCase 是固定的写法</span>
-
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_upper</span>(self):  <span style="color:#75715e"># 单测函数一般以test开头</span>
-        self<span style="color:#f92672">.</span>assertEqual(<span style="color:#e6db74">&#39;foo&#39;</span><span style="color:#f92672">.</span>upper(), <span style="color:#e6db74">&#39;FOO&#39;</span>)  <span style="color:#75715e"># 使用assert断言判断测试结果是否符合预期</span>
-
-<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
-    unittest<span style="color:#f92672">.</span>main()  <span style="color:#75715e"># 这个也是固定写法</span>
-</code></pre></div><p>在命令行运行 <code>python test_upper.py</code>，输出如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># file name: test_upper.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> unittest
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TestStringMethods</span>(unittest<span style="color:#f92672">.</span>TestCase):  <span style="color:#75715e"># 继承 unittest.TestCase 是固定的写法</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_upper</span>(self):  <span style="color:#75715e"># 单测函数一般以test开头</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>assertEqual(<span style="color:#e6db74">&#39;foo&#39;</span><span style="color:#f92672">.</span>upper(), <span style="color:#e6db74">&#39;FOO&#39;</span>)  <span style="color:#75715e"># 使用assert断言判断测试结果是否符合预期</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>    unittest<span style="color:#f92672">.</span>main()  <span style="color:#75715e"># 这个也是固定写法</span>
+</span></span></code></pre></div><p>在命令行运行 <code>python test_upper.py</code>，输出如下：</p>
 <p><img src="/img/unittest-res.png" alt=""></p>
 <p>在上面这个例子中 <code>assertEqual(a, b)</code> 用于判断 <code>a</code> 和 <code>b</code> 是否相等。像这样的 assert 方法还有很多，下面是它们的用法：</p>
 <table>
@@ -931,24 +930,24 @@ CMD [&quot;python&quot;, &quot;calc.py&quot;]
 <p>GitHub项目地址：<a href="https://github.com/luochang212/python-tips/tree/master/command_line" target="_blank">python-tips/command_line</a></p>
 <h3 id="1-命令行选项">1. 命令行选项</h3>
 <p>最常用的从命令行执行 Python 的方法是，在 Terminal 中进入脚本所在的工作路径下，执行：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ python srcipt.py  <span style="color:#75715e"># script.py 可以换成你的 Python 文件</span>
-</code></pre></div><p>除了这种运行方法，Python 还提供 <code>-c</code> 和 <code>-m</code> 两个接口选项(interface options)。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ python srcipt.py  <span style="color:#75715e"># script.py 可以换成你的 Python 文件</span>
+</span></span></code></pre></div><p>除了这种运行方法，Python 还提供 <code>-c</code> 和 <code>-m</code> 两个接口选项(interface options)。</p>
 <p><strong><code>-c &lt;command&gt;</code></strong></p>
 <p><code>-c</code> 选项后接 Python 代码，可在命令行直接执行。行前空格的规和脚本的规则相同。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 例一</span>
-
-python -c <span style="color:#e6db74">&#39;
-</span><span style="color:#e6db74">print(&#34;hello&#34;)
-</span><span style="color:#e6db74">print(&#34;world&#34;)&#39;</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 例二</span>
-
-python -c <span style="color:#e6db74">&#39;
-</span><span style="color:#e6db74">for i in range(3):
-</span><span style="color:#e6db74">    print(i)&#39;</span>
-</code></pre></div><p><strong><code>-m &lt;module-name&gt;</code></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 例一</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>python -c <span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">print(&#34;hello&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">print(&#34;world&#34;)&#39;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 例二</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>python -c <span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">for i in range(3):
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    print(i)&#39;</span>
+</span></span></code></pre></div><p><strong><code>-m &lt;module-name&gt;</code></strong></p>
 <p><code>-m</code> 选项后接 Python 模块。该命令会在 <code>sys.path</code> 下搜索该模块，并将该模块作为 <code>__main__</code> 模块执行。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ python -m script  <span style="color:#75715e"># 将 script.py 作为模块执行</span>
-</code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ python -m script  <span style="color:#75715e"># 将 script.py 作为模块执行</span>
+</span></span></code></pre></div><blockquote>
 <p><strong>Note</strong>:</p>
 <ul>
 <li>关于原生命令行选项，可参考 <a href="https://docs.python.org/3/using/cmdline.html">Command line and environment</a></li>
@@ -959,73 +958,73 @@ python -c <span style="color:#e6db74">&#39;
 <p>Python 可以利用标准输入 <a href="https://docs.python.org/3/library/sys.html#sys.stdin">sys.stdin</a>，从命令行获取文本。</p>
 <h4 id="-使用-echo-从命令行获取输入">① 使用 <code>echo</code> 从命令行获取输入</h4>
 <p>在当前目录下新建一个 Python 文件 <code>read_text.py</code>。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># read_text.py</span>
-<span style="color:#f92672">import</span> sys
-
-<span style="color:#66d9ef">for</span> line <span style="color:#f92672">in</span> sys<span style="color:#f92672">.</span>stdin:
-    line <span style="color:#f92672">=</span> line<span style="color:#f92672">.</span>strip()
-    print(line <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;......ok&#39;</span>)
-</code></pre></div><p>在该目录下，执行命令：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ echo <span style="color:#e6db74">&#34;hello&#34;</span> | python read_text.py
-</code></pre></div><p>如命令行输出：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># read_text.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> line <span style="color:#f92672">in</span> sys<span style="color:#f92672">.</span>stdin:
+</span></span><span style="display:flex;"><span>    line <span style="color:#f92672">=</span> line<span style="color:#f92672">.</span>strip()
+</span></span><span style="display:flex;"><span>    print(line <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;......ok&#39;</span>)
+</span></span></code></pre></div><p>在该目录下，执行命令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ echo <span style="color:#e6db74">&#34;hello&#34;</span> | python read_text.py
+</span></span></code></pre></div><p>如命令行输出：</p>
 <p><img src="/img/command-line-execute-1.png" alt=""></p>
 <p>则说明我们已经成功地从命令行读取了字符串 <code>&quot;hello&quot;</code>。</p>
 <h4 id="-使用-cat-从指定文件获取输入">② 使用 <code>cat</code> 从指定文件获取输入</h4>
 <p>除使用 <code>echo</code> 外，我们还可以用 <code>cat</code> 指定文件，作为标准输入:</p>
 <p>新建一个文本文件 <code>info.txt</code>，在里面随便写点什么，比如：</p>
-<pre><code>hello
+<pre tabindex="0"><code>hello
 are you ok
 how are you
 i fine, thx
-that's great
+that&#39;s great
 </code></pre><p>在当前目录下，执行命令：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ cat info.txt | python read_text.py
-</code></pre></div><p>其输出是：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ cat info.txt | python read_text.py
+</span></span></code></pre></div><p>其输出是：</p>
 <p><img src="/img/command-line-execute-2.png" alt=""></p>
 <h4 id="-从其他-python-文件的输出流中获取输入">③ 从其他 Python 文件的输出流中获取输入</h4>
 <p>我们也可以从另一个 Python 文件的输出流中获取输入。</p>
 <p>首先，在当前目录下新建一个 Python 文件 <code>gen_text.py</code>。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># gen_text.py</span>
-<span style="color:#f92672">import</span> sys
-
-<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">3</span>):
-    print(<span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">.</span>join([<span style="color:#e6db74">&#34;This is line&#34;</span>, str(i)]))
-</code></pre></div><p>在当前目录下执行：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ python gen_text.py | python read_text.py
-</code></pre></div><p>获得的输出是：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># gen_text.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">3</span>):
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">.</span>join([<span style="color:#e6db74">&#34;This is line&#34;</span>, str(i)]))
+</span></span></code></pre></div><p>在当前目录下执行：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ python gen_text.py | python read_text.py
+</span></span></code></pre></div><p>获得的输出是：</p>
 <p><img src="/img/command-line-execute-3.png" alt=""></p>
 <p>Windows 用户参见 <a href="https://stackoverflow.com/questions/1450393/how-do-you-read-from-stdin/1450396#1450396">How do you read from stdin?</a></p>
 <h3 id="3-从命令行读入参数">3. 从命令行读入参数</h3>
 <p>Python 可以通过 <a href="https://docs.python.org/3/library/sys.html#sys.argv">sys.argv</a> 从命令行读入参数。</p>
 <p>在当前目录下新建 <code>get_argv.py</code>。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> sys
-
-print(sys<span style="color:#f92672">.</span>argv)
-</code></pre></div><p>在命令行执行下述代码，看看是否能获得预期的结果：</p>
-<pre><code>$ python get_argv.py
-# 输出是 ['get_argv.py']
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(sys<span style="color:#f92672">.</span>argv)
+</span></span></code></pre></div><p>在命令行执行下述代码，看看是否能获得预期的结果：</p>
+<pre tabindex="0"><code>$ python get_argv.py
+# 输出是 [&#39;get_argv.py&#39;]
 
 $ python get_argv.py hi nihao
-# 输出是 ['get_argv.py', 'hi', 'nihao']
+# 输出是 [&#39;get_argv.py&#39;, &#39;hi&#39;, &#39;nihao&#39;]
 </code></pre><h3 id="4-标准错误输出">4. 标准错误输出</h3>
 <p>Python 可以指定<strong>标准错误输出</strong> (<a href="https://docs.python.org/3/library/sys.html#sys.stderr">sys.stderr</a>) 的内容。</p>
 <h4 id="-将标准错误输出打印到命令行">① 将标准错误输出打印到命令行</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># gen_error.py</span>
-<span style="color:#f92672">import</span> sys
-
-<span style="color:#75715e"># 正常信息</span>
-print(<span style="color:#e6db74">&#39;NORMAL INFO&#39;</span>)
-
-<span style="color:#75715e"># 错误信息 Python2写法</span>
-print <span style="color:#f92672">&gt;&gt;</span> sys<span style="color:#f92672">.</span>stderr, <span style="color:#e6db74">&#39;ERROR INFO&#39;</span>
-
-<span style="color:#75715e"># 错误信息 Python3写法</span>
-print(<span style="color:#e6db74">&#39;ERROR INFO&#39;</span>, file<span style="color:#f92672">=</span>sys<span style="color:#f92672">.</span>stderr)
-</code></pre></div><p>直接将错误信息打印到命令行不会有什么特殊的提醒，看到的结果就和普通 <code>print</code> 函数一样。但是 Linux 能依次识别哪些是正常打印信息，哪些是错误信息。我们可以在 Linux 将这两类信息分别打入两个文件，详见下一节。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># gen_error.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 正常信息</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#39;NORMAL INFO&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 错误信息 Python2写法</span>
+</span></span><span style="display:flex;"><span>print <span style="color:#f92672">&gt;&gt;</span> sys<span style="color:#f92672">.</span>stderr, <span style="color:#e6db74">&#39;ERROR INFO&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 错误信息 Python3写法</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#39;ERROR INFO&#39;</span>, file<span style="color:#f92672">=</span>sys<span style="color:#f92672">.</span>stderr)
+</span></span></code></pre></div><p>直接将错误信息打印到命令行不会有什么特殊的提醒，看到的结果就和普通 <code>print</code> 函数一样。但是 Linux 能依次识别哪些是正常打印信息，哪些是错误信息。我们可以在 Linux 将这两类信息分别打入两个文件，详见下一节。</p>
 <h4 id="-将标准错误输出打印到日志">② 将标准错误输出打印到日志</h4>
 <p>因为我们在 Python 脚本中已经指定了哪些是正常信息，哪些是错误信息，因此 Linux 可以识别它们。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ python gen_error.py 1&gt;&gt; result.log 2&gt;&gt; error.log
-</code></pre></div><p>上述的代码通过 <code>1&gt;&gt;</code>（1可省略）将正常信息打印到日志 <code>result.log</code>；通过 <code>2&gt;&gt;</code> 将错误信息打印到日志 <code>error.log</code>。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ python gen_error.py 1&gt;&gt; result.log 2&gt;&gt; error.log
+</span></span></code></pre></div><p>上述的代码通过 <code>1&gt;&gt;</code>（1可省略）将正常信息打印到日志 <code>result.log</code>；通过 <code>2&gt;&gt;</code> 将错误信息打印到日志 <code>error.log</code>。</p>
 <blockquote>
 <p><strong>Note</strong>: 关于 Terminal 快捷键，Mac 用户可以看看 <a href="https://support.apple.com/en-gb/guide/terminal/trmlshtcts/mac">Keyboard shortcuts in Terminal on Mac</a>.</p>
 </blockquote>

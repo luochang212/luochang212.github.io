@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.84.1" />
+<meta name="generator" content="Hugo 0.118.2">
 
     
     
@@ -30,9 +30,8 @@
 <meta property="og:description" content="摩纳哥语音编辑器（Monaco Speech Editor）是一款适用于视障人群的在线代码编辑器。它在开源编辑器 Monaco Editor 的基础上，开发了专为视障者设计的语音辅助功能，包括鼠标悬浮提示，快捷键操作和代码阅读。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/monaco_speech_editor/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2019-08-22T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2019-08-22T00:00:00&#43;00:00" /><meta property="og:site_name" content="Title" />
-
+<meta property="article:published_time" content="2019-08-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-08-22T00:00:00+00:00" /><meta property="og:site_name" content="Title" />
 
 
     
@@ -302,7 +301,7 @@
       </div>
       
 <div class="copyright">
-  &copy; 2022 Chang Luo
+  &copy; 2023 Chang Luo
   
 </div>
 
@@ -726,16 +725,16 @@
 <p>文件系统是纯手撸的，没有采用任何框架。UI技术来自W3C的范例 <a href="https://www.w3schools.com/howto/howto_js_todolist.asp">to do list</a>（中国大陆无法访问），交互设计借鉴了 <a href="https://github.com/grame-cncm/fausteditorweb">fausteditorweb</a> 的文件系统。</p>
 <p><img src="/img/monaco-9.PNG" alt=""></p>
 <p>文件列表中的每个文件都以面向对象的方式存储。下面这段代码初始化了文件对象<code>Files</code>，以及用于存储该对象的数组<code>fileArray</code>。</p>
-<pre><code>    // 用面向对象的方法控制页面切换
+<pre tabindex="0"><code>    // 用面向对象的方法控制页面切换
     // 初始化变量
     var Files = {
-        fileId: &quot;&quot;,
-        fileName: &quot;&quot;,
-        isDelete: &quot;false&quot;,
-        isActive: &quot;&quot;,
+        fileId: &#34;&#34;,
+        fileName: &#34;&#34;,
+        isDelete: &#34;false&#34;,
+        isActive: &#34;&#34;,
         editor: null,
-        editorContent: &quot;&quot;,
-        editorLanguage: &quot;&quot;
+        editorContent: &#34;&#34;,
+        editorLanguage: &#34;&#34;
     };
 
     var fileArray = [];

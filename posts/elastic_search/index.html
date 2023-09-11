@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.84.1" />
+<meta name="generator" content="Hugo 0.118.2">
 
     
     
@@ -30,9 +30,8 @@
 <meta property="og:description" content="Elasticsearch 是一个开源的分布式全文搜索引擎。它建立在当前最先进有效的搜索引擎库 Lucene 之上。Elasticsearch 集成了 Lucene 的全文检索功能，并通过一套简单的 API 隐藏了 Lucene 的复杂性，使之简单易用。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/elastic_search/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2019-10-24T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2019-10-24T00:00:00&#43;00:00" /><meta property="og:site_name" content="Title" />
-
+<meta property="article:published_time" content="2019-10-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-10-24T00:00:00+00:00" /><meta property="og:site_name" content="Title" />
 
 
     
@@ -302,7 +301,7 @@
       </div>
       
 <div class="copyright">
-  &copy; 2022 Chang Luo
+  &copy; 2023 Chang Luo
   
 </div>
 
@@ -585,7 +584,7 @@
 <h3 id="请求">请求</h3>
 <p>一个个文档存在于 ES 中，如果我们想要查询、添加、删除、更新某个文档，那么我们就必须向 ES 发送请求。</p>
 <p>一个 Elasticsearch 请求由以下部件组成：</p>
-<pre><code>curl -X&lt;VERB&gt; '&lt;PROTOCOL&gt;://&lt;HOST&gt;:&lt;PORT&gt;/&lt;PATH&gt;?&lt;QUERY_STRING&gt;' -d '&lt;BODY&gt;'
+<pre tabindex="0"><code>curl -X&lt;VERB&gt; &#39;&lt;PROTOCOL&gt;://&lt;HOST&gt;:&lt;PORT&gt;/&lt;PATH&gt;?&lt;QUERY_STRING&gt;&#39; -d &#39;&lt;BODY&gt;&#39;
 </code></pre><table>
 <thead>
 <tr>
@@ -643,14 +642,14 @@ curl -XGET 'http://localhost:9200/website/blog/es'
 <p>打开 Terminal (MacOS) 或者 PowerShell (Windows)，将当前目录切换到放解压文件夹的目录，然后运行：</p>
 </li>
 </ol>
-<pre><code>cd elasticsearch-7.4.0
+<pre tabindex="0"><code>cd elasticsearch-7.4.0
 cd bin
 ./elasticsearch
 </code></pre><p>这将在当前 Terminal 窗口运行 ES。如果你不希望 ES 服务中止，请勿关闭窗口。</p>
 <ol start="4">
 <li>另外打开一个新的 Terminal 窗口，运行：</li>
 </ol>
-<pre><code>curl 'http://localhost:9200/?pretty'
+<pre tabindex="0"><code>curl &#39;http://localhost:9200/?pretty&#39;
 </code></pre><p>如果 ES 正常运行，终端将会返回一条包含集群信息的 JSON 值。</p>
 <blockquote>
 <p><strong>Note</strong>: 更多有关安装的信息，参见 <a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/running-elasticsearch.html">安装并运行 Elasticsearch</a> 和 <a href="https://opensource.com/article/19/7/installing-elasticsearch-macos">How to install Elasticsearch on MacOS</a>。</p>
@@ -666,21 +665,21 @@ cd bin
 <p>安装 <a href="https://pypi.org/project/elasticsearch/">Elasticsearch</a>。</p>
 </li>
 </ol>
-<pre><code>pip install elasticsearch
+<pre tabindex="0"><code>pip install elasticsearch
 </code></pre><ol start="3">
 <li>新建一个 <code>.py</code> 文件。</li>
 </ol>
-<pre><code>touch my_es.py
+<pre tabindex="0"><code>touch my_es.py
 </code></pre><ol start="4">
 <li>在你喜欢的 IDE 里打开它，输入以下内容，这将初始化一个名为 <code>es</code> 的客户端。</li>
 </ol>
-<pre><code># 初始化 ES 客户端
+<pre tabindex="0"><code># 初始化 ES 客户端
 import elasticsearch
 
 
 def init_es_client():
     es = elasticsearch.Elasticsearch(
-        hosts=&quot;[YOUR-HOST-NAME]&quot;, http_auth=(&quot;[YOUR-ACCOUNT]&quot;, &quot;[YOUR-PASSWORD]&quot;)
+        hosts=&#34;[YOUR-HOST-NAME]&#34;, http_auth=(&#34;[YOUR-ACCOUNT]&#34;, &#34;[YOUR-PASSWORD]&#34;)
     )
 
     return es
@@ -689,21 +688,21 @@ es = init_es_client()
 </code></pre><ol start="5">
 <li>为测试客户端是否搭建成功，可以 <code>print</code> 一下客户端信息。在前文代码之后加上：</li>
 </ol>
-<pre><code>print(es.info())
+<pre tabindex="0"><code>print(es.info())
 </code></pre><p>运行 <code>my_es.py</code>，如果收到一条包含 <code>name</code>, <code>cluster_name</code> 等字段的 JSON 返回值，那么恭喜你已经搭建成功了。</p>
 <h3 id="客户端请求">客户端请求</h3>
 <p>搭完客户端，我们就可以向 ES 发送请求了。<!--一个请求常常被写成一个函数。-->下面这个函数就是一个查询请求。其中 <code>body</code> 里的内容是请求体，它用 DSL 语法写成。</p>
-<pre><code>def search(es_client, start, end):
-    result = es_client.search(index=&quot;[YOUR-INDEX]&quot;, body={
-        &quot;query&quot;: {
-            &quot;bool&quot;: {
-                &quot;must&quot;:[
-                    { &quot;range&quot;: { &quot;[YOUR-DATE]&quot;:{ &quot;gte&quot;: start, &quot;lte&quot;: end }}}, 
+<pre tabindex="0"><code>def search(es_client, start, end):
+    result = es_client.search(index=&#34;[YOUR-INDEX]&#34;, body={
+        &#34;query&#34;: {
+            &#34;bool&#34;: {
+                &#34;must&#34;:[
+                    { &#34;range&#34;: { &#34;[YOUR-DATE]&#34;:{ &#34;gte&#34;: start, &#34;lte&#34;: end }}}, 
                     {
-                        &quot;bool&quot;: {
-                            &quot;should&quot;: [
-                                { &quot;match_phrase&quot;: { &quot;[YOUR-CONTENT]&quot;: &quot;[KEYWORD-1]&quot;}},
-                                { &quot;match_phrase&quot;: { &quot;[YOUR-CONTENT]&quot;: &quot;[KEYWORD-2]&quot;}}
+                        &#34;bool&#34;: {
+                            &#34;should&#34;: [
+                                { &#34;match_phrase&#34;: { &#34;[YOUR-CONTENT]&#34;: &#34;[KEYWORD-1]&#34;}},
+                                { &#34;match_phrase&#34;: { &#34;[YOUR-CONTENT]&#34;: &#34;[KEYWORD-2]&#34;}}
                             ]
                         }
                     }

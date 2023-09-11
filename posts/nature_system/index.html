@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.84.1" />
+<meta name="generator" content="Hugo 0.118.2">
 
     
     
@@ -30,9 +30,8 @@
 <meta property="og:description" content="本文介绍如何用 Agent-based model 的方法，对一个包含狼、麋鹿、草三种生物的生态系统建模。本模型的优势在于模拟了狼的集群行为，即模拟了在头狼带领下狼群的捕食行为。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/nature_system/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2019-06-12T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2019-06-12T00:00:00&#43;00:00" /><meta property="og:site_name" content="Title" />
-
+<meta property="article:published_time" content="2019-06-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-06-12T00:00:00+00:00" /><meta property="og:site_name" content="Title" />
 
 
     
@@ -302,7 +301,7 @@
       </div>
       
 <div class="copyright">
-  &copy; 2022 Chang Luo
+  &copy; 2023 Chang Luo
   
 </div>
 
@@ -641,7 +640,7 @@
 <p>无论是狼还是麋鹿，食物水平都会随着时间流逝而下降。</p>
 <p>对于麋鹿，每次迭代中如果没有吃到食物，它的food属性值将会减1。吃到食物时，food属性值则会加2，但减去随时间流逝下降的1点食物值，在数值变动上实际只增加了1。</p>
 <p>对于狼，它捕食麋鹿为生。在本模型中，狼的速度值与搜索范围值相等。如果一只麋鹿出现在狼的搜索范围内，则麋鹿和狼的距离越近，越容易被判定为被狼捕获。代码实现如下：</p>
-<pre><code>		pk = 1 - (d/spd)
+<pre tabindex="0"><code>		pk = 1 - (d/spd)
 		if pk &gt; rand
 			{麋鹿死，狼食物加1，狼移动到麋鹿原先的位置}
 		end
@@ -654,7 +653,7 @@
 <p>只要保证几个核心的变量和全局变量（比如agent和MESSAGES）在每轮迭代中正常更新，那么即使其他部分有错，依旧能保证模型的正常运行。</p>
 <h3 id="代码实现">代码实现</h3>
 <p>1.下面这段代码用于维护各生物的属性数据，每轮迭代前都要执行。</p>
-<pre><code>function [agent] = initial_iteration(agent,nf)
+<pre tabindex="0"><code>function [agent] = initial_iteration(agent,nf)
 % This a new function to initial the property at the beginning of each iteration
 
 global MESSAGES PARAM
@@ -663,7 +662,7 @@ global MESSAGES PARAM
 %eaten is the number of moose be eaten at each iteration, this
 %number will be useful to decision making process of migrate.
 for p = 1:length(agent)
-    if isa(agent{p},'alphaWolf')
+    if isa(agent{p},&#39;alphaWolf&#39;)
         agent{p}.eaten = 0;
     end
 end
@@ -671,7 +670,7 @@ end
 %% initial wolf.migration at the beginning of each iteration
 % wolf.migration
 for q = 1:length(agent)
-    if isa(agent{q},'wolf')
+    if isa(agent{q},&#39;wolf&#39;)
         agent{q}.migration = 0;
     end
 end
@@ -679,10 +678,10 @@ end
 %% update the alphaWolf.population of wolf pack for each iteration
 for m = 1:length(agent)
     currAgent = agent{m};
-    if isa(currAgent,'alphaWolf')
+    if isa(currAgent,&#39;alphaWolf&#39;)
         count = 0;
         for n = 1:length(agent)
-            if isa(agent{n},'wolf') &amp; agent{n}.packNo == m &amp; MESSAGES.atype(n) ~= 0
+            if isa(agent{n},&#39;wolf&#39;) &amp; agent{n}.packNo == m &amp; MESSAGES.atype(n) ~= 0
                 count = count + 1;
             end
         end
@@ -694,7 +693,7 @@ end
 %% updatet alphaWolf.range at the beginning of each iteration
 for m = 1:length(agent)
     currAgent = agent{m};
-    if isa(currAgent,'alphaWolf')
+    if isa(currAgent,&#39;alphaWolf&#39;)
         if currAgent.population &lt;= PARAM.F_SIZE
             nrange = ceil(PARAM.F_SPD/2 * (1 + nf/5));
         else
@@ -705,49 +704,49 @@ for m = 1:length(agent)
     end
 end
 </code></pre><p>从这段代码中可以看到一些整个模型都在反复使用的语句。比如：</p>
-<pre><code>if isa(agent{p},'alphaWolf')
+<pre tabindex="0"><code>if isa(agent{p},&#39;alphaWolf&#39;)
 </code></pre><p>对于<code>$isa()$</code>，MATLAB帮助文档是这么解释的：tf=isa(obj, ClassName) returns true if obj is an instance of the class specified by ClassName, and false otherwise. isa also returns true if obj is an instance of a class that is derived from ClassName.</p>
 <p>也就是说，<code>$isa()$</code>用于判断一个变量是否是一个类的实例，或是否是一个类的子类的实例。</p>
 <p>还有一个常用的判断是：</p>
-<pre><code>if agent{n}.packNo == m
+<pre tabindex="0"><code>if agent{n}.packNo == m
 </code></pre><!--鉴于packNo表示一只狼所属狼群的头狼的索引值，而m正是某只头狼的索引。-->这个语句判断了一只狼是否是索引为m的头狼所在狼群中的狼。
 <p>2.下面这段代码出自从agent_solve中。</p>
-<pre><code>for cn=n:-1:1
+<pre tabindex="0"><code>for cn=n:-1:1
     curr=agent{cn};
-    if isa(curr,'moose')|isa(curr,'wolf')|isa(curr,'alphaWolf')
+    if isa(curr,&#39;moose&#39;)|isa(curr,&#39;wolf&#39;)|isa(curr,&#39;alphaWolf&#39;)
         %% eat rules
         % moose
-        if isa(curr,'moose')
+        if isa(curr,&#39;moose&#39;)
             [curr,moose_eaten]=eat(curr,cn);
         end
         % wolf
-        if isa(curr,'wolf')        %alphaWolf can not chase prey
+        if isa(curr,&#39;wolf&#39;)        %alphaWolf can not chase prey
             [curr,agent]=eat(curr,cn,agent);  %eating rules (mooses eat food, wolves eat mooses)
         end
-        if isa(curr,'alphaWolf')
+        if isa(curr,&#39;alphaWolf&#39;)
             eaten=curr.eaten;
         end
         
         %% migrate rule
         % if population is large, wolf pack will be active
         flag = 0;
-        if isa(curr,'alphaWolf') &amp; curr.population &gt; PARAM.F_SIZE &amp; eaten &lt; ceil(curr.population * 1/2)
+        if isa(curr,&#39;alphaWolf&#39;) &amp; curr.population &gt; PARAM.F_SIZE &amp; eaten &lt; ceil(curr.population * 1/2)
             [curr,agent_migrate]=migrate(curr,cn,agent,eaten);              % if no food was eaten, then migrate in search of some
             agent = agent_migrate;                      %up date cell array with modified agent data structure
             flag =1;
             % if population is small, wolf pack will not move so frequently
-        elseif isa(curr,'alphaWolf') &amp; curr.population &lt;= PARAM.F_SIZE &amp; eaten &lt; ceil(curr.population * 1/4)
+        elseif isa(curr,&#39;alphaWolf&#39;) &amp; curr.population &lt;= PARAM.F_SIZE &amp; eaten &lt; ceil(curr.population * 1/4)
             [curr,agent_migrate]=migrate(curr,cn,agent,eaten);              % if no food was eaten, then migrate in search of some
             agent = agent_migrate;                      %up date cell array with modified agent data structure
             flag =1;
-        elseif isa(curr,'moose') &amp; moose_eaten==0
+        elseif isa(curr,&#39;moose&#39;) &amp; moose_eaten==0
             curr=migrate(curr,cn);
         end
         % if the alphawolf did not migrate,flag is 0
         % in this case,wolf should move randomly to find the food
-        if isa(curr,'alphaWolf') &amp; flag == 0
+        if isa(curr,&#39;alphaWolf&#39;) &amp; flag == 0
             for p = 1:length(agent)
-                if isa(agent{p},'wolf') &amp; agent{p}.packNo == cn &amp; MESSAGES.atype(p) ~= 0 &amp; agent{p}.migration == 0
+                if isa(agent{p},&#39;wolf&#39;) &amp; agent{p}.packNo == cn &amp; MESSAGES.atype(p) ~= 0 &amp; agent{p}.migration == 0
                     [agent{p}] = migrate(agent{p},p,agent);
                 end
             end
@@ -756,19 +755,19 @@ end
         %% death rule
         % wolf (from old age)
         % moose (from starvation or old age)
-        if isa(curr,'moose')|isa(curr,'wolf')
+        if isa(curr,&#39;moose&#39;)|isa(curr,&#39;wolf&#39;)
             [curr,klld]=die(curr,cn);
         end
         
         % alphaWolf (from old age) and wolf pack (from starvation)
         % PS: alphaWolf represent for the whole wolf pack here
-        if isa(curr,'alphaWolf')
+        if isa(curr,&#39;alphaWolf&#39;)
             [curr,klld,agent]=die(curr,cn,agent);
         end
         
         %% breed rule
         % moose
-        if isa(curr,'moose')&amp;klld==0
+        if isa(curr,&#39;moose&#39;)&amp;klld==0
             new=[];
             [curr,new]=breed(curr,cn);			%breeding rule
             if ~isempty(new)					%if current agent has bred during this iteration
@@ -779,7 +778,7 @@ end
         
         % alphaWolf
         % only alphaWolf can breed, wolf can not
-        if isa(curr,'alphaWolf')&amp;klld==0
+        if isa(curr,&#39;alphaWolf&#39;)&amp;klld==0
             new=[];
             [curr,new]=breed(curr,cn);			%breeding rule
             if ~isempty(new)					%if current agent has bred during this iteration
@@ -794,7 +793,7 @@ end
 end
 </code></pre><p>由于一些函数的输出是另一些函数的输入，因此各个函数的调用顺序需要谨慎调整。本模型按照eat, migrate, die, breed的顺序依次调用上述函数。</p>
 <p>基于同样的原因，上面这段代码中第一句for循环，写成了倒序形式：</p>
-<pre><code>for cn=n:-1:1
+<pre tabindex="0"><code>for cn=n:-1:1
 </code></pre><!--我的贡献是基于老师的模型，为狼群写了一个集群行为。在@文件内，对每个生物的属性和行为的具体调整，在agent_solve里都可见端倪。可以以此为索引，看看每个生物的行为模式。-->
 <h3 id="运行结果">运行结果</h3>
 <p>在命令窗口中输入<code>ecolab(30 ,100, 5, 4, 60, false, false)</code>，可得到两幅图。</p>
