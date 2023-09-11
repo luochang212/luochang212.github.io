@@ -6,25 +6,7 @@
     <description>Recent content in Tags on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 30 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>java</title>
-      <link>http://luochang212.github.io/tags/java/</link>
-      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/tags/java/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>tutorial</title>
-      <link>http://luochang212.github.io/tags/tutorial/</link>
-      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/tags/tutorial/</guid>
-      <description></description>
-    </item>
-    
+    <lastBuildDate>Sun, 25 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>sql</title>
       <link>http://luochang212.github.io/tags/sql/</link>
@@ -35,11 +17,11 @@
     </item>
     
     <item>
-      <title>NLP</title>
-      <link>http://luochang212.github.io/tags/nlp/</link>
-      <pubDate>Mon, 29 Aug 2022 00:00:00 +0000</pubDate>
+      <title>tutorial</title>
+      <link>http://luochang212.github.io/tags/tutorial/</link>
+      <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/tags/nlp/</guid>
+      <guid>http://luochang212.github.io/tags/tutorial/</guid>
       <description></description>
     </item>
     
