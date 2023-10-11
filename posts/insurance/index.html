@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://luochang212.github.io/posts/insurance/">
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.118.2">
+
+    
+    
+    
+
+<title>简单分析理财型保险 • Chang Luo</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="简单分析理财型保险"/>
+<meta name="twitter:description" content="对一款保险做了最粗浅的分析，顺便介绍 NPV 和 IRR"/>
+
+<meta property="og:title" content="简单分析理财型保险" />
+<meta property="og:description" content="对一款保险做了最粗浅的分析，顺便介绍 NPV 和 IRR" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://luochang212.github.io/posts/insurance/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-10-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-10-10T00:00:00+00:00" /><meta property="og:site_name" content="Title" />
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+
+<link rel="stylesheet" href="/scss/hugo-toc.0873834b0f2e9fdc9e1d0301e8ebce21fc10383882a41e9373f29b90e85a9987.css" integrity="sha256-CHODSw8un9yeHQMB6OvOIfwQODiCpB6Tc/KbkOhamYc=">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    
+
+</head>
+
+
+    <body class=" ">
+    <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://upcdn.b0.upaiyun.com/libs/jquery/jquery-1.9.0.min.js"></script>
+
+  <style>
+    body {
+      transition: background-color .5s;
+    }
+
+    #overlay {
+      position: fixed;
+      display: none;
+      width: calc(100vw - 580px);
+      height: 100%;
+      top: 0;
+      left: 0;
+       
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      right: 0;
+      background-color: #FFF;
+       
+      overflow-x: hidden;
+      transition: 0.5s;
+       
+       
+    }
+
+    #main {
+      transition: margin-left .5s;
+       
+      padding: 16px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      overflow: hidden;
+    }
+
+     
+    .tab {
+      overflow: hidden;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+    }
+
+     
+    .tab button {
+      background-color: inherit;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      transition: 0.3s;
+      font-size: 17px;
+    }
+
+     
+    .tab button:hover {
+      background-color: #ddd;
+    }
+
+     
+    .tab button.active {
+      background-color: #ccc;
+    }
+
+     
+    .tabcontent {
+      display: none;
+      padding: 12px 12px;
+      margin: 0;
+      border: 1px solid #ccc;
+      border-top: none;
+    }
+
+    .dropbtn {
+      background-color: #3498DB;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+    }
+
+    .dropup {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropup-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      bottom: 50px;
+      z-index: 1;
+    }
+
+    .dropup-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropup-content a:hover {
+      background-color: #ccc
+    }
+
+    .dropup:hover .dropup-content {
+      display: block;
+    }
+
+    .dropup:hover .dropbtn {
+      background-color: #2980B9;
+    }
+
+    #video2,
+    #video3 {
+      display: none;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  
+  <div class="sidebar">
+    <div class="container ">
+      <div class="sidebar-about">
+        <span class="site__title">
+          <a href="http://luochang212.github.io">Chang Luo</a>
+        </span>
+        
+        
+        
+        <div class="author-image">
+          <a href="#" class="load-iframe" onclick="openNav()"><img src="http://luochang212.github.io/images/profile.png" id="author-iamge"
+              alt="Author Image" class="img--circle img--headshot element--center"></a>
+        </div>
+        
+        <p class="site__description">
+          
+        </p>
+      </div>
+      <div class="collapsible-menu">
+        <input type="checkbox" id="menuToggle">
+        <label for="menuToggle">Chang Luo</label>
+        <div class="menu-content">
+          <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/portfolio/">
+						<span>Projects</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+          <section class="social">
+	
+	<a href="https://twitter.com/MinosPalace" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	<a href="https://github.com/luochang212" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	<a href="https://instagram.com/suphenshin" rel="me"><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></a>
+	
+	
+	<a href="https://linkedin.com/in/bupt-luochang" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</section>
+
+        </div>
+      </div>
+      
+<div class="copyright">
+  &copy; 2023 Chang Luo
+  
+</div>
+
+
+
+    </div>
+  </div>
+
+  
+  
+
+  <div id="overlay" onclick="off()"></div>
+
+  <div id="mySidenav" class="sidenav">
+
+    <div id="main">
+      <div class="tab">
+        <button id="default-tab" class="tablinks" onclick="openItem(event, 'Resources')">Resources</button>
+        <button class="tablinks" onclick="openItem(event, 'netease-player')">Music</button>
+        <button class="tablinks" onclick="openItem(event, 'Video-player')">Video</button>
+        <button class="tablinks" onclick="openItem(event, 'gallery')">Gallery</button>
+        <button class="tablinks" onclick="openItem(event, 'gadget')">Gadget</button>
+      </div>
+
+      <div id="Resources" class="tabcontent">
+        <iframe src="about:blank" data-src="/resources/" frameborder="0" height="560" width="100%" marginheight="0"
+          marginwidth="0" scrolling="yes"></iframe>
+      </div>
+
+      <div id="netease-player" class="tabcontent">
+        <iframe src="about:blank" data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
+          frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=450></iframe>
+      </div>
+
+      <div id="Video-player" class="tabcontent">
+
+        <div id="video1">
+          <iframe src="about:blank"
+            data-src="//player.bilibili.com/player.html?aid=455023331&bvid=BV1X541167RE&cid=170542054&page=1&high_quality=1&danmaku=0"
+            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+        <div id="video2">
+          <iframe src="about:blank"
+            data-src="//player.bilibili.com/player.html?aid=65042716&bvid=BV1M4411r7yu&cid=112895137&page=1&high_quality=1&high_quality=1&danmaku=0"
+            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+        <div id="video3">
+          <iframe src="about:blank"
+            data-src="//player.bilibili.com/player.html?aid=20535616&bvid=BV1zW411W75L&cid=33582726&page=1//player.bilibili.com/player.html?aid=15159845&cid=24679968&page=1&high_quality=1&danmaku=0"
+            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+
+        
+
+        
+
+        <br>
+        <div class="dropup">
+          <button class="dropbtn">更多视频</button>
+          <div class="dropup-content">
+            <a onclick="link1()">1</a>
+            <a onclick="link2()">2</a>
+            <a onclick="link3()">3</a>
+          </div>
+        </div>
+      </div>
+
+      <div id="gallery" class="tabcontent">
+        <iframe src="about:blank" data-src="/gadget/gallery.html#two" frameborder="0" height="560" width="100%"
+          scrolling="yes"></iframe>
+      </div>
+
+      <div id="gadget" class="tabcontent">
+        <iframe src="about:blank" data-src="/gadget/" frameborder="0" height="560" width="100%"
+          scrolling="yes"></iframe>
+      </div>
+
+    </div>
+  </div>
+
+  
+  <script>
+    'use strict'
+
+    function openNav() {
+      on();
+      document.getElementById("mySidenav").style.width = "580px";
+      document.body.style.backgroundColor = "rgba(0,0,0,0.5)";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.body.style.backgroundColor = "white";
+    }
+
+    function on() {
+      document.getElementById("overlay").style.display = "block";
+    }
+
+    function off() {
+      closeNav();
+      document.getElementById("overlay").style.display = "none";
+    }
+
+    
+    document.getElementById('default-tab').click();
+
+    function openItem(evt, itemName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(itemName).style.display = "block";
+      evt.currentTarget.className += "active";
+    }
+
+    function link1() {
+      document.getElementById("video1").style.display = "block";
+      document.getElementById("video2").style.display = "none";
+      document.getElementById("video3").style.display = "none";
+    }
+
+    function link2() {
+      document.getElementById("video1").style.display = "none";
+      document.getElementById("video2").style.display = "block";
+      document.getElementById("video3").style.display = "none";
+    }
+
+    function link3() {
+      document.getElementById("video1").style.display = "none";
+      document.getElementById("video2").style.display = "none";
+      document.getElementById("video3").style.display = "block";
+    }
+
+     
+    var flag = 0;
+
+     
+    $(".load-iframe").click(function () {
+      if (flag < 1) {
+        $("iframe").each(function () {
+          $(this).attr("src", $(this).data("src"));
+        });
+        flag = flag + 1;
+      }
+    });
+  </script>
+
+</body>
+
+
+
+        <div class="content container">
+            
+    <style>
+  .my-emoji {
+    height: 25px;
+    display: inline-block;
+    margin: 0;
+    vertical-align: text-bottom;
+  }
+</style>
+
+
+
+<article>
+  <header>
+    <h1>简单分析理财型保险</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Oct 10, 2023
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/analysis">ANALYSIS</a>
+              •
+          
+              <a class="badge badge-category" href="/categories/insurance">INSURANCE</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/python">python</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 3 min read
+</div>
+
+
+  </header>
+  
+  
+  
+  <div class="toc-wrapper">
+    <input type="checkbox" id="tocToggle">
+    <label for="tocToggle">目录</label>
+    
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一折现率和净现值npv">一、折现率和净现值NPV</a>
+      <ul>
+        <li><a href="#11-什么是折现率">1.1 什么是折现率</a></li>
+        <li><a href="#12-什么是净现值">1.2 什么是净现值</a></li>
+        <li><a href="#13-成本-收益曲线">1.3 成本-收益曲线</a></li>
+        <li><a href="#14-不同折现率下的npv曲线">1.4 不同折现率下的NPV曲线</a></li>
+        <li><a href="#15-一万元现值未来-60-年间对应的金额">1.5 一万元现值未来 60 年间对应的金额</a></li>
+      </ul>
+    </li>
+    <li><a href="#二内部收益率irr">二、内部收益率IRR</a></li>
+    <li><a href="#三我的想法">三、我的想法</a></li>
+  </ul>
+</nav>
+    
+  </div>
+  
+  
+  <div class="post">
+    <blockquote>
+<p>说起理财型保险，一般会想到增额寿险、年金险等。这些保险玩得花，水也很深自不必说。前段时间一位朋友打算买重疾险，销售给的方案是带返还的，我才知道重疾险也可以带理财属性。</p>
+</blockquote>
+<p>这样的保险值不值得买呢？虽然“保险价值”人各不同，但“理财价值”是可以客观衡量的。我们可以把理财部分剥离出来分析。</p>
+<p>保险顾问给出的方案是这样的：</p>
+<ul>
+<li><strong>费用</strong>：保费分 30 年支付，每年支付 9000 元，共计 27 万</li>
+<li><strong>权益</strong>：终生享受重疾险；身故后保险公司一次性返还 50 万</li>
+</ul>
+<p>乍一看这个方案非常划算，只要支付 <code>27万</code>，身故时就能获得 <code>50万</code>，还免费得一个重疾险。但考虑到至少 30 年的资金成本，还是要计算一下才知道值不值。</p>
+<h2 id="一折现率和净现值npv">一、折现率和净现值NPV</h2>
+<p>假设一个特别完美的情况，我们身体健康 or 医保够用，总之没用到重疾险一分钱。这时把它退化成一款理财产品，它的损益如下：</p>
+<table>
+<thead>
+<tr>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>&hellip;</th>
+<th>29</th>
+<th>30+（以身故时间为准）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-9,000</td>
+<td>-9,000</td>
+<td>-9,000</td>
+<td>-9,000</td>
+<td>&hellip;</td>
+<td>-9,000</td>
+<td>+500,000</td>
+</tr>
+</tbody>
+</table>
+<p>为了衡量资金的时间成本，我们引入净现值的概念。为了理解净现值，要先解折现率。</p>
+<h3 id="11-什么是折现率">1.1 什么是折现率</h3>
+<p><a href="https://en.wikipedia.org/wiki/Discount_rate">折现率</a> (Discount rate) 是把&quot;未来的钱&quot;折算成&quot;现在的钱&quot;的折扣率。如果你认为一年后的 107 元与当下的 100 元等值，那么折现率就是 7%. 用公式表达就是：</p>
+<p><code>$一年后107元的现值 = \frac{107}{1 + 折现率} = \frac{107}{1 + 7\%} = 100$</code></p>
+<h3 id="12-什么是净现值">1.2 什么是净现值</h3>
+<p><a href="https://en.wikipedia.org/wiki/Net_present_value">净现值(NPV)</a> (Net present value) 指未来现金流入现值与未来现金流出现值的差额。</p>
+<p>按 7% 的折现率，将未来的损益折算成现值后加和，可得该产品的 NPV 为：</p>
+<p><code>$NPV = -9000 -9000*(1/1.07) -9000*(1/1.07)^{2} + ... + -9000*(1/1.07)^{29} + 500000*(1/1.07)^{t}$</code></p>
+<p>其中 <code>t</code> 为身故时间，单位为年，值域 <code>$[30, +\infty]$</code>。由此公式，可写出对应的代码：</p>
+<pre tabindex="0"><code># 成本、收益、NPV 的通用计算函数
+def calc_npv(discount_rate=0.02, t=30):
+    &#34;&#34;&#34;返回换算成现值的成本、换算成现值的收益和净现值
+    &#34;&#34;&#34;
+    cost = sum([9000/((1+discount_rate)**i) for i in range(30)])
+    profit = 500000/((1+discount_rate)**t)
+    return cost, profit, profit - cost
+</code></pre><h3 id="13-成本-收益曲线">1.3 成本-收益曲线</h3>
+<p>我们取最保守的 2% 折现率，来做成本现值 (cost) 和收益现值 (profit) 的曲线。如图，cost 和 profit 是关于身故时间（横轴）的函数。</p>
+<p>成本 cost 只和折现率有关，与身故时间无关，因此在图中是<strong>一条横线</strong>。随着身故时间向后推移，50万的折现值越来越低。如图所示，如果身故时间晚于交保后 45 年，NPV 就会转向负值 (<code>NPV = profit - cost</code>)。</p>
+<p>当然，这是完全没有考虑保险价值的结果，所以实际收益转负的身故时间还要再向后推。但不要忘了，我们采用的是 2% 的超保守折现率，如果换成更真实的折现率又会怎么样呢？</p>
+<p><img src="/img/cost-profit.png" alt=""></p>
+<pre tabindex="0"><code># 成本/收益曲线
+import matplotlib.pyplot as plt
+
+discount_rate = 0.02
+npv = [calc_npv(discount_rate, t) for t in range(30, 60)]
+x_list = list(range(30, 60))
+cost_list = [e[0] for e in npv]
+profit_list = [e[1] for e in npv]
+
+plt.plot(x_list, cost_list, label=&#39;cost&#39;)
+plt.plot(x_list, profit_list, label=&#39;profit&#39;, marker=&#39;.&#39;)
+plt.title(&#39;cost-profit curves&#39;)
+plt.xlabel(&#39;(years)&#39;)
+plt.ylabel(&#39;(yuan)&#39;)
+plt.legend()
+plt.show()
+</code></pre><blockquote>
+<p>为什么说 2% 的折现率保守：</p>
+<ul>
+<li><a href="https://baijiahao.baidu.com/s?id=1759324255223654880">中国青年报：过去十年CPI涨幅是2%</a></li>
+<li>2023年货币基金年化收益率一般是2%，大额存单可达3%</li>
+<li>30+年将跨越好几个经济周期，如遭遇大通胀周期，2%难以抵消通胀</li>
+</ul>
+</blockquote>
+<h3 id="14-不同折现率下的npv曲线">1.4 不同折现率下的NPV曲线</h3>
+<p>为了看不同折现率下的损益情况，依次取 <code>2%, 3%, 5%, 7%</code> 的折现率，做出净现值（NPV，单位：元）与身故时间（横轴）的函数图像。</p>
+<p>从盈亏平衡看，如果取较保守的 3%，将在第 35 年（交满全部期数后 5 年）抵达盈亏平衡点；如果取建议值 7%，哪怕第 30 年（交满全部期数后 1 年），也将面临 5.3 万的亏损。从预期寿命看，按 7% 折现率，如果活到平均寿命 80 岁，将亏损 10.2 万；按 3% 折现率，将亏损 6.7 万。可以说是死得越早亏得越少了。</p>
+<p>注意，上面提及的金额都是换算后的现值，并且是在完全不考虑“保险价值”的情况下做出的计算，保险本身也有相当大的价值。</p>
+<p>经过刚刚的计算，我们知道针对上述方案，保险公司如果能将人均赔付费用控制在现值 6 万元以下，就可以稳赚不赔；对于用户，如果愿意用 6-10万 元现值换终身重疾险保障，并留给受益人税前 50 万的遗产，那么这可能是一款适合你的产品。</p>
+<p><img src="/img/npv.png" alt=""></p>
+<pre tabindex="0"><code># 不同折现率，对应的净现值曲线
+x_list = list(range(30, 60))
+get_npv_list = lambda e: [calc_npv(e, t)[2] for t in range(30, 60)]
+dr_02 = get_npv_list(0.02)
+dr_03 = get_npv_list(0.03)
+dr_05 = get_npv_list(0.05)
+dr_07 = get_npv_list(0.07)
+
+plt.plot(x_list, dr_02, label=&#39;2%&#39;)
+plt.plot(x_list, dr_03, label=&#39;3%&#39;)
+plt.plot(x_list, dr_05, label=&#39;5%&#39;)
+plt.plot(x_list, dr_07, label=&#39;7%&#39;)
+plt.title(&#39;NPV curves&#39;)
+plt.xlabel(&#39;(years)&#39;)
+plt.ylabel(&#39;(yuan)&#39;)
+plt.legend()
+plt.show()
+</code></pre><blockquote>
+<p><strong>Q</strong>: 本文为什么用 7% 的折现率作为参考值？</p>
+<p><strong>A</strong>: 折现率因人而异，一般考虑通胀、资金机会成本和延迟消费等因素。理论上你把一笔钱用于投资，并且这笔钱最好的年化收益是 5%，那么它的折现率就是 5%</p>
+<p>本文取 7% 折现率的说法来自 <a href="https://en.wikipedia.org/wiki/Social_discount_rate">维基百科</a>。原文如下：</p>
+<p>“The US government uses a variety of discount rates but <strong>something around 7%</strong> is what the US Office of Management and Budget (OMB) recommends for a pretax rate of return on <strong>private investments</strong>. In the United Kingdom, HM Treasury fixes the social discount rate for the public sector at 3.5%.”</p>
+</blockquote>
+<h3 id="15-一万元现值未来-60-年间对应的金额">1.5 一万元现值未来 60 年间对应的金额</h3>
+<p>为了理解 1 万元在 60 年后意味着什么，做 60 年间其对应金额的图像。</p>
+<p>60 年后的 1 万元，按 2% 折现率是 3.2 万；按 3% 是 5.7 万；按 5% 是 17.8 万；按 7% 是 54.2 万。按你认为公允的折现率计算，然后扣除通胀，60 年后 1 万元的效用应该还是要高于现在的 1 万元的。</p>
+<p><img src="/img/1w-60-years.png" alt=""></p>
+<pre tabindex="0"><code># 一万元现值，60年后对应的金额
+x_list = list(range(60))
+get_future_list = lambda e: [10000*((1+e)**t) for t in range(60)]
+dr_02 = get_future_list(0.02)
+dr_03 = get_future_list(0.03)
+dr_05 = get_future_list(0.05)
+dr_07 = get_future_list(0.07)
+
+plt.plot(x_list, dr_02, label=&#39;2%&#39;)
+plt.plot(x_list, dr_03, label=&#39;3%&#39;)
+plt.plot(x_list, dr_05, label=&#39;5%&#39;)
+plt.plot(x_list, dr_07, label=&#39;7%&#39;)
+plt.title(&#39;10000 yuan after 60 years&#39;)
+plt.xlabel(&#39;(years)&#39;)
+plt.ylabel(&#39;(yuan)&#39;)
+plt.legend()
+plt.show()
+</code></pre><h2 id="二内部收益率irr">二、内部收益率IRR</h2>
+<p>内部收益率 (IRR) 是净现值（NPV）等于 0 时的折现率。根据定义，带入 NPV 公式写出如下代码：</p>
+<pre tabindex="0"><code>import numpy as np
+from scipy.optimize import fsolve
+
+def calc_root(t=50):
+    f = lambda e: 500000/((1+e)**t) - sum([9000/((1+e)**i) for i in range(30)])
+    return fsolve(f, 0)[0]
+
+root = calc_root()
+print(root)
+</code></pre><p>如投保后的第 50 年身故，内部收益率 IRR 为 0.017。IRR 越高对顾客越划算。</p>
+<h2 id="三我的想法">三、我的想法</h2>
+<p>首先声明，现实情况远比模型复杂。有些情况对客户有利，比如有未被记录的隐形疾病；有些情况对客户有害，比如保险公司乱收费，收取额外的运营费用。这些都是纸面计算无法覆盖的问题。并且市面上保险产品很多，情况各异难免挂一漏万。</p>
+<p>如果个人情况真的需要买保险，我建议购买没有理财噱头的产品。我认为，为了理财而高出的那些成本是不值得的。我列了一些风险项供你参考：</p>
+<ul>
+<li>履约成本：30年很长，期间存在个人经济情况恶化的风险，更高的保费意味着更高的履约成本</li>
+<li>经济周期的不确定性：如果遇到大通胀周期，就像2023年俄罗斯经历的那样，那一切都完了！</li>
+<li>资金的机会成本：资金的流动性是重要的，它不但能保障最低限度的生活，还给资金增殖以机会。生意人追求高周转、低库存就是这个道理。死资金是毫无增殖的可能性的</li>
+<li>保险公司倒闭的风险：虽然概率很低，但时间一长也不无可能。不理财小风险，有理财高风险。如无必要，为什么要增加风险</li>
+<li>收益的上限：保险中为理财属性支付的钱，收益的上限并不高</li>
+<li>医保的进步：医保预期将覆盖更多病种，商业保险或许越来越鸡肋</li>
+</ul>
+<p>如果保险公司能公允地设计产品，良心地赔付，保险肯定是有价值的。但是把理财属性加到保险里，特别是用一些夸张的纸面数字诱导消费者购买，欺骗式地打消顾客的疑虑，就是很鸡贼的一件事。</p>
+<p>从人性角度讲，他花了时间，绕了更多的弯子，是为了挣我更多的钱（当然也有可能是为了扩大经营规模但是这里不像）。如果不绕弯子能挣到，他肯定不会花心思去绕，毕竟这对双方都是成本。我不太信任这些弯子，总感觉它们存在就是为了背刺我。</p>
+<p>保险该买得买，但是遇到理财属性明显的，我会绕着走。</p>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/hive_sql_example/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Hive SQL 笔记</span>
+    </a>
+    
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+        </div>
+        
+    <script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
+
+
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+
+
+    
+
+
+
+    </body>
+</html>
