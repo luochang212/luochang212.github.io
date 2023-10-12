@@ -13,23 +13,9 @@
       <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/hive_sql_example/</guid>
-      <description>1. 表操作 1.1 建表 CREATE TABLE [DATABASE].[TABLE_NAME] ( `id` BIGINT COMMENT &amp;#39;学号&amp;#39;, name STRING COMMENT &amp;#39;姓名&amp;#39;, ttl_score DOUBLE COMMENT &amp;#39;总分&amp;#39; ) COMMENT &amp;#39;枝江中学五年级学生成绩明细表&amp;#39; PARTITIONED BY (day STRING COMMENT &amp;#39;day&amp;#39;, hour STRING COMMENT &amp;#39;hour&amp;#39;) ROW FORMAT [row_format] STORED AS [file_format]; Note: 了解更多，请参考 CREATE TABLE with Hive format
+      <description>什么？SQL 还需要注释？SQL 会自己注释自己的，对吧
+1. 表操作 1.1 建表 CREATE TABLE [DATABASE].[TABLE_NAME] ( `id` BIGINT COMMENT &amp;#39;学号&amp;#39;, name STRING COMMENT &amp;#39;姓名&amp;#39;, ttl_score DOUBLE COMMENT &amp;#39;总分&amp;#39; ) COMMENT &amp;#39;枝江中学五年级学生成绩明细表&amp;#39; PARTITIONED BY (day STRING COMMENT &amp;#39;day&amp;#39;, hour STRING COMMENT &amp;#39;hour&amp;#39;) ROW FORMAT [row_format] STORED AS [file_format]; Note: 了解更多，请参考 CREATE TABLE with Hive format
 1.2 删表 DROP TABLE [DATABASE].[TABLE_NAME]; DROP TABLE IF EXISTS [DATABASE].[TABLE_NAME]; 1.3 在原表上新增列 ALTER TABLE [DATABASE].[TABLE_NAME] ADD COLUMNS ( sub_score ARRAY&amp;lt;DOUBLE&amp;gt; COMMENT &amp;#39;分科成绩&amp;#39;, sub_score_map MAP&amp;lt;STRING,DOUBLE&amp;gt; COMMENT &amp;#39;分科成绩map&amp;#39;, `rank` BIGINT COMMENT &amp;#39;年段排名&amp;#39;, update_time STRING COMMENT &amp;#39;更新时间&amp;#39; ); 1.</description>
-    </item>
-    
-    <item>
-      <title>R语言学习笔记</title>
-      <link>http://luochang212.github.io/posts/r_project/</link>
-      <pubDate>Sun, 07 Aug 2022 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/posts/r_project/</guid>
-      <description>本文类似 Quick-Reference Guide，随便看看就好。真想学的话，建议阅读人民邮电出版社的《R语言实战》，此书节奏好、内容紧凑，本人力荐 罒ω罒
-1. 基本使用 1.1 启动会话 只需要在 Mac Terminal 里输入 R，然后敲回车：
-&amp;gt; R 1.2 第一段代码 # say hi x &amp;lt;- &amp;#34;Hello World&amp;#34; print(x) 文件命名为 test.R
-有两种方式运行此脚本：
-1）在会话中运行
-&amp;gt; R &amp;gt; source(&amp;#34;test.R&amp;#34;) 2）直接运行
-&amp;gt; Rscript test.R 1.3 常用命令 函数 功能 help.start() 打开帮助文档 help(&amp;quot;foo&amp;quot;) 或 ?foo 查看函数或数据集foo的帮助（引号可省略） helo.search(&amp;quot;foo&amp;quot;) 或 ??foo 以foo为关键词搜索本地帮助文档 example(&amp;quot;foo&amp;quot;) 函数foo的使用示例（引号可省略） RSiteSearch(&amp;quot;foo&amp;quot;) 以foo为关键词搜索在线文档 apropos(&amp;quot;foo&amp;quot;, mode=&amp;quot;function&amp;quot;) 列出名称中含有foo的所有可用函数 data() 列出当前已加载包中所有可用示例数据集 getwd() 显示当前的工作目录 setwd(&amp;quot;mydirectory&amp;quot;) 修改当前的工作目录为mydirectory ls() 列出当前工作空间中的对象 rm(objectlist) 移除一个或多个对象 options() 显示或设置当前选项 save.</description>
     </item>
     
     <item>

@@ -8,21 +8,21 @@
     <language>en-us</language>
     <lastBuildDate>Tue, 10 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>简单分析理财型保险</title>
+      <title>理财型保险值不值得买？</title>
       <link>http://luochang212.github.io/posts/insurance/</link>
       <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/insurance/</guid>
-      <description>说起理财型保险，一般会想到增额寿险、年金险等。这些保险玩得花，水也很深自不必说。前段时间一位朋友打算买重疾险，销售给的方案是带返还的，我才知道重疾险也可以带理财属性。
-这样的保险值不值得买呢？虽然“保险价值”人各不同，但“理财价值”是可以客观衡量的。我们可以把理财部分剥离出来分析。
-保险顾问给出的方案是这样的：
-费用：保费分 30 年支付，每年支付 9000 元，共计 27 万 权益：终生享受重疾险；身故后保险公司一次性返还 50 万 乍一看这个方案非常划算，只要支付 27万，身故时就能获得 50万，还免费得一个重疾险。但考虑到至少 30 年的资金成本，还是要计算一下才知道值不值。
-一、折现率和净现值NPV 假设一个特别完美的情况，我们身体健康 or 医保够用，总之没用到重疾险一分钱。这时把它退化成一款理财产品，它的损益如下：
-0 1 2 3 &amp;hellip; 29 30+（以身故时间为准） -9,000 -9,000 -9,000 -9,000 &amp;hellip; -9,000 +500,000 为了衡量资金的时间成本，我们引入净现值的概念。为了理解净现值，要先解折现率。
-1.1 什么是折现率 折现率 (Discount rate) 是把&amp;quot;未来的钱&amp;quot;折算成&amp;quot;现在的钱&amp;quot;的折扣率。如果你认为一年后的 107 元与当下的 100 元等值，那么折现率就是 7%. 用公式表达就是：
+      <description>死鬼，用你那没有脑子的头想想，这种问题怎么会有答案嘛！你在期待些什么？本文介绍NPV和IRR的概念，并提供一套朴素的分析思路。希望对你有帮助 (=ﾟωﾟ)=
+说起理财型保险，一般会想到增额寿险、年金险等。这些保险玩得花、水很深，自不必说。前段时间朋友想买重疾险，销售给的方案是带返还的，我才知道重疾险也有理财功能。
+这样的保险值不值得买呢？虽然“保险价值”人各不同，但“理财价值”却是可以客观衡量的。我们可以把理财部分单独剥离出来分析。
+这是保险顾问给出的方案：
+费用：分 30 年支付，每年支付 9000 元，共计 27 万 权益：终生享受重疾险；身故后保险公司一次性返还 50 万 乍一看这个方案非常划算，只需要支付 27万，身故时就能获得 50万，数字近乎翻倍，重疾险就像白送的。但考虑到 30 年起步的资金成本，还是要具体计算一下，才知道值不值。
+一、折现率和净现值NPV 假设一个特别完美的情况，我们身体健康 or 医保够用，总之没用到重疾险一分钱。此时它退化为一款理财产品，损益如下：
+0 1 2 3 &amp;hellip; 29 30+（以身故时间为准） -9,000 -9,000 -9,000 -9,000 &amp;hellip; -9,000 +500,000 这一串数字加起来是没法知道结论的。为了衡量资金的时间成本，我们引入 折现率 和 净现值 两个概念。
+1.1 什么是折现率？ 折现率 (Discount rate) 是把未来的钱折成现在的钱的折扣率。如果你认为一年后的 107 元与当下的 100 元等值，那么折现率就是 7%. 用公式表达为：
 $一年后107元的现值 = \frac{107}{1 + 折现率} = \frac{107}{1 + 7\%} = 100$
-1.2 什么是净现值 净现值(NPV) (Net present value) 指未来现金流入现值与未来现金流出现值的差额。
-按 7% 的折现率，将未来的损益折算成现值后加和，可得该产品的 NPV 为：</description>
+1.2 什么是净现值？ 净现值(NPV) (Net present value) 指未来现金流入现值与未来现金流出现值的差额。</description>
     </item>
     
     <item>
@@ -31,23 +31,9 @@ $一年后107元的现值 = \frac{107}{1 + 折现率} = \frac{107}{1 + 7\%} = 10
       <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/hive_sql_example/</guid>
-      <description>1. 表操作 1.1 建表 CREATE TABLE [DATABASE].[TABLE_NAME] ( `id` BIGINT COMMENT &amp;#39;学号&amp;#39;, name STRING COMMENT &amp;#39;姓名&amp;#39;, ttl_score DOUBLE COMMENT &amp;#39;总分&amp;#39; ) COMMENT &amp;#39;枝江中学五年级学生成绩明细表&amp;#39; PARTITIONED BY (day STRING COMMENT &amp;#39;day&amp;#39;, hour STRING COMMENT &amp;#39;hour&amp;#39;) ROW FORMAT [row_format] STORED AS [file_format]; Note: 了解更多，请参考 CREATE TABLE with Hive format
+      <description>什么？SQL 还需要注释？SQL 会自己注释自己的，对吧
+1. 表操作 1.1 建表 CREATE TABLE [DATABASE].[TABLE_NAME] ( `id` BIGINT COMMENT &amp;#39;学号&amp;#39;, name STRING COMMENT &amp;#39;姓名&amp;#39;, ttl_score DOUBLE COMMENT &amp;#39;总分&amp;#39; ) COMMENT &amp;#39;枝江中学五年级学生成绩明细表&amp;#39; PARTITIONED BY (day STRING COMMENT &amp;#39;day&amp;#39;, hour STRING COMMENT &amp;#39;hour&amp;#39;) ROW FORMAT [row_format] STORED AS [file_format]; Note: 了解更多，请参考 CREATE TABLE with Hive format
 1.2 删表 DROP TABLE [DATABASE].[TABLE_NAME]; DROP TABLE IF EXISTS [DATABASE].[TABLE_NAME]; 1.3 在原表上新增列 ALTER TABLE [DATABASE].[TABLE_NAME] ADD COLUMNS ( sub_score ARRAY&amp;lt;DOUBLE&amp;gt; COMMENT &amp;#39;分科成绩&amp;#39;, sub_score_map MAP&amp;lt;STRING,DOUBLE&amp;gt; COMMENT &amp;#39;分科成绩map&amp;#39;, `rank` BIGINT COMMENT &amp;#39;年段排名&amp;#39;, update_time STRING COMMENT &amp;#39;更新时间&amp;#39; ); 1.</description>
-    </item>
-    
-    <item>
-      <title>R语言学习笔记</title>
-      <link>http://luochang212.github.io/posts/r_project/</link>
-      <pubDate>Sun, 07 Aug 2022 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/posts/r_project/</guid>
-      <description>本文类似 Quick-Reference Guide，随便看看就好。真想学的话，建议阅读人民邮电出版社的《R语言实战》，此书节奏好、内容紧凑，本人力荐 罒ω罒
-1. 基本使用 1.1 启动会话 只需要在 Mac Terminal 里输入 R，然后敲回车：
-&amp;gt; R 1.2 第一段代码 # say hi x &amp;lt;- &amp;#34;Hello World&amp;#34; print(x) 文件命名为 test.R
-有两种方式运行此脚本：
-1）在会话中运行
-&amp;gt; R &amp;gt; source(&amp;#34;test.R&amp;#34;) 2）直接运行
-&amp;gt; Rscript test.R 1.3 常用命令 函数 功能 help.start() 打开帮助文档 help(&amp;quot;foo&amp;quot;) 或 ?foo 查看函数或数据集foo的帮助（引号可省略） helo.search(&amp;quot;foo&amp;quot;) 或 ??foo 以foo为关键词搜索本地帮助文档 example(&amp;quot;foo&amp;quot;) 函数foo的使用示例（引号可省略） RSiteSearch(&amp;quot;foo&amp;quot;) 以foo为关键词搜索在线文档 apropos(&amp;quot;foo&amp;quot;, mode=&amp;quot;function&amp;quot;) 列出名称中含有foo的所有可用函数 data() 列出当前已加载包中所有可用示例数据集 getwd() 显示当前的工作目录 setwd(&amp;quot;mydirectory&amp;quot;) 修改当前的工作目录为mydirectory ls() 列出当前工作空间中的对象 rm(objectlist) 移除一个或多个对象 options() 显示或设置当前选项 save.</description>
     </item>
     
     <item>
