@@ -8,12 +8,12 @@
     <language>en-us</language>
     <lastBuildDate>Tue, 10 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/categories/analysis/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>理财型保险值不值得买？</title>
+      <title>什么样的保险值得买？</title>
       <link>http://luochang212.github.io/posts/insurance/</link>
       <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/insurance/</guid>
-      <description>死鬼，用你那没有脑子的头想想，这种问题怎么会有答案嘛！你在期待些什么？本文主要介绍 NPV 和 IRR 两个指标，有了它们的帮助，你对保险的理解能多一点点。希望对你有用 (=ﾟωﾟ)=
+      <description>死鬼，用你那没有脑子的头想想，这种问题怎么会有答案嘛！你在期待些什么？本文介绍 NPV 和 IRR 两个指标，有了它们的帮助，也许你对保险的理解会多一点点 (=ﾟωﾟ)=
 GitHub项目地址：insurance.ipynb
 前段时间朋友买重疾险，销售给的方案是带返还的，返还也算一种理财玩法吧。
 这是销售给的方案：

@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en-us">
     
-  <head>
+    
+
+
+    <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     
-    <link rel="canonical" href="http://luochang212.github.io/">
+    <link rel="canonical" href="http://luochang212.github.io/posts/pypi_packaging/">
     
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,18 +16,22 @@
 <meta name="generator" content="Hugo 0.118.2">
 
     
+    
+    
 
-<title>Chang Luo</title>
+<title>Python 项目打包小记 • Chang Luo</title>
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Chang Luo"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="Python 项目打包小记"/>
+<meta name="twitter:description" content="最水的一集"/>
 
-<meta property="og:title" content="Chang Luo" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://luochang212.github.io/" /><meta property="og:site_name" content="Title" />
+<meta property="og:title" content="Python 项目打包小记" />
+<meta property="og:description" content="最水的一集" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://luochang212.github.io/posts/pypi_packaging/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-10-18T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-10-18T00:00:00+00:00" /><meta property="og:site_name" content="Title" />
 
 
     
@@ -59,8 +66,7 @@
     <!-- Icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
     <link rel="shortcut icon" href="/favicon.png">
-    <link rel="alternate" type="application/rss+xml" href="http://luochang212.github.io/index.xml" title="Chang Luo" />
-
+    
     
 
 </head>
@@ -458,152 +464,272 @@
 
         <div class="content container">
             
-  <div class="post-list">
+    <style>
+  .my-emoji {
+    height: 25px;
+    display: inline-block;
+    margin: 0;
+    vertical-align: text-bottom;
+  }
+</style>
+
+
+
+<article>
+  <header>
+    <h1>Python 项目打包小记</h1>
     
     
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Oct 18, 2023
+    
+    
+    
       
-        
       
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/kitchen_time_1/" >厨房笔记（一）：牛刀小试</a>
-        </span>
-        <span class="item__date">
-          Aug 6, 2018
-        </span>
-        <span >
-        
-        刚到英国那会儿，做饭的兴致很高。每天都跟过家家似的，买菜，钻研菜谱，然后做饭，在厨房里待上四五个小时也不觉得累，大概这就是“人生若只如初见”吧。
-        
-        </span>
-        
-        </div>
-        
-     
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/packaging">PACKAGING</a>
+              •
+          
+              <a class="badge badge-category" href="/categories/pypi">PYPI</a>
+              
+          
       
-        
+    
+    
+    
       
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/markowitz_model/" >【项目】基于蚁群算法的证券投资组合优化</a>
-        </span>
-        <span class="item__date">
-          May 15, 2018
-        </span>
-        <span >
-        
-        在证券交易中，为了降低风险，经常使用一笔资金购买多支股票。那么，如何合理地选择证券组合，并确定每支证券的资金分配系数，以使预期风险最低，预期收益最高，就成了一个经典的经济学问题 -- 证券投资组合优化问题。
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/markowitz_model/">➦</a>
-        
-        </div>
-        
-     
       
-        
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/python">python</a>
+           
       
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/nezha/" >观影：少女哪吒</a>
-        </span>
-        <span class="item__date">
-          Jul 11, 2017
-        </span>
-        <span >
-        
-        青春可贵，文学高华，可是越是珍贵就越脆弱越易碎。对于一般人来说，破碎的疼痛也许还能承受得住，可是对内心敏感的人，这几乎是欲死的折磨。
-        
-        </span>
-        
-        </div>
-        
-     
+          <a class="badge badge-tag" href="/tags/dt">dt</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 2 min read
+</div>
+
+
+  </header>
+  
+  
+  
+  <div class="toc-wrapper">
+    <input type="checkbox" id="tocToggle">
+    <label for="tocToggle">目录</label>
+    
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#一文件结构介绍">一、文件结构介绍</a></li>
+        <li><a href="#二添加配置文件">二、添加配置文件</a></li>
+        <li><a href="#三打包">三、打包</a></li>
+        <li><a href="#四上传">四、上传</a></li>
+        <li><a href="#五测试">五、测试</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    
+  </div>
+  
+  
+  <div class="post">
+    <blockquote>
+<p>这篇文章很水，已经没过膝盖了</p>
+</blockquote>
+<p>GitHub项目地址：<a href="https://github.com/luochang212/hit-and-blow" target="_blank">hit-and-blow</a></p>
+<p>走过路过的打包 DT 向我看齐！小手操作起来一起摆脱 DT！</p>
+<ul>
+<li>官方教程：<a href="https://packaging.python.org/en/latest/tutorials/packaging-projects/">Packaging Python Projects</a></li>
+<li>背景知识：<a href="https://docs.python.org/3/tutorial/modules.html#packages">Modules</a></li>
+</ul>
+<h3 id="一文件结构介绍">一、文件结构介绍</h3>
+<p>你需要构建下面这些文件：</p>
+<pre tabindex="0"><code>packaging_tutorial/
+├── LICENSE
+├── pyproject.toml
+├── README.md
+├── src/
+│   └── example_package_YOUR_USERNAME_HERE/
+│       ├── __init__.py
+│       └── example.py
+└── tests/
+</code></pre><p>文件夹 / 文件 说明：</p>
+<ul>
+<li><code>packaging_tutorial</code>: GitHub 项目文件夹</li>
+<li><code>LICENSE</code>: 开源协议，可由 GitHub 生成</li>
+<li><code>pyproject.toml</code>: 打包配置文件</li>
+<li><code>README.md</code>: 项目说明文件</li>
+<li><code>src</code>: 项目结构要求</li>
+<li><code>example_package_YOUR_USERNAME_HERE</code>: 你的 Python 包名</li>
+</ul>
+<h3 id="二添加配置文件">二、添加配置文件</h3>
+<p>将以下内容修改后添加到文件 <code>pyproject.toml</code></p>
+<pre tabindex="0"><code>[build-system]
+requires = [&#34;hatchling&#34;]
+build-backend = &#34;hatchling.build&#34;
+
+[project]
+name = &#34;example_package_YOUR_USERNAME_HERE&#34;
+version = &#34;0.0.1&#34;
+authors = [
+  { name=&#34;Example Author&#34;, email=&#34;author@example.com&#34; },
+]
+description = &#34;A small example package&#34;
+readme = &#34;README.md&#34;
+requires-python = &#34;&gt;=3.7&#34;
+classifiers = [
+    &#34;Programming Language :: Python :: 3&#34;,
+    &#34;License :: OSI Approved :: MIT License&#34;,
+    &#34;Operating System :: OS Independent&#34;,
+]
+
+[project.urls]
+&#34;Homepage&#34; = &#34;https://github.com/pypa/sampleproject&#34;
+&#34;Bug Tracker&#34; = &#34;https://github.com/pypa/sampleproject/issues&#34;
+</code></pre><h3 id="三打包">三、打包</h3>
+<p><strong>1）安装环境</strong></p>
+<pre tabindex="0"><code>python3 -m pip install --upgrade pip
+python3 -m pip install --upgrade build
+</code></pre><p><strong>2）打包</strong></p>
+<p>在 <code>pyproject.toml</code> 文件同目录下运行，执行打包操作：</p>
+<pre tabindex="0"><code>python3 -m build
+</code></pre><p>此举将在同目录下生成名为 <code>dist</code> 的文件夹，里面放的是打包好的文件。</p>
+<h3 id="四上传">四、上传</h3>
+<p><strong>1）安装环境</strong></p>
+<pre tabindex="0"><code>python3 -m pip install --upgrade twine
+</code></pre><p><strong>2）账号准备</strong></p>
+<p>PyPI 提供了测试服和正式服。如果只是测试流程，可以选择测试服。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>账号注册链接</th>
+<th>获取 API token 的链接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>测试服</td>
+<td><a href="https://test.pypi.org/account/register/">test.pypi.org/account/register</a></td>
+<td><a href="https://test.pypi.org/manage/account/#api-tokens">test.pypi.org/manage/account</a></td>
+</tr>
+<tr>
+<td>正式服</td>
+<td><a href="https://pypi.org/account/register/">pypi.org/account/register</a></td>
+<td><a href="https://pypi.org/manage/account/#api-tokens">pypi.org/manage/account</a></td>
+</tr>
+</tbody>
+</table>
+<p>测试服与正式服选其一。注册账号后，获取API token.</p>
+<blockquote>
+<p><strong>Note</strong>: 正式服需要先完成 2FA 验证才能获取 API token</p>
+</blockquote>
+<p><strong>3）上传到 PyPI</strong></p>
+<p>根据你注册的账号类型，选择对应的服务器。</p>
+<p>1. 上传到测试服务器 <a href="https://test.pypi.org/">TestPyPI</a>：</p>
+<pre tabindex="0"><code>python3 -m twine upload --repository testpypi dist/*
+</code></pre><p>2. 上传到正式服务器 <a href="https://pypi.org/">PyPI</a>：</p>
+<pre tabindex="0"><code>twine upload dist/* 
+</code></pre><p>输入以上命令后，需要你输入 <code>username</code> 和 <code>password</code>。</p>
+<ul>
+<li><code>username</code> 请填入 <code>__token__</code></li>
+<li><code>password</code> 是你申请的 <code>API token</code>，也就是以 <code>pypi-</code> 开头的那一坨东西</li>
+</ul>
+<h3 id="五测试">五、测试</h3>
+<p>现在可以通过你熟知的 <code>pip install xxx</code> 下载并测试你的 Python 库了。</p>
+<p>❌ 请不要走开👇</p>
+<blockquote>
+<p>现在是 <strong>广告时间</strong>！</p>
+<p>我打包的 PyPI 项目在 <a href="https://test.pypi.org/project/switch-hacker/">=&gt; 这里 &lt;=</a></p>
+<p>它是我为<a href="https://www.douban.com/game/35010128/">《世界游戏大全51》豆瓣评分9.1</a> 中的小游戏猜颜色写的解算器，好吧其实就是作弊器。它复现了猜颜色的玩法，并用 <code>AutoPlay</code> 类实现自动计算游戏答案！也许还有优化空间，有时间我会继续改进的。</p>
+<p>如果你愿意关注它，可以在 <a href="https://github.com/luochang212/hit-and-blow">=&gt; GitHub &lt;=</a> 上跟踪它的进展，或在 issue 中向我提出建议！</p>
+</blockquote>
+
   </div>
   
 
-<ul class="pagination">
+<div class="navigation navigation-single">
     
-    <li class="page-item">
-        <a href="/" class="page-link" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
-    </li>
-    
-    <li class="page-item">
-    <a href="/page/4/" class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
-    </li>
+    <a href="/posts/insurance/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">什么样的保险值得买？</span>
+    </a>
     
     
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="/">1</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="/page/2/">2</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="/page/3/">3</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="/page/4/">4</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item active"><a class="page-link" href="/page/5/">5</a></li>
-    
-    
-    <li class="page-item disabled">
-    <a href="" class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
-    </li>
-    
-    <li class="page-item">
-        <a href="/page/5/" class="page-link" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
-    </li>
-    
-</ul>
+</div>
 
+
+  
+
+  
+    
+
+
+</article>
 
         </div>
         
+    <script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
   
-  <script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
+
+
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+
+
+    
+
 
 
     </body>

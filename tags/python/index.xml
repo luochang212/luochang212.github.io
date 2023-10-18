@@ -6,14 +6,29 @@
     <description>Recent content in Python on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 10 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 18 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>理财型保险值不值得买？</title>
+      <title>Python 项目打包小记</title>
+      <link>http://luochang212.github.io/posts/pypi_packaging/</link>
+      <pubDate>Wed, 18 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/posts/pypi_packaging/</guid>
+      <description>这篇文章很水，已经没过膝盖了
+GitHub项目地址：hit-and-blow
+走过路过的打包 DT 向我看齐！小手操作起来一起摆脱 DT！
+官方教程：Packaging Python Projects 背景知识：Modules 一、文件结构介绍 你需要构建下面这些文件：
+packaging_tutorial/ ├── LICENSE ├── pyproject.toml ├── README.md ├── src/ │ └── example_package_YOUR_USERNAME_HERE/ │ ├── __init__.py │ └── example.py └── tests/ 文件夹 / 文件 说明：
+packaging_tutorial: GitHub 项目文件夹 LICENSE: 开源协议，可由 GitHub 生成 pyproject.toml: 打包配置文件 README.md: 项目说明文件 src: 项目结构要求 example_package_YOUR_USERNAME_HERE: 你的 Python 包名 二、添加配置文件 将以下内容修改后添加到文件 pyproject.toml
+[build-system] requires = [&amp;#34;hatchling&amp;#34;] build-backend = &amp;#34;hatchling.build&amp;#34; [project] name = &amp;#34;example_package_YOUR_USERNAME_HERE&amp;#34; version = &amp;#34;0.</description>
+    </item>
+    
+    <item>
+      <title>什么样的保险值得买？</title>
       <link>http://luochang212.github.io/posts/insurance/</link>
       <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/insurance/</guid>
-      <description>死鬼，用你那没有脑子的头想想，这种问题怎么会有答案嘛！你在期待些什么？本文主要介绍 NPV 和 IRR 两个指标，有了它们的帮助，你对保险的理解能多一点点。希望对你有用 (=ﾟωﾟ)=
+      <description>死鬼，用你那没有脑子的头想想，这种问题怎么会有答案嘛！你在期待些什么？本文介绍 NPV 和 IRR 两个指标，有了它们的帮助，也许你对保险的理解会多一点点 (=ﾟωﾟ)=
 GitHub项目地址：insurance.ipynb
 前段时间朋友买重疾险，销售给的方案是带返还的，返还也算一种理财玩法吧。
 这是销售给的方案：

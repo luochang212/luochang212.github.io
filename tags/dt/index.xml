@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DT on Chang Luo</title>
+    <link>http://luochang212.github.io/tags/dt/</link>
+    <description>Recent content in DT on Chang Luo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 18 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/tags/dt/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python 项目打包小记</title>
+      <link>http://luochang212.github.io/posts/pypi_packaging/</link>
+      <pubDate>Wed, 18 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/posts/pypi_packaging/</guid>
+      <description>这篇文章很水，已经没过膝盖了
+GitHub项目地址：hit-and-blow
+走过路过的打包 DT 向我看齐！小手操作起来一起摆脱 DT！
+官方教程：Packaging Python Projects 背景知识：Modules 一、文件结构介绍 你需要构建下面这些文件：
+packaging_tutorial/ ├── LICENSE ├── pyproject.toml ├── README.md ├── src/ │ └── example_package_YOUR_USERNAME_HERE/ │ ├── __init__.py │ └── example.py └── tests/ 文件夹 / 文件 说明：
+packaging_tutorial: GitHub 项目文件夹 LICENSE: 开源协议，可由 GitHub 生成 pyproject.toml: 打包配置文件 README.md: 项目说明文件 src: 项目结构要求 example_package_YOUR_USERNAME_HERE: 你的 Python 包名 二、添加配置文件 将以下内容修改后添加到文件 pyproject.toml
+[build-system] requires = [&amp;#34;hatchling&amp;#34;] build-backend = &amp;#34;hatchling.build&amp;#34; [project] name = &amp;#34;example_package_YOUR_USERNAME_HERE&amp;#34; version = &amp;#34;0.</description>
+    </item>
+    
+  </channel>
+</rss>

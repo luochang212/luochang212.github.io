@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://luochang212.github.io/posts/pypi_packaging/</loc>
+    <lastmod>2023-10-18T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://luochang212.github.io/posts/insurance/</loc>
     <lastmod>2023-10-10T00:00:00+00:00</lastmod>
   </url><url>
@@ -92,13 +95,31 @@
     <loc>http://luochang212.github.io/posts/nezha/</loc>
     <lastmod>2017-07-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://luochang212.github.io/categories/analysis/</loc>
-    <lastmod>2023-10-10T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://luochang212.github.io/categories/</loc>
-    <lastmod>2023-10-10T00:00:00+00:00</lastmod>
+    <lastmod>2023-10-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://luochang212.github.io/</loc>
+    <lastmod>2023-10-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://luochang212.github.io/tags/dt/</loc>
+    <lastmod>2023-10-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://luochang212.github.io/categories/packaging/</loc>
+    <lastmod>2023-10-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://luochang212.github.io/posts/</loc>
+    <lastmod>2023-10-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://luochang212.github.io/categories/pypi/</loc>
+    <lastmod>2023-10-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://luochang212.github.io/tags/python/</loc>
+    <lastmod>2023-10-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://luochang212.github.io/tags/</loc>
+    <lastmod>2023-10-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://luochang212.github.io/categories/analysis/</loc>
     <lastmod>2023-10-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://luochang212.github.io/categories/insurance/</loc>
@@ -108,15 +129,6 @@
     <lastmod>2023-10-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://luochang212.github.io/tags/npv/</loc>
-    <lastmod>2023-10-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://luochang212.github.io/posts/</loc>
-    <lastmod>2023-10-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://luochang212.github.io/tags/python/</loc>
-    <lastmod>2023-10-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://luochang212.github.io/tags/</loc>
     <lastmod>2023-10-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://luochang212.github.io/categories/development/</loc>
