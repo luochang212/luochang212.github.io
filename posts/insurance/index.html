@@ -19,15 +19,15 @@
     
     
 
-<title>什么样的保险值得买？ • Chang Luo</title>
+<title>什么保险值得买？ • Chang Luo</title>
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="什么样的保险值得买？"/>
-<meta name="twitter:description" content="死鬼，用你那没有脑子的头想想，这种问题怎么会有答案嘛！本文介绍 NPV 和 IRR 两个指标，有了它们的帮助，也许你对保险的理解会多一点点"/>
+<meta name="twitter:title" content="什么保险值得买？"/>
+<meta name="twitter:description" content="未来的钱，可能没你想的那么值钱，这是一件挺反直觉的事。要解释这一切，还要从折现率说起"/>
 
-<meta property="og:title" content="什么样的保险值得买？" />
-<meta property="og:description" content="死鬼，用你那没有脑子的头想想，这种问题怎么会有答案嘛！本文介绍 NPV 和 IRR 两个指标，有了它们的帮助，也许你对保险的理解会多一点点" />
+<meta property="og:title" content="什么保险值得买？" />
+<meta property="og:description" content="未来的钱，可能没你想的那么值钱，这是一件挺反直觉的事。要解释这一切，还要从折现率说起" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/insurance/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-10-10T00:00:00+00:00" />
@@ -477,7 +477,7 @@
 
 <article>
   <header>
-    <h1>什么样的保险值得买？</h1>
+    <h1>什么保险值得买？</h1>
     
     
 <div class="post__meta">
@@ -535,11 +535,12 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#一折现率和净现值npv">一、折现率和净现值NPV</a></li>
+        <li><a href="#一折现率和净现值">一、折现率和净现值</a></li>
         <li><a href="#二成本-收益曲线">二、成本-收益曲线</a></li>
         <li><a href="#三不同折现率的npv曲线">三、不同折现率的NPV曲线</a></li>
         <li><a href="#四内部收益率irr">四、内部收益率IRR</a></li>
-        <li><a href="#五我的看法">五、我的看法</a></li>
+        <li><a href="#五简单结论">五、简单结论</a></li>
+        <li><a href="#六后日谈">六、后日谈</a></li>
       </ul>
     </li>
   </ul>
@@ -550,22 +551,19 @@
   
   <div class="post">
     <blockquote>
-<p>死鬼，用你那没有脑子的头想想，这种问题怎么会有答案嘛！你在期待些什么？本文介绍 NPV 和 IRR 两个指标，有了它们的帮助，也许你对保险的理解会多一点点 (=ﾟωﾟ)=</p>
+<p>未来的钱，可能没你想的那么值钱，这是一件挺反直觉的事。要解释这一切，还要从折现率说起。</p>
 </blockquote>
-<!-- 内心OS：一句话偷了瓜咪和光神的梗，什么天才！ -->
-<!-- 死鬼病毒🦠，启动！ -->
 <p>GitHub项目地址：<a href="https://github.com/luochang212/python-tips/blob/master/insurance.ipynb" target="_blank">insurance.ipynb</a></p>
-<!-- 说起理财型保险，一般会想到增额寿险、年金险等等。这些保险玩得花、水很深，自不必说。 -->
-<p>前段时间朋友买重疾险，销售给的方案是带返还的，返还也算一种理财玩法吧。</p>
+<p>有位朋友买保险，顾问给的方案是缴纳 30 年，身故后返还数值多于缴纳额的现金，期间还有保险功能。听起来是纯捡便宜，这究竟是怎么一回事呢？</p>
 <p>这是销售给的方案：</p>
 <ul>
-<li><strong>费用</strong>：分 30 年支付，每年支付 9000 元，共计 27 万</li>
-<li><strong>权益</strong>：终生享受重疾险；身故后保险公司一次性返还 50 万</li>
+<li><strong>费用</strong>：分 30 年支付，每年支付 9000 元，共计 27 万元</li>
+<li><strong>权益</strong>：终生享受重疾险；身故后保险公司一次性返还 50 万元</li>
 </ul>
-<p>乍一看这个方案很划算，只要支付 <code>27万</code>，身故时能得 <code>50万</code>，数字近乎翻倍，重疾险就像白送的。但考虑到 30 年起步的资金成本，还是要具体计算一下才知道值不值。</p>
-<h3 id="一折现率和净现值npv">一、折现率和净现值NPV</h3>
-<p>虽然“保险价值”人各不同，但“理财价值”却是可以客观衡量的。</p>
-<p>让我们把理财部分单独剥离出来分析，此时它的损益如下：</p>
+<p>乍看之下很划算，但是不是真划算，要算过才知道。</p>
+<p>很抱歉，为了把问题讲明白，我还得先引一下背景知识。</p>
+<h3 id="一折现率和净现值">一、折现率和净现值</h3>
+<p>销售给的方案，可以用这个表格表示：</p>
 <table>
 <thead>
 <tr>
@@ -590,16 +588,16 @@
 </tr>
 </tbody>
 </table>
-<p>我们知道，资金有时间成本。来自不同时期的钱，其价值是不同的。为了计算真实的损益情况，我们引入 <strong>折现率</strong> 和 <strong>净现值</strong> 两个概念。</p>
-<h4 id="11-什么是折现率">1.1 什么是折现率？</h4>
-<p><a href="https://en.wikipedia.org/wiki/Discount_rate">折现率</a> (Discount rate) 是把未来的钱折算成现在的钱的折扣率。如果你认为一年后的 107 元与现在 100 元相当，折现率就是 7%，用公式表达为：</p>
+<p>可以看到，每笔钱入账时间不同。为衡量资金的时间成本，我们需要 <strong>折现率</strong> 和 <strong>净现值</strong> 两个概念。</p>
+<h4 id="11-什么是折现率">1.1 什么是折现率</h4>
+<p><a href="https://en.wikipedia.org/wiki/Discount_rate">折现率</a> (Discount rate) 是把未来的钱折成现在的钱的折价比率。举个简单的例子，如果你认为一年后的 107 元与现在 100 元相当，那么折现率就是 7%，用公式表达为：</p>
 <p><code>$一年后107元的现值 = \frac{107}{1 + 折现率} = \frac{107}{1 + 7\%} = 100$</code></p>
-<h4 id="12-什么是净现值">1.2 什么是净现值？</h4>
-<p><a href="https://en.wikipedia.org/wiki/Net_present_value">净现值(NPV)</a> (Net present value) 指未来现金流入现值与未来现金流出现值的差额。</p>
-<p>一旦有了上面那张损益表，并有了一个确定的折扣率，就能计算 NPV。假设折扣率为 0.02，有：</p>
+<h4 id="12-什么是净现值">1.2 什么是净现值</h4>
+<p><a href="https://en.wikipedia.org/wiki/Net_present_value">净现值</a> (Net present value)，简记为 NPV。指未来现金流入现值与未来现金流出现值的差额，说人话就是收入的现值减去支出的现值。</p>
+<p>现值随折现率确定而确定，所以我们需要先约定一个折现率，才能让计算继续下去。我们假设折现率为 0.02，则有如下 NPV 计算公式：</p>
 <p><code>$NPV = -9000 -9000*\frac{1}{1 + 0.02} -9000*\frac{1}{(1 + 0.02)^{2}} + ... + -9000*\frac{1}{(1 + 0.02)^{29}} + 500000*\frac{1}{(1 + 0.02)^{t}}$</code></p>
-<p>其中 <code>t</code> 为从交保到身故的时间间隔，单位为年，值域 <code>$[30, +\infty]$</code></p>
-<p>根据 NPV 公式，可写如下 Python 函数。后面会多次用到它，可以看一眼。</p>
+<p>其中 <code>t</code> 为从交保到身故的间隔年数，值域为 <code>$[30, +\infty]$</code></p>
+<p>根据 NPV 公式，有如下 Python 函数，后面会多次用到它。</p>
 <pre tabindex="0"><code># 计算成本、收益、NPV
 def calc_npv(discount_rate=0.02, t=30):
     &#34;&#34;&#34;返回 成本的现值、收益的现值、净现值NPV
@@ -609,13 +607,13 @@ def calc_npv(discount_rate=0.02, t=30):
     return cost, profit, profit - cost
 </code></pre><h3 id="二成本-收益曲线">二、成本-收益曲线</h3>
 <blockquote>
-<p>由于 <code>NPV = 收益的现值 - 成本的现值</code>，所以展示 成本和收益 而非 NPV，让我们更容易理解公式内部发生了什么。</p>
+<p>因为 <code>NPV = 收益的现值 - 成本的现值</code>，所以展示 <strong>收益的现值</strong> 和 <strong>成本的现值</strong> 会更直观</p>
 </blockquote>
-<p>下图是用偏保守的 2% 折现率计算的 <code>成本-收益曲线</code>。</p>
-<p>图中，横坐标是身故时间（以买保险的时刻为 0，单位年），纵坐标是现值（单位元）。图中的两条线分别表示成本现值和收益现值的走势。</p>
+<p>下图是用偏保守的 2% 折现率计算的。</p>
+<p>横坐标是从买保险到身故的时间间隔（单位年），纵坐标是成本和收益的现值（单位元）。横坐标的起点是 30 年，即以完成 30 期缴费的时刻作为起点。</p>
 <p><img src="/img/cost-profit.png" alt=""></p>
-<p>由于成本 cost 只与折扣率有关，与时间无关，因此是一条横线；收益 profit 随时间递减，这导致 NPV 在交保后的第 45 年转负 (<code>NPV = profit - cost</code>)，这代表第 45 年之后就会亏损。</p>
-<p>注意，上述分析只考虑理财价值，不考虑保险价值。因此 NPV 转负的实际时间要更晚。但也别忘了，我们刚刚用的是 2% 的保守折现率，如果用更接近现实世界的数字，会发生什么呢？</p>
+<p>cost 是一条直线其实不难理解，因为 cost 的计算不含参数 t. 由于 t 是横坐标，这就是说 cost 不随 t 变化而变化。</p>
+<p>图中收支平衡点约在 45 年处，假设 30 岁签约保险，那么此时 75 岁还未及平均寿命。别忘了这是用 2% 保守折现率计算的结果，如果用更接近真实的折现率，“收支平衡”的年限还会提前。</p>
 <p>画图代码：</p>
 <pre tabindex="0"><code># 成本/收益曲线
 import matplotlib.pyplot as plt
@@ -634,21 +632,37 @@ plt.ylabel(&#39;(yuan)&#39;)
 plt.legend()
 plt.show()
 </code></pre><blockquote>
-<p><strong>Note</strong>: 2% 的折现率保守吗？</p>
-<p>你可以参考一下这些 2023 年的信息：</p>
+<p><strong>Note</strong>: 为什么说 2% 的折现率保守？</p>
+<p>时处 2023 年，这是一些证据：</p>
 <ul>
 <li><a href="https://baijiahao.baidu.com/s?id=1759324255223654880">中国青年报：过去十年CPI涨幅是 2%</a></li>
-<li>货币基金的年化收益率一般是 2%，大额存单可达 3%</li>
-<li>30 年将跨越好几个经济周期，如遇通胀周期，2% 跑不赢通胀</li>
+<li>货币基金年化收益率约 2%</li>
+<li>四大行 3 年期定存约 2.6% - 2.8%</li>
+<li>地方银行 5 年期定存可达 4%（但有下降趋势）</li>
+<li>美元存款定存可达 5% - 7%（但有下降趋势）</li>
 </ul>
 </blockquote>
 <h3 id="三不同折现率的npv曲线">三、不同折现率的NPV曲线</h3>
-<p>由于 <code>2%</code> 的折现率太低，我们看看 <code>3%, 5%, 7%</code> 下 NPV 的表现。</p>
+<p><code>2%</code> 的折现率设得太低，我们来看看 <code>3%, 5%, 7%</code> 的折现率下 NPV 的表现。</p>
 <p><img src="/img/npv.png" alt=""></p>
-<p>从 NPV 转负的时间看。3% 的折现率，缴满 5 年后转负；7% 的折现率，缴满之后就已经是负的了，而且是 -5.3 万。</p>
-<p>从预期寿命下的 NPV 看。假设预期寿命是 80 岁，此时 t 近似取 50。7% 折现率对应 80 岁时亏 10.2 万；3% 折现率对应亏 6.7 万。</p>
-<p>🦈 简单做个结论：</p>
-<p>因为不知道更细致的分布情况，无法做更深入的计算。所以粗略的结论是，如果你愿意花 6-10 万的现值，换终身重疾险，并留 50 万的税前遗产给受益人，那这款产品可能适合你。这么算下来，这款产品过分良心了，我对 50 万是不是无条件返还表示强烈怀疑。</p>
+<p>注：为便于表达，假设 30 岁时签约保险</p>
+<p>看看区别：</p>
+<ul>
+<li>从收支平衡的时间看：
+<ul>
+<li>3% 折现率，65 岁收支平衡</li>
+<li>7% 折现率，在缴满之前 NPV 就为负，收支平衡点在缴满前</li>
+</ul>
+</li>
+<li>假设 80 岁身故，那么：
+<ul>
+<li>3% 折现率，亏 6.7 万元</li>
+<li>7% 折现率，亏 10.2 万元</li>
+</ul>
+</li>
+</ul>
+<p>但是上面说的“收支平衡”也好，“亏”也好，都没有计算保险成本。实际在你亏的数字上，扣除保险公司支付给你的保险费用，才是保险公司赚的利润。但话说回来，50万返款肯定不是无条件给的，对身故的情形有限制，这又多了很多可以扯皮的地方。</p>
+<p>那我又有一个脑洞了，万一遗产税出台呢？这 50 万相当于帮后代合理避税了。有条件的老哥不如赌一把？看能不能钻尚未出台的遗产税的空子。</p>
 <p>画图代码：</p>
 <pre tabindex="0"><code># 不同折现率，对应的净现值曲线
 x_list = list(range(30, 60))
@@ -668,46 +682,12 @@ plt.ylabel(&#39;(yuan)&#39;)
 plt.legend()
 plt.show()
 </code></pre><blockquote>
-<p><strong>Note</strong>: 7% 折现率参考值的依据</p>
-<p>折现率的具体值，一般考虑通胀、资金成本、延迟消费等因素。理论上，一笔用于投资的钱，最好的年化收益率是 5%，它的折现率就是 5%</p>
-<p>7% 是 OMB 提供的参考值，<a href="https://en.wikipedia.org/wiki/Social_discount_rate">维基百科</a> 原文如下：</p>
+<p><strong>Note</strong>: 7% 折现率也是有说法的。它是 OMB 提供的参考值，<a href="https://en.wikipedia.org/wiki/Social_discount_rate">维基百科</a> 原文如下：</p>
 <p>“The US government uses a variety of discount rates but <strong>something around 7%</strong> is what the US Office of Management and Budget (OMB) recommends for a pretax rate of return on <strong>private investments</strong>. In the United Kingdom, HM Treasury fixes the social discount rate for the public sector at 3.5%.”</p>
 </blockquote>
-<!-- ### 1.5 一万元在未来值多少钱
-
-60 年后的 1 万元：
-
-- 按折现率 2% 算是 3.2 万
-- 按折现率 3% 算是 5.7 万
-- 按折现率 5% 算是 17.8 万
-- 按折现率 7% 算是 54.2 万
-
-54 万太夸张了，我觉得 5 万和 17 万合理一点。
-
-![](/img/1w-60-years.png)
-
-```
-# 一万元现值，60年后对应的金额
-x_list = list(range(60))
-get_future_list = lambda e: [10000*((1+e)**t) for t in range(60)]
-dr_02 = get_future_list(0.02)
-dr_03 = get_future_list(0.03)
-dr_05 = get_future_list(0.05)
-dr_07 = get_future_list(0.07)
-
-plt.plot(x_list, dr_02, label='2%')
-plt.plot(x_list, dr_03, label='3%')
-plt.plot(x_list, dr_05, label='5%')
-plt.plot(x_list, dr_07, label='7%')
-plt.title('10000 yuan after 60 years')
-plt.xlabel('(years)')
-plt.ylabel('(yuan)')
-plt.legend()
-plt.show()
-``` -->
 <h3 id="四内部收益率irr">四、内部收益率IRR</h3>
-<p>IRR 可以作为购买保险的参考指标，IRR 越高对顾客越有利。</p>
-<p>内部收益率 (IRR) 是净现值（NPV）等于 0 时的折现率。将该定义结合 NPV 公式，有如下代码：</p>
+<p>还有一个指标，也可以作为购买保险的参考依据。它叫 IRR，IRR 的数值越高，一般对顾客越有利。</p>
+<p>内部收益率 (IRR) 是净现值 (NPV) 等于 0 时的折现率。该定义结合 NPV 公式可得如下代码：</p>
 <pre tabindex="0"><code>import numpy as np
 from scipy.optimize import fsolve
 
@@ -718,20 +698,24 @@ def calc_root(t=50):
 root = calc_root()
 print(root)
 </code></pre><p>运行上述代码，输出：<code>$root \approx 0.017$</code></p>
-<p>这意味着，80 岁时身故（对应参数 <code>t=50</code>）对应的内部收益率 IRR 约为 0.017。PS: 不要忘了 0.017 是只看保险理财属性的结果。</p>
-<h3 id="五我的看法">五、我的看法</h3>
-<p>“保险值不值得买” 不是一个技术问题，它是现实问题。小到保险公司乱收费，大到通胀周期发生，都不是几个简单指标可以预测的，真正做决策购买，还需要综合考虑更多现实因素。</p>
-<p>就我个人而言，不是很喜欢理财型保险。可能是我的偏见。下面是我觉得它存在的风险，供你参考：</p>
-<ul>
-<li><strong>履约成本</strong>：30年长周期，叠加高年费，有断供风险</li>
-<li><strong>通胀周期</strong>：30年会经历多轮经济周期。如遇通胀，像 2023 年俄罗斯那样就亏大了</li>
-<li><strong>资金流动性</strong>：资金水位较低时，可能影响资金流动性，富哥富姐无视</li>
-<li><strong>资金机会成本</strong>：保费锁死了一部分钱，隐形中你失去了其他投资机会</li>
-<li><strong>收益上限</strong>：保险理财提供的收益高吗？如果不高，为什么这么多钱要被它锁住？</li>
-<li><strong>收益兑付</strong>：手续麻烦吗？快吗？受益人要不要纳税？</li>
-<li><strong>保险公司倒闭的风险</strong>：你确定保险公司活得比你久？</li>
-<li><strong>医保的进步</strong>：医保变好，商业保险就变鸡肋了</li>
-</ul>
+<p>这意味着，80 岁时身故（对应参数 <code>t=50</code>）对应的内部收益率 IRR 约为 0.017。PS: 此数值仅供参考，因为它没有考虑保险兑付，只考虑身故返利。</p>
+<h3 id="五简单结论">五、简单结论</h3>
+<p>一通计算下，这款产品不像看上去那么赚，但也不至于割韭菜。毕竟在重疾险之外，它还提供了返款的机会，虽然不知道真返起来痛不痛快。</p>
+<p>险保不炒，保险要回归保险本质。还是要考察它作为重疾险的品质和那 50 万具体的返款的条件才知道值不值。这涉及到一大堆复杂的概率分布计算，本文是不打算解决这个问题的，本文只想给一个简单但稍微反直觉的结论，给看客们一个可供参考的依据：如果你活到 80 岁，期间保险公司兑付 6 万保险，并且最后成功返款，那这就是标准的营亏平衡点。高于这个点你赚了，低于这个点保险公司赚了，你俩是零和游戏。</p>
+<h3 id="六后日谈">六、后日谈</h3>
+<p>“看起来赚，返款时还不知怎样”是这类产品的特点。身为一个风险厌恶者，我更喜欢干净的保险产品：不要返款，也不要理财属性。因为这终究是噱头，在层层的条款背后，大概率的结果是：你玩不过它。</p>
+<p>毕竟它是大机构，你们之间产生纠纷，身为个体只会输多赢少。所以我们的策略应该是减少一切和大机构发生纠纷的可能。保险合同，简单最美。</p>
+<!-- 
+### 七、一些闲话
+
+- **履约成本**：30年长周期，叠加高年费，有断供风险
+- **通胀周期**：30年会经历多轮经济周期。如遇通胀，像 2023 年俄罗斯那样就亏大了
+- **资金流动性**：资金水位较低时，可能影响资金流动性，富哥富姐无视
+- **资金机会成本**：保费锁死了一部分钱，隐形中你失去了其他投资机会
+- **收益上限**：保险理财提供的收益高吗？如果不高，为什么这么多钱要被它锁住？
+- **收益兑付**：手续麻烦吗？快吗？受益人要不要纳税？
+- **保险公司倒闭的风险**：你确定保险公司活得比你久？
+- **医保的进步**：医保变好，商业保险就变鸡肋了 -->
 
   </div>
   
@@ -740,12 +724,12 @@ print(root)
     
     <a href="/posts/hive_sql_example/" class="navigation-prev">
       <i aria-hidden="true" class="fa fa-chevron-left"></i>
-      <span class="navigation-tittle">Hive SQL 笔记</span>
+      <span class="navigation-tittle">HiveQL 用法笔记</span>
     </a>
     
     
     <a href="/posts/pypi_packaging/" class="navigation-next">
-      <span class="navigation-tittle">Python 项目打包小记</span>
+      <span class="navigation-tittle">PyPI 打包小记</span>
       <i aria-hidden="true" class="fa fa-chevron-right"></i>
     </a>
     
