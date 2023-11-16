@@ -656,14 +656,17 @@
 <h4 id="7-sigmoid-激活函数">7. Sigmoid 激活函数</h4>
 <p>将输入投影到 <code>$(0, 1)$</code></p>
 <p><code>$sigmoid(x) = \frac{1}{1 + \mathbf{exp}(-x)}$</code></p>
+<p><img src="/img/Sigmoid-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.png" alt="Sigmoid-激活函数"></p>
 <h4 id="8-tanh-激活函数">8. Tanh 激活函数</h4>
 <p>将输入投影到 <code>$(-1, 1)$</code></p>
 <p><code>$tanh(x) = \frac{1 - \mathbf{exp}(-2x)}{1 + \mathbf{exp}(-2x)}$</code></p>
+<p><img src="/img/Tanh-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.png" alt="Tanh-激活函数"></p>
 <h4 id="9-relu-激活函数">9. ReLU 激活函数</h4>
 <p>ReLU: rectified linear unit</p>
 <p>将输入投影到 <code>$(0, +\infty)$</code></p>
 <p><code>$ReLU(x) = \mathbf{max}(x, 0)$</code></p>
 <p>指数运算是一个很贵的操作，所以为什么大家爱用ReLU，因为一个max就好了</p>
+<p><img src="/img/ReLU-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.png" alt="ReLU-激活函数"></p>
 <h4 id="10-多类分类借鉴-softmax">10. 多类分类：借鉴 softmax</h4>
 <p><code>$softmax$</code> 就是输出一个堆概率 <code>$y_1, y_2, ..., y_k$</code>，所有这些加起来等于1</p>
 <p><code>$y_1, y_2, ..., y_k = softmax(o_1, o_1, ... , o_k)$</code></p>
