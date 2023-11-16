@@ -6,7 +6,24 @@
     <description>Recent content in Python on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 18 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 14 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>深度学习笔记</title>
+      <link>http://luochang212.github.io/posts/d2l/</link>
+      <pubDate>Tue, 14 Nov 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/posts/d2l/</guid>
+      <description>d2l 深度学习笔记，如有错误，欢迎拍砖 GitHub项目地址：AI-Project
+一、softmax 回归 1. 虽然叫回归，但是softmax 解决的是分类问题 回归估计是一个连续值 分类预测是一个离散类别 2. 分类应用举例 MINIST ImageNet human-protein-atlas-image-classification (Kaggle) malware-classification (Kaggle) jigsaw-comment-classification (Kaggle) 3. 从回归到多类分类 &amp;ndash; 均方损失 对分类结果做 one-hot 编码：
+$y = [y_1, y_2, , ... , y_n]^T$
+$y_i=\left\{\begin{array}{l}1 \text { if } i=y \\ 0 \text { otherwise }\end{array}\right.$
+使用均方损失 ($O_i$) 训练：
+$\hat{y}=\underset{i}{\operatorname{argmax}} o_i$
+该式含义为：取最大化 $O_i$ 对应的 $i$ 作为 $\hat{y}$ 的估计值
+4. 无校验比例 需要更置信地识别正确类（大余量）
+$O_y - O_i \geq \Delta (y, i)$</description>
+    </item>
+    
     <item>
       <title>PyPI 打包小记</title>
       <link>http://luochang212.github.io/posts/pypi_packaging/</link>
@@ -164,14 +181,14 @@ $ P(cancer) = 0.008, P(normal) = 0.992 \\ P(+ | cancer) = 0.98, P(- | cancer) = 
       
       <guid>http://luochang212.github.io/posts/python_tips/</guid>
       <description>Python 学习笔记，如有错误，欢迎指正 GitHub项目地址：python-tips
-本文从 2019 年 11 月一路更新到了 2020 年 11 月，我也从实习转向了正式工作。一年前，我尚未将 Python 视作主力编程语言。但今天，它毫无疑问已经是我最熟稔的伙伴之一了。
-Python 有许多缺点，但是它在机器学习、科学计算、可视化、网络编程等方面的优势，几乎无可匹敌。它的身影在一些不追求高性能的、离线低频次的场景下频繁出现。在诸如数据分析、算法预研、仿真建模等领域，都将 Python 作为首选语言。
-但是，入门 Python 并不容易。因为除了学习使用 Python 写代码，你还要学习关于这门语言自身的知识。例如，Python 有将文件视作模块 (module) 的机制。如果你要具体地理解这件事，你还需要深究 import 、 if __name__ == &amp;quot;__main__&amp;quot; 和 __init__.py 的含义。
-Python 语言就像一棵枝叶繁茂的树。如果你找不到枝干，就会被无数琐碎细节淹没，无从入手。《大学》云，知所先后则近道矣，正有其意。我衷心希望本文能成为学习你 Python 的“枝干”和“抓手”。
-书目推荐：
+相关书籍推荐：
 入门：《Python编程从入门到实践》 [豆瓣链接] 初级：《Python学习手册》(英文名 Learning Python) [豆瓣链接] 中级：《流畅的Python》[豆瓣链接] PS: 针对每个阶段，我推荐的是我认为最好的那本书。
 语言基础 列表 本文从以下几个方面介绍列表：
-创建 获取 修改 添加 插入 删除 排序 逆序 索引 循环 列表推导 切片 复制 去重 计数 查找 查看示例 字典 鉴于 JSON 在数据处理中的大量使用，字典的重要性也不言而喻。</description>
+创建 获取 修改 添加 插入 删除 排序 逆序 索引 循环 列表推导 切片 复制 去重 计数 查找 查看示例 字典 鉴于 JSON 在数据处理中的大量使用，字典的重要性也不言而喻。
+本文从以下几个方面介绍字典：
+创建 获取 更新 遍历 排序 删除 字典与JSON collections.defaultdict() setdefault() 查看示例 字符串 除了列表和字典，字符串也是 Python 中一种非常重要的数据类型。
+基本操作 格式化 字符串方法 查看示例 函数 本文目录：
+形参和实参 位置实参 关键字实参 默认值 位置实参和关键字实参的混用 默认值、位置实参和关键字实参的混用 传递任意数量的位置实参 传递任意数量的关键字实参 由字符串函数名生成可调用的函数 查看示例 异常 程序会发生异常，比如试图在计算中除0。Python 提供了强大的异常处理机制。</description>
     </item>
     
     <item>

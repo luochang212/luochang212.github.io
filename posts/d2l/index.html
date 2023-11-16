@@ -24,14 +24,14 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="深度学习笔记"/>
-<meta name="twitter:description" content="d2l 是一个相见恨晚的好教程，有没有懂的"/>
+<meta name="twitter:description" content="我踏马记记记"/>
 
 <meta property="og:title" content="深度学习笔记" />
-<meta property="og:description" content="d2l 是一个相见恨晚的好教程，有没有懂的" />
+<meta property="og:description" content="我踏马记记记" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/d2l/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-10-20T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-10-20T00:00:00+00:00" /><meta property="og:site_name" content="Title" />
+<meta property="article:published_time" content="2023-11-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-11-14T00:00:00+00:00" /><meta property="og:site_name" content="Title" />
 
 
     
@@ -483,7 +483,7 @@
 <div class="post__meta">
     
     
-      <i class="fas fa-calendar-alt"></i> Oct 20, 2023
+      <i class="fas fa-calendar-alt"></i> Nov 14, 2023
     
     
     
@@ -516,7 +516,7 @@
     
     
     <br/>
-    <i class="fas fa-clock"></i> 0 min read
+    <i class="fas fa-clock"></i> 2 min read
 </div>
 
 
@@ -528,28 +528,184 @@
     <input type="checkbox" id="tocToggle">
     <label for="tocToggle">目录</label>
     
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#一softmax-回归">一、softmax 回归</a></li>
+        <li><a href="#二多层感知机">二、多层感知机</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     
   </div>
   
   
   <div class="post">
-    
+    <blockquote>
+<p>d2l 深度学习笔记，如有错误，欢迎拍砖 <img src="/img/quyin/witty.png" class="my-emoji" style = "height: 32px;"></p>
+</blockquote>
+<p>GitHub项目地址：<a href="https://github.com/luochang212/AI-Project" target="_blank">AI-Project</a></p>
+<h3 id="一softmax-回归">一、softmax 回归</h3>
+<h4 id="1-虽然叫回归但是softmax-解决的是分类问题">1. 虽然叫回归，但是softmax 解决的是分类问题</h4>
+<ul>
+<li>回归估计是一个连续值</li>
+<li>分类预测是一个离散类别</li>
+</ul>
+<h4 id="2-分类应用举例">2. 分类应用举例</h4>
+<ul>
+<li>MINIST</li>
+<li>ImageNet</li>
+<li>human-protein-atlas-image-classification (<strong>Kaggle</strong>)</li>
+<li>malware-classification (<strong>Kaggle</strong>)</li>
+<li>jigsaw-comment-classification (<strong>Kaggle</strong>)</li>
+</ul>
+<h4 id="3-从回归到多类分类----均方损失">3. 从回归到多类分类 &ndash; 均方损失</h4>
+<p>对分类结果做 one-hot 编码：</p>
+<p><code>$y = [y_1, y_2, , ... , y_n]^T$</code></p>
+<p><code>$y_i=\left\{\begin{array}{l}1 \text { if } i=y \\ 0 \text { otherwise }\end{array}\right.$</code></p>
+<p>使用均方损失 ($O_i$) 训练：</p>
+<p><code>$\hat{y}=\underset{i}{\operatorname{argmax}} o_i$</code></p>
+<p>该式含义为：取最大化 <code>$O_i$</code> 对应的 <code>$i$</code> 作为 <code>$\hat{y}$</code> 的估计值</p>
+<h4 id="4-无校验比例">4. 无校验比例</h4>
+<p>需要更置信地识别正确类（大余量）</p>
+<p><code>$O_y - O_i \geq \Delta (y, i)$</code></p>
+<h4 id="5-校验比例">5. 校验比例</h4>
+<p>现在我们得到的输出 $O_i$ 是一个向量，我们希望把它转化成每一种分类对应的概率。我们可以通过添加 softmax 操作子实现这一目标，它对 $O_i$ 做如下操作：</p>
+<p><code>$\hat{y_i} = \frac{\exp(O_i)}{\sum_{k} \exp(O_k)}$</code></p>
+<p>此时，<code>$y$</code> 与 <code>$\hat{y}$</code> 都是概率，我们可以把两个概率的区别 <code>$y - \hat{y}$</code> 作为损失</p>
+<h4 id="6-交叉熵损失">6. 交叉熵损失</h4>
+<p>交叉熵常用来衡量两个概率的区别 <code>$H(p, q) = \sum_{i} - P_i log(q_i)$</code></p>
+<p>将它作为损失：</p>
+<p><code>$l(\mathbf{y}, \hat{\mathbf{y}})=-\sum_i y_i \log \hat{y}_i=-\log \hat{y}_y$</code></p>
+<p>PS：因为除了 <code>$i = y$</code> 的情况，<code>$i$</code> 为其他值时 <code>$y_i$</code> 为 0</p>
+<p>其梯度是真实概率和预测概率的区别：</p>
+<p><code>$\partial_{o_i} l(\mathbf{y}, \hat{\mathbf{y}})=\operatorname{softmax}(\mathbf{o})_i-y_i$</code></p>
+<h4 id="7-总结">7. 总结</h4>
+<ul>
+<li>Softmax回归是一个多类分类模型</li>
+<li>使用Softmax操作子得到每个类的预测置信度</li>
+<li>使用交叉熵来衡量预测和标号的区别</li>
+</ul>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/AI-Project/blob/main/src/7.softmax回归.ipynb')">查看示例</button>
+</center>
+<h3 id="二多层感知机">二、多层感知机</h3>
+<p>感知机解决的是二分类问题</p>
+<h4 id="1-什么是感知机">1. 什么是感知机</h4>
+<p>给定输入 <code>$x$</code>，权重 <code>$w$</code>，和偏移 <code>$b$</code>，感知机输出：</p>
+<p><code>$o = \sigma \left(\left&lt;W, X\right&gt; + b\right)$</code></p>
+<p><code>$\sigma(x) = \left\{\begin{array}{l}1 \text { if } x &gt; 0 \\ -1 \text { otherwise }\end{array}\right.$</code></p>
+<h4 id="2-训练感知机">2. 训练感知机</h4>
+<ol>
+<li>初始化：w = 0, b = 0</li>
+<li>如果分类分错：<code>$y_i [\left&lt; W, X_i \right&gt;] \leq 0 \text{ then } w \gets w + y_i x_i \text{ and } b \gets b + y_i $</code></li>
+<li>停止条件：所有类别都分对的时候停止</li>
+</ol>
+<p>等价于使用批量大小为1的梯度下降，并使用如下损失函数：</p>
+<p><code>$l\left(y, X, W\right) = max\left(0, -y\left&lt;W, X\right&gt;\right)$</code></p>
+<h4 id="3-收敛定理">3. 收敛定理</h4>
+<p>对于：</p>
+<ul>
+<li>数据在半径 <code>$r$</code> 内</li>
+<li>余量 <code>$\rho$</code> 将数据点分两类</li>
+<li><code>$\lvert\lvert w \rvert\rvert^{2} + b^2 \leq 1$</code></li>
+</ul>
+<p>感知机保证在 <code>$\frac{r^2 + 1}{\rho^2}$</code> 步后收敛</p>
+<h4 id="4-xor问题-minsky--papert-1969">4. XOR问题 (Minsky &amp; Papert, 1969)</h4>
+<p>感知机不能拟合 XOR 函数，它只能产生线性分割面</p>
+<pre tabindex="0"><code>        |
+    1   |   -1
+        |
+-----------------
+        |
+   -1   |    1
+        |
+</code></pre><p>由于感知机无法拟合 XOR 函数，导致了第一次 AI 寒冬。但是其实有办法解决这个问题，解决的方法叫 <strong>多层感知机</strong>。</p>
+<h4 id="5-多层感知机">5. 多层感知机</h4>
+<pre tabindex="0"><code>    　   |
+   ①    |    ②
+    　   |
+-------------------
+    　   |
+   ③    |    ④
+    　   |
+</code></pre><ul>
+<li>先学一次：对于竖线，左边为 <code>$+$</code> ，右边为 <code>$-$</code></li>
+<li>再学一次：对于横线：上边为 <code>$+$</code> ，下边为 <code>$-$</code></li>
+</ul>
+<p>把两次分类结果组合一下（做乘法），就能表达 XOR 了。</p>
+<p>对于我们的启发是：如果一个复杂问题一次性做不了，可以先用一个简单函数，再用一个简单函数，接着用一个简单函数组合这两者。也就是一层变多层，就可以表达复杂结果。</p>
+<p><img src="../img/perceptron-1.png" alt=""></p>
+<p>为什么说隐藏层的层数是超参？因为输入数据的维度 <code>$n$</code> 和输出数据的维度 <code>$m$</code> 都是由数据决定的，我们惟一能调的，只有隐藏层的层数。</p>
+<h4 id="6-单隐藏层">6. 单隐藏层</h4>
+<ul>
+<li>输入：<code>$\mathbf{x} \in \mathbb{R}^{n}$</code></li>
+<li>隐藏层：<code>$\mathbf{W}_1 \in \mathbb{R}^{m \times n}, \mathbf{b}_1 \in \mathbb{R}^m$</code></li>
+<li>输出层：<code>$\mathbf{w}_2 \in \mathbb{R}^{m}, \mathbf{b}_2 \in \mathbb{R}$</code></li>
+</ul>
+<p><code>$~~~~~~~~~\mathbf{h} = \sigma \left( \mathbf{W}_1 + \mathbf{b}_1 \right)$</code></p>
+<p><code>$~~~~~~~~~\mathbf{o} = \mathbf{w}_2^\mathbf{T} \mathbf{h} + \mathbf{b}_2$</code></p>
+<p>$\sigma$ 是按元素的<strong>激活函数</strong></p>
+<blockquote>
+<p><strong>Note</strong>: 为什么需要非线性的激活函数？</p>
+<p>如果 <code>$\sigma$</code> 是线性的，把公式一的 <code>$\mathbf{h}$</code> 代入到公式二中，可得：</p>
+<p><code>$\mathbf{hence} \space \mathbf{o} = \mathbf{w}_2^T \mathbf{W}_1 \mathbf{o} + b^{\prime}$</code> 依然是线性，折腾半天发现我们得到的依旧是一个最简单的线性模型。</p>
+</blockquote>
+<h4 id="7-sigmoid-激活函数">7. Sigmoid 激活函数</h4>
+<p>将输入投影到 <code>$(0, 1)$</code></p>
+<p><code>$sigmoid(x) = \frac{1}{1 + \mathbf{exp}(-x)}$</code></p>
+<h4 id="8-tanh-激活函数">8. Tanh 激活函数</h4>
+<p>将输入投影到 <code>$(-1, 1)$</code></p>
+<p><code>$tanh(x) = \frac{1 - \mathbf{exp}(-2x)}{1 + \mathbf{exp}(-2x)}$</code></p>
+<h4 id="9-relu-激活函数">9. ReLU 激活函数</h4>
+<p>ReLU: rectified linear unit</p>
+<p>将输入投影到 <code>$(0, +\infty)$</code></p>
+<p><code>$ReLU(x) = \mathbf{max}(x, 0)$</code></p>
+<p>指数运算是一个很贵的操作，所以为什么大家爱用ReLU，因为一个max就好了</p>
+<h4 id="10-多类分类借鉴-softmax">10. 多类分类：借鉴 softmax</h4>
+<p><code>$softmax$</code> 就是输出一个堆概率 <code>$y_1, y_2, ..., y_k$</code>，所有这些加起来等于1</p>
+<p><code>$y_1, y_2, ..., y_k = softmax(o_1, o_1, ... , o_k)$</code></p>
+<h4 id="11-多隐藏层">11. 多隐藏层</h4>
+<p><code>$\mathbf{h}_1 = \sigma(\mathbf{W}_1\mathbf{x} + b_1)$</code></p>
+<p><code>$\mathbf{h}_2 = \sigma(\mathbf{W}_2\mathbf{h}_1 + b_2)$</code></p>
+<p><code>$\mathbf{h}_3 = \sigma(\mathbf{W}_3\mathbf{h}_2 + b_3)$</code></p>
+<p><code>$\mathbf{o} = \mathbf{W}_4\mathbf{h}_3 + b_4$</code></p>
+<p>激活函数主要是为了防止层数的塌陷，所以最后一层输出层不需要激活函数。</p>
+<p>超参数：</p>
+<ul>
+<li>隐藏层数</li>
+<li>每层隐藏层的大小</li>
+</ul>
+<h4 id="12-总结">12. 总结</h4>
+<ul>
+<li>多层感知机使用隐藏层和激活函数来得到非线性模型</li>
+<li>常用激活函数是Sigmoid, Tanh, ReLU</li>
+<li>使用Softmax来处理多类分类</li>
+<li>超参数为隐藏层数，和各个隐藏层大小</li>
+</ul>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/AI-Project/blob/main/src/8.多层感知机.ipynb')">查看示例</button>
+</center>
+<blockquote>
+<p>todo: 未完待续</p>
+</blockquote>
+<div id="mini-overlay" onclick="overlay_off()"></div>
+<div id="mini-window"><iframe id="mini-iframe" frameBorder="0"></iframe></div>
+<button id="btn-close" onclick="overlay_off()">×</button>
+<script src="/python-tips/overlay.js"></script>
+<link rel="stylesheet" href="/python-tips/style.css">
   </div>
   
 
 <div class="navigation navigation-single">
     
-    <a href="/posts/hunted/" class="navigation-prev">
+    <a href="/posts/pypi_packaging/" class="navigation-prev">
       <i aria-hidden="true" class="fa fa-chevron-left"></i>
-      <span class="navigation-tittle">《潜行追踪》观后感</span>
+      <span class="navigation-tittle">PyPI 打包小记</span>
     </a>
     
-    
-    <a href="/posts/reinforcement_learning/" class="navigation-next">
-      <span class="navigation-tittle">强化学习笔记</span>
-      <i aria-hidden="true" class="fa fa-chevron-right"></i>
-    </a>
     
 </div>
 
