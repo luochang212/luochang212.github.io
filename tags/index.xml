@@ -6,22 +6,31 @@
     <description>Recent content in Tags on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 14 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 11 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>DT</title>
-      <link>http://luochang212.github.io/tags/dt/</link>
-      <pubDate>Tue, 14 Nov 2023 00:00:00 +0000</pubDate>
+      <title>Note</title>
+      <link>http://luochang212.github.io/tags/note/</link>
+      <pubDate>Sat, 11 Nov 2023 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/tags/dt/</guid>
+      <guid>http://luochang212.github.io/tags/note/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Python</title>
       <link>http://luochang212.github.io/tags/python/</link>
-      <pubDate>Tue, 14 Nov 2023 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 11 Nov 2023 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DT</title>
+      <link>http://luochang212.github.io/tags/dt/</link>
+      <pubDate>Wed, 18 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/tags/dt/</guid>
       <description></description>
     </item>
     

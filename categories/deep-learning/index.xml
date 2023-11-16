@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>deep learning on Chang Luo</title>
+    <link>http://luochang212.github.io/categories/deep-learning/</link>
+    <description>Recent content in deep learning on Chang Luo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 11 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/categories/deep-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>深度学习笔记</title>
+      <link>http://luochang212.github.io/posts/d2l/</link>
+      <pubDate>Sat, 11 Nov 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/posts/d2l/</guid>
+      <description>d2l 深度学习笔记，如有错误，欢迎拍砖 GitHub项目地址：AI-Project
+一、softmax 回归 1. 虽然叫回归，但是softmax 解决的是分类问题 回归估计是一个连续值 分类预测是一个离散类别 2. 分类应用举例 MINIST ImageNet human-protein-atlas-image-classification (Kaggle) malware-classification (Kaggle) jigsaw-comment-classification (Kaggle) 3. 从回归到多类分类 &amp;ndash; 均方损失 对分类结果做 one-hot 编码：
+$y = [y_1, y_2, , ... , y_n]^T$
+$y_i=\left\{\begin{array}{l}1 \text { if } i=y \\ 0 \text { otherwise }\end{array}\right.$
+使用均方损失 ($O_i$) 训练：
+$\hat{y}=\underset{i}{\operatorname{argmax}} o_i$
+该式含义为：取最大化 $O_i$ 对应的 $i$ 作为 $\hat{y}$ 的估计值
+4. 无校验比例 需要更置信地识别正确类（大余量）
+$O_y - O_i \geq \Delta (y, i)$</description>
+    </item>
+    
+  </channel>
+</rss>
