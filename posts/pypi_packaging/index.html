@@ -554,27 +554,27 @@
 <li>背景知识：<a href="https://docs.python.org/3/tutorial/modules.html#packages">Modules</a></li>
 </ul>
 <h3 id="一文件结构介绍">一、文件结构介绍</h3>
-<p>打包前，需要构建以下文件结构：</p>
+<p>打包前，需构建如下文件结构：</p>
 <pre tabindex="0"><code>packaging_tutorial/
 ├── LICENSE
 ├── pyproject.toml
 ├── README.md
 ├── src/
-│   └── YOUR_PACKAGE_HERE/
+│   └── YOUR_PACKAGE_NAME/
 │       ├── __init__.py
 │       └── example.py
 └── tests/
-</code></pre><p>文件夹 / 文件 说明：</p>
+</code></pre><p>各个 <code>文件</code> / <code>文件夹</code> 说明：</p>
 <ul>
 <li><code>packaging_tutorial</code>: 项目文件夹</li>
 <li><code>LICENSE</code>: 开源协议，可由 GitHub 生成</li>
 <li><code>pyproject.toml</code>: 打包配置文件</li>
-<li><code>README.md</code>: 说明文档</li>
-<li><code>src</code>: 项目结构要求有此文件夹</li>
-<li><code>YOUR_PACKAGE_HERE</code>: 包的主程序，以“你的包名”命名文件夹</li>
+<li><code>README.md</code>: 项目文档</li>
+<li><code>src</code>: 项目结构要求的，用来放主程序</li>
+<li><code>YOUR_PACKAGE_NAME</code>: 主程序文件夹，以“你的包名”命名文件夹</li>
 </ul>
 <h3 id="二添加配置文件">二、添加配置文件</h3>
-<p>将下面的内容修改一下，改成你的名字邮箱什么的，存成 <code>pyproject.toml</code> 文件</p>
+<p>将以下内容修改一下，改改名字邮箱什么的，存成配置文件 <code>pyproject.toml</code></p>
 <pre tabindex="0"><code>[build-system]
 requires = [&#34;hatchling&#34;]
 build-backend = &#34;hatchling.build&#34;
@@ -602,19 +602,20 @@ classifiers = [
 <pre tabindex="0"><code>python3 -m pip install --upgrade pip
 python3 -m pip install --upgrade build
 </code></pre><h4 id="32-打包">3.2 打包</h4>
-<p>在 <code>pyproject.toml</code> 文件所属目录下，打开命令行，运行代码：</p>
+<p>来到 <code>pyproject.toml</code> 所在目录，打开命令行，运行代码：</p>
 <pre tabindex="0"><code>python3 -m build
-</code></pre><p>此操作在当前目录下生成名为 <code>dist</code> 的文件夹，里面是打包好的项目。</p>
+</code></pre><p>操作后，当前目录下生成名为 <code>dist</code> 的文件夹。文件夹内是打包好的项目。</p>
 <h3 id="四上传">四、上传</h3>
 <h4 id="41-准备上传环境">4.1 准备上传环境</h4>
 <pre tabindex="0"><code>python3 -m pip install --upgrade twine
 </code></pre><h4 id="42-注册-pypi-账号">4.2 注册 PyPI 账号</h4>
-<p>PyPI 提供了测试服和正式服。测试上传选测试服，正式上传选正式服。</p>
+<p>PyPI 提供了测试服和正式服。测试上传选测试账号，正式上传选正式账号。</p>
+<p>注册账号后申请 API token.</p>
 <table>
 <thead>
 <tr>
 <th></th>
-<th>账号注册链接</th>
+<th>注册账号的链接</th>
 <th>获取 API token 的链接</th>
 </tr>
 </thead>
@@ -631,17 +632,16 @@ python3 -m pip install --upgrade build
 </tr>
 </tbody>
 </table>
-<p>注册账号后，获取 API token.</p>
 <blockquote>
-<p><strong>Note</strong>: 正式服需要先完成 2FA 验证才能获取 API token</p>
+<p><strong>Note</strong>: 正式服需要完成 2FA 验证才能获取 API token，测试服无需验证</p>
 </blockquote>
 <h4 id="43-上传到-pypi">4.3 上传到 PyPI</h4>
-<p>分两种情况：</p>
+<p>两种情况：</p>
 <p>1）上传测试服 <a href="https://test.pypi.org/">TestPyPI</a>：</p>
 <pre tabindex="0"><code>python3 -m twine upload --repository testpypi dist/*
 </code></pre><p>2）上传正式服 <a href="https://pypi.org/">PyPI</a>：</p>
 <pre tabindex="0"><code>twine upload dist/* 
-</code></pre><p>运行以上代码，命令行会要求你输入 <code>username</code> 和 <code>password</code>。</p>
+</code></pre><p>运行命令后，命令行会要求你输入 <code>username</code> 和 <code>password</code>。</p>
 <ul>
 <li><code>username</code> 填 <code>__token__</code></li>
 <li><code>password</code> 填你的 <code>API token</code>，就是 <code>pypi-</code> 开头那串东西</li>
