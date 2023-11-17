@@ -53,7 +53,7 @@ $y$: 因变量（或被解释变量、回归子） $x$: 自变量（或解释变
       <pubDate>Sat, 21 Nov 2020 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/fastapi/</guid>
-      <description>什么是 API？如何从零开始，搭建自己的第一个API？本文带你搭建一个 API 小应用以带你了解 FastAPI 的使用细节
+      <description>什么是 API？如何从零开始，搭建自己的第一个API？本文带你搭建一个 API 小应用以了解 FastAPI 的使用细节
 GitHub项目地址：calendar-api
 什么是 API？
 简单来说，API 是软件间相互传输数据的接口。它在生活中十分常见，比如博物馆订票系统中就使用了 API. 当你在手机应用上订票时，手机实际上发送了一个 HTTP 请求给远程服务器。远程服务器解析该请求。当确认所有字段信息均准确无误后，它才会把你的订票信息录入数据库，并回调成功标识。只有当上述操作全都被正确执行时，你的手机才会显示订票成功。
