@@ -32,9 +32,9 @@ $O_y - O_i \geq \Delta (y, i)$</description>
       <guid>http://luochang212.github.io/posts/pypi_packaging/</guid>
       <description>走过路过的打包 DT 向我看齐 😈
 GitHub项目地址：hit-and-blow
-官方教程：Packaging Python Projects 背景知识：Modules 一、文件结构介绍 你需要构建以下文件：
-packaging_tutorial/ ├── LICENSE ├── pyproject.toml ├── README.md ├── src/ │ └── example_package_YOUR_USERNAME_HERE/ │ ├── __init__.py │ └── example.py └── tests/ 文件夹 / 文件 说明：
-packaging_tutorial: GitHub 项目文件夹 LICENSE: 开源协议，可由 GitHub 生成 pyproject.toml: 打包配置文件 README.md: 项目说明文件 src: 项目结构要求 example_package_YOUR_USERNAME_HERE: 你的 Python 包名 二、添加配置文件 将以下内容修改后添加到文件 pyproject.toml
+官方教程：Packaging Python Projects 背景知识：Modules 一、文件结构介绍 打包前，需要构建以下文件结构：
+packaging_tutorial/ ├── LICENSE ├── pyproject.toml ├── README.md ├── src/ │ └── YOUR_PACKAGE_HERE/ │ ├── __init__.py │ └── example.py └── tests/ 文件夹 / 文件 说明：
+packaging_tutorial: 项目文件夹 LICENSE: 开源协议，可由 GitHub 生成 pyproject.toml: 打包配置文件 README.md: 说明文档 src: 项目结构要求有此文件夹 YOUR_PACKAGE_HERE: 包的主程序，以“你的包名”命名文件夹 二、添加配置文件 将下面的内容修改一下，改成你的名字邮箱什么的，存成 pyproject.toml 文件
 [build-system] requires = [&amp;#34;hatchling&amp;#34;] build-backend = &amp;#34;hatchling.build&amp;#34; [project] name = &amp;#34;example_package_YOUR_USERNAME_HERE&amp;#34; version = &amp;#34;0.0.1&amp;#34; authors = [ { name=&amp;#34;Example Author&amp;#34;, email=&amp;#34;author@example.</description>
     </item>
     

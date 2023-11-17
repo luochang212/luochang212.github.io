@@ -24,10 +24,10 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="PyPI 打包小记"/>
-<meta name="twitter:description" content="我人生中写的第一个 Python 包竟是个作弊器？虽然作弊器没什么卵用，但打包过程还是有用的，来简单记录一下"/>
+<meta name="twitter:description" content="人生中第一个上传 PyPI 的项目竟是作弊器？作弊器没什么卵用，但打包过程还是有用的，简单记录一下"/>
 
 <meta property="og:title" content="PyPI 打包小记" />
-<meta property="og:description" content="我人生中写的第一个 Python 包竟是个作弊器？虽然作弊器没什么卵用，但打包过程还是有用的，来简单记录一下" />
+<meta property="og:description" content="人生中第一个上传 PyPI 的项目竟是作弊器？作弊器没什么卵用，但打包过程还是有用的，简单记录一下" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/pypi_packaging/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-10-18T00:00:00+00:00" />
@@ -536,7 +536,6 @@
         <li><a href="#二添加配置文件">二、添加配置文件</a></li>
         <li><a href="#三打包">三、打包</a></li>
         <li><a href="#四上传">四、上传</a></li>
-        <li><a href="#五测试">五、测试</a></li>
       </ul>
     </li>
   </ul>
@@ -555,27 +554,27 @@
 <li>背景知识：<a href="https://docs.python.org/3/tutorial/modules.html#packages">Modules</a></li>
 </ul>
 <h3 id="一文件结构介绍">一、文件结构介绍</h3>
-<p>你需要构建以下文件：</p>
+<p>打包前，需要构建以下文件结构：</p>
 <pre tabindex="0"><code>packaging_tutorial/
 ├── LICENSE
 ├── pyproject.toml
 ├── README.md
 ├── src/
-│   └── example_package_YOUR_USERNAME_HERE/
+│   └── YOUR_PACKAGE_HERE/
 │       ├── __init__.py
 │       └── example.py
 └── tests/
 </code></pre><p>文件夹 / 文件 说明：</p>
 <ul>
-<li><code>packaging_tutorial</code>: GitHub 项目文件夹</li>
+<li><code>packaging_tutorial</code>: 项目文件夹</li>
 <li><code>LICENSE</code>: 开源协议，可由 GitHub 生成</li>
 <li><code>pyproject.toml</code>: 打包配置文件</li>
-<li><code>README.md</code>: 项目说明文件</li>
-<li><code>src</code>: 项目结构要求</li>
-<li><code>example_package_YOUR_USERNAME_HERE</code>: 你的 Python 包名</li>
+<li><code>README.md</code>: 说明文档</li>
+<li><code>src</code>: 项目结构要求有此文件夹</li>
+<li><code>YOUR_PACKAGE_HERE</code>: 包的主程序，以“你的包名”命名文件夹</li>
 </ul>
 <h3 id="二添加配置文件">二、添加配置文件</h3>
-<p>将以下内容修改后添加到文件 <code>pyproject.toml</code></p>
+<p>将下面的内容修改一下，改成你的名字邮箱什么的，存成 <code>pyproject.toml</code> 文件</p>
 <pre tabindex="0"><code>[build-system]
 requires = [&#34;hatchling&#34;]
 build-backend = &#34;hatchling.build&#34;
@@ -599,18 +598,18 @@ classifiers = [
 &#34;Homepage&#34; = &#34;https://github.com/pypa/sampleproject&#34;
 &#34;Bug Tracker&#34; = &#34;https://github.com/pypa/sampleproject/issues&#34;
 </code></pre><h3 id="三打包">三、打包</h3>
-<p><strong>1）安装环境</strong></p>
+<h4 id="31-准备打包环境">3.1 准备打包环境</h4>
 <pre tabindex="0"><code>python3 -m pip install --upgrade pip
 python3 -m pip install --upgrade build
-</code></pre><p><strong>2）打包</strong></p>
-<p>在 <code>pyproject.toml</code> 文件同目录下运行，执行打包操作：</p>
+</code></pre><h4 id="32-打包">3.2 打包</h4>
+<p>在 <code>pyproject.toml</code> 文件所属目录下，打开命令行，运行代码：</p>
 <pre tabindex="0"><code>python3 -m build
-</code></pre><p>此举将在同目录下生成名为 <code>dist</code> 的文件夹，里面放的是打包好的文件。</p>
+</code></pre><p>此操作在当前目录下生成名为 <code>dist</code> 的文件夹，里面是打包好的项目。</p>
 <h3 id="四上传">四、上传</h3>
-<p><strong>1）安装环境</strong></p>
+<h4 id="41-准备上传环境">4.1 准备上传环境</h4>
 <pre tabindex="0"><code>python3 -m pip install --upgrade twine
-</code></pre><p><strong>2）账号准备</strong></p>
-<p>PyPI 提供了测试服和正式服。如果只是测试流程，可以选择测试服。</p>
+</code></pre><h4 id="42-注册-pypi-账号">4.2 注册 PyPI 账号</h4>
+<p>PyPI 提供了测试服和正式服。测试上传选测试服，正式上传选正式服。</p>
 <table>
 <thead>
 <tr>
@@ -632,26 +631,26 @@ python3 -m pip install --upgrade build
 </tr>
 </tbody>
 </table>
-<p>测试服与正式服选其一。注册账号后，获取API token.</p>
+<p>注册账号后，获取 API token.</p>
 <blockquote>
 <p><strong>Note</strong>: 正式服需要先完成 2FA 验证才能获取 API token</p>
 </blockquote>
-<p><strong>3）上传到 PyPI</strong></p>
-<p>根据你注册的账号类型，选择对应的服务器。</p>
-<p>1. 上传到测试服务器 <a href="https://test.pypi.org/">TestPyPI</a>：</p>
+<h4 id="43-上传到-pypi">4.3 上传到 PyPI</h4>
+<p>分两种情况：</p>
+<p>1）上传测试服 <a href="https://test.pypi.org/">TestPyPI</a>：</p>
 <pre tabindex="0"><code>python3 -m twine upload --repository testpypi dist/*
-</code></pre><p>2. 上传到正式服务器 <a href="https://pypi.org/">PyPI</a>：</p>
+</code></pre><p>2）上传正式服 <a href="https://pypi.org/">PyPI</a>：</p>
 <pre tabindex="0"><code>twine upload dist/* 
-</code></pre><p>执行以上命令后，需要你输入 <code>username</code> 和 <code>password</code>。</p>
+</code></pre><p>运行以上代码，命令行会要求你输入 <code>username</code> 和 <code>password</code>。</p>
 <ul>
-<li><code>username</code> 请填入 <code>__token__</code></li>
-<li><code>password</code> 是你申请的 <code>API token</code>，也就是以 <code>pypi-</code> 开头的那一坨东西</li>
+<li><code>username</code> 填 <code>__token__</code></li>
+<li><code>password</code> 填你的 <code>API token</code>，就是 <code>pypi-</code> 开头那串东西</li>
 </ul>
-<h3 id="五测试">五、测试</h3>
-<p>现在可以通过你熟知的 <code>pip install xxx</code> 下载并测试你的 Python 库了。</p>
+<h4 id="44-测试">4.4 测试</h4>
+<p>现在可以用 <code>pip install xxx</code> 下载并测试了！</p>
 <blockquote>
-<p>🖐️ 不要走开🖐️，现在是广告时间！</p>
-<p>作为练习，我为豆瓣评分9.1的<a href="https://www.douban.com/game/35010128/">《世界游戏大全51》</a> 中的猜颜色小游戏写了解算器（作弊器），并打包上传到了PyPI。如果感兴趣，可以在 <a href="https://test.pypi.org/project/switch-hacker/">PyPI</a> 和 <a href="https://github.com/luochang212/hit-and-blow">GitHub</a> 中下载。</p>
+<p>🖐️ 不要走开🖐️ 广告时间到！</p>
+<p>作为练习，我为豆瓣 9.1 分的 <a href="https://www.douban.com/game/35010128/">《世界游戏大全51》</a> 中的小游戏“猜颜色”写了解算器（作弊器）并打包上传到 PyPI。如果感兴趣，可以在 <a href="https://test.pypi.org/project/switch-hacker/">PyPI</a> 或 <a href="https://github.com/luochang212/hit-and-blow">GitHub</a> 下载～</p>
 </blockquote>
 
   </div>
