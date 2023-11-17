@@ -554,23 +554,24 @@
 <p>未来的钱，也许没你想的那么值钱，这是一件挺反直觉的事。要解释这一切，还要从折现率说起</p>
 </blockquote>
 <p>GitHub项目地址：<a href="https://github.com/luochang212/python-tips/blob/master/insurance.ipynb" target="_blank">insurance.ipynb</a></p>
-<p>我有位朋友买保险，保险顾问给的方案，身故后返还两倍于缴纳金额的钱，并附带终身重疾险。听起来像是纯捡便宜，究竟是怎么一回事呢？</p>
-<p>销售顾问给的方案：</p>
+<p>有位朋友买保险，保险顾问给的方案是：购买重疾险，身故后返还两倍于缴纳金额的钱。听起来像捡便宜，究竟是怎么回事呢？</p>
+<p>保险顾问的方案：</p>
 <ul>
 <li><strong>支出</strong>：分 30 年支付重疾险，每年付 9000 元，共 27 万元</li>
 <li><strong>收益</strong>：享受终生重疾险；身故后保险公司一次性返还 50 万元</li>
 </ul>
-<p>乍看很划算。是不是真划算，算过才知道。</p>
-<p>抱歉啊，为了把问题讲明白，得先引一下背景知识。</p>
+<p>乍看很划算。是不是真香，算过才知道。</p>
+<p>为了把问题讲明白，得先引一下背景知识。</p>
 <h3 id="一折现率和净现值">一、折现率和净现值</h3>
 <h4 id="11-什么是折现率">1.1 什么是折现率</h4>
-<p>因为通胀和机会投资的存在，未来的钱更不值钱。将未来的钱折算成现在的钱，存在折扣比率，我们叫它 <a href="https://en.wikipedia.org/wiki/Discount_rate">折现率</a> (Discount rate)。举个例子，如果你认为一年后的 107 元与现在的 100 元相当，折现率就是 7%。</p>
+<p>由于生息潜力和通胀预期，同样数额的钱在未来更不值钱。将未来的钱折算成现在的钱，存在折扣率，我们叫它 <a href="https://en.wikipedia.org/wiki/Discount_rate">折现率</a> (Discount rate)。举个例子，如果你认为一年后的 107 元与现在的 100 元相当，折现率就是 7%。</p>
 <h4 id="12-什么是现值">1.2 什么是现值</h4>
-<p>按折现率，把“未来的钱”折算成“现在的钱”的值。</p>
-<p><code>$一年后107元的现值 = \frac{107}{1 + 折现率} = \frac{107}{1 + 7\%} = 100$</code></p>
+<p>按折现率，把“未来的钱”折算成“现在的钱”的值就是 <a href="https://en.wikipedia.org/wiki/Present_value">现值</a> (Present value)。</p>
+<p><code>$一年后的107元的现值 = \frac{107}{1 + 折现率} = \frac{107}{1 + 7\%} = 100$</code></p>
 <h4 id="13-什么是净现值">1.3 什么是净现值</h4>
 <p><a href="https://en.wikipedia.org/wiki/Net_present_value">净现值</a> (Net present value)，简记为 NPV。指“未来现金流入现值”与“未来现金流出现值”的差额。</p>
-<p>代入文章最初提到的保险方案计算 NPV，下表负值代表流出，正值代表流入：</p>
+<h4 id="14-计算净现值">1.4 计算净现值</h4>
+<p>代入保险方案的例子来计算 NPV。下表中负值代表流出，正值代表流入：</p>
 <table>
 <thead>
 <tr>
@@ -595,10 +596,10 @@
 </tr>
 </tbody>
 </table>
-<p>假设折现率为 2%，净现值 NPV 为：</p>
+<p>假设折现率为 2%，净现值为：</p>
 <p><code>$NPV = -9000 -9000*\frac{1}{1 + 0.02} -9000*\frac{1}{(1 + 0.02)^{2}} + ... -9000*\frac{1}{(1 + 0.02)^{29}} + 500000*\frac{1}{(1 + 0.02)^{t}}$</code></p>
-<p>其中，<code>t</code> 是从投保到身故的间隔年数，值域 <code>$[30, +\infty]$</code></p>
-<p>计算 NPV 的函数是：</p>
+<p>其中，<code>t</code> 是投保到身故的间隔年数，值域 <code>$[30, +\infty]$</code></p>
+<p>根据 NPV 公式，计算 NPV 的 Python 函数如下：</p>
 <pre tabindex="0"><code># 计算成本、收益、NPV
 def calc_npv(discount_rate=0.02, t=30):
     &#34;&#34;&#34;返回 成本的现值、收益的现值、净现值NPV
@@ -608,15 +609,15 @@ def calc_npv(discount_rate=0.02, t=30):
     return cost, profit, profit - cost
 </code></pre><h3 id="二成本-收益曲线">二、成本-收益曲线</h3>
 <blockquote>
-<p><code>NPV = 收益的现值 - 成本的现值</code>，所以展示 <code>收益的现值</code> 和 <code>成本的现值</code> 比 <code>NPV</code> 更直观</p>
+<p><code>NPV = 收益的现值 - 成本的现值</code>，因此展示 <code>收益的现值</code> 和 <code>成本的现值</code> 比展示 <code>NPV</code> 更直观</p>
 </blockquote>
-<p>下图用偏保守的 2% 折现率计算：</p>
+<p>下图是用 2% 折现率计算的成本-收益曲线。</p>
 <p><img src="/img/cost-profit.png" alt=""></p>
 <ul>
-<li>cost: 成本是固定的。它在缴完费的情况下是常数，是横线</li>
-<li>profit: 收益是递减的。因为 50 万的到手时间越晚，现值越低</li>
+<li>成本是常数：在缴费完成的情况下成本是常数，图中为横线</li>
+<li>收益随时间递减：50 万的到手时间越晚，其现值越低</li>
 </ul>
-<p>营亏平衡点在 45 年处。按 30 岁交保计算，第 45 年是 75 岁。这意味着，活过 75 岁你就“亏了”。别忘了这儿用的是 2% 折现率计算的。更高的折现率，亏的时间还会提前。</p>
+<p>营亏平衡点在 45 年处。按 30 岁交保计算，第 45 年是 75 岁。这意味着，活过 75 岁就“亏了”。别忘了这是用 2% 折现率计算的。使用更高的折现率，“亏”的时间还会提前。</p>
 <p>画图代码：</p>
 <pre tabindex="0"><code># 成本/收益曲线
 import matplotlib.pyplot as plt
@@ -635,7 +636,7 @@ plt.ylabel(&#39;(yuan)&#39;)
 plt.legend()
 plt.show()
 </code></pre><blockquote>
-<p><strong>Note</strong>: 我觉得 2% 的折现率太低了。2023 年的一些金融数据：</p>
+<p><strong>Note</strong>: 我觉得 2% 的折现率太低了。以下是 2023 年的数据：</p>
 <ul>
 <li>货币基金年化收益率 1.5% - 2.5%</li>
 <li>四大行 3 年定存 2.6% - 2.8%</li>
@@ -645,24 +646,24 @@ plt.show()
 </ul>
 </blockquote>
 <h3 id="三不同折现率的-npv-曲线">三、不同折现率的 NPV 曲线</h3>
-<p><code>3%, 5%, 7%</code> 折现率下的 NPV 曲线：</p>
+<p>用 <code>3%, 5%, 7%</code> 三种折现率做 NPV 曲线。</p>
 <p><img src="/img/npv.png" alt=""></p>
-<p>假设 30 岁时交保，由图可知：</p>
+<p>假设 30 岁交保，由图可知：</p>
 <ul>
 <li>达到营亏平衡点：
 <ul>
-<li>3% 折现率：65 岁身故达到营亏平衡</li>
+<li>3% 折现率：65 岁达营亏平衡点</li>
 <li>7% 折现率：无法营亏平衡，交满 30 年时 NPV 已为负数</li>
 </ul>
 </li>
-<li>80 岁时的情况：
+<li>80 岁时的 NPV：
 <ul>
 <li>3% 折现率：“亏” 6.7 万元</li>
 <li>7% 折现率：“亏” 10.2 万元</li>
 </ul>
 </li>
 </ul>
-<p>请注意，“亏”打引号，是因为没有计算重疾险的兑付金额。在你亏的数字上，扣除保险公司兑付的保险费用，才是保险公司的利润。</p>
+<p>“亏”打引号，是因为没有计算重疾险的兑付。在你亏的数字上，扣除保险公司兑付的保险费用，才是保险公司的利润。</p>
 <p>画图代码：</p>
 <pre tabindex="0"><code># 不同折现率，对应的净现值曲线
 x_list = list(range(30, 60))
@@ -686,9 +687,8 @@ plt.show()
 <p>“The US government uses a variety of discount rates but <strong>something around 7%</strong> is what the US Office of Management and Budget (OMB) recommends for a pretax rate of return on <strong>private investments</strong>. In the United Kingdom, HM Treasury fixes the social discount rate for the public sector at 3.5%.”</p>
 </blockquote>
 <h3 id="四内部收益率-irr">四、内部收益率 IRR</h3>
-<p>内部收益率 (IRR) 是净现值为 0 时的折现率。</p>
-<p>IRR 值越大，对投保人越有利。</p>
-<p>下面是很不严谨的 IRR 计算结果。因为只考虑那 50 万的事，不考虑保险兑付（每个人健康状况不同，保险兑付不一样就不太好算）</p>
+<p>内部收益率 (IRR) 是净现值为 0 时的折现率。该值越大，对投保人越有利。</p>
+<p>下面是很不严谨的 IRR 计算结果。因为只考虑那 50 万的事，不考虑保险兑付情况。毕竟每个人健康状况不同，保险兑付情况不一样，不太好算。</p>
 <pre tabindex="0"><code>import numpy as np
 from scipy.optimize import fsolve
 
@@ -698,13 +698,13 @@ def calc_root(t=50):
 
 root = calc_root()
 print(root)
-</code></pre><p>输出：<code>$root \approx 0.017$</code></p>
-<p>这意味着，如果 30 岁交保 80 岁身故（参数 <code>t = 50</code>），此时的内部收益率 IRR 为 0.017。</p>
+</code></pre><p>输出的 <code>$root \approx 0.017$</code></p>
+<p>这意味着，30 岁交保 80 岁身故（参数 <code>t = 50</code>）的情况下，内部收益率 IRR 为 0.017。</p>
 <p>至今为止都是纸面计算。现实远比纸面魔幻，试想这些不确定因素：</p>
 <ul>
-<li>由于对身故情形有要求，所以 50 万返款不一定能拿到</li>
-<li>30 - 50 年的时间维度下，可能发生大通胀，折现率可能被低估</li>
-<li>如果出台遗产税能否合理避税，算赠予还是遗产，懂法律的同学跟我讲下</li>
+<li>由于对身故情形有要求，50 万返款拿不到手</li>
+<li>30 - 50 年的时间维度下，可能发生大规模通胀，导致折现率被低估</li>
+<li>未来 30 年可能遭遇现金流不足，导致断供</li>
 </ul>
 <h3 id="五简单结论">五、简单结论</h3>
 <p>一通计算，这款产品似乎没那么香了。作为参考，如果你：</p>
@@ -715,8 +715,8 @@ print(root)
 </ul>
 <p>达到这个标准，恭喜你到达了营亏平衡点。高于这个点你赚了，低于这个点保险公司赚了，你俩是零和博弈。</p>
 <h3 id="六后日谈">六、后日谈</h3>
-<p>身为风险厌恶者，我喜欢简单的保险产品（不要返款）。这是噱头。层层条款背后，大概率你玩不过它。</p>
-<p>它是大机构，你是普通人，你们产生纠纷，谁输谁赢呢？所以我的策略是尽量避免和机构产生纠纷。越简单的合同，产生纠纷的几率越低。简单是优势来着。</p>
+<p>身为风险厌恶者，我喜欢简单的保险产品（不要返款、不要年金）。这些是噱头。层层条款背后，大概率你玩不过它。</p>
+<p>它是大机构，你是普通人，你们之间产生纠纷，你输多赢少。所以我的策略是尽量避免和机构产生纠纷。越简单的合同，产生纠纷的几率越低。简单是优势来着。</p>
 
   </div>
   
