@@ -555,7 +555,7 @@
 </blockquote>
 <p>GitHub项目地址：<a href="https://github.com/luochang212/python-tips/blob/master/insurance.ipynb" target="_blank">insurance.ipynb</a></p>
 <p>有位朋友买重疾险，保险顾问给的方案是，身故后返还两倍于累计缴纳金额的钱。听起来像捡便宜，究竟是怎么回事呢？</p>
-<p>保险顾问给的具体方案：</p>
+<p>保险顾问给的具体方案是：</p>
 <ul>
 <li><strong>支出</strong>：分 30 年支付重疾险，每年付 9000 元，共 27 万元</li>
 <li><strong>收益</strong>：享受终生重疾险；身故后保险公司一次性返还 50 万元</li>
@@ -569,9 +569,9 @@
 <p>按折现率，把“未来的钱”折算成“现在的钱”的值就是 <a href="https://en.wikipedia.org/wiki/Present_value">现值</a> (Present value)。</p>
 <p><code>$一年后的107元的现值 = \frac{107}{1 + 折现率} = \frac{107}{1 + 7\%} = 100$</code></p>
 <h4 id="13-什么是净现值">1.3 什么是净现值</h4>
-<p><a href="https://en.wikipedia.org/wiki/Net_present_value">净现值</a> (Net present value)，简记为 NPV。指“未来现金流入现值”与“未来现金流出现值”的差额。</p>
+<p><a href="https://en.wikipedia.org/wiki/Net_present_value">净现值</a> (Net present value)，简记为 NPV。指“未来现金流入现值”与“未来现金流出现值”的差额。可以简单理解为 <code>收益的现值 - 成本的现值</code>。</p>
 <h4 id="14-计算净现值">1.4 计算净现值</h4>
-<p>代入保险方案的例子来计算净现值。下表中负值代表流出，正值代表流入：</p>
+<p>代入保险方案来计算净现值。下表中正值代表收益，负值代表成本：</p>
 <table>
 <thead>
 <tr>
@@ -614,6 +614,7 @@ def calc_npv(discount_rate=0.02, t=30):
 </blockquote>
 <p>下图是用 2% 折现率计算的成本-收益曲线。</p>
 <p><img src="/img/cost-profit.png" alt=""></p>
+<p>由图可知：</p>
 <ul>
 <li>成本是常数：在缴费完成的情况下成本是常数，图中为横线</li>
 <li>收益随时间递减：50 万的到手时间越晚，其现值越低</li>
@@ -648,26 +649,31 @@ plt.show()
 </blockquote>
 <h3 id="三不同折现率的-npv-曲线">三、不同折现率的 NPV 曲线</h3>
 <blockquote>
-<p>净现值 (NPV) 是最能直观反映盈亏的指标。要特别注意 NPV 由正转负的点，即盈亏平衡点。</p>
+<p>净现值 (NPV) 是最能直观反映盈亏的指标。特别要注意 NPV 由正转负的点，即盈亏平衡点。</p>
 </blockquote>
 <p>用 <code>3%, 5%, 7%</code> 三种折现率做 NPV 曲线。</p>
 <p><img src="/img/npv.png" alt=""></p>
 <p>假设 30 岁投保，由图可知：</p>
 <ol>
-<li>看盈亏平衡点：
+<li>盈亏平衡点：
 <ul>
 <li>3% 折现率：65 岁达盈亏平衡点</li>
 <li>7% 折现率：无法盈亏平衡，交满 30 年保费时 NPV 已为负数</li>
 </ul>
 </li>
-<li>看 80 岁时的 NPV：
+<li>80 岁时的 NPV：
 <ul>
 <li>3% 折现率：“亏” 6.7 万元</li>
 <li>7% 折现率：“亏” 10.2 万元</li>
 </ul>
 </li>
+<li>折现率 5% 和 7% 的 NPV 曲线出现交叉：
+<ul>
+<li>这是因为折现率从 5% <code>$\to$</code> 7% 时，<code>成本现值</code> 的下降速度高于 <code>收益现值</code> 的下降速度</li>
+</ul>
+</li>
 </ol>
-<p>“亏”打引号，是因为没有计算重疾险的兑付。在你亏的数字上，扣除保险公司兑付给你的保险费用，才是保险公司的利润，也就是你的亏损。</p>
+<p>请注意，“亏”打引号，是因为没有计算重疾险的兑付。在你亏的数字上，扣除保险公司兑付的保险费用，才是保险公司的利润，也就是你的实际亏损。</p>
 <p>画图代码：</p>
 <pre tabindex="0"><code># 不同折现率，对应的净现值曲线
 x_list = list(range(30, 60))
