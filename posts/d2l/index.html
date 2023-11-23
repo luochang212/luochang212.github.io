@@ -516,7 +516,7 @@
     
     
     <br/>
-    <i class="fas fa-clock"></i> 2 min read
+    <i class="fas fa-clock"></i> 4 min read
 </div>
 
 
@@ -532,8 +532,12 @@
   <ul>
     <li>
       <ul>
+        <li><a href="#技术路线图">〇、技术路线图</a></li>
         <li><a href="#一softmax-回归">一、softmax 回归</a></li>
         <li><a href="#二多层感知机">二、多层感知机</a></li>
+        <li><a href="#三卷积层">三、卷积层</a></li>
+        <li><a href="#四lenet">四、LeNet</a></li>
+        <li><a href="#五alexnet">五、AlexNet</a></li>
       </ul>
     </li>
   </ul>
@@ -547,6 +551,18 @@
 <p>d2l 深度学习笔记，如有错误，欢迎拍砖 <img src="/img/quyin/witty.png" class="my-emoji" style = "height: 32px;"></p>
 </blockquote>
 <p>GitHub项目地址：<a href="https://github.com/luochang212/AI-Project" target="_blank">AI-Project</a></p>
+<h3 id="技术路线图">〇、技术路线图</h3>
+<pre class="mermaid">
+flowchart TD
+    A[softmax 回归] -->|无法拟合 XOR 函数| B[多层感知机]
+    B --> |高像素图片作为输入，模型参数爆炸| C[卷积]
+    C -->|数据的长宽下降太快| D[填充]
+    C -->|数据的长宽下降太慢| E[步幅]
+    C -->|缓解卷积对位置敏感| F[池化]
+    C -->|多模式识别与组合| G[多通道输入/输出]
+
+</pre>
+<center>❤️ powered by <a href="https://github.com/mermaid-js/mermaid" target="_blank">mermaid</a></center>
 <h3 id="一softmax-回归">一、softmax 回归</h3>
 <h4 id="1-虽然叫回归但是softmax-解决的是分类问题">1. 虽然叫回归，但是softmax 解决的是分类问题</h4>
 <ul>
@@ -589,7 +605,7 @@
 <li>使用交叉熵来衡量预测和标号的区别</li>
 </ul>
 <center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/AI-Project/blob/main/src/7.softmax回归.ipynb')">查看示例</button>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/AI-Project/blob/main/src/09.softmax回归.ipynb')">查看示例</button>
 </center>
 <h3 id="二多层感知机">二、多层感知机</h3>
 <p>感知机解决的是二分类问题</p>
@@ -689,8 +705,187 @@
 <li>超参数为隐藏层数，和各个隐藏层大小</li>
 </ul>
 <center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/AI-Project/blob/main/src/8.多层感知机.ipynb')">查看示例</button>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/AI-Project/blob/main/src/10.多层感知机.ipynb')">查看示例</button>
 </center>
+<h3 id="三卷积层">三、卷积层</h3>
+<p>下次更新</p>
+<h3 id="四lenet">四、LeNet</h3>
+<p><a href="https://en.wikipedia.org/wiki/LeNet">LeNet</a> is a convolutional neural network structure proposed by LeCun et al. in 1998.</p>
+<p>最早应用于手写数字识别。</p>
+<p>MNIST 是 LeNet 附带的数据集</p>
+<ul>
+<li>5w个训练数据</li>
+<li>1w个测试数据</li>
+<li>图像大小$28 \times 28$</li>
+<li>10类</li>
+</ul>
+<p><img src="/img/lenet-1.png" alt="LeNet"></p>
+<h4 id="1-小结">1. 小结</h4>
+<ul>
+<li>LeNet是早期成功的神经网络</li>
+<li>先使用卷积层来学习图片空间信息</li>
+<li>然后使用全连接层来转换到类别空间</li>
+</ul>
+<h4 id="2-卷积神经网络lenet">2. 卷积神经网络（LeNet）</h4>
+<p>LeNet (LeNet-5) 由两个部分组成：卷积编码器和全连接层密集块</p>
+<h3 id="五alexnet">五、AlexNet</h3>
+<h4 id="1-技术回顾">1. 技术回顾</h4>
+<p>1）支持向量机</p>
+<p>在2000年左右，最流行的机器学习的算法是核方法 (Learning with Kernels).</p>
+<p>the Support Vector Machine (SVM)</p>
+<ul>
+<li>特征提取</li>
+<li>选择核函数来计算相似性</li>
+<li>凸优化问题</li>
+<li>漂亮的定理（来自泛函）</li>
+</ul>
+<p>优点：对调参不敏感，闭着眼睛都可以用</p>
+<p>2）几何学</p>
+<ul>
+<li>抽取特征</li>
+<li>描述几何（例如多相机）</li>
+<li>（非）凸优化</li>
+<li>漂亮定理</li>
+<li>如果假设满足，效果很好</li>
+</ul>
+<p>3）特征工程</p>
+<p>直接把特征放到SVM里效果非常差，所以需要做特征工程</p>
+<ul>
+<li>（在计算机视觉里）特征工程是关键</li>
+<li>特征描述子：SIFT, SURF</li>
+</ul>
+<h4 id="2-imagenet-2020">2. ImageNet (2020)</h4>
+<ul>
+<li>图片：自然物体的彩色图片</li>
+<li>大小：$469 \times 387$</li>
+<li>样本数 1.2M</li>
+<li>类数：1000</li>
+</ul>
+<p>因为你有了更大的数据集，所以允许用更深的神经网络，用来抽取信息</p>
+<h4 id="3-alexnet">3. AlexNet</h4>
+<ul>
+<li>AlexNet赢了2012年ImageNet竞赛</li>
+<li>更深更大的 LeNet</li>
+<li>主要改进：
+<ul>
+<li>丢弃法（因为模型大了，所以用丢弃做一点正则）</li>
+<li>ReLU（$Sigmoid \space (LeNet) \to ReLU$，ReLU在零点的一阶导更好，梯度更大）</li>
+<li>MaxPooling（数值比较大，梯度比较大，使得训练比较容易）</li>
+<li>计算机视觉方法论的改变
+<ul>
+<li>核方法：人工特征提取 $\to$ SVM</li>
+<li>神经网络：通过 CNN 学习特征 $\to$ Softmax回归</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-alexnet架构">4. AlexNet架构</h4>
+<p>1）第一个卷积层和池化层的区别</p>
+<table>
+<thead>
+<tr>
+<th>AlexNet</th>
+<th>LeNet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>image ($3 \times 224 \times 224$)</td>
+<td>image ($32 \times 32$)</td>
+</tr>
+<tr>
+<td>11*11 Conv(96), stride 4</td>
+<td>5*5 Conv(6), pad 2</td>
+</tr>
+<tr>
+<td>3*3 MaxPool, stride 2</td>
+<td>2*2 AvgPool, stride 2</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>卷积：更大的窗口，更大的通道数，更大的步幅</li>
+<li>池化：更大的窗口且stride不变（对位置更不敏感），使用MaxPool</li>
+</ul>
+<p>2）接下来</p>
+<table>
+<thead>
+<tr>
+<th>AlexNet</th>
+<th>LeNet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5*5 Conv(256), pad 2</td>
+<td>5*5 Conv()</td>
+</tr>
+<tr>
+<td>3*3 MaxPool, stride 2</td>
+<td>2*2 AvgPool, stride 2</td>
+</tr>
+<tr>
+<td>3*3 Conv(384), pad 1</td>
+<td></td>
+</tr>
+<tr>
+<td>3*3 Conv(384), pad 1</td>
+<td></td>
+</tr>
+<tr>
+<td>3*3 Conv(384), pad 1</td>
+<td></td>
+</tr>
+<tr>
+<td>3*3 MaxPool, stride 2</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>新增了3层卷积层</li>
+<li>更多的输出通道</li>
+</ul>
+<p>3）全连接层</p>
+<table>
+<thead>
+<tr>
+<th>AlexNet</th>
+<th>LeNet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dense(4096)</td>
+<td>Dense(120)</td>
+</tr>
+<tr>
+<td>Dense(4096)</td>
+<td>Dense(84)</td>
+</tr>
+<tr>
+<td>Dense(1000)</td>
+<td>Dense(10)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>隐藏层大小：120 $\to$ 4096</li>
+<li>输出类别：10 $\to$ 1000</li>
+</ul>
+<h4 id="5-更多细节">5. 更多细节</h4>
+<ul>
+<li>激活函数从 Sigmoid 变到了 ReLU（减缓梯度消失，因为梯度比较大）</li>
+<li>隐藏全连接层后加入了丢弃层</li>
+<li>数据增强（随机截取采样，调亮度/色温。神经网络会记住所有数据，数据增强能让记住数据的能力变低）</li>
+</ul>
+<h4 id="6-总结">6. 总结</h4>
+<ul>
+<li>AlexNet是更大更深的LeNet，10x参数个数，260x计算复杂度</li>
+<li>新加入了丢弃法，ReLU，最大池化层，和数据增强</li>
+<li>AlexNet赢下了2012ImageNet竞赛后，标志着新的一轮神经网络热潮的开始</li>
+</ul>
 <blockquote>
 <p>todo: 未完待续</p>
 </blockquote>
@@ -699,6 +894,10 @@
 <button id="btn-close" onclick="overlay_off()">×</button>
 <script src="/python-tips/overlay.js"></script>
 <link rel="stylesheet" href="/python-tips/style.css">
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+</script>
+
   </div>
   
 
