@@ -516,7 +516,7 @@
     
     
     <br/>
-    <i class="fas fa-clock"></i> 4 min read
+    <i class="fas fa-clock"></i> 5 min read
 </div>
 
 
@@ -708,7 +708,87 @@ flowchart TD
 <button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/AI-Project/blob/main/src/10.多层感知机.ipynb')">查看示例</button>
 </center>
 <h3 id="三卷积层">三、卷积层</h3>
-<p>下次更新</p>
+<p>一张 12,000,000 像素的猫或者狗的图片，分RGB三种颜色，如果使用单隐藏层的 MLP 处理，模型有 3.6B 个参数，远多于世界上所有猫和狗的数量。</p>
+<h4 id="1-识别器的原则">1. 识别器的原则</h4>
+<ul>
+<li>平移不变性（在图片的哪个位置都能识别到）</li>
+<li>局部性（不需要看整张图就能识别）</li>
+</ul>
+<h4 id="2-重新考察全连接层">2. 重新考察全连接层</h4>
+<ul>
+<li>将输入和输出变形为矩阵（宽度，高度）</li>
+<li>将权重变形为4-D张量 <code>$(h, w)$</code> 到 <code>$(h^\prime, w^\prime)$</code>
+<code>$h_{i,j} = \sum_{k,l} w_{i,j,k,l}x_{k,l} = \sum_{a,b} v_{i,j,a,b}x_{i+a,j+b}$</code></li>
+<li><code>$v$</code> 是 <code>$w$</code> 的重新索引 <code>$v_{i,j,i+a,j+b}$</code></li>
+</ul>
+<h4 id="3-原则-1---平移不变性">3. 原则 #1 - 平移不变性</h4>
+<ul>
+<li>x的平移导致h的平移 <code>$h_{i,j} = \sum_{a,b} v_{i,j,a,b} x_{i+a,j+b}$</code></li>
+<li>v不应该依赖于(i, j)</li>
+<li>解决方案：<code>$v_{i,j,a,b} = v_{a,b}$</code>
+<code>$h_{i,j} = \sum_{a,b} v_{a,b}x_{i+a,j+b}$</code></li>
+</ul>
+<p>这就是二维<del>卷积</del>交叉相关</p>
+<h4 id="4-原则-2---局部性">4. 原则 #2 - 局部性</h4>
+<p>$h_{i,j} = \sum_{a,b} \mathbf{v}<em>{a,b} \mathbf{x}</em>{i+a,j+b}$</p>
+<ul>
+<li>当评估 <code>$h_{i,j}$</code> 时，我们不应该用远离 <code>$x_{i,j}$</code> 的参数</li>
+<li>解决方案：当 <code>$|a|, |b| &gt; \Delta$ 时，使得 $v_{a,b} = 0$</code>
+<code>$h_{i,j} = \sum_{a=-\Delta}^{\Delta} \sum_{b=-\Delta}^{\Delta} v_{a,b} x_{i+a,j+b}$</code></li>
+</ul>
+<h4 id="5-小结">5. 小结</h4>
+<ul>
+<li>对全连接层使用平移不变性和局部性得到卷积层</li>
+</ul>
+<p><code>$~~~~~~~~~~~h_{i,j} = \sum_{a,b} \mathbf{v}_{i,j,a,b} \mathbf{x}_{i+a,j+b}$</code></p>
+<p><code>$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$</code>⬇</p>
+<p><code>$~~~~~~~~~~~h_{i,j} = \sum_{a=-\Delta}^{\Delta} \sum_{b=-\Delta}^{\Delta} \mathbf{v}_{a,b} \mathbf{x}_{i+a,j+b}$</code></p>
+<h4 id="6-二维交叉相关">6. 二维交叉相关</h4>
+<ul>
+<li>卷积核 (Kernel)，其实就是 <code>$\mathbf{w}$</code></li>
+<li>核是不随扫描的位置变化的，这就实现了平移不变性</li>
+</ul>
+<h4 id="7-二维卷积层">7. 二维卷积层</h4>
+<ul>
+<li>输入 <code>$\mathbf{X}: n_h \times n_w$</code></li>
+<li>核 <code>$\mathbf{W}: k_h \times k_w$</code></li>
+<li>偏差 <code>$b \in \mathbb{R}$</code></li>
+<li>输出 <code>$\mathbf{Y}: (n_h - k_h + 1) \times (n_w - k_w + 1)$</code></li>
+</ul>
+<p><code>$\mathbf{Y} = \mathbf{X} \mathbf{W} + b$</code></p>
+<p><code>$\mathbf{W}$</code> 和 <code>$b$</code> 是可学习的参数</p>
+<h4 id="8-例子">8. 例子</h4>
+<p>不同的卷积核，会得到不同的效果</p>
+<p><strong>边缘检测</strong></p>
+<p><code>$\left[\begin{array}{c} -1 &amp; -1 &amp; -1 \\ -1 &amp; 8 &amp; -1 \\ -1 &amp; -1 &amp; -1 \end{array}\right]$</code></p>
+<p><img src="/img/conv-1.png" alt=""></p>
+<p><strong>锐化</strong></p>
+<p><code>$\left[\begin{array}{c} 0 &amp; -1 &amp; 0 \\ -1 &amp; 5 &amp; -1 \\ 0 &amp; -1 &amp; 0 \end{array}\right]$</code></p>
+<p><img src="/img/conv-2.png" alt=""></p>
+<p><strong>高斯模糊</strong></p>
+<p><code>$\frac{1}{16}\left[\begin{array}{c} 1 &amp; 2 &amp; 1 \\ 2 &amp; 4 &amp; 2 \\ 1 &amp; 2 &amp; 1 \end{array}\right]$</code></p>
+<p><img src="/img/conv-3.png" alt=""></p>
+<h4 id="9-交叉相关-vs-卷积">9. 交叉相关 vs 卷积</h4>
+<ul>
+<li>二维交叉相关</li>
+<li>二维卷积</li>
+<li>由于对称性，在实际使用中没有区别</li>
+</ul>
+<p>因为使用是一样的，所以没有使用数学上严格定义的卷积</p>
+<h4 id="10-一维和三维交叉相关">10. 一维和三维交叉相关</h4>
+<ul>
+<li>一维：文本、语言、时需序列</li>
+<li>二维：视频、医学图像、气象图像</li>
+</ul>
+<h4 id="11-总结">11. 总结</h4>
+<ul>
+<li>卷积层将输入和核矩阵进行交叉相关，加上偏移后得到输出</li>
+<li>核矩阵和偏移是可学习的参数</li>
+<li>核矩阵的大小是超参数</li>
+</ul>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/AI-Project/blob/main/src/19.卷积层.ipynb')">查看示例</button>
+</center>
 <h3 id="四lenet">四、LeNet</h3>
 <p><a href="https://en.wikipedia.org/wiki/LeNet">LeNet</a> is a convolutional neural network structure proposed by LeCun et al. in 1998.</p>
 <p>最早应用于手写数字识别。</p>
@@ -728,6 +808,9 @@ flowchart TD
 </ul>
 <h4 id="2-卷积神经网络lenet">2. 卷积神经网络（LeNet）</h4>
 <p>LeNet (LeNet-5) 由两个部分组成：卷积编码器和全连接层密集块</p>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/AI-Project/blob/main/src/23.经典卷积神经网络LeNet.ipynb')">查看示例</button>
+</center>
 <h3 id="五alexnet">五、AlexNet</h3>
 <h4 id="1-技术回顾">1. 技术回顾</h4>
 <p>1）支持向量机</p>
@@ -886,6 +969,9 @@ flowchart TD
 <li>新加入了丢弃法，ReLU，最大池化层，和数据增强</li>
 <li>AlexNet赢下了2012ImageNet竞赛后，标志着新的一轮神经网络热潮的开始</li>
 </ul>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/AI-Project/blob/main/src/24.深度卷积神经网络AlexNet.ipynb')">查看示例</button>
+</center>
 <blockquote>
 <p>todo: 未完待续</p>
 </blockquote>
