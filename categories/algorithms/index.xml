@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Algorithms on Chang Luo</title>
+    <link>http://luochang212.github.io/categories/algorithms/</link>
+    <description>Recent content in Algorithms on Chang Luo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 26 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/categories/algorithms/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>图算法笔记</title>
+      <link>http://luochang212.github.io/posts/graph_algorithms/</link>
+      <pubDate>Sun, 26 Nov 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/posts/graph_algorithms/</guid>
+      <description>DGL教程：https://docs.dgl.ai/index.html
+GitHub项目地址：graph-algo</description>
+    </item>
+    
+  </channel>
+</rss>
