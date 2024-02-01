@@ -13,7 +13,7 @@
       <pubDate>Wed, 18 Oct 2023 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/pypi_packaging/</guid>
-      <description>走过路过的打包 DT 向我看齐 😈
+      <description>你们这些家伙，好好看看我是怎么打包的吧！
 GitHub项目地址：hit-and-blow
 官方教程：Packaging Python Projects 背景知识：Modules 一、文件结构介绍 打包前，需构建如下文件结构：
 packaging_tutorial/ ├── LICENSE ├── pyproject.toml ├── README.md ├── src/ │ └── YOUR_PACKAGE_NAME/ │ ├── __init__.py │ └── example.py └── tests/ 各个 文件 / 文件夹 说明：

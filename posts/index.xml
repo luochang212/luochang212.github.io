@@ -6,14 +6,24 @@
     <description>Recent content in Posts on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 11 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 02 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux 运维手册</title>
+      <link>http://luochang212.github.io/posts/linux_handbook/</link>
+      <pubDate>Tue, 02 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/posts/linux_handbook/</guid>
+      <description>不想当算法的开发不是好运维
+一、Bash 常见操作 1）文件操作 命令 描述 touch [FILE] 创建文件 vim [FILE] 打开文件 cat [FILE] 打印文件 head [FILE] 打印文件头 10 行，展示 20 行用 head -n 20 [FILE] less [FILE] 打印文件，可以用 上键 下键 翻页 cd [PATH] 打开目录 mkdir [PATH] 创建目录 mkdir -p [PATH/TO/DIR] 创建多级目录 tar cvf file.tar ./data 把 data 目录 压缩成 file.tar 文件 tar xvf file.tar 解压 file.tar 文件 2）网络操作 命令 描述 ifconfig 查看有效的网络接口的状态 ifconfig -a 查看所有的网络接口的状态 wget 下载文件 curl 3）系统信息 命令 描述 uname -m 查看linux架构 uname -a 查看系统详细信息 cat /etc/centos-release 查看centos版本 ps aux 查看进程 ps -ef 查看进程 kill -9 [PID] 杀掉进程[PID] df -h 查看磁盘空间 history 查看历史命令 type [CMD] 查看命令所在路径，如type mkdir 4）文本处理 命令 描述 awk 取列 awk -F 指定分割符取列 grep -v 查找不包含特定匹配模式的行 wc -l 输出文件的行数 5）表达式 命令 描述 -gt 大于 -lt 小于 -eq 等于 -ne 不等于 -ge 大于等于 -le 小于等于 -a file 如果file存在则为真 -d file 如果file存在且为目录则为真 -f file 如果file存在且为普通文件则为真 sleep 1m 休眠一分钟 二、后台运行 后台运行 Bash 命令的两种方式：</description>
+    </item>
+    
     <item>
       <title>深度学习笔记</title>
       <link>http://luochang212.github.io/posts/d2l/</link>
       <pubDate>Sat, 11 Nov 2023 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/d2l/</guid>
-      <description>跟李沐老师学习深度学习的笔记，课程见 d2l，如有错误，欢迎拍砖 GitHub项目地址：AI-Project
+      <description>跟李沐老师学深度学习，课程见 d2l，如有错误，欢迎拍砖 GitHub项目地址：AI-Project
 〇、技术路线图 flowchart TD A[softmax 回归] --&gt;|无法拟合 XOR 函数| B[多层感知机] B --&gt; |高像素图片作为输入，模型参数爆炸| C[卷积] C --&gt;|数据的长宽下降太快| D[填充] C --&gt;|数据的长宽下降太慢| E[步幅] C --&gt;|缓解卷积对位置敏感| F[池化] C --&gt;|多模式识别与组合| G[多通道输入/输出] ❤️ powered by mermaid 一、softmax 回归 1. 虽然叫回归，但是softmax 解决的是分类问题 回归估计是一个连续值 分类预测是一个离散类别 2. 分类应用举例 MINIST ImageNet human-protein-atlas-image-classification (Kaggle) malware-classification (Kaggle) jigsaw-comment-classification (Kaggle) 3. 从回归到多类分类 &amp;ndash; 均方损失 对分类结果做 one-hot 编码：
 $y = [y_1, y_2, , ... , y_n]^T$
 $y_i=\left\{\begin{array}{l}1 \text { if } i=y \\ 0 \text { otherwise }\end{array}\right.</description>
@@ -25,7 +35,7 @@ $y_i=\left\{\begin{array}{l}1 \text { if } i=y \\ 0 \text { otherwise }\end{arra
       <pubDate>Wed, 18 Oct 2023 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/pypi_packaging/</guid>
-      <description>走过路过的打包 DT 向我看齐 😈
+      <description>你们这些家伙，好好看看我是怎么打包的吧！
 GitHub项目地址：hit-and-blow
 官方教程：Packaging Python Projects 背景知识：Modules 一、文件结构介绍 打包前，需构建如下文件结构：
 packaging_tutorial/ ├── LICENSE ├── pyproject.toml ├── README.md ├── src/ │ └── YOUR_PACKAGE_NAME/ │ ├── __init__.py │ └── example.py └── tests/ 各个 文件 / 文件夹 说明：
@@ -54,11 +64,11 @@ $一年后的107元的现值 = \frac{107}{1 + 折现率} = \frac{107}{1 + 7\%} =
     </item>
     
     <item>
-      <title>HiveQL 用法笔记</title>
-      <link>http://luochang212.github.io/posts/hive_sql_example/</link>
+      <title>Hive SQL 笔记</title>
+      <link>http://luochang212.github.io/posts/hive_sql_note/</link>
       <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/hive_sql_example/</guid>
+      <guid>http://luochang212.github.io/posts/hive_sql_note/</guid>
       <description>什么？SQL 还需要注释？SQL 会自己注释自己的，对吧
 1. 表操作 1.1 建表 CREATE TABLE [DATABASE].[TABLE_NAME] ( `id` BIGINT COMMENT &amp;#39;学号&amp;#39;, name STRING COMMENT &amp;#39;姓名&amp;#39;, ttl_score DOUBLE COMMENT &amp;#39;总分&amp;#39; ) COMMENT &amp;#39;枝江中学五年级学生成绩明细表&amp;#39; PARTITIONED BY (day STRING COMMENT &amp;#39;day&amp;#39;, hour STRING COMMENT &amp;#39;hour&amp;#39;) ROW FORMAT [row_format] STORED AS [file_format]; Note: 了解更多，请参考 CREATE TABLE with Hive format
 1.2 删表 DROP TABLE [DATABASE].[TABLE_NAME]; DROP TABLE IF EXISTS [DATABASE].[TABLE_NAME]; 1.3 在原表上新增列 ALTER TABLE [DATABASE].[TABLE_NAME] ADD COLUMNS ( sub_score ARRAY&amp;lt;DOUBLE&amp;gt; COMMENT &amp;#39;分科成绩&amp;#39;, sub_score_map MAP&amp;lt;STRING,DOUBLE&amp;gt; COMMENT &amp;#39;分科成绩map&amp;#39;, `rank` BIGINT COMMENT &amp;#39;年段排名&amp;#39;, update_time STRING COMMENT &amp;#39;更新时间&amp;#39; ); 1.</description>

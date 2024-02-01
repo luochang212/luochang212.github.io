@@ -8,11 +8,11 @@
     <language>en-us</language>
     <lastBuildDate>Sun, 25 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/categories/development/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>HiveQL 用法笔记</title>
-      <link>http://luochang212.github.io/posts/hive_sql_example/</link>
+      <title>Hive SQL 笔记</title>
+      <link>http://luochang212.github.io/posts/hive_sql_note/</link>
       <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/hive_sql_example/</guid>
+      <guid>http://luochang212.github.io/posts/hive_sql_note/</guid>
       <description>什么？SQL 还需要注释？SQL 会自己注释自己的，对吧
 1. 表操作 1.1 建表 CREATE TABLE [DATABASE].[TABLE_NAME] ( `id` BIGINT COMMENT &amp;#39;学号&amp;#39;, name STRING COMMENT &amp;#39;姓名&amp;#39;, ttl_score DOUBLE COMMENT &amp;#39;总分&amp;#39; ) COMMENT &amp;#39;枝江中学五年级学生成绩明细表&amp;#39; PARTITIONED BY (day STRING COMMENT &amp;#39;day&amp;#39;, hour STRING COMMENT &amp;#39;hour&amp;#39;) ROW FORMAT [row_format] STORED AS [file_format]; Note: 了解更多，请参考 CREATE TABLE with Hive format
 1.2 删表 DROP TABLE [DATABASE].[TABLE_NAME]; DROP TABLE IF EXISTS [DATABASE].[TABLE_NAME]; 1.3 在原表上新增列 ALTER TABLE [DATABASE].[TABLE_NAME] ADD COLUMNS ( sub_score ARRAY&amp;lt;DOUBLE&amp;gt; COMMENT &amp;#39;分科成绩&amp;#39;, sub_score_map MAP&amp;lt;STRING,DOUBLE&amp;gt; COMMENT &amp;#39;分科成绩map&amp;#39;, `rank` BIGINT COMMENT &amp;#39;年段排名&amp;#39;, update_time STRING COMMENT &amp;#39;更新时间&amp;#39; ); 1.</description>
