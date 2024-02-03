@@ -583,6 +583,10 @@
 <td>打印文件，可以用 <code>上键</code> <code>下键</code> 翻页</td>
 </tr>
 <tr>
+<td>rm [FILE]</td>
+<td>删除文件</td>
+</tr>
+<tr>
 <td>cd [PATH]</td>
 <td>打开目录</td>
 </tr>
@@ -622,12 +626,56 @@
 <td>查看所有的网络接口的状态</td>
 </tr>
 <tr>
+<td>hostname -I</td>
+<td>awk &lsquo;{print $1}&rsquo;</td>
+</tr>
+<tr>
 <td>wget [URL]</td>
 <td>下载文件到当前路径</td>
 </tr>
 <tr>
 <td>curl [URL]</td>
 <td>访问网页</td>
+</tr>
+<tr>
+<td>netstat -r</td>
+<td>显示路由表信息</td>
+</tr>
+<tr>
+<td>netstat -g</td>
+<td>显示多重广播功能群组组员名单</td>
+</tr>
+<tr>
+<td>netstat -s</td>
+<td>显示按协议分类统计信息</td>
+</tr>
+<tr>
+<td>netstat -l</td>
+<td>显示所有监听端口</td>
+</tr>
+<tr>
+<td>netstat -n</td>
+<td>使用域名解析，将域名解析成ip地址</td>
+</tr>
+<tr>
+<td>netstat -p</td>
+<td>显示程序名和进程PID</td>
+</tr>
+<tr>
+<td>netstat -t</td>
+<td>显示所有的tcp协议的端口</td>
+</tr>
+<tr>
+<td>netstat -u</td>
+<td>显示所有的udp协议的端口</td>
+</tr>
+<tr>
+<td>netstat -nupl</td>
+<td>显示UDP类型的端口</td>
+</tr>
+<tr>
+<td>netstat -ntpl</td>
+<td>显示TCP类型的端口</td>
 </tr>
 </tbody>
 </table>
@@ -640,6 +688,10 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>hostname</td>
+<td>查看主机名</td>
+</tr>
 <tr>
 <td>uname -m</td>
 <td>查看linux架构</td>
@@ -675,6 +727,10 @@
 <tr>
 <td>type [CMD]</td>
 <td>查看命令所在路径，如<code>type mkdir</code></td>
+</tr>
+<tr>
+<td>echo $LANG</td>
+<td>查看字符编码</td>
 </tr>
 </tbody>
 </table>
@@ -791,7 +847,7 @@ alias jupyter=&#34;ssh -L9999:localhost:8888 ${user}@${ip}&#34;
 </blockquote>
 <h4 id="2使用-rc-和-sz">2）使用 <code>rc</code> 和 <code>sz</code></h4>
 <blockquote>
-<p>使用前可能需要安装依赖：<code>yum -y install lrzsz</code></p>
+<p>使用前需要安装依赖：<code>yum -y install lrzsz</code></p>
 </blockquote>
 <ul>
 <li><code>rc</code> (receive zmodem): 上传到服务器</li>
