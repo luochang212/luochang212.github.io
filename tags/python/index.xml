@@ -23,7 +23,7 @@
       <pubDate>Sat, 11 Nov 2023 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/d2l/</guid>
-      <description>跟李沐老师学深度学习，课程见 d2l，如有错误，欢迎拍砖 GitHub项目地址：AI-Project
+      <description>跟李沐老师学深度学习，课程见 d2l，如有错误，欢迎拍砖 GitHub 项目地址：AI-Project
 〇、技术路线图 flowchart TD A[softmax 回归] --&gt;|无法拟合 XOR 函数| B[多层感知机] B --&gt; |高像素图片作为输入，模型参数爆炸| C[卷积] C --&gt;|数据的长宽下降太快| D[填充] C --&gt;|数据的长宽下降太慢| E[步幅] C --&gt;|缓解卷积对位置敏感| F[池化] C --&gt;|多模式识别与组合| G[多通道输入/输出] ❤️ powered by mermaid 一、softmax 回归 1. 虽然叫回归，但是softmax 解决的是分类问题 回归估计是一个连续值 分类预测是一个离散类别 2. 分类应用举例 MINIST ImageNet human-protein-atlas-image-classification (Kaggle) malware-classification (Kaggle) jigsaw-comment-classification (Kaggle) 3. 从回归到多类分类 &amp;ndash; 均方损失 对分类结果做 one-hot 编码：
 $y = [y_1, y_2, , ... , y_n]^T$
 $y_i=\left\{\begin{array}{l}1 \text { if } i=y \\ 0 \text { otherwise }\end{array}\right.</description>
@@ -36,7 +36,7 @@ $y_i=\left\{\begin{array}{l}1 \text { if } i=y \\ 0 \text { otherwise }\end{arra
       
       <guid>http://luochang212.github.io/posts/pypi_packaging/</guid>
       <description>你们这些家伙，好好看看我是怎么打包的吧！
-GitHub项目地址：hit-and-blow
+GitHub 项目地址：hit-and-blow
 官方教程：Packaging Python Projects 背景知识：Modules 一、文件结构介绍 打包前，需构建如下文件结构：
 packaging_tutorial/ ├── LICENSE ├── pyproject.toml ├── README.md ├── src/ │ └── YOUR_PACKAGE_NAME/ │ ├── __init__.py │ └── example.py └── tests/ 各个 文件 / 文件夹 说明：
 packaging_tutorial: 项目文件夹 LICENSE: 开源协议，可由 GitHub 生成 pyproject.toml: 打包配置文件 README.md: 项目文档 src: 项目结构要求的，用来放主程序 YOUR_PACKAGE_NAME: 主程序文件夹，以“你的包名”命名文件夹 二、添加配置文件 将以下内容修改一下，改改名字邮箱什么的，存成配置文件 pyproject.toml
@@ -50,7 +50,7 @@ packaging_tutorial: 项目文件夹 LICENSE: 开源协议，可由 GitHub 生成
       
       <guid>http://luochang212.github.io/posts/insurance/</guid>
       <description>未来的钱，也许没你想的那么值钱，这是一件挺反直觉的事。要解释这一切，还要从折现率说起
-GitHub项目地址：insurance.ipynb
+GitHub 项目地址：insurance.ipynb
 有位朋友买重疾险，保险顾问给的方案是，身故后返还两倍于累计缴纳金额的钱。听起来像捡便宜，究竟是怎么回事呢？
 保险顾问给的具体方案是：
 支出：分 30 年支付重疾险，每年付 9000 元，共 27 万元 收益：享受终生重疾险；身故后保险公司一次性返还 50 万元 乍看很划算。是不是真香，算过才知道。
@@ -83,7 +83,7 @@ $y$: 因变量（或被解释变量、回归子） $x$: 自变量（或解释变
       
       <guid>http://luochang212.github.io/posts/poisson/</guid>
       <description>本文介绍泊松分布和泊松函数的定义，并通过 Python random 库对泊松分布进行仿真，带你触摸复杂表象下的简单本质。
-GitHub项目地址：python-tips/poisson
+GitHub 项目地址：python-tips/poisson
 1. 从泊松函数讲起 泊松分布 表示在给定时间段内发生给定数量的事件的概率。这个定义比较抽象。举个具体的例子，假设你每小时接到电话的概率是固定的，比如每小时 0.05 个，那么你在接下来 1 小时内接到电话个数的概率，就服从泊松分布:
 1 小时内接到 0 个电话，对应一个概率值 $P_0$；
 1 小时内接到 1 个电话，对应一个概率值 $P_1$；
@@ -136,7 +136,7 @@ Python 环境分为本地环境(lcoal env) 和全局环境 (global env) 。为�
       <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/algorithms/</guid>
-      <description> 算法学习笔记，长期更新 GitHub项目地址：python-tips/algorithms
+      <description> 算法学习笔记，长期更新 GitHub 项目地址：python-tips/algorithms
 排序 本节介绍各种排序算法的思路和特点，并提供了示例代码。
 插入排序 直接插入排序 希尔排序 交换排序 冒泡排序 快速排序 选择排序 简单选择排序 堆排序 归并排序 二路归并排序 查看示例 排列组合 排列 组合 子集 查看示例 深度优先搜索DFS 广度优先搜索BFS 二叉搜索树 动态规划 × </description>
     </item>
@@ -148,7 +148,7 @@ Python 环境分为本地环境(lcoal env) 和全局环境 (global env) 。为�
       
       <guid>http://luochang212.github.io/posts/chico_and_dico/</guid>
       <description>Chico 和 Dico 是两位魔术师，他们有一个经典魔术：根据任意四张牌猜第五张牌。但完成这个魔术并不需要任何魔术师的技巧，因为它完全建立在数学原理之上。只需要一点数学知识和充分的练习，你也能表演这个魔术！
-GitHub项目地址：chico-and-dico
+GitHub 项目地址：chico-and-dico
 Chico 和 Dico 的魔术 Chico 和 Dico 是两位魔术师，他们经常表演的一个魔术是这样的：Chico 将一副 52 张的扑克牌交给一位观众，让他随机抽取其中的 5 张。然后 Chico 将这 5 张牌按一定的顺序重新排列，再将其还给观众。上述整个过程 Dico 都是看不见的。然而，当观众按 Chico 排好的顺序依次展示前四张牌之后，Dico 却能准确地说出第五张牌是什么。
 乍一看这个魔术很神奇。随机抽取 5 张牌，你能从前 4 张牌中看出第 5 张牌是什么吗？对于普通人来说，当然不可能。Chico 和 Dico 的秘诀在于 Chico 有机会将扑克重新排序。如果两人事先约定好某种协议，Chico 是有可能通过扑克排列的顺序，向 Dico 传递关于第 5 张牌的信息的。
 关键在于如何实现这种协议。
@@ -185,7 +185,7 @@ $ P(cancer) = 0.008, P(normal) = 0.992 \\ P(+ | cancer) = 0.98, P(- | cancer) = 
       <pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/python_tips/</guid>
-      <description>Python 学习笔记，如有错误，欢迎指正 GitHub项目地址：python-tips
+      <description>Python 学习笔记，如有错误，欢迎指正 GitHub 项目地址：python-tips
 相关书籍推荐：
 入门：《Python编程从入门到实践》 [豆瓣链接] 初级：《Python学习手册》(英文名 Learning Python) [豆瓣链接] 中级：《流畅的Python》[豆瓣链接] PS: 针对每个阶段，我推荐的是我认为最好的那本书。
 语言基础 列表 本文从以下几个方面介绍列表：
@@ -202,7 +202,7 @@ $ P(cancer) = 0.008, P(normal) = 0.992 \\ P(+ | cancer) = 0.98, P(- | cancer) = 
       <pubDate>Fri, 10 May 2019 21:43:09 +0100</pubDate>
       
       <guid>http://luochang212.github.io/posts/pyqt5_layout_sidebar/</guid>
-      <description>GitHub项目地址：pyqt5-demo
+      <description>GitHub 项目地址：pyqt5-demo
 主流软件如网易云音乐、腾讯电脑管家，都有侧边栏。侧边栏能有效扩展应用空间，使软件功能的层次更加分明。
 但PyQt5并没有一个专门的方法实现侧边栏。要实现侧边栏，主要有两种技术路线。一是从标签部件(QTabWidget)改造而来，二是用网格布局(QGridLayout)画出来。本文采用第一种技术路线，制作一个简单的侧边栏应用。
 Note: 两种技术路线制作的侧边栏有细微的差别。如果采用第二种技术路线(QGridLayout)，侧边栏和内容页之间没有明显的分界。所以需要额外地在侧边栏和内容页之间加一条线，来突出两者属于不同的组件。而第一种技术路线(QTabWidget)不需要，创建的侧边栏和内容页之间的区别明显。
@@ -220,7 +220,7 @@ from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__
       
       <guid>http://luochang212.github.io/posts/pyqt5_layout/</guid>
       <description>PyQt5是Python环境下用来开发UI界面的一个包。它容易上手，对初学者友好，并且拥有丰富的函数库，可以实现大部分桌面应用的开发需求，且支持QSS语言，能够对界面风格做个性化调整。总体来说，PyQt5是一款开发效率极高的UI框架。这篇文章从零开始，教你搭建一个属于自己的桌面应用。
-GitHub项目地址：pyqt5-demo
+GitHub 项目地址：pyqt5-demo
 创建第一个窗口 一般来说，桌面应用都以窗口(window)形式呈现。因此，要搭建桌面应用，首先要创建窗口。
 下面这段代码创建了一个空的窗口。
 from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__(self): super().__init__() # set the title of main window self.setWindowTitle(&amp;#39;My first window - www.luochang.ink&amp;#39;) # set the size of window self.Width = 500 self.height = int(0.618 * self.Width) self.resize(self.Width, self.height) if __name__ == &amp;#39;__main__&amp;#39;: app = QApplication(sys.argv) ex = Window() ex.show() sys.exit(app.exec_()) 这段代码仅仅设置了窗口的标题和大小。下一步，我们要往这个空的窗口里添加部件(widget). 为了规范性，我们在Window类里新建一个函数initUI, 然后在initUI里为窗口添加部件。
@@ -234,7 +234,7 @@ from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__
       <pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/my_weibo/</guid>
-      <description>GitHub项目地址：weibo-analysis
+      <description>GitHub 项目地址：weibo-analysis
 这次的数据用的是本科期间就已经爬好，但因为当时没有足够的处理技巧，这些数据在硬盘里一丢就是两年。如今，本Python初丁趁着还有机会摸鱼，赶紧把数据翻出来，让它们发光发热。
 文本获取 因为新浪微博的严防死打，现如今微博的数据越来越不好爬。GitHub上的微博爬虫生存周期通常都很短，使爬取数据的成本大大增加。这里我用的是微博@失眠狸 同学的方法，用鼠标精灵写了个插件，控制快捷键和页面拖动，把内容从浏览器上粘贴到sublime里。
 生成csv文件 有了原始数据，接下来我们要把数据归一化，做成方便处理的数据。一个常用的方法就是将数据整理成csv文件。
@@ -253,7 +253,7 @@ Step 2. 分割raw data. 先用split函数进行粗略分割，再用find函数�
 是你吗？华为的舔狗~
 晚上2点不睡的坏小孩，早上10点起的偷懒者。（此处是一个卑微的笑容）
 附录：部分代码 下面这段代码分割了文本。
-def classification(self, txt_array, file_index): id = np.array([]) date = np.array([]) time = np.array([]) device = np.array([]) content = np.array([]) count = 0 for ite in range(1, np.size(txt_array), 1): if txt_array[ite].find(&amp;#34;\n&amp;#34;+&amp;#34;YOUR_NAME&amp;#34;) !</description>
+def classification(self, txt_array, file_index): id = np.array([]) date = np.array([]) time = np.array([]) device = np.array([]) content = np.array([]) count = 0 for ite in range(1, np.size(txt_array), 1): if txt_array[ite].</description>
     </item>
     
     <item>
@@ -262,7 +262,7 @@ def classification(self, txt_array, file_index): id = np.array([]) date = np.arr
       <pubDate>Wed, 10 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/tsp_route/</guid>
-      <description>GitHub项目地址：tsp-route
+      <description>GitHub 项目地址：tsp-route
 对于在欧洲的小伙伴们，复活节假在这一周就正式开始啦。大家都是怎么计划旅行的呢？
 我的习惯是在出发前最后一晚，花上半小时，搜索目的地景点 (Point of interest, POI), 然后在Google Maps上为它们点上小星星，以免和它们擦肩而过。我的地图经过一番操作，就成了下面这副模样。
 此时此刻，望着这些密集的星星，我不禁自问：如何才能走最少的路，遍历所有景点呢?

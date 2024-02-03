@@ -13,7 +13,7 @@
       <pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/my_weibo/</guid>
-      <description>GitHub项目地址：weibo-analysis
+      <description>GitHub 项目地址：weibo-analysis
 这次的数据用的是本科期间就已经爬好，但因为当时没有足够的处理技巧，这些数据在硬盘里一丢就是两年。如今，本Python初丁趁着还有机会摸鱼，赶紧把数据翻出来，让它们发光发热。
 文本获取 因为新浪微博的严防死打，现如今微博的数据越来越不好爬。GitHub上的微博爬虫生存周期通常都很短，使爬取数据的成本大大增加。这里我用的是微博@失眠狸 同学的方法，用鼠标精灵写了个插件，控制快捷键和页面拖动，把内容从浏览器上粘贴到sublime里。
 生成csv文件 有了原始数据，接下来我们要把数据归一化，做成方便处理的数据。一个常用的方法就是将数据整理成csv文件。
@@ -32,7 +32,7 @@ Step 2. 分割raw data. 先用split函数进行粗略分割，再用find函数�
 是你吗？华为的舔狗~
 晚上2点不睡的坏小孩，早上10点起的偷懒者。（此处是一个卑微的笑容）
 附录：部分代码 下面这段代码分割了文本。
-def classification(self, txt_array, file_index): id = np.array([]) date = np.array([]) time = np.array([]) device = np.array([]) content = np.array([]) count = 0 for ite in range(1, np.size(txt_array), 1): if txt_array[ite].find(&amp;#34;\n&amp;#34;+&amp;#34;YOUR_NAME&amp;#34;) !</description>
+def classification(self, txt_array, file_index): id = np.array([]) date = np.array([]) time = np.array([]) device = np.array([]) content = np.array([]) count = 0 for ite in range(1, np.size(txt_array), 1): if txt_array[ite].</description>
     </item>
     
   </channel>

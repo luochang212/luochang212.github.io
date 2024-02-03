@@ -13,7 +13,7 @@
       <pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/python_tips/</guid>
-      <description>Python 学习笔记，如有错误，欢迎指正 GitHub项目地址：python-tips
+      <description>Python 学习笔记，如有错误，欢迎指正 GitHub 项目地址：python-tips
 相关书籍推荐：
 入门：《Python编程从入门到实践》 [豆瓣链接] 初级：《Python学习手册》(英文名 Learning Python) [豆瓣链接] 中级：《流畅的Python》[豆瓣链接] PS: 针对每个阶段，我推荐的是我认为最好的那本书。
 语言基础 列表 本文从以下几个方面介绍列表：

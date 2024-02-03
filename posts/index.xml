@@ -18,12 +18,23 @@
     </item>
     
     <item>
+      <title>新家部署清单</title>
+      <link>http://luochang212.github.io/posts/new_home/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/posts/new_home/</guid>
+      <description> Building your home from scratch.
+GitHub 项目地址：new_home
+一、随身物品 身份证 手机 钥匙 钱包 脑子 二、文具 通勤双肩包 雨伞 拍纸本 中性笔 铅笔 毛笔 秀丽笔 少量专业书籍 三、生活用品 衣服 衣架 毛巾 * 2 洗澡用 垫枕头上 牙具 牙杯 牙膏 牙刷 鞋 拖鞋 运动鞋 水杯： 工位：带盖水杯 家用：陶瓷水杯 脸盆 指甲刀 剃须刀 剪刀 四、床上用品 被子 枕头 床单 床笠 可爱靠枕 五、电子设备 手机 手机支架 手表 耳机 平板 树莓派 Switch Mac mini 笔记本电脑 笔记本电脑支架 外接显示器 外接显示器支架 鼠标 鼠标垫 拓展坞 移动硬盘 移动WIFI 游戏手柄 自拍杆 充电宝 充电器 充电头 充电线 插线板 六、家具 桌子 镜子 阅读灯 氛围灯 拖把 垃圾桶 桶装矿泉水倒立支架 七、家用电器 体重秤 烧水壶 智能音箱 桌面时钟（带温度湿度功能） 桌面风扇 暖风机 空气净化器 八、家用消耗品 洗衣液 沐浴露 洗发液 洗面奶 面霜 唇膏 抽纸 酒精湿巾 垃圾袋 九、食品 茶叶 饼干 十、药品 药箱 体温计 口罩 十一、工具 螺丝刀 卷尺 十二、厨具 中式炒锅 电饭煲 电磁炉 碗 / 盘子 筷子 / 勺子 菜刀 菜板 茶漏 十三、运动用品 瑜伽垫 俯卧撑支架 双节棍 长棍 泳镜 泳帽 泳裤 十四、保暖用品 手套 护膝 十五、证件 护照 驾驶证 其他身份材料 </description>
+    </item>
+    
+    <item>
       <title>深度学习笔记</title>
       <link>http://luochang212.github.io/posts/d2l/</link>
       <pubDate>Sat, 11 Nov 2023 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/d2l/</guid>
-      <description>跟李沐老师学深度学习，课程见 d2l，如有错误，欢迎拍砖 GitHub项目地址：AI-Project
+      <description>跟李沐老师学深度学习，课程见 d2l，如有错误，欢迎拍砖 GitHub 项目地址：AI-Project
 〇、技术路线图 flowchart TD A[softmax 回归] --&gt;|无法拟合 XOR 函数| B[多层感知机] B --&gt; |高像素图片作为输入，模型参数爆炸| C[卷积] C --&gt;|数据的长宽下降太快| D[填充] C --&gt;|数据的长宽下降太慢| E[步幅] C --&gt;|缓解卷积对位置敏感| F[池化] C --&gt;|多模式识别与组合| G[多通道输入/输出] ❤️ powered by mermaid 一、softmax 回归 1. 虽然叫回归，但是softmax 解决的是分类问题 回归估计是一个连续值 分类预测是一个离散类别 2. 分类应用举例 MINIST ImageNet human-protein-atlas-image-classification (Kaggle) malware-classification (Kaggle) jigsaw-comment-classification (Kaggle) 3. 从回归到多类分类 &amp;ndash; 均方损失 对分类结果做 one-hot 编码：
 $y = [y_1, y_2, , ... , y_n]^T$
 $y_i=\left\{\begin{array}{l}1 \text { if } i=y \\ 0 \text { otherwise }\end{array}\right.</description>
@@ -36,7 +47,7 @@ $y_i=\left\{\begin{array}{l}1 \text { if } i=y \\ 0 \text { otherwise }\end{arra
       
       <guid>http://luochang212.github.io/posts/pypi_packaging/</guid>
       <description>你们这些家伙，好好看看我是怎么打包的吧！
-GitHub项目地址：hit-and-blow
+GitHub 项目地址：hit-and-blow
 官方教程：Packaging Python Projects 背景知识：Modules 一、文件结构介绍 打包前，需构建如下文件结构：
 packaging_tutorial/ ├── LICENSE ├── pyproject.toml ├── README.md ├── src/ │ └── YOUR_PACKAGE_NAME/ │ ├── __init__.py │ └── example.py └── tests/ 各个 文件 / 文件夹 说明：
 packaging_tutorial: 项目文件夹 LICENSE: 开源协议，可由 GitHub 生成 pyproject.toml: 打包配置文件 README.md: 项目文档 src: 项目结构要求的，用来放主程序 YOUR_PACKAGE_NAME: 主程序文件夹，以“你的包名”命名文件夹 二、添加配置文件 将以下内容修改一下，改改名字邮箱什么的，存成配置文件 pyproject.toml
@@ -50,7 +61,7 @@ packaging_tutorial: 项目文件夹 LICENSE: 开源协议，可由 GitHub 生成
       
       <guid>http://luochang212.github.io/posts/insurance/</guid>
       <description>未来的钱，也许没你想的那么值钱，这是一件挺反直觉的事。要解释这一切，还要从折现率说起
-GitHub项目地址：insurance.ipynb
+GitHub 项目地址：insurance.ipynb
 有位朋友买重疾险，保险顾问给的方案是，身故后返还两倍于累计缴纳金额的钱。听起来像捡便宜，究竟是怎么回事呢？
 保险顾问给的具体方案是：
 支出：分 30 年支付重疾险，每年付 9000 元，共 27 万元 收益：享受终生重疾险；身故后保险公司一次性返还 50 万元 乍看很划算。是不是真香，算过才知道。
@@ -82,14 +93,13 @@ $一年后的107元的现值 = \frac{107}{1 + 折现率} = \frac{107}{1 + 7\%} =
       <guid>http://luochang212.github.io/posts/causal_inference/</guid>
       <description>不谜语人的因果推断笔记！
 学习统计最好还是学习一下 R 语言。相比 Python，R 是专门用于统计的语言，它提供了更细致的函数和更标准的实现方法。
-GitHub项目地址： 1. 因果推断入门 小朋友感冒，家长给他吃药，一个星期后就痊愈了。那么“吃药”和“痊愈”是否有因果关系呢？
+GitHub 项目地址： 1. 因果推断入门 小朋友感冒，家长给他吃药，一个星期后就痊愈了。那么“吃药”和“痊愈”是否有因果关系呢？
 我们知道普通的小感冒，即使不吃药，一个星期后也会痊愈。因此未必是因为吃药才痊愈的，也有可能是小朋友凭借抵抗力恢复了健康。此时，要进一步分析“吃药”与“痊愈”的因果关系，就要用到因果推断技术。
 注意在上述例子中，原因存在两种状态：吃药/不吃药。结果也存在两种状态：痊愈/未痊愈。为了描述方便，我们把：
 作为原因的变量：x 叫做控制变量 (control variable)，或解释变量 (explanatory variable) 作为结果的变量：y 叫做响应变量 (response variable)，或被解释变量 (explained variable) 1.1 如何测量因果关系 反事实因果分析框架 是统计学中分析因果关系的一种常见思路。这种思路把一种“状态”与其“反事实状态”造成结果的差异当作因果效应。对于小朋友 $i$，反事实因果分析框架反映的因果效应 $\tau_{i}$ 表示为： $$\tau_{i} = Y_{i}(1) - Y_{i}(0)$$ 这里 $Y_{i}(1)$ 代表吃药，$Y_{i}(0)$ 代表不吃药，它们都是观测值。
 不难发现，$Y_{i}(1)$ 和 $Y_{i}(0)$ 是无法同时观测到的。这被称为 因果推断的根本性问题 (Holland, 1986)。正如“人不能两次踏入同一条河流”，一旦做出某种选择，其他选择的结果就无从观测了。
 由于此“根本性问题”的存在，对 $\tau$ 算不了真实值，只能估计。因果效应 $\tau$ 有三种常见的估计值：
-我们约定：是否吃药用 $X$ 表示，$X = 0 \space or \space 1$，其中 1 代表吃药，0 代表不吃药。这里有必要区分下，$Y_{i}|X=1$ 是指那些真的吃了药的人的 $Y$ 值。$Y_{i}(1)$、$Y_{i}(0)$ 则是看不到的一个潜在状态，可能是用统计方法算出的估计值，也可能是模型的外推。
-1.ATT (average treatment effect on treated)：实验组平均因果效应 $$\tau_{ATT} = E( \space (Y_{i}|X=1) - Y_{i}(0) \space )$$ 2.</description>
+我们约定：是否吃药用 $X$ 表示，$X = 0 \space or \space 1$，其中 1 代表吃药，0 代表不吃药。这里有必要区分下，$Y_{i}|X=1$ 是指那些真的吃了药的人的 $Y$ 值。$Y_{i}(1)$、$Y_{i}(0)$ 则是看不到的一个潜在状态，可能是用统计方法算出的估计值，也可能是模型的外推。</description>
     </item>
     
     <item>
@@ -99,7 +109,7 @@ GitHub项目地址： 1. 因果推断入门 小朋友感冒，家长给他吃药
       
       <guid>http://luochang212.github.io/posts/moyu_bash/</guid>
       <description>老板：退退退
-GitHub项目地址：moyu-bash
+GitHub 项目地址：moyu-bash
 1. 缘起 最近刷到一个微信小程序，叫 “摸鱼侠”，它长这样：
 这里面有个栏目叫 “今日已摸到”，还挺有意思的，它会计算今日截至当前为止挣到的工资。
 我寻思这小程序颜色太过艳丽，容易被老板抓包，便计上心来，打算写个 bash 版摸鱼侠。和生产环境融为一体，纯键盘操控，老板来了一个 ctrl c 便能毁尸灭迹，大大滴方便。
@@ -128,7 +138,7 @@ $y$: 因变量（或被解释变量、回归子） $x$: 自变量（或解释变
       
       <guid>http://luochang212.github.io/posts/fastapi/</guid>
       <description>什么是 API？如何从零开始，搭建自己的第一个API？本文带你搭建一个 API 小应用以了解 FastAPI 的使用细节
-GitHub项目地址：calendar-api
+GitHub 项目地址：calendar-api
 什么是 API？
 简单来说，API 是软件间相互传输数据的接口。它在生活中十分常见，比如博物馆订票系统中就使用了 API. 当你在手机应用上订票时，手机实际上发送了一个 HTTP 请求给远程服务器。远程服务器解析该请求。当确认所有字段信息均准确无误后，它才会把你的订票信息录入数据库，并回调成功标识。只有当上述操作全都被正确执行时，你的手机才会显示订票成功。
 API 程序通常运行在服务端 (server) 上。客户端 (client) 通过向 API 提供的网络接口发送请求，以实现对服务端的通信。服务端收到请求后，对请求进行解析。如果请求是合法的，则执行该请求，并将请求结果回调给客户端。一次典型的 API 请求大体上是这么个过程。
@@ -136,8 +146,7 @@ API 程序通常运行在服务端 (server) 上。客户端 (client) 通过向 A
 1. REST API API 本身是高度个性化的，软件间可以用任意数据类型进行通信。但如果 API 缺少规范、各行其是，就会导致软件间沟通成本高企。REST API 就是其中一种规范。REST API 提出了六项指导原则，只要 API 符合这六项指导原则，就可称之为“符合 REST 风格的 API”。
 REST API 提出的六项指导原则分别是：
 Client–server Stateless Cacheable Uniform interface Layered system Code on demand (optional) [了解更多]
-FastAPI 对构建 REST 风格的 API 提供了良好的支持。
-2. 安装 FastAPI FastAPI 是 Python 下用于开发 API 的一个包。它有代码量少、服务稳定、支持异步等特点。</description>
+FastAPI 对构建 REST 风格的 API 提供了良好的支持。</description>
     </item>
     
     <item>
@@ -147,7 +156,7 @@ FastAPI 对构建 REST 风格的 API 提供了良好的支持。
       
       <guid>http://luochang212.github.io/posts/poisson/</guid>
       <description>本文介绍泊松分布和泊松函数的定义，并通过 Python random 库对泊松分布进行仿真，带你触摸复杂表象下的简单本质。
-GitHub项目地址：python-tips/poisson
+GitHub 项目地址：python-tips/poisson
 1. 从泊松函数讲起 泊松分布 表示在给定时间段内发生给定数量的事件的概率。这个定义比较抽象。举个具体的例子，假设你每小时接到电话的概率是固定的，比如每小时 0.05 个，那么你在接下来 1 小时内接到电话个数的概率，就服从泊松分布:
 1 小时内接到 0 个电话，对应一个概率值 $P_0$；
 1 小时内接到 1 个电话，对应一个概率值 $P_1$；
@@ -200,7 +209,7 @@ Python 环境分为本地环境(lcoal env) 和全局环境 (global env) 。为�
       <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/algorithms/</guid>
-      <description> 算法学习笔记，长期更新 GitHub项目地址：python-tips/algorithms
+      <description> 算法学习笔记，长期更新 GitHub 项目地址：python-tips/algorithms
 排序 本节介绍各种排序算法的思路和特点，并提供了示例代码。
 插入排序 直接插入排序 希尔排序 交换排序 冒泡排序 快速排序 选择排序 简单选择排序 堆排序 归并排序 二路归并排序 查看示例 排列组合 排列 组合 子集 查看示例 深度优先搜索DFS 广度优先搜索BFS 二叉搜索树 动态规划 × </description>
     </item>
@@ -212,7 +221,7 @@ Python 环境分为本地环境(lcoal env) 和全局环境 (global env) 。为�
       
       <guid>http://luochang212.github.io/posts/chico_and_dico/</guid>
       <description>Chico 和 Dico 是两位魔术师，他们有一个经典魔术：根据任意四张牌猜第五张牌。但完成这个魔术并不需要任何魔术师的技巧，因为它完全建立在数学原理之上。只需要一点数学知识和充分的练习，你也能表演这个魔术！
-GitHub项目地址：chico-and-dico
+GitHub 项目地址：chico-and-dico
 Chico 和 Dico 的魔术 Chico 和 Dico 是两位魔术师，他们经常表演的一个魔术是这样的：Chico 将一副 52 张的扑克牌交给一位观众，让他随机抽取其中的 5 张。然后 Chico 将这 5 张牌按一定的顺序重新排列，再将其还给观众。上述整个过程 Dico 都是看不见的。然而，当观众按 Chico 排好的顺序依次展示前四张牌之后，Dico 却能准确地说出第五张牌是什么。
 乍一看这个魔术很神奇。随机抽取 5 张牌，你能从前 4 张牌中看出第 5 张牌是什么吗？对于普通人来说，当然不可能。Chico 和 Dico 的秘诀在于 Chico 有机会将扑克重新排序。如果两人事先约定好某种协议，Chico 是有可能通过扑克排列的顺序，向 Dico 传递关于第 5 张牌的信息的。
 关键在于如何实现这种协议。
@@ -280,7 +289,7 @@ $ P(cancer) = 0.008, P(normal) = 0.992 \\ P(+ | cancer) = 0.98, P(- | cancer) = 
       <pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/python_tips/</guid>
-      <description>Python 学习笔记，如有错误，欢迎指正 GitHub项目地址：python-tips
+      <description>Python 学习笔记，如有错误，欢迎指正 GitHub 项目地址：python-tips
 相关书籍推荐：
 入门：《Python编程从入门到实践》 [豆瓣链接] 初级：《Python学习手册》(英文名 Learning Python) [豆瓣链接] 中级：《流畅的Python》[豆瓣链接] PS: 针对每个阶段，我推荐的是我认为最好的那本书。
 语言基础 列表 本文从以下几个方面介绍列表：
@@ -334,7 +343,7 @@ $ mkdir base $ cd base $ touch index.</description>
       <guid>http://luochang212.github.io/posts/monaco_speech_editor/</guid>
       <description>摩纳哥语音编辑器（Monaco Speech Editor）是一款适用于视障人群的在线代码编辑器。它在开源编辑器 Monaco Editor 的基础上，开发了专为视障者设计的语音辅助功能，包括鼠标悬浮提示，快捷键操作和代码阅读。
 其代码阅读功能尤其强大，用户可以用键盘精确定位指定内容进行阅读。针对同一段代码，它提供多种语音输出模式：字符模式、代码模式、音乐模式、全局模式。这些模式根据用户在不同编程阶段的不同需求，提供差异化的语音输出。比如，当用户对一个语句进行 debug 时，推荐使用字符模式进行语音播放。
-如果你对它的功能感兴趣，点击下方链接尝试一下吧 GitHub项目地址：monaco-speech-editor
+如果你对它的功能感兴趣，点击下方链接尝试一下吧 GitHub 项目地址：monaco-speech-editor
 项目背景 根据世界卫生组织2010年的数据，全盲者在全年龄段人口中所占比例为0.58%。在全盲人口中，大部分是中老年人口。从下图可以看出，致盲风险随着年龄快速升高。在0～14岁人群中，全盲比例仅有0.07%；在15～49岁人群中，全盲比例稍高一些，为0.16%；而在50岁以上人群中，全盲比例则达到了2.39%。
 全盲人口的比例不大，但从绝对数值来看却是非常可观的。2010年，世界全盲人口比例为0.58%，但全盲人口数却达到了3936.5万。即使14岁以下人口的全盲比例仅有0.07%，但考虑绝对数值，也达到了142.1万人。
 而且并非只有全盲者才需要语音辅助。有相当比例的视力障碍者，即使使用眼镜，也无法矫正到正常视力。这部分的视障者，也是需要语音辅助的。相比于全盲者，视力障碍者的人口则更为庞大，达到了惊人的2亿8538万。
@@ -431,7 +440,7 @@ TESCO买的厚三文鱼片，均匀地敷上面粉，直至表面摸不到水分
       
       <guid>http://luochang212.github.io/posts/nature_system/</guid>
       <description>本文介绍如何用 Agent-based model 的方法，对一个包含狼、麋鹿、草三种生物的生态系统建模。
-GitHub项目地址：nature-system
+GitHub 项目地址：nature-system
 Agent指个体，Agent-base model即基于个体的模型。在Agent-based model中，虚拟实体(virtual entity)和现实个体一一对应。一般来说，虚拟实体的属性是对现实个体的抽象，虚拟实体的行为则是依照已经写好的规则迭代。这种建模方式往往涉及个体详细的行为模式，因此适合以研究个体行为规则为目的的建模。
 需要注意的是，利用Agent-based model方法建模，并不是变量越多越好，过多的变量会造成调试上的困难。选取的变量足够支撑起我们研究的问题就可以了。
 Note: 除了Agent-base model之外，Equation-based model也是一种比较常见的建模方式。Agent-based model适合表达每个个体身上发生了什么，比如个体的速度、位置的变化等。Equation-based model则而更适合表达系统平均发生了什么，比如人口模型中人口数量变化就更适合用Equation-based model建模。
@@ -452,8 +461,7 @@ Note: 除了Agent-base model之外，Equation-based model也是一种比较常�
 本模型中，一个狼群为一个生育单位。和麋鹿的生育相似，狼群也仅在食物有富余时进行生育。生育的数量与狼群群内个体数量成正比。在不同群内生物数量范围内，比例系数略有不同。生育后，母体的食物也会按比例减少，并将此部分食物赋予孩子。同样，狼群的生育也有时间间隔限制。一次生育完成后，起码要经历5次迭代的时间，才能进行下一次生育。
 3.迁徙(migrate)
 狼群的迁徙取决于头狼，头狼相当于狼群的神经中枢。它接收上一轮狼群的捕猎信息，来判断下一步狼群的迁徙方向。由于头狼无法获知整张地图的麋鹿分布信息，它仅仅只能从已知信息推断，所以这可以视为局部优化问题。
-具体来说，狼群的迁徙规则分两类：如果在上一次迭代中，狼群没有捕到一只麋鹿，那么狼群将随机移动以寻找麋鹿。如果起码吃到了一只，那么就用一个for循环，找出是狼群中的哪只狼吃到了麋鹿。在下一步迭代中，头狼将往这只狼的方向移动。
-头狼移动之后，狼群内的普通狼将在头狼的range属性值代表的活动范围内随机分布。range的数值取决于狼群群内个体数量，群内个体数量大的狼群，其range值也较大。</description>
+具体来说，狼群的迁徙规则分两类：如果在上一次迭代中，狼群没有捕到一只麋鹿，那么狼群将随机移动以寻找麋鹿。如果起码吃到了一只，那么就用一个for循环，找出是狼群中的哪只狼吃到了麋鹿。在下一步迭代中，头狼将往这只狼的方向移动。</description>
     </item>
     
     <item>
@@ -489,7 +497,7 @@ for (i = 0; i &amp;lt; subArray.length; i++) { var index = i+1; body += &amp;#39
       <pubDate>Fri, 10 May 2019 21:43:09 +0100</pubDate>
       
       <guid>http://luochang212.github.io/posts/pyqt5_layout_sidebar/</guid>
-      <description>GitHub项目地址：pyqt5-demo
+      <description>GitHub 项目地址：pyqt5-demo
 主流软件如网易云音乐、腾讯电脑管家，都有侧边栏。侧边栏能有效扩展应用空间，使软件功能的层次更加分明。
 但PyQt5并没有一个专门的方法实现侧边栏。要实现侧边栏，主要有两种技术路线。一是从标签部件(QTabWidget)改造而来，二是用网格布局(QGridLayout)画出来。本文采用第一种技术路线，制作一个简单的侧边栏应用。
 Note: 两种技术路线制作的侧边栏有细微的差别。如果采用第二种技术路线(QGridLayout)，侧边栏和内容页之间没有明显的分界。所以需要额外地在侧边栏和内容页之间加一条线，来突出两者属于不同的组件。而第一种技术路线(QTabWidget)不需要，创建的侧边栏和内容页之间的区别明显。
@@ -507,7 +515,7 @@ from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__
       
       <guid>http://luochang212.github.io/posts/pyqt5_layout/</guid>
       <description>PyQt5是Python环境下用来开发UI界面的一个包。它容易上手，对初学者友好，并且拥有丰富的函数库，可以实现大部分桌面应用的开发需求，且支持QSS语言，能够对界面风格做个性化调整。总体来说，PyQt5是一款开发效率极高的UI框架。这篇文章从零开始，教你搭建一个属于自己的桌面应用。
-GitHub项目地址：pyqt5-demo
+GitHub 项目地址：pyqt5-demo
 创建第一个窗口 一般来说，桌面应用都以窗口(window)形式呈现。因此，要搭建桌面应用，首先要创建窗口。
 下面这段代码创建了一个空的窗口。
 from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__(self): super().__init__() # set the title of main window self.setWindowTitle(&amp;#39;My first window - www.luochang.ink&amp;#39;) # set the size of window self.Width = 500 self.height = int(0.618 * self.Width) self.resize(self.Width, self.height) if __name__ == &amp;#39;__main__&amp;#39;: app = QApplication(sys.argv) ex = Window() ex.show() sys.exit(app.exec_()) 这段代码仅仅设置了窗口的标题和大小。下一步，我们要往这个空的窗口里添加部件(widget). 为了规范性，我们在Window类里新建一个函数initUI, 然后在initUI里为窗口添加部件。
@@ -521,7 +529,7 @@ from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__
       <pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/my_weibo/</guid>
-      <description>GitHub项目地址：weibo-analysis
+      <description>GitHub 项目地址：weibo-analysis
 这次的数据用的是本科期间就已经爬好，但因为当时没有足够的处理技巧，这些数据在硬盘里一丢就是两年。如今，本Python初丁趁着还有机会摸鱼，赶紧把数据翻出来，让它们发光发热。
 文本获取 因为新浪微博的严防死打，现如今微博的数据越来越不好爬。GitHub上的微博爬虫生存周期通常都很短，使爬取数据的成本大大增加。这里我用的是微博@失眠狸 同学的方法，用鼠标精灵写了个插件，控制快捷键和页面拖动，把内容从浏览器上粘贴到sublime里。
 生成csv文件 有了原始数据，接下来我们要把数据归一化，做成方便处理的数据。一个常用的方法就是将数据整理成csv文件。
@@ -540,7 +548,7 @@ Step 2. 分割raw data. 先用split函数进行粗略分割，再用find函数�
 是你吗？华为的舔狗~
 晚上2点不睡的坏小孩，早上10点起的偷懒者。（此处是一个卑微的笑容）
 附录：部分代码 下面这段代码分割了文本。
-def classification(self, txt_array, file_index): id = np.array([]) date = np.array([]) time = np.array([]) device = np.array([]) content = np.array([]) count = 0 for ite in range(1, np.size(txt_array), 1): if txt_array[ite].find(&amp;#34;\n&amp;#34;+&amp;#34;YOUR_NAME&amp;#34;) !</description>
+def classification(self, txt_array, file_index): id = np.array([]) date = np.array([]) time = np.array([]) device = np.array([]) content = np.array([]) count = 0 for ite in range(1, np.size(txt_array), 1): if txt_array[ite].</description>
     </item>
     
     <item>
@@ -549,7 +557,7 @@ def classification(self, txt_array, file_index): id = np.array([]) date = np.arr
       <pubDate>Wed, 10 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/tsp_route/</guid>
-      <description>GitHub项目地址：tsp-route
+      <description>GitHub 项目地址：tsp-route
 对于在欧洲的小伙伴们，复活节假在这一周就正式开始啦。大家都是怎么计划旅行的呢？
 我的习惯是在出发前最后一晚，花上半小时，搜索目的地景点 (Point of interest, POI), 然后在Google Maps上为它们点上小星星，以免和它们擦肩而过。我的地图经过一番操作，就成了下面这副模样。
 此时此刻，望着这些密集的星星，我不禁自问：如何才能走最少的路，遍历所有景点呢?
