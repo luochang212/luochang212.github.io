@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://luochang212.github.io/posts/d2l_from_scratch/</loc>
+    <lastmod>2024-02-03T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://luochang212.github.io/posts/linux_handbook/</loc>
     <lastmod>2024-01-02T00:00:00+00:00</lastmod>
   </url><url>
@@ -104,28 +107,34 @@
     <loc>http://luochang212.github.io/posts/nezha/</loc>
     <lastmod>2017-07-11T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://luochang212.github.io/categories/</loc>
+    <lastmod>2024-02-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://luochang212.github.io/</loc>
+    <lastmod>2024-02-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://luochang212.github.io/categories/d2l/</loc>
+    <lastmod>2024-02-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://luochang212.github.io/categories/deep-learning/</loc>
+    <lastmod>2024-02-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://luochang212.github.io/tags/note/</loc>
+    <lastmod>2024-02-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://luochang212.github.io/posts/</loc>
+    <lastmod>2024-02-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://luochang212.github.io/tags/python/</loc>
+    <lastmod>2024-02-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://luochang212.github.io/tags/</loc>
+    <lastmod>2024-02-03T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://luochang212.github.io/categories/algorithms/</loc>
     <lastmod>2024-01-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://luochang212.github.io/categories/</loc>
-    <lastmod>2024-01-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://luochang212.github.io/</loc>
-    <lastmod>2024-01-02T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://luochang212.github.io/categories/graph/</loc>
-    <lastmod>2024-01-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://luochang212.github.io/tags/note/</loc>
-    <lastmod>2024-01-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://luochang212.github.io/posts/</loc>
-    <lastmod>2024-01-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://luochang212.github.io/tags/python/</loc>
-    <lastmod>2024-01-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://luochang212.github.io/tags/</loc>
     <lastmod>2024-01-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://luochang212.github.io/tags/home/</loc>
@@ -136,12 +145,6 @@
   </url><url>
     <loc>http://luochang212.github.io/tags/list/</loc>
     <lastmod>2024-01-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://luochang212.github.io/categories/d2l/</loc>
-    <lastmod>2023-11-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://luochang212.github.io/categories/deep-learning/</loc>
-    <lastmod>2023-11-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://luochang212.github.io/tags/dt/</loc>
     <lastmod>2023-10-18T00:00:00+00:00</lastmod>

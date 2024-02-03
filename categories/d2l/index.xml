@@ -6,7 +6,21 @@
     <description>Recent content in d2l on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 11 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/categories/d2l/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 03 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/categories/d2l/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>手写深度学习</title>
+      <link>http://luochang212.github.io/posts/d2l_from_scratch/</link>
+      <pubDate>Sat, 03 Feb 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/posts/d2l_from_scratch/</guid>
+      <description>时至今日，深度学习更像一门技术而非科学。
+掌握技术最好的办法，就是多练 GitHub 项目地址：AI-Project/scratch
+一、多层感知机 Go to -&amp;gt; 《动手学深度学习》第四章：多层感知机
+施工中&amp;hellip;
+二、AutoML 施工中&amp;hellip;
+三、Hugging face 施工中&amp;hellip;</description>
+    </item>
+    
     <item>
       <title>深度学习笔记</title>
       <link>http://luochang212.github.io/posts/d2l/</link>

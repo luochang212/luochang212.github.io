@@ -790,6 +790,9 @@ alias jupyter=&#34;ssh -L9999:localhost:8888 ${user}@${ip}&#34;
 <p><strong>注意</strong>：SCP 只能传单个文件，不能传文件夹。传文件夹可以把它压缩成 <code>tar</code> 文件再传</p>
 </blockquote>
 <h4 id="2使用-rc-和-sz">2）使用 <code>rc</code> 和 <code>sz</code></h4>
+<blockquote>
+<p>使用前可能需要安装依赖：<code>yum -y install lrzsz</code></p>
+</blockquote>
 <ul>
 <li><code>rc</code> (receive zmodem): 上传到服务器</li>
 <li><code>sz</code> (send zmodem): 下载到本地</li>
@@ -858,6 +861,11 @@ useradd -m [USERNAME]
       <span class="navigation-tittle">新家部署清单</span>
     </a>
     
+    
+    <a href="/posts/d2l_from_scratch/" class="navigation-next">
+      <span class="navigation-tittle">手写深度学习</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
     
 </div>
 

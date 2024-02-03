@@ -24,14 +24,14 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="手写深度学习"/>
-<meta name="twitter:description" content="我写写写"/>
+<meta name="twitter:description" content="冬天就是要多做手部运动，让手暖起来"/>
 
 <meta property="og:title" content="手写深度学习" />
-<meta property="og:description" content="我写写写" />
+<meta property="og:description" content="冬天就是要多做手部运动，让手暖起来" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/d2l_from_scratch/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-11-25T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-11-25T00:00:00+00:00" /><meta property="og:site_name" content="Title" />
+<meta property="article:published_time" content="2024-02-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-02-03T00:00:00+00:00" /><meta property="og:site_name" content="Title" />
 
 
     
@@ -340,19 +340,19 @@
 
         <div id="video1">
           <iframe src="about:blank"
-            data-src="//player.bilibili.com/player.html?aid=663375832&bvid=BV11a4y1S7Pt&cid=1334196946&p=1"
+            data-src="//player.bilibili.com/player.html?aid=663375832&bvid=BV11a4y1S7Pt&cid=1334196946&p=1&high_quality=1&danmaku=0&autoplay=0"
             style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
             allowfullscreen="true"></iframe>
         </div>
         <div id="video2">
           <iframe src="about:blank"
-            data-src="//player.bilibili.com/player.html?aid=958254107&bvid=BV1rp4y1L7i4&cid=1264513494&p=1"
+            data-src="//player.bilibili.com/player.html?aid=958254107&bvid=BV1rp4y1L7i4&cid=1264513494&p=1&high_quality=1&danmaku=0&autoplay=0"
             style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
             allowfullscreen="true"></iframe>
         </div>
         <div id="video3">
           <iframe src="about:blank"
-            data-src="//player.bilibili.com/player.html?aid=566507193&bvid=BV1Av4y147QE&cid=997936232&p=1"
+            data-src="//player.bilibili.com/player.html?aid=566507193&bvid=BV1Av4y147QE&cid=997936232&p=1&high_quality=1&danmaku=0&autoplay=0"
             style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
             allowfullscreen="true"></iframe>
         </div>
@@ -365,7 +365,7 @@
         <div class="dropup">
           <button class="dropbtn">更多视频</button>
           <div class="dropup-content">
-            <a onclick="link1()">财财</a>
+            <a onclick="link1()">发财财</a>
             <a onclick="link2()">岁岁恋</a>
             <a onclick="link3()">真物论</a>
           </div>
@@ -423,7 +423,7 @@
         tablinks[i].className = tablinks[i].className.replace(" active", "");
       }
       document.getElementById(itemName).style.display = "block";
-      evt.currentTarget.className += "active";
+      evt.currentTarget.className += " active";
     }
 
     function link1() {
@@ -483,7 +483,7 @@
 <div class="post__meta">
     
     
-      <i class="fas fa-calendar-alt"></i> Nov 25, 2023
+      <i class="fas fa-calendar-alt"></i> Feb 3, 2024
     
     
     
@@ -532,8 +532,9 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#automl">AutoML</a></li>
-        <li><a href="#hugging-face">Hugging face</a></li>
+        <li><a href="#一多层感知机">一、多层感知机</a></li>
+        <li><a href="#二automl">二、AutoML</a></li>
+        <li><a href="#三hugging-face">三、Hugging face</a></li>
       </ul>
     </li>
   </ul>
@@ -544,28 +545,36 @@
   
   <div class="post">
     <blockquote>
-<p><a href="https://zh-v2.d2l.ai/index.html">d2l</a> 关键代码学习 <img src="/img/quyin/witty.png" class="my-emoji" style = "height: 32px;"></p>
+<p>时至今日，深度学习更像一门技术而非科学。</p>
+<p>掌握技术最好的办法，就是多练 <img src="/img/quyin/witty.png" class="my-emoji" style = "height: 32px;"></p>
 </blockquote>
-<p>GitHub项目地址：<a href="https://github.com/luochang212/AI-Project" target="_blank">AI-Project/scratch</a></p>
-<h3 id="automl">AutoML</h3>
-<h3 id="hugging-face">Hugging face</h3>
-<!-- ### 一、自动微分 -->
+<!-- > [d2l](https://zh-v2.d2l.ai/index.html) 关键代码学习 <img src="/img/quyin/witty.png" class="my-emoji" style = "height: 32px;"> -->
+<p>GitHub 项目地址：<a href="https://github.com/luochang212/AI-Project/tree/main/scratch" target="_blank">AI-Project/scratch</a></p>
+<h3 id="一多层感知机">一、多层感知机</h3>
+<p>Go to -&gt; <a href="https://zh-v2.d2l.ai/chapter_multilayer-perceptrons/index.html" target="_blank">《动手学深度学习》第四章：多层感知机</a></p>
+<blockquote>
+<p>施工中&hellip;</p>
+</blockquote>
+<h3 id="二automl">二、AutoML</h3>
+<blockquote>
+<p>施工中&hellip;</p>
+</blockquote>
+<h3 id="三hugging-face">三、Hugging face</h3>
+<blockquote>
+<p>施工中&hellip;</p>
+</blockquote>
+<!-- 自动微分 -->
 
   </div>
   
 
 <div class="navigation navigation-single">
     
-    <a href="/posts/d2l/" class="navigation-prev">
+    <a href="/posts/linux_handbook/" class="navigation-prev">
       <i aria-hidden="true" class="fa fa-chevron-left"></i>
-      <span class="navigation-tittle">深度学习笔记</span>
+      <span class="navigation-tittle">Linux 运维手册</span>
     </a>
     
-    
-    <a href="/posts/graph_algorithms/" class="navigation-next">
-      <span class="navigation-tittle">图算法笔记</span>
-      <i aria-hidden="true" class="fa fa-chevron-right"></i>
-    </a>
     
 </div>
 
