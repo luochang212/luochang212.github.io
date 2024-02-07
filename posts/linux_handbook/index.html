@@ -516,7 +516,7 @@
     
     
     <br/>
-    <i class="fas fa-clock"></i> 2 min read
+    <i class="fas fa-clock"></i> 5 min read
 </div>
 
 
@@ -535,11 +535,12 @@
         <li><a href="#一常见操作">一、常见操作</a></li>
         <li><a href="#二后台运行">二、后台运行</a></li>
         <li><a href="#三快捷指令">三、快捷指令</a></li>
-        <li><a href="#四传输文件">四、传输文件</a></li>
-        <li><a href="#五映射端口">五、映射端口</a></li>
-        <li><a href="#六发邮件">六、发邮件</a></li>
-        <li><a href="#七创建--删除--切换-系统用户">七、创建 / 删除 / 切换 系统用户</a></li>
-        <li><a href="#八推荐的书">八、推荐的书</a></li>
+        <li><a href="#四用户系统">四、用户系统</a></li>
+        <li><a href="#五环境部署">五、环境部署</a></li>
+        <li><a href="#六文件传输">六、文件传输</a></li>
+        <li><a href="#七端口映射">七、端口映射</a></li>
+        <li><a href="#八文件系统">八、文件系统</a></li>
+        <li><a href="#九推荐的书">九、推荐的书</a></li>
       </ul>
     </li>
   </ul>
@@ -550,7 +551,7 @@
   
   <div class="post">
     <blockquote>
-<p>不想当算法的开发不是好运维</p>
+<p>基于 CentOS 系统，其他系统亦可借鉴</p>
 </blockquote>
 <h3 id="一常见操作">一、常见操作</h3>
 <h4 id="1文件操作">1）文件操作</h4>
@@ -562,6 +563,10 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>ls</td>
+<td>列出当前文件夹下的文件</td>
+</tr>
 <tr>
 <td>touch [FILE]</td>
 <td>创建文件</td>
@@ -579,6 +584,10 @@
 <td>打印文件头 10 行，展示 20 行用 <code>head -n 20 [FILE]</code></td>
 </tr>
 <tr>
+<td>tail [FILE]</td>
+<td>打印文件尾 10 行，展示 20 行用 <code>tail -n 20 [FILE]</code></td>
+</tr>
+<tr>
 <td>less [FILE]</td>
 <td>打印文件，可以用 <code>上键</code> <code>下键</code> 翻页</td>
 </tr>
@@ -587,8 +596,20 @@
 <td>删除文件</td>
 </tr>
 <tr>
+<td>rm -rf [DIR]</td>
+<td>递归删除路径<code>DIR</code>下所有文件</td>
+</tr>
+<tr>
+<td>mv [FILE_A] [FILE_B]</td>
+<td>文件<code>FILE_A</code>改名为<code>FILE_B</code></td>
+</tr>
+<tr>
+<td>mv [FILE] [DIR]</td>
+<td>文件<code>FILE</code>移动到路径<code>DIR</code></td>
+</tr>
+<tr>
 <td>cd [PATH]</td>
-<td>打开目录</td>
+<td>打开目录<code>PATH</code></td>
 </tr>
 <tr>
 <td>mkdir [PATH]</td>
@@ -626,6 +647,14 @@
 <td>查看所有的网络接口的状态</td>
 </tr>
 <tr>
+<td>ping [SERVER_IP]</td>
+<td>检查远端服务器连通性</td>
+</tr>
+<tr>
+<td>telnet [SERVER_IP] [SERVER_PORT]</td>
+<td>检查远端服务器的端口的连通性</td>
+</tr>
+<tr>
 <td>hostname -I</td>
 <td>awk &lsquo;{print $1}&rsquo;</td>
 </tr>
@@ -636,6 +665,14 @@
 <tr>
 <td>curl [URL]</td>
 <td>访问网页</td>
+</tr>
+<tr>
+<td>netstat -tnpl</td>
+<td>显示TCP类型的端口</td>
+</tr>
+<tr>
+<td>netstat -unpl</td>
+<td>显示UDP类型的端口</td>
 </tr>
 <tr>
 <td>netstat -r</td>
@@ -670,16 +707,16 @@
 <td>显示所有的udp协议的端口</td>
 </tr>
 <tr>
-<td>netstat -nupl</td>
-<td>显示UDP类型的端口</td>
+<td>ssh -p [SERVER_PORT] [USER]@[SERVER_IP]</td>
+<td>ssh连接远端服务器</td>
 </tr>
 <tr>
-<td>netstat -ntpl</td>
-<td>显示TCP类型的端口</td>
+<td>ssh-keygen -R [SERVER_IP]</td>
+<td>同IP机器重装后重连前注销老host</td>
 </tr>
 </tbody>
 </table>
-<h4 id="3系统信息">3）系统信息</h4>
+<h4 id="3系统操作">3）系统操作</h4>
 <table>
 <thead>
 <tr>
@@ -688,6 +725,10 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>top</td>
+<td>查看CPU占用率</td>
+</tr>
 <tr>
 <td>hostname</td>
 <td>查看主机名</td>
@@ -759,9 +800,17 @@
 <td>wc -l</td>
 <td>输出文件的行数</td>
 </tr>
+<tr>
+<td>echo &ldquo;ABC&rdquo; &gt; [FILE]</td>
+<td>将文本<code>ABC</code>写入文件<code>FILE</code>行尾</td>
+</tr>
+<tr>
+<td>echo &ldquo;ABC&rdquo; &raquo; [FILE]</td>
+<td>用文本<code>ABC</code>覆写文件<code>FILE</code></td>
+</tr>
 </tbody>
 </table>
-<h4 id="5表达式">5）表达式</h4>
+<h4 id="5bash-表达式">5）Bash 表达式</h4>
 <table>
 <thead>
 <tr>
@@ -795,6 +844,18 @@
 <td>小于等于</td>
 </tr>
 <tr>
+<td>!</td>
+<td>非</td>
+</tr>
+<tr>
+<td>==</td>
+<td>等于</td>
+</tr>
+<tr>
+<td>=～</td>
+<td>正则匹配，等式右侧写正则表达式</td>
+</tr>
+<tr>
 <td>-a file</td>
 <td>如果file存在则为真</td>
 </tr>
@@ -810,6 +871,74 @@
 <td>sleep 1m</td>
 <td>休眠一分钟</td>
 </tr>
+<tr>
+<td>export PATH=[/some/new/path]:$PATH</td>
+<td>新增环境变量<code>/some/new/path</code></td>
+</tr>
+<tr>
+<td>$#</td>
+<td>保存传递给shell脚本的命令行参数的数量</td>
+</tr>
+<tr>
+<td>$*</td>
+<td>保存所有传递给shell脚本的命令行参数 ($1 $2 &hellip;)</td>
+</tr>
+<tr>
+<td>$@</td>
+<td>保存所有传递给shell脚本的命令行参数 (&quot;$1&quot; &ldquo;$2&rdquo; &hellip;)</td>
+</tr>
+<tr>
+<td>$0</td>
+<td>保存shell脚本的名字</td>
+</tr>
+<tr>
+<td>$?</td>
+<td>保存上一个执行的命令的退出码</td>
+</tr>
+</tbody>
+</table>
+<h4 id="6vim-命令">6）vim 命令</h4>
+<p>以下命令需用 <code>vim</code> 打开文件，再按 <code>esc</code> 后输入，再按 <code>enter</code> 执行</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+<td>切换到编辑模式。唯独这个直接按<code>a</code>就行，不用先按<code>esc</code></td>
+</tr>
+<tr>
+<td>:q</td>
+<td>退出文档，不保存</td>
+</tr>
+<tr>
+<td>:q!</td>
+<td>强制退出文档</td>
+</tr>
+<tr>
+<td>:x</td>
+<td>保存后退出</td>
+</tr>
+<tr>
+<td>:wq!</td>
+<td>强制保存退出</td>
+</tr>
+<tr>
+<td>:set paste</td>
+<td>切换到粘贴模式</td>
+</tr>
+<tr>
+<td>/[TEXT]</td>
+<td>查找<code>[TEXT]</code>，按<code>n</code>下一个</td>
+</tr>
+<tr>
+<td>:help</td>
+<td>打开帮助文档</td>
+</tr>
 </tbody>
 </table>
 <h3 id="二后台运行">二、后台运行</h3>
@@ -819,8 +948,8 @@
 <li><code>nohup [CMD] &amp;</code>: 后台运行，关掉终端不会停止运行</li>
 </ol>
 <h3 id="三快捷指令">三、快捷指令</h3>
-<p>如果你想在 MacOS 终端用 短指令 替代 长指令，可以使用 <code>alias</code>. 步骤如下：</p>
-<p>1）在 MacOS 的 <code>~/.bash_profile</code> 文件里，用 <code>alias</code> 配置“快捷指令”：</p>
+<p>在 MacOS 终端用 短指令 替代 长指令，可以用 <code>alias</code>，步骤如下：</p>
+<p>首先打开 <code>~/.bash_profile</code> 配置文件，添加以下内容：</p>
 <pre tabindex="0"><code># alias
 # remote server
 user=[REMOTE_SERVER_USERNAME]
@@ -828,27 +957,117 @@ ip=[REMOTE_SERVER_IP]
 
 alias login=&#34;ssh -p 22 ${user}@${ip}&#34;
 alias jupyter=&#34;ssh -L9999:localhost:8888 ${user}@${ip}&#34;
-</code></pre><p>添加以上内容到 <code>~/.bash_profile</code></p>
-<p>2） 然后在终端运行以下命令：</p>
+</code></pre><p>然后在终端运行：</p>
 <pre tabindex="0"><code>source ~/.bash_profile
-</code></pre><p>之后就能用 <code>login</code> 和 <code>jupyter</code> 两个短指令，替代配置文件中等号右侧的两个长指令。</p>
+</code></pre><p>此时，<code>login</code> 和 <code>jupyter</code> 两个短指令，就能替代等式右侧的两个长指令了。</p>
 <blockquote>
-<p><strong>Note</strong>: 在 Linux 系统上也能配置，区别是 Linux 的配置文件是 <code>~/.bashrc</code></p>
+<p><strong>Note</strong>: CentOS 系统同理，区别是 CentOS 的配置文件是 <code>~/.bashrc</code></p>
 </blockquote>
-<h3 id="四传输文件">四、传输文件</h3>
+<h3 id="四用户系统">四、用户系统</h3>
+<p><strong>创建</strong> 一个系统用户，其中 <code>-m</code> (&ndash;create-home) 可选。</p>
+<pre tabindex="0"><code># 创建用户使用如下命令
+useradd [USERNAME]
+# 或
+useradd -m [USERNAME]
+</code></pre><p>选项 <code>-m</code> 代表创建用户时，为用户创建 <code>/home/[USERNAME]</code> 目录。</p>
+<p><strong>验证</strong> 系统用户是否存在：</p>
+<pre tabindex="0"><code>id [USERNAME]
+</code></pre><p><strong>改密</strong>：</p>
+<pre tabindex="0"><code>passwd [USERNAME]
+</code></pre><p><strong>删除</strong> 系统用户：</p>
+<pre tabindex="0"><code>userdel [USERNAME]
+</code></pre><p><strong>切换</strong> 系统用户：切换到用户 <code>[USERNAME]</code></p>
+<pre tabindex="0"><code>su [USERNAME]
+</code></pre><h3 id="五环境部署">五、环境部署</h3>
+<h4 id="1更新-yum">1）更新 <code>yum</code></h4>
+<pre tabindex="0"><code>yum update -y
+yum upgrade -y
+
+yum --version
+</code></pre><h4 id="2安装-java">2）安装 <code>java</code></h4>
+<pre tabindex="0"><code>yum install -y java-1.8.0-openjdk
+
+# 验证 java 是否安装成功
+java -version  
+</code></pre><h4 id="3安装-pip3">3）安装 <code>pip3</code></h4>
+<pre tabindex="0"><code>yum install epel-release
+yum install python3-pip
+pip3 install --upgrade pip
+
+# 验证 pip3 是否安装成功
+pip3 --version
+</code></pre><h4 id="4安装-jupyter-和-notebook">4）安装 <code>jupyter</code> 和 <code>notebook</code></h4>
+<pre tabindex="0"><code>pip3 install jupyter notebook
+
+# 验证 jupyter notebook 是否安装成功
+jupyter notebook --allow-root
+</code></pre><h4 id="5安装-miniconda3">5）安装 <code>miniconda3</code></h4>
+<p>参考：<a href="https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html" target="_blank">docs.conda.io</a></p>
+<pre tabindex="0"><code># 安装
+mkdir -p ~/miniconda3
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+rm -rf ~/miniconda3/miniconda.sh
+
+# 初始化 bash 文件
+~/miniconda3/bin/conda init bash
+~/miniconda3/bin/conda init zsh
+
+# 使 bash 文件生效
+source ~/.bashrc
+
+# 验证 miniconda3 是否安装成功
+conda info --envs
+which python
+</code></pre><h4 id="6安装-rust">6）安装 <code>rust</code></h4>
+<p>参考：<a href="https://www.rust-lang.org/tools/install" target="_blank">rust-lang.org</a></p>
+<pre tabindex="0"><code># 安装
+curl --proto &#39;=https&#39; --tlsv1.2 -sSf https://sh.rustup.rs | sh
+</code></pre><p>运行 <code>vim ~/.bashrc</code>，将以下内容添加到 <code>.bashrc</code> 文件中</p>
+<pre tabindex="0"><code>rust_bin=~/.cargo/bin
+if [[ ! $rust_bin =~ [*$PATH*] ]]; then
+    export PATH=$rust_bin:$PATH
+fi
+</code></pre><p>运行 <code>source ~/.bashrc</code>，以初始化环境变量</p>
+<blockquote>
+<p><strong>Note</strong>: 卸载 rustup</p>
+<pre tabindex="0"><code>rustup self uninstall
+</code></pre></blockquote>
+<h4 id="7miniconda3-换-kernal">7）<code>miniconda3</code> 换 Kernal</h4>
+<p>安装依赖</p>
+<pre tabindex="0"><code>pip install ipykernel
+</code></pre><p>创建虚拟环境</p>
+<pre tabindex="0"><code>conda create -n py27 python=2.7  # 创建名为 py27 的 Python 2.7 新环境
+conda activate py27  # 激活新环境
+
+# 将新环境加入 jupyter notebook 的 kernel 中
+python -m ipykernel install --user --name py27 --display-name &#34;Python (py27)&#34;
+</code></pre><p>随便创建一个 <code>.ipynb</code> 文件，在导航栏点击：Kernel -&gt; Change Kernel -&gt; Python (py27)</p>
+<p><img src="/img/change_kernel.png" alt=""></p>
+<p>检查新 kernel 是否生效，在 jupyter notebook 运行</p>
+<pre tabindex="0"><code>import sys
+sys.executable
+</code></pre><p>输出：<code>'/home/[USER_NAME]/miniconda3/envs/py27/bin/python'</code></p>
+<h3 id="六文件传输">六、文件传输</h3>
 <h4 id="1使用-scp">1）使用 SCP</h4>
+<blockquote>
+<p>用于 远端服务器 之间互传文件。</p>
+</blockquote>
 <pre tabindex="0"><code>scp [SOURCE_FILE] [USERNAME]@[DESTINATION_SERVER_IP]:[/PATH/TO/DIR]
 </code></pre><p>上述命令的含义是：</p>
 <p>把当前路径下的 <code>[SOURCE_FILE]</code> <strong>文件</strong> 传到 <code>[DESTINATION_SERVER_IP]</code> <strong>主机</strong> 的 <code>[USERNAME]</code> <strong>用户</strong> 的 <code>[/PATH/TO/DIR]</code> <strong>目录</strong> 下。</p>
-<p>举个栗子 (=ﾟωﾟ)=🌰</p>
+<p>举个栗子 (=ﾟωﾟ)= 🌰</p>
 <pre tabindex="0"><code>scp data.tar jane@:132.43.75.194:/home/jane/code
 </code></pre><blockquote>
 <p><strong>注意</strong>：SCP 只能传单个文件，不能传文件夹。传文件夹可以把它压缩成 <code>tar</code> 文件再传</p>
 </blockquote>
 <h4 id="2使用-rc-和-sz">2）使用 <code>rc</code> 和 <code>sz</code></h4>
 <blockquote>
-<p>使用前需要安装依赖：<code>yum -y install lrzsz</code></p>
+<p>用于 远端服务器 与 本地电脑 互传文件。</p>
 </blockquote>
+<p>安装依赖：</p>
+<pre tabindex="0"><code>yum -y install lrzsz
+</code></pre><p>传输命令：</p>
 <ul>
 <li><code>rc</code> (receive zmodem): 上传到服务器</li>
 <li><code>sz</code> (send zmodem): 下载到本地</li>
@@ -867,42 +1086,99 @@ alias jupyter=&#34;ssh -L9999:localhost:8888 ${user}@${ip}&#34;
 <li>MacOS 推荐用 <code>SecureCRT</code></li>
 </ul>
 </blockquote>
-<h3 id="五映射端口">五、映射端口</h3>
-<p>将远端服务器的端口映射到本地笔记本电脑上：</p>
+<h4 id="3samba">3）samba</h4>
+<blockquote>
+<p>用于 远端服务器 与 本地电脑 互传文件。</p>
+</blockquote>
+<p>① 安装依赖</p>
+<pre tabindex="0"><code>yum install samba samba-client
+</code></pre><p>请确保系统至少有一个用户，以下命令用于确认是否有名为 <code>[USER]</code> 的用户：</p>
+<pre tabindex="0"><code>id [USER]
+</code></pre><p><code>&gt; uid=1000([USER]) gid=1000([USER]) groups=1000([USER])</code></p>
+<p>② 在 samba 中为用户设置用于网络连接的密码</p>
+<pre tabindex="0"><code>smbpasswd -a [USER]
+</code></pre><p>会提示输入 samba 账号密码，按要求输入即可。</p>
+<p>③ 创建分享文件夹</p>
+<p>在目录 <code>/tmp/</code> 下新建名为 <code>sambashare</code> 的文件夹</p>
+<pre tabindex="0"><code>mkdir -p /tmp/sambashare
+</code></pre><p>④ 修改 samba 配置文件</p>
+<p>运行 <code>vim /etc/samba/smb.conf</code> 打开配置文件，并添加以下内容，注意把 <code>[USER]</code> 替换成你的用户名：</p>
+<pre tabindex="0"><code>[sambashare]
+        comment = Share Folder
+        path = /tmp/sambashare
+        public = no
+        guest ok = no
+        writable = yes
+        browsable = yes
+        available = yes
+</code></pre><p>⑤ 重启 samba 服务</p>
+<pre tabindex="0"><code>systemctl restart smb
+systemctl enable smb
+
+# 检查 samba 服务是否调起
+systemctl status smb
+</code></pre><p>⑥ 端口加白</p>
+<p>查看 samba 服务占用的端口：</p>
+<pre tabindex="0"><code>netstat -tnpl | grep smb  # TCP 端口
+netstat -unpl | grep smb  # UDP 端口
+</code></pre><p>然后在 PaaS 服务供应商处为对应端口加白。</p>
+<p>⑦ 测试端口连通性</p>
+<p>在本地命令行执行以下命令，确认远端服务器的端口可连通：</p>
+<pre tabindex="0"><code>telnet [SERVER_IP] [SERVER_PORT]
+</code></pre><p>⑧ 本地电脑连接 smb 服务</p>
+<p><strong>MacOS 系统</strong>：在访达中输入快捷键 <code>CMD+K</code> 打开 <code>Connect to Server</code> 页面</p>
+<p><img src="/img/connect_to_server.png" alt=""></p>
+<p>输入 <code>smb://[YOUR_SERVER_IP]/sambashare</code> 点击 <code>Connect</code> 连接你的 smb 服务。</p>
+<p><strong>Windows 系统</strong>：在文件地址导航栏输入 <code>\\[YOUR_SERVER_IP]</code> 后回车。</p>
+<h3 id="七端口映射">七、端口映射</h3>
+<p>将远端服务器的端口映射到本地电脑上：</p>
 <pre tabindex="0"><code>ssh -L[LOCAL_PORT]:localhost:[REMOTE_PORT] [USER]@[SERVER_IP]
 </code></pre><blockquote>
 <p><strong>Note</strong>: 举例，命令 <code>ssh -L9999:localhost:8888 musk@132.43.75.194</code></p>
 <p>的含义是把远端服务器 <code>132.43.75.194</code> 上的用户 <code>musk</code> 的 <code>8888</code> 端口，映射到本地 <code>9999</code> 端口。</p>
 </blockquote>
-<h3 id="六发邮件">六、发邮件</h3>
-<p>把下面的 <code>[YOUR-CONTENT-HERE]</code> 换成邮件内容，把 <code>[YOUR-EMAIL-HERE]</code> 换成收件邮箱，然后运行</p>
-<pre tabindex="0"><code>echo &#34;[YOUR-CONTENT-HERE]&#34; | formail \
-    -I &#34;MIME-Version:1.0&#34; \
-    -I &#34;Content-type:text/html;charset=utf8&#34; -I &#34;Subject:$1&#34; | \
+<!-- ### 七、发邮件
+
+把下面的 `[YOUR-CONTENT-HERE]` 换成邮件内容，把 `[YOUR-EMAIL-HERE]` 换成收件邮箱，然后运行
+
+```
+echo "[YOUR-CONTENT-HERE]" | formail \
+    -I "MIME-Version:1.0" \
+    -I "Content-type:text/html;charset=utf8" -I "Subject:$1" | \
     sendmail -oi [YOUR-EMAIL-HERE]
-</code></pre><blockquote>
-<p><strong>Note</strong>: 运行前可能需要安装依赖</p>
-<pre tabindex="0"><code>yum install procmail -y
-</code></pre></blockquote>
-<!-- 
 ```
-echo "[YOUR-CONTENT-HERE]" | mail -s "Subject:Content-type:text/html;charset=utf8" "[YOUR-EMAIL-HERE]"
-```
--->
-<h3 id="七创建--删除--切换-系统用户">七、创建 / 删除 / 切换 系统用户</h3>
-<p><strong>创建</strong> 一个系统用户，其中 <code>-m</code> (&ndash;create-home) 可选。</p>
-<pre tabindex="0"><code># 创建用户使用如下命令
-useradd [USERNAME]
-# 或
-useradd -m [USERNAME]
-</code></pre><p>加上 <code>-m</code> 意味着创建用户时，为用户创建 <code>/home/[USERNAME]</code> 目录。</p>
-<p><strong>验证</strong> 系统用户是否存在：</p>
-<pre tabindex="0"><code>sudo id [USERNAME]
-</code></pre><p><strong>删除</strong> 系统用户：</p>
-<pre tabindex="0"><code>userdel [USERNAME]
-</code></pre><p><strong>切换</strong> 系统用户：切换到用户 <code>[USERNAME]</code></p>
-<pre tabindex="0"><code>su [USERNAME]
-</code></pre><h3 id="八推荐的书">八、推荐的书</h3>
+
+> **Note**: 运行前可能需要安装依赖
+>
+> ```
+> yum install procmail -y
+> ``` -->
+<h3 id="八文件系统">八、文件系统</h3>
+<p>安装一个叫 <code>tree</code> 的命令行工具，它能打印目录结构</p>
+<pre tabindex="0"><code>yum install tree
+</code></pre><p>限制打印目录深度为 1 层：</p>
+<pre tabindex="0"><code>tree -L 1
+</code></pre><pre tabindex="0"><code>.
+├── bin -&gt; usr/bin: 包含了很多基础 shell 命令的可执行文件，如 cp, mkdir
+├── boot: 系统内核和启动镜像
+├── dev: 包含关于设备的特殊文件，如 random, null
+├── etc: 包含系统配置文件
+├── home: 用户个人数据
+├── lib -&gt; usr/lib: 系统软件库，一般被 /bin 和 /sbin 路径下的可执行文件调用
+├── lost+found: 文件系统发生错误后找回数据用的
+├── media: 移动磁盘插入时，会在此目录下生成磁盘路径
+├── mnt: 与 /media 类似，但不会自动挂载磁盘，而由系统管理员手动挂载
+├── opt: 存储系统和外部软件代码，对应的可执行文件一般在 /bin
+├── proc: 当前运行程序与内核信息，如 cpuinfo, meminfo, [PID]
+├── root: root的根目录
+├── run: 存放运行时信息，与 /var/run 关系密切
+├── sbin -&gt; usr/sbin: 与 /bin 类似，但只允许 root 访问
+├── srv: 存放由服务器的服务产生的数据
+├── sys: 虚拟的文件夹，存在于内存中，随系统启动创建，包含 内核、内存、驱动 等信息
+├── tmp: 用于存放临时文件，系统重启时清空
+├── usr: 软件安装路径
+└── var: 运行时信息，如登录信息 (/var/log/wtmp)。系统不会自动清理此目录
+</code></pre><h3 id="九推荐的书">九、推荐的书</h3>
 <ul>
 <li><a href="https://book.douban.com/subject/10747453/">UNIX/Linux 系统管理技术手册</a></li>
 </ul>
