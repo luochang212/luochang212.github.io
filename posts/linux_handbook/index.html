@@ -30,8 +30,8 @@
 <meta property="og:description" content="怎么 4202 年了，还有人在写这种东西" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/linux_handbook/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-01-02T00:00:00+00:00" />
-<meta property="article:modified_time" content="2024-01-02T00:00:00+00:00" /><meta property="og:site_name" content="Title" />
+<meta property="article:published_time" content="2024-02-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-02-03T00:00:00+00:00" /><meta property="og:site_name" content="Title" />
 
 
     
@@ -483,7 +483,7 @@
 <div class="post__meta">
     
     
-      <i class="fas fa-calendar-alt"></i> Jan 2, 2024
+      <i class="fas fa-calendar-alt"></i> Feb 3, 2024
     
     
     
@@ -948,7 +948,7 @@
 <li><code>nohup [CMD] &amp;</code>: 后台运行，关掉终端不会停止运行</li>
 </ol>
 <h3 id="三快捷指令">三、快捷指令</h3>
-<p>在 MacOS 终端用 短指令 替代 长指令，可以用 <code>alias</code>，步骤如下：</p>
+<p>可以用 <code>alias</code>，在 MacOS 终端用 短指令 替代 长指令，步骤如下：</p>
 <p>首先打开 <code>~/.bash_profile</code> 配置文件，添加以下内容：</p>
 <pre tabindex="0"><code># alias
 # remote server
@@ -964,7 +964,7 @@ alias jupyter=&#34;ssh -L9999:localhost:8888 ${user}@${ip}&#34;
 <p><strong>Note</strong>: CentOS 系统同理，区别是 CentOS 的配置文件是 <code>~/.bashrc</code></p>
 </blockquote>
 <h3 id="四用户系统">四、用户系统</h3>
-<p><strong>创建</strong> 一个系统用户，其中 <code>-m</code> (&ndash;create-home) 可选。</p>
+<p><strong>创建</strong> 一个系统用户，其中 <code>-m</code> (&ndash;create-home) 参数可选。</p>
 <pre tabindex="0"><code># 创建用户使用如下命令
 useradd [USERNAME]
 # 或
@@ -983,6 +983,7 @@ useradd -m [USERNAME]
 <pre tabindex="0"><code>yum update -y
 yum upgrade -y
 
+# 查看当前 yum 版本
 yum --version
 </code></pre><h4 id="2安装-java">2）安装 <code>java</code></h4>
 <pre tabindex="0"><code>yum install -y java-1.8.0-openjdk
@@ -1009,11 +1010,11 @@ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/
 bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
 rm -rf ~/miniconda3/miniconda.sh
 
-# 初始化 bash 文件
+# 配置初始化文件
 ~/miniconda3/bin/conda init bash
 ~/miniconda3/bin/conda init zsh
 
-# 使 bash 文件生效
+# 使初始化文件生效
 source ~/.bashrc
 
 # 验证 miniconda3 是否安装成功
@@ -1021,30 +1022,32 @@ conda info --envs
 which python
 </code></pre><h4 id="6安装-rust">6）安装 <code>rust</code></h4>
 <p>参考：<a href="https://www.rust-lang.org/tools/install" target="_blank">rust-lang.org</a></p>
+<p>安装 <code>rustup</code>:</p>
 <pre tabindex="0"><code># 安装
 curl --proto &#39;=https&#39; --tlsv1.2 -sSf https://sh.rustup.rs | sh
-</code></pre><p>运行 <code>vim ~/.bashrc</code>，将以下内容添加到 <code>.bashrc</code> 文件中</p>
+</code></pre><p>将以下内容添加到 <code>～/.bashrc</code> 文件中</p>
 <pre tabindex="0"><code>rust_bin=~/.cargo/bin
 if [[ ! $rust_bin =~ [*$PATH*] ]]; then
     export PATH=$rust_bin:$PATH
 fi
-</code></pre><p>运行 <code>source ~/.bashrc</code>，以初始化环境变量</p>
+</code></pre><p>运行 <code>source ~/.bashrc</code> 初始化环境变量</p>
 <blockquote>
 <p><strong>Note</strong>: 卸载 rustup</p>
 <pre tabindex="0"><code>rustup self uninstall
 </code></pre></blockquote>
 <h4 id="7miniconda3-换-kernal">7）<code>miniconda3</code> 换 Kernal</h4>
-<p>安装依赖</p>
+<p>① 安装依赖</p>
 <pre tabindex="0"><code>pip install ipykernel
-</code></pre><p>创建虚拟环境</p>
+</code></pre><p>② 创建虚拟环境</p>
 <pre tabindex="0"><code>conda create -n py27 python=2.7  # 创建名为 py27 的 Python 2.7 新环境
 conda activate py27  # 激活新环境
 
 # 将新环境加入 jupyter notebook 的 kernel 中
 python -m ipykernel install --user --name py27 --display-name &#34;Python (py27)&#34;
-</code></pre><p>随便创建一个 <code>.ipynb</code> 文件，在导航栏点击：Kernel -&gt; Change Kernel -&gt; Python (py27)</p>
+</code></pre><p>③ 在用户界面更换 <code>Kernel</code></p>
+<p>随便创建一个 <code>.ipynb</code> 文件，在导航栏点击：Kernel -&gt; Change Kernel -&gt; Python (py27)</p>
 <p><img src="/img/change_kernel.png" alt=""></p>
-<p>检查新 kernel 是否生效，在 jupyter notebook 运行</p>
+<p>④ 检查新 kernel 是否生效，在 jupyter notebook 运行</p>
 <pre tabindex="0"><code>import sys
 sys.executable
 </code></pre><p>输出：<code>'/home/[USER_NAME]/miniconda3/envs/py27/bin/python'</code></p>

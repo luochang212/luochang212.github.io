@@ -6,11 +6,11 @@
     <description>Recent content in Python on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 03 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 07 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>手写深度学习</title>
       <link>http://luochang212.github.io/posts/d2l_from_scratch/</link>
-      <pubDate>Sat, 03 Feb 2024 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 07 Feb 2024 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/d2l_from_scratch/</guid>
       <description>时至今日，深度学习更像一门技术而非科学。
@@ -24,7 +24,7 @@
     <item>
       <title>Linux 运维手册</title>
       <link>http://luochang212.github.io/posts/linux_handbook/</link>
-      <pubDate>Tue, 02 Jan 2024 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 03 Feb 2024 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/linux_handbook/</guid>
       <description>基于 CentOS 系统，其他系统亦可借鉴
