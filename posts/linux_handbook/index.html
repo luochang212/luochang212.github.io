@@ -551,7 +551,7 @@
   
   <div class="post">
     <blockquote>
-<p>基于 CentOS 系统，其他系统亦可借鉴</p>
+<p>基于 CentOS 系统</p>
 </blockquote>
 <h3 id="一常见操作">一、常见操作</h3>
 <h4 id="1文件操作">1）文件操作</h4>
@@ -948,7 +948,7 @@
 <li><code>nohup [CMD] &amp;</code>: 后台运行，关掉终端不会停止运行</li>
 </ol>
 <h3 id="三快捷指令">三、快捷指令</h3>
-<p>可以用 <code>alias</code>，在 MacOS 终端用 短指令 替代 长指令，步骤如下：</p>
+<p>在 MacOS 终端用 短指令 替代 长指令，可以用 <code>alias</code>，步骤如下：</p>
 <p>首先打开 <code>~/.bash_profile</code> 配置文件，添加以下内容：</p>
 <pre tabindex="0"><code># alias
 # remote server
@@ -983,7 +983,6 @@ useradd -m [USERNAME]
 <pre tabindex="0"><code>yum update -y
 yum upgrade -y
 
-# 查看当前 yum 版本
 yum --version
 </code></pre><h4 id="2安装-java">2）安装 <code>java</code></h4>
 <pre tabindex="0"><code>yum install -y java-1.8.0-openjdk
@@ -1010,11 +1009,11 @@ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/
 bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
 rm -rf ~/miniconda3/miniconda.sh
 
-# 配置初始化文件
+# 初始化 bash 文件
 ~/miniconda3/bin/conda init bash
 ~/miniconda3/bin/conda init zsh
 
-# 使初始化文件生效
+# 使 bash 文件生效
 source ~/.bashrc
 
 # 验证 miniconda3 是否安装成功
@@ -1022,32 +1021,30 @@ conda info --envs
 which python
 </code></pre><h4 id="6安装-rust">6）安装 <code>rust</code></h4>
 <p>参考：<a href="https://www.rust-lang.org/tools/install" target="_blank">rust-lang.org</a></p>
-<p>安装 <code>rustup</code>:</p>
 <pre tabindex="0"><code># 安装
 curl --proto &#39;=https&#39; --tlsv1.2 -sSf https://sh.rustup.rs | sh
-</code></pre><p>将以下内容添加到 <code>～/.bashrc</code> 文件中</p>
+</code></pre><p>运行 <code>vim ~/.bashrc</code>，将以下内容添加到 <code>.bashrc</code> 文件中</p>
 <pre tabindex="0"><code>rust_bin=~/.cargo/bin
 if [[ ! $rust_bin =~ [*$PATH*] ]]; then
     export PATH=$rust_bin:$PATH
 fi
-</code></pre><p>运行 <code>source ~/.bashrc</code> 初始化环境变量</p>
+</code></pre><p>运行 <code>source ~/.bashrc</code>，以初始化环境变量</p>
 <blockquote>
 <p><strong>Note</strong>: 卸载 rustup</p>
 <pre tabindex="0"><code>rustup self uninstall
 </code></pre></blockquote>
 <h4 id="7miniconda3-换-kernal">7）<code>miniconda3</code> 换 Kernal</h4>
-<p>① 安装依赖</p>
+<p>安装依赖</p>
 <pre tabindex="0"><code>pip install ipykernel
-</code></pre><p>② 创建虚拟环境</p>
+</code></pre><p>创建虚拟环境</p>
 <pre tabindex="0"><code>conda create -n py27 python=2.7  # 创建名为 py27 的 Python 2.7 新环境
 conda activate py27  # 激活新环境
 
 # 将新环境加入 jupyter notebook 的 kernel 中
 python -m ipykernel install --user --name py27 --display-name &#34;Python (py27)&#34;
-</code></pre><p>③ 在用户界面更换 <code>Kernel</code></p>
-<p>随便创建一个 <code>.ipynb</code> 文件，在导航栏点击：Kernel -&gt; Change Kernel -&gt; Python (py27)</p>
+</code></pre><p>随便创建一个 <code>.ipynb</code> 文件，在导航栏点击：Kernel -&gt; Change Kernel -&gt; Python (py27)</p>
 <p><img src="/img/change_kernel.png" alt=""></p>
-<p>④ 检查新 kernel 是否生效，在 jupyter notebook 运行</p>
+<p>检查新 kernel 是否生效，在 jupyter notebook 运行</p>
 <pre tabindex="0"><code>import sys
 sys.executable
 </code></pre><p>输出：<code>'/home/[USER_NAME]/miniconda3/envs/py27/bin/python'</code></p>
@@ -1089,7 +1086,7 @@ sys.executable
 <li>MacOS 推荐用 <code>SecureCRT</code></li>
 </ul>
 </blockquote>
-<h4 id="3samba">3）samba</h4>
+<h4 id="3使用-samba">3）使用 Samba</h4>
 <blockquote>
 <p>用于 远端服务器 与 本地电脑 互传文件。</p>
 </blockquote>
@@ -1098,13 +1095,13 @@ sys.executable
 </code></pre><p>请确保系统至少有一个用户，以下命令用于确认是否有名为 <code>[USER]</code> 的用户：</p>
 <pre tabindex="0"><code>id [USER]
 </code></pre><p><code>&gt; uid=1000([USER]) gid=1000([USER]) groups=1000([USER])</code></p>
-<p>② 在 samba 中为用户设置用于网络连接的密码</p>
+<p>② 在 Samba 中为用户设置用于网络连接的密码</p>
 <pre tabindex="0"><code>smbpasswd -a [USER]
-</code></pre><p>会提示输入 samba 账号密码，按要求输入即可。</p>
+</code></pre><p>会提示输入 Samba 账号密码，按要求输入即可。</p>
 <p>③ 创建分享文件夹</p>
 <p>在目录 <code>/tmp/</code> 下新建名为 <code>sambashare</code> 的文件夹</p>
 <pre tabindex="0"><code>mkdir -p /tmp/sambashare
-</code></pre><p>④ 修改 samba 配置文件</p>
+</code></pre><p>④ 修改 Samba 配置文件</p>
 <p>运行 <code>vim /etc/samba/smb.conf</code> 打开配置文件，并添加以下内容，注意把 <code>[USER]</code> 替换成你的用户名：</p>
 <pre tabindex="0"><code>[sambashare]
         comment = Share Folder
@@ -1114,14 +1111,14 @@ sys.executable
         writable = yes
         browsable = yes
         available = yes
-</code></pre><p>⑤ 重启 samba 服务</p>
+</code></pre><p>⑤ 重启 Samba 服务</p>
 <pre tabindex="0"><code>systemctl restart smb
 systemctl enable smb
 
-# 检查 samba 服务是否调起
+# 检查 Samba 服务是否调起
 systemctl status smb
 </code></pre><p>⑥ 端口加白</p>
-<p>查看 samba 服务占用的端口：</p>
+<p>查看 Samba 服务占用的端口：</p>
 <pre tabindex="0"><code>netstat -tnpl | grep smb  # TCP 端口
 netstat -unpl | grep smb  # UDP 端口
 </code></pre><p>然后在 PaaS 服务供应商处为对应端口加白。</p>
@@ -1193,7 +1190,7 @@ echo "[YOUR-CONTENT-HERE]" | formail \
     
     <a href="/posts/new_home/" class="navigation-prev">
       <i aria-hidden="true" class="fa fa-chevron-left"></i>
-      <span class="navigation-tittle">新家部署清单</span>
+      <span class="navigation-tittle">居家物资清单</span>
     </a>
     
     

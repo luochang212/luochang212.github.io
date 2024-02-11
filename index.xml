@@ -6,15 +6,15 @@
     <description>Recent content on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 07 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 09 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>手写深度学习</title>
       <link>http://luochang212.github.io/posts/d2l_from_scratch/</link>
-      <pubDate>Wed, 07 Feb 2024 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/d2l_from_scratch/</guid>
-      <description>时至今日，深度学习更像一门技术而非科学。
-掌握技术最好的办法，就是多练 GitHub 项目地址：AI-Project/scratch
+      <description>今天的深度学习更像一门技术而非科学，掌握技术最好的方法，就是多练
+GitHub 项目地址：AI-Project/scratch
 一、多层感知机 Go to -&amp;gt; 《动手学深度学习》第四章：多层感知机
 施工中&amp;hellip;
 二、AutoML 施工中&amp;hellip;
@@ -27,12 +27,12 @@
       <pubDate>Sat, 03 Feb 2024 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/linux_handbook/</guid>
-      <description>基于 CentOS 系统，其他系统亦可借鉴
+      <description>基于 CentOS 系统
 一、常见操作 1）文件操作 命令 描述 ls 列出当前文件夹下的文件 touch [FILE] 创建文件 vim [FILE] 打开文件 cat [FILE] 打印文件 head [FILE] 打印文件头 10 行，展示 20 行用 head -n 20 [FILE] tail [FILE] 打印文件尾 10 行，展示 20 行用 tail -n 20 [FILE] less [FILE] 打印文件，可以用 上键 下键 翻页 rm [FILE] 删除文件 rm -rf [DIR] 递归删除路径DIR下所有文件 mv [FILE_A] [FILE_B] 文件FILE_A改名为FILE_B mv [FILE] [DIR] 文件FILE移动到路径DIR cd [PATH] 打开目录PATH mkdir [PATH] 创建目录 mkdir -p [PATH/TO/DIR] 创建多级目录 tar cvf file.</description>
     </item>
     
     <item>
-      <title>新家部署清单</title>
+      <title>居家物资清单</title>
       <link>http://luochang212.github.io/posts/new_home/</link>
       <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
       
@@ -735,96 +735,6 @@ Note: 作用两次的意思就是，当一个置换规则作用于字符串一�
       
       <guid>http://luochang212.github.io/portfolio/4/</guid>
       <description>本项目采用 Agent-based model 的方式，为狼-麋鹿-草生态系统建模。技术上采用了 MATLAB 面向对象编程，为狼和麋鹿的四种行为，分别是捕食、迁徙、生育、死亡，编写了规则。其中狼群拥有智能，可以利用有限信息搜索羊群，并且在头狼的带领下，狼群还表现出集群行为。给定初始条件以后，本模型会模拟生态系统的运作，输出一个时刻更新的二维图以展示各生物位置的变化情况。此外，还会输出一个折线图以表示各生物数量的变化情况。</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://luochang212.github.io/demo/mini-window/readme/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/demo/mini-window/readme/</guid>
-      <description>mini-window 在网站中用小窗打开外链，降低跳出率。</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://luochang212.github.io/gadget/dictionary.js/readme/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/gadget/dictionary.js/readme/</guid>
-      <description>dictionary.js </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://luochang212.github.io/gadget/dictionary.js/src/chinese-xinhua/readme/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/gadget/dictionary.js/src/chinese-xinhua/readme/</guid>
-      <description>chinese-xinhua 中华新华字典数据库和 API 。收录包括 14032 条歇后语，16142 个汉字，264434 个词语，31648 个成语。
-Project Structure chinese-xinhua/ | +- data/ &amp;lt;-- 数据文件夹 | | | +- idiom.json &amp;lt;-- 成语 | | | +- word.json &amp;lt;-- 汉字 | | | +- xiehouyu.json &amp;lt;-- 歇后语 | | | +- ci.json &amp;lt;-- 词语 Database Introduction 成语 (idiom.json) [ { &amp;#34;derivation&amp;#34;: &amp;#34;语出《法华经·法师功德品》下至阿鼻地狱。”&amp;#34;, &amp;#34;example&amp;#34;: &amp;#34;但也有少数意志薄弱的……逐步上当，终至堕入～。★《上饶集中营·炼狱杂记》&amp;#34;, &amp;#34;explanation&amp;#34;: &amp;#34;阿鼻梵语的译音，意译为无间”，即痛苦无有间断之意。常用来比喻黑暗的社会和严酷的牢狱。又比喻无法摆脱的极其痛苦的境地。&amp;#34;, &amp;#34;pinyin&amp;#34;: &amp;#34;ā bí dì yù&amp;#34;, &amp;#34;word&amp;#34;: &amp;#34;阿鼻地狱&amp;#34;, &amp;#34;abbreviation&amp;#34;: &amp;#34;abdy&amp;#34; }, ... ] 词语 (ci.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://luochang212.github.io/gadget/monaco-speech-editor/docs/readme/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/gadget/monaco-speech-editor/docs/readme/</guid>
-      <description>monaco-speech-editor Monaco Speech Editor 是一款在线代码编辑器。内置强大的语音辅助功能，以帮助视障人群阅读、编辑和编译代码。
-快速开始 点击本链接，在线运行应用。
-本地运行 因为 Monaco Speech Editor 是一个用传统前端方式写成的，不依赖于任何框架的静态网页，因此很容易在本地运行。
-首先，下载本仓库。
-git clone https://github.com/luochang212/monaco-speech-editor.git 然后，打开 monaco-speech-editor 文件夹。
-最后，点击 index.html，此应用将在本地浏览器运行。
-特性 文件管理系统:
-新建文件 删除文件 重命名文件 上传文件 下载文件 恢复已删除的文件 控制台:
-显示 HTML 文件的渲染结果 把渲染结果在新标签页中打开 把渲染结果在新窗口中打开 打印 console.log() 函数的输出 主题:
-日间模式 夜间模式 辅助功能:
-工具栏: 包括语法高亮，光标跳转，播放下一行，播放当前行，播放下一行。
-朗读模式: 包括字符模式，代码模式，音乐模式，概述模式。
-辅助切换: 这是一个设置列表，按上键和下键切换设置条目，按左键和右键切换设置开关。
-线性索引: 这是一个功能和快捷键列表。
-初始化编辑器设置 如果你是一个视障用户，请打开上面的链接，并在链接之后加上路由 #tutorial。这会触发一个语音引导，该语音引导将教你如何使用以及探索本应用的功能。（PS: 因为 Google 公司的政策，通过路由自动播放语音的功能可能无法在 Google Chrome 以及使用其内核的其他浏览器上使用。但是用户仍能通过编辑器首页的按钮播放本语音教程。）
-如果你是一个拥有正常视力的用户，并且不想被本软件的自动语音播放事件打扰。只需在原网页链接后增加路由 #mute 即可静止所有自动语音播放事件。
-完整路由列表 路由 对应的初始化设置 #load-demo load demo #dark turn on night mode #full-screen full screen #run open console bar #tutorial play audio tutorial #spotlight turn on spotlight #linear-index turn on linear index #character-mode trun on character mode #code-mode turn on code mode #overview-mode turn on overview mode #voice-feedback turn on voice feedback #voice-cue turn on voice cue #mute disable any autoplay event #dark&amp;amp;run turn on night mode and console bar #dark&amp;amp;mute turn on night mode and disable any autoplay event 依赖 Monaco Editor</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://luochang212.github.io/gadget/monaco-speech-editor/node_modules/monaco-editor/changelog/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/gadget/monaco-speech-editor/node_modules/monaco-editor/changelog/</guid>
-      <description>Monaco Editor Changelog [0.17.1] (25.06.2019) Update monaco-typescript to TypeScript 3.5.0. [0.17.0] (05.05.2019) New &amp;amp; Noteworthy Localization support is brought back for AMD bundle. We lost the localization support when VS Code moved to the localization system but now AMD bundles ships the same localized strings VS Code localization extensions ship. For more details, please read Monaco#822 and related VS Code upstream issue LinkProvider.ProvideLinks should now return ILinksList instead of ILink[]. IEditorOptions.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://luochang212.github.io/gadget/monaco-speech-editor/node_modules/monaco-editor/readme/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/gadget/monaco-speech-editor/node_modules/monaco-editor/readme/</guid>
-      <description>Monaco Editor The Monaco Editor is the code editor which powers VS Code, with the features better described here.
-Please note that this repository contains no source code for the code editor, it only contains the scripts to package everything together and ship the monaco-editor npm module.
-Try it out Try the editor out on our website.
-Installing $ npm install monaco-editor You will get:
-inside esm: ESM version of the editor (compatible with e.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://luochang212.github.io/gadget/monaco-speech-editor/readme/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/gadget/monaco-speech-editor/readme/</guid>
-      <description>monaco-speech-editor 中文文档
-Monaco Speech Editor is an online code editor for visually impaired people. It provides several built-in functions to make it easy to read, edit and compile.
-Quick Start Try the editor out on my website.
-Run Locally Since this web application was written with pure JS and didn&amp;rsquo;t use any framework, it is easy to run locally.
-First, download the repository.
-git clone https://github.com/luochang212/monaco-speech-editor.git Then, open monaco-speech-editor.
-Now, click index.</description>
     </item>
     
   </channel>

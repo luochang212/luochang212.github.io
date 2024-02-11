@@ -13,7 +13,7 @@
       <pubDate>Sat, 03 Feb 2024 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/linux_handbook/</guid>
-      <description>基于 CentOS 系统，其他系统亦可借鉴
+      <description>基于 CentOS 系统
 一、常见操作 1）文件操作 命令 描述 ls 列出当前文件夹下的文件 touch [FILE] 创建文件 vim [FILE] 打开文件 cat [FILE] 打印文件 head [FILE] 打印文件头 10 行，展示 20 行用 head -n 20 [FILE] tail [FILE] 打印文件尾 10 行，展示 20 行用 tail -n 20 [FILE] less [FILE] 打印文件，可以用 上键 下键 翻页 rm [FILE] 删除文件 rm -rf [DIR] 递归删除路径DIR下所有文件 mv [FILE_A] [FILE_B] 文件FILE_A改名为FILE_B mv [FILE] [DIR] 文件FILE移动到路径DIR cd [PATH] 打开目录PATH mkdir [PATH] 创建目录 mkdir -p [PATH/TO/DIR] 创建多级目录 tar cvf file.</description>
     </item>
     

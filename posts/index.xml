@@ -6,15 +6,15 @@
     <description>Recent content in Posts on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 07 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 09 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>手写深度学习</title>
       <link>http://luochang212.github.io/posts/d2l_from_scratch/</link>
-      <pubDate>Wed, 07 Feb 2024 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/d2l_from_scratch/</guid>
-      <description>时至今日，深度学习更像一门技术而非科学。
-掌握技术最好的办法，就是多练 GitHub 项目地址：AI-Project/scratch
+      <description>今天的深度学习更像一门技术而非科学，掌握技术最好的方法，就是多练
+GitHub 项目地址：AI-Project/scratch
 一、多层感知机 Go to -&amp;gt; 《动手学深度学习》第四章：多层感知机
 施工中&amp;hellip;
 二、AutoML 施工中&amp;hellip;
@@ -27,12 +27,12 @@
       <pubDate>Sat, 03 Feb 2024 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/linux_handbook/</guid>
-      <description>基于 CentOS 系统，其他系统亦可借鉴
+      <description>基于 CentOS 系统
 一、常见操作 1）文件操作 命令 描述 ls 列出当前文件夹下的文件 touch [FILE] 创建文件 vim [FILE] 打开文件 cat [FILE] 打印文件 head [FILE] 打印文件头 10 行，展示 20 行用 head -n 20 [FILE] tail [FILE] 打印文件尾 10 行，展示 20 行用 tail -n 20 [FILE] less [FILE] 打印文件，可以用 上键 下键 翻页 rm [FILE] 删除文件 rm -rf [DIR] 递归删除路径DIR下所有文件 mv [FILE_A] [FILE_B] 文件FILE_A改名为FILE_B mv [FILE] [DIR] 文件FILE移动到路径DIR cd [PATH] 打开目录PATH mkdir [PATH] 创建目录 mkdir -p [PATH/TO/DIR] 创建多级目录 tar cvf file.</description>
     </item>
     
     <item>
-      <title>新家部署清单</title>
+      <title>居家物资清单</title>
       <link>http://luochang212.github.io/posts/new_home/</link>
       <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
       
