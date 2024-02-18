@@ -13,12 +13,13 @@
       <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/d2l_from_scratch/</guid>
-      <description>今天的深度学习更像一门技术而非科学，掌握技术最好的方法，就是多练
+      <description>与其说，深度学习是一门技术，不如说是一种语言
 GitHub 项目地址：AI-Project/scratch
-一、多层感知机 Go to -&amp;gt; 《动手学深度学习》第四章：多层感知机
-施工中&amp;hellip;
-二、AutoML 施工中&amp;hellip;
-三、Hugging face 施工中&amp;hellip;</description>
+一、自动微分 1. 张量 $x$ 的梯度 张量 $x$ 的梯度可以存储在 $x$ 上。
+要点：
+x.grad: 取 $x$ 的梯度 x.requires_grad_(True): 允许 tenser $x$ 存储自己的梯度 x.grad.zero_(): 将 $x$ 的梯度置零 import torch # 初始化张量 x (tenser x) x = torch.arange(4.0) x.requires_grad_(True) # 允许 tensor x 存储梯度 x.grad == None # 梯度默认为 None &amp;gt; True
+2. 损失函数 及 反向传播 我们约定：
+将 损失 记为 $y$ 设 损失函数 为：$y = 2 * x \cdot x$（注意是点乘） 计算 $y$ 关于 $x$ 每个分量的梯度，步骤如下：</description>
     </item>
     
     <item>

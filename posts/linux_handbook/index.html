@@ -24,10 +24,10 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Linux 运维手册"/>
-<meta name="twitter:description" content="怎么 4202 年了，还有人在写这种东西"/>
+<meta name="twitter:description" content="4202 年了，怎么还有人在写这种东西"/>
 
 <meta property="og:title" content="Linux 运维手册" />
-<meta property="og:description" content="怎么 4202 年了，还有人在写这种东西" />
+<meta property="og:description" content="4202 年了，怎么还有人在写这种东西" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://luochang212.github.io/posts/linux_handbook/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-02-03T00:00:00+00:00" />
@@ -538,9 +538,10 @@
         <li><a href="#四用户系统">四、用户系统</a></li>
         <li><a href="#五环境部署">五、环境部署</a></li>
         <li><a href="#六文件传输">六、文件传输</a></li>
-        <li><a href="#七端口映射">七、端口映射</a></li>
-        <li><a href="#八文件系统">八、文件系统</a></li>
-        <li><a href="#九推荐的书">九、推荐的书</a></li>
+        <li><a href="#七例行任务">七、例行任务</a></li>
+        <li><a href="#八端口映射">八、端口映射</a></li>
+        <li><a href="#九文件系统">九、文件系统</a></li>
+        <li><a href="#十推荐的书">十、推荐的书</a></li>
       </ul>
     </li>
   </ul>
@@ -1130,14 +1131,41 @@ netstat -unpl | grep smb  # UDP 端口
 <p><img src="/img/connect_to_server.png" alt=""></p>
 <p>输入 <code>smb://[YOUR_SERVER_IP]/sambashare</code> 点击 <code>Connect</code> 连接你的 smb 服务。</p>
 <p><strong>Windows 系统</strong>：在文件地址导航栏输入 <code>\\[YOUR_SERVER_IP]</code> 后回车。</p>
-<h3 id="七端口映射">七、端口映射</h3>
+<h3 id="七例行任务">七、例行任务</h3>
+<p><strong>查看</strong> 例行任务配置文件：</p>
+<pre tabindex="0"><code>crontab -l
+</code></pre><p><strong>修改</strong> 例行任务配置文件：</p>
+<pre tabindex="0"><code>crontab -e
+</code></pre><p>例行任务的执行时间：</p>
+<ul>
+<li>定时任务的执行时间由 5 个值决定，形如 <code>1 3 * * *</code></li>
+<li>5 个值的含义分别是：<code>[minute] [hour] [day of month] [month] [day of week]</code></li>
+<li>表达方式：
+<ul>
+<li><code>*</code>: 代表每一（天）执行，取值 1, 2, 3, &hellip;</li>
+<li><code>*/2</code>: 代表每两（天）执行，取值 0, 2, 4, &hellip;</li>
+<li><code>3-5</code>: 代表取值 3, 4, 5</li>
+</ul>
+</li>
+</ul>
+<p>下面是五个例子：</p>
+<pre tabindex="0"><code>1 3 * * *  [CMD]   # 每天凌晨 3 点 1 分执行任务
+1 3 * * 2-4  [CMD]   # 周二、周三、周四的凌晨 3 点 1 分执行任务
+1 3 15 * *  [CMD]   # 每个月 15 号的凌晨 3 点 1 分执行任务
+0 */2 * * *  [CMD]   # 每隔两个小时，在整点执行任务，时间取 0点、2点、4点 ...
+1 3 15 3 *  [CMD]   # 每年 3 月 15 号的凌晨 3 点 1 分执行任务
+</code></pre><p>可以在 <a href="https://crontab.guru" target="_blank">crontab.guru</a> 上调试。</p>
+<blockquote>
+<p><strong>Note</strong>: 注意，cron 不在命令行环境中运行，需单独为 cron 初始化环境变量</p>
+</blockquote>
+<h3 id="八端口映射">八、端口映射</h3>
 <p>将远端服务器的端口映射到本地电脑上：</p>
 <pre tabindex="0"><code>ssh -L[LOCAL_PORT]:localhost:[REMOTE_PORT] [USER]@[SERVER_IP]
 </code></pre><blockquote>
 <p><strong>Note</strong>: 举例，命令 <code>ssh -L9999:localhost:8888 musk@132.43.75.194</code></p>
 <p>的含义是把远端服务器 <code>132.43.75.194</code> 上的用户 <code>musk</code> 的 <code>8888</code> 端口，映射到本地 <code>9999</code> 端口。</p>
 </blockquote>
-<!-- ### 七、发邮件
+<!-- ### 发邮件
 
 把下面的 `[YOUR-CONTENT-HERE]` 换成邮件内容，把 `[YOUR-EMAIL-HERE]` 换成收件邮箱，然后运行
 
@@ -1153,7 +1181,7 @@ echo "[YOUR-CONTENT-HERE]" | formail \
 > ```
 > yum install procmail -y
 > ``` -->
-<h3 id="八文件系统">八、文件系统</h3>
+<h3 id="九文件系统">九、文件系统</h3>
 <p>安装一个叫 <code>tree</code> 的命令行工具，它能打印目录结构</p>
 <pre tabindex="0"><code>yum install tree
 </code></pre><p>限制打印目录深度为 1 层：</p>
@@ -1178,7 +1206,7 @@ echo "[YOUR-CONTENT-HERE]" | formail \
 ├── tmp: 用于存放临时文件，系统重启时清空
 ├── usr: 软件安装路径
 └── var: 运行时信息，如登录信息 (/var/log/wtmp)。系统不会自动清理此目录
-</code></pre><h3 id="九推荐的书">九、推荐的书</h3>
+</code></pre><h3 id="十推荐的书">十、推荐的书</h3>
 <ul>
 <li><a href="https://book.douban.com/subject/10747453/">UNIX/Linux 系统管理技术手册</a></li>
 </ul>

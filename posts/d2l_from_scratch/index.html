@@ -516,7 +516,7 @@
     
     
     <br/>
-    <i class="fas fa-clock"></i> 1 min read
+    <i class="fas fa-clock"></i> 7 min read
 </div>
 
 
@@ -532,9 +532,9 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#一多层感知机">一、多层感知机</a></li>
-        <li><a href="#二automl">二、AutoML</a></li>
-        <li><a href="#三hugging-face">三、Hugging face</a></li>
+        <li><a href="#一自动微分">一、自动微分</a></li>
+        <li><a href="#二logstic-回归">二、Logstic 回归</a></li>
+        <li><a href="#三softmax-回归">三、Softmax 回归</a></li>
       </ul>
     </li>
   </ul>
@@ -545,23 +545,472 @@
   
   <div class="post">
     <blockquote>
-<p>今天的深度学习更像一门技术而非科学，掌握技术最好的方法，就是多练</p>
+<p>与其说，深度学习是一门技术，不如说是一种语言</p>
 </blockquote>
 <p>GitHub 项目地址：<a href="https://github.com/luochang212/AI-Project/tree/main/scratch" target="_blank">AI-Project/scratch</a></p>
-<h3 id="一多层感知机">一、多层感知机</h3>
-<p>Go to -&gt; <a href="https://zh-v2.d2l.ai/chapter_multilayer-perceptrons/index.html" target="_blank">《动手学深度学习》第四章：多层感知机</a></p>
+<h3 id="一自动微分">一、自动微分</h3>
+<h4 id="1-张量-x-的梯度">1. 张量 $x$ 的梯度</h4>
+<p>张量 $x$ 的梯度可以存储在 $x$ 上。</p>
+<p>要点：</p>
+<ul>
+<li><code>x.grad</code>: 取 $x$ 的梯度</li>
+<li><code>x.requires_grad_(True)</code>: 允许 tenser $x$ 存储自己的梯度</li>
+<li><code>x.grad.zero_()</code>: 将 $x$ 的梯度置零</li>
+</ul>
+<pre tabindex="0"><code>import torch
+
+# 初始化张量 x (tenser x)
+x = torch.arange(4.0)
+
+x.requires_grad_(True)  # 允许 tensor x 存储梯度
+x.grad == None  # 梯度默认为 None
+</code></pre><p>&gt; True</p>
+<h4 id="2-损失函数-及-反向传播">2. 损失函数 及 反向传播</h4>
+<p>我们约定：</p>
+<ul>
+<li>将 <strong>损失</strong> 记为 $y$</li>
+<li>设 <strong>损失函数</strong> 为：$y = 2 * x \cdot x$（注意是点乘）</li>
+</ul>
+<p>计算 $y$ 关于 $x$ 每个分量的梯度，步骤如下：</p>
+<ol>
+<li>定义损失函数：<code>y = 2 * torch.dot(x, x)</code></li>
+<li>计算 $y$ 关于 $x$ 的梯度，即反向传播：<code>y.backward()</code></li>
+<li>获取更新后 $x$ 的梯度：<code>x.grad</code></li>
+</ol>
+<pre tabindex="0"><code>y = 2 * torch.dot(x, x)
+y.backward()  # 用反向传播自动计算 y 关于 x 每个分量的梯度
+
+x.grad
+</code></pre><p><code>&gt; tensor([ 0.,  4.,  8., 12.])</code></p>
+<p>函数 $y = 2x^{T}x$ 关于 $x$ 的梯度应为 $4x$，验证是否正确：</p>
+<pre tabindex="0"><code>x.grad == 4 * x
+</code></pre><p><code>&gt; tensor([True, True, True, True])</code></p>
+<h4 id="3-当损失为向量时">3. 当损失为向量时</h4>
+<p>梯度的“形状”：</p>
+<ul>
+<li>当损失 $y$ 为 <strong>标量</strong> 时，梯度是 <strong>向量</strong>，且与 $x$ 维度相同</li>
+<li>当损失 $y$ 为 <strong>向量</strong> 时，梯度是 <strong>矩阵</strong></li>
+</ul>
+<p>注意，当损失 $y$ 为向量时。我们的目的不是计算微分矩阵，而是单独计算批量中每个样本的偏导数之和。也就是说：</p>
+<p>在反向传播代码里要多加一个 <code>sum()</code> 函数，写成 <code>y.sum().backward()</code></p>
+<pre tabindex="0"><code>x.grad.zero_()  # 将张量 x 的梯度置零
+x, x.grad
+</code></pre><p><code>&gt; (tensor([0., 1., 2., 3.], requires_grad=True), tensor([0., 0., 0., 0.]))</code></p>
+<p>定义损失函数：$y = 2 * x \times x$（注意是叉乘）</p>
+<pre tabindex="0"><code># 定义损失函数
+y = 2 * x * x
+y  # 注意 y 在这里是向量
+</code></pre><p><code>&gt; tensor([ 0.,  2.,  8., 18.], grad_fn=&lt;MulBackward0&gt;)</code></p>
+<pre tabindex="0"><code>y.sum().backward()
+x.grad
+</code></pre><p><code>&gt; tensor([ 0.,  4.,  8., 12.])</code></p>
+<h4 id="4-with-torchno_grad">4. <code>with torch.no_grad()</code></h4>
+<p>在 PyTorch 中，如果一个张量的 <code>requires_grad</code> 参数设为 <code>True</code>。则所有依赖它的张量的 <code>requires_grad</code> 参数将被设置为 <code>True</code></p>
+<p>但在 <code>with torch.no_grad()</code> 块中的张量，依赖它的张量的 <code>requires_grad</code> 参数将被设为 <code>False</code></p>
+<p>参见：https://pytorch.org/docs/stable/generated/torch.no_grad.html</p>
+<p>下面是一个例子：</p>
+<pre tabindex="0"><code>x = torch.tensor([1.], requires_grad=True)
+with torch.no_grad():
+    y = x * 2
+y.requires_grad
+</code></pre><p><code>&gt; False</code></p>
+<p>作为对照：</p>
+<pre tabindex="0"><code>x = torch.tensor([1.], requires_grad=True)
+y = x * 2
+y.requires_grad
+</code></pre><p><code>&gt; True</code></p>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/AI-Project/blob/main/scratch/auto_diff.ipynb')">查看示例</button>
+</center>
+<h3 id="二logstic-回归">二、Logstic 回归</h3>
 <blockquote>
 <p>施工中&hellip;</p>
 </blockquote>
-<h3 id="二automl">二、AutoML</h3>
-<blockquote>
-<p>施工中&hellip;</p>
-</blockquote>
-<h3 id="三hugging-face">三、Hugging face</h3>
-<blockquote>
-<p>施工中&hellip;</p>
-</blockquote>
-<!-- 自动微分 -->
+<h3 id="三softmax-回归">三、Softmax 回归</h3>
+<p>从零开始写 softmax 回归</p>
+<p>softmax 回归其实是分类不是回归</p>
+<p>softmax 回归的步骤：</p>
+<ul>
+<li>初始 样本 与 样本标号</li>
+<li>将样本分割成 训练集 和 测试集</li>
+<li>初始化 矩阵 W 和 向量 b（线性回归 Y = W * X + b）</li>
+<li>线性回归的结果过 softmax</li>
+<li>定义 loss function，在这里是 交叉熵</li>
+<li>定义优化器，做反向传播，更新参数</li>
+<li>计算分类精度</li>
+</ul>
+<p>重要构件：</p>
+<ul>
+<li>线性回归</li>
+<li>softmax 算子</li>
+<li>loss 函数</li>
+<li>优化器</li>
+</ul>
+<pre tabindex="0"><code>import random
+import math
+import numpy as np
+import collections
+import matplotlib.pyplot as plt
+from IPython import display
+import torch
+</code></pre><h4 id="1-生成-样本-和-样本标号">1. 生成 样本 和 样本标号</h4>
+<p>生成 <code>clustr_num</code> 个簇，每个簇有 <code>sample_num</code> 个样本</p>
+<pre tabindex="0"><code># 画图参数
+COLORS = [&#39;b&#39;, &#39;g&#39;, &#39;r&#39;, &#39;c&#39;, &#39;m&#39;, &#39;y&#39;, &#39;k&#39;]
+MARKERS = [&#39;o&#39;, &#39;v&#39;, &#39;^&#39;, &#39;s&#39;, &#39;P&#39;]
+
+# 业务参数
+DIM = 3
+CLUSTR_NUM = 10
+
+
+def generate_sample(clustr_num, width=30, std=3, smin=600, smax=700, gen_seed=9603602):
+    &#34;&#34;&#34;
+    clustr_num: 簇数
+    width: 空间点位于长宽高均为 width 的正方体内
+    std: 生成样本时，样本与样本中心距离的标准差
+    smin: 生成样本量时，样本量的最小值
+    smax: 生成样本量时，样本量的最大值
+    &#34;&#34;&#34;
+    if clustr_num &gt; len(COLORS) * len(MARKERS):
+        raise Exception(&#34;Error: clustr_num &lt;= len(COLORS) * len(MARKERS)&#34;)
+    dim = DIM
+    res = collections.defaultdict(list)
+    
+    random.seed(gen_seed)
+    for i in range(clustr_num):
+        mean = [random.random() * width for _ in range(dim)]
+        sample_num = round((smax - smin) * random.random()) + smin
+        for r in np.random.normal(0, std, sample_num):
+            deg = [random.random() * math.pi * 2 for _ in range(2)]
+            node = [mean[0] + r * math.cos(deg[0]) * math.cos(deg[1]),
+                    mean[1] + r * math.cos(deg[0]) * math.sin(deg[1]),
+                    mean[2] + r * math.sin(deg[0])]
+        
+            res[i].append(node)
+
+    return res
+</code></pre><pre tabindex="0"><code>samples = dict(generate_sample(clustr_num=CLUSTR_NUM))
+# samples
+</code></pre><pre tabindex="0"><code>def _3d_plot(samples):
+    
+    fig = plt.figure()
+    ax = fig.add_subplot(projection=&#39;3d&#39;)
+
+    mix = [(c, m) for c in COLORS for m in MARKERS]
+    np.random.seed(19680801)
+    np.random.shuffle(mix)
+    for i, f in enumerate(samples.items()):
+        _, v = f
+        color, marker = mix[i]
+
+        xs = [e[0] for e in v]
+        ys = [e[1] for e in v]
+        zs = [e[2] for e in v]
+        ax.scatter(xs, ys, zs, color=color, marker=marker)
+
+    ax.set_xlabel(&#39;X Label&#39;)
+    ax.set_ylabel(&#39;Y Label&#39;)
+    ax.set_zlabel(&#39;Z Label&#39;)
+    
+    plt.show()
+    
+_3d_plot(samples)
+</code></pre><p><img src="/img/softmax_reg_sample.png" alt=""></p>
+<h4 id="2-分割-训练集-和-测试集">2. 分割 训练集 和 测试集</h4>
+<p>将样本字典整成元组并打乱，分成训练集和测试集</p>
+<pre tabindex="0"><code>def load_sample(train_rate=0.8):
+    sample_list = []
+    for k, v in samples.items():
+        for s in v:
+            e = (s, k)
+            sample_list.append(e)
+    
+    random.shuffle(sample_list)
+    train_num = math.floor(len(sample_list) * train_rate)
+    
+    train = sample_list[:train_num]
+    test = sample_list[train_num:]
+
+    return train, test
+</code></pre><pre tabindex="0"><code>train_data, test_data = load_sample()
+# train_data, test_data
+</code></pre><pre tabindex="0"><code>len(train_data), len(test_data)
+</code></pre><h4 id="3-初始化模型参数">3. 初始化模型参数</h4>
+<pre tabindex="0"><code>nums_input = DIM  # 输入数据的维度
+nums_output = CLUSTR_NUM  # CLUSTR_NUM 是簇数，也是标签数
+
+W = torch.normal(0, 0.01, size=(nums_input, nums_output), requires_grad=True, dtype=torch.float64)
+b = torch.zeros(nums_output, requires_grad=True, dtype=torch.float64)
+</code></pre><pre tabindex="0"><code>print(&#34;W.shape:&#34;, W.shape)
+print(&#34;b.shape:&#34;, b.shape)
+print(&#34;W.dtype:&#34;, W.dtype)
+print(&#34;b.dtype:&#34;, b.dtype)
+</code></pre><h4 id="4-定义-softmax-操作">4. 定义 softmax 操作</h4>
+<p>经过 softmax 操作，每个元素变成非负数，且每行总和为 1</p>
+<p>你可以说 softmax 操作是在做标准化</p>
+<p>但我觉得 softmax 操作更像是把原始数据做变换后，往概率那边硬凑</p>
+<pre tabindex="0"><code>def softmax(X):
+    X_exp = torch.exp(X)
+    partition = X_exp.sum(1, keepdim=True)
+    return X_exp / partition  # 利用了广播机制
+</code></pre><h4 id="6-定义-网络模型">6. 定义 网络模型</h4>
+<pre tabindex="0"><code>def net(X):
+    return softmax(torch.matmul(X.reshape(-1, W.shape[0]), W) + b)
+</code></pre><h4 id="7-定义-损失函数">7. 定义 损失函数</h4>
+<p>把 交叉熵函数 作为 损失函数</p>
+<p>注意作为输入的 y_hat 和 y 的形状不同，本质上不是一个东西。它俩的关系是：</p>
+<p>$y = j = argmax \hat y_{j}$</p>
+<pre tabindex="0"><code>def cross_entropy(y_hat, y):
+    return -torch.log(y_hat[range(len(y_hat)), y])
+</code></pre><h4 id="8-优化器">8. 优化器</h4>
+<p><code>sgd()</code> 函数是：小批量随机梯度下降</p>
+<p>参见：https://zh-v2.d2l.ai/chapter_linear-networks/linear-regression-scratch.html#sec-linear-scratch</p>
+<pre tabindex="0"><code>def sgd(params, lr, batch_size):
+    &#34;&#34;&#34;Minibatch stochastic gradient descent.
+
+    Defined in :numref:`sec_utils`&#34;&#34;&#34;
+    with torch.no_grad():
+        for param in params:
+            param -= lr * param.grad / batch_size
+            param.grad.zero_()
+</code></pre><pre tabindex="0"><code>def sgd_updater(batch_size, lr=0.1):
+    &#34;&#34;&#34;优化器
+    batch_size: 批量大小
+    lr: 学习率
+    &#34;&#34;&#34;
+    return sgd([W, b], lr, batch_size)
+</code></pre><h4 id="9-两个工具类">9. 两个工具类</h4>
+<p>本节有两个工具类：</p>
+<ul>
+<li>累加器</li>
+<li>训练图作图器</li>
+</ul>
+<pre tabindex="0"><code># 累加器
+class Accumulator:
+    &#34;&#34;&#34;在n个变量上累加&#34;&#34;&#34;
+    def __init__(self, n):
+        self.data = [0.0] * n
+
+    def add(self, *args):
+        self.data = [a + float(b) for a, b in zip(self.data, args)]
+
+    def reset(self):
+        self.data = [0.0] * len(self.data)
+
+    def __getitem__(self, idx):
+        return self.data[idx]
+</code></pre><pre tabindex="0"><code># 训练图作图器
+class Animator:
+    &#34;&#34;&#34;在动画中绘制数据&#34;&#34;&#34;
+    def __init__(self, xlabel=None, ylabel=None, legend=None, xlim=None,
+                 ylim=None, xscale=&#39;linear&#39;, yscale=&#39;linear&#39;,
+                 fmts=(&#39;-&#39;, &#39;m--&#39;, &#39;g-.&#39;, &#39;r:&#39;), nrows=1, ncols=1,
+                 figsize=(3.5, 2.5)):
+        # 增量地绘制多条线
+        if legend is None:
+            legend = []
+        self.use_svg_display()
+        self.fig, self.axes = plt.subplots(nrows, ncols, figsize=figsize)
+        if nrows * ncols == 1:
+            self.axes = [self.axes, ]
+        # 使用lambda函数捕获参数
+        self.config_axes = lambda: self.set_axes(
+            self.axes[0], xlabel, ylabel, xlim, ylim, xscale, yscale, legend)
+        self.X, self.Y, self.fmts = None, None, fmts
+        
+    def use_svg_display():
+        &#34;&#34;&#34;Use the svg format to display a plot in Jupyter.
+
+        Defined in :numref:`sec_calculus`&#34;&#34;&#34;
+        from matplotlib_inline import backend_inline
+        backend_inline.set_matplotlib_formats(&#39;svg&#39;)
+
+    def set_axes(axes, xlabel, ylabel, xlim, ylim, xscale, yscale, legend):
+        &#34;&#34;&#34;Set the axes for matplotlib.
+
+        Defined in :numref:`sec_calculus`&#34;&#34;&#34;
+        axes.set_xlabel(xlabel), axes.set_ylabel(ylabel)
+        axes.set_xscale(xscale), axes.set_yscale(yscale)
+        axes.set_xlim(xlim),     axes.set_ylim(ylim)
+        if legend:
+            axes.legend(legend)
+        axes.grid()
+
+    def add(self, x, y):
+        # 向图表中添加多个数据点
+        if not hasattr(y, &#34;__len__&#34;):
+            y = [y]
+        n = len(y)
+        if not hasattr(x, &#34;__len__&#34;):
+            x = [x] * n
+        if not self.X:
+            self.X = [[] for _ in range(n)]
+        if not self.Y:
+            self.Y = [[] for _ in range(n)]
+        for i, (a, b) in enumerate(zip(x, y)):
+            if a is not None and b is not None:
+                self.X[i].append(a)
+                self.Y[i].append(b)
+        self.axes[0].cla()
+        for x, y, fmt in zip(self.X, self.Y, self.fmts):
+            self.axes[0].plot(x, y, fmt)
+        self.config_axes()
+        display.display(self.fig)
+        display.clear_output(wait=True)
+</code></pre><h4 id="10-计算-分类精度">10. 计算 分类精度</h4>
+<p>计算预测正确的数量：</p>
+<pre tabindex="0"><code>def accuracy(y_hat, y):
+    &#34;&#34;&#34;计算预测正确的数量&#34;&#34;&#34;
+    if len(y_hat.shape) &gt; 1 and y_hat.shape[1] &gt; 1:
+        y_hat = y_hat.argmax(axis=1)
+    cmp = y_hat.type(y.dtype) == y
+    return float(cmp.type(y.dtype).sum())
+</code></pre><p>计算预测正确的比例：</p>
+<pre tabindex="0"><code>def cal_accuracy_rate(y_hat, y):
+    &#34;&#34;&#34;计算预测正确的比例&#34;&#34;&#34;
+    return accuracy(y_hat, y) / len(y)
+</code></pre><p>一个复合函数，用于计算 在指定数据集 上，网络 net 的精度</p>
+<pre tabindex="0"><code>def evaluate_accuracy(net, data_iter):  #@save
+    &#34;&#34;&#34;计算在指定数据集上模型的精度&#34;&#34;&#34;
+    if isinstance(net, torch.nn.Module):
+        net.eval()  # 将模型设置为评估模式
+    metric = Accumulator(2)  # 正确预测数、预测总数
+    with torch.no_grad():
+        for X, y in data_iter:
+            metric.add(accuracy(net(X), y), y.numel())
+    return metric[0] / metric[1]
+</code></pre><h4 id="11-数据迭代器">11. 数据迭代器</h4>
+<p>我的野生实现，不是官方的实现方法</p>
+<p>每 <code>batch_size</code> 行输入 concat 在一起，对应的 <code>y</code> 也 concat 在一起</p>
+<pre tabindex="0"><code>def data_iter(data, batch_size):
+    &#34;&#34;&#34;将 原始输入向量 拼接成 批量矩阵&#34;&#34;&#34;
+    res = []
+    batch_num = math.floor(len(data) / batch_size)
+    for i in range(batch_num):
+        start, end = batch_size * i, batch_size * (i + 1)
+        X = torch.tensor([[e[0]] for e in data[start:end]])
+        y = torch.tensor([e[1] for e in data[start:end]])
+        res.append((X, y))
+    return res
+</code></pre><h4 id="12-训练">12. 训练</h4>
+<p>注意，学习率 lr 和 迭代周期数 num_epochs 都是可调的超参数</p>
+<pre tabindex="0"><code># 单批量训练
+def train_epoch(train_data, net, loss, updater):
+    metric = Accumulator(3)  # 用于存储 (训练损失总和、训练准确度总和、样本数)
+    for X, y in train_data:
+        # 正向传播
+        y_hat = net(X)
+        
+        # 计算梯度
+        l = loss(y_hat, y)
+
+        if isinstance(updater, torch.optim.Optimizer):
+            # 使用PyTorch内置的优化器和损失函数
+            updater.zero_grad()
+            l.mean().backward()
+            updater.step()
+        else:
+            # 反向传播
+            l.sum().backward()
+
+            # 使用优化器，更新参数
+            updater(X.shape[0])  # X.shape[0] 是批量大小 (batch_size)
+        
+        # 记录当前状态
+        metric.add(float(l.sum()), accuracy(y_hat, y), y.numel())
+
+    # 返回训练损失和训练精度
+    return metric[0] / metric[2],  metric[1] / metric[2]
+</code></pre><pre tabindex="0"><code># 多批量训练
+def train(num_epochs, net, train_data, test_data, loss, updater):
+    &#34;&#34;&#34;
+    num_epochs: 迭代周期个数
+    net: 网络模型函数
+    train_data: 训练集
+    test_data: 测试集
+    loss: 损失函数
+    updater: 优化器
+    &#34;&#34;&#34;
+    animator = Animator(xlabel=&#39;epoch&#39;, xlim=[1, num_epochs], ylim=[0.3, 1.0],
+                        legend=[&#39;train loss&#39;, &#39;train acc&#39;, &#39;test acc&#39;])
+    
+    batch_num = math.floor(len(train_data) / num_epochs)
+    for epoch in range(num_epochs):
+        start, end = batch_num * epoch, batch_num * (epoch + 1)
+        train_metrics = train_epoch(train_data[start:end], net, loss, updater)
+        test_acc = evaluate_accuracy(net, test_data)
+        animator.add(epoch + 1, train_metrics + (test_acc,))  # train_metrics + (test_acc,) 是有三个元素的元组
+    train_loss, train_acc = train_metrics
+    assert train_loss &lt; 20, train_loss
+    assert train_acc &lt;= 1 and train_acc &gt; 0.5, train_acc
+    assert test_acc &lt;= 1 and test_acc &gt; 0.5, test_acc
+    print(&#34;train_loss:&#34;, round(train_loss, 5))
+    print(&#34;train_acc:&#34;, round(train_acc, 5))
+    print(&#34;test_acc:&#34;, round(test_acc, 5))
+</code></pre><pre tabindex="0"><code>batch_size = 30  # 输入 X 的 X.shape[0]
+num_epochs = 20  # 迭代周期数
+
+train_dt = data_iter(train_data, batch_size)
+test_dt = data_iter(test_data, batch_size)
+len(train_dt), len(test_dt)
+</code></pre><pre tabindex="0"><code>loss = cross_entropy
+updater=torch.optim.SGD([W, b], lr=0.1, momentum=0.9)
+
+train(num_epochs, net, train_dt, test_dt, loss, updater)
+</code></pre><p><img src="/img/softmax_reg_acc.png" alt=""></p>
+<h4 id="13-预测">13. 预测</h4>
+<pre tabindex="0"><code>def predict(net, test_data, n=6):
+    &#34;&#34;&#34;预测标签&#34;&#34;&#34;
+    for X, y in test_data:
+        break
+    trues = y
+    preds = net(X).argmax(axis=1)
+    
+    indexs = list(range(len(trues)))
+    random.shuffle(indexs)
+    for i in indexs[:n]:
+        print(&#34;true:&#34;, y[i])
+        print(&#34;pred:&#34;, preds[i])
+        print(&#34;=&#34; * 15)
+</code></pre><pre tabindex="0"><code>predict(net, test_dt, n=5)
+</code></pre><p>输出：</p>
+<pre tabindex="0"><code>true: tensor(1)
+pred: tensor(6)
+===============
+true: tensor(6)
+pred: tensor(6)
+===============
+true: tensor(2)
+pred: tensor(2)
+===============
+true: tensor(8)
+pred: tensor(8)
+===============
+true: tensor(5)
+pred: tensor(3)
+===============
+</code></pre><center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/AI-Project/blob/main/scratch/softmax_regression.ipynb')">查看示例</button>
+</center>
+<!-- ### 四、多层感知机
+
+Go to -> <a href="https://zh-v2.d2l.ai/chapter_multilayer-perceptrons/index.html" target="_blank">《动手学深度学习》第四章：多层感知机</a>
+
+> 施工中...
+
+### 五、AutoML
+
+> 施工中...
+
+### 六、Hugging face
+
+> 施工中... -->
+<div id="mini-overlay" onclick="overlay_off()"></div>
+<div id="mini-window"><iframe id="mini-iframe" frameBorder="0"></iframe></div>
+<button id="btn-close" onclick="overlay_off()">×</button>
+<script src="/python-tips/overlay.js"></script>
+<link rel="stylesheet" href="/python-tips/style.css">
 
   </div>
   
