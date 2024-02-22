@@ -1096,33 +1096,92 @@ sys.executable
 <blockquote>
 <p>用于 远端服务器 与 本地电脑 互传文件。</p>
 </blockquote>
+<p>查看是否已经安装 Samba</p>
+<ul>
+<li>CentOS: <code>rpm -qa | grep samba</code></li>
+<li>Ubuntu: <code>dpkg -l | grep samba</code></li>
+</ul>
 <p>① 安装依赖</p>
-<pre tabindex="0"><code>yum install samba samba-client
-</code></pre><p>请确保系统至少有一个用户，以下命令用于确认是否有名为 <code>[USER]</code> 的用户：</p>
+<ul>
+<li>CentOS: <code>yum install -y samba samba-client samba-common</code></li>
+<li>Ubuntu: <code>sudo apt-get install -y samba samba-client</code></li>
+</ul>
+<p>请确保系统至少有一个用户，以下命令用于确认是否有名为 <code>[USER]</code> 的用户：</p>
 <pre tabindex="0"><code>id [USER]
 </code></pre><p><code>&gt; uid=1000([USER]) gid=1000([USER]) groups=1000([USER])</code></p>
-<p>② 在 Samba 中为用户设置用于网络连接的密码</p>
+<p>② 创建 Samba 用户，Samba 用户必须是系统实际存在的用户</p>
+<p>为用户设置 Samba 密码</p>
 <pre tabindex="0"><code>smbpasswd -a [USER]
-</code></pre><p>会提示输入 Samba 账号密码，按要求输入即可。</p>
+</code></pre><p>按提示要求，输入 Samba 账号密码即可。</p>
+<ul>
+<li>查看 Samba 服务器中已拥有哪些用户: <code>pdbedit -L</code></li>
+<li>删除 Samba 服务中的某个用户: <code>smbpasswd -x [用户名]</code></li>
+</ul>
 <p>③ 创建分享文件夹</p>
-<p>在目录 <code>/tmp/</code> 下新建名为 <code>sambashare</code> 的文件夹</p>
-<pre tabindex="0"><code>mkdir -p /tmp/sambashare
+<p>在目录 <code>/share/</code> 下新建名为 <code>sambashare</code> 的文件夹</p>
+<pre tabindex="0"><code>mkdir -p /share/sambashare
+</code></pre><p>修改分享文件夹的权限</p>
+<pre tabindex="0"><code>chmod 777 /share/sambashare
 </code></pre><p>④ 修改 Samba 配置文件</p>
-<p>运行 <code>vim /etc/samba/smb.conf</code> 打开配置文件，并添加以下内容，注意把 <code>[USER]</code> 替换成你的用户名：</p>
-<pre tabindex="0"><code>[sambashare]
-        comment = Share Folder
-        path = /tmp/sambashare
-        public = no
-        guest ok = no
+<p>运行 <code>vim /etc/samba/smb.conf</code> 打开配置文件，并添加以下内容，注意 <code>valid users</code> 是指定允许访问的用户。</p>
+<pre tabindex="0"><code>[global]
+        workgroup = SAMBA
+        security = user
+
+        passdb backend = tdbsam
+
+        printing = cups
+        printcap name = cups
+        load printers = yes
+        cups options = raw
+
+[homes]
+        comment = Home Directories
+        valid users = %S, %D%w%S
+        browseable = No
+        read only = No
+        inherit acls = Yes
+
+[printers]
+        comment = All Printers
+        path = /var/tmp
+        printable = Yes
+        create mask = 0600
+        browseable = No
+
+[print$]
+        comment = Printer Drivers
+        path = /var/lib/samba/drivers
+        write list = @printadmin root
+        force group = @printadmin
+        create mask = 0664
+        directory mask = 0775
+
+[sambashare]
+        comment = share folder
+        path = /share/sambashare
+        browseable = yes
         writable = yes
-        browsable = yes
-        available = yes
+        read only = no
+        guest ok = yes
+        create mask = 0777
+        directory mask = 0777
+        public = yes
+        valid users = root
 </code></pre><p>⑤ 重启 Samba 服务</p>
-<pre tabindex="0"><code>systemctl restart smb
-systemctl enable smb
+<p>CentOS 6</p>
+<pre tabindex="0"><code>$ sudo systemctl restart smb
+$ sudo systemctl enable smb
 
 # 检查 Samba 服务是否调起
-systemctl status smb
+$ systemctl status smb
+</code></pre><p>CentOS 7</p>
+<pre tabindex="0"><code>$ sudo systemctl start smb.service     # 启动 samba
+$ sudo systemctl restart smb.service   # 重启 samba
+$ sudo systemctl enable smb.service    # 设置开机自动启动
+$ sudo systemctl status smb.service    # 查询 samba 状态
+</code></pre><p>Ubuntu 16.04.3</p>
+<pre tabindex="0"><code>$ sudo service smbd restart
 </code></pre><p>⑥ 端口加白</p>
 <p>查看 Samba 服务占用的端口：</p>
 <pre tabindex="0"><code>netstat -tnpl | grep smb  # TCP 端口
@@ -1214,7 +1273,8 @@ echo "[YOUR-CONTENT-HERE]" | formail \
 </code></pre><h3 id="十推荐的书">十、推荐的书</h3>
 <ul>
 <li><a href="https://book.douban.com/subject/10747453/">UNIX/Linux 系统管理技术手册</a></li>
-<li><a href="https://dunwu.github.io/linux-tutorial/">linux-tutorial/</a></li>
+<li><a href="https://github.com/judasn/Linux-Tutorial">judasn / Linux-Tutorial</a></li>
+<li><a href="https://dunwu.github.io/linux-tutorial/">dunwu / linux-tutorial/</a></li>
 </ul>
 
   </div>
