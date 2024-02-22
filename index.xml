@@ -6,7 +6,19 @@
     <description>Recent content on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 09 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 17 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kaggle 系列：欺诈检测</title>
+      <link>http://luochang212.github.io/posts/fraud_detection/</link>
+      <pubDate>Sat, 17 Feb 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/posts/fraud_detection/</guid>
+      <description> 猫猫：“爱你哦”
+也是猫猫：“骗你的”
+一、推特机器人账号 Source URL:
+Twitter Bots Accounts amazon-science / fraud-dataset-benchmark </description>
+    </item>
+    
     <item>
       <title>手写深度学习</title>
       <link>http://luochang212.github.io/posts/d2l_from_scratch/</link>
@@ -15,11 +27,13 @@
       <guid>http://luochang212.github.io/posts/d2l_from_scratch/</guid>
       <description>与其说，深度学习是一门技术，不如说是一种语言
 GitHub 项目地址：AI-Project/scratch
-一、自动微分 1. 张量 $x$ 的梯度 张量 $x$ 的梯度可以存储在 $x$ 上。
+一、自动微分 1. 简单的例子 1.1 张量 x 的梯度
+张量 $x$ 的梯度可以存储在 $x$ 上。
 要点：
 x.grad: 取 $x$ 的梯度 x.requires_grad_(True): 允许 tenser $x$ 存储自己的梯度 x.grad.zero_(): 将 $x$ 的梯度置零 import torch # 初始化张量 x (tenser x) x = torch.arange(4.0) x.requires_grad_(True) # 允许 tensor x 存储梯度 x.grad == None # 梯度默认为 None &amp;gt; True
-2. 损失函数 及 反向传播 我们约定：
-将 损失 记为 $y$ 设 损失函数 为：$y = 2 * x \cdot x$（注意是点乘） 计算 $y$ 关于 $x$ 每个分量的梯度，步骤如下：</description>
+初始化带梯度的张量，下面是两个例子：
+torch.tensor([1., 2., 3.], requires_grad=True) &amp;gt; tensor([1., 2., 3.], requires_grad=True)
+torch.randn((2, 5), requires_grad=True) &amp;gt; tensor([[ 0.4075, 1.</description>
     </item>
     
     <item>
@@ -736,6 +750,68 @@ Note: 作用两次的意思就是，当一个置换规则作用于字符串一�
       
       <guid>http://luochang212.github.io/portfolio/4/</guid>
       <description>本项目采用 Agent-based model 的方式，为狼-麋鹿-草生态系统建模。技术上采用了 MATLAB 面向对象编程，为狼和麋鹿的四种行为，分别是捕食、迁徙、生育、死亡，编写了规则。其中狼群拥有智能，可以利用有限信息搜索羊群，并且在头狼的带领下，狼群还表现出集群行为。给定初始条件以后，本模型会模拟生态系统的运作，输出一个时刻更新的二维图以展示各生物位置的变化情况。此外，还会输出一个折线图以表示各生物数量的变化情况。</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/gadget/monaco-speech-editor/docs/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/monaco-speech-editor/docs/readme/</guid>
+      <description>monaco-speech-editor Monaco Speech Editor 是一款在线代码编辑器。内置强大的语音辅助功能，以帮助视障人群阅读、编辑和编译代码。
+快速开始 点击本链接，在线运行应用。
+本地运行 因为 Monaco Speech Editor 是一个用传统前端方式写成的，不依赖于任何框架的静态网页，因此很容易在本地运行。
+首先，下载本仓库。
+git clone https://github.com/luochang212/monaco-speech-editor.git 然后，打开 monaco-speech-editor 文件夹。
+最后，点击 index.html，此应用将在本地浏览器运行。
+特性 文件管理系统:
+新建文件 删除文件 重命名文件 上传文件 下载文件 恢复已删除的文件 控制台:
+显示 HTML 文件的渲染结果 把渲染结果在新标签页中打开 把渲染结果在新窗口中打开 打印 console.log() 函数的输出 主题:
+日间模式 夜间模式 辅助功能:
+工具栏: 包括语法高亮，光标跳转，播放下一行，播放当前行，播放下一行。
+朗读模式: 包括字符模式，代码模式，音乐模式，概述模式。
+辅助切换: 这是一个设置列表，按上键和下键切换设置条目，按左键和右键切换设置开关。
+线性索引: 这是一个功能和快捷键列表。
+初始化编辑器设置 如果你是一个视障用户，请打开上面的链接，并在链接之后加上路由 #tutorial。这会触发一个语音引导，该语音引导将教你如何使用以及探索本应用的功能。（PS: 因为 Google 公司的政策，通过路由自动播放语音的功能可能无法在 Google Chrome 以及使用其内核的其他浏览器上使用。但是用户仍能通过编辑器首页的按钮播放本语音教程。）
+如果你是一个拥有正常视力的用户，并且不想被本软件的自动语音播放事件打扰。只需在原网页链接后增加路由 #mute 即可静止所有自动语音播放事件。
+完整路由列表 路由 对应的初始化设置 #load-demo load demo #dark turn on night mode #full-screen full screen #run open console bar #tutorial play audio tutorial #spotlight turn on spotlight #linear-index turn on linear index #character-mode trun on character mode #code-mode turn on code mode #overview-mode turn on overview mode #voice-feedback turn on voice feedback #voice-cue turn on voice cue #mute disable any autoplay event #dark&amp;amp;run turn on night mode and console bar #dark&amp;amp;mute turn on night mode and disable any autoplay event 依赖 Monaco Editor</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/gadget/monaco-speech-editor/node_modules/monaco-editor/changelog/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/monaco-speech-editor/node_modules/monaco-editor/changelog/</guid>
+      <description>Monaco Editor Changelog [0.17.1] (25.06.2019) Update monaco-typescript to TypeScript 3.5.0. [0.17.0] (05.05.2019) New &amp;amp; Noteworthy Localization support is brought back for AMD bundle. We lost the localization support when VS Code moved to the localization system but now AMD bundles ships the same localized strings VS Code localization extensions ship. For more details, please read Monaco#822 and related VS Code upstream issue LinkProvider.ProvideLinks should now return ILinksList instead of ILink[]. IEditorOptions.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/gadget/monaco-speech-editor/node_modules/monaco-editor/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/monaco-speech-editor/node_modules/monaco-editor/readme/</guid>
+      <description>Monaco Editor The Monaco Editor is the code editor which powers VS Code, with the features better described here.
+Please note that this repository contains no source code for the code editor, it only contains the scripts to package everything together and ship the monaco-editor npm module.
+Try it out Try the editor out on our website.
+Installing $ npm install monaco-editor You will get:
+inside esm: ESM version of the editor (compatible with e.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://luochang212.github.io/gadget/monaco-speech-editor/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/gadget/monaco-speech-editor/readme/</guid>
+      <description>monaco-speech-editor 中文文档
+Monaco Speech Editor is an online code editor for visually impaired people. It provides several built-in functions to make it easy to read, edit and compile.
+Quick Start Try the editor out on my website.
+Run Locally Since this web application was written with pure JS and didn&amp;rsquo;t use any framework, it is easy to run locally.
+First, download the repository.
+git clone https://github.com/luochang212/monaco-speech-editor.git Then, open monaco-speech-editor.
+Now, click index.</description>
     </item>
     
   </channel>
