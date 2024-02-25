@@ -13,7 +13,7 @@
       <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/d2l_from_scratch/</guid>
-      <description>与其说，深度学习是一门技术，不如说是一种语言
+      <description>与其说深度学习是一门技术，不如说深度学习是一种语言
 GitHub 项目地址：AI-Project/scratch
 一、自动微分 1. 简单的例子 1.1 张量 x 的梯度
 张量 $x$ 的梯度可以存储在 $x$ 上。

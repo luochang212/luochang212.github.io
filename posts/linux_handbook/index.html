@@ -516,7 +516,7 @@
     
     
     <br/>
-    <i class="fas fa-clock"></i> 6 min read
+    <i class="fas fa-clock"></i> 7 min read
 </div>
 
 
@@ -1104,7 +1104,7 @@ sys.executable
 <p>① 安装依赖</p>
 <ul>
 <li>CentOS: <code>yum install -y samba samba-client samba-common</code></li>
-<li>Ubuntu: <code>sudo apt-get install -y samba samba-client</code></li>
+<li>Ubuntu: <code>sudo apt install -y samba samba-client</code></li>
 </ul>
 <p>请确保系统至少有一个用户，以下命令用于确认是否有名为 <code>[USER]</code> 的用户：</p>
 <pre tabindex="0"><code>id [USER]
@@ -1172,9 +1172,6 @@ sys.executable
 <p>CentOS 6</p>
 <pre tabindex="0"><code>$ sudo systemctl restart smb
 $ sudo systemctl enable smb
-
-# 检查 Samba 服务是否调起
-$ systemctl status smb
 </code></pre><p>CentOS 7</p>
 <pre tabindex="0"><code>$ sudo systemctl start smb.service     # 启动 samba
 $ sudo systemctl restart smb.service   # 重启 samba
@@ -1182,7 +1179,14 @@ $ sudo systemctl enable smb.service    # 设置开机自动启动
 $ sudo systemctl status smb.service    # 查询 samba 状态
 </code></pre><p>Ubuntu 16.04.3</p>
 <pre tabindex="0"><code>$ sudo service smbd restart
-</code></pre><p>⑥ 端口加白</p>
+</code></pre><p>重启后检查 smb 服务是否启动，两种方法：</p>
+<p>1）用 <code>systemctl</code></p>
+<pre tabindex="0"><code># 查询 Samba 服务的状态
+$ systemctl status smb
+</code></pre><p>2）用 <code>smbclient</code></p>
+<pre tabindex="0"><code>smbclient //localhost/sambashare -U root
+</code></pre><p>输入 smb 用户密码，如果显示 <code>smb: \&gt;</code> 则表示成功。</p>
+<p>⑥ 端口加白</p>
 <p>查看 Samba 服务占用的端口：</p>
 <pre tabindex="0"><code>netstat -tnpl | grep smb  # TCP 端口
 netstat -unpl | grep smb  # UDP 端口
@@ -1274,7 +1278,7 @@ echo "[YOUR-CONTENT-HERE]" | formail \
 <ul>
 <li><a href="https://book.douban.com/subject/10747453/">UNIX/Linux 系统管理技术手册</a></li>
 <li><a href="https://github.com/judasn/Linux-Tutorial">judasn / Linux-Tutorial</a></li>
-<li><a href="https://dunwu.github.io/linux-tutorial/">dunwu / linux-tutorial/</a></li>
+<li><a href="https://dunwu.github.io/linux-tutorial">dunwu / linux-tutorial</a></li>
 </ul>
 
   </div>
@@ -1282,7 +1286,7 @@ echo "[YOUR-CONTENT-HERE]" | formail \
 
 <div class="navigation navigation-single">
     
-    <a href="/posts/new_home/" class="navigation-prev">
+    <a href="/posts/home_inventory_list/" class="navigation-prev">
       <i aria-hidden="true" class="fa fa-chevron-left"></i>
       <span class="navigation-tittle">居家物资清单</span>
     </a>

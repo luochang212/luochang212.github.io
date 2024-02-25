@@ -6,11 +6,11 @@
     <description>Recent content in Tags on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 09 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 25 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Note</title>
       <link>http://luochang212.github.io/tags/note/</link>
-      <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 25 Feb 2024 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/tags/note/</guid>
       <description></description>
@@ -19,7 +19,7 @@
     <item>
       <title>Python</title>
       <link>http://luochang212.github.io/tags/python/</link>
-      <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 25 Feb 2024 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/tags/python/</guid>
       <description></description>
@@ -49,24 +49,6 @@
       <pubDate>Wed, 18 Oct 2023 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/tags/dt/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>IRR</title>
-      <link>http://luochang212.github.io/tags/irr/</link>
-      <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/tags/irr/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>NPV</title>
-      <link>http://luochang212.github.io/tags/npv/</link>
-      <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/tags/npv/</guid>
       <description></description>
     </item>
     
@@ -292,15 +274,6 @@
       <pubDate>Thu, 22 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/tags/web-speech-api/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Golang</title>
-      <link>http://luochang212.github.io/tags/golang/</link>
-      <pubDate>Fri, 12 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/tags/golang/</guid>
       <description></description>
     </item>
     

@@ -6,14 +6,42 @@
     <description>Recent content on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 09 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 25 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>图算法笔记</title>
+      <link>http://luochang212.github.io/posts/graph_algorithms/</link>
+      <pubDate>Sun, 25 Feb 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/posts/graph_algorithms/</guid>
+      <description>记笔记能让脑子里的知识结构化说是
+GitHub 项目地址：graph-algorithm
+一、图的基础操作 1.创建图 1.1 从空图开始创建 1.2 用边文件创建 1.3 用已经存在的图、边的列表创建 1.4 创建带权边 1.5 为图添加属性 1.6 创建有向图 2.可视化 random circular spectral shell 3.中心性度量 Degree Centrality Closeness Centrality Betweenness Centrality Eigenvector Centrality 4.随机图生成 5.读写文件 写入文件 读出数据 查看示例 二、通用图算法 连通性 Connectivity 最短路 Shortest Paths 相似性度量 Similarity Measures 距离度量 Distance Measures 链接预测 Link Prediction 匹配 Matching 查看示例 三、社区检测算法 1.常见社区检测算法 1.1 label Propagation 1.2 Girvan-Newman 1.3 Greedy Modularity 1.4 Louvain 2.是否接受边权作为输入 推荐使用 louvain 查看示例 四、Graph Embedding 施工中</description>
+    </item>
+    
+    <item>
+      <title>树莓派 5 装机指南</title>
+      <link>http://luochang212.github.io/posts/raspberry_pi_5/</link>
+      <pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/posts/raspberry_pi_5/</guid>
+      <description>2024 年 2 月，给我的 Raspberry Pi 5 安装 Ubuntu，最后踩了两次坑才装好。感觉搜索前几的教程都不对，没一个让我顺利装完的。那么我来记录一下安装过程吧
+一、下载 你需要下载两个东西：
+ubuntu-23.10：适用于树莓派 5 的 Ubuntu 镜像 Raspberry Pi Imager：将镜像写入 TF 卡的工具 1）ubuntu-23.10 的下载页面：ubuntu.com/download/raspberry-pi
+PS: 你可以选择服务器版或桌面版，我安的是桌面版
+2）Raspberry Pi Imager 的下载页面：raspberrypi.com/software
+二、将镜像写入 TF 卡 下载好镜像之后，你需要把镜像写入 TF 卡。
+打开 Raspberry Pi Imager，界面上有三个白框，分别是：
+CHOOSE DEVICE: 选择你的树莓派版本。选 Raspberry Pi 5 CHOOSE OS: 选择你要安装的镜像。由于我们用的是本地镜像，下拉栏划到最底，选 Use custom CHOOSE STORAGE: 选择你的 TF 卡。没插卡的请插卡，然后在下拉栏选中你的卡。由于后续步骤会抹除 TF 卡数据，清确保卡内没有重要文件 三、首次启动 Ubuntu 在不插电源的情况下，将 TF 卡插入板子。
+然后连接外接显示屏、鼠标、键盘、网线（如果有），插电即可直接点亮。如果 1 分钟后没有任何反应，可以尝试按 TF 卡旁边的电源键。需要注意的是，树莓派 5 新加了实体电源键，老版本没有。</description>
+    </item>
+    
     <item>
       <title>手写深度学习</title>
       <link>http://luochang212.github.io/posts/d2l_from_scratch/</link>
       <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/d2l_from_scratch/</guid>
-      <description>与其说，深度学习是一门技术，不如说是一种语言
+      <description>与其说深度学习是一门技术，不如说深度学习是一种语言
 GitHub 项目地址：AI-Project/scratch
 一、自动微分 1. 简单的例子 1.1 张量 x 的梯度
 张量 $x$ 的梯度可以存储在 $x$ 上。
@@ -36,13 +64,13 @@ torch.randn((2, 5), requires_grad=True) &amp;gt; tensor([[ 0.4075, 1.</descripti
     
     <item>
       <title>居家物资清单</title>
-      <link>http://luochang212.github.io/posts/new_home/</link>
+      <link>http://luochang212.github.io/posts/home_inventory_list/</link>
       <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/new_home/</guid>
-      <description> Building your home from scratch.
+      <guid>http://luochang212.github.io/posts/home_inventory_list/</guid>
+      <description>Build your home from scratch.
 GitHub 项目地址：new_home
-一、随身物品 身份证 手机 钥匙 钱包 脑子 二、文具 通勤双肩包 雨伞 拍纸本 中性笔 铅笔 毛笔 秀丽笔 少量专业书籍 三、生活用品 衣服 衣架 毛巾 * 2 洗澡用 垫枕头上 牙具 牙杯 牙膏 牙刷 鞋 拖鞋 运动鞋 水杯： 工位：带盖水杯 家用：陶瓷水杯 脸盆 指甲刀 剃须刀 剪刀 四、床上用品 被子 枕头 床单 床笠 可爱靠枕 五、电子产品 手机 手机支架 手表 耳机 平板 树莓派 Switch Mac mini 笔记本电脑 笔记本电脑支架 外接显示器 外接显示器支架 鼠标 鼠标垫 拓展坞 移动硬盘 移动WIFI 游戏手柄 自拍杆 充电宝 充电器 充电头 充电线 插线板 六、家具 桌子 镜子 阅读灯 氛围灯 拖把 垃圾桶 桶装矿泉水倒立支架 七、电器 体重秤 烧水壶 智能音箱 桌面时钟（带温度湿度功能） 桌面风扇 暖风机 空气净化器 八、消耗品 洗衣液 沐浴露 洗发液 洗面奶 面霜 唇膏 抽纸 酒精湿巾 垃圾袋 保鲜袋 抹布 九、食品 调味料 基础 盐 生抽 / 蒸鱼豉油 / 寿喜烧酱汁 / 照烧汁 食用油 / 香油 / 黄油 生粉 / 粘米粉 / 白凉粉 / 面包粉 辣椒 / 二荆条 / 辣椒面 / 辣椒酱 / 泡椒 白砂糖 / 冰糖 / 红糖 生姜 / 泡仔姜 蒜 / 蒜泥 / 香蒜酱 / 青蒜酱 / 黑蒜酱 / 糖蒜 香醋 / 米醋 / 白醋 咖喱块 / 咖喱粉 进阶 蜂蜜 / 蜂蜜芥末酱 黑胡椒 / 白胡椒 / 花椒 花生酱 八角 月桂叶 蚝油 麻酱 牛油火锅底料 柠檬 / 青柠 药膳 当归 党参 黄芪 食材 主食 大米 / 小米 / 莲子 / 薏米 / 黑米 红豆 / 黄豆 / 绿豆 / 黑豆 粉丝 / 米线 / 河粉 挂面 / 龙须面 / 车仔面 / 荞麦面 / 刀削面 / 方便面 / 意大利面 水饺 / 馄饨 地瓜 / 土豆 麦片 / 藕粉 / 芝麻糊 茶泡饭速食包 / 真空装玉米 / 真空装卷饼 佐食 牛奶 / 酸奶 鸡蛋 / 咸鸭蛋 / 溏心蛋 / 皮蛋 茶叶 / 咖啡 豆腐 榨菜 / 香菜心 / 脆瓜 / 脆萝卜 / 海带丝 香菇肉酱 / 红烧肉罐头 / 咖喱牛肉罐头 / 鱼罐头 / 午餐肉罐头 猪肉松 / 鱼肉松 板鸭 / 腊肉 蛋挞皮 / 蛋挞液 盐酥鸡 / 唐扬鸡块 白斩鸡 / 烤鸭 冰鲜披萨 蔬菜 小白菜 / 娃娃菜 空心菜 / 地瓜叶 包菜 西红柿 胡萝卜 / 白萝卜 黄瓜 / 南瓜 / 西葫芦 西兰花 笋 芹菜 / 香菜 / 韭菜 四季豆 / 豌豆 / 毛豆 香菇 / 红菇 海带 / 紫菜 肉类 鸡肉 / 鸭肉 / 鸽子肉 猪肉 / 牛肉 / 羊肉 鱼 / 龙利鱼排 / 鱿鱼圈 / 虾仁 鱼丸 / 牛肉丸 牛排 / 汉堡肉 / 火腿 水果 苹果 橘子 橙子 香蕉 梨 芒果 椰子 香瓜 西瓜 奇异果 牛油果 蓝莓 / 草莓 葡萄 速食 面包 / 华夫饼 饼干 / 小熊饼干 / 趣多多 / 奥利奥 / 脆脆鲨 蛋糕 / 提拉米苏 / 巧克力派 / 蛋黄派 混合坚果 零食 巧克力 冰淇淋 / 雪糕 青团 / 糯米糍 / 年糕 无骨鸭爪 / 鸭脖 猪肉干 / 牛肉干 / 肉脯干 饮料 可乐 雪碧 菠萝啤 / 米酒 / 桂花酿 橙汁 椰汁 咸柠七 十、药品 口罩 体温计 药箱 感冒 藿香正气胶囊 999感冒灵颗粒 化痰止咳 川贝枇杷颗粒 乙酰半胱氨酸片 咽喉肿痛 咽喉清颗粒 发热流感 布洛芬（散利痛 / 布洛芬缓释胶囊） 复方氨酚烷胺胶囊 复方对乙酰氨基酚片(Ⅱ) 抗生素（抗细菌） 头孢 阿莫西林（青霉素） 罗红霉素分散片 盐酸左氧氟沙星片 [肠胃炎可用] 诺氟沙星胶囊 盐酸莫西沙星片 抗病毒 磷酸奥司他韦胶囊 唇炎 单乳膏 [上海市皮肤科医院有售] 抗过敏 氯雷他定 蚊虫叮咬 999皮炎平 消炎 莫匹罗星软膏（百多邦） 消毒 碘伏 酒精棉球 包扎 创可贴 纱布片 / 绷带 棉签 医用胶带 医用剪刀 医用镊子 十一、工具 螺丝刀 卷尺 十二、厨具 中式炒锅 电饭煲 电磁炉 碗 / 盘子 勺子 / 筷子 菜刀 菜板 茶漏 十三、运动用品 瑜伽垫 俯卧撑支架 双节棍 长棍 泳镜 泳帽 泳裤 十四、保暖用品 手套 护膝 十五、证件 护照 驾驶证 银行卡 其他身份材料 十六、XOX 拍立得 To签色纸 应援棒 </description>
+一、随身物品 身份证 手机 钥匙 钱包 脑子 二、文具 通勤双肩包 雨伞 拍纸本 中性笔 铅笔 毛笔 秀丽笔 少量专业书籍 三、生活用品 衣服 衣架 毛巾 * 2 洗澡用 垫枕头上 牙具 牙杯 牙膏 牙刷 鞋 拖鞋 运动鞋 水杯： 工位：带盖水杯 家用：陶瓷水杯 脸盆 指甲刀 剃须刀 剪刀 四、床上用品 被子 枕头 床单 床笠 可爱靠枕 五、电子产品 手机 手机支架 手表 耳机 平板 树莓派 Switch Mac mini 笔记本电脑 笔记本电脑支架 外接显示器 外接显示器支架 鼠标 鼠标垫 拓展坞 移动硬盘 移动WIFI 游戏手柄 自拍杆 充电宝 充电器 充电头 充电线 插线板 六、家具 桌子 镜子 阅读灯 氛围灯 拖把 垃圾桶 桶装矿泉水倒立支架 七、电器 体重秤 烧水壶 智能音箱 桌面时钟（带温度湿度功能） 桌面风扇 暖风机 空气净化器 八、消耗品 洗衣液 沐浴露 洗发液 洗面奶 面霜 唇膏 抽纸 酒精湿巾 垃圾袋 保鲜袋 抹布 九、食品 调味料 基础 盐 生抽 / 蒸鱼豉油 / 寿喜烧酱汁 / 照烧汁 食用油 / 香油 / 黄油 生粉 / 粘米粉 / 白凉粉 / 面包粉 辣椒 / 二荆条 / 辣椒面 / 辣椒酱 / 泡椒 白砂糖 / 冰糖 / 红糖 生姜 / 泡仔姜 蒜 / 蒜泥 / 香蒜酱 / 青蒜酱 / 黑蒜酱 / 糖蒜 香醋 / 米醋 / 白醋 咖喱块 / 咖喱粉 进阶 蜂蜜 / 蜂蜜芥末酱 黑胡椒 / 白胡椒 / 花椒 花生酱 八角 月桂叶 蚝油 麻酱 牛油火锅底料 柠檬 / 青柠 药膳 当归 党参 黄芪 食材 主食 大米 / 小米 / 莲子 / 薏米 / 黑米 红豆 / 黄豆 / 绿豆 / 黑豆 粉丝 / 米线 / 河粉 挂面 / 龙须面 / 车仔面 / 荞麦面 / 刀削面 / 方便面 / 意大利面 水饺 / 馄饨 地瓜 / 土豆 麦片 / 藕粉 / 芝麻糊 茶泡饭速食包 / 真空装玉米 / 真空装卷饼 佐食 牛奶 / 酸奶 鸡蛋 / 咸鸭蛋 / 溏心蛋 / 皮蛋 茶叶 / 咖啡 豆腐 榨菜 / 香菜心 / 脆瓜 / 脆萝卜 / 海带丝 香菇肉酱 / 红烧肉罐头 / 咖喱牛肉罐头 / 鱼罐头 / 午餐肉罐头 猪肉松 / 鱼肉松 板鸭 / 腊肉 蛋挞皮 / 蛋挞液 盐酥鸡 / 唐扬鸡块 白斩鸡 / 烤鸭 冰鲜披萨 蔬菜 小白菜 / 娃娃菜 空心菜 / 地瓜叶 包菜 西红柿 胡萝卜 / 白萝卜 黄瓜 / 南瓜 / 西葫芦 西兰花 笋 芹菜 / 香菜 / 韭菜 四季豆 / 豌豆 / 毛豆 香菇 / 红菇 海带 / 紫菜 肉类 鸡肉 / 鸭肉 / 鸽子肉 猪肉 / 牛肉 / 羊肉 鱼 / 龙利鱼排 / 鱿鱼圈 / 虾仁 鱼丸 / 牛肉丸 牛排 / 汉堡肉 / 火腿 水果 苹果 橘子 橙子 香蕉 梨 芒果 椰子 香瓜 西瓜 奇异果 牛油果 蓝莓 / 草莓 葡萄 速食 面包 / 华夫饼 饼干 / 小熊饼干 / 趣多多 / 奥利奥 / 脆脆鲨 蛋糕 / 提拉米苏 / 巧克力派 / 蛋黄派 混合坚果 零食 巧克力 冰淇淋 / 雪糕 青团 / 糯米糍 / 年糕 无骨鸭爪 / 鸭脖 猪肉干 / 牛肉干 / 肉脯干 饮料 可乐 雪碧 菠萝啤 / 米酒 / 桂花酿 橙汁 椰汁 咸柠七 十、药品 口罩 体温计 药箱 感冒 藿香正气胶囊 999感冒灵颗粒 化痰止咳 川贝枇杷颗粒 乙酰半胱氨酸片 咽喉肿痛 咽喉清颗粒 发热流感 布洛芬（散利痛 / 布洛芬缓释胶囊） 复方氨酚烷胺胶囊 复方对乙酰氨基酚片(Ⅱ) 抗生素（抗细菌） 头孢 阿莫西林（青霉素） 罗红霉素分散片 盐酸左氧氟沙星片 [肠胃炎可用] 诺氟沙星胶囊 盐酸莫西沙星片 抗病毒 磷酸奥司他韦胶囊 唇炎 单乳膏 [上海市皮肤科医院有售] 抗过敏 氯雷他定 蚊虫叮咬 999皮炎平 消炎 莫匹罗星软膏（百多邦） 消毒 碘伏 酒精棉球 包扎 创可贴 纱布片 / 绷带 棉签 医用胶带 医用剪刀 医用镊子 十一、工具 螺丝刀 卷尺 十二、厨具 中式炒锅 电饭煲 电磁炉 碗 / 盘子 勺子 / 筷子 菜刀 菜板 茶漏 十三、运动用品 瑜伽垫 俯卧撑支架 双节棍 长棍 泳镜 泳帽 泳裤 十四、保暖用品 手套 护膝 十五、证件 护照 驾驶证 银行卡 其他身份材料 十六、XOX 拍立得 To签色纸 应援棒 参考：</description>
     </item>
     
     <item>
@@ -69,26 +97,6 @@ GitHub 项目地址：hit-and-blow
 packaging_tutorial/ ├── LICENSE ├── pyproject.toml ├── README.md ├── src/ │ └── YOUR_PACKAGE_NAME/ │ ├── __init__.py │ └── example.py └── tests/ 各个 文件 / 文件夹 说明：
 packaging_tutorial: 项目文件夹 LICENSE: 开源协议，可由 GitHub 生成 pyproject.toml: 打包配置文件 README.md: 项目文档 src: 项目结构要求的，用来放主程序 YOUR_PACKAGE_NAME: 主程序文件夹，以“你的包名”命名文件夹 二、添加配置文件 将以下内容修改一下，改改名字邮箱什么的，存成配置文件 pyproject.toml
 [build-system] requires = [&amp;#34;hatchling&amp;#34;] build-backend = &amp;#34;hatchling.build&amp;#34; [project] name = &amp;#34;example_package_YOUR_USERNAME_HERE&amp;#34; version = &amp;#34;0.0.1&amp;#34; authors = [ { name=&amp;#34;Example Author&amp;#34;, email=&amp;#34;author@example.</description>
-    </item>
-    
-    <item>
-      <title>什么保险值得买？</title>
-      <link>http://luochang212.github.io/posts/insurance/</link>
-      <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/posts/insurance/</guid>
-      <description>未来的钱，也许没你想的那么值钱，这是一件挺反直觉的事。要解释这一切，还要从折现率说起
-GitHub 项目地址：insurance.ipynb
-有位朋友买重疾险，保险顾问给的方案是，身故后返还两倍于累计缴纳金额的钱。听起来像捡便宜，究竟是怎么回事呢？
-保险顾问给的具体方案是：
-支出：分 30 年支付重疾险，每年付 9000 元，共 27 万元 收益：享受终生重疾险；身故后保险公司一次性返还 50 万元 乍看很划算。是不是真香，算过才知道。
-为了把问题讲明白，先引一下背景知识。
-一、折现率和净现值 1.1 什么是折现率 由于生息潜力和通胀预期，同样数额的钱在未来更不值钱。将未来的钱折算成现在的钱，存在折扣率，我们叫它 折现率 (Discount rate)。举个例子，如果你认为一年后的 107 元与现在的 100 元相当，折现率就是 7%。
-1.2 什么是现值 按折现率，把“未来的钱”折算成“现在的钱”的值就是 现值 (Present value)。
-$一年后的107元的现值 = \frac{107}{1 + 折现率} = \frac{107}{1 + 7\%} = 100$
-1.3 什么是净现值 净现值 (Net present value)，简记为 NPV。指“未来现金流入现值”与“未来现金流出现值”的差额。可以简单理解为 收益的现值 - 成本的现值。
-1.4 计算净现值 代入保险方案来计算净现值。下表中正值代表收益，负值代表成本：
-0 1 2 3 &amp;hellip; 29 t -9,000 -9,000 -9,000 -9,000 &amp;hellip; -9,000 +500,000 假设折现率为 2%，净现值为：</description>
     </item>
     
     <item>
@@ -374,22 +382,6 @@ Amazon Polly Cloud Text-to-Speech Microsoft text to speech API 但鉴于这些�
 综上，本项目主要依赖项只有两个：Monaco Editor 和 Web Speech API。事实上，本项目的名称 Monaco Speech Editor，也正是取自这两个依赖项。
 需求分析 一名视障程序员或一位全盲者，在使用代码编辑器时，主要有以下信息需求：
 界面内容信息：这个按钮的名称是什么？这项设置的名称是什么？ 界面定位信息：编译器在哪？设置在哪？某项功能的按钮在哪？ 界面反馈信息：我刚刚按下的按钮打开了什么功能？ 编辑器内容信息：这行代码的内容是什么？光标前的字符是什么？ 编辑器定位信息：某个的变量在哪儿？我应该如何跳转到那儿？ 编辑器反馈信息：我刚刚输入了什么字符？我将要删除什么字符？ 光标位置信息：全文一共有多少行代码？我的光标现在停在第几行？ 控制台内容信息：控制台的输出是什么？ 功能设计 本项目提供的功能大致可划分为三个类：编辑器的基础功能，语音支持和UI交互辅助。</description>
-    </item>
-    
-    <item>
-      <title>Golang 学习笔记</title>
-      <link>http://luochang212.github.io/posts/learning_golang/</link>
-      <pubDate>Fri, 12 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/posts/learning_golang/</guid>
-      <description>Golang是2009年由谷歌的三位大佬(Robert Griesemer, Rob Pike, Ken Thompson)创造的一门新语言。Goalng有很多优点。比如，作为静态类型语言，Golang的依赖少，易于部署。它还支持协程并发，支持垃圾回收，可跨平台编译。Golang兼具动态语言的强大表达能力和C的执行效率，被誉为21世纪的C语言。
-最近在学习Golang，为了寻找配置教程、优秀的电子书以及难度曲线适中的入门实践项目，我颇费了些功夫。趁着记忆还新鲜，我想分享一下我的学习路径以及学习资料。本文涉及Golang的安装、配置、运行以及实践项目。希望通过阅读本文，初学者们可以更快地找到适合自己的学习方向。
-下载安装 官网提供标准安装包，一路点击就能完成安装。
-安装包的链接是https://golang.org/dl/，更多关于安装的信息见安装 Go.
-环境配置 （一）在终端运行
-在命令行运行程序几乎不需要配置。只要下载Golang，然后按官方建议，创建一个名为gocode的文件夹，直接在里面写代码就可以了。为了防止以后import其他包发生错误，建议把gocode文件夹放在GOPATH下。如何知道Golang的工作路径(GOPATH)在哪里呢？打开命令行，输入go env，就能在输出里找到工作路径了（注意区别安装路径和工作路径，它们是两个不同的路径）。
-下面是Golang在命令行运行时的一些常用命令：
-Linux系统下的常用命令（点击展开） 新建目录 $ mkdir foldername 打开目录 ``` $ cd foldername ``` 返回上一级目录 ``` $ cd .. ``` 新建go文件 ``` $ touch filename.go ``` 删除go文件 ``` $ rm filename.go ``` 重命名go文件 ``` $ mv filename1.go filename2.go ``` 用vim打开go文件 ``` $ vim filename.go ``` 运行go程序 ``` $ go run filename.go ``` 生成可执行的二进制文件 ``` $ go build filename.</description>
     </item>
     
     <item>
