@@ -1,29 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>queuing theory on Chang Luo</title>
+    <title>Queuing Theory on Chang Luo</title>
     <link>http://luochang212.github.io/categories/queuing-theory/</link>
-    <description>Recent content in queuing theory on Chang Luo</description>
+    <description>Recent content in Queuing Theory on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 04 Jul 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/categories/queuing-theory/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 04 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://luochang212.github.io/categories/queuing-theory/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>排队论在网络性能分析中的应用</title>
       <link>http://luochang212.github.io/posts/network_performance_analysis/</link>
       <pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
-      
       <guid>http://luochang212.github.io/posts/network_performance_analysis/</guid>
-      <description>排队论(queueing theory)也称随机服务系统理论，它研究的内容有三部分：性态问题、最优化问题和统计推断问题。（《运筹学》清华大学出版社）
-下图描述了排队过程的一般流程：
-现实中的排队问题是多种多样的，对上述“顾客源”和“服务机构”应该作宽泛的理解。顾客和服务机构可以是生物，也可以是非生物；排队结构可以是有形的，也可以是无形的，比如向交换台要求通话的请求；顾客可以走向服务机构，也可以相反，比如送货上门。
-在网络中，服务器和用户之间相互传送数据包。数据包的传送需要时间，因此或多或少都会产生延迟。为了分析这些延迟，我们引入了一系列假设，并利用排队论对网络延迟进行建模分析。
-本文将着重介绍网络性能分析(Network performance analysis)中几种常见的排队模型。它们是：
-The M/M/1 queuing system The birth-death process The M/M/m queuing system The M/M/1/m queuing system The M/M/∞ queuing system The M/M/m/m queuing system 另外，作为以上模型的理论基础，本文将首先介绍泊松过程(Poisson process)。
-泊松过程的推导 泊松过程是马尔可夫过程的一个特例，在排队论中经常被用来估计顾客到达的概率分布。
-（一）泊松过程的假设
-在时间间隔$\Delta t$内，有且仅有一位顾客到达的概率$P$和$\Delta t$成比例，比例系数为$\lambda$
-在时间间隔$\Delta t$内，至多只允许一位顾客到达（否则应该选取一个更短的时间间隔） $$\begin{aligned} P(\text { 在时间间隔 }[t, t+\Delta t] \text { 内，有且仅有一位顾客到达 }) &amp;amp;=\lambda \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，没有顾客到达 }) &amp;amp;=1-\lambda \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，多于一位顾客到达 }) &amp;amp;=0 \end{aligned}$$</description>
+      <description>排队论(queueing theory)也称随机服务系统理论，它研究的内容有三部分：性态问题、最优化问题和统计推断问题。（《运筹学》清华大学出版社）&#xA;下图描述了排队过程的一般流程：&#xA;现实中的排队问题是多种多样的，对上述“顾客源”和“服务机构”应该作宽泛的理解。顾客和服务机构可以是生物，也可以是非生物；排队结构可以是有形的，也可以是无形的，比如向交换台要求通话的请求；顾客可以走向服务机构，也可以相反，比如送货上门。&#xA;在网络中，服务器和用户之间相互传送数据包。数据包的传送需要时间，因此或多或少都会产生延迟。为了分析这些延迟，我们引入了一系列假设，并利用排队论对网络延迟进行建模分析。&#xA;本文将着重介绍网络性能分析(Network performance analysis)中几种常见的排队模型。它们是：&#xA;The M/M/1 queuing system The birth-death process The M/M/m queuing system The M/M/1/m queuing system The M/M/∞ queuing system The M/M/m/m queuing system 另外，作为以上模型的理论基础，本文将首先介绍泊松过程(Poisson process)。&#xA;泊松过程的推导 泊松过程是马尔可夫过程的一个特例，在排队论中经常被用来估计顾客到达的概率分布。&#xA;（一）泊松过程的假设&#xA;在时间间隔$\Delta t$内，有且仅有一位顾客到达的概率$P$和$\Delta t$成比例，比例系数为$\lambda$&#xA;在时间间隔$\Delta t$内，至多只允许一位顾客到达（否则应该选取一个更短的时间间隔） $$\begin{aligned} P(\text { 在时间间隔 }[t, t+\Delta t] \text { 内，有且仅有一位顾客到达 }) &amp;amp;=\lambda \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，没有顾客到达 }) &amp;amp;=1-\lambda \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，多于一位顾客到达 }) &amp;amp;=0 \end{aligned}$$</description>
     </item>
-    
   </channel>
 </rss>

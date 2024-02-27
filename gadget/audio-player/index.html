@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://luochang212.github.io/gadget/audio-player/">
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.123.2">
+
+    
+    
+    
+
+<title> • Chang Luo</title>
+
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="&lt;!doctype html&gt; Audio Player 0:00 0:00 "/>
+<meta name="twitter:site" content="@MinosPalace"/>
+
+<meta property="og:title" content="" />
+<meta property="og:description" content="&lt;!doctype html&gt; Audio Player 0:00 0:00 " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://luochang212.github.io/gadget/audio-player/" /><meta property="article:section" content="gadget" />
+
+<meta property="og:site_name" content="Title" />
+
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+
+<link rel="stylesheet" href="/scss/hugo-toc.0873834b0f2e9fdc9e1d0301e8ebce21fc10383882a41e9373f29b90e85a9987.css" integrity="sha256-CHODSw8un9yeHQMB6OvOIfwQODiCpB6Tc/KbkOhamYc=">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    
+
+</head>
+
+
+    <body class=" ">
+    <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://upcdn.b0.upaiyun.com/libs/jquery/jquery-1.9.0.min.js"></script>
+
+  <style>
+    body {
+      transition: background-color .5s;
+    }
+
+    #overlay {
+      position: fixed;
+      display: none;
+      width: calc(100vw - 580px);
+      height: 100%;
+      top: 0;
+      left: 0;
+       
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      right: 0;
+      background-color: #FFF;
+       
+      overflow-x: hidden;
+      transition: 0.5s;
+       
+       
+    }
+
+    #main {
+      transition: margin-left .5s;
+       
+      padding: 16px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      overflow: hidden;
+    }
+
+     
+    .tab {
+      overflow: hidden;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+    }
+
+     
+    .tab button {
+      background-color: inherit;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      transition: 0.3s;
+      font-size: 17px;
+    }
+
+     
+    .tab button:hover {
+      background-color: #ddd;
+    }
+
+     
+    .tab button.active {
+      background-color: #ccc;
+    }
+
+     
+    .tabcontent {
+      display: none;
+      padding: 12px 12px;
+      margin: 0;
+      border: 1px solid #ccc;
+      border-top: none;
+    }
+
+    .dropbtn {
+      background-color: #3498DB;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+    }
+
+    .dropup {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropup-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      bottom: 50px;
+      z-index: 1;
+    }
+
+    .dropup-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropup-content a:hover {
+      background-color: #ccc
+    }
+
+    .dropup:hover .dropup-content {
+      display: block;
+    }
+
+    .dropup:hover .dropbtn {
+      background-color: #2980B9;
+    }
+
+    #video2,
+    #video3 {
+      display: none;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  
+  <div class="sidebar">
+    <div class="container ">
+      <div class="sidebar-about">
+        <span class="site__title">
+          <a href="http://luochang212.github.io/">Chang Luo</a>
+        </span>
+        
+        
+        
+        <div class="author-image">
+          <a href="#" class="load-iframe" onclick="openNav()"><img src="http://luochang212.github.io//images/profile.png" id="author-iamge"
+              alt="Author Image" class="img--circle img--headshot element--center"></a>
+        </div>
+        
+        <p class="site__description">
+          
+        </p>
+      </div>
+      <div class="collapsible-menu">
+        <input type="checkbox" id="menuToggle">
+        <label for="menuToggle">Chang Luo</label>
+        <div class="menu-content">
+          <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/portfolio/">
+						<span>Projects</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+          <section class="social">
+	
+	<a href="https://twitter.com/MinosPalace" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	<a href="https://github.com/luochang212" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	<a href="https://instagram.com/suphenshin" rel="me"><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></a>
+	
+	
+	<a href="https://linkedin.com/in/bupt-luochang" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</section>
+
+        </div>
+      </div>
+      
+<div class="copyright">
+  &copy; 2024 Chang Luo
+  
+</div>
+
+
+
+    </div>
+  </div>
+
+  
+  
+
+  <div id="overlay" onclick="off()"></div>
+
+  <div id="mySidenav" class="sidenav">
+
+    <div id="main">
+      <div class="tab">
+        <button id="default-tab" class="tablinks" onclick="openItem(event, 'Resources')">Resources</button>
+        <button class="tablinks" onclick="openItem(event, 'netease-player')">Music</button>
+        <button class="tablinks" onclick="openItem(event, 'Video-player')">Video</button>
+        <button class="tablinks" onclick="openItem(event, 'gallery')">Gallery</button>
+        <button class="tablinks" onclick="openItem(event, 'gadget')">Gadget</button>
+      </div>
+
+      <div id="Resources" class="tabcontent">
+        <iframe src="about:blank" data-src="/resources/" frameborder="0" height="560" width="100%" marginheight="0"
+          marginwidth="0" scrolling="yes"></iframe>
+      </div>
+
+      <div id="netease-player" class="tabcontent">
+        <iframe src="about:blank" data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
+          frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=450></iframe>
+      </div>
+
+      <div id="Video-player" class="tabcontent">
+
+        <div id="video1">
+          <iframe src="about:blank"
+            data-src="//player.bilibili.com/player.html?aid=663375832&bvid=BV11a4y1S7Pt&cid=1334196946&p=1&high_quality=1&danmaku=0&autoplay=0"
+            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+        <div id="video2">
+          <iframe src="about:blank"
+            data-src="//player.bilibili.com/player.html?aid=958254107&bvid=BV1rp4y1L7i4&cid=1264513494&p=1&high_quality=1&danmaku=0&autoplay=0"
+            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+        <div id="video3">
+          <iframe src="about:blank"
+            data-src="//player.bilibili.com/player.html?aid=566507193&bvid=BV1Av4y147QE&cid=997936232&p=1&high_quality=1&danmaku=0&autoplay=0"
+            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+
+        
+
+        
+
+        <br>
+        <div class="dropup">
+          <button class="dropbtn">更多视频</button>
+          <div class="dropup-content">
+            <a onclick="link1()">发财财</a>
+            <a onclick="link2()">岁岁恋</a>
+            <a onclick="link3()">真物论</a>
+          </div>
+        </div>
+      </div>
+
+      <div id="gallery" class="tabcontent">
+        <iframe src="about:blank" data-src="/gadget/gallery.html#two" frameborder="0" height="560" width="100%"
+          scrolling="yes"></iframe>
+      </div>
+
+      <div id="gadget" class="tabcontent">
+        <iframe src="about:blank" data-src="/gadget/" frameborder="0" height="560" width="100%"
+          scrolling="yes"></iframe>
+      </div>
+
+    </div>
+  </div>
+
+  
+  <script>
+    'use strict'
+
+    function openNav() {
+      on();
+      document.getElementById("mySidenav").style.width = "580px";
+      document.body.style.backgroundColor = "rgba(0,0,0,0.5)";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.body.style.backgroundColor = "white";
+    }
+
+    function on() {
+      document.getElementById("overlay").style.display = "block";
+    }
+
+    function off() {
+      closeNav();
+      document.getElementById("overlay").style.display = "none";
+    }
+
+    
+    document.getElementById('default-tab').click();
+
+    function openItem(evt, itemName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(itemName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+
+    function link1() {
+      document.getElementById("video1").style.display = "block";
+      document.getElementById("video2").style.display = "none";
+      document.getElementById("video3").style.display = "none";
+    }
+
+    function link2() {
+      document.getElementById("video1").style.display = "none";
+      document.getElementById("video2").style.display = "block";
+      document.getElementById("video3").style.display = "none";
+    }
+
+    function link3() {
+      document.getElementById("video1").style.display = "none";
+      document.getElementById("video2").style.display = "none";
+      document.getElementById("video3").style.display = "block";
+    }
+
+     
+    var flag = 0;
+
+     
+    $(".load-iframe").click(function () {
+      if (flag < 1) {
+        $("iframe").each(function () {
+          $(this).attr("src", $(this).data("src"));
+        });
+        flag = flag + 1;
+      }
+    });
+  </script>
+
+</body>
+
+
+
+        <div class="content container">
+            
+    <style>
+  .my-emoji {
+    height: 25px;
+    display: inline-block;
+    margin: 0;
+    vertical-align: text-bottom;
+  }
+</style>
+
+
+
+<article>
+  <header>
+    <h1></h1>
+    
+    
+<div class="post__meta">
+    
+    
+    
+    
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 1 min read
+</div>
+
+
+  </header>
+  
+  
+  
+  <div class="toc-wrapper">
+    <input type="checkbox" id="tocToggle">
+    <label for="tocToggle">目录</label>
+    
+    
+    
+  </div>
+  
+  
+  <div class="post">
+    <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="user-scalable=no">
+  <title>Audio Player</title>
+  <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+  <link rel="stylesheet" href="/howler.js/examples/player/styles.css">
+</head>
+<body>
+  <!-- Top Info -->
+  <div id="title">
+    <span id="track"></span>
+    <div id="timer">0:00</div>
+    <div id="duration">0:00</div>
+  </div>
+
+  <!-- Controls -->
+  <div class="controlsOuter">
+    <div class="controlsInner">
+      <div id="loading"></div>
+      <div class="btn" id="playBtn"></div>
+      <div class="btn" id="pauseBtn"></div>
+      <div class="btn" id="prevBtn"></div>
+      <div class="btn" id="nextBtn"></div>
+    </div>
+    <div class="btn" id="playlistBtn"></div>
+    <div class="btn" id="volumeBtn"></div>
+  </div>
+
+  <!-- Progress -->
+  <div id="waveform"></div>
+  <div id="bar"></div>
+  <div id="progress"></div>
+
+  <!-- Playlist -->
+  <div id="playlist">
+    <div id="list"></div>
+  </div>
+
+  <!-- Volume -->
+  <div id="volume" class="fadeout">
+    <div id="barFull" class="bar"></div>
+    <div id="barEmpty" class="bar"></div>
+    <div id="sliderBtn"></div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/howler.js/src/howler.core.js"></script>
+  <script src="/howler.js/examples/player/siriwave.js"></script>
+  <script>
+ /*!
+ *  Howler.js Audio Player Demo
+ *  howlerjs.com
+ *
+ *  (c) 2013-2019, James Simpson of GoldFire Studios
+ *  goldfirestudios.com
+ *
+ *  MIT License
+ */
+
+// Cache references to DOM elements.
+var elms = ['track', 'timer', 'duration', 'playBtn', 'pauseBtn', 'prevBtn', 'nextBtn', 'playlistBtn', 'volumeBtn', 'progress', 'bar', 'wave', 'loading', 'playlist', 'list', 'volume', 'barEmpty', 'barFull', 'sliderBtn'];
+elms.forEach(function(elm) {
+  window[elm] = document.getElementById(elm);
+});
+
+/**
+ * Player class containing the state of our playlist and where we are in it.
+ * Includes all methods for playing, skipping, updating the display, etc.
+ * @param {Array} playlist Array of objects with playlist song details ({title, file, howl}).
+ */
+var Player = function(playlist) {
+  this.playlist = playlist;
+  this.index = 0;
+
+  // Display the title of the first track.
+  track.innerHTML = '1. ' + playlist[0].title;
+
+  // Setup the playlist display.
+  playlist.forEach(function(song) {
+    var div = document.createElement('div');
+    div.className = 'list-song';
+    div.innerHTML = song.title;
+    div.onclick = function() {
+      player.skipTo(playlist.indexOf(song));
+    };
+    list.appendChild(div);
+  });
+};
+Player.prototype = {
+  /**
+   * Play a song in the playlist.
+   * @param  {Number} index Index of the song in the playlist (leave empty to play the first or current).
+   */
+  play: function(index) {
+    var self = this;
+    var sound;
+
+    index = typeof index === 'number' ? index : self.index;
+    var data = self.playlist[index];
+
+    // If we already loaded this track, use the current one.
+    // Otherwise, setup and load a new Howl.
+    if (data.howl) {
+      sound = data.howl;
+    } else {
+      sound = data.howl = new Howl({
+        src: ['/audio/' + data.file + '.webm', '/audio/' + data.file + '.mp3'],
+        html5: true, // Force to HTML5 so that the audio can stream in (best for large files).
+        onplay: function() {
+          // Display the duration.
+          duration.innerHTML = self.formatTime(Math.round(sound.duration()));
+
+          // Start upating the progress of the track.
+          requestAnimationFrame(self.step.bind(self));
+
+          // Start the wave animation if we have already loaded
+          wave.container.style.display = 'block';
+          bar.style.display = 'none';
+          pauseBtn.style.display = 'block';
+        },
+        onload: function() {
+          // Start the wave animation.
+          wave.container.style.display = 'block';
+          bar.style.display = 'none';
+          loading.style.display = 'none';
+        },
+        onend: function() {
+          // Stop the wave animation.
+          wave.container.style.display = 'none';
+          bar.style.display = 'block';
+          self.skip('next');
+        },
+        onpause: function() {
+          // Stop the wave animation.
+          wave.container.style.display = 'none';
+          bar.style.display = 'block';
+        },
+        onstop: function() {
+          // Stop the wave animation.
+          wave.container.style.display = 'none';
+          bar.style.display = 'block';
+        },
+        onseek: function() {
+          // Start upating the progress of the track.
+          requestAnimationFrame(self.step.bind(self));
+        }
+      });
+    }
+
+    // Begin playing the sound.
+    sound.play();
+
+    // Update the track display.
+    track.innerHTML = (index + 1) + '. ' + data.title;
+
+    // Show the pause button.
+    if (sound.state() === 'loaded') {
+      playBtn.style.display = 'none';
+      pauseBtn.style.display = 'block';
+    } else {
+      loading.style.display = 'block';
+      playBtn.style.display = 'none';
+      pauseBtn.style.display = 'none';
+    }
+
+    // Keep track of the index we are currently playing.
+    self.index = index;
+  },
+
+  /**
+   * Pause the currently playing track.
+   */
+  pause: function() {
+    var self = this;
+
+    // Get the Howl we want to manipulate.
+    var sound = self.playlist[self.index].howl;
+
+    // Puase the sound.
+    sound.pause();
+
+    // Show the play button.
+    playBtn.style.display = 'block';
+    pauseBtn.style.display = 'none';
+  },
+
+  /**
+   * Skip to the next or previous track.
+   * @param  {String} direction 'next' or 'prev'.
+   */
+  skip: function(direction) {
+    var self = this;
+
+    // Get the next track based on the direction of the track.
+    var index = 0;
+    if (direction === 'prev') {
+      index = self.index - 1;
+      if (index < 0) {
+        index = self.playlist.length - 1;
+      }
+    } else {
+      index = self.index + 1;
+      if (index >= self.playlist.length) {
+        index = 0;
+      }
+    }
+
+    self.skipTo(index);
+  },
+
+  /**
+   * Skip to a specific track based on its playlist index.
+   * @param  {Number} index Index in the playlist.
+   */
+  skipTo: function(index) {
+    var self = this;
+
+    // Stop the current track.
+    if (self.playlist[self.index].howl) {
+      self.playlist[self.index].howl.stop();
+    }
+
+    // Reset progress.
+    progress.style.width = '0%';
+
+    // Play the new track.
+    self.play(index);
+  },
+
+  /**
+   * Set the volume and update the volume slider display.
+   * @param  {Number} val Volume between 0 and 1.
+   */
+  volume: function(val) {
+    var self = this;
+
+    // Update the global volume (affecting all Howls).
+    Howler.volume(val);
+
+    // Update the display on the slider.
+    var barWidth = (val * 90) / 100;
+    barFull.style.width = (barWidth * 100) + '%';
+    sliderBtn.style.left = (window.innerWidth * barWidth + window.innerWidth * 0.05 - 25) + 'px';
+  },
+
+  /**
+   * Seek to a new position in the currently playing track.
+   * @param  {Number} per Percentage through the song to skip.
+   */
+  seek: function(per) {
+    var self = this;
+
+    // Get the Howl we want to manipulate.
+    var sound = self.playlist[self.index].howl;
+
+    // Convert the percent into a seek position.
+    if (sound.playing()) {
+      sound.seek(sound.duration() * per);
+    }
+  },
+
+  /**
+   * The step called within requestAnimationFrame to update the playback position.
+   */
+  step: function() {
+    var self = this;
+
+    // Get the Howl we want to manipulate.
+    var sound = self.playlist[self.index].howl;
+
+    // Determine our current seek position.
+    var seek = sound.seek() || 0;
+    timer.innerHTML = self.formatTime(Math.round(seek));
+    progress.style.width = (((seek / sound.duration()) * 100) || 0) + '%';
+
+    // If the sound is still playing, continue stepping.
+    if (sound.playing()) {
+      requestAnimationFrame(self.step.bind(self));
+    }
+  },
+
+  /**
+   * Toggle the playlist display on/off.
+   */
+  togglePlaylist: function() {
+    var self = this;
+    var display = (playlist.style.display === 'block') ? 'none' : 'block';
+
+    setTimeout(function() {
+      playlist.style.display = display;
+    }, (display === 'block') ? 0 : 500);
+    playlist.className = (display === 'block') ? 'fadein' : 'fadeout';
+  },
+
+  /**
+   * Toggle the volume display on/off.
+   */
+  toggleVolume: function() {
+    var self = this;
+    var display = (volume.style.display === 'block') ? 'none' : 'block';
+
+    setTimeout(function() {
+      volume.style.display = display;
+    }, (display === 'block') ? 0 : 500);
+    volume.className = (display === 'block') ? 'fadein' : 'fadeout';
+  },
+
+  /**
+   * Format the time from seconds to M:SS.
+   * @param  {Number} secs Seconds to format.
+   * @return {String}      Formatted time.
+   */
+  formatTime: function(secs) {
+    var minutes = Math.floor(secs / 60) || 0;
+    var seconds = (secs - minutes * 60) || 0;
+
+    return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+  }
+};
+
+// Setup our new audio player class and pass it the playlist.
+var player = new Player([
+  // {
+  //   title: 'A Distant View',
+  //   file: 'A_Distant_View',
+  //   howl: null
+  // },
+  // {
+  //   title: 'A Little Story',
+  //   file: 'A_Little_Story',
+  //   howl: null
+  // },
+  //   {
+  //   title: 'Cinderella',
+  //   file: 'Cinderella',
+  //   howl: null
+  // },
+  //   {
+  //   title: 'Kids',
+  //   file: 'Kids',
+  //   howl: null
+  // },
+  // {
+  //   title: 'Little Something',
+  //   file: 'Little_Something',
+  //   howl: null
+  // },
+  //   {
+  //   title: 'Shots',
+  //   file: 'Shots',
+  //   howl: null
+  // },
+  // {
+  //   title: '大风吹',
+  //   file: '大风吹',
+  //   howl: null
+  // },
+  //   {
+  //   title: '黑暗森林',
+  //   file: '黑暗森林',
+  //   howl: null
+  // },
+  // {
+  //   title: '你曾是少年',
+  //   file: '你曾是少年',
+  //   howl: null
+  // },
+  // {
+  //   title: '最近还好吗',
+  //   file: '最近还好吗',
+  //   howl: null
+  // },
+  {
+    title: 'hey-siri',
+    file: 'hey-siri',
+    howl: null
+  }
+]);
+
+// Bind our player controls.
+playBtn.addEventListener('click', function() {
+  player.play();
+});
+pauseBtn.addEventListener('click', function() {
+  player.pause();
+});
+prevBtn.addEventListener('click', function() {
+  player.skip('prev');
+});
+nextBtn.addEventListener('click', function() {
+  player.skip('next');
+});
+waveform.addEventListener('click', function(event) {
+  player.seek(event.clientX / window.innerWidth);
+});
+playlistBtn.addEventListener('click', function() {
+  player.togglePlaylist();
+});
+playlist.addEventListener('click', function() {
+  player.togglePlaylist();
+});
+volumeBtn.addEventListener('click', function() {
+  player.toggleVolume();
+});
+volume.addEventListener('click', function() {
+  player.toggleVolume();
+});
+
+// Setup the event listeners to enable dragging of volume slider.
+barEmpty.addEventListener('click', function(event) {
+  var per = event.layerX / parseFloat(barEmpty.scrollWidth);
+  player.volume(per);
+});
+sliderBtn.addEventListener('mousedown', function() {
+  window.sliderDown = true;
+});
+sliderBtn.addEventListener('touchstart', function() {
+  window.sliderDown = true;
+});
+volume.addEventListener('mouseup', function() {
+  window.sliderDown = false;
+});
+volume.addEventListener('touchend', function() {
+  window.sliderDown = false;
+});
+
+var move = function(event) {
+  if (window.sliderDown) {
+    var x = event.clientX || event.touches[0].clientX;
+    var startX = window.innerWidth * 0.05;
+    var layerX = x - startX;
+    var per = Math.min(1, Math.max(0, layerX / parseFloat(barEmpty.scrollWidth)));
+    player.volume(per);
+  }
+};
+
+volume.addEventListener('mousemove', move);
+volume.addEventListener('touchmove', move);
+
+// Setup the "waveform" animation.
+var wave = new SiriWave({
+  container: waveform,
+  width: window.innerWidth,
+  height: window.innerHeight * 0.3,
+  cover: true,
+  speed: 0.03,
+  amplitude: 0.7,
+  frequency: 2
+});
+wave.start();
+
+// Update the height of the wave animation.
+// These are basically some hacks to get SiriWave.js to do what we want.
+var resize = function() {
+  var height = window.innerHeight * 0.3;
+  var width = window.innerWidth;
+  wave.height = height;
+  wave.height_2 = height / 2;
+  wave.MAX = wave.height_2 - 4;
+  wave.width = width;
+  wave.width_2 = width / 2;
+  wave.width_4 = width / 4;
+  wave.canvas.height = height;
+  wave.canvas.width = width;
+  wave.container.style.margin = -(height / 2) + 'px auto';
+
+  // Update the position of the slider.
+  var sound = player.playlist[player.index].howl;
+  if (sound) {
+    var vol = sound.volume();
+    var barWidth = (vol * 0.9);
+    sliderBtn.style.left = (window.innerWidth * barWidth + window.innerWidth * 0.05 - 25) + 'px';
+  }
+};
+window.addEventListener('resize', resize);
+resize();
+
+</script>
+</body>
+</html>
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/gadget/baijiahao/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle"></span>
+    </a>
+    
+    
+    <a href="/gadget/algorithms/" class="navigation-next">
+      <span class="navigation-tittle"></span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+        </div>
+        
+    <script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
+
+
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+
+
+    
+
+
+
+    </body>
+</html>

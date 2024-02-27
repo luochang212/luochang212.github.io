@@ -5,15 +5,14 @@
     <link>http://luochang212.github.io/demo/</link>
     <description>Recent content in Demoes on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="http://luochang212.github.io/demo/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <atom:link href="http://luochang212.github.io/demo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
-      <link>http://luochang212.github.io/demo/mini-window/readme/</link>
+      <link>http://luochang212.github.io/demo/sidenav/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/demo/mini-window/readme/</guid>
-      <description>mini-window 在网站中用小窗打开外链，降低跳出率。</description>
+      <guid>http://luochang212.github.io/demo/sidenav/</guid>
+      <description>&lt;!DOCTYPE HTML&gt; Animated Side Navigation Example Animated Side Navigation Example Click on the element below to open the side navigation menu.&#xA;&amp;#9776; open Resources Audio Player Video player Piano 更多视频 1 2 3 </description>
     </item>
-    
   </channel>
 </rss>
