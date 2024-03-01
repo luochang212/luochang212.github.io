@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.123.2">
+<meta name="generator" content="Hugo 0.118.2">
 
     
     
@@ -22,9 +22,9 @@
 <title>树莓派 5 装机指南 • Chang Luo</title>
 
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="树莓派 5 装机指南"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="树莓派 5 装机指南"/>
 <meta name="twitter:description" content="树莓派 5 安装 Ubuntu 23.10 的 踩坑记录"/>
-<meta name="twitter:site" content="@MinosPalace"/>
 
 <meta property="og:title" content="树莓派 5 装机指南" />
 <meta property="og:description" content="树莓派 5 安装 Ubuntu 23.10 的 踩坑记录" />
@@ -32,7 +32,6 @@
 <meta property="og:url" content="http://luochang212.github.io/posts/raspberry_pi_5/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-02-24T00:00:00+00:00" />
 <meta property="article:modified_time" content="2024-02-24T00:00:00+00:00" /><meta property="og:site_name" content="Title" />
-
 
 
     
@@ -216,13 +215,13 @@
     <div class="container ">
       <div class="sidebar-about">
         <span class="site__title">
-          <a href="http://luochang212.github.io/">Chang Luo</a>
+          <a href="http://luochang212.github.io">Chang Luo</a>
         </span>
         
         
         
         <div class="author-image">
-          <a href="#" class="load-iframe" onclick="openNav()"><img src="http://luochang212.github.io//images/profile.png" id="author-iamge"
+          <a href="#" class="load-iframe" onclick="openNav()"><img src="http://luochang212.github.io/images/profile.png" id="author-iamge"
               alt="Author Image" class="img--circle img--headshot element--center"></a>
         </div>
         
@@ -517,7 +516,7 @@
     
     
     <br/>
-    <i class="fas fa-clock"></i> 2 min read
+    <i class="fas fa-clock"></i> 3 min read
 </div>
 
 
@@ -595,8 +594,7 @@ ip addr
 <h3 id="五部署开发环境">五、部署开发环境</h3>
 <p>1）基础依赖</p>
 <p>更新 <code>apt</code> 及其管理的软件包</p>
-<pre tabindex="0"><code>sudo apt update
-sudo apt upgrade -y
+<pre tabindex="0"><code>sudo apt update &amp;&amp; sudo apt upgrade -y
 </code></pre><p>安装 <code>openssh-server</code>, <code>wget</code>, <code>vim</code>, <code>git</code>, <code>net-tools</code>, <code>snapd</code></p>
 <pre tabindex="0"><code>sudo apt install openssh-server
 sudo apt install wget git vim
@@ -636,13 +634,64 @@ reboot
 <p>Samba 用于在笔记本和树莓派之间传输文件。</p>
 <pre tabindex="0"><code>sudo apt install -y samba samba-client
 </code></pre><p>配置 Samba 可以参考 <a href="/posts/linux_handbook/#%E5%85%AD%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93" target="_blank">Linux 运维手册</a>，这里不再赘述。</p>
+<p>7）连接 GitHub</p>
+<blockquote>
+<p>以下内容来自阿里云云效 <a href="https://help.aliyun.com/document_detail/153709.html" target="_blank">配置 SSH 密钥</a></p>
+</blockquote>
+<p>① 查看已存在的 SSH 密钥</p>
+<p>在生成新的 SSH 密钥前，请先确认是否需要使用本地已生成的SSH密钥，SSH 密钥对一般存放在本地用户的根目录下。</p>
+<p>Linux、Mac 请直接使用以下命令查看已存在的公钥，Windows 用户在 WSL（需要 windows10 或以上）或 Git Bash下使用以下命令查看已生成公钥：</p>
+<p><strong>ED25519 算法</strong></p>
+<pre tabindex="0"><code>cat ~/.ssh/id_ed25519.pub
+</code></pre><p><strong>RSA 算法</strong></p>
+<pre tabindex="0"><code>cat ~/.ssh/id_rsa.pub
+</code></pre><p>如果返回一长串以 ssh-ed25519 或 ssh-rsa 开头的字符串, 说明已存在本地公钥，你可以跳过步骤二生成 SSH 密钥，直接操作步骤三。</p>
+<p>② 生成 SSH 密钥</p>
+<p>若步骤一未返回指定内容字符串，表示本地暂无可用 SSH 密钥，需要生成新的 SSH 密钥，请按如下步骤操作：</p>
+<p>1.访问终端（ Windows 请使用 <code>WSL</code> 或 <code>Git Bash</code>），运行 <code>ssh-keygen -t</code>。</p>
+<p>2.输入密钥算法类型和可选的注释。</p>
+<p>注释会出现在 <code>.pub</code> 文件中，一般可使用邮箱作为注释内容。</p>
+<p>基于ED25519算法，生成密钥对命令如下：</p>
+<pre tabindex="0"><code>ssh-keygen -t ed25519 -C &#34;&lt;注释内容&gt;&#34;
+</code></pre><p>基于RSA算法，生成密钥对命令如下：</p>
+<pre tabindex="0"><code>ssh-keygen -t rsa -C &#34;&lt;注释内容&gt;&#34;
+</code></pre><p>3.点击回车，选择 SSH 密钥生成路径。</p>
+<p>以 ED25519 算法为例，默认路径如下：</p>
+<pre tabindex="0"><code>Generating public/private ed25519 key pair.
+Enter file in which to save the key (/home/user/.ssh/id_ed25519):
+</code></pre><p>密钥默认生成路径：<code>/home/user/.ssh/id_ed25519</code>，公钥与之对应为：<code>/home/user/.ssh/id_ed25519.pub</code>。</p>
+<p>以 RSA 算法为例，默认路径如下：</p>
+<pre tabindex="0"><code>Generating public/private rsa key pair.
+Enter file in which to save the key (/home/user/.ssh/id_rsa):
+</code></pre><p>密钥默认生成路径：<code>/home/user/.ssh/id_rsa</code>，公钥与之对应为：<code>/home/user/.ssh/id_rsa.pub</code>。</p>
+<p>4.设置一个密钥口令。</p>
+<pre tabindex="0"><code>Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+</code></pre><p>口令默认为空，你可以选择使用口令保护私钥文件。如果你不想在每次使用 SSH 协议访问仓库时，都要输入用于保护私钥文件的口令，可以在创建密钥时，输入空口令。</p>
+<p>5.点击回车，完成密钥对创建。</p>
+<p>③ 拷贝公钥</p>
+<p>除了在命令行打印出已生成的公钥信息手动复制外，可以使用命令拷贝公钥到粘贴板下，请参考操作系统使用以下命令进行拷贝：</p>
+<p>Windows（在WSL或Git Bash下）:</p>
+<pre tabindex="0"><code>cat ~/.ssh/id_ed25519.pub | clip
+</code></pre><p>Mac:</p>
+<pre tabindex="0"><code>tr -d &#39;\n&#39; &lt; ~/.ssh/id_ed25519.pub | pbcopy
+</code></pre><p>GNU/Linux (requires xclip):</p>
+<pre tabindex="0"><code>xclip -sel clip &lt; ~/.ssh/id_ed25519.pub
+</code></pre><p>④ 在 GitHub 上设置公钥</p>
+<p>[头像] &ndash;&gt; [Settings] &ndash;&gt; [侧边栏：SSH and GPG keys] &ndash;&gt; [New SSH key]</p>
 <h3 id="六软件推荐">六、软件推荐</h3>
-<p>推荐使用以下软件。它们可以在 <code>App Center</code> 下载，除了 VLC</p>
+<p>1）可在 <code>App Center</code> 中下载：</p>
 <ul>
 <li>Firefox</li>
 <li>Chromium</li>
+<li>VSCode</li>
 <li>Sublime</li>
 <li>UFW</li>
+</ul>
+<p>2）需自己下载：</p>
+<ul>
+<li><a href="https://www.jetbrains.com/idea/download">IntelliJ IDEA</a></li>
+<li>cmatrix: <code>sudo apt install cmatrix</code></li>
 <li>VLC: <code>sudo apt install vlc</code></li>
 </ul>
 <h3 id="七物料清单">七、物料清单</h3>
@@ -664,6 +713,7 @@ reboot
 <ul>
 <li><a href="https://www.youtube.com/watch?v=5CBYGz_mO9U">YouTube: Raspberry Pi 5 Ubuntu install in 8 minutes</a></li>
 <li><a href="https://ubuntu.com/core/docs/install-raspberry-pi">Installing Ubuntu Core on a Raspberry Pi</a></li>
+<li><a href="https://help.aliyun.com/document_detail/153709.html">配置 SSH 密钥</a></li>
 </ul>
 
   </div>

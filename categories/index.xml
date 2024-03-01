@@ -6,182 +6,231 @@
     <description>Recent content in Categories on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 25 Feb 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://luochang212.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 25 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Algorithms</title>
       <link>http://luochang212.github.io/categories/algorithms/</link>
       <pubDate>Sun, 25 Feb 2024 00:00:00 +0000</pubDate>
+      
       <guid>http://luochang212.github.io/categories/algorithms/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>Graph</title>
       <link>http://luochang212.github.io/categories/graph/</link>
       <pubDate>Sun, 25 Feb 2024 00:00:00 +0000</pubDate>
+      
       <guid>http://luochang212.github.io/categories/graph/</guid>
       <description></description>
     </item>
+    
     <item>
-      <title>Hardware</title>
+      <title>hardware</title>
       <link>http://luochang212.github.io/categories/hardware/</link>
       <pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
+      
       <guid>http://luochang212.github.io/categories/hardware/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>Raspberry Pi 5</title>
       <link>http://luochang212.github.io/categories/raspberry-pi-5/</link>
       <pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
+      
       <guid>http://luochang212.github.io/categories/raspberry-pi-5/</guid>
       <description></description>
     </item>
+    
     <item>
-      <title>D2l</title>
+      <title>d2l</title>
       <link>http://luochang212.github.io/categories/d2l/</link>
       <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
+      
       <guid>http://luochang212.github.io/categories/d2l/</guid>
       <description></description>
     </item>
+    
     <item>
-      <title>Deep Learning</title>
+      <title>deep learning</title>
       <link>http://luochang212.github.io/categories/deep-learning/</link>
       <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
+      
       <guid>http://luochang212.github.io/categories/deep-learning/</guid>
       <description></description>
     </item>
+    
     <item>
-      <title>Life</title>
+      <title>life</title>
       <link>http://luochang212.github.io/categories/life/</link>
       <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      
       <guid>http://luochang212.github.io/categories/life/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>Packaging</title>
       <link>http://luochang212.github.io/categories/packaging/</link>
       <pubDate>Wed, 18 Oct 2023 00:00:00 +0000</pubDate>
+      
       <guid>http://luochang212.github.io/categories/packaging/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>PyPI</title>
       <link>http://luochang212.github.io/categories/pypi/</link>
       <pubDate>Wed, 18 Oct 2023 00:00:00 +0000</pubDate>
+      
       <guid>http://luochang212.github.io/categories/pypi/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>Development</title>
       <link>http://luochang212.github.io/categories/development/</link>
       <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
+      
       <guid>http://luochang212.github.io/categories/development/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>Hive</title>
       <link>http://luochang212.github.io/categories/hive/</link>
       <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
+      
       <guid>http://luochang212.github.io/categories/hive/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>Math</title>
       <link>http://luochang212.github.io/categories/math/</link>
       <pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
+      
       <guid>http://luochang212.github.io/categories/math/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>R-Project</title>
       <link>http://luochang212.github.io/categories/r-project/</link>
       <pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
+      
       <guid>http://luochang212.github.io/categories/r-project/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>Bash</title>
       <link>http://luochang212.github.io/categories/bash/</link>
       <pubDate>Sun, 03 Jul 2022 00:00:00 +0000</pubDate>
+      
       <guid>http://luochang212.github.io/categories/bash/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>Python</title>
       <link>http://luochang212.github.io/categories/python/</link>
       <pubDate>Sat, 21 Nov 2020 00:00:00 +0000</pubDate>
+      
       <guid>http://luochang212.github.io/categories/python/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>Hadoop</title>
       <link>http://luochang212.github.io/categories/hadoop/</link>
       <pubDate>Sat, 25 Jul 2020 00:00:00 +0000</pubDate>
+      
       <guid>http://luochang212.github.io/categories/hadoop/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>ES</title>
       <link>http://luochang212.github.io/categories/es/</link>
       <pubDate>Thu, 24 Oct 2019 00:00:00 +0000</pubDate>
+      
       <guid>http://luochang212.github.io/categories/es/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>JavaScript</title>
       <link>http://luochang212.github.io/categories/javascript/</link>
       <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
+      
       <guid>http://luochang212.github.io/categories/javascript/</guid>
       <description></description>
     </item>
+    
     <item>
-      <title>Queuing Theory</title>
+      <title>queuing theory</title>
       <link>http://luochang212.github.io/categories/queuing-theory/</link>
       <pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
+      
       <guid>http://luochang212.github.io/categories/queuing-theory/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>Kitchen</title>
       <link>http://luochang212.github.io/categories/kitchen/</link>
       <pubDate>Tue, 02 Jul 2019 00:00:00 +0000</pubDate>
+      
       <guid>http://luochang212.github.io/categories/kitchen/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>MATLAB</title>
       <link>http://luochang212.github.io/categories/matlab/</link>
       <pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
+      
       <guid>http://luochang212.github.io/categories/matlab/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>JavaSript</title>
       <link>http://luochang212.github.io/categories/javasript/</link>
       <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
+      
       <guid>http://luochang212.github.io/categories/javasript/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>PyCharm</title>
       <link>http://luochang212.github.io/categories/pycharm/</link>
       <pubDate>Fri, 10 May 2019 21:43:09 +0100</pubDate>
+      
       <guid>http://luochang212.github.io/categories/pycharm/</guid>
       <description></description>
     </item>
+    
     <item>
-      <title>Jupyter Notebook</title>
+      <title>jupyter notebook</title>
       <link>http://luochang212.github.io/categories/jupyter-notebook/</link>
       <pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
+      
       <guid>http://luochang212.github.io/categories/jupyter-notebook/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>Movie</title>
       <link>http://luochang212.github.io/categories/movie/</link>
       <pubDate>Tue, 11 Jul 2017 00:00:00 +0000</pubDate>
+      
       <guid>http://luochang212.github.io/categories/movie/</guid>
       <description></description>
     </item>
+    
   </channel>
 </rss>

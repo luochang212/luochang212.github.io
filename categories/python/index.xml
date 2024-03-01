@@ -6,49 +6,106 @@
     <description>Recent content in Python on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 21 Nov 2020 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://luochang212.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 21 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>FastAPI 初见</title>
       <link>http://luochang212.github.io/posts/fastapi/</link>
       <pubDate>Sat, 21 Nov 2020 00:00:00 +0000</pubDate>
+      
       <guid>http://luochang212.github.io/posts/fastapi/</guid>
-      <description>什么是 API？如何从零开始，搭建自己的第一个API？本文带你搭建一个 API 小应用以了解 FastAPI 的使用细节&#xA;GitHub 项目地址：calendar-api&#xA;什么是 API？&#xA;简单来说，API 是软件间相互传输数据的接口。它在生活中十分常见，比如博物馆订票系统中就使用了 API. 当你在手机应用上订票时，手机实际上发送了一个 HTTP 请求给远程服务器。远程服务器解析该请求。当确认所有字段信息均准确无误后，它才会把你的订票信息录入数据库，并回调成功标识。只有当上述操作全都被正确执行时，你的手机才会显示订票成功。&#xA;API 程序通常运行在服务端 (server) 上。客户端 (client) 通过向 API 提供的网络接口发送请求，以实现对服务端的通信。服务端收到请求后，对请求进行解析。如果请求是合法的，则执行该请求，并将请求结果回调给客户端。一次典型的 API 请求大体上是这么个过程。&#xA;在业务中，有时需要记录每次请求产生的中间状态、运行结果和日志数据。这时就需要 服务端 调用 数据库 (database) 以存储业务中产生的各种信息。&#xA;1. REST API API 本身是高度个性化的，软件间可以用任意数据类型进行通信。但如果 API 缺少规范、各行其是，就会导致软件间沟通成本高企。REST API 就是其中一种规范。REST API 提出了六项指导原则，只要 API 符合这六项指导原则，就可称之为“符合 REST 风格的 API”。&#xA;REST API 提出的六项指导原则分别是：&#xA;Client–server Stateless Cacheable Uniform interface Layered system Code on demand (optional) [了解更多]&#xA;FastAPI 对构建 REST 风格的 API 提供了良好的支持。</description>
+      <description>什么是 API？如何从零开始，搭建自己的第一个API？本文带你搭建一个 API 小应用以了解 FastAPI 的使用细节
+GitHub 项目地址：calendar-api
+什么是 API？
+简单来说，API 是软件间相互传输数据的接口。它在生活中十分常见，比如博物馆订票系统中就使用了 API. 当你在手机应用上订票时，手机实际上发送了一个 HTTP 请求给远程服务器。远程服务器解析该请求。当确认所有字段信息均准确无误后，它才会把你的订票信息录入数据库，并回调成功标识。只有当上述操作全都被正确执行时，你的手机才会显示订票成功。
+API 程序通常运行在服务端 (server) 上。客户端 (client) 通过向 API 提供的网络接口发送请求，以实现对服务端的通信。服务端收到请求后，对请求进行解析。如果请求是合法的，则执行该请求，并将请求结果回调给客户端。一次典型的 API 请求大体上是这么个过程。
+在业务中，有时需要记录每次请求产生的中间状态、运行结果和日志数据。这时就需要 服务端 调用 数据库 (database) 以存储业务中产生的各种信息。
+1. REST API API 本身是高度个性化的，软件间可以用任意数据类型进行通信。但如果 API 缺少规范、各行其是，就会导致软件间沟通成本高企。REST API 就是其中一种规范。REST API 提出了六项指导原则，只要 API 符合这六项指导原则，就可称之为“符合 REST 风格的 API”。
+REST API 提出的六项指导原则分别是：
+Client–server Stateless Cacheable Uniform interface Layered system Code on demand (optional) [了解更多]
+FastAPI 对构建 REST 风格的 API 提供了良好的支持。</description>
     </item>
+    
     <item>
       <title>Python 工程化实践</title>
       <link>http://luochang212.github.io/posts/python_practice/</link>
       <pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate>
+      
       <guid>http://luochang212.github.io/posts/python_practice/</guid>
-      <description>学 Python 不应仅限于学编程，同样应该学习工程知识，比如虚拟环境、编码风格以及单元测试等。本文致力于介绍 Python 工程化所需的前置知识。&#xA;⚠️ 注意：以下教程适用于 MacOS。&#xA;部署环境 1. Anaconda Anaconda 是一个包管理器，它能让你方便的管理 Python 版本和包版本。并且， Anaconda 聚合了 Jupyter notebook，使其大受数据科学家和人工智能工程师的欢迎。下面我们来介绍如何用 Anaconda 管理我们的 Python 环境。&#xA;如果你还没有 Anaconda，安装一个：&#xA;海外用户直接访问 Anaconda 官网 下载即可 国内用户无法访问Anaconda 官网(被墙)，建议选择清华镜像替代。 安装完以后，在命令行界面输入 conda，会打印一个帮助文档。&#xA;帮助文档大概是说 conda 有哪些常用命令，比如下面这些：&#xA;$ conda help # 打印帮助文档 $ conda info # 查看conda信息，包括当前在哪个环境，环境路径，Python版本等信息 $ conda list # 列出conda下安装了哪些包 $ conda install [package_name] # 在conda环境中安装某个包 $ conda update [package_name] # 升级conda环境中的某个包 Note：后文仅专注介绍虚拟环境相关内容，更多内容请在 Anaconda 官方文档 中查看。&#xA;Python 环境分为本地环境(lcoal env) 和全局环境 (global env) 。为一个项目配置环境，应该配置本地环境；为本机所有项目配置环境，则应该配置全局环境。</description>
+      <description>学 Python 不应仅限于学编程，同样应该学习工程知识，比如虚拟环境、编码风格以及单元测试等。本文致力于介绍 Python 工程化所需的前置知识。
+⚠️ 注意：以下教程适用于 MacOS。
+部署环境 1. Anaconda Anaconda 是一个包管理器，它能让你方便的管理 Python 版本和包版本。并且， Anaconda 聚合了 Jupyter notebook，使其大受数据科学家和人工智能工程师的欢迎。下面我们来介绍如何用 Anaconda 管理我们的 Python 环境。
+如果你还没有 Anaconda，安装一个：
+海外用户直接访问 Anaconda 官网 下载即可 国内用户无法访问Anaconda 官网(被墙)，建议选择清华镜像替代。 安装完以后，在命令行界面输入 conda，会打印一个帮助文档。
+帮助文档大概是说 conda 有哪些常用命令，比如下面这些：
+$ conda help # 打印帮助文档 $ conda info # 查看conda信息，包括当前在哪个环境，环境路径，Python版本等信息 $ conda list # 列出conda下安装了哪些包 $ conda install [package_name] # 在conda环境中安装某个包 $ conda update [package_name] # 升级conda环境中的某个包 Note：后文仅专注介绍虚拟环境相关内容，更多内容请在 Anaconda 官方文档 中查看。
+Python 环境分为本地环境(lcoal env) 和全局环境 (global env) 。为一个项目配置环境，应该配置本地环境；为本机所有项目配置环境，则应该配置全局环境。</description>
     </item>
+    
     <item>
       <title>算法集萃</title>
       <link>http://luochang212.github.io/posts/algorithms/</link>
       <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
+      
       <guid>http://luochang212.github.io/posts/algorithms/</guid>
-      <description> 算法学习笔记，长期更新 GitHub 项目地址：python-tips/algorithms&#xA;排序 本节介绍各种排序算法的思路和特点，并提供了示例代码。&#xA;插入排序 直接插入排序 希尔排序 交换排序 冒泡排序 快速排序 选择排序 简单选择排序 堆排序 归并排序 二路归并排序 查看示例 排列组合 排列 组合 子集 查看示例 深度优先搜索DFS 广度优先搜索BFS 二叉搜索树 动态规划 × </description>
+      <description> 算法学习笔记，长期更新 GitHub 项目地址：python-tips/algorithms
+排序 本节介绍各种排序算法的思路和特点，并提供了示例代码。
+插入排序 直接插入排序 希尔排序 交换排序 冒泡排序 快速排序 选择排序 简单选择排序 堆排序 归并排序 二路归并排序 查看示例 排列组合 排列 组合 子集 查看示例 深度优先搜索DFS 广度优先搜索BFS 二叉搜索树 动态规划 × </description>
     </item>
+    
     <item>
       <title>用魔法打败魔法！</title>
       <link>http://luochang212.github.io/posts/chico_and_dico/</link>
       <pubDate>Fri, 21 Feb 2020 00:00:00 +0000</pubDate>
+      
       <guid>http://luochang212.github.io/posts/chico_and_dico/</guid>
-      <description>Chico 和 Dico 是两位魔术师，他们有一个经典魔术：根据任意四张牌猜第五张牌。但完成这个魔术并不需要任何魔术师的技巧，因为它完全建立在数学原理之上。只需要一点数学知识和充分的练习，你也能表演这个魔术！&#xA;GitHub 项目地址：chico-and-dico&#xA;Chico 和 Dico 的魔术 Chico 和 Dico 是两位魔术师，他们经常表演的一个魔术是这样的：Chico 将一副 52 张的扑克牌交给一位观众，让他随机抽取其中的 5 张。然后 Chico 将这 5 张牌按一定的顺序重新排列，再将其还给观众。上述整个过程 Dico 都是看不见的。然而，当观众按 Chico 排好的顺序依次展示前四张牌之后，Dico 却能准确地说出第五张牌是什么。&#xA;乍一看这个魔术很神奇。随机抽取 5 张牌，你能从前 4 张牌中看出第 5 张牌是什么吗？对于普通人来说，当然不可能。Chico 和 Dico 的秘诀在于 Chico 有机会将扑克重新排序。如果两人事先约定好某种协议，Chico 是有可能通过扑克排列的顺序，向 Dico 传递关于第 5 张牌的信息的。&#xA;关键在于如何实现这种协议。&#xA;数学模型 在进行分析之前，我们需要把 Chico 和 Dico 的魔术抽象成一个数学模型。&#xA;魔术本身已经提供了一些建模信息。我们可以假设一共有 n 张牌，抽取其中的 k 张。在对牌组进行某种排序之后，我们需要利用前 (k - j) 张牌的信息，推测后 j 张牌是什么。&#xA;现在我们有 n, j, k 三个变量，下面我们来进一步探究三个变量之间究竟服从何种关系。&#xA;首先，我们知道从 n 张牌中抽取 k 张牌一共有 C(n, k) 种组合方式，而 (k - j) 张牌的排列方式则有 A(n, k-j) 种。按照模型的要求，我们要用后者对前者的信息进行编码。根据信息论中的信源编码理论，至少有：C(n, k) &amp;lt;= A(n, k-j)。</description>
+      <description>Chico 和 Dico 是两位魔术师，他们有一个经典魔术：根据任意四张牌猜第五张牌。但完成这个魔术并不需要任何魔术师的技巧，因为它完全建立在数学原理之上。只需要一点数学知识和充分的练习，你也能表演这个魔术！
+GitHub 项目地址：chico-and-dico
+Chico 和 Dico 的魔术 Chico 和 Dico 是两位魔术师，他们经常表演的一个魔术是这样的：Chico 将一副 52 张的扑克牌交给一位观众，让他随机抽取其中的 5 张。然后 Chico 将这 5 张牌按一定的顺序重新排列，再将其还给观众。上述整个过程 Dico 都是看不见的。然而，当观众按 Chico 排好的顺序依次展示前四张牌之后，Dico 却能准确地说出第五张牌是什么。
+乍一看这个魔术很神奇。随机抽取 5 张牌，你能从前 4 张牌中看出第 5 张牌是什么吗？对于普通人来说，当然不可能。Chico 和 Dico 的秘诀在于 Chico 有机会将扑克重新排序。如果两人事先约定好某种协议，Chico 是有可能通过扑克排列的顺序，向 Dico 传递关于第 5 张牌的信息的。
+关键在于如何实现这种协议。
+数学模型 在进行分析之前，我们需要把 Chico 和 Dico 的魔术抽象成一个数学模型。
+魔术本身已经提供了一些建模信息。我们可以假设一共有 n 张牌，抽取其中的 k 张。在对牌组进行某种排序之后，我们需要利用前 (k - j) 张牌的信息，推测后 j 张牌是什么。
+现在我们有 n, j, k 三个变量，下面我们来进一步探究三个变量之间究竟服从何种关系。
+首先，我们知道从 n 张牌中抽取 k 张牌一共有 C(n, k) 种组合方式，而 (k - j) 张牌的排列方式则有 A(n, k-j) 种。按照模型的要求，我们要用后者对前者的信息进行编码。根据信息论中的信源编码理论，至少有：C(n, k) &amp;lt;= A(n, k-j)。</description>
     </item>
+    
     <item>
       <title>贝叶斯方法</title>
       <link>http://luochang212.github.io/posts/bayesian/</link>
       <pubDate>Fri, 31 Jan 2020 00:00:00 +0000</pubDate>
+      
       <guid>http://luochang212.github.io/posts/bayesian/</guid>
-      <description>统计学中有两大学派，频率学派和贝叶斯学派。频率派用总体信息和样本信息进行统计推断。而贝叶斯派除了使用以上两种信息之外，还使用先验信息进行统计推断。本文从数学原理和编程实践两个方向探究贝叶斯方法。&#xA;本文从数学原理和编程实践两个方面来介绍贝叶斯方法。&#xA;数学原理 贝叶斯理论包含很多内容。我们熟悉的利用先验分布推后验分布的方法被称为贝叶斯推理（Bayesian inference）。此外，还可以利用参数的后验分布的均值作为该参数的点估计，这种方法被称为贝叶斯估计（Bayesian estimation）。本文数学原理部分主要介绍贝叶斯推理和贝叶斯估计。&#xA;理论部分为六节，各节的主要内容如下。&#xA;章节 主要内容 第一节 用一个简单的实例，让大家对贝叶斯方法有一个形象的认识。 第二节 用一个复杂的实例，让大家对贝叶斯方法的术语有一个形象的认识。 第三节 介绍贝叶斯公式的事件形式及其推导。 第四节 介绍贝叶斯公式的密度函数形式及其推导。 第五节 介绍贝叶斯估计。 第六节 探索联合分布蕴含了哪些信息。 一、实例：癌症化验的准确率 下面请各位做题家们做一下你们最爱的经典老题 📖 题目 有两个可选的假设：&#xA;病人有癌症（cancer）、病人无癌症（normal）&#xA;可用数据来自化验结果：&#xA;正（+）、负（-）&#xA;有先验知识：&#xA;在所有人口中，患病率是 0.8%。对确实有病的患者的化验准确率为 98%，对确实无病的患者的化验准确率为 97%，总结如下：&#xA;$ P(cancer) = 0.008, P(normal) = 0.992 \\ P(+ | cancer) = 0.98, P(- | cancer) = 0.02 \\ P(+ | normal) = 0.03, P(- | normal) = 0.97 $&#xA;问题：&#xA;假定有一个新病人，化验结果为正，是否应将病人断定为有癌症？求后验概率 $ P(cancer | +) $。</description>
+      <description>统计学中有两大学派，频率学派和贝叶斯学派。频率派用总体信息和样本信息进行统计推断。而贝叶斯派除了使用以上两种信息之外，还使用先验信息进行统计推断。本文从数学原理和编程实践两个方向探究贝叶斯方法。
+本文从数学原理和编程实践两个方面来介绍贝叶斯方法。
+数学原理 贝叶斯理论包含很多内容。我们熟悉的利用先验分布推后验分布的方法被称为贝叶斯推理（Bayesian inference）。此外，还可以利用参数的后验分布的均值作为该参数的点估计，这种方法被称为贝叶斯估计（Bayesian estimation）。本文数学原理部分主要介绍贝叶斯推理和贝叶斯估计。
+理论部分为六节，各节的主要内容如下。
+章节 主要内容 第一节 用一个简单的实例，让大家对贝叶斯方法有一个形象的认识。 第二节 用一个复杂的实例，让大家对贝叶斯方法的术语有一个形象的认识。 第三节 介绍贝叶斯公式的事件形式及其推导。 第四节 介绍贝叶斯公式的密度函数形式及其推导。 第五节 介绍贝叶斯估计。 第六节 探索联合分布蕴含了哪些信息。 一、实例：癌症化验的准确率 下面请各位做题家们做一下你们最爱的经典老题 📖 题目 有两个可选的假设：
+病人有癌症（cancer）、病人无癌症（normal）
+可用数据来自化验结果：
+正（+）、负（-）
+有先验知识：
+在所有人口中，患病率是 0.8%。对确实有病的患者的化验准确率为 98%，对确实无病的患者的化验准确率为 97%，总结如下：
+$ P(cancer) = 0.008, P(normal) = 0.992 \\ P(+ | cancer) = 0.98, P(- | cancer) = 0.02 \\ P(+ | normal) = 0.03, P(- | normal) = 0.97 $
+问题：
+假定有一个新病人，化验结果为正，是否应将病人断定为有癌症？求后验概率 $ P(cancer | +) $。</description>
     </item>
+    
     <item>
       <title>我的 Python 不可能这么可爱</title>
       <link>http://luochang212.github.io/posts/python_tips/</link>
       <pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate>
+      
       <guid>http://luochang212.github.io/posts/python_tips/</guid>
-      <description>Python 学习笔记，如有错误，欢迎指正 GitHub 项目地址：python-tips&#xA;相关书籍推荐：&#xA;入门：《Python编程从入门到实践》 [豆瓣链接] 初级：《Python学习手册》(英文名 Learning Python) [豆瓣链接] 中级：《流畅的Python》[豆瓣链接] PS: 针对每个阶段，我推荐的是我认为最好的那本书。&#xA;语言基础 列表 本文从以下几个方面介绍列表：&#xA;创建 获取 修改 添加 插入 删除 排序 逆序 索引 循环 列表推导 切片 复制 去重 计数 查找 查看示例 字典 鉴于 JSON 在数据处理中的大量使用，字典的重要性也不言而喻。&#xA;本文从以下几个方面介绍字典：&#xA;创建 获取 更新 遍历 排序 删除 字典与JSON collections.defaultdict() setdefault() 查看示例 字符串 除了列表和字典，字符串也是 Python 中一种非常重要的数据类型。&#xA;基本操作 格式化 字符串方法 查看示例 函数 本文目录：&#xA;形参和实参 位置实参 关键字实参 默认值 位置实参和关键字实参的混用 默认值、位置实参和关键字实参的混用 传递任意数量的位置实参 传递任意数量的关键字实参 由字符串函数名生成可调用的函数 查看示例 异常 程序会发生异常，比如试图在计算中除0。Python 提供了强大的异常处理机制。</description>
+      <description>Python 学习笔记，如有错误，欢迎指正 GitHub 项目地址：python-tips
+相关书籍推荐：
+入门：《Python编程从入门到实践》 [豆瓣链接] 初级：《Python学习手册》(英文名 Learning Python) [豆瓣链接] 中级：《流畅的Python》[豆瓣链接] PS: 针对每个阶段，我推荐的是我认为最好的那本书。
+语言基础 列表 本文从以下几个方面介绍列表：
+创建 获取 修改 添加 插入 删除 排序 逆序 索引 循环 列表推导 切片 复制 去重 计数 查找 查看示例 字典 鉴于 JSON 在数据处理中的大量使用，字典的重要性也不言而喻。
+本文从以下几个方面介绍字典：
+创建 获取 更新 遍历 排序 删除 字典与JSON collections.defaultdict() setdefault() 查看示例 字符串 除了列表和字典，字符串也是 Python 中一种非常重要的数据类型。
+基本操作 格式化 字符串方法 查看示例 函数 本文目录：
+形参和实参 位置实参 关键字实参 默认值 位置实参和关键字实参的混用 默认值、位置实参和关键字实参的混用 传递任意数量的位置实参 传递任意数量的关键字实参 由字符串函数名生成可调用的函数 查看示例 异常 程序会发生异常，比如试图在计算中除0。Python 提供了强大的异常处理机制。</description>
     </item>
+    
   </channel>
 </rss>

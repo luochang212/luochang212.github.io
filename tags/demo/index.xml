@@ -1,19 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Demo on Chang Luo</title>
+    <title>demo on Chang Luo</title>
     <link>http://luochang212.github.io/tags/demo/</link>
-    <description>Recent content in Demo on Chang Luo</description>
+    <description>Recent content in demo on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 07 Oct 2019 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://luochang212.github.io/tags/demo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 07 Oct 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/tags/demo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Monaco Editor 入门指南</title>
       <link>http://luochang212.github.io/posts/monaco_editor_tutorial/</link>
       <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
+      
       <guid>http://luochang212.github.io/posts/monaco_editor_tutorial/</guid>
-      <description>Monaco Editor 是一款开源的在线代码编辑器。它是 VSCode 的浏览器版本，随着近年 VSCode 大热，Monaco Editor 也随之走红。目前虽未登上 Online Editor 领域的宝座，却也隐然有超越几位老前辈（指 CodeMirror, Ace 之流）之势。&#xA;GitHub项目链接：monaco-editor-demos&#xA;在学习 Monaco Editor 的过程中，我发现网络上的中文教程很少。为了填补这部分空白，我决定写一份入门教程，帮助初学者快速熟悉 Monaco Editor。通过阅读本文，你可以了解以下内容：&#xA;如何安装 如何搭建 如何调用常用 API 如何寻找学习资源 安装 新建项目文件夹，打开它：&#xA;$ mkdir my-application $ cd my-application 确保你已经下载了 npm，然后安装 Monaco Editor：&#xA;$ npm install monaco-editor 搭建 本文提供了搭建 Monaco Editor 的一种方法，此方法的特点是能够兼容文件系统。如果你希望为后续应用添加文件管理系统，那么参考本文的搭建流程可以避免不必要的踩坑。添加文件系统的具体方法参见 monaco-speech-editor。&#xA;有两种搭建方式可选：&#xA;方式一：直接从GitHub仓库下载。&#xA;方式二：手动搭建。&#xA;下面介绍了手动搭建的流程。&#xA;首先，在项目文件夹 my-application 下，新建一个名为 base 的文件夹。然后在该文件夹下新建 index.html, app.js, style.css:&#xA;$ mkdir base $ cd base $ touch index.</description>
+      <description>Monaco Editor 是一款开源的在线代码编辑器。它是 VSCode 的浏览器版本，随着近年 VSCode 大热，Monaco Editor 也随之走红。目前虽未登上 Online Editor 领域的宝座，却也隐然有超越几位老前辈（指 CodeMirror, Ace 之流）之势。
+GitHub项目链接：monaco-editor-demos
+在学习 Monaco Editor 的过程中，我发现网络上的中文教程很少。为了填补这部分空白，我决定写一份入门教程，帮助初学者快速熟悉 Monaco Editor。通过阅读本文，你可以了解以下内容：
+如何安装 如何搭建 如何调用常用 API 如何寻找学习资源 安装 新建项目文件夹，打开它：
+$ mkdir my-application $ cd my-application 确保你已经下载了 npm，然后安装 Monaco Editor：
+$ npm install monaco-editor 搭建 本文提供了搭建 Monaco Editor 的一种方法，此方法的特点是能够兼容文件系统。如果你希望为后续应用添加文件管理系统，那么参考本文的搭建流程可以避免不必要的踩坑。添加文件系统的具体方法参见 monaco-speech-editor。
+有两种搭建方式可选：
+方式一：直接从GitHub仓库下载。
+方式二：手动搭建。
+下面介绍了手动搭建的流程。
+首先，在项目文件夹 my-application 下，新建一个名为 base 的文件夹。然后在该文件夹下新建 index.html, app.js, style.css:
+$ mkdir base $ cd base $ touch index.</description>
     </item>
+    
   </channel>
 </rss>
