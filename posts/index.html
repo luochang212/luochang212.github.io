@@ -317,9 +317,10 @@
       <div class="tab">
         <button id="default-tab" class="tablinks" onclick="openItem(event, 'Resources')">Resources</button>
         <button class="tablinks" onclick="openItem(event, 'netease-player')">Music</button>
-        <button class="tablinks" onclick="openItem(event, 'Video-player')">Video</button>
+        <button class="tablinks" onclick="openItem(event, 'video-player')">Video</button>
         <button class="tablinks" onclick="openItem(event, 'gallery')">Gallery</button>
         <button class="tablinks" onclick="openItem(event, 'gadget')">Gadget</button>
+        <button class="tablinks" onclick="openItem(event, 'categories')">Cats</button>
       </div>
 
       <div id="Resources" class="tabcontent">
@@ -332,7 +333,7 @@
           frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=450></iframe>
       </div>
 
-      <div id="Video-player" class="tabcontent">
+      <div id="video-player" class="tabcontent">
 
         <div id="video1">
           <iframe src="about:blank"
@@ -375,6 +376,11 @@
 
       <div id="gadget" class="tabcontent">
         <iframe src="about:blank" data-src="/gadget/" frameborder="0" height="560" width="100%"
+          scrolling="yes"></iframe>
+      </div>
+
+      <div id="categories" class="tabcontent">
+        <iframe src="about:blank" data-src="/categories/" frameborder="0" height="560" width="100%"
           scrolling="yes"></iframe>
       </div>
 
@@ -466,6 +472,15 @@
         
 <li>
   <span class="list__title--small">
+    <a href="/posts/home_network_topology/" >家庭网络拓扑</a>
+      
+      <time class="pull-right hidden-tablet">Mar 2, 2024</time>
+      
+  </span>
+</li>
+
+<li>
+  <span class="list__title--small">
     <a href="/posts/graph_algorithms/" >图算法笔记</a>
       
       <time class="pull-right hidden-tablet">Feb 25, 2024</time>
@@ -502,7 +517,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/posts/home_inventory_list/" >居家物资清单</a>
+    <a href="/posts/inventory_list/" >居家物资清单</a>
       
       <time class="pull-right hidden-tablet">Jan 1, 2024</time>
       

@@ -6,7 +6,23 @@
     <description>Recent content in Posts on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 25 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 02 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>家庭网络拓扑</title>
+      <link>http://luochang212.github.io/posts/home_network_topology/</link>
+      <pubDate>Sat, 02 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/posts/home_network_topology/</guid>
+      <description>本文介绍家庭局域网数据传输过程
+常见家庭网络拓扑如下：
+flowchart LR A[外网] --&gt;|光纤入户| B[光猫] --&gt;|路由器WAN| C[路由器] --&gt; D[交换机] D --&gt;|交换机LAN1| E[电脑] D --&gt;|交换机LAN2| F[笔记本] D--&gt;|交换机LAN3| G[电视机盒子] 现代的 路由器 和 交换机 其实是一个设备，统称路由器。为了便于理解，我们还是把它们拆开。
+一、局域网设备 光猫、路由器、交换机 的连接方法。
+1）光猫 光猫一般放在弱电箱，它有一个 WAN 口和多个 LAN 口。我们把路由器插在其中一个 LAN 口上，假设插的是 LAN1
+WAN LAN1 LAN2 LAN3 ... 接外网网线 接路由器 空闲 空闲 空闲 2）光猫 接 路由器 然后将网线从光猫 LAN1 接到路由器 WAN
+WAN LAN 接光猫 LAN1 接交换机（为了便于理解，虚拟出来的 LAN，实际不存在） 3）路由器 接 交换机 最后将网线从路由器 LAN 接到交换机 WAN
+WAN LAN1 LAN2 LAN3 .</description>
+    </item>
+    
     <item>
       <title>图算法笔记</title>
       <link>http://luochang212.github.io/posts/graph_algorithms/</link>
@@ -64,10 +80,10 @@ torch.randn((2, 5), requires_grad=True) &amp;gt; tensor([[ 0.4075, 1.</descripti
     
     <item>
       <title>居家物资清单</title>
-      <link>http://luochang212.github.io/posts/home_inventory_list/</link>
+      <link>http://luochang212.github.io/posts/inventory_list/</link>
       <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/home_inventory_list/</guid>
+      <guid>http://luochang212.github.io/posts/inventory_list/</guid>
       <description>Build your home from scratch.
 GitHub 项目地址：new_home
 一、随身物品 身份证 手机 钥匙 钱包 脑子 二、文具 通勤双肩包 雨伞 拍纸本 中性笔 铅笔 毛笔 秀丽笔 少量专业书籍 三、生活用品 衣服 衣架 毛巾 * 2 洗澡用 垫枕头上 牙具 牙杯 牙膏 牙刷 鞋 拖鞋 运动鞋 水杯： 工位：带盖水杯 家用：陶瓷水杯 脸盆 指甲刀 剃须刀 剪刀 四、床上用品 被子 枕头 床单 床笠 可爱靠枕 五、电子产品 手机 手机支架 手表 耳机 平板 树莓派 Switch Mac mini 笔记本电脑 笔记本电脑支架 外接显示器 外接显示器支架 鼠标 鼠标垫 拓展坞 移动硬盘 移动WIFI 游戏手柄 自拍杆 充电宝 充电器 充电头 充电线 插线板 六、家具 桌子 镜子 阅读灯 氛围灯 拖把 垃圾桶 桶装矿泉水倒立支架 七、电器 体重秤 烧水壶 智能音箱 桌面时钟（带温度湿度功能） 桌面风扇 暖风机 空气净化器 八、消耗品 洗衣液 沐浴露 洗发液 洗面奶 面霜 唇膏 抽纸 酒精湿巾 垃圾袋 保鲜袋 抹布 九、食品 调味料 基础 盐 生抽 / 蒸鱼豉油 / 寿喜烧酱汁 / 照烧汁 食用油 / 香油 / 黄油 生粉 / 粘米粉 / 白凉粉 / 面包粉 辣椒 / 二荆条 / 辣椒面 / 辣椒酱 / 泡椒 白砂糖 / 冰糖 / 红糖 生姜 / 泡仔姜 蒜 / 蒜泥 / 香蒜酱 / 青蒜酱 / 黑蒜酱 / 糖蒜 香醋 / 米醋 / 白醋 咖喱块 / 咖喱粉 进阶 蜂蜜 / 蜂蜜芥末酱 黑胡椒 / 白胡椒 / 花椒 花生酱 八角 月桂叶 蚝油 麻酱 牛油火锅底料 柠檬 / 青柠 药膳 当归 党参 黄芪 食材 主食 大米 / 小米 / 莲子 / 薏米 / 黑米 红豆 / 黄豆 / 绿豆 / 黑豆 粉丝 / 米线 / 河粉 挂面 / 龙须面 / 车仔面 / 荞麦面 / 刀削面 / 方便面 / 意大利面 水饺 / 馄饨 地瓜 / 土豆 麦片 / 藕粉 / 芝麻糊 茶泡饭速食包 / 真空装玉米 / 真空装卷饼 佐食 牛奶 / 酸奶 鸡蛋 / 咸鸭蛋 / 溏心蛋 / 皮蛋 茶叶 / 咖啡 豆腐 榨菜 / 香菜心 / 脆瓜 / 脆萝卜 / 海带丝 香菇肉酱 / 红烧肉罐头 / 咖喱牛肉罐头 / 鱼罐头 / 午餐肉罐头 猪肉松 / 鱼肉松 板鸭 / 腊肉 蛋挞皮 / 蛋挞液 盐酥鸡 / 唐扬鸡块 白斩鸡 / 烤鸭 冰鲜披萨 蔬菜 小白菜 / 娃娃菜 空心菜 / 地瓜叶 包菜 西红柿 胡萝卜 / 白萝卜 黄瓜 / 南瓜 / 西葫芦 西兰花 笋 芹菜 / 香菜 / 韭菜 四季豆 / 豌豆 / 毛豆 香菇 / 红菇 海带 / 紫菜 肉类 鸡肉 / 鸭肉 / 鸽子肉 猪肉 / 牛肉 / 羊肉 鱼 / 龙利鱼排 / 鱿鱼圈 / 虾仁 鱼丸 / 牛肉丸 牛排 / 汉堡肉 / 火腿 水果 苹果 橘子 橙子 香蕉 梨 芒果 椰子 香瓜 西瓜 奇异果 牛油果 蓝莓 / 草莓 葡萄 速食 面包 / 华夫饼 饼干 / 小熊饼干 / 趣多多 / 奥利奥 / 脆脆鲨 蛋糕 / 提拉米苏 / 巧克力派 / 蛋黄派 混合坚果 零食 巧克力 冰淇淋 / 雪糕 青团 / 糯米糍 / 年糕 无骨鸭爪 / 鸭脖 猪肉干 / 牛肉干 / 肉脯干 饮料 可乐 雪碧 菠萝啤 / 米酒 / 桂花酿 橙汁 椰汁 咸柠七 十、药品 口罩 体温计 药箱 感冒 藿香正气胶囊 999感冒灵颗粒 化痰止咳 川贝枇杷颗粒 乙酰半胱氨酸片 咽喉肿痛 咽喉清颗粒 发热流感 布洛芬（散利痛 / 布洛芬缓释胶囊） 复方氨酚烷胺胶囊 复方对乙酰氨基酚片(Ⅱ) 抗生素（抗细菌） 头孢 阿莫西林（青霉素） 罗红霉素分散片 盐酸左氧氟沙星片 [肠胃炎可用] 诺氟沙星胶囊 盐酸莫西沙星片 抗病毒 磷酸奥司他韦胶囊 唇炎 单乳膏 [上海市皮肤科医院有售] 抗过敏 氯雷他定 蚊虫叮咬 999皮炎平 消炎 莫匹罗星软膏（百多邦） 消毒 碘伏 酒精棉球 包扎 创可贴 纱布片 / 绷带 棉签 医用胶带 医用剪刀 医用镊子 十一、工具 螺丝刀 卷尺 十二、厨具 中式炒锅 电饭煲 电磁炉 碗 / 盘子 勺子 / 筷子 菜刀 菜板 茶漏 十三、运动用品 瑜伽垫 俯卧撑支架 双节棍 长棍 泳镜 泳帽 泳裤 十四、保暖用品 手套 护膝 十五、证件 护照 驾驶证 银行卡 其他身份材料 十六、XOX 拍立得 To签色纸 应援棒 参考：</description>
@@ -105,7 +121,7 @@ packaging_tutorial: 项目文件夹 LICENSE: 开源协议，可由 GitHub 生成
       <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/posts/hive_sql_note/</guid>
-      <description>什么？SQL 还需要注释？SQL 会自己注释自己的，对吧
+      <description>SQL 还需要注释？SQL 会自己注释自己的，对吧
 1. 表操作 1.1 建表 CREATE TABLE [DATABASE].[TABLE_NAME] ( `id` BIGINT COMMENT &amp;#39;学号&amp;#39;, name STRING COMMENT &amp;#39;姓名&amp;#39;, ttl_score DOUBLE COMMENT &amp;#39;总分&amp;#39; ) COMMENT &amp;#39;枝江中学五年级学生成绩明细表&amp;#39; PARTITIONED BY (day STRING COMMENT &amp;#39;day&amp;#39;, hour STRING COMMENT &amp;#39;hour&amp;#39;) ROW FORMAT [row_format] STORED AS [file_format]; Note: 了解更多，请参考 CREATE TABLE with Hive format
 1.2 删表 DROP TABLE [DATABASE].[TABLE_NAME]; DROP TABLE IF EXISTS [DATABASE].[TABLE_NAME]; 1.3 在原表上新增列 ALTER TABLE [DATABASE].[TABLE_NAME] ADD COLUMNS ( sub_score ARRAY&amp;lt;DOUBLE&amp;gt; COMMENT &amp;#39;分科成绩&amp;#39;, sub_score_map MAP&amp;lt;STRING,DOUBLE&amp;gt; COMMENT &amp;#39;分科成绩map&amp;#39;, `rank` BIGINT COMMENT &amp;#39;年段排名&amp;#39;, update_time STRING COMMENT &amp;#39;更新时间&amp;#39; ); 1.</description>
     </item>
@@ -236,7 +252,11 @@ Python 环境分为本地环境(lcoal env) 和全局环境 (global env) 。为�
       <guid>http://luochang212.github.io/posts/algorithms/</guid>
       <description> 算法学习笔记，长期更新 GitHub 项目地址：python-tips/algorithms
 排序 本节介绍各种排序算法的思路和特点，并提供了示例代码。
-插入排序 直接插入排序 希尔排序 交换排序 冒泡排序 快速排序 选择排序 简单选择排序 堆排序 归并排序 二路归并排序 查看示例 排列组合 排列 组合 子集 查看示例 深度优先搜索DFS 广度优先搜索BFS 二叉搜索树 动态规划 × </description>
+插入排序 直接插入排序 希尔排序 交换排序 冒泡排序 快速排序 选择排序 简单选择排序 堆排序 归并排序 二路归并排序 查看示例 排列组合 排列 组合 子集 查看示例 深度优先搜索DFS 施工中
+广度优先搜索BFS 施工中
+二叉搜索树 施工中
+动态规划 施工中
+× </description>
     </item>
     
     <item>

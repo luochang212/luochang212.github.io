@@ -317,9 +317,10 @@
       <div class="tab">
         <button id="default-tab" class="tablinks" onclick="openItem(event, 'Resources')">Resources</button>
         <button class="tablinks" onclick="openItem(event, 'netease-player')">Music</button>
-        <button class="tablinks" onclick="openItem(event, 'Video-player')">Video</button>
+        <button class="tablinks" onclick="openItem(event, 'video-player')">Video</button>
         <button class="tablinks" onclick="openItem(event, 'gallery')">Gallery</button>
         <button class="tablinks" onclick="openItem(event, 'gadget')">Gadget</button>
+        <button class="tablinks" onclick="openItem(event, 'categories')">Cats</button>
       </div>
 
       <div id="Resources" class="tabcontent">
@@ -332,7 +333,7 @@
           frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=450></iframe>
       </div>
 
-      <div id="Video-player" class="tabcontent">
+      <div id="video-player" class="tabcontent">
 
         <div id="video1">
           <iframe src="about:blank"
@@ -375,6 +376,11 @@
 
       <div id="gadget" class="tabcontent">
         <iframe src="about:blank" data-src="/gadget/" frameborder="0" height="560" width="100%"
+          scrolling="yes"></iframe>
+      </div>
+
+      <div id="categories" class="tabcontent">
+        <iframe src="about:blank" data-src="/categories/" frameborder="0" height="560" width="100%"
           scrolling="yes"></iframe>
       </div>
 
@@ -466,36 +472,18 @@
         
 <li>
   <span class="list__title--small">
-    <a href="/posts/causal_inference/" >因果推断笔记</a>
-      
-      <time class="pull-right hidden-tablet">Jul 16, 2022</time>
-      
-  </span>
-</li>
-
-<li>
-  <span class="list__title--small">
-    <a href="/posts/learning_statistics/" >统计学补完计划</a>
-      
-      <time class="pull-right hidden-tablet">May 1, 2021</time>
-      
-  </span>
-</li>
-
-<li>
-  <span class="list__title--small">
-    <a href="/posts/poisson/" >泊松分布的仿真及可视化</a>
-      
-      <time class="pull-right hidden-tablet">Sep 19, 2020</time>
-      
-  </span>
-</li>
-
-<li>
-  <span class="list__title--small">
     <a href="/posts/network_performance_analysis/" >排队论在网络性能分析中的应用</a>
       
       <time class="pull-right hidden-tablet">Jul 4, 2019</time>
+      
+  </span>
+</li>
+
+<li>
+  <span class="list__title--small">
+    <a href="/posts/python_math_problem/" >Python 解置换群问题</a>
+      
+      <time class="pull-right hidden-tablet">Mar 16, 2019</time>
       
   </span>
 </li>

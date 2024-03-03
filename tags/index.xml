@@ -6,27 +6,99 @@
     <description>Recent content in Tags on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 25 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 02 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Note</title>
-      <link>http://luochang212.github.io/tags/note/</link>
+      <title>HTTP</title>
+      <link>http://luochang212.github.io/tags/http/</link>
+      <pubDate>Sat, 02 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/tags/http/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web</title>
+      <link>http://luochang212.github.io/tags/web/</link>
+      <pubDate>Sat, 02 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/tags/web/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Community</title>
+      <link>http://luochang212.github.io/tags/community/</link>
       <pubDate>Sun, 25 Feb 2024 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/tags/note/</guid>
+      <guid>http://luochang212.github.io/tags/community/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Graph</title>
+      <link>http://luochang212.github.io/tags/graph/</link>
+      <pubDate>Sun, 25 Feb 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/tags/graph/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Install</title>
+      <link>http://luochang212.github.io/tags/install/</link>
+      <pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/tags/install/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Raspberry Pi 5</title>
+      <link>http://luochang212.github.io/tags/raspberry-pi-5/</link>
+      <pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/tags/raspberry-pi-5/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>D2L</title>
+      <link>http://luochang212.github.io/tags/d2l/</link>
+      <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/tags/d2l/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Python</title>
       <link>http://luochang212.github.io/tags/python/</link>
-      <pubDate>Sun, 25 Feb 2024 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>home</title>
+      <title>Bash</title>
+      <link>http://luochang212.github.io/tags/bash/</link>
+      <pubDate>Sat, 03 Feb 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/tags/bash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Operations</title>
+      <link>http://luochang212.github.io/tags/operations/</link>
+      <pubDate>Sat, 03 Feb 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/tags/operations/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Home</title>
       <link>http://luochang212.github.io/tags/home/</link>
       <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
       
@@ -35,38 +107,47 @@
     </item>
     
     <item>
-      <title>list</title>
-      <link>http://luochang212.github.io/tags/list/</link>
+      <title>Shopping-List</title>
+      <link>http://luochang212.github.io/tags/shopping-list/</link>
       <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/tags/list/</guid>
+      <guid>http://luochang212.github.io/tags/shopping-list/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>DT</title>
-      <link>http://luochang212.github.io/tags/dt/</link>
+      <title>Note</title>
+      <link>http://luochang212.github.io/tags/note/</link>
+      <pubDate>Sat, 11 Nov 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/tags/note/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Package</title>
+      <link>http://luochang212.github.io/tags/package/</link>
       <pubDate>Wed, 18 Oct 2023 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/tags/dt/</guid>
+      <guid>http://luochang212.github.io/tags/package/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>sql</title>
-      <link>http://luochang212.github.io/tags/sql/</link>
+      <title>Hive-SQL</title>
+      <link>http://luochang212.github.io/tags/hive-sql/</link>
       <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/tags/sql/</guid>
+      <guid>http://luochang212.github.io/tags/hive-sql/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>tutorial</title>
-      <link>http://luochang212.github.io/tags/tutorial/</link>
-      <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
+      <title>Causality</title>
+      <link>http://luochang212.github.io/tags/causality/</link>
+      <pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/tags/tutorial/</guid>
+      <guid>http://luochang212.github.io/tags/causality/</guid>
       <description></description>
     </item>
     
@@ -80,29 +161,11 @@
     </item>
     
     <item>
-      <title>Statistics</title>
-      <link>http://luochang212.github.io/tags/statistics/</link>
-      <pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/tags/statistics/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>APP</title>
       <link>http://luochang212.github.io/tags/app/</link>
       <pubDate>Sun, 03 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/tags/app/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Bash</title>
-      <link>http://luochang212.github.io/tags/bash/</link>
-      <pubDate>Sun, 03 Jul 2022 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/tags/bash/</guid>
       <description></description>
     </item>
     
@@ -125,7 +188,7 @@
     </item>
     
     <item>
-      <title>poisson distribution</title>
+      <title>Poisson-Distribution</title>
       <link>http://luochang212.github.io/tags/poisson-distribution/</link>
       <pubDate>Sat, 19 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -134,16 +197,7 @@
     </item>
     
     <item>
-      <title>Hadoop</title>
-      <link>http://luochang212.github.io/tags/hadoop/</link>
-      <pubDate>Sat, 25 Jul 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/tags/hadoop/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Hadoop streaming</title>
+      <title>Hadoop-Streaming</title>
       <link>http://luochang212.github.io/tags/hadoop-streaming/</link>
       <pubDate>Sat, 25 Jul 2020 00:00:00 +0000</pubDate>
       
@@ -161,7 +215,7 @@
     </item>
     
     <item>
-      <title>practice</title>
+      <title>Practice</title>
       <link>http://luochang212.github.io/tags/practice/</link>
       <pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate>
       
@@ -170,16 +224,7 @@
     </item>
     
     <item>
-      <title>algorithm</title>
-      <link>http://luochang212.github.io/tags/algorithm/</link>
-      <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/tags/algorithm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>combinatorics</title>
+      <title>Combinatorics</title>
       <link>http://luochang212.github.io/tags/combinatorics/</link>
       <pubDate>Fri, 21 Feb 2020 00:00:00 +0000</pubDate>
       
@@ -188,7 +233,7 @@
     </item>
     
     <item>
-      <title>number theory</title>
+      <title>Number-Theory</title>
       <link>http://luochang212.github.io/tags/number-theory/</link>
       <pubDate>Fri, 21 Feb 2020 00:00:00 +0000</pubDate>
       
@@ -224,7 +269,7 @@
     </item>
     
     <item>
-      <title>tips</title>
+      <title>Tips&#34;</title>
       <link>http://luochang212.github.io/tags/tips/</link>
       <pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate>
       
@@ -242,7 +287,7 @@
     </item>
     
     <item>
-      <title>search engine</title>
+      <title>Search-Engine</title>
       <link>http://luochang212.github.io/tags/search-engine/</link>
       <pubDate>Thu, 24 Oct 2019 00:00:00 +0000</pubDate>
       
@@ -251,7 +296,7 @@
     </item>
     
     <item>
-      <title>demo</title>
+      <title>DEMO</title>
       <link>http://luochang212.github.io/tags/demo/</link>
       <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
       
@@ -260,7 +305,7 @@
     </item>
     
     <item>
-      <title>Monaco editor</title>
+      <title>Monaco-Editor</title>
       <link>http://luochang212.github.io/tags/monaco-editor/</link>
       <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
       
@@ -269,7 +314,7 @@
     </item>
     
     <item>
-      <title>web speech API</title>
+      <title>Web-Speech-API</title>
       <link>http://luochang212.github.io/tags/web-speech-api/</link>
       <pubDate>Thu, 22 Aug 2019 00:00:00 +0000</pubDate>
       
@@ -278,7 +323,7 @@
     </item>
     
     <item>
-      <title>network performance analysis</title>
+      <title>Network-Performance-Analysis</title>
       <link>http://luochang212.github.io/tags/network-performance-analysis/</link>
       <pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
       
@@ -287,7 +332,7 @@
     </item>
     
     <item>
-      <title>poisson process</title>
+      <title>Poisson-Process</title>
       <link>http://luochang212.github.io/tags/poisson-process/</link>
       <pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
       
@@ -296,7 +341,7 @@
     </item>
     
     <item>
-      <title>queuing theory</title>
+      <title>Queuing-Theory</title>
       <link>http://luochang212.github.io/tags/queuing-theory/</link>
       <pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
       
@@ -305,7 +350,7 @@
     </item>
     
     <item>
-      <title>beef</title>
+      <title>Beef</title>
       <link>http://luochang212.github.io/tags/beef/</link>
       <pubDate>Tue, 02 Jul 2019 00:00:00 +0000</pubDate>
       
@@ -314,7 +359,7 @@
     </item>
     
     <item>
-      <title>chicken</title>
+      <title>Chicken</title>
       <link>http://luochang212.github.io/tags/chicken/</link>
       <pubDate>Tue, 02 Jul 2019 00:00:00 +0000</pubDate>
       
@@ -323,7 +368,7 @@
     </item>
     
     <item>
-      <title>pork</title>
+      <title>Pork</title>
       <link>http://luochang212.github.io/tags/pork/</link>
       <pubDate>Tue, 02 Jul 2019 00:00:00 +0000</pubDate>
       
@@ -341,7 +386,7 @@
     </item>
     
     <item>
-      <title>Agent based model</title>
+      <title>Agent-Based-Model</title>
       <link>http://luochang212.github.io/tags/agent-based-model/</link>
       <pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
       
@@ -350,16 +395,7 @@
     </item>
     
     <item>
-      <title>modelling</title>
-      <link>http://luochang212.github.io/tags/modelling/</link>
-      <pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/tags/modelling/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>nature system</title>
+      <title>Nature-System</title>
       <link>http://luochang212.github.io/tags/nature-system/</link>
       <pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
       
@@ -368,7 +404,7 @@
     </item>
     
     <item>
-      <title>efficient</title>
+      <title>Efficient</title>
       <link>http://luochang212.github.io/tags/efficient/</link>
       <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
       
@@ -377,7 +413,7 @@
     </item>
     
     <item>
-      <title>plan</title>
+      <title>Plan</title>
       <link>http://luochang212.github.io/tags/plan/</link>
       <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
       
@@ -386,7 +422,7 @@
     </item>
     
     <item>
-      <title>to-do list</title>
+      <title>To-Do-List</title>
       <link>http://luochang212.github.io/tags/to-do-list/</link>
       <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
       
@@ -395,7 +431,7 @@
     </item>
     
     <item>
-      <title>layout</title>
+      <title>Layout</title>
       <link>http://luochang212.github.io/tags/layout/</link>
       <pubDate>Fri, 10 May 2019 21:43:09 +0100</pubDate>
       
@@ -404,16 +440,7 @@
     </item>
     
     <item>
-      <title>pycharm</title>
-      <link>http://luochang212.github.io/tags/pycharm/</link>
-      <pubDate>Fri, 10 May 2019 21:43:09 +0100</pubDate>
-      
-      <guid>http://luochang212.github.io/tags/pycharm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>pyqt5</title>
+      <title>PyQt5</title>
       <link>http://luochang212.github.io/tags/pyqt5/</link>
       <pubDate>Fri, 10 May 2019 21:43:09 +0100</pubDate>
       
@@ -422,7 +449,7 @@
     </item>
     
     <item>
-      <title>sidebar</title>
+      <title>Sidebar</title>
       <link>http://luochang212.github.io/tags/sidebar/</link>
       <pubDate>Fri, 10 May 2019 21:43:09 +0100</pubDate>
       
@@ -431,16 +458,7 @@
     </item>
     
     <item>
-      <title>data visualization</title>
-      <link>http://luochang212.github.io/tags/data-visualization/</link>
-      <pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/tags/data-visualization/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>jupyter notebook</title>
+      <title>Jupyter-Notebook</title>
       <link>http://luochang212.github.io/tags/jupyter-notebook/</link>
       <pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
       
@@ -449,7 +467,7 @@
     </item>
     
     <item>
-      <title>weibo</title>
+      <title>WeiBo</title>
       <link>http://luochang212.github.io/tags/weibo/</link>
       <pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
       
@@ -458,7 +476,16 @@
     </item>
     
     <item>
-      <title>google maps</title>
+      <title>Google-API</title>
+      <link>http://luochang212.github.io/tags/google-api/</link>
+      <pubDate>Wed, 10 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/tags/google-api/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Google-Maps</title>
       <link>http://luochang212.github.io/tags/google-maps/</link>
       <pubDate>Wed, 10 Apr 2019 00:00:00 +0000</pubDate>
       
@@ -467,7 +494,7 @@
     </item>
     
     <item>
-      <title>abstract algebra</title>
+      <title>Abstract-Algebra</title>
       <link>http://luochang212.github.io/tags/abstract-algebra/</link>
       <pubDate>Sat, 16 Mar 2019 00:00:00 +0000</pubDate>
       
@@ -476,7 +503,7 @@
     </item>
     
     <item>
-      <title>permutation</title>
+      <title>Permutation</title>
       <link>http://luochang212.github.io/tags/permutation/</link>
       <pubDate>Sat, 16 Mar 2019 00:00:00 +0000</pubDate>
       
@@ -485,16 +512,25 @@
     </item>
     
     <item>
-      <title>ant colony qlgorithm</title>
-      <link>http://luochang212.github.io/tags/ant-colony-qlgorithm/</link>
-      <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
+      <title>PyCharm</title>
+      <link>http://luochang212.github.io/tags/pycharm/</link>
+      <pubDate>Sat, 16 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/tags/ant-colony-qlgorithm/</guid>
+      <guid>http://luochang212.github.io/tags/pycharm/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>markowitz model</title>
+      <title>Ant-Colony-Algorithm</title>
+      <link>http://luochang212.github.io/tags/ant-colony-algorithm/</link>
+      <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/tags/ant-colony-algorithm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Markowitz-Model</title>
       <link>http://luochang212.github.io/tags/markowitz-model/</link>
       <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
       
@@ -503,7 +539,7 @@
     </item>
     
     <item>
-      <title>optimization</title>
+      <title>Optimization</title>
       <link>http://luochang212.github.io/tags/optimization/</link>
       <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
       
@@ -512,7 +548,7 @@
     </item>
     
     <item>
-      <title>portfolio</title>
+      <title>Portfolio</title>
       <link>http://luochang212.github.io/tags/portfolio/</link>
       <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
       
@@ -521,11 +557,20 @@
     </item>
     
     <item>
-      <title>literature</title>
+      <title>Literature</title>
       <link>http://luochang212.github.io/tags/literature/</link>
       <pubDate>Tue, 11 Jul 2017 00:00:00 +0000</pubDate>
       
       <guid>http://luochang212.github.io/tags/literature/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Movie</title>
+      <link>http://luochang212.github.io/tags/movie/</link>
+      <pubDate>Tue, 11 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/tags/movie/</guid>
       <description></description>
     </item>
     

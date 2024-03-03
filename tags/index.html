@@ -317,9 +317,10 @@
       <div class="tab">
         <button id="default-tab" class="tablinks" onclick="openItem(event, 'Resources')">Resources</button>
         <button class="tablinks" onclick="openItem(event, 'netease-player')">Music</button>
-        <button class="tablinks" onclick="openItem(event, 'Video-player')">Video</button>
+        <button class="tablinks" onclick="openItem(event, 'video-player')">Video</button>
         <button class="tablinks" onclick="openItem(event, 'gallery')">Gallery</button>
         <button class="tablinks" onclick="openItem(event, 'gadget')">Gadget</button>
+        <button class="tablinks" onclick="openItem(event, 'categories')">Cats</button>
       </div>
 
       <div id="Resources" class="tabcontent">
@@ -332,7 +333,7 @@
           frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=450></iframe>
       </div>
 
-      <div id="Video-player" class="tabcontent">
+      <div id="video-player" class="tabcontent">
 
         <div id="video1">
           <iframe src="about:blank"
@@ -375,6 +376,11 @@
 
       <div id="gadget" class="tabcontent">
         <iframe src="about:blank" data-src="/gadget/" frameborder="0" height="560" width="100%"
+          scrolling="yes"></iframe>
+      </div>
+
+      <div id="categories" class="tabcontent">
+        <iframe src="about:blank" data-src="/categories/" frameborder="0" height="560" width="100%"
           scrolling="yes"></iframe>
       </div>
 
@@ -466,9 +472,63 @@
         
 <li>
   <span class="list__title--small">
-    <a href="/tags/note/" >Note</a>
+    <a href="/tags/http/" >HTTP</a>
+      
+      <time class="pull-right hidden-tablet">Mar 2, 2024</time>
+      
+  </span>
+</li>
+
+<li>
+  <span class="list__title--small">
+    <a href="/tags/web/" >Web</a>
+      
+      <time class="pull-right hidden-tablet">Mar 2, 2024</time>
+      
+  </span>
+</li>
+
+<li>
+  <span class="list__title--small">
+    <a href="/tags/community/" >Community</a>
       
       <time class="pull-right hidden-tablet">Feb 25, 2024</time>
+      
+  </span>
+</li>
+
+<li>
+  <span class="list__title--small">
+    <a href="/tags/graph/" >Graph</a>
+      
+      <time class="pull-right hidden-tablet">Feb 25, 2024</time>
+      
+  </span>
+</li>
+
+<li>
+  <span class="list__title--small">
+    <a href="/tags/install/" >Install</a>
+      
+      <time class="pull-right hidden-tablet">Feb 24, 2024</time>
+      
+  </span>
+</li>
+
+<li>
+  <span class="list__title--small">
+    <a href="/tags/raspberry-pi-5/" >Raspberry Pi 5</a>
+      
+      <time class="pull-right hidden-tablet">Feb 24, 2024</time>
+      
+  </span>
+</li>
+
+<li>
+  <span class="list__title--small">
+    <a href="/tags/d2l/" >D2L</a>
+      
+      <time class="pull-right hidden-tablet">Feb 9, 2024</time>
       
   </span>
 </li>
@@ -477,14 +537,32 @@
   <span class="list__title--small">
     <a href="/tags/python/" >Python</a>
       
-      <time class="pull-right hidden-tablet">Feb 25, 2024</time>
+      <time class="pull-right hidden-tablet">Feb 9, 2024</time>
       
   </span>
 </li>
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/home/" >home</a>
+    <a href="/tags/bash/" >Bash</a>
+      
+      <time class="pull-right hidden-tablet">Feb 3, 2024</time>
+      
+  </span>
+</li>
+
+<li>
+  <span class="list__title--small">
+    <a href="/tags/operations/" >Operations</a>
+      
+      <time class="pull-right hidden-tablet">Feb 3, 2024</time>
+      
+  </span>
+</li>
+
+<li>
+  <span class="list__title--small">
+    <a href="/tags/home/" >Home</a>
       
       <time class="pull-right hidden-tablet">Jan 1, 2024</time>
       
@@ -493,7 +571,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/list/" >list</a>
+    <a href="/tags/shopping-list/" >Shopping-List</a>
       
       <time class="pull-right hidden-tablet">Jan 1, 2024</time>
       
@@ -502,7 +580,16 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/dt/" >DT</a>
+    <a href="/tags/note/" >Note</a>
+      
+      <time class="pull-right hidden-tablet">Nov 11, 2023</time>
+      
+  </span>
+</li>
+
+<li>
+  <span class="list__title--small">
+    <a href="/tags/package/" >Package</a>
       
       <time class="pull-right hidden-tablet">Oct 18, 2023</time>
       
@@ -511,7 +598,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/sql/" >sql</a>
+    <a href="/tags/hive-sql/" >Hive-SQL</a>
       
       <time class="pull-right hidden-tablet">Dec 25, 2022</time>
       
@@ -520,9 +607,9 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/tutorial/" >tutorial</a>
+    <a href="/tags/causality/" >Causality</a>
       
-      <time class="pull-right hidden-tablet">Dec 25, 2022</time>
+      <time class="pull-right hidden-tablet">Jul 16, 2022</time>
       
   </span>
 </li>
@@ -538,25 +625,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/statistics/" >Statistics</a>
-      
-      <time class="pull-right hidden-tablet">Jul 16, 2022</time>
-      
-  </span>
-</li>
-
-<li>
-  <span class="list__title--small">
     <a href="/tags/app/" >APP</a>
-      
-      <time class="pull-right hidden-tablet">Jul 3, 2022</time>
-      
-  </span>
-</li>
-
-<li>
-  <span class="list__title--small">
-    <a href="/tags/bash/" >Bash</a>
       
       <time class="pull-right hidden-tablet">Jul 3, 2022</time>
       
@@ -583,7 +652,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/poisson-distribution/" >poisson distribution</a>
+    <a href="/tags/poisson-distribution/" >Poisson-Distribution</a>
       
       <time class="pull-right hidden-tablet">Sep 19, 2020</time>
       
@@ -592,16 +661,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/hadoop/" >Hadoop</a>
-      
-      <time class="pull-right hidden-tablet">Jul 25, 2020</time>
-      
-  </span>
-</li>
-
-<li>
-  <span class="list__title--small">
-    <a href="/tags/hadoop-streaming/" >Hadoop streaming</a>
+    <a href="/tags/hadoop-streaming/" >Hadoop-Streaming</a>
       
       <time class="pull-right hidden-tablet">Jul 25, 2020</time>
       
@@ -619,7 +679,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/practice/" >practice</a>
+    <a href="/tags/practice/" >Practice</a>
       
       <time class="pull-right hidden-tablet">Jun 14, 2020</time>
       
@@ -628,16 +688,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/algorithm/" >algorithm</a>
-      
-      <time class="pull-right hidden-tablet">Apr 3, 2020</time>
-      
-  </span>
-</li>
-
-<li>
-  <span class="list__title--small">
-    <a href="/tags/combinatorics/" >combinatorics</a>
+    <a href="/tags/combinatorics/" >Combinatorics</a>
       
       <time class="pull-right hidden-tablet">Feb 21, 2020</time>
       
@@ -646,7 +697,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/number-theory/" >number theory</a>
+    <a href="/tags/number-theory/" >Number-Theory</a>
       
       <time class="pull-right hidden-tablet">Feb 21, 2020</time>
       
@@ -682,7 +733,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/tips/" >tips</a>
+    <a href="/tags/tips/" >Tips&#34;</a>
       
       <time class="pull-right hidden-tablet">Nov 14, 2019</time>
       
@@ -700,7 +751,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/search-engine/" >search engine</a>
+    <a href="/tags/search-engine/" >Search-Engine</a>
       
       <time class="pull-right hidden-tablet">Oct 24, 2019</time>
       
@@ -709,7 +760,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/demo/" >demo</a>
+    <a href="/tags/demo/" >DEMO</a>
       
       <time class="pull-right hidden-tablet">Oct 7, 2019</time>
       
@@ -718,7 +769,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/monaco-editor/" >Monaco editor</a>
+    <a href="/tags/monaco-editor/" >Monaco-Editor</a>
       
       <time class="pull-right hidden-tablet">Oct 7, 2019</time>
       
@@ -727,7 +778,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/web-speech-api/" >web speech API</a>
+    <a href="/tags/web-speech-api/" >Web-Speech-API</a>
       
       <time class="pull-right hidden-tablet">Aug 22, 2019</time>
       
@@ -736,7 +787,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/network-performance-analysis/" >network performance analysis</a>
+    <a href="/tags/network-performance-analysis/" >Network-Performance-Analysis</a>
       
       <time class="pull-right hidden-tablet">Jul 4, 2019</time>
       
@@ -745,7 +796,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/poisson-process/" >poisson process</a>
+    <a href="/tags/poisson-process/" >Poisson-Process</a>
       
       <time class="pull-right hidden-tablet">Jul 4, 2019</time>
       
@@ -754,7 +805,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/queuing-theory/" >queuing theory</a>
+    <a href="/tags/queuing-theory/" >Queuing-Theory</a>
       
       <time class="pull-right hidden-tablet">Jul 4, 2019</time>
       
@@ -763,7 +814,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/beef/" >beef</a>
+    <a href="/tags/beef/" >Beef</a>
       
       <time class="pull-right hidden-tablet">Jul 2, 2019</time>
       
@@ -772,7 +823,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/chicken/" >chicken</a>
+    <a href="/tags/chicken/" >Chicken</a>
       
       <time class="pull-right hidden-tablet">Jul 2, 2019</time>
       
@@ -781,7 +832,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/pork/" >pork</a>
+    <a href="/tags/pork/" >Pork</a>
       
       <time class="pull-right hidden-tablet">Jul 2, 2019</time>
       
@@ -799,7 +850,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/agent-based-model/" >Agent based model</a>
+    <a href="/tags/agent-based-model/" >Agent-Based-Model</a>
       
       <time class="pull-right hidden-tablet">Jun 12, 2019</time>
       
@@ -808,7 +859,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/modelling/" >modelling</a>
+    <a href="/tags/nature-system/" >Nature-System</a>
       
       <time class="pull-right hidden-tablet">Jun 12, 2019</time>
       
@@ -817,16 +868,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/nature-system/" >nature system</a>
-      
-      <time class="pull-right hidden-tablet">Jun 12, 2019</time>
-      
-  </span>
-</li>
-
-<li>
-  <span class="list__title--small">
-    <a href="/tags/efficient/" >efficient</a>
+    <a href="/tags/efficient/" >Efficient</a>
       
       <time class="pull-right hidden-tablet">May 24, 2019</time>
       
@@ -835,7 +877,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/plan/" >plan</a>
+    <a href="/tags/plan/" >Plan</a>
       
       <time class="pull-right hidden-tablet">May 24, 2019</time>
       
@@ -844,7 +886,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/to-do-list/" >to-do list</a>
+    <a href="/tags/to-do-list/" >To-Do-List</a>
       
       <time class="pull-right hidden-tablet">May 24, 2019</time>
       
@@ -853,7 +895,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/layout/" >layout</a>
+    <a href="/tags/layout/" >Layout</a>
       
       <time class="pull-right hidden-tablet">May 10, 2019</time>
       
@@ -862,7 +904,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/pycharm/" >pycharm</a>
+    <a href="/tags/pyqt5/" >PyQt5</a>
       
       <time class="pull-right hidden-tablet">May 10, 2019</time>
       
@@ -871,7 +913,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/pyqt5/" >pyqt5</a>
+    <a href="/tags/sidebar/" >Sidebar</a>
       
       <time class="pull-right hidden-tablet">May 10, 2019</time>
       
@@ -880,16 +922,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/sidebar/" >sidebar</a>
-      
-      <time class="pull-right hidden-tablet">May 10, 2019</time>
-      
-  </span>
-</li>
-
-<li>
-  <span class="list__title--small">
-    <a href="/tags/data-visualization/" >data visualization</a>
+    <a href="/tags/jupyter-notebook/" >Jupyter-Notebook</a>
       
       <time class="pull-right hidden-tablet">Apr 20, 2019</time>
       
@@ -898,7 +931,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/jupyter-notebook/" >jupyter notebook</a>
+    <a href="/tags/weibo/" >WeiBo</a>
       
       <time class="pull-right hidden-tablet">Apr 20, 2019</time>
       
@@ -907,16 +940,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/weibo/" >weibo</a>
-      
-      <time class="pull-right hidden-tablet">Apr 20, 2019</time>
-      
-  </span>
-</li>
-
-<li>
-  <span class="list__title--small">
-    <a href="/tags/google-maps/" >google maps</a>
+    <a href="/tags/google-api/" >Google-API</a>
       
       <time class="pull-right hidden-tablet">Apr 10, 2019</time>
       
@@ -925,7 +949,16 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/abstract-algebra/" >abstract algebra</a>
+    <a href="/tags/google-maps/" >Google-Maps</a>
+      
+      <time class="pull-right hidden-tablet">Apr 10, 2019</time>
+      
+  </span>
+</li>
+
+<li>
+  <span class="list__title--small">
+    <a href="/tags/abstract-algebra/" >Abstract-Algebra</a>
       
       <time class="pull-right hidden-tablet">Mar 16, 2019</time>
       
@@ -934,7 +967,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/permutation/" >permutation</a>
+    <a href="/tags/permutation/" >Permutation</a>
       
       <time class="pull-right hidden-tablet">Mar 16, 2019</time>
       
@@ -943,7 +976,16 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/ant-colony-qlgorithm/" >ant colony qlgorithm</a>
+    <a href="/tags/pycharm/" >PyCharm</a>
+      
+      <time class="pull-right hidden-tablet">Mar 16, 2019</time>
+      
+  </span>
+</li>
+
+<li>
+  <span class="list__title--small">
+    <a href="/tags/ant-colony-algorithm/" >Ant-Colony-Algorithm</a>
       
       <time class="pull-right hidden-tablet">May 15, 2018</time>
       
@@ -952,7 +994,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/markowitz-model/" >markowitz model</a>
+    <a href="/tags/markowitz-model/" >Markowitz-Model</a>
       
       <time class="pull-right hidden-tablet">May 15, 2018</time>
       
@@ -961,7 +1003,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/optimization/" >optimization</a>
+    <a href="/tags/optimization/" >Optimization</a>
       
       <time class="pull-right hidden-tablet">May 15, 2018</time>
       
@@ -970,7 +1012,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/portfolio/" >portfolio</a>
+    <a href="/tags/portfolio/" >Portfolio</a>
       
       <time class="pull-right hidden-tablet">May 15, 2018</time>
       
@@ -979,7 +1021,16 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/tags/literature/" >literature</a>
+    <a href="/tags/literature/" >Literature</a>
+      
+      <time class="pull-right hidden-tablet">Jul 11, 2017</time>
+      
+  </span>
+</li>
+
+<li>
+  <span class="list__title--small">
+    <a href="/tags/movie/" >Movie</a>
       
       <time class="pull-right hidden-tablet">Jul 11, 2017</time>
       

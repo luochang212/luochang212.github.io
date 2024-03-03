@@ -317,9 +317,10 @@
       <div class="tab">
         <button id="default-tab" class="tablinks" onclick="openItem(event, 'Resources')">Resources</button>
         <button class="tablinks" onclick="openItem(event, 'netease-player')">Music</button>
-        <button class="tablinks" onclick="openItem(event, 'Video-player')">Video</button>
+        <button class="tablinks" onclick="openItem(event, 'video-player')">Video</button>
         <button class="tablinks" onclick="openItem(event, 'gallery')">Gallery</button>
         <button class="tablinks" onclick="openItem(event, 'gadget')">Gadget</button>
+        <button class="tablinks" onclick="openItem(event, 'categories')">Cats</button>
       </div>
 
       <div id="Resources" class="tabcontent">
@@ -332,7 +333,7 @@
           frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=450></iframe>
       </div>
 
-      <div id="Video-player" class="tabcontent">
+      <div id="video-player" class="tabcontent">
 
         <div id="video1">
           <iframe src="about:blank"
@@ -375,6 +376,11 @@
 
       <div id="gadget" class="tabcontent">
         <iframe src="about:blank" data-src="/gadget/" frameborder="0" height="560" width="100%"
+          scrolling="yes"></iframe>
+      </div>
+
+      <div id="categories" class="tabcontent">
+        <iframe src="about:blank" data-src="/categories/" frameborder="0" height="560" width="100%"
           scrolling="yes"></iframe>
       </div>
 
@@ -466,6 +472,15 @@
         
 <li>
   <span class="list__title--small">
+    <a href="/categories/network/" >Network</a>
+      
+      <time class="pull-right hidden-tablet">Mar 2, 2024</time>
+      
+  </span>
+</li>
+
+<li>
+  <span class="list__title--small">
     <a href="/categories/algorithms/" >Algorithms</a>
       
       <time class="pull-right hidden-tablet">Feb 25, 2024</time>
@@ -475,16 +490,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/categories/graph/" >Graph</a>
-      
-      <time class="pull-right hidden-tablet">Feb 25, 2024</time>
-      
-  </span>
-</li>
-
-<li>
-  <span class="list__title--small">
-    <a href="/categories/hardware/" >hardware</a>
+    <a href="/categories/hardware/" >Hardware</a>
       
       <time class="pull-right hidden-tablet">Feb 24, 2024</time>
       
@@ -493,16 +499,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/categories/raspberry-pi-5/" >Raspberry Pi 5</a>
-      
-      <time class="pull-right hidden-tablet">Feb 24, 2024</time>
-      
-  </span>
-</li>
-
-<li>
-  <span class="list__title--small">
-    <a href="/categories/d2l/" >d2l</a>
+    <a href="/categories/deeplearning/" >DeepLearning</a>
       
       <time class="pull-right hidden-tablet">Feb 9, 2024</time>
       
@@ -511,16 +508,16 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/categories/deep-learning/" >deep learning</a>
+    <a href="/categories/devops/" >DevOps</a>
       
-      <time class="pull-right hidden-tablet">Feb 9, 2024</time>
+      <time class="pull-right hidden-tablet">Feb 3, 2024</time>
       
   </span>
 </li>
 
 <li>
   <span class="list__title--small">
-    <a href="/categories/life/" >life</a>
+    <a href="/categories/life/" >Life</a>
       
       <time class="pull-right hidden-tablet">Jan 1, 2024</time>
       
@@ -529,25 +526,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/categories/packaging/" >Packaging</a>
-      
-      <time class="pull-right hidden-tablet">Oct 18, 2023</time>
-      
-  </span>
-</li>
-
-<li>
-  <span class="list__title--small">
-    <a href="/categories/pypi/" >PyPI</a>
-      
-      <time class="pull-right hidden-tablet">Oct 18, 2023</time>
-      
-  </span>
-</li>
-
-<li>
-  <span class="list__title--small">
-    <a href="/categories/development/" >Development</a>
+    <a href="/categories/bigdata/" >BigData</a>
       
       <time class="pull-right hidden-tablet">Dec 25, 2022</time>
       
@@ -556,16 +535,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/categories/hive/" >Hive</a>
-      
-      <time class="pull-right hidden-tablet">Dec 25, 2022</time>
-      
-  </span>
-</li>
-
-<li>
-  <span class="list__title--small">
-    <a href="/categories/math/" >Math</a>
+    <a href="/categories/statistics/" >Statistics</a>
       
       <time class="pull-right hidden-tablet">Jul 16, 2022</time>
       
@@ -574,16 +544,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/categories/r-project/" >R-Project</a>
-      
-      <time class="pull-right hidden-tablet">Jul 16, 2022</time>
-      
-  </span>
-</li>
-
-<li>
-  <span class="list__title--small">
-    <a href="/categories/bash/" >Bash</a>
+    <a href="/categories/sota/" >SOTA</a>
       
       <time class="pull-right hidden-tablet">Jul 3, 2022</time>
       
@@ -592,34 +553,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/categories/python/" >Python</a>
-      
-      <time class="pull-right hidden-tablet">Nov 21, 2020</time>
-      
-  </span>
-</li>
-
-<li>
-  <span class="list__title--small">
-    <a href="/categories/hadoop/" >Hadoop</a>
-      
-      <time class="pull-right hidden-tablet">Jul 25, 2020</time>
-      
-  </span>
-</li>
-
-<li>
-  <span class="list__title--small">
-    <a href="/categories/es/" >ES</a>
-      
-      <time class="pull-right hidden-tablet">Oct 24, 2019</time>
-      
-  </span>
-</li>
-
-<li>
-  <span class="list__title--small">
-    <a href="/categories/javascript/" >JavaScript</a>
+    <a href="/categories/frontend/" >FrontEnd</a>
       
       <time class="pull-right hidden-tablet">Oct 7, 2019</time>
       
@@ -628,7 +562,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/categories/queuing-theory/" >queuing theory</a>
+    <a href="/categories/math/" >Math</a>
       
       <time class="pull-right hidden-tablet">Jul 4, 2019</time>
       
@@ -637,16 +571,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/categories/kitchen/" >Kitchen</a>
-      
-      <time class="pull-right hidden-tablet">Jul 2, 2019</time>
-      
-  </span>
-</li>
-
-<li>
-  <span class="list__title--small">
-    <a href="/categories/matlab/" >MATLAB</a>
+    <a href="/categories/modeling/" >Modeling</a>
       
       <time class="pull-right hidden-tablet">Jun 12, 2019</time>
       
@@ -655,25 +580,7 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/categories/javasript/" >JavaSript</a>
-      
-      <time class="pull-right hidden-tablet">May 24, 2019</time>
-      
-  </span>
-</li>
-
-<li>
-  <span class="list__title--small">
-    <a href="/categories/pycharm/" >PyCharm</a>
-      
-      <time class="pull-right hidden-tablet">May 10, 2019</time>
-      
-  </span>
-</li>
-
-<li>
-  <span class="list__title--small">
-    <a href="/categories/jupyter-notebook/" >jupyter notebook</a>
+    <a href="/categories/datavisualization/" >DataVisualization</a>
       
       <time class="pull-right hidden-tablet">Apr 20, 2019</time>
       
@@ -682,9 +589,9 @@
 
 <li>
   <span class="list__title--small">
-    <a href="/categories/movie/" >Movie</a>
+    <a href="/categories/machinelearning/" >MachineLearning</a>
       
-      <time class="pull-right hidden-tablet">Jul 11, 2017</time>
+      <time class="pull-right hidden-tablet">May 15, 2018</time>
       
   </span>
 </li>

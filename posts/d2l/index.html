@@ -321,9 +321,10 @@
       <div class="tab">
         <button id="default-tab" class="tablinks" onclick="openItem(event, 'Resources')">Resources</button>
         <button class="tablinks" onclick="openItem(event, 'netease-player')">Music</button>
-        <button class="tablinks" onclick="openItem(event, 'Video-player')">Video</button>
+        <button class="tablinks" onclick="openItem(event, 'video-player')">Video</button>
         <button class="tablinks" onclick="openItem(event, 'gallery')">Gallery</button>
         <button class="tablinks" onclick="openItem(event, 'gadget')">Gadget</button>
+        <button class="tablinks" onclick="openItem(event, 'categories')">Cats</button>
       </div>
 
       <div id="Resources" class="tabcontent">
@@ -336,7 +337,7 @@
           frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=450></iframe>
       </div>
 
-      <div id="Video-player" class="tabcontent">
+      <div id="video-player" class="tabcontent">
 
         <div id="video1">
           <iframe src="about:blank"
@@ -379,6 +380,11 @@
 
       <div id="gadget" class="tabcontent">
         <iframe src="about:blank" data-src="/gadget/" frameborder="0" height="560" width="100%"
+          scrolling="yes"></iframe>
+      </div>
+
+      <div id="categories" class="tabcontent">
+        <iframe src="about:blank" data-src="/categories/" frameborder="0" height="560" width="100%"
           scrolling="yes"></iframe>
       </div>
 
@@ -492,10 +498,7 @@
           in
           
           
-              <a class="badge badge-category" href="/categories/d2l">D2L</a>
-              •
-          
-              <a class="badge badge-category" href="/categories/deep-learning">DEEP LEARNING</a>
+              <a class="badge badge-category" href="/categories/deeplearning">DEEPLEARNING</a>
               
           
       
@@ -995,7 +998,7 @@ flowchart TD
     </a>
     
     
-    <a href="/posts/home_inventory_list/" class="navigation-next">
+    <a href="/posts/inventory_list/" class="navigation-next">
       <span class="navigation-tittle">居家物资清单</span>
       <i aria-hidden="true" class="fa fa-chevron-right"></i>
     </a>

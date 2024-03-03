@@ -6,56 +6,7 @@
     <description>Recent content in Math on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 16 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/categories/math/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>因果推断笔记</title>
-      <link>http://luochang212.github.io/posts/causal_inference/</link>
-      <pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/posts/causal_inference/</guid>
-      <description>不谜语人的因果推断笔记！
-学习统计最好还是学习一下 R 语言。相比 Python，R 是专门用于统计的语言，它提供了更细致的函数和更标准的实现方法。
-GitHub 项目地址： 1. 因果推断入门 小朋友感冒，家长给他吃药，一个星期后就痊愈了。那么“吃药”和“痊愈”是否有因果关系呢？
-我们知道普通的小感冒，即使不吃药，一个星期后也会痊愈。因此未必是因为吃药才痊愈的，也有可能是小朋友凭借抵抗力恢复了健康。此时，要进一步分析“吃药”与“痊愈”的因果关系，就要用到因果推断技术。
-注意在上述例子中，原因存在两种状态：吃药/不吃药。结果也存在两种状态：痊愈/未痊愈。为了描述方便，我们把：
-作为原因的变量：x 叫做控制变量 (control variable)，或解释变量 (explanatory variable) 作为结果的变量：y 叫做响应变量 (response variable)，或被解释变量 (explained variable) 1.1 如何测量因果关系 反事实因果分析框架 是统计学中分析因果关系的一种常见思路。这种思路把一种“状态”与其“反事实状态”造成结果的差异当作因果效应。对于小朋友 $i$，反事实因果分析框架反映的因果效应 $\tau_{i}$ 表示为： $$\tau_{i} = Y_{i}(1) - Y_{i}(0)$$ 这里 $Y_{i}(1)$ 代表吃药，$Y_{i}(0)$ 代表不吃药，它们都是观测值。
-不难发现，$Y_{i}(1)$ 和 $Y_{i}(0)$ 是无法同时观测到的。这被称为 因果推断的根本性问题 (Holland, 1986)。正如“人不能两次踏入同一条河流”，一旦做出某种选择，其他选择的结果就无从观测了。
-由于此“根本性问题”的存在，对 $\tau$ 算不了真实值，只能估计。因果效应 $\tau$ 有三种常见的估计值：
-我们约定：是否吃药用 $X$ 表示，$X = 0 \space or \space 1$，其中 1 代表吃药，0 代表不吃药。这里有必要区分下，$Y_{i}|X=1$ 是指那些真的吃了药的人的 $Y$ 值。$Y_{i}(1)$、$Y_{i}(0)$ 则是看不到的一个潜在状态，可能是用统计方法算出的估计值，也可能是模型的外推。</description>
-    </item>
-    
-    <item>
-      <title>统计学补完计划</title>
-      <link>http://luochang212.github.io/posts/learning_statistics/</link>
-      <pubDate>Sat, 01 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/posts/learning_statistics/</guid>
-      <description>统计学绝非一门生硬无趣的学科，它有着鲜活的案例和丰富的实验，让我们循着公式乘着代码在统计的海洋里尽情摇摆叭 1. 回归分析 1.1 简单线性回归模型 (1) 回归方程 许多回归分析都是在如下假设前提下开始的：$y$ 和 $x$ 是两个代表某个总体的变量，我们希望用 $x$ 解释 $y$，通过一个线性方程，我们可以刻画 $y$ 和 $x$ 之间的关系： $$y=\beta_{0}+\beta_{1} x+u \quad (1.1)$$ 假定方程 (1.1) 在我们所关注的总体中成立，它便定义了一个简单线性回归模型 (simple linear regression model).
-其中，各符号含义如下：
-$y$: 因变量（或被解释变量、回归子） $x$: 自变量（或解释变量、回归元） $u$: 误差项（或干扰项） $\beta_{1}$: 斜率参数 $\beta_{0}$: 截距参数 举例来说，假设我们用方程 (1.1) 来刻画大豆收成：$y$ 表示收成，$x$ 表示施肥量，$u$ 则包括了诸如土地质量、降水量等因素。
-(2) 零条件均值假设 只有在我们对 $x$ 和 $u$ 之间的关系做出某种约束时，我们才能计算出 $\beta_{1}$ 和 $\beta_{0}$ 的可靠估计量。
-🌟 零条件均值假定： $$\begin{aligned} &amp;amp;\mathrm{E}(u)=0 \quad (1.2) \\ &amp;amp;\mathrm{E}(u \mid x)=\mathrm{E}(u) \quad (1.3) \end{aligned}$$ 方程 (1.</description>
-    </item>
-    
-    <item>
-      <title>泊松分布的仿真及可视化</title>
-      <link>http://luochang212.github.io/posts/poisson/</link>
-      <pubDate>Sat, 19 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/posts/poisson/</guid>
-      <description>本文介绍泊松分布和泊松函数的定义，并通过 Python random 库对泊松分布进行仿真，带你触摸复杂表象下的简单本质。
-GitHub 项目地址：python-tips/poisson
-1. 从泊松函数讲起 泊松分布 表示在给定时间段内发生给定数量的事件的概率。这个定义比较抽象。举个具体的例子，假设你每小时接到电话的概率是固定的，比如每小时 0.05 个，那么你在接下来 1 小时内接到电话个数的概率，就服从泊松分布:
-1 小时内接到 0 个电话，对应一个概率值 $P_0$；
-1 小时内接到 1 个电话，对应一个概率值 $P_1$；
-&amp;hellip; &amp;hellip;
-1 小时内接到 n 个电话，也对应一个概率值$P_n$。
-这些概率值组成一个概率分布列，它们的值 $(n, P_n)$ 在二维坐标下连成一条曲线。这条曲线所在的函数就是泊松分布的概率密度函数。其公式及图像如下：
-$$\boxed{P(k | t, \lambda)=\frac{(\lambda t)^{k}}{k !} \exp (-\lambda t)}$$
-从公式中，我们可以看出：只要确定了 $\lambda$ 和 $t$，该式就退化成了概率 $P$ 关于事件发生次数 $k$ 的函数。 类似地，如果我们确定了 $\lambda$ 和 $k$，则该式退化成概率$P$ 关于时间范围 $t$ 的函数。
-“确定哪些参数，让函数最终退化成哪些参数的函数”，这个选择和我们的研究目的有关。如果你对不同 $k$ 如何影响 $P$ 值感兴趣，那么就应该确定参数 $\lambda$ 和 $t$。如果对 $t$ 和 $P$ 之间的关系感兴趣，那么就应该确定参数 $\lambda$ 和 $k$。</description>
-    </item>
-    
+    <lastBuildDate>Thu, 04 Jul 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/categories/math/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>排队论在网络性能分析中的应用</title>
       <link>http://luochang212.github.io/posts/network_performance_analysis/</link>
@@ -72,6 +23,21 @@ The M/M/1 queuing system The birth-death process The M/M/m queuing system The M/
 （一）泊松过程的假设
 在时间间隔$\Delta t$内，有且仅有一位顾客到达的概率$P$和$\Delta t$成比例，比例系数为$\lambda$
 在时间间隔$\Delta t$内，至多只允许一位顾客到达（否则应该选取一个更短的时间间隔） $$\begin{aligned} P(\text { 在时间间隔 }[t, t+\Delta t] \text { 内，有且仅有一位顾客到达 }) &amp;amp;=\lambda \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，没有顾客到达 }) &amp;amp;=1-\lambda \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，多于一位顾客到达 }) &amp;amp;=0 \end{aligned}$$</description>
+    </item>
+    
+    <item>
+      <title>Python 解置换群问题</title>
+      <link>http://luochang212.github.io/posts/python_math_problem/</link>
+      <pubDate>Sat, 16 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/posts/python_math_problem/</guid>
+      <description>室友问我一个问题，把我难住了。
+想不出解法，遂写了个程序暴力求解。
+**题目：**A permutation is applied to the string SUPERBGOLDHAT. The same permutation is applied to the output from this operation. The second output is OGTHLEPDSUARB. What was the first output? (Note: as an example, the permutation(1 3 4) applied to WOLF gives FOWL. Write your answer in capital letters inside quotation marks, e.g. &amp;ldquo;BEARDPLUGHOST&amp;rdquo;.)
+把它译成中文就是：已知将某个置换作用于字符串SUPERBGOLDHAT两次，生成字符串OGTHLEPDSUARB. 求该置换作用于字符串SUPERBGOLDHAT一次时，生成的结果。
+Note: 作用两次的意思就是，当一个置换规则作用于字符串一次时，会生成一个新字符串。将这个规则作用在这个新字符串上，又会生成一个字符串，这个字符串就是两次作用的结果。
+近世代数基础 如果你不知道什么是置换的话，可以看一下本节。学过近世代数的同学请自觉跳过这部分ꉂ(ˊᗜˋ*)
+我们给定一个序列$a ={1, 2, 3, 4, 5, 6} $ 。然后给定一个作用于该序列的置换：</description>
     </item>
     
   </channel>

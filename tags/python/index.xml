@@ -6,35 +6,7 @@
     <description>Recent content in Python on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 25 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>图算法笔记</title>
-      <link>http://luochang212.github.io/posts/graph_algorithms/</link>
-      <pubDate>Sun, 25 Feb 2024 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/posts/graph_algorithms/</guid>
-      <description>记笔记能让脑子里的知识结构化说是
-GitHub 项目地址：graph-algorithm
-一、图的基础操作 1.创建图 1.1 从空图开始创建 1.2 用边文件创建 1.3 用已经存在的图、边的列表创建 1.4 创建带权边 1.5 为图添加属性 1.6 创建有向图 2.可视化 random circular spectral shell 3.中心性度量 Degree Centrality Closeness Centrality Betweenness Centrality Eigenvector Centrality 4.随机图生成 5.读写文件 写入文件 读出数据 查看示例 二、通用图算法 连通性 Connectivity 最短路 Shortest Paths 相似性度量 Similarity Measures 距离度量 Distance Measures 链接预测 Link Prediction 匹配 Matching 查看示例 三、社区检测算法 1.常见社区检测算法 1.1 label Propagation 1.2 Girvan-Newman 1.3 Greedy Modularity 1.4 Louvain 2.是否接受边权作为输入 推荐使用 louvain 查看示例 四、图嵌入 施工中</description>
-    </item>
-    
-    <item>
-      <title>树莓派 5 装机指南</title>
-      <link>http://luochang212.github.io/posts/raspberry_pi_5/</link>
-      <pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/posts/raspberry_pi_5/</guid>
-      <description>2024 年 2 月，给我的 Raspberry Pi 5 安装 Ubuntu，最后踩了两次坑才装好。感觉搜索前几的教程都不对，没一个让我顺利装完的。那么我来记录一下安装过程吧
-一、下载 你需要下载两个东西：
-ubuntu-23.10：适用于树莓派 5 的 Ubuntu 镜像 Raspberry Pi Imager：将镜像写入 TF 卡的工具 1）ubuntu-23.10 的下载页面：ubuntu.com/download/raspberry-pi
-PS: 你可以选择服务器版或桌面版，我安的是桌面版
-2）Raspberry Pi Imager 的下载页面：raspberrypi.com/software
-二、将镜像写入 TF 卡 下载好镜像之后，你需要把镜像写入 TF 卡。
-打开 Raspberry Pi Imager，界面上有三个白框，分别是：
-CHOOSE DEVICE: 选择你的树莓派版本。选 Raspberry Pi 5 CHOOSE OS: 选择你要安装的镜像。由于我们用的是本地镜像，下拉栏划到最底，选 Use custom CHOOSE STORAGE: 选择你的 TF 卡。没插卡的请插卡，然后在下拉栏选中你的卡。由于后续步骤会抹除 TF 卡数据，清确保卡内没有重要文件 三、首次启动 Ubuntu 在不插电源的情况下，将 TF 卡插入板子。
-然后连接外接显示屏、鼠标、键盘、网线（如果有），插电即可直接点亮。如果 1 分钟后没有任何反应，可以尝试按 TF 卡旁边的电源键。需要注意的是，树莓派 5 新加了实体电源键，老版本没有。</description>
-    </item>
-    
+    <lastBuildDate>Fri, 09 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>手写深度学习</title>
       <link>http://luochang212.github.io/posts/d2l_from_scratch/</link>
@@ -50,16 +22,6 @@ x.grad: 取 $x$ 的梯度 x.requires_grad_(True): 允许 tenser $x$ 存储自己
 初始化带梯度的张量，下面是两个例子：
 torch.tensor([1., 2., 3.], requires_grad=True) &amp;gt; tensor([1., 2., 3.], requires_grad=True)
 torch.randn((2, 5), requires_grad=True) &amp;gt; tensor([[ 0.4075, 1.</description>
-    </item>
-    
-    <item>
-      <title>Linux 运维手册</title>
-      <link>http://luochang212.github.io/posts/linux_handbook/</link>
-      <pubDate>Sat, 03 Feb 2024 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/posts/linux_handbook/</guid>
-      <description>基于 CentOS 系统
-一、常见操作 1）文件操作 命令 描述 ls 列出当前文件夹下的文件 touch [FILE] 创建文件 vim [FILE] 打开文件 cat [FILE] 打印文件 head [FILE] 打印文件头 10 行，展示 20 行用 head -n 20 [FILE] tail [FILE] 打印文件尾 10 行，展示 20 行用 tail -n 20 [FILE] tail -f [FILE] 实时查看文件的末尾新增的内容，一般用于打印监控日志 less [FILE] 打印文件，可以用 上键 下键 翻页 rm [FILE] 删除文件 rm -rf [DIR] 递归删除路径DIR下所有文件 mv [FILE_A] [FILE_B] 文件FILE_A改名为FILE_B mv [FILE] [DIR] 文件FILE移动到路径DIR cd [PATH] 打开目录PATH mkdir [PATH] 创建目录 mkdir -p [PATH/TO/DIR] 创建多级目录 tar cvf file.</description>
     </item>
     
     <item>
@@ -121,25 +83,6 @@ $$\boxed{P(k | t, \lambda)=\frac{(\lambda t)^{k}}{k !} \exp (-\lambda t)}$$
     </item>
     
     <item>
-      <title>漫谈 Hadoop Streaming</title>
-      <link>http://luochang212.github.io/posts/hadoop_intro/</link>
-      <pubDate>Sat, 25 Jul 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://luochang212.github.io/posts/hadoop_intro/</guid>
-      <description>本文聚焦如何通过 Hadoop Streaming + Python 编写 Hadoop 程序。
-Hadoop 是一个用于大数据处理的分布式计算框架。
-众所周知，实现分布式计算是一个繁琐的过程，Hadoop 通过一个标准化的数据处理流程，简化操作步骤，让没有分布式计算背景的程序员也能轻松写出分布式程序。Hadoop 本身是用 Java 写就的，因此对于非 Java 程序员来说，学 Hadoop 必须先学 Java，这大大降低了 Hadoop 的友好程度。
-Hadoop Streaming 就是为了解决这个问题而生的，它支持用其他编程语言编写 Hadoop 程序。
-1. 分布式系统的由来 经历半个多世纪的高速增长，半导体工业在本世纪初触及了它的物理瓶颈，摩尔定律失灵，硬件算力不再高速增长，人们开始关注利用软件方法来提升算力。
-2003年，两名谷歌工程师开发了一个分布式存储系统，这是它的前身。经过几位后来者添枝加叶，该系统在 2006 年开源，并发展成为今天我们熟知的 Hadoop。
-使用分布式系统，显而易见的好处是能够缩短程序运行的时间。在常规时间就能跑完的程序上使用 Hadoop 无异于画蛇添足。但是对大数据开发人员来说，使用 Hadoop 意味着不必坐在电脑前为了结果等上一整天。如果集群效率够高，完全可能在几分钟内完成单机一天的计算量。
-2. Hadoop 基本介绍 Hadoop 有两个重要的组成部分：HDFS 和 MapReduce。
-HDFS 是一个分布式存储系统，它负责将文件切割成分片，然后分发到集群中的目标机器上进行存储；MapReduce 负责构建一个标准化的数据处理流程，在完成其规定的几道数据处理流程之后，用户将得到他们期望的结果。
-这意味着 Hadoop 的学习至少包括两个部分。要掌握 HDFS，你需要掌握 Hadoop 命令行命令，这将在第7节详细介绍。要掌握 MapReduce，如果你是 Python 开发者，你需要掌握 Hadoop Streaming，这将在下一节中介绍。
-3. MapReduce MapReduce 的重要性不言而喻，它定义了数据在 Hadoop 中被如何处理。MapReduce 包含三个重要过程：Map, Shuffle 和 Reduce。其中，Map 和 Reduce 由我们来编写，Shuffle 则由系统自动完成。</description>
-    </item>
-    
-    <item>
       <title>Python 工程化实践</title>
       <link>http://luochang212.github.io/posts/python_practice/</link>
       <pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate>
@@ -163,7 +106,11 @@ Python 环境分为本地环境(lcoal env) 和全局环境 (global env) 。为�
       <guid>http://luochang212.github.io/posts/algorithms/</guid>
       <description> 算法学习笔记，长期更新 GitHub 项目地址：python-tips/algorithms
 排序 本节介绍各种排序算法的思路和特点，并提供了示例代码。
-插入排序 直接插入排序 希尔排序 交换排序 冒泡排序 快速排序 选择排序 简单选择排序 堆排序 归并排序 二路归并排序 查看示例 排列组合 排列 组合 子集 查看示例 深度优先搜索DFS 广度优先搜索BFS 二叉搜索树 动态规划 × </description>
+插入排序 直接插入排序 希尔排序 交换排序 冒泡排序 快速排序 选择排序 简单选择排序 堆排序 归并排序 二路归并排序 查看示例 排列组合 排列 组合 子集 查看示例 深度优先搜索DFS 施工中
+广度优先搜索BFS 施工中
+二叉搜索树 施工中
+动态规划 施工中
+× </description>
     </item>
     
     <item>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web on Chang Luo</title>
+    <link>http://luochang212.github.io/tags/web/</link>
+    <description>Recent content in Web on Chang Luo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 02 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>家庭网络拓扑</title>
+      <link>http://luochang212.github.io/posts/home_network_topology/</link>
+      <pubDate>Sat, 02 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://luochang212.github.io/posts/home_network_topology/</guid>
+      <description>本文介绍家庭局域网数据传输过程
+常见家庭网络拓扑如下：
+flowchart LR A[外网] --&gt;|光纤入户| B[光猫] --&gt;|路由器WAN| C[路由器] --&gt; D[交换机] D --&gt;|交换机LAN1| E[电脑] D --&gt;|交换机LAN2| F[笔记本] D--&gt;|交换机LAN3| G[电视机盒子] 现代的 路由器 和 交换机 其实是一个设备，统称路由器。为了便于理解，我们还是把它们拆开。
+一、局域网设备 光猫、路由器、交换机 的连接方法。
+1）光猫 光猫一般放在弱电箱，它有一个 WAN 口和多个 LAN 口。我们把路由器插在其中一个 LAN 口上，假设插的是 LAN1
+WAN LAN1 LAN2 LAN3 ... 接外网网线 接路由器 空闲 空闲 空闲 2）光猫 接 路由器 然后将网线从光猫 LAN1 接到路由器 WAN
+WAN LAN 接光猫 LAN1 接交换机（为了便于理解，虚拟出来的 LAN，实际不存在） 3）路由器 接 交换机 最后将网线从路由器 LAN 接到交换机 WAN
+WAN LAN1 LAN2 LAN3 .</description>
+    </item>
+    
+  </channel>
+</rss>
