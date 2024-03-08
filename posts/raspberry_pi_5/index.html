@@ -608,11 +608,9 @@ ip addr
 <p>1）基础依赖</p>
 <p>更新 <code>apt</code> 及其管理的软件包</p>
 <pre tabindex="0"><code>sudo apt update &amp;&amp; sudo apt upgrade -y
-</code></pre><p>安装 <code>openssh-server</code>, <code>wget</code>, <code>curl</code>,<code>vim</code>, <code>git</code>, <code>net-tools</code>, <code>snapd</code></p>
-<pre tabindex="0"><code>sudo apt install openssh-server
-sudo apt install wget curl git vim
-sudo apt install net-tools
-sudo apt install snapd
+</code></pre><p>安装 <code>openssh-server</code>, <code>lrzsz</code>, <code>wget</code>, <code>git</code>, <code>curl</code>, <code>vim</code>, <code>snapd</code>, <code>build-essential</code>, <code>net-tools</code></p>
+<pre tabindex="0"><code>sudo apt install -y openssh-server lrzsz git curl vim
+sudo apt install -y wget snapd build-essential net-tools
 </code></pre><p>2）安装 Java</p>
 <p>安装 Java 11 (which is a long-term support version)</p>
 <pre tabindex="0"><code>sudo apt install openjdk-11-jdk
