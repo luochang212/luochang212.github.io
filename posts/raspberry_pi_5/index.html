@@ -542,6 +542,7 @@
         <li><a href="#五部署开发环境">五、部署开发环境</a></li>
         <li><a href="#六软件推荐">六、软件推荐</a></li>
         <li><a href="#七物料清单">七、物料清单</a></li>
+        <li><a href="#八其他操作系统">八、其他操作系统</a></li>
       </ul>
     </li>
   </ul>
@@ -605,20 +606,31 @@ ip addr
 <p>2）点击 Software Updater</p>
 <p><img src="/img/rasp_updater.png" alt=""></p>
 <h3 id="五部署开发环境">五、部署开发环境</h3>
-<p>1）基础依赖</p>
+<h4 id="1基础依赖">1）基础依赖</h4>
 <p>更新 <code>apt</code> 及其管理的软件包</p>
 <pre tabindex="0"><code>sudo apt update &amp;&amp; sudo apt upgrade -y
-</code></pre><p>安装 <code>openssh-server</code>, <code>lrzsz</code>, <code>wget</code>, <code>git</code>, <code>curl</code>, <code>vim</code>, <code>snapd</code>, <code>build-essential</code>, <code>net-tools</code></p>
-<pre tabindex="0"><code>sudo apt install -y openssh-server lrzsz git curl vim
-sudo apt install -y wget snapd build-essential net-tools
-</code></pre><p>2）安装 Java</p>
+</code></pre><p>🦀 安装 <code>openssh-server</code>, <code>lrzsz</code>, <code>wget</code>, <code>git</code>, <code>curl</code>, <code>vim</code>, <code>build-essential</code>, <code>net-tools</code></p>
+<pre tabindex="0"><code>sudo apt install -y vim git curl wget
+
+# 可选装
+sudo apt install -y openssh-server build-essential net-tools lrzsz
+</code></pre><p>🐯 安装 <code>snapd</code></p>
+<pre tabindex="0"><code>sudo apt install -y snapd
+
+# 启用 snapd 和 snapd.apparmor
+sudo systemctl enable --now snapd apparmor
+</code></pre><p>🐳 安装 <code>flatpak</code></p>
+<pre tabindex="0"><code>sudo apt install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo apt install gnome-software-plugin-flatpak
+</code></pre><h4 id="2安装-java">2）安装 Java</h4>
 <p>安装 Java 11 (which is a long-term support version)</p>
 <pre tabindex="0"><code>sudo apt install openjdk-11-jdk
 </code></pre><p>安装 Java 8</p>
 <pre tabindex="0"><code>sudo apt install openjdk-8-jdk
-</code></pre><p>3）安装 jupyter-notebook</p>
+</code></pre><h4 id="3安装-jupyter-notebook">3）安装 <code>jupyter-notebook</code></h4>
 <pre tabindex="0"><code>sudo apt install jupyter-notebook
-</code></pre><p>4）安装 miniconda</p>
+</code></pre><h4 id="4安装-miniconda">4）安装 miniconda</h4>
 <p>官方文档：<a href="https://docs.anaconda.com/free/miniconda3" target="_blank">docs.anaconda.com/free/miniconda</a></p>
 <p>需要注意的是，树莓派 5 是 <code>aarch64</code> 架构，不能直接使用官方 Linux 安装命令。而是要用 <code>Miniconda3 Linux-aarch64 64-bit</code> 版本的下载链接，然后在安装命令中把对应的 <code>sh</code> 文件链接换成 <code>aarch64</code> 的才行。</p>
 <pre tabindex="0"><code># 下载并运行安装脚本
@@ -632,7 +644,10 @@ rm -rf ~/miniconda3/miniconda.sh
 </code></pre><pre tabindex="0"><code># 如果没啥事可以重启一下，重启后 miniconda 在命令行生效
 reboot
 </code></pre><p>miniconda 的其他相关操作在 <a href="http://localhost:1313/posts/linux_handbook/#%E4%BA%94%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2" target="_blank">Linux 运维手册</a> 里有，可以看看。</p>
-<p>5）安装 VSCode</p>
+<blockquote>
+<p><strong>Note</strong>: 你也可以选择 <a href="https://github.com/conda-forge/miniforge" target="_blank">Miniforge</a> ，它是比 miniconda 更轻量级的 Python 包管理器，完全开源，由社区驱动。</p>
+</blockquote>
+<h4 id="5安装-vscode">5）安装 VSCode</h4>
 <p>① 下载 <code>.deb</code> 安装包</p>
 <p>官方下载页面：<a href="https://code.visualstudio.com/Download" target="_blank">code.visualstudio.com/Download</a></p>
 <blockquote>
@@ -641,11 +656,11 @@ reboot
 <p><img src="/img/rasp_vscode.png" alt=""></p>
 <p>② 安装，把 <code>&lt;filename&gt;</code> 换成实际下载文件的文件名</p>
 <pre tabindex="0"><code>sudo apt install ./&lt;filename&gt;.deb
-</code></pre><p>6）安装 Samba（可选）</p>
+</code></pre><h4 id="6安装-samba可选">6）安装 Samba（可选）</h4>
 <p>Samba 用于在笔记本和树莓派之间传输文件。</p>
 <pre tabindex="0"><code>sudo apt install -y samba samba-client
 </code></pre><p>配置 Samba 可以参考 <a href="/posts/linux_handbook/#%E5%85%AD%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93" target="_blank">Linux 运维手册</a>，这里不再赘述。</p>
-<p>7）连接 GitHub</p>
+<h4 id="7连接-github">7）连接 GitHub</h4>
 <blockquote>
 <p>以下内容来自阿里云云效 <a href="https://help.aliyun.com/document_detail/153709.html" target="_blank">配置 SSH 密钥</a></p>
 </blockquote>
@@ -690,6 +705,23 @@ Enter same passphrase again:
 <pre tabindex="0"><code>xclip -sel clip &lt; ~/.ssh/id_ed25519.pub
 </code></pre><p>④ 在 GitHub 上设置公钥</p>
 <p>[头像] &ndash;&gt; [Settings] &ndash;&gt; [侧边栏：SSH and GPG keys] &ndash;&gt; [New SSH key]</p>
+<h4 id="8安装-gnome-tweaks">8）安装 GNOME Tweaks</h4>
+<p>GNOME Tweaks 可用于更换桌面主题，Ubuntu 用以下命令安装：</p>
+<pre tabindex="0"><code>sudo apt install gnome-tweaks
+</code></pre><p>我安装的主题是 <a href="https://github.com/vinceliuice/Orchis-theme" target="_blank">Orchis-theme</a>，你可以浏览资源站，选择自己喜欢的主题。</p>
+<ul>
+<li>GNOME 资源站:
+<ul>
+<li><a href="https://www.gnome-look.org/browse/" target="_blank">gnome-look.org</a></li>
+<li><a href="https://www.pling.com/" target="_blank">pling.com</a></li>
+</ul>
+</li>
+<li>GNOME 插件:
+<ul>
+<li><a href="https://extensions.gnome.org/" target="_blank">extensions.gnome.org</a></li>
+</ul>
+</li>
+</ul>
 <h3 id="六软件推荐">六、软件推荐</h3>
 <table>
 <thead>
@@ -742,7 +774,7 @@ Enter same passphrase again:
 </tr>
 <tr>
 <td>cmatrix</td>
-<td>美丽废物</td>
+<td>黑客帝国风格的“数字雨”</td>
 <td><code>sudo apt install cmatrix</code></td>
 </tr>
 </tbody>
@@ -761,6 +793,26 @@ Enter same passphrase again:
 <li>网线（可选）</li>
 <li>外壳（可选）</li>
 <li>小屏（可选）</li>
+</ul>
+<h3 id="八其他操作系统">八、其他操作系统</h3>
+<p>其他适用于树莓派的操作系统：</p>
+<ul>
+<li><strong>CentOS</strong>:
+<ul>
+<li><a href="https://mirrors.tuna.tsinghua.edu.cn/centos-altarch/7.9.2009/isos/armhfp/">mirrors.tuna.tsinghua.edu.cn</a></li>
+<li><a href="http://isoredirect.centos.org/altarch/7/isos/aarch64/">isoredirect.centos.org</a></li>
+</ul>
+</li>
+<li><strong>Kali Linux</strong>:
+<ul>
+<li><a href="https://www.kali.org/">kali.org</a></li>
+</ul>
+</li>
+<li><strong>Raspberry Pi OS</strong>:
+<ul>
+<li><a href="https://www.raspberrypi.com/software/">raspberrypi.com</a></li>
+</ul>
+</li>
 </ul>
 <p>参考资料：</p>
 <ul>
