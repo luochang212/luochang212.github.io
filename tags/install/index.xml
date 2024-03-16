@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Install on Chang Luo</title>
-    <link>http://luochang212.github.io/tags/install/</link>
+    <link>https://luochang212.github.io/tags/install/</link>
     <description>Recent content in Install on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 24 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/tags/install/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 24 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://luochang212.github.io/tags/install/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>树莓派 5 装机指南</title>
-      <link>http://luochang212.github.io/posts/raspberry_pi_5/</link>
+      <link>https://luochang212.github.io/posts/raspberry_pi_5/</link>
       <pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/raspberry_pi_5/</guid>
+      <guid>https://luochang212.github.io/posts/raspberry_pi_5/</guid>
       <description>2024 年 2 月，给我的 Raspberry Pi 5 安装 Ubuntu，最后踩了两次坑才装好。感觉搜索前几的教程都不对，没一个让我顺利装完的。那么我来记录一下安装过程吧
 一、下载 你需要下载两个东西：
 ubuntu-23.10：适用于树莓派 5 的 Ubuntu 镜像 Raspberry Pi Imager：将镜像写入 TF 卡的工具 1）ubuntu-23.10 的下载页面：ubuntu.com/download/raspberry-pi

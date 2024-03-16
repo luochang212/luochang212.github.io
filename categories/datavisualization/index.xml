@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>DataVisualization on Chang Luo</title>
-    <link>http://luochang212.github.io/categories/datavisualization/</link>
+    <link>https://luochang212.github.io/categories/datavisualization/</link>
     <description>Recent content in DataVisualization on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 20 Apr 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/categories/datavisualization/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 20 Apr 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://luochang212.github.io/categories/datavisualization/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>微博数据可视化</title>
-      <link>http://luochang212.github.io/posts/my_weibo/</link>
+      <link>https://luochang212.github.io/posts/my_weibo/</link>
       <pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/my_weibo/</guid>
+      <guid>https://luochang212.github.io/posts/my_weibo/</guid>
       <description>GitHub 项目地址：weibo-analysis
 这次的数据用的是本科期间就已经爬好，但因为当时没有足够的处理技巧，这些数据在硬盘里一丢就是两年。如今，本Python初丁趁着还有机会摸鱼，赶紧把数据翻出来，让它们发光发热。
 文本获取 因为新浪微博的严防死打，现如今微博的数据越来越不好爬。GitHub上的微博爬虫生存周期通常都很短，使爬取数据的成本大大增加。这里我用的是微博@失眠狸 同学的方法，用鼠标精灵写了个插件，控制快捷键和页面拖动，把内容从浏览器上粘贴到sublime里。

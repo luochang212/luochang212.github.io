@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Web on Chang Luo</title>
-    <link>http://luochang212.github.io/tags/web/</link>
+    <link>https://luochang212.github.io/tags/web/</link>
     <description>Recent content in Web on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 02 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 02 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://luochang212.github.io/tags/web/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>家庭网络拓扑</title>
-      <link>http://luochang212.github.io/posts/home_network_topology/</link>
+      <link>https://luochang212.github.io/posts/home_network_topology/</link>
       <pubDate>Sat, 02 Mar 2024 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/home_network_topology/</guid>
+      <guid>https://luochang212.github.io/posts/home_network_topology/</guid>
       <description>本文介绍家庭局域网数据传输过程
 常见家庭网络拓扑如下：
 flowchart LR A[外网] --&gt;|光纤入户| B[光猫] --&gt;|路由器WAN| C[路由器] --&gt; D[交换机] D --&gt;|交换机LAN1| E[电脑] D --&gt;|交换机LAN2| F[笔记本] D--&gt;|交换机LAN3| G[电视机盒子] 现代的 路由器 和 交换机 其实是一个设备，统称路由器。为了便于理解，我们还是把它们拆开。

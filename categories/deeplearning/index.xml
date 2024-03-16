@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>DeepLearning on Chang Luo</title>
-    <link>http://luochang212.github.io/categories/deeplearning/</link>
+    <link>https://luochang212.github.io/categories/deeplearning/</link>
     <description>Recent content in DeepLearning on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 09 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/categories/deeplearning/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 09 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://luochang212.github.io/categories/deeplearning/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>手写深度学习</title>
-      <link>http://luochang212.github.io/posts/d2l_from_scratch/</link>
+      <link>https://luochang212.github.io/posts/d2l_from_scratch/</link>
       <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/d2l_from_scratch/</guid>
+      <guid>https://luochang212.github.io/posts/d2l_from_scratch/</guid>
       <description>与其说深度学习是一门技术，不如说深度学习是一种语言
 GitHub 项目地址：AI-Project/scratch
 一、自动微分 1. 简单的例子 1.1 张量 x 的梯度
@@ -26,10 +26,10 @@ torch.randn((2, 5), requires_grad=True) &amp;gt; tensor([[ 0.4075, 1.</descripti
     
     <item>
       <title>深度学习笔记</title>
-      <link>http://luochang212.github.io/posts/d2l/</link>
+      <link>https://luochang212.github.io/posts/d2l/</link>
       <pubDate>Sat, 11 Nov 2023 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/d2l/</guid>
+      <guid>https://luochang212.github.io/posts/d2l/</guid>
       <description>跟李沐老师学深度学习，课程见 d2l，如有错误，欢迎拍砖 GitHub 项目地址：AI-Project
 〇、技术路线图 flowchart TD A[softmax 回归] --&gt;|无法拟合 XOR 函数| B[多层感知机] B --&gt; |高像素图片作为输入，模型参数爆炸| C[卷积] C --&gt;|数据的长宽下降太快| D[填充] C --&gt;|数据的长宽下降太慢| E[步幅] C --&gt;|缓解卷积对位置敏感| F[池化] C --&gt;|多模式识别与组合| G[多通道输入/输出] ❤️ powered by mermaid 一、softmax 回归 1. 虽然叫回归，但是softmax 解决的是分类问题 回归估计是一个连续值 分类预测是一个离散类别 2. 分类应用举例 MINIST ImageNet human-protein-atlas-image-classification (Kaggle) malware-classification (Kaggle) jigsaw-comment-classification (Kaggle) 3. 从回归到多类分类 &amp;ndash; 均方损失 对分类结果做 one-hot 编码：
 $y = [y_1, y_2, , ... , y_n]^T$

@@ -7,7 +7,7 @@
     <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     
-    <link rel="canonical" href="http://luochang212.github.io/posts/pyqt5_layout/">
+    <link rel="canonical" href="https://luochang212.github.io/posts/pyqt5_layout/">
     
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,7 +29,7 @@
 <meta property="og:title" content="PyQt5 布局浅析" />
 <meta property="og:description" content="PyQt5是Python环境下用来开发UI界面的一个包。它容易上手，对初学者友好，并且拥有丰富的函数库，可以实现大部分桌面应用的开发需求，且支持QSS语言，能够对界面风格做个性化调整。总体来说，PyQt5是一款开发效率极高的UI框架。这篇文章从零开始，教你搭建一个属于自己的桌面应用。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://luochang212.github.io/posts/pyqt5_layout/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://luochang212.github.io/posts/pyqt5_layout/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2019-05-03T00:00:00+00:00" />
 <meta property="article:modified_time" content="2019-05-03T00:00:00+00:00" /><meta property="og:site_name" content="Title" />
 
@@ -54,7 +54,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hugo-toc.0873834b0f2e9fdc9e1d0301e8ebce21fc10383882a41e9373f29b90e85a9987.css" integrity="sha256-CHODSw8un9yeHQMB6OvOIfwQODiCpB6Tc/KbkOhamYc=">
+<link rel="stylesheet" href="/scss/tocbot.5ef07cebc3c477b54270456f149ee02922479bb7555fd344b2c69f953b0e7e5e.css" integrity="sha256-XvB868PEd7VCcEVvFJ7gKSJHm7dVX9NEssaflTsOfl4=">
 
 
 
@@ -215,13 +215,13 @@
     <div class="container ">
       <div class="sidebar-about">
         <span class="site__title">
-          <a href="http://luochang212.github.io">Chang Luo</a>
+          <a href="https://luochang212.github.io">Chang Luo</a>
         </span>
         
         
         
         <div class="author-image">
-          <a href="#" class="load-iframe" onclick="openNav()"><img src="http://luochang212.github.io/images/profile.png" id="author-iamge"
+          <a href="#" class="load-iframe" onclick="openNav()"><img src="https://luochang212.github.io/images/profile.png" id="author-iamge"
               alt="Author Image" class="img--circle img--headshot element--center"></a>
         </div>
         
@@ -534,21 +534,7 @@
     <input type="checkbox" id="tocToggle">
     <label for="tocToggle">目录</label>
     
-    <nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#创建第一个窗口">创建第一个窗口</a></li>
-        <li><a href="#为窗口添加部件">为窗口添加部件</a></li>
-        <li><a href="#为窗口添加布局">为窗口添加布局</a></li>
-        <li><a href="#布局进阶之部件缩放">布局进阶之部件缩放</a></li>
-        <li><a href="#布局进阶之部件迭代">布局进阶之部件迭代</a></li>
-        <li><a href="#制作一个布局灵活的ui界面">制作一个布局灵活的UI界面</a></li>
-        <li><a href="#附录夸夸机器人的完整代码">附录：夸夸机器人的完整代码</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+    <div class="toc" id="TableOfContents"></div>
     
   </div>
   
@@ -949,6 +935,21 @@ if (!doNotTrack) {
     
 
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
+<script type="text/javascript">
+  if (tocbot) {
+    tocbot.init({
+      
+      tocSelector: '.toc',
+      
+      contentSelector: '.post',
+      
+      headingSelector: 'h2, h3, h4',
+      collapseDepth: 4
+    });
+  }
+</script>
 
 
 

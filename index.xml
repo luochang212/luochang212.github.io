@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Chang Luo</title>
-    <link>http://luochang212.github.io/</link>
+    <link>https://luochang212.github.io/</link>
     <description>Recent content on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 02 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 02 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://luochang212.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>家庭网络拓扑</title>
-      <link>http://luochang212.github.io/posts/home_network_topology/</link>
+      <link>https://luochang212.github.io/posts/home_network_topology/</link>
       <pubDate>Sat, 02 Mar 2024 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/home_network_topology/</guid>
+      <guid>https://luochang212.github.io/posts/home_network_topology/</guid>
       <description>本文介绍家庭局域网数据传输过程
 常见家庭网络拓扑如下：
 flowchart LR A[外网] --&gt;|光纤入户| B[光猫] --&gt;|路由器WAN| C[路由器] --&gt; D[交换机] D --&gt;|交换机LAN1| E[电脑] D --&gt;|交换机LAN2| F[笔记本] D--&gt;|交换机LAN3| G[电视机盒子] 现代的 路由器 和 交换机 其实是一个设备，统称路由器。为了便于理解，我们还是把它们拆开。
@@ -25,10 +25,10 @@ WAN LAN1 LAN2 LAN3 .</description>
     
     <item>
       <title>图算法笔记</title>
-      <link>http://luochang212.github.io/posts/graph_algorithms/</link>
+      <link>https://luochang212.github.io/posts/graph_algorithms/</link>
       <pubDate>Sun, 25 Feb 2024 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/graph_algorithms/</guid>
+      <guid>https://luochang212.github.io/posts/graph_algorithms/</guid>
       <description>记笔记能让脑子里的知识结构化说是
 GitHub 项目地址：graph-algorithm
 一、图的基础操作 1.创建图 1.1 从空图开始创建 1.2 用边文件创建 1.3 用已经存在的图、边的列表创建 1.4 创建带权边 1.5 为图添加属性 1.6 创建有向图 2.可视化 random circular spectral shell 3.中心性度量 Degree Centrality Closeness Centrality Betweenness Centrality Eigenvector Centrality 4.随机图生成 5.读写文件 写入文件 读出数据 查看示例 二、通用图算法 连通性 Connectivity 最短路 Shortest Paths 相似性度量 Similarity Measures 距离度量 Distance Measures 链接预测 Link Prediction 匹配 Matching 查看示例 三、社区检测算法 1.常见社区检测算法 1.1 label Propagation 1.2 Girvan-Newman 1.3 Greedy Modularity 1.4 Louvain 2.是否接受边权作为输入 推荐使用 louvain 查看示例 四、图嵌入 施工中</description>
@@ -36,10 +36,10 @@ GitHub 项目地址：graph-algorithm
     
     <item>
       <title>树莓派 5 装机指南</title>
-      <link>http://luochang212.github.io/posts/raspberry_pi_5/</link>
+      <link>https://luochang212.github.io/posts/raspberry_pi_5/</link>
       <pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/raspberry_pi_5/</guid>
+      <guid>https://luochang212.github.io/posts/raspberry_pi_5/</guid>
       <description>2024 年 2 月，给我的 Raspberry Pi 5 安装 Ubuntu，最后踩了两次坑才装好。感觉搜索前几的教程都不对，没一个让我顺利装完的。那么我来记录一下安装过程吧
 一、下载 你需要下载两个东西：
 ubuntu-23.10：适用于树莓派 5 的 Ubuntu 镜像 Raspberry Pi Imager：将镜像写入 TF 卡的工具 1）ubuntu-23.10 的下载页面：ubuntu.com/download/raspberry-pi
@@ -53,10 +53,10 @@ CHOOSE DEVICE: 选择你的树莓派版本。选 Raspberry Pi 5 CHOOSE OS: 选�
     
     <item>
       <title>手写深度学习</title>
-      <link>http://luochang212.github.io/posts/d2l_from_scratch/</link>
+      <link>https://luochang212.github.io/posts/d2l_from_scratch/</link>
       <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/d2l_from_scratch/</guid>
+      <guid>https://luochang212.github.io/posts/d2l_from_scratch/</guid>
       <description>与其说深度学习是一门技术，不如说深度学习是一种语言
 GitHub 项目地址：AI-Project/scratch
 一、自动微分 1. 简单的例子 1.1 张量 x 的梯度
@@ -70,20 +70,20 @@ torch.randn((2, 5), requires_grad=True) &amp;gt; tensor([[ 0.4075, 1.</descripti
     
     <item>
       <title>Linux 运维手册</title>
-      <link>http://luochang212.github.io/posts/linux_handbook/</link>
+      <link>https://luochang212.github.io/posts/linux_handbook/</link>
       <pubDate>Sat, 03 Feb 2024 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/linux_handbook/</guid>
+      <guid>https://luochang212.github.io/posts/linux_handbook/</guid>
       <description>基于 CentOS 系统
 一、常见操作 1）文件操作 命令 描述 ls 列出当前文件夹下的文件 touch [FILE] 创建文件 vim [FILE] 打开文件 cat [FILE] 打印文件 head [FILE] 打印文件头 10 行，展示 20 行用 head -n 20 [FILE] tail [FILE] 打印文件尾 10 行，展示 20 行用 tail -n 20 [FILE] tail -f [FILE] 实时查看文件的末尾新增的内容，一般用于打印监控日志 less [FILE] 打印文件，可以用 上键 下键 翻页 rm [FILE] 删除文件 rm -rf [DIR] 递归删除路径DIR下所有文件 mv [FILE_A] [FILE_B] 文件FILE_A改名为FILE_B mv [FILE] [DIR] 文件FILE移动到路径DIR cd [PATH] 打开目录PATH mkdir [PATH] 创建目录 mkdir -p [PATH/TO/DIR] 创建多级目录 tar cvf file.</description>
     </item>
     
     <item>
       <title>居家物资清单</title>
-      <link>http://luochang212.github.io/posts/inventory_list/</link>
+      <link>https://luochang212.github.io/posts/inventory_list/</link>
       <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/inventory_list/</guid>
+      <guid>https://luochang212.github.io/posts/inventory_list/</guid>
       <description>Build your home from scratch.
 GitHub 项目地址：new_home
 一、随身物品 身份证 手机 钥匙 钱包 脑子 二、文具 通勤双肩包 雨伞 拍纸本 中性笔 铅笔 毛笔 秀丽笔 少量专业书籍 三、生活用品 衣服 衣架 毛巾 * 2 洗澡用 垫枕头上 牙具 牙杯 牙膏 牙刷 鞋 拖鞋 运动鞋 水杯： 工位：带盖水杯 家用：陶瓷水杯 脸盆 指甲刀 剃须刀 剪刀 四、床上用品 被子 枕头 床单 床笠 可爱靠枕 五、电子产品 手机 手机支架 手表 耳机 平板 树莓派 Switch Mac mini 笔记本电脑 笔记本电脑支架 外接显示器 外接显示器支架 鼠标 鼠标垫 拓展坞 移动硬盘 移动WIFI 游戏手柄 自拍杆 充电宝 充电器 充电头 充电线 插线板 六、家具 桌子 镜子 阅读灯 氛围灯 拖把 垃圾桶 桶装矿泉水倒立支架 七、电器 体重秤 烧水壶 智能音箱 桌面时钟（带温度湿度功能） 桌面风扇 暖风机 空气净化器 八、消耗品 洗衣液 沐浴露 洗发液 洗面奶 面霜 唇膏 抽纸 酒精湿巾 垃圾袋 保鲜袋 抹布 九、食品 调味料 基础 盐 生抽 / 蒸鱼豉油 / 寿喜烧酱汁 / 照烧汁 食用油 / 香油 / 黄油 生粉 / 粘米粉 / 白凉粉 / 面包粉 辣椒 / 二荆条 / 辣椒面 / 辣椒酱 / 泡椒 白砂糖 / 冰糖 / 红糖 生姜 / 泡仔姜 蒜 / 蒜泥 / 香蒜酱 / 青蒜酱 / 黑蒜酱 / 糖蒜 香醋 / 米醋 / 白醋 咖喱块 / 咖喱粉 进阶 蜂蜜 / 蜂蜜芥末酱 黑胡椒 / 白胡椒 / 花椒 花生酱 八角 月桂叶 蚝油 麻酱 牛油火锅底料 柠檬 / 青柠 药膳 当归 党参 黄芪 食材 主食 大米 / 小米 / 莲子 / 薏米 / 黑米 红豆 / 黄豆 / 绿豆 / 黑豆 粉丝 / 米线 / 河粉 挂面 / 龙须面 / 车仔面 / 荞麦面 / 刀削面 / 方便面 / 意大利面 水饺 / 馄饨 地瓜 / 土豆 麦片 / 藕粉 / 芝麻糊 茶泡饭速食包 / 真空装玉米 / 真空装卷饼 佐食 牛奶 / 酸奶 鸡蛋 / 咸鸭蛋 / 溏心蛋 / 皮蛋 茶叶 / 咖啡 豆腐 榨菜 / 香菜心 / 脆瓜 / 脆萝卜 / 海带丝 香菇肉酱 / 红烧肉罐头 / 咖喱牛肉罐头 / 鱼罐头 / 午餐肉罐头 猪肉松 / 鱼肉松 板鸭 / 腊肉 蛋挞皮 / 蛋挞液 盐酥鸡 / 唐扬鸡块 白斩鸡 / 烤鸭 冰鲜披萨 蔬菜 小白菜 / 娃娃菜 空心菜 / 地瓜叶 包菜 西红柿 胡萝卜 / 白萝卜 黄瓜 / 南瓜 / 西葫芦 西兰花 笋 芹菜 / 香菜 / 韭菜 四季豆 / 豌豆 / 毛豆 香菇 / 红菇 海带 / 紫菜 肉类 鸡肉 / 鸭肉 / 鸽子肉 猪肉 / 牛肉 / 羊肉 鱼 / 龙利鱼排 / 鱿鱼圈 / 虾仁 鱼丸 / 牛肉丸 牛排 / 汉堡肉 / 火腿 水果 苹果 橘子 橙子 香蕉 梨 芒果 椰子 香瓜 西瓜 奇异果 牛油果 蓝莓 / 草莓 葡萄 速食 面包 / 华夫饼 饼干 / 小熊饼干 / 趣多多 / 奥利奥 / 脆脆鲨 蛋糕 / 提拉米苏 / 巧克力派 / 蛋黄派 混合坚果 零食 巧克力 冰淇淋 / 雪糕 青团 / 糯米糍 / 年糕 无骨鸭爪 / 鸭脖 猪肉干 / 牛肉干 / 肉脯干 饮料 可乐 雪碧 菠萝啤 / 米酒 / 桂花酿 橙汁 椰汁 咸柠七 十、药品 口罩 体温计 药箱 感冒 藿香正气胶囊 999感冒灵颗粒 化痰止咳 川贝枇杷颗粒 乙酰半胱氨酸片 咽喉肿痛 咽喉清颗粒 发热流感 布洛芬（散利痛 / 布洛芬缓释胶囊） 复方氨酚烷胺胶囊 复方对乙酰氨基酚片(Ⅱ) 抗生素（抗细菌） 头孢 阿莫西林（青霉素） 罗红霉素分散片 盐酸左氧氟沙星片 [肠胃炎可用] 诺氟沙星胶囊 盐酸莫西沙星片 抗病毒 磷酸奥司他韦胶囊 唇炎 单乳膏 [上海市皮肤科医院有售] 抗过敏 氯雷他定 蚊虫叮咬 999皮炎平 消炎 莫匹罗星软膏（百多邦） 消毒 碘伏 酒精棉球 包扎 创可贴 纱布片 / 绷带 棉签 医用胶带 医用剪刀 医用镊子 十一、工具 螺丝刀 卷尺 十二、厨具 中式炒锅 电饭煲 电磁炉 碗 / 盘子 勺子 / 筷子 菜刀 菜板 茶漏 十三、运动用品 瑜伽垫 俯卧撑支架 双节棍 长棍 泳镜 泳帽 泳裤 十四、保暖用品 手套 护膝 十五、证件 护照 驾驶证 银行卡 其他身份材料 十六、XOX 拍立得 To签色纸 应援棒 参考：</description>
@@ -91,10 +91,10 @@ GitHub 项目地址：new_home
     
     <item>
       <title>深度学习笔记</title>
-      <link>http://luochang212.github.io/posts/d2l/</link>
+      <link>https://luochang212.github.io/posts/d2l/</link>
       <pubDate>Sat, 11 Nov 2023 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/d2l/</guid>
+      <guid>https://luochang212.github.io/posts/d2l/</guid>
       <description>跟李沐老师学深度学习，课程见 d2l，如有错误，欢迎拍砖 GitHub 项目地址：AI-Project
 〇、技术路线图 flowchart TD A[softmax 回归] --&gt;|无法拟合 XOR 函数| B[多层感知机] B --&gt; |高像素图片作为输入，模型参数爆炸| C[卷积] C --&gt;|数据的长宽下降太快| D[填充] C --&gt;|数据的长宽下降太慢| E[步幅] C --&gt;|缓解卷积对位置敏感| F[池化] C --&gt;|多模式识别与组合| G[多通道输入/输出] ❤️ powered by mermaid 一、softmax 回归 1. 虽然叫回归，但是softmax 解决的是分类问题 回归估计是一个连续值 分类预测是一个离散类别 2. 分类应用举例 MINIST ImageNet human-protein-atlas-image-classification (Kaggle) malware-classification (Kaggle) jigsaw-comment-classification (Kaggle) 3. 从回归到多类分类 &amp;ndash; 均方损失 对分类结果做 one-hot 编码：
 $y = [y_1, y_2, , ... , y_n]^T$
@@ -103,10 +103,10 @@ $y_i=\left\{\begin{array}{l}1 \text { if } i=y \\ 0 \text { otherwise }\end{arra
     
     <item>
       <title>PyPI 打包小记</title>
-      <link>http://luochang212.github.io/posts/pypi_packaging/</link>
+      <link>https://luochang212.github.io/posts/pypi_packaging/</link>
       <pubDate>Wed, 18 Oct 2023 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/pypi_packaging/</guid>
+      <guid>https://luochang212.github.io/posts/pypi_packaging/</guid>
       <description>你们这些家伙，好好看看我是怎么打包的吧！
 GitHub 项目地址：hit-and-blow
 官方教程：Packaging Python Projects 背景知识：Modules 一、文件结构介绍 打包前，需构建如下文件结构：
@@ -117,10 +117,10 @@ packaging_tutorial: 项目文件夹 LICENSE: 开源协议，可由 GitHub 生成
     
     <item>
       <title>Hive SQL 笔记</title>
-      <link>http://luochang212.github.io/posts/hive_sql_note/</link>
+      <link>https://luochang212.github.io/posts/hive_sql_note/</link>
       <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/hive_sql_note/</guid>
+      <guid>https://luochang212.github.io/posts/hive_sql_note/</guid>
       <description>SQL 还需要注释？SQL 会自己注释自己的，对吧
 1. 表操作 1.1 建表 CREATE TABLE [DATABASE].[TABLE_NAME] ( `id` BIGINT COMMENT &amp;#39;学号&amp;#39;, name STRING COMMENT &amp;#39;姓名&amp;#39;, ttl_score DOUBLE COMMENT &amp;#39;总分&amp;#39; ) COMMENT &amp;#39;枝江中学五年级学生成绩明细表&amp;#39; PARTITIONED BY (day STRING COMMENT &amp;#39;day&amp;#39;, hour STRING COMMENT &amp;#39;hour&amp;#39;) ROW FORMAT [row_format] STORED AS [file_format]; Note: 了解更多，请参考 CREATE TABLE with Hive format
 1.2 删表 DROP TABLE [DATABASE].[TABLE_NAME]; DROP TABLE IF EXISTS [DATABASE].[TABLE_NAME]; 1.3 在原表上新增列 ALTER TABLE [DATABASE].[TABLE_NAME] ADD COLUMNS ( sub_score ARRAY&amp;lt;DOUBLE&amp;gt; COMMENT &amp;#39;分科成绩&amp;#39;, sub_score_map MAP&amp;lt;STRING,DOUBLE&amp;gt; COMMENT &amp;#39;分科成绩map&amp;#39;, `rank` BIGINT COMMENT &amp;#39;年段排名&amp;#39;, update_time STRING COMMENT &amp;#39;更新时间&amp;#39; ); 1.</description>
@@ -128,10 +128,10 @@ packaging_tutorial: 项目文件夹 LICENSE: 开源协议，可由 GitHub 生成
     
     <item>
       <title>因果推断笔记</title>
-      <link>http://luochang212.github.io/posts/causal_inference/</link>
+      <link>https://luochang212.github.io/posts/causal_inference/</link>
       <pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/causal_inference/</guid>
+      <guid>https://luochang212.github.io/posts/causal_inference/</guid>
       <description>不谜语人的因果推断笔记！
 学习统计最好还是学习一下 R 语言。相比 Python，R 是专门用于统计的语言，它提供了更细致的函数和更标准的实现方法。
 GitHub 项目地址： 1. 因果推断入门 小朋友感冒，家长给他吃药，一个星期后就痊愈了。那么“吃药”和“痊愈”是否有因果关系呢？
@@ -145,10 +145,10 @@ GitHub 项目地址： 1. 因果推断入门 小朋友感冒，家长给他吃�
     
     <item>
       <title>摸鱼侠极客版</title>
-      <link>http://luochang212.github.io/posts/moyu_bash/</link>
+      <link>https://luochang212.github.io/posts/moyu_bash/</link>
       <pubDate>Sun, 03 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/moyu_bash/</guid>
+      <guid>https://luochang212.github.io/posts/moyu_bash/</guid>
       <description>老板：退退退
 GitHub 项目地址：moyu-bash
 1. 缘起 最近刷到一个微信小程序，叫 “摸鱼侠”，它长这样：
@@ -161,10 +161,10 @@ GitHub 项目地址：moyu-bash
     
     <item>
       <title>统计学补完计划</title>
-      <link>http://luochang212.github.io/posts/learning_statistics/</link>
+      <link>https://luochang212.github.io/posts/learning_statistics/</link>
       <pubDate>Sat, 01 May 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/learning_statistics/</guid>
+      <guid>https://luochang212.github.io/posts/learning_statistics/</guid>
       <description>统计学绝非一门生硬无趣的学科，它有着鲜活的案例和丰富的实验，让我们循着公式乘着代码在统计的海洋里尽情摇摆叭 1. 回归分析 1.1 简单线性回归模型 (1) 回归方程 许多回归分析都是在如下假设前提下开始的：$y$ 和 $x$ 是两个代表某个总体的变量，我们希望用 $x$ 解释 $y$，通过一个线性方程，我们可以刻画 $y$ 和 $x$ 之间的关系： $$y=\beta_{0}+\beta_{1} x+u \quad (1.1)$$ 假定方程 (1.1) 在我们所关注的总体中成立，它便定义了一个简单线性回归模型 (simple linear regression model).
 其中，各符号含义如下：
 $y$: 因变量（或被解释变量、回归子） $x$: 自变量（或解释变量、回归元） $u$: 误差项（或干扰项） $\beta_{1}$: 斜率参数 $\beta_{0}$: 截距参数 举例来说，假设我们用方程 (1.1) 来刻画大豆收成：$y$ 表示收成，$x$ 表示施肥量，$u$ 则包括了诸如土地质量、降水量等因素。
@@ -174,10 +174,10 @@ $y$: 因变量（或被解释变量、回归子） $x$: 自变量（或解释变
     
     <item>
       <title>FastAPI 初见</title>
-      <link>http://luochang212.github.io/posts/fastapi/</link>
+      <link>https://luochang212.github.io/posts/fastapi/</link>
       <pubDate>Sat, 21 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/fastapi/</guid>
+      <guid>https://luochang212.github.io/posts/fastapi/</guid>
       <description>什么是 API？如何从零开始，搭建自己的第一个API？本文带你搭建一个 API 小应用以了解 FastAPI 的使用细节
 GitHub 项目地址：calendar-api
 什么是 API？
@@ -192,10 +192,10 @@ FastAPI 对构建 REST 风格的 API 提供了良好的支持。</description>
     
     <item>
       <title>泊松分布的仿真及可视化</title>
-      <link>http://luochang212.github.io/posts/poisson/</link>
+      <link>https://luochang212.github.io/posts/poisson/</link>
       <pubDate>Sat, 19 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/poisson/</guid>
+      <guid>https://luochang212.github.io/posts/poisson/</guid>
       <description>本文介绍泊松分布和泊松函数的定义，并通过 Python random 库对泊松分布进行仿真，带你触摸复杂表象下的简单本质。
 GitHub 项目地址：python-tips/poisson
 1. 从泊松函数讲起 泊松分布 表示在给定时间段内发生给定数量的事件的概率。这个定义比较抽象。举个具体的例子，假设你每小时接到电话的概率是固定的，比如每小时 0.05 个，那么你在接下来 1 小时内接到电话个数的概率，就服从泊松分布:
@@ -211,10 +211,10 @@ $$\boxed{P(k | t, \lambda)=\frac{(\lambda t)^{k}}{k !} \exp (-\lambda t)}$$
     
     <item>
       <title>漫谈 Hadoop Streaming</title>
-      <link>http://luochang212.github.io/posts/hadoop_intro/</link>
+      <link>https://luochang212.github.io/posts/hadoop_intro/</link>
       <pubDate>Sat, 25 Jul 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/hadoop_intro/</guid>
+      <guid>https://luochang212.github.io/posts/hadoop_intro/</guid>
       <description>本文聚焦如何通过 Hadoop Streaming + Python 编写 Hadoop 程序。
 Hadoop 是一个用于大数据处理的分布式计算框架。
 众所周知，实现分布式计算是一个繁琐的过程，Hadoop 通过一个标准化的数据处理流程，简化操作步骤，让没有分布式计算背景的程序员也能轻松写出分布式程序。Hadoop 本身是用 Java 写就的，因此对于非 Java 程序员来说，学 Hadoop 必须先学 Java，这大大降低了 Hadoop 的友好程度。
@@ -230,10 +230,10 @@ HDFS 是一个分布式存储系统，它负责将文件切割成分片，然后
     
     <item>
       <title>Python 工程化实践</title>
-      <link>http://luochang212.github.io/posts/python_practice/</link>
+      <link>https://luochang212.github.io/posts/python_practice/</link>
       <pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/python_practice/</guid>
+      <guid>https://luochang212.github.io/posts/python_practice/</guid>
       <description>学 Python 不应仅限于学编程，同样应该学习工程知识，比如虚拟环境、编码风格以及单元测试等。本文致力于介绍 Python 工程化所需的前置知识。
 ⚠️ 注意：以下教程适用于 MacOS。
 部署环境 1. Anaconda Anaconda 是一个包管理器，它能让你方便的管理 Python 版本和包版本。并且， Anaconda 聚合了 Jupyter notebook，使其大受数据科学家和人工智能工程师的欢迎。下面我们来介绍如何用 Anaconda 管理我们的 Python 环境。
@@ -246,10 +246,10 @@ Python 环境分为本地环境(lcoal env) 和全局环境 (global env) 。为�
     
     <item>
       <title>算法集萃</title>
-      <link>http://luochang212.github.io/posts/algorithms/</link>
+      <link>https://luochang212.github.io/posts/algorithms/</link>
       <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/algorithms/</guid>
+      <guid>https://luochang212.github.io/posts/algorithms/</guid>
       <description> 算法学习笔记，长期更新 GitHub 项目地址：python-tips/algorithms
 排序 本节介绍各种排序算法的思路和特点，并提供了示例代码。
 插入排序 直接插入排序 希尔排序 交换排序 冒泡排序 快速排序 选择排序 简单选择排序 堆排序 归并排序 二路归并排序 查看示例 排列组合 排列 组合 子集 查看示例 深度优先搜索DFS 施工中
@@ -261,10 +261,10 @@ Python 环境分为本地环境(lcoal env) 和全局环境 (global env) 。为�
     
     <item>
       <title>用魔法打败魔法！</title>
-      <link>http://luochang212.github.io/posts/chico_and_dico/</link>
+      <link>https://luochang212.github.io/posts/chico_and_dico/</link>
       <pubDate>Fri, 21 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/chico_and_dico/</guid>
+      <guid>https://luochang212.github.io/posts/chico_and_dico/</guid>
       <description>Chico 和 Dico 是两位魔术师，他们有一个经典魔术：根据任意四张牌猜第五张牌。但完成这个魔术并不需要任何魔术师的技巧，因为它完全建立在数学原理之上。只需要一点数学知识和充分的练习，你也能表演这个魔术！
 GitHub 项目地址：chico-and-dico
 Chico 和 Dico 的魔术 Chico 和 Dico 是两位魔术师，他们经常表演的一个魔术是这样的：Chico 将一副 52 张的扑克牌交给一位观众，让他随机抽取其中的 5 张。然后 Chico 将这 5 张牌按一定的顺序重新排列，再将其还给观众。上述整个过程 Dico 都是看不见的。然而，当观众按 Chico 排好的顺序依次展示前四张牌之后，Dico 却能准确地说出第五张牌是什么。
@@ -278,10 +278,10 @@ Chico 和 Dico 的魔术 Chico 和 Dico 是两位魔术师，他们经常表演�
     
     <item>
       <title>达尔文的故乡</title>
-      <link>http://luochang212.github.io/posts/uk_experience/</link>
+      <link>https://luochang212.github.io/posts/uk_experience/</link>
       <pubDate>Wed, 12 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/uk_experience/</guid>
+      <guid>https://luochang212.github.io/posts/uk_experience/</guid>
       <description>英国小镇 Shrewsbury 是达尔文的故乡。这里有丰沛的水系、星罗棋布的公园、历史悠久的建筑。这里没有如织的游人，是一座安静的小镇。
 9月初，新生乍到老生未还，突然涌现的短租需求，使本地短租公寓一时爆火。
 看着 Airbnb 上比平时高了百分之两百的房租。我决定离开这座城市，去别处居住一段时间。
@@ -309,10 +309,10 @@ Chico 和 Dico 的魔术 Chico 和 Dico 是两位魔术师，他们经常表演�
     
     <item>
       <title>贝叶斯方法</title>
-      <link>http://luochang212.github.io/posts/bayesian/</link>
+      <link>https://luochang212.github.io/posts/bayesian/</link>
       <pubDate>Fri, 31 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/bayesian/</guid>
+      <guid>https://luochang212.github.io/posts/bayesian/</guid>
       <description>统计学中有两大学派，频率学派和贝叶斯学派。频率派用总体信息和样本信息进行统计推断。而贝叶斯派除了使用以上两种信息之外，还使用先验信息进行统计推断。本文从数学原理和编程实践两个方向探究贝叶斯方法。
 本文从数学原理和编程实践两个方面来介绍贝叶斯方法。
 数学原理 贝叶斯理论包含很多内容。我们熟悉的利用先验分布推后验分布的方法被称为贝叶斯推理（Bayesian inference）。此外，还可以利用参数的后验分布的均值作为该参数的点估计，这种方法被称为贝叶斯估计（Bayesian estimation）。本文数学原理部分主要介绍贝叶斯推理和贝叶斯估计。
@@ -330,10 +330,10 @@ $ P(cancer) = 0.008, P(normal) = 0.992 \\ P(+ | cancer) = 0.98, P(- | cancer) = 
     
     <item>
       <title>我的 Python 不可能这么可爱</title>
-      <link>http://luochang212.github.io/posts/python_tips/</link>
+      <link>https://luochang212.github.io/posts/python_tips/</link>
       <pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/python_tips/</guid>
+      <guid>https://luochang212.github.io/posts/python_tips/</guid>
       <description>Python 学习笔记，如有错误，欢迎指正 GitHub 项目地址：python-tips
 相关书籍推荐：
 入门：《Python编程从入门到实践》 [豆瓣链接] 初级：《Python学习手册》(英文名 Learning Python) [豆瓣链接] 中级：《流畅的Python》[豆瓣链接] PS: 针对每个阶段，我推荐的是我认为最好的那本书。
@@ -347,10 +347,10 @@ $ P(cancer) = 0.008, P(normal) = 0.992 \\ P(+ | cancer) = 0.98, P(- | cancer) = 
     
     <item>
       <title>Elasticsearch 初探</title>
-      <link>http://luochang212.github.io/posts/elastic_search/</link>
+      <link>https://luochang212.github.io/posts/elastic_search/</link>
       <pubDate>Thu, 24 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/elastic_search/</guid>
+      <guid>https://luochang212.github.io/posts/elastic_search/</guid>
       <description>Elasticsearch 是一个开源分布式全文搜索引擎。它建立在当前最先进有效的搜索引擎库 Lucene 之上。Elasticsearch 集成了 Lucene 的检索功能，并通过一套简单的 API 隐藏了 Lucene 的复杂性，使之简单易用。
 初识 ES 的初步介绍 本节将介绍 ES 的几个特性。这些介绍能帮助我们理解 ES 是应什么需求诞生的？它解决了什么问题？它为何如此架构？以及这种架构方式为它带来哪些性能上的提升？这些信息虽然不能直接提升我们使用 ES 的能力，但能从更深的维度帮助我们使用好它。
 不仅仅是搜索 ES 不仅能够搜索，它还提供一套分布式实时存储文档的解决方案。 ES 允许用户将数据存储在多个服务器节点上。这些节点能实时共享数据。一旦主节点的内容发生改变，这些改变会实时传递到副节点上，以保证主副节点的内容一致。如果主节点掉线，ES 能立即选举出一个副节点充当主节点。选举过程就像切换开关一样，能够在瞬间完成，从而保证了 ES 的可靠性。
@@ -362,10 +362,10 @@ SQL 和 NoSQL SQL 全称 Structured Query Language。SQL 中的 Structured 突�
     
     <item>
       <title>Monaco Editor 入门指南</title>
-      <link>http://luochang212.github.io/posts/monaco_editor_tutorial/</link>
+      <link>https://luochang212.github.io/posts/monaco_editor_tutorial/</link>
       <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/monaco_editor_tutorial/</guid>
+      <guid>https://luochang212.github.io/posts/monaco_editor_tutorial/</guid>
       <description>Monaco Editor 是一款开源的在线代码编辑器。它是 VSCode 的浏览器版本，随着近年 VSCode 大热，Monaco Editor 也随之走红。目前虽未登上 Online Editor 领域的宝座，却也隐然有超越几位老前辈（指 CodeMirror, Ace 之流）之势。
 GitHub项目链接：monaco-editor-demos
 在学习 Monaco Editor 的过程中，我发现网络上的中文教程很少。为了填补这部分空白，我决定写一份入门教程，帮助初学者快速熟悉 Monaco Editor。通过阅读本文，你可以了解以下内容：
@@ -382,10 +382,10 @@ $ mkdir base $ cd base $ touch index.</description>
     
     <item>
       <title>【项目】摩纳哥语音编辑器</title>
-      <link>http://luochang212.github.io/posts/monaco_speech_editor/</link>
+      <link>https://luochang212.github.io/posts/monaco_speech_editor/</link>
       <pubDate>Thu, 22 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/monaco_speech_editor/</guid>
+      <guid>https://luochang212.github.io/posts/monaco_speech_editor/</guid>
       <description>摩纳哥语音编辑器（Monaco Speech Editor）是一款适用于视障人群的在线代码编辑器。它在开源编辑器 Monaco Editor 的基础上，开发了专为视障者设计的语音辅助功能，包括鼠标悬浮提示，快捷键操作和代码阅读。
 其代码阅读功能尤其强大，用户可以用键盘精确定位指定内容进行阅读。针对同一段代码，它提供多种语音输出模式：字符模式、代码模式、音乐模式、全局模式。这些模式根据用户在不同编程阶段的不同需求，提供差异化的语音输出。比如，当用户对一个语句进行 debug 时，推荐使用字符模式进行语音播放。
 如果你对它的功能感兴趣，点击下方链接尝试一下吧 GitHub 项目地址：monaco-speech-editor
@@ -406,10 +406,10 @@ Amazon Polly Cloud Text-to-Speech Microsoft text to speech API 但鉴于这些�
     
     <item>
       <title>排队论在网络性能分析中的应用</title>
-      <link>http://luochang212.github.io/posts/network_performance_analysis/</link>
+      <link>https://luochang212.github.io/posts/network_performance_analysis/</link>
       <pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/network_performance_analysis/</guid>
+      <guid>https://luochang212.github.io/posts/network_performance_analysis/</guid>
       <description>排队论(queueing theory)也称随机服务系统理论，它研究的内容有三部分：性态问题、最优化问题和统计推断问题。（《运筹学》清华大学出版社）
 下图描述了排队过程的一般流程：
 现实中的排队问题是多种多样的，对上述“顾客源”和“服务机构”应该作宽泛的理解。顾客和服务机构可以是生物，也可以是非生物；排队结构可以是有形的，也可以是无形的，比如向交换台要求通话的请求；顾客可以走向服务机构，也可以相反，比如送货上门。
@@ -424,10 +424,10 @@ The M/M/1 queuing system The birth-death process The M/M/m queuing system The M/
     
     <item>
       <title>厨房笔记（二）：快手菜合集</title>
-      <link>http://luochang212.github.io/posts/kitchen_time_2/</link>
+      <link>https://luochang212.github.io/posts/kitchen_time_2/</link>
       <pubDate>Tue, 02 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/kitchen_time_2/</guid>
+      <guid>https://luochang212.github.io/posts/kitchen_time_2/</guid>
       <description>做饭累不累？如果你只是偶尔做一顿饭以娱身心，还是挺快乐的。但要是餐餐下厨，就没那么好玩了。一日三餐，少说也要花费两三个小时的光景，不但耗损精力，还挤占学习时间。日复一日地做下来，不累才怪。因此，长期做饭的留学生往往会体现三种趋势：做饭价格向便宜收敛，做饭速度向手快收敛，做饭味道向好吃收敛。因为咱追求的就是便宜美味的同时，又省时省力不麻烦。那么下面就由我来给大家盘点一下那些好吃又方便的快手菜吧
 牛肉丸子汤 原料：牛肉丸、醋、香油、白胡椒粉、辣椒粉、葱
 做法：
@@ -464,10 +464,10 @@ TESCO买的厚三文鱼片，均匀地敷上面粉，直至表面摸不到水分
     
     <item>
       <title>生态系统建模</title>
-      <link>http://luochang212.github.io/posts/nature_system/</link>
+      <link>https://luochang212.github.io/posts/nature_system/</link>
       <pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/nature_system/</guid>
+      <guid>https://luochang212.github.io/posts/nature_system/</guid>
       <description>本文介绍如何用 Agent-based model 的方法，对一个包含狼、麋鹿、草三种生物的生态系统建模。
 GitHub 项目地址：nature-system
 Agent指个体，Agent-base model即基于个体的模型。在Agent-based model中，虚拟实体(virtual entity)和现实个体一一对应。一般来说，虚拟实体的属性是对现实个体的抽象，虚拟实体的行为则是依照已经写好的规则迭代。这种建模方式往往涉及个体详细的行为模式，因此适合以研究个体行为规则为目的的建模。
@@ -495,10 +495,10 @@ Note: 除了Agent-base model之外，Equation-based model也是一种比较常�
     
     <item>
       <title>JavaScript 初探</title>
-      <link>http://luochang212.github.io/posts/to_do_list/</link>
+      <link>https://luochang212.github.io/posts/to_do_list/</link>
       <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/to_do_list/</guid>
+      <guid>https://luochang212.github.io/posts/to_do_list/</guid>
       <description>初次学习JavaScript，用JS写了一个计划表生成工具。
 项目链接：计划表生成工具
 JavaScript是一个神奇的语言。它既不像Java原生地支持类和继承，也不如Python声明变量方便，更兼闹出&amp;quot;===&amp;ldquo;这样的麻烦。但我依旧深知它的强大，尤其是在可视化这一方面，在接触qtwebengine的时候已经感受过一次了。目前，我学习JS的平台是W3Schools 和廖雪峰的网站。
@@ -522,10 +522,10 @@ for (i = 0; i &amp;lt; subArray.length; i++) { var index = i+1; body += &amp;#39
     
     <item>
       <title>PyQt5 侧边栏布局</title>
-      <link>http://luochang212.github.io/posts/pyqt5_layout_sidebar/</link>
+      <link>https://luochang212.github.io/posts/pyqt5_layout_sidebar/</link>
       <pubDate>Fri, 10 May 2019 21:43:09 +0100</pubDate>
       
-      <guid>http://luochang212.github.io/posts/pyqt5_layout_sidebar/</guid>
+      <guid>https://luochang212.github.io/posts/pyqt5_layout_sidebar/</guid>
       <description>GitHub 项目地址：pyqt5-demo
 主流软件如网易云音乐、腾讯电脑管家，都有侧边栏。侧边栏能有效扩展应用空间，使软件功能的层次更加分明。
 但PyQt5并没有一个专门的方法实现侧边栏。要实现侧边栏，主要有两种技术路线。一是从标签部件(QTabWidget)改造而来，二是用网格布局(QGridLayout)画出来。本文采用第一种技术路线，制作一个简单的侧边栏应用。
@@ -539,10 +539,10 @@ from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__
     
     <item>
       <title>PyQt5 布局浅析</title>
-      <link>http://luochang212.github.io/posts/pyqt5_layout/</link>
+      <link>https://luochang212.github.io/posts/pyqt5_layout/</link>
       <pubDate>Fri, 03 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/pyqt5_layout/</guid>
+      <guid>https://luochang212.github.io/posts/pyqt5_layout/</guid>
       <description>PyQt5是Python环境下用来开发UI界面的一个包。它容易上手，对初学者友好，并且拥有丰富的函数库，可以实现大部分桌面应用的开发需求，且支持QSS语言，能够对界面风格做个性化调整。总体来说，PyQt5是一款开发效率极高的UI框架。这篇文章从零开始，教你搭建一个属于自己的桌面应用。
 GitHub 项目地址：pyqt5-demo
 创建第一个窗口 一般来说，桌面应用都以窗口(window)形式呈现。因此，要搭建桌面应用，首先要创建窗口。
@@ -554,10 +554,10 @@ from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__
     
     <item>
       <title>微博数据可视化</title>
-      <link>http://luochang212.github.io/posts/my_weibo/</link>
+      <link>https://luochang212.github.io/posts/my_weibo/</link>
       <pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/my_weibo/</guid>
+      <guid>https://luochang212.github.io/posts/my_weibo/</guid>
       <description>GitHub 项目地址：weibo-analysis
 这次的数据用的是本科期间就已经爬好，但因为当时没有足够的处理技巧，这些数据在硬盘里一丢就是两年。如今，本Python初丁趁着还有机会摸鱼，赶紧把数据翻出来，让它们发光发热。
 文本获取 因为新浪微博的严防死打，现如今微博的数据越来越不好爬。GitHub上的微博爬虫生存周期通常都很短，使爬取数据的成本大大增加。这里我用的是微博@失眠狸 同学的方法，用鼠标精灵写了个插件，控制快捷键和页面拖动，把内容从浏览器上粘贴到sublime里。
@@ -582,10 +582,10 @@ def classification(self, txt_array, file_index): id = np.array([]) date = np.arr
     
     <item>
       <title>【项目】TSP旅行路线规划</title>
-      <link>http://luochang212.github.io/posts/tsp_route/</link>
+      <link>https://luochang212.github.io/posts/tsp_route/</link>
       <pubDate>Wed, 10 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/tsp_route/</guid>
+      <guid>https://luochang212.github.io/posts/tsp_route/</guid>
       <description>GitHub 项目地址：tsp-route
 对于在欧洲的小伙伴们，复活节假在这一周就正式开始啦。大家都是怎么计划旅行的呢？
 我的习惯是在出发前最后一晚，花上半小时，搜索目的地景点 (Point of interest, POI), 然后在Google Maps上为它们点上小星星，以免和它们擦肩而过。我的地图经过一番操作，就成了下面这副模样。
@@ -605,10 +605,10 @@ def classification(self, txt_array, file_index): id = np.array([]) date = np.arr
     
     <item>
       <title>Python 解置换群问题</title>
-      <link>http://luochang212.github.io/posts/python_math_problem/</link>
+      <link>https://luochang212.github.io/posts/python_math_problem/</link>
       <pubDate>Sat, 16 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/python_math_problem/</guid>
+      <guid>https://luochang212.github.io/posts/python_math_problem/</guid>
       <description>室友问我一个问题，把我难住了。
 想不出解法，遂写了个程序暴力求解。
 **题目：**A permutation is applied to the string SUPERBGOLDHAT. The same permutation is applied to the output from this operation. The second output is OGTHLEPDSUARB. What was the first output? (Note: as an example, the permutation(1 3 4) applied to WOLF gives FOWL. Write your answer in capital letters inside quotation marks, e.g. &amp;ldquo;BEARDPLUGHOST&amp;rdquo;.)
@@ -620,10 +620,10 @@ Note: 作用两次的意思就是，当一个置换规则作用于字符串一�
     
     <item>
       <title>厨房笔记（一）：牛刀小试</title>
-      <link>http://luochang212.github.io/posts/kitchen_time_1/</link>
+      <link>https://luochang212.github.io/posts/kitchen_time_1/</link>
       <pubDate>Mon, 06 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/kitchen_time_1/</guid>
+      <guid>https://luochang212.github.io/posts/kitchen_time_1/</guid>
       <description>刚到英国那会儿，做饭的兴致很高。每天都跟过家家似的，买菜，钻研菜谱，然后做饭，在厨房里待上四五个小时也不觉得累。大概这就是“人生若只如初见”吧。
 拌牛肉 原料：牛肉3两，猪油，葱，酱油，地瓜粉1匙半，盐
 做法：
@@ -671,10 +671,10 @@ Note: 作用两次的意思就是，当一个置换规则作用于字符串一�
     
     <item>
       <title>【项目】基于蚁群算法的证券投资组合优化</title>
-      <link>http://luochang212.github.io/posts/markowitz_model/</link>
+      <link>https://luochang212.github.io/posts/markowitz_model/</link>
       <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/markowitz_model/</guid>
+      <guid>https://luochang212.github.io/posts/markowitz_model/</guid>
       <description>在证券交易中，为了降低风险，经常使用一笔资金购买多支股票。那么，如何合理地选择证券组合，并确定每支证券的资金分配系数，以使预期风险最低，预期收益最高，就成了一个经典的经济学问题 &amp;ndash; 证券投资组合优化问题。
 1952年，马科维茨首次提出均值-方差模型(Markowitz Mean-Variance Model)。该模型利用股票的历史交易数据，定义了股票的预期风险与收益，并引入“无差异曲线”和“有效市场边界”的概念，最终导出了最佳投资组合的计算公式。
 本文利用蚁群算法，求解马科维茨均值-方差模型。蚁群算法是一个群体智能算法，因其较强的鲁棒性和适用性，被广泛应用于工业界，是一种研究较为成熟的算法。
@@ -701,10 +701,10 @@ Note: 作用两次的意思就是，当一个置换规则作用于字符串一�
     
     <item>
       <title>观影：少女哪吒</title>
-      <link>http://luochang212.github.io/posts/nezha/</link>
+      <link>https://luochang212.github.io/posts/nezha/</link>
       <pubDate>Tue, 11 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/nezha/</guid>
+      <guid>https://luochang212.github.io/posts/nezha/</guid>
       <description>青春可贵，文学高华，可是越是珍贵就越脆弱越易碎。对于一般人来说，破碎的疼痛也许还能承受得住，可是对内心敏感的人，这几乎是欲死的折磨。
 我发现，影片中很多人都沉浸于某种爱好。王晓冰喜欢文学和音乐，晓冰妈喜欢舞蹈，晓冰爸外面的女人喜欢钢琴。但他们的爱好不是为了艺术，他们只是借沉浸艺术来麻痹自己。
 我猜，王晓冰对家人大喊“虚伪”的原因，大概就是看不惯家人的这种自我麻痹吧？看不惯这种因为怯懦、无法承受就转向麻痹自我的态度。她不满拿音乐和舞蹈麻痹自己的母亲，不满借口“恋爱自由”为自己脱责的父亲。
@@ -717,47 +717,47 @@ Note: 作用两次的意思就是，当一个置换规则作用于字符串一�
     
     <item>
       <title>基于蚁群算法的证券投资组合优化</title>
-      <link>http://luochang212.github.io/portfolio/1/</link>
+      <link>https://luochang212.github.io/portfolio/1/</link>
       <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/portfolio/1/</guid>
+      <guid>https://luochang212.github.io/portfolio/1/</guid>
       <description>在证券交易中，为了降低风险，经常使用一笔资金购买多支股票。那么，如何合理地选择证券组合，并确定每支证券的资金分配系数，以使预期风险最低，预期收益最高，就成了一种经典的金融问题 &amp;ndash; 证券投资组合优化问题。
 马科维茨均值-方差模型(Markowitz Mean-Variance Model)是一种用于求解证券投资组合优化问题的数学模型。本文改进了一种多元函数连续域蚁群算法，用于求解马科维茨均值-方差模型。</description>
     </item>
     
     <item>
       <title>TSP旅行路线规划</title>
-      <link>http://luochang212.github.io/portfolio/2/</link>
+      <link>https://luochang212.github.io/portfolio/2/</link>
       <pubDate>Wed, 01 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/portfolio/2/</guid>
+      <guid>https://luochang212.github.io/portfolio/2/</guid>
       <description>旅行中的一天通常这样度过：清晨从宾馆出发，去第一个景点。第一个景点逛完，去下一个景点&amp;hellip;&amp;hellip;直到最后一个景点逛完，行程结束返回宾馆。那么如何规划一条最短的路线走完一天的行程呢？这就涉及到一个经典的运筹学问题 &amp;ndash; TSP问题。本项目用googlemaps库获取纬度和经度信息，用OR-Tools库求解TSP问题，用gmaps库可视化输出结果。利用本项目，用户只需输入景点名称，即可获得一张周游所有景点的最短路线图。可以说是一个即插即用的TSP路线规划工具。</description>
     </item>
     
     <item>
       <title>团队软件项目</title>
-      <link>http://luochang212.github.io/portfolio/3/</link>
+      <link>https://luochang212.github.io/portfolio/3/</link>
       <pubDate>Mon, 01 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/portfolio/3/</guid>
+      <guid>https://luochang212.github.io/portfolio/3/</guid>
       <description>每年，教学经理(Learning and Teaching Manager)都必须从老师那里收集课程信息。如果发现考试时间重叠或者太过密集，教学经理都必须通知老师调整时间。此外，教学经理还必须核对课程信息是否正确。比如各项考核分数之和是否为100分，考试时间是否与节假日重叠，作业的截至日期是否在发布日期之后等。核对完成后，还必须将每个课程的信息打印出来。这个过程非常手动，对用户也不友好。因此，团队编写了本软件。本软件能自动核对、打印、可视化课程信息，并允许用户将课程信息以邮件形式返回给教学经理，以帮助课程经理提高工作效率。</description>
     </item>
     
     <item>
       <title>自然系统的建模与仿真</title>
-      <link>http://luochang212.github.io/portfolio/4/</link>
+      <link>https://luochang212.github.io/portfolio/4/</link>
       <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/portfolio/4/</guid>
+      <guid>https://luochang212.github.io/portfolio/4/</guid>
       <description>本项目采用 Agent-based model 的方式，为狼-麋鹿-草生态系统建模。技术上采用了 MATLAB 面向对象编程，为狼和麋鹿的四种行为，分别是捕食、迁徙、生育、死亡，编写了规则。其中狼群拥有智能，可以利用有限信息搜索羊群，并且在头狼的带领下，狼群还表现出集群行为。给定初始条件以后，本模型会模拟生态系统的运作，输出一个时刻更新的二维图以展示各生物位置的变化情况。此外，还会输出一个折线图以表示各生物数量的变化情况。</description>
     </item>
     
     <item>
       <title></title>
-      <link>http://luochang212.github.io/gadget/monaco-speech-editor/docs/readme/</link>
+      <link>https://luochang212.github.io/gadget/monaco-speech-editor/docs/readme/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/gadget/monaco-speech-editor/docs/readme/</guid>
+      <guid>https://luochang212.github.io/gadget/monaco-speech-editor/docs/readme/</guid>
       <description>monaco-speech-editor Monaco Speech Editor 是一款在线代码编辑器。内置强大的语音辅助功能，以帮助视障人群阅读、编辑和编译代码。
 快速开始 点击本链接，在线运行应用。
 本地运行 因为 Monaco Speech Editor 是一个用传统前端方式写成的，不依赖于任何框架的静态网页，因此很容易在本地运行。
@@ -779,19 +779,19 @@ git clone https://github.com/luochang212/monaco-speech-editor.git 然后，打�
     
     <item>
       <title></title>
-      <link>http://luochang212.github.io/gadget/monaco-speech-editor/node_modules/monaco-editor/changelog/</link>
+      <link>https://luochang212.github.io/gadget/monaco-speech-editor/node_modules/monaco-editor/changelog/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/gadget/monaco-speech-editor/node_modules/monaco-editor/changelog/</guid>
+      <guid>https://luochang212.github.io/gadget/monaco-speech-editor/node_modules/monaco-editor/changelog/</guid>
       <description>Monaco Editor Changelog [0.17.1] (25.06.2019) Update monaco-typescript to TypeScript 3.5.0. [0.17.0] (05.05.2019) New &amp;amp; Noteworthy Localization support is brought back for AMD bundle. We lost the localization support when VS Code moved to the localization system but now AMD bundles ships the same localized strings VS Code localization extensions ship. For more details, please read Monaco#822 and related VS Code upstream issue LinkProvider.ProvideLinks should now return ILinksList instead of ILink[]. IEditorOptions.</description>
     </item>
     
     <item>
       <title></title>
-      <link>http://luochang212.github.io/gadget/monaco-speech-editor/node_modules/monaco-editor/readme/</link>
+      <link>https://luochang212.github.io/gadget/monaco-speech-editor/node_modules/monaco-editor/readme/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/gadget/monaco-speech-editor/node_modules/monaco-editor/readme/</guid>
+      <guid>https://luochang212.github.io/gadget/monaco-speech-editor/node_modules/monaco-editor/readme/</guid>
       <description>Monaco Editor The Monaco Editor is the code editor which powers VS Code, with the features better described here.
 Please note that this repository contains no source code for the code editor, it only contains the scripts to package everything together and ship the monaco-editor npm module.
 Try it out Try the editor out on our website.
@@ -801,10 +801,10 @@ inside esm: ESM version of the editor (compatible with e.</description>
     
     <item>
       <title></title>
-      <link>http://luochang212.github.io/gadget/monaco-speech-editor/readme/</link>
+      <link>https://luochang212.github.io/gadget/monaco-speech-editor/readme/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/gadget/monaco-speech-editor/readme/</guid>
+      <guid>https://luochang212.github.io/gadget/monaco-speech-editor/readme/</guid>
       <description>monaco-speech-editor 中文文档
 Monaco Speech Editor is an online code editor for visually impaired people. It provides several built-in functions to make it easy to read, edit and compile.
 Quick Start Try the editor out on my website.

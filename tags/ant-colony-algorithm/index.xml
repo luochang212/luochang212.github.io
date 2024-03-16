@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ant-Colony-Algorithm on Chang Luo</title>
-    <link>http://luochang212.github.io/tags/ant-colony-algorithm/</link>
+    <link>https://luochang212.github.io/tags/ant-colony-algorithm/</link>
     <description>Recent content in Ant-Colony-Algorithm on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 15 May 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/tags/ant-colony-algorithm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 15 May 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://luochang212.github.io/tags/ant-colony-algorithm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>【项目】基于蚁群算法的证券投资组合优化</title>
-      <link>http://luochang212.github.io/posts/markowitz_model/</link>
+      <link>https://luochang212.github.io/posts/markowitz_model/</link>
       <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/markowitz_model/</guid>
+      <guid>https://luochang212.github.io/posts/markowitz_model/</guid>
       <description>在证券交易中，为了降低风险，经常使用一笔资金购买多支股票。那么，如何合理地选择证券组合，并确定每支证券的资金分配系数，以使预期风险最低，预期收益最高，就成了一个经典的经济学问题 &amp;ndash; 证券投资组合优化问题。
 1952年，马科维茨首次提出均值-方差模型(Markowitz Mean-Variance Model)。该模型利用股票的历史交易数据，定义了股票的预期风险与收益，并引入“无差异曲线”和“有效市场边界”的概念，最终导出了最佳投资组合的计算公式。
 本文利用蚁群算法，求解马科维茨均值-方差模型。蚁群算法是一个群体智能算法，因其较强的鲁棒性和适用性，被广泛应用于工业界，是一种研究较为成熟的算法。

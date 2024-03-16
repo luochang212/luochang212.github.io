@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Agent-Based-Model on Chang Luo</title>
-    <link>http://luochang212.github.io/tags/agent-based-model/</link>
+    <link>https://luochang212.github.io/tags/agent-based-model/</link>
     <description>Recent content in Agent-Based-Model on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 12 Jun 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/tags/agent-based-model/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 12 Jun 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://luochang212.github.io/tags/agent-based-model/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>生态系统建模</title>
-      <link>http://luochang212.github.io/posts/nature_system/</link>
+      <link>https://luochang212.github.io/posts/nature_system/</link>
       <pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/nature_system/</guid>
+      <guid>https://luochang212.github.io/posts/nature_system/</guid>
       <description>本文介绍如何用 Agent-based model 的方法，对一个包含狼、麋鹿、草三种生物的生态系统建模。
 GitHub 项目地址：nature-system
 Agent指个体，Agent-base model即基于个体的模型。在Agent-based model中，虚拟实体(virtual entity)和现实个体一一对应。一般来说，虚拟实体的属性是对现实个体的抽象，虚拟实体的行为则是依照已经写好的规则迭代。这种建模方式往往涉及个体详细的行为模式，因此适合以研究个体行为规则为目的的建模。

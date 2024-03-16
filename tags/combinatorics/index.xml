@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Combinatorics on Chang Luo</title>
-    <link>http://luochang212.github.io/tags/combinatorics/</link>
+    <link>https://luochang212.github.io/tags/combinatorics/</link>
     <description>Recent content in Combinatorics on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 21 Feb 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://luochang212.github.io/tags/combinatorics/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 21 Feb 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://luochang212.github.io/tags/combinatorics/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>用魔法打败魔法！</title>
-      <link>http://luochang212.github.io/posts/chico_and_dico/</link>
+      <link>https://luochang212.github.io/posts/chico_and_dico/</link>
       <pubDate>Fri, 21 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://luochang212.github.io/posts/chico_and_dico/</guid>
+      <guid>https://luochang212.github.io/posts/chico_and_dico/</guid>
       <description>Chico 和 Dico 是两位魔术师，他们有一个经典魔术：根据任意四张牌猜第五张牌。但完成这个魔术并不需要任何魔术师的技巧，因为它完全建立在数学原理之上。只需要一点数学知识和充分的练习，你也能表演这个魔术！
 GitHub 项目地址：chico-and-dico
 Chico 和 Dico 的魔术 Chico 和 Dico 是两位魔术师，他们经常表演的一个魔术是这样的：Chico 将一副 52 张的扑克牌交给一位观众，让他随机抽取其中的 5 张。然后 Chico 将这 5 张牌按一定的顺序重新排列，再将其还给观众。上述整个过程 Dico 都是看不见的。然而，当观众按 Chico 排好的顺序依次展示前四张牌之后，Dico 却能准确地说出第五张牌是什么。
