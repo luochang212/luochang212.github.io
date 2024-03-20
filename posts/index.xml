@@ -6,18 +6,7 @@
     <description>Recent content in Posts on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 16 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>爆改 Next.js</title>
-      <link>/posts/learning_next_js/</link>
-      <pubDate>Sat, 16 Mar 2024 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/learning_next_js/</guid>
-      <description>https://www.psycopg.org/psycopg3/docs/basic/usage.html
-基于 CentOS 系统
-一、常见操作 1）文件操作 </description>
-    </item>
-    
+    <lastBuildDate>Sat, 02 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>家庭网络拓扑</title>
       <link>/posts/home_network_topology/</link>
