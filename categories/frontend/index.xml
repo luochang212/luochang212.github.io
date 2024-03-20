@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>FrontEnd on Chang Luo</title>
-    <link>/categories/frontend/</link>
+    <link>https://luochang212.github.io/categories/frontend/</link>
     <description>Recent content in FrontEnd on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 07 Oct 2019 00:00:00 +0000</lastBuildDate><atom:link href="/categories/frontend/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 07 Oct 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://luochang212.github.io/categories/frontend/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Monaco Editor 入门指南</title>
-      <link>/posts/monaco_editor_tutorial/</link>
+      <link>https://luochang212.github.io/posts/monaco_editor_tutorial/</link>
       <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/posts/monaco_editor_tutorial/</guid>
+      <guid>https://luochang212.github.io/posts/monaco_editor_tutorial/</guid>
       <description>Monaco Editor 是一款开源的在线代码编辑器。它是 VSCode 的浏览器版本，随着近年 VSCode 大热，Monaco Editor 也随之走红。目前虽未登上 Online Editor 领域的宝座，却也隐然有超越几位老前辈（指 CodeMirror, Ace 之流）之势。
 GitHub项目链接：monaco-editor-demos
 在学习 Monaco Editor 的过程中，我发现网络上的中文教程很少。为了填补这部分空白，我决定写一份入门教程，帮助初学者快速熟悉 Monaco Editor。通过阅读本文，你可以了解以下内容：
@@ -29,10 +29,10 @@ $ mkdir base $ cd base $ touch index.</description>
     
     <item>
       <title>【项目】摩纳哥语音编辑器</title>
-      <link>/posts/monaco_speech_editor/</link>
+      <link>https://luochang212.github.io/posts/monaco_speech_editor/</link>
       <pubDate>Thu, 22 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/posts/monaco_speech_editor/</guid>
+      <guid>https://luochang212.github.io/posts/monaco_speech_editor/</guid>
       <description>摩纳哥语音编辑器（Monaco Speech Editor）是一款适用于视障人群的在线代码编辑器。它在开源编辑器 Monaco Editor 的基础上，开发了专为视障者设计的语音辅助功能，包括鼠标悬浮提示，快捷键操作和代码阅读。
 其代码阅读功能尤其强大，用户可以用键盘精确定位指定内容进行阅读。针对同一段代码，它提供多种语音输出模式：字符模式、代码模式、音乐模式、全局模式。这些模式根据用户在不同编程阶段的不同需求，提供差异化的语音输出。比如，当用户对一个语句进行 debug 时，推荐使用字符模式进行语音播放。
 如果你对它的功能感兴趣，点击下方链接尝试一下吧 GitHub 项目地址：monaco-speech-editor
@@ -53,10 +53,10 @@ Amazon Polly Cloud Text-to-Speech Microsoft text to speech API 但鉴于这些�
     
     <item>
       <title>JavaScript 初探</title>
-      <link>/posts/to_do_list/</link>
+      <link>https://luochang212.github.io/posts/to_do_list/</link>
       <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>/posts/to_do_list/</guid>
+      <guid>https://luochang212.github.io/posts/to_do_list/</guid>
       <description>初次学习JavaScript，用JS写了一个计划表生成工具。
 项目链接：计划表生成工具
 JavaScript是一个神奇的语言。它既不像Java原生地支持类和继承，也不如Python声明变量方便，更兼闹出&amp;quot;===&amp;ldquo;这样的麻烦。但我依旧深知它的强大，尤其是在可视化这一方面，在接触qtwebengine的时候已经感受过一次了。目前，我学习JS的平台是W3Schools 和廖雪峰的网站。

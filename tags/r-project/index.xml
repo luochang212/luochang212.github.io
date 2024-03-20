@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>R-Project on Chang Luo</title>
-    <link>/tags/r-project/</link>
+    <link>https://luochang212.github.io/tags/r-project/</link>
     <description>Recent content in R-Project on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 16 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="/tags/r-project/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 16 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://luochang212.github.io/tags/r-project/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>因果推断笔记</title>
-      <link>/posts/causal_inference/</link>
+      <link>https://luochang212.github.io/posts/causal_inference/</link>
       <pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>/posts/causal_inference/</guid>
+      <guid>https://luochang212.github.io/posts/causal_inference/</guid>
       <description>不谜语人的因果推断笔记！
 学习统计最好还是学习一下 R 语言。相比 Python，R 是专门用于统计的语言，它提供了更细致的函数和更标准的实现方法。
 GitHub 项目地址： 1. 因果推断入门 小朋友感冒，家长给他吃药，一个星期后就痊愈了。那么“吃药”和“痊愈”是否有因果关系呢？

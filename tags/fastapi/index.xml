@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>FastAPI on Chang Luo</title>
-    <link>/tags/fastapi/</link>
+    <link>https://luochang212.github.io/tags/fastapi/</link>
     <description>Recent content in FastAPI on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 21 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="/tags/fastapi/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 21 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://luochang212.github.io/tags/fastapi/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>FastAPI 初见</title>
-      <link>/posts/fastapi/</link>
+      <link>https://luochang212.github.io/posts/fastapi/</link>
       <pubDate>Sat, 21 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>/posts/fastapi/</guid>
+      <guid>https://luochang212.github.io/posts/fastapi/</guid>
       <description>什么是 API？如何从零开始，搭建自己的第一个API？本文带你搭建一个 API 小应用以了解 FastAPI 的使用细节
 GitHub 项目地址：calendar-api
 什么是 API？

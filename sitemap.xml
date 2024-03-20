@@ -2,384 +2,384 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/posts/home_network_topology/</loc>
+    <loc>https://luochang212.github.io/posts/home_network_topology/</loc>
     <lastmod>2024-03-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/graph_algorithms/</loc>
+    <loc>https://luochang212.github.io/posts/graph_algorithms/</loc>
     <lastmod>2024-02-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/raspberry_pi_5/</loc>
+    <loc>https://luochang212.github.io/posts/raspberry_pi_5/</loc>
     <lastmod>2024-02-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/d2l_from_scratch/</loc>
+    <loc>https://luochang212.github.io/posts/d2l_from_scratch/</loc>
     <lastmod>2024-02-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/linux_handbook/</loc>
+    <loc>https://luochang212.github.io/posts/linux_handbook/</loc>
     <lastmod>2024-02-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/inventory_list/</loc>
+    <loc>https://luochang212.github.io/posts/inventory_list/</loc>
     <lastmod>2024-01-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/d2l/</loc>
+    <loc>https://luochang212.github.io/posts/d2l/</loc>
     <lastmod>2023-11-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/pypi_packaging/</loc>
+    <loc>https://luochang212.github.io/posts/pypi_packaging/</loc>
     <lastmod>2023-10-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/hive_sql_note/</loc>
+    <loc>https://luochang212.github.io/posts/hive_sql_note/</loc>
     <lastmod>2022-12-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/causal_inference/</loc>
+    <loc>https://luochang212.github.io/posts/causal_inference/</loc>
     <lastmod>2022-07-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/moyu_bash/</loc>
+    <loc>https://luochang212.github.io/posts/moyu_bash/</loc>
     <lastmod>2022-07-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/learning_statistics/</loc>
+    <loc>https://luochang212.github.io/posts/learning_statistics/</loc>
     <lastmod>2021-05-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/fastapi/</loc>
+    <loc>https://luochang212.github.io/posts/fastapi/</loc>
     <lastmod>2020-11-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/poisson/</loc>
+    <loc>https://luochang212.github.io/posts/poisson/</loc>
     <lastmod>2020-09-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/hadoop_intro/</loc>
+    <loc>https://luochang212.github.io/posts/hadoop_intro/</loc>
     <lastmod>2020-07-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/python_practice/</loc>
+    <loc>https://luochang212.github.io/posts/python_practice/</loc>
     <lastmod>2020-06-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/algorithms/</loc>
+    <loc>https://luochang212.github.io/posts/algorithms/</loc>
     <lastmod>2020-04-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/chico_and_dico/</loc>
+    <loc>https://luochang212.github.io/posts/chico_and_dico/</loc>
     <lastmod>2020-02-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/uk_experience/</loc>
+    <loc>https://luochang212.github.io/posts/uk_experience/</loc>
     <lastmod>2020-02-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/bayesian/</loc>
+    <loc>https://luochang212.github.io/posts/bayesian/</loc>
     <lastmod>2020-01-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/python_tips/</loc>
+    <loc>https://luochang212.github.io/posts/python_tips/</loc>
     <lastmod>2019-11-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/elastic_search/</loc>
+    <loc>https://luochang212.github.io/posts/elastic_search/</loc>
     <lastmod>2019-10-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/monaco_editor_tutorial/</loc>
+    <loc>https://luochang212.github.io/posts/monaco_editor_tutorial/</loc>
     <lastmod>2019-10-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/monaco_speech_editor/</loc>
+    <loc>https://luochang212.github.io/posts/monaco_speech_editor/</loc>
     <lastmod>2019-08-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/network_performance_analysis/</loc>
+    <loc>https://luochang212.github.io/posts/network_performance_analysis/</loc>
     <lastmod>2019-07-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/kitchen_time_2/</loc>
+    <loc>https://luochang212.github.io/posts/kitchen_time_2/</loc>
     <lastmod>2019-07-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/nature_system/</loc>
+    <loc>https://luochang212.github.io/posts/nature_system/</loc>
     <lastmod>2019-06-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/to_do_list/</loc>
+    <loc>https://luochang212.github.io/posts/to_do_list/</loc>
     <lastmod>2019-05-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/pyqt5_layout_sidebar/</loc>
+    <loc>https://luochang212.github.io/posts/pyqt5_layout_sidebar/</loc>
     <lastmod>2019-05-10T21:43:09+01:00</lastmod>
   </url><url>
-    <loc>/posts/pyqt5_layout/</loc>
+    <loc>https://luochang212.github.io/posts/pyqt5_layout/</loc>
     <lastmod>2019-05-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/my_weibo/</loc>
+    <loc>https://luochang212.github.io/posts/my_weibo/</loc>
     <lastmod>2019-04-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/tsp_route/</loc>
+    <loc>https://luochang212.github.io/posts/tsp_route/</loc>
     <lastmod>2019-04-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/python_math_problem/</loc>
+    <loc>https://luochang212.github.io/posts/python_math_problem/</loc>
     <lastmod>2019-03-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/kitchen_time_1/</loc>
+    <loc>https://luochang212.github.io/posts/kitchen_time_1/</loc>
     <lastmod>2018-08-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/markowitz_model/</loc>
+    <loc>https://luochang212.github.io/posts/markowitz_model/</loc>
     <lastmod>2018-05-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/nezha/</loc>
+    <loc>https://luochang212.github.io/posts/nezha/</loc>
     <lastmod>2017-07-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/</loc>
+    <loc>https://luochang212.github.io/categories/</loc>
     <lastmod>2024-03-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/</loc>
+    <loc>https://luochang212.github.io/</loc>
     <lastmod>2024-03-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/http/</loc>
+    <loc>https://luochang212.github.io/tags/http/</loc>
     <lastmod>2024-03-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/network/</loc>
+    <loc>https://luochang212.github.io/categories/network/</loc>
     <lastmod>2024-03-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/</loc>
+    <loc>https://luochang212.github.io/posts/</loc>
     <lastmod>2024-03-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/</loc>
+    <loc>https://luochang212.github.io/tags/</loc>
     <lastmod>2024-03-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/web/</loc>
+    <loc>https://luochang212.github.io/tags/web/</loc>
     <lastmod>2024-03-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/algorithms/</loc>
+    <loc>https://luochang212.github.io/categories/algorithms/</loc>
     <lastmod>2024-02-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/community/</loc>
+    <loc>https://luochang212.github.io/tags/community/</loc>
     <lastmod>2024-02-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/graph/</loc>
+    <loc>https://luochang212.github.io/tags/graph/</loc>
     <lastmod>2024-02-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/hardware/</loc>
+    <loc>https://luochang212.github.io/categories/hardware/</loc>
     <lastmod>2024-02-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/install/</loc>
+    <loc>https://luochang212.github.io/tags/install/</loc>
     <lastmod>2024-02-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/raspberry-pi-5/</loc>
+    <loc>https://luochang212.github.io/tags/raspberry-pi-5/</loc>
     <lastmod>2024-02-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/d2l/</loc>
+    <loc>https://luochang212.github.io/tags/d2l/</loc>
     <lastmod>2024-02-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/deeplearning/</loc>
+    <loc>https://luochang212.github.io/categories/deeplearning/</loc>
     <lastmod>2024-02-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/python/</loc>
+    <loc>https://luochang212.github.io/tags/python/</loc>
     <lastmod>2024-02-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/bash/</loc>
+    <loc>https://luochang212.github.io/tags/bash/</loc>
     <lastmod>2024-02-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/devops/</loc>
+    <loc>https://luochang212.github.io/categories/devops/</loc>
     <lastmod>2024-02-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/operations/</loc>
+    <loc>https://luochang212.github.io/tags/operations/</loc>
     <lastmod>2024-02-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/home/</loc>
+    <loc>https://luochang212.github.io/tags/home/</loc>
     <lastmod>2024-01-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/life/</loc>
+    <loc>https://luochang212.github.io/categories/life/</loc>
     <lastmod>2024-01-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/shopping-list/</loc>
+    <loc>https://luochang212.github.io/tags/shopping-list/</loc>
     <lastmod>2024-01-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/note/</loc>
+    <loc>https://luochang212.github.io/tags/note/</loc>
     <lastmod>2023-11-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/package/</loc>
+    <loc>https://luochang212.github.io/tags/package/</loc>
     <lastmod>2023-10-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/bigdata/</loc>
+    <loc>https://luochang212.github.io/categories/bigdata/</loc>
     <lastmod>2022-12-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/hive-sql/</loc>
+    <loc>https://luochang212.github.io/tags/hive-sql/</loc>
     <lastmod>2022-12-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/causality/</loc>
+    <loc>https://luochang212.github.io/tags/causality/</loc>
     <lastmod>2022-07-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/r-project/</loc>
+    <loc>https://luochang212.github.io/tags/r-project/</loc>
     <lastmod>2022-07-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/statistics/</loc>
+    <loc>https://luochang212.github.io/categories/statistics/</loc>
     <lastmod>2022-07-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/app/</loc>
+    <loc>https://luochang212.github.io/tags/app/</loc>
     <lastmod>2022-07-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/sota/</loc>
+    <loc>https://luochang212.github.io/categories/sota/</loc>
     <lastmod>2022-07-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/api/</loc>
+    <loc>https://luochang212.github.io/tags/api/</loc>
     <lastmod>2020-11-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/fastapi/</loc>
+    <loc>https://luochang212.github.io/tags/fastapi/</loc>
     <lastmod>2020-11-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/poisson-distribution/</loc>
+    <loc>https://luochang212.github.io/tags/poisson-distribution/</loc>
     <lastmod>2020-09-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/hadoop-streaming/</loc>
+    <loc>https://luochang212.github.io/tags/hadoop-streaming/</loc>
     <lastmod>2020-07-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/mapreduce/</loc>
+    <loc>https://luochang212.github.io/tags/mapreduce/</loc>
     <lastmod>2020-07-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/practice/</loc>
+    <loc>https://luochang212.github.io/tags/practice/</loc>
     <lastmod>2020-06-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/combinatorics/</loc>
+    <loc>https://luochang212.github.io/tags/combinatorics/</loc>
     <lastmod>2020-02-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/number-theory/</loc>
+    <loc>https://luochang212.github.io/tags/number-theory/</loc>
     <lastmod>2020-02-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/experience/</loc>
+    <loc>https://luochang212.github.io/tags/experience/</loc>
     <lastmod>2020-02-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/uk/</loc>
+    <loc>https://luochang212.github.io/tags/uk/</loc>
     <lastmod>2020-02-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/bayesian/</loc>
+    <loc>https://luochang212.github.io/tags/bayesian/</loc>
     <lastmod>2020-01-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/tips/</loc>
+    <loc>https://luochang212.github.io/tags/tips/</loc>
     <lastmod>2019-11-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/elasticsearch/</loc>
+    <loc>https://luochang212.github.io/tags/elasticsearch/</loc>
     <lastmod>2019-10-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/search-engine/</loc>
+    <loc>https://luochang212.github.io/tags/search-engine/</loc>
     <lastmod>2019-10-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/demo/</loc>
+    <loc>https://luochang212.github.io/tags/demo/</loc>
     <lastmod>2019-10-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/frontend/</loc>
+    <loc>https://luochang212.github.io/categories/frontend/</loc>
     <lastmod>2019-10-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/monaco-editor/</loc>
+    <loc>https://luochang212.github.io/tags/monaco-editor/</loc>
     <lastmod>2019-10-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/web-speech-api/</loc>
+    <loc>https://luochang212.github.io/tags/web-speech-api/</loc>
     <lastmod>2019-08-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/math/</loc>
+    <loc>https://luochang212.github.io/categories/math/</loc>
     <lastmod>2019-07-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/network-performance-analysis/</loc>
+    <loc>https://luochang212.github.io/tags/network-performance-analysis/</loc>
     <lastmod>2019-07-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/poisson-process/</loc>
+    <loc>https://luochang212.github.io/tags/poisson-process/</loc>
     <lastmod>2019-07-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/queuing-theory/</loc>
+    <loc>https://luochang212.github.io/tags/queuing-theory/</loc>
     <lastmod>2019-07-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/beef/</loc>
+    <loc>https://luochang212.github.io/tags/beef/</loc>
     <lastmod>2019-07-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/chicken/</loc>
+    <loc>https://luochang212.github.io/tags/chicken/</loc>
     <lastmod>2019-07-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/pork/</loc>
+    <loc>https://luochang212.github.io/tags/pork/</loc>
     <lastmod>2019-07-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/abm/</loc>
+    <loc>https://luochang212.github.io/tags/abm/</loc>
     <lastmod>2019-06-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/agent-based-model/</loc>
+    <loc>https://luochang212.github.io/tags/agent-based-model/</loc>
     <lastmod>2019-06-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/modeling/</loc>
+    <loc>https://luochang212.github.io/categories/modeling/</loc>
     <lastmod>2019-06-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/nature-system/</loc>
+    <loc>https://luochang212.github.io/tags/nature-system/</loc>
     <lastmod>2019-06-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/portfolio/</loc>
+    <loc>https://luochang212.github.io/portfolio/</loc>
     <lastmod>2019-06-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/portfolio/1/</loc>
+    <loc>https://luochang212.github.io/portfolio/1/</loc>
     <lastmod>2019-06-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/efficient/</loc>
+    <loc>https://luochang212.github.io/tags/efficient/</loc>
     <lastmod>2019-05-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/plan/</loc>
+    <loc>https://luochang212.github.io/tags/plan/</loc>
     <lastmod>2019-05-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/to-do-list/</loc>
+    <loc>https://luochang212.github.io/tags/to-do-list/</loc>
     <lastmod>2019-05-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/layout/</loc>
+    <loc>https://luochang212.github.io/tags/layout/</loc>
     <lastmod>2019-05-10T21:43:09+01:00</lastmod>
   </url><url>
-    <loc>/tags/pyqt5/</loc>
+    <loc>https://luochang212.github.io/tags/pyqt5/</loc>
     <lastmod>2019-05-10T21:43:09+01:00</lastmod>
   </url><url>
-    <loc>/tags/sidebar/</loc>
+    <loc>https://luochang212.github.io/tags/sidebar/</loc>
     <lastmod>2019-05-10T21:43:09+01:00</lastmod>
   </url><url>
-    <loc>/portfolio/2/</loc>
+    <loc>https://luochang212.github.io/portfolio/2/</loc>
     <lastmod>2019-05-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/datavisualization/</loc>
+    <loc>https://luochang212.github.io/categories/datavisualization/</loc>
     <lastmod>2019-04-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/jupyter-notebook/</loc>
+    <loc>https://luochang212.github.io/tags/jupyter-notebook/</loc>
     <lastmod>2019-04-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/weibo/</loc>
+    <loc>https://luochang212.github.io/tags/weibo/</loc>
     <lastmod>2019-04-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/google-api/</loc>
+    <loc>https://luochang212.github.io/tags/google-api/</loc>
     <lastmod>2019-04-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/google-maps/</loc>
+    <loc>https://luochang212.github.io/tags/google-maps/</loc>
     <lastmod>2019-04-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/portfolio/3/</loc>
+    <loc>https://luochang212.github.io/portfolio/3/</loc>
     <lastmod>2019-04-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/abstract-algebra/</loc>
+    <loc>https://luochang212.github.io/tags/abstract-algebra/</loc>
     <lastmod>2019-03-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/permutation/</loc>
+    <loc>https://luochang212.github.io/tags/permutation/</loc>
     <lastmod>2019-03-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/pycharm/</loc>
+    <loc>https://luochang212.github.io/tags/pycharm/</loc>
     <lastmod>2019-03-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/portfolio/4/</loc>
+    <loc>https://luochang212.github.io/portfolio/4/</loc>
     <lastmod>2019-03-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/ant-colony-algorithm/</loc>
+    <loc>https://luochang212.github.io/tags/ant-colony-algorithm/</loc>
     <lastmod>2018-05-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/machinelearning/</loc>
+    <loc>https://luochang212.github.io/categories/machinelearning/</loc>
     <lastmod>2018-05-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/markowitz-model/</loc>
+    <loc>https://luochang212.github.io/tags/markowitz-model/</loc>
     <lastmod>2018-05-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/optimization/</loc>
+    <loc>https://luochang212.github.io/tags/optimization/</loc>
     <lastmod>2018-05-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/portfolio/</loc>
+    <loc>https://luochang212.github.io/tags/portfolio/</loc>
     <lastmod>2018-05-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/literature/</loc>
+    <loc>https://luochang212.github.io/tags/literature/</loc>
     <lastmod>2017-07-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/movie/</loc>
+    <loc>https://luochang212.github.io/tags/movie/</loc>
     <lastmod>2017-07-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/gadget/monaco-speech-editor/docs/readme/</loc>
+    <loc>https://luochang212.github.io/gadget/monaco-speech-editor/docs/readme/</loc>
   </url><url>
-    <loc>/gadget/monaco-speech-editor/readme/</loc>
+    <loc>https://luochang212.github.io/gadget/monaco-speech-editor/readme/</loc>
   </url><url>
-    <loc>/about/</loc>
+    <loc>https://luochang212.github.io/about/</loc>
   </url><url>
-    <loc>/gadget/</loc>
+    <loc>https://luochang212.github.io/gadget/</loc>
   </url><url>
-    <loc>/projects/</loc>
+    <loc>https://luochang212.github.io/projects/</loc>
   </url><url>
-    <loc>/resources/</loc>
+    <loc>https://luochang212.github.io/resources/</loc>
   </url><url>
-    <loc>/wiki/</loc>
+    <loc>https://luochang212.github.io/wiki/</loc>
   </url>
 </urlset>

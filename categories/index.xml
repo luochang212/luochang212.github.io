@@ -2,134 +2,134 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Chang Luo</title>
-    <link>/categories/</link>
+    <link>https://luochang212.github.io/categories/</link>
     <description>Recent content in Categories on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 02 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 02 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://luochang212.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Network</title>
-      <link>/categories/network/</link>
+      <link>https://luochang212.github.io/categories/network/</link>
       <pubDate>Sat, 02 Mar 2024 00:00:00 +0000</pubDate>
       
-      <guid>/categories/network/</guid>
+      <guid>https://luochang212.github.io/categories/network/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Algorithms</title>
-      <link>/categories/algorithms/</link>
+      <link>https://luochang212.github.io/categories/algorithms/</link>
       <pubDate>Sun, 25 Feb 2024 00:00:00 +0000</pubDate>
       
-      <guid>/categories/algorithms/</guid>
+      <guid>https://luochang212.github.io/categories/algorithms/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hardware</title>
-      <link>/categories/hardware/</link>
+      <link>https://luochang212.github.io/categories/hardware/</link>
       <pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
       
-      <guid>/categories/hardware/</guid>
+      <guid>https://luochang212.github.io/categories/hardware/</guid>
       <description></description>
     </item>
     
     <item>
       <title>DeepLearning</title>
-      <link>/categories/deeplearning/</link>
+      <link>https://luochang212.github.io/categories/deeplearning/</link>
       <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
       
-      <guid>/categories/deeplearning/</guid>
+      <guid>https://luochang212.github.io/categories/deeplearning/</guid>
       <description></description>
     </item>
     
     <item>
       <title>DevOps</title>
-      <link>/categories/devops/</link>
+      <link>https://luochang212.github.io/categories/devops/</link>
       <pubDate>Sat, 03 Feb 2024 00:00:00 +0000</pubDate>
       
-      <guid>/categories/devops/</guid>
+      <guid>https://luochang212.github.io/categories/devops/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Life</title>
-      <link>/categories/life/</link>
+      <link>https://luochang212.github.io/categories/life/</link>
       <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
       
-      <guid>/categories/life/</guid>
+      <guid>https://luochang212.github.io/categories/life/</guid>
       <description></description>
     </item>
     
     <item>
       <title>BigData</title>
-      <link>/categories/bigdata/</link>
+      <link>https://luochang212.github.io/categories/bigdata/</link>
       <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>/categories/bigdata/</guid>
+      <guid>https://luochang212.github.io/categories/bigdata/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Statistics</title>
-      <link>/categories/statistics/</link>
+      <link>https://luochang212.github.io/categories/statistics/</link>
       <pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>/categories/statistics/</guid>
+      <guid>https://luochang212.github.io/categories/statistics/</guid>
       <description></description>
     </item>
     
     <item>
       <title>SOTA</title>
-      <link>/categories/sota/</link>
+      <link>https://luochang212.github.io/categories/sota/</link>
       <pubDate>Sun, 03 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>/categories/sota/</guid>
+      <guid>https://luochang212.github.io/categories/sota/</guid>
       <description></description>
     </item>
     
     <item>
       <title>FrontEnd</title>
-      <link>/categories/frontend/</link>
+      <link>https://luochang212.github.io/categories/frontend/</link>
       <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/categories/frontend/</guid>
+      <guid>https://luochang212.github.io/categories/frontend/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Math</title>
-      <link>/categories/math/</link>
+      <link>https://luochang212.github.io/categories/math/</link>
       <pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>/categories/math/</guid>
+      <guid>https://luochang212.github.io/categories/math/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Modeling</title>
-      <link>/categories/modeling/</link>
+      <link>https://luochang212.github.io/categories/modeling/</link>
       <pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>/categories/modeling/</guid>
+      <guid>https://luochang212.github.io/categories/modeling/</guid>
       <description></description>
     </item>
     
     <item>
       <title>DataVisualization</title>
-      <link>/categories/datavisualization/</link>
+      <link>https://luochang212.github.io/categories/datavisualization/</link>
       <pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>/categories/datavisualization/</guid>
+      <guid>https://luochang212.github.io/categories/datavisualization/</guid>
       <description></description>
     </item>
     
     <item>
       <title>MachineLearning</title>
-      <link>/categories/machinelearning/</link>
+      <link>https://luochang212.github.io/categories/machinelearning/</link>
       <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>/categories/machinelearning/</guid>
+      <guid>https://luochang212.github.io/categories/machinelearning/</guid>
       <description></description>
     </item>
     

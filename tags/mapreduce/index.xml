@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>MapReduce on Chang Luo</title>
-    <link>/tags/mapreduce/</link>
+    <link>https://luochang212.github.io/tags/mapreduce/</link>
     <description>Recent content in MapReduce on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 25 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="/tags/mapreduce/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 25 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://luochang212.github.io/tags/mapreduce/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>漫谈 Hadoop Streaming</title>
-      <link>/posts/hadoop_intro/</link>
+      <link>https://luochang212.github.io/posts/hadoop_intro/</link>
       <pubDate>Sat, 25 Jul 2020 00:00:00 +0000</pubDate>
       
-      <guid>/posts/hadoop_intro/</guid>
+      <guid>https://luochang212.github.io/posts/hadoop_intro/</guid>
       <description>本文聚焦如何通过 Hadoop Streaming + Python 编写 Hadoop 程序。
 Hadoop 是一个用于大数据处理的分布式计算框架。
 众所周知，实现分布式计算是一个繁琐的过程，Hadoop 通过一个标准化的数据处理流程，简化操作步骤，让没有分布式计算背景的程序员也能轻松写出分布式程序。Hadoop 本身是用 Java 写就的，因此对于非 Java 程序员来说，学 Hadoop 必须先学 Java，这大大降低了 Hadoop 的友好程度。
