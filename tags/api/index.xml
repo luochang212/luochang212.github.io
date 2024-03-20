@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>API on Chang Luo</title>
-    <link>https://luochang212.github.io/tags/api/</link>
+    <link>/tags/api/</link>
     <description>Recent content in API on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 21 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://luochang212.github.io/tags/api/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 21 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="/tags/api/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>FastAPI 初见</title>
-      <link>https://luochang212.github.io/posts/fastapi/</link>
+      <link>/posts/fastapi/</link>
       <pubDate>Sat, 21 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/posts/fastapi/</guid>
+      <guid>/posts/fastapi/</guid>
       <description>什么是 API？如何从零开始，搭建自己的第一个API？本文带你搭建一个 API 小应用以了解 FastAPI 的使用细节
 GitHub 项目地址：calendar-api
 什么是 API？
@@ -27,10 +27,10 @@ FastAPI 对构建 REST 风格的 API 提供了良好的支持。</description>
     
     <item>
       <title>Monaco Editor 入门指南</title>
-      <link>https://luochang212.github.io/posts/monaco_editor_tutorial/</link>
+      <link>/posts/monaco_editor_tutorial/</link>
       <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/posts/monaco_editor_tutorial/</guid>
+      <guid>/posts/monaco_editor_tutorial/</guid>
       <description>Monaco Editor 是一款开源的在线代码编辑器。它是 VSCode 的浏览器版本，随着近年 VSCode 大热，Monaco Editor 也随之走红。目前虽未登上 Online Editor 领域的宝座，却也隐然有超越几位老前辈（指 CodeMirror, Ace 之流）之势。
 GitHub项目链接：monaco-editor-demos
 在学习 Monaco Editor 的过程中，我发现网络上的中文教程很少。为了填补这部分空白，我决定写一份入门教程，帮助初学者快速熟悉 Monaco Editor。通过阅读本文，你可以了解以下内容：

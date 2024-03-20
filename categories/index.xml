@@ -2,134 +2,134 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Chang Luo</title>
-    <link>https://luochang212.github.io/categories/</link>
+    <link>/categories/</link>
     <description>Recent content in Categories on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 02 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://luochang212.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 16 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FrontEnd</title>
+      <link>/categories/frontend/</link>
+      <pubDate>Sat, 16 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/frontend/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Network</title>
-      <link>https://luochang212.github.io/categories/network/</link>
+      <link>/categories/network/</link>
       <pubDate>Sat, 02 Mar 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/categories/network/</guid>
+      <guid>/categories/network/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Algorithms</title>
-      <link>https://luochang212.github.io/categories/algorithms/</link>
+      <link>/categories/algorithms/</link>
       <pubDate>Sun, 25 Feb 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/categories/algorithms/</guid>
+      <guid>/categories/algorithms/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hardware</title>
-      <link>https://luochang212.github.io/categories/hardware/</link>
+      <link>/categories/hardware/</link>
       <pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/categories/hardware/</guid>
+      <guid>/categories/hardware/</guid>
       <description></description>
     </item>
     
     <item>
       <title>DeepLearning</title>
-      <link>https://luochang212.github.io/categories/deeplearning/</link>
+      <link>/categories/deeplearning/</link>
       <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/categories/deeplearning/</guid>
+      <guid>/categories/deeplearning/</guid>
       <description></description>
     </item>
     
     <item>
       <title>DevOps</title>
-      <link>https://luochang212.github.io/categories/devops/</link>
+      <link>/categories/devops/</link>
       <pubDate>Sat, 03 Feb 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/categories/devops/</guid>
+      <guid>/categories/devops/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Life</title>
-      <link>https://luochang212.github.io/categories/life/</link>
+      <link>/categories/life/</link>
       <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/categories/life/</guid>
+      <guid>/categories/life/</guid>
       <description></description>
     </item>
     
     <item>
       <title>BigData</title>
-      <link>https://luochang212.github.io/categories/bigdata/</link>
+      <link>/categories/bigdata/</link>
       <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/categories/bigdata/</guid>
+      <guid>/categories/bigdata/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Statistics</title>
-      <link>https://luochang212.github.io/categories/statistics/</link>
+      <link>/categories/statistics/</link>
       <pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/categories/statistics/</guid>
+      <guid>/categories/statistics/</guid>
       <description></description>
     </item>
     
     <item>
       <title>SOTA</title>
-      <link>https://luochang212.github.io/categories/sota/</link>
+      <link>/categories/sota/</link>
       <pubDate>Sun, 03 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/categories/sota/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>FrontEnd</title>
-      <link>https://luochang212.github.io/categories/frontend/</link>
-      <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://luochang212.github.io/categories/frontend/</guid>
+      <guid>/categories/sota/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Math</title>
-      <link>https://luochang212.github.io/categories/math/</link>
+      <link>/categories/math/</link>
       <pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/categories/math/</guid>
+      <guid>/categories/math/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Modeling</title>
-      <link>https://luochang212.github.io/categories/modeling/</link>
+      <link>/categories/modeling/</link>
       <pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/categories/modeling/</guid>
+      <guid>/categories/modeling/</guid>
       <description></description>
     </item>
     
     <item>
       <title>DataVisualization</title>
-      <link>https://luochang212.github.io/categories/datavisualization/</link>
+      <link>/categories/datavisualization/</link>
       <pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/categories/datavisualization/</guid>
+      <guid>/categories/datavisualization/</guid>
       <description></description>
     </item>
     
     <item>
       <title>MachineLearning</title>
-      <link>https://luochang212.github.io/categories/machinelearning/</link>
+      <link>/categories/machinelearning/</link>
       <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/categories/machinelearning/</guid>
+      <guid>/categories/machinelearning/</guid>
       <description></description>
     </item>
     

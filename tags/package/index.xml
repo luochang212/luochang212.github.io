@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Package on Chang Luo</title>
-    <link>https://luochang212.github.io/tags/package/</link>
+    <link>/tags/package/</link>
     <description>Recent content in Package on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 18 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://luochang212.github.io/tags/package/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 18 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/package/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>PyPI 打包小记</title>
-      <link>https://luochang212.github.io/posts/pypi_packaging/</link>
+      <link>/posts/pypi_packaging/</link>
       <pubDate>Wed, 18 Oct 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/posts/pypi_packaging/</guid>
+      <guid>/posts/pypi_packaging/</guid>
       <description>你们这些家伙，好好看看我是怎么打包的吧！
 GitHub 项目地址：hit-and-blow
 官方教程：Packaging Python Projects 背景知识：Modules 一、文件结构介绍 打包前，需构建如下文件结构：

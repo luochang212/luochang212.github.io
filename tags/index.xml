@@ -2,575 +2,593 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Chang Luo</title>
-    <link>https://luochang212.github.io/tags/</link>
+    <link>/tags/</link>
     <description>Recent content in Tags on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 02 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://luochang212.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 16 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Next.js</title>
+      <link>/tags/next.js/</link>
+      <pubDate>Sat, 16 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/next.js/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PostgreSQL</title>
+      <link>/tags/postgresql/</link>
+      <pubDate>Sat, 16 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/postgresql/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>HTTP</title>
-      <link>https://luochang212.github.io/tags/http/</link>
+      <link>/tags/http/</link>
       <pubDate>Sat, 02 Mar 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/http/</guid>
+      <guid>/tags/http/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Web</title>
-      <link>https://luochang212.github.io/tags/web/</link>
+      <link>/tags/web/</link>
       <pubDate>Sat, 02 Mar 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/web/</guid>
+      <guid>/tags/web/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Community</title>
-      <link>https://luochang212.github.io/tags/community/</link>
+      <link>/tags/community/</link>
       <pubDate>Sun, 25 Feb 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/community/</guid>
+      <guid>/tags/community/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Graph</title>
-      <link>https://luochang212.github.io/tags/graph/</link>
+      <link>/tags/graph/</link>
       <pubDate>Sun, 25 Feb 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/graph/</guid>
+      <guid>/tags/graph/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Install</title>
-      <link>https://luochang212.github.io/tags/install/</link>
+      <link>/tags/install/</link>
       <pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/install/</guid>
+      <guid>/tags/install/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Raspberry Pi 5</title>
-      <link>https://luochang212.github.io/tags/raspberry-pi-5/</link>
+      <link>/tags/raspberry-pi-5/</link>
       <pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/raspberry-pi-5/</guid>
+      <guid>/tags/raspberry-pi-5/</guid>
       <description></description>
     </item>
     
     <item>
       <title>D2L</title>
-      <link>https://luochang212.github.io/tags/d2l/</link>
+      <link>/tags/d2l/</link>
       <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/d2l/</guid>
+      <guid>/tags/d2l/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Python</title>
-      <link>https://luochang212.github.io/tags/python/</link>
+      <link>/tags/python/</link>
       <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/python/</guid>
+      <guid>/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Bash</title>
-      <link>https://luochang212.github.io/tags/bash/</link>
+      <link>/tags/bash/</link>
       <pubDate>Sat, 03 Feb 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/bash/</guid>
+      <guid>/tags/bash/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Operations</title>
-      <link>https://luochang212.github.io/tags/operations/</link>
+      <link>/tags/operations/</link>
       <pubDate>Sat, 03 Feb 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/operations/</guid>
+      <guid>/tags/operations/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Home</title>
-      <link>https://luochang212.github.io/tags/home/</link>
+      <link>/tags/home/</link>
       <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/home/</guid>
+      <guid>/tags/home/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Shopping-List</title>
-      <link>https://luochang212.github.io/tags/shopping-list/</link>
+      <link>/tags/shopping-list/</link>
       <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/shopping-list/</guid>
+      <guid>/tags/shopping-list/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Note</title>
-      <link>https://luochang212.github.io/tags/note/</link>
+      <link>/tags/note/</link>
       <pubDate>Sat, 11 Nov 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/note/</guid>
+      <guid>/tags/note/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Package</title>
-      <link>https://luochang212.github.io/tags/package/</link>
+      <link>/tags/package/</link>
       <pubDate>Wed, 18 Oct 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/package/</guid>
+      <guid>/tags/package/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hive-SQL</title>
-      <link>https://luochang212.github.io/tags/hive-sql/</link>
+      <link>/tags/hive-sql/</link>
       <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/hive-sql/</guid>
+      <guid>/tags/hive-sql/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Causality</title>
-      <link>https://luochang212.github.io/tags/causality/</link>
+      <link>/tags/causality/</link>
       <pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/causality/</guid>
+      <guid>/tags/causality/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R-Project</title>
-      <link>https://luochang212.github.io/tags/r-project/</link>
+      <link>/tags/r-project/</link>
       <pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/r-project/</guid>
+      <guid>/tags/r-project/</guid>
       <description></description>
     </item>
     
     <item>
       <title>APP</title>
-      <link>https://luochang212.github.io/tags/app/</link>
+      <link>/tags/app/</link>
       <pubDate>Sun, 03 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/app/</guid>
+      <guid>/tags/app/</guid>
       <description></description>
     </item>
     
     <item>
       <title>API</title>
-      <link>https://luochang212.github.io/tags/api/</link>
+      <link>/tags/api/</link>
       <pubDate>Sat, 21 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/api/</guid>
+      <guid>/tags/api/</guid>
       <description></description>
     </item>
     
     <item>
       <title>FastAPI</title>
-      <link>https://luochang212.github.io/tags/fastapi/</link>
+      <link>/tags/fastapi/</link>
       <pubDate>Sat, 21 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/fastapi/</guid>
+      <guid>/tags/fastapi/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Poisson-Distribution</title>
-      <link>https://luochang212.github.io/tags/poisson-distribution/</link>
+      <link>/tags/poisson-distribution/</link>
       <pubDate>Sat, 19 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/poisson-distribution/</guid>
+      <guid>/tags/poisson-distribution/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hadoop-Streaming</title>
-      <link>https://luochang212.github.io/tags/hadoop-streaming/</link>
+      <link>/tags/hadoop-streaming/</link>
       <pubDate>Sat, 25 Jul 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/hadoop-streaming/</guid>
+      <guid>/tags/hadoop-streaming/</guid>
       <description></description>
     </item>
     
     <item>
       <title>MapReduce</title>
-      <link>https://luochang212.github.io/tags/mapreduce/</link>
+      <link>/tags/mapreduce/</link>
       <pubDate>Sat, 25 Jul 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/mapreduce/</guid>
+      <guid>/tags/mapreduce/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Practice</title>
-      <link>https://luochang212.github.io/tags/practice/</link>
+      <link>/tags/practice/</link>
       <pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/practice/</guid>
+      <guid>/tags/practice/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Combinatorics</title>
-      <link>https://luochang212.github.io/tags/combinatorics/</link>
+      <link>/tags/combinatorics/</link>
       <pubDate>Fri, 21 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/combinatorics/</guid>
+      <guid>/tags/combinatorics/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Number-Theory</title>
-      <link>https://luochang212.github.io/tags/number-theory/</link>
+      <link>/tags/number-theory/</link>
       <pubDate>Fri, 21 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/number-theory/</guid>
+      <guid>/tags/number-theory/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Experience</title>
-      <link>https://luochang212.github.io/tags/experience/</link>
+      <link>/tags/experience/</link>
       <pubDate>Wed, 12 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/experience/</guid>
+      <guid>/tags/experience/</guid>
       <description></description>
     </item>
     
     <item>
       <title>UK</title>
-      <link>https://luochang212.github.io/tags/uk/</link>
+      <link>/tags/uk/</link>
       <pubDate>Wed, 12 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/uk/</guid>
+      <guid>/tags/uk/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Bayesian</title>
-      <link>https://luochang212.github.io/tags/bayesian/</link>
+      <link>/tags/bayesian/</link>
       <pubDate>Fri, 31 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/bayesian/</guid>
+      <guid>/tags/bayesian/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tips&#34;</title>
-      <link>https://luochang212.github.io/tags/tips/</link>
+      <link>/tags/tips/</link>
       <pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/tips/</guid>
+      <guid>/tags/tips/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Elasticsearch</title>
-      <link>https://luochang212.github.io/tags/elasticsearch/</link>
+      <link>/tags/elasticsearch/</link>
       <pubDate>Thu, 24 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/elasticsearch/</guid>
+      <guid>/tags/elasticsearch/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Search-Engine</title>
-      <link>https://luochang212.github.io/tags/search-engine/</link>
+      <link>/tags/search-engine/</link>
       <pubDate>Thu, 24 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/search-engine/</guid>
+      <guid>/tags/search-engine/</guid>
       <description></description>
     </item>
     
     <item>
       <title>DEMO</title>
-      <link>https://luochang212.github.io/tags/demo/</link>
+      <link>/tags/demo/</link>
       <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/demo/</guid>
+      <guid>/tags/demo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Monaco-Editor</title>
-      <link>https://luochang212.github.io/tags/monaco-editor/</link>
+      <link>/tags/monaco-editor/</link>
       <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/monaco-editor/</guid>
+      <guid>/tags/monaco-editor/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Web-Speech-API</title>
-      <link>https://luochang212.github.io/tags/web-speech-api/</link>
+      <link>/tags/web-speech-api/</link>
       <pubDate>Thu, 22 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/web-speech-api/</guid>
+      <guid>/tags/web-speech-api/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Network-Performance-Analysis</title>
-      <link>https://luochang212.github.io/tags/network-performance-analysis/</link>
+      <link>/tags/network-performance-analysis/</link>
       <pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/network-performance-analysis/</guid>
+      <guid>/tags/network-performance-analysis/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Poisson-Process</title>
-      <link>https://luochang212.github.io/tags/poisson-process/</link>
+      <link>/tags/poisson-process/</link>
       <pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/poisson-process/</guid>
+      <guid>/tags/poisson-process/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Queuing-Theory</title>
-      <link>https://luochang212.github.io/tags/queuing-theory/</link>
+      <link>/tags/queuing-theory/</link>
       <pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/queuing-theory/</guid>
+      <guid>/tags/queuing-theory/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Beef</title>
-      <link>https://luochang212.github.io/tags/beef/</link>
+      <link>/tags/beef/</link>
       <pubDate>Tue, 02 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/beef/</guid>
+      <guid>/tags/beef/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Chicken</title>
-      <link>https://luochang212.github.io/tags/chicken/</link>
+      <link>/tags/chicken/</link>
       <pubDate>Tue, 02 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/chicken/</guid>
+      <guid>/tags/chicken/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Pork</title>
-      <link>https://luochang212.github.io/tags/pork/</link>
+      <link>/tags/pork/</link>
       <pubDate>Tue, 02 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/pork/</guid>
+      <guid>/tags/pork/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ABM</title>
-      <link>https://luochang212.github.io/tags/abm/</link>
+      <link>/tags/abm/</link>
       <pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/abm/</guid>
+      <guid>/tags/abm/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Agent-Based-Model</title>
-      <link>https://luochang212.github.io/tags/agent-based-model/</link>
+      <link>/tags/agent-based-model/</link>
       <pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/agent-based-model/</guid>
+      <guid>/tags/agent-based-model/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Nature-System</title>
-      <link>https://luochang212.github.io/tags/nature-system/</link>
+      <link>/tags/nature-system/</link>
       <pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/nature-system/</guid>
+      <guid>/tags/nature-system/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Efficient</title>
-      <link>https://luochang212.github.io/tags/efficient/</link>
+      <link>/tags/efficient/</link>
       <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/efficient/</guid>
+      <guid>/tags/efficient/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Plan</title>
-      <link>https://luochang212.github.io/tags/plan/</link>
+      <link>/tags/plan/</link>
       <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/plan/</guid>
+      <guid>/tags/plan/</guid>
       <description></description>
     </item>
     
     <item>
       <title>To-Do-List</title>
-      <link>https://luochang212.github.io/tags/to-do-list/</link>
+      <link>/tags/to-do-list/</link>
       <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/to-do-list/</guid>
+      <guid>/tags/to-do-list/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Layout</title>
-      <link>https://luochang212.github.io/tags/layout/</link>
+      <link>/tags/layout/</link>
       <pubDate>Fri, 10 May 2019 21:43:09 +0100</pubDate>
       
-      <guid>https://luochang212.github.io/tags/layout/</guid>
+      <guid>/tags/layout/</guid>
       <description></description>
     </item>
     
     <item>
       <title>PyQt5</title>
-      <link>https://luochang212.github.io/tags/pyqt5/</link>
+      <link>/tags/pyqt5/</link>
       <pubDate>Fri, 10 May 2019 21:43:09 +0100</pubDate>
       
-      <guid>https://luochang212.github.io/tags/pyqt5/</guid>
+      <guid>/tags/pyqt5/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Sidebar</title>
-      <link>https://luochang212.github.io/tags/sidebar/</link>
+      <link>/tags/sidebar/</link>
       <pubDate>Fri, 10 May 2019 21:43:09 +0100</pubDate>
       
-      <guid>https://luochang212.github.io/tags/sidebar/</guid>
+      <guid>/tags/sidebar/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Jupyter-Notebook</title>
-      <link>https://luochang212.github.io/tags/jupyter-notebook/</link>
+      <link>/tags/jupyter-notebook/</link>
       <pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/jupyter-notebook/</guid>
+      <guid>/tags/jupyter-notebook/</guid>
       <description></description>
     </item>
     
     <item>
       <title>WeiBo</title>
-      <link>https://luochang212.github.io/tags/weibo/</link>
+      <link>/tags/weibo/</link>
       <pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/weibo/</guid>
+      <guid>/tags/weibo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Google-API</title>
-      <link>https://luochang212.github.io/tags/google-api/</link>
+      <link>/tags/google-api/</link>
       <pubDate>Wed, 10 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/google-api/</guid>
+      <guid>/tags/google-api/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Google-Maps</title>
-      <link>https://luochang212.github.io/tags/google-maps/</link>
+      <link>/tags/google-maps/</link>
       <pubDate>Wed, 10 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/google-maps/</guid>
+      <guid>/tags/google-maps/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Abstract-Algebra</title>
-      <link>https://luochang212.github.io/tags/abstract-algebra/</link>
+      <link>/tags/abstract-algebra/</link>
       <pubDate>Sat, 16 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/abstract-algebra/</guid>
+      <guid>/tags/abstract-algebra/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Permutation</title>
-      <link>https://luochang212.github.io/tags/permutation/</link>
+      <link>/tags/permutation/</link>
       <pubDate>Sat, 16 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/permutation/</guid>
+      <guid>/tags/permutation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>PyCharm</title>
-      <link>https://luochang212.github.io/tags/pycharm/</link>
+      <link>/tags/pycharm/</link>
       <pubDate>Sat, 16 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/pycharm/</guid>
+      <guid>/tags/pycharm/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ant-Colony-Algorithm</title>
-      <link>https://luochang212.github.io/tags/ant-colony-algorithm/</link>
+      <link>/tags/ant-colony-algorithm/</link>
       <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/ant-colony-algorithm/</guid>
+      <guid>/tags/ant-colony-algorithm/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Markowitz-Model</title>
-      <link>https://luochang212.github.io/tags/markowitz-model/</link>
+      <link>/tags/markowitz-model/</link>
       <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/markowitz-model/</guid>
+      <guid>/tags/markowitz-model/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Optimization</title>
-      <link>https://luochang212.github.io/tags/optimization/</link>
+      <link>/tags/optimization/</link>
       <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/optimization/</guid>
+      <guid>/tags/optimization/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Portfolio</title>
-      <link>https://luochang212.github.io/tags/portfolio/</link>
+      <link>/tags/portfolio/</link>
       <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/portfolio/</guid>
+      <guid>/tags/portfolio/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Literature</title>
-      <link>https://luochang212.github.io/tags/literature/</link>
+      <link>/tags/literature/</link>
       <pubDate>Tue, 11 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/literature/</guid>
+      <guid>/tags/literature/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Movie</title>
-      <link>https://luochang212.github.io/tags/movie/</link>
+      <link>/tags/movie/</link>
       <pubDate>Tue, 11 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/tags/movie/</guid>
+      <guid>/tags/movie/</guid>
       <description></description>
     </item>
     

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>SOTA on Chang Luo</title>
-    <link>https://luochang212.github.io/categories/sota/</link>
+    <link>/categories/sota/</link>
     <description>Recent content in SOTA on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 03 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://luochang212.github.io/categories/sota/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 03 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="/categories/sota/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>摸鱼侠极客版</title>
-      <link>https://luochang212.github.io/posts/moyu_bash/</link>
+      <link>/posts/moyu_bash/</link>
       <pubDate>Sun, 03 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/posts/moyu_bash/</guid>
+      <guid>/posts/moyu_bash/</guid>
       <description>老板：退退退
 GitHub 项目地址：moyu-bash
 1. 缘起 最近刷到一个微信小程序，叫 “摸鱼侠”，它长这样：
@@ -25,10 +25,10 @@ GitHub 项目地址：moyu-bash
     
     <item>
       <title>用魔法打败魔法！</title>
-      <link>https://luochang212.github.io/posts/chico_and_dico/</link>
+      <link>/posts/chico_and_dico/</link>
       <pubDate>Fri, 21 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/posts/chico_and_dico/</guid>
+      <guid>/posts/chico_and_dico/</guid>
       <description>Chico 和 Dico 是两位魔术师，他们有一个经典魔术：根据任意四张牌猜第五张牌。但完成这个魔术并不需要任何魔术师的技巧，因为它完全建立在数学原理之上。只需要一点数学知识和充分的练习，你也能表演这个魔术！
 GitHub 项目地址：chico-and-dico
 Chico 和 Dico 的魔术 Chico 和 Dico 是两位魔术师，他们经常表演的一个魔术是这样的：Chico 将一副 52 张的扑克牌交给一位观众，让他随机抽取其中的 5 张。然后 Chico 将这 5 张牌按一定的顺序重新排列，再将其还给观众。上述整个过程 Dico 都是看不见的。然而，当观众按 Chico 排好的顺序依次展示前四张牌之后，Dico 却能准确地说出第五张牌是什么。
@@ -42,10 +42,10 @@ Chico 和 Dico 的魔术 Chico 和 Dico 是两位魔术师，他们经常表演�
     
     <item>
       <title>【项目】TSP旅行路线规划</title>
-      <link>https://luochang212.github.io/posts/tsp_route/</link>
+      <link>/posts/tsp_route/</link>
       <pubDate>Wed, 10 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luochang212.github.io/posts/tsp_route/</guid>
+      <guid>/posts/tsp_route/</guid>
       <description>GitHub 项目地址：tsp-route
 对于在欧洲的小伙伴们，复活节假在这一周就正式开始啦。大家都是怎么计划旅行的呢？
 我的习惯是在出发前最后一晚，花上半小时，搜索目的地景点 (Point of interest, POI), 然后在Google Maps上为它们点上小星星，以免和它们擦肩而过。我的地图经过一番操作，就成了下面这副模样。
