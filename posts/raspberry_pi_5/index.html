@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.118.2">
+<meta name="generator" content="Hugo 0.124.1">
 
     
     
@@ -22,9 +22,9 @@
 <title>树莓派 5 装机指南 • Chang Luo</title>
 
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="树莓派 5 装机指南"/>
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="树莓派 5 装机指南"/>
 <meta name="twitter:description" content="树莓派 5 安装 Ubuntu 23.10 的 踩坑记录"/>
+      <meta name="twitter:site" content="@MinosPalace"/>
 
 <meta property="og:title" content="树莓派 5 装机指南" />
 <meta property="og:description" content="树莓派 5 安装 Ubuntu 23.10 的 踩坑记录" />
@@ -215,13 +215,13 @@
     <div class="container ">
       <div class="sidebar-about">
         <span class="site__title">
-          <a href="https://luochang212.github.io">Chang Luo</a>
+          <a href="https://luochang212.github.io/">Chang Luo</a>
         </span>
         
         
         
         <div class="author-image">
-          <a href="#" class="load-iframe" onclick="openNav()"><img src="https://luochang212.github.io/images/profile.webp" id="author-iamge"
+          <a href="#" class="load-iframe" onclick="openNav()"><img src="https://luochang212.github.io//images/profile.webp" id="author-iamge"
               alt="Author Image" class="img--circle img--headshot element--center"></a>
         </div>
         
@@ -519,7 +519,7 @@
     
     
     <br/>
-    <i class="fas fa-clock"></i> 3 min read
+    <i class="fas fa-clock"></i> 4 min read
 </div>
 
 
@@ -628,10 +628,23 @@ rm -rf ~/miniconda3/miniconda.sh
 ~/miniconda3/bin/conda init zsh
 </code></pre><pre tabindex="0"><code># 如果没啥事可以重启一下，重启后 miniconda 在命令行生效
 reboot
-</code></pre><p>miniconda 的其他相关操作在 <a href="http://localhost:1313/posts/linux_handbook/#%E4%BA%94%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2" target="_blank">Linux 运维手册</a> 里有，可以看看。</p>
+</code></pre><p>关于 miniconda 的其他操作，可前往<a href="/posts/linux_handbook" target="_blank">《Linux 运维手册》</a>查阅。</p>
+<p>相关章节：<a href="/posts/linux_handbook/#5安装-miniconda3" target="_blank">安装 miniconda3</a>、<a href="/posts/linux_handbook/#7miniconda3-换-kernal" target="_blank">miniconda3 换 Kernal</a></p>
 <blockquote>
-<p><strong>Note</strong>: 你也可以选择 <a href="https://github.com/conda-forge/miniforge" target="_blank">Miniforge</a> ，它比 miniconda 更轻量级，完全开源，由社区驱动。</p>
-</blockquote>
+<p><strong>Note</strong>: <a href="https://github.com/conda-forge/miniforge" target="_blank">miniforge</a> 是 miniconda 的开源替代。</p>
+<p>官网传送门 =&gt; <a href="https://conda-forge.org/download/" target="_blank">conda-forge</a></p>
+<p>安装 miniforge：</p>
+<pre tabindex="0"><code>bash Miniforge3-$(uname)-$(uname -m).sh
+</code></pre><p>配置环境变量：</p>
+<pre tabindex="0"><code># 对于 MacOS，在 ~/.bash_profile 中修改环境变量
+forge_bin=$HOME/miniforge3/bin
+if [[ ! :$PATH: =~ :$forge_bin: ]]; then
+    export PATH=&#34;$forge_bin:$PATH&#34;
+fi
+</code></pre><p>初始化：</p>
+<pre tabindex="0"><code>conda init  # 初始化
+conda activate  # 启动 miniforge
+</code></pre></blockquote>
 <h4 id="5安装-vscode">5）安装 VSCode</h4>
 <p>① 下载 <code>.deb</code> 安装包</p>
 <p>官方下载页面：<a href="https://code.visualstudio.com/Download" target="_blank">code.visualstudio.com/Download</a></p>
@@ -836,7 +849,7 @@ Enter same passphrase again:
         </div>
         
     <script type="text/javascript" async
-  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
   MathJax.Hub.Config({
   tex2jax: {
     inlineMath: [['$','$'], ['\\(','\\)']],
@@ -865,18 +878,8 @@ Enter same passphrase again:
 </script>
 
 
-  
-  
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'G-CTTYXM88J2', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
 
 
 <script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>

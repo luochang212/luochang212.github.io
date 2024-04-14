@@ -6,22 +6,14 @@
     <description>Recent content in Practice on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 14 Jun 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://luochang212.github.io/tags/practice/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 14 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://luochang212.github.io/tags/practice/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Python 工程化实践</title>
       <link>https://luochang212.github.io/posts/python_practice/</link>
       <pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://luochang212.github.io/posts/python_practice/</guid>
-      <description>学 Python 不应仅限于学编程，同样应该学习工程知识，比如虚拟环境、编码风格以及单元测试等。本文致力于介绍 Python 工程化所需的前置知识。
-⚠️ 注意：以下教程适用于 MacOS。
-部署环境 1. Anaconda Anaconda 是一个包管理器，它能让你方便的管理 Python 版本和包版本。并且， Anaconda 聚合了 Jupyter notebook，使其大受数据科学家和人工智能工程师的欢迎。下面我们来介绍如何用 Anaconda 管理我们的 Python 环境。
-如果你还没有 Anaconda，安装一个：
-海外用户直接访问 Anaconda 官网 下载即可 国内用户无法访问Anaconda 官网(被墙)，建议选择清华镜像替代。 安装完以后，在命令行界面输入 conda，会打印一个帮助文档。
-帮助文档大概是说 conda 有哪些常用命令，比如下面这些：
-$ conda help # 打印帮助文档 $ conda info # 查看conda信息，包括当前在哪个环境，环境路径，Python版本等信息 $ conda list # 列出conda下安装了哪些包 $ conda install [package_name] # 在conda环境中安装某个包 $ conda update [package_name] # 升级conda环境中的某个包 Note：后文仅专注介绍虚拟环境相关内容，更多内容请在 Anaconda 官方文档 中查看。
-Python 环境分为本地环境(lcoal env) 和全局环境 (global env) 。为一个项目配置环境，应该配置本地环境；为本机所有项目配置环境，则应该配置全局环境。</description>
+      <description>学 Python 不应仅限于学编程，同样应该学习工程知识，比如虚拟环境、编码风格以及单元测试等。本文致力于介绍 Python 工程化所需的前置知识。&#xA;⚠️ 注意：以下教程适用于 MacOS。&#xA;部署环境 1. Anaconda Anaconda 是一个包管理器，它能让你方便的管理 Python 版本和包版本。并且， Anaconda 聚合了 Jupyter notebook，使其大受数据科学家和人工智能工程师的欢迎。下面我们来介绍如何用 Anaconda 管理我们的 Python 环境。&#xA;如果你还没有 Anaconda，安装一个：&#xA;海外用户直接访问 Anaconda 官网 下载即可 国内用户无法访问Anaconda 官网(被墙)，建议选择清华镜像替代。 安装完以后，在命令行界面输入 conda，会打印一个帮助文档。&#xA;帮助文档大概是说 conda 有哪些常用命令，比如下面这些：&#xA;$ conda help # 打印帮助文档 $ conda info # 查看conda信息，包括当前在哪个环境，环境路径，Python版本等信息 $ conda list # 列出conda下安装了哪些包 $ conda install [package_name] # 在conda环境中安装某个包 $ conda update [package_name] # 升级conda环境中的某个包 Note：后文仅专注介绍虚拟环境相关内容，更多内容请在 Anaconda 官方文档 中查看。&#xA;Python 环境分为本地环境(lcoal env) 和全局环境 (global env) 。为一个项目配置环境，应该配置本地环境；为本机所有项目配置环境，则应该配置全局环境。</description>
     </item>
-    
   </channel>
 </rss>

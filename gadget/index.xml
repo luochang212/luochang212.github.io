@@ -5,46 +5,154 @@
     <link>https://luochang212.github.io/gadget/</link>
     <description>Recent content in Gadget on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://luochang212.github.io/gadget/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <atom:link href="https://luochang212.github.io/gadget/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
-      <link>https://luochang212.github.io/gadget/monaco-speech-editor/docs/readme/</link>
+      <link>https://luochang212.github.io/gadget/algorithms/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://luochang212.github.io/gadget/monaco-speech-editor/docs/readme/</guid>
-      <description>monaco-speech-editor Monaco Speech Editor 是一款在线代码编辑器。内置强大的语音辅助功能，以帮助视障人群阅读、编辑和编译代码。
-快速开始 点击本链接，在线运行应用。
-本地运行 因为 Monaco Speech Editor 是一个用传统前端方式写成的，不依赖于任何框架的静态网页，因此很容易在本地运行。
-首先，下载本仓库。
-git clone https://github.com/luochang212/monaco-speech-editor.git 然后，打开 monaco-speech-editor 文件夹。
-最后，点击 index.html，此应用将在本地浏览器运行。
-特性 文件管理系统:
-新建文件 删除文件 重命名文件 上传文件 下载文件 恢复已删除的文件 控制台:
-显示 HTML 文件的渲染结果 把渲染结果在新标签页中打开 把渲染结果在新窗口中打开 打印 console.log() 函数的输出 主题:
-日间模式 夜间模式 辅助功能:
-工具栏: 包括语法高亮，光标跳转，播放下一行，播放当前行，播放下一行。
-朗读模式: 包括字符模式，代码模式，音乐模式，概述模式。
-辅助切换: 这是一个设置列表，按上键和下键切换设置条目，按左键和右键切换设置开关。
-线性索引: 这是一个功能和快捷键列表。
-初始化编辑器设置 如果你是一个视障用户，请打开上面的链接，并在链接之后加上路由 #tutorial。这会触发一个语音引导，该语音引导将教你如何使用以及探索本应用的功能。（PS: 因为 Google 公司的政策，通过路由自动播放语音的功能可能无法在 Google Chrome 以及使用其内核的其他浏览器上使用。但是用户仍能通过编辑器首页的按钮播放本语音教程。）
-如果你是一个拥有正常视力的用户，并且不想被本软件的自动语音播放事件打扰。只需在原网页链接后增加路由 #mute 即可静止所有自动语音播放事件。
-完整路由列表 路由 对应的初始化设置 #load-demo load demo #dark turn on night mode #full-screen full screen #run open console bar #tutorial play audio tutorial #spotlight turn on spotlight #linear-index turn on linear index #character-mode trun on character mode #code-mode turn on code mode #overview-mode turn on overview mode #voice-feedback turn on voice feedback #voice-cue turn on voice cue #mute disable any autoplay event #dark&amp;amp;run turn on night mode and console bar #dark&amp;amp;mute turn on night mode and disable any autoplay event 依赖 Monaco Editor</description>
+      <guid>https://luochang212.github.io/gadget/algorithms/</guid>
+      <description>&lt;!DOCTYPE html&gt; 算法集萃 Home Projects About 算法集萃 1. 分配货物 有四条船，有一堆货物。往每条船上分配货物，要求每条船上货物的重量相等。 列表中的元素表示每个货物的重量。 返回 Ture 或者 False 表示是否存在满足条件的装货方式。 示例：&#xA;输入: [2,2,2,1,1] 输出: True 输入: [2,2,2,3] 输出: False 解答：&#xA;None 2. 复原IP地址[LeetCode] 给定一个只包含数字的字符串，复原它并返回所有可能的 IP 地址格式。 示例：&#xA;输入: &#34;25525511135&#34; 输出: [&#34;255.255.11.135&#34;, &#34;255.255.111.35&#34;] 解答：&#xA;None </description>
     </item>
-    
     <item>
       <title></title>
-      <link>https://luochang212.github.io/gadget/monaco-speech-editor/readme/</link>
+      <link>https://luochang212.github.io/gadget/audio-player/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://luochang212.github.io/gadget/monaco-speech-editor/readme/</guid>
-      <description>monaco-speech-editor 中文文档
-Monaco Speech Editor is an online code editor for visually impaired people. It provides several built-in functions to make it easy to read, edit and compile.
-Quick Start Try the editor out on my website.
-Run Locally Since this web application was written with pure JS and didn&amp;rsquo;t use any framework, it is easy to run locally.
-First, download the repository.
-git clone https://github.com/luochang212/monaco-speech-editor.git Then, open monaco-speech-editor.
-Now, click index.</description>
+      <guid>https://luochang212.github.io/gadget/audio-player/</guid>
+      <description>&lt;!doctype html&gt; Audio Player 0:00 0:00 </description>
     </item>
-    
+    <item>
+      <title></title>
+      <link>https://luochang212.github.io/gadget/baijiahao/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/gadget/baijiahao/</guid>
+      <description>&lt;!DOCTYPE html&gt; 百家号模拟器 Home Projects About 百家号模拟器 主题： 属性： 生成文章 </description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://luochang212.github.io/gadget/font/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/gadget/font/</guid>
+      <description> Don&#39;t threaten me with a good time &amp;#9834; Don&#39;t threaten me with a good time &amp;#9834; Don&#39;t threaten me with a good time &amp;#9834; </description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://luochang212.github.io/gadget/gallery/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/gadget/gallery/</guid>
+      <description>&lt;!DOCTYPE html&gt; Gallery Click on the buttons to change the grid view.&#xA;1 2 4 </description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://luochang212.github.io/gadget/happy-birthday/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/gadget/happy-birthday/</guid>
+      <description>&lt;!DOCTYPE html&gt; ┗|｀O′|┛ Happy Birthday&#xA;To&#xA;赵公公 </description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://luochang212.github.io/gadget/how-old-are-you/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/gadget/how-old-are-you/</guid>
+      <description>&lt;!DOCTYPE html&gt; 年龄可视化 Home Projects About A 90-Year Human Life in Months Your Age: Inspired by Your Life in Weeks. </description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://luochang212.github.io/gadget/hydra/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/gadget/hydra/</guid>
+      <description>&lt;!DOCTYPE html&gt; Button Glow hydra HYDRA </description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://luochang212.github.io/gadget/live2d/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/gadget/live2d/</guid>
+      <description>&lt;!DOCTYPE html&gt; Live2D！ 隐藏 </description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://luochang212.github.io/gadget/monaco-speech-editor/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/gadget/monaco-speech-editor/</guid>
+      <description>&lt;!DOCTYPE html&gt; Monaco Speech Editor Explorer&#xA;File manager Demo You can load demos from a JSON file.&#xA;Load Demo Tutorial Listen to the features of this application.&#xA;Quick Start Upload&#xA;Drop your file here&#xA;Feature List&#xA;Speech Synthesis Speak Document Speak By Line Speak Console Result Speak Console Log Stop Speaking Cursor Position Search Cursor Position Cursor Jump To Line Trash Find Deleted Files Setting&#xA;Voice Rate 1 Pitch 1 Mode Character Mode Code Mode Music Mode Overview Mode Accessibility Voice Feedback Voice Cue Spotlight Linear Index Mute Theme Night Mode Console Console Bar Hide Console Log Area Hide Rendering Result Area apex azcli bat c clojure coffeescript cpp csharp csp css dockerfile fsharp go graphql handlebars html ini java javascript json kotlin less lua markdown msdax mysql objective-c pascal perl pgsql php plaintext postiats powerquery powershell pug python r razor redis redshift ruby rust sb scheme scss shell sol sql st swift tcl typescript vb xml yaml Jump To Line: Ln 1, Col 1 Console Run Open In New Window Open In New Tab Speak Document (Ctrl+Alt+D) Speak By Line (Ctrl+Alt+P) Speak Next Line (Ctrl+Alt+&amp;#8681;) Speak previous Line (Ctrl+Alt+&amp;#8679;) Speak Console Result (Ctrl+Alt+E) Speak Console Log (Ctrl+Alt+L) Stop Speaking (Ctrl+Alt+S) Search Cursor Position (Ctrl+Alt+C) Character Mode (Ctrl+Alt+A) Code Mode (Ctrl+Alt+O) Music Mode (Ctrl+Alt+M) Overview Mode (Ctrl+Alt+V) Voice Feedback (Ctrl+Alt+F) Voice Cue (Ctrl+Alt+U) Console Bar (Ctrl+Alt+B) Running Code (Ctrl+Alt+R) Night Mode (Ctrl+Alt+N) </description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://luochang212.github.io/gadget/mozi/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/gadget/mozi/</guid>
+      <description>&lt;!DOCTYPE html&gt; 墨子 | 读书笔记 墨子 原文及读书笔记&#xA;卷一 亲士 修身 所染 法仪 七患 辞过 三辩 卷二 尚贤上 尚贤中 尚贤下 卷三 尚同上 尚同中 尚同下 卷四 兼爱上 兼爱中 兼爱下 卷五 非攻上 非攻中 非攻下 卷六 节用上 节用中 节葬下 卷七 天志上 天志中 天志下 卷九 卷十 卷十一 卷十二 介绍 作者 : 墨翟 成书时间 : [春秋 - 战国] 公元前490年-公元前221年 篇目数量 : 原有71篇，现存53篇 墨家主张“兼爱”，和西方的“博爱”相似；墨家重视技术，这也与西方不谋而合。在诸子百家中，墨家可能是最接近西方文明的学派。因此，当近代中国在西方的坚船利炮下生灵涂炭之时，中国的学者们不由开始缅怀墨子。倘若当年汉武帝不尊儒而尊墨，或许就能引领中华文明走上一条科技之路，从而免于两千多年后落得一个被列强欺凌的下场。这当然是臆想，但这却让墨家在近代意外走红，引起了关注。&#xA;墨家曾为显学，是历史道路的候选者，虽然最终被历史淘汰，但依旧具有研究价值。其次，作为传世两千多年的著作，《墨子》一书对中国人的影响亦不容小觑。在看《墨子》的过程中，你或许能找到一些古今俱同的政治理念和处事之道。&#xA;参考资料 中国哲学书电子化计划 汉典 相关书籍 《中国文化精神》钱穆 《中国历代政治得失》钱穆 《人能弘道：傅佩荣谈论语》傅佩荣 《乡土中国》费孝通 《寻觅中华》余秋雨 卷一 # 亲士 入国而不存其士，则亡国矣。见贤而不急，则缓其君矣。非贤无急，非士无与虑国，缓贤忘士而能以其国存者，未曾有也。</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://luochang212.github.io/gadget/my-first-try/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/gadget/my-first-try/</guid>
+      <description>&lt;!DOCTYPE html&gt; Document </description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://luochang212.github.io/gadget/new-to-do-list/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/gadget/new-to-do-list/</guid>
+      <description>&lt;!DOCTYPE html&gt; My To Do List Add </description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://luochang212.github.io/gadget/piano/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/gadget/piano/</guid>
+      <description> JS Piano Use your keyboard. Hover for hints. A W S E D F T G Y H U J K O L P ; </description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://luochang212.github.io/gadget/plan/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/gadget/plan/</guid>
+      <description>&lt;!DOCTYPE html&gt; Plan MORE PLANS 1月 2月 3月 2020年2月计划 一、计划内容 学习计划 📖 LeetCode (1 题/天) 读书 (10 页/天) 运动计划 🏃 跑步 (1000 米/天) 仰卧起坐 (10 次/天) 注：括号内是计量单位，不是计划数。&#xA;二、完成情况 none</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://luochang212.github.io/gadget/react-lifecycle-demo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/gadget/react-lifecycle-demo/</guid>
+      <description>&lt;!DOCTYPE html&gt; </description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://luochang212.github.io/gadget/read-zip-file-by-url/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/gadget/read-zip-file-by-url/</guid>
+      <description>&lt;!DOCTYPE html&gt; Read a zip file demo 操作方法： 选中下方文本框; 按 Ctrl + v 粘贴链接; 点击文本框外任意区域。 Please wait. </description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://luochang212.github.io/gadget/show-time/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/gadget/show-time/</guid>
+      <description>&lt;!DOCTYPE html&gt; 现在几点了？ 现在几点了？ © 2019 Chang Luo Weibo | Bilibili&#xA;哈哈哈，这只是一个测试网页，并没有什么用。什么？居然被你发现了 O_O !!!&#xA;点击这里获取日期与时间 </description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://luochang212.github.io/gadget/tic-tac-toe/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/gadget/tic-tac-toe/</guid>
+      <description>&lt;!doctype html&gt;React AppYou need to enable JavaScript to run this app.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://luochang212.github.io/gadget/to-do-list/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/gadget/to-do-list/</guid>
+      <description>&lt;!DOCTYPE html&gt; 计划表生成工具 计划表生成工具 © 2019 Chang Luo | Home&#xA;这是俺写的小工具，什么？居然被你发现了 O_O !!!&#xA;使用说明： 在此框中输入你的计划，点击“添加计划”按钮，将你的计划添加至计划列表。接着点击“生成表格”按钮，通过勾选生成的表格中的复选框，告诉后台你的完成情况。最后点击“下载表格”按钮，下载计划完成统计表。&#xA;添加计划 &amp;nbsp &amp;nbsp &amp;nbsp → &amp;nbsp &amp;nbsp &amp;nbsp 生成表格 &amp;nbsp &amp;nbsp &amp;nbsp → &amp;nbsp &amp;nbsp &amp;nbsp 下载表格 &amp;nbsp &amp;nbsp &amp;nbsp &amp;nbsp &amp;nbsp &amp;nbsp &amp;nbsp &amp;nbsp 清空 </description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://luochang212.github.io/gadget/unzip/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/gadget/unzip/</guid>
+      <description>&lt;!DOCTYPE html&gt; Read a zip file demo zip.js A JavaScript library to zip and unzip files Read a zip file demo choose a zip file choose temporary storage RAM HDD download zip content </description>
+    </item>
   </channel>
 </rss>

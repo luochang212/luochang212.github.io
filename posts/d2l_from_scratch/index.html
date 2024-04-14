@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.118.2">
+<meta name="generator" content="Hugo 0.124.1">
 
     
     
@@ -22,9 +22,9 @@
 <title>手写深度学习 • Chang Luo</title>
 
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="手写深度学习"/>
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="手写深度学习"/>
 <meta name="twitter:description" content="冬天就是要多做手部运动，让手暖起来"/>
+      <meta name="twitter:site" content="@MinosPalace"/>
 
 <meta property="og:title" content="手写深度学习" />
 <meta property="og:description" content="冬天就是要多做手部运动，让手暖起来" />
@@ -215,13 +215,13 @@
     <div class="container ">
       <div class="sidebar-about">
         <span class="site__title">
-          <a href="https://luochang212.github.io">Chang Luo</a>
+          <a href="https://luochang212.github.io/">Chang Luo</a>
         </span>
         
         
         
         <div class="author-image">
-          <a href="#" class="load-iframe" onclick="openNav()"><img src="https://luochang212.github.io/images/profile.webp" id="author-iamge"
+          <a href="#" class="load-iframe" onclick="openNav()"><img src="https://luochang212.github.io//images/profile.webp" id="author-iamge"
               alt="Author Image" class="img--circle img--headshot element--center"></a>
         </div>
         
@@ -606,7 +606,7 @@ x.grad
 <h4 id="3-with-torchno_grad">3. <code>with torch.no_grad()</code></h4>
 <p>在 PyTorch 中，如果一个张量的 <code>requires_grad</code> 参数设为 <code>True</code>。则所有依赖它的张量的 <code>requires_grad</code> 参数将被设置为 <code>True</code></p>
 <p>但在 <code>with torch.no_grad()</code> 块中的张量，依赖它的张量的 <code>requires_grad</code> 参数将被设为 <code>False</code></p>
-<p>参见：https://pytorch.org/docs/stable/generated/torch.no_grad.html</p>
+<p>参见：<a href="https://pytorch.org/docs/stable/generated/torch.no_grad.html" target="_blank">pytorch.org</a></p>
 <p>下面是一个例子：</p>
 <pre tabindex="0"><code>x = torch.tensor([1.], requires_grad=True)
 with torch.no_grad():
@@ -706,12 +706,12 @@ train_iter = data.DataLoader(mnist_train, batch_size, shuffle=True,
     def cumsum(self):
         &#34;&#34;&#34;Return the accumulated time.&#34;&#34;&#34;
         return np.array(self.times).cumsum().tolist()
-</code></pre><pre tabindex="0"><code># 看一下读取训练数据所需的时间
-timer = Timer()
-for X, y in train_iter:
-    continue
-f&#39;{timer.stop():.2f} sec&#39;
-</code></pre><h4 id="3-整合所有组件">3. 整合所有组件</h4>
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 看一下读取训练数据所需的时间</span>
+</span></span><span style="display:flex;"><span>timer <span style="color:#f92672">=</span> Timer()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> X, y <span style="color:#f92672">in</span> train_iter:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>timer<span style="color:#f92672">.</span>stop()<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> sec&#39;</span>
+</span></span></code></pre></div><h4 id="3-整合所有组件">3. 整合所有组件</h4>
 <pre tabindex="0"><code>def load_data_fashion_mnist(batch_size, resize=None):
     &#34;&#34;&#34;下载Fashion-MNIST数据集，然后将其加载到内存中&#34;&#34;&#34;
     trans = [transforms.ToTensor()]
@@ -2253,7 +2253,7 @@ train(num_epochs, net, train_iter, test_iter, loss, trainer)
         </div>
         
     <script type="text/javascript" async
-  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
   MathJax.Hub.Config({
   tex2jax: {
     inlineMath: [['$','$'], ['\\(','\\)']],
@@ -2282,18 +2282,8 @@ train(num_epochs, net, train_iter, test_iter, loss, trainer)
 </script>
 
 
-  
-  
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'G-CTTYXM88J2', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
 
 
 <script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>

@@ -6,23 +6,14 @@
     <description>Recent content in Sidebar on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 10 May 2019 21:43:09 +0100</lastBuildDate><atom:link href="https://luochang212.github.io/tags/sidebar/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 10 May 2019 21:43:09 +0100</lastBuildDate>
+    <atom:link href="https://luochang212.github.io/tags/sidebar/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>PyQt5 侧边栏布局</title>
       <link>https://luochang212.github.io/posts/pyqt5_layout_sidebar/</link>
       <pubDate>Fri, 10 May 2019 21:43:09 +0100</pubDate>
-      
       <guid>https://luochang212.github.io/posts/pyqt5_layout_sidebar/</guid>
-      <description>GitHub 项目地址：pyqt5-demo
-主流软件如网易云音乐、腾讯电脑管家，都有侧边栏。侧边栏能有效扩展应用空间，使软件功能的层次更加分明。
-但PyQt5并没有一个专门的方法实现侧边栏。要实现侧边栏，主要有两种技术路线。一是从标签部件(QTabWidget)改造而来，二是用网格布局(QGridLayout)画出来。本文采用第一种技术路线，制作一个简单的侧边栏应用。
-Note: 两种技术路线制作的侧边栏有细微的差别。如果采用第二种技术路线(QGridLayout)，侧边栏和内容页之间没有明显的分界。所以需要额外地在侧边栏和内容页之间加一条线，来突出两者属于不同的组件。而第一种技术路线(QTabWidget)不需要，创建的侧边栏和内容页之间的区别明显。
-下图是一个用第二种技术路线(QGridLayout)制作的应用，可以看到侧边栏和内容页中间画了一条线，以突出两个组件的分界。
-步骤分析 在开始写代码之前，我们先分析一下制作侧边栏需要几个步骤。
-添加部件 为部件设置布局 将标签部件改造成侧边栏的内容页 为侧边栏按钮编写函数，实现内容页之间的跳转 添加部件并设置布局 此段不详述。关于部件和布局的基础知识，在上一篇中有介绍，详见PyQt5 布局浅析。
-下面这段代码添加了部件且设置了布局。
-from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__(self): super().__init__() # set the title of main window self.setWindowTitle(&amp;#39;Sidebar layout - www.luochang.ink&amp;#39;) # set the size of window self.Width = 800 self.height = int(0.618 * self.Width) self.resize(self.Width, self.height) # add all widgets self.btn_1 = QPushButton(&amp;#39;1&amp;#39;, self) self.btn_2 = QPushButton(&amp;#39;2&amp;#39;, self) self.btn_3 = QPushButton(&amp;#39;3&amp;#39;, self) self.</description>
+      <description>GitHub 项目地址：pyqt5-demo&#xA;主流软件如网易云音乐、腾讯电脑管家，都有侧边栏。侧边栏能有效扩展应用空间，使软件功能的层次更加分明。&#xA;但PyQt5并没有一个专门的方法实现侧边栏。要实现侧边栏，主要有两种技术路线。一是从标签部件(QTabWidget)改造而来，二是用网格布局(QGridLayout)画出来。本文采用第一种技术路线，制作一个简单的侧边栏应用。&#xA;Note: 两种技术路线制作的侧边栏有细微的差别。如果采用第二种技术路线(QGridLayout)，侧边栏和内容页之间没有明显的分界。所以需要额外地在侧边栏和内容页之间加一条线，来突出两者属于不同的组件。而第一种技术路线(QTabWidget)不需要，创建的侧边栏和内容页之间的区别明显。&#xA;下图是一个用第二种技术路线(QGridLayout)制作的应用，可以看到侧边栏和内容页中间画了一条线，以突出两个组件的分界。&#xA;步骤分析 在开始写代码之前，我们先分析一下制作侧边栏需要几个步骤。&#xA;添加部件 为部件设置布局 将标签部件改造成侧边栏的内容页 为侧边栏按钮编写函数，实现内容页之间的跳转 添加部件并设置布局 此段不详述。关于部件和布局的基础知识，在上一篇中有介绍，详见PyQt5 布局浅析。&#xA;下面这段代码添加了部件且设置了布局。&#xA;from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__(self): super().__init__() # set the title of main window self.setWindowTitle(&amp;#39;Sidebar layout - www.luochang.ink&amp;#39;) # set the size of window self.Width = 800 self.height = int(0.618 * self.Width) self.resize(self.Width, self.height) # add all widgets self.btn_1 = QPushButton(&amp;#39;1&amp;#39;, self) self.btn_2 = QPushButton(&amp;#39;2&amp;#39;, self) self.btn_3 = QPushButton(&amp;#39;3&amp;#39;, self) self.</description>
     </item>
-    
   </channel>
 </rss>

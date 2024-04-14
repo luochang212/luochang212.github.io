@@ -6,62 +6,28 @@
     <description>Recent content in SOTA on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 03 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://luochang212.github.io/categories/sota/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 03 Jul 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://luochang212.github.io/categories/sota/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>摸鱼侠极客版</title>
       <link>https://luochang212.github.io/posts/moyu_bash/</link>
       <pubDate>Sun, 03 Jul 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://luochang212.github.io/posts/moyu_bash/</guid>
-      <description>老板：退退退
-GitHub 项目地址：moyu-bash
-1. 缘起 最近刷到一个微信小程序，叫 “摸鱼侠”，它长这样：
-这里面有个栏目叫 “今日已摸到”，还挺有意思的，它会计算今日截至当前为止挣到的工资。
-我寻思这小程序颜色太过艳丽，容易被老板抓包，便计上心来，打算写个 bash 版摸鱼侠。和生产环境融为一体，纯键盘操控，老板来了一个 ctrl c 便能毁尸灭迹，大大滴方便。
-2. 出生 这要实现起来也不难，只要把 (工作秒数 - 休息秒数) * 每秒工资 就好嘛。
-我纯纯的 bash 新手，不对之处大家批评。
-# Author: github@luochang212 work_start=10:00:00 # 上班时间 lunch_start=12:00:00 # 午饭开始 lunch_end=13:00:00 # 午饭结束 dinner_start=18:00:00 # 晚饭开始 dinner_end=19:00:00 # 晚饭结束 work_end=20:00:00 # 下班时间 salary=40000 # 月薪 day=22 # 每月工作天数 CURRENT_TIME=$(date +&amp;#34;%T&amp;#34;) EMOJI_ARRAY=(&amp;#34;(・▽ &amp;lt; )★&amp;#34; &amp;#34;─=≡Σ((( つ•̀ 3 •́)つ&amp;#34; &amp;#34;┗|｀O′|┛&amp;#34; &amp;#34;_(┐「ε:)_&amp;#34; &amp;#34;ヽ( ˘ω˘ )ゝ&amp;#34;) get_second() { read -r h m s &amp;lt;&amp;lt;&amp;lt; $(echo $1 | tr &amp;#39;:&amp;#39; &amp;#39; &amp;#39;) echo $(((10#$h*60*60)+(10#$m*60)+10#$s)) } calc_duration() { local start=$(get_second $1) local end=$(get_second $2) echo $((end-start)) } calc_work_time() { local lunch_time=$(calc_duration $lunch_start $lunch_end) local dinner_time=$(calc_duration $dinner_start $dinner_end) if [ $(calc_duration $CURRENT_TIME $work_start) -gt 0 ]; then echo 0 elif [ $(calc_duration $CURRENT_TIME $lunch_start) -gt 0 ]; then echo $(calc_duration $work_start $CURRENT_TIME) elif [ $(calc_duration $CURRENT_TIME $lunch_end) -gt 0 ]; then echo $(calc_duration $work_start $lunch_start) elif [ $(calc_duration $CURRENT_TIME $dinner_start) -gt 0 ]; then echo $(($(calc_duration $work_start $CURRENT_TIME) - lunch_time)) elif [ $(calc_duration $CURRENT_TIME $dinner_end) -gt 0 ]; then echo $(($(calc_duration $work_start $dinner_start) - lunch_time)) elif [ $(calc_duration $CURRENT_TIME $work_end) -gt 0 ]; then echo $(($(calc_duration $work_start $CURRENT_TIME) - lunch_time - dinner_time)) else echo $(($(calc_duration $work_start $work_end) - lunch_time - dinner_time)) fi } show_work_time() { local work_sec=$(calc_work_time) echo &amp;#34;$(($work_sec / 3600)) hours and $(($work_sec % 3600 / 60)) minutes and $(($work_sec % 60)) seconds&amp;#34; } calc_money() { local lunch_time=$(calc_duration $lunch_start $lunch_end) local dinner_time=$(calc_duration $dinner_start $dinner_end) local mnt=$((($(calc_duration $work_start $work_end) - lunch_time - dinner_time) / 60)) local salary_per_mnt=$(($salary * 100000000 / $day / $mnt)) local work_sec=$(calc_work_time) local money=$((salary_per_mnt * (work_sec / 60) / 1000000)) echo $money } show_money() { local money=$(calc_money) echo &amp;#34;已挣到：$(($money / 100)).</description>
+      <description>老板：退退退&#xA;GitHub 项目地址：moyu-bash&#xA;1. 缘起 最近刷到一个微信小程序，叫 “摸鱼侠”，它长这样：&#xA;这里面有个栏目叫 “今日已摸到”，还挺有意思的，它会计算今日截至当前为止挣到的工资。&#xA;我寻思这小程序颜色太过艳丽，容易被老板抓包，便计上心来，打算写个 bash 版摸鱼侠。和生产环境融为一体，纯键盘操控，老板来了一个 ctrl c 便能毁尸灭迹，大大滴方便。&#xA;2. 出生 这要实现起来也不难，只要把 (工作秒数 - 休息秒数) * 每秒工资 就好嘛。&#xA;我纯纯的 bash 新手，不对之处大家批评。&#xA;# Author: github@luochang212 work_start=10:00:00 # 上班时间 lunch_start=12:00:00 # 午饭开始 lunch_end=13:00:00 # 午饭结束 dinner_start=18:00:00 # 晚饭开始 dinner_end=19:00:00 # 晚饭结束 work_end=20:00:00 # 下班时间 salary=40000 # 月薪 day=22 # 每月工作天数 CURRENT_TIME=$(date +&amp;#34;%T&amp;#34;) EMOJI_ARRAY=(&amp;#34;(・▽ &amp;lt; )★&amp;#34; &amp;#34;─=≡Σ((( つ•̀ 3 •́)つ&amp;#34; &amp;#34;┗|｀O′|┛&amp;#34; &amp;#34;_(┐「ε:)_&amp;#34; &amp;#34;ヽ( ˘ω˘ )ゝ&amp;#34;) get_second() { read -r h m s &amp;lt;&amp;lt;&amp;lt; $(echo $1 | tr &amp;#39;:&amp;#39; &amp;#39; &amp;#39;) echo $(((10#$h*60*60)+(10#$m*60)+10#$s)) } calc_duration() { local start=$(get_second $1) local end=$(get_second $2) echo $((end-start)) } calc_work_time() { local lunch_time=$(calc_duration $lunch_start $lunch_end) local dinner_time=$(calc_duration $dinner_start $dinner_end) if [ $(calc_duration $CURRENT_TIME $work_start) -gt 0 ]; then echo 0 elif [ $(calc_duration $CURRENT_TIME $lunch_start) -gt 0 ]; then echo $(calc_duration $work_start $CURRENT_TIME) elif [ $(calc_duration $CURRENT_TIME $lunch_end) -gt 0 ]; then echo $(calc_duration $work_start $lunch_start) elif [ $(calc_duration $CURRENT_TIME $dinner_start) -gt 0 ]; then echo $(($(calc_duration $work_start $CURRENT_TIME) - lunch_time)) elif [ $(calc_duration $CURRENT_TIME $dinner_end) -gt 0 ]; then echo $(($(calc_duration $work_start $dinner_start) - lunch_time)) elif [ $(calc_duration $CURRENT_TIME $work_end) -gt 0 ]; then echo $(($(calc_duration $work_start $CURRENT_TIME) - lunch_time - dinner_time)) else echo $(($(calc_duration $work_start $work_end) - lunch_time - dinner_time)) fi } show_work_time() { local work_sec=$(calc_work_time) echo &amp;#34;$(($work_sec / 3600)) hours and $(($work_sec % 3600 / 60)) minutes and $(($work_sec % 60)) seconds&amp;#34; } calc_money() { local lunch_time=$(calc_duration $lunch_start $lunch_end) local dinner_time=$(calc_duration $dinner_start $dinner_end) local mnt=$((($(calc_duration $work_start $work_end) - lunch_time - dinner_time) / 60)) local salary_per_mnt=$(($salary * 100000000 / $day / $mnt)) local work_sec=$(calc_work_time) local money=$((salary_per_mnt * (work_sec / 60) / 1000000)) echo $money } show_money() { local money=$(calc_money) echo &amp;#34;已挣到：$(($money / 100)).</description>
     </item>
-    
     <item>
       <title>用魔法打败魔法！</title>
       <link>https://luochang212.github.io/posts/chico_and_dico/</link>
       <pubDate>Fri, 21 Feb 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://luochang212.github.io/posts/chico_and_dico/</guid>
-      <description>Chico 和 Dico 是两位魔术师，他们有一个经典魔术：根据任意四张牌猜第五张牌。但完成这个魔术并不需要任何魔术师的技巧，因为它完全建立在数学原理之上。只需要一点数学知识和充分的练习，你也能表演这个魔术！
-GitHub 项目地址：chico-and-dico
-Chico 和 Dico 的魔术 Chico 和 Dico 是两位魔术师，他们经常表演的一个魔术是这样的：Chico 将一副 52 张的扑克牌交给一位观众，让他随机抽取其中的 5 张。然后 Chico 将这 5 张牌按一定的顺序重新排列，再将其还给观众。上述整个过程 Dico 都是看不见的。然而，当观众按 Chico 排好的顺序依次展示前四张牌之后，Dico 却能准确地说出第五张牌是什么。
-乍一看这个魔术很神奇。随机抽取 5 张牌，你能从前 4 张牌中看出第 5 张牌是什么吗？对于普通人来说，当然不可能。Chico 和 Dico 的秘诀在于 Chico 有机会将扑克重新排序。如果两人事先约定好某种协议，Chico 是有可能通过扑克排列的顺序，向 Dico 传递关于第 5 张牌的信息的。
-关键在于如何实现这种协议。
-数学模型 在进行分析之前，我们需要把 Chico 和 Dico 的魔术抽象成一个数学模型。
-魔术本身已经提供了一些建模信息。我们可以假设一共有 n 张牌，抽取其中的 k 张。在对牌组进行某种排序之后，我们需要利用前 (k - j) 张牌的信息，推测后 j 张牌是什么。
-现在我们有 n, j, k 三个变量，下面我们来进一步探究三个变量之间究竟服从何种关系。
-首先，我们知道从 n 张牌中抽取 k 张牌一共有 C(n, k) 种组合方式，而 (k - j) 张牌的排列方式则有 A(n, k-j) 种。按照模型的要求，我们要用后者对前者的信息进行编码。根据信息论中的信源编码理论，至少有：C(n, k) &amp;lt;= A(n, k-j)。</description>
+      <description>Chico 和 Dico 是两位魔术师，他们有一个经典魔术：根据任意四张牌猜第五张牌。但完成这个魔术并不需要任何魔术师的技巧，因为它完全建立在数学原理之上。只需要一点数学知识和充分的练习，你也能表演这个魔术！&#xA;GitHub 项目地址：chico-and-dico&#xA;Chico 和 Dico 的魔术 Chico 和 Dico 是两位魔术师，他们经常表演的一个魔术是这样的：Chico 将一副 52 张的扑克牌交给一位观众，让他随机抽取其中的 5 张。然后 Chico 将这 5 张牌按一定的顺序重新排列，再将其还给观众。上述整个过程 Dico 都是看不见的。然而，当观众按 Chico 排好的顺序依次展示前四张牌之后，Dico 却能准确地说出第五张牌是什么。&#xA;乍一看这个魔术很神奇。随机抽取 5 张牌，你能从前 4 张牌中看出第 5 张牌是什么吗？对于普通人来说，当然不可能。Chico 和 Dico 的秘诀在于 Chico 有机会将扑克重新排序。如果两人事先约定好某种协议，Chico 是有可能通过扑克排列的顺序，向 Dico 传递关于第 5 张牌的信息的。&#xA;关键在于如何实现这种协议。&#xA;数学模型 在进行分析之前，我们需要把 Chico 和 Dico 的魔术抽象成一个数学模型。&#xA;魔术本身已经提供了一些建模信息。我们可以假设一共有 n 张牌，抽取其中的 k 张。在对牌组进行某种排序之后，我们需要利用前 (k - j) 张牌的信息，推测后 j 张牌是什么。&#xA;现在我们有 n, j, k 三个变量，下面我们来进一步探究三个变量之间究竟服从何种关系。&#xA;首先，我们知道从 n 张牌中抽取 k 张牌一共有 C(n, k) 种组合方式，而 (k - j) 张牌的排列方式则有 A(n, k-j) 种。按照模型的要求，我们要用后者对前者的信息进行编码。根据信息论中的信源编码理论，至少有：C(n, k) &amp;lt;= A(n, k-j)。</description>
     </item>
-    
     <item>
       <title>【项目】TSP旅行路线规划</title>
       <link>https://luochang212.github.io/posts/tsp_route/</link>
       <pubDate>Wed, 10 Apr 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://luochang212.github.io/posts/tsp_route/</guid>
-      <description>GitHub 项目地址：tsp-route
-对于在欧洲的小伙伴们，复活节假在这一周就正式开始啦。大家都是怎么计划旅行的呢？
-我的习惯是在出发前最后一晚，花上半小时，搜索目的地景点 (Point of interest, POI), 然后在Google Maps上为它们点上小星星，以免和它们擦肩而过。我的地图经过一番操作，就成了下面这副模样。
-此时此刻，望着这些密集的星星，我不禁自问：如何才能走最少的路，遍历所有景点呢?
-搜索了谷歌和百度，都没找到我要路径规划功能。最接近需求的是谷歌地图的&amp;quot;Add destination&amp;quot;功能。然而这个功能只是依次连接你点选的地点。并不能由一组地点，确定连接它们的一条全局最短路径。
-没有现成应用怎么办，我打算自己动手写一个。
-下图是Google Add destination功能。
-适用模型：TSP 模型 用一句话概括需求就是：我们需要一条从某地方出发，遍历所有地点，最终回到起点的最短路径。
-这个需求其实就是运筹学的一个经典问题，旅行商问题(TSP)。旅行商问题的确切描述是这样的：一个商人在各个城市之间旅行，要求遍历所有城市并返回到出发点，要如何规划路线，才能使总路径最短。（打开维基百科了解更多)
-解决思路 用googlemaps包获取纬度和经度信息 用OR-Tools包求解TSP问题 最后用gmaps可视化结果 在敲代码的过程中，最难的地方莫过于看文档查API, 搞清楚输入输出和调用结构。不过敲完这一顿之后我还是不禁感慨，GoogleI太为开发者着想了。一旦学会调用API，实现一个简单应用的代码量还是很小的 orz
-食用指南 项目地址 &amp;ndash;&amp;gt; 传送门
-在运行代码之前，你需要以下配置：
-一个Jupyter Notebook. 你需要安装这些包：googleplaces, googlemaps, gmaps, ortools. 你需要一个Google Maps API key, 从这里获取API. 完成配置等于成功的一半。在Jupyter notebook打开TSPSolver.ipynb，将第二个代码块的所有变量，改成自己的，比如自己的目的地自己的区域和自己的API密码……最后从头到尾运行所有代码块，你就可以得到自己的定制路线辣~
-配置代码如下。
-# input the places of interest (POI) places = &amp;#39;YHA London Central Hostel&amp;#39;, &amp;#39;Coca-Cola London Eye&amp;#39;, &amp;#39;St. Paul\&amp;#39;s Cathedral&amp;#39;, &amp;#39;Leadenhall Market&amp;#39;, &amp;#39;The National Gallery&amp;#39; \ &amp;#39;Big Ben&amp;#39;, &amp;#39;Buckingham Palace&amp;#39;, &amp;#39;Waterloo Station&amp;#39; # the region Location=&amp;#39;London&amp;#39; # choose a mode Mode = &amp;#34;walking&amp;#34; # &amp;#34;driving&amp;#34;, &amp;#34;walking&amp;#34;, &amp;#34;bicycling&amp;#34;, &amp;#34;transit&amp;#34; # get Google API key from following website: # https://developers.</description>
+      <description>GitHub 项目地址：tsp-route&#xA;对于在欧洲的小伙伴们，复活节假在这一周就正式开始啦。大家都是怎么计划旅行的呢？&#xA;我的习惯是在出发前最后一晚，花上半小时，搜索目的地景点 (Point of interest, POI), 然后在Google Maps上为它们点上小星星，以免和它们擦肩而过。我的地图经过一番操作，就成了下面这副模样。&#xA;此时此刻，望着这些密集的星星，我不禁自问：如何才能走最少的路，遍历所有景点呢?&#xA;搜索了谷歌和百度，都没找到我要路径规划功能。最接近需求的是谷歌地图的&amp;quot;Add destination&amp;quot;功能。然而这个功能只是依次连接你点选的地点。并不能由一组地点，确定连接它们的一条全局最短路径。&#xA;没有现成应用怎么办，我打算自己动手写一个。&#xA;下图是Google Add destination功能。&#xA;适用模型：TSP 模型 用一句话概括需求就是：我们需要一条从某地方出发，遍历所有地点，最终回到起点的最短路径。&#xA;这个需求其实就是运筹学的一个经典问题，旅行商问题(TSP)。旅行商问题的确切描述是这样的：一个商人在各个城市之间旅行，要求遍历所有城市并返回到出发点，要如何规划路线，才能使总路径最短。（打开维基百科了解更多)&#xA;解决思路 用googlemaps包获取纬度和经度信息 用OR-Tools包求解TSP问题 最后用gmaps可视化结果 在敲代码的过程中，最难的地方莫过于看文档查API, 搞清楚输入输出和调用结构。不过敲完这一顿之后我还是不禁感慨，GoogleI太为开发者着想了。一旦学会调用API，实现一个简单应用的代码量还是很小的 orz&#xA;食用指南 项目地址 &amp;ndash;&amp;gt; 传送门&#xA;在运行代码之前，你需要以下配置：&#xA;一个Jupyter Notebook. 你需要安装这些包：googleplaces, googlemaps, gmaps, ortools. 你需要一个Google Maps API key, 从这里获取API. 完成配置等于成功的一半。在Jupyter notebook打开TSPSolver.ipynb，将第二个代码块的所有变量，改成自己的，比如自己的目的地自己的区域和自己的API密码……最后从头到尾运行所有代码块，你就可以得到自己的定制路线辣~&#xA;配置代码如下。&#xA;# input the places of interest (POI) places = &amp;#39;YHA London Central Hostel&amp;#39;, &amp;#39;Coca-Cola London Eye&amp;#39;, &amp;#39;St. Paul\&amp;#39;s Cathedral&amp;#39;, &amp;#39;Leadenhall Market&amp;#39;, &amp;#39;The National Gallery&amp;#39; \ &amp;#39;Big Ben&amp;#39;, &amp;#39;Buckingham Palace&amp;#39;, &amp;#39;Waterloo Station&amp;#39; # the region Location=&amp;#39;London&amp;#39; # choose a mode Mode = &amp;#34;walking&amp;#34; # &amp;#34;driving&amp;#34;, &amp;#34;walking&amp;#34;, &amp;#34;bicycling&amp;#34;, &amp;#34;transit&amp;#34; # get Google API key from following website: # https://developers.</description>
     </item>
-    
   </channel>
 </rss>
