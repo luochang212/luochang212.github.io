@@ -119,13 +119,19 @@
     <loc>https://luochang212.github.io/</loc>
     <lastmod>2024-04-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://luochang212.github.io/tags/decision-tree/</loc>
+    <loc>https://luochang212.github.io/tags/fastapi/</loc>
     <lastmod>2024-04-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/tags/lightgbm/</loc>
     <lastmod>2024-04-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/categories/machinelearning/</loc>
+    <lastmod>2024-04-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/onnx/</loc>
+    <lastmod>2024-04-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/optuna/</loc>
     <lastmod>2024-04-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/posts/</loc>
@@ -216,9 +222,6 @@
     <lastmod>2022-07-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/tags/api/</loc>
-    <lastmod>2020-11-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://luochang212.github.io/tags/fastapi/</loc>
     <lastmod>2020-11-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/tags/poisson-distribution/</loc>

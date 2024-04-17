@@ -13,7 +13,7 @@
       <link>https://luochang212.github.io/posts/lightgbm_practice/</link>
       <pubDate>Sat, 13 Apr 2024 00:00:00 +0000</pubDate>
       <guid>https://luochang212.github.io/posts/lightgbm_practice/</guid>
-      <description>LightGBM 是一种梯度提升树算法，适用于排序、分类和回归任务。本文由一系列 Jupyter Notebook 串成，主要介绍如何使用 LightGBM 解决二分类问题。本文使用的数据集是 adult (・ω&amp;lt; )★&#xA;GitHub 项目地址：lightgbm-tutorial&#xA;一、数据可视化 导入数据 统计描述 describe() 方法 info() 方法 统计各字段枚举值数量 查看字段下所有枚举值 查看空值个数 可视化 标号的值的比例 小提琴图 (Violin Plot) 查看示例 二、预处理与特征选择 预处理 标签编码 更好的编码方式？ 初次训练 简单评估 模型存储与导入 模型存储 模型导入 特征选择 计算特征的重要程度 多次实验求均值 查看示例 三、超参数微调 简单的例子 稍微复杂的例子：随机森林 导入数据 one-hot 编码 训练 评估 超参数微调 使用微调后的超参数训练 LightGMB 超参数微调 单次训练 超参数寻优 使用微调后的超参数训练 查看示例 四、训练与评估 基础模型 N 折交叉验证 超参寻优：N 折交叉验证 使用微调后的超参数训练 阈值选择 (y_pred -&amp;gt; y) 使用 np.</description>
+      <description>LightGBM 是一种梯度提升树算法，可用于排序、分类和回归任务。本文由一系列 Jupyter Notebook 串成，介绍如何使用 LightGBM 训练二分类模型。本项目使用的数据集是 adult (・ω&amp;lt; )★&#xA;GitHub 项目地址：lightgbm-binary&#xA;🚀 本文的亮点 ✅ 使用 Optuna 做超参数寻优 ✅ 使用 Treelite 做推理加速 ✅ 使用 Graphviz 做决策树模型可视化 ✅ 使用 scale_pos_weight 参数，解决样本不均衡问题 ✅ 使用自编写的自适应学习率衰减技术提高 AUC，详见 util.AdaptiveLearningRate ✅ 对由标签概率生成标签的阈值寻优 (y_pred -&amp;gt; y)，详见 util.gen_threshold ✅ 一站式评估函数，可一次性输出多种指标，包括 accuracy, precision, recall, f1_score, auc, cross-entropy loss, confusion matrix，详见 util.eval_binary ✨ 感谢 Kimi 在学习过程中提供的无私帮助～&#xA;一、数据可视化 导入数据 统计描述 describe() 方法 info() 方法 统计各字段枚举值数量 查看字段下所有枚举值 查看空值个数 可视化 标号的值的比例 小提琴图 (Violin Plot) 查看示例 二、预处理与特征选择 预处理 标签编码 更好的编码方式？ 初次训练 使用 lgb.</description>
     </item>
     <item>
       <title>家庭网络拓扑</title>
