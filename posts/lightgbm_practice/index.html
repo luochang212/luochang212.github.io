@@ -23,11 +23,11 @@
 
 
 <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="LightGBM 工程实践"/>
-<meta name="twitter:description" content="LightGBM 训练快效果还行，对简单的业务场景，是一个比较甜点的算法"/>
+<meta name="twitter:description" content="LightGBM 训练快，效果还行，对简单的业务场景，是一个比较甜点的算法"/>
       <meta name="twitter:site" content="@MinosPalace"/>
 
 <meta property="og:title" content="LightGBM 工程实践" />
-<meta property="og:description" content="LightGBM 训练快效果还行，对简单的业务场景，是一个比较甜点的算法" />
+<meta property="og:description" content="LightGBM 训练快，效果还行，对简单的业务场景，是一个比较甜点的算法" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://luochang212.github.io/posts/lightgbm_practice/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-04-13T00:00:00+00:00" />
@@ -553,9 +553,9 @@
 <li>✅ 使用 Treelite 做推理加速</li>
 <li>✅ 使用 Graphviz 做决策树模型可视化</li>
 <li>✅ 使用 <code>scale_pos_weight</code> 参数，解决样本不均衡问题</li>
-<li>✅ 使用自编写的自适应学习率衰减技术提高 AUC，详见 <code>util.AdaptiveLearningRate</code></li>
-<li>✅ 对由标签概率生成标签的阈值寻优 (<code>y_pred -&gt; y</code>)，详见 <code>util.gen_threshold</code></li>
-<li>✅ 一站式评估函数，可一次性输出多种指标，包括 accuracy, precision, recall, f1_score, auc, cross-entropy loss, confusion matrix，详见 <code>util.eval_binary</code></li>
+<li>✅ 对标签概率生成标签的阈值寻优 (<code>y_pred -&gt; y</code>)，详见 <code>util.gen_threshold</code></li>
+<li>✅ 编写自适应学习率衰减函数提高 AUC，详见 <code>util.AdaptiveLearningRate</code></li>
+<li>✅ 编写一站式评估函数，可一次性输出多种指标，包括 accuracy, precision, recall, f1_score, auc, cross-entropy loss, confusion matrix，详见 <code>util.eval_binary</code></li>
 </ul>
 <p>✨ 感谢 <a href="https://kimi.moonshot.cn/">Kimi</a> 在学习过程中提供的无私帮助～</p>
 <h3 id="一数据可视化">一、数据可视化</h3>
