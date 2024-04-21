@@ -102,11 +102,8 @@
       top: 0;
       right: 0;
       background-color: #FFF;
-       
       overflow-x: hidden;
       transition: 0.5s;
-       
-       
     }
 
     #main {
@@ -152,11 +149,12 @@
 
      
     .tabcontent {
-      display: none;
+      display: flex;
       padding: 12px 12px;
       margin: 0;
       border: 1px solid #ccc;
       border-top: none;
+      height: calc(100vh - 90px);
     }
 
     .dropbtn {
@@ -203,6 +201,11 @@
     #video2,
     #video3 {
       display: none;
+    }
+
+    .myiframe {
+      height: 100%;
+      width: 100%;
     }
   </style>
 
@@ -328,33 +331,51 @@
       </div>
 
       <div id="Resources" class="tabcontent">
-        <iframe src="about:blank" data-src="/resources/" frameborder="0" height="560" width="100%" marginheight="0"
-          marginwidth="0" scrolling="yes"></iframe>
+        <iframe class="myiframe"
+          src="about:blank"
+          data-src="/resources/"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          scrolling="auto"></iframe>
       </div>
 
       <div id="netease-player" class="tabcontent">
-        <iframe src="about:blank" data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
-          frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=450></iframe>
+        <iframe class="myiframe"
+          src="about:blank"
+          data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
+          frameborder="no"
+          marginheight="0"
+          marginwidth="0"
+          scrolling="auto"></iframe>
       </div>
 
       <div id="video-player" class="tabcontent">
-
         <div id="video1">
           <iframe src="about:blank"
             data-src="//player.bilibili.com/player.html?aid=663375832&bvid=BV11a4y1S7Pt&cid=1334196946&p=1&high_quality=1&danmaku=0&autoplay=0"
-            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            style="width:100%; height: 500px"
+            scrolling="no"
+            frameborder="no"
+            framespacing="0"
             allowfullscreen="true"></iframe>
         </div>
         <div id="video2">
           <iframe src="about:blank"
             data-src="//player.bilibili.com/player.html?aid=958254107&bvid=BV1rp4y1L7i4&cid=1264513494&p=1&high_quality=1&danmaku=0&autoplay=0"
-            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            style="width:100%; height: 500px"
+            scrolling="no"
+            frameborder="no"
+            framespacing="0"
             allowfullscreen="true"></iframe>
         </div>
         <div id="video3">
           <iframe src="about:blank"
             data-src="//player.bilibili.com/player.html?aid=566507193&bvid=BV1Av4y147QE&cid=997936232&p=1&high_quality=1&danmaku=0&autoplay=0"
-            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            style="width:100%; height:460px"
+            scrolling="no"
+            frameborder="no"
+            framespacing="0"
             allowfullscreen="true"></iframe>
         </div>
 
@@ -374,20 +395,34 @@
       </div>
 
       <div id="gallery" class="tabcontent">
-        <iframe src="about:blank" data-src="/gadget/gallery.html#two" frameborder="0" height="560" width="100%"
-          scrolling="yes"></iframe>
+        <iframe class="myiframe"
+        src="about:blank"
+        data-src="/gadget/gallery#two"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        scrolling="auto"></iframe>
       </div>
 
       <div id="gadget" class="tabcontent">
-        <iframe src="about:blank" data-src="/gadget/" frameborder="0" height="560" width="100%"
-          scrolling="yes"></iframe>
+        <iframe class="myiframe"
+        src="about:blank"
+        data-src="/tool/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        scrolling="auto"></iframe>
       </div>
 
       <div id="categories" class="tabcontent">
-        <iframe src="about:blank" data-src="/categories/" frameborder="0" height="560" width="100%"
-          scrolling="yes"></iframe>
+        <iframe class="myiframe"
+        src="about:blank"
+        data-src="/categories/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        scrolling="auto"></iframe>
       </div>
-
     </div>
   </div>
 
@@ -519,7 +554,7 @@
     
     
     <br/>
-    <i class="fas fa-clock"></i> 24 min read
+    <i class="fas fa-clock"></i> 25 min read
 </div>
 
 
@@ -706,12 +741,12 @@ train_iter = data.DataLoader(mnist_train, batch_size, shuffle=True,
     def cumsum(self):
         &#34;&#34;&#34;Return the accumulated time.&#34;&#34;&#34;
         return np.array(self.times).cumsum().tolist()
-</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 看一下读取训练数据所需的时间</span>
-</span></span><span style="display:flex;"><span>timer <span style="color:#f92672">=</span> Timer()
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> X, y <span style="color:#f92672">in</span> train_iter:
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">continue</span>
-</span></span><span style="display:flex;"><span><span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>timer<span style="color:#f92672">.</span>stop()<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> sec&#39;</span>
-</span></span></code></pre></div><h4 id="3-整合所有组件">3. 整合所有组件</h4>
+</code></pre><pre tabindex="0"><code># 看一下读取训练数据所需的时间
+timer = Timer()
+for X, y in train_iter:
+    continue
+f&#39;{timer.stop():.2f} sec&#39;
+</code></pre><h4 id="3-整合所有组件">3. 整合所有组件</h4>
 <pre tabindex="0"><code>def load_data_fashion_mnist(batch_size, resize=None):
     &#34;&#34;&#34;下载Fashion-MNIST数据集，然后将其加载到内存中&#34;&#34;&#34;
     trans = [transforms.ToTensor()]
@@ -2209,10 +2244,108 @@ train(num_epochs, net, train_iter, test_iter, loss, trainer)
 <button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/AI-Project/blob/main/scratch/7.mlp_consise.ipynb')">查看示例</button>
 </center>
 <br>
-<h3 id="八automl">八、AutoML</h3>
-<blockquote>
-<p>施工中&hellip;</p>
-</blockquote>
+<h3 id="八automl-h2o">八、AutoML: h2o</h3>
+<p>h2o 是一个 AutoML 框架，本节我们尝试用 <code>h2o.automl.H2OAutoML</code> 完成 Kaggle 竞赛 <a href="https://www.kaggle.com/competitions/titanic" target="_blank">titanic</a>.</p>
+<pre tabindex="0"><code>DIRECTORY = &#39;./data&#39;
+TRAIN_FILE=&#39;titanic/train.csv&#39;
+TEST_FILE=&#39;titanic/test.csv&#39;
+MODEL_FILE=&#39;model&#39;
+PREDICT_FILE=&#39;res.csv&#39;
+
+LABEL_COL=&#39;Survived&#39;
+</code></pre><pre tabindex="0"><code>import h2o
+import pandas as pd
+import warnings
+
+import util
+</code></pre><pre tabindex="0"><code># 隐藏 warning，请谨慎使用
+warnings.filterwarnings(&#34;ignore&#34;)
+</code></pre><h4 id="1-训练">1. 训练</h4>
+<pre tabindex="0"><code>h2o.init()
+</code></pre><pre tabindex="0"><code>train_path = util.gen_abspath(DIRECTORY, TRAIN_FILE)
+data = h2o.import_file(train_path)
+data
+</code></pre><pre tabindex="0"><code># 处理类别变量
+factor_cols = [&#39;Name&#39;, &#39;Sex&#39;]
+for col in factor_cols:
+    data[col] = data[col].asfactor()
+</code></pre><pre tabindex="0"><code># 分割训练集、验证集
+train, valid = data.split_frame(ratios=[0.8], seed=377)
+</code></pre><pre tabindex="0"><code>y = LABEL_COL
+x = data.columns
+x.remove(&#39;PassengerId&#39;)
+x.remove(&#39;Survived&#39;)
+</code></pre><pre tabindex="0"><code>aml = h2o.automl.H2OAutoML(max_runtime_secs=1000)
+aml.train(x=x, y=y, training_frame=data)
+</code></pre><pre tabindex="0"><code># 预测
+y_pred = aml.predict(data).as_data_frame()[&#39;predict&#39;].tolist()
+y_true = data.as_data_frame()[&#39;Survived&#39;].tolist()
+</code></pre><pre tabindex="0"><code>y_label, threshold = util.eval_binary(y_true=y_true, y_pred=y_pred, n_trials=1000, ret=True)
+</code></pre><p>输出：</p>
+<pre tabindex="0"><code>threshold: 0.69676
+accuracy: 1.00000
+precision: 1.00000
+recall: 1.00000
+f1_score: 1.00000
+auc: 1.00000
+cross-entropy loss: 0.06207
+True Positive (TP): 342
+True Negative (TN): 549
+False Positive (FP): 0
+False Negative (FN): 0
+confusion matrix:
+[[549   0]
+ [  0 342]]
+</code></pre><h4 id="2-评估">2. 评估</h4>
+<pre tabindex="0"><code># 最佳模型的表现
+aml.leader.model_performance(valid)
+</code></pre><p>输出：</p>
+<pre tabindex="0"><code>MSE: 0.01228063484339922
+RMSE: 0.11081802580536805
+MAE: 0.09042077792156883
+RMSLE: 0.07910391398523471
+Mean Residual Deviance: 0.01228063484339922
+R^2: 0.947051240897029
+Null degrees of freedom: 185
+Residual degrees of freedom: 183
+Null deviance: 43.20171411080499
+Residual deviance: 2.284198080872255
+AIC: -282.5049544551409
+</code></pre><pre tabindex="0"><code># 最佳模型的摘要信息
+aml.leader.summary()
+</code></pre><pre tabindex="0"><code># 特征的重要程度
+aml.varimp()
+</code></pre><pre tabindex="0"><code># 模型排行榜
+aml.leaderboard
+</code></pre><h4 id="3-保存">3. 保存</h4>
+<pre tabindex="0"><code># save model DIRECTORY
+model_dir = util.gen_abspath(DIRECTORY, MODEL_FILE)
+model_path = h2o.save_model(model=aml.leader, path=model_dir, force=True)
+</code></pre><pre tabindex="0"><code># load model
+saved_model = h2o.load_model(model_path)
+</code></pre><h4 id="4-预测">4. 预测</h4>
+<pre tabindex="0"><code>test_path = util.gen_abspath(DIRECTORY, TEST_FILE)
+test_data = h2o.import_file(test_path)
+test_data
+</code></pre><pre tabindex="0"><code>factor_cols = [&#39;Name&#39;, &#39;Sex&#39;]
+for col in factor_cols:
+    test_data[col] = test_data[col].asfactor()
+tmp = test_data.drop([&#39;PassengerId&#39;], axis=1)
+
+df_predict = aml.predict(tmp)
+</code></pre><pre tabindex="0"><code>res = pd.DataFrame({
+    &#39;PassengerId&#39;: test_data.as_data_frame()[&#39;PassengerId&#39;].tolist(),
+    &#39;Survived&#39;: [1 if e &gt; threshold else 0 for e in df_predict.as_data_frame()[&#39;predict&#39;].tolist()]
+})
+
+res
+</code></pre><pre tabindex="0"><code>res_path = util.gen_abspath(DIRECTORY, PREDICT_FILE)
+res.to_csv(res_path, index=False)
+</code></pre><br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/AI-Project/blob/main/scratch/8.automl.ipynb')">查看示例</button>
+</center>
+<br>
 <h3 id="九hugging-face">九、Hugging face</h3>
 <blockquote>
 <p>施工中&hellip;</p>

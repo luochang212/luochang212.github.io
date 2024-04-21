@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>RNN on Chang Luo</title>
+    <link>http://localhost:1313/tags/rnn/</link>
+    <description>Recent content in RNN on Chang Luo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 21 Apr 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/rnn/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>循环神经网络 RNN</title>
+      <link>http://localhost:1313/posts/sequence_model/</link>
+      <pubDate>Sun, 21 Apr 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/sequence_model/</guid>
+      <description>与其说深度学习是一门技术，不如说深度学习是一种语言&#xA;GitHub 项目地址：AI-Project/scratch</description>
+    </item>
+    <item>
+      <title>手写 DataLoader</title>
+      <link>http://localhost:1313/posts/dataloader/</link>
+      <pubDate>Sun, 21 Apr 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/dataloader/</guid>
+      <description>class MyDataLoader: def __init__(self): self.i = 0 self._lst: list @property def lst(self): return self._lst @lst.setter def lst(self, value): self._lst = value def __iter__(self): return self def __next__(self): if self.i &amp;lt; len(self._lst): i = self.i self.i += 1 return self._lst[i] else: self.i = 0 raise StopIteration </description>
+    </item>
+  </channel>
+</rss>

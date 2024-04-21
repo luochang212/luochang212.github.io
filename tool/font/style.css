@@ -1,0 +1,70 @@
+/* @import url('https://fonts.googleapis.com/css?family=Satisfy'); */
+/* latin */
+@font-face {
+	font-family: 'Satisfy';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Satisfy Regular'), local('Satisfy-Regular'), url(https://fonts.gstatic.com/s/satisfy/v10/rP2Hp2yn6lkG50LoCZOIHTWEBlw.woff2) format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+blockquote {
+  max-width: 40rem;
+	margin: 4rem auto;
+	padding: 2rem 4rem;
+  font-family: 'Satisfy', cursive;
+  font-size: 2rem;
+}
+
+.style1 {
+	position: relative;
+	background: rgba(0,0,0,.02);
+  box-shadow: 0 0 .5rem rgba(0,0,0,.2) inset;
+}
+.style1:before {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 1rem;
+	height: 1rem;
+	border-top: 1rem solid #eee;
+	border-right: 1rem solid #fff;
+  box-shadow: -.2rem -.2rem .25rem rgba(0,0,0,.1);
+}
+.style1:after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 1rem;
+	height: 1rem;
+	border-bottom: 1rem solid #fff;
+	border-left: 1rem solid #eee;
+}
+
+.style2 {
+	position: relative;
+	background: rgba(0,0,0,.02);
+  border: 2px solid rgba(0,0,0,.1);
+}
+.style2:before, .style2:after {
+  content: "";
+	position: absolute;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgba(0,0,0,.5);
+  box-sizing: border-box;
+}
+.style2:before {
+  top: 0;
+  left: 0;
+  border-width: 2px 0 0 2px;
+  transform: translate(-2px, -2px);
+}
+.style2:after {
+  bottom: 0;
+  right: 0;
+  border-width: 0 2px 2px 0;
+  transform: translate(2px, 2px);
+}

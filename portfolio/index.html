@@ -98,11 +98,8 @@
       top: 0;
       right: 0;
       background-color: #FFF;
-       
       overflow-x: hidden;
       transition: 0.5s;
-       
-       
     }
 
     #main {
@@ -148,11 +145,12 @@
 
      
     .tabcontent {
-      display: none;
+      display: flex;
       padding: 12px 12px;
       margin: 0;
       border: 1px solid #ccc;
       border-top: none;
+      height: calc(100vh - 90px);
     }
 
     .dropbtn {
@@ -199,6 +197,11 @@
     #video2,
     #video3 {
       display: none;
+    }
+
+    .myiframe {
+      height: 100%;
+      width: 100%;
     }
   </style>
 
@@ -324,33 +327,51 @@
       </div>
 
       <div id="Resources" class="tabcontent">
-        <iframe src="about:blank" data-src="/resources/" frameborder="0" height="560" width="100%" marginheight="0"
-          marginwidth="0" scrolling="yes"></iframe>
+        <iframe class="myiframe"
+          src="about:blank"
+          data-src="/resources/"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          scrolling="auto"></iframe>
       </div>
 
       <div id="netease-player" class="tabcontent">
-        <iframe src="about:blank" data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
-          frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=450></iframe>
+        <iframe class="myiframe"
+          src="about:blank"
+          data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
+          frameborder="no"
+          marginheight="0"
+          marginwidth="0"
+          scrolling="auto"></iframe>
       </div>
 
       <div id="video-player" class="tabcontent">
-
         <div id="video1">
           <iframe src="about:blank"
             data-src="//player.bilibili.com/player.html?aid=663375832&bvid=BV11a4y1S7Pt&cid=1334196946&p=1&high_quality=1&danmaku=0&autoplay=0"
-            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            style="width:100%; height: 500px"
+            scrolling="no"
+            frameborder="no"
+            framespacing="0"
             allowfullscreen="true"></iframe>
         </div>
         <div id="video2">
           <iframe src="about:blank"
             data-src="//player.bilibili.com/player.html?aid=958254107&bvid=BV1rp4y1L7i4&cid=1264513494&p=1&high_quality=1&danmaku=0&autoplay=0"
-            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            style="width:100%; height: 500px"
+            scrolling="no"
+            frameborder="no"
+            framespacing="0"
             allowfullscreen="true"></iframe>
         </div>
         <div id="video3">
           <iframe src="about:blank"
             data-src="//player.bilibili.com/player.html?aid=566507193&bvid=BV1Av4y147QE&cid=997936232&p=1&high_quality=1&danmaku=0&autoplay=0"
-            style="width:100%; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0"
+            style="width:100%; height:460px"
+            scrolling="no"
+            frameborder="no"
+            framespacing="0"
             allowfullscreen="true"></iframe>
         </div>
 
@@ -370,20 +391,34 @@
       </div>
 
       <div id="gallery" class="tabcontent">
-        <iframe src="about:blank" data-src="/gadget/gallery.html#two" frameborder="0" height="560" width="100%"
-          scrolling="yes"></iframe>
+        <iframe class="myiframe"
+        src="about:blank"
+        data-src="/gadget/gallery#two"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        scrolling="auto"></iframe>
       </div>
 
       <div id="gadget" class="tabcontent">
-        <iframe src="about:blank" data-src="/gadget/" frameborder="0" height="560" width="100%"
-          scrolling="yes"></iframe>
+        <iframe class="myiframe"
+        src="about:blank"
+        data-src="/tool/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        scrolling="auto"></iframe>
       </div>
 
       <div id="categories" class="tabcontent">
-        <iframe src="about:blank" data-src="/categories/" frameborder="0" height="560" width="100%"
-          scrolling="yes"></iframe>
+        <iframe class="myiframe"
+        src="about:blank"
+        data-src="/categories/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        scrolling="auto"></iframe>
       </div>
-
     </div>
   </div>
 
@@ -522,7 +557,7 @@
 						<div class="featured-card">
 						    <br>
 							<span class="project__title">
-								<a href="/projects/markowitz_model.html" target="_blank" rel="noopener noreferrer">基于蚁群算法的证券投资组合优化</a>
+								<a href="/projects/markowitz_model" target="_blank" rel="noopener noreferrer">基于蚁群算法的证券投资组合优化</a>
 							</span>
 							
 							<p class="project__subtitle-big">
@@ -553,7 +588,7 @@
                 <br>
                 
                 <div class="row">
-                    <div class="col-md-4 col-sm-4 col-xs-12" href="/projects/tsp_route.html" target="_blank"
+                    <div class="col-md-4 col-sm-4 col-xs-12" href="/projects/tsp_route" target="_blank"
                         rel="noopener noreferrer">
                         
                         <img class="project__image img-responsive" src="/img/tsp_route.JPG" alt="TSP旅行路线规划">
@@ -561,7 +596,7 @@
                     </div>
                     <div class="col-md-8 col-sm-8 col-xs-12">
                         <span class="project__title">
-                            <a href="/projects/tsp_route.html" target="_blank" rel="noopener noreferrer">TSP旅行路线规划</a>
+                            <a href="/projects/tsp_route" target="_blank" rel="noopener noreferrer">TSP旅行路线规划</a>
                         </span>
                         <span class="project__subtitle-small">
                             <sup><i class="fa fa-quote-left" aria-hidden="true"></i></sup>
@@ -577,7 +612,7 @@
                 <div class="row-space">&nbsp;</div>
                 
                 <div class="row">
-                    <div class="col-md-4 col-sm-4 col-xs-12" href="/projects/team_software_project.html" target="_blank"
+                    <div class="col-md-4 col-sm-4 col-xs-12" href="/projects/team_software_project" target="_blank"
                         rel="noopener noreferrer">
                         
                         <img class="project__image img-responsive" src="/img/QGridLayout.png" alt="团队软件项目">
@@ -585,7 +620,7 @@
                     </div>
                     <div class="col-md-8 col-sm-8 col-xs-12">
                         <span class="project__title">
-                            <a href="/projects/team_software_project.html" target="_blank" rel="noopener noreferrer">团队软件项目</a>
+                            <a href="/projects/team_software_project" target="_blank" rel="noopener noreferrer">团队软件项目</a>
                         </span>
                         <span class="project__subtitle-small">
                             <sup><i class="fa fa-quote-left" aria-hidden="true"></i></sup>
@@ -601,7 +636,7 @@
                 <div class="row-space">&nbsp;</div>
                 
                 <div class="row">
-                    <div class="col-md-4 col-sm-4 col-xs-12" href="/projects/nature_system.html" target="_blank"
+                    <div class="col-md-4 col-sm-4 col-xs-12" href="/projects/nature_system" target="_blank"
                         rel="noopener noreferrer">
                         
                         <img class="project__image img-responsive" src="/img/state.jpg" alt="自然系统的建模与仿真">
@@ -609,7 +644,7 @@
                     </div>
                     <div class="col-md-8 col-sm-8 col-xs-12">
                         <span class="project__title">
-                            <a href="/projects/nature_system.html" target="_blank" rel="noopener noreferrer">自然系统的建模与仿真</a>
+                            <a href="/projects/nature_system" target="_blank" rel="noopener noreferrer">自然系统的建模与仿真</a>
                         </span>
                         <span class="project__subtitle-small">
                             <sup><i class="fa fa-quote-left" aria-hidden="true"></i></sup>
@@ -641,7 +676,7 @@
 
 <script>
     function openLink() {
-        window.open("/projects/", "_self");
+        window.open("/project/", "_self");
     }
 </script>
 

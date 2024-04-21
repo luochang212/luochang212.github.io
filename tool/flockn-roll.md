@@ -1,0 +1,115 @@
++++
+draft=true
++++
+
+<!DOCTYPE html>
+
+<html lang="en" class="gr__rocs_hu-berlin_de"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<link rel="stylesheet" type="text/css" href="/Flock'n Roll/style.css">
+		<link rel="stylesheet" type="text/css" href="/Flock'n Roll/slider.css">
+		<link href="/Flock'n Roll/css" rel="stylesheet" type="text/css">
+		
+		<script src="/Flock'n Roll/d3.v4.min.js.download" type="text/javascript"></script>
+		<script src="/Flock'n Roll/widget.2.2.js.download" type="text/javascript"></script>
+	
+		<title>Collective Motion</title>
+	</head>
+	
+	<body data-gr-c-s-loaded="true">
+		<div id="content">
+		<div id="container">
+
+		<g id="sliders" transform="translate(10,30)">
+			<g class="slider" id="slider_speed" transform="translate(0,0)">
+				<line class="track" style="stroke-width: 5;" x1="0" x2="180"></line>
+				<line class="track-inset" style="stroke-width: 4;" x1="0" x2="180"></line>
+				<circle class="handle" cx="144" id="handle_speed" r="6"></circle>
+				<line class="track-overlay" style="stroke-width: 12; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);" x1="0" x2="180"></line>
+				<text class="tag" style="text-anchor: start; alignment-baseline: middle; font-size: 12px; opacity: 1;" transform="translate(0,-12)">
+					Speed
+				</text>
+			</g>
+			<g class="slider" id="slider_noise_heading" transform="translate(0,38)">
+				<line class="track" style="stroke-width: 5;" x1="0" x2="180"></line>
+				<line class="track-inset" style="stroke-width: 4;" x1="0" x2="180"></line>
+				<circle class="handle" cx="90" id="handle_noise_heading" r="6"></circle>
+				<line class="track-overlay" style="stroke-width: 12; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);" x1="0" x2="180"></line>
+				<text class="tag" style="text-anchor: start; alignment-baseline: middle; font-size: 12px; opacity: 1;" transform="translate(0,-12)">
+					Wiggle
+				</text>
+			</g>
+			<g class="slider" id="slider_rcoll" transform="translate(0,86)">
+				<line class="track" style="stroke-width: 5;" x1="0" x2="180"></line>
+				<line class="track-inset" style="stroke-width: 4;" x1="0" x2="180"></line>
+				<circle class="handle" cx="9" id="handle_rcoll" r="6"></circle>
+				<line class="track-overlay" style="stroke-width: 12; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);" x1="0" x2="180"></line>
+				<text class="tag" style="text-anchor: start; alignment-baseline: middle; font-size: 12px; opacity: 1;" transform="translate(0,-12)">
+					Collision Radius
+				</text>
+			</g>
+			<g class="slider" id="slider_ralign" transform="translate(0,124)">
+				<line class="track" style="stroke-width: 5;" x1="0" x2="180"></line>
+				<line class="track-inset" style="stroke-width: 4;" x1="0" x2="180"></line>
+				<circle class="handle" cx="45" id="handle_ralign" r="6"></circle>
+				<line class="track-overlay" style="stroke-width: 12; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);" x1="0" x2="180"></line>
+				<text class="tag" style="text-anchor: start; alignment-baseline: middle; font-size: 12px; opacity: 1;" transform="translate(0,-12)">
+					Alignment Radius
+				</text>
+			</g>
+			<g class="slider" id="slider_rattract" transform="translate(0,162)">
+				<line class="track" style="stroke-width: 5;" x1="0" x2="180"></line>
+				<line class="track-inset" style="stroke-width: 4;" x1="0" x2="180"></line>
+				<circle class="handle" cx="135" id="handle_rattract" r="6"></circle>
+				<line class="track-overlay" style="stroke-width: 12; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);" x1="0" x2="180"></line>
+				<text class="tag" style="text-anchor: start; alignment-baseline: middle; font-size: 12px; opacity: 1;" transform="translate(0,-12)">
+					Attraction Radius
+				</text>
+			</g>
+			<g class="slider" id="slider_blindspot" transform="translate(0,210)">
+				<line class="track" style="stroke-width: 5;" x1="0" x2="180"></line>
+				<line class="track-inset" style="stroke-width: 4;" x1="0" x2="180"></line>
+				<circle class="handle" cx="59.66573816155989" id="handle_blindspot" r="6"></circle>
+				<line class="track-overlay" style="stroke-width: 12; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);" x1="0" x2="180"></line>
+				<text class="tag" style="text-anchor: start; alignment-baseline: middle; font-size: 12px; opacity: 1;" transform="translate(0,-12)">
+					Blind Spot
+				</text>
+			</g>
+		</g>
+		<g transform="translate(320,67.5)">
+			<path d="M 0,0 L -40.59494080239556,23.437500000000004 A 46.875 46.875 0 1 1 40.59494080239556,23.437500000000004L 0,0" id="attract_scope"></path>
+			<path d="M 0,0 L -13.531646934131853,7.812500000000002 A 15.625 15.625 0 1 1 13.531646934131853,7.812500000000002L 0,0" id="orient_scope"></path>
+			<path d="M 0,0 L -12.940952255126042,-48.29629131445341 A 50 50 0 0 1 12.940952255126042,-48.29629131445341L 0,0" id="speed"></path>
+			<path class="drop" d="M-10,0L-9.781476007338057,0.0000013559894431524102L-9.135454576426008,0.00016426943596341506L-8.090169943749475,0.0025590741750720378L-6.691306063588582,0.016823767664085196L-5.000000000000001,0.06765823467065922L-3.0901699437494745,0.19610489832639383L-1.0452846326765346,0.4463234694540685L1.0452846326765333,0.8375776926373233L3.0901699437494736,1.3332825570450615L4.999999999999998,1.8267723361077999L6.691306063588579,2.1598542120919086L8.090169943749473,2.1748366492414193L9.13545457642601,1.7811876213190558L9.781476007338057,1.0058541416985987L10,6.123233995736766e-16L9.781476007338057,-1.005854141698598L9.13545457642601,-1.7811876213190547L8.090169943749475,-2.17483664924142L6.691306063588584,-2.1598542120919086L5.000000000000004,-1.8267723361078005L3.0901699437494754,-1.3332825570450613L1.0452846326765424,-0.8375776926373246L-1.0452846326765388,-0.4463234694540675L-3.0901699437494723,-0.1961048983263941L-5.000000000000001,-0.06765823467065922L-6.691306063588584,-0.016823767664085165L-8.090169943749473,-0.0025590741750720447L-9.13545457642601,-0.00016426943596341506L-9.781476007338055,-0.0000013559894431524354" style="fill-opacity: 1; fill: black; stroke: black;" transform="scale(4)translate(0,6.25)rotate(-90)"></path>
+			<circle id="repell_scope" r="3.125"></circle>
+		</g>
+		<g transform="translate(300,218.75)">
+			<g transform="translate(-60,0)">
+				<g class="button" id="button_b1">
+					<circle class="button-background" r="25"></circle>
+					<path class="button-symbol" d="M12.5,0L-6.25,10.825317547305483L-6.25,-10.825317547305483Z"></path>
+					<text class="tag" style="opacity: 1; text-anchor: middle; font-size: 12px; alignment-baseline: hanging;" transform="translate(0,30)"></text>
+				</g>
+			</g>
+			<g transform="translate(0,0)">
+				<g class="button" id="button_b2">
+					<circle class="button-background" r="25"></circle>
+					<path class="button-symbol" d="M-12.5,0L6.25,10.825317547305483L6.25,-10.825317547305483Z"></path>
+					<text class="tag" style="opacity: 1; text-anchor: middle; font-size: 12px; alignment-baseline: hanging;" transform="translate(0,30)"></text>
+				</g>
+			</g>
+			<g transform="translate(60,0)">
+				<g class="button" id="button_b3">
+					<circle class="button-background" r="25"></circle>
+					<path class="button-symbol" d="M10.112712429686841,-7.347315653655917A12.5,12.5,0,1,0,10.112712429686843,7.347315653655914L5.056356214843421,3.673657826827957A6.25,6.25,0,1,1,5.0563562148434205,-3.6736578268279585L1.5169068644530264,-1.1020973480483878L11.992923714458682,0.5571407175701673L13.652161780077236,-9.918876132435487Z"></path>
+					<text class="tag" style="opacity: 1; text-anchor: middle; font-size: 12px; alignment-baseline: hanging;" transform="translate(0,30)"></text>
+				</g>
+			</g>
+		</g>
+	    </div>
+		
+		</div>
+		
+		<script src="/Flock'n Roll/sim.js.download" type="text/javascript"></script>
+
+</html>
