@@ -6,15 +6,8 @@
     <description>Recent content in DeepLearning on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 21 Apr 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 09 Feb 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://luochang212.github.io/categories/deeplearning/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>循环神经网络</title>
-      <link>https://luochang212.github.io/posts/rnn_note/</link>
-      <pubDate>Sun, 21 Apr 2024 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/posts/rnn_note/</guid>
-      <description>与其说深度学习是一门技术，不如说深度学习是一种语言&#xA;GitHub 项目地址：AI-Project/scratch</description>
-    </item>
     <item>
       <title>手写深度学习</title>
       <link>https://luochang212.github.io/posts/d2l_from_scratch/</link>
