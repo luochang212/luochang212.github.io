@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://luochang212.github.io/posts/rnn_note/</loc>
+    <lastmod>2024-04-21T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://luochang212.github.io/posts/lightgbm_practice/</loc>
     <lastmod>2024-04-13T00:00:00+00:00</lastmod>
   </url><url>
@@ -114,10 +117,25 @@
     <lastmod>2017-07-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/categories/</loc>
-    <lastmod>2024-04-13T00:00:00+00:00</lastmod>
+    <lastmod>2024-04-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/</loc>
-    <lastmod>2024-04-13T00:00:00+00:00</lastmod>
+    <lastmod>2024-04-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/categories/deeplearning/</loc>
+    <lastmod>2024-04-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/posts/</loc>
+    <lastmod>2024-04-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/python/</loc>
+    <lastmod>2024-04-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/rnn/</loc>
+    <lastmod>2024-04-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/</loc>
+    <lastmod>2024-04-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/tags/graphviz/</loc>
     <lastmod>2024-04-13T00:00:00+00:00</lastmod>
@@ -129,12 +147,6 @@
     <lastmod>2024-04-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/tags/optuna/</loc>
-    <lastmod>2024-04-13T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://luochang212.github.io/posts/</loc>
-    <lastmod>2024-04-13T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://luochang212.github.io/tags/</loc>
     <lastmod>2024-04-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/tags/treelite/</loc>
@@ -168,12 +180,6 @@
     <lastmod>2024-02-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/tags/d2l/</loc>
-    <lastmod>2024-02-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://luochang212.github.io/categories/deeplearning/</loc>
-    <lastmod>2024-02-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://luochang212.github.io/tags/python/</loc>
     <lastmod>2024-02-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/tags/bash/</loc>
