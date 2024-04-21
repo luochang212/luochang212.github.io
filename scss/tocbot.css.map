@@ -3,8 +3,8 @@
 	"file": "tocbot.css",
 	"sourceRoot": "/Users/changluo/Documents/Sites/luochang212.github.io-hugo",
 	"sources": [
-		"themes/hyde-hyde/assets/scss/tocbot.scss",
-		"themes/hyde-hyde/assets/scss/hugo-toc.scss"
+		"themes/my-hyde-hyde/assets/scss/tocbot.scss",
+		"themes/my-hyde-hyde/assets/scss/hugo-toc.scss"
 	],
 	"sourcesContent": [
 		"@import 'hugo-toc';\n\n.toc {\n  font-size: $toc-font-size;\n  overflow-y: auto;\n  background: $toc-background-color;\n  padding-left: 0rem;\n  padding-top: 1em;\n  > .toc-list {\n    overflow: hidden;\n    position: relative;\n    li {\n      list-style: none;\n    }\n  }\n}\n.toc-list {\n  margin: 0;\n  padding-left: 1rem;\n}\n.is-collapsible {\n  max-height: 1000px;\n  overflow: hidden;\n}\n.is-collapsed {\n  max-height: 0;\n}\n.is-position-fixed {\n  position: fixed;\n  top: 0;\n}\n",
