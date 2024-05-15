@@ -4,10 +4,10 @@
     
 
 
-    <head>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     
-    <link rel="canonical" href="https://luochang212.github.io/posts/lightgbm_practice/">
+    <link rel="canonical" href="http://localhost:1313/posts/jupyter_note/">
     
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,19 +19,19 @@
     
     
 
-<title>LightGBM 工程实践 • Chang Luo</title>
+<title>Jupyter Lab • Chang Luo</title>
 
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="LightGBM 工程实践"/>
-<meta name="twitter:description" content="LightGBM 训练快，效果还行，对简单业务场景是一个比较甜点的算法"/>
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Jupyter Lab"/>
+<meta name="twitter:description" content="我踏马记记记"/>
       <meta name="twitter:site" content="@MinosPalace"/>
 
-<meta property="og:title" content="LightGBM 工程实践" />
-<meta property="og:description" content="LightGBM 训练快，效果还行，对简单业务场景是一个比较甜点的算法" />
+<meta property="og:title" content="Jupyter Lab" />
+<meta property="og:description" content="我踏马记记记" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://luochang212.github.io/posts/lightgbm_practice/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-04-13T00:00:00+00:00" />
-<meta property="article:modified_time" content="2024-04-13T00:00:00+00:00" /><meta property="og:site_name" content="Title" />
+<meta property="og:url" content="http://localhost:1313/posts/jupyter_note/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-05-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-05-15T00:00:00+00:00" /><meta property="og:site_name" content="Title" />
 
 
     
@@ -219,13 +219,13 @@
     <div class="container ">
       <div class="sidebar-about">
         <span class="site__title">
-          <a href="https://luochang212.github.io/">Chang Luo</a>
+          <a href="http://localhost:1313/">Chang Luo</a>
         </span>
         
         
         
         <div class="author-image">
-          <a href="#" class="load-iframe" onclick="openNav()"><img src="https://luochang212.github.io//images/profile.webp" id="author-iamge"
+          <a href="#" class="load-iframe" onclick="openNav()"><img src="http://localhost:1313//images/profile.webp" id="author-iamge"
               alt="Author Image" class="img--circle img--headshot element--center"></a>
         </div>
         
@@ -519,13 +519,13 @@
 
 <article>
   <header>
-    <h1>LightGBM 工程实践</h1>
+    <h1>Jupyter Lab</h1>
     
     
 <div class="post__meta">
     
     
-      <i class="fas fa-calendar-alt"></i> Apr 13, 2024
+      <i class="fas fa-calendar-alt"></i> May 15, 2024
     
     
     
@@ -534,7 +534,7 @@
           in
           
           
-              <a class="badge badge-category" href="/categories/machinelearning">MACHINELEARNING</a>
+              <a class="badge badge-category" href="/categories/devops">DEVOPS</a>
               
           
       
@@ -546,22 +546,16 @@
           <br/>
            <i class="fas fa-tags"></i>
           
-          <a class="badge badge-tag" href="/tags/lightgbm">lightgbm</a>
+          <a class="badge badge-tag" href="/tags/jupyter">jupyter</a>
            
       
-          <a class="badge badge-tag" href="/tags/optuna">optuna</a>
-           
-      
-          <a class="badge badge-tag" href="/tags/graphviz">graphviz</a>
-           
-      
-          <a class="badge badge-tag" href="/tags/treelite">treelite</a>
+          <a class="badge badge-tag" href="/tags/note">note</a>
           
       
     
     
     <br/>
-    <i class="fas fa-clock"></i> 1 min read
+    <i class="fas fa-clock"></i> 2 min read
 </div>
 
 
@@ -580,203 +574,95 @@
   
   <div class="post">
     <blockquote>
-<p>LightGBM 是一种梯度提升树算法，可用于排序、分类和回归任务。本文由一系列 Jupyter Notebook 串成，介绍如何使用 LightGBM 训练二分类模型。本项目使用的数据集是 <a href="https://archive.ics.uci.edu/dataset/2/adult" target="_blank">adult</a> (・ω&lt; )★</p>
+<p>Jupyter Lab 你是真的火了</p>
 </blockquote>
-<p>GitHub 项目地址：<a href="https://github.com/luochang212/lightgbm-binary" target="_blank">lightgbm-binary</a></p>
-<h3 id="-本文亮点">🚀 本文亮点</h3>
-<ul>
-<li>✅ 使用 Optuna 做超参数寻优</li>
-<li>✅ 使用 Treelite 做推理加速</li>
-<li>✅ 使用 Graphviz 做决策树模型可视化</li>
-<li>✅ 使用 <code>scale_pos_weight</code> 参数，解决样本不均衡问题</li>
-<li>✅ 对标签概率生成标签的阈值寻优 (<code>y_pred -&gt; y</code>)，详见 <code>util.gen_threshold</code></li>
-<li>✅ 编写自适应学习率衰减函数提高 AUC，详见 <code>util.AdaptiveLearningRate</code></li>
-<li>✅ 编写一站式评估函数，可一次性输出多种指标，包括 accuracy, precision, recall, f1_score, auc, cross-entropy loss, confusion matrix，详见 <code>util.eval_binary</code></li>
-</ul>
-<p>✨ 感谢 <a href="https://kimi.moonshot.cn/">Kimi</a> 在学习过程中提供的无私帮助～</p>
-<h3 id="一数据可视化">一、数据可视化</h3>
+<p>5 月 14 号 <a href="https://openai.com/index/spring-update/" target="_blank">OpenAI 春季发布会</a> 上出现这样一张图：</p>
+<p><img src="/img/openai_jupyter_lab.PNG" alt="openai_jupyter_lab"></p>
+<p>让我们知道，OpenAI 的研究员也在使用 <a href="https://jupyterlab.readthedocs.io/en/latest/">Jupyter Lab</a></p>
+<p>正好，我最近正在从 <code>Jupyter Notebook</code> 转向使用 <code>Jupyter Lab</code> 做开发。<code>Jupyter Lab</code> 其实有丰富的功能，并不只是 Python 的解释器这么简单。看看我都挖掘了哪些功能吧！</p>
+<h3 id="一制作-ppt">一、制作 PPT</h3>
+<h4 id="11-notebook-转-ppt">1.1 Notebook 转 PPT</h4>
+<p>只需两步，就能把 Notebook 变成 PPT：</p>
 <ol>
-<li>导入数据</li>
-<li>统计描述
-<ul>
-<li><code>describe()</code> 方法</li>
-<li><code>info()</code> 方法</li>
-<li>统计各字段枚举值数量</li>
-<li>查看字段下所有枚举值</li>
-<li>查看空值个数</li>
-</ul>
+<li>
+<p><strong>设置 Slide Type</strong>：你需要对每个 Cell 设置 <code>Slide Type</code>，才能保证页面被正确渲染。在新版 Jupyter Lab 的右侧边栏上，有一个带俩齿轮的按钮。点进去，然后一路点 <code>[Property Inspector] -&gt; [COMMON TOOLS] -&gt; [Slide Type]</code>，对 Cell 进行设置。</p>
 </li>
-<li>可视化
-<ul>
-<li>标号的值的比例</li>
-<li>小提琴图 (Violin Plot)</li>
-</ul>
+<li>
+<p><strong>打开网页应用</strong>：打开 Terminal，来到 <code>[YOUR_SLIDE].ipynb</code> 文件所在路径，运行</p>
+<pre tabindex="0"><code>jupyter nbconvert --to slides [YOUR_SLIDE].ipynb --post serve
+</code></pre><p>这会在浏览器中打开一个网页应用，你可以用这个网页做 pre。值得一提的是，这个网页是有路由的，这意味着如果你在服务器上运行 Jupyter，你甚至可以通过网页链接分享特定页面。</p>
 </li>
 </ol>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/lightgbm-binary/blob/main/1.数据可视化.ipynb')">查看示例</button>
-</center>
-<h3 id="二预处理与特征选择">二、预处理与特征选择</h3>
+<h4 id="12-把-ppt-存成-pdf">1.2 把 PPT 存成 PDF</h4>
+<p>你可以把 PPT 存成 PDF，只需要：</p>
 <ol>
-<li>预处理
-<ul>
-<li>标签编码</li>
-<li>更好的编码方式？</li>
-</ul>
-</li>
-<li>初次训练
-<ul>
-<li>使用 <code>lgb.LGBMClassifier</code> 进行训练</li>
-<li>使用原生 API 进行训练</li>
-</ul>
-</li>
-<li>简单评估</li>
-<li>模型存储与导入
-<ul>
-<li>模型存储</li>
-<li>模型导入</li>
-</ul>
-</li>
-<li>特征选择
-<ul>
-<li>计算特征的重要程度</li>
-<li>多次实验求均值</li>
-</ul>
-</li>
+<li>把网页路由的 <code>#</code> 号改成 <code>?print-pdf</code></li>
+<li>用 Chrome 的打印功能，把网页存成本地 PDF</li>
 </ol>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/lightgbm-binary/blob/main/2.预处理与特征选择.ipynb')">查看示例</button>
-</center>
-<h3 id="三超参数微调">三、超参数微调</h3>
+<p>修改后的网址长这样：</p>
+<pre tabindex="0"><code>http://127.0.0.1:8000/[YOUR_SLIDE].slides.html?print-pdf
+</code></pre><h3 id="二在-jupyter-中运行-java">二、在 Jupyter 中运行 Java</h3>
+<p><a href="https://github.com/SpencerPark/IJava">IJava</a> 支持在 Jupyter 环境中嵌入 Java 内核。它允许用户在 Java 编程中使用 IPython 的特性，如交互式编程、魔术命令、图表输出等。</p>
+<h4 id="21-安装-ijava">2.1 安装 IJava</h4>
 <ol>
-<li>简单的例子</li>
-<li>稍微复杂的例子：随机森林
-<ul>
-<li>导入数据</li>
-<li>one-hot 编码</li>
-<li>训练</li>
-<li>评估</li>
-<li>超参数微调</li>
-<li>使用微调后的超参数训练</li>
-</ul>
-</li>
-<li>LightGMB 超参数微调
-<ul>
-<li>单次训练</li>
-<li>超参数寻优</li>
-<li>使用微调后的超参数训练</li>
-</ul>
-</li>
-<li>学习率衰减
-<ul>
-<li>指数衰减</li>
-<li>自适应衰减</li>
-</ul>
-</li>
+<li>从 <a href="https://github.com/SpencerPark/IJava/releases">Releases</a> 下载安装包，安装包形如 <code>ijava-[VERSION].zip</code></li>
+<li>解压 <code>ijava-[VERSION].zip</code>，进入文件夹中运行
+<pre tabindex="0"><code>python3 install.py --sys-prefix
+</code></pre></li>
+<li>检查内核是否安装成功
+<pre tabindex="0"><code># 列出已安装的内核
+jupyter kernelspec list
+
+# 尝试在命令行中运行 java 内核
+jupyter console --kernel=java
+</code></pre></li>
 </ol>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/lightgbm-binary/blob/main/3.超参数微调.ipynb')">查看示例</button>
-</center>
-<h3 id="四训练与评估">四、训练与评估</h3>
-<ol>
-<li>基础模型</li>
-<li>N 折交叉验证</li>
-<li>超参寻优：N 折交叉验证</li>
-<li>使用微调后的超参数训练</li>
-<li>阈值选择 (<code>y_pred -&gt; y</code>)
+<h4 id="22-内核管理工具">2.2 内核管理工具</h4>
+<p><code>jupyter kernelspec</code> 相关的命令选项可用于安装、管理、移除内核，以下是一些常用命令：</p>
 <ul>
-<li>使用 <code>np.rint</code></li>
-<li>尝试：考虑原标号的分布
+<li>列出内核：<code>jupyter kernelspec list</code></li>
+<li>安装内核：<code>jupyter kernelspec install [KERNEL_DIRECTORY]</code></li>
+<li>移除内核：<code>jupyter kernelspec uninstall [KERNEL_NAME]</code></li>
+</ul>
+<blockquote>
+<p><strong>Note</strong>: 使用 <code>jupyter kernelspec install</code> 命令安装内核时，可指定多项参数，下面是一个示例命令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>jupyter kernelspec install <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  ~/miniforge3/share/jupyter/kernels/java <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --sys-prefix <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --name java <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --display-name <span style="color:#e6db74">&#34;Java&#34;</span>
+</span></span></code></pre></div><p>在这个命令中：</p>
 <ul>
-<li>训练标号的分布情况</li>
-<li>预测标号的概率密度函数 (PDF)</li>
-<li>预测标号的概率分布函数 (CDF)</li>
-<li>当 CDF = <code>训练数据 0 标号比例</code> 时反推阈值</li>
+<li><code>~/miniforge3/share/jupyter/kernels/java</code> 是内核路径，可用 <code>jupyter kernelspec list</code> 命令查看内核路径</li>
+<li><code>--sys-prefix</code> 选项确保内核在系统范围内可用，而不仅限于特定用户或虚拟环境。这对多用户系统或者需要在全局范围内共享内核的情况非常有用。如果你希望内核仅对当前用户可见，也可以使用 <code>--user</code> 选项</li>
+<li><code>--name java</code> 指定了内核的名 (kernel name)，这是在编程环境引用内核时使用的名称</li>
+<li><code>--display-name &quot;Java&quot;</code> 则设置了在 Jupyter Notebook 或 Jupyter Lab 界面中显示给用户的名称</li>
 </ul>
-</li>
-<li>使用 optuna 寻优</li>
-</ul>
-</li>
-<li>评估
-<ul>
-<li>混淆矩阵</li>
-<li>准确率</li>
-<li>精确率和召回率</li>
-<li><code>f1</code> 值</li>
-<li><code>log_loss</code> 交叉熵损失</li>
-<li>ROC 曲线 与 AUC</li>
-<li>一站式评估函数</li>
-</ul>
-</li>
-</ol>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/lightgbm-binary/blob/main/4.训练与评估.ipynb')">查看示例</button>
-</center>
-<h2 id="五加速推理">五、加速推理</h2>
-<ol>
-<li>导入模型和数据</li>
-<li>使用 Treelite 加速推理
-<ul>
-<li>推理速度</li>
-<li>推理准度</li>
-<li>通用函数</li>
-</ul>
-</li>
-</ol>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/lightgbm-binary/blob/main/5.加速推理.ipynb')">查看示例</button>
-</center>
-<h2 id="六部署">六、部署</h2>
-<ol>
-<li>模型训练</li>
-<li>模型部署
-<ul>
-<li>离线部署</li>
-<li>在线部署</li>
-</ul>
-</li>
-</ol>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/lightgbm-binary/blob/main/6.部署.ipynb')">查看示例</button>
-</center>
-<h2 id="七模型可视化">七、模型可视化</h2>
-<ol>
-<li>创建可交互的可视化界面</li>
-<li>将决策树存成 PNG / PDF</li>
-</ol>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/lightgbm-binary/blob/main/7.模型可视化.ipynb')">查看示例</button>
-</center>
-<p>参考：</p>
-<ul>
-<li><a href="https://lightgbm.readthedocs.io/en/latest/Parameters.html" target="_blank">LightGBM doc: Parameters</a></li>
-<li><a href="https://github.com/microsoft/LightGBM/tree/master/examples/python-guide" target="_blank">Python-package Examples</a></li>
-<li><a href="https://forecastegy.com/posts/how-to-use-optuna-to-tune-lightgbm-hyperparameters" target="_blank">How To Use Optuna to Tune LightGBM Hyperparameters</a></li>
-<li><a href="https://blog.csdn.net/qq_56591814/article/details/122505580" target="_blank">lightGBM实战</a></li>
-<li><a href="https://www.kaggle.com/code/kanncaa1/feature-selection-and-data-visualization" target="_blank">Feature Selection and Data Visualization</a></li>
-<li><a href="https://www.kaggle.com/code/prashant111/lightgbm-classifier-in-python" target="_blank">LightGBM Classifier in Python</a></li>
-</ul>
-<div id="mini-overlay" onclick="overlay_off()"></div>
-<div id="mini-window"><iframe id="mini-iframe" frameBorder="0"></iframe></div>
-<button id="btn-close" onclick="overlay_off()">×</button>
-<script src="/python-tips/overlay.js"></script>
-<link rel="stylesheet" href="/python-tips/style.css">
+</blockquote>
+<h3 id="三mermaid-插件">三、Mermaid 插件</h3>
+<p>Mermaid 是一个流行的图表生成工具。安装 Mermaid 插件后，用户可以在 Markdown 单元格中使用 Mermaid 语法编写图表代码，并将其渲染成图表。Mermaid 支持多种图表类型，如流程图、序列图、甘特图等。</p>
+<p>用以下命令安装 mermaid 插件：</p>
+<pre tabindex="0"><code>jupyter labextension install @jupyter-widgets/jupyterlab-mermaid
+</code></pre><h3 id="四变量查看器">四、变量查看器</h3>
+<p><a href="https://github.com/jupyterlab-contrib/jupyterlab-variableInspector">jupyterlab-contrib/jupyterlab-variableInspector</a> 是一个 Jupyter Lab 扩展，它允许用户直接查看交互中的变量。</p>
+<p>用以下命令安装变量查看器：</p>
+<pre tabindex="0"><code>pip install lckr_jupyterlab_variableinspector
+</code></pre><p>安装后，在 Notebook 的空白处，通过右键菜单栏的 <code>Open Variable Inspector</code> 打开。</p>
+<blockquote>
+<p><strong>Note</strong>: 使用 Mamba</p>
+<p><a href="https://github.com/mamba-org/mamba">Mamba</a> 是 Miniforge 自带的包管理工具。大多数时候，你可以用 <code>mamba</code> 命令直接替代 <code>conda</code> 命令，如 <code>mamba install numpy -c conda-forge</code>。一般来说，使用 mamba 能在安装时获得更高的下载速度。</p>
+</blockquote>
 
   </div>
   
 
 <div class="navigation navigation-single">
     
-    <a href="/posts/home_network_topology/" class="navigation-prev">
+    <a href="/posts/lstm_power_consumption/" class="navigation-prev">
       <i aria-hidden="true" class="fa fa-chevron-left"></i>
-      <span class="navigation-tittle">家庭网络拓扑</span>
-    </a>
-    
-    
-    <a href="/posts/lstm_power_consumption/" class="navigation-next">
       <span class="navigation-tittle">LSTM 家庭用电预测</span>
-      <i aria-hidden="true" class="fa fa-chevron-right"></i>
     </a>
+    
     
 </div>
 

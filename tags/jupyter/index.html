@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="en-us">
     
-    
-
-
     <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     
-    <link rel="canonical" href="https://luochang212.github.io/posts/lightgbm_practice/">
+    <link rel="canonical" href="https://luochang212.github.io/tags/jupyter/">
     
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,19 +16,17 @@
     
     
 
-<title>LightGBM 工程实践 • Chang Luo</title>
+<title>Jupyter • Chang Luo</title>
 
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="LightGBM 工程实践"/>
-<meta name="twitter:description" content="LightGBM 训练快，效果还行，对简单业务场景是一个比较甜点的算法"/>
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Jupyter"/>
+<meta name="twitter:description" content=""/>
       <meta name="twitter:site" content="@MinosPalace"/>
 
-<meta property="og:title" content="LightGBM 工程实践" />
-<meta property="og:description" content="LightGBM 训练快，效果还行，对简单业务场景是一个比较甜点的算法" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://luochang212.github.io/posts/lightgbm_practice/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-04-13T00:00:00+00:00" />
-<meta property="article:modified_time" content="2024-04-13T00:00:00+00:00" /><meta property="og:site_name" content="Title" />
+<meta property="og:title" content="Jupyter" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://luochang212.github.io/tags/jupyter/" /><meta property="og:site_name" content="Title" />
 
 
     
@@ -66,7 +61,8 @@
     <!-- Icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
     <link rel="shortcut icon" href="/favicon.png">
-    
+    <link rel="alternate" type="application/rss+xml" href="https://luochang212.github.io/tags/jupyter/index.xml" title="Chang Luo" />
+
     
 
 </head>
@@ -506,357 +502,29 @@
 
         <div class="content container">
             
-    <style>
-  .my-emoji {
-    height: 25px;
-    display: inline-block;
-    margin: 0;
-    vertical-align: text-bottom;
-  }
-</style>
-
-
-
-<article>
-  <header>
-    <h1>LightGBM 工程实践</h1>
+    <span class="section__title">Jupyter</span>
+<ul class="posts">
     
-    
-<div class="post__meta">
-    
-    
-      <i class="fas fa-calendar-alt"></i> Apr 13, 2024
-    
-    
-    
+        
+<li>
+  <span class="list__title--small">
+    <a href="/posts/jupyter_lab/" >JupyterLab 鉴赏回</a>
       
+      <time class="pull-right hidden-tablet">May 15, 2024</time>
       
-          in
-          
-          
-              <a class="badge badge-category" href="/categories/machinelearning">MACHINELEARNING</a>
-              
-          
-      
-    
-    
-    
-      
-      
-          <br/>
-           <i class="fas fa-tags"></i>
-          
-          <a class="badge badge-tag" href="/tags/lightgbm">lightgbm</a>
-           
-      
-          <a class="badge badge-tag" href="/tags/optuna">optuna</a>
-           
-      
-          <a class="badge badge-tag" href="/tags/graphviz">graphviz</a>
-           
-      
-          <a class="badge badge-tag" href="/tags/treelite">treelite</a>
-          
-      
-    
-    
-    <br/>
-    <i class="fas fa-clock"></i> 1 min read
-</div>
+  </span>
+</li>
 
 
-  </header>
-  
-  
-  
-  <div class="toc-wrapper">
-    <input type="checkbox" id="tocToggle">
-    <label for="tocToggle">目录</label>
     
-    <div class="toc" id="TableOfContents"></div>
-    
-  </div>
-  
-  
-  <div class="post">
-    <blockquote>
-<p>LightGBM 是一种梯度提升树算法，可用于排序、分类和回归任务。本文由一系列 Jupyter Notebook 串成，介绍如何使用 LightGBM 训练二分类模型。本项目使用的数据集是 <a href="https://archive.ics.uci.edu/dataset/2/adult" target="_blank">adult</a> (・ω&lt; )★</p>
-</blockquote>
-<p>GitHub 项目地址：<a href="https://github.com/luochang212/lightgbm-binary" target="_blank">lightgbm-binary</a></p>
-<h3 id="-本文亮点">🚀 本文亮点</h3>
-<ul>
-<li>✅ 使用 Optuna 做超参数寻优</li>
-<li>✅ 使用 Treelite 做推理加速</li>
-<li>✅ 使用 Graphviz 做决策树模型可视化</li>
-<li>✅ 使用 <code>scale_pos_weight</code> 参数，解决样本不均衡问题</li>
-<li>✅ 对标签概率生成标签的阈值寻优 (<code>y_pred -&gt; y</code>)，详见 <code>util.gen_threshold</code></li>
-<li>✅ 编写自适应学习率衰减函数提高 AUC，详见 <code>util.AdaptiveLearningRate</code></li>
-<li>✅ 编写一站式评估函数，可一次性输出多种指标，包括 accuracy, precision, recall, f1_score, auc, cross-entropy loss, confusion matrix，详见 <code>util.eval_binary</code></li>
 </ul>
-<p>✨ 感谢 <a href="https://kimi.moonshot.cn/">Kimi</a> 在学习过程中提供的无私帮助～</p>
-<h3 id="一数据可视化">一、数据可视化</h3>
-<ol>
-<li>导入数据</li>
-<li>统计描述
-<ul>
-<li><code>describe()</code> 方法</li>
-<li><code>info()</code> 方法</li>
-<li>统计各字段枚举值数量</li>
-<li>查看字段下所有枚举值</li>
-<li>查看空值个数</li>
-</ul>
-</li>
-<li>可视化
-<ul>
-<li>标号的值的比例</li>
-<li>小提琴图 (Violin Plot)</li>
-</ul>
-</li>
-</ol>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/lightgbm-binary/blob/main/1.数据可视化.ipynb')">查看示例</button>
-</center>
-<h3 id="二预处理与特征选择">二、预处理与特征选择</h3>
-<ol>
-<li>预处理
-<ul>
-<li>标签编码</li>
-<li>更好的编码方式？</li>
-</ul>
-</li>
-<li>初次训练
-<ul>
-<li>使用 <code>lgb.LGBMClassifier</code> 进行训练</li>
-<li>使用原生 API 进行训练</li>
-</ul>
-</li>
-<li>简单评估</li>
-<li>模型存储与导入
-<ul>
-<li>模型存储</li>
-<li>模型导入</li>
-</ul>
-</li>
-<li>特征选择
-<ul>
-<li>计算特征的重要程度</li>
-<li>多次实验求均值</li>
-</ul>
-</li>
-</ol>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/lightgbm-binary/blob/main/2.预处理与特征选择.ipynb')">查看示例</button>
-</center>
-<h3 id="三超参数微调">三、超参数微调</h3>
-<ol>
-<li>简单的例子</li>
-<li>稍微复杂的例子：随机森林
-<ul>
-<li>导入数据</li>
-<li>one-hot 编码</li>
-<li>训练</li>
-<li>评估</li>
-<li>超参数微调</li>
-<li>使用微调后的超参数训练</li>
-</ul>
-</li>
-<li>LightGMB 超参数微调
-<ul>
-<li>单次训练</li>
-<li>超参数寻优</li>
-<li>使用微调后的超参数训练</li>
-</ul>
-</li>
-<li>学习率衰减
-<ul>
-<li>指数衰减</li>
-<li>自适应衰减</li>
-</ul>
-</li>
-</ol>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/lightgbm-binary/blob/main/3.超参数微调.ipynb')">查看示例</button>
-</center>
-<h3 id="四训练与评估">四、训练与评估</h3>
-<ol>
-<li>基础模型</li>
-<li>N 折交叉验证</li>
-<li>超参寻优：N 折交叉验证</li>
-<li>使用微调后的超参数训练</li>
-<li>阈值选择 (<code>y_pred -&gt; y</code>)
-<ul>
-<li>使用 <code>np.rint</code></li>
-<li>尝试：考虑原标号的分布
-<ul>
-<li>训练标号的分布情况</li>
-<li>预测标号的概率密度函数 (PDF)</li>
-<li>预测标号的概率分布函数 (CDF)</li>
-<li>当 CDF = <code>训练数据 0 标号比例</code> 时反推阈值</li>
-</ul>
-</li>
-<li>使用 optuna 寻优</li>
-</ul>
-</li>
-<li>评估
-<ul>
-<li>混淆矩阵</li>
-<li>准确率</li>
-<li>精确率和召回率</li>
-<li><code>f1</code> 值</li>
-<li><code>log_loss</code> 交叉熵损失</li>
-<li>ROC 曲线 与 AUC</li>
-<li>一站式评估函数</li>
-</ul>
-</li>
-</ol>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/lightgbm-binary/blob/main/4.训练与评估.ipynb')">查看示例</button>
-</center>
-<h2 id="五加速推理">五、加速推理</h2>
-<ol>
-<li>导入模型和数据</li>
-<li>使用 Treelite 加速推理
-<ul>
-<li>推理速度</li>
-<li>推理准度</li>
-<li>通用函数</li>
-</ul>
-</li>
-</ol>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/lightgbm-binary/blob/main/5.加速推理.ipynb')">查看示例</button>
-</center>
-<h2 id="六部署">六、部署</h2>
-<ol>
-<li>模型训练</li>
-<li>模型部署
-<ul>
-<li>离线部署</li>
-<li>在线部署</li>
-</ul>
-</li>
-</ol>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/lightgbm-binary/blob/main/6.部署.ipynb')">查看示例</button>
-</center>
-<h2 id="七模型可视化">七、模型可视化</h2>
-<ol>
-<li>创建可交互的可视化界面</li>
-<li>将决策树存成 PNG / PDF</li>
-</ol>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/lightgbm-binary/blob/main/7.模型可视化.ipynb')">查看示例</button>
-</center>
-<p>参考：</p>
-<ul>
-<li><a href="https://lightgbm.readthedocs.io/en/latest/Parameters.html" target="_blank">LightGBM doc: Parameters</a></li>
-<li><a href="https://github.com/microsoft/LightGBM/tree/master/examples/python-guide" target="_blank">Python-package Examples</a></li>
-<li><a href="https://forecastegy.com/posts/how-to-use-optuna-to-tune-lightgbm-hyperparameters" target="_blank">How To Use Optuna to Tune LightGBM Hyperparameters</a></li>
-<li><a href="https://blog.csdn.net/qq_56591814/article/details/122505580" target="_blank">lightGBM实战</a></li>
-<li><a href="https://www.kaggle.com/code/kanncaa1/feature-selection-and-data-visualization" target="_blank">Feature Selection and Data Visualization</a></li>
-<li><a href="https://www.kaggle.com/code/prashant111/lightgbm-classifier-in-python" target="_blank">LightGBM Classifier in Python</a></li>
-</ul>
-<div id="mini-overlay" onclick="overlay_off()"></div>
-<div id="mini-window"><iframe id="mini-iframe" frameBorder="0"></iframe></div>
-<button id="btn-close" onclick="overlay_off()">×</button>
-<script src="/python-tips/overlay.js"></script>
-<link rel="stylesheet" href="/python-tips/style.css">
 
-  </div>
-  
-
-<div class="navigation navigation-single">
-    
-    <a href="/posts/home_network_topology/" class="navigation-prev">
-      <i aria-hidden="true" class="fa fa-chevron-left"></i>
-      <span class="navigation-tittle">家庭网络拓扑</span>
-    </a>
-    
-    
-    <a href="/posts/lstm_power_consumption/" class="navigation-next">
-      <span class="navigation-tittle">LSTM 家庭用电预测</span>
-      <i aria-hidden="true" class="fa fa-chevron-right"></i>
-    </a>
-    
-</div>
-
-
-  
-
-  
-    
-
-
-</article>
 
         </div>
         
-    <script type="text/javascript" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-  MathJax.Hub.Config({
-  tex2jax: {
-    inlineMath: [['$','$'], ['\\(','\\)']],
-    displayMath: [['$$','$$']],
-    processEscapes: true,
-    processEnvironments: true,
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-    TeX: { equationNumbers: { autoNumber: "AMS" },
-         extensions: ["AMSmath.js", "AMSsymbols.js"] }
-  }
-  });
-  MathJax.Hub.Queue(function() {
     
-    
-    
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i = 0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-
-  MathJax.Hub.Config({
-  
-  TeX: { equationNumbers: { autoNumber: "AMS" } }
-  });
-</script>
-
-
-
-
-
 
 <script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
-
-
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
-        
-    <script type="text/javascript">
-        
-        hljs.initHighlightingOnLoad();
-    </script>
-    
-
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
-<script type="text/javascript">
-  if (tocbot) {
-    tocbot.init({
-      
-      tocSelector: '.toc',
-      
-      contentSelector: '.post',
-      
-      headingSelector: 'h2, h3, h4',
-      collapseDepth: 4
-    });
-  }
-</script>
-
-
-
-    
 
 
 

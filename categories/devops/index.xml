@@ -6,8 +6,15 @@
     <description>Recent content in DevOps on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 03 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 15 May 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://luochang212.github.io/categories/devops/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JupyterLab 鉴赏回</title>
+      <link>https://luochang212.github.io/posts/jupyter_lab/</link>
+      <pubDate>Wed, 15 May 2024 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/posts/jupyter_lab/</guid>
+      <description>前组的中台基建很完善，所有工作，包括开发、构建、发布，都可以在浏览器上进行。因此，同事们经常戏称自己为“浏览器工程师”。&#xA;对于轻度开发者，即使没有强大的中台，一样可以成为浏览器工程师，秘诀就是：使用 JupyterLab&#xA;JupyterLab 你是真的火了&amp;hellip;&#xA;5 月 14 号 OpenAI 春季发布会 出现了这个画面：&#xA;原来 JupyterLab 是 OpenAI 研究员日常使用的开发工具，感谢 OpenAI 亲自为 JupyterLab 带货。&#xA;JupyterLab 拥有丰富的功能，并不只是 Python 的解释器这么简单。让我来向你们展示它有多实用！&#xA;〇、安装 JupyterLab mamba install -c conda-forge jupyterlab Note: mamba 也是 miniforge 自带的包管理工具。大多数时候，你可以用 mamba 直接替代 conda，如 mamba info --envs。在安装时使用 mamba 通常可以获得更高的下载速度。&#xA;一、制作 PPT 1.1 Notebook 转 PPT 只需两步，就能把 Notebook 变成 PPT：&#xA;设置 Slide Type：你需要对每个 Cell 设置 Slide Type，才能保证页面被正确渲染。在新版 Jupyter Lab 的右侧边栏上，有一个带俩齿轮的按钮。点进去，然后一路点 [Property Inspector] -&amp;gt; [COMMON TOOLS] -&amp;gt; [Slide Type]，对 Cell 进行设置。</description>
+    </item>
     <item>
       <title>Linux 运维手册</title>
       <link>https://luochang212.github.io/posts/linux_handbook/</link>
