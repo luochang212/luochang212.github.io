@@ -573,16 +573,15 @@
   
   
   <div class="post">
-    <blockquote>
-<p>前组的中台基建很完善，所有工作，包括开发、构建、发布，都可以在浏览器上进行。因此，同事们经常戏称自己为“浏览器工程师”。</p>
-<p>对于轻度开发者，即使没有强大的中台，一样可以成为浏览器工程师，秘诀就是：使用 JupyterLab</p>
-</blockquote>
+    <!-- > 前组的中台基建很完善，所有工作，包括开发、构建、发布，都可以在浏览器上进行。因此，同事们经常戏称自己为“浏览器工程师”。
+> 
+> 对于轻度开发者，即使没有强大的中台，一样可以成为浏览器工程师，秘诀就是：使用 JupyterLab -->
 <p>JupyterLab 你是真的火了&hellip;</p>
 <p>5 月 14 号 <a href="https://openai.com/index/spring-update/" target="_blank">OpenAI 春季发布会</a> 出现了这个画面：</p>
 <p><img src="/img/openai_jupyter_lab.PNG" alt="openai_jupyter_lab"></p>
-<p>原来 <a href="https://jupyterlab.readthedocs.io/en/latest/">JupyterLab</a> 也是 OpenAI 研究员日常使用的开发工具，感谢 OpenAI 亲自带货。</p>
+<p>才知道，原来 <a href="https://jupyterlab.readthedocs.io/en/latest/">JupyterLab</a> 也是 OpenAI 研究员日常使用的开发工具，感谢 OpenAI 亲自带货。</p>
 <!-- `JupyterLab` 之外另一个选择是 `Jupyter Notebook`。`JupyterLab` 可以认为是后者的加强版。此前，我一直是 `Jupyter Notebook` 的用户。最近我正在从 `Jupyter Notebook` 转向 `JupyterLab`。 -->
-<p>JupyterLab 拥有丰富的功能，并不只是 Python 的解释器这么简单。让我来向你们展示它有多强大！</p>
+<p>JupyterLab 拥有丰富的功能，并不只是 Python 解释器这么简单。让我来向你们展示它有多强大！</p>
 <h3 id="安装-jupyterlab">〇、安装 JupyterLab</h3>
 <pre tabindex="0"><code>mamba install -c conda-forge jupyterlab
 </code></pre><blockquote>
@@ -703,7 +702,13 @@ c.ServerApp.ssl_keyfile = &#39;[DIR]/[KEY_FILE_NAME].key&#39;
 <pre tabindex="0"><code>pip install nbmerge
 </code></pre><p>安装完成后，使用以下命令合并文件：</p>
 <pre tabindex="0"><code>nbmerge file1.ipynb file2.ipynb file3.ipynb &gt; merge.ipynb
-</code></pre><script type="module">
+</code></pre><h3 id="七显示代码执行时间">七、显示代码执行时间</h3>
+<p><a href="https://github.com/deshaw/jupyterlab-execute-time">jupyterlab-execute-time</a> 插件能记录并显示每个代码单元格的执行时间。</p>
+<p>安装：</p>
+<pre tabindex="0"><code>pip install jupyterlab_execute_time
+</code></pre><p>效果：</p>
+<p><img src="/img/jupyterlab_execute_time.png" alt=""></p>
+<script type="module">
   import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
 </script>
 
