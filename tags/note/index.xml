@@ -13,7 +13,7 @@
       <link>https://luochang212.github.io/posts/jupyter_lab/</link>
       <pubDate>Wed, 15 May 2024 00:00:00 +0000</pubDate>
       <guid>https://luochang212.github.io/posts/jupyter_lab/</guid>
-      <description>JupyterLab 你是真的火了&amp;hellip;&#xA;5 月 14 号 OpenAI 春季发布会 出现了这个画面：&#xA;才知道 JupyterLab 是 OpenAI 的日常开发工具。感谢 OpenAI 亲自带货。&#xA;JupyterLab 拥有丰富的功能，并不仅仅是 Python 解释器这么简单，让我向你们展示它的强大！&#xA;〇、安装 JupyterLab 执行以下命令安装 JupyterLab：&#xA;mamba install -c conda-forge jupyterlab Note: mamba 是 miniforge 自带的包管理工具。大多数时候，你可以用 mamba 直接替代 conda，比如 mamba info --envs。使用 mamba 通常可以获得更高的下载速度。&#xA;一、制作 PPT 1.1 Notebook 转 PPT 只需两步，就能把 Notebook 转成 PPT：&#xA;设置 Slide Type：为保证页面被正确渲染，你需要设置 Cell 的 Slide Type。对于新版 Jupyter Lab，在右侧边栏上有带俩齿轮的按钮，点进去，然后一路点 [Property Inspector] -&amp;gt; [COMMON TOOLS] -&amp;gt; [Slide Type]，在这里对 Cell 进行设置。</description>
+      <description>JupyterLab 你是真的火了&amp;hellip;&#xA;5 月 14 号 OpenAI 春季发布会 出现了这个画面：&#xA;才知道 JupyterLab 是 OpenAI 的日常开发工具。感谢 OpenAI 亲自带货。&#xA;JupyterLab 拥有丰富的功能，并不只是 Python 解释器这么简单，让我来向你们展示它的强大！&#xA;〇、安装 JupyterLab 执行以下命令安装 JupyterLab：&#xA;mamba install -c conda-forge jupyterlab Note: mamba 是 miniforge 自带的包管理工具。大多数时候，你可以用 mamba 直接替代 conda，比如 mamba info --envs。使用 mamba 通常可以获得更高的下载速度。&#xA;一、制作 PPT 1.1 Notebook 转 PPT 只需两步，就能把 Notebook 转成 PPT：&#xA;设置 Slide Type：为保证页面被正确渲染，你需要设置 Cell 的 Slide Type。对于新版 Jupyter Lab，在右侧边栏上有带俩齿轮的按钮，点进去，然后一路点 [Property Inspector] -&amp;gt; [COMMON TOOLS] -&amp;gt; [Slide Type]，在这里对 Cell 进行设置。</description>
     </item>
     <item>
       <title>深度学习笔记</title>

@@ -581,7 +581,7 @@
 <p><img src="/img/openai_jupyter_lab.PNG" alt="openai_jupyter_lab"></p>
 <p>才知道 <a href="https://jupyterlab.readthedocs.io/en/latest/" target="_blank">JupyterLab</a> 是 OpenAI 的日常开发工具。感谢 OpenAI 亲自带货。</p>
 <!-- `JupyterLab` 之外另一个选择是 `Jupyter Notebook`。`JupyterLab` 可以认为是后者的加强版。此前，我一直是 `Jupyter Notebook` 的用户。最近我正在从 `Jupyter Notebook` 转向 `JupyterLab`。 -->
-<p>JupyterLab 拥有丰富的功能，并不仅仅是 Python 解释器这么简单，让我向你们展示它的强大！</p>
+<p>JupyterLab 拥有丰富的功能，并不只是 Python 解释器这么简单，让我来向你们展示它的强大！</p>
 <h3 id="安装-jupyterlab">〇、安装 JupyterLab</h3>
 <p>执行以下命令安装 JupyterLab：</p>
 <pre tabindex="0"><code>mamba install -c conda-forge jupyterlab
@@ -598,22 +598,22 @@
 <li>
 <p><strong>启动网页应用</strong>：打开 Terminal，来到 <code>[YOUR_SLIDE].ipynb</code> 所在路径，运行</p>
 <pre tabindex="0"><code>jupyter nbconvert --to slides [YOUR_SLIDE].ipynb --post serve
-</code></pre><p>这会在浏览器中打开一个 PPT 网页应用。很棒的一点是，这个网页是有路由的。就是说，如果你的 Jupyter 运行在服务器上，你可以用网址来分享特定页面。</p>
+</code></pre><p>这会在浏览器中打开一个 slide 网页应用，你可以用它来做 pre。值得一提的是，这个网页是有路由的。这意味着，如果你的 Jupyter 运行在服务器上，你可以用它来分享特定页面。</p>
 </li>
 </ol>
 <blockquote>
 <p>以防你不知道，JupyterLab 可以开 Terminal，位置在 <code>[左上 + 号] -&gt; [Other] -&gt; [Terminal]</code></p>
 </blockquote>
 <h4 id="12-ppt-转-pdf">1.2 PPT 转 PDF</h4>
-<p>把 PPT 转存 PDF，只需两步：</p>
+<p>把 PPT 转存成 PDF，只需要两步：</p>
 <ol>
 <li>把 PPT 网页路由的 <code>#</code> 号改成 <code>?print-pdf</code>。修改后的网址形如：
 <pre tabindex="0"><code>http://127.0.0.1:8000/[YOUR_SLIDE].slides.html?print-pdf
 </code></pre></li>
-<li>用 Chrome 打印功能，把网页存成 PDF</li>
+<li>用 Chrome 打印功能，把网页转存成 PDF 文件</li>
 </ol>
 <h3 id="二在-jupyter-中运行-java">二、在 Jupyter 中运行 Java</h3>
-<p>在 Jupyter 中运行 Java 要用到 IJava。<a href="https://github.com/SpencerPark/IJava" target="_blank">IJava</a> 支持 Java 内核。它允许用户使用 IPython 特性进行 Java 编程，比如交互式编程、魔术命令、图表输出等。</p>
+<p>在 Jupyter 中运行 Java 要用到 IJava。<a href="https://github.com/SpencerPark/IJava" target="_blank">IJava</a> 是一个 Java 内核，它允许用户使用 IPython 特性进行 Java 编程，比如交互式编程、魔术命令、图表输出等。</p>
 <h4 id="21-安装-ijava">2.1 安装 IJava</h4>
 <ol>
 <li>从 <a href="https://github.com/SpencerPark/IJava/releases" target="_blank">Releases</a> 下载安装包，安装包形如 <code>ijava-[VERSION].zip</code></li>
@@ -652,7 +652,7 @@ jupyter console --kernel=java
 </ul>
 </blockquote>
 <h3 id="三mermaid-插件">三、Mermaid 插件</h3>
-<p>Mermaid 是一个流行的图表生成工具。安装 Mermaid 插件后，用户可以在 markdown 单元格中使用 Mermaid 语法编写图表代码，并即时渲染。</p>
+<p>Mermaid 是一个流行的图表生成工具。用户可以在 markdown 单元格中使用 Mermaid 语法编写图表代码，并即时渲染。</p>
 <p>安装 Mermaid 插件：</p>
 <pre tabindex="0"><code>jupyter labextension install @jupyter-widgets/jupyterlab-mermaid
 </code></pre><p>Mermaid 图表效果如下：</p>
@@ -669,11 +669,11 @@ sequenceDiagram
 是一个 Jupyter Lab 扩展，它允许用户直接查看交互中的变量。</p>
 <p>安装变量查看器：</p>
 <pre tabindex="0"><code>pip install lckr_jupyterlab_variableinspector
-</code></pre><p>安装后，在 Notebook 空白处，右键打开菜单栏，点击 <code>Open Variable Inspector</code> 打开变量查看器。</p>
+</code></pre><p>安装后，在 Notebook 空白处，打开右键菜单栏，然后点击 <code>Open Variable Inspector</code> 即可打开变量查看器。</p>
 <p><img src="/img/variable_inspector.png" alt="variable_inspector"></p>
 <h3 id="五在服务器上使用-jupyterlab">五、在服务器上使用 JupyterLab</h3>
 <p>在服务器上使用 JupyterLab 有诸多好处。比如无需再用 <code>sz rz</code> 传输文件，右击文件即可下载，拖拽文件即可上传。</p>
-<h4 id="51-启动-jupyterlab-服务">5.1 启动 JupyterLab 服务</h4>
+<h4 id="51-启动-jupyterlab">5.1 启动 JupyterLab</h4>
 <pre tabindex="0"><code># 对于 HTTP，使用 80 端口
 jupyter lab --ip=&#39;0.0.0.0&#39; --port=80 --no-browser --allow-root
 
@@ -696,7 +696,7 @@ jupyter lab --ip=&#39;0.0.0.0&#39; --port=443 --no-browser --allow-root
 c.ServerApp.ssl_keyfile = &#39;[DIR]/[KEY_FILE_NAME].key&#39;
 </code></pre></li>
 </ol>
-<p>对于不同的 SaaS 供应商，具体的操作不同，这里就不详述了。</p>
+<p>对于不同的 SaaS 供应商，操作不同，这里就不详述了。</p>
 <h3 id="六合并-ipynb-文件">六、合并 ipynb 文件</h3>
 <p><code>nbmerge</code> 支持将多个 ipynb 文件合并成一个文件。</p>
 <p>安装 <code>nbmerge</code>：</p>
@@ -705,9 +705,9 @@ c.ServerApp.ssl_keyfile = &#39;[DIR]/[KEY_FILE_NAME].key&#39;
 <pre tabindex="0"><code>nbmerge file1.ipynb file2.ipynb file3.ipynb &gt; merge.ipynb
 </code></pre><h3 id="七显示代码执行时间">七、显示代码执行时间</h3>
 <p><a href="https://github.com/deshaw/jupyterlab-execute-time" target="_blank">jupyterlab-execute-time</a> 插件能记录并显示每个代码单元格的执行时间。</p>
-<p>安装：</p>
+<p>安装插件：</p>
 <pre tabindex="0"><code>pip install jupyterlab_execute_time
-</code></pre><p>效果：</p>
+</code></pre><p>显示效果：</p>
 <p><img src="/img/jupyterlab_execute_time.png" alt="jupyterlab_execute_time"></p>
 <script type="module">
   import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
