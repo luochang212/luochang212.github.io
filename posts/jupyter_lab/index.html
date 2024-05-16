@@ -573,14 +573,10 @@
   
   
   <div class="post">
-    <!-- > 前组的中台基建很完善，所有工作，包括开发、构建、发布，都可以在浏览器上进行。因此，同事们经常戏称自己为“浏览器工程师”。
-> 
-> 对于轻度开发者，即使没有强大的中台，一样可以成为浏览器工程师，秘诀就是：使用 JupyterLab -->
-<p>JupyterLab 你是真的火了&hellip;</p>
+    <p>JupyterLab 你是真的火了&hellip;</p>
 <p>5 月 14 号 <a href="https://openai.com/index/spring-update/" target="_blank">OpenAI 春季发布会</a> 出现了这个画面：</p>
 <p><img src="/img/openai_jupyter_lab.PNG" alt="openai_jupyter_lab"></p>
 <p>才知道 <a href="https://jupyterlab.readthedocs.io/en/latest/" target="_blank">JupyterLab</a> 是 OpenAI 的日常开发工具。感谢 OpenAI 亲自带货。</p>
-<!-- `JupyterLab` 之外另一个选择是 `Jupyter Notebook`。`JupyterLab` 可以认为是后者的加强版。此前，我一直是 `Jupyter Notebook` 的用户。最近我正在从 `Jupyter Notebook` 转向 `JupyterLab`。 -->
 <p>JupyterLab 拥有丰富的功能，并不只是 Python 解释器这么简单，让我来向你们展示它的强大！</p>
 <h3 id="安装-jupyterlab">〇、安装 JupyterLab</h3>
 <p>执行以下命令安装 JupyterLab：</p>
@@ -612,8 +608,8 @@
 </code></pre></li>
 <li>用 Chrome 打印功能，把网页转存成 PDF 文件</li>
 </ol>
-<h3 id="二在-jupyter-中运行-java">二、在 Jupyter 中运行 Java</h3>
-<p>在 Jupyter 中运行 Java 要用到 IJava。<a href="https://github.com/SpencerPark/IJava" target="_blank">IJava</a> 是一个 Java 内核，它允许用户使用 IPython 特性进行 Java 编程，比如交互式编程、魔术命令、图表输出等。</p>
+<h3 id="二运行-java">二、运行 Java</h3>
+<p>在 Jupyter 中运行 Java 要用到 IJava。<a href="https://github.com/SpencerPark/IJava" target="_blank">IJava</a> 是一个 Java 内核，它允许用户使用 IPython 特性进行 Java 编程。</p>
 <h4 id="21-安装-ijava">2.1 安装 IJava</h4>
 <ol>
 <li>从 <a href="https://github.com/SpencerPark/IJava/releases" target="_blank">Releases</a> 下载安装包，安装包形如 <code>ijava-[VERSION].zip</code></li>
@@ -651,7 +647,7 @@ jupyter console --kernel=java
 <li><code>--display-name &quot;Java&quot;</code> 则设置了在 Jupyter Notebook 或 Jupyter Lab 界面中，显示给用户的名称</li>
 </ul>
 </blockquote>
-<h3 id="三mermaid-插件">三、Mermaid 插件</h3>
+<h3 id="三绘制-mermaid-图表">三、绘制 Mermaid 图表</h3>
 <p>Mermaid 是一个流行的图表生成工具。用户可以在 markdown 单元格中使用 Mermaid 语法编写图表代码，并即时渲染。</p>
 <p>安装 Mermaid 插件：</p>
 <pre tabindex="0"><code>jupyter labextension install @jupyter-widgets/jupyterlab-mermaid
@@ -664,7 +660,7 @@ sequenceDiagram
     Bob-->>Alice: I am good thanks!
 
 </pre>
-<h3 id="四使用变量查看器">四、使用变量查看器</h3>
+<h3 id="四查看变量的值">四、查看变量的值</h3>
 <p><a href="https://github.com/jupyterlab-contrib/jupyterlab-variableInspector" target="_blank">variableInspector</a>
 是一个 Jupyter Lab 扩展，它允许用户直接查看交互中的变量。</p>
 <p>安装变量查看器：</p>
@@ -703,7 +699,7 @@ c.ServerApp.ssl_keyfile = &#39;[DIR]/[KEY_FILE_NAME].key&#39;
 <pre tabindex="0"><code>pip install nbmerge
 </code></pre><p>安装完成后，使用以下命令合并文件：</p>
 <pre tabindex="0"><code>nbmerge file1.ipynb file2.ipynb file3.ipynb &gt; merge.ipynb
-</code></pre><h3 id="七显示代码执行时间">七、显示代码执行时间</h3>
+</code></pre><h3 id="七显示代码运行时间">七、显示代码运行时间</h3>
 <p><a href="https://github.com/deshaw/jupyterlab-execute-time" target="_blank">jupyterlab-execute-time</a> 插件能记录并显示每个代码单元格的执行时间。</p>
 <p>安装插件：</p>
 <pre tabindex="0"><code>pip install jupyterlab_execute_time
