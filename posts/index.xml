@@ -20,7 +20,7 @@
       <link>https://luochang212.github.io/posts/lstm_power_consumption/</link>
       <pubDate>Sun, 12 May 2024 00:00:00 +0000</pubDate>
       <guid>https://luochang212.github.io/posts/lstm_power_consumption/</guid>
-      <description> 长短期记忆网络（Long Short-Term Memory，LSTM）是一种 RNN 模型，常用于序列数据建模。尤其适合需要挖掘序列中长期依赖关系的问题。&#xA;GitHub 项目地址：luochang212/lstm-model&#xA;一、keras 模型训练 数据导入 数据预处理 趋势可视化 分割训练集和测试集 定义 &amp;amp; 训练网络 预测 预测整个序列 查看示例 二、keras 模型推理 数据预处理 用训练好的 keras 模型做预测 keras: 预测下一个值 预测下一个序列 查看示例 三、PyTorch 模型训练 施工中&#xA;参考资料：&#xA;Household_Power_consumption (dataset)&#xA;Ocean Wave Prediction with LSTM&#xA;Time-series data analysis using LSTM (Tutorial)&#xA;PyGWalker&#xA;luochang212/rnn-note&#xA;× </description>
+      <description> 长短期记忆网络（Long Short-Term Memory，LSTM）是一种 RNN 模型，常用于序列数据建模。尤其适合需要挖掘序列中长期依赖关系的问题。&#xA;GitHub 项目地址：luochang212/lstm-model&#xA;一、keras 模型训练 数据导入 数据预处理 趋势可视化 分割训练集和测试集 定义 &amp;amp; 训练网络 预测 预测整个序列 查看示例 二、keras 模型推理 数据预处理 用训练好的 keras 模型做预测 预测下一个值 预测下一个序列 查看示例 三、PyTorch 模型训练 施工中&#xA;参考资料：&#xA;Household_Power_consumption (dataset)&#xA;Ocean Wave Prediction with LSTM&#xA;Time-series data analysis using LSTM (Tutorial)&#xA;PyGWalker&#xA;luochang212/rnn-note&#xA;× </description>
     </item>
     <item>
       <title>LightGBM 工程实践</title>
@@ -90,7 +90,7 @@
       <link>https://luochang212.github.io/posts/hive_sql_note/</link>
       <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
       <guid>https://luochang212.github.io/posts/hive_sql_note/</guid>
-      <description>SQL 还需要注释？SQL 会自己注释自己的，对吧&#xA;1. 表操作 1.1 建表 CREATE TABLE [DATABASE].[TABLE_NAME] ( `id` BIGINT COMMENT &amp;#39;学号&amp;#39;, name STRING COMMENT &amp;#39;姓名&amp;#39;, ttl_score DOUBLE COMMENT &amp;#39;总分&amp;#39; ) COMMENT &amp;#39;枝江中学五年级学生成绩明细表&amp;#39; PARTITIONED BY (day STRING COMMENT &amp;#39;day&amp;#39;, hour STRING COMMENT &amp;#39;hour&amp;#39;) ROW FORMAT [row_format] STORED AS [file_format]; Note: 了解更多，请参考 CREATE TABLE with Hive format&#xA;1.2 删表 DROP TABLE [DATABASE].[TABLE_NAME]; DROP TABLE IF EXISTS [DATABASE].[TABLE_NAME]; 1.3 在原表上新增列 ALTER TABLE [DATABASE].[TABLE_NAME] ADD COLUMNS ( sub_score ARRAY&amp;lt;DOUBLE&amp;gt; COMMENT &amp;#39;分科成绩&amp;#39;, sub_score_map MAP&amp;lt;STRING,DOUBLE&amp;gt; COMMENT &amp;#39;分科成绩map&amp;#39;, `rank` BIGINT COMMENT &amp;#39;年段排名&amp;#39;, update_time STRING COMMENT &amp;#39;更新时间&amp;#39; ); 1.</description>
+      <description>Hive SQL 会自己注释自己的，对吧&#xA;1. 数据表操作 1.1 创建 Hive 表 CREATE TABLE [DATABASE].[TABLE_NAME] ( `id` BIGINT COMMENT &amp;#39;学号&amp;#39;, name STRING COMMENT &amp;#39;姓名&amp;#39;, ttl_score DOUBLE COMMENT &amp;#39;总分&amp;#39; ) COMMENT &amp;#39;枝江中学五年级学生成绩明细表&amp;#39; PARTITIONED BY (day STRING COMMENT &amp;#39;day&amp;#39;, hour STRING COMMENT &amp;#39;hour&amp;#39;) ROW FORMAT [row_format] STORED AS [file_format]; Note: 了解更多，请参考 CREATE TABLE with Hive format&#xA;1.2 删除 Hive 表 DROP TABLE [DATABASE].[TABLE_NAME]; DROP TABLE IF EXISTS [DATABASE].[TABLE_NAME]; 1.3 增加新的列 ALTER TABLE [DATABASE].[TABLE_NAME] ADD COLUMNS ( sub_score ARRAY&amp;lt;DOUBLE&amp;gt; COMMENT &amp;#39;分科成绩&amp;#39;, sub_score_map MAP&amp;lt;STRING,DOUBLE&amp;gt; COMMENT &amp;#39;分科成绩map&amp;#39;, `rank` BIGINT COMMENT &amp;#39;年段排名&amp;#39;, update_time STRING COMMENT &amp;#39;更新时间&amp;#39; ); 1.</description>
     </item>
     <item>
       <title>因果推断笔记</title>
