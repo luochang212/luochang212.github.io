@@ -617,7 +617,7 @@ WHERE ttl_score &gt;= 10
 FIELDS TERMINATED BY &#39;,&#39;
 LINES TERMINATED BY &#39;\n&#39;;
 </code></pre><h3 id="2-构建测试用例">2. 构建测试用例</h3>
-<h4 id="21-利用-union-all-构建测试用例">2.1 利用 union all 构建测试用例</h4>
+<h4 id="21-利用-union-all-构建测试用例">2.1 利用 UNION ALL 构建测试用例</h4>
 <pre tabindex="0"><code>SELECT
     `id`,
     name,
@@ -1790,8 +1790,8 @@ public class UniqueCountUDF extends UDF {
      * @return 无重复元素的数量
      */
     public IntWritable evaluate(Text input) {
-        if (input == null) {
-            return null;
+        if (input == null || input.toString().isEmpty()) {
+            return new IntWritable(0);
         }
         String[] arr = input.toString().split(&#34;,&#34;);
         return new IntWritable((int) Arrays.stream(arr).distinct().count());
@@ -1850,6 +1850,13 @@ hdfs dfs -mkdir hdfs://[HOSTNAME]:[PORT]/[PATH/TO/USER/DIR]/hive/udf
 # 上传 jar 包
 hdfs dfs -put [PATH/TO/JAR/FILE] \
     hdfs://[HOSTNAME]:[PORT]/[PATH/TO/USER/DIR]/hive/udf
+
+# 删除 jar 包
+hdfs dfs -rm \
+    hdfs://[HOSTNAME]:[PORT]/[PATH/TO/USER/DIR]/hive/udf/[JAR_FILE]
+
+# 删除整个目录及其内容（递归删除）
+hdfs dfs -rm -r hdfs://[HOSTNAME]:[PORT]/[PATH/TO/USER/DIR]
 </code></pre><p><strong>5）测试</strong></p>
 <p>写个 demo 测试一下，看函数功能是否符合预期。</p>
 <p><code>unique_count.hql</code> 文件：</p>
