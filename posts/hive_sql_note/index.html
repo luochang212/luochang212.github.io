@@ -555,7 +555,7 @@
     
     
     <br/>
-    <i class="fas fa-clock"></i> 13 min read
+    <i class="fas fa-clock"></i> 15 min read
 </div>
 
 
@@ -813,7 +813,7 @@ FROM std.std_student_info
 FROM std.std_student_info
 GROUP BY gender
 </code></pre><h3 id="9-join-方法">9. JOIN 方法</h3>
-<p>常用的 JOIN 方法有：</p>
+<h4 id="91-常见的-join-方法">9.1 常见的 JOIN 方法</h4>
 <table>
 <thead>
 <tr>
@@ -834,9 +834,17 @@ GROUP BY gender
 <td><code>FULL OUTER JOIN</code></td>
 <td>保留左表与右表所有记录，连接键值相等时连接，连接键有多值时做笛卡尔积</td>
 </tr>
+<tr>
+<td><code>LEFT SEMI JOIN</code></td>
+<td>如果左表的数据行在右表中存在匹配项，则返回左表这一行。它不会返回右表的任何列，结果集只包含左表的列</td>
+</tr>
+<tr>
+<td><code>MAP JOIN</code></td>
+<td>适用于大小表 JOIN，MAP JOIN 实现时，会将小表数据广播到所有 MAP 任务节点，所有 MAP 任务都会在本地缓存小表数据。由于 JOIN 操作在 MAP 阶段完成，不需要 shuffle 和 reduce，因此大大减少了计算资源的消耗</td>
+</tr>
 </tbody>
 </table>
-<p>LEFT JOIN 示例：</p>
+<h4 id="92-left-join-示例">9.2 LEFT JOIN 示例</h4>
 <pre tabindex="0"><code>SELECT
     a.id,
     ttl_score,
@@ -855,7 +863,128 @@ LEFT JOIN
         age
     FROM std.std_student_info
 ) b ON a.id = b.id;
-</code></pre><h3 id="10-array-相关函数">10. ARRAY 相关函数</h3>
+</code></pre><h4 id="93-left-semi-join-示例">9.3 LEFT SEMI JOIN 示例</h4>
+<p>为了下面的演示，先造两张临时表。注意，临时表要和 LEFT SEMI JOIN 代码一起运行</p>
+<pre tabindex="0"><code>-- 创建临时表 orders
+CREATE TEMPORARY TABLE orders AS
+SELECT *
+FROM
+(
+    SELECT 1001 AS order_id, 1 AS product_id
+    UNION ALL
+    SELECT 1002 AS order_id, 2 AS product_id
+    UNION ALL
+    SELECT 1003 AS order_id, 6 AS product_id
+    UNION ALL
+    SELECT 1004 AS order_id, 1 AS product_id
+) t;
+
+-- 创建临时表 products
+CREATE TEMPORARY TABLE products AS
+SELECT *
+FROM
+(
+    SELECT 1 AS product_id, &#39;A&#39; AS product_name
+    UNION ALL
+    SELECT 2 AS product_id, &#39;B&#39; AS product_name
+    UNION ALL
+    SELECT 3 AS product_id, &#39;C&#39; AS product_name
+    UNION ALL
+    SELECT 4 AS product_id, &#39;D&#39; AS product_name
+) t;
+
+SELECT p.product_name
+FROM products p
+LEFT SEMI JOIN orders o
+ON p.product_id = o.product_id;
+</code></pre><p>输出：</p>
+<table>
+<thead>
+<tr>
+<th>product_name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+</tr>
+<tr>
+<td>B</td>
+</tr>
+</tbody>
+</table>
+<h4 id="94-map-join-示例">9.4 MAP JOIN 示例</h4>
+<p>复用上面的两张临时表，计算 MAP JOIN</p>
+<pre tabindex="0"><code>-- 创建临时表 orders
+CREATE TEMPORARY TABLE orders AS
+SELECT *
+FROM
+(
+    SELECT 1001 AS order_id, 1 AS product_id
+    UNION ALL
+    SELECT 1002 AS order_id, 2 AS product_id
+    UNION ALL
+    SELECT 1003 AS order_id, 6 AS product_id
+    UNION ALL
+    SELECT 1004 AS order_id, 1 AS product_id
+) t;
+
+-- 创建临时表 products
+CREATE TEMPORARY TABLE products AS
+SELECT *
+FROM
+(
+    SELECT 1 AS product_id, &#39;A&#39; AS product_name
+    UNION ALL
+    SELECT 2 AS product_id, &#39;B&#39; AS product_name
+    UNION ALL
+    SELECT 3 AS product_id, &#39;C&#39; AS product_name
+    UNION ALL
+    SELECT 4 AS product_id, &#39;D&#39; AS product_name
+) t;
+
+-- 自动检测，尽可能将符合条件的 JOIN 转换为 MAP JOIN
+SET hive.auto.convert.join=true;
+-- 配置阈值，如果小表超阈值，则不会自动进行 MAP JOIN
+SET hive.mapjoin.smalltable.filesize=25000000;
+
+SELECT /*+ MAPJOIN(p) */ o.order_id, o.product_id, p.product_name
+FROM orders o
+INNER JOIN products p
+ON o.product_id = p.product_id;
+</code></pre><p>输出：</p>
+<table>
+<thead>
+<tr>
+<th>order_id</th>
+<th>product_id</th>
+<th>product_name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1001</td>
+<td>1</td>
+<td>A</td>
+</tr>
+<tr>
+<td>1002</td>
+<td>2</td>
+<td>B</td>
+</tr>
+<tr>
+<td>1004</td>
+<td>1</td>
+<td>A</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Note</strong>: 如果你不确定 MAP JOIN 是否实际生效，可以使用 <code>EXPLAIN</code> 关键字，获取查询计划</p>
+<pre tabindex="0"><code>EXPLAIN [query];  -- 获取查询计划
+EXPLAIN EXTENDED [query];  -- 获取更详细的查询计划
+</code></pre></blockquote>
+<h3 id="10-array-相关函数">10. ARRAY 相关函数</h3>
 <h4 id="101-collect_list-函数">10.1 COLLECT_LIST 函数</h4>
 <p><strong>COLLECT_LIST 函数</strong>：将来自多行的某字段的值聚合成 ARRAY</p>
 <pre tabindex="0"><code>SELECT
