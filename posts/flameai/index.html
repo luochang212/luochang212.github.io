@@ -4,10 +4,10 @@
     
 
 
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     
-    <link rel="canonical" href="http://localhost:1313/posts/flameai/">
+    <link rel="canonical" href="https://luochang212.github.io/posts/flameai/">
     
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,9 +29,9 @@
 <meta property="og:title" content="深度学习工具箱 FlameAI" />
 <meta property="og:description" content="开发属于自己的深度学习工具箱" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/posts/flameai/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-05-23T00:00:00+00:00" />
-<meta property="article:modified_time" content="2024-05-23T00:00:00+00:00" /><meta property="og:site_name" content="Title" />
+<meta property="og:url" content="https://luochang212.github.io/posts/flameai/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-05-25T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-05-25T00:00:00+00:00" /><meta property="og:site_name" content="Title" />
 
 
     
@@ -219,13 +219,13 @@
     <div class="container ">
       <div class="sidebar-about">
         <span class="site__title">
-          <a href="http://localhost:1313/">Chang Luo</a>
+          <a href="https://luochang212.github.io/">Chang Luo</a>
         </span>
         
         
         
         <div class="author-image">
-          <a href="#" class="load-iframe" onclick="openNav()"><img src="http://localhost:1313//images/profile.webp" id="author-iamge"
+          <a href="#" class="load-iframe" onclick="openNav()"><img src="https://luochang212.github.io//images/profile.webp" id="author-iamge"
               alt="Author Image" class="img--circle img--headshot element--center"></a>
         </div>
         
@@ -525,7 +525,7 @@
 <div class="post__meta">
     
     
-      <i class="fas fa-calendar-alt"></i> May 23, 2024
+      <i class="fas fa-calendar-alt"></i> May 25, 2024
     
     
     
@@ -578,7 +578,7 @@
 </blockquote>
 <p>GitHub 项目地址：<a href="https://github.com/luochang212/flameai" target="_blank">flameai</a></p>
 <h3 id="一简单介绍">一、简单介绍</h3>
-<p>我写的这个包叫 <a href="https://pypi.org/project/flameai" target="_blank">FlameAI</a>。作为一个深度学习工具包，它目前的主要功能是 <strong>数据预处理</strong> 和 <strong>模型评估</strong>。为了让这个包看起来上流一点，我让 Kimi 帮我想了好几个名字，最后还是选了这个名字，因为它最霸气。</p>
+<p>我写的这个包叫 <a href="https://pypi.org/project/flameai" target="_blank">FlameAI</a>。作为一个深度学习工具包，它的主要功能是 <strong>数据预处理</strong> 和 <strong>模型评估</strong>。为了让这个包看起来上流一点，我让 Kimi 帮我想了好几个名字，最后还是选了这个名字，因为它最霸气。</p>
 <p>执行以下命令安装 FlameAI：</p>
 <pre tabindex="0"><code>pip install flameai
 </code></pre><p>如果嫌安装速度慢，可以使用阿里源：</p>
@@ -641,8 +641,7 @@ y_pred = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
 # 以最大化精确率为目标，对阈值寻优
 eval_binary(y_true, y_pred, metric=Metric.PRECISION)
 </code></pre><h5 id="3定义返回值">3）定义返回值</h5>
-<p>有时候，你想在代码中访问寻优后的阈值，而非直接打印到标准输出。</p>
-<p>这可以通过设置 <code>ret</code> 和 <code>verbose</code> 参数实现：</p>
+<p>有时候，你想在代码中直接访问寻优后的阈值，而非打印到标准输出。这可以通过设置 <code>ret</code> 和 <code>verbose</code> 参数实现：</p>
 <pre tabindex="0"><code>from flameai import eval_binary, Metric
 
 y_true = [0, 0, 0, 1, 0, 1, 0, 1, 1, 0]
@@ -676,6 +675,12 @@ confusion_matrix(y_true, y_label)
 </code></pre><p>绘制效果：</p>
 <p><img src="/img/flameai_confusion_matrix.png" alt=""></p>
 <h4 id="24-线性回归模型评估">2.4 线性回归模型评估</h4>
+<p>支持一次输出三个线性回归评估指标，分别是：</p>
+<ul>
+<li><strong>mae:</strong> 平均绝对误差</li>
+<li><strong>mse:</strong> 均方误差</li>
+<li><strong>r2_score:</strong> 确定系数</li>
+</ul>
 <pre tabindex="0"><code>import flameai
 
 y_true = [0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.70, 0.80, 0.90, 1.00]
@@ -727,9 +732,11 @@ print([e for e in dt])
 <p>PS: 装饰器所在的两个函数不是必须的。如果把它们去掉，还能变得更短</p>
 </blockquote>
 <h4 id="26-hive-命令行工具">2.6 Hive 命令行工具</h4>
-<p>假设你已经在 <code>query.hql</code> 写好了 HQL 查询语句。执行以下命令将执行查询并把查询结果输出到 <code>query.csv</code> 文件。</p>
+<p>假设你已经把 HQL 查询语句写到 <code>query.hql</code> 文件里了。执行以下命令，将执行查询，并把查询结果输出到 <code>query.csv</code> 文件。</p>
 <pre tabindex="0"><code>hve query
-</code></pre><p>这里的 <code>query</code> 是你 HQL 文件的无后缀文件名。</p>
+</code></pre><blockquote>
+<p>PS: 这里的 <code>query</code> 可以替换成任意 HQL 文件的无后缀文件名。</p>
+</blockquote>
 <h4 id="27-标准日志输出">2.7 标准日志输出</h4>
 <p>FlameAI 支持用内部预设的 <code>logging</code> 模版输出日志。</p>
 <pre tabindex="0"><code>from flameai.util import set_logger
