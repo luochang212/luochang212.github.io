@@ -1,33 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Python on Chang Luo</title>
+    <title>Python&#34; on Chang Luo</title>
     <link>https://luochang212.github.io/tags/python/</link>
-    <description>Recent content in Python on Chang Luo</description>
+    <description>Recent content in Python&#34; on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 09 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 20 Apr 2019 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://luochang212.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>手写深度学习</title>
-      <link>https://luochang212.github.io/posts/d2l_from_scratch/</link>
-      <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/posts/d2l_from_scratch/</guid>
-      <description>与其说深度学习是一门技术，不如说深度学习是一种语言&#xA;GitHub 项目地址：AI-Project/scratch&#xA;一、自动微分 1. 简单的例子 1.1 张量 x 的梯度&#xA;张量 $x$ 的梯度可以存储在 $x$ 上。&#xA;要点：&#xA;x.grad: 取 $x$ 的梯度 x.requires_grad_(True): 允许 tenser $x$ 存储自己的梯度 x.grad.zero_(): 将 $x$ 的梯度置零 import torch # 初始化张量 x (tenser x) x = torch.arange(4.0) x.requires_grad_(True) # 允许 tensor x 存储梯度 x.grad == None # 梯度默认为 None &amp;gt; True&#xA;初始化带梯度的张量，下面是两个例子：&#xA;torch.tensor([1., 2., 3.], requires_grad=True) &amp;gt; tensor([1., 2., 3.], requires_grad=True)&#xA;torch.randn((2, 5), requires_grad=True) &amp;gt; tensor([[ 0.4075, 1.</description>
+      <title>微博数据可视化</title>
+      <link>https://luochang212.github.io/posts/my_weibo/</link>
+      <pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/posts/my_weibo/</guid>
+      <description>GitHub 项目地址：weibo-analysis&#xA;这次的数据用的是本科期间就已经爬好，但因为当时没有足够的处理技巧，这些数据在硬盘里一丢就是两年。如今，本Python初丁趁着还有机会摸鱼，赶紧把数据翻出来，让它们发光发热。&#xA;文本获取 因为新浪微博的严防死打，现如今微博的数据越来越不好爬。GitHub上的微博爬虫生存周期通常都很短，使爬取数据的成本大大增加。这里我用的是微博@失眠狸 同学的方法，用鼠标精灵写了个插件，控制快捷键和页面拖动，把内容从浏览器上粘贴到sublime里。&#xA;生成csv文件 有了原始数据，接下来我们要把数据归一化，做成方便处理的数据。一个常用的方法就是将数据整理成csv文件。&#xA;Step 1. 分析需要保存的字段以及数据的维度，从而设计出数据的存储结构。根据原数据，我划分了五个字段: id, date, time, device, content, 它们分别记录一条微博的文件位置、发布日期、发布时间、发送设备和文本内容。&#xA;Step 2. 分割raw data. 先用split函数进行粗略分割，再用find函数精确分割。接着将分割好的内容提取到各字段，并依次存入csv。&#xA;经过上述两步，数据的整理工作就做完啦。&#xA;可视化微博数据 有了csv文件，做数据可视化是分分钟的事。此时我把工作平台从PyCharm搬到了Jupyter Notebook。这是因为Jupyter Notebook可以制作的各式各样的可视化图表和窗口小工具(widget), 比PyCharm更适合数据处理。至于工具包，这里我选的是pandas和seaborn.&#xA;首先是需求分析，我的目标如下:&#xA;绘制日期分布热力图，观察今年使用微博频率的趋势&#xA;绘制设备使用直方图，看看平时最常用什么平台发博&#xA;绘制时间分布直方图，观察一天之中各时段的发博频率&#xA;使用窗口滑块小部件，拖动查看各个时间段都发了什么内容&#xA;这里不描述具体过程，详见GitHub Repository.&#xA;分析结果如下:&#xA;热力图总体来说颜色逐年加深，说明我正在逐渐成为一个微博控。而且注意到往年年初我是不怎么玩微博的，但随着年纪渐长，1-3月份我玩微博的频率越来越高，这意味着过年可能越来越无聊，没有年味，从而加长了我混迹微博的时间。&#xA;是你吗？华为的舔狗~&#xA;晚上2点不睡的坏小孩，早上10点起的偷懒者。（此处是一个卑微的笑容）&#xA;附录：部分代码 下面这段代码分割了文本。&#xA;def classification(self, txt_array, file_index): id = np.array([]) date = np.array([]) time = np.array([]) device = np.array([]) content = np.array([]) count = 0 for ite in range(1, np.size(txt_array), 1): if txt_array[ite].</description>
     </item>
-    <item>
-      <title>深度学习笔记</title>
-      <link>https://luochang212.github.io/posts/d2l/</link>
-      <pubDate>Sat, 11 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/posts/d2l/</guid>
-      <description>跟李沐老师学深度学习，课程见 d2l，如有错误，欢迎拍砖 GitHub 项目地址：AI-Project&#xA;〇、技术路线图 flowchart TD A[softmax 回归] --&gt;|无法拟合 XOR 函数| B[多层感知机] B --&gt; |高像素图片作为输入，模型参数爆炸| C[卷积] C --&gt;|数据的长宽下降太快| D[填充] C --&gt;|数据的长宽下降太慢| E[步幅] C --&gt;|缓解卷积对位置敏感| F[池化] C --&gt;|多模式识别与组合| G[多通道输入/输出] ❤️ powered by mermaid 一、softmax 回归 1. 虽然叫回归，但是softmax 解决的是分类问题 回归估计是一个连续值 分类预测是一个离散类别 2. 分类应用举例 MINIST ImageNet human-protein-atlas-image-classification (Kaggle) malware-classification (Kaggle) jigsaw-comment-classification (Kaggle) 3. 从回归到多类分类 &amp;ndash; 均方损失 对分类结果做 one-hot 编码：&#xA;$y = [y_1, y_2, , ... , y_n]^T$&#xA;$y_i=\left\{\begin{array}{l}1 \text { if } i=y \\ 0 \text { otherwise }\end{array}\right.</description>
-    </item>
-    <item>
-      <title>PyPI 打包小记</title>
-      <link>https://luochang212.github.io/posts/pypi_packaging/</link>
-      <pubDate>Wed, 18 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/posts/pypi_packaging/</guid>
-      <description>你们这些家伙，好好看看我是怎么打包的吧！&#xA;GitHub 项目地址：hit-and-blow&#xA;官方教程：Packaging Python Projects 背景知识：Modules 一、文件结构介绍 打包前，需构建如下文件结构：&#xA;packaging_tutorial/ ├── LICENSE ├── pyproject.toml ├── README.md ├── src/ │ └── YOUR_PACKAGE_NAME/ │ ├── __init__.py │ └── example.py └── tests/ 各个 文件 / 文件夹 说明：&#xA;packaging_tutorial: 项目文件夹 LICENSE: 开源协议，可由 GitHub 生成 pyproject.toml: 打包配置文件 README.md: 项目文档 src: 项目结构要求的，用来放主程序 YOUR_PACKAGE_NAME: 主程序文件夹，以“你的包名”命名文件夹 二、添加配置文件 将以下内容修改一下，改改名字邮箱什么的，存成配置文件 pyproject.toml&#xA;[build-system] requires = [&amp;#34;hatchling&amp;#34;] build-backend = &amp;#34;hatchling.build&amp;#34; [project] name = &amp;#34;example_package_YOUR_USERNAME_HERE&amp;#34; version = &amp;#34;0.0.1&amp;#34; authors = [ { name=&amp;#34;Example Author&amp;#34;, email=&amp;#34;author@example.</description>
+  </channel>
+</rss>
+g_tutorial: 项目文件夹 LICENSE: 开源协议，可由 GitHub 生成 pyproject.toml: 打包配置文件 README.md: 项目文档 src: 项目结构要求的，用来放主程序 YOUR_PACKAGE_NAME: 主程序文件夹，以“你的包名”命名文件夹 二、添加配置文件 将以下内容修改一下，改改名字邮箱什么的，存成配置文件 pyproject.toml&#xA;[build-system] requires = [&amp;#34;hatchling&amp;#34;] build-backend = &amp;#34;hatchling.build&amp;#34; [project] name = &amp;#34;example_package_YOUR_USERNAME_HERE&amp;#34; version = &amp;#34;0.0.1&amp;#34; authors = [ { name=&amp;#34;Example Author&amp;#34;, email=&amp;#34;author@example.</description>
     </item>
     <item>
       <title>统计学补完计划</title>
