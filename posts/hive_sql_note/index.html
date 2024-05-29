@@ -23,11 +23,11 @@
 
 
 <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Hive SQL 笔记"/>
-<meta name="twitter:description" content="Hive SQL 不需要注释，它会自己注释自己"/>
+<meta name="twitter:description" content="Hive SQL 不需要注释，它会自己解释自己"/>
       <meta name="twitter:site" content="@MinosPalace"/>
 
 <meta property="og:title" content="Hive SQL 笔记" />
-<meta property="og:description" content="Hive SQL 不需要注释，它会自己注释自己" />
+<meta property="og:description" content="Hive SQL 不需要注释，它会自己解释自己" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://luochang212.github.io/posts/hive_sql_note/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-12-25T00:00:00+00:00" />
@@ -574,7 +574,7 @@
   
   <div class="post">
     <blockquote>
-<p>Hive SQL 会自己注释自己</p>
+<p>Hive SQL 不需要注释，它会自己解释自己</p>
 </blockquote>
 <h3 id="1-数据表操作">1. 数据表操作</h3>
 <h4 id="11-创建-hive-表">1.1 创建 Hive 表</h4>
@@ -593,18 +593,42 @@ STORED AS [file_format];
 <h4 id="12-删除-hive-表">1.2 删除 Hive 表</h4>
 <pre tabindex="0"><code>DROP TABLE [DATABASE].[TABLE_NAME];
 </code></pre><pre tabindex="0"><code>DROP TABLE IF EXISTS [DATABASE].[TABLE_NAME];
-</code></pre><h4 id="13-增加新的列">1.3 增加新的列</h4>
+</code></pre><h4 id="13-插入新的行">1.3 插入新的行</h4>
+<p>从查询结果插入：</p>
+<pre tabindex="0"><code>INSERT INTO TABLE [DATABASE].[TABLE_A]
+SELECT id, name, department
+FROM [DATABASE].[TABLE_B]
+WHERE date = &#39;2024-05-30&#39;;
+</code></pre><p>直接插入特定值：</p>
+<pre tabindex="0"><code>INSERT INOT TABLE [DATABASE].[TABLE_A]
+VALUES (1001, &#39;Alice Smith&#39;, &#39;HR&#39;),
+       (1002, &#39;Bob Johnson&#39;, &#39;Finance&#39;);
+</code></pre><p>插入分区表：</p>
+<pre tabindex="0"><code>INSERT INTO TABLE [DATABASE].[TABLE_A] PARTITION (date=&#39;2024-05-30&#39;)
+SELECT id, name, department
+FROM [DATABASE].[TABLE_B]
+WHERE date = &#39;2024-05-30&#39;;
+</code></pre><h4 id="14-覆盖表数据">1.4 覆盖表数据</h4>
+<p>删除老数据，插入新数据：</p>
+<pre tabindex="0"><code>INSERT OVERWRITE TABLE [DATABASE].[TABLE_A]
+SELECT id, name, department
+FROM [DATABASE].[TABLE_B]
+WHERE date = &#39;2024-05-30&#39;;
+</code></pre><blockquote>
+<p>PS: 对于分区表，仅覆盖分区数据</p>
+</blockquote>
+<h4 id="15-增加新的列">1.5 增加新的列</h4>
 <pre tabindex="0"><code>ALTER TABLE [DATABASE].[TABLE_NAME] ADD COLUMNS (
     sub_score    ARRAY&lt;DOUBLE&gt;    COMMENT &#39;分科成绩&#39;,
     sub_score_map    MAP&lt;STRING,DOUBLE&gt;    COMMENT &#39;分科成绩map&#39;,
     `rank`    BIGINT    COMMENT &#39;年段排名&#39;,
     update_time    STRING    COMMENT &#39;更新时间&#39;
 );
-</code></pre><h4 id="14-查询表结构">1.4 查询表结构</h4>
+</code></pre><h4 id="16-查询表结构">1.6 查询表结构</h4>
 <pre tabindex="0"><code>DESC [DATABASE].[TABLE_NAME];
-</code></pre><h4 id="15-查询分区">1.5 查询分区</h4>
+</code></pre><h4 id="17-查询分区">1.7 查询分区</h4>
 <pre tabindex="0"><code>CHECK PARTITIONS [DATABASE].[TABLE_NAME];
-</code></pre><h4 id="16-创建临时表">1.6 创建临时表</h4>
+</code></pre><h4 id="18-创建临时表">1.8 创建临时表</h4>
 <pre tabindex="0"><code>CREATE TEMPORARY TABLE std.std_temp_high_score AS
 SELECT
     name,
@@ -612,7 +636,7 @@ SELECT
 FROM [DATABASE].[TABLE_NAME]
 WHERE ttl_score &gt;= 10
     AND LENGTH(name) &gt; 1;
-</code></pre><h4 id="17-将本地-csv-文件上传至-hive">1.7 将本地 csv 文件上传至 Hive</h4>
+</code></pre><h4 id="19-将本地-csv-文件上传至-hive">1.9 将本地 csv 文件上传至 Hive</h4>
 <pre tabindex="0"><code>LOAD DATA LOCAL INPATH &#39;/home/user/data.csv&#39; INTO TABLE my_table
 FIELDS TERMINATED BY &#39;,&#39;
 LINES TERMINATED BY &#39;\n&#39;;
@@ -645,7 +669,7 @@ FROM
     SELECT 2 AS `id`, &#39;大深&#39; AS name, 91.5 AS ttl_score
     UNION ALL
     SELECT 3 AS `id`, &#39;阿弥&#39; AS name, 93 AS ttl_score
-) t
+) t;
 </code></pre><p>2）学生基础信息表：</p>
 <pre tabindex="0"><code>CREATE TABLE std.std_student_info AS
 SELECT
@@ -659,7 +683,7 @@ FROM
     SELECT 2 AS `id`, &#39;P&#39; AS gender, 15 AS age
     UNION ALL
     SELECT 3 AS `id`, &#39;T&#39; AS gender, 18 AS age
-) t
+) t;
 </code></pre><h3 id="3-数据类型">3. 数据类型</h3>
 <h4 id="31-常用数据类型">3.1 常用数据类型</h4>
 <table>
@@ -708,35 +732,35 @@ FROM std.std_student_score
 <pre tabindex="0"><code>SELECT
     `id`,
     CAST(ttl_score/10 AS BIGINT) AS ttl_score
-FROM std.std_student_score
+FROM std.std_student_score;
 </code></pre><h3 id="4-string-数据类型的常用方法">4. STRING 数据类型的常用方法</h3>
 <h4 id="41-替换字符串">4.1 替换字符串</h4>
 <pre tabindex="0"><code>SELECT
-    REGEXP_REPLACE(&#34;abcdeffecmn&#34;, &#34;ef|cm&#34;, &#34;%&#34;)
+    REGEXP_REPLACE(&#34;abcdeffecmn&#34;, &#34;ef|cm&#34;, &#34;%&#34;);
 </code></pre><p>output: <code>abcd%fe%n</code></p>
 <h4 id="42-替换符号需使用--转义">4.2 替换符号：需使用 <code>\\</code> 转义</h4>
 <pre tabindex="0"><code>SELECT
-    REGEXP_REPLACE(&#34;abcd:effe(eee)cmn&#34;, &#34;\\:|\\(|\\)&#34;, &#34; &#34;)
+    REGEXP_REPLACE(&#34;abcd:effe(eee)cmn&#34;, &#34;\\:|\\(|\\)&#34;, &#34; &#34;);
 </code></pre><p>output: <code>abcd effe eee cmn</code></p>
 <h4 id="43-获取字符串的子串">4.3 获取字符串的子串</h4>
 <pre tabindex="0"><code>SELECT
-    SUBSTR(&#39;abcedf&#39;, 3) AS sub_str
+    SUBSTR(&#39;abcedf&#39;, 3) AS sub_str;
 </code></pre><p>output: <code>cedf</code></p>
 <pre tabindex="0"><code>SELECT
-    SUBSTR(&#39;abcedf&#39;, 3, 2) AS sub_str
+    SUBSTR(&#39;abcedf&#39;, 3, 2) AS sub_str;
 </code></pre><p>output: <code>ce</code></p>
 <pre tabindex="0"><code>SELECT
-    SUBSTR(&#39;abcedf&#39;, -3, 2) AS sub_str
+    SUBSTR(&#39;abcedf&#39;, -3, 2) AS sub_str;
 </code></pre><p>output: <code>ed</code></p>
 <pre tabindex="0"><code>SELECT
-    SUBSTR(&#39;abcedf&#39;, -3, 5) AS sub_str
+    SUBSTR(&#39;abcedf&#39;, -3, 5) AS sub_str;
 </code></pre><p>output: <code>edf</code></p>
 <h4 id="44-找到特定字符串在用英文逗号分隔的字符串列表中的位置">4.4 找到特定字符串在用英文逗号分隔的字符串列表中的位置</h4>
 <pre tabindex="0"><code>SELECT
-    FIND_IN_SET(&#39;a&#39;, &#39;c,b,a,d&#39;)
+    FIND_IN_SET(&#39;a&#39;, &#39;c,b,a,d&#39;);
 </code></pre><p>output: <code>3</code></p>
 <pre tabindex="0"><code>SELECT
-    FIND_IN_SET(&#39;m&#39;, &#39;c,b,a,d&#39;)
+    FIND_IN_SET(&#39;m&#39;, &#39;c,b,a,d&#39;);
 </code></pre><p>output: <code>0</code></p>
 <p>找不到会返回 <code>0</code> 所以它也可以通过是否为零来判断字符在列表中是否存在</p>
 <h3 id="5-doubel-数据类型的常用方法">5. DOUBEL 数据类型的常用方法</h3>
@@ -746,7 +770,7 @@ FROM std.std_student_score
 FROM
 (
     SELECT 1.232812 AS ratio
-) t
+) t;
 </code></pre><p>output: <code>1.233</code></p>
 <h3 id="6-行内函数">6. 行内函数</h3>
 <p>HQL 函数可以分为两种：一种是做行内处理的，输入是一行，输出也是一行；另一种做聚合，输入多行，输出一行。</p>
@@ -755,7 +779,7 @@ FROM
 <pre tabindex="0"><code>SELECT
     `id`,
     if(ttl_score &gt; 90, 1, 0) AS is_high
-FROM std.std_student_score
+FROM std.std_student_score;
 </code></pre><h4 id="62-case-函数">6.2 CASE 函数</h4>
 <pre tabindex="0"><code>SELECT
     `id`,
@@ -765,7 +789,7 @@ FROM std.std_student_score
         WHEN ttl_score &gt;= 60 THEN &#39;C&#39;
         ELSE &#39;C-&#39;
     END AS `level`
-FROM std.std_student_score
+FROM std.std_student_score;
 </code></pre><h4 id="63-concat-函数">6.3 CONCAT 函数</h4>
 <pre tabindex="0"><code>SELECT
     CONCAT(&#39;a&#39;, &#39;-&#39;, &#39;b&#39;)
@@ -775,33 +799,33 @@ FROM std.std_student_score
 <pre tabindex="0"><code>SELECT
     CONCAT_WS(&#39;,&#39;,
         ARRAY(&#39;1&#39;,&#39;2&#39;,&#39;3&#39;)
-    )
+    );
 </code></pre><pre tabindex="0"><code>SELECT
-    CONCAT_WS(&#39;,&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;)
+    CONCAT_WS(&#39;,&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;);
 </code></pre><p>output: <code>1,2,3</code></p>
 <h4 id="65-split-函数">6.5 SPLIT 函数</h4>
 <pre tabindex="0"><code>SELECT
-    SPLIT(&#39;1,2,3&#39;, &#39;,&#39;)
+    SPLIT(&#39;1,2,3&#39;, &#39;,&#39;);
 </code></pre><p>output: <code>[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;]</code></p>
 <h3 id="7-聚合-group-by">7. 聚合 GROUP BY</h3>
 <h4 id="71-用-group-by-去重">7.1 用 GROUP BY 去重</h4>
 <p>聚合语句 GROUP BY，单独使用有去重的效果</p>
 <pre tabindex="0"><code>SELECT gender
 FROM std.std_student_info
-GROUP BY gender
+GROUP BY gender;
 </code></pre><h4 id="72-计算每个-gender-值对应的记录数">7.2 计算每个 gender 值对应的记录数</h4>
 <pre tabindex="0"><code>SELECT
     gender,
     COUNT(*) AS cnt
 FROM std.std_student_info
-GROUP BY gender
+GROUP BY gender;
 </code></pre><h3 id="8-聚合函数">8. 聚合函数</h3>
 <h4 id="81-计算记录数count-函数">8.1 计算记录数：COUNT 函数</h4>
 <pre tabindex="0"><code>SELECT COUNT(*) AS row_num
-FROM std.std_student_info
+FROM std.std_student_info;
 </code></pre><h4 id="82-聚合时对字段值去重distinct">8.2 聚合时对字段值去重：DISTINCT</h4>
 <pre tabindex="0"><code>SELECT COUNT(DISTINCT gender) AS gender_cnt
-FROM std.std_student_info
+FROM std.std_student_info;
 </code></pre><h4 id="83-内置函数sum-max-min-avg-variance">8.3 内置函数：SUM, MAX, MIN, AVG, VARIANCE</h4>
 <pre tabindex="0"><code>SELECT
     gender,
@@ -811,7 +835,7 @@ FROM std.std_student_info
     AVG(age) AS avg_age,    -- 均值
     VARIANCE(age) AS var_age    -- 方差
 FROM std.std_student_info
-GROUP BY gender
+GROUP BY gender;
 </code></pre><h3 id="9-join-方法">9. JOIN 方法</h3>
 <h4 id="91-常见的-join-方法">9.1 常见的 JOIN 方法</h4>
 <table>
@@ -991,14 +1015,14 @@ EXPLAIN EXTENDED [query];  -- 获取更详细的查询计划
     gender,
     COLLECT_LIST(age) AS age_list
 FROM std.std_student_info
-GROUP BY gender
+GROUP BY gender;
 </code></pre><h4 id="102-collect_set-函数">10.2 COLLECT_SET 函数</h4>
 <p><strong>COLLECT_SET 函数</strong>：将来自多行的某字段的值聚合成 ARRAY 并去重</p>
 <pre tabindex="0"><code>SELECT
     gender,
     COLLECT_SET(age) AS age_set
 FROM std.std_student_info
-GROUP BY gender
+GROUP BY gender;
 </code></pre><h4 id="103-用分隔符拼接-array">10.3 用分隔符拼接 ARRAY</h4>
 <pre tabindex="0"><code>SELECT
     gender,
@@ -1006,7 +1030,7 @@ GROUP BY gender
         COLLECT_SET(CAST(age AS STRING))
     ) AS age_set
 FROM std.std_student_info
-GROUP BY gender
+GROUP BY gender;
 </code></pre><h4 id="104-array_contains-函数">10.4 ARRAY_CONTAINS 函数</h4>
 <p><strong>ARRAY_CONTAINS 函数</strong>：判断 ARRAY 中是否包含某元素</p>
 <pre tabindex="0"><code>SELECT
@@ -1018,14 +1042,14 @@ FROM
     UNION ALL
     SELECT 2 AS id, array(6,7,8) AS age_list
 ) t
-WHERE ARRAY_CONTAINS(age_list, 3) 
+WHERE ARRAY_CONTAINS(age_list, 3);
 </code></pre><h4 id="105-元素排序-sort_array-函数">10.5 元素排序: SORT_ARRAY 函数</h4>
 <pre tabindex="0"><code>SELECT
     SORT_ARRAY(lst) AS sorted_lst
 FROM
 (
     SELECT ARRAY(3,2,4,1) AS lst
-) t
+) t;
 </code></pre><h3 id="11-map-相关函数">11. MAP 相关函数</h3>
 <h4 id="111-str_to_map-函数">11.1 STR_TO_MAP 函数</h4>
 <p><strong>STR_TO_MAP 函数</strong>：将固定格式的 STRING 转成 MAP</p>
@@ -1036,7 +1060,7 @@ FROM
             CONCAT(&#39;key_1&#39;, &#39;:&#39;, &#39;value_1&#39;),
             CONCAT(&#39;key_2&#39;, &#39;:&#39;, &#39;value_2&#39;)
         ), &#39;,&#39;, &#39;:&#39;
-    ) AS my_map
+    ) AS my_map;
 </code></pre><p>或者</p>
 <pre tabindex="0"><code>SELECT
     STR_TO_MAP(
@@ -1045,7 +1069,7 @@ FROM
             CONCAT(&#39;key_2&#39;, &#39;:&#39;, &#39;value_2&#39;)
             )
         ), &#39;,&#39;, &#39;:&#39;
-    ) AS my_map
+    ) AS my_map;
 </code></pre><p>output: <code>{&quot;key_1&quot;:&quot;value_1&quot;,&quot;key_2&quot;:&quot;value_2&quot;}</code></p>
 <h4 id="112-通过-key-读取-value">11.2 通过 key 读取 value</h4>
 <pre tabindex="0"><code>SELECT
@@ -1060,7 +1084,7 @@ FROM
                 )
             ), &#39;,&#39;, &#39;:&#39;
         ) AS my_map
-) t
+) t;
 </code></pre><p>output: <code>A1</code></p>
 <h4 id="113-map_keys-函数">11.3 MAP_KEYS 函数</h4>
 <p><strong>MAP_KEYS 函数</strong>：提取 map 中 的 key，生成由 key 组成的 array</p>
@@ -1091,19 +1115,19 @@ FROM
                 CONCAT(&#39;政治:&#39;, &#39;92&#39;)
             ), &#39;,&#39;, &#39;:&#39;
         ) AS sub_score
-) t
+) t;
 </code></pre><p>使用 MAP_KEYS 函数将字典的 key 转为 key 的 ARRAY</p>
 <pre tabindex="0"><code>SELECT
     `id`,
     MAP_KEYS(sub_score) AS sub_list
-FROM std.std_level_map
+FROM std.std_level_map;
 </code></pre><h4 id="114-map_values-函数">11.4 MAP_VALUES 函数</h4>
 <p><strong>MAP_VALUES 函数</strong>：把 map 中的 value 转为 value 的 array</p>
 <p>与 MAP_KEYS 类似，用 MAP_VALUES 可以把 map 的 value 转为 value 的 ARRAY</p>
 <pre tabindex="0"><code>SELECT
     `id`,
     MAP_VALUES(sub_score) AS score_list
-FROM std.std_level_map
+FROM std.std_level_map;
 </code></pre><h3 id="12-构造-json">12 构造 JSON</h3>
 <h4 id="121-构造简单的-json">12.1 构造简单的 JSON</h4>
 <pre tabindex="0"><code>SELECT
@@ -1112,7 +1136,7 @@ FROM std.std_level_map
             CONCAT(&#39;语文:&#39;, &#39;80&#39;),
             CONCAT(&#39;数学:&#39;, &#39;90&#39;)
         ), &#39;&#34;}&#39;
-    ) AS my_map
+    ) AS my_map;
 </code></pre><p>output: <code>{&quot;语文:80&quot;,&quot;数学:90&quot;}</code></p>
 <h4 id="122-将-map-转换为-json-格式的字符串">12.2 将 MAP 转换为 JSON 格式的字符串</h4>
 <pre tabindex="0"><code>SELECT
@@ -1126,7 +1150,7 @@ FROM std.std_level_map
     ) AS my_map
 FROM std.std_level_map
 LATERAL VIEW OUTER EXPLODE(sub_score) e AS k, v
-GROUP BY `id`
+GROUP BY `id`;
 </code></pre><p>output:</p>
 <table>
 <thead>
@@ -1158,7 +1182,7 @@ GROUP BY `id`
                 ), &#39;&#34;}&#39;
             )
         ), &#39;]&#39;
-    ) AS my_map
+    ) AS my_map;
 </code></pre><p>output: <code>[{&quot;语文:80&quot;,&quot;数学:90&quot;}]</code></p>
 <h4 id="124-基于-map-构造形如-arraymapstringstring-的字符串">12.4 基于 MAP 构造形如 <code>ARRAY&lt;MAP&lt;STRING,STRING&gt;&gt;</code> 的字符串</h4>
 <pre tabindex="0"><code>SELECT
@@ -1176,7 +1200,7 @@ GROUP BY `id`
             ), &#39;]&#39;
         )
     ) AS my_map
-FROM std.std_level_map
+FROM std.std_level_map;
 </code></pre><p>output: <code>[{&quot;英语&quot;:&quot;95&quot;,&quot;政治&quot;:&quot;90&quot;},{&quot;英语&quot;:&quot;75&quot;,&quot;政治&quot;:&quot;92&quot;}]</code></p>
 <blockquote>
 <p><strong>Note</strong>: 如果原MAP中不包含任何选定数据，应该返回空字符串，为了实现这个效果，需要在外层套一个IF函数来判断。常用的判断条件有：</p>
@@ -1207,7 +1231,7 @@ FROM
         ARRAY(1,2) AS group_id
 ) t
 LATERAL VIEW OUTER EXPLODE(group_id) g AS gid
-WHERE id IN (1,3)
+WHERE id IN (1,3);
 </code></pre><p>output:</p>
 <table>
 <thead>
@@ -1255,7 +1279,7 @@ FROM
 ) t
 LATERAL VIEW OUTER EXPLODE(group_id) g AS gid
 WHERE gid &gt; 1
-GROUP BY gid
+GROUP BY gid;
 </code></pre><p>output:</p>
 <table>
 <thead>
@@ -1296,7 +1320,7 @@ FROM
         ARRAY(&#39;A&#39;,&#39;B&#39;) AS level
 ) t
 LATERAL VIEW OUTER EXPLODE(group_id) g AS gid
-LATERAL VIEW OUTER EXPLODE(level) l AS lvl
+LATERAL VIEW OUTER EXPLODE(level) l AS lvl;
 </code></pre><p>output:</p>
 <table>
 <thead>
@@ -1351,7 +1375,7 @@ FROM
     SELECT 2 AS id, &#39;A&#39; AS class
     UNION ALL
     SELECT 3 AS id, &#39;B&#39; AS class
-) t
+) t;
 </code></pre><p>output:</p>
 <table>
 <thead>
@@ -1403,7 +1427,7 @@ FROM
     SELECT 3 AS id, &#39;A&#39; AS class, 91 AS score
     UNION ALL
     SELECT 4 AS id, &#39;B&#39; AS class, 100 AS score
-) t
+) t;
 </code></pre><p>output:</p>
 <table>
 <thead>
@@ -1459,7 +1483,7 @@ FROM
     SELECT 3 AS id, &#39;A&#39; AS class, 91 AS score
     UNION ALL
     SELECT 4 AS id, &#39;B&#39; AS class, 100 AS score
-) t
+) t;
 </code></pre><p>output:</p>
 <table>
 <thead>
@@ -1517,7 +1541,7 @@ FROM
     SELECT 3 AS id, &#39;A&#39; AS class, 91 AS score
     UNION ALL
     SELECT 4 AS id, &#39;B&#39; AS class, 100 AS score
-) t
+) t;
 </code></pre><p>output:</p>
 <table>
 <thead>
@@ -1570,9 +1594,9 @@ FROM
     SELECT 3 AS id, 90 AS score
 ) t
 ORDER BY score DESC
-LIMIT 2
+LIMIT 2;
 </code></pre><p>ORDER BY也常用于随机抽样：</p>
-<pre tabindex="0"><code>ORDER BY RAND()
+<pre tabindex="0"><code>ORDER BY RAND();
 </code></pre><h4 id="152-组筛选-having-方法">15.2 组筛选: HAVING 方法</h4>
 <p>HAVING语句能对GROUP BY的结果做筛选。以下 HQL 选出班级人数大于1的班级：</p>
 <pre tabindex="0"><code>SELECT
@@ -1587,7 +1611,7 @@ FROM
     SELECT 3 AS id, &#39;B&#39; AS class
 ) t
 GROUP BY class
-HAVING id_cnt &gt; 1
+HAVING id_cnt &gt; 1;
 </code></pre><h4 id="153-cluster-by-distribute-by-和-sort-by">15.3 <code>CLUSTER BY</code>, <code>DISTRIBUTE BY</code> 和 <code>SORT BY</code></h4>
 <p>这三个语句是控制reducer的。<code>DISTRIBUTE BY [YOUR_COLUMN_HERE]</code> 用于控制数据如何进入reducer，比如：</p>
 <pre tabindex="0"><code>SELECT
@@ -1601,7 +1625,7 @@ FROM
     UNION ALL
     SELECT 3 AS id, &#39;B&#39; AS class
 ) t
-DISTRIBUTE BY class
+DISTRIBUTE BY class;
 </code></pre><p>如上，则拥有相同class值的记录，会进入同一个reducer。</p>
 <p><code>SORT BY [YOUR_COLUMN_HERE]</code> 用于控制reducer中数据的排序，比如：</p>
 <pre tabindex="0"><code>SELECT
@@ -1616,7 +1640,7 @@ FROM
     SELECT 3 AS id, &#39;B&#39; AS class
 ) t
 DISTRIBUTE BY class
-SORT BY id
+SORT BY id;
 </code></pre><p>如上例，在每个reducer中，会用id字段做reducer内的排序。</p>
 <p>对某字段使用 <code>CLUSTER BY</code>，等于对该字段既使用DISTRIBUTE BY，又使用SORT BY，一种语法糖了属于是。</p>
 <blockquote>
@@ -1647,7 +1671,7 @@ FROM
     FROM [DB_NAME].[SOURCE_TABLE]
     WHERE [CONDITIONS]
     DISTRIBUTE BY [YOUR_KEY]
-) t
+) t;
 </code></pre><p>PYTHON 部分：</p>
 <pre tabindex="0"><code>import sys
 
@@ -1685,7 +1709,7 @@ FROM
     SELECT NULL AS col_1, 10 AS col_2
     UNION ALL
     SELECT NULL AS col_1, NULL AS col_2
-) t
+) t;
 </code></pre><p>output:</p>
 <table>
 <thead>
@@ -1713,7 +1737,7 @@ FROM
     SELECT NULL AS col_1, NULL AS col_2
     UNION ALL
     SELECT 100 AS col_1, 200 AS col_2
-) t
+) t;
 </code></pre><p>output:</p>
 <table>
 <thead>
@@ -1738,7 +1762,7 @@ FROM
 <p>原始用法：</p>
 <pre tabindex="0"><code>SELECT
     GREATEST(3,1,2) AS greatest_num
-    LEAST(6,5,7) AS least_num
+    LEAST(6,5,7) AS least_num;
 </code></pre><p>output:</p>
 <table>
 <thead>
@@ -1765,7 +1789,7 @@ FROM
     SELECT 8 AS breakfast, 0 AS lunch, 20 AS dinner
     UNION ALL
     SELECT 0 AS breakfast, 35 AS lunch, 22 AS dinner
-) t
+) t;
 </code></pre><p>output:</p>
 <table>
 <thead>
@@ -1820,7 +1844,7 @@ FROM
     ) t2
 ) t3
 ORDER BY distance
-LIMIT 1
+LIMIT 1;
 </code></pre><p>复杂一点的例子：计算多组学生分数的分位数：25/50/75分位数</p>
 <pre tabindex="0"><code>SELECT
     ttl_score,
