@@ -576,8 +576,14 @@
     <blockquote>
 <p>简单的 <code>nohup [CMD] &amp;</code> 已经不够用，该研究一下后台管理工具了</p>
 </blockquote>
+<p>问了一下 Qwen，大概有五款工具可用。这五款工具可以分两类：</p>
+<ul>
+<li>进程管理器：<code>pm2</code>, <code>systemd</code>, <code>supervisor</code></li>
+<li>终端复用器：<code>screen</code>, <code>tmux</code></li>
+</ul>
+<p>总之，保持单个程序在后台运行，<code>systemd</code> 就够用了。如果需要保持多个程序，建议用 <code>pm2</code>。<code>screen</code> 和 <code>tmux</code> 则是更临时的方案，适合偶尔开起来用一下的情况。</p>
 <h3 id="一systemd">一、systemd</h3>
-<p>使用 systemd 管理 Jupyter lab 服务，得先创建一个 systemd unit 文件来定义服务的启动、重启等行为。以下是创建 systemd 服务的步骤。</p>
+<p>使用 systemd 管理 Jupyter lab 服务，必须先创建一个 systemd unit 文件来定义服务的启动、重启等行为。以下是创建 systemd 服务的步骤。</p>
 <h4 id="11-创建-unit-文件">1.1 创建 unit 文件</h4>
 <p>用 <code>vi</code> 新建并打开 <code>jupyterlab.service</code> 文件：</p>
 <pre tabindex="0"><code>sudo vi /etc/systemd/system/jupyterlab.service
@@ -589,7 +595,7 @@ After=network.target
 [Service]
 Type=simple
 User=[YOUR_USERNAME]
-ExecStart=/[YOUR_USERNAME]/miniconda3/bin/jupyter lab --ip=0.0.0.0 --port=443 --no-browser --allow-root
+ExecStart=/home/[YOUR_USERNAME]/miniconda3/bin/jupyter lab --ip=0.0.0.0 --port=443 --no-browser --allow-root
 WorkingDirectory=/home/[YOUR_USERNAME]/
 Restart=on-failure
 RestartSec=8s
@@ -621,58 +627,25 @@ sudo systemctl restart jupyterlab
 </code></pre><blockquote>
 <p>平替：<a href="https://github.com/Supervisor/supervisor">supervisor</a></p>
 </blockquote>
-<h3 id="二screen">二、screen</h3>
-<p>Screen 是一个终端复用工具，用它也可以实现后台运行 jupyter 服务。下面以 <code>jupyter notebook</code> 为例。</p>
-<h4 id="21-安装-screen">2.1 安装 Screen</h4>
-<p>在 Ubuntu 上安装：</p>
-<pre tabindex="0"><code>sudo apt-get install screen
-</code></pre><p>在 Centos 安装：</p>
-<pre tabindex="0"><code># 更新系统中的所有包
-sudo yum update
-
-# 启用 EPEL 仓库 (Extra Packages for Enterprise Linux)
-sudo yum install epel-release
-
-# 安装 screen
-sudo yum install screen
-
-# 测试 screen 是否安装成功
-screen --version
-</code></pre><h4 id="22-开启会话">2.2 开启会话</h4>
-<p>开启一个名为 <code>jp</code> 的会话：</p>
-<pre tabindex="0"><code>screen -S jp
-</code></pre><p>在新会话里启动 jupyter notebook：</p>
-<pre tabindex="0"><code>jupyter notebook --ip=0.0.0.0 --port=443 --allow-root
-</code></pre><h4 id="23-离开会话">2.3 离开会话</h4>
-<p>按 <code>ctrl + a</code> 然后按 <code>d</code> 暂时离开会话。</p>
-<h4 id="24-重回会话">2.4 重回会话</h4>
-<p>列出所有 screen 会话：</p>
-<pre tabindex="0"><code>screen -ls
-</code></pre><p>重回 <code>jp</code> 会话：</p>
-<pre tabindex="0"><code>screen -r jp
-</code></pre><p>退出会话：</p>
-<pre tabindex="0"><code>exit
-</code></pre><blockquote>
-<p>平替：<a href="https://github.com/tmux/tmux/wiki">tmux</a></p>
-</blockquote>
-<h3 id="三pm2">三、pm2</h3>
-<h4 id="31-安装">3.1 安装</h4>
+<h3 id="二pm2">二、pm2</h3>
+<p><a href="https://github.com/Unitech/pm2">pm2</a> 是一个自带负载均衡的生产环境进程管理器。</p>
+<h4 id="21-安装">2.1 安装</h4>
 <p>对于 Centos，安装 <code>Node.js</code> 和 <code>npm</code>：</p>
 <pre tabindex="0"><code>sudo yum install epel-release
 sudo yum install nodejs npm
 </code></pre><p>全局安装 <code>pm2</code>：</p>
 <pre tabindex="0"><code>sudo npm install -g pm2
-</code></pre><h4 id="32-shell-启动脚本">3.2 Shell 启动脚本</h4>
+</code></pre><h4 id="22-shell-启动脚本">2.2 Shell 启动脚本</h4>
 <p>写一个名为 <code>jp.sh</code> 的启动脚本：</p>
 <pre tabindex="0"><code>#!/bin/bash
 
 # 如果不是全局 conda 环境
 /path/to/your/miniconda3/bin/activate [YOUR_ENV]
 
-jupyter-lab --ip=0.0.0.0 --port=443 --no-browser --allow-root
+jupyter-lab --ip=0.0.0.0 --port=443 --no-browser --notebook-dir=/home  --allow-root
 </code></pre><p>给脚本执行权限：</p>
 <pre tabindex="0"><code>chmod +x ./jp.sh
-</code></pre><h4 id="33-启动-pm2">3.3 启动 pm2</h4>
+</code></pre><h4 id="23-启动-pm2">2.3 启动 pm2</h4>
 <p>使用 pm2 启动这个脚本：</p>
 <pre tabindex="0"><code>pm2 start ./jp.sh
 
@@ -705,7 +678,41 @@ pm2 reset all
 
 # 查看删除是否生效
 pm2 list
-</code></pre><!-- Docker -->
+</code></pre><h3 id="三screen">三、screen</h3>
+<p>Screen 是一个终端复用工具，用它也可以实现后台运行 jupyter 服务。下面以 <code>jupyter notebook</code> 为例。</p>
+<h4 id="31-安装-screen">3.1 安装 Screen</h4>
+<p>在 Ubuntu 上安装：</p>
+<pre tabindex="0"><code>sudo apt-get install screen
+</code></pre><p>在 Centos 安装：</p>
+<pre tabindex="0"><code># 更新系统中的所有包
+sudo yum update
+
+# 启用 EPEL 仓库 (Extra Packages for Enterprise Linux)
+sudo yum install epel-release
+
+# 安装 screen
+sudo yum install screen
+
+# 测试 screen 是否安装成功
+screen --version
+</code></pre><h4 id="32-开启会话">3.2 开启会话</h4>
+<p>开启一个名为 <code>jp</code> 的会话：</p>
+<pre tabindex="0"><code>screen -S jp
+</code></pre><p>在新会话里启动 jupyter notebook：</p>
+<pre tabindex="0"><code>jupyter notebook --ip=0.0.0.0 --port=443 --allow-root
+</code></pre><h4 id="33-离开会话">3.3 离开会话</h4>
+<p>按 <code>ctrl + a</code> 然后按 <code>d</code> 暂时离开会话。</p>
+<h4 id="34-重回会话">3.4 重回会话</h4>
+<p>列出所有 screen 会话：</p>
+<pre tabindex="0"><code>screen -ls
+</code></pre><p>重回 <code>jp</code> 会话：</p>
+<pre tabindex="0"><code>screen -r jp
+</code></pre><p>退出会话：</p>
+<pre tabindex="0"><code>exit
+</code></pre><blockquote>
+<p>平替：<a href="https://github.com/tmux/tmux/wiki">tmux</a></p>
+</blockquote>
+<!-- Docker -->
 <p>参考：</p>
 <ul>
 <li><a href="https://janakiev.com/blog/jupyter-systemd/">Manage Jupyter Notebook and JupyterLab with Systemd</a></li>
