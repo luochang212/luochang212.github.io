@@ -574,14 +574,15 @@
   
   <div class="post">
     <blockquote>
-<p>简单的 <code>nohup [CMD] &amp;</code> 已经不够用，该研究一下后台管理工具了</p>
+<p>呀嘞呀嘞，JupyterLab 怎么又挂了。</p>
+<p>简单的 <code>nohup [CMD] &amp;</code> 已经不够用，该研究一下后台管理工具了。</p>
 </blockquote>
-<p>问了一下 Qwen，大概有五款工具可用。这五款工具可以分两类：</p>
+<p>问了一下 Qwen，大概有五款后台管理工具可用。这五款工具可以分两类：</p>
 <ul>
-<li>进程管理器：<code>pm2</code>, <code>systemd</code>, <code>supervisor</code></li>
+<li>进程管理器：<code>systemd</code>, <code>pm2</code>, <code>supervisor</code></li>
 <li>终端复用器：<code>screen</code>, <code>tmux</code></li>
 </ul>
-<p>总之，保持单个程序在后台运行，<code>systemd</code> 就够用了。如果需要保持多个程序，建议用 <code>pm2</code>。<code>screen</code> 和 <code>tmux</code> 则是更临时的方案，适合偶尔开起来用一下的情况。</p>
+<p>总之，保持单个程序在后台运行，<code>systemd</code> 就够用。如果要维持多个后台程序，<code>pm2</code> 比较合适。<code>screen</code> 和 <code>tmux</code> 则是更临时的方案，适合偶尔用用的情况。</p>
 <h3 id="一systemd">一、systemd</h3>
 <p>使用 systemd 管理 Jupyter lab 服务，必须先创建一个 systemd unit 文件来定义服务的启动、重启等行为。以下是创建 systemd 服务的步骤。</p>
 <h4 id="11-创建-unit-文件">1.1 创建 unit 文件</h4>
