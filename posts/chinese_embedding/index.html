@@ -19,19 +19,19 @@
     
     
 
-<title>1 • Chang Luo</title>
+<title>如何生成中文词向量 • Chang Luo</title>
 
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="1"/>
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="如何生成中文词向量"/>
 <meta name="twitter:description" content="1"/>
       <meta name="twitter:site" content="@MinosPalace"/>
 
-<meta property="og:title" content="1" />
+<meta property="og:title" content="如何生成中文词向量" />
 <meta property="og:description" content="1" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://localhost:1313/posts/chinese_embedding/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-05-30T00:00:00+00:00" />
-<meta property="article:modified_time" content="2024-05-30T00:00:00+00:00" /><meta property="og:site_name" content="Title" />
+<meta property="article:published_time" content="2024-06-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-06-01T00:00:00+00:00" /><meta property="og:site_name" content="Title" />
 
 
     
@@ -519,13 +519,13 @@
 
 <article>
   <header>
-    <h1>1</h1>
+    <h1>如何生成中文词向量</h1>
     
     
 <div class="post__meta">
     
     
-      <i class="fas fa-calendar-alt"></i> May 30, 2024
+      <i class="fas fa-calendar-alt"></i> Jun 1, 2024
     
     
     
@@ -577,10 +577,43 @@
   
   <div class="post">
     <blockquote>
-<p>1</p>
+<p>怎么训练词向量</p>
 </blockquote>
-<p>GitHub 项目地址：<a href="https://github.com/luochang212/flameai" target="_blank">flameai</a></p>
-<h3 id="一简单介绍">一、简单介绍</h3>
+<!-- ### 一、简单介绍 -->
+<ul>
+<li>
+<p>预训练模型</p>
+</li>
+<li>
+<p>自己训练</p>
+</li>
+<li>
+<p>方法有哪些，都需要哪些输入，怎么训练</p>
+</li>
+</ul>
+<!-- GitHub 项目地址：<a href="https://github.com/luochang212/flameai" target="_blank">flameai</a> -->
+<p>word2vec</p>
+<p>two tower DNN
+<a href="https://medium.com/better-ml/embedding-learning-for-retrieval-29af1c9a1e65">https://medium.com/better-ml/embedding-learning-for-retrieval-29af1c9a1e65</a></p>
+<p>bert</p>
+<p>transformer</p>
+<p>roformer
+<a href="https://huggingface.co/docs/transformers/model_doc/roformer">https://huggingface.co/docs/transformers/model_doc/roformer</a></p>
+<p>langchain(2)—基于开源embedding模型的中文向量效果测试 - 袋鼠猪的文章 - 知乎
+<a href="https://zhuanlan.zhihu.com/p/635670918">https://zhuanlan.zhihu.com/p/635670918</a></p>
+<p>embedding方法分类为：word2vec（基于seq2seq的神经网络结构）、Glove（词共现矩阵）、Item2Vec（推荐中的双塔模型）、FastText（浅层神经网络）、ELMo（独立训练双向，stacked Bi-LSTM架构）、GPT（从左到右的单向Transformer）、BERT（双向transformer的encoder，attention联合上下文双向训练）</p>
+<h3 id="附录和-q-老师的对话记录">附录：和 Q 老师的对话记录</h3>
+<blockquote>
+<p><strong>Q</strong>: nn.Embedding 是一种预训练的embedding模型吗</p>
+</blockquote>
+<p><strong>Qwen-2.5</strong>: <code>nn.Embedding</code>本身并不是一个预训练模型，而是深度学习框架（如PyTorch）中提供的一个层（Layer），用于将离散的类别（如词汇ID）转换为连续的向量空间中的向量，即词嵌入（word embeddings）。这个层的权重是可学习的，意味着在模型训练过程中，这些嵌入向量会根据任务目标进行优化。</p>
+<p>当你创建一个<code>nn.Embedding</code>层时，你可以指定词汇表的大小（<code>vocab_size</code>）和嵌入向量的维度（<code>embedding_dim</code>）。初始时，这些嵌入向量通常是随机初始化的。然而，你可以选择用预训练好的词向量（如Word2Vec、GloVe）来初始化这个层的权重，从而利用预训练模型学到的语义信息作为模型训练的起点，这可以加速收敛过程并可能提高最终模型的表现。</p>
+<p>总结来说，<code>nn.Embedding</code>是一个工具，它允许你在神经网络中使用并且学习词嵌入，但它本身不包含预训练的过程。预训练的词向量可以被用来初始化<code>nn.Embedding</code>层，但它们是分开的概念。</p>
+<blockquote>
+<p><strong>Q</strong>: nn.Embedding 中每个词的对应的向量在训练过程中会发生变化吗</p>
+</blockquote>
+<p><strong>Qwen-2.5</strong>: 是的，在使用<code>nn.Embedding</code>的训练过程中，每个词对应的向量会发生变化。这是因为在PyTorch中，<code>nn.Embedding</code>层的权重是模型参数的一部分，它们会随着反向传播和优化算法（如梯度下降）的进行而更新。这意味着在训练迭代中，根据网络的损失函数以及优化目标，词嵌入向量会被调整以更好地捕获输入数据中的模式和语义关系。</p>
+<p>简而言之，<code>nn.Embedding</code>层中的词嵌入向量不是静态不变的，而是可以根据训练数据动态学习和优化的，这一特性使得它们能够为特定任务提供更合适的词表示。</p>
 
   </div>
   
@@ -589,7 +622,7 @@
     
     <a href="/posts/process_manager/" class="navigation-prev">
       <i aria-hidden="true" class="fa fa-chevron-left"></i>
-      <span class="navigation-tittle">后台管理工具</span>
+      <span class="navigation-tittle">高效运维之后台管理工具</span>
     </a>
     
     
