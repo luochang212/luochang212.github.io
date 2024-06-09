@@ -713,7 +713,7 @@ $$\mathbf{g} \leftarrow \min\left(1, \frac{\theta}{|\mathbf{g}|}\right) \mathbf{
 <p>使用注意力机制解回归问题。分别试验了非参模型和带参模型的效果。</p>
 <br>
 <center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/attention-note/blob/main/5.注意力汇聚：Nadaraya-Watson 核回归.ipynb')">查看笔记</button>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/attention-note/blob/main/5.注意力汇聚：Nadaraya-Watson核回归.ipynb')">查看笔记</button>
 </center>
 <br>
 <h4 id="26-注意力评分函数">2.6 注意力评分函数</h4>
@@ -726,6 +726,14 @@ $$\mathbf{g} \leftarrow \min\left(1, \frac{\theta}{|\mathbf{g}|}\right) \mathbf{
 <br>
 <center>
 <button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/attention-note/blob/main/6.注意力评分函数.ipynb')">查看笔记</button>
+</center>
+<br>
+<h4 id="27-bahdanau-注意力">2.7 Bahdanau 注意力</h4>
+<p>受对齐思想启发，Bahdanau 注意力将加性注意力加入解码器。</p>
+<p>每个解码时间步，模型会根据当前解码器状态计算一个权重分布，用于加权求和编码器的所有隐藏状态，生成一个上下文向量。这意味着每次生成新词时，模型可以关注输入序列的不同部分。</p>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/attention-note/blob/main/7.Bahdanau注意力.ipynb')">查看笔记</button>
 </center>
 <br>
 <p>参考：</p>
