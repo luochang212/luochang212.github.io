@@ -7,7 +7,7 @@
     <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     
-    <link rel="canonical" href="https://luochang212.github.io/posts/process_manager/">
+    <link rel="canonical" href="https://luochang212.github.io/posts/attention_note/">
     
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,19 +19,19 @@
     
     
 
-<title>后台管理工具介绍 • Chang Luo</title>
+<title>注意力机制笔记 • Chang Luo</title>
 
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="后台管理工具介绍"/>
-<meta name="twitter:description" content="呀嘞呀嘞，JupyterLab 怎么又挂了"/>
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="注意力机制笔记"/>
+<meta name="twitter:description" content="智能产生的根源：并行、查询、压缩"/>
       <meta name="twitter:site" content="@MinosPalace"/>
 
-<meta property="og:title" content="后台管理工具介绍" />
-<meta property="og:description" content="呀嘞呀嘞，JupyterLab 怎么又挂了" />
+<meta property="og:title" content="注意力机制笔记" />
+<meta property="og:description" content="智能产生的根源：并行、查询、压缩" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://luochang212.github.io/posts/process_manager/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-05-30T00:00:00+00:00" />
-<meta property="article:modified_time" content="2024-05-30T00:00:00+00:00" /><meta property="og:site_name" content="Title" />
+<meta property="og:url" content="https://luochang212.github.io/posts/attention_note/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-06-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-06-09T00:00:00+00:00" /><meta property="og:site_name" content="Title" />
 
 
     
@@ -519,13 +519,13 @@
 
 <article>
   <header>
-    <h1>后台管理工具介绍</h1>
+    <h1>注意力机制笔记</h1>
     
     
 <div class="post__meta">
     
     
-      <i class="fas fa-calendar-alt"></i> May 30, 2024
+      <i class="fas fa-calendar-alt"></i> Jun 9, 2024
     
     
     
@@ -555,7 +555,7 @@
     
     
     <br/>
-    <i class="fas fa-clock"></i> 2 min read
+    <i class="fas fa-clock"></i> 1 min read
 </div>
 
 
@@ -574,167 +574,177 @@
   
   <div class="post">
     <blockquote>
-<p>呀嘞呀嘞，我的 JupyterLab 怎么又挂了。</p>
-<p>简单的 <code>nohup [CMD] &amp;</code> 已经不够用，该研究一下后台管理工具了。</p>
+<p><a href="https://people.eecs.berkeley.edu/~yima/" target="_blank">马毅</a>：要想正确理解深度神经网络，就必须认识到其本质是学习高维数据中的低维结构的手段。从第一性原理出发，把目的和手段分清楚，其余的都很容易被统一、被解释。</p>
 </blockquote>
-<p>问了一下 Qwen，大概有五款后台管理工具可选。这五款工具又可以分两类：</p>
+<p>对于马毅老师这句话，我觉得从 Attention 角度理解，Embedding 的时候本来就升维了，再做 QKV 就相当于在高维里面抽低维信息。而且 Q 也是可学习的，所以就既能学到好的抽取方法；对于每一种抽取方法，又能特别高效地抽取。</p>
+<p>GitHub 项目地址：<a href="https://github.com/luochang212/rnn-note" target="_blank">rnn-note</a> / <a href="https://github.com/luochang212/attention-note" target="_blank">attention-note</a></p>
+<h3 id="一语言模型入门rnn">一、语言模型入门：RNN</h3>
+<h4 id="11-序列模型">1.1 序列模型</h4>
+<p>马尔可夫假设，当前数据只跟最近 τ 个数据点相关。把最近 τ 个数据点作为特征，用 MLP 预测当前数据点的值。</p>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/rnn-note/blob/main/1.序列模型.ipynb')">查看笔记</button>
+</center>
+<br>
+<h4 id="12-文本预处理">1.2 文本预处理</h4>
+<p>对文本词元化 (tokenize) 并构建词表，其实就是把文本映射到从 0 开始的索引。</p>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/rnn-note/blob/main/2.文本预处理.ipynb')">查看笔记</button>
+</center>
+<br>
+<h4 id="13-语言模型和数据集">1.3 语言模型和数据集</h4>
+<p>对语料分批量 (batch) 处理。介绍了两种（batch 内的）采样策略：</p>
 <ul>
-<li>进程管理器：<code>systemd</code>, <code>pm2</code>, <code>supervisor</code></li>
-<li>终端复用器：<code>screen</code>, <code>tmux</code></li>
+<li>随机采样策略：每个 batch 内的相邻子序列是随机的</li>
+<li>顺序分区策略：每个 batch 内的相邻子序列是顺序的</li>
 </ul>
-<p>总之，保持单个程序在后台运行，<code>systemd</code> 就够用。如果要维持多个后台程序，<code>pm2</code> 比较合适。<code>screen</code> 和 <code>tmux</code> 则是更临时的方案，适合偶尔用用的情况。</p>
-<h3 id="一systemd">一、systemd</h3>
-<p>使用 systemd 管理 Jupyter lab 服务，必须先创建一个 systemd unit 文件来定义服务的启动、重启等行为。以下是创建 systemd 服务的步骤。</p>
-<h4 id="11-创建-unit-文件">1.1 创建 unit 文件</h4>
-<p>用 <code>vi</code> 新建并打开 <code>jupyterlab.service</code> 文件：</p>
-<pre tabindex="0"><code>sudo vi /etc/systemd/system/jupyterlab.service
-</code></pre><p>配置如下：</p>
-<pre tabindex="0"><code>[Unit]
-Description=Jupyter Lab
-After=network.target
-
-[Service]
-Type=simple
-User=[YOUR_USERNAME]
-ExecStart=/home/[YOUR_USERNAME]/miniconda3/bin/jupyter lab --ip=0.0.0.0 --port=443 --no-browser --allow-root
-WorkingDirectory=/home/[YOUR_USERNAME]/
-Restart=on-failure
-RestartSec=8s
-
-[Install]
-WantedBy=multi-user.target
-</code></pre><ul>
-<li>将 <code>[YOUR_USERNAME]</code> 替换为你的用户名。如果你在 root 上开服务，记得在 ExecStart 后加一个 <code>--allow-root</code></li>
-<li>如果你的服务不在 https 上，请用 <code>--port=80</code> 或 <code>--port=8888</code> 之类的其他端口</li>
-<li>在 https 上搭建 jupyter lab 服务的方法，参见 <a href="/posts/jupyter_lab/#51-%E5%90%AF%E5%8A%A8-jupyterlab" target="_blank">在服务器上使用 JupyterLab</a></li>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/rnn-note/blob/main/3.语言模型和数据集.ipynb')">查看笔记</button>
+</center>
+<br>
+<h4 id="14-循环神经网络的从零开始实现">1.4 循环神经网络的从零开始实现</h4>
+<p>每次输出仅由前一个隐状态和当前新输入 x 决定，是为 RNN。</p>
+<p>提及的知识点：</p>
+<ul>
+<li><strong>独热编码</strong>：文本经过词元化后，还要经过 one-hot 处理，才能进入模型</li>
+<li><strong>困惑度</strong>：我们用困惑度来描述文本生成的质量，通过一个序列中所有的 n 个词元的交叉熵损失的平均值来衡量
+$$\frac{1}{n} \sum_{t=1}^n-\log P\left(x_t \mid x_{t-1}, \ldots, x_1\right)$$</li>
+<li><strong>梯度裁剪</strong>：对于 $T$ 长序列将产生 $O(T)$ 长矩阵乘法链。当 $T$ 较大时，可能导致数值不稳定，例如可能导致梯度爆炸或梯度消失。这种情况下优化算法可能无法收敛。下式通过将梯度 $g$ 投影回给定半径 $\theta$ 来限制梯度的大小。其中 $\frac{\theta}{|\mathbf{g}|}$ 可以理解为梯度 $g$ 的单位方向向量。
+$$\mathbf{g} \leftarrow \min\left(1, \frac{\theta}{|\mathbf{g}|}\right) \mathbf{g}$$</li>
 </ul>
-<h4 id="12-启动服务">1.2 启动服务</h4>
-<p>1）重启守护进程，使新增的 systemd unit 文件生效。</p>
-<pre tabindex="0"><code>sudo systemctl daemon-reload
-</code></pre><p>2）启动 jupyter lab 服务</p>
-<pre tabindex="0"><code>sudo systemctl start jupyterlab
-</code></pre><blockquote>
-<p>注意，这里的服务名应和 jupyterlab.service 文件名相同</p>
-</blockquote>
-<p>3）开机自启</p>
-<pre tabindex="0"><code>sudo systemctl enable jupyterlab
-</code></pre><p>4）检查服务状态</p>
-<pre tabindex="0"><code>sudo systemctl status jupyterlab
-
-ps -ef | grep jupyter
-</code></pre><p>5）停止或重启服务</p>
-<pre tabindex="0"><code>sudo systemctl stop jupyterlab
-sudo systemctl restart jupyterlab
-</code></pre><blockquote>
-<p>平替：<a href="https://github.com/Supervisor/supervisor" target="_blank">supervisor</a> 是一款 systemd 的平替，操作都蛮像的。</p>
-</blockquote>
-<h3 id="二pm2">二、pm2</h3>
-<p><a href="https://github.com/Unitech/pm2" target="_blank">pm2</a> 是一个自带负载均衡的生产环境进程管理器。</p>
-<h4 id="21-安装">2.1 安装</h4>
-<p>对于 Centos，安装 <code>Node.js</code> 和 <code>npm</code>：</p>
-<pre tabindex="0"><code>sudo yum install epel-release
-sudo yum install nodejs npm
-</code></pre><p>全局安装 <code>pm2</code>：</p>
-<pre tabindex="0"><code>sudo npm install -g pm2
-</code></pre><h4 id="22-shell-启动脚本">2.2 Shell 启动脚本</h4>
-<p>写一个名为 <code>jp.sh</code> 的启动脚本：</p>
-<pre tabindex="0"><code>#!/bin/bash
-
-# 如果不是全局 conda 环境
-/path/to/your/miniconda3/bin/activate [YOUR_ENV]
-
-jupyter-lab --ip=0.0.0.0 --port=443 --no-browser --notebook-dir=/home  --allow-root
-</code></pre><p>给脚本执行权限：</p>
-<pre tabindex="0"><code>chmod +x ./jp.sh
-</code></pre><h4 id="23-启动-pm2">2.3 启动 pm2</h4>
-<p>使用 pm2 启动这个脚本：</p>
-<pre tabindex="0"><code>pm2 start ./jp.sh
-
-# 带重启策略的启动
-pm2 start ./jp.sh --restart-on-failure
-</code></pre><p>查看 pm2 的状态：</p>
-<pre tabindex="0"><code># 查看状态
-pm2 status
-
-# 查看日志
-pm2 logs jp
-</code></pre><p>进程保持：</p>
-<pre tabindex="0"><code># 保存当前 list 以保证它在开机时自启
-pm2 save
-
-# 保证 pm2 开机自启
-pm2 startup
-</code></pre><p>停止和删除进程：</p>
-<pre tabindex="0"><code># 停止 jp 进程
-pm2 stop jp
-
-# 停止所有进程
-pm2 stop all
-
-# 删除所有进程
-pm2 delete all
-
-# 重置 pm2 环境（可选）
-pm2 reset all
-
-# 查看删除是否生效
-pm2 list
-</code></pre><h3 id="三screen">三、screen</h3>
-<p>Screen 是一个终端复用工具，用它也可以实现后台运行 jupyter 服务。下面以 <code>jupyter notebook</code> 为例。</p>
-<h4 id="31-安装-screen">3.1 安装 Screen</h4>
-<p>在 Ubuntu 上安装：</p>
-<pre tabindex="0"><code>sudo apt-get install screen
-</code></pre><p>在 Centos 安装：</p>
-<pre tabindex="0"><code># 更新系统中的所有包
-sudo yum update
-
-# 启用 EPEL 仓库 (Extra Packages for Enterprise Linux)
-sudo yum install epel-release
-
-# 安装 screen
-sudo yum install screen
-
-# 测试 screen 是否安装成功
-screen --version
-</code></pre><h4 id="32-开启会话">3.2 开启会话</h4>
-<p>开启一个名为 <code>jp</code> 的会话：</p>
-<pre tabindex="0"><code>screen -S jp
-</code></pre><p>在新会话里启动 jupyter notebook：</p>
-<pre tabindex="0"><code>jupyter notebook --ip=0.0.0.0 --port=443 --allow-root
-</code></pre><h4 id="33-离开会话">3.3 离开会话</h4>
-<p>按 <code>ctrl + a</code> 然后按 <code>d</code> 暂时离开会话。</p>
-<h4 id="34-重回会话">3.4 重回会话</h4>
-<p>列出所有 screen 会话：</p>
-<pre tabindex="0"><code>screen -ls
-</code></pre><p>重回 <code>jp</code> 会话：</p>
-<pre tabindex="0"><code>screen -r jp
-</code></pre><p>退出会话：</p>
-<pre tabindex="0"><code>exit
-</code></pre><blockquote>
-<p>平替：<a href="https://github.com/tmux/tmux/wiki" target="_blank">tmux</a> 也很常用，两款工具都支持分屏。没有深究它俩有什么区别，看上去就是界面风格的区别。</p>
-</blockquote>
-<!-- Docker -->
+<p><img src="/img/rnn_flow.svg" alt=""></p>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/rnn-note/blob/main/4.循环神经网络的从零开始实现.ipynb')">查看笔记</button>
+</center>
+<br>
+<h4 id="15-循环神经网络的简洁实现">1.5 循环神经网络的简洁实现</h4>
+<p>使用高级 API 实现循环神经网络。</p>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/rnn-note/blob/main/5.循环神经网络的简洁实现.ipynb')">查看笔记</button>
+</center>
+<br>
+<h4 id="16-门控循环单元">1.6 门控循环单元</h4>
+<p>”门控循环单元与普通的循环神经网络之间的关键区别在于： 前者支持隐状态的门控。 这意味着模型有专门的机制来确定应该何时更新隐状态， 以及应该何时重置隐状态。 这些机制是可学习的。“</p>
+<p>为了解长期记忆依赖问题，使用了两个门和一个候选隐状态：</p>
+<ul>
+<li>重置门 $\mathbf{R}_t$</li>
+<li>更新门 $\mathbf{Z}_t$</li>
+<li>候选隐状态 $\mathbf{H}_t$</li>
+</ul>
+<p>重置门、更新门由上一轮隐状态和当前新输入 x 决定；候选隐状态由上一轮隐状态、当前新输入 x 和重置门决定；本轮产出的隐状态由更新门、上一轮隐状态、候选隐状态决定。</p>
+<p><img src="/img/gru_flow.svg" alt=""></p>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/rnn-note/blob/main/6.门控循环单元.ipynb')">查看笔记</button>
+</center>
+<br>
+<h4 id="17-长短期记忆网络">1.7 长短期记忆网络</h4>
+<p>长短期记忆网络 LSTM 比 GRU 复杂一点，效果也好一点。</p>
+<ul>
+<li>输入门：和候选记忆元一起更新 记忆元</li>
+<li>遗忘门：更新 记忆元</li>
+<li>输出门：和 记忆元 一起更新 隐状态</li>
+</ul>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/rnn-note/blob/main/7.长短期记忆网络.ipynb')">查看笔记</button>
+</center>
+<br>
+<h4 id="18深度循环神经网络">1.8.深度循环神经网络</h4>
+<p>在输入和输出之间，添加多层相互依赖的隐状态。</p>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/rnn-note/blob/main/8.深度循环神经网络.ipynb')">查看笔记</button>
+</center>
+<br>
+<h3 id="二注意力机制">二、注意力机制</h3>
+<h4 id="21-机器翻译数据集">2.1 机器翻译数据集</h4>
+<p>“通过截断和填充文本序列，可以保证所有的文本序列都具有相同的长度，以便以小批量的方式加载。”</p>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/attention-note/blob/main/1.机器翻译数据集.ipynb')">查看笔记</button>
+</center>
+<br>
+<h4 id="22-编码器-解码器架构">2.2 编码器-解码器架构</h4>
+<p>从不定长序列到不定长序列：</p>
+<ul>
+<li>编码器（encoder）： 它接受一个长度可变的序列作为输入，并将其转换为具有固定形状的编码状态。</li>
+<li>解码器（decoder）： 它将固定形状的编码状态映射到长度可变的序列。</li>
+</ul>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/attention-note/blob/main/2.编码器-解码器架构.ipynb')">查看笔记</button>
+</center>
+<br>
+<h4 id="23-序列到序列学习">2.3 序列到序列学习</h4>
+<p>使用两个循环神经网络设计一个序列到序列模型。</p>
+<p>知识点：</p>
+<ul>
+<li>掩蔽填充词，将填充词元的预测排除在损失函数的计算之外</li>
+<li>使用 BLEU 衡量翻译质量的好坏</li>
+</ul>
+<p><img src="/img/seq2seq_flow.svg" alt=""></p>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/attention-note/blob/main/3.序列到序列学习.ipynb')">查看笔记</button>
+</center>
+<br>
+<h4 id="24-注意力提示">2.4 注意力提示</h4>
+<p>对于一个有杯子、书本、窗户的场景</p>
+<ul>
+<li>非自主性提示：杯子特别红</li>
+<li>自主性提示：想看书、想看看窗外</li>
+</ul>
+<p>其实就是不依赖数据本身的统计信息，而是主动查询来获取信息。本节引出 QKV 的概念。</p>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/attention-note/blob/main/4.注意力提示.ipynb')">查看笔记</button>
+</center>
+<br>
+<h4 id="25-注意力汇聚nadaraya-watson-核回归">2.5 注意力汇聚：Nadaraya-Watson 核回归</h4>
+<p>使用注意力机制解回归问题。分别试验了非参模型和带参模型的效果。</p>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/attention-note/blob/main/5.注意力汇聚：Nadaraya-Watson 核回归.ipynb')">查看笔记</button>
+</center>
+<br>
+<h4 id="26-注意力评分函数">2.6 注意力评分函数</h4>
+<p>注意力评分函数是 q 和 k 的函数，本质是对查询和键之间的关系建模。</p>
+<p>本节介绍了两个注意力评分函数：</p>
+<ul>
+<li>加性注意力：用 MLP 做</li>
+<li>缩放点积注意力：用点积做，因此要求查询和键具有相同长度 $d$</li>
+</ul>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/attention-note/blob/main/6.注意力评分函数.ipynb')">查看笔记</button>
+</center>
+<br>
 <p>参考：</p>
 <ul>
-<li><a href="https://janakiev.com/blog/jupyter-systemd/" target="_blank">Manage Jupyter Notebook and JupyterLab with Systemd</a></li>
-<li><a href="https://stackoverflow.com/questions/47331050/how-to-run-jupyter-notebook-in-the-background-no-need-to-keep-one-terminal-for" target="_blank">How to run jupyter notebook in the background?</a></li>
+<li><a href="http://zh-v2.d2l.ai/chapter_attention-mechanisms/index.html" target="_blank">zh-v2.d2l.ai</a></li>
+<li><a href="https://cvpr2024-tutorial-low-dim-models.github.io/?continueFlag=c5a6aa2d606ab528733a659adc47aaf0" target="_blank">Learning Deep Low-Dimensional Models from High-Dimensional Data: From Theory to Practice</a></li>
 </ul>
+<div id="mini-overlay" onclick="overlay_off()"></div>
+<div id="mini-window"><iframe id="mini-iframe" frameBorder="0"></iframe></div>
+<button id="btn-close" onclick="overlay_off()">×</button>
+<script src="/python-tips/overlay.js"></script>
+<link rel="stylesheet" href="/python-tips/style.css">
 
   </div>
   
 
 <div class="navigation navigation-single">
     
-    <a href="/posts/flameai/" class="navigation-prev">
+    <a href="/posts/process_manager/" class="navigation-prev">
       <i aria-hidden="true" class="fa fa-chevron-left"></i>
-      <span class="navigation-tittle">深度学习工具箱 FlameAI</span>
+      <span class="navigation-tittle">后台管理工具介绍</span>
     </a>
     
-    
-    <a href="/posts/attention_note/" class="navigation-next">
-      <span class="navigation-tittle">注意力机制笔记</span>
-      <i aria-hidden="true" class="fa fa-chevron-right"></i>
-    </a>
     
 </div>
 

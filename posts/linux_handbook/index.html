@@ -1096,6 +1096,9 @@ fi
 <pre tabindex="0"><code>conda create -n py27 python=2.7  # 创建名为 py27 的 Python 2.7 新环境
 conda activate py27  # 激活新环境
 
+# 为当前 Python 环境安装 ipykernel
+python -m pip install ipykernel
+
 # 将新环境加入 jupyter notebook 的 kernel 中
 python -m ipykernel install --user --name py27 --display-name &#34;Python (py27)&#34;
 </code></pre><p>随便创建一个 <code>.ipynb</code> 文件，在导航栏点击：Kernel -&gt; Change Kernel -&gt; Python (py27)</p>
