@@ -736,6 +736,29 @@ $$\mathbf{g} \leftarrow \min\left(1, \frac{\theta}{|\mathbf{g}|}\right) \mathbf{
 <button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/attention-note/blob/main/7.Bahdanau注意力.ipynb')">查看笔记</button>
 </center>
 <br>
+<h4 id="28-多头注意力">2.8 多头注意力</h4>
+<p>为了使用多个注意力汇聚，多头注意力块用 h 组不同的线性投影 (linear projections) 来变换查询、键和值。然后用变换后的 QKV 将并行地进行注意力汇聚。最后，将 h 个注意力汇聚的输出 concat 在一起，并通过另一个可以学习的线性投影 (逐位前馈网络, FFN) 进行变换，以产生最终输出。</p>
+<p><img src="/img/multi_head_flow.svg" alt=""></p>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/attention-note/blob/main/8.多头注意力.ipynb')">查看笔记</button>
+</center>
+<br>
+<h4 id="29-自注意力和位置编码">2.9 自注意力和位置编码</h4>
+<p>当注意力汇聚的 QKV 均来自同一组输入时，这种注意力被称为自注意力。为了让神经网络既能并行地处理词元，又能学到序列信息，Transformer 通过在输入中添加位置编码来注入绝对或者相对信息。</p>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/attention-note/blob/main/9.自注意力和位置编码.ipynb')">查看笔记</button>
+</center>
+<br>
+<h4 id="210-transformer">2.10 Transformer</h4>
+<p>Transformer 作为编码器-解码器架构的一种实现，其整体架构如下所示。注意到图中出现了三个注意力块，接近输入的两个，是自注意力。连接编码器和解码器的，是编码器-解码器注意力。</p>
+<p><img src="/img/transformer_flow.svg" alt=""></p>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/attention-note/blob/main/10.transformer.ipynb')">查看笔记</button>
+</center>
+<br>
 <h3 id="问题列表">问题列表</h3>
 <ul>
 <li>transformer架构中都有哪些层？</li>
@@ -745,9 +768,9 @@ $$\mathbf{g} \leftarrow \min\left(1, \frac{\theta}{|\mathbf{g}|}\right) \mathbf{
 <li>缩放点积注意力做的是点积，加性注意力做的数学运算是什么？不是点积吗？</li>
 <li>在加性注意力中q和k的维度可以不同吗？在点积放缩注意力中q和k的维度可以不同吗？</li>
 <li>多头自注意力机制如何平衡多个头的输出信息？</li>
-<li>可以把多头注意力跟CNN中的通道类比吗？两者有什么差别？</li>
+<li>可以把多头注意力跟CNN中的通道做类比吗？两者有什么差别？</li>
 <li>自注意力的输入是否有固定的长度限制？</li>
-<li>实际训练时，样本长度总会有一个限制，一般限制多少？</li>
+<li>实际训练时，样本长度总会有一个限制，一般限制是多少？</li>
 <li>长距离依赖最远能多远，由什么参数决定的？</li>
 <li>相邻样本的位置编码是否也比较相近？这会导致采样策略影响模型效果吗？</li>
 <li>自注意力计算的时间复杂度是多少？</li>
@@ -757,8 +780,10 @@ $$\mathbf{g} \leftarrow \min\left(1, \frac{\theta}{|\mathbf{g}|}\right) \mathbf{
 </ul>
 <p>参考：</p>
 <ul>
+<li><a href="https://arxiv.org/abs/1706.03762" target="_blank">Attention Is All You Need</a></li>
 <li><a href="http://zh-v2.d2l.ai/chapter_attention-mechanisms/index.html" target="_blank">zh-v2.d2l.ai</a></li>
 <li><a href="https://cvpr2024-tutorial-low-dim-models.github.io/?continueFlag=c5a6aa2d606ab528733a659adc47aaf0" target="_blank">Learning Deep Low-Dimensional Models from High-Dimensional Data: From Theory to Practice</a></li>
+<li><a href="https://github.com/ridgerchu/matmulfreellm" target="_blank">ridgerchu / matmulfreellm</a></li>
 </ul>
 <div id="mini-overlay" onclick="overlay_off()"></div>
 <div id="mini-window"><iframe id="mini-iframe" frameBorder="0"></iframe></div>
