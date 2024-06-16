@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Arxiv on Chang Luo</title>
+    <link>https://luochang212.github.io/tags/arxiv/</link>
+    <description>Recent content in Arxiv on Chang Luo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 16 Jun 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://luochang212.github.io/tags/arxiv/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Attention Is All You Need 论文精读</title>
+      <link>https://luochang212.github.io/posts/transformer_arxiv/</link>
+      <pubDate>Sun, 16 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/posts/transformer_arxiv/</guid>
+      <description>Transformer 的编码器变成了 BERT，成为上一代搜广推算法的技术基础；Transformer 的解码器变成了 GPT，成为本轮生成式人工智能的技术基础；由于自注意力需要做时间复杂度为 $O(n^2)$ 的矩阵运算，导致算力需求暴涨，推动 2023 年 NVIDIA 股价翻了接近 3 番 &amp;hellip; &amp;hellip; 这篇发表于 2017 年的老古董，显然对今天产生了深远的影响。&#xA;即使在今天，Transformer 依然具有生命力。它的模型结构没有大改。近期诞生的一系列技术，比如 RLHF, LoRA, MoE，更像是 Transformer 的插件，而非对模型本身的改造。在模型结构没有大改的情况下，仅靠 Scaling 就造就了 ChatGPT 这样划时代的超级终端。&#xA;这一切的一切，让我决定精读这篇论文。我会先逐句翻译论文，再把算法实现一遍。&#xA;论文：Attention Is All You Need&#xA;一、原文翻译 摘要 主流 seq2seq 模型是基于编码器-解码器架构的复杂 RNN 或 CNN 网络。表现最好的模型还用注意力机制连接编码器和解码器。我们提出一种全新的简单网络架构：Transformer。它完全基于注意力机制，不使用 RNN 和 CNN。两个机器翻译任务的实验表明，它拥有更好的并行度，并使训练时间大大减少。在 WMT 2014 英德翻译任务上，我们的模型达到了 28.4 的 BLEU 分数，比现有最好模型，整体提升 2 BLEU。在 WMT 2014 英法翻译任务上，我们的模型在 8 台 GPU 上训练了 3.5 天后，在单一模型评分中拿到了 41.8 的最高分。相比此前文献中的最佳模型，Transformer 极大降低了训练成本。通过英语成分句法分析，我们展示了 Transformer 的泛化能力，无论数据量是大是小，都能很好地泛化到其他任务上。</description>
+    </item>
+  </channel>
+</rss>

@@ -6,19 +6,47 @@
     <description>Recent content in Tags on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 09 Jun 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 16 Jun 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://luochang212.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Arxiv</title>
+      <link>https://luochang212.github.io/tags/arxiv/</link>
+      <pubDate>Sun, 16 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/tags/arxiv/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Transformer</title>
+      <link>https://luochang212.github.io/tags/transformer/</link>
+      <pubDate>Sun, 16 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/tags/transformer/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>MultiHeadAttention</title>
+      <link>https://luochang212.github.io/tags/multiheadattention/</link>
+      <pubDate>Sun, 09 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/tags/multiheadattention/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>PositionalEncoding</title>
+      <link>https://luochang212.github.io/tags/positionalencoding/</link>
+      <pubDate>Sun, 09 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/tags/positionalencoding/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Jupyter</title>
       <link>https://luochang212.github.io/tags/jupyter/</link>
-      <pubDate>Sun, 09 Jun 2024 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 30 May 2024 00:00:00 +0000</pubDate>
       <guid>https://luochang212.github.io/tags/jupyter/</guid>
       <description></description>
     </item>
     <item>
       <title>Nohup</title>
       <link>https://luochang212.github.io/tags/nohup/</link>
-      <pubDate>Sun, 09 Jun 2024 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 30 May 2024 00:00:00 +0000</pubDate>
       <guid>https://luochang212.github.io/tags/nohup/</guid>
       <description></description>
     </item>

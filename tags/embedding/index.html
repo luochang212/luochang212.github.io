@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="en-us">
     
-    
-
-
-    <head>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     
-    <link rel="canonical" href="https://luochang212.github.io/posts/lstm_power_consumption/">
+    <link rel="canonical" href="http://localhost:1313/tags/embedding/">
     
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,19 +16,17 @@
     
     
 
-<title>LSTM 家庭用电预测 • Chang Luo</title>
+<title>Embedding • Chang Luo</title>
 
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="LSTM 家庭用电预测"/>
-<meta name="twitter:description" content="预测 next sequence 比预测 next token 难得多"/>
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Embedding"/>
+<meta name="twitter:description" content=""/>
       <meta name="twitter:site" content="@MinosPalace"/>
 
-<meta property="og:title" content="LSTM 家庭用电预测" />
-<meta property="og:description" content="预测 next sequence 比预测 next token 难得多" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://luochang212.github.io/posts/lstm_power_consumption/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-05-12T00:00:00+00:00" />
-<meta property="article:modified_time" content="2024-05-12T00:00:00+00:00" /><meta property="og:site_name" content="Title" />
+<meta property="og:title" content="Embedding" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://localhost:1313/tags/embedding/" /><meta property="og:site_name" content="Title" />
 
 
     
@@ -66,7 +61,8 @@
     <!-- Icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
     <link rel="shortcut icon" href="/favicon.png">
-    
+    <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/embedding/index.xml" title="Chang Luo" />
+
     
 
 </head>
@@ -219,13 +215,13 @@
     <div class="container ">
       <div class="sidebar-about">
         <span class="site__title">
-          <a href="https://luochang212.github.io/">Chang Luo</a>
+          <a href="http://localhost:1313/">Chang Luo</a>
         </span>
         
         
         
         <div class="author-image">
-          <a href="#" class="load-iframe" onclick="openNav()"><img src="https://luochang212.github.io//images/profile.webp" id="author-iamge"
+          <a href="#" class="load-iframe" onclick="openNav()"><img src="http://localhost:1313//images/profile.webp" id="author-iamge"
               alt="Author Image" class="img--circle img--headshot element--center"></a>
         </div>
         
@@ -506,227 +502,29 @@
 
         <div class="content container">
             
-    <style>
-  .my-emoji {
-    height: 25px;
-    display: inline-block;
-    margin: 0;
-    vertical-align: text-bottom;
-  }
-</style>
+    <span class="section__title">Embedding</span>
+<ul class="posts">
+    
+        
+<li>
+  <span class="list__title--small">
+    <a href="/posts/chinese_embedding/" >如何生成中文词向量</a>
+      
+      <time class="pull-right hidden-tablet">Jun 16, 2024</time>
+      
+  </span>
+</li>
 
 
-
-<article>
-  <header>
-    <h1>LSTM 家庭用电预测</h1>
     
-    
-<div class="post__meta">
-    
-    
-      <i class="fas fa-calendar-alt"></i> May 12, 2024
-    
-    
-    
-      
-      
-          in
-          
-          
-              <a class="badge badge-category" href="/categories/deeplearning">DEEPLEARNING</a>
-              
-          
-      
-    
-    
-    
-      
-      
-          <br/>
-           <i class="fas fa-tags"></i>
-          
-          <a class="badge badge-tag" href="/tags/lstm">lstm</a>
-           
-      
-          <a class="badge badge-tag" href="/tags/rnn">rnn</a>
-          
-      
-    
-    
-    <br/>
-    <i class="fas fa-clock"></i> 1 min read
-</div>
-
-
-  </header>
-  
-  
-  
-  <div class="toc-wrapper">
-    <input type="checkbox" id="tocToggle">
-    <label for="tocToggle">目录</label>
-    
-    <div class="toc" id="TableOfContents"></div>
-    
-  </div>
-  
-  
-  <div class="post">
-    <blockquote>
-<p>长短期记忆网络（Long Short-Term Memory，LSTM）是一种 RNN 模型，常用于序列数据建模。尤其适合需要挖掘序列中长期依赖关系的问题。</p>
-</blockquote>
-<p>GitHub 项目地址：<a href="https://github.com/luochang212/lstm-model" target="_blank">luochang212/lstm-model</a></p>
-<h3 id="一keras-模型训练">一、keras 模型训练</h3>
-<ol>
-<li>数据导入</li>
-<li>数据预处理</li>
-<li>趋势可视化</li>
-<li>分割训练集和测试集</li>
-<li>定义 &amp; 训练网络</li>
-<li>预测</li>
-<li>预测整个序列</li>
-</ol>
-<br>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/lstm-model/blob/main/1.keras模型训练.ipynb')">查看示例</button>
-</center>
-<br>
-<h3 id="二keras-模型推理">二、keras 模型推理</h3>
-<ol>
-<li>数据预处理</li>
-<li>用训练好的 keras 模型做预测</li>
-<li>预测下一个值</li>
-<li>预测下一个序列</li>
-</ol>
-<br>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/lstm-model/blob/main/2.keras模型推理.ipynb')">查看示例</button>
-</center>
-<br>
-<h3 id="三pytorch-模型训练">三、PyTorch 模型训练</h3>
-<blockquote>
-<p>施工中</p>
-</blockquote>
-<p>参考资料：</p>
-<ul>
-<li>
-<p><a href="https://www.kaggle.com/datasets/sagnikseal/household-power-consumption" target="_blank">Household_Power_consumption</a> (dataset)</p>
-</li>
-<li>
-<p><a href="https://www.kaggle.com/code/akdagmelih/ocean-wave-prediction-with-lstm/notebook" target="_blank">Ocean Wave Prediction with LSTM</a></p>
-</li>
-<li>
-<p><a href="https://www.kaggle.com/code/amirrezaeian/time-series-data-analysis-using-lstm-tutorial/notebook" target="_blank">Time-series data analysis using LSTM (Tutorial)</a></p>
-</li>
-<li>
-<p><a href="https://docs.kanaries.net/pygwalker#a-python-library-for-exploratory-data-analysis-with-visualization---pygwalkers" target="_blank">PyGWalker</a></p>
-</li>
-<li>
-<p><a href="https://github.com/luochang212/rnn-note" target="_blank">luochang212/rnn-note</a></p>
-</li>
 </ul>
-<div id="mini-overlay" onclick="overlay_off()"></div>
-<div id="mini-window"><iframe id="mini-iframe" frameBorder="0"></iframe></div>
-<button id="btn-close" onclick="overlay_off()">×</button>
-<script src="/python-tips/overlay.js"></script>
-<link rel="stylesheet" href="/python-tips/style.css">
 
-  </div>
-  
-
-<div class="navigation navigation-single">
-    
-    <a href="/posts/lightgbm_practice/" class="navigation-prev">
-      <i aria-hidden="true" class="fa fa-chevron-left"></i>
-      <span class="navigation-tittle">LightGBM 工程实践</span>
-    </a>
-    
-    
-    <a href="/posts/jupyter_lab/" class="navigation-next">
-      <span class="navigation-tittle">JupyterLab 中有哪些黑科技</span>
-      <i aria-hidden="true" class="fa fa-chevron-right"></i>
-    </a>
-    
-</div>
-
-
-  
-
-  
-    
-
-
-</article>
 
         </div>
         
-    <script type="text/javascript" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-  MathJax.Hub.Config({
-  tex2jax: {
-    inlineMath: [['$','$'], ['\\(','\\)']],
-    displayMath: [['$$','$$']],
-    processEscapes: true,
-    processEnvironments: true,
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-    TeX: { equationNumbers: { autoNumber: "AMS" },
-         extensions: ["AMSmath.js", "AMSsymbols.js"] }
-  }
-  });
-  MathJax.Hub.Queue(function() {
     
-    
-    
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i = 0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-
-  MathJax.Hub.Config({
-  
-  TeX: { equationNumbers: { autoNumber: "AMS" } }
-  });
-</script>
-
-
-
-
-
 
 <script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
-
-
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
-        
-    <script type="text/javascript">
-        
-        hljs.initHighlightingOnLoad();
-    </script>
-    
-
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
-<script type="text/javascript">
-  if (tocbot) {
-    tocbot.init({
-      
-      tocSelector: '.toc',
-      
-      contentSelector: '.post',
-      
-      headingSelector: 'h2, h3, h4',
-      collapseDepth: 4
-    });
-  }
-</script>
-
-
-
-    
 
 
 

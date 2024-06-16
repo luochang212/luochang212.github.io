@@ -6,8 +6,22 @@
     <description>Recent content in DeepLearning on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 12 May 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 16 Jun 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://luochang212.github.io/categories/deeplearning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Attention Is All You Need 论文精读</title>
+      <link>https://luochang212.github.io/posts/transformer_arxiv/</link>
+      <pubDate>Sun, 16 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/posts/transformer_arxiv/</guid>
+      <description>Transformer 的编码器变成了 BERT，成为上一代搜广推算法的技术基础；Transformer 的解码器变成了 GPT，成为本轮生成式人工智能的技术基础；由于自注意力需要做时间复杂度为 $O(n^2)$ 的矩阵运算，导致算力需求暴涨，推动 2023 年 NVIDIA 股价翻了接近 3 番 &amp;hellip; &amp;hellip; 这篇发表于 2017 年的老古董，显然对今天产生了深远的影响。&#xA;即使在今天，Transformer 依然具有生命力。它的模型结构没有大改。近期诞生的一系列技术，比如 RLHF, LoRA, MoE，更像是 Transformer 的插件，而非对模型本身的改造。在模型结构没有大改的情况下，仅靠 Scaling 就造就了 ChatGPT 这样划时代的超级终端。&#xA;这一切的一切，让我决定精读这篇论文。我会先逐句翻译论文，再把算法实现一遍。&#xA;论文：Attention Is All You Need&#xA;一、原文翻译 摘要 主流 seq2seq 模型是基于编码器-解码器架构的复杂 RNN 或 CNN 网络。表现最好的模型还用注意力机制连接编码器和解码器。我们提出一种全新的简单网络架构：Transformer。它完全基于注意力机制，不使用 RNN 和 CNN。两个机器翻译任务的实验表明，它拥有更好的并行度，并使训练时间大大减少。在 WMT 2014 英德翻译任务上，我们的模型达到了 28.4 的 BLEU 分数，比现有最好模型，整体提升 2 BLEU。在 WMT 2014 英法翻译任务上，我们的模型在 8 台 GPU 上训练了 3.5 天后，在单一模型评分中拿到了 41.8 的最高分。相比此前文献中的最佳模型，Transformer 极大降低了训练成本。通过英语成分句法分析，我们展示了 Transformer 的泛化能力，无论数据量是大是小，都能很好地泛化到其他任务上。</description>
+    </item>
+    <item>
+      <title>注意力机制笔记</title>
+      <link>https://luochang212.github.io/posts/attention_note/</link>
+      <pubDate>Sun, 09 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/posts/attention_note/</guid>
+      <description>马毅：要想正确理解深度神经网络，就必须认识到其本质是学习高维数据中的低维结构的手段。从第一性原理出发，把目的和手段分清楚，其余的都很容易被统一、被解释。&#xA;从 Attention 的角度理解马毅老师这句话，Embedding 的时候本来就升维了，再做 QKV 就相当于在高维里面抽低维信息。而且 Q 也是可学习的，所以就既能学到好的抽取方法；对于每一种抽取方法，又能特别高效地抽取。&#xA;GitHub 项目地址：rnn-note / attention-note&#xA;一、语言模型入门：RNN, LSTM, GRU 1.1 序列模型 马尔可夫假设，当前数据只跟最近 τ 个数据点相关。把最近 τ 个数据点作为特征，用 MLP 预测当前数据点的值。&#xA;查看笔记 1.2 文本预处理 对文本词元化 (tokenize) 并构建词表，就是把文本映射到从 0 开始的索引。&#xA;查看笔记 1.3 语言模型和数据集 对语料分批量 (batch) 处理。介绍了两种（batch 内的）采样策略：&#xA;随机采样策略：每个 batch 内的相邻子序列是随机的 顺序分区策略：每个 batch 内的相邻子序列是顺序的 查看笔记 1.4 循环神经网络的从零开始实现 每次输出仅由前一个隐状态和当前新输入 x 决定，是为 RNN。&#xA;提及的知识点：&#xA;独热编码：文本经过词元化后，还要经过 one-hot 处理，才能进入模型 困惑度：我们用困惑度来描述文本生成的质量，通过一个序列中所有的 n 个词元的交叉熵损失的平均值来衡量 $$\frac{1}{n} \sum_{t=1}^n-\log P\left(x_t \mid x_{t-1}, \ldots, x_1\right)$$ 梯度裁剪：对于 $T$ 长序列将产生 $O(T)$ 长矩阵乘法链。当 $T$ 较大时，可能导致数值不稳定，例如可能导致梯度爆炸或梯度消失。这种情况下优化算法可能无法收敛。下式通过将梯度 $g$ 投影回给定半径 $\theta$ 来限制梯度的大小。其中 $\frac{\theta}{|\mathbf{g}|}$ 可以理解为梯度 $g$ 的单位方向向量。 $$\mathbf{g} \leftarrow \min\left(1, \frac{\theta}{|\mathbf{g}|}\right) \mathbf{g}$$ 查看笔记 1.</description>
+    </item>
     <item>
       <title>LSTM 家庭用电预测</title>
       <link>https://luochang212.github.io/posts/lstm_power_consumption/</link>
