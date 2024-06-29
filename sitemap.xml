@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://luochang212.github.io/posts/chinese_embedding/</loc>
+    <lastmod>2024-06-29T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://luochang212.github.io/posts/transformer_arxiv/</loc>
     <lastmod>2024-06-16T00:00:00+00:00</lastmod>
   </url><url>
@@ -131,22 +134,28 @@
     <loc>https://luochang212.github.io/posts/nezha/</loc>
     <lastmod>2017-07-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://luochang212.github.io/tags/arxiv/</loc>
-    <lastmod>2024-06-16T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://luochang212.github.io/categories/</loc>
-    <lastmod>2024-06-16T00:00:00+00:00</lastmod>
+    <lastmod>2024-06-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/</loc>
-    <lastmod>2024-06-16T00:00:00+00:00</lastmod>
+    <lastmod>2024-06-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/categories/deeplearning/</loc>
-    <lastmod>2024-06-16T00:00:00+00:00</lastmod>
+    <lastmod>2024-06-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/embedding/</loc>
+    <lastmod>2024-06-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/posts/</loc>
-    <lastmod>2024-06-16T00:00:00+00:00</lastmod>
+    <lastmod>2024-06-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/representation/</loc>
+    <lastmod>2024-06-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/tags/</loc>
+    <lastmod>2024-06-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/arxiv/</loc>
     <lastmod>2024-06-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/tags/transformer/</loc>

@@ -23,11 +23,11 @@
 
 
 <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Attention Is All You Need 论文精读"/>
-<meta name="twitter:description" content="注意力机制是一个很 Fancy 的词。从契合原意的角度出发，它应该叫“上下文依赖查询”。造一些听着很 PRO 的词也是学术能力的一环"/>
+<meta name="twitter:description" content="注意力机制是个挺 fancy 的词，起一个 fancy 的名字也是学术能力的一环"/>
       <meta name="twitter:site" content="@MinosPalace"/>
 
 <meta property="og:title" content="Attention Is All You Need 论文精读" />
-<meta property="og:description" content="注意力机制是一个很 Fancy 的词。从契合原意的角度出发，它应该叫“上下文依赖查询”。造一些听着很 PRO 的词也是学术能力的一环" />
+<meta property="og:description" content="注意力机制是个挺 fancy 的词，起一个 fancy 的名字也是学术能力的一环" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://luochang212.github.io/posts/transformer_arxiv/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-06-16T00:00:00+00:00" />
@@ -600,6 +600,9 @@
 <p><strong>解码器：</strong></p>
 <p>解码器同样由 N = 6 个完全相同的块组成。除了编码器中有的两个子层，解码器使用了第三个子层。第三个子层在编码器堆栈的输出中计算多头注意力。和编码器类似，我们先对每个子层做残差连接，再做层归一化。我们还修改了解码器中的自注意力子层，以防读取到后续序列。掩码机制的使用，加上每次输出只偏移一个位置的事实，保证了位置 i 的预测只能基于小于 i 的位置的输出。</p>
 <h5 id="32-注意力">3.2 注意力</h5>
+<p>注意力函数可以理解为一个查询和一系列键值对到一个输出的映射，这里查询、键和值都是向量，输出是值的加权和。每个值所分配的权重由查询和对应键的兼容性函数计算得出。查询和所有键做点积，然后除以 $d_k$，然后给上面这坨东西包一层 softmax 以获取每个值的权重。</p>
+<p><strong>3.2.1 放缩点积注意力</strong></p>
+<p>我们给本文使用的注意力起名为“放缩点积注意力”。输入里的查询和键都是 $d_k$ 维的，值是 $d_v$ 维的。</p>
 <blockquote>
 <p>to do</p>
 </blockquote>
@@ -621,6 +624,11 @@
       <span class="navigation-tittle">注意力机制笔记</span>
     </a>
     
+    
+    <a href="/posts/chinese_embedding/" class="navigation-next">
+      <span class="navigation-tittle">中文词向量生成</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
     
 </div>
 
