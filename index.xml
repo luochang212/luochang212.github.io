@@ -13,7 +13,7 @@
       <link>https://luochang212.github.io/posts/chinese_embedding/</link>
       <pubDate>Sat, 29 Jun 2024 00:00:00 +0000</pubDate>
       <guid>https://luochang212.github.io/posts/chinese_embedding/</guid>
-      <description>Embedding 是指将词语映射到一个连续的向量空间中，使得语义上相似的词语在该空间中距离较近。这种表示方法有利于模型处理文本数据，因为它能捕获词语之间的语义和语法关系。&#xA;GitHub 项目地址：luochang212/chinese-embedding&#xA;✨ 本文探索的内容包括：&#xA;如何生成词向量 如何生成句子向量 如何找到语义相近的词 如何对 embedding 做降维及可视化 一、用 Word2Vec 生成词向量 用 Word2Vec 生成中英文词向量。&#xA;查看笔记 二、用 Bert 生成句子向量 用 Bert 生成中英文句子向量。&#xA;英文词向量 中文词向量 查看笔记 三、寻找最近邻 embedding 我的构想是：拿到红楼梦里所有词汇的 embedding，然后看我们感兴趣的词（比如林黛玉）离哪个词最近。&#xA;分词 批量计算 embedding 计算每个词的 embedding 计算我们关心词汇的近邻 embedding 整合成一个类 查看笔记 四、Embedding 可视化 用 t-SNE 和 PCA 对 embedding 降维，做 2D &amp;amp; 3D 可视化&#xA;红楼梦中的人物关系 中美英城市群 t-SNE PCA 查看笔记 五、头脑风暴 Embedding 的稳定性 Embedding 差值的意义 查看笔记 附录：和 Qwen-2.5 的聊天记录 Q: nn.</description>
+      <description>Embedding 是指将词语映射到一个连续的向量空间中，使得语义上相似的词语在该空间中距离较近。这种表示方法有利于模型处理文本数据，因为它能捕获词语之间的语义和语法关系。&#xA;GitHub 项目地址：luochang212/chinese-embedding&#xA;✨ 本文探索的内容包括：&#xA;如何生成词向量 如何生成句子向量 如何找到语义相近的词 如何对 embedding 做降维及可视化 一、用 Word2Vec 生成词向量 用 Word2Vec 生成中英文词向量。&#xA;英文词向量 中文词向量 查看笔记 二、用 Bert 生成句子向量 用 Bert 生成中英文句子向量。&#xA;英文句子向量 中文句子向量 查看笔记 三、寻找最近邻 embedding 我的构想是：拿到红楼梦里所有词汇的 embedding，然后看我们感兴趣的词（比如林黛玉）离哪个词最近。&#xA;分词 批量计算 embedding 计算每个词的 embedding 计算我们关心词汇的近邻 embedding 整合成一个类 查看笔记 四、Embedding 可视化 用 t-SNE 和 PCA 对 embedding 降维，做 2D &amp;amp; 3D 可视化&#xA;红楼梦中的人物关系 中美英城市群 t-SNE PCA 查看笔记 五、头脑风暴 Embedding 的稳定性 Embedding 差值的意义 查看笔记 附录：和 Qwen-2.5 的聊天记录 Q: nn.</description>
     </item>
     <item>
       <title>Attention Is All You Need 论文精读</title>
