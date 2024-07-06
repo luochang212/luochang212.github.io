@@ -4,10 +4,10 @@
     
 
 
-    <head>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     
-    <link rel="canonical" href="https://luochang212.github.io/posts/dl_tricks/">
+    <link rel="canonical" href="http://localhost:1313/posts/dl_tricks/">
     
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,7 +29,7 @@
 <meta property="og:title" content="深度学习优化技术" />
 <meta property="og:description" content="深度学习优化技术" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://luochang212.github.io/posts/dl_tricks/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="http://localhost:1313/posts/dl_tricks/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-06-30T00:00:00+00:00" />
 <meta property="article:modified_time" content="2024-06-30T00:00:00+00:00" /><meta property="og:site_name" content="Title" />
 
@@ -219,13 +219,13 @@
     <div class="container ">
       <div class="sidebar-about">
         <span class="site__title">
-          <a href="https://luochang212.github.io/">Chang Luo</a>
+          <a href="http://localhost:1313/">Chang Luo</a>
         </span>
         
         
         
         <div class="author-image">
-          <a href="#" class="load-iframe" onclick="openNav()"><img src="https://luochang212.github.io//images/profile.webp" id="author-iamge"
+          <a href="#" class="load-iframe" onclick="openNav()"><img src="http://localhost:1313//images/profile.webp" id="author-iamge"
               alt="Author Image" class="img--circle img--headshot element--center"></a>
         </div>
         
@@ -574,11 +574,47 @@
   
   <div class="post">
     <blockquote>
-<p>深度学习优化技术</p>
+<p>今天来复习深度学习中的组件。其实只要试着想一遍数据是如何在 MLP 中流动的，就能把深度学习的关键组件想得七七八八了。</p>
 </blockquote>
-<p>GitHub 项目地址：<a href="https://github.com/luochang212/AI-Project" target="_blank">AI-Project</a></p>
-<h3 id="一语言模型入门rnn-lstm-gru">一、语言模型入门：RNN, LSTM, GRU</h3>
-<h4 id="11-序列模型">1.1 序列模型</h4>
+<p>GitHub 项目地址：<a href="https://github.com/luochang212/dl-tricks" target="_blank">dl-tricks</a></p>
+<p>下图中，我们约定，左边是特征侧，右边是标签侧。</p>
+<p>训练开始时，样本数据先从左到右，从特征侧到标签侧，做正向传播。当传播到标签侧时，我们用 <strong>损失函数</strong> 计算梯度。再拿梯度，用 <strong>优化器</strong> 反向逐层更新参数，做反向传播。这样下一个批量 (batch) 做计算就可以用新参数做正向传播了。以上就是一轮迭代的过程，怎么样，深度学习很简单吧 (`ヮ´ )</p>
+<p>以上，我们已经接触到两个组件了，分别是：</p>
+<ul>
+<li>损失函数</li>
+<li>优化器</li>
+</ul>
+<p><img src="/img/mlp_network.png" alt=""></p>
+<p>实际上，正向传播过程中，还有一些小细节。在每个节点上，都有一个参数 <code>W</code>。<code>W</code> 的维度取决于上一层网络神经元的数量。</p>
+<p>我们以第 2 列，从上往下数第 3 个节点为例。它的上一层网络有 <code>m=10</code> 个神经元，因此 <code>W</code> 是一个 10 维向量。当然，节点自身还有当前批量样本，计算到当前节点位置的 <code>x</code> 值。</p>
+<p>$$ ReLU (W x + b) $$</p>
+<p>正向传播时，先计算 <code>W</code> 和 <code>x</code> 的内积，然后加上一个偏置 <code>b</code>，再计算以上结果过 <strong>激活函数</strong> 的值，最后用这个值更新 <code>x</code>。我们注意到，这里出现了激活函数。激活函数也是深度学习中的重要组件。</p>
+<p>回顾完 MLP 的整体框架，接下来，我们来复习各个组件的实现。</p>
+<h3 id="一激活函数">一、激活函数</h3>
+<h4 id="11-sigmoid">1.1 Sigmoid</h4>
+<h4 id="12-relu">1.2 ReLU</h4>
+<h4 id="13-tanh">1.3 Tanh</h4>
+<h4 id="14-softmax">1.4 Softmax</h4>
+<h3 id="二优化器">二、优化器</h3>
+<h4 id="21-sgd">2.1 SGD</h4>
+<h4 id="22-adam">2.2 Adam</h4>
+<h3 id="三损失函数">三、损失函数</h3>
+<h4 id="31-均方误差">3.1 均方误差</h4>
+<p>均方误差（Mean Squared Error, MSE）</p>
+<h4 id="32-交叉熵损失">3.2 交叉熵损失</h4>
+<p>交叉熵损失（Cross Entropy Loss）</p>
+<h3 id="四正则化技术">四、正则化技术</h3>
+<h4 id="41-权重衰减">4.1 权重衰减</h4>
+<h4 id="42-dropout">4.2 dropout</h4>
+<h3 id="五优化策略">五、优化策略</h3>
+<h4 id="51-梯度裁剪">5.1 梯度裁剪</h4>
+<h4 id="52-学习率调度">5.2 学习率调度</h4>
+<h4 id="53-量化">5.3 量化</h4>
+<h3 id="六归一化技术">六、归一化技术</h3>
+<h4 id="61-批量归一化">6.1 批量归一化</h4>
+<h4 id="62-层归一化">6.2 层归一化</h4>
+<h3 id="七可视化">七、可视化</h3>
+<p>ONNX + Netron</p>
 
   </div>
   
@@ -590,6 +626,11 @@
       <span class="navigation-tittle">中文词向量生成</span>
     </a>
     
+    
+    <a href="/posts/sentiment_analysis/" class="navigation-next">
+      <span class="navigation-tittle">文本情感分析</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
     
 </div>
 
