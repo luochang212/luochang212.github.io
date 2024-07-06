@@ -23,11 +23,11 @@
 
 
 <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="文本情感分析"/>
-<meta name="twitter:description" content="用 Bert &#43; Transformer encoder &#43; Fully Connected Layer 在 IMDB 电影评论数据集上做文本情感分析"/>
+<meta name="twitter:description" content="用 Bert &#43; Transformer Encoder &#43; Fully Connected Layer 做文本情感分析"/>
       <meta name="twitter:site" content="@MinosPalace"/>
 
 <meta property="og:title" content="文本情感分析" />
-<meta property="og:description" content="用 Bert &#43; Transformer encoder &#43; Fully Connected Layer 在 IMDB 电影评论数据集上做文本情感分析" />
+<meta property="og:description" content="用 Bert &#43; Transformer Encoder &#43; Fully Connected Layer 做文本情感分析" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://luochang212.github.io/posts/sentiment_analysis/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-07-06T00:00:00+00:00" />
@@ -586,8 +586,18 @@
 <li>GitHub 项目地址：<a href="https://github.com/luochang212/sentiment-analysis" target="_blank">sentiment-analysis</a></li>
 <li>IMDB 数据集：<a href="https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews/data" target="_blank">imdb-dataset</a></li>
 </ul>
+<p>✨ 本文在做什么：</p>
+<ol>
+<li>建立 词向量 ⇋ CSV 文件 双向 Pipeline</li>
+<li>用两种方法对 IMDB 电影评论做情感分析：
+<ul>
+<li>Bert 预训练词向量 + MLP</li>
+<li>Bert + Transformer Encoder + 全连接层</li>
+</ul>
+</li>
+</ol>
+<p>前两章是模版代码，像是没营养但必须要搭的砖，您完全可以跳过，从第三章开始看起。</p>
 <h3 id="一读写词向量">一、读写词向量</h3>
-<p>用 word2vec 获取单词的词向量，再用单词的平均词嵌入作为句子向量。最后把词向量存到 CSV 文件中。</p>
 <p>本节的主要目标是完成 <code>词向量 -&gt; CSV 文件</code> 和 <code>CSV 文件 -&gt; 词向量</code> 的 Pipeline。</p>
 <ol>
 <li>对语料做预处理</li>
