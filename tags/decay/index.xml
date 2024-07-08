@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Decay on Chang Luo</title>
-    <link>http://localhost:1313/tags/decay/</link>
+    <link>https://luochang212.github.io/tags/decay/</link>
     <description>Recent content in Decay on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 30 Jun 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/decay/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 07 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://luochang212.github.io/tags/decay/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>深度学习优化技术</title>
-      <link>http://localhost:1313/posts/dl_tricks/</link>
-      <pubDate>Sun, 30 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/dl_tricks/</guid>
-      <description>今天来复习深度学习中的组件。其实只要试着想一遍数据是如何在 MLP 中流动的，就能把深度学习的关键组件想得七七八八了。&#xA;GitHub 项目地址：dl-tricks&#xA;下图中，我们约定，左边是特征侧，右边是标签侧。&#xA;训练开始时，样本数据先从左到右，从特征侧到标签侧，做正向传播。当传播到标签侧时，我们用 损失函数 计算梯度。再拿梯度，用 优化器 反向逐层更新参数，做反向传播。这样下一个批量 (batch) 做计算就可以用新参数做正向传播了。以上就是一轮迭代的过程，怎么样，深度学习很简单吧 (`ヮ´ )&#xA;以上，我们已经接触到两个组件了，分别是：&#xA;损失函数 优化器 实际上，正向传播过程中，还有一些小细节。在每个节点上，都有一个参数 W。W 的维度取决于上一层网络神经元的数量。&#xA;我们以第 2 列，从上往下数第 3 个节点为例。它的上一层网络有 m=10 个神经元，因此 W 是一个 10 维向量。当然，节点自身还有当前批量样本，计算到当前节点位置的 x 值。&#xA;$$ ReLU (W x + b) $$&#xA;正向传播时，先计算 W 和 x 的内积，然后加上一个偏置 b，再计算以上结果过 激活函数 的值，最后用这个值更新 x。我们注意到，这里出现了激活函数。激活函数也是深度学习中的重要组件。&#xA;回顾完 MLP 的整体框架，接下来，我们来复习各个组件的实现。&#xA;一、激活函数 1.1 Sigmoid 1.2 ReLU 1.3 Tanh 1.4 Softmax 二、优化器 2.1 SGD 2.2 Adam 三、损失函数 3.1 均方误差 均方误差（Mean Squared Error, MSE）</description>
+      <title>像搭积木一样搭神经网络</title>
+      <link>https://luochang212.github.io/posts/dl_tricks/</link>
+      <pubDate>Sun, 07 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/posts/dl_tricks/</guid>
+      <description>搭积木的时候，我们将不同类型的积木搭在一起。对每一种类型的积木，又有多种变体可供选择。比如门框就具有多种变体，可以是罗马风格，也可以是中式田园风格。这和神经网络的架构方式非常像。因此写神经网络代码的过程，经常被戏称为“搭积木”。&#xA;GitHub 项目地址：dl-tricks&#xA;一、概述 1.1 从 MLP 说起 多层感知机 (MLP) 是最简单的深度神经网络。麻雀虽小，五脏俱全。其实只要想一遍数据是如何在 MLP 中流动的，就能把深度学习中的各种组件想个七七八八了。&#xA;下图是一个 4 层的多层感知机，左边是特征侧，右边是标签侧。训练开始时，样本数据先从左到右，做 正向传播。数据流转到标签侧后，用 损失函数 计算梯度，再拿 优化器 沿负梯度方向逐层反向更新参数。这样下一 批量 数据 (batch) 重新从特征侧开始做正向传播时，正好能用上前一轮更新的参数。&#xA;为了让例子更具体，我们假设有 2560 个样本，把它们分成 10 个批量，这样每批量就有 256 个样本。训练过程中，如果把 10 个批量数据全部训练一遍，就叫完成一个训练轮次 (epoch). 通常，神经网络需要训练多个轮次才会收敛。&#xA;下图展示样本、批量和轮次的关系：&#xA;1.2 神经元里发生了什么 让我们来看看每个神经元里发生了什么。&#xA;假定我们的样本有 10 个特征 (features)，考虑各个层的维数：&#xA;第一层的维数必须与样本特征数相同 最后一层的维数必须与预测类别数相同 中间隐藏层的维数比较自由，可以灵活地调整 假定一到四层的维数如下：&#xA;[Layer 0] 第一层维数为 10 [Layer 1] 第二层维数为 12 [Layer 2] 第三层维数为 12 [Layer 3] 第四层维数为 10 现在，我们来考虑一个样本做正向传播的情况：&#xA;第一层：&#xA;直接把样本的 10 个特征，分别填入 10 个神经元里就好了。</description>
     </item>
   </channel>
 </rss>

@@ -6,8 +6,22 @@
     <description>Recent content in Tags on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 06 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 07 Jul 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://luochang212.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Decay</title>
+      <link>https://luochang212.github.io/tags/decay/</link>
+      <pubDate>Sun, 07 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/tags/decay/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Dropout</title>
+      <link>https://luochang212.github.io/tags/dropout/</link>
+      <pubDate>Sun, 07 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/tags/dropout/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Bert</title>
       <link>https://luochang212.github.io/tags/bert/</link>

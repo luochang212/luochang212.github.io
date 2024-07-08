@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://luochang212.github.io/posts/dl_tricks/</loc>
+    <lastmod>2024-07-07T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://luochang212.github.io/posts/sentiment_analysis/</loc>
     <lastmod>2024-07-06T00:00:00+00:00</lastmod>
   </url><url>
@@ -137,28 +140,34 @@
     <loc>https://luochang212.github.io/posts/nezha/</loc>
     <lastmod>2017-07-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://luochang212.github.io/tags/bert/</loc>
-    <lastmod>2024-07-06T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://luochang212.github.io/categories/</loc>
-    <lastmod>2024-07-06T00:00:00+00:00</lastmod>
+    <lastmod>2024-07-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/</loc>
+    <lastmod>2024-07-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/decay/</loc>
+    <lastmod>2024-07-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/categories/deeplearning/</loc>
+    <lastmod>2024-07-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/dropout/</loc>
+    <lastmod>2024-07-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/posts/</loc>
+    <lastmod>2024-07-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/</loc>
+    <lastmod>2024-07-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/bert/</loc>
     <lastmod>2024-07-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/tags/classification/</loc>
     <lastmod>2024-07-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://luochang212.github.io/categories/deeplearning/</loc>
-    <lastmod>2024-07-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://luochang212.github.io/posts/</loc>
-    <lastmod>2024-07-06T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://luochang212.github.io/tags/sentiment/</loc>
-    <lastmod>2024-07-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://luochang212.github.io/tags/</loc>
     <lastmod>2024-07-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/tags/transformer/</loc>

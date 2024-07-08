@@ -4,10 +4,10 @@
     
 
 
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     
-    <link rel="canonical" href="http://localhost:1313/posts/dl_tricks/">
+    <link rel="canonical" href="https://luochang212.github.io/posts/dl_tricks/">
     
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,19 +19,19 @@
     
     
 
-<title>深度学习优化技术 • Chang Luo</title>
+<title>像搭积木一样搭神经网络 • Chang Luo</title>
 
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="深度学习优化技术"/>
-<meta name="twitter:description" content="深度学习优化技术"/>
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="像搭积木一样搭神经网络"/>
+<meta name="twitter:description" content="试着介绍深度学习中的各种组件，是对费曼学习法的一次拙劣戏仿"/>
       <meta name="twitter:site" content="@MinosPalace"/>
 
-<meta property="og:title" content="深度学习优化技术" />
-<meta property="og:description" content="深度学习优化技术" />
+<meta property="og:title" content="像搭积木一样搭神经网络" />
+<meta property="og:description" content="试着介绍深度学习中的各种组件，是对费曼学习法的一次拙劣戏仿" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/posts/dl_tricks/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-06-30T00:00:00+00:00" />
-<meta property="article:modified_time" content="2024-06-30T00:00:00+00:00" /><meta property="og:site_name" content="Title" />
+<meta property="og:url" content="https://luochang212.github.io/posts/dl_tricks/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-07-07T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-07-07T00:00:00+00:00" /><meta property="og:site_name" content="Title" />
 
 
     
@@ -219,13 +219,13 @@
     <div class="container ">
       <div class="sidebar-about">
         <span class="site__title">
-          <a href="http://localhost:1313/">Chang Luo</a>
+          <a href="https://luochang212.github.io/">Chang Luo</a>
         </span>
         
         
         
         <div class="author-image">
-          <a href="#" class="load-iframe" onclick="openNav()"><img src="http://localhost:1313//images/profile.webp" id="author-iamge"
+          <a href="#" class="load-iframe" onclick="openNav()"><img src="https://luochang212.github.io//images/profile.webp" id="author-iamge"
               alt="Author Image" class="img--circle img--headshot element--center"></a>
         </div>
         
@@ -519,13 +519,13 @@
 
 <article>
   <header>
-    <h1>深度学习优化技术</h1>
+    <h1>像搭积木一样搭神经网络</h1>
     
     
 <div class="post__meta">
     
     
-      <i class="fas fa-calendar-alt"></i> Jun 30, 2024
+      <i class="fas fa-calendar-alt"></i> Jul 7, 2024
     
     
     
@@ -555,7 +555,7 @@
     
     
     <br/>
-    <i class="fas fa-clock"></i> 1 min read
+    <i class="fas fa-clock"></i> 2 min read
 </div>
 
 
@@ -574,46 +574,151 @@
   
   <div class="post">
     <blockquote>
-<p>今天来复习深度学习中的组件。其实只要试着想一遍数据是如何在 MLP 中流动的，就能把深度学习的关键组件想得七七八八了。</p>
+<p>搭积木的时候，我们将不同类型的积木搭在一起。对每一种类型的积木，又有多种变体可供选择。比如门框就具有多种变体，可以是罗马风格，也可以是中式田园风格。这和神经网络的架构方式非常像。因此写神经网络代码的过程，经常被戏称为“搭积木”。</p>
 </blockquote>
 <p>GitHub 项目地址：<a href="https://github.com/luochang212/dl-tricks" target="_blank">dl-tricks</a></p>
-<p>下图中，我们约定，左边是特征侧，右边是标签侧。</p>
-<p>训练开始时，样本数据先从左到右，从特征侧到标签侧，做正向传播。当传播到标签侧时，我们用 <strong>损失函数</strong> 计算梯度。再拿梯度，用 <strong>优化器</strong> 反向逐层更新参数，做反向传播。这样下一个批量 (batch) 做计算就可以用新参数做正向传播了。以上就是一轮迭代的过程，怎么样，深度学习很简单吧 (`ヮ´ )</p>
-<p>以上，我们已经接触到两个组件了，分别是：</p>
-<ul>
-<li>损失函数</li>
-<li>优化器</li>
-</ul>
+<h3 id="一概述">一、概述</h3>
+<h4 id="11-从-mlp-说起">1.1 从 MLP 说起</h4>
+<p>多层感知机 (MLP) 是最简单的深度神经网络。麻雀虽小，五脏俱全。其实只要想一遍数据是如何在 MLP 中流动的，就能把深度学习中的各种组件想个七七八八了。</p>
+<p>下图是一个 4 层的多层感知机，左边是特征侧，右边是标签侧。训练开始时，样本数据先从左到右，做 <strong>正向传播</strong>。数据流转到标签侧后，用 <strong>损失函数</strong> 计算梯度，再拿 <strong>优化器</strong> 沿负梯度方向逐层反向更新参数。这样下一 <strong>批量</strong> 数据 (batch) 重新从特征侧开始做正向传播时，正好能用上前一轮更新的参数。</p>
 <p><img src="/img/mlp_network.png" alt=""></p>
-<p>实际上，正向传播过程中，还有一些小细节。在每个节点上，都有一个参数 <code>W</code>。<code>W</code> 的维度取决于上一层网络神经元的数量。</p>
-<p>我们以第 2 列，从上往下数第 3 个节点为例。它的上一层网络有 <code>m=10</code> 个神经元，因此 <code>W</code> 是一个 10 维向量。当然，节点自身还有当前批量样本，计算到当前节点位置的 <code>x</code> 值。</p>
-<p>$$ ReLU (W x + b) $$</p>
-<p>正向传播时，先计算 <code>W</code> 和 <code>x</code> 的内积，然后加上一个偏置 <code>b</code>，再计算以上结果过 <strong>激活函数</strong> 的值，最后用这个值更新 <code>x</code>。我们注意到，这里出现了激活函数。激活函数也是深度学习中的重要组件。</p>
-<p>回顾完 MLP 的整体框架，接下来，我们来复习各个组件的实现。</p>
-<h3 id="一激活函数">一、激活函数</h3>
-<h4 id="11-sigmoid">1.1 Sigmoid</h4>
-<h4 id="12-relu">1.2 ReLU</h4>
-<h4 id="13-tanh">1.3 Tanh</h4>
-<h4 id="14-softmax">1.4 Softmax</h4>
-<h3 id="二优化器">二、优化器</h3>
-<h4 id="21-sgd">2.1 SGD</h4>
-<h4 id="22-adam">2.2 Adam</h4>
-<h3 id="三损失函数">三、损失函数</h3>
-<h4 id="31-均方误差">3.1 均方误差</h4>
+<p>为了让例子更具体，我们假设有 2560 个样本，把它们分成 10 个批量，这样每批量就有 256 个样本。训练过程中，如果把 10 个批量数据全部训练一遍，就叫完成一个训练轮次 (epoch). 通常，神经网络需要训练多个轮次才会收敛。</p>
+<p>下图展示样本、批量和轮次的关系：</p>
+<p><img src="/img/epoch_and_batch.png" alt=""></p>
+<h4 id="12-神经元里发生了什么">1.2 神经元里发生了什么</h4>
+<p>让我们来看看每个神经元里发生了什么。</p>
+<p>假定我们的样本有 10 个特征 (features)，考虑各个层的维数：</p>
+<ul>
+<li>第一层的维数必须与样本特征数相同</li>
+<li>最后一层的维数必须与预测类别数相同</li>
+<li>中间隐藏层的维数比较自由，可以灵活地调整</li>
+</ul>
+<p>假定一到四层的维数如下：</p>
+<pre tabindex="0"><code>[Layer 0] 第一层维数为 10
+[Layer 1] 第二层维数为 12
+[Layer 2] 第三层维数为 12
+[Layer 3] 第四层维数为 10
+</code></pre><p>现在，我们来考虑一个样本做正向传播的情况：</p>
+<p><strong>第一层：</strong></p>
+<p>直接把样本的 10 个特征，分别填入 10 个神经元里就好了。</p>
+<pre tabindex="0"><code># 原始特征
+features = [&#34;张&#34;, &#34;女性&#34;, 143.0, &#34;国际贸易&#34;, 97.0, \
+            88.5, 95.0, 79.0, 91.0, 70.0]
+
+# 经过 encoder 编码后
+features = [33, 1, 143.0, 1002, 97.0, \
+            88.5, 95.0, 79.0, 91.0, 70.0]
+
+# 把特征注入对应神经元
+x_00, x_01, x_02, x_03, x_04, x_05, x_06, x_07, x_08, x_09 = *features
+</code></pre><p><strong>第二层：</strong></p>
+<p>第二层第 i 个神经元的值 <code>$x_{1i}$</code>，可以看作是由第一层神经元的值 <code>$x_{0i} (i \in [0, 9])$</code> 经过 <code>线性变换 -&gt; 加偏置项 -&gt; 过激活函数</code> 得到的。</p>
+<p><code>$x_{1i}$</code> 可由下式得出：</p>
+<p>$$ x_{1i} = ReLU (W_{0i} X_0 + b_{0i}) $$</p>
+<p>其中：</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$ReLU$</code></td>
+<td>是激活函数</td>
+</tr>
+<tr>
+<td><code>$W_{0i}$</code></td>
+<td>第 2 层神经元 i 上的可学习参数，是长为 10 的一维向量</td>
+</tr>
+<tr>
+<td><code>$X_0$</code></td>
+<td>第 1 层所有神经元 <code>x</code> 值 concat 成的向量，是长为 10 的一维向量</td>
+</tr>
+<tr>
+<td><code>$b_{0i}$</code></td>
+<td>第 2 层神经元 i 上的可学习偏置，是标量</td>
+</tr>
+<tr>
+<td><code>$x_{1i}$</code></td>
+<td>第 2 层神经元 i 上的值，是标量（对于最后一层，它就是输出值 <code>$\hat{y}_{i}$</code>）</td>
+</tr>
+</tbody>
+</table>
+<p>为了更具象地理解，不妨认为神经元 <code>$i$</code> 里包了三个参数：</p>
+<ul>
+<li><code>$W_{0i}$</code>: 可学习的线性变换参数</li>
+<li><code>$b_{0i}$</code>: 可学习的偏置</li>
+<li><code>$x_{1i}$</code>: 神经元的值</li>
+</ul>
+<p>注意到前两项 <code>$W_{0i}$</code> 和 <code>$b_{0i}$</code> 下标的第一个数字是 0。但是认为它们在 <code>Layer 0</code>（第一层）不是个好主意。我倾向于认为 <code>$W_{0i}$</code>, <code>$b_{0i}$</code>和 <code>$x_{1i}$</code> 高度相关，可以把它们当作神经元 <code>$i$</code> 上的参数。</p>
+<p>下图揭示了这种关系：<code>$X_0$</code> 是来自上一层的 “外来者”，而 <code>$W_{0i}$</code> 和 <code>$b_{0i}$</code> 更像本层的 “原住民”。</p>
+<img src="/img/calc_net.png" alt="描述信息" style="height: 450px; display: block; margin-left: auto; margin-right: auto;">
+<p>如果：</p>
+<ul>
+<li>将第二层所有向量 <code>$W: W_{00}, W_{01}, ... ... W_{09}$</code> concat 起来得到矩阵 <code>$W_0$</code></li>
+<li>将第二层所有偏置 <code>$b: b_{00}, b_{10}, ... ... b_{0,12}$</code> concat 起来得到向量 <code>$b_0$</code></li>
+<li>将第一层所有神经元上的值 concat 起来得到 <code>$X_0$</code></li>
+<li>将第二层所有神经元上的值 concat 起来得到 <code>$X_1$</code></li>
+</ul>
+<p>那么第二层上的非线形变换可以写作：</p>
+<p>$$ X_1 = ReLU (W_0 X_0 + b_0) $$</p>
+<blockquote>
+<p>好崩溃，画个图把 <a href="https://lucid.app/" target="_blank">Lucid</a> 免费额度用完了 (´;ω;`)</p>
+</blockquote>
+<h3 id="二激活函数">二、激活函数</h3>
+<p>激活函数为深度神经网络引入了非线性性，让神经网络具有拟合任意函数的能力。合适的网络架构，可以找到非凸优化问题的全局最优解。</p>
+<h4 id="21-sigmoid">2.1 Sigmoid</h4>
+<p><img src="/img/Sigmoid-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.png" alt=""></p>
+<ul>
+<li>表达式：<code>$ sigmoid (x) = \frac{1}{1 + e^{-x}} $</code></li>
+<li>值域：<code>$(0, 1)$</code></li>
+<li>特性：导数存在且处处可微。但在输入值很大或很小的情况下，梯度接近于零，导致梯度消失的问题。且输出不是零均值，可能会影响下一层的收敛速度。</li>
+</ul>
+<h4 id="22-tanh">2.2 Tanh</h4>
+<p><img src="/img/Tanh-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.png" alt=""></p>
+<ul>
+<li>表达式：<code>$ \tanh(x) = \frac{1 - e^{-2x}}{1 + e^{-2x}} $</code></li>
+<li>值域：<code>$(-1, 1)$</code></li>
+<li>特性：与 Sigmoid 函数相似，存在梯度消失问题。但相比 Sigmoid 函数，输出值更接近于零均值，有助于加快收敛速度。</li>
+</ul>
+<h4 id="23-relu">2.3 ReLU</h4>
+<p><img src="/img/ReLU-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.png" alt=""></p>
+<ul>
+<li>表达式：<code>$ ReLU (x) = \max(0, x) $</code></li>
+<li>值域：<code>$[0, +\infty)$</code></li>
+<li>特性：简单高效，计算速度快。当输入为正数时，梯度为 1，可避免梯度消失问题；当输入为负数时，梯度为 0，意味着不再激活，即神经元死亡。输出不是归一化的，可能需要额外的规范化技术。</li>
+</ul>
+<h4 id="24-softmax">2.4 Softmax</h4>
+<ul>
+<li>表达式：<code>$ softmax (\mathbf{x})_j = \frac{e^{x_j}}{\sum_{k=1}^{K} e^{x_k}} $</code></li>
+<li>值域：输出是一个概率分布，所有元素和为 1</li>
+<li>特性：可将任意实数向量转化为概率分布向量，常用于分类模型输出层的激活函数。</li>
+</ul>
+<h3 id="三正向传播">三、正向传播</h3>
+<blockquote>
+<p>施工中</p>
+</blockquote>
+<h3 id="四优化器">四、优化器</h3>
+<h4 id="41-sgd">4.1 SGD</h4>
+<h4 id="42-adam">4.2 Adam</h4>
+<h3 id="五损失函数">五、损失函数</h3>
+<h4 id="51-均方误差">5.1 均方误差</h4>
 <p>均方误差（Mean Squared Error, MSE）</p>
-<h4 id="32-交叉熵损失">3.2 交叉熵损失</h4>
+<h4 id="52-交叉熵损失">5.2 交叉熵损失</h4>
 <p>交叉熵损失（Cross Entropy Loss）</p>
-<h3 id="四正则化技术">四、正则化技术</h3>
-<h4 id="41-权重衰减">4.1 权重衰减</h4>
-<h4 id="42-dropout">4.2 dropout</h4>
-<h3 id="五优化策略">五、优化策略</h3>
-<h4 id="51-梯度裁剪">5.1 梯度裁剪</h4>
-<h4 id="52-学习率调度">5.2 学习率调度</h4>
-<h4 id="53-量化">5.3 量化</h4>
-<h3 id="六归一化技术">六、归一化技术</h3>
-<h4 id="61-批量归一化">6.1 批量归一化</h4>
-<h4 id="62-层归一化">6.2 层归一化</h4>
-<h3 id="七可视化">七、可视化</h3>
+<h3 id="六正则化技术">六、正则化技术</h3>
+<h4 id="61-权重衰减">6.1 权重衰减</h4>
+<h4 id="62-dropout">6.2 dropout</h4>
+<h3 id="七优化策略">七、优化策略</h3>
+<h4 id="71-梯度裁剪">7.1 梯度裁剪</h4>
+<h4 id="72-学习率调度">7.2 学习率调度</h4>
+<h4 id="73-量化">7.3 量化</h4>
+<h3 id="八归一化技术">八、归一化技术</h3>
+<h4 id="81-批量归一化">8.1 批量归一化</h4>
+<h4 id="82-层归一化">8.2 层归一化</h4>
+<h3 id="九推理和可视化">九、推理和可视化</h3>
 <p>ONNX + Netron</p>
 
   </div>
@@ -621,16 +726,11 @@
 
 <div class="navigation navigation-single">
     
-    <a href="/posts/chinese_embedding/" class="navigation-prev">
+    <a href="/posts/sentiment_analysis/" class="navigation-prev">
       <i aria-hidden="true" class="fa fa-chevron-left"></i>
-      <span class="navigation-tittle">中文词向量生成</span>
-    </a>
-    
-    
-    <a href="/posts/sentiment_analysis/" class="navigation-next">
       <span class="navigation-tittle">文本情感分析</span>
-      <i aria-hidden="true" class="fa fa-chevron-right"></i>
     </a>
+    
     
 </div>
 
