@@ -23,11 +23,11 @@
 
 
 <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="像搭积木一样搭神经网络"/>
-<meta name="twitter:description" content="试着介绍深度学习中的各种组件，是对费曼学习法的一次拙劣戏仿"/>
+<meta name="twitter:description" content="深度学习科普文，大概是对费曼学习法的一次拙劣戏仿"/>
       <meta name="twitter:site" content="@MinosPalace"/>
 
 <meta property="og:title" content="像搭积木一样搭神经网络" />
-<meta property="og:description" content="试着介绍深度学习中的各种组件，是对费曼学习法的一次拙劣戏仿" />
+<meta property="og:description" content="深度学习科普文，大概是对费曼学习法的一次拙劣戏仿" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://luochang212.github.io/posts/dl_tricks/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-07-07T00:00:00+00:00" />
@@ -555,7 +555,7 @@
     
     
     <br/>
-    <i class="fas fa-clock"></i> 2 min read
+    <i class="fas fa-clock"></i> 3 min read
 </div>
 
 
@@ -574,18 +574,66 @@
   
   <div class="post">
     <blockquote>
-<p>搭积木的时候，我们将不同类型的积木搭在一起。而对每一种类型的积木，又有多种变体可供选择。比如门框，既可以是文艺复兴风格，也可以是中式庭园风格。搭神经网络就和搭积木很像。神经网络中也充满了各种类型的积木，以及同类型下积木的变体。本文的目标是带大家认识神经网络中的“积木”。</p>
+<p>搭积木时，要用到多种类型的积木，而对同一类型的积木，又有多种可用变体。比如，我们既可以用中式田园风格的门框，也可以用文艺复兴时期的门框。神经网络中也充满了各种类型的积木，以及同一类型下的不同变体。本文的目标是带大家看看神经网络中的各种“积木”。</p>
 </blockquote>
-<p>GitHub 项目地址：<a href="https://github.com/luochang212/dl-tricks" target="_blank">dl-tricks</a></p>
+<p>GitHub 项目地址：<a href="https://github.com/luochang212/dl-tricks/blob/main/note.ipynb" target="_blank">dl-tricks/note.ipynb</a></p>
 <h3 id="一概述">一、概述</h3>
 <h4 id="11-从-mlp-说起">1.1 从 MLP 说起</h4>
-<p>多层感知机 (MLP) 是最简单的深度神经网络。麻雀虽小，五脏俱全。其实只要想一遍数据是如何在 MLP 中流动的，就能把深度学习中的各种组件想个七七八八了。</p>
-<p>下图是一个 4 层的多层感知机，左边是特征侧，右边是标签侧。训练开始时，样本数据先从左到右，做 <strong>正向传播</strong>。数据流转到标签侧后，用 <strong>损失函数</strong> 计算梯度，再拿 <strong>优化器</strong> 沿负梯度方向逐层反向更新参数。这样下一 <strong>批量</strong> 数据 (batch) 重新从特征侧开始做正向传播时，正好能用上前一轮更新的参数。</p>
+<p>多层感知机 (MLP) 是非常简单的深度神经网络。麻雀虽小，五脏俱全。只要想想数据是如何在 MLP 中流动的，就能把深度学习中的各种组件想个七七八八。</p>
+<p>下图是一个 4 层感知机，左边是特征，右边是标签。训练开始时，样本数据先从左到右做 <strong>正向传播</strong>。待数据流到右侧，用 <strong>损失函数</strong> 计算损失。此时损失是一个标量，而最后一层的节点权重 <code>$W$</code> 是一个矩阵，标量对矩阵的偏导是矩阵。<strong>优化器</strong> 会用大小合适的梯度矩阵，沿负梯度方向逐层反向更新权重 <code>$W$</code>。这样下一 <strong>批量</strong> (batch) 数据进入网络时，正好能用上一轮更新后的参数做正向传播。</p>
 <p><img src="/img/mlp_network.png" alt=""></p>
-<p>为了让例子更具体，我们假设有 2560 个样本，把它们分成 10 个批量，这样每批量就有 256 个样本。训练过程中，如果把 10 个批量数据全部训练一遍，就叫完成一个训练轮次 (epoch). 通常，神经网络需要训练多个轮次才会收敛。</p>
-<p>下图展示样本、批量和轮次的关系：</p>
+<h4 id="12-dataloader">1.2 DataLoader</h4>
+<p>样本是有限的。为了榨干样本的最后一丝性能，同一个样本往往要反复使用多次。这就要 <code>DataLoader</code> 上场了。<code>DataLoader</code> 把数据编排成一个个批量。并构建了一个迭代器，每次调用它都能从第一个批量开始遍历。</p>
+<p>我们来写一个实现以上功能的野生 <code>DataLoader</code>：</p>
+<pre tabindex="0"><code>import math
+import torch
+
+class DataLoader:
+    def __init__(self, data: list, batch_size: int):
+        self.i = 0
+        self.batch_size = batch_size
+        self.batch_num = math.floor(len(data) / batch_size)
+        self._data = self.gen_batch(data)
+
+    def gen_batch(self, data):
+        lst = []
+        s = self.batch_size
+        for i in range(self.batch_num):
+            start, end = s * i, s * (i + 1)
+            X = torch.tensor([e[0] for e in data[start:end]])
+            y = torch.tensor([e[1] for e in data[start:end]])
+            lst.append((X, y))
+
+        return lst
+
+    def __iter__(self):
+        self.i = 0
+        return self
+
+    def __next__(self):
+        if self.i &lt; len(self._data):
+            self.i += 1
+            return self._data[self.i - 1]
+        else:
+            raise StopIteration
+</code></pre><p>为了让例子更加具体，我们假设一共有 2560 个样本，并把它们分成 10 个批量，每个批量有 256 个样本。</p>
+<pre tabindex="0"><code># 构造符合 f(a, b) = \frac{a^2 - b^2}{a^2 + b^2} + \epsilon 函数的样本生成
+sample_num = 2560
+X = [(random.random(), random.random()) for e in range(sample_num)]
+y = map(lambda e: ((e[0]**2 - e[1]**2) / (e[0]**2 + e[1]**2)) + (random.random() / 100), X)
+
+raw_data = list(zip(X, y))
+</code></pre><pre tabindex="0"><code># 输出一个批量的数据
+for X, y in DataLoader(data=raw_data, batch_size=10):
+    print(f&#39;X: {X}&#39;)
+    print(f&#39;y: {y}&#39;)
+    break
+</code></pre><p>看下图。在训练过程中，如果 10 个批量数据全训了一遍，就叫完成一个轮次 (epoch). 神经网络通常需要经过多个轮次的训练才会收敛。</p>
 <p><img src="/img/epoch_and_batch.png" alt=""></p>
-<h4 id="12-神经元里发生了什么">1.2 神经元里发生了什么</h4>
+<blockquote>
+<p><strong>Note:</strong> 为什么要做成批量？因为批量可以提高反向传播的效率。想了解更多细节，可以问 GPT：批量随机梯度下降比随机梯度下降好在哪儿？</p>
+</blockquote>
+<h4 id="13-神经元里发生了什么">1.3 神经元里发生了什么</h4>
 <p>让我们来看看每个神经元里发生了什么。</p>
 <p>假定我们的样本有 10 个特征 (features)，考虑各个层的维数：</p>
 <ul>
