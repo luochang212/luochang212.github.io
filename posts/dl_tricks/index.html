@@ -23,11 +23,11 @@
 
 
 <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="像搭积木一样搭神经网络"/>
-<meta name="twitter:description" content="深度学习科普文，大概是对费曼学习法的一次拙劣戏仿"/>
+<meta name="twitter:description" content="介绍深度学习中的各种组件，对费曼学习法的拙劣戏仿"/>
       <meta name="twitter:site" content="@MinosPalace"/>
 
 <meta property="og:title" content="像搭积木一样搭神经网络" />
-<meta property="og:description" content="深度学习科普文，大概是对费曼学习法的一次拙劣戏仿" />
+<meta property="og:description" content="介绍深度学习中的各种组件，对费曼学习法的拙劣戏仿" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://luochang212.github.io/posts/dl_tricks/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-07-07T00:00:00+00:00" />
@@ -574,17 +574,17 @@
   
   <div class="post">
     <blockquote>
-<p>搭积木时，要用到多种类型的积木，而对同一类型的积木，又有多种可用变体。比如，我们既可以用中式田园风格的门框，也可以用文艺复兴时期的门框。神经网络中也充满了各种类型的积木，以及同一类型下的不同变体。本文的目标是带大家看看神经网络中的各种“积木”。</p>
+<p>搭积木的时候，我们将不同类型的积木搭在一起。而对每一种类型的积木，又有多种变体可供选择。比如门框，既可以是文艺复兴风格，也可以是中式庭园风格。神经网络也一样，充满了各种各样的“积木”，以及“积木”的变体。学习神经网络，其实就是认“积木”的过程。</p>
 </blockquote>
 <p>GitHub 项目地址：<a href="https://github.com/luochang212/dl-tricks/blob/main/note.ipynb" target="_blank">dl-tricks/note.ipynb</a></p>
 <h3 id="一概述">一、概述</h3>
 <h4 id="11-从-mlp-说起">1.1 从 MLP 说起</h4>
-<p>多层感知机 (MLP) 是非常简单的深度神经网络。麻雀虽小，五脏俱全。只要想想数据是如何在 MLP 中流动的，就能把深度学习中的各种组件想个七七八八。</p>
+<p>多层感知机 (MLP) 是非常简单的深度神经网络。麻雀虽小，五脏俱全。只要想想数据是如何在 MLP 中流动的，就能把深度学习中的各种组件想个七七八八。注意到，我们这里给神经网络中的“积木”一个比较正式的名称 &mdash;&mdash; 组件。</p>
 <p>下图是一个 4 层感知机，左边是特征，右边是标签。训练开始时，样本数据先从左到右做 <strong>正向传播</strong>。待数据流到右侧，用 <strong>损失函数</strong> 计算损失。此时损失是一个标量，而最后一层的节点权重 <code>$W$</code> 是一个矩阵，标量对矩阵的偏导是矩阵。<strong>优化器</strong> 会用大小合适的梯度矩阵，沿负梯度方向逐层反向更新权重 <code>$W$</code>。这样下一 <strong>批量</strong> (batch) 数据进入网络时，正好能用上一轮更新后的参数做正向传播。</p>
 <p><img src="/img/mlp_network.png" alt=""></p>
 <h4 id="12-dataloader">1.2 DataLoader</h4>
-<p>样本是有限的。为了榨干样本的最后一丝性能，同一个样本往往要反复使用多次。这就要 <code>DataLoader</code> 上场了。<code>DataLoader</code> 把数据编排成一个个批量。并构建了一个迭代器，每次调用它都能从第一个批量开始遍历。</p>
-<p>我们来写一个实现以上功能的野生 <code>DataLoader</code>：</p>
+<p>样本是有限的。为了榨干样本的最后一丝价值，一个样本往往要反复利用多次。这就要 <code>DataLoader</code> 上场了。<code>DataLoader</code> 把数据编排成一个个批量，并构建一个迭代器，使得每次调用它，都能从第一个批量开始遍历。</p>
+<p>让我们来实现一个野生 <code>DataLoader</code>：</p>
 <pre tabindex="0"><code>import math
 import torch
 
@@ -616,15 +616,15 @@ class DataLoader:
             return self._data[self.i - 1]
         else:
             raise StopIteration
-</code></pre><p>为了让例子更加具体，我们假设一共有 2560 个样本，并把它们分成 10 个批量，每个批量有 256 个样本。</p>
+</code></pre><p>为了让例子更加具体，我们假设有 2560 个样本。如果分成 10 个批量，则每批量有 256 个样本。</p>
 <pre tabindex="0"><code># 构造符合 f(a, b) = \frac{a^2 - b^2}{a^2 + b^2} + \epsilon 函数的样本生成
-sample_num = 2560
+sample_num, batch_size = 2560, 10
 X = [(random.random(), random.random()) for e in range(sample_num)]
 y = map(lambda e: ((e[0]**2 - e[1]**2) / (e[0]**2 + e[1]**2)) + (random.random() / 100), X)
 
 raw_data = list(zip(X, y))
 </code></pre><pre tabindex="0"><code># 输出一个批量的数据
-for X, y in DataLoader(data=raw_data, batch_size=10):
+for X, y in DataLoader(data=raw_data, batch_size=batch_size):
     print(f&#39;X: {X}&#39;)
     print(f&#39;y: {y}&#39;)
     break
