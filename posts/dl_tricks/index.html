@@ -716,50 +716,47 @@ x_00, x_01, x_02, x_03, x_04, x_05, x_06, x_07, x_08, x_09 = *features
 <p>好崩溃，画个图把 <a href="https://lucid.app/" target="_blank">Lucid</a> 免费额度用完了 (´;ω;`)</p>
 </blockquote>
 <h3 id="二激活函数">二、激活函数</h3>
-<p>激活函数为深度神经网络引入了非线性性，让神经网络具有拟合任意函数的能力。合适的网络架构，可以找到非凸优化问题的全局最优解。</p>
+<p>激活函数为深度神经网络引入了非线性性，让神经网络具有拟合任意函数的能力，使其拥有找到非凸优化问题最优解的能力。</p>
 <h4 id="21-sigmoid">2.1 Sigmoid</h4>
-<p><img src="/img/Sigmoid-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.png" alt=""></p>
 <ul>
 <li>表达式：<code>$ sigmoid (x) = \frac{1}{1 + e^{-x}} $</code></li>
 <li>值域：<code>$(0, 1)$</code></li>
 <li>特性：导数存在且处处可微。但在输入值很大或很小的情况下，梯度接近于零，导致梯度消失的问题。且输出不是零均值，可能会影响下一层的收敛速度。</li>
 </ul>
+<p><img src="/img/Sigmoid-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.png" alt=""></p>
 <h4 id="22-tanh">2.2 Tanh</h4>
-<p><img src="/img/Tanh-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.png" alt=""></p>
 <ul>
 <li>表达式：<code>$ \tanh(x) = \frac{1 - e^{-2x}}{1 + e^{-2x}} $</code></li>
 <li>值域：<code>$(-1, 1)$</code></li>
 <li>特性：与 Sigmoid 函数相似，存在梯度消失问题。但相比 Sigmoid 函数，输出值更接近于零均值，有助于加快收敛速度。</li>
 </ul>
+<p><img src="/img/Tanh-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.png" alt=""></p>
 <h4 id="23-relu">2.3 ReLU</h4>
-<p><img src="/img/ReLU-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.png" alt=""></p>
 <ul>
 <li>表达式：<code>$ ReLU (x) = \max(0, x) $</code></li>
 <li>值域：<code>$[0, +\infty)$</code></li>
 <li>特性：简单高效，计算速度快。当输入为正数时，梯度为 1，可避免梯度消失问题；当输入为负数时，梯度为 0，意味着不再激活，即神经元死亡。输出不是归一化的，可能需要额外的规范化技术。</li>
 </ul>
+<p><img src="/img/ReLU-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.png" alt=""></p>
 <h4 id="24-softmax">2.4 Softmax</h4>
 <ul>
-<li>表达式：<code>$ softmax (\mathbf{x})_j = \frac{e^{x_j}}{\sum_{k=1}^{K} e^{x_k}} $</code></li>
+<li>表达式：<code>$\operatorname{softmax}(\mathbf{X})_{i j}=\frac{\exp \left(\mathbf{X}_{i j}\right)}{\sum_k \exp \left(\mathbf{X}_{i k}\right)}$</code></li>
 <li>值域：输出是一个概率分布，所有元素和为 1</li>
 <li>特性：可将任意实数向量转化为概率分布向量，常用于分类模型输出层的激活函数。</li>
 </ul>
-<h3 id="三正向传播">三、正向传播</h3>
-<blockquote>
-<p>施工中</p>
-</blockquote>
-<h3 id="四优化器">四、优化器</h3>
+<h3 id="三损失函数">三、损失函数</h3>
+<h4 id="51-交叉熵损失">5.1 交叉熵损失</h4>
+<p>交叉熵损失（Cross Entropy Loss）</p>
+<h4 id="52-均方误差">5.2 均方误差</h4>
+<p>均方误差（Mean Squared Error, MSE）</p>
+<h3 id="四优化器">四优化器</h3>
 <h4 id="41-sgd">4.1 SGD</h4>
 <h4 id="42-adam">4.2 Adam</h4>
-<h3 id="五损失函数">五、损失函数</h3>
-<h4 id="51-均方误差">5.1 均方误差</h4>
-<p>均方误差（Mean Squared Error, MSE）</p>
-<h4 id="52-交叉熵损失">5.2 交叉熵损失</h4>
-<p>交叉熵损失（Cross Entropy Loss）</p>
+<h3 id="五链式求导">五、链式求导</h3>
 <h3 id="六正则化技术">六、正则化技术</h3>
 <h4 id="61-权重衰减">6.1 权重衰减</h4>
 <h4 id="62-dropout">6.2 dropout</h4>
-<h3 id="七优化策略">七、优化策略</h3>
+<h3 id="七优化策略梯度更新策略">七、优化策略（梯度更新策略）</h3>
 <h4 id="71-梯度裁剪">7.1 梯度裁剪</h4>
 <h4 id="72-学习率调度">7.2 学习率调度</h4>
 <h4 id="73-量化">7.3 量化</h4>
