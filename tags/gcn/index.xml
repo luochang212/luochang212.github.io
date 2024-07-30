@@ -6,13 +6,20 @@
     <description>Recent content in GCN on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 27 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 28 Jul 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://luochang212.github.io/tags/gcn/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>如何获取图嵌入</title>
+      <link>https://luochang212.github.io/posts/graph_embedding/</link>
+      <pubDate>Sun, 28 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/posts/graph_embedding/</guid>
+      <description>两种常见的图嵌入算法：GraphSAGE 和 GCN&#xA;GitHub 项目地址：graph-embedding</description>
+    </item>
+    <item>
       <title>SynchroTrap 的算法实现</title>
-      <link>https://luochang212.github.io/posts/graphframes/</link>
+      <link>https://luochang212.github.io/posts/synchrotrap/</link>
       <pubDate>Sat, 27 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/posts/graphframes/</guid>
+      <guid>https://luochang212.github.io/posts/synchrotrap/</guid>
       <description>一种基于 Jaccard 相似度和最大连通子图的流量风控算法&#xA;GitHub 项目地址：SynchroTrap&#xA;一、构造样本 生成源数据 生成大盘数据 生成正态样本分布 生成 uid 并计算访问次数 时间与时间戳 用户日志表 生成异常数据 选择攻击开始时间 获取 ip 池 发起攻击 整合两份数据 Note: 与异常捕获的难度有关的变量：&#xA;攻击持续的时间 attack_duration 正常 ip 的含量 normal_ip_rate 资源池的大小 ip_num 资源池的隔离 uid_repeat_rate 攻击间隔 max_t - min_t 攻击线程数 epoch 查看笔记 二、算法实现 SynchroTrap 的原理 SynchroTrap 通过构建 &amp;lt;U, T, C&amp;gt; 三元组来衡量用户与用户间的距离 它的基本思想是：如果两条日志的时间差小于一个较小的 $T_{\text {sim }}$，且限制项 $C_i$ 与 $C_j$ 相等，则认为 $U_i$ 和 $U_j$ 有关联。其中，限制项 $C$ 可以是任何与资源限制有关的项 任意两个 UID 的相似度可由 Jaccard similarity 计算得出 用 Jaccard 相似度建边 可视化 计算强连通图 查看笔记 三、评估与可视化 异常检测： 由于黑产存在资源复用，其使用的 uid 之间 Jaccard similarity 相似度往往较高。用高度相似的节点构图，再基于图计算社区。我们发现：黑产用户组成的社区规模，比正常用户的社区规模更大 模型评估： 计算 SynchroTrap 算法的 准确率、精确率、召回率 等指标 可视化 由于 SynchroTrap 是一种识别同步行为的算法。我们可以用 ip 和 timestamp 作图，看看能否发现黑产攻击的起停时间 下图中，Fraud IP 表示我们识别出的黑产 IP，Normal IP 是其余未被识别的 IP（包含有未召回的 IP）</description>
     </item>
   </channel>
