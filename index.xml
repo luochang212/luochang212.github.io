@@ -6,14 +6,21 @@
     <description>Recent content on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 07 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 27 Jul 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://luochang212.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SynchroTrap 的算法实现</title>
+      <link>https://luochang212.github.io/posts/graphframes/</link>
+      <pubDate>Sat, 27 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/posts/graphframes/</guid>
+      <description>一种基于 Jaccard 相似度和最大连通子图的流量风控算法&#xA;GitHub 项目地址：SynchroTrap&#xA;一、构造样本 生成源数据 生成大盘数据 生成正态样本分布 生成 uid 并计算访问次数 时间与时间戳 用户日志表 生成异常数据 选择攻击开始时间 获取 ip 池 发起攻击 整合两份数据 Note: 与异常捕获的难度有关的变量：&#xA;攻击持续的时间 attack_duration 正常 ip 的含量 normal_ip_rate 资源池的大小 ip_num 资源池的隔离 uid_repeat_rate 攻击间隔 max_t - min_t 攻击线程数 epoch 查看笔记 二、算法实现 SynchroTrap 的原理 SynchroTrap 通过构建 &amp;lt;U, T, C&amp;gt; 三元组来衡量用户与用户间的距离 它的基本思想是：如果两条日志的时间差小于一个较小的 $T_{\text {sim }}$，且限制项 $C_i$ 与 $C_j$ 相等，则认为 $U_i$ 和 $U_j$ 有关联。其中，限制项 $C$ 可以是任何与资源限制有关的项 任意两个 UID 的相似度可由 Jaccard similarity 计算得出 用 Jaccard 相似度建边 可视化 计算强连通图 查看笔记 三、评估与可视化 异常检测： 由于黑产存在资源复用，其使用的 uid 之间 Jaccard similarity 相似度往往较高。用高度相似的节点构图，再基于图计算社区。我们发现：黑产用户组成的社区规模，比正常用户的社区规模更大 模型评估： 计算 SynchroTrap 算法的 准确率、精确率、召回率 等指标 可视化 由于 SynchroTrap 是一种识别同步行为的算法。我们可以用 ip 和 timestamp 作图，看看能否发现黑产攻击的起停时间 下图中，Fraud IP 表示我们识别出的黑产 IP，Normal IP 是其余未被识别的 IP（包含有未召回的 IP）</description>
+    </item>
     <item>
       <title>像搭积木一样搭神经网络</title>
       <link>https://luochang212.github.io/posts/dl_tricks/</link>
       <pubDate>Sun, 07 Jul 2024 00:00:00 +0000</pubDate>
       <guid>https://luochang212.github.io/posts/dl_tricks/</guid>
-      <description>搭积木的时候，我们将不同类型的积木搭在一起。而对每一种类型的积木，又有多种变体可供选择。比如门框，既可以是文艺复兴风格，也可以是中式庭园风格。神经网络也一样，充满了各种各样的“积木”，以及“积木”的变体。学习神经网络，其实就是认“积木”的过程。&#xA;GitHub 项目地址：dl-tricks/note.ipynb&#xA;一、概述 1.1 从 MLP 说起 多层感知机 (MLP) 是非常简单的深度神经网络。麻雀虽小，五脏俱全。只要想想数据是如何在 MLP 中流动的，就能把深度学习中的各种组件想个七七八八。注意到，我们这里给神经网络中的“积木”一个比较正式的名称 &amp;mdash;&amp;mdash; 组件。&#xA;下图是一个 4 层感知机，左边是特征，右边是标签。训练开始时，样本数据先从左到右做 正向传播。待数据流到右侧，用 损失函数 计算损失。此时损失是一个标量，而最后一层的节点权重 $W$ 是一个矩阵，标量对矩阵的偏导是矩阵。优化器 会用大小合适的梯度矩阵，沿负梯度方向逐层反向更新权重 $W$。这样下一 批量 (batch) 数据进入网络时，正好能用上一轮更新后的参数做正向传播。&#xA;1.2 DataLoader 样本是有限的。为了榨干样本的最后一丝价值，一个样本往往要反复利用多次。这就要 DataLoader 上场了。DataLoader 把数据编排成一个个批量，并构建一个迭代器，使得每次调用它，都能从第一个批量开始遍历。&#xA;让我们来实现一个野生 DataLoader：&#xA;import math import torch class DataLoader: def __init__(self, data: list, batch_size: int): self.i = 0 self.batch_size = batch_size self.batch_num = math.floor(len(data) / batch_size) self._data = self.gen_batch(data) def gen_batch(self, data): lst = [] s = self.</description>
+      <description>搭积木的时候，我们将不同类型的积木搭在一起。而对每一种类型的积木，又有多种变体可供选择。比如门框，既可以是文艺复兴风格，也可以是中式庭园风格。神经网络也一样，充满了各种各样的“积木”，以及“积木”的变体。学习神经网络，其实就是认“积木”的过程。&#xA;GitHub 项目地址：dl-tricks/note.ipynb&#xA;一、必要组件 1.1 从 MLP 说起 我们从最简单的深度神经网络 多层感知机 (MLP) 开始说起。麻雀虽小，五脏俱全。了解数据如何在 MLP 中流动，就能大致勾勒一个神经网络的 必要组件。&#xA;下图是一个 4 层感知机，左边是特征，右边是标签。训练开始时，样本数据先从左到右做 正向传播。待数据流到右侧，用 损失函数 计算损失。此时损失是一个标量，而最后一层的节点权重 $W$ 是一个矩阵，标量对矩阵的偏导是矩阵。优化器 会用大小合适的梯度矩阵，沿负梯度方向逐层反向更新权重 $W$。这样下一 批量 (batch) 数据进入网络时，正好能用上一轮更新后的参数做正向传播。&#xA;1.2 DataLoader 样本是有限的，为了让模型获得最强性能，必须榨干每个样本的价值。&#xA;因此在训练中，一个样本往往要复用多次。DataLoader 就在做这样一件事。它把数据编排成一个个批量，并构建一个迭代器。每次调用它，会返回一个从第一个批量开始遍历的迭代器。这个特性使得复用样本变得更加方便。&#xA;原生的 PyTorch DataLoader 很复杂，让我们来实现一个野生 DataLoader：&#xA;import math import torch class DataLoader: def __init__(self, data: list, batch_size: int): self.i = 0 self.batch_size = batch_size self.batch_num = math.floor(len(data) / batch_size) self._data = self.gen_batch(data) def gen_batch(self, data): lst = [] s = self.</description>
     </item>
     <item>
       <title>文本情感分析</title>

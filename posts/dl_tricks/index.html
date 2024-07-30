@@ -23,11 +23,11 @@
 
 
 <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="像搭积木一样搭神经网络"/>
-<meta name="twitter:description" content="介绍深度学习中的各种组件，对费曼学习法的拙劣戏仿"/>
+<meta name="twitter:description" content="本文试图介绍深度学习中的各种组件，是对费曼学习法的拙劣戏仿"/>
       <meta name="twitter:site" content="@MinosPalace"/>
 
 <meta property="og:title" content="像搭积木一样搭神经网络" />
-<meta property="og:description" content="介绍深度学习中的各种组件，对费曼学习法的拙劣戏仿" />
+<meta property="og:description" content="本文试图介绍深度学习中的各种组件，是对费曼学习法的拙劣戏仿" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://luochang212.github.io/posts/dl_tricks/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-07-07T00:00:00+00:00" />
@@ -577,14 +577,15 @@
 <p>搭积木的时候，我们将不同类型的积木搭在一起。而对每一种类型的积木，又有多种变体可供选择。比如门框，既可以是文艺复兴风格，也可以是中式庭园风格。神经网络也一样，充满了各种各样的“积木”，以及“积木”的变体。学习神经网络，其实就是认“积木”的过程。</p>
 </blockquote>
 <p>GitHub 项目地址：<a href="https://github.com/luochang212/dl-tricks/blob/main/note.ipynb" target="_blank">dl-tricks/note.ipynb</a></p>
-<h3 id="一概述">一、概述</h3>
+<h3 id="一必要组件">一、必要组件</h3>
 <h4 id="11-从-mlp-说起">1.1 从 MLP 说起</h4>
-<p>多层感知机 (MLP) 是非常简单的深度神经网络。麻雀虽小，五脏俱全。只要想想数据是如何在 MLP 中流动的，就能把深度学习中的各种组件想个七七八八。注意到，我们这里给神经网络中的“积木”一个比较正式的名称 &mdash;&mdash; 组件。</p>
+<p>我们从最简单的深度神经网络 <strong>多层感知机</strong> (MLP) 开始说起。麻雀虽小，五脏俱全。了解数据如何在 MLP 中流动，就能大致勾勒一个神经网络的 <strong>必要组件</strong>。</p>
 <p>下图是一个 4 层感知机，左边是特征，右边是标签。训练开始时，样本数据先从左到右做 <strong>正向传播</strong>。待数据流到右侧，用 <strong>损失函数</strong> 计算损失。此时损失是一个标量，而最后一层的节点权重 <code>$W$</code> 是一个矩阵，标量对矩阵的偏导是矩阵。<strong>优化器</strong> 会用大小合适的梯度矩阵，沿负梯度方向逐层反向更新权重 <code>$W$</code>。这样下一 <strong>批量</strong> (batch) 数据进入网络时，正好能用上一轮更新后的参数做正向传播。</p>
 <p><img src="/img/mlp_network.png" alt=""></p>
 <h4 id="12-dataloader">1.2 DataLoader</h4>
-<p>样本是有限的。为了榨干样本的最后一丝价值，一个样本往往要反复利用多次。这就要 <code>DataLoader</code> 上场了。<code>DataLoader</code> 把数据编排成一个个批量，并构建一个迭代器，使得每次调用它，都能从第一个批量开始遍历。</p>
-<p>让我们来实现一个野生 <code>DataLoader</code>：</p>
+<p>样本是有限的，为了让模型获得最强性能，必须榨干每个样本的价值。</p>
+<p>因此在训练中，一个样本往往要复用多次。<code>DataLoader</code> 就在做这样一件事。它把数据编排成一个个批量，并构建一个迭代器。每次调用它，会返回一个从第一个批量开始遍历的迭代器。这个特性使得复用样本变得更加方便。</p>
+<p>原生的 PyTorch <code>DataLoader</code> 很复杂，让我们来实现一个野生 <code>DataLoader</code>：</p>
 <pre tabindex="0"><code>import math
 import torch
 
@@ -616,7 +617,7 @@ class DataLoader:
             return self._data[self.i - 1]
         else:
             raise StopIteration
-</code></pre><p>为了让例子更加具体，我们假设有 2560 个样本。如果分成 10 个批量，则每批量有 256 个样本。</p>
+</code></pre><p>假设有 2560 个样本。计划分成 10 个批量，则每批量有 256 个样本。我们可以用上面的野生 <code>DataLoader</code> 加载这些样本。</p>
 <pre tabindex="0"><code># 构造符合 f(a, b) = \frac{a^2 - b^2}{a^2 + b^2} + \epsilon 函数的样本生成
 sample_num, batch_size = 2560, 10
 X = [(random.random(), random.random()) for e in range(sample_num)]
@@ -628,27 +629,28 @@ for X, y in DataLoader(data=raw_data, batch_size=batch_size):
     print(f&#39;X: {X}&#39;)
     print(f&#39;y: {y}&#39;)
     break
-</code></pre><p>看下图。在训练过程中，如果 10 个批量数据全训了一遍，就叫完成一个轮次 (epoch). 神经网络通常需要经过多个轮次的训练才会收敛。</p>
+</code></pre><p>在实际训练过程中，如果把全部 10 个批量的数据全训了一遍，就叫完成一个轮次 (epoch) 的训练。深度神经网络通常需要多个轮次训练才会收敛。</p>
 <p><img src="/img/epoch_and_batch.png" alt=""></p>
 <blockquote>
-<p><strong>Note:</strong> 为什么要做成批量？因为批量可以提高反向传播的效率。想了解更多细节，可以问 GPT：批量随机梯度下降比随机梯度下降好在哪儿？</p>
+<p><strong>Note:</strong> 为什么要做成批量？因为批量计算提高了反向传播的效率。你可以问 GPT：批量随机梯度下降比随机梯度下降好在哪儿？</p>
 </blockquote>
 <h4 id="13-神经元里发生了什么">1.3 神经元里发生了什么</h4>
-<p>让我们来看看每个神经元里发生了什么。</p>
-<p>假定我们的样本有 10 个特征 (features)，考虑各个层的维数：</p>
-<ul>
-<li>第一层的维数必须与样本特征数相同</li>
-<li>最后一层的维数必须与预测类别数相同</li>
-<li>中间隐藏层的维数比较自由，可以灵活地调整</li>
-</ul>
-<p>假定一到四层的维数如下：</p>
+<p>为了考察神经元里发生了什么。我们假设输入样本有 10 个特征 (features). 我们构建一个四层 MLP，假定各层神经元数量如下：</p>
 <pre tabindex="0"><code>[Layer 0] 第一层维数为 10
 [Layer 1] 第二层维数为 12
 [Layer 2] 第三层维数为 12
 [Layer 3] 第四层维数为 10
-</code></pre><p>现在，我们来考虑一个样本做正向传播的情况：</p>
+</code></pre><blockquote>
+<p>在设计各层神经元数量时，需要满足一些客观条件：</p>
+<ul>
+<li>第一层神经元数量需与样本特征数相同</li>
+<li>最后一层神经元数量需与预测的类别数相同</li>
+<li>中间隐藏层的神经元数量比较自由，可以灵活地调整</li>
+</ul>
+</blockquote>
+<p>现在，我们来考虑一个样本在 MLP 的前两层做正向传播的情况：</p>
 <p><strong>第一层：</strong></p>
-<p>直接把样本的 10 个特征，分别填入 10 个神经元里就好了。</p>
+<p>把样本的 10 个特征直接填入 10 个神经元就好了。</p>
 <pre tabindex="0"><code># 原始特征
 features = [&#34;张&#34;, &#34;女性&#34;, 143.0, &#34;国际贸易&#34;, 97.0, \
             88.5, 95.0, 79.0, 91.0, 70.0]
@@ -661,14 +663,14 @@ features = [33, 1, 143.0, 1002, 97.0, \
 x_00, x_01, x_02, x_03, x_04, x_05, x_06, x_07, x_08, x_09 = *features
 </code></pre><p><strong>第二层：</strong></p>
 <p>第二层第 i 个神经元的值 <code>$x_{1i}$</code>，可以看作是由第一层神经元的值 <code>$x_{0i} (i \in [0, 9])$</code> 经过 <code>线性变换 -&gt; 加偏置项 -&gt; 过激活函数</code> 得到的。</p>
-<p><code>$x_{1i}$</code> 可由下式得出：</p>
+<p>公式表达如下：</p>
 <p>$$ x_{1i} = ReLU (W_{0i} X_0 + b_{0i}) $$</p>
 <p>其中：</p>
 <table>
 <thead>
 <tr>
 <th>符号</th>
-<th>描述</th>
+<th>解释</th>
 </tr>
 </thead>
 <tbody>
@@ -678,7 +680,7 @@ x_00, x_01, x_02, x_03, x_04, x_05, x_06, x_07, x_08, x_09 = *features
 </tr>
 <tr>
 <td><code>$W_{0i}$</code></td>
-<td>第 2 层神经元 i 上的可学习参数，是长为 10 的一维向量</td>
+<td>第 2 层第 i 个神经元上的可学习权重，是长为 10 的一维向量</td>
 </tr>
 <tr>
 <td><code>$X_0$</code></td>
@@ -686,37 +688,40 @@ x_00, x_01, x_02, x_03, x_04, x_05, x_06, x_07, x_08, x_09 = *features
 </tr>
 <tr>
 <td><code>$b_{0i}$</code></td>
-<td>第 2 层神经元 i 上的可学习偏置，是标量</td>
+<td>第 2 层第 i 个神经元上的可学习偏置，是标量</td>
 </tr>
 <tr>
 <td><code>$x_{1i}$</code></td>
-<td>第 2 层神经元 i 上的值，是标量（对于最后一层，它就是输出值 <code>$\hat{y}_{i}$</code>）</td>
+<td>第 2 层第 i 个神经元的值，是标量（对于最后一层，它就是输出值 <code>$\hat{y}_{i}$</code>）</td>
 </tr>
 </tbody>
 </table>
-<p>为了更具象地理解，不妨认为神经元 <code>$i$</code> 里包了三个参数：</p>
+<p>以下三个参数可以被认为是“包含”在第 i 个神经元中：</p>
 <ul>
-<li><code>$W_{0i}$</code>: 可学习的线性变换参数</li>
-<li><code>$b_{0i}$</code>: 可学习的偏置</li>
+<li><code>$W_{0i}$</code>: 权重</li>
+<li><code>$b_{0i}$</code>: 偏置</li>
 <li><code>$x_{1i}$</code>: 神经元的值</li>
 </ul>
-<p>注意到前两项 <code>$W_{0i}$</code> 和 <code>$b_{0i}$</code> 下标的第一个数字是 0。但是认为它们在 <code>Layer 0</code>（第一层）不是个好主意。我倾向于认为 <code>$W_{0i}$</code>, <code>$b_{0i}$</code>和 <code>$x_{1i}$</code> 高度相关，可以把它们当作神经元 <code>$i$</code> 上的参数。</p>
-<p>下图揭示了这种关系：<code>$X_0$</code> 是来自上一层的 “外来者”，而 <code>$W_{0i}$</code> 和 <code>$b_{0i}$</code> 更像本层的 “原住民”。</p>
+<p>注意到，<code>$W_{0i}$</code> 和 <code>$b_{0i}$</code> 下标的第一个数字虽然是 0，并不意味着它们在 <code>Layer 0</code>（第一层）上，它们实际“属于”第二层的第 i 个神经元。</p>
+<p>下图解释了这种情况形成的原因：我们认为 <code>$x_{1i}$</code> 的计算过程发生在第二层中，因此 <code>$X_0$</code> 被看作是来自上一层的输入。因此 <code>$W_{0i}$</code> 和 <code>$b_{0i}$</code> 也应被视为在第二层上进行更新的参数。但是计算时，这俩参数实际与 <code>$X_0$</code> 发生运算，在等式中又位于 <code>$X_0$</code> 那边，因此具有 0 下标.</p>
 <img src="/img/calc_net.png" alt="描述信息" style="height: 450px; display: block; margin-left: auto; margin-right: auto;">
-<p>如果：</p>
-<ul>
-<li>将第二层所有向量 <code>$W: W_{00}, W_{01}, ... ... W_{09}$</code> concat 起来得到矩阵 <code>$W_0$</code></li>
-<li>将第二层所有偏置 <code>$b: b_{00}, b_{10}, ... ... b_{0,12}$</code> concat 起来得到向量 <code>$b_0$</code></li>
-<li>将第一层所有神经元上的值 concat 起来得到 <code>$X_0$</code></li>
-<li>将第二层所有神经元上的值 concat 起来得到 <code>$X_1$</code></li>
-</ul>
-<p>那么第二层上的非线形变换可以写作：</p>
-<p>$$ X_1 = ReLU (W_0 X_0 + b_0) $$</p>
 <blockquote>
 <p>好崩溃，画个图把 <a href="https://lucid.app/" target="_blank">Lucid</a> 免费额度用完了 (´;ω;`)</p>
 </blockquote>
+<h4 id="14-层视角而非神经元视角">1.4 层视角，而非神经元视角</h4>
+<p>如果从层视角，而非从神经元视角看。</p>
+<p>我们把：</p>
+<ul>
+<li>第二层所有权重 <code>$W_{00}, W_{01}, ... ... W_{09}$</code> concat 起来得到矩阵 <code>$W_0$</code></li>
+<li>第二层所有偏置 <code>$b_{00}, b_{10}, ... ... b_{0,11}$</code> concat 起来得到向量 <code>$b_0$</code></li>
+<li>第一层所有神经元的值 <code>$X_{00}, X_{01}, ... ... X_{09}$</code> concat 起来得到 <code>$X_0$</code></li>
+<li>第二层所有神经元的值 <code>$X_{10}, X_{11}, ... ... X_{1,11}$</code> concat 起来得到 <code>$X_1$</code></li>
+</ul>
+<p>此时，第一层到第二层的非线形变换可写作：</p>
+<p>$$ X_1 = ReLU (W_0 X_0 + b_0) $$</p>
 <h3 id="二激活函数">二、激活函数</h3>
-<p>激活函数为深度神经网络引入了非线性性，让神经网络具有拟合任意函数的能力，使其拥有找到非凸优化问题最优解的能力。</p>
+<p>激活函数堪称伟大。如果说神经网络的多层架构解决了 <a href="/posts/d2l/#4-xor问题-minsky--papert-1969" target="_blank">XOR 问题</a>，激活函数则为深度神经网络引入了非线性性，让神经网络具有拟合任意函数的能力，使其拥有了解非凸优化问题的能力。</p>
+<p>本节介绍三种常见的激活函数：<code>Sigmoid</code>, <code>Tanh</code>, <code>ReLU</code>。其中 <code>ReLU</code> 因为计算简单，在工业界被大量使用。</p>
 <h4 id="21-sigmoid">2.1 Sigmoid</h4>
 <ul>
 <li>表达式：<code>$ sigmoid (x) = \frac{1}{1 + e^{-x}} $</code></li>
@@ -745,11 +750,24 @@ x_00, x_01, x_02, x_03, x_04, x_05, x_06, x_07, x_08, x_09 = *features
 <li>特性：可将任意实数向量转化为概率分布向量，常用于分类模型输出层的激活函数。</li>
 </ul>
 <h3 id="三损失函数">三、损失函数</h3>
-<h4 id="51-交叉熵损失">5.1 交叉熵损失</h4>
-<p>交叉熵损失（Cross Entropy Loss）</p>
-<h4 id="52-均方误差">5.2 均方误差</h4>
+<p>对于不同的任务，常用损失函数也不同。分类任务常用交叉熵损失；回归任务常用均方误差损失。</p>
+<h4 id="31-交叉熵损失">3.1 交叉熵损失</h4>
+<p>交叉熵损失（Cross Entropy Loss）用于衡量两个分布的差异。差异越大，则损失函数的值越大。</p>
+<p>下面给出交叉熵函数的计算公式：</p>
+<ol>
+<li>
+<p>对于 <strong>二分类任务</strong>，假设模型正样本概率为 p，真实标号正样本概率为 q，则模型给出的预测分布和真实分布之间的交叉熵可由下式计算：</p>
+<p>$H(p, q) = - (p \cdot \log(q) + (1 - p) \cdot \log(1 - q))$</p>
+</li>
+<li>
+<p>对于 <strong>多分类任务</strong>，假设模型预测概率分布为 <code>P</code>，真实标号分布为 <code>Q</code>，则交叉熵函数为：</p>
+<p>$H(P, Q) = - \sum_{i=1}^{C} (P(i) * log(Q(i)))$</p>
+</li>
+</ol>
+<p>写个函数验证下这件事：</p>
+<h4 id="32-均方误差">3.2 均方误差</h4>
 <p>均方误差（Mean Squared Error, MSE）</p>
-<h3 id="四优化器">四优化器</h3>
+<h3 id="四优化器">四、优化器</h3>
 <h4 id="41-sgd">4.1 SGD</h4>
 <h4 id="42-adam">4.2 Adam</h4>
 <h3 id="五链式求导">五、链式求导</h3>
@@ -776,6 +794,11 @@ x_00, x_01, x_02, x_03, x_04, x_05, x_06, x_07, x_08, x_09 = *features
       <span class="navigation-tittle">文本情感分析</span>
     </a>
     
+    
+    <a href="/posts/graphframes/" class="navigation-next">
+      <span class="navigation-tittle">SynchroTrap 的算法实现</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
     
 </div>
 
