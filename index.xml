@@ -6,15 +6,8 @@
     <description>Recent content on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 28 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 27 Jul 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://luochang212.github.io/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>如何获取图嵌入</title>
-      <link>https://luochang212.github.io/posts/graph_embedding/</link>
-      <pubDate>Sun, 28 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/posts/graph_embedding/</guid>
-      <description>两种常见的图嵌入算法：GraphSAGE 和 GCN&#xA;GitHub 项目地址：graph-embedding</description>
-    </item>
     <item>
       <title>SynchroTrap 的算法实现</title>
       <link>https://luochang212.github.io/posts/synchrotrap/</link>
