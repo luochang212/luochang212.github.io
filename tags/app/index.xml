@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>APP on Chang Luo</title>
-    <link>http://localhost:1313/tags/app/</link>
+    <link>https://luochang212.github.io/tags/app/</link>
     <description>Recent content in APP on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 03 Jul 2022 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/app/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://luochang212.github.io/tags/app/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>摸鱼侠极客版</title>
-      <link>http://localhost:1313/posts/moyu_bash/</link>
+      <link>https://luochang212.github.io/posts/moyu_bash/</link>
       <pubDate>Sun, 03 Jul 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/moyu_bash/</guid>
+      <guid>https://luochang212.github.io/posts/moyu_bash/</guid>
       <description>老板：退退退&#xA;GitHub 项目地址：moyu-bash&#xA;1. 缘起 最近刷到一个微信小程序，叫 “摸鱼侠”，它长这样：&#xA;这里面有个栏目叫 “今日已摸到”，还挺有意思的，它会计算今日截至当前为止挣到的工资。&#xA;我寻思这小程序颜色太过艳丽，容易被老板抓包，便计上心来，打算写个 bash 版摸鱼侠。和生产环境融为一体，纯键盘操控，老板来了一个 ctrl c 便能毁尸灭迹，大大滴方便。&#xA;2. 出生 这要实现起来也不难，只要把 (工作秒数 - 休息秒数) * 每秒工资 就好嘛。&#xA;我纯纯的 bash 新手，不对之处大家批评。&#xA;# Author: github@luochang212 work_start=10:00:00 # 上班时间 lunch_start=12:00:00 # 午饭开始 lunch_end=13:00:00 # 午饭结束 dinner_start=18:00:00 # 晚饭开始 dinner_end=19:00:00 # 晚饭结束 work_end=20:00:00 # 下班时间 salary=40000 # 月薪 day=22 # 每月工作天数 CURRENT_TIME=$(date +&amp;#34;%T&amp;#34;) EMOJI_ARRAY=(&amp;#34;(・▽ &amp;lt; )★&amp;#34; &amp;#34;─=≡Σ((( つ•̀ 3 •́)つ&amp;#34; &amp;#34;┗|｀O′|┛&amp;#34; &amp;#34;_(┐「ε:)_&amp;#34; &amp;#34;ヽ( ˘ω˘ )ゝ&amp;#34;) get_second() { read -r h m s &amp;lt;&amp;lt;&amp;lt; $(echo $1 | tr &amp;#39;:&amp;#39; &amp;#39; &amp;#39;) echo $(((10#$h*60*60)+(10#$m*60)+10#$s)) } calc_duration() { local start=$(get_second $1) local end=$(get_second $2) echo $((end-start)) } calc_work_time() { local lunch_time=$(calc_duration $lunch_start $lunch_end) local dinner_time=$(calc_duration $dinner_start $dinner_end) if [ $(calc_duration $CURRENT_TIME $work_start) -gt 0 ]; then echo 0 elif [ $(calc_duration $CURRENT_TIME $lunch_start) -gt 0 ]; then echo $(calc_duration $work_start $CURRENT_TIME) elif [ $(calc_duration $CURRENT_TIME $lunch_end) -gt 0 ]; then echo $(calc_duration $work_start $lunch_start) elif [ $(calc_duration $CURRENT_TIME $dinner_start) -gt 0 ]; then echo $(($(calc_duration $work_start $CURRENT_TIME) - lunch_time)) elif [ $(calc_duration $CURRENT_TIME $dinner_end) -gt 0 ]; then echo $(($(calc_duration $work_start $dinner_start) - lunch_time)) elif [ $(calc_duration $CURRENT_TIME $work_end) -gt 0 ]; then echo $(($(calc_duration $work_start $CURRENT_TIME) - lunch_time - dinner_time)) else echo $(($(calc_duration $work_start $work_end) - lunch_time - dinner_time)) fi } show_work_time() { local work_sec=$(calc_work_time) echo &amp;#34;$(($work_sec / 3600)) hours and $(($work_sec % 3600 / 60)) minutes and $(($work_sec % 60)) seconds&amp;#34; } calc_money() { local lunch_time=$(calc_duration $lunch_start $lunch_end) local dinner_time=$(calc_duration $dinner_start $dinner_end) local mnt=$((($(calc_duration $work_start $work_end) - lunch_time - dinner_time) / 60)) local salary_per_mnt=$(($salary * 100000000 / $day / $mnt)) local work_sec=$(calc_work_time) local money=$((salary_per_mnt * (work_sec / 60) / 1000000)) echo $money } show_money() { local money=$(calc_money) echo &amp;#34;已挣到：$(($money / 100)).</description>
     </item>
   </channel>

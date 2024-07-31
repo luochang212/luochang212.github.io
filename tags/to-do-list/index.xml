@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>To-Do-List on Chang Luo</title>
-    <link>http://localhost:1313/tags/to-do-list/</link>
+    <link>https://luochang212.github.io/tags/to-do-list/</link>
     <description>Recent content in To-Do-List on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 24 May 2019 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/to-do-list/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://luochang212.github.io/tags/to-do-list/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>JavaScript 初探</title>
-      <link>http://localhost:1313/posts/to_do_list/</link>
+      <link>https://luochang212.github.io/posts/to_do_list/</link>
       <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/to_do_list/</guid>
+      <guid>https://luochang212.github.io/posts/to_do_list/</guid>
       <description>初次学习JavaScript，用JS写了一个计划表生成工具。&#xA;项目链接：计划表生成工具&#xA;JavaScript是一个神奇的语言。它既不像Java原生地支持类和继承，也不如Python声明变量方便，更兼闹出&amp;quot;===&amp;ldquo;这样的麻烦。但我依旧深知它的强大，尤其是在可视化这一方面，在接触qtwebengine的时候已经感受过一次了。目前，我学习JS的平台是W3Schools 和廖雪峰的网站。&#xA;话说这是我自学JS以来写的第一个程序，求轻虐(￣▽￣)&#xA;我的初衷 我的初衷是制作一个习惯统计工具，用来分析我在长期计划上的坚持能力。于是照例我对它做了一个需求分析。&#xA;习惯统计工具的需求分析：&#xA;需要用户能够注册。即能够声明我是谁，并且把我和我的数据绑定。 需要将数据存在文件里，而不是存在缓存文件里。 需要按时间戳对生成的数据进行统计。 需要对最终结果制作统计图表。 通过分析，我发现静态网页很难实现第一第二步。能不能实现我不敢下定论，但肯定有技术难度。目前，我只有一个由GitHub page托管的静态网页，因此我选择退而求其次。先学习生成一个单一的表格，来记录当天计划的执行情况。我把这个工具叫做计划表生成工具。&#xA;需求分析 计划表生成工具好比是习惯统计工具的一个子系统。习惯统计工具面向的是连续多天，而计划表生成工具只面向单独一天。&#xA;计划表生成工具的需求分析：&#xA;一个UI界面（前端） 一个允许用户做输入、选择和修改操作的数据流（后端） 一个最终显示的表格（前端） 判断此工具是否easy to use，找到不好用的因素并改进 （测试） 此时我们的big picture就已经明确。战略定了，下面来定战术。&#xA;步骤分析 （一）添加计划&#xA;对于前端UI，首先我们需要一个textarea，用来接收每项计划的内容。还需要一个按钮，点下这个按钮时，将文本框内的信息添加到计划列表。为了便于存储，我为计划(item)设计了一个类。&#xA;这个类的声明如下：&#xA;var Items = { name: &amp;#34;&amp;#34;, isCheck: &amp;#34;false&amp;#34;, isDelete: &amp;#34;false&amp;#34; }; 可以看出这个类有三个值。它们分别表示该对象的名称，是否完成，以及是否删除。每次添加计划，用以下代码实例化这个类(items)，生成一个对象(item)：&#xA;var item = Object.create(Items); （二）生成表格&#xA;这一步要把复选框(checkbox)和按钮(button)都和每一行的计划绑定。那么如何绑定呢？&#xA;要知道，用for loop遍历subArray的过程，就是生成表格内容的过程。所以，checkbox和button也都是在这次遍历中生成的。那么，我们就可以在它们的生成过程中，创建它们的id，并把id和计划对应起来。&#xA;具体到代码中，我用了i.toString(10)将循环数转成string类型，然后加到id上。于是，第一项计划对应的checkbox的id就是&amp;quot;cb0&amp;rdquo;, 对应的button的id就是&amp;quot;btn0&amp;quot;, 以此类推。&#xA;for (i = 0; i &amp;lt; subArray.length; i++) { var index = i+1; body += &amp;#39;&amp;lt;tr&amp;gt;&amp;#39;; body += &amp;#39;&amp;lt;td&amp;gt;&amp;#39; + index.</description>
     </item>
   </channel>

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Poisson-Distribution on Chang Luo</title>
-    <link>http://localhost:1313/tags/poisson-distribution/</link>
+    <link>https://luochang212.github.io/tags/poisson-distribution/</link>
     <description>Recent content in Poisson-Distribution on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 19 Sep 2020 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/poisson-distribution/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://luochang212.github.io/tags/poisson-distribution/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>泊松分布的仿真及可视化</title>
-      <link>http://localhost:1313/posts/poisson/</link>
+      <link>https://luochang212.github.io/posts/poisson/</link>
       <pubDate>Sat, 19 Sep 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/poisson/</guid>
+      <guid>https://luochang212.github.io/posts/poisson/</guid>
       <description>本文介绍泊松分布和泊松函数的定义，并通过 Python random 库对泊松分布进行仿真，带你触摸复杂表象下的简单本质。&#xA;GitHub 项目地址：python-tips/poisson&#xA;1. 从泊松函数讲起 泊松分布 表示在给定时间段内发生给定数量的事件的概率。这个定义比较抽象。举个具体的例子，假设你每小时接到电话的概率是固定的，比如每小时 0.05 个，那么你在接下来 1 小时内接到电话个数的概率，就服从泊松分布:&#xA;1 小时内接到 0 个电话，对应一个概率值 $P_0$；&#xA;1 小时内接到 1 个电话，对应一个概率值 $P_1$；&#xA;&amp;hellip; &amp;hellip;&#xA;1 小时内接到 n 个电话，也对应一个概率值$P_n$。&#xA;这些概率值组成一个概率分布列，它们的值 $(n, P_n)$ 在二维坐标下连成一条曲线。这条曲线所在的函数就是泊松分布的概率密度函数。其公式及图像如下：&#xA;$$\boxed{P(k | t, \lambda)=\frac{(\lambda t)^{k}}{k !} \exp (-\lambda t)}$$&#xA;从公式中，我们可以看出：只要确定了 $\lambda$ 和 $t$，该式就退化成了概率 $P$ 关于事件发生次数 $k$ 的函数。 类似地，如果我们确定了 $\lambda$ 和 $k$，则该式退化成概率$P$ 关于时间范围 $t$ 的函数。&#xA;“确定哪些参数，让函数最终退化成哪些参数的函数”，这个选择和我们的研究目的有关。如果你对不同 $k$ 如何影响 $P$ 值感兴趣，那么就应该确定参数 $\lambda$ 和 $t$。如果对 $t$ 和 $P$ 之间的关系感兴趣，那么就应该确定参数 $\lambda$ 和 $k$。</description>
     </item>
   </channel>

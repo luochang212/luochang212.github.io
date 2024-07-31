@@ -2,108 +2,108 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Chang Luo</title>
-    <link>http://localhost:1313/categories/</link>
+    <link>https://luochang212.github.io/categories/</link>
     <description>Recent content in Categories on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 27 Jul 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://luochang212.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Algorithms</title>
-      <link>http://localhost:1313/categories/algorithms/</link>
+      <link>https://luochang212.github.io/categories/algorithms/</link>
       <pubDate>Sat, 27 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/algorithms/</guid>
+      <guid>https://luochang212.github.io/categories/algorithms/</guid>
       <description></description>
     </item>
     <item>
       <title>DeepLearning</title>
-      <link>http://localhost:1313/categories/deeplearning/</link>
+      <link>https://luochang212.github.io/categories/deeplearning/</link>
       <pubDate>Sun, 07 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/deeplearning/</guid>
+      <guid>https://luochang212.github.io/categories/deeplearning/</guid>
       <description></description>
     </item>
     <item>
       <title>DevOps</title>
-      <link>http://localhost:1313/categories/devops/</link>
+      <link>https://luochang212.github.io/categories/devops/</link>
       <pubDate>Thu, 30 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/devops/</guid>
+      <guid>https://luochang212.github.io/categories/devops/</guid>
       <description></description>
     </item>
     <item>
       <title>MachineLearning</title>
-      <link>http://localhost:1313/categories/machinelearning/</link>
+      <link>https://luochang212.github.io/categories/machinelearning/</link>
       <pubDate>Sat, 13 Apr 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/machinelearning/</guid>
+      <guid>https://luochang212.github.io/categories/machinelearning/</guid>
       <description></description>
     </item>
     <item>
       <title>Network</title>
-      <link>http://localhost:1313/categories/network/</link>
+      <link>https://luochang212.github.io/categories/network/</link>
       <pubDate>Sat, 02 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/network/</guid>
+      <guid>https://luochang212.github.io/categories/network/</guid>
       <description></description>
     </item>
     <item>
       <title>Hardware</title>
-      <link>http://localhost:1313/categories/hardware/</link>
+      <link>https://luochang212.github.io/categories/hardware/</link>
       <pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/hardware/</guid>
+      <guid>https://luochang212.github.io/categories/hardware/</guid>
       <description></description>
     </item>
     <item>
       <title>Life</title>
-      <link>http://localhost:1313/categories/life/</link>
+      <link>https://luochang212.github.io/categories/life/</link>
       <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/life/</guid>
+      <guid>https://luochang212.github.io/categories/life/</guid>
       <description></description>
     </item>
     <item>
       <title>BigData</title>
-      <link>http://localhost:1313/categories/bigdata/</link>
+      <link>https://luochang212.github.io/categories/bigdata/</link>
       <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/bigdata/</guid>
+      <guid>https://luochang212.github.io/categories/bigdata/</guid>
       <description></description>
     </item>
     <item>
       <title>Statistics</title>
-      <link>http://localhost:1313/categories/statistics/</link>
+      <link>https://luochang212.github.io/categories/statistics/</link>
       <pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/statistics/</guid>
+      <guid>https://luochang212.github.io/categories/statistics/</guid>
       <description></description>
     </item>
     <item>
       <title>SOTA</title>
-      <link>http://localhost:1313/categories/sota/</link>
+      <link>https://luochang212.github.io/categories/sota/</link>
       <pubDate>Sun, 03 Jul 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/sota/</guid>
+      <guid>https://luochang212.github.io/categories/sota/</guid>
       <description></description>
     </item>
     <item>
       <title>FrontEnd</title>
-      <link>http://localhost:1313/categories/frontend/</link>
+      <link>https://luochang212.github.io/categories/frontend/</link>
       <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/frontend/</guid>
+      <guid>https://luochang212.github.io/categories/frontend/</guid>
       <description></description>
     </item>
     <item>
       <title>Math</title>
-      <link>http://localhost:1313/categories/math/</link>
+      <link>https://luochang212.github.io/categories/math/</link>
       <pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/math/</guid>
+      <guid>https://luochang212.github.io/categories/math/</guid>
       <description></description>
     </item>
     <item>
       <title>Modeling</title>
-      <link>http://localhost:1313/categories/modeling/</link>
+      <link>https://luochang212.github.io/categories/modeling/</link>
       <pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/modeling/</guid>
+      <guid>https://luochang212.github.io/categories/modeling/</guid>
       <description></description>
     </item>
     <item>
       <title>DataVisualization</title>
-      <link>http://localhost:1313/categories/datavisualization/</link>
+      <link>https://luochang212.github.io/categories/datavisualization/</link>
       <pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/datavisualization/</guid>
+      <guid>https://luochang212.github.io/categories/datavisualization/</guid>
       <description></description>
     </item>
   </channel>

@@ -2,66 +2,66 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>DeepLearning on Chang Luo</title>
-    <link>http://localhost:1313/categories/deeplearning/</link>
+    <link>https://luochang212.github.io/categories/deeplearning/</link>
     <description>Recent content in DeepLearning on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 07 Jul 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/deeplearning/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://luochang212.github.io/categories/deeplearning/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>像搭积木一样搭神经网络</title>
-      <link>http://localhost:1313/posts/dl_tricks/</link>
+      <link>https://luochang212.github.io/posts/dl_tricks/</link>
       <pubDate>Sun, 07 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/dl_tricks/</guid>
+      <guid>https://luochang212.github.io/posts/dl_tricks/</guid>
       <description>搭积木的时候，需要将不同类型的积木搭在一起：门框、窗子、走廊、屋顶。对每一种类型的积木，又有多种变体可供选择。比如，屋顶可以用文艺复兴风格，也可以用中式庭园风格。神经网络也是，学神经网络，本质上就是认识各种各样“积木”的过程。&#xA;GitHub 项目地址：dl-tricks/note.ipynb&#xA;一、必要组件 1.1 从 MLP 说起 我们从最简单的深度神经网络 多层感知机 (MLP) 开始说起。麻雀虽小，五脏俱全。了解数据如何在 MLP 中流动，就能大致勾勒一个神经网络的 必要组件。&#xA;下图是一个 4 层感知机，左边是特征，右边是标签。训练开始时，样本数据先从左到右做 正向传播。待数据流到右侧，用 损失函数 计算损失。此时损失是一个标量，而最后一层的节点权重 $W$ 是一个矩阵，标量对矩阵的偏导是矩阵。优化器 会用大小合适的梯度矩阵，沿负梯度方向逐层反向更新权重 $W$。这样下一 批量 (batch) 数据进入网络时，正好能用上一轮更新后的参数做正向传播。&#xA;1.2 DataLoader 样本是有限的，为了让模型获得最强性能，必须榨干每个样本的价值。&#xA;因此在训练中，一个样本往往要复用多次。DataLoader 就在做这样一件事。它把数据编排成一个个批量，并构建一个迭代器。每次调用它，会返回一个从第一个批量开始遍历的迭代器。这个特性使得复用样本变得更加方便。&#xA;原生的 PyTorch DataLoader 很复杂，让我们来实现一个野生 DataLoader：&#xA;import math import torch class DataLoader: def __init__(self, data: list, batch_size: int): self.i = 0 self.batch_size = batch_size self.batch_num = math.floor(len(data) / batch_size) self._data = self.gen_batch(data) def gen_batch(self, data): lst = [] s = self.</description>
     </item>
     <item>
       <title>文本情感分析</title>
-      <link>http://localhost:1313/posts/sentiment_analysis/</link>
+      <link>https://luochang212.github.io/posts/sentiment_analysis/</link>
       <pubDate>Sat, 06 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/sentiment_analysis/</guid>
+      <guid>https://luochang212.github.io/posts/sentiment_analysis/</guid>
       <description>用 Bert + Transformer encoder + 全连接层 在 IMDB 电影评论数据集上做文本情感分析。&#xA;GitHub 项目地址：sentiment-analysis IMDB 数据集：imdb-dataset ✨ 本文在做什么：&#xA;建立 词向量 ⇋ CSV 文件 双向 Pipeline 用两种方法对 IMDB 电影评论做情感分析： Bert 预训练词向量 + MLP Bert + Transformer Encoder + 全连接层 前两章是模版代码，像是没营养但必须要搭的砖，您完全可以跳过，从第三章开始看起。&#xA;一、读写词向量 本节的主要目标是完成 词向量 -&amp;gt; CSV 文件 和 CSV 文件 -&amp;gt; 词向量 的 Pipeline。&#xA;对语料做预处理 获取词向量和句子向量 将词向量存入 csv 从 csv 中读取词向量 将读写词向量功能整合成函数 查看示例 二、获取 IMDB 数据集的 Embedding 将 IMDB 数据集中的电影评论转换成句子向量，然后存在 CSV 文件中。&#xA;文本预处理 计算句子向量 查看示例 三、用 MLP 做文本情感分析 用 Bert + MLP 做 IMDB 电影评论文本情感分析。</description>
     </item>
     <item>
       <title>中文词向量生成</title>
-      <link>http://localhost:1313/posts/chinese_embedding/</link>
+      <link>https://luochang212.github.io/posts/chinese_embedding/</link>
       <pubDate>Sat, 29 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/chinese_embedding/</guid>
+      <guid>https://luochang212.github.io/posts/chinese_embedding/</guid>
       <description>Embedding 在做的事情就是，将词映射到向量空间中，使语义相近的词在空间中距离也相近。顺便做了一件有意思的事情。我用 Bert 生成《红楼梦》中 17 个名字的平均嵌入，然后用 t-SNE 降维，发现主角团三人的词向量是紧紧挨在一起的。&#xA;GitHub 项目地址：luochang212/chinese-embedding&#xA;✨ 本文探索的内容包括：&#xA;如何生成词向量 如何生成句子向量 如何找到语义相近的词 如何对 embedding 做降维及可视化 一、用 Word2Vec 生成词向量 用 Word2Vec 生成中英文词向量。&#xA;英文词向量 中文词向量 查看笔记 二、用 Bert 生成句子向量 用 Bert 生成中英文句子向量。&#xA;英文句子向量 中文句子向量 查看笔记 三、寻找最近邻 embedding 我的构想是：拿到红楼梦里所有词汇的 embedding，然后看我们感兴趣的词（比如林黛玉）离哪个词最近。&#xA;分词 批量计算 embedding 计算每个词的 embedding 计算我们关心词汇的近邻 embedding 整合成一个类 查看笔记 四、Embedding 可视化 用 t-SNE 和 PCA 对 embedding 降维，做 2D &amp;amp; 3D 可视化&#xA;红楼梦中的人物关系 中英美城市群 t-SNE PCA 查看笔记 五、头脑风暴 Embedding 的稳定性 Embedding 差值的意义 输出 embedding 的数量 查看笔记 附录：和 Qwen-2.</description>
     </item>
     <item>
       <title>Attention Is All You Need 论文精读</title>
-      <link>http://localhost:1313/posts/transformer_arxiv/</link>
+      <link>https://luochang212.github.io/posts/transformer_arxiv/</link>
       <pubDate>Sun, 16 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/transformer_arxiv/</guid>
+      <guid>https://luochang212.github.io/posts/transformer_arxiv/</guid>
       <description>Transformer 的编码器变成了 BERT，解码器变成了 GPT。BERT 推动过去几年搜广推算法增长，而 GPT 促成了今天 GenAI 浪潮的爆发。这篇发表于 2017 年的论文，对今天产生了难以估量的影响。&#xA;原文：Attention Is All You Need&#xA;一、论文翻译 摘要 主流 seq2seq 模型是基于编解码器架构实现的复杂 RNN 或 CNN 网络，其中表现最好的模型还会使用注意力机制来连接编码器和解码器。我们提出一种全新的简单网络架构：Transformer。它完全基于注意力机制，不使用 RNN 和 CNN。在两个机器翻译任务上的实验表明，它拥有更好的并行度，并且训练时间大大减少。在 WMT 2014 英德翻译任务上，我们的模型取得了 28.4 的 BLEU 分数，比现有最好模型提升 2 BLEU。在 WMT 2014 英法翻译任务上，我们的模型在 8 台 GPU 上训练 3.5 天后，在单一模型评分指标下获得 41.8 的最高分。相比之前文献的最佳模型，Transformer 极大降低了训练成本。我们还通过英语成分句法分析任务展示了 Transformer 的泛化能力，无论数据集大小，Transformer 都能很好地泛化到其他任务上。&#xA;1 介绍 循环神经网络、长短记忆网络和门控循环网络被证明是序列模型和处理语言建模和机器翻译这类转换问题的最先进方法。在此之后，人们又花费大量努力挖掘循环神经网络语言模型和编解码器架构的潜力。&#xA;循环神经网络对输入输出词元按位置进行计算，将词元的位置与时间步进行对齐，生成一系列隐状态 $h_t$。该隐状态是前一个隐状态 $h_{t-1}$ 和时间步 $t$ 时刻输入 $X_t$ 的函数。在训练样本时，这种内在的序列关系天然阻碍并行。对长序列文本，因为内存限制了批量样本的处理，导致这种阻碍更加明显。最近的研究利用因子分解和条件计算两种方法显著提升了计算效率，尤其后者还提高了模型的性能。但是序列计算这个最根本的限制依然存在。&#xA;注意力机制在多种序列建模和转换建模任务中占有重要地位，它能对输入输出序列中的依赖关系进行位置无关的建模。除了少数几个例子外，注意力机制通常和循环神经网络一起使用。&#xA;我们提出了 Transformer，一种不使用循环神经网络、纯基于注意力来捕获输入输出全局依赖关系的模型。Transformer 显著提高了并行度，并且在 8 台 P100 GPU 上训练 12 小时后，翻译质量达到了前所未有的高度。</description>
     </item>
     <item>
       <title>注意力机制笔记</title>
-      <link>http://localhost:1313/posts/attention_note/</link>
+      <link>https://luochang212.github.io/posts/attention_note/</link>
       <pubDate>Sun, 09 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/attention_note/</guid>
+      <guid>https://luochang212.github.io/posts/attention_note/</guid>
       <description>马毅：要想正确理解深度神经网络，就必须认识到其本质是学习高维数据中的低维结构的手段。从第一性原理出发，把目的和手段分清楚，其余的都很容易被统一、被解释。&#xA;从 Attention 的角度理解马毅老师这句话，Embedding 的时候本来就升维了，再做 QKV 就相当于在高维里面抽低维信息。而且 Q 也是可学习的，所以就既能学到好的抽取方法；对于每一种抽取方法，又能特别高效地抽取。&#xA;GitHub 项目地址：rnn-note / attention-note&#xA;一、语言模型入门：RNN, LSTM, GRU 1.1 序列模型 马尔可夫假设，当前数据只跟最近 τ 个数据点相关。把最近 τ 个数据点作为特征，用 MLP 预测当前数据点的值。&#xA;查看笔记 1.2 文本预处理 对文本词元化 (tokenize) 并构建词表，就是把文本映射到从 0 开始的索引。&#xA;查看笔记 1.3 语言模型和数据集 对语料分批量 (batch) 处理。介绍了两种（batch 内的）采样策略：&#xA;随机采样策略：每个 batch 内的相邻子序列是随机的 顺序分区策略：每个 batch 内的相邻子序列是顺序的 查看笔记 1.4 循环神经网络的从零开始实现 每次输出仅由前一个隐状态和当前新输入 x 决定，是为 RNN。&#xA;提及的知识点：&#xA;独热编码：文本经过词元化后，还要经过 one-hot 处理，才能进入模型 困惑度：我们用困惑度来描述文本生成的质量，通过一个序列中所有的 n 个词元的交叉熵损失的平均值来衡量 $$\frac{1}{n} \sum_{t=1}^n-\log P\left(x_t \mid x_{t-1}, \ldots, x_1\right)$$ 梯度裁剪：对于 $T$ 长序列将产生 $O(T)$ 长矩阵乘法链。当 $T$ 较大时，可能导致数值不稳定，例如可能导致梯度爆炸或梯度消失。这种情况下优化算法可能无法收敛。下式通过将梯度 $g$ 投影回给定半径 $\theta$ 来限制梯度的大小。其中 $\frac{\theta}{|\mathbf{g}|}$ 可以理解为梯度 $g$ 的单位方向向量。 $$\mathbf{g} \leftarrow \min\left(1, \frac{\theta}{|\mathbf{g}|}\right) \mathbf{g}$$ 查看笔记 1.</description>
     </item>
     <item>
       <title>LSTM 家庭用电预测</title>
-      <link>http://localhost:1313/posts/lstm_power_consumption/</link>
+      <link>https://luochang212.github.io/posts/lstm_power_consumption/</link>
       <pubDate>Sun, 12 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/lstm_power_consumption/</guid>
+      <guid>https://luochang212.github.io/posts/lstm_power_consumption/</guid>
       <description> 长短期记忆网络（Long Short-Term Memory，LSTM）是一种 RNN 模型，常用于序列数据建模。尤其适合需要挖掘序列中长期依赖关系的问题。&#xA;GitHub 项目地址：luochang212/lstm-model&#xA;一、keras 模型训练 数据导入 数据预处理 趋势可视化 分割训练集和测试集 定义 &amp;amp; 训练网络 预测 预测整个序列 查看示例 二、keras 模型推理 数据预处理 用训练好的 keras 模型做预测 预测下一个值 预测下一个序列 查看示例 三、PyTorch 模型训练 施工中&#xA;参考资料：&#xA;Household_Power_consumption (dataset)&#xA;Ocean Wave Prediction with LSTM&#xA;Time-series data analysis using LSTM (Tutorial)&#xA;PyGWalker&#xA;luochang212/rnn-note&#xA;× </description>
     </item>
     <item>
       <title>手写深度学习</title>
-      <link>http://localhost:1313/posts/d2l_from_scratch/</link>
+      <link>https://luochang212.github.io/posts/d2l_from_scratch/</link>
       <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/d2l_from_scratch/</guid>
+      <guid>https://luochang212.github.io/posts/d2l_from_scratch/</guid>
       <description>与其说深度学习是一门技术，不如说深度学习是一种语言&#xA;GitHub 项目地址：AI-Project/scratch&#xA;一、自动微分 1. 简单的例子 1.1 张量 x 的梯度&#xA;张量 $x$ 的梯度可以存储在 $x$ 上。&#xA;要点：&#xA;x.grad: 取 $x$ 的梯度 x.requires_grad_(True): 允许 tenser $x$ 存储自己的梯度 x.grad.zero_(): 将 $x$ 的梯度置零 import torch # 初始化张量 x (tenser x) x = torch.arange(4.0) x.requires_grad_(True) # 允许 tensor x 存储梯度 x.grad == None # 梯度默认为 None &amp;gt; True&#xA;初始化带梯度的张量，下面是两个例子：&#xA;torch.tensor([1., 2., 3.], requires_grad=True) &amp;gt; tensor([1., 2., 3.], requires_grad=True)&#xA;torch.randn((2, 5), requires_grad=True) &amp;gt; tensor([[ 0.4075, 1.</description>
     </item>
     <item>
       <title>深度学习笔记</title>
-      <link>http://localhost:1313/posts/d2l/</link>
+      <link>https://luochang212.github.io/posts/d2l/</link>
       <pubDate>Sat, 11 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/d2l/</guid>
+      <guid>https://luochang212.github.io/posts/d2l/</guid>
       <description>跟李沐老师学深度学习，课程见 d2l，如有错误，欢迎拍砖 GitHub 项目地址：AI-Project&#xA;〇、技术路线图 flowchart TD A[softmax 回归] --&gt;|无法拟合 XOR 函数| B[多层感知机] B --&gt; |高像素图片作为输入，模型参数爆炸| C[卷积] C --&gt;|数据的长宽下降太快| D[填充] C --&gt;|数据的长宽下降太慢| E[步幅] C --&gt;|缓解卷积对位置敏感| F[池化] C --&gt;|多模式识别与组合| G[多通道输入/输出] ❤️ powered by mermaid 一、softmax 回归 1. 虽然叫回归，但是softmax 解决的是分类问题 回归估计是一个连续值 分类预测是一个离散类别 2. 分类应用举例 MINIST ImageNet human-protein-atlas-image-classification (Kaggle) malware-classification (Kaggle) jigsaw-comment-classification (Kaggle) 3. 从回归到多类分类 &amp;ndash; 均方损失 对分类结果做 one-hot 编码：&#xA;$y = [y_1, y_2, , ... , y_n]^T$&#xA;$y_i=\left\{\begin{array}{l}1 \text { if } i=y \\ 0 \text { otherwise }\end{array}\right.</description>
     </item>
   </channel>
