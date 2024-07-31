@@ -574,13 +574,13 @@
   
   <div class="post">
     <blockquote>
-<p>基于 Jaccard 相似度和最大连通图的风控算法。</p>
+<p>基于 Jaccard 相似度和最大连通子图的流量风控算法。</p>
 </blockquote>
 <p>GitHub 项目地址：<a href="https://github.com/luochang212/SynchroTrap" target="_blank">SynchroTrap</a></p>
 <p>✨ 本文做了什么：</p>
 <ul>
-<li>用 <code>mimesis</code> 生成源数据，并基于源数据构建了正态分布的样本</li>
-<li>通过构造一个 $\lambda$ 可调的泊松过程，生成用户到访时间戳</li>
+<li>用 <code>mimesis</code> 生成源数据，并基于源数据构建正态分布的样本</li>
+<li>通过构造一个 $\lambda$ 可调的泊松过程，生成用户的到访时间戳</li>
 <li>写了一个由 7 个变量控制的异常数据生成函数，见 <a href="https://github.com/luochang212/SynchroTrap/blob/main/utils.py" target="_blank">gen_attack_df</a></li>
 <li>用 <code>NetworkX</code> 对由 Jaccard 相似度构作的图做可视化</li>
 <li>用 Spark 的 <code>graphframes</code> 计算强连通图</li>
