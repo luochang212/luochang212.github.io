@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Search-Engine on Chang Luo</title>
-    <link>https://luochang212.github.io/tags/search-engine/</link>
+    <link>http://localhost:1313/tags/search-engine/</link>
     <description>Recent content in Search-Engine on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 24 Oct 2019 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://luochang212.github.io/tags/search-engine/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/search-engine/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Elasticsearch 初探</title>
-      <link>https://luochang212.github.io/posts/elastic_search/</link>
+      <link>http://localhost:1313/posts/elastic_search/</link>
       <pubDate>Thu, 24 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/posts/elastic_search/</guid>
+      <guid>http://localhost:1313/posts/elastic_search/</guid>
       <description>Elasticsearch 是一个开源分布式全文搜索引擎。它建立在当前最先进有效的搜索引擎库 Lucene 之上。Elasticsearch 集成了 Lucene 的检索功能，并通过一套简单的 API 隐藏了 Lucene 的复杂性，使之简单易用。&#xA;初识 ES 的初步介绍 本节将介绍 ES 的几个特性。这些介绍能帮助我们理解 ES 是应什么需求诞生的？它解决了什么问题？它为何如此架构？以及这种架构方式为它带来哪些性能上的提升？这些信息虽然不能直接提升我们使用 ES 的能力，但能从更深的维度帮助我们使用好它。&#xA;不仅仅是搜索 ES 不仅能够搜索，它还提供一套分布式实时存储文档的解决方案。 ES 允许用户将数据存储在多个服务器节点上。这些节点能实时共享数据。一旦主节点的内容发生改变，这些改变会实时传递到副节点上，以保证主副节点的内容一致。如果主节点掉线，ES 能立即选举出一个副节点充当主节点。选举过程就像切换开关一样，能够在瞬间完成，从而保证了 ES 的可靠性。&#xA;分布式的存储方案不仅仅是基于数据安全的考量，同时也是为了加快检索的速度。利用 MapReduce，ES 可以在多个节点上并行地检索数据，大大缩短了海量数据处理的时间。&#xA;领域专用语言 为了统一查询语法，ES 设计了一套领域专用语言 (DSL, domain specific language)。这套语言基于 JSON，优点是简单易学，缺点是在表达复杂的查询时，会显得格外冗长，阅读起来也不太友好。&#xA;SQL 和 NoSQL SQL 全称 Structured Query Language。SQL 中的 Structured 突出了它是结构化的查询语言。结构化即受字段限制。SQL 数据库中的每条数据都具有相同的长度，因此可以被视作一张数据表。相比于 SQL，NoSQL 能表达更复杂的内部数据结构。字段之间不相互影响，可以拥有各自的层级结构。因此 NoSQL 数据库要比 SQL 数据库更加灵活且易于拓展。NoSQL 数据库中的数据通常用 JSON 表示。&#xA;入门 一些简单概念 文档 在 ES 中，文档是一个特定的术语。它表示用来存储对象的存储单元。一个对象通常不会是简单的键值对，它可能包含更复杂的数据结构，比如日期、地理数据、数组等。为表达这种复杂的、多层次的数据，ES 将 JSON 作为文档存储的固定格式。也就是说在 ES 里，一个文档被存成一个 JSON 值。</description>
     </item>
   </channel>

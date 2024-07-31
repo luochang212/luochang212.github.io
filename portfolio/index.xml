@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects on Chang Luo</title>
-    <link>https://luochang212.github.io/portfolio/</link>
+    <link>http://localhost:1313/portfolio/</link>
     <description>Recent content in Projects on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 01 Jun 2019 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://luochang212.github.io/portfolio/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/portfolio/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>基于蚁群算法的证券投资组合优化</title>
-      <link>https://luochang212.github.io/portfolio/1/</link>
+      <link>http://localhost:1313/portfolio/1/</link>
       <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/portfolio/1/</guid>
+      <guid>http://localhost:1313/portfolio/1/</guid>
       <description>在证券交易中，为了降低风险，经常使用一笔资金购买多支股票。那么，如何合理地选择证券组合，并确定每支证券的资金分配系数，以使预期风险最低，预期收益最高，就成了一种经典的金融问题 &amp;ndash; 证券投资组合优化问题。&#xA;马科维茨均值-方差模型(Markowitz Mean-Variance Model)是一种用于求解证券投资组合优化问题的数学模型。本文改进了一种多元函数连续域蚁群算法，用于求解马科维茨均值-方差模型。</description>
     </item>
     <item>
       <title>TSP旅行路线规划</title>
-      <link>https://luochang212.github.io/portfolio/2/</link>
+      <link>http://localhost:1313/portfolio/2/</link>
       <pubDate>Wed, 01 May 2019 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/portfolio/2/</guid>
+      <guid>http://localhost:1313/portfolio/2/</guid>
       <description>旅行中的一天通常这样度过：清晨从宾馆出发，去第一个景点。第一个景点逛完，去下一个景点&amp;hellip;&amp;hellip;直到最后一个景点逛完，行程结束返回宾馆。那么如何规划一条最短的路线走完一天的行程呢？这就涉及到一个经典的运筹学问题 &amp;ndash; TSP问题。本项目用googlemaps库获取纬度和经度信息，用OR-Tools库求解TSP问题，用gmaps库可视化输出结果。利用本项目，用户只需输入景点名称，即可获得一张周游所有景点的最短路线图。可以说是一个即插即用的TSP路线规划工具。</description>
     </item>
     <item>
       <title>团队软件项目</title>
-      <link>https://luochang212.github.io/portfolio/3/</link>
+      <link>http://localhost:1313/portfolio/3/</link>
       <pubDate>Mon, 01 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/portfolio/3/</guid>
+      <guid>http://localhost:1313/portfolio/3/</guid>
       <description>每年，教学经理(Learning and Teaching Manager)都必须从老师那里收集课程信息。如果发现考试时间重叠或者太过密集，教学经理都必须通知老师调整时间。此外，教学经理还必须核对课程信息是否正确。比如各项考核分数之和是否为100分，考试时间是否与节假日重叠，作业的截至日期是否在发布日期之后等。核对完成后，还必须将每个课程的信息打印出来。这个过程非常手动，对用户也不友好。因此，团队编写了本软件。本软件能自动核对、打印、可视化课程信息，并允许用户将课程信息以邮件形式返回给教学经理，以帮助课程经理提高工作效率。</description>
     </item>
     <item>
       <title>自然系统的建模与仿真</title>
-      <link>https://luochang212.github.io/portfolio/4/</link>
+      <link>http://localhost:1313/portfolio/4/</link>
       <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/portfolio/4/</guid>
+      <guid>http://localhost:1313/portfolio/4/</guid>
       <description>本项目采用 Agent-based model 的方式，为狼-麋鹿-草生态系统建模。技术上采用了 MATLAB 面向对象编程，为狼和麋鹿的四种行为，分别是捕食、迁徙、生育、死亡，编写了规则。其中狼群拥有智能，可以利用有限信息搜索羊群，并且在头狼的带领下，狼群还表现出集群行为。给定初始条件以后，本模型会模拟生态系统的运作，输出一个时刻更新的二维图以展示各生物位置的变化情况。此外，还会输出一个折线图以表示各生物数量的变化情况。</description>
     </item>
   </channel>

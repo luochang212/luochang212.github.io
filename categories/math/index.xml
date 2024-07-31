@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Math on Chang Luo</title>
-    <link>https://luochang212.github.io/categories/math/</link>
+    <link>http://localhost:1313/categories/math/</link>
     <description>Recent content in Math on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 04 Jul 2019 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://luochang212.github.io/categories/math/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/categories/math/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>排队论在网络性能分析中的应用</title>
-      <link>https://luochang212.github.io/posts/network_performance_analysis/</link>
+      <link>http://localhost:1313/posts/network_performance_analysis/</link>
       <pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/posts/network_performance_analysis/</guid>
+      <guid>http://localhost:1313/posts/network_performance_analysis/</guid>
       <description>排队论(queueing theory)也称随机服务系统理论，它研究的内容有三部分：性态问题、最优化问题和统计推断问题。（《运筹学》清华大学出版社）&#xA;下图描述了排队过程的一般流程：&#xA;现实中的排队问题是多种多样的，对上述“顾客源”和“服务机构”应该作宽泛的理解。顾客和服务机构可以是生物，也可以是非生物；排队结构可以是有形的，也可以是无形的，比如向交换台要求通话的请求；顾客可以走向服务机构，也可以相反，比如送货上门。&#xA;在网络中，服务器和用户之间相互传送数据包。数据包的传送需要时间，因此或多或少都会产生延迟。为了分析这些延迟，我们引入了一系列假设，并利用排队论对网络延迟进行建模分析。&#xA;本文将着重介绍网络性能分析(Network performance analysis)中几种常见的排队模型。它们是：&#xA;The M/M/1 queuing system The birth-death process The M/M/m queuing system The M/M/1/m queuing system The M/M/∞ queuing system The M/M/m/m queuing system 另外，作为以上模型的理论基础，本文将首先介绍泊松过程(Poisson process)。&#xA;泊松过程的推导 泊松过程是马尔可夫过程的一个特例，在排队论中经常被用来估计顾客到达的概率分布。&#xA;（一）泊松过程的假设&#xA;在时间间隔$\Delta t$内，有且仅有一位顾客到达的概率$P$和$\Delta t$成比例，比例系数为$\lambda$&#xA;在时间间隔$\Delta t$内，至多只允许一位顾客到达（否则应该选取一个更短的时间间隔） $$\begin{aligned} P(\text { 在时间间隔 }[t, t+\Delta t] \text { 内，有且仅有一位顾客到达 }) &amp;amp;=\lambda \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，没有顾客到达 }) &amp;amp;=1-\lambda \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，多于一位顾客到达 }) &amp;amp;=0 \end{aligned}$$</description>
     </item>
     <item>
       <title>Python 解置换群问题</title>
-      <link>https://luochang212.github.io/posts/python_math_problem/</link>
+      <link>http://localhost:1313/posts/python_math_problem/</link>
       <pubDate>Sat, 16 Mar 2019 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/posts/python_math_problem/</guid>
+      <guid>http://localhost:1313/posts/python_math_problem/</guid>
       <description>室友问我一个问题，把我难住了。&#xA;想不出解法，遂写了个程序暴力求解。&#xA;**题目：**A permutation is applied to the string SUPERBGOLDHAT. The same permutation is applied to the output from this operation. The second output is OGTHLEPDSUARB. What was the first output? (Note: as an example, the permutation(1 3 4) applied to WOLF gives FOWL. Write your answer in capital letters inside quotation marks, e.g. &amp;ldquo;BEARDPLUGHOST&amp;rdquo;.)&#xA;把它译成中文就是：已知将某个置换作用于字符串SUPERBGOLDHAT两次，生成字符串OGTHLEPDSUARB. 求该置换作用于字符串SUPERBGOLDHAT一次时，生成的结果。&#xA;Note: 作用两次的意思就是，当一个置换规则作用于字符串一次时，会生成一个新字符串。将这个规则作用在这个新字符串上，又会生成一个字符串，这个字符串就是两次作用的结果。&#xA;近世代数基础 如果你不知道什么是置换的话，可以看一下本节。学过近世代数的同学请自觉跳过这部分ꉂ(ˊᗜˋ*)&#xA;我们给定一个序列$a ={1, 2, 3, 4, 5, 6} $ 。然后给定一个作用于该序列的置换：</description>
     </item>
   </channel>
