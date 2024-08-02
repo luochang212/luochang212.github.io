@@ -13,7 +13,7 @@
       <link>https://luochang212.github.io/posts/chinese_embedding/</link>
       <pubDate>Sat, 29 Jun 2024 00:00:00 +0000</pubDate>
       <guid>https://luochang212.github.io/posts/chinese_embedding/</guid>
-      <description>Embedding 在做的事情就是，将词映射到向量空间中，使语义相近的词在空间中距离也相近。顺便做了一件有意思的事情。我用 Bert 生成《红楼梦》中 17 个名字的平均嵌入，然后用 t-SNE 降维，发现主角团三人的词向量是紧紧挨在一起的。&#xA;GitHub 项目地址：luochang212/chinese-embedding&#xA;✨ 本文探索的内容包括：&#xA;如何生成词向量 如何生成句子向量 如何找到语义相近的词 如何对 embedding 做降维及可视化 一、用 Word2Vec 生成词向量 用 Word2Vec 生成中英文词向量。&#xA;英文词向量 中文词向量 查看笔记 二、用 Bert 生成句子向量 用 Bert 生成中英文句子向量。&#xA;英文句子向量 中文句子向量 查看笔记 三、寻找最近邻 embedding 我的构想是：拿到红楼梦里所有词汇的 embedding，然后看我们感兴趣的词（比如林黛玉）离哪个词最近。&#xA;分词 批量计算 embedding 计算每个词的 embedding 计算我们关心词汇的近邻 embedding 整合成一个类 查看笔记 四、Embedding 可视化 用 t-SNE 和 PCA 对 embedding 降维，做 2D &amp;amp; 3D 可视化&#xA;红楼梦中的人物关系 中英美城市群 t-SNE PCA 查看笔记 五、头脑风暴 Embedding 的稳定性 Embedding 差值的意义 输出 embedding 的数量 查看笔记 附录：和 Qwen-2.</description>
+      <description>本文做了一件有意思的事，用 Bert 生成《红楼梦》人名的词嵌入，再用 t-SNE 将高维的词向量降为二维后做可视化。结果发现，主角团三人的名字在向量空间中是紧紧挨在一起的。&#xA;GitHub 项目地址：luochang212/chinese-embedding&#xA;✨ 本文探索的内容包括：&#xA;如何生成词向量 如何生成句子向量 如何找到语义相近的词 如何对 embedding 做降维及可视化 一、用 Word2Vec 生成词向量 用 Word2Vec 生成中英文词向量。&#xA;英文词向量 中文词向量 查看笔记 二、用 Bert 生成句子向量 用 Bert 生成中英文句子向量。&#xA;英文句子向量 中文句子向量 查看笔记 三、寻找最近邻 embedding 我的构想是：拿到红楼梦里所有词汇的 embedding，然后看我们感兴趣的词（比如林黛玉）离哪个词最近。&#xA;分词 批量计算 embedding 计算每个词的 embedding 计算我们关心词汇的近邻 embedding 整合成一个类 查看笔记 四、Embedding 可视化 用 t-SNE 和 PCA 对 embedding 降维，做 2D &amp;amp; 3D 可视化&#xA;红楼梦中的人物关系 中英美城市群 t-SNE PCA 查看笔记 五、头脑风暴 Embedding 的稳定性 Embedding 差值的意义 输出 embedding 的数量 查看笔记 附录：和 Qwen-2.</description>
     </item>
   </channel>
 </rss>

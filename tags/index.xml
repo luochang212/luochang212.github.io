@@ -9,6 +9,13 @@
     <lastBuildDate>Sat, 27 Jul 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://luochang212.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Connected Component</title>
+      <link>https://luochang212.github.io/tags/connected-component/</link>
+      <pubDate>Sat, 27 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/tags/connected-component/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Graph</title>
       <link>https://luochang212.github.io/tags/graph/</link>
       <pubDate>Sat, 27 Jul 2024 00:00:00 +0000</pubDate>
@@ -16,10 +23,10 @@
       <description></description>
     </item>
     <item>
-      <title>Jaccard</title>
-      <link>https://luochang212.github.io/tags/jaccard/</link>
+      <title>Jaccard Similarity</title>
+      <link>https://luochang212.github.io/tags/jaccard-similarity/</link>
       <pubDate>Sat, 27 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/tags/jaccard/</guid>
+      <guid>https://luochang212.github.io/tags/jaccard-similarity/</guid>
       <description></description>
     </item>
     <item>
