@@ -6,8 +6,15 @@
     <description>Recent content in DeepLearning on Chang Luo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 07 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 10 Aug 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://luochang212.github.io/categories/deeplearning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>三种图神经网络算法：GraphSAGE, GCN 和 GAT</title>
+      <link>https://luochang212.github.io/posts/graph_embedding/</link>
+      <pubDate>Sat, 10 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/posts/graph_embedding/</guid>
+      <description>GNN 对图数据的处理方式还是很符合直觉的，基本沿袭了 CNN 的思路。利用与 CNN 类似的“局部性”，构建一个不甚宽但是很深的网络来学习节点的嵌入。时间有限，GCN 和 GAT 只是跑通，没有细抠。在 GraphSAGE 上稍微多花了点时间，但是看下来也非常符合直觉，基本没有什么令人意外的东西。&#xA;GitHub 项目地址：graph-embedding&#xA;✨ 本文做了什么：&#xA;对简单版的 GraphSAGE 做逐行注释 使用 Docker 运行 GraphSAGE 的原版示例 用 PyG 实现简单的 GCN 和 GAT 为运行 PyG 写了一些可复用的 pipeline 代码 注意：运行以下代码依赖 util.py 文件。&#xA;一、GraphSAGE 的简单实现 主流图算法大致分两种：&#xA;图嵌入算法 (GE): DeepWalk, Node2Vec 等 图神经网络算法 (GNN): GraphSAGE, GCN, GAT 等 1.1 绪论：图神经网络 图神经网络的输入一般是 节点关联数据 和 节点特征数据，输出是图嵌入。图神经网络算法做的事情，相当于将一种复杂的数据结构，转换成低维向量。低维向量往往是很好用的。&#xA;拿到图嵌入，我们可以做很多事情，比如：&#xA;节点分类 链接预测 社区发现 相似度量 总之，图嵌入是一种很有用的特征。图嵌入甚至可以和其他特征融合，训练更复杂的模型。&#xA;1.1.1 GNN 和 CNN GNN 似乎和 CNN 用了相同的思路。GNN 就像是 CNN 在图这种数据结构上的推广，我个人是这么感觉的。</description>
+    </item>
     <item>
       <title>像搭积木一样搭神经网络</title>
       <link>https://luochang212.github.io/posts/dl_tricks/</link>
