@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://luochang212.github.io/posts/redis_util/</loc>
+    <lastmod>2024-08-18T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://luochang212.github.io/posts/graph_embedding/</loc>
     <lastmod>2024-08-10T00:00:00+00:00</lastmod>
   </url><url>
@@ -147,10 +150,28 @@
     <lastmod>2017-07-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/categories/</loc>
-    <lastmod>2024-08-10T00:00:00+00:00</lastmod>
+    <lastmod>2024-08-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/</loc>
-    <lastmod>2024-08-10T00:00:00+00:00</lastmod>
+    <lastmod>2024-08-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/categories/devops/</loc>
+    <lastmod>2024-08-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/milvus/</loc>
+    <lastmod>2024-08-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/posts/</loc>
+    <lastmod>2024-08-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/redis/</loc>
+    <lastmod>2024-08-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/</loc>
+    <lastmod>2024-08-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/vector-engine/</loc>
+    <lastmod>2024-08-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/categories/deeplearning/</loc>
     <lastmod>2024-08-10T00:00:00+00:00</lastmod>
@@ -162,12 +183,6 @@
     <lastmod>2024-08-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/tags/graphsage/</loc>
-    <lastmod>2024-08-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://luochang212.github.io/posts/</loc>
-    <lastmod>2024-08-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://luochang212.github.io/tags/</loc>
     <lastmod>2024-08-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/categories/algorithms/</loc>
@@ -214,9 +229,6 @@
   </url><url>
     <loc>https://luochang212.github.io/tags/positionalencoding/</loc>
     <lastmod>2024-06-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://luochang212.github.io/categories/devops/</loc>
-    <lastmod>2024-05-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/tags/jupyter/</loc>
     <lastmod>2024-05-30T00:00:00+00:00</lastmod>

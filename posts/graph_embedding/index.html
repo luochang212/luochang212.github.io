@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.124.1">
+<meta name="generator" content="Hugo 0.132.1">
 
     
     
@@ -22,16 +22,24 @@
 <title>三种图神经网络算法：GraphSAGE, GCN 和 GAT • Chang Luo</title>
 
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="三种图神经网络算法：GraphSAGE, GCN 和 GAT"/>
-<meta name="twitter:description" content="GNN 处理图数据的方式还是很符合直觉的，基本沿袭了 CNN 的思路：每次只看局部信息，通过逐层汇聚形成全貌"/>
-      <meta name="twitter:site" content="@MinosPalace"/>
 
-<meta property="og:title" content="三种图神经网络算法：GraphSAGE, GCN 和 GAT" />
-<meta property="og:description" content="GNN 处理图数据的方式还是很符合直觉的，基本沿袭了 CNN 的思路：每次只看局部信息，通过逐层汇聚形成全貌" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://luochang212.github.io/posts/graph_embedding/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-08-10T00:00:00+00:00" />
-<meta property="article:modified_time" content="2024-08-10T00:00:00+00:00" /><meta property="og:site_name" content="Title" />
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="三种图神经网络算法：GraphSAGE, GCN 和 GAT">
+  <meta name="twitter:description" content="GNN 处理图数据的方式还是很符合直觉的，基本沿袭了 CNN 的思路：每次只看局部信息，通过逐层汇聚形成全貌">
+      <meta name="twitter:site" content="@MinosPalace">
+
+<meta property="og:url" content="https://luochang212.github.io/posts/graph_embedding/">
+  <meta property="og:site_name" content="Chang Luo">
+  <meta property="og:title" content="三种图神经网络算法：GraphSAGE, GCN 和 GAT">
+  <meta property="og:description" content="GNN 处理图数据的方式还是很符合直觉的，基本沿袭了 CNN 的思路：每次只看局部信息，通过逐层汇聚形成全貌">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-08-10T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-08-10T00:00:00+00:00">
+    <meta property="article:tag" content="GraphSAGE">
+    <meta property="article:tag" content="GCN">
+    <meta property="article:tag" content="GAT">
 
 
     
@@ -588,13 +596,13 @@
 <li>为运行 PyG 写了一些 pipeline 代码</li>
 </ul>
 <p>注意：运行以下代码依赖 <a href="https://github.com/luochang212/graph-embedding/blob/main/util.py" target="_blank">util.py</a> 文件。</p>
-<h3 id="一graphsage-的简单实现">一、GraphSAGE 的简单实现</h3>
+<h2 id="一graphsage-的简单实现">一、GraphSAGE 的简单实现</h2>
 <p>主流图算法大致分两种：</p>
 <ul>
 <li>图嵌入算法 (GE): DeepWalk, Node2Vec 等</li>
 <li>图神经网络算法 (GNN): GraphSAGE, GCN, GAT 等</li>
 </ul>
-<h4 id="11-绪论图神经网络">1.1 绪论：图神经网络</h4>
+<h3 id="11-绪论图神经网络">1.1 绪论：图神经网络</h3>
 <p>图神经网络的输入一般是 <strong>节点关联数据</strong> 和 <strong>节点特征数据</strong>，输出是图嵌入。图神经网络算法做的事情，相当于将图这种复杂的数据结构，转换成低维向量。而低维向量往往是很好用的。</p>
 <p>拿到图嵌入，我们可以做很多事情，比如：</p>
 <ul>
@@ -604,14 +612,14 @@
 <li>相似度量</li>
 </ul>
 <p>图嵌入是一种很有用的特征，它甚至可以和其他特征融合，用来训练更复杂的模型。</p>
-<h5 id="111-gnn-和-cnn">1.1.1 GNN 和 CNN</h5>
+<h4 id="111-gnn-和-cnn">1.1.1 GNN 和 CNN</h4>
 <p>GNN 基本沿袭了 CNN 的思路，GNN 像是 CNN 在图数据上的推广。</p>
 <p>我们说 CNN 有平移不变性和局部性。其中 <strong>局部性</strong> 是指：每个神经元每次只看一小块像素，但随着神经元在层数上堆叠，层级越高的神经元，“看到”的像素数量越多（如下图）。</p>
 <p><img src="/img/graphsage_partial.svg" alt=""></p>
 <p>假设 $C_1$ 能看见 4 个像素，$C_2$ 能看见 4 个像素。由于 $B_1$ 能看见 $C_1$ 和 $C_2$，所以相当于 $B_1$ 能够“看见” <code>4*2=8</code> 个像素。</p>
 <p>依此类推，$A$ 能看见 $B_1$ 和 $B_2$，相当于能“看见” <code>8*2=16</code> 个像素。</p>
 <p>层级越高的神经元，底下的“小弟”越多。尽管每个小弟只负责看一部分，但是高层级的神经元汇总了小弟们看见的部分，因此能够看到全局。这好比 merge 周报的老板，虽然每个细节知道的都不如员工多，但比员工更了解公司的全貌。</p>
-<h5 id="112-aggregate-操作">1.1.2 Aggregate 操作</h5>
+<h4 id="112-aggregate-操作">1.1.2 Aggregate 操作</h4>
 <p>图神经网络也有和 CNN 类似的汇聚过程。图神经网络会执行一种叫 Aggregate 的操作。虽然每次 Aggregate 只是把邻居节点的特征聚合到自己身上。但随着聚合次数增加，四跳五跳甚至十八跳节点的信息，也会一步一步“挪”过来。</p>
 <p>更牛的是，Aggregate 是并行的。这意味着每轮迭代，所有节点都会收集邻居节点的信息。所有的节点，都会构建一个属于自己的深度网络。而且随着迭代轮次增加，网络的深度和范围也会同步增加。</p>
 <blockquote>
@@ -623,7 +631,7 @@
 <li>迭代 n 个轮次，将 n 跳之内的节点信息聚合到本节点</li>
 </ul>
 </blockquote>
-<h4 id="12-graphsage-的基本思想">1.2 GraphSAGE 的基本思想</h4>
+<h3 id="12-graphsage-的基本思想">1.2 GraphSAGE 的基本思想</h3>
 <p>GraphSAGE 是一种可实时计算图嵌入的算法。这意味着它不需要知道节点所在的整张图的信息，只需要知道某节点 n 跳之内的拓扑关系和节点特征，就能计算该节点的嵌入。</p>
 <p>它是如何做到这一点的呢？</p>
 <p>GraphSAGE 的基本思想是：不学节点的下标，而学节点的特征</p>
@@ -662,11 +670,11 @@
 </tr>
 </tbody>
 </table>
-<h4 id="13-graphsage-的简单实现">1.3 GraphSAGE 的简单实现</h4>
+<h3 id="13-graphsage-的简单实现">1.3 GraphSAGE 的简单实现</h3>
 <blockquote>
 <p>在论文作者提供的 <a href="https://github.com/williamleif/graphsage-simple">简单版 GraphSAGE</a> 之上进行改写，做了逐行注释、loss 可视化，并优化了部分代码细节。</p>
 </blockquote>
-<h5 id="131-cora-数据集">1.3.1 Cora 数据集</h5>
+<h4 id="131-cora-数据集">1.3.1 Cora 数据集</h4>
 <p><a href="https://paperswithcode.com/dataset/cora">Cora 数据集</a> 是一个经典的图数据集。论文作者也是用此数据集作为示例。</p>
 <blockquote>
 <p><strong>Note:</strong> Cora 是一个论文引用关系数据集。它由 2708 篇科学论文组成。这些论文被分成 7 个类别，类别包括神经网络、强化学习、规则学习等。每篇论文由一个 1433 维的词向量表示，该向量的每一个元素对应一个词，元素值为 0 或 1，表示该词在论文中的存在与否。所有词均来自一个有 1433 个词的字典。</p>
@@ -676,7 +684,7 @@
 <li><code>cora.content</code>：记录论文的编号、特征和类别标签，每行代表一篇论文</li>
 <li><code>cora.cites</code>：记录论文间的引用关系，每一行表示一条引用关系</li>
 </ul>
-<h5 id="132-逐行注释">1.3.2 逐行注释</h5>
+<h4 id="132-逐行注释">1.3.2 逐行注释</h4>
 <p>论文代码中，包含以下三个类：</p>
 <table>
 <thead>
@@ -711,9 +719,9 @@
 <button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/graph-embedding/blob/main/1.GraphSAGE的简单实现.ipynb')">查看笔记</button>
 </center>
 <br>
-<h3 id="二graphsage-的原版实现">二、GraphSAGE 的原版实现</h3>
+<h2 id="二graphsage-的原版实现">二、GraphSAGE 的原版实现</h2>
 <p>上一节我们尝试了 <a href="https://github.com/williamleif/graphsage-simple">GraphSAGE 的简单版实现</a>。在简单实现中，一些与理解无关的复杂性被省略了。作为一名严肃的工程师，当然要跑跑 <a href="https://github.com/williamleif/GraphSAGE">原版 GraphSAGE</a> 实现。</p>
-<h4 id="21-配置-docker-环境">2.1 配置 Docker 环境</h4>
+<h3 id="21-配置-docker-环境">2.1 配置 Docker 环境</h3>
 <p>看了作者的 <code>requirements.txt</code> 里一堆不知道是啥还锁版本的包就头大，所幸作者提供了 Docker。</p>
 <p>首先来到 Dockerfile 所在目录。</p>
 <blockquote>
@@ -732,15 +740,15 @@ RUN pip install networkx==1.11 \
 
 docker run -it -p 9999:8888 graphsage
 </code></pre><p>容器启动后，在浏览器打开 <a href="http://localhost:9999">http://localhost:9999</a>。网页会要求输入 token，用容器日志里那个就行。</p>
-<h4 id="22-运行原版示例">2.2 运行原版示例</h4>
+<h3 id="22-运行原版示例">2.2 运行原版示例</h3>
 <p>作者给了一些 demo，让我们能快速跑起来 ᕕ( ᐛ )ᕗ</p>
-<h5 id="221-有监督学习">2.2.1 有监督学习</h5>
+<h4 id="221-有监督学习">2.2.1 有监督学习</h4>
 <p>在容器提供的 Jupyter Notebook 里打开 Terminal，运行：</p>
 <pre tabindex="0"><code>python -m graphsage.supervised_train \
     --train_prefix ./example_data/toy-ppi \
     --model graphsage_mean \
     --sigmoid
-</code></pre><h5 id="222-无监督学习">2.2.2 无监督学习</h5>
+</code></pre><h4 id="222-无监督学习">2.2.2 无监督学习</h4>
 <pre tabindex="0"><code>python -m graphsage.unsupervised_train \
     --train_prefix ./example_data/toy-ppi \
     --model graphsage_mean \
@@ -752,7 +760,7 @@ docker run -it -p 9999:8888 graphsage
 <button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/graph-embedding/blob/main/2.GraphSAGE的原版实现.ipynb')">查看笔记</button>
 </center>
 <br>
-<h3 id="三图卷积网络-gcn">三、图卷积网络 GCN</h3>
+<h2 id="三图卷积网络-gcn">三、图卷积网络 GCN</h2>
 <ul>
 <li>PyG: <a href="https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.nn.conv.GCNConv.html#torch-geometric-nn-conv-gcnconv">conv.GCNConv</a></li>
 <li>arXiv: <a href="https://arxiv.org/abs/1609.02907">Semi-Supervised Classification with Graph Convolutional Networks</a></li>
@@ -769,7 +777,7 @@ docker run -it -p 9999:8888 graphsage
 <button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/graph-embedding/blob/main/3.图卷积网络GCN.ipynb')">查看笔记</button>
 </center>
 <br>
-<h3 id="四图注意力网络-gat">四、图注意力网络 GAT</h3>
+<h2 id="四图注意力网络-gat">四、图注意力网络 GAT</h2>
 <ul>
 <li>PyG: <a href="https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.nn.conv.GATConv.html#torch-geometric-nn-conv-gatconv">conv.GATConv</a></li>
 <li>arXiv: <a href="https://arxiv.org/abs/1710.10903">Graph Attention Networks</a></li>
@@ -802,6 +810,11 @@ docker run -it -p 9999:8888 graphsage
       <span class="navigation-tittle">SynchroTrap 算法实现</span>
     </a>
     
+    
+    <a href="/posts/redis_util/" class="navigation-next">
+      <span class="navigation-tittle">初试向量引擎：RediSearch 和 Milvus</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
     
 </div>
 
@@ -844,8 +857,6 @@ docker run -it -p 9999:8888 graphsage
   TeX: { equationNumbers: { autoNumber: "AMS" } }
   });
 </script>
-
-
 
 
 
