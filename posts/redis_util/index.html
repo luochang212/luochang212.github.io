@@ -25,13 +25,13 @@
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="初试向量引擎：RediSearch 和 Milvus">
-  <meta name="twitter:description" content="如果你想建立索引，Redis 完全够用了，此种场景下的需求不过如此。但是一旦有向量检索需求，就可以考虑向量引擎">
+  <meta name="twitter:description" content="如果只想建索引，Redis 完全够用了。但是一旦有向量相似度计算需求，就可以考虑向量引擎了">
       <meta name="twitter:site" content="@MinosPalace">
 
 <meta property="og:url" content="https://luochang212.github.io/posts/redis_util/">
   <meta property="og:site_name" content="Chang Luo">
   <meta property="og:title" content="初试向量引擎：RediSearch 和 Milvus">
-  <meta property="og:description" content="如果你想建立索引，Redis 完全够用了，此种场景下的需求不过如此。但是一旦有向量检索需求，就可以考虑向量引擎">
+  <meta property="og:description" content="如果只想建索引，Redis 完全够用了。但是一旦有向量相似度计算需求，就可以考虑向量引擎了">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -585,21 +585,19 @@
   
   <div class="post">
     <blockquote>
-<p>如果你只是想建立索引，将文本作为 key 存取对应的 Embedding，Redis 完全够用了。此种场景下的需求无非就是如此，最多再为每个 key 加上过期时间。但是一旦有向量检索需求，那就可以考虑使用向量引擎：</p>
-<ul>
-<li>Redis 的 <strong>RediSearch</strong> 模块是一种很棒的解决方案，与 Redis 生态无缝衔接且功能强大</li>
-<li><strong>Milvus</strong> 的优点是方便。它集成了 Embedding 生成功能。你甚至可以直接用文本召回相似文本，无需手动处理 Embedding</li>
-</ul>
+<p>如果你只是想建立索引，通过文本存取对应的文本嵌入，Redis 完全够用了。但是一旦有向量相似度计算需求，就可以考虑向量引擎了。</p>
 </blockquote>
+<!-- > - **RediSearch** 是 Redis 的一个模块，支持向量相似度搜索，它的优点与 Redis 生态无缝衔接，可复制 Redis 的生态优势
+> - **Milvus** 是一个开箱即用的开源向量数据库，有预置的语言模型，可以方便地生成嵌入，且支持多种索引类型 -->
 <p>GitHub 项目地址：<a href="https://github.com/luochang212/redis-util" target="_blank">redis-util</a></p>
-<p>✨ 本文做了什么：</p>
+<p>✨ 本项目干了啥：</p>
 <ul>
-<li>在容器中启动一个 Redis，并将数据卷挂载到本地路径</li>
-<li>通过 Python API 使用 Redis 进行基础 CURD 操作</li>
-<li>不借助任何插件，使用原生 Redis 存取向量</li>
+<li>使用容器启动 Redis，并将数据卷挂载到本地路径</li>
+<li>通过 Redis 的 Python API 进行基础的 CURD 操作</li>
+<li>在不借助任何插件的情况下，使用原生 Redis 存取向量</li>
 <li>使用 RediSearch 存取向量，并获取 TOP N 最近邻向量</li>
-<li>尝试向量引擎 Milvus 的一些基本功能</li>
-<li>基于 Redis “自制”向量引擎，支持设置过期时间，支持生成文本嵌入</li>
+<li>初见向量引擎 Milvus，尝试使用一些基础功能</li>
+<li>基于 Redis “自制”向量引擎，支持设置索引过期时间，支持生成文本嵌入</li>
 </ul>
 <p>注意：运行以下代码依赖 <a href="https://github.com/luochang212/redis-util/blob/main/util.py" target="_blank">util.py</a> 文件。</p>
 <h2 id="一安装-redis">一、安装 Redis</h2>
@@ -644,14 +642,15 @@
 <button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/redis-util/blob/main/4.开源向量引擎Milvus.ipynb')">查看笔记</button>
 </center>
 <br>
-<h2 id="五redisearch-自制强化版">五、RediSearch 自制强化版</h2>
+<h2 id="五自制强化版向量引擎">五、自制强化版向量引擎</h2>
+<p>Milvue 至今仍不支持设置索引过期时间。对我而言这是很重要的功能。毕竟本地机器内存有限，你也不想用着用着突然死机对吧。但我又眼馋 Milvue 方便的嵌入生成功能。怎么办呢？只能自己动手，写一个拥有嵌入生成功能的 Redis 向量索引工具。</p>
 <ol>
 <li>预训练模型 <code>all-MiniLM-L6-v2</code></li>
 <li>自制向量引擎</li>
 </ol>
 <br>
 <center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/redis-util/blob/main/5.RediSearch自制强化版.ipynb')">查看笔记</button>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/redis-util/blob/main/5.自制强化版向量引擎.ipynb')">查看笔记</button>
 </center>
 <br>
 <div id="mini-overlay" onclick="overlay_off()"></div>
