@@ -25,13 +25,13 @@
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="初见向量引擎：RediSearch 和 Milvus">
-  <meta name="twitter:description" content="如果只想建索引，Redis 完全够用了。但是一旦有向量相似度计算需求，就需要考虑向量引擎了">
+  <meta name="twitter:description" content="如果只想建索引，Redis 完全够用了。但是一旦有向量相似度计算需求，就可以考虑向量引擎了">
       <meta name="twitter:site" content="@MinosPalace">
 
 <meta property="og:url" content="https://luochang212.github.io/posts/redis_util/">
   <meta property="og:site_name" content="Chang Luo">
   <meta property="og:title" content="初见向量引擎：RediSearch 和 Milvus">
-  <meta property="og:description" content="如果只想建索引，Redis 完全够用了。但是一旦有向量相似度计算需求，就需要考虑向量引擎了">
+  <meta property="og:description" content="如果只想建索引，Redis 完全够用了。但是一旦有向量相似度计算需求，就可以考虑向量引擎了">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -585,7 +585,7 @@
   
   <div class="post">
     <blockquote>
-<p>如果你只是想建立索引，通过文本存取对应的文本嵌入，Redis 完全够用了。但是一旦有向量相似度计算需求，就需要考虑向量引擎了。</p>
+<p>如果你只是想建立索引，通过文本存取对应的文本嵌入，Redis 完全够用了。但是一旦有向量相似度计算需求，就可以考虑向量引擎了。</p>
 </blockquote>
 <!-- > - **RediSearch** 是 Redis 的一个模块，支持向量相似度搜索，它的优点与 Redis 生态无缝衔接，可复制 Redis 的生态优势
 > - **Milvus** 是一个开箱即用的开源向量数据库，有预置的语言模型，可以方便地生成嵌入，且支持多种索引类型 -->
@@ -636,7 +636,7 @@
 </center>
 <br>
 <h2 id="四开源向量引擎-milvus">四、开源向量引擎 Milvus</h2>
-<p><a href="https://milvus.io/docs/quickstart.md" target="_blank">milvus</a> 是一款为机器学习设计的开源向量数据库，支持存储、查询、索引向量。Milvus 的核心功能是向量相似度搜索，它使用近似最近邻搜索算法来加速搜索过程，找到与查询向量最相似的向量。Milvus 支持多种索引类型，包括 FLAT、IVF_FLAT、IVF_SQ8、IVF_PQ、HNSW 和 ANNOY，以适应不同的查询需求和数据规模。</p>
+<p><a href="https://milvus.io/docs/quickstart.md" target="_blank">Milvue</a> 是一款为机器学习设计的开源向量数据库，支持存储、查询、索引向量。Milvus 的核心功能是向量相似度搜索，它使用近似最近邻搜索算法来加速搜索过程，找到与查询向量最相似的向量。Milvus 支持多种索引类型，包括 FLAT、IVF_FLAT、IVF_SQ8、IVF_PQ、HNSW 和 ANNOY，以适应不同的查询需求和数据规模。</p>
 <br>
 <center>
 <button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/redis-util/blob/main/4.开源向量引擎Milvus.ipynb')">查看笔记</button>

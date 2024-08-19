@@ -13,7 +13,7 @@
       <link>https://luochang212.github.io/posts/redis_util/</link>
       <pubDate>Sun, 18 Aug 2024 00:00:00 +0000</pubDate>
       <guid>https://luochang212.github.io/posts/redis_util/</guid>
-      <description>如果你只是想建立索引，通过文本存取对应的文本嵌入，Redis 完全够用了。但是一旦有向量相似度计算需求，就需要考虑向量引擎了。&#xA;GitHub 项目地址：redis-util&#xA;✨ 本项目干了啥：&#xA;使用容器启动 Redis，并将数据卷挂载到本地路径 通过 Redis 的 Python API 进行基础的 CURD 操作 在不借助任何插件的情况下，使用原生 Redis 存取向量 使用 RediSearch 存取向量，并获取 TOP N 最近邻向量 初见向量引擎 Milvus，尝试使用一些基础功能 基于 Redis “自制”向量引擎，支持设置索引过期时间，支持生成文本嵌入 注意：运行以下代码依赖 util.py 文件。&#xA;一、安装 Redis 下载镜像文件 启动容器 交互式 shell 测试连接 处理 CURD 逻辑 查看笔记 二、用 Redis 存取 Embedding Word2vec 生成 Embedding 数据类型转换 存取 Embedding 查看笔记 三、RediSearch 模块 安装 Docker 镜像 存取向量 查找最近邻向量 查看笔记 四、开源向量引擎 Milvus milvus 是一款为机器学习设计的开源向量数据库，支持存储、查询、索引向量。Milvus 的核心功能是向量相似度搜索，它使用近似最近邻搜索算法来加速搜索过程，找到与查询向量最相似的向量。Milvus 支持多种索引类型，包括 FLAT、IVF_FLAT、IVF_SQ8、IVF_PQ、HNSW 和 ANNOY，以适应不同的查询需求和数据规模。</description>
+      <description>如果你只是想建立索引，通过文本存取对应的文本嵌入，Redis 完全够用了。但是一旦有向量相似度计算需求，就可以考虑向量引擎了。&#xA;GitHub 项目地址：redis-util&#xA;✨ 本项目干了啥：&#xA;使用容器启动 Redis，并将数据卷挂载到本地路径 通过 Redis 的 Python API 进行基础的 CURD 操作 在不借助任何插件的情况下，使用原生 Redis 存取向量 使用 RediSearch 存取向量，并获取 TOP N 最近邻向量 初见向量引擎 Milvus，尝试使用一些基础功能 基于 Redis “自制”向量引擎，支持设置索引过期时间，支持生成文本嵌入 注意：运行以下代码依赖 util.py 文件。&#xA;一、安装 Redis 下载镜像文件 启动容器 交互式 shell 测试连接 处理 CURD 逻辑 查看笔记 二、用 Redis 存取 Embedding Word2vec 生成 Embedding 数据类型转换 存取 Embedding 查看笔记 三、RediSearch 模块 安装 Docker 镜像 存取向量 查找最近邻向量 查看笔记 四、开源向量引擎 Milvus Milvue 是一款为机器学习设计的开源向量数据库，支持存储、查询、索引向量。Milvus 的核心功能是向量相似度搜索，它使用近似最近邻搜索算法来加速搜索过程，找到与查询向量最相似的向量。Milvus 支持多种索引类型，包括 FLAT、IVF_FLAT、IVF_SQ8、IVF_PQ、HNSW 和 ANNOY，以适应不同的查询需求和数据规模。</description>
     </item>
   </channel>
 </rss>
