@@ -594,11 +594,12 @@
 <p>GitHub 项目地址：<a href="https://github.com/luochang212/redis-util" target="_blank">redis-util</a></p>
 <p>✨ 本文做了什么：</p>
 <ul>
-<li>在容器中运行 Redis，并将数据卷挂载到本地</li>
-<li>使用 Python API 连接 Redis，并进行基础的 CURD 操作</li>
-<li>不凭借任何插件，使用原生 Redis 存取向量</li>
+<li>在容器中启动一个 Redis，并将数据卷挂载到本地路径</li>
+<li>通过 Python API 使用 Redis 进行基础 CURD 操作</li>
+<li>不借助任何插件，使用原生 Redis 存取向量</li>
 <li>使用 RediSearch 存取向量，并获取 TOP N 最近邻向量</li>
-<li>尝试开源向量引擎 Milvus</li>
+<li>尝试向量引擎 Milvus 的一些基本功能</li>
+<li>基于 Redis “自制”向量引擎，支持设置过期时间，支持生成文本嵌入</li>
 </ul>
 <p>注意：运行以下代码依赖 <a href="https://github.com/luochang212/redis-util/blob/main/util.py" target="_blank">util.py</a> 文件。</p>
 <h2 id="一安装-redis">一、安装 Redis</h2>
@@ -637,12 +638,20 @@
 </center>
 <br>
 <h2 id="四开源向量引擎-milvus">四、开源向量引擎 Milvus</h2>
-<ul>
-<li>文档：<a href="https://milvus.io/docs">milvus</a></li>
-</ul>
+<p><a href="https://milvus.io/docs/quickstart.md" target="_blank">milvus</a> 是一款为机器学习设计的开源向量数据库，支持存储、查询、索引向量。Milvus 的核心功能是向量相似度搜索，它使用近似最近邻搜索算法来加速搜索过程，找到与查询向量最相似的向量。Milvus 支持多种索引类型，包括 FLAT、IVF_FLAT、IVF_SQ8、IVF_PQ、HNSW 和 ANNOY，以适应不同的查询需求和数据规模。</p>
 <br>
 <center>
 <button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/redis-util/blob/main/4.开源向量引擎Milvus.ipynb')">查看笔记</button>
+</center>
+<br>
+<h2 id="五redisearch-自制强化版">五、RediSearch 自制强化版</h2>
+<ol>
+<li>预训练模型 <code>all-MiniLM-L6-v2</code></li>
+<li>自制向量引擎</li>
+</ol>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/redis-util/blob/main/5.RediSearch自制强化版.ipynb')">查看笔记</button>
 </center>
 <br>
 <div id="mini-overlay" onclick="overlay_off()"></div>
