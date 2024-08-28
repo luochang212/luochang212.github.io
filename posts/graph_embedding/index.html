@@ -25,13 +25,13 @@
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="三种图神经网络算法：GraphSAGE, GCN 和 GAT">
-  <meta name="twitter:description" content="GNN 处理图数据的方式还是很符合直觉的，基本沿袭了 CNN 的思路：每次只看局部信息，通过逐层汇聚形成全貌">
+  <meta name="twitter:description" content="GNN 处理图数据的方式还是很符合直觉的，基本沿袭了 CNN 的思路：每个神经元只看局部信息，通过层层汇聚掌握全貌">
       <meta name="twitter:site" content="@MinosPalace">
 
 <meta property="og:url" content="https://luochang212.github.io/posts/graph_embedding/">
   <meta property="og:site_name" content="Chang Luo">
   <meta property="og:title" content="三种图神经网络算法：GraphSAGE, GCN 和 GAT">
-  <meta property="og:description" content="GNN 处理图数据的方式还是很符合直觉的，基本沿袭了 CNN 的思路：每次只看局部信息，通过逐层汇聚形成全貌">
+  <meta property="og:description" content="GNN 处理图数据的方式还是很符合直觉的，基本沿袭了 CNN 的思路：每个神经元只看局部信息，通过层层汇聚掌握全貌">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -585,7 +585,7 @@
   
   <div class="post">
     <blockquote>
-<p>GNN 处理图数据的方式还是很符合直觉的，基本沿袭了 CNN 的思路：每次只看局部信息，通过逐层汇聚形成全貌。</p>
+<p>GNN 处理图数据的方式还是很符合直觉的，基本沿袭了 CNN 的思路：每个神经元只看局部信息，通过层层汇聚掌握全貌。</p>
 </blockquote>
 <p>GitHub 项目地址：<a href="https://github.com/luochang212/graph-embedding" target="_blank">graph-embedding</a></p>
 <p>✨ 本文做了什么：</p>
@@ -603,27 +603,29 @@
 <li>图神经网络算法 (GNN): GraphSAGE, GCN, GAT 等</li>
 </ul>
 <h3 id="11-绪论图神经网络">1.1 绪论：图神经网络</h3>
-<p>图神经网络的输入一般是 <strong>节点关联数据</strong> 和 <strong>节点特征数据</strong>，输出是图嵌入。图神经网络算法做的事情，相当于将图这种复杂的数据结构，转换成低维向量。而低维向量往往是很好用的。</p>
-<p>拿到图嵌入，我们可以做很多事情，比如：</p>
+<!-- 图神经网络的输入是 **节点间关联关系** 和 **节点特征**，输出是图嵌入。 -->
+<p>图神经网络算法做的事，相当于将图这种复杂的数据结构，转换成低维向量。而低维向量往往是很好用的。</p>
+<p>拿到图嵌入可以做很多事情，比如：</p>
 <ul>
 <li>节点分类</li>
 <li>链接预测</li>
 <li>社区发现</li>
 <li>相似度量</li>
 </ul>
-<p>图嵌入是一种很有用的特征，它甚至可以和其他特征融合，用来训练更复杂的模型。</p>
+<p>总之，图嵌入是一种非常有用的特征。在实践中，甚至可以将图嵌入和其他特征 concat 起来，训练更复杂的模型。</p>
 <h4 id="111-gnn-和-cnn">1.1.1 GNN 和 CNN</h4>
-<p>GNN 基本沿袭了 CNN 的思路，GNN 像是 CNN 在图数据上的推广。</p>
-<p>我们说 CNN 有平移不变性和局部性。其中 <strong>局部性</strong> 是指：每个神经元每次只看一小块像素，但随着神经元在层数上堆叠，层级越高的神经元，“看到”的像素数量越多（如下图）。</p>
+<p>GNN 和 CNN 的思路还挺像的，可以看作 CNN 在图数据上的推广。</p>
+<!-- GNN 基本沿袭了 CNN 的思路，GNN 像是 CNN 在图数据上的推广。 -->
+<p>CNN 有平移不变性和局部性。其中 <strong>局部性</strong> 指：每个神经元每次只看一小块像素，随着神经元层数的堆叠，层级越高的神经元，“看到”的像素量越多（如下图）。</p>
 <p><img src="/img/graphsage_partial.svg" alt=""></p>
-<p>假设 $C_1$ 能看见 4 个像素，$C_2$ 能看见 4 个像素。由于 $B_1$ 能看见 $C_1$ 和 $C_2$，所以相当于 $B_1$ 能够“看见” <code>4*2=8</code> 个像素。</p>
-<p>依此类推，$A$ 能看见 $B_1$ 和 $B_2$，相当于能“看见” <code>8*2=16</code> 个像素。</p>
-<p>层级越高的神经元，底下的“小弟”越多。尽管每个小弟只负责看一部分，但是高层级的神经元汇总了小弟们看见的部分，因此能够看到全局。这好比 merge 周报的老板，虽然每个细节知道的都不如员工多，但比员工更了解公司的全貌。</p>
+<p>假设 $C_1$ 能看到 4 个像素，$C_2$ 能看到 4 个像素。由于 $B_1$ 能看到 $C_1$ 和 $C_2$，相当于 $B_1$ 能够“看到” <code>4*2=8</code> 个像素。</p>
+<p>依此类推，$A$ 能看到 $B_1$ 和 $B_2$，相当于能“看到” <code>8*2=16</code> 个像素。</p>
+<p>层级越高的神经元，底下的“小弟”越多。尽管每个小弟只负责看一部分，但是高层级的神经元汇总了小弟们看见的部分，因此能够看到全局。这好比 merge 周报的老板，虽然细节知道的不如员工多，但比员工更了解公司的全貌。</p>
 <h4 id="112-aggregate-操作">1.1.2 Aggregate 操作</h4>
 <p>图神经网络也有和 CNN 类似的汇聚过程。图神经网络会执行一种叫 Aggregate 的操作。虽然每次 Aggregate 只是把邻居节点的特征聚合到自己身上。但随着聚合次数增加，四跳五跳甚至十八跳节点的信息，也会一步一步“挪”过来。</p>
-<p>更牛的是，Aggregate 是并行的。这意味着每轮迭代，所有节点都会收集邻居节点的信息。所有的节点，都会构建一个属于自己的深度网络。而且随着迭代轮次增加，网络的深度和范围也会同步增加。</p>
+<p>更牛的是，Aggregate 是并行的。这意味着每轮迭代，所有节点都会收集邻居节点的信息。每个节点，都会构建一个属于自己的深度网络。而且随着迭代轮次增加，网络的深度和范围也会同步增加。</p>
 <blockquote>
-<p>迭代次数与聚合范围的关系：</p>
+<p>迭代次数与聚合范围的关系是线性的：</p>
 <ul>
 <li>迭代 1 个轮次，将 1 跳之内的节点信息聚合到本节点</li>
 <li>迭代 2 个轮次，将 2 跳之内的节点信息聚合到本节点</li>
@@ -632,10 +634,9 @@
 </ul>
 </blockquote>
 <h3 id="12-graphsage-的基本思想">1.2 GraphSAGE 的基本思想</h3>
-<p>GraphSAGE 是一种可实时计算图嵌入的算法。这意味着它不需要知道节点所在的整张图的信息，只需要知道某节点 n 跳之内的拓扑关系和节点特征，就能计算该节点的嵌入。</p>
+<p>GraphSAGE 是一种可实时计算的图嵌入算法。这意味着它不需要知道节点所在的整张图的信息，只需要知道某节点 n 跳之内的拓扑关系和节点特征，就能计算该节点的嵌入。</p>
 <p>它是如何做到这一点的呢？</p>
-<p>GraphSAGE 的基本思想是：不学节点的下标，而学节点的特征</p>
-<p>比如，我们的节点有四项特征，分别表示一个同学是否喜欢唱跳rap篮球。我们只需要知道邻接的是一个喜欢唱跳rap篮球的人就好了，至于这个人是谁，我们并不关心。</p>
+<p>GraphSAGE 的基本思想是：不学节点的下标，只学节点的特征。</p>
 <table>
 <thead>
 <tr>
@@ -670,22 +671,21 @@
 </tr>
 </tbody>
 </table>
+<p>如上表，我们只需要知道一个人是不是喜欢唱跳 rap 篮球就好了，至于这个人是谁，我们并不关心。</p>
 <h3 id="13-graphsage-的简单实现">1.3 GraphSAGE 的简单实现</h3>
-<blockquote>
-<p>在论文作者提供的 <a href="https://github.com/williamleif/graphsage-simple">简单版 GraphSAGE</a> 之上进行改写，做了逐行注释、loss 可视化，并优化了部分代码细节。</p>
-</blockquote>
+<!-- > 本节做了什么：在论文作者提供的 [简单版 GraphSAGE](https://github.com/williamleif/graphsage-simple) 之上进行改写，做了逐行注释、loss 可视化，并优化了部分代码细节。 -->
 <h4 id="131-cora-数据集">1.3.1 Cora 数据集</h4>
-<p><a href="https://paperswithcode.com/dataset/cora">Cora 数据集</a> 是一个经典的图数据集。论文作者也是用此数据集作为示例。</p>
+<p><a href="https://paperswithcode.com/dataset/cora">Cora 数据集</a> 是一个经典的图数据集，GraphSAGE 的作者也将此数据集作为示例。</p>
 <blockquote>
-<p><strong>Note:</strong> Cora 是一个论文引用关系数据集。它由 2708 篇科学论文组成。这些论文被分成 7 个类别，类别包括神经网络、强化学习、规则学习等。每篇论文由一个 1433 维的词向量表示，该向量的每一个元素对应一个词，元素值为 0 或 1，表示该词在论文中的存在与否。所有词均来自一个有 1433 个词的字典。</p>
+<p><strong>Note:</strong> Cora 是一个论文引用关系数据集。它由 2708 篇科学论文组成。这些论文被分成 7 个类别，类别包括神经网络、强化学习、规则学习等。每篇论文由一个 1433 维的词向量表示，该向量的每一个元素对应一个词，元素值为 0 或 1，表示该词在论文中的是否存在。所有词均来自一个 1433 个词的字典。</p>
 </blockquote>
-<p>Cora 数据集包含两个数据文件：</p>
+<p>Cora 包含两个数据文件：</p>
 <ul>
 <li><code>cora.content</code>：记录论文的编号、特征和类别标签，每行代表一篇论文</li>
 <li><code>cora.cites</code>：记录论文间的引用关系，每一行表示一条引用关系</li>
 </ul>
 <h4 id="132-逐行注释">1.3.2 逐行注释</h4>
-<p>论文代码中，包含以下三个类：</p>
+<p>论文代码中定义了三个类：</p>
 <table>
 <thead>
 <tr>
@@ -708,11 +708,11 @@
 </tr>
 </tbody>
 </table>
-<p>这三个类很重要，甚至可以只用这三个类，把整个算法串起来。</p>
+<p>这三个类很重要。只用这三个类，就可以把整个算法串起来。</p>
 <ol>
-<li>数据先流经 <strong>MeanAggregator</strong>，MeanAggregator 的作用是将邻居节点特征转换为本节点的表征。这里，把这种表征记作关联特征</li>
-<li>然后 <strong>Encoder</strong> 将关联特征与原始特征 concat 起来。concat 后的结果输入一个带 RuLU 的全连接层。这一步的输出其实已经是节点的 Embedding 了。只不过还要经过有监督学习的更新，才能保证 Embedding 具有分类性能</li>
-<li>监督学习 <strong>SupervisedGraphSage</strong> 为 Embedding 赋予分类性能。它用全连接层将 Embedding 和标号 label 连接起来。经过多轮训练，最终得到既包含节点特征信息，又包含关联信息，还对由 label 定义的类型具有良好分类性能的 Embedding</li>
+<li><strong>MeanAggregator</strong> 的作用是将邻居节点特征转换为本节点的表征。由于是邻居的特征，可以把把这种表征记为节点的“关联表征”</li>
+<li>然后由 <strong>Encoder</strong> 将关联表征与原始特征 concat 起来。concat 后的结果输入带 RuLU 的全连接层。这一步的输出其实已经是节点的 Embedding 了。只不过还要经过监督学习的更新，才能保证 Embedding 具有良好的分类性能</li>
+<li>监督学习 <strong>SupervisedGraphSage</strong> 赋予 Embedding 分类性能。它用全连接层将图嵌入 Embedding 和标号 label 连接起来。经过多轮训练，最终得到包含 节点特征信息 和 关联信息，还对由 label 定义的类别具有良好分类性能的 Embedding</li>
 </ol>
 <br>
 <center>
