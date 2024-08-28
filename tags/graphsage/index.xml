@@ -13,7 +13,7 @@
       <link>https://luochang212.github.io/posts/graph_embedding/</link>
       <pubDate>Sat, 10 Aug 2024 00:00:00 +0000</pubDate>
       <guid>https://luochang212.github.io/posts/graph_embedding/</guid>
-      <description>GNN 处理图数据的方式还是很符合直觉的，基本沿袭了 CNN 的思路：每个神经元只看局部信息，通过层层汇聚掌握全貌。&#xA;GitHub 项目地址：graph-embedding&#xA;✨ 本文做了什么：&#xA;对 GraphSAGE 的简单实现做逐行注释 在 Docker 环境运行 GraphSAGE 的原版示例 用 PyG 实现了 GCN 和 GAT 为运行 PyG 写了一些 pipeline 代码 注意：运行以下代码依赖 util.py 文件。&#xA;一、GraphSAGE 的简单实现 主流图算法大致分两种：&#xA;图嵌入算法 (GE): DeepWalk, Node2Vec 等 图神经网络算法 (GNN): GraphSAGE, GCN, GAT 等 1.1 绪论：图神经网络 图神经网络算法做的事，相当于将图这种复杂的数据结构，转换成低维向量。而低维向量往往是很好用的。&#xA;拿到图嵌入可以做很多事情，比如：&#xA;节点分类 链接预测 社区发现 相似度量 总之，图嵌入是一种非常有用的特征。在实践中，甚至可以将图嵌入和其他特征 concat 起来，训练更复杂的模型。&#xA;1.1.1 GNN 和 CNN GNN 和 CNN 的思路还挺像的，可以看作 CNN 在图数据上的推广。&#xA;CNN 有平移不变性和局部性。其中 局部性 指：每个神经元每次只看一小块像素，随着神经元层数的堆叠，层级越高的神经元，“看到”的像素量越多（如下图）。</description>
+      <description>GNN 处理图数据的方式还是很符合直觉的，基本沿袭了 CNN 的思路：每个神经元只看局部信息，通过层层汇聚掌握全貌。&#xA;GitHub 项目地址：graph-embedding&#xA;✨ 本文做了什么：&#xA;对 GraphSAGE 的简单实现做逐行注释 在 Docker 环境运行 GraphSAGE 的原版示例 用 PyG 实现了 GCN 和 GAT 为运行 PyG 写了一些 pipeline 代码 注意：运行以下代码依赖 util.py 文件。&#xA;一、GraphSAGE 的简单实现 主流图算法大致分两种：&#xA;图嵌入算法 (GE): DeepWalk, Node2Vec 等 图神经网络算法 (GNN): GraphSAGE, GCN, GAT 等 1.1 绪论：图神经网络 图神经网络算法做的事，相当于把图这种复杂的数据结构，转换成低维向量，而低维向量往往是很好用的。&#xA;拿到图嵌入可以做很多事情，比如：&#xA;节点分类 链接预测 社区发现 相似度量 总之，图嵌入是一种非常有用的特征。在实践中，甚至可以将图嵌入和其他特征 concat 起来，训练更复杂的模型。&#xA;1.1.1 GNN 和 CNN GNN 和 CNN 的思路还挺像的，可以看作 CNN 在图数据上的推广。&#xA;CNN 有平移不变性和局部性。其中 局部性 指：每个神经元每次只看一小块像素，随着神经元层数的堆叠，层级越高的神经元，“看到”的像素量越多（如下图）。</description>
     </item>
   </channel>
 </rss>
