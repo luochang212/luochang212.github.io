@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>BigData on Chang Luo</title>
-    <link>http://localhost:1313/categories/bigdata/</link>
+    <link>https://luochang212.github.io/categories/bigdata/</link>
     <description>Recent content in BigData on Chang Luo</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 25 Dec 2022 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/bigdata/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://luochang212.github.io/categories/bigdata/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hive SQL 笔记</title>
-      <link>http://localhost:1313/posts/hive_sql_note/</link>
+      <link>https://luochang212.github.io/posts/hive_sql_note/</link>
       <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/hive_sql_note/</guid>
+      <guid>https://luochang212.github.io/posts/hive_sql_note/</guid>
       <description>Hive SQL 不需要注释，它会自己解释自己&#xA;1. 数据表操作 1.1 创建 Hive 表 CREATE TABLE [DATABASE].[TABLE_NAME] ( `id` BIGINT COMMENT &amp;#39;学号&amp;#39;, name STRING COMMENT &amp;#39;姓名&amp;#39;, ttl_score DOUBLE COMMENT &amp;#39;总分&amp;#39; ) COMMENT &amp;#39;枝江中学五年级学生成绩明细表&amp;#39; PARTITIONED BY (day STRING COMMENT &amp;#39;day&amp;#39;, hour STRING COMMENT &amp;#39;hour&amp;#39;) ROW FORMAT [row_format] STORED AS [file_format]; Note: 想了解更多，请参考 CREATE TABLE with Hive format&#xA;1.2 删除 Hive 表 DROP TABLE [DATABASE].[TABLE_NAME]; DROP TABLE IF EXISTS [DATABASE].[TABLE_NAME]; ALTER TABLE [DATABASE].[TABLE_NAME] DROP IF EXISTS PARTITION (dt=&amp;#39;2024-09-01&amp;#39;, country=&amp;#39;US&amp;#39;); 1.</description>
     </item>
     <item>
       <title>漫谈 Hadoop Streaming</title>
-      <link>http://localhost:1313/posts/hadoop_intro/</link>
+      <link>https://luochang212.github.io/posts/hadoop_intro/</link>
       <pubDate>Sat, 25 Jul 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/hadoop_intro/</guid>
+      <guid>https://luochang212.github.io/posts/hadoop_intro/</guid>
       <description>本文聚焦如何通过 Hadoop Streaming + Python 编写 Hadoop 程序。&#xA;Hadoop 是一个用于大数据处理的分布式计算框架。&#xA;众所周知，实现分布式计算是一个繁琐的过程，Hadoop 通过一个标准化的数据处理流程，简化操作步骤，让没有分布式计算背景的程序员也能轻松写出分布式程序。Hadoop 本身是用 Java 写就的，因此对于非 Java 程序员来说，学 Hadoop 必须先学 Java，这大大降低了 Hadoop 的友好程度。&#xA;Hadoop Streaming 就是为了解决这个问题而生的，它支持用其他编程语言编写 Hadoop 程序。&#xA;1. 分布式系统的由来 经历半个多世纪的高速增长，半导体工业在本世纪初触及了它的物理瓶颈，摩尔定律失灵，硬件算力不再高速增长，人们开始关注利用软件方法来提升算力。&#xA;2003年，两名谷歌工程师开发了一个分布式存储系统，这是它的前身。经过几位后来者添枝加叶，该系统在 2006 年开源，并发展成为今天我们熟知的 Hadoop。&#xA;使用分布式系统，显而易见的好处是能够缩短程序运行的时间。在常规时间就能跑完的程序上使用 Hadoop 无异于画蛇添足。但是对大数据开发人员来说，使用 Hadoop 意味着不必坐在电脑前为了结果等上一整天。如果集群效率够高，完全可能在几分钟内完成单机一天的计算量。&#xA;2. Hadoop 基本介绍 Hadoop 有两个重要的组成部分：HDFS 和 MapReduce。&#xA;HDFS 是一个分布式存储系统，它负责将文件切割成分片，然后分发到集群中的目标机器上进行存储；MapReduce 负责构建一个标准化的数据处理流程，在完成其规定的几道数据处理流程之后，用户将得到他们期望的结果。&#xA;这意味着 Hadoop 的学习至少包括两个部分。要掌握 HDFS，你需要掌握 Hadoop 命令行命令，这将在第7节详细介绍。要掌握 MapReduce，如果你是 Python 开发者，你需要掌握 Hadoop Streaming，这将在下一节中介绍。&#xA;3. MapReduce MapReduce 的重要性不言而喻，它定义了数据在 Hadoop 中被如何处理。MapReduce 包含三个重要过程：Map, Shuffle 和 Reduce。其中，Map 和 Reduce 由我们来编写，Shuffle 则由系统自动完成。</description>
     </item>
     <item>
       <title>Elasticsearch 初探</title>
-      <link>http://localhost:1313/posts/elastic_search/</link>
+      <link>https://luochang212.github.io/posts/elastic_search/</link>
       <pubDate>Thu, 24 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/elastic_search/</guid>
+      <guid>https://luochang212.github.io/posts/elastic_search/</guid>
       <description>Elasticsearch 是一个开源分布式全文搜索引擎。它建立在当前最先进有效的搜索引擎库 Lucene 之上。Elasticsearch 集成了 Lucene 的检索功能，并通过一套简单的 API 隐藏了 Lucene 的复杂性，使之简单易用。&#xA;初识 ES 的初步介绍 本节将介绍 ES 的几个特性。这些介绍能帮助我们理解 ES 是应什么需求诞生的？它解决了什么问题？它为何如此架构？以及这种架构方式为它带来哪些性能上的提升？这些信息虽然不能直接提升我们使用 ES 的能力，但能从更深的维度帮助我们使用好它。&#xA;不仅仅是搜索 ES 不仅能够搜索，它还提供一套分布式实时存储文档的解决方案。 ES 允许用户将数据存储在多个服务器节点上。这些节点能实时共享数据。一旦主节点的内容发生改变，这些改变会实时传递到副节点上，以保证主副节点的内容一致。如果主节点掉线，ES 能立即选举出一个副节点充当主节点。选举过程就像切换开关一样，能够在瞬间完成，从而保证了 ES 的可靠性。&#xA;分布式的存储方案不仅仅是基于数据安全的考量，同时也是为了加快检索的速度。利用 MapReduce，ES 可以在多个节点上并行地检索数据，大大缩短了海量数据处理的时间。&#xA;领域专用语言 为了统一查询语法，ES 设计了一套领域专用语言 (DSL, domain specific language)。这套语言基于 JSON，优点是简单易学，缺点是在表达复杂的查询时，会显得格外冗长，阅读起来也不太友好。&#xA;SQL 和 NoSQL SQL 全称 Structured Query Language。SQL 中的 Structured 突出了它是结构化的查询语言。结构化即受字段限制。SQL 数据库中的每条数据都具有相同的长度，因此可以被视作一张数据表。相比于 SQL，NoSQL 能表达更复杂的内部数据结构。字段之间不相互影响，可以拥有各自的层级结构。因此 NoSQL 数据库要比 SQL 数据库更加灵活且易于拓展。NoSQL 数据库中的数据通常用 JSON 表示。&#xA;入门 一些简单概念 文档 在 ES 中，文档是一个特定的术语。它表示用来存储对象的存储单元。一个对象通常不会是简单的键值对，它可能包含更复杂的数据结构，比如日期、地理数据、数组等。为表达这种复杂的、多层次的数据，ES 将 JSON 作为文档存储的固定格式。也就是说在 ES 里，一个文档被存成一个 JSON 值。</description>
     </item>
   </channel>

@@ -2,45 +2,45 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Note on Chang Luo</title>
-    <link>http://localhost:1313/tags/note/</link>
+    <link>https://luochang212.github.io/tags/note/</link>
     <description>Recent content in Note on Chang Luo</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 15 May 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/note/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://luochang212.github.io/tags/note/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>JupyterLab 中有哪些黑科技</title>
-      <link>http://localhost:1313/posts/jupyter_lab/</link>
+      <link>https://luochang212.github.io/posts/jupyter_lab/</link>
       <pubDate>Wed, 15 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/jupyter_lab/</guid>
+      <guid>https://luochang212.github.io/posts/jupyter_lab/</guid>
       <description>JupyterLab 你是真的火了&amp;hellip;&#xA;5 月 14 号 OpenAI 春季发布会 出现了这个画面：&#xA;才知道 JupyterLab 是 OpenAI 的日常开发工具。感谢 OpenAI 亲自带货。&#xA;JupyterLab 拥有丰富的功能，并不只是 Python 解释器这么简单，让我来向你们展示它的强大！&#xA;〇、安装 JupyterLab 执行以下命令安装 JupyterLab：&#xA;mamba install -c conda-forge jupyterlab Note: mamba 是 miniforge 自带的包管理工具。大多数时候，你可以用 mamba 直接替代 conda，比如 mamba info --envs。使用 mamba 通常可以获得更高的下载速度。&#xA;一、制作 PPT 1.1 Notebook 转 PPT 只需两步，就能把 Notebook 转成 PPT：&#xA;设置 Slide Type：为保证页面被正确渲染，你需要设置 Cell 的 Slide Type。对于新版 Jupyter Lab，在右侧边栏上有带俩齿轮的按钮，点进去，然后一路点 [Property Inspector] -&amp;gt; [COMMON TOOLS] -&amp;gt; [Slide Type]，在这里对 Cell 进行设置。</description>
     </item>
     <item>
       <title>深度学习笔记</title>
-      <link>http://localhost:1313/posts/d2l/</link>
+      <link>https://luochang212.github.io/posts/d2l/</link>
       <pubDate>Sat, 11 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/d2l/</guid>
+      <guid>https://luochang212.github.io/posts/d2l/</guid>
       <description>跟李沐老师学深度学习，课程见 d2l，如有错误，欢迎拍砖 GitHub 项目地址：AI-Project&#xA;〇、技术路线图 flowchart TD A[softmax 回归] --&gt;|无法拟合 XOR 函数| B[多层感知机] B --&gt; |高像素图片作为输入，模型参数爆炸| C[卷积] C --&gt;|数据的长宽下降太快| D[填充] C --&gt;|数据的长宽下降太慢| E[步幅] C --&gt;|缓解卷积对位置敏感| F[池化] C --&gt;|多模式识别与组合| G[多通道输入/输出] ❤️ powered by mermaid 一、softmax 回归 1. 虽然叫回归，但是softmax 解决的是分类问题 回归估计是一个连续值 分类预测是一个离散类别 2. 分类应用举例 MINIST ImageNet human-protein-atlas-image-classification (Kaggle) malware-classification (Kaggle) jigsaw-comment-classification (Kaggle) 3. 从回归到多类分类 &amp;ndash; 均方损失 对分类结果做 one-hot 编码：&#xA;$y = [y_1, y_2, , ... , y_n]^T$&#xA;$y_i=\left\{\begin{array}{l}1 \text { if } i=y \\ 0 \text { otherwise }\end{array}\right.</description>
     </item>
     <item>
       <title>Hive SQL 笔记</title>
-      <link>http://localhost:1313/posts/hive_sql_note/</link>
+      <link>https://luochang212.github.io/posts/hive_sql_note/</link>
       <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/hive_sql_note/</guid>
+      <guid>https://luochang212.github.io/posts/hive_sql_note/</guid>
       <description>Hive SQL 不需要注释，它会自己解释自己&#xA;1. 数据表操作 1.1 创建 Hive 表 CREATE TABLE [DATABASE].[TABLE_NAME] ( `id` BIGINT COMMENT &amp;#39;学号&amp;#39;, name STRING COMMENT &amp;#39;姓名&amp;#39;, ttl_score DOUBLE COMMENT &amp;#39;总分&amp;#39; ) COMMENT &amp;#39;枝江中学五年级学生成绩明细表&amp;#39; PARTITIONED BY (day STRING COMMENT &amp;#39;day&amp;#39;, hour STRING COMMENT &amp;#39;hour&amp;#39;) ROW FORMAT [row_format] STORED AS [file_format]; Note: 想了解更多，请参考 CREATE TABLE with Hive format&#xA;1.2 删除 Hive 表 DROP TABLE [DATABASE].[TABLE_NAME]; DROP TABLE IF EXISTS [DATABASE].[TABLE_NAME]; ALTER TABLE [DATABASE].[TABLE_NAME] DROP IF EXISTS PARTITION (dt=&amp;#39;2024-09-01&amp;#39;, country=&amp;#39;US&amp;#39;); 1.</description>
     </item>
     <item>
       <title>统计学补完计划</title>
-      <link>http://localhost:1313/posts/learning_statistics/</link>
+      <link>https://luochang212.github.io/posts/learning_statistics/</link>
       <pubDate>Sat, 01 May 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/learning_statistics/</guid>
+      <guid>https://luochang212.github.io/posts/learning_statistics/</guid>
       <description>统计学绝非一门生硬无趣的学科，它有着鲜活的案例和丰富的实验，让我们循着公式乘着代码在统计的海洋里尽情摇摆叭 1. 回归分析 1.1 简单线性回归模型 (1) 回归方程 许多回归分析都是在如下假设前提下开始的：$y$ 和 $x$ 是两个代表某个总体的变量，我们希望用 $x$ 解释 $y$，通过一个线性方程，我们可以刻画 $y$ 和 $x$ 之间的关系： $$y=\beta_{0}+\beta_{1} x+u \quad (1.1)$$ 假定方程 (1.1) 在我们所关注的总体中成立，它便定义了一个简单线性回归模型 (simple linear regression model).&#xA;其中，各符号含义如下：&#xA;$y$: 因变量（或被解释变量、回归子） $x$: 自变量（或解释变量、回归元） $u$: 误差项（或干扰项） $\beta_{1}$: 斜率参数 $\beta_{0}$: 截距参数 举例来说，假设我们用方程 (1.1) 来刻画大豆收成：$y$ 表示收成，$x$ 表示施肥量，$u$ 则包括了诸如土地质量、降水量等因素。&#xA;(2) 零条件均值假设 只有在我们对 $x$ 和 $u$ 之间的关系做出某种约束时，我们才能计算出 $\beta_{1}$ 和 $\beta_{0}$ 的可靠估计量。&#xA;🌟 零条件均值假定： $$\begin{aligned} &amp;amp;\mathrm{E}(u)=0 \quad (1.2) \\ &amp;amp;\mathrm{E}(u \mid x)=\mathrm{E}(u) \quad (1.3) \end{aligned}$$ 方程 (1.</description>
     </item>
     <item>
       <title>算法集萃</title>
-      <link>http://localhost:1313/posts/algorithms/</link>
+      <link>https://luochang212.github.io/posts/algorithms/</link>
       <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/algorithms/</guid>
+      <guid>https://luochang212.github.io/posts/algorithms/</guid>
       <description> 算法学习笔记，长期更新 GitHub 项目地址：python-tips/algorithms&#xA;排序 本节介绍各种排序算法的思路和特点，并提供了示例代码。&#xA;插入排序 直接插入排序 希尔排序 交换排序 冒泡排序 快速排序 选择排序 简单选择排序 堆排序 归并排序 二路归并排序 查看示例 排列组合 排列 组合 子集 查看示例 深度优先搜索DFS 施工中&#xA;广度优先搜索BFS 施工中&#xA;二叉搜索树 施工中&#xA;动态规划 施工中&#xA;× </description>
     </item>
   </channel>

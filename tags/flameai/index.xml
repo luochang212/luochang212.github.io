@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>FlameAI on Chang Luo</title>
-    <link>http://localhost:1313/tags/flameai/</link>
+    <link>https://luochang212.github.io/tags/flameai/</link>
     <description>Recent content in FlameAI on Chang Luo</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 25 May 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/flameai/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://luochang212.github.io/tags/flameai/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>深度学习工具箱 FlameAI</title>
-      <link>http://localhost:1313/posts/flameai/</link>
+      <link>https://luochang212.github.io/posts/flameai/</link>
       <pubDate>Sat, 25 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/flameai/</guid>
+      <guid>https://luochang212.github.io/posts/flameai/</guid>
       <description>在上一篇博客《LightGBM 工程实践》中，我把通用函数写到 util.py 文件，以实现代码复用。但是这么复用好麻烦，每次开新项目，得把 util.py 文件贴过去才行。为了省下这个贴的动作，我把它写成 Python 包了。现在下载一次，就可以到处使用啦！&#xA;GitHub 项目地址：flameai&#xA;一、简单介绍 我的这个包叫 FlameAI。作为一个深度学习工具包，它的主要功能是 数据预处理 和 模型评估。FlameAI 旨在解决最后一公里问题。即在框架之外，业务代码之内，寻求最佳实践。为了让我的包看起来上流一点，我让 Kimi 帮我想了几个名字，最后还是选择了 FlameAI，因为这个名字最霸气。&#xA;执行以下命令安装 FlameAI：&#xA;pip install flameai 如果嫌安装速度慢，可以使用阿里源：&#xA;pip install flameai -i https://mirrors.aliyun.com/pypi/simple/ 二、模块功能介绍 2.1 二分类模型评估 二分类模型评估是咱们的拳头产品。只需一行命令，就可以计算下面全部指标：&#xA;accuracy: 准确率 precision: 精确率 recall: 召回率 f1_score: 精确率和召回率的调和平均数 auc: ROC曲线下的面积 cross-entropy loss: 交叉熵损失 True Positive (TP): 真阳 True Negative (TN): 真阴 False Positive (FP): 假阳 False Negative (FN): 假阴 confusion matrix: 混淆矩阵 1）简单用法 你可以直接指定阈值，下面代码中指定阈值为 0.</description>
     </item>
   </channel>

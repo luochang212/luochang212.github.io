@@ -2,598 +2,605 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Chang Luo</title>
-    <link>http://localhost:1313/</link>
+    <link>https://luochang212.github.io/</link>
     <description>Recent content on Chang Luo</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 18 Aug 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 01 Sep 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://luochang212.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>时间序列表示学习：TS2Vec</title>
+      <link>https://luochang212.github.io/posts/ts2vec/</link>
+      <pubDate>Sun, 01 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/posts/ts2vec/</guid>
+      <description> TS2Vec 是一种基于分层对比学习的时间序列表示学习框架。&#xA;GitHub 项目地址：ts_embedding&#xA;参考：&#xA;arXiv: TS2Vec: Towards Universal Representation of Time Series GitHub: zhihanyue/ts2vec </description>
+    </item>
     <item>
       <title>初见向量引擎：RediSearch 和 Milvus</title>
-      <link>http://localhost:1313/posts/redis_util/</link>
+      <link>https://luochang212.github.io/posts/redis_util/</link>
       <pubDate>Sun, 18 Aug 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/redis_util/</guid>
-      <description>如果你只是想建立索引，通过文本存取对应的文本嵌入，Redis 完全够用了。但是一旦需要计算向量相似度，就可以考虑向量引擎了。&#xA;GitHub 项目地址：redis-util&#xA;✨ 本项目干了啥：&#xA;使用容器启动 Redis，并将数据卷挂载到本地路径 通过 Redis 的 Python API 进行基础的 CURD 操作 在不借助任何插件的情况下，使用原生 Redis 存取向量 使用 RediSearch 存取向量，并获取 TOP N 最近邻向量 初见向量引擎 Milvus，尝试使用一些基础功能 基于 Redis “自制”向量引擎，支持设置索引过期时间，支持生成文本嵌入 注意：运行以下代码依赖 util.py 文件。&#xA;一、安装 Redis 下载镜像文件 启动容器 交互式 shell 测试连接 处理 CURD 逻辑 查看笔记 二、用 Redis 存取 Embedding Word2vec 生成 Embedding 数据类型转换 存取 Embedding 查看笔记 三、RediSearch 模块 安装 Docker 镜像 存取向量 查找最近邻向量 查看笔记 四、开源向量引擎 Milvus Milvue 是一款为机器学习设计的开源向量数据库，支持存储、查询、索引向量。Milvus 的核心功能是向量相似度搜索，它使用近似最近邻搜索算法来加速搜索过程，找到与查询向量最相似的向量。Milvus 支持多种索引类型，包括 FLAT、IVF_FLAT、IVF_SQ8、IVF_PQ、HNSW 和 ANNOY，以适应不同的查询需求和数据规模。</description>
+      <guid>https://luochang212.github.io/posts/redis_util/</guid>
+      <description>如果你只是想建立索引，通过文本存取对应的文本嵌入，Redis 完全够用了。但是一旦需要计算向量相似度，就可以考虑向量引擎了。&#xA;GitHub 项目地址：redis-util&#xA;✨ 本项目干了啥：&#xA;使用容器启动 Redis，并将数据卷挂载到本地路径 通过 Redis 的 Python API 进行基础的 CRUD 操作 在不借助任何插件的情况下，使用原生 Redis 存取向量 使用 RediSearch 存取向量，并获取 TOP N 最近邻向量 初见向量引擎 Milvus，尝试使用一些基础功能 基于 Redis “自制”向量引擎，支持设置索引过期时间，支持生成文本嵌入 注意：运行以下代码依赖 util.py 文件。&#xA;一、安装 Redis 下载镜像文件 启动容器 交互式 shell 测试连接 处理 CURD 逻辑 查看笔记 二、用 Redis 存取 Embedding Word2vec 生成 Embedding 数据类型转换 存取 Embedding 查看笔记 三、RediSearch 模块 安装 Docker 镜像 存取向量 查找最近邻向量 查看笔记 四、开源向量引擎 Milvus Milvue 是一款为机器学习设计的开源向量数据库，支持存储、查询、索引向量。Milvus 的核心功能是向量相似度搜索，它使用近似最近邻搜索算法来加速搜索过程，找到与查询向量最相似的向量。Milvus 支持多种索引类型，包括 FLAT、IVF_FLAT、IVF_SQ8、IVF_PQ、HNSW 和 ANNOY，以适应不同的查询需求和数据规模。</description>
     </item>
     <item>
       <title>三种图神经网络算法：GraphSAGE, GCN 和 GAT</title>
-      <link>http://localhost:1313/posts/graph_embedding/</link>
+      <link>https://luochang212.github.io/posts/graph_embedding/</link>
       <pubDate>Sat, 10 Aug 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/graph_embedding/</guid>
+      <guid>https://luochang212.github.io/posts/graph_embedding/</guid>
       <description>GNN 处理图数据的方式还是很符合直觉的，基本沿袭了 CNN 的思路：每个神经元只看局部信息，通过层层汇聚掌握全貌。&#xA;GitHub 项目地址：graph-embedding&#xA;✨ 本文做了什么：&#xA;对 GraphSAGE 的简单实现做逐行注释 在 Docker 环境运行 GraphSAGE 的原版示例 用 PyG 实现了 GCN 和 GAT 为运行 PyG 写了一些 pipeline 代码 注意：运行以下代码依赖 util.py 文件。&#xA;一、GraphSAGE 的简单实现 主流图算法大致分两种：&#xA;图嵌入算法 (GE): DeepWalk, Node2Vec 等 图神经网络算法 (GNN): GraphSAGE, GCN, GAT 等 1.1 绪论：图神经网络 图神经网络算法做的事，相当于把图这种复杂的数据结构，转换成低维向量，而低维向量往往是很好用的。&#xA;拿到图嵌入可以做很多事情，比如：&#xA;节点分类 链接预测 社区发现 相似度量 总之，图嵌入是一种非常有用的特征。在实践中，甚至可以将图嵌入和其他特征 concat 起来，训练更复杂的模型。&#xA;1.1.1 GNN 和 CNN GNN 和 CNN 的思路还挺像的，可以看作 CNN 在图数据上的推广。&#xA;CNN 有平移不变性和局部性。其中 局部性 指：每个神经元每次只看一小块像素，随着神经元层数的堆叠，层级越高的神经元，“看到”的像素量越多（如下图）。</description>
     </item>
     <item>
       <title>SynchroTrap 算法实现</title>
-      <link>http://localhost:1313/posts/synchrotrap/</link>
+      <link>https://luochang212.github.io/posts/synchrotrap/</link>
       <pubDate>Sat, 27 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/synchrotrap/</guid>
+      <guid>https://luochang212.github.io/posts/synchrotrap/</guid>
       <description>SynchroTrap 是基于 Jaccard 相似度和最大连通子图的异常检测算法，出自 Facebook 的论文 Uncovering Large Groups of Active Malicious Accounts in Online Social Networks.&#xA;GitHub 项目地址：SynchroTrap&#xA;✨ 本文做了什么：&#xA;用 mimesis 生成源数据，并基于源数据构造正态分布的样本 通过构造一个 $\lambda$ 可调的泊松过程，生成用户到访时间戳 提供一个由 7 个变量控制的异常数据生成函数，见 gen_attack_df 用 Jaccard 相似度构图，再用 NetworkX 对图做可视化 用 Spark 的 graphframes 计算最大连通子图 复现了论文 2.2 节的可视化效果，见 评估与可视化 介绍如何使用 Docker 构建 Spark 开发环境 注意：运行以下代码依赖 utils.py 文件和 gen_data 库。&#xA;一、样本生成 脱离互联网企业，我们很难拿到可供挖掘的异常数据样本。一种方法是自己生成。自己生成样本的好处是能拿到真正的 ground truth，而且可以精细地控制异常的规模和程度。&#xA;生成源数据 生成大盘数据 生成正态样本分布 生成 uid 并计算访问次数 时间与时间戳 用户日志表 生成异常数据 选择攻击开始时间 获取 ip 池 发起攻击 整合两份数据 Note: 与异常捕获的难度有关的变量：</description>
     </item>
     <item>
       <title>像搭积木一样搭神经网络</title>
-      <link>http://localhost:1313/posts/dl_tricks/</link>
+      <link>https://luochang212.github.io/posts/dl_tricks/</link>
       <pubDate>Sun, 07 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/dl_tricks/</guid>
+      <guid>https://luochang212.github.io/posts/dl_tricks/</guid>
       <description>搭积木的时候，需要将不同类型的积木搭在一起：门框、窗子、走廊、屋顶。对每一种类型的积木，又有多种变体可供选择。比如，屋顶可以用文艺复兴风格，也可以用中式庭园风格。神经网络也是，学神经网络，本质上就是认识各种各样“积木”的过程。&#xA;GitHub 项目地址：dl-tricks/note.ipynb&#xA;一、必要组件 1.1 从 MLP 说起 我们从最简单的深度神经网络 多层感知机 (MLP) 开始说起。麻雀虽小，五脏俱全。了解数据如何在 MLP 中流动，就能大致勾勒一个神经网络的 必要组件。&#xA;下图是一个 4 层感知机，左边是特征，右边是标签。训练开始时，样本数据先从左到右做 正向传播。待数据流到右侧，用 损失函数 计算损失。此时损失是一个标量，而最后一层的节点权重 $W$ 是一个矩阵，标量对矩阵的偏导是矩阵。优化器 会用大小合适的梯度矩阵，沿负梯度方向逐层反向更新权重 $W$。这样下一 批量 (batch) 数据进入网络时，正好能用上一轮更新后的参数做正向传播。&#xA;1.2 DataLoader 样本是有限的，为了让模型获得最强性能，必须榨干每个样本的价值。&#xA;因此在训练中，一个样本往往要复用多次。DataLoader 就在做这样一件事。它把数据编排成一个个批量，并构建一个迭代器。每次调用它，会返回一个从第一个批量开始遍历的迭代器。这个特性使得复用样本变得更加方便。&#xA;原生的 PyTorch DataLoader 很复杂，让我们来实现一个野生 DataLoader：&#xA;import math import torch class DataLoader: def __init__(self, data: list, batch_size: int): self.i = 0 self.batch_size = batch_size self.batch_num = math.floor(len(data) / batch_size) self._data = self.gen_batch(data) def gen_batch(self, data): lst = [] s = self.</description>
     </item>
     <item>
       <title>文本情感分析</title>
-      <link>http://localhost:1313/posts/sentiment_analysis/</link>
+      <link>https://luochang212.github.io/posts/sentiment_analysis/</link>
       <pubDate>Sat, 06 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/sentiment_analysis/</guid>
+      <guid>https://luochang212.github.io/posts/sentiment_analysis/</guid>
       <description>用 Bert + Transformer encoder + 全连接层 在 IMDB 电影评论数据集上做文本情感分析。&#xA;GitHub 项目地址：sentiment-analysis IMDB 数据集：imdb-dataset ✨ 本文在做什么：&#xA;建立 词向量 ⇋ CSV 文件 双向 Pipeline 用两种方法对 IMDB 电影评论做情感分析： Bert 预训练词向量 + MLP Bert + Transformer Encoder + 全连接层 前两章是模版代码，像是没营养但必须要搭的砖，您完全可以跳过，从第三章开始看起。&#xA;一、读写词向量 本节的主要目标是完成 词向量 -&amp;gt; CSV 文件 和 CSV 文件 -&amp;gt; 词向量 的 Pipeline。&#xA;对语料做预处理 获取词向量和句子向量 将词向量存入 csv 从 csv 中读取词向量 将读写词向量功能整合成函数 查看示例 二、获取 IMDB 数据集的 Embedding 将 IMDB 数据集中的电影评论转换成句子向量，然后存在 CSV 文件中。&#xA;文本预处理 计算句子向量 查看示例 三、用 MLP 做文本情感分析 用 Bert + MLP 做 IMDB 电影评论文本情感分析。</description>
     </item>
     <item>
       <title>中文词向量生成</title>
-      <link>http://localhost:1313/posts/chinese_embedding/</link>
+      <link>https://luochang212.github.io/posts/chinese_embedding/</link>
       <pubDate>Sat, 29 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/chinese_embedding/</guid>
+      <guid>https://luochang212.github.io/posts/chinese_embedding/</guid>
       <description>本文做了一件有意思的事，用 Bert 生成《红楼梦》人名的词嵌入，再用 t-SNE 将高维的词向量降为二维后做可视化。结果发现，主角团三人的名字在向量空间中是紧紧挨在一起的。&#xA;GitHub 项目地址：luochang212/chinese-embedding&#xA;✨ 本文探索的内容包括：&#xA;如何生成词向量 如何生成句子向量 如何找到语义相近的词 如何对 embedding 做降维及可视化 一、用 Word2Vec 生成词向量 用 Word2Vec 生成中英文词向量。&#xA;英文词向量 中文词向量 查看笔记 二、用 Bert 生成句子向量 用 Bert 生成中英文句子向量。&#xA;英文句子向量 中文句子向量 查看笔记 三、寻找最近邻 embedding 我的构想是：拿到红楼梦里所有词汇的 embedding，然后看我们感兴趣的词（比如林黛玉）离哪个词最近。&#xA;分词 批量计算 embedding 计算每个词的 embedding 计算我们关心词汇的近邻 embedding 整合成一个类 查看笔记 四、Embedding 可视化 用 t-SNE 和 PCA 对 embedding 降维，做 2D &amp;amp; 3D 可视化&#xA;红楼梦中的人物关系 中英美城市群 t-SNE PCA 查看笔记 五、头脑风暴 Embedding 的稳定性 Embedding 差值的意义 输出 embedding 的数量 查看笔记 附录：和 Qwen-2.</description>
     </item>
     <item>
       <title>Attention Is All You Need 论文精读</title>
-      <link>http://localhost:1313/posts/transformer_arxiv/</link>
+      <link>https://luochang212.github.io/posts/transformer_arxiv/</link>
       <pubDate>Sun, 16 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/transformer_arxiv/</guid>
+      <guid>https://luochang212.github.io/posts/transformer_arxiv/</guid>
       <description>Transformer 的编码器变成了 BERT，解码器变成了 GPT。BERT 推动过去几年搜广推算法增长，而 GPT 促成了今天 GenAI 浪潮的爆发。这篇发表于 2017 年的论文，对今天产生了难以估量的影响。&#xA;原文：Attention Is All You Need&#xA;论文翻译 摘要 主流 seq2seq 模型是基于编解码器架构实现的复杂 RNN 或 CNN 网络，其中表现最好的模型还会使用注意力机制来连接编码器和解码器。我们提出一种全新的简单网络架构：Transformer。它完全基于注意力机制，不使用 RNN 和 CNN。在两个机器翻译任务上的实验表明，它拥有更好的并行度，并且训练时间大大减少。在 WMT 2014 英德翻译任务上，我们的模型取得了 28.4 的 BLEU 分数，比现有最好模型提升 2 BLEU。在 WMT 2014 英法翻译任务上，我们的模型在 8 台 GPU 上训练 3.5 天后，在单一模型评分指标下获得 41.8 的最高分。相比之前文献的最佳模型，Transformer 极大降低了训练成本。我们还通过英语成分句法分析任务展示了 Transformer 的泛化能力，无论数据集大小，Transformer 都能很好地泛化到其他任务上。&#xA;1. 介绍 循环神经网络、长短记忆网络和门控循环网络被证明是序列模型和处理语言建模和机器翻译这类转换问题的最先进方法。在此之后，人们又花费大量努力挖掘循环神经网络语言模型和编解码器架构的潜力。&#xA;循环神经网络对输入输出词元按位置进行计算，将词元的位置与时间步进行对齐，生成一系列隐状态 $h_t$。该隐状态是前一个隐状态 $h_{t-1}$ 和时间步 $t$ 时刻输入 $X_t$ 的函数。在训练样本时，这种内在的序列关系天然阻碍并行。对长序列文本，因为内存限制了批量样本的处理，导致这种阻碍更加明显。最近的研究利用因子分解和条件计算两种方法显著提升了计算效率，尤其后者还提高了模型的性能。但是序列计算这个最根本的限制依然存在。&#xA;注意力机制在多种序列建模和转换建模任务中占有重要地位，它能对输入输出序列中的依赖关系进行位置无关的建模。除了少数几个例子外，注意力机制通常和循环神经网络一起使用。&#xA;我们提出了 Transformer，一种不使用循环神经网络、纯基于注意力来捕获输入输出全局依赖关系的模型。Transformer 显著提高了并行度，并且在 8 台 P100 GPU 上训练 12 小时后，翻译质量达到了前所未有的高度。</description>
     </item>
     <item>
       <title>注意力机制笔记</title>
-      <link>http://localhost:1313/posts/attention_note/</link>
+      <link>https://luochang212.github.io/posts/attention_note/</link>
       <pubDate>Sun, 09 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/attention_note/</guid>
+      <guid>https://luochang212.github.io/posts/attention_note/</guid>
       <description>马毅：要想正确理解深度神经网络，就必须认识到其本质是学习高维数据中的低维结构的手段。从第一性原理出发，把目的和手段分清楚，其余的都很容易被统一、被解释。&#xA;从 Attention 的角度理解马毅老师这句话，Embedding 的时候本来就升维了，再做 QKV 就相当于在高维里面抽低维信息。而且 Q 也是可学习的，所以就既能学到好的抽取方法；对于每一种抽取方法，又能特别高效地抽取。&#xA;GitHub 项目地址：rnn-note / attention-note&#xA;一、语言模型入门：RNN, LSTM, GRU 1.1 序列模型 马尔可夫假设，当前数据只跟最近 τ 个数据点相关。把最近 τ 个数据点作为特征，用 MLP 预测当前数据点的值。&#xA;查看笔记 1.2 文本预处理 对文本词元化 (tokenize) 并构建词表，就是把文本映射到从 0 开始的索引。&#xA;查看笔记 1.3 语言模型和数据集 对语料分批量 (batch) 处理。介绍了两种（batch 内的）采样策略：&#xA;随机采样策略：每个 batch 内的相邻子序列是随机的 顺序分区策略：每个 batch 内的相邻子序列是顺序的 查看笔记 1.4 循环神经网络的从零开始实现 每次输出仅由前一个隐状态和当前新输入 x 决定，是为 RNN。&#xA;提及的知识点：&#xA;独热编码：文本经过词元化后，还要经过 one-hot 处理，才能进入模型 困惑度：我们用困惑度来描述文本生成的质量，通过一个序列中所有的 n 个词元的交叉熵损失的平均值来衡量 $$\frac{1}{n} \sum_{t=1}^n-\log P\left(x_t \mid x_{t-1}, \ldots, x_1\right)$$ 梯度裁剪：对于 $T$ 长序列将产生 $O(T)$ 长矩阵乘法链。当 $T$ 较大时，可能导致数值不稳定，例如可能导致梯度爆炸或梯度消失。这种情况下优化算法可能无法收敛。下式通过将梯度 $g$ 投影回给定半径 $\theta$ 来限制梯度的大小。其中 $\frac{\theta}{|\mathbf{g}|}$ 可以理解为梯度 $g$ 的单位方向向量。 $$\mathbf{g} \leftarrow \min\left(1, \frac{\theta}{|\mathbf{g}|}\right) \mathbf{g}$$ 查看笔记 1.</description>
     </item>
     <item>
       <title>后台管理工具介绍</title>
-      <link>http://localhost:1313/posts/process_manager/</link>
+      <link>https://luochang212.github.io/posts/process_manager/</link>
       <pubDate>Thu, 30 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/process_manager/</guid>
+      <guid>https://luochang212.github.io/posts/process_manager/</guid>
       <description>呀嘞呀嘞，我的 JupyterLab 怎么又挂了。&#xA;简单的 nohup [CMD] &amp;amp; 已经不够用，该研究一下后台管理工具了。&#xA;问了一下 Qwen，大概有五款后台管理工具可用。这五款工具大致可分为两类：&#xA;进程管理器：systemd, pm2, supervisor 终端复用器：screen, tmux 总之，保持单个程序在后台运行，systemd 就够用。如果要维持多个后台程序，pm2 比较合适。screen 和 tmux 则是更临时的方案，适合偶尔用用的情况。&#xA;一、systemd 使用 systemd 管理 Jupyter lab 服务，必须先创建一个 systemd unit 文件来定义服务的启动、重启等行为。以下是创建 systemd 服务的步骤。&#xA;1.1 创建 unit 文件 用 vi 新建并打开 jupyterlab.service 文件：&#xA;sudo vi /etc/systemd/system/jupyterlab.service 配置如下：&#xA;[Unit] Description=Jupyter Lab After=network.target [Service] Type=simple User=[YOUR_USERNAME] ExecStart=/home/[YOUR_USERNAME]/miniconda3/bin/jupyter lab --ip=0.0.0.0 --port=443 --no-browser --allow-root WorkingDirectory=/home/[YOUR_USERNAME]/ Restart=on-failure RestartSec=8s [Install] WantedBy=multi-user.target 将 [YOUR_USERNAME] 替换为你的用户名。如果你在 root 上开服务，记得在 ExecStart 后加一个 --allow-root 如果你的服务不在 https 上，请用 --port=80 或 --port=8888 之类的其他端口 在 https 上搭建 jupyter lab 服务的方法，参见 在服务器上使用 JupyterLab 1.</description>
     </item>
     <item>
       <title>深度学习工具箱 FlameAI</title>
-      <link>http://localhost:1313/posts/flameai/</link>
+      <link>https://luochang212.github.io/posts/flameai/</link>
       <pubDate>Sat, 25 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/flameai/</guid>
+      <guid>https://luochang212.github.io/posts/flameai/</guid>
       <description>在上一篇博客《LightGBM 工程实践》中，我把通用函数写到 util.py 文件，以实现代码复用。但是这么复用好麻烦，每次开新项目，得把 util.py 文件贴过去才行。为了省下这个贴的动作，我把它写成 Python 包了。现在下载一次，就可以到处使用啦！&#xA;GitHub 项目地址：flameai&#xA;一、简单介绍 我的这个包叫 FlameAI。作为一个深度学习工具包，它的主要功能是 数据预处理 和 模型评估。FlameAI 旨在解决最后一公里问题。即在框架之外，业务代码之内，寻求最佳实践。为了让我的包看起来上流一点，我让 Kimi 帮我想了几个名字，最后还是选择了 FlameAI，因为这个名字最霸气。&#xA;执行以下命令安装 FlameAI：&#xA;pip install flameai 如果嫌安装速度慢，可以使用阿里源：&#xA;pip install flameai -i https://mirrors.aliyun.com/pypi/simple/ 二、模块功能介绍 2.1 二分类模型评估 二分类模型评估是咱们的拳头产品。只需一行命令，就可以计算下面全部指标：&#xA;accuracy: 准确率 precision: 精确率 recall: 召回率 f1_score: 精确率和召回率的调和平均数 auc: ROC曲线下的面积 cross-entropy loss: 交叉熵损失 True Positive (TP): 真阳 True Negative (TN): 真阴 False Positive (FP): 假阳 False Negative (FN): 假阴 confusion matrix: 混淆矩阵 1）简单用法 你可以直接指定阈值，下面代码中指定阈值为 0.</description>
     </item>
     <item>
       <title>JupyterLab 中有哪些黑科技</title>
-      <link>http://localhost:1313/posts/jupyter_lab/</link>
+      <link>https://luochang212.github.io/posts/jupyter_lab/</link>
       <pubDate>Wed, 15 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/jupyter_lab/</guid>
+      <guid>https://luochang212.github.io/posts/jupyter_lab/</guid>
       <description>JupyterLab 你是真的火了&amp;hellip;&#xA;5 月 14 号 OpenAI 春季发布会 出现了这个画面：&#xA;才知道 JupyterLab 是 OpenAI 的日常开发工具。感谢 OpenAI 亲自带货。&#xA;JupyterLab 拥有丰富的功能，并不只是 Python 解释器这么简单，让我来向你们展示它的强大！&#xA;〇、安装 JupyterLab 执行以下命令安装 JupyterLab：&#xA;mamba install -c conda-forge jupyterlab Note: mamba 是 miniforge 自带的包管理工具。大多数时候，你可以用 mamba 直接替代 conda，比如 mamba info --envs。使用 mamba 通常可以获得更高的下载速度。&#xA;一、制作 PPT 1.1 Notebook 转 PPT 只需两步，就能把 Notebook 转成 PPT：&#xA;设置 Slide Type：为保证页面被正确渲染，你需要设置 Cell 的 Slide Type。对于新版 Jupyter Lab，在右侧边栏上有带俩齿轮的按钮，点进去，然后一路点 [Property Inspector] -&amp;gt; [COMMON TOOLS] -&amp;gt; [Slide Type]，在这里对 Cell 进行设置。</description>
     </item>
     <item>
       <title>LSTM 家庭用电预测</title>
-      <link>http://localhost:1313/posts/lstm_power_consumption/</link>
+      <link>https://luochang212.github.io/posts/lstm_power_consumption/</link>
       <pubDate>Sun, 12 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/lstm_power_consumption/</guid>
+      <guid>https://luochang212.github.io/posts/lstm_power_consumption/</guid>
       <description> 长短期记忆网络（Long Short-Term Memory，LSTM）是一种 RNN 模型，常用于序列数据建模。尤其适合需要挖掘序列中长期依赖关系的问题。&#xA;GitHub 项目地址：luochang212/lstm-model&#xA;一、keras 模型训练 数据导入 数据预处理 趋势可视化 分割训练集和测试集 定义 &amp;amp; 训练网络 预测 预测整个序列 查看示例 二、keras 模型推理 数据预处理 用训练好的 keras 模型做预测 预测下一个值 预测下一个序列 查看示例 三、PyTorch 模型训练 施工中&#xA;参考资料：&#xA;Household_Power_consumption (dataset)&#xA;Ocean Wave Prediction with LSTM&#xA;Time-series data analysis using LSTM (Tutorial)&#xA;PyGWalker&#xA;luochang212/rnn-note&#xA;× </description>
     </item>
     <item>
       <title>LightGBM 工程实践</title>
-      <link>http://localhost:1313/posts/lightgbm_practice/</link>
+      <link>https://luochang212.github.io/posts/lightgbm_practice/</link>
       <pubDate>Sat, 13 Apr 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/lightgbm_practice/</guid>
+      <guid>https://luochang212.github.io/posts/lightgbm_practice/</guid>
       <description>LightGBM 是一种梯度提升树算法，可用于排序、分类和回归任务。本文由一系列 Jupyter Notebook 串成，介绍如何使用 LightGBM 训练二分类模型。本项目使用的数据集是 adult (・ω&amp;lt; )★&#xA;GitHub 项目地址：lightgbm-binary&#xA;🚀 本文亮点 ✅ 使用 Optuna 做超参数寻优 ✅ 使用 Treelite 做推理加速 ✅ 使用 Graphviz 做决策树模型可视化 ✅ 使用 scale_pos_weight 参数，解决样本不均衡问题 ✅ 对标签概率生成标签的阈值寻优 (y_pred -&amp;gt; y)，详见 util.gen_threshold ✅ 编写自适应学习率衰减函数提高 AUC，详见 util.AdaptiveLearningRate ✅ 编写一站式评估函数，可一次性输出多种指标，包括 accuracy, precision, recall, f1_score, auc, cross-entropy loss, confusion matrix，详见 util.eval_binary ✨ 注意：以下代码运行时依赖 util.py 文件&#xA;一、数据可视化 导入数据 统计描述 describe() 方法 info() 方法 统计各字段枚举值数量 查看字段下所有枚举值 查看空值个数 可视化 标号的值的比例 小提琴图 (Violin Plot) 查看示例 二、预处理与特征选择 预处理 标签编码 更好的编码方式？ 初次训练 使用 lgb.</description>
     </item>
     <item>
       <title>家庭网络拓扑</title>
-      <link>http://localhost:1313/posts/home_network_topology/</link>
+      <link>https://luochang212.github.io/posts/home_network_topology/</link>
       <pubDate>Sat, 02 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/home_network_topology/</guid>
+      <guid>https://luochang212.github.io/posts/home_network_topology/</guid>
       <description>本文介绍家庭局域网数据传输过程&#xA;常见家庭网络拓扑如下：&#xA;flowchart LR A[外网] --&gt;|光纤入户| B[光猫] --&gt;|路由器WAN| C[路由器] --&gt; D[交换机] D --&gt;|交换机LAN1| E[电脑] D --&gt;|交换机LAN2| F[笔记本] D--&gt;|交换机LAN3| G[电视机盒子] 现代的 路由器 和 交换机 其实是一个设备，统称路由器。为了便于理解，我们还是把它们拆开。&#xA;一、局域网设备 光猫、路由器、交换机 的连接方法。&#xA;1）光猫 光猫一般放在弱电箱，它有一个 WAN 口和多个 LAN 口。我们把路由器插在其中一个 LAN 口上，假设插的是 LAN1&#xA;WAN LAN1 LAN2 LAN3 ... 接外网网线 接路由器 空闲 空闲 空闲 2）光猫 接 路由器 然后将网线从光猫 LAN1 接到路由器 WAN&#xA;WAN LAN 接光猫 LAN1 接交换机（为了便于理解，虚拟出来的 LAN，实际不存在） 3）路由器 接 交换机 最后将网线从路由器 LAN 接到交换机 WAN&#xA;WAN LAN1 LAN2 LAN3 .</description>
     </item>
     <item>
       <title>图算法笔记</title>
-      <link>http://localhost:1313/posts/graph_algorithms/</link>
+      <link>https://luochang212.github.io/posts/graph_algorithms/</link>
       <pubDate>Sun, 25 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/graph_algorithms/</guid>
+      <guid>https://luochang212.github.io/posts/graph_algorithms/</guid>
       <description>记笔记能让脑子里的知识结构化说是&#xA;GitHub 项目地址：graph-algorithm&#xA;一、图的基础操作 1.创建图 1.1 从空图开始创建 1.2 用边文件创建 1.3 用已经存在的图、边的列表创建 1.4 创建带权边 1.5 为图添加属性 1.6 创建有向图 2.可视化 random circular spectral shell 3.中心性度量 Degree Centrality Closeness Centrality Betweenness Centrality Eigenvector Centrality 4.随机图生成 5.读写文件 写入文件 读出数据 查看示例 二、通用图算法 连通性 Connectivity 最短路 Shortest Paths 相似性度量 Similarity Measures 距离度量 Distance Measures 链接预测 Link Prediction 匹配 Matching 查看示例 三、社区检测算法 1.常见社区检测算法 1.1 label Propagation 1.2 Girvan-Newman 1.3 Greedy Modularity 1.4 Louvain 2.是否接受边权作为输入 推荐使用 louvain 查看示例 四、图嵌入 施工中</description>
     </item>
     <item>
       <title>树莓派 5 装机指南</title>
-      <link>http://localhost:1313/posts/raspberry_pi_5/</link>
+      <link>https://luochang212.github.io/posts/raspberry_pi_5/</link>
       <pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/raspberry_pi_5/</guid>
+      <guid>https://luochang212.github.io/posts/raspberry_pi_5/</guid>
       <description>2024 年 2 月，给我的 Raspberry Pi 5 安装 Ubuntu，最后踩了两次坑才装好。感觉搜索前几的教程都不对，没一个让我顺利装完的。那么我来记录一下安装过程吧&#xA;一、下载 你需要下载两个东西：&#xA;ubuntu-23.10：适用于树莓派 5 的 Ubuntu 镜像 Raspberry Pi Imager：将镜像写入 TF 卡的工具 1）ubuntu-23.10 的下载页面：ubuntu.com/download/raspberry-pi&#xA;PS: 你可以选择服务器版或桌面版，我安的是桌面版&#xA;2）Raspberry Pi Imager 的下载页面：raspberrypi.com/software&#xA;二、将镜像写入 TF 卡 下载好镜像之后，你需要把镜像写入 TF 卡。&#xA;打开 Raspberry Pi Imager，界面上有三个白框，分别是：&#xA;CHOOSE DEVICE: 选择你的树莓派版本。选 Raspberry Pi 5 CHOOSE OS: 选择你要安装的镜像。由于我们用的是本地镜像，下拉栏划到最底，选 Use custom CHOOSE STORAGE: 选择你的 TF 卡。没插卡的请插卡，然后在下拉栏选中你的卡。由于后续步骤会抹除 TF 卡数据，清确保卡内没有重要文件 三、首次启动 Ubuntu 在不插电源的情况下，将 TF 卡插入板子。&#xA;然后连接外接显示屏、鼠标、键盘、网线（如果有），插电即可直接点亮。如果 1 分钟后没有任何反应，可以尝试按 TF 卡旁边的电源键。需要注意的是，树莓派 5 新加了实体电源键，老版本没有。</description>
     </item>
     <item>
       <title>手写深度学习</title>
-      <link>http://localhost:1313/posts/d2l_from_scratch/</link>
+      <link>https://luochang212.github.io/posts/d2l_from_scratch/</link>
       <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/d2l_from_scratch/</guid>
+      <guid>https://luochang212.github.io/posts/d2l_from_scratch/</guid>
       <description>与其说深度学习是一门技术，不如说深度学习是一种语言&#xA;GitHub 项目地址：AI-Project/scratch&#xA;一、自动微分 1. 简单的例子 1.1 张量 x 的梯度&#xA;张量 $x$ 的梯度可以存储在 $x$ 上。&#xA;要点：&#xA;x.grad: 取 $x$ 的梯度 x.requires_grad_(True): 允许 tenser $x$ 存储自己的梯度 x.grad.zero_(): 将 $x$ 的梯度置零 import torch # 初始化张量 x (tenser x) x = torch.arange(4.0) x.requires_grad_(True) # 允许 tensor x 存储梯度 x.grad == None # 梯度默认为 None &amp;gt; True&#xA;初始化带梯度的张量，下面是两个例子：&#xA;torch.tensor([1., 2., 3.], requires_grad=True) &amp;gt; tensor([1., 2., 3.], requires_grad=True)&#xA;torch.randn((2, 5), requires_grad=True) &amp;gt; tensor([[ 0.4075, 1.</description>
     </item>
     <item>
       <title>Linux 运维手册</title>
-      <link>http://localhost:1313/posts/linux_handbook/</link>
+      <link>https://luochang212.github.io/posts/linux_handbook/</link>
       <pubDate>Sat, 03 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/linux_handbook/</guid>
+      <guid>https://luochang212.github.io/posts/linux_handbook/</guid>
       <description>基于 CentOS 系统&#xA;一、常见操作 1）文件操作 命令 描述 ls 列出当前文件夹下的文件 ls -alh 列出包括隐藏文件在内的所有文件，显示详细信息，并以人类可读的方式显示占用的磁盘空间大小 touch [FILE] 创建文件 vim [FILE] 打开文件 cat [FILE] 打印文件 head [FILE] 打印文件头 10 行，展示 20 行用 head -n 20 [FILE] tail [FILE] 打印文件尾 10 行，展示 20 行用 tail -n 20 [FILE] tail -f [FILE] 实时查看文件的末尾新增的内容，一般用于打印监控日志 less [FILE] 打印文件，可以用 上键 下键 翻页 rm [FILE] 删除文件 rm -rf [DIR] 递归删除路径DIR下所有文件 mv [FILE_A] [FILE_B] 文件FILE_A改名为FILE_B mv [FILE] [DIR] 文件FILE移动到路径DIR cd [PATH] 打开目录PATH mkdir [PATH] 创建目录 mkdir -p [PATH/TO/DIR] 创建多级目录 tar cvf file.</description>
     </item>
     <item>
       <title>居家物资清单</title>
-      <link>http://localhost:1313/posts/inventory_list/</link>
+      <link>https://luochang212.github.io/posts/inventory_list/</link>
       <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/inventory_list/</guid>
+      <guid>https://luochang212.github.io/posts/inventory_list/</guid>
       <description>Build your home from scratch.&#xA;GitHub 项目地址：new_home&#xA;一、随身物品 身份证 手机 钥匙 钱包 脑子 二、文具 通勤双肩包 雨伞 拍纸本 中性笔 铅笔 毛笔 秀丽笔 少量专业书籍 三、生活用品 衣服 衣架 毛巾 * 2 洗澡用 垫枕头上 牙具 牙杯 牙膏 牙刷 鞋 拖鞋 运动鞋 水杯： 工位：带盖水杯 家用：陶瓷水杯 脸盆 指甲刀 剃须刀 剪刀 四、床上用品 被子 枕头 床单 床笠 可爱靠枕 五、电子产品 手机 手机支架 手表 耳机 平板 树莓派 Switch Mac mini 笔记本电脑 笔记本电脑支架 外接显示器 外接显示器支架 鼠标 鼠标垫 拓展坞 移动硬盘 移动WIFI 游戏手柄 自拍杆 充电宝 充电器 充电头 充电线 插线板 六、家具 桌子 镜子 阅读灯 氛围灯 拖把 垃圾桶 桶装矿泉水倒立支架 七、电器 体重秤 烧水壶 智能音箱 桌面时钟（带温度湿度功能） 桌面风扇 暖风机 空气净化器 八、消耗品 洗衣液 沐浴露 洗发液 洗面奶 面霜 唇膏 抽纸 酒精湿巾 垃圾袋 保鲜袋 抹布 九、食品 调味料 基础 盐 生抽 / 蒸鱼豉油 / 寿喜烧酱汁 / 照烧汁 食用油 / 香油 / 黄油 生粉 / 粘米粉 / 白凉粉 / 面包粉 辣椒 / 二荆条 / 辣椒面 / 辣椒酱 / 泡椒 白砂糖 / 冰糖 / 红糖 生姜 / 泡仔姜 蒜 / 蒜泥 / 香蒜酱 / 青蒜酱 / 黑蒜酱 / 糖蒜 香醋 / 米醋 / 白醋 咖喱块 / 咖喱粉 进阶 蜂蜜 / 蜂蜜芥末酱 黑胡椒 / 白胡椒 / 花椒 花生酱 八角 月桂叶 蚝油 麻酱 牛油火锅底料 柠檬 / 青柠 药膳 当归 党参 黄芪 食材 主食 大米 / 小米 / 莲子 / 薏米 / 黑米 红豆 / 黄豆 / 绿豆 / 黑豆 粉丝 / 米线 / 河粉 挂面 / 龙须面 / 车仔面 / 荞麦面 / 刀削面 / 方便面 / 意大利面 水饺 / 馄饨 地瓜 / 土豆 麦片 / 藕粉 / 芝麻糊 茶泡饭速食包 / 真空装玉米 / 真空装卷饼 佐食 牛奶 / 酸奶 鸡蛋 / 咸鸭蛋 / 溏心蛋 / 皮蛋 茶叶 / 咖啡 豆腐 榨菜 / 香菜心 / 脆瓜 / 脆萝卜 / 海带丝 香菇肉酱 / 红烧肉罐头 / 咖喱牛肉罐头 / 鱼罐头 / 午餐肉罐头 猪肉松 / 鱼肉松 板鸭 / 腊肉 蛋挞皮 / 蛋挞液 盐酥鸡 / 唐扬鸡块 白斩鸡 / 烤鸭 冰鲜披萨 蔬菜 小白菜 / 娃娃菜 空心菜 / 地瓜叶 包菜 西红柿 胡萝卜 / 白萝卜 黄瓜 / 南瓜 / 西葫芦 西兰花 笋 芹菜 / 香菜 / 韭菜 四季豆 / 豌豆 / 毛豆 香菇 / 红菇 海带 / 紫菜 肉类 鸡肉 / 鸭肉 / 鸽子肉 猪肉 / 牛肉 / 羊肉 鱼 / 龙利鱼排 / 鱿鱼圈 / 虾仁 鱼丸 / 牛肉丸 牛排 / 汉堡肉 / 火腿 水果 苹果 橘子 橙子 香蕉 梨 芒果 椰子 香瓜 西瓜 奇异果 牛油果 蓝莓 / 草莓 葡萄 速食 面包 / 华夫饼 饼干 / 小熊饼干 / 趣多多 / 奥利奥 / 脆脆鲨 蛋糕 / 提拉米苏 / 巧克力派 / 蛋黄派 混合坚果 零食 巧克力 冰淇淋 / 雪糕 青团 / 糯米糍 / 年糕 无骨鸭爪 / 鸭脖 猪肉干 / 牛肉干 / 肉脯干 饮料 可乐 雪碧 菠萝啤 / 米酒 / 桂花酿 橙汁 椰汁 咸柠七 十、药品 口罩 体温计 药箱 感冒 藿香正气胶囊 999感冒灵颗粒 化痰止咳 川贝枇杷颗粒 乙酰半胱氨酸片 咽喉肿痛 咽喉清颗粒 发热流感 布洛芬（散利痛 / 布洛芬缓释胶囊） 复方氨酚烷胺胶囊 复方对乙酰氨基酚片(Ⅱ) 抗生素（抗细菌） 头孢 阿莫西林（青霉素） 罗红霉素分散片 盐酸左氧氟沙星片 [肠胃炎可用] 诺氟沙星胶囊 盐酸莫西沙星片 抗病毒 磷酸奥司他韦胶囊 唇炎 单乳膏 [上海市皮肤科医院有售] 抗过敏 氯雷他定 蚊虫叮咬 999皮炎平 消炎 莫匹罗星软膏（百多邦） 消毒 碘伏 酒精棉球 包扎 创可贴 纱布片 / 绷带 棉签 医用胶带 医用剪刀 医用镊子 十一、工具 螺丝刀 卷尺 十二、厨具 中式炒锅 电饭煲 电磁炉 碗 / 盘子 勺子 / 筷子 菜刀 菜板 茶漏 十三、运动用品 瑜伽垫 俯卧撑支架 双节棍 长棍 泳镜 泳帽 泳裤 十四、保暖用品 手套 护膝 十五、证件 护照 驾驶证 银行卡 其他身份材料 十六、XOX 拍立得 To签色纸 应援棒 参考：</description>
     </item>
     <item>
       <title>深度学习笔记</title>
-      <link>http://localhost:1313/posts/d2l/</link>
+      <link>https://luochang212.github.io/posts/d2l/</link>
       <pubDate>Sat, 11 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/d2l/</guid>
+      <guid>https://luochang212.github.io/posts/d2l/</guid>
       <description>跟李沐老师学深度学习，课程见 d2l，如有错误，欢迎拍砖 GitHub 项目地址：AI-Project&#xA;〇、技术路线图 flowchart TD A[softmax 回归] --&gt;|无法拟合 XOR 函数| B[多层感知机] B --&gt; |高像素图片作为输入，模型参数爆炸| C[卷积] C --&gt;|数据的长宽下降太快| D[填充] C --&gt;|数据的长宽下降太慢| E[步幅] C --&gt;|缓解卷积对位置敏感| F[池化] C --&gt;|多模式识别与组合| G[多通道输入/输出] ❤️ powered by mermaid 一、softmax 回归 1. 虽然叫回归，但是softmax 解决的是分类问题 回归估计是一个连续值 分类预测是一个离散类别 2. 分类应用举例 MINIST ImageNet human-protein-atlas-image-classification (Kaggle) malware-classification (Kaggle) jigsaw-comment-classification (Kaggle) 3. 从回归到多类分类 &amp;ndash; 均方损失 对分类结果做 one-hot 编码：&#xA;$y = [y_1, y_2, , ... , y_n]^T$&#xA;$y_i=\left\{\begin{array}{l}1 \text { if } i=y \\ 0 \text { otherwise }\end{array}\right.</description>
     </item>
     <item>
       <title>PyPI 打包小记</title>
-      <link>http://localhost:1313/posts/pypi_packaging/</link>
+      <link>https://luochang212.github.io/posts/pypi_packaging/</link>
       <pubDate>Wed, 18 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/pypi_packaging/</guid>
+      <guid>https://luochang212.github.io/posts/pypi_packaging/</guid>
       <description>你们这些家伙，好好看看我是怎么打包的吧！&#xA;GitHub 项目地址：hit-and-blow&#xA;官方教程：Packaging Python Projects 背景知识：Modules 一、文件结构介绍 打包前，需构建如下文件结构：&#xA;packaging_tutorial/ ├── LICENSE ├── pyproject.toml ├── README.md ├── src/ │ └── YOUR_PACKAGE_NAME/ │ ├── __init__.py │ └── example.py └── tests/ 各个 文件 / 文件夹 说明：&#xA;packaging_tutorial: 项目文件夹 LICENSE: 开源协议，可由 GitHub 生成 pyproject.toml: 打包配置文件 README.md: 项目文档 src: 项目结构要求的，用来放主程序 YOUR_PACKAGE_NAME: 主程序文件夹，以“你的包名”命名文件夹 二、添加配置文件 将以下内容修改一下，改改名字邮箱什么的，存成配置文件 pyproject.toml&#xA;[build-system] requires = [&amp;#34;hatchling&amp;#34;] build-backend = &amp;#34;hatchling.build&amp;#34; [project] name = &amp;#34;example_package_YOUR_USERNAME_HERE&amp;#34; version = &amp;#34;0.0.1&amp;#34; authors = [ { name=&amp;#34;Example Author&amp;#34;, email=&amp;#34;author@example.</description>
     </item>
     <item>
       <title>Hive SQL 笔记</title>
-      <link>http://localhost:1313/posts/hive_sql_note/</link>
+      <link>https://luochang212.github.io/posts/hive_sql_note/</link>
       <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/hive_sql_note/</guid>
+      <guid>https://luochang212.github.io/posts/hive_sql_note/</guid>
       <description>Hive SQL 不需要注释，它会自己解释自己&#xA;1. 数据表操作 1.1 创建 Hive 表 CREATE TABLE [DATABASE].[TABLE_NAME] ( `id` BIGINT COMMENT &amp;#39;学号&amp;#39;, name STRING COMMENT &amp;#39;姓名&amp;#39;, ttl_score DOUBLE COMMENT &amp;#39;总分&amp;#39; ) COMMENT &amp;#39;枝江中学五年级学生成绩明细表&amp;#39; PARTITIONED BY (day STRING COMMENT &amp;#39;day&amp;#39;, hour STRING COMMENT &amp;#39;hour&amp;#39;) ROW FORMAT [row_format] STORED AS [file_format]; Note: 想了解更多，请参考 CREATE TABLE with Hive format&#xA;1.2 删除 Hive 表 DROP TABLE [DATABASE].[TABLE_NAME]; DROP TABLE IF EXISTS [DATABASE].[TABLE_NAME]; ALTER TABLE [DATABASE].[TABLE_NAME] DROP IF EXISTS PARTITION (dt=&amp;#39;2024-09-01&amp;#39;, country=&amp;#39;US&amp;#39;); 1.</description>
     </item>
     <item>
       <title>因果推断笔记</title>
-      <link>http://localhost:1313/posts/causal_inference/</link>
+      <link>https://luochang212.github.io/posts/causal_inference/</link>
       <pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/causal_inference/</guid>
+      <guid>https://luochang212.github.io/posts/causal_inference/</guid>
       <description>不谜语人的因果推断笔记！&#xA;学习统计最好还是学习一下 R 语言。相比 Python，R 是专门用于统计的语言，它提供了更细致的函数和更标准的实现方法。&#xA;GitHub 项目地址： 1. 因果推断入门 小朋友感冒，家长给他吃药，一个星期后就痊愈了。那么“吃药”和“痊愈”是否有因果关系呢？&#xA;我们知道普通的小感冒，即使不吃药，一个星期后也会痊愈。因此未必是因为吃药才痊愈的，也有可能是小朋友凭借抵抗力恢复了健康。此时，要进一步分析“吃药”与“痊愈”的因果关系，就要用到因果推断技术。&#xA;注意在上述例子中，原因存在两种状态：吃药/不吃药。结果也存在两种状态：痊愈/未痊愈。为了描述方便，我们把：&#xA;作为原因的变量：x 叫做控制变量 (control variable)，或解释变量 (explanatory variable) 作为结果的变量：y 叫做响应变量 (response variable)，或被解释变量 (explained variable) 1.1 如何测量因果关系 反事实因果分析框架 是统计学中分析因果关系的一种常见思路。这种思路把一种“状态”与其“反事实状态”造成结果的差异当作因果效应。对于小朋友 $i$，反事实因果分析框架反映的因果效应 $\tau_{i}$ 表示为： $$\tau_{i} = Y_{i}(1) - Y_{i}(0)$$ 这里 $Y_{i}(1)$ 代表吃药，$Y_{i}(0)$ 代表不吃药，它们都是观测值。&#xA;不难发现，$Y_{i}(1)$ 和 $Y_{i}(0)$ 是无法同时观测到的。这被称为 因果推断的根本性问题 (Holland, 1986)。正如“人不能两次踏入同一条河流”，一旦做出某种选择，其他选择的结果就无从观测了。&#xA;由于此“根本性问题”的存在，对 $\tau$ 算不了真实值，只能估计。因果效应 $\tau$ 有三种常见的估计值：&#xA;我们约定：是否吃药用 $X$ 表示，$X = 0 \space or \space 1$，其中 1 代表吃药，0 代表不吃药。这里有必要区分下，$Y_{i}|X=1$ 是指那些真的吃了药的人的 $Y$ 值。$Y_{i}(1)$、$Y_{i}(0)$ 则是看不到的一个潜在状态，可能是用统计方法算出的估计值，也可能是模型的外推。</description>
     </item>
     <item>
       <title>摸鱼侠极客版</title>
-      <link>http://localhost:1313/posts/moyu_bash/</link>
+      <link>https://luochang212.github.io/posts/moyu_bash/</link>
       <pubDate>Sun, 03 Jul 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/moyu_bash/</guid>
+      <guid>https://luochang212.github.io/posts/moyu_bash/</guid>
       <description>老板：退退退&#xA;GitHub 项目地址：moyu-bash&#xA;1. 缘起 最近刷到一个微信小程序，叫 “摸鱼侠”，它长这样：&#xA;这里面有个栏目叫 “今日已摸到”，还挺有意思的，它会计算今日截至当前为止挣到的工资。&#xA;我寻思这小程序颜色太过艳丽，容易被老板抓包，便计上心来，打算写个 bash 版摸鱼侠。和生产环境融为一体，纯键盘操控，老板来了一个 ctrl c 便能毁尸灭迹，大大滴方便。&#xA;2. 出生 这要实现起来也不难，只要把 (工作秒数 - 休息秒数) * 每秒工资 就好嘛。&#xA;我纯纯的 bash 新手，不对之处大家批评。&#xA;# Author: github@luochang212 work_start=10:00:00 # 上班时间 lunch_start=12:00:00 # 午饭开始 lunch_end=13:00:00 # 午饭结束 dinner_start=18:00:00 # 晚饭开始 dinner_end=19:00:00 # 晚饭结束 work_end=20:00:00 # 下班时间 salary=40000 # 月薪 day=22 # 每月工作天数 CURRENT_TIME=$(date +&amp;#34;%T&amp;#34;) EMOJI_ARRAY=(&amp;#34;(・▽ &amp;lt; )★&amp;#34; &amp;#34;─=≡Σ((( つ•̀ 3 •́)つ&amp;#34; &amp;#34;┗|｀O′|┛&amp;#34; &amp;#34;_(┐「ε:)_&amp;#34; &amp;#34;ヽ( ˘ω˘ )ゝ&amp;#34;) get_second() { read -r h m s &amp;lt;&amp;lt;&amp;lt; $(echo $1 | tr &amp;#39;:&amp;#39; &amp;#39; &amp;#39;) echo $(((10#$h*60*60)+(10#$m*60)+10#$s)) } calc_duration() { local start=$(get_second $1) local end=$(get_second $2) echo $((end-start)) } calc_work_time() { local lunch_time=$(calc_duration $lunch_start $lunch_end) local dinner_time=$(calc_duration $dinner_start $dinner_end) if [ $(calc_duration $CURRENT_TIME $work_start) -gt 0 ]; then echo 0 elif [ $(calc_duration $CURRENT_TIME $lunch_start) -gt 0 ]; then echo $(calc_duration $work_start $CURRENT_TIME) elif [ $(calc_duration $CURRENT_TIME $lunch_end) -gt 0 ]; then echo $(calc_duration $work_start $lunch_start) elif [ $(calc_duration $CURRENT_TIME $dinner_start) -gt 0 ]; then echo $(($(calc_duration $work_start $CURRENT_TIME) - lunch_time)) elif [ $(calc_duration $CURRENT_TIME $dinner_end) -gt 0 ]; then echo $(($(calc_duration $work_start $dinner_start) - lunch_time)) elif [ $(calc_duration $CURRENT_TIME $work_end) -gt 0 ]; then echo $(($(calc_duration $work_start $CURRENT_TIME) - lunch_time - dinner_time)) else echo $(($(calc_duration $work_start $work_end) - lunch_time - dinner_time)) fi } show_work_time() { local work_sec=$(calc_work_time) echo &amp;#34;$(($work_sec / 3600)) hours and $(($work_sec % 3600 / 60)) minutes and $(($work_sec % 60)) seconds&amp;#34; } calc_money() { local lunch_time=$(calc_duration $lunch_start $lunch_end) local dinner_time=$(calc_duration $dinner_start $dinner_end) local mnt=$((($(calc_duration $work_start $work_end) - lunch_time - dinner_time) / 60)) local salary_per_mnt=$(($salary * 100000000 / $day / $mnt)) local work_sec=$(calc_work_time) local money=$((salary_per_mnt * (work_sec / 60) / 1000000)) echo $money } show_money() { local money=$(calc_money) echo &amp;#34;已挣到：$(($money / 100)).</description>
     </item>
     <item>
       <title>统计学补完计划</title>
-      <link>http://localhost:1313/posts/learning_statistics/</link>
+      <link>https://luochang212.github.io/posts/learning_statistics/</link>
       <pubDate>Sat, 01 May 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/learning_statistics/</guid>
+      <guid>https://luochang212.github.io/posts/learning_statistics/</guid>
       <description>统计学绝非一门生硬无趣的学科，它有着鲜活的案例和丰富的实验，让我们循着公式乘着代码在统计的海洋里尽情摇摆叭 1. 回归分析 1.1 简单线性回归模型 (1) 回归方程 许多回归分析都是在如下假设前提下开始的：$y$ 和 $x$ 是两个代表某个总体的变量，我们希望用 $x$ 解释 $y$，通过一个线性方程，我们可以刻画 $y$ 和 $x$ 之间的关系： $$y=\beta_{0}+\beta_{1} x+u \quad (1.1)$$ 假定方程 (1.1) 在我们所关注的总体中成立，它便定义了一个简单线性回归模型 (simple linear regression model).&#xA;其中，各符号含义如下：&#xA;$y$: 因变量（或被解释变量、回归子） $x$: 自变量（或解释变量、回归元） $u$: 误差项（或干扰项） $\beta_{1}$: 斜率参数 $\beta_{0}$: 截距参数 举例来说，假设我们用方程 (1.1) 来刻画大豆收成：$y$ 表示收成，$x$ 表示施肥量，$u$ 则包括了诸如土地质量、降水量等因素。&#xA;(2) 零条件均值假设 只有在我们对 $x$ 和 $u$ 之间的关系做出某种约束时，我们才能计算出 $\beta_{1}$ 和 $\beta_{0}$ 的可靠估计量。&#xA;🌟 零条件均值假定： $$\begin{aligned} &amp;amp;\mathrm{E}(u)=0 \quad (1.2) \\ &amp;amp;\mathrm{E}(u \mid x)=\mathrm{E}(u) \quad (1.3) \end{aligned}$$ 方程 (1.</description>
     </item>
     <item>
       <title>FastAPI 初见</title>
-      <link>http://localhost:1313/posts/fastapi/</link>
+      <link>https://luochang212.github.io/posts/fastapi/</link>
       <pubDate>Sat, 21 Nov 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/fastapi/</guid>
+      <guid>https://luochang212.github.io/posts/fastapi/</guid>
       <description>什么是 API？如何从零开始，搭建自己的第一个API？本文带你搭建一个 API 小应用以了解 FastAPI 的使用细节&#xA;GitHub 项目地址：calendar-api&#xA;什么是 API？&#xA;简单来说，API 是软件间相互传输数据的接口。它在生活中十分常见，比如博物馆订票系统中就使用了 API. 当你在手机应用上订票时，手机实际上发送了一个 HTTP 请求给远程服务器。远程服务器解析该请求。当确认所有字段信息均准确无误后，它才会把你的订票信息录入数据库，并回调成功标识。只有当上述操作全都被正确执行时，你的手机才会显示订票成功。&#xA;API 程序通常运行在服务端 (server) 上。客户端 (client) 通过向 API 提供的网络接口发送请求，以实现对服务端的通信。服务端收到请求后，对请求进行解析。如果请求是合法的，则执行该请求，并将请求结果回调给客户端。一次典型的 API 请求大体上是这么个过程。&#xA;在业务中，有时需要记录每次请求产生的中间状态、运行结果和日志数据。这时就需要 服务端 调用 数据库 (database) 以存储业务中产生的各种信息。&#xA;1. REST API API 本身是高度个性化的，软件间可以用任意数据类型进行通信。但如果 API 缺少规范、各行其是，就会导致软件间沟通成本高企。REST API 就是其中一种规范。REST API 提出了六项指导原则，只要 API 符合这六项指导原则，就可称之为“符合 REST 风格的 API”。&#xA;REST API 提出的六项指导原则分别是：&#xA;Client–server Stateless Cacheable Uniform interface Layered system Code on demand (optional) [了解更多]&#xA;FastAPI 对构建 REST 风格的 API 提供了良好的支持。</description>
     </item>
     <item>
       <title>泊松分布的仿真及可视化</title>
-      <link>http://localhost:1313/posts/poisson/</link>
+      <link>https://luochang212.github.io/posts/poisson/</link>
       <pubDate>Sat, 19 Sep 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/poisson/</guid>
+      <guid>https://luochang212.github.io/posts/poisson/</guid>
       <description>本文介绍泊松分布和泊松函数的定义，并通过 Python random 库对泊松分布进行仿真，带你触摸复杂表象下的简单本质。&#xA;GitHub 项目地址：python-tips/poisson&#xA;1. 从泊松函数讲起 泊松分布 表示在给定时间段内发生给定数量的事件的概率。这个定义比较抽象。举个具体的例子，假设你每小时接到电话的概率是固定的，比如每小时 0.05 个，那么你在接下来 1 小时内接到电话个数的概率，就服从泊松分布:&#xA;1 小时内接到 0 个电话，对应一个概率值 $P_0$；&#xA;1 小时内接到 1 个电话，对应一个概率值 $P_1$；&#xA;&amp;hellip; &amp;hellip;&#xA;1 小时内接到 n 个电话，也对应一个概率值$P_n$。&#xA;这些概率值组成一个概率分布列，它们的值 $(n, P_n)$ 在二维坐标下连成一条曲线。这条曲线所在的函数就是泊松分布的概率密度函数。其公式及图像如下：&#xA;$$\boxed{P(k | t, \lambda)=\frac{(\lambda t)^{k}}{k !} \exp (-\lambda t)}$$&#xA;从公式中，我们可以看出：只要确定了 $\lambda$ 和 $t$，该式就退化成了概率 $P$ 关于事件发生次数 $k$ 的函数。 类似地，如果我们确定了 $\lambda$ 和 $k$，则该式退化成概率$P$ 关于时间范围 $t$ 的函数。&#xA;“确定哪些参数，让函数最终退化成哪些参数的函数”，这个选择和我们的研究目的有关。如果你对不同 $k$ 如何影响 $P$ 值感兴趣，那么就应该确定参数 $\lambda$ 和 $t$。如果对 $t$ 和 $P$ 之间的关系感兴趣，那么就应该确定参数 $\lambda$ 和 $k$。</description>
     </item>
     <item>
       <title>漫谈 Hadoop Streaming</title>
-      <link>http://localhost:1313/posts/hadoop_intro/</link>
+      <link>https://luochang212.github.io/posts/hadoop_intro/</link>
       <pubDate>Sat, 25 Jul 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/hadoop_intro/</guid>
+      <guid>https://luochang212.github.io/posts/hadoop_intro/</guid>
       <description>本文聚焦如何通过 Hadoop Streaming + Python 编写 Hadoop 程序。&#xA;Hadoop 是一个用于大数据处理的分布式计算框架。&#xA;众所周知，实现分布式计算是一个繁琐的过程，Hadoop 通过一个标准化的数据处理流程，简化操作步骤，让没有分布式计算背景的程序员也能轻松写出分布式程序。Hadoop 本身是用 Java 写就的，因此对于非 Java 程序员来说，学 Hadoop 必须先学 Java，这大大降低了 Hadoop 的友好程度。&#xA;Hadoop Streaming 就是为了解决这个问题而生的，它支持用其他编程语言编写 Hadoop 程序。&#xA;1. 分布式系统的由来 经历半个多世纪的高速增长，半导体工业在本世纪初触及了它的物理瓶颈，摩尔定律失灵，硬件算力不再高速增长，人们开始关注利用软件方法来提升算力。&#xA;2003年，两名谷歌工程师开发了一个分布式存储系统，这是它的前身。经过几位后来者添枝加叶，该系统在 2006 年开源，并发展成为今天我们熟知的 Hadoop。&#xA;使用分布式系统，显而易见的好处是能够缩短程序运行的时间。在常规时间就能跑完的程序上使用 Hadoop 无异于画蛇添足。但是对大数据开发人员来说，使用 Hadoop 意味着不必坐在电脑前为了结果等上一整天。如果集群效率够高，完全可能在几分钟内完成单机一天的计算量。&#xA;2. Hadoop 基本介绍 Hadoop 有两个重要的组成部分：HDFS 和 MapReduce。&#xA;HDFS 是一个分布式存储系统，它负责将文件切割成分片，然后分发到集群中的目标机器上进行存储；MapReduce 负责构建一个标准化的数据处理流程，在完成其规定的几道数据处理流程之后，用户将得到他们期望的结果。&#xA;这意味着 Hadoop 的学习至少包括两个部分。要掌握 HDFS，你需要掌握 Hadoop 命令行命令，这将在第7节详细介绍。要掌握 MapReduce，如果你是 Python 开发者，你需要掌握 Hadoop Streaming，这将在下一节中介绍。&#xA;3. MapReduce MapReduce 的重要性不言而喻，它定义了数据在 Hadoop 中被如何处理。MapReduce 包含三个重要过程：Map, Shuffle 和 Reduce。其中，Map 和 Reduce 由我们来编写，Shuffle 则由系统自动完成。</description>
     </item>
     <item>
       <title>Python 工程化实践</title>
-      <link>http://localhost:1313/posts/python_practice/</link>
+      <link>https://luochang212.github.io/posts/python_practice/</link>
       <pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/python_practice/</guid>
+      <guid>https://luochang212.github.io/posts/python_practice/</guid>
       <description>学 Python 不应仅限于学编程，同样应该学习工程知识，比如虚拟环境、编码风格以及单元测试等。本文致力于介绍 Python 工程化所需的前置知识。&#xA;⚠️ 注意：以下教程适用于 MacOS。&#xA;部署环境 1. Anaconda Anaconda 是一个包管理器，它能让你方便的管理 Python 版本和包版本。并且， Anaconda 聚合了 Jupyter notebook，使其大受数据科学家和人工智能工程师的欢迎。下面我们来介绍如何用 Anaconda 管理我们的 Python 环境。&#xA;如果你还没有 Anaconda，安装一个：&#xA;海外用户直接访问 Anaconda 官网 下载即可 国内用户无法访问Anaconda 官网(被墙)，建议选择清华镜像替代。 安装完以后，在命令行界面输入 conda，会打印一个帮助文档。&#xA;帮助文档大概是说 conda 有哪些常用命令，比如下面这些：&#xA;$ conda help # 打印帮助文档 $ conda info # 查看conda信息，包括当前在哪个环境，环境路径，Python版本等信息 $ conda list # 列出conda下安装了哪些包 $ conda install [package_name] # 在conda环境中安装某个包 $ conda update [package_name] # 升级conda环境中的某个包 Note：后文仅专注介绍虚拟环境相关内容，更多内容请在 Anaconda 官方文档 中查看。&#xA;Python 环境分为本地环境(lcoal env) 和全局环境 (global env) 。为一个项目配置环境，应该配置本地环境；为本机所有项目配置环境，则应该配置全局环境。</description>
     </item>
     <item>
       <title>算法集萃</title>
-      <link>http://localhost:1313/posts/algorithms/</link>
+      <link>https://luochang212.github.io/posts/algorithms/</link>
       <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/algorithms/</guid>
+      <guid>https://luochang212.github.io/posts/algorithms/</guid>
       <description> 算法学习笔记，长期更新 GitHub 项目地址：python-tips/algorithms&#xA;排序 本节介绍各种排序算法的思路和特点，并提供了示例代码。&#xA;插入排序 直接插入排序 希尔排序 交换排序 冒泡排序 快速排序 选择排序 简单选择排序 堆排序 归并排序 二路归并排序 查看示例 排列组合 排列 组合 子集 查看示例 深度优先搜索DFS 施工中&#xA;广度优先搜索BFS 施工中&#xA;二叉搜索树 施工中&#xA;动态规划 施工中&#xA;× </description>
     </item>
     <item>
       <title>用魔法打败魔法！</title>
-      <link>http://localhost:1313/posts/chico_and_dico/</link>
+      <link>https://luochang212.github.io/posts/chico_and_dico/</link>
       <pubDate>Fri, 21 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/chico_and_dico/</guid>
+      <guid>https://luochang212.github.io/posts/chico_and_dico/</guid>
       <description>Chico 和 Dico 是两位魔术师，他们有一个经典魔术：根据任意四张牌猜第五张牌。但完成这个魔术并不需要任何魔术师的技巧，因为它完全建立在数学原理之上。只需要一点数学知识和充分的练习，你也能表演这个魔术！&#xA;GitHub 项目地址：chico-and-dico&#xA;Chico 和 Dico 的魔术 Chico 和 Dico 是两位魔术师，他们经常表演的一个魔术是这样的：Chico 将一副 52 张的扑克牌交给一位观众，让他随机抽取其中的 5 张。然后 Chico 将这 5 张牌按一定的顺序重新排列，再将其还给观众。上述整个过程 Dico 都是看不见的。然而，当观众按 Chico 排好的顺序依次展示前四张牌之后，Dico 却能准确地说出第五张牌是什么。&#xA;乍一看这个魔术很神奇。随机抽取 5 张牌，你能从前 4 张牌中看出第 5 张牌是什么吗？对于普通人来说，当然不可能。Chico 和 Dico 的秘诀在于 Chico 有机会将扑克重新排序。如果两人事先约定好某种协议，Chico 是有可能通过扑克排列的顺序，向 Dico 传递关于第 5 张牌的信息的。&#xA;关键在于如何实现这种协议。&#xA;数学模型 在进行分析之前，我们需要把 Chico 和 Dico 的魔术抽象成一个数学模型。&#xA;魔术本身已经提供了一些建模信息。我们可以假设一共有 n 张牌，抽取其中的 k 张。在对牌组进行某种排序之后，我们需要利用前 (k - j) 张牌的信息，推测后 j 张牌是什么。&#xA;现在我们有 n, j, k 三个变量，下面我们来进一步探究三个变量之间究竟服从何种关系。&#xA;首先，我们知道从 n 张牌中抽取 k 张牌一共有 C(n, k) 种组合方式，而 (k - j) 张牌的排列方式则有 A(n, k-j) 种。按照模型的要求，我们要用后者对前者的信息进行编码。根据信息论中的信源编码理论，至少有：C(n, k) &amp;lt;= A(n, k-j)。</description>
     </item>
     <item>
       <title>达尔文的故乡</title>
-      <link>http://localhost:1313/posts/uk_experience/</link>
+      <link>https://luochang212.github.io/posts/uk_experience/</link>
       <pubDate>Wed, 12 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/uk_experience/</guid>
+      <guid>https://luochang212.github.io/posts/uk_experience/</guid>
       <description>英国小镇 Shrewsbury 是达尔文的故乡。这里有丰沛的水系、星罗棋布的公园、历史悠久的建筑。这里没有如织的游人，是一座安静的小镇。&#xA;9月初，新生乍到老生未还，突然涌现的短租需求，使本地短租公寓一时爆火。&#xA;看着 Airbnb 上比平时高了百分之两百的房租。我决定离开这座城市，去别处居住一段时间。&#xA;达尔文的故乡 Shrewsbury 是达尔文的故乡。这座小镇水系纵横，有很多河流、小桥、公园。人不多，十分安逸。&#xA;这并不是我第一次来这里。寒假我曾周游英国，游历 11 座城市，对 Shrewsbury 颇有好感。所以这次离开英国之前，选择故地重游。&#xA;房东 房东是一对老夫妻，有很多孩子，现在已与他们分居，所以剩下了许多空房。我住的是他们小儿子的卧室。&#xA;吃完早餐，我问女房东英国还有像 Shrewsbury 这样美丽的小镇吗？房东对我的问题有些不解，她说 everywhere in this country。嘿嘿嘿，这回答可有些过于骄傲了。英国美丽的小镇不少，但此地绝对算中上水平。&#xA;夫妻俩日子过得讲究，早上要喝茶，晚上要下馆子。只有中午吃得简陋一点，一般是烤面包或者三明治。&#xA;他们下午去遛狗。狗是一只小母狗，叫莉莉。&#xA;有天我去超市买东西，正好遇见他们遛狗回家。逆着夕阳，两人牵手回家的场景让我有一瞬恍惚，仿佛我看到的是两个夕阳下的青年，他们脸上明媚的笑容和热情的招呼让我忘记他们的年纪。&#xA;屋里屋外 房子是独栋别墅，有车库和后院。从房子的年龄看，他们已经富裕了很多年。&#xA;我房间的窗外是一片森林。夜晚森林里黑得诡异，让人想起中世纪的欧洲。白天森林里阳光普照，林间空地上，几个孩子在做游戏，边上是孩儿妈，坐在木头长椅上发呆。&#xA;房东很有品味，屋里挂着很多抽象到看不懂的布艺和画，桌子上摆着陶的、木的装饰品。当然，最令人羡慕的还是他们的阳光房，布置得实在太美啦！&#xA;小镇风光 房东家在郊区，但距离小镇不算太远，步行半小时能到镇上。&#xA;和大多数英国小镇一样，这里有许多老房子、老街道。数百年前的城市风貌一直延续到了今天。&#xA;众多的水系、桥梁、公园组成了这座小镇迥异的风景线。&#xA;一条凶狠霸道的链子！&#xA;后记 为什么英国城市会形成如此风光，我试图总结一些因素：&#xA;英国的主要产业是金融、教育和文化产业。这些行业污染低利润高，所以英伦三岛才有如此美丽的自然风光&#xA;近代城市文明是英国率先建立起来的。无论是建筑技术还是审美都是一脉相承。所以英国的古建筑和现代建筑之间能够相处融洽、相得益彰&#xA;英国的城市一般规模小车流小，很少有建宽大主干道的需求。客观上道路对行人通行的切割和限制就少了很多，更加 walkable&#xA;重视社区氛围营造，社区内有充足的休憩空间和社交空间，比如驻唱酒吧、公园长椅、咖啡馆、书店、中古商店&#xA;这些因素造就了英国独特的城市风貌和交通格局。有些优点中国无法照搬照抄，但也许可以启发当代中国建设者。尤其是城市格局与英国相似的中国县城和小镇，颇能借鉴英国在城市交通、景观园林、商业布局方面的设计。</description>
     </item>
     <item>
       <title>贝叶斯方法</title>
-      <link>http://localhost:1313/posts/bayesian/</link>
+      <link>https://luochang212.github.io/posts/bayesian/</link>
       <pubDate>Fri, 31 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/bayesian/</guid>
+      <guid>https://luochang212.github.io/posts/bayesian/</guid>
       <description>统计学中有两大学派，频率学派和贝叶斯学派。频率派用总体信息和样本信息进行统计推断。而贝叶斯派除了使用以上两种信息之外，还使用先验信息进行统计推断。本文从数学原理和编程实践两个方向探究贝叶斯方法。&#xA;本文从数学原理和编程实践两个方面来介绍贝叶斯方法。&#xA;数学原理 贝叶斯理论包含很多内容。我们熟悉的利用先验分布推后验分布的方法被称为贝叶斯推理（Bayesian inference）。此外，还可以利用参数的后验分布的均值作为该参数的点估计，这种方法被称为贝叶斯估计（Bayesian estimation）。本文数学原理部分主要介绍贝叶斯推理和贝叶斯估计。&#xA;理论部分为六节，各节的主要内容如下。&#xA;章节 主要内容 第一节 用一个简单的实例，让大家对贝叶斯方法有一个形象的认识。 第二节 用一个复杂的实例，让大家对贝叶斯方法的术语有一个形象的认识。 第三节 介绍贝叶斯公式的事件形式及其推导。 第四节 介绍贝叶斯公式的密度函数形式及其推导。 第五节 介绍贝叶斯估计。 第六节 探索联合分布蕴含了哪些信息。 一、实例：癌症化验的准确率 下面请各位做题家们做一下你们最爱的经典老题 📖 题目 有两个可选的假设：&#xA;病人有癌症（cancer）、病人无癌症（normal）&#xA;可用数据来自化验结果：&#xA;正（+）、负（-）&#xA;有先验知识：&#xA;在所有人口中，患病率是 0.8%。对确实有病的患者的化验准确率为 98%，对确实无病的患者的化验准确率为 97%，总结如下：&#xA;$ P(cancer) = 0.008, P(normal) = 0.992 \\ P(+ | cancer) = 0.98, P(- | cancer) = 0.02 \\ P(+ | normal) = 0.03, P(- | normal) = 0.97 $&#xA;问题：&#xA;假定有一个新病人，化验结果为正，是否应将病人断定为有癌症？求后验概率 $ P(cancer | +) $。</description>
     </item>
     <item>
       <title>我的 Python 不可能这么可爱</title>
-      <link>http://localhost:1313/posts/python_tips/</link>
+      <link>https://luochang212.github.io/posts/python_tips/</link>
       <pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/python_tips/</guid>
+      <guid>https://luochang212.github.io/posts/python_tips/</guid>
       <description>Python 学习笔记，如有错误，欢迎指正 GitHub 项目地址：python-tips&#xA;相关书籍推荐：&#xA;入门：《Python编程从入门到实践》 [豆瓣链接] 初级：《Python学习手册》(英文名 Learning Python) [豆瓣链接] 中级：《流畅的Python》[豆瓣链接] PS: 针对每个阶段，我推荐的是我认为最好的那本书。&#xA;语言基础 列表 本文从以下几个方面介绍列表：&#xA;创建 获取 修改 添加 插入 删除 排序 逆序 索引 循环 列表推导 切片 复制 去重 计数 查找 查看示例 字典 鉴于 JSON 在数据处理中的大量使用，字典的重要性也不言而喻。&#xA;本文从以下几个方面介绍字典：&#xA;创建 获取 更新 遍历 排序 删除 字典与JSON collections.defaultdict() setdefault() 查看示例 字符串 除了列表和字典，字符串也是 Python 中一种非常重要的数据类型。&#xA;基本操作 格式化 字符串方法 查看示例 函数 本文目录：&#xA;形参和实参 位置实参 关键字实参 默认值 位置实参和关键字实参的混用 默认值、位置实参和关键字实参的混用 传递任意数量的位置实参 传递任意数量的关键字实参 由字符串函数名生成可调用的函数 查看示例 异常 程序会发生异常，比如试图在计算中除0。Python 提供了强大的异常处理机制。</description>
     </item>
     <item>
       <title>Elasticsearch 初探</title>
-      <link>http://localhost:1313/posts/elastic_search/</link>
+      <link>https://luochang212.github.io/posts/elastic_search/</link>
       <pubDate>Thu, 24 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/elastic_search/</guid>
+      <guid>https://luochang212.github.io/posts/elastic_search/</guid>
       <description>Elasticsearch 是一个开源分布式全文搜索引擎。它建立在当前最先进有效的搜索引擎库 Lucene 之上。Elasticsearch 集成了 Lucene 的检索功能，并通过一套简单的 API 隐藏了 Lucene 的复杂性，使之简单易用。&#xA;初识 ES 的初步介绍 本节将介绍 ES 的几个特性。这些介绍能帮助我们理解 ES 是应什么需求诞生的？它解决了什么问题？它为何如此架构？以及这种架构方式为它带来哪些性能上的提升？这些信息虽然不能直接提升我们使用 ES 的能力，但能从更深的维度帮助我们使用好它。&#xA;不仅仅是搜索 ES 不仅能够搜索，它还提供一套分布式实时存储文档的解决方案。 ES 允许用户将数据存储在多个服务器节点上。这些节点能实时共享数据。一旦主节点的内容发生改变，这些改变会实时传递到副节点上，以保证主副节点的内容一致。如果主节点掉线，ES 能立即选举出一个副节点充当主节点。选举过程就像切换开关一样，能够在瞬间完成，从而保证了 ES 的可靠性。&#xA;分布式的存储方案不仅仅是基于数据安全的考量，同时也是为了加快检索的速度。利用 MapReduce，ES 可以在多个节点上并行地检索数据，大大缩短了海量数据处理的时间。&#xA;领域专用语言 为了统一查询语法，ES 设计了一套领域专用语言 (DSL, domain specific language)。这套语言基于 JSON，优点是简单易学，缺点是在表达复杂的查询时，会显得格外冗长，阅读起来也不太友好。&#xA;SQL 和 NoSQL SQL 全称 Structured Query Language。SQL 中的 Structured 突出了它是结构化的查询语言。结构化即受字段限制。SQL 数据库中的每条数据都具有相同的长度，因此可以被视作一张数据表。相比于 SQL，NoSQL 能表达更复杂的内部数据结构。字段之间不相互影响，可以拥有各自的层级结构。因此 NoSQL 数据库要比 SQL 数据库更加灵活且易于拓展。NoSQL 数据库中的数据通常用 JSON 表示。&#xA;入门 一些简单概念 文档 在 ES 中，文档是一个特定的术语。它表示用来存储对象的存储单元。一个对象通常不会是简单的键值对，它可能包含更复杂的数据结构，比如日期、地理数据、数组等。为表达这种复杂的、多层次的数据，ES 将 JSON 作为文档存储的固定格式。也就是说在 ES 里，一个文档被存成一个 JSON 值。</description>
     </item>
     <item>
       <title>Monaco Editor 入门指南</title>
-      <link>http://localhost:1313/posts/monaco_editor_tutorial/</link>
+      <link>https://luochang212.github.io/posts/monaco_editor_tutorial/</link>
       <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/monaco_editor_tutorial/</guid>
+      <guid>https://luochang212.github.io/posts/monaco_editor_tutorial/</guid>
       <description>⚠️ 注意：本教程已过时。本教程的正确食用方法是从 GitHub monaco-editor-demos 上直接下载代码，然后点击 index.html 直接查看 Demo 及 源码。本文中描述的构建方法可能已不适用（更新于 2024.04）&#xA;GitHub项目链接：monaco-editor-demos&#xA;在学习 Monaco Editor 的过程中，我发现网络上的中文教程很少。为了填补这部分空白，我决定写一份入门教程，帮助初学者快速熟悉 Monaco Editor。通过阅读本文，你可以了解以下内容：&#xA;如何安装 如何搭建 如何调用常用 API 如何寻找学习资源 安装 新建项目文件夹，打开它：&#xA;$ mkdir my-application $ cd my-application 确保你已经下载了 npm，然后安装 Monaco Editor：&#xA;$ npm install monaco-editor 搭建 本文提供了搭建 Monaco Editor 的一种方法，此方法的特点是能够兼容文件系统。如果你希望为后续应用添加文件管理系统，那么参考本文的搭建流程可以避免不必要的踩坑。添加文件系统的具体方法参见 monaco-speech-editor。&#xA;有两种搭建方式可选：&#xA;方式一：直接从GitHub仓库下载。&#xA;方式二：手动搭建。&#xA;下面介绍了手动搭建的流程。&#xA;首先，在项目文件夹 my-application 下，新建一个名为 base 的文件夹。然后在该文件夹下新建 index.html, app.js, style.css:&#xA;$ mkdir base $ cd base $ touch index.html app.js style.css 在本地编辑器打开 index.</description>
     </item>
     <item>
       <title>【项目】摩纳哥语音编辑器</title>
-      <link>http://localhost:1313/posts/monaco_speech_editor/</link>
+      <link>https://luochang212.github.io/posts/monaco_speech_editor/</link>
       <pubDate>Thu, 22 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/monaco_speech_editor/</guid>
+      <guid>https://luochang212.github.io/posts/monaco_speech_editor/</guid>
       <description>摩纳哥语音编辑器（Monaco Speech Editor）是一款适用于视障人群的在线代码编辑器。它在开源编辑器 Monaco Editor 的基础上，开发了专为视障者设计的语音辅助功能，包括鼠标悬浮提示，快捷键操作和代码阅读。&#xA;其代码阅读功能尤其强大，用户可以用键盘精确定位指定内容进行阅读。针对同一段代码，它提供多种语音输出模式：字符模式、代码模式、音乐模式、全局模式。这些模式根据用户在不同编程阶段的不同需求，提供差异化的语音输出。比如，当用户对一个语句进行 debug 时，推荐使用字符模式进行语音播放。&#xA;如果你对它的功能感兴趣，点击下方链接尝试一下吧 GitHub 项目地址：monaco-speech-editor&#xA;项目背景 根据世界卫生组织2010年的数据，全盲者在全年龄段人口中所占比例为0.58%。在全盲人口中，大部分是中老年人口。从下图可以看出，致盲风险随着年龄快速升高。在0～14岁人群中，全盲比例仅有0.07%；在15～49岁人群中，全盲比例稍高一些，为0.16%；而在50岁以上人群中，全盲比例则达到了2.39%。&#xA;全盲人口的比例不大，但从绝对数值来看却是非常可观的。2010年，世界全盲人口比例为0.58%，但全盲人口数却达到了3936.5万。即使14岁以下人口的全盲比例仅有0.07%，但考虑绝对数值，也达到了142.1万人。&#xA;而且并非只有全盲者才需要语音辅助。有相当比例的视力障碍者，即使使用眼镜，也无法矫正到正常视力。这部分的视障者，也是需要语音辅助的。相比于全盲者，视力障碍者的人口则更为庞大，达到了惊人的2亿8538万。&#xA;在提倡公平的原则下，我们希望视障者和视力正常的人一样，也能自由地选择职业。事实上现在已经有[部分视障工程师](http://www.xinhuanet.com/2018-01/04/c_1122206710.htm)，出现在程序员岗位上，证明着他们的实力。本项目旨在为视障程序员编程无障碍化做一些贡献，[项目源代码](https://github.com/luochang212/monaco-speech-editor)现已在GitHub上以MIT许可证开源。 技术选择 本编辑器是用JavaScript编写的网络应用 (web application)。它只有两项功能需要外部依赖，一个是在线代码编辑器模块，一个是文字转语音模块。&#xA;（一）在线代码编辑器&#xA;开源的在线代码编辑器还是挺多的，比如：&#xA;Ace CodeMirror Monaco Editor 它们对语法高亮、缩进、代码补全等基础功能都有比较好的支持，用起来大同小异。选择Monaco Editor是因为用惯了VSCode。毕竟Monaco Editor的源代码就是直接从VSCode贴过去的，两者的界面风格和操作方式都极其相似，对VSCode用户比较友好。但后来使用过程中发现打脸了，当然这是后话。&#xA;（二）文字转语音&#xA;文字转语音 (text to speech) 的应用就更多了，几乎各大公司都推出了自己的应用：&#xA;Amazon Polly Cloud Text-to-Speech Microsoft text to speech API 但鉴于这些应用都需要网络连接，才能获取语音。考虑到网络延迟和脱机使用的问题，本项目并未采用以上任何一种API，而是选择了Web Speech API。Web Speech API本身并不提供语音服务，它事实上起到资源连接的作用。它首先会搜索操作系统，然后将操作系统提供的语音支持集合成一个列表，提供给浏览器使用。所以Web Speech API提供的语音支持会随用户系统的语音支持项而发生变化。因此不排除一些较老的机型无法使用的可能。但本项目认为本地化语音支持比之于对老机型的支持更加重要，因此选择了Web Speech API。这也是一个取向问题。&#xA;综上，本项目主要依赖项只有两个：Monaco Editor 和 Web Speech API。事实上，本项目的名称 Monaco Speech Editor，也正是取自这两个依赖项。&#xA;需求分析 一名视障程序员或一位全盲者，在使用代码编辑器时，主要有以下信息需求：&#xA;界面内容信息：这个按钮的名称是什么？这项设置的名称是什么？ 界面定位信息：编译器在哪？设置在哪？某项功能的按钮在哪？ 界面反馈信息：我刚刚按下的按钮打开了什么功能？ 编辑器内容信息：这行代码的内容是什么？光标前的字符是什么？ 编辑器定位信息：某个的变量在哪儿？我应该如何跳转到那儿？ 编辑器反馈信息：我刚刚输入了什么字符？我将要删除什么字符？ 光标位置信息：全文一共有多少行代码？我的光标现在停在第几行？ 控制台内容信息：控制台的输出是什么？ 功能设计 本项目提供的功能大致可划分为三个类：编辑器的基础功能，语音支持和UI交互辅助。</description>
     </item>
     <item>
       <title>排队论在网络性能分析中的应用</title>
-      <link>http://localhost:1313/posts/network_performance_analysis/</link>
+      <link>https://luochang212.github.io/posts/network_performance_analysis/</link>
       <pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/network_performance_analysis/</guid>
+      <guid>https://luochang212.github.io/posts/network_performance_analysis/</guid>
       <description>排队论(queueing theory)也称随机服务系统理论，它研究的内容有三部分：性态问题、最优化问题和统计推断问题。（《运筹学》清华大学出版社）&#xA;下图描述了排队过程的一般流程：&#xA;现实中的排队问题是多种多样的，对上述“顾客源”和“服务机构”应该作宽泛的理解。顾客和服务机构可以是生物，也可以是非生物；排队结构可以是有形的，也可以是无形的，比如向交换台要求通话的请求；顾客可以走向服务机构，也可以相反，比如送货上门。&#xA;在网络中，服务器和用户之间相互传送数据包。数据包的传送需要时间，因此或多或少都会产生延迟。为了分析这些延迟，我们引入了一系列假设，并利用排队论对网络延迟进行建模分析。&#xA;本文将着重介绍网络性能分析(Network performance analysis)中几种常见的排队模型。它们是：&#xA;The M/M/1 queuing system The birth-death process The M/M/m queuing system The M/M/1/m queuing system The M/M/∞ queuing system The M/M/m/m queuing system 另外，作为以上模型的理论基础，本文将首先介绍泊松过程(Poisson process)。&#xA;泊松过程的推导 泊松过程是马尔可夫过程的一个特例，在排队论中经常被用来估计顾客到达的概率分布。&#xA;（一）泊松过程的假设&#xA;在时间间隔$\Delta t$内，有且仅有一位顾客到达的概率$P$和$\Delta t$成比例，比例系数为$\lambda$&#xA;在时间间隔$\Delta t$内，至多只允许一位顾客到达（否则应该选取一个更短的时间间隔） $$\begin{aligned} P(\text { 在时间间隔 }[t, t+\Delta t] \text { 内，有且仅有一位顾客到达 }) &amp;amp;=\lambda \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，没有顾客到达 }) &amp;amp;=1-\lambda \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，多于一位顾客到达 }) &amp;amp;=0 \end{aligned}$$</description>
     </item>
     <item>
       <title>厨房笔记（二）：快手菜合集</title>
-      <link>http://localhost:1313/posts/kitchen_time_2/</link>
+      <link>https://luochang212.github.io/posts/kitchen_time_2/</link>
       <pubDate>Tue, 02 Jul 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/kitchen_time_2/</guid>
+      <guid>https://luochang212.github.io/posts/kitchen_time_2/</guid>
       <description>做饭累不累？如果你只是偶尔做一顿饭以娱身心，还是挺快乐的。但要是餐餐下厨，就没那么好玩了。一日三餐，少说也要花费两三个小时的光景，不但耗损精力，还挤占学习时间。日复一日地做下来，不累才怪。因此，长期做饭的留学生往往会体现三种趋势：做饭价格向便宜收敛，做饭速度向手快收敛，做饭味道向好吃收敛。因为咱追求的就是便宜美味的同时，又省时省力不麻烦。那么下面就由我来给大家盘点一下那些好吃又方便的快手菜吧&#xA;牛肉丸子汤 原料：牛肉丸、醋、香油、白胡椒粉、辣椒粉、葱&#xA;做法：&#xA;锅内放牛肉丸，加水至没过牛肉丸，火开到最大。&#xA;等水煮开的同时，把葱切成葱花备用。&#xA;待水煮开，调成中火，保持水面沸腾。然后开始调味，按个人口味加醋和辣椒粉。加白胡椒半勺，香油数滴。&#xA;牛肉丸还是比较易熟的，水开后再煮五至七分钟，加葱花，稍微再煮一分钟，即可起锅。&#xA;炸三文鱼 原料：三文鱼片、面粉、盐&#xA;做法：&#xA;TESCO买的厚三文鱼片，均匀地敷上面粉，直至表面摸不到水分。&#xA;锅里倒少量油铺匀锅底，开中火将油烧热。&#xA;注意三文鱼易焦，只能开小火煎。翻面也不能太勤，否则鱼容易碎。大概三分钟左右翻一次面，反复翻面直至两面煎至金黄。&#xA;煎十分种左右起锅。注意火候，煎得太短里面不熟，煎得太久肉会变柴。&#xA;烤羊排 原料：羊排、酱油、孜然、黑胡椒、盐、芝麻&#xA;做法：&#xA;羊排切段，加黑胡椒，加酱油，加孜然，加盐腌二十分钟。&#xA;放入烤箱，开170度，烤四十分钟。&#xA;出烤箱后撒点芝麻点缀。&#xA;淡菜排骨汤 原料：排骨、淡菜、豆腐、生姜、蒜&#xA;做法：&#xA;烧一锅水，同时把豆腐切块，淡菜洗干净备用。&#xA;下排骨，煮出浮沫后，将排骨捞出，用冷水把排骨冲洗干净。&#xA;再烧一锅水，下淡菜、排骨、豆腐、两瓣蒜、几片生姜，盖上锅盖煮十分钟。&#xA;淡菜有自身的鲜味，不用调味，起锅即食。&#xA;炒鸡蛋 原料：鸡蛋、葱、洋葱、猪油&#xA;做法：&#xA;葱和洋葱切段备用。蛋打成蛋液，加盐备用。&#xA;把葱白和洋葱下锅炒香，剩余葱段放入蛋液中拌匀，待锅内葱香味溢出，下鸡蛋液。&#xA;鸡蛋液微微凝固时，立刻用筷子从四周向中间拨动，使蛋液凝固过程中均匀受热。注意拨动的节奏，不需要拨得太勤或者太缓。&#xA;当鸡蛋熟了以后，应该还是一整块的，而且比较滑嫩。此时，把筷子插入鸡蛋块中，画圆圈将鸡蛋块打散。&#xA;把打散的鸡蛋再翻炒几下，当鸡蛋表面微焦、香味溢出时即可出锅。&#xA;注：如果油放得少，油温不宜太高，因为鸡蛋容易焦。如果油放得多，那么油温可以适当高一点，这样炒蛋会有油炸的效果，蛋的边边被油炸过后会卷起来，酥酥脆脆的很香。</description>
     </item>
     <item>
       <title>生态系统建模</title>
-      <link>http://localhost:1313/posts/nature_system/</link>
+      <link>https://luochang212.github.io/posts/nature_system/</link>
       <pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/nature_system/</guid>
+      <guid>https://luochang212.github.io/posts/nature_system/</guid>
       <description>本文介绍如何用 Agent-based model 的方法，对一个包含狼、麋鹿、草三种生物的生态系统建模。&#xA;GitHub 项目地址：nature-system&#xA;Agent指个体，Agent-base model即基于个体的模型。在Agent-based model中，虚拟实体(virtual entity)和现实个体一一对应。一般来说，虚拟实体的属性是对现实个体的抽象，虚拟实体的行为则是依照已经写好的规则迭代。这种建模方式往往涉及个体详细的行为模式，因此适合以研究个体行为规则为目的的建模。&#xA;需要注意的是，利用Agent-based model方法建模，并不是变量越多越好，过多的变量会造成调试上的困难。选取的变量足够支撑起我们研究的问题就可以了。&#xA;Note: 除了Agent-base model之外，Equation-based model也是一种比较常见的建模方式。Agent-based model适合表达每个个体身上发生了什么，比如个体的速度、位置的变化等。Equation-based model则而更适合表达系统平均发生了什么，比如人口模型中人口数量变化就更适合用Equation-based model建模。&#xA;模型假设 （一）生物的属性&#xA;模型内有三种生物：狼(wolf)、麋鹿(moose)、草(grass)。此外，狼还分为头狼和普通狼。下面这张表展示了头狼、普通狼、麋鹿的属性：&#xA;# age food pos speed last_breed population packNo range eaten 头狼 √ √ √ √ √ √ √ √ 普通狼 √ √ √ √ √ 麋鹿 √ √ √ √ √ 从上表可以看出，年龄、食物、位置、速度是头狼、普通狼和麋鹿的共有属性。last_breed指和上一次生育的时间间隔，在模型内用一次迭代表示一次时间间隔，因为迭代必须是整数，因此last_breed也是整型变量。头狼特有population属性，用来表示该头狼所在狼群中狼的数量；头狼特有range属性，表示该狼群活动的范围；头狼特有eaten属性，表示狼群在一次迭代中，全体成员吃到的麋鹿的总数。普通狼特有packNo属性，用来标记其所属狼群的头狼在列表中的索引号。普通狼没有last_breed属性，是因为其生育是以整个狼群为单位的。由于狼群是由头狼定义的，狼群相关的属性和行为也绑定在头狼身上，因此在代码实现上，狼群的生育是通过头狼实现的。&#xA;草没有上述生物那么复杂的模型，本模型中的草均匀平铺在环境中，且不会生长，吃完就没了。因此麋鹿为了获取新的食物来源，需要经常迁徙。&#xA;（二）生物的行为&#xA;头狼、普通狼和麋鹿都具有四种行为：死亡、迁徙、生育、捕猎。这四种行为在不同的生物种类上有不同的定义。比如麋鹿的迁徙规则是等到自己的位置没草吃了，才开始迁徙。而头狼迁徙规则则比较复杂，头狼会根据狼群内的种群数量，判断狼群的散布范围，以及调整迁徙的积极性。&#xA;1.死亡(die)&#xA;狼有两种死法：饿死或老死。麋鹿则有三种死法：饿死、老死或者被吃。&#xA;每一种生物都有固定的年龄上限值，超过该值将在本次迭代中死亡。本模型中，狼的最大年龄为25。如果一只狼如果没有饿死，它将在第25次迭代时老死。而饿死在生物food属性为0时发生。&#xA;对于麋鹿，每只麋鹿都有一个food属性。对于狼，整个狼群共享一个food属性，当狼群的food属性值为0时，会有一只普通狼死亡。&#xA;如果头狼死去时，狼群内普通狼的数量大于0，则会有一只普通狼晋升为头狼。&#xA;2.生育(breed)&#xA;不同的物种有不同的生育规则。&#xA;每只麋鹿一次只生一个。生育时母亲将把自己food属性值的一半分给孩子。生育有时间间隔，不能持续生育。在本模型中，麋鹿经历一次生育后，起码要经历10次迭代，才能进行第二次生育。此外，生育还有食物限制，当food属性高于10，麋鹿才会生育。如果同时满足时间间隔和食物条件，那么麋鹿将在本轮迭代进行生育。&#xA;本模型中，一个狼群为一个生育单位。和麋鹿的生育相似，狼群也仅在食物有富余时进行生育。生育的数量与狼群群内个体数量成正比。在不同群内生物数量范围内，比例系数略有不同。生育后，母体的食物也会按比例减少，并将此部分食物赋予孩子。同样，狼群的生育也有时间间隔限制。一次生育完成后，起码要经历5次迭代的时间，才能进行下一次生育。&#xA;3.迁徙(migrate)&#xA;狼群的迁徙取决于头狼，头狼相当于狼群的神经中枢。它接收上一轮狼群的捕猎信息，来判断下一步狼群的迁徙方向。由于头狼无法获知整张地图的麋鹿分布信息，它仅仅只能从已知信息推断，所以这可以视为局部优化问题。&#xA;具体来说，狼群的迁徙规则分两类：如果在上一次迭代中，狼群没有捕到一只麋鹿，那么狼群将随机移动以寻找麋鹿。如果起码吃到了一只，那么就用一个for循环，找出是狼群中的哪只狼吃到了麋鹿。在下一步迭代中，头狼将往这只狼的方向移动。</description>
     </item>
     <item>
       <title>JavaScript 初探</title>
-      <link>http://localhost:1313/posts/to_do_list/</link>
+      <link>https://luochang212.github.io/posts/to_do_list/</link>
       <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/to_do_list/</guid>
+      <guid>https://luochang212.github.io/posts/to_do_list/</guid>
       <description>初次学习JavaScript，用JS写了一个计划表生成工具。&#xA;项目链接：计划表生成工具&#xA;JavaScript是一个神奇的语言。它既不像Java原生地支持类和继承，也不如Python声明变量方便，更兼闹出&amp;quot;===&amp;ldquo;这样的麻烦。但我依旧深知它的强大，尤其是在可视化这一方面，在接触qtwebengine的时候已经感受过一次了。目前，我学习JS的平台是W3Schools 和廖雪峰的网站。&#xA;话说这是我自学JS以来写的第一个程序，求轻虐(￣▽￣)&#xA;我的初衷 我的初衷是制作一个习惯统计工具，用来分析我在长期计划上的坚持能力。于是照例我对它做了一个需求分析。&#xA;习惯统计工具的需求分析：&#xA;需要用户能够注册。即能够声明我是谁，并且把我和我的数据绑定。 需要将数据存在文件里，而不是存在缓存文件里。 需要按时间戳对生成的数据进行统计。 需要对最终结果制作统计图表。 通过分析，我发现静态网页很难实现第一第二步。能不能实现我不敢下定论，但肯定有技术难度。目前，我只有一个由GitHub page托管的静态网页，因此我选择退而求其次。先学习生成一个单一的表格，来记录当天计划的执行情况。我把这个工具叫做计划表生成工具。&#xA;需求分析 计划表生成工具好比是习惯统计工具的一个子系统。习惯统计工具面向的是连续多天，而计划表生成工具只面向单独一天。&#xA;计划表生成工具的需求分析：&#xA;一个UI界面（前端） 一个允许用户做输入、选择和修改操作的数据流（后端） 一个最终显示的表格（前端） 判断此工具是否easy to use，找到不好用的因素并改进 （测试） 此时我们的big picture就已经明确。战略定了，下面来定战术。&#xA;步骤分析 （一）添加计划&#xA;对于前端UI，首先我们需要一个textarea，用来接收每项计划的内容。还需要一个按钮，点下这个按钮时，将文本框内的信息添加到计划列表。为了便于存储，我为计划(item)设计了一个类。&#xA;这个类的声明如下：&#xA;var Items = { name: &amp;#34;&amp;#34;, isCheck: &amp;#34;false&amp;#34;, isDelete: &amp;#34;false&amp;#34; }; 可以看出这个类有三个值。它们分别表示该对象的名称，是否完成，以及是否删除。每次添加计划，用以下代码实例化这个类(items)，生成一个对象(item)：&#xA;var item = Object.create(Items); （二）生成表格&#xA;这一步要把复选框(checkbox)和按钮(button)都和每一行的计划绑定。那么如何绑定呢？&#xA;要知道，用for loop遍历subArray的过程，就是生成表格内容的过程。所以，checkbox和button也都是在这次遍历中生成的。那么，我们就可以在它们的生成过程中，创建它们的id，并把id和计划对应起来。&#xA;具体到代码中，我用了i.toString(10)将循环数转成string类型，然后加到id上。于是，第一项计划对应的checkbox的id就是&amp;quot;cb0&amp;rdquo;, 对应的button的id就是&amp;quot;btn0&amp;quot;, 以此类推。&#xA;for (i = 0; i &amp;lt; subArray.length; i++) { var index = i+1; body += &amp;#39;&amp;lt;tr&amp;gt;&amp;#39;; body += &amp;#39;&amp;lt;td&amp;gt;&amp;#39; + index.</description>
     </item>
     <item>
       <title>PyQt5 侧边栏布局</title>
-      <link>http://localhost:1313/posts/pyqt5_layout_sidebar/</link>
+      <link>https://luochang212.github.io/posts/pyqt5_layout_sidebar/</link>
       <pubDate>Fri, 10 May 2019 21:43:09 +0100</pubDate>
-      <guid>http://localhost:1313/posts/pyqt5_layout_sidebar/</guid>
+      <guid>https://luochang212.github.io/posts/pyqt5_layout_sidebar/</guid>
       <description>GitHub 项目地址：pyqt5-demo&#xA;主流软件如网易云音乐、腾讯电脑管家，都有侧边栏。侧边栏能有效扩展应用空间，使软件功能的层次更加分明。&#xA;但PyQt5并没有一个专门的方法实现侧边栏。要实现侧边栏，主要有两种技术路线。一是从标签部件(QTabWidget)改造而来，二是用网格布局(QGridLayout)画出来。本文采用第一种技术路线，制作一个简单的侧边栏应用。&#xA;Note: 两种技术路线制作的侧边栏有细微的差别。如果采用第二种技术路线(QGridLayout)，侧边栏和内容页之间没有明显的分界。所以需要额外地在侧边栏和内容页之间加一条线，来突出两者属于不同的组件。而第一种技术路线(QTabWidget)不需要，创建的侧边栏和内容页之间的区别明显。&#xA;下图是一个用第二种技术路线(QGridLayout)制作的应用，可以看到侧边栏和内容页中间画了一条线，以突出两个组件的分界。&#xA;步骤分析 在开始写代码之前，我们先分析一下制作侧边栏需要几个步骤。&#xA;添加部件 为部件设置布局 将标签部件改造成侧边栏的内容页 为侧边栏按钮编写函数，实现内容页之间的跳转 添加部件并设置布局 此段不详述。关于部件和布局的基础知识，在上一篇中有介绍，详见PyQt5 布局浅析。&#xA;下面这段代码添加了部件且设置了布局。&#xA;from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__(self): super().__init__() # set the title of main window self.setWindowTitle(&amp;#39;Sidebar layout - www.luochang.ink&amp;#39;) # set the size of window self.Width = 800 self.height = int(0.618 * self.Width) self.resize(self.Width, self.height) # add all widgets self.btn_1 = QPushButton(&amp;#39;1&amp;#39;, self) self.btn_2 = QPushButton(&amp;#39;2&amp;#39;, self) self.btn_3 = QPushButton(&amp;#39;3&amp;#39;, self) self.</description>
     </item>
     <item>
       <title>PyQt5 布局浅析</title>
-      <link>http://localhost:1313/posts/pyqt5_layout/</link>
+      <link>https://luochang212.github.io/posts/pyqt5_layout/</link>
       <pubDate>Fri, 03 May 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/pyqt5_layout/</guid>
+      <guid>https://luochang212.github.io/posts/pyqt5_layout/</guid>
       <description>PyQt5是Python环境下用来开发UI界面的一个包。它容易上手，对初学者友好，并且拥有丰富的函数库，可以实现大部分桌面应用的开发需求，且支持QSS语言，能够对界面风格做个性化调整。总体来说，PyQt5是一款开发效率极高的UI框架。这篇文章从零开始，教你搭建一个属于自己的桌面应用。&#xA;GitHub 项目地址：pyqt5-demo&#xA;创建第一个窗口 一般来说，桌面应用都以窗口(window)形式呈现。因此，要搭建桌面应用，首先要创建窗口。&#xA;下面这段代码创建了一个空的窗口。&#xA;from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__(self): super().__init__() # set the title of main window self.setWindowTitle(&amp;#39;My first window - www.luochang.ink&amp;#39;) # set the size of window self.Width = 500 self.height = int(0.618 * self.Width) self.resize(self.Width, self.height) if __name__ == &amp;#39;__main__&amp;#39;: app = QApplication(sys.argv) ex = Window() ex.show() sys.exit(app.exec_()) 这段代码仅仅设置了窗口的标题和大小。下一步，我们要往这个空的窗口里添加部件(widget). 为了规范性，我们在Window类里新建一个函数initUI, 然后在initUI里为窗口添加部件。&#xA;为窗口添加部件 下面这段代码为窗口添加了一个按钮部件(QPushButton).&#xA;from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__(self): super().</description>
     </item>
     <item>
       <title>微博数据可视化</title>
-      <link>http://localhost:1313/posts/my_weibo/</link>
+      <link>https://luochang212.github.io/posts/my_weibo/</link>
       <pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/my_weibo/</guid>
+      <guid>https://luochang212.github.io/posts/my_weibo/</guid>
       <description>GitHub 项目地址：weibo-analysis&#xA;这次的数据用的是本科期间就已经爬好，但因为当时没有足够的处理技巧，这些数据在硬盘里一丢就是两年。如今，本Python初丁趁着还有机会摸鱼，赶紧把数据翻出来，让它们发光发热。&#xA;文本获取 因为新浪微博的严防死打，现如今微博的数据越来越不好爬。GitHub上的微博爬虫生存周期通常都很短，使爬取数据的成本大大增加。这里我用的是微博@失眠狸 同学的方法，用鼠标精灵写了个插件，控制快捷键和页面拖动，把内容从浏览器上粘贴到sublime里。&#xA;生成csv文件 有了原始数据，接下来我们要把数据归一化，做成方便处理的数据。一个常用的方法就是将数据整理成csv文件。&#xA;Step 1. 分析需要保存的字段以及数据的维度，从而设计出数据的存储结构。根据原数据，我划分了五个字段: id, date, time, device, content, 它们分别记录一条微博的文件位置、发布日期、发布时间、发送设备和文本内容。&#xA;Step 2. 分割raw data. 先用split函数进行粗略分割，再用find函数精确分割。接着将分割好的内容提取到各字段，并依次存入csv。&#xA;经过上述两步，数据的整理工作就做完啦。&#xA;可视化微博数据 有了csv文件，做数据可视化是分分钟的事。此时我把工作平台从PyCharm搬到了Jupyter Notebook。这是因为Jupyter Notebook可以制作的各式各样的可视化图表和窗口小工具(widget), 比PyCharm更适合数据处理。至于工具包，这里我选的是pandas和seaborn.&#xA;首先是需求分析，我的目标如下:&#xA;绘制日期分布热力图，观察今年使用微博频率的趋势&#xA;绘制设备使用直方图，看看平时最常用什么平台发博&#xA;绘制时间分布直方图，观察一天之中各时段的发博频率&#xA;使用窗口滑块小部件，拖动查看各个时间段都发了什么内容&#xA;这里不描述具体过程，详见GitHub Repository.&#xA;分析结果如下:&#xA;热力图总体来说颜色逐年加深，说明我正在逐渐成为一个微博控。而且注意到往年年初我是不怎么玩微博的，但随着年纪渐长，1-3月份我玩微博的频率越来越高，这意味着过年可能越来越无聊，没有年味，从而加长了我混迹微博的时间。&#xA;是你吗？华为的舔狗~&#xA;晚上2点不睡的坏小孩，早上10点起的偷懒者。（此处是一个卑微的笑容）&#xA;附录：部分代码 下面这段代码分割了文本。&#xA;def classification(self, txt_array, file_index): id = np.array([]) date = np.array([]) time = np.array([]) device = np.array([]) content = np.array([]) count = 0 for ite in range(1, np.size(txt_array), 1): if txt_array[ite].</description>
     </item>
     <item>
       <title>【项目】TSP旅行路线规划</title>
-      <link>http://localhost:1313/posts/tsp_route/</link>
+      <link>https://luochang212.github.io/posts/tsp_route/</link>
       <pubDate>Wed, 10 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/tsp_route/</guid>
+      <guid>https://luochang212.github.io/posts/tsp_route/</guid>
       <description>GitHub 项目地址：tsp-route&#xA;对于在欧洲的小伙伴们，复活节假在这一周就正式开始啦。大家都是怎么计划旅行的呢？&#xA;我的习惯是在出发前最后一晚，花上半小时，搜索目的地景点 (Point of interest, POI), 然后在Google Maps上为它们点上小星星，以免和它们擦肩而过。我的地图经过一番操作，就成了下面这副模样。&#xA;此时此刻，望着这些密集的星星，我不禁自问：如何才能走最少的路，遍历所有景点呢?&#xA;搜索了谷歌和百度，都没找到我要路径规划功能。最接近需求的是谷歌地图的&amp;quot;Add destination&amp;quot;功能。然而这个功能只是依次连接你点选的地点。并不能由一组地点，确定连接它们的一条全局最短路径。&#xA;没有现成应用怎么办，我打算自己动手写一个。&#xA;下图是Google Add destination功能。&#xA;适用模型：TSP 模型 用一句话概括需求就是：我们需要一条从某地方出发，遍历所有地点，最终回到起点的最短路径。&#xA;这个需求其实就是运筹学的一个经典问题，旅行商问题(TSP)。旅行商问题的确切描述是这样的：一个商人在各个城市之间旅行，要求遍历所有城市并返回到出发点，要如何规划路线，才能使总路径最短。（打开维基百科了解更多)&#xA;解决思路 用googlemaps包获取纬度和经度信息 用OR-Tools包求解TSP问题 最后用gmaps可视化结果 在敲代码的过程中，最难的地方莫过于看文档查API, 搞清楚输入输出和调用结构。不过敲完这一顿之后我还是不禁感慨，GoogleI太为开发者着想了。一旦学会调用API，实现一个简单应用的代码量还是很小的 orz&#xA;食用指南 项目地址 &amp;ndash;&amp;gt; 传送门&#xA;在运行代码之前，你需要以下配置：&#xA;一个Jupyter Notebook. 你需要安装这些包：googleplaces, googlemaps, gmaps, ortools. 你需要一个Google Maps API key, 从这里获取API. 完成配置等于成功的一半。在Jupyter notebook打开TSPSolver.ipynb，将第二个代码块的所有变量，改成自己的，比如自己的目的地自己的区域和自己的API密码……最后从头到尾运行所有代码块，你就可以得到自己的定制路线辣~&#xA;配置代码如下。&#xA;# input the places of interest (POI) places = &amp;#39;YHA London Central Hostel&amp;#39;, &amp;#39;Coca-Cola London Eye&amp;#39;, &amp;#39;St. Paul\&amp;#39;s Cathedral&amp;#39;, &amp;#39;Leadenhall Market&amp;#39;, &amp;#39;The National Gallery&amp;#39; \ &amp;#39;Big Ben&amp;#39;, &amp;#39;Buckingham Palace&amp;#39;, &amp;#39;Waterloo Station&amp;#39; # the region Location=&amp;#39;London&amp;#39; # choose a mode Mode = &amp;#34;walking&amp;#34; # &amp;#34;driving&amp;#34;, &amp;#34;walking&amp;#34;, &amp;#34;bicycling&amp;#34;, &amp;#34;transit&amp;#34; # get Google API key from following website: # https://developers.</description>
     </item>
     <item>
       <title>Python 解置换群问题</title>
-      <link>http://localhost:1313/posts/python_math_problem/</link>
+      <link>https://luochang212.github.io/posts/python_math_problem/</link>
       <pubDate>Sat, 16 Mar 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/python_math_problem/</guid>
+      <guid>https://luochang212.github.io/posts/python_math_problem/</guid>
       <description>室友问我一个问题，把我难住了。&#xA;想不出解法，遂写了个程序暴力求解。&#xA;**题目：**A permutation is applied to the string SUPERBGOLDHAT. The same permutation is applied to the output from this operation. The second output is OGTHLEPDSUARB. What was the first output? (Note: as an example, the permutation(1 3 4) applied to WOLF gives FOWL. Write your answer in capital letters inside quotation marks, e.g. &amp;ldquo;BEARDPLUGHOST&amp;rdquo;.)&#xA;把它译成中文就是：已知将某个置换作用于字符串SUPERBGOLDHAT两次，生成字符串OGTHLEPDSUARB. 求该置换作用于字符串SUPERBGOLDHAT一次时，生成的结果。&#xA;Note: 作用两次的意思就是，当一个置换规则作用于字符串一次时，会生成一个新字符串。将这个规则作用在这个新字符串上，又会生成一个字符串，这个字符串就是两次作用的结果。&#xA;近世代数基础 如果你不知道什么是置换的话，可以看一下本节。学过近世代数的同学请自觉跳过这部分ꉂ(ˊᗜˋ*)&#xA;我们给定一个序列$a ={1, 2, 3, 4, 5, 6} $ 。然后给定一个作用于该序列的置换：</description>
     </item>
     <item>
       <title>厨房笔记（一）：牛刀小试</title>
-      <link>http://localhost:1313/posts/kitchen_time_1/</link>
+      <link>https://luochang212.github.io/posts/kitchen_time_1/</link>
       <pubDate>Mon, 06 Aug 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/kitchen_time_1/</guid>
+      <guid>https://luochang212.github.io/posts/kitchen_time_1/</guid>
       <description>刚到英国那会儿，做饭的兴致很高。每天都跟过家家似的，买菜，钻研菜谱，然后做饭，在厨房里待上四五个小时也不觉得累。大概这就是“人生若只如初见”吧。&#xA;拌牛肉 原料：牛肉3两，猪油，葱，酱油，地瓜粉1匙半，盐&#xA;做法：&#xA;牛肉顺纹路切成宽约一寸的肉条，肉条逆纹路切片，装碗，用自来水清洗，沥干，加入一匙猪油和适量的盐与酱油，用手抓揉片刻后，加入一匙半的地瓜粉，继续抓握揉捏约3分钟即可，葱切好备用；&#xA;五匙猪油下锅，至微热，放入适量葱头和小半葱段，煎至略有香味溢出，起锅备用；&#xA;水烧沸，调至小火，牛肉下锅，先不要搅动，待地瓜粉固结后，可用筷子将牛肉摊开，当水再次沸腾时，用漏勺将肉舀出，趁热放入煎好的猪油中搅拌，菜即成。&#xA;亲子丼 原料：米饭，鸡肉，洋葱，鸡蛋，酱油，盐，糖，料酒&#xA;做法：&#xA;米饭下锅煮，可弃之不顾。&#xA;鸡肉切小块，放酱油、盐、料酒腌一下；洋葱切短条；鸡蛋稍稍打散。&#xA;鸡肉下锅煎至出油，起锅。此时锅不必洗，放半碗水，加酱油、少量料酒和糖。&#xA;待水烧开，放入鸡肉和洋葱。盖锅盖将鸡肉焖熟，然后倒入一半蛋液，盖锅盖小火焖3分钟。&#xA;起锅盖，倒入剩下一半蛋液。菜即成。&#xA;红烧肉 原料：五花肉，葱，姜，蒜，大料，老抽，生抽，糖，油&#xA;做法：&#xA;五花肉切块，葱切段，蒜切末，姜切条。&#xA;倒油，加葱头、姜条、蒜末、大料，小火熬油。油熬出香味后，放五花肉翻炒，闻香即可起锅。&#xA;另起一锅油，倒六七小勺糖，中火将糖煮化。倒入五花肉，翻炒片刻后，加少量水、老抽、生抽。&#xA;时不时搅拌，尝肉汁甜度，不够可加糖。待锅内汤汁收浓稠，起锅享用。&#xA;牛肉丸意大利面 原料：意面、牛肉丸、葱、蒜、番茄、番茄酱&#xA;做法：&#xA;烧一壶开水，倒入电饭锅，加两勺盐，放入螺旋意大利面。面煮不烂，可以弃之不顾。&#xA;切葱头，剁蒜泥，番茄切小块备用。&#xA;烧一锅油，放入丸子，翻面煎至定型。&#xA;起锅后油不倒，加入蒜泥葱头炒香。番茄块倒入锅中炒软，然后加大量番茄酱，继续翻炒，以防番茄酱烧焦。&#xA;捞面放入锅中和酱汁搅和搅和，放入丸子，起锅开吃。&#xA;葱油鸡 原料：大鸡腿、葱、姜、蒜、料酒&#xA;做法：&#xA;鸡肉处理干净后，用盐给它来个大宝剑。盘中先放葱结、姜片、鸡肉，次淋白葡萄酒。&#xA;鸡肉盛于盘内，冷水入锅，小火蒸20分钟。&#xA;此时切葱末、蒜泥、姜泥备用。&#xA;起油锅，小火炸葱头，出香味后放入葱末、蒜泥、姜泥，煸炒出香味。待肉出锅后，可拿干净的刀切片，再浇葱油。亦可不切，大口嚼之可也。&#xA;芋头的鸡丝凉面！ 原教程链接：https://www.bilibili.com/video/av28407533&#xA;原料：鸡胸肉、黄瓜、意大利面、花生酱、松子、生抽、醋、料酒、辣椒、蒜头、橄榄油&#xA;做法：&#xA;电饭锅加水放面，加盐巴煮。&#xA;鸡胸肉处理干净，将肉肉锤松。开水放肉，加八角、葱段、姜片、料酒。再次煮沸后关火，焖十分钟。&#xA;意面起锅，放凉水里泡一哈，滤出面条，加橄榄油拌一拌，放在一边就好啦！&#xA;黄瓜去皮切条，葱切成细细的小圈，菜码就做好啦！&#xA;花生酱加两份生抽一份醋，调成酸奶一样的质感，凉面汁就做好啦！&#xA;蒜切末，松子装进保鲜袋用书脊砸碎。碗内放辣椒、松子碎末、蒜末。烧一锅油，倒入碗中搅合搅合，油泼辣子（伪）就做好啦！&#xA;拿个盘中，放面，放菜码，放葱花，放凉面汁，放油泼辣子。鸡丝凉面就做好啦~&#xA;注：根据个人口味适当调整了生抽和醋的比例，凉面汁的稠度以及简化了蒜汁的制作（直接把蒜末加到油泼辣子中）另本人冰箱里没有鸡胸肉，所以本次图片中的成品是牛肉丝凉面，事实证明牛肉丝并不适合做凉面，别问我怎么知道的（皮）</description>
     </item>
     <item>
       <title>【项目】基于蚁群算法的证券投资组合优化</title>
-      <link>http://localhost:1313/posts/markowitz_model/</link>
+      <link>https://luochang212.github.io/posts/markowitz_model/</link>
       <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/markowitz_model/</guid>
+      <guid>https://luochang212.github.io/posts/markowitz_model/</guid>
       <description>在证券交易中，为了降低风险，经常使用一笔资金购买多支股票。那么，如何合理地选择证券组合，并确定每支证券的资金分配系数，以使预期风险最低，预期收益最高，就成了一个经典的经济学问题 &amp;ndash; 证券投资组合优化问题。&#xA;1952年，马科维茨首次提出均值-方差模型(Markowitz Mean-Variance Model)。该模型利用股票的历史交易数据，定义了股票的预期风险与收益，并引入“无差异曲线”和“有效市场边界”的概念，最终导出了最佳投资组合的计算公式。&#xA;本文利用蚁群算法，求解马科维茨均值-方差模型。蚁群算法是一个群体智能算法，因其较强的鲁棒性和适用性，被广泛应用于工业界，是一种研究较为成熟的算法。&#xA;研究背景 一个证券投资组合，简单来说就是一组证券及其选购系数的组合。选购系数均大于零（不允许做空），且和为1。&#xA;余超在**《基于蚁群算法的投资组合优化研究》**中给出了完整的模型假设。概括如下：&#xA;一只蚂蚁代表了一个投资组合； 在投资组合优化问题中的蚁群算法要采用连续域优化； 相较于传统蚁群问题，该算法中信息素应该在城市而非路径上积累； 可在蚂蚁移动过程中加入随机扰动以增加全局搜索能力。 余超在模型基础上已经做了非常完整的工作，但是没能求出完整的有效市场边界。&#xA;于是，卞蓓丽在**《蚁群算法在多目标优化的证券投资组合中的应用研究》**中指出，多目标优化的证券投资组合问题是没有绝对最优解的，而是有一群无法相互支配的解形成的有效边界。对多目标优化问题而言，最重要的是求出有效边界，而不仅仅是求出一两个更优解，后者用单目标就可以完成。余超的多目标研究没有求出有效边界。”&#xA;卞蓓丽提示我们：因为，投资组合问题，本质上是一个多目标优化问题。所以，我们要计算出完整的有效边界曲线，才算达成预期目标。&#xA;余超建立了基础模型，而卞蓓丽在余超的基础上进行了改进。本文借鉴他们二人建立的数学模型，利用多元函数连续域蚁群算法，求解马科维茨均值-方差模型。&#xA;研究方法 （一）马科维茨投资组合理论简介&#xA;投资组合的预期收益($𝒓_𝒑$)：单一证券i的预期收益为$E\left(r_{i}\right) $，式中$r_{i s}$为针对状况s证券i的收益率，$P_{s}$是状态s出现的概率；在计算了所有N个证券的预期收益率后，就可以计算出证券组合的预期收益率$𝒓_𝒑$，式中$x_{i}$表示组合中证券i所占的比例，即加权系数。&#xA;单一证券i的预期收益: $E\left(r_{i}\right)=\sum_{s=1}^{n} r_{i s} * P_{s}$&#xA;证券组合的预期收益: $\overline{r_{p}}=\sum_{i=1}^{N} x_{i} * E\left(r_{i}\right)$&#xA;投资组合的预期风险($𝝈_{𝒑}$)：单一证券i的预期风险为$\sigma_{\mathrm{i}} $，式中$r_{i s}$为针对状况s证券i的收益率，$P_{S}$是状态s出现的概率，$E\left(r_{i}\right) $为证券i的预期收益率 ；在计算了所有N个证券的预期风险后，就可以计算出证券组合的预期风险$\sigma_{\mathrm{p}}$ ，式中$\operatorname{cov}_{i j}$表示证券i和证券j的协方差，$x_{i}$和$x_{j}$表示组合中证券i和证券j所占的比例，即加权系数。&#xA;单一证券i的预期风险: $\sigma_{\mathrm{i}}=\left(\sum_{s=1}^{n}\left[r_{i s}-E\left(r_{i}\right)\right]^{2} * P_{S}\right)^{\frac{1}{2}}$&#xA;证券组合的预期风险: $\sigma_{\mathrm{p}}=\left(\sum_{i=1}^{N} \sum_{j=1}^{N} \operatorname{cov}_{i j} * x_{i} * x_{j}\right)^{\frac{1}{2}}$&#xA;有效市场边界: 有效市场边界是所有最佳投资组合(Efficient Portfolio)的集合。有效前沿曲线上面的每一点都代表一个最佳投资组合。下图曲线就是有效市场边界，有效市场边界满足以下两个条件：&#xA;对每一水平的风险，该组合提供最大的预期收益； 对每一水平的预期收益，该组合能提供最小的风险。 （二）蚁群算法在马科维茨模型中的应用&#xA;具体到蚁群算法中，一只蚂蚁代表一个投资组合$𝑃=\{𝑥_1,𝑥_2,⋯,𝑥_𝑛\}$。通过马科维茨理论，我们可以计算出该投资组合P对应的均值和方差。将均值、方差绘制在r-σ二维空间上，可以观察各个投资组合之间的帕累托关系，可分为三种情况：明显优于、明显劣于、和无法比较优劣。&#xA;最终我们求出的有效市场边界上的近似点，就是由这样一组无法比较优劣的点组成的，我们把它叫作一组无法相互支配的最优解。&#xA;研究模型 （一）模型假设&#xA;假设投资者选择n只证券，则每个投资组合可视为一个n维单位向量$𝑃=\{𝑥_1,𝑥_2,⋯,𝑥_𝑛\}$，其中$𝑥_𝑖$表示第𝑖只证券所占权重，$x_𝑖&amp;gt;0$。 假设在蚁群中有m只蚂蚁，每只蚂蚁都代表一个投资组合P。蚂蚁移动的过程，相当于从一个投资组合变换到另一个投资组合。 目标函数空间是一个连续的r-σ二维空间，其值由每个投资组合P的收益率的均值方差决定。其中r代表收益率均值，σ代表收益率的标准差。 该模型采用的是单期方法，即在t=0时刻买入一个资产组合，在t=1时卖出。 信息素在蚂蚁身上积累，越接近有效边界的蚂蚁，释放的信息素越多。蚂蚁对身边一定范围内的其他蚂蚁有吸引作用，且自身积累的信息素越多，吸引越强。 交易没有最小交易单位限制，即能以分数股的形式交易。 交易中无交易成本。 交易不允许卖空。(即$𝑥_𝑖≥0$) （二）模型改进：多元函数连续域蚁群算法</description>
     </item>
     <item>
       <title>观影：少女哪吒</title>
-      <link>http://localhost:1313/posts/nezha/</link>
+      <link>https://luochang212.github.io/posts/nezha/</link>
       <pubDate>Tue, 11 Jul 2017 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/nezha/</guid>
+      <guid>https://luochang212.github.io/posts/nezha/</guid>
       <description>青春可贵，文学高华，可是越是珍贵就越脆弱越易碎。对于一般人来说，破碎的疼痛也许还能承受得住，可是对内心敏感的人，这几乎是欲死的折磨。&#xA;我发现，影片中很多人都沉浸于某种爱好。王晓冰喜欢文学和音乐，晓冰妈喜欢舞蹈，晓冰爸外面的女人喜欢钢琴。但他们的爱好不是为了艺术，他们只是借沉浸艺术来麻痹自己。&#xA;我猜，王晓冰对家人大喊“虚伪”的原因，大概就是看不惯家人的这种自我麻痹吧？看不惯这种因为怯懦、无法承受就转向麻痹自我的态度。她不满拿音乐和舞蹈麻痹自己的母亲，不满借口“恋爱自由”为自己脱责的父亲。&#xA;每个人都为着生活痛苦、狂燥、疲惫不堪，在生活的折磨下渐渐失去勇气。因为不忍正视生活之残酷，他们选择戴上虚伪的面具，假装做出幸福的样子。但晓冰不，她个性干爽利落，追求三毛式的真诚和坦率。就算现实让她疼痛到龇牙咧嘴，她也要把那撇开的嘴角当作笑容。&#xA;影片里李小路就像一个完美的存在，她的出现对晓冰而言是上苍的馈赠。就像徐杰说小路是侠女，小路确有一股特殊的气质。英气里带点活泼，让人倍感亲切。有时紧锁的眉头和尖利的眼神又不时提醒着她已是一个有了主见的少女。是小路，让晓冰的生活里有了短暂的纯粹的欢乐。&#xA;造成晓冰痛苦的原因是多方位的，家庭的破碎，平庸又手握权力的老师的刁难，爱情的不如意，学业的不顺遂等等。对于这一切，晓冰都毅然决然、不顾后果、绝不妥协地抗争。永远高昂着头，又不幸身为下贱，这场景让我想起妙玉。&#xA;总体上讲，电影的场景感觉很碎，只给人提供一种感觉。影片没有悲壮的结局，因此对应地也缺少回响。因为没有回响，因此又显得生涩。也不知道这生涩是好是坏，虽说失掉了反复品咂的回味，但又给思考和体验留了更多空间。&#xA;（看的电影很少，还是第一次看这么文艺的电影，写一点个人的感觉 Σ Σ Σ (|||▽||| )</description>
     </item>
     <item>
       <title>基于蚁群算法的证券投资组合优化</title>
-      <link>http://localhost:1313/portfolio/1/</link>
+      <link>https://luochang212.github.io/portfolio/1/</link>
       <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/portfolio/1/</guid>
+      <guid>https://luochang212.github.io/portfolio/1/</guid>
       <description>在证券交易中，为了降低风险，经常使用一笔资金购买多支股票。那么，如何合理地选择证券组合，并确定每支证券的资金分配系数，以使预期风险最低，预期收益最高，就成了一种经典的金融问题 &amp;ndash; 证券投资组合优化问题。&#xA;马科维茨均值-方差模型(Markowitz Mean-Variance Model)是一种用于求解证券投资组合优化问题的数学模型。本文改进了一种多元函数连续域蚁群算法，用于求解马科维茨均值-方差模型。</description>
     </item>
     <item>
       <title>TSP旅行路线规划</title>
-      <link>http://localhost:1313/portfolio/2/</link>
+      <link>https://luochang212.github.io/portfolio/2/</link>
       <pubDate>Wed, 01 May 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/portfolio/2/</guid>
+      <guid>https://luochang212.github.io/portfolio/2/</guid>
       <description>旅行中的一天通常这样度过：清晨从宾馆出发，去第一个景点。第一个景点逛完，去下一个景点&amp;hellip;&amp;hellip;直到最后一个景点逛完，行程结束返回宾馆。那么如何规划一条最短的路线走完一天的行程呢？这就涉及到一个经典的运筹学问题 &amp;ndash; TSP问题。本项目用googlemaps库获取纬度和经度信息，用OR-Tools库求解TSP问题，用gmaps库可视化输出结果。利用本项目，用户只需输入景点名称，即可获得一张周游所有景点的最短路线图。可以说是一个即插即用的TSP路线规划工具。</description>
     </item>
     <item>
       <title>团队软件项目</title>
-      <link>http://localhost:1313/portfolio/3/</link>
+      <link>https://luochang212.github.io/portfolio/3/</link>
       <pubDate>Mon, 01 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/portfolio/3/</guid>
+      <guid>https://luochang212.github.io/portfolio/3/</guid>
       <description>每年，教学经理(Learning and Teaching Manager)都必须从老师那里收集课程信息。如果发现考试时间重叠或者太过密集，教学经理都必须通知老师调整时间。此外，教学经理还必须核对课程信息是否正确。比如各项考核分数之和是否为100分，考试时间是否与节假日重叠，作业的截至日期是否在发布日期之后等。核对完成后，还必须将每个课程的信息打印出来。这个过程非常手动，对用户也不友好。因此，团队编写了本软件。本软件能自动核对、打印、可视化课程信息，并允许用户将课程信息以邮件形式返回给教学经理，以帮助课程经理提高工作效率。</description>
     </item>
     <item>
       <title>自然系统的建模与仿真</title>
-      <link>http://localhost:1313/portfolio/4/</link>
+      <link>https://luochang212.github.io/portfolio/4/</link>
       <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/portfolio/4/</guid>
+      <guid>https://luochang212.github.io/portfolio/4/</guid>
       <description>本项目采用 Agent-based model 的方式，为狼-麋鹿-草生态系统建模。技术上采用了 MATLAB 面向对象编程，为狼和麋鹿的四种行为，分别是捕食、迁徙、生育、死亡，编写了规则。其中狼群拥有智能，可以利用有限信息搜索羊群，并且在头狼的带领下，狼群还表现出集群行为。给定初始条件以后，本模型会模拟生态系统的运作，输出一个时刻更新的二维图以展示各生物位置的变化情况。此外，还会输出一个折线图以表示各生物数量的变化情况。</description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/demo/sidenav/</link>
+      <link>https://luochang212.github.io/demo/sidenav/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/demo/sidenav/</guid>
+      <guid>https://luochang212.github.io/demo/sidenav/</guid>
       <description>&lt;!DOCTYPE HTML&gt; Animated Side Navigation Example Animated Side Navigation Example Click on the element below to open the side navigation menu.&#xA;&amp;#9776; open Resources Audio Player Video player Piano 更多视频 1 2 3 </description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/gadget/algorithms/</link>
+      <link>https://luochang212.github.io/gadget/algorithms/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/gadget/algorithms/</guid>
+      <guid>https://luochang212.github.io/gadget/algorithms/</guid>
       <description>&lt;!DOCTYPE html&gt; 算法集萃 Home Projects About 算法集萃 1. 分配货物 有四条船，有一堆货物。往每条船上分配货物，要求每条船上货物的重量相等。 列表中的元素表示每个货物的重量。 返回 Ture 或者 False 表示是否存在满足条件的装货方式。 示例：&#xA;输入: [2,2,2,1,1] 输出: True 输入: [2,2,2,3] 输出: False 解答：&#xA;None 2. 复原IP地址[LeetCode] 给定一个只包含数字的字符串，复原它并返回所有可能的 IP 地址格式。 示例：&#xA;输入: &#34;25525511135&#34; 输出: [&#34;255.255.11.135&#34;, &#34;255.255.111.35&#34;] 解答：&#xA;None </description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/gadget/attention-is-all-you-need/</link>
+      <link>https://luochang212.github.io/gadget/attention-is-all-you-need/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/gadget/attention-is-all-you-need/</guid>
+      <guid>https://luochang212.github.io/gadget/attention-is-all-you-need/</guid>
       <description>&lt;!DOCTYPE html&gt; [1706.03762] Attention Is All You Need Provided proper attribution is provided, Google hereby grants permission to reproduce the tables and figures in this paper solely for use in journalistic or scholarly works.&#xA;Attention Is All You Need Ashish Vaswani Google Brain avaswani@google.com &amp;amp;Noam Shazeer11footnotemark: 1 Google Brain noam@google.com &amp;amp;Niki Parmar11footnotemark: 1 Google Research nikip@google.com &amp;amp;Jakob Uszkoreit11footnotemark: 1 Google Research usz@google.com &amp;amp;Llion Jones11footnotemark: 1 Google Research llion@google.com &amp;amp;Aidan N. Gomez11footnotemark: 1 &amp;nbsp;&amp;nbsp; University of Toronto aidan@cs.</description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/gadget/audio-player/</link>
+      <link>https://luochang212.github.io/gadget/audio-player/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/gadget/audio-player/</guid>
+      <guid>https://luochang212.github.io/gadget/audio-player/</guid>
       <description>&lt;!doctype html&gt; Audio Player 0:00 0:00 </description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/gadget/baijiahao/</link>
+      <link>https://luochang212.github.io/gadget/baijiahao/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/gadget/baijiahao/</guid>
+      <guid>https://luochang212.github.io/gadget/baijiahao/</guid>
       <description>&lt;!DOCTYPE html&gt; 百家号模拟器 Home Projects About 百家号模拟器 主题： 属性： 生成文章 </description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/gadget/font/</link>
+      <link>https://luochang212.github.io/gadget/font/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/gadget/font/</guid>
+      <guid>https://luochang212.github.io/gadget/font/</guid>
       <description> Don&#39;t threaten me with a good time &amp;#9834; Don&#39;t threaten me with a good time &amp;#9834; Don&#39;t threaten me with a good time &amp;#9834; </description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/gadget/gallery/</link>
+      <link>https://luochang212.github.io/gadget/gallery/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/gadget/gallery/</guid>
+      <guid>https://luochang212.github.io/gadget/gallery/</guid>
       <description>&lt;!DOCTYPE html&gt; Gallery Click on the buttons to change the grid view.&#xA;1 2 4 </description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/gadget/happy-birthday/</link>
+      <link>https://luochang212.github.io/gadget/happy-birthday/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/gadget/happy-birthday/</guid>
+      <guid>https://luochang212.github.io/gadget/happy-birthday/</guid>
       <description>&lt;!DOCTYPE html&gt; ┗|｀O′|┛ Happy Birthday&#xA;To&#xA;赵公公 </description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/gadget/how-old-are-you/</link>
+      <link>https://luochang212.github.io/gadget/how-old-are-you/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/gadget/how-old-are-you/</guid>
+      <guid>https://luochang212.github.io/gadget/how-old-are-you/</guid>
       <description>&lt;!DOCTYPE html&gt; 年龄可视化 Home Projects About A 90-Year Human Life in Months Your Age: Inspired by Your Life in Weeks. </description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/gadget/hydra/</link>
+      <link>https://luochang212.github.io/gadget/hydra/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/gadget/hydra/</guid>
+      <guid>https://luochang212.github.io/gadget/hydra/</guid>
       <description>&lt;!DOCTYPE html&gt; Hydra hydra HYDRA </description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/gadget/live2d/</link>
+      <link>https://luochang212.github.io/gadget/live2d/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/gadget/live2d/</guid>
+      <guid>https://luochang212.github.io/gadget/live2d/</guid>
       <description>&lt;!DOCTYPE html&gt; Live2D！ 隐藏 </description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/gadget/monaco-speech-editor/</link>
+      <link>https://luochang212.github.io/gadget/monaco-speech-editor/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/gadget/monaco-speech-editor/</guid>
+      <guid>https://luochang212.github.io/gadget/monaco-speech-editor/</guid>
       <description>&lt;!DOCTYPE html&gt; Monaco Speech Editor Explorer&#xA;File manager Demo You can load demos from a JSON file.&#xA;Load Demo Tutorial Listen to the features of this application.&#xA;Quick Start Upload&#xA;Drop your file here&#xA;Feature List&#xA;Speech Synthesis Speak Document Speak By Line Speak Console Result Speak Console Log Stop Speaking Cursor Position Search Cursor Position Cursor Jump To Line Trash Find Deleted Files Setting&#xA;Voice Rate 1 Pitch 1 Mode Character Mode Code Mode Music Mode Overview Mode Accessibility Voice Feedback Voice Cue Spotlight Linear Index Mute Theme Night Mode Console Console Bar Hide Console Log Area Hide Rendering Result Area apex azcli bat c clojure coffeescript cpp csharp csp css dockerfile fsharp go graphql handlebars html ini java javascript json kotlin less lua markdown msdax mysql objective-c pascal perl pgsql php plaintext postiats powerquery powershell pug python r razor redis redshift ruby rust sb scheme scss shell sol sql st swift tcl typescript vb xml yaml Jump To Line: Ln 1, Col 1 Console Run Open In New Window Open In New Tab Speak Document (Ctrl+Alt+D) Speak By Line (Ctrl+Alt+P) Speak Next Line (Ctrl+Alt+&amp;#8681;) Speak previous Line (Ctrl+Alt+&amp;#8679;) Speak Console Result (Ctrl+Alt+E) Speak Console Log (Ctrl+Alt+L) Stop Speaking (Ctrl+Alt+S) Search Cursor Position (Ctrl+Alt+C) Character Mode (Ctrl+Alt+A) Code Mode (Ctrl+Alt+O) Music Mode (Ctrl+Alt+M) Overview Mode (Ctrl+Alt+V) Voice Feedback (Ctrl+Alt+F) Voice Cue (Ctrl+Alt+U) Console Bar (Ctrl+Alt+B) Running Code (Ctrl+Alt+R) Night Mode (Ctrl+Alt+N) </description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/gadget/mozi/</link>
+      <link>https://luochang212.github.io/gadget/mozi/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/gadget/mozi/</guid>
+      <guid>https://luochang212.github.io/gadget/mozi/</guid>
       <description>&lt;!DOCTYPE html&gt; 墨子 | 读书笔记 墨子 原文及读书笔记&#xA;卷一 亲士 修身 所染 法仪 七患 辞过 三辩 卷二 尚贤上 尚贤中 尚贤下 卷三 尚同上 尚同中 尚同下 卷四 兼爱上 兼爱中 兼爱下 卷五 非攻上 非攻中 非攻下 卷六 节用上 节用中 节葬下 卷七 天志上 天志中 天志下 卷九 卷十 卷十一 卷十二 介绍 作者 : 墨翟 成书时间 : [春秋 - 战国] 公元前490年-公元前221年 篇目数量 : 原有71篇，现存53篇 墨家主张“兼爱”，和西方的“博爱”相似；墨家重视技术，这也与西方不谋而合。在诸子百家中，墨家可能是最接近西方文明的学派。因此，当近代中国在西方的坚船利炮下生灵涂炭之时，中国的学者们不由开始缅怀墨子。倘若当年汉武帝不尊儒而尊墨，或许就能引领中华文明走上一条科技之路，从而免于两千多年后落得一个被列强欺凌的下场。这当然是臆想，但这却让墨家在近代意外走红，引起了关注。&#xA;墨家曾为显学，是历史道路的候选者，虽然最终被历史淘汰，但依旧具有研究价值。其次，作为传世两千多年的著作，《墨子》一书对中国人的影响亦不容小觑。在看《墨子》的过程中，你或许能找到一些古今俱同的政治理念和处事之道。&#xA;参考资料 中国哲学书电子化计划 汉典 相关书籍 《中国文化精神》钱穆 《中国历代政治得失》钱穆 《人能弘道：傅佩荣谈论语》傅佩荣 《乡土中国》费孝通 《寻觅中华》余秋雨 卷一 # 亲士 入国而不存其士，则亡国矣。见贤而不急，则缓其君矣。非贤无急，非士无与虑国，缓贤忘士而能以其国存者，未曾有也。</description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/gadget/my-first-try/</link>
+      <link>https://luochang212.github.io/gadget/my-first-try/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/gadget/my-first-try/</guid>
+      <guid>https://luochang212.github.io/gadget/my-first-try/</guid>
       <description>&lt;!DOCTYPE html&gt; Document </description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/gadget/new-to-do-list/</link>
+      <link>https://luochang212.github.io/gadget/new-to-do-list/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/gadget/new-to-do-list/</guid>
+      <guid>https://luochang212.github.io/gadget/new-to-do-list/</guid>
       <description>&lt;!DOCTYPE html&gt; My To Do List Add </description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/gadget/piano/</link>
+      <link>https://luochang212.github.io/gadget/piano/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/gadget/piano/</guid>
+      <guid>https://luochang212.github.io/gadget/piano/</guid>
       <description> JS Piano Use your keyboard. Hover for hints. A W S E D F T G Y H U J K O L P ; </description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/gadget/plan/</link>
+      <link>https://luochang212.github.io/gadget/plan/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/gadget/plan/</guid>
+      <guid>https://luochang212.github.io/gadget/plan/</guid>
       <description>&lt;!DOCTYPE html&gt; Plan MORE PLANS 1月 2月 3月 2020年2月计划 一、计划内容 学习计划 📖 LeetCode (1 题/天) 读书 (10 页/天) 运动计划 🏃 跑步 (1000 米/天) 仰卧起坐 (10 次/天) 注：括号内是计量单位，不是计划数。&#xA;二、完成情况 none</description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/gadget/react-lifecycle-demo/</link>
+      <link>https://luochang212.github.io/gadget/react-lifecycle-demo/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/gadget/react-lifecycle-demo/</guid>
+      <guid>https://luochang212.github.io/gadget/react-lifecycle-demo/</guid>
       <description>&lt;!DOCTYPE html&gt; </description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/gadget/read-zip-file-by-url/</link>
+      <link>https://luochang212.github.io/gadget/read-zip-file-by-url/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/gadget/read-zip-file-by-url/</guid>
+      <guid>https://luochang212.github.io/gadget/read-zip-file-by-url/</guid>
       <description>&lt;!DOCTYPE html&gt; Read a zip file demo 操作方法： 选中下方文本框; 按 Ctrl + v 粘贴链接; 点击文本框外任意区域。 Please wait. </description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/gadget/show-time/</link>
+      <link>https://luochang212.github.io/gadget/show-time/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/gadget/show-time/</guid>
+      <guid>https://luochang212.github.io/gadget/show-time/</guid>
       <description>&lt;!DOCTYPE html&gt; 现在几点了？ 现在几点了？ © 2019 Chang Luo Weibo | Bilibili&#xA;哈哈哈，这只是一个测试网页，并没有什么用。什么？居然被你发现了 O_O !!!&#xA;点击这里获取日期与时间 </description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/gadget/tic-tac-toe/</link>
+      <link>https://luochang212.github.io/gadget/tic-tac-toe/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/gadget/tic-tac-toe/</guid>
+      <guid>https://luochang212.github.io/gadget/tic-tac-toe/</guid>
       <description>&lt;!doctype html&gt;React AppYou need to enable JavaScript to run this app.</description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/gadget/to-do-list/</link>
+      <link>https://luochang212.github.io/gadget/to-do-list/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/gadget/to-do-list/</guid>
+      <guid>https://luochang212.github.io/gadget/to-do-list/</guid>
       <description>&lt;!DOCTYPE html&gt; 计划表生成工具 计划表生成工具 © 2019 Chang Luo | Home&#xA;这是俺写的小工具，什么？居然被你发现了 O_O !!!&#xA;使用说明： 在此框中输入你的计划，点击“添加计划”按钮，将你的计划添加至计划列表。接着点击“生成表格”按钮，通过勾选生成的表格中的复选框，告诉后台你的完成情况。最后点击“下载表格”按钮，下载计划完成统计表。&#xA;添加计划 &amp;nbsp &amp;nbsp &amp;nbsp → &amp;nbsp &amp;nbsp &amp;nbsp 生成表格 &amp;nbsp &amp;nbsp &amp;nbsp → &amp;nbsp &amp;nbsp &amp;nbsp 下载表格 &amp;nbsp &amp;nbsp &amp;nbsp &amp;nbsp &amp;nbsp &amp;nbsp &amp;nbsp &amp;nbsp 清空 </description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/gadget/unzip/</link>
+      <link>https://luochang212.github.io/gadget/unzip/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/gadget/unzip/</guid>
+      <guid>https://luochang212.github.io/gadget/unzip/</guid>
       <description>&lt;!DOCTYPE html&gt; Read a zip file demo zip.js A JavaScript library to zip and unzip files Read a zip file demo choose a zip file choose temporary storage RAM HDD download zip content </description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/projects/3d_scene/</link>
+      <link>https://luochang212.github.io/projects/3d_scene/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/3d_scene/</guid>
+      <guid>https://luochang212.github.io/projects/3d_scene/</guid>
       <description>&lt;!DOCTYPE html&gt; 3D场景建模 更多项目 3D场景建模&#x9;用OpenGL搭建3D室内场景模型 效果展示 © 2019 Chang Luo </description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/projects/machine_learning/</link>
+      <link>https://luochang212.github.io/projects/machine_learning/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/machine_learning/</guid>
+      <guid>https://luochang212.github.io/projects/machine_learning/</guid>
       <description>&lt;!DOCTYPE html&gt; 机器学习 更多项目 机器学习&#x9;用主成分分析法实现MNIST数据集下的图像分类 GitHub © 2019 Chang Luo </description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/projects/markowitz_model/</link>
+      <link>https://luochang212.github.io/projects/markowitz_model/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/markowitz_model/</guid>
+      <guid>https://luochang212.github.io/projects/markowitz_model/</guid>
       <description>&lt;!DOCTYPE html&gt; 基于蚁群算法的证券投资组合优化 更多项目 基于蚁群算法的证券投资组合优化问题研究 北京邮电大学本科毕业论文&#xA;指导老师：赵新超&#xA;作者：罗畅 研究背景 在证券交易中，为了降低风险，经常使用一笔资金购买多支股票。那么，如何合理地选择证券组合，并确定每支证券的资金分配系数，以使预期风险最低，预期收益最高，就成了一个经典的经济学问题 – 证券投资组合优化问题。 马科维茨均值-方差模型(Markowitz Mean-Variance Model)是一种用于求解证券投资组合优化问题的数学模型。本文改进了一种多元函数连续域蚁群算法，用于求解马科维茨均值-方差模型。 研究方法 在蚁群算法中，一只蚂蚁代表一个投资组合P={x1,x2,⋯,xn}。通过马科维茨理论，我们可以计算出该投资组合P对应的均值和方差。将均值、方差绘制在r-σ二维空间上，可以观察各个投资组合之间的帕累托关系。帕累托关系有三种可能情况：明显优于、明显劣于和无法比较优劣。这些无法比较优劣的点的集合，最终构成一条有效边界曲线。 数学模型 本文以一种二元函数连续域蚁群算法为蓝本，改进为n元函数连续域蚁群算法。原算法效果如下： 众所周知，绘图最高只能画到三维，恕我无法直观地表达n元函数连续域蚁群算法的效果。但是最终效果可以从求解马科维茨均值方差模型的近似求解中看出来。详细效果见后文。 研究结果 研究结果如下图。从图中可以看出，蚁群算法的解形成了清晰的Pateto有效前沿。而且解的分布范围广，说明该算法具有良好的搜索能力，能保证结果的多样性。 和MATLAB金融工具箱相比，因为蚁群算法的迭代次数较多，对解的探索能力强，因此整体而言，蚁群算法的解要优于MATLAB金融工具箱的解。 比较分析 为了进一步验证本文设计的蚁群算法的算法性能，我们选取了前3只股票。即在n=3的情况下，暴力计算了有效市场边界。下图表示了MATLAB金融工具箱、蚁群算法、暴力算法的结果比较： 从图中可以看出，蚁群算法确实优于金融工具箱的解，和真实的有效市场边界更为接近。 相关链接 博客全文 PPT © 2019 Chang Luo </description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/projects/monaco_speech_editor/</link>
+      <link>https://luochang212.github.io/projects/monaco_speech_editor/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/monaco_speech_editor/</guid>
+      <guid>https://luochang212.github.io/projects/monaco_speech_editor/</guid>
       <description>&lt;!DOCTYPE html&gt; Monaco Speech Editor 更多项目 Monaco Speech Editor 适用于视障人群的在线代码编辑器 博客全文 Demo © 2019 Chang Luo </description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/projects/my_weibo/</link>
+      <link>https://luochang212.github.io/projects/my_weibo/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/my_weibo/</guid>
+      <guid>https://luochang212.github.io/projects/my_weibo/</guid>
       <description>&lt;!DOCTYPE html&gt; 微博数据可视化 更多项目 微博数据可视化&#x9;基于Pandas和seaborn实现的新浪微博数据可视化 博客全文 GitHub © 2019 Chang Luo </description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/projects/nature_system/</link>
+      <link>https://luochang212.github.io/projects/nature_system/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/nature_system/</guid>
+      <guid>https://luochang212.github.io/projects/nature_system/</guid>
       <description>&lt;!DOCTYPE html&gt; 自然系统的建模与仿真 更多项目 自然系统的建模与仿真&#x9;用MATLAB面向对象编程建立了狼、麋鹿、草生态系统模型 博客全文 GitHub © 2019 Chang Luo </description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/projects/team_software_project/</link>
+      <link>https://luochang212.github.io/projects/team_software_project/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/team_software_project/</guid>
+      <guid>https://luochang212.github.io/projects/team_software_project/</guid>
       <description>&lt;!DOCTYPE html&gt; 团队软件项目 更多项目 团队软件项目&#x9;基于PyQt5编写的课程管理软件 项目报告 项目PPT © 2019 Chang Luo </description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/projects/tsp_route/</link>
+      <link>https://luochang212.github.io/projects/tsp_route/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/tsp_route/</guid>
+      <guid>https://luochang212.github.io/projects/tsp_route/</guid>
       <description>&lt;!DOCTYPE html&gt; TSP旅行路线规划 更多项目 TSP旅行路线规划&#x9;用 Google Map Api 在谷歌地图上绘制TSP旅行路线 博客全文 GitHub © 2019 Chang Luo </description>
     </item>
   </channel>

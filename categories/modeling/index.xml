@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Modeling on Chang Luo</title>
-    <link>http://localhost:1313/categories/modeling/</link>
+    <link>https://luochang212.github.io/categories/modeling/</link>
     <description>Recent content in Modeling on Chang Luo</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 12 Jun 2019 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/modeling/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://luochang212.github.io/categories/modeling/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>生态系统建模</title>
-      <link>http://localhost:1313/posts/nature_system/</link>
+      <link>https://luochang212.github.io/posts/nature_system/</link>
       <pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/nature_system/</guid>
+      <guid>https://luochang212.github.io/posts/nature_system/</guid>
       <description>本文介绍如何用 Agent-based model 的方法，对一个包含狼、麋鹿、草三种生物的生态系统建模。&#xA;GitHub 项目地址：nature-system&#xA;Agent指个体，Agent-base model即基于个体的模型。在Agent-based model中，虚拟实体(virtual entity)和现实个体一一对应。一般来说，虚拟实体的属性是对现实个体的抽象，虚拟实体的行为则是依照已经写好的规则迭代。这种建模方式往往涉及个体详细的行为模式，因此适合以研究个体行为规则为目的的建模。&#xA;需要注意的是，利用Agent-based model方法建模，并不是变量越多越好，过多的变量会造成调试上的困难。选取的变量足够支撑起我们研究的问题就可以了。&#xA;Note: 除了Agent-base model之外，Equation-based model也是一种比较常见的建模方式。Agent-based model适合表达每个个体身上发生了什么，比如个体的速度、位置的变化等。Equation-based model则而更适合表达系统平均发生了什么，比如人口模型中人口数量变化就更适合用Equation-based model建模。&#xA;模型假设 （一）生物的属性&#xA;模型内有三种生物：狼(wolf)、麋鹿(moose)、草(grass)。此外，狼还分为头狼和普通狼。下面这张表展示了头狼、普通狼、麋鹿的属性：&#xA;# age food pos speed last_breed population packNo range eaten 头狼 √ √ √ √ √ √ √ √ 普通狼 √ √ √ √ √ 麋鹿 √ √ √ √ √ 从上表可以看出，年龄、食物、位置、速度是头狼、普通狼和麋鹿的共有属性。last_breed指和上一次生育的时间间隔，在模型内用一次迭代表示一次时间间隔，因为迭代必须是整数，因此last_breed也是整型变量。头狼特有population属性，用来表示该头狼所在狼群中狼的数量；头狼特有range属性，表示该狼群活动的范围；头狼特有eaten属性，表示狼群在一次迭代中，全体成员吃到的麋鹿的总数。普通狼特有packNo属性，用来标记其所属狼群的头狼在列表中的索引号。普通狼没有last_breed属性，是因为其生育是以整个狼群为单位的。由于狼群是由头狼定义的，狼群相关的属性和行为也绑定在头狼身上，因此在代码实现上，狼群的生育是通过头狼实现的。&#xA;草没有上述生物那么复杂的模型，本模型中的草均匀平铺在环境中，且不会生长，吃完就没了。因此麋鹿为了获取新的食物来源，需要经常迁徙。&#xA;（二）生物的行为&#xA;头狼、普通狼和麋鹿都具有四种行为：死亡、迁徙、生育、捕猎。这四种行为在不同的生物种类上有不同的定义。比如麋鹿的迁徙规则是等到自己的位置没草吃了，才开始迁徙。而头狼迁徙规则则比较复杂，头狼会根据狼群内的种群数量，判断狼群的散布范围，以及调整迁徙的积极性。&#xA;1.死亡(die)&#xA;狼有两种死法：饿死或老死。麋鹿则有三种死法：饿死、老死或者被吃。&#xA;每一种生物都有固定的年龄上限值，超过该值将在本次迭代中死亡。本模型中，狼的最大年龄为25。如果一只狼如果没有饿死，它将在第25次迭代时老死。而饿死在生物food属性为0时发生。&#xA;对于麋鹿，每只麋鹿都有一个food属性。对于狼，整个狼群共享一个food属性，当狼群的food属性值为0时，会有一只普通狼死亡。&#xA;如果头狼死去时，狼群内普通狼的数量大于0，则会有一只普通狼晋升为头狼。&#xA;2.生育(breed)&#xA;不同的物种有不同的生育规则。&#xA;每只麋鹿一次只生一个。生育时母亲将把自己food属性值的一半分给孩子。生育有时间间隔，不能持续生育。在本模型中，麋鹿经历一次生育后，起码要经历10次迭代，才能进行第二次生育。此外，生育还有食物限制，当food属性高于10，麋鹿才会生育。如果同时满足时间间隔和食物条件，那么麋鹿将在本轮迭代进行生育。&#xA;本模型中，一个狼群为一个生育单位。和麋鹿的生育相似，狼群也仅在食物有富余时进行生育。生育的数量与狼群群内个体数量成正比。在不同群内生物数量范围内，比例系数略有不同。生育后，母体的食物也会按比例减少，并将此部分食物赋予孩子。同样，狼群的生育也有时间间隔限制。一次生育完成后，起码要经历5次迭代的时间，才能进行下一次生育。&#xA;3.迁徙(migrate)&#xA;狼群的迁徙取决于头狼，头狼相当于狼群的神经中枢。它接收上一轮狼群的捕猎信息，来判断下一步狼群的迁徙方向。由于头狼无法获知整张地图的麋鹿分布信息，它仅仅只能从已知信息推断，所以这可以视为局部优化问题。&#xA;具体来说，狼群的迁徙规则分两类：如果在上一次迭代中，狼群没有捕到一只麋鹿，那么狼群将随机移动以寻找麋鹿。如果起码吃到了一只，那么就用一个for循环，找出是狼群中的哪只狼吃到了麋鹿。在下一步迭代中，头狼将往这只狼的方向移动。</description>
     </item>
   </channel>

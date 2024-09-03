@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>MultiHeadAttention on Chang Luo</title>
-    <link>http://localhost:1313/tags/multiheadattention/</link>
+    <link>https://luochang212.github.io/tags/multiheadattention/</link>
     <description>Recent content in MultiHeadAttention on Chang Luo</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 09 Jun 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/multiheadattention/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://luochang212.github.io/tags/multiheadattention/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>注意力机制笔记</title>
-      <link>http://localhost:1313/posts/attention_note/</link>
+      <link>https://luochang212.github.io/posts/attention_note/</link>
       <pubDate>Sun, 09 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/attention_note/</guid>
+      <guid>https://luochang212.github.io/posts/attention_note/</guid>
       <description>马毅：要想正确理解深度神经网络，就必须认识到其本质是学习高维数据中的低维结构的手段。从第一性原理出发，把目的和手段分清楚，其余的都很容易被统一、被解释。&#xA;从 Attention 的角度理解马毅老师这句话，Embedding 的时候本来就升维了，再做 QKV 就相当于在高维里面抽低维信息。而且 Q 也是可学习的，所以就既能学到好的抽取方法；对于每一种抽取方法，又能特别高效地抽取。&#xA;GitHub 项目地址：rnn-note / attention-note&#xA;一、语言模型入门：RNN, LSTM, GRU 1.1 序列模型 马尔可夫假设，当前数据只跟最近 τ 个数据点相关。把最近 τ 个数据点作为特征，用 MLP 预测当前数据点的值。&#xA;查看笔记 1.2 文本预处理 对文本词元化 (tokenize) 并构建词表，就是把文本映射到从 0 开始的索引。&#xA;查看笔记 1.3 语言模型和数据集 对语料分批量 (batch) 处理。介绍了两种（batch 内的）采样策略：&#xA;随机采样策略：每个 batch 内的相邻子序列是随机的 顺序分区策略：每个 batch 内的相邻子序列是顺序的 查看笔记 1.4 循环神经网络的从零开始实现 每次输出仅由前一个隐状态和当前新输入 x 决定，是为 RNN。&#xA;提及的知识点：&#xA;独热编码：文本经过词元化后，还要经过 one-hot 处理，才能进入模型 困惑度：我们用困惑度来描述文本生成的质量，通过一个序列中所有的 n 个词元的交叉熵损失的平均值来衡量 $$\frac{1}{n} \sum_{t=1}^n-\log P\left(x_t \mid x_{t-1}, \ldots, x_1\right)$$ 梯度裁剪：对于 $T$ 长序列将产生 $O(T)$ 长矩阵乘法链。当 $T$ 较大时，可能导致数值不稳定，例如可能导致梯度爆炸或梯度消失。这种情况下优化算法可能无法收敛。下式通过将梯度 $g$ 投影回给定半径 $\theta$ 来限制梯度的大小。其中 $\frac{\theta}{|\mathbf{g}|}$ 可以理解为梯度 $g$ 的单位方向向量。 $$\mathbf{g} \leftarrow \min\left(1, \frac{\theta}{|\mathbf{g}|}\right) \mathbf{g}$$ 查看笔记 1.</description>
     </item>
   </channel>
