@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Graphviz on Chang Luo</title>
-    <link>https://luochang212.github.io/tags/graphviz/</link>
+    <link>http://localhost:1313/tags/graphviz/</link>
     <description>Recent content in Graphviz on Chang Luo</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 13 Apr 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://luochang212.github.io/tags/graphviz/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/graphviz/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>LightGBM 工程实践</title>
-      <link>https://luochang212.github.io/posts/lightgbm_practice/</link>
+      <link>http://localhost:1313/posts/lightgbm_practice/</link>
       <pubDate>Sat, 13 Apr 2024 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/posts/lightgbm_practice/</guid>
+      <guid>http://localhost:1313/posts/lightgbm_practice/</guid>
       <description>LightGBM 是一种梯度提升树算法，可用于排序、分类和回归任务。本文由一系列 Jupyter Notebook 串成，介绍如何使用 LightGBM 训练二分类模型。本项目使用的数据集是 adult (・ω&amp;lt; )★&#xA;GitHub 项目地址：lightgbm-binary&#xA;🚀 本文亮点 ✅ 使用 Optuna 做超参数寻优 ✅ 使用 Treelite 做推理加速 ✅ 使用 Graphviz 做决策树模型可视化 ✅ 使用 scale_pos_weight 参数，解决样本不均衡问题 ✅ 对标签概率生成标签的阈值寻优 (y_pred -&amp;gt; y)，详见 util.gen_threshold ✅ 编写自适应学习率衰减函数提高 AUC，详见 util.AdaptiveLearningRate ✅ 编写一站式评估函数，可一次性输出多种指标，包括 accuracy, precision, recall, f1_score, auc, cross-entropy loss, confusion matrix，详见 util.eval_binary ✨ 注意：以下代码运行时依赖 util.py 文件&#xA;一、数据可视化 导入数据 统计描述 describe() 方法 info() 方法 统计各字段枚举值数量 查看字段下所有枚举值 查看空值个数 可视化 标号的值的比例 小提琴图 (Violin Plot) 查看示例 二、预处理与特征选择 预处理 标签编码 更好的编码方式？ 初次训练 使用 lgb.</description>
     </item>
   </channel>

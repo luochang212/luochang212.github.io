@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Demoes on Chang Luo</title>
-    <link>https://luochang212.github.io/demo/</link>
+    <link>http://localhost:1313/demo/</link>
     <description>Recent content in Demoes on Chang Luo</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="https://luochang212.github.io/demo/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/demo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
-      <link>https://luochang212.github.io/demo/sidenav/</link>
+      <link>http://localhost:1313/demo/sidenav/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/demo/sidenav/</guid>
+      <guid>http://localhost:1313/demo/sidenav/</guid>
       <description>&lt;!DOCTYPE HTML&gt; Animated Side Navigation Example Animated Side Navigation Example Click on the element below to open the side navigation menu.&#xA;&amp;#9776; open Resources Audio Player Video player Piano 更多视频 1 2 3 </description>
     </item>
   </channel>

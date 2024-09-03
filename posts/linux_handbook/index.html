@@ -4,10 +4,10 @@
     
 
 
-    <head>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     
-    <link rel="canonical" href="https://luochang212.github.io/posts/linux_handbook/">
+    <link rel="canonical" href="http://localhost:1313/posts/linux_handbook/">
     
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,7 +28,7 @@
   <meta name="twitter:description" content="4202 年了，怎么还有人在写这种东西">
       <meta name="twitter:site" content="@MinosPalace">
 
-<meta property="og:url" content="https://luochang212.github.io/posts/linux_handbook/">
+<meta property="og:url" content="http://localhost:1313/posts/linux_handbook/">
   <meta property="og:site_name" content="Chang Luo">
   <meta property="og:title" content="Linux 运维手册">
   <meta property="og:description" content="4202 年了，怎么还有人在写这种东西">
@@ -226,13 +226,13 @@
     <div class="container ">
       <div class="sidebar-about">
         <span class="site__title">
-          <a href="https://luochang212.github.io/">Chang Luo</a>
+          <a href="http://localhost:1313/">Chang Luo</a>
         </span>
         
         
         
         <div class="author-image">
-          <a href="#" class="load-iframe" onclick="openNav()"><img src="https://luochang212.github.io//images/profile.webp" id="author-iamge"
+          <a href="#" class="load-iframe" onclick="openNav()"><img src="http://localhost:1313//images/profile.webp" id="author-iamge"
               alt="Author Image" class="img--circle img--headshot element--center"></a>
         </div>
         
@@ -598,6 +598,10 @@
 <td>列出当前文件夹下的文件</td>
 </tr>
 <tr>
+<td>ls -alh</td>
+<td>列出包括隐藏文件在内的所有文件，显示详细信息，并以人类可读的方式显示占用的磁盘空间大小</td>
+</tr>
+<tr>
 <td>touch [FILE]</td>
 <td>创建文件</td>
 </tr>
@@ -674,7 +678,15 @@
 <tbody>
 <tr>
 <td>lsof -i</td>
-<td>显示所有与网络连接有关的进程及其打开的端口信息</td>
+<td>列出所有与网络连接有关的进程及其打开的端口信息</td>
+</tr>
+<tr>
+<td>lsof -i :[PORT]</td>
+<td>列出特定端口的进程信息</td>
+</tr>
+<tr>
+<td>lsof | grep deleted</td>
+<td>列出占用未被正确删除的文件的句柄的进程</td>
 </tr>
 <tr>
 <td>ifconfig</td>
@@ -810,6 +822,10 @@
 <tr>
 <td>du -h / | sort -rh</td>
 <td>根据文件磁盘占用倒排</td>
+</tr>
+<tr>
+<td>du -h &ndash;max-depth=1</td>
+<td>查看当前目录占用的磁盘空间大小</td>
 </tr>
 <tr>
 <td>history</td>
@@ -996,6 +1012,21 @@
 <tr>
 <td>:help</td>
 <td>打开帮助文档</td>
+</tr>
+</tbody>
+</table>
+<h4 id="7gpu-命令">7）GPU 命令</h4>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nvidia-smi</td>
+<td>显示 GPU 摘要信息</td>
 </tr>
 </tbody>
 </table>

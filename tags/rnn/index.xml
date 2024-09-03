@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>RNN on Chang Luo</title>
-    <link>https://luochang212.github.io/tags/rnn/</link>
+    <link>http://localhost:1313/tags/rnn/</link>
     <description>Recent content in RNN on Chang Luo</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 12 May 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://luochang212.github.io/tags/rnn/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/rnn/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>LSTM 家庭用电预测</title>
-      <link>https://luochang212.github.io/posts/lstm_power_consumption/</link>
+      <link>http://localhost:1313/posts/lstm_power_consumption/</link>
       <pubDate>Sun, 12 May 2024 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/posts/lstm_power_consumption/</guid>
+      <guid>http://localhost:1313/posts/lstm_power_consumption/</guid>
       <description> 长短期记忆网络（Long Short-Term Memory，LSTM）是一种 RNN 模型，常用于序列数据建模。尤其适合需要挖掘序列中长期依赖关系的问题。&#xA;GitHub 项目地址：luochang212/lstm-model&#xA;一、keras 模型训练 数据导入 数据预处理 趋势可视化 分割训练集和测试集 定义 &amp;amp; 训练网络 预测 预测整个序列 查看示例 二、keras 模型推理 数据预处理 用训练好的 keras 模型做预测 预测下一个值 预测下一个序列 查看示例 三、PyTorch 模型训练 施工中&#xA;参考资料：&#xA;Household_Power_consumption (dataset)&#xA;Ocean Wave Prediction with LSTM&#xA;Time-series data analysis using LSTM (Tutorial)&#xA;PyGWalker&#xA;luochang212/rnn-note&#xA;× </description>
     </item>
   </channel>

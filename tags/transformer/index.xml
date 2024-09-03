@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Transformer on Chang Luo</title>
-    <link>https://luochang212.github.io/tags/transformer/</link>
+    <link>http://localhost:1313/tags/transformer/</link>
     <description>Recent content in Transformer on Chang Luo</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 06 Jul 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://luochang212.github.io/tags/transformer/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/transformer/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>文本情感分析</title>
-      <link>https://luochang212.github.io/posts/sentiment_analysis/</link>
+      <link>http://localhost:1313/posts/sentiment_analysis/</link>
       <pubDate>Sat, 06 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/posts/sentiment_analysis/</guid>
+      <guid>http://localhost:1313/posts/sentiment_analysis/</guid>
       <description>用 Bert + Transformer encoder + 全连接层 在 IMDB 电影评论数据集上做文本情感分析。&#xA;GitHub 项目地址：sentiment-analysis IMDB 数据集：imdb-dataset ✨ 本文在做什么：&#xA;建立 词向量 ⇋ CSV 文件 双向 Pipeline 用两种方法对 IMDB 电影评论做情感分析： Bert 预训练词向量 + MLP Bert + Transformer Encoder + 全连接层 前两章是模版代码，像是没营养但必须要搭的砖，您完全可以跳过，从第三章开始看起。&#xA;一、读写词向量 本节的主要目标是完成 词向量 -&amp;gt; CSV 文件 和 CSV 文件 -&amp;gt; 词向量 的 Pipeline。&#xA;对语料做预处理 获取词向量和句子向量 将词向量存入 csv 从 csv 中读取词向量 将读写词向量功能整合成函数 查看示例 二、获取 IMDB 数据集的 Embedding 将 IMDB 数据集中的电影评论转换成句子向量，然后存在 CSV 文件中。&#xA;文本预处理 计算句子向量 查看示例 三、用 MLP 做文本情感分析 用 Bert + MLP 做 IMDB 电影评论文本情感分析。</description>
     </item>
     <item>
       <title>Attention Is All You Need 论文精读</title>
-      <link>https://luochang212.github.io/posts/transformer_arxiv/</link>
+      <link>http://localhost:1313/posts/transformer_arxiv/</link>
       <pubDate>Sun, 16 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/posts/transformer_arxiv/</guid>
+      <guid>http://localhost:1313/posts/transformer_arxiv/</guid>
       <description>Transformer 的编码器变成了 BERT，解码器变成了 GPT。BERT 推动过去几年搜广推算法增长，而 GPT 促成了今天 GenAI 浪潮的爆发。这篇发表于 2017 年的论文，对今天产生了难以估量的影响。&#xA;原文：Attention Is All You Need&#xA;论文翻译 摘要 主流 seq2seq 模型是基于编解码器架构实现的复杂 RNN 或 CNN 网络，其中表现最好的模型还会使用注意力机制来连接编码器和解码器。我们提出一种全新的简单网络架构：Transformer。它完全基于注意力机制，不使用 RNN 和 CNN。在两个机器翻译任务上的实验表明，它拥有更好的并行度，并且训练时间大大减少。在 WMT 2014 英德翻译任务上，我们的模型取得了 28.4 的 BLEU 分数，比现有最好模型提升 2 BLEU。在 WMT 2014 英法翻译任务上，我们的模型在 8 台 GPU 上训练 3.5 天后，在单一模型评分指标下获得 41.8 的最高分。相比之前文献的最佳模型，Transformer 极大降低了训练成本。我们还通过英语成分句法分析任务展示了 Transformer 的泛化能力，无论数据集大小，Transformer 都能很好地泛化到其他任务上。&#xA;1. 介绍 循环神经网络、长短记忆网络和门控循环网络被证明是序列模型和处理语言建模和机器翻译这类转换问题的最先进方法。在此之后，人们又花费大量努力挖掘循环神经网络语言模型和编解码器架构的潜力。&#xA;循环神经网络对输入输出词元按位置进行计算，将词元的位置与时间步进行对齐，生成一系列隐状态 $h_t$。该隐状态是前一个隐状态 $h_{t-1}$ 和时间步 $t$ 时刻输入 $X_t$ 的函数。在训练样本时，这种内在的序列关系天然阻碍并行。对长序列文本，因为内存限制了批量样本的处理，导致这种阻碍更加明显。最近的研究利用因子分解和条件计算两种方法显著提升了计算效率，尤其后者还提高了模型的性能。但是序列计算这个最根本的限制依然存在。&#xA;注意力机制在多种序列建模和转换建模任务中占有重要地位，它能对输入输出序列中的依赖关系进行位置无关的建模。除了少数几个例子外，注意力机制通常和循环神经网络一起使用。&#xA;我们提出了 Transformer，一种不使用循环神经网络、纯基于注意力来捕获输入输出全局依赖关系的模型。Transformer 显著提高了并行度，并且在 8 台 P100 GPU 上训练 12 小时后，翻译质量达到了前所未有的高度。</description>
     </item>
   </channel>
