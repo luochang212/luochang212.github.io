@@ -13,14 +13,14 @@
       <link>https://luochang212.github.io/posts/frequent_pattern_mining/</link>
       <pubDate>Thu, 05 Sep 2024 00:00:00 +0000</pubDate>
       <guid>https://luochang212.github.io/posts/frequent_pattern_mining/</guid>
-      <description> 挖掘 频繁项集 和 频繁序列 是频繁模式挖掘的两个经典任务。它俩的区别是：前者是顺序无关的，而后者关注顺序。对于这两种任务，Spark 已经有非常成熟的解决方案了，在主流公司的数据量级下是够用的。&#xA;GitHub 项目地址：frequent-pattern-mining&#xA;频繁项集 经常被念叨的一个用途，是挖掘经常被一起购买的商品（比如奶粉和尿布）。如果知道哪些商品经常被一起购买，就可以将这些商品放在一起打包出售。或者放在超市相隔较远的两个地方，引导用户多逛。&#xA;频繁序列 也很有用。用户的连续行为可以看作一个序列。通过分析用户的频繁序列，产品经理可以发现用户习惯，进而优化功能排布或者页面顺序，达到提升链路转化效率的效果。&#xA;一、频繁项集算法：FPGrowth 数据预处理 频繁项挖掘 频繁项集 关联规则 查看示例 二、频繁序列算法：PrefixSpan 一个简单的例子 子序列挖掘 商品编码 生成商品序列 计算频繁子序列 通过子序列回溯原始数据 查看示例 参考：&#xA;Frequent Pattern Mining Market Basket Analysis with Apriori Algorithm × </description>
+      <description> 挖掘 频繁项集 和 频繁序列 是频繁模式挖掘的两个经典任务。它俩的区别是：前者是顺序无关的，而后者关注顺序。对于这两种任务，Spark 已经有非常成熟的解决方案了，在主流公司的数据量级下是够用的。&#xA;GitHub 项目地址：frequent-pattern-mining&#xA;频繁项集 经常被念叨的一个用途，是挖掘经常被一起购买的商品（比如奶粉和尿布）。如果知道哪些商品经常被一起购买，就可以将这些商品放在一起打包出售。或者放在超市相隔较远的两个地方，引导用户多逛。&#xA;频繁序列 也很有用。用户的连续行为可以看作一个序列。通过分析用户的频繁序列，产品经理可以发现用户习惯，进而优化功能排布或者页面顺序，达到提升链路转化效率的效果。&#xA;✨ 注意：运行以下代码依赖 utils.py 文件。&#xA;一、频繁项集算法：FPGrowth 数据预处理 频繁项挖掘 频繁项集 关联规则 查看示例 二、频繁序列算法：PrefixSpan 一个简单的例子 子序列挖掘 商品编码 生成商品序列 计算频繁子序列 通过子序列回溯原始数据 查看示例 参考：&#xA;Frequent Pattern Mining Market Basket Analysis with Apriori Algorithm × </description>
     </item>
     <item>
       <title>SynchroTrap 算法实现</title>
       <link>https://luochang212.github.io/posts/synchrotrap/</link>
       <pubDate>Sat, 27 Jul 2024 00:00:00 +0000</pubDate>
       <guid>https://luochang212.github.io/posts/synchrotrap/</guid>
-      <description>SynchroTrap 是基于 Jaccard 相似度和最大连通子图的异常检测算法，出自 Facebook 的论文 Uncovering Large Groups of Active Malicious Accounts in Online Social Networks.&#xA;GitHub 项目地址：SynchroTrap&#xA;✨ 本文做了什么：&#xA;用 mimesis 生成源数据，并基于源数据构造正态分布的样本 通过构造一个 $\lambda$ 可调的泊松过程，生成用户到访时间戳 提供一个由 7 个变量控制的异常数据生成函数，见 gen_attack_df 用 Jaccard 相似度构图，再用 NetworkX 对图做可视化 用 Spark 的 graphframes 计算最大连通子图 复现了论文 2.2 节的可视化效果，见 评估与可视化 介绍如何使用 Docker 构建 Spark 开发环境 注意：运行以下代码依赖 utils.py 文件和 gen_data 库。&#xA;一、样本生成 脱离互联网企业，我们很难拿到可供挖掘的异常数据样本。一种方法是自己生成。自己生成样本的好处是能拿到真正的 ground truth，而且可以精细地控制异常的规模和程度。&#xA;生成源数据 生成大盘数据 生成正态样本分布 生成 uid 并计算访问次数 时间与时间戳 用户日志表 生成异常数据 选择攻击开始时间 获取 ip 池 发起攻击 整合两份数据 Note: 与异常捕获的难度有关的变量：</description>
+      <description>SynchroTrap 是基于 Jaccard 相似度和最大连通子图的异常检测算法，出自 Facebook 的论文 Uncovering Large Groups of Active Malicious Accounts in Online Social Networks.&#xA;GitHub 项目地址：SynchroTrap&#xA;本文做了什么：&#xA;用 mimesis 生成源数据，并基于源数据构造正态分布的样本 通过构造一个 $\lambda$ 可调的泊松过程，生成用户到访时间戳 提供一个由 7 个变量控制的异常数据生成函数，见 gen_attack_df 用 Jaccard 相似度构图，再用 NetworkX 对图做可视化 用 Spark 的 graphframes 计算最大连通子图 复现了论文 2.2 节的可视化效果，见 评估与可视化 介绍如何使用 Docker 构建 Spark 开发环境 ✨ 注意：运行以下代码依赖 utils.py 文件和 gen_data 库。&#xA;一、样本生成 脱离互联网企业，我们很难拿到可供挖掘的异常数据样本。一种方法是自己生成。自己生成样本的好处是能拿到真正的 ground truth，而且可以精细地控制异常的规模和程度。&#xA;生成源数据 生成大盘数据 生成正态样本分布 生成 uid 并计算访问次数 时间与时间戳 用户日志表 生成异常数据 选择攻击开始时间 获取 ip 池 发起攻击 整合两份数据 Note: 与异常捕获的难度有关的变量：</description>
     </item>
     <item>
       <title>图算法笔记</title>

@@ -13,7 +13,7 @@
       <link>https://luochang212.github.io/posts/graph_embedding/</link>
       <pubDate>Sat, 10 Aug 2024 00:00:00 +0000</pubDate>
       <guid>https://luochang212.github.io/posts/graph_embedding/</guid>
-      <description>GNN 处理图数据的方式还是很符合直觉的，基本沿袭了 CNN 的思路：每个神经元只看局部信息，通过层层汇聚掌握全貌。&#xA;GitHub 项目地址：graph-embedding&#xA;✨ 本文做了什么：&#xA;对 GraphSAGE 的简单实现做逐行注释 在 Docker 环境运行 GraphSAGE 的原版示例 用 PyG 实现了 GCN 和 GAT 为运行 PyG 写了一些 pipeline 代码 注意：运行以下代码依赖 util.py 文件。&#xA;一、GraphSAGE 的简单实现 主流图算法大致分两种：&#xA;图嵌入算法 (GE): DeepWalk, Node2Vec 等 图神经网络算法 (GNN): GraphSAGE, GCN, GAT 等 1.1 绪论：图神经网络 图神经网络算法做的事，相当于把图这种复杂的数据结构，转换成低维向量，而低维向量往往是很好用的。&#xA;拿到图嵌入可以做很多事情，比如：&#xA;节点分类 链接预测 社区发现 相似度量 总之，图嵌入是一种非常有用的特征。在实践中，甚至可以将图嵌入和其他特征 concat 起来，训练更复杂的模型。&#xA;1.1.1 GNN 和 CNN GNN 和 CNN 的思路还挺像的，可以看作 CNN 在图数据上的推广。&#xA;CNN 有平移不变性和局部性。其中 局部性 指：每个神经元每次只看一小块像素，随着神经元层数的堆叠，层级越高的神经元，“看到”的像素量越多（如下图）。</description>
+      <description>GNN 处理图数据的方式还是很符合直觉的，基本沿袭了 CNN 的思路：每个神经元只看局部信息，通过层层汇聚掌握全貌。&#xA;GitHub 项目地址：graph-embedding&#xA;本文做了什么：&#xA;对 GraphSAGE 的简单实现做逐行注释 在 Docker 环境运行 GraphSAGE 的原版示例 用 PyG 实现了 GCN 和 GAT 为运行 PyG 写了一些 pipeline 代码 ✨ 注意：运行以下代码依赖 util.py 文件。&#xA;一、GraphSAGE 的简单实现 主流图算法大致分两种：&#xA;图嵌入算法 (GE): DeepWalk, Node2Vec 等 图神经网络算法 (GNN): GraphSAGE, GCN, GAT 等 1.1 绪论：图神经网络 图神经网络算法做的事，相当于把图这种复杂的数据结构，转换成低维向量，而低维向量往往是很好用的。&#xA;拿到图嵌入可以做很多事情，比如：&#xA;节点分类 链接预测 社区发现 相似度量 总之，图嵌入是一种非常有用的特征。在实践中，甚至可以将图嵌入和其他特征 concat 起来，训练更复杂的模型。&#xA;1.1.1 GNN 和 CNN GNN 和 CNN 的思路还挺像的，可以看作 CNN 在图数据上的推广。&#xA;CNN 有平移不变性和局部性。其中 局部性 指：每个神经元每次只看一小块像素，随着神经元层数的堆叠，层级越高的神经元，“看到”的像素量越多（如下图）。</description>
     </item>
     <item>
       <title>像搭积木一样搭神经网络</title>
@@ -23,18 +23,18 @@
       <description>搭积木的时候，需要将不同类型的积木搭在一起：门框、窗子、走廊、屋顶。对每一种类型的积木，又有多种变体可供选择。比如，屋顶可以用文艺复兴风格，也可以用中式庭园风格。神经网络也是，学神经网络，本质上就是认识各种各样“积木”的过程。&#xA;GitHub 项目地址：dl-tricks/note.ipynb&#xA;一、必要组件 1.1 从 MLP 说起 我们从最简单的深度神经网络 多层感知机 (MLP) 开始说起。麻雀虽小，五脏俱全。了解数据如何在 MLP 中流动，就能大致勾勒一个神经网络的 必要组件。&#xA;下图是一个 4 层感知机，左边是特征，右边是标签。训练开始时，样本数据先从左到右做 正向传播。待数据流到右侧，用 损失函数 计算损失。此时损失是一个标量，而最后一层的节点权重 $W$ 是一个矩阵，标量对矩阵的偏导是矩阵。优化器 会用大小合适的梯度矩阵，沿负梯度方向逐层反向更新权重 $W$。这样下一 批量 (batch) 数据进入网络时，正好能用上一轮更新后的参数做正向传播。&#xA;1.2 DataLoader 样本是有限的，为了让模型获得最强性能，必须榨干每个样本的价值。&#xA;因此在训练中，一个样本往往要复用多次。DataLoader 就在做这样一件事。它把数据编排成一个个批量，并构建一个迭代器。每次调用它，会返回一个从第一个批量开始遍历的迭代器。这个特性使得复用样本变得更加方便。&#xA;原生的 PyTorch DataLoader 很复杂，让我们来实现一个野生 DataLoader：&#xA;import math import torch class DataLoader: def __init__(self, data: list, batch_size: int): self.i = 0 self.batch_size = batch_size self.batch_num = math.floor(len(data) / batch_size) self._data = self.gen_batch(data) def gen_batch(self, data): lst = [] s = self.</description>
     </item>
     <item>
-      <title>文本情感分析</title>
+      <title>文本情感分析：使用 Bert 和 Transformer</title>
       <link>https://luochang212.github.io/posts/sentiment_analysis/</link>
       <pubDate>Sat, 06 Jul 2024 00:00:00 +0000</pubDate>
       <guid>https://luochang212.github.io/posts/sentiment_analysis/</guid>
-      <description>用 Bert + Transformer encoder + 全连接层 在 IMDB 电影评论数据集上做文本情感分析。&#xA;GitHub 项目地址：sentiment-analysis IMDB 数据集：imdb-dataset ✨ 本文在做什么：&#xA;建立 词向量 ⇋ CSV 文件 双向 Pipeline 用两种方法对 IMDB 电影评论做情感分析： Bert 预训练词向量 + MLP Bert + Transformer Encoder + 全连接层 前两章是模版代码，像是没营养但必须要搭的砖，您完全可以跳过，从第三章开始看起。&#xA;一、读写词向量 本节的主要目标是完成 词向量 -&amp;gt; CSV 文件 和 CSV 文件 -&amp;gt; 词向量 的 Pipeline。&#xA;对语料做预处理 获取词向量和句子向量 将词向量存入 csv 从 csv 中读取词向量 将读写词向量功能整合成函数 查看示例 二、获取 IMDB 数据集的 Embedding 将 IMDB 数据集中的电影评论转换成句子向量，然后存在 CSV 文件中。&#xA;文本预处理 计算句子向量 查看示例 三、用 MLP 做文本情感分析 用 Bert + MLP 做 IMDB 电影评论文本情感分析。</description>
+      <description>用 Bert + Transformer encoder + 全连接层 在 IMDB 电影评论数据集上做文本情感分析。&#xA;GitHub 项目地址：sentiment-analysis IMDB 数据集：imdb-dataset 本文干了啥：&#xA;建立 词向量 ⇋ CSV 文件 双向 Pipeline 用两种方法对 IMDB 电影评论做情感分析： Bert 预训练词向量 + MLP Bert + Transformer Encoder + 全连接层 前两章是模版代码，像是没营养但必须要搭的砖，您完全可以跳过，从第三章开始看起。&#xA;一、读写词向量 本节的主要目标是完成 词向量 -&amp;gt; CSV 文件 和 CSV 文件 -&amp;gt; 词向量 的 Pipeline。&#xA;对语料做预处理 获取词向量和句子向量 将词向量存入 csv 从 csv 中读取词向量 将读写词向量功能整合成函数 查看示例 二、获取 IMDB 数据集的 Embedding 将 IMDB 数据集中的电影评论转换成句子向量，然后存在 CSV 文件中。&#xA;文本预处理 计算句子向量 查看示例 三、用 MLP 做文本情感分析 用 Bert + MLP 做 IMDB 电影评论文本情感分析。</description>
     </item>
     <item>
       <title>中文词向量生成</title>
       <link>https://luochang212.github.io/posts/chinese_embedding/</link>
       <pubDate>Sat, 29 Jun 2024 00:00:00 +0000</pubDate>
       <guid>https://luochang212.github.io/posts/chinese_embedding/</guid>
-      <description>本文做了一件有意思的事，用 Bert 生成《红楼梦》人名的词嵌入，再用 t-SNE 将高维的词向量降为二维后做可视化。结果发现，主角团三人的名字在向量空间中是紧紧挨在一起的。&#xA;GitHub 项目地址：luochang212/chinese-embedding&#xA;✨ 本文探索的内容包括：&#xA;如何生成词向量 如何生成句子向量 如何找到语义相近的词 如何对 embedding 做降维及可视化 一、用 Word2Vec 生成词向量 用 Word2Vec 生成中英文词向量。&#xA;英文词向量 中文词向量 查看笔记 二、用 Bert 生成句子向量 用 Bert 生成中英文句子向量。&#xA;英文句子向量 中文句子向量 查看笔记 三、寻找最近邻 embedding 我的构想是：拿到红楼梦里所有词汇的 embedding，然后看我们感兴趣的词（比如林黛玉）离哪个词最近。&#xA;分词 批量计算 embedding 计算每个词的 embedding 计算我们关心词汇的近邻 embedding 整合成一个类 查看笔记 四、Embedding 可视化 用 t-SNE 和 PCA 对 embedding 降维，做 2D &amp;amp; 3D 可视化&#xA;红楼梦中的人物关系 中英美城市群 t-SNE PCA 查看笔记 五、头脑风暴 Embedding 的稳定性 Embedding 差值的意义 输出 embedding 的数量 查看笔记 附录：和 Qwen-2.</description>
+      <description>本文做了一件有意思的事，用 Bert 生成《红楼梦》人名的词嵌入，再用 t-SNE 将高维的词向量降为二维后做可视化。结果发现，主角团三人的名字在向量空间中是紧紧挨在一起的。&#xA;GitHub 项目地址：luochang212/chinese-embedding&#xA;本文探索的内容包括：&#xA;如何生成词向量 如何生成句子向量 如何找到语义相近的词 如何对 embedding 做降维及可视化 一、用 Word2Vec 生成词向量 用 Word2Vec 生成中英文词向量。&#xA;英文词向量 中文词向量 查看笔记 二、用 Bert 生成句子向量 用 Bert 生成中英文句子向量。&#xA;英文句子向量 中文句子向量 查看笔记 三、寻找最近邻 embedding 我的构想是：拿到红楼梦里所有词汇的 embedding，然后看我们感兴趣的词（比如林黛玉）离哪个词最近。&#xA;分词 批量计算 embedding 计算每个词的 embedding 计算我们关心词汇的近邻 embedding 整合成一个类 查看笔记 四、Embedding 可视化 用 t-SNE 和 PCA 对 embedding 降维，做 2D &amp;amp; 3D 可视化&#xA;红楼梦中的人物关系 中英美城市群 t-SNE PCA 查看笔记 五、头脑风暴 Embedding 的稳定性 Embedding 差值的意义 输出 embedding 的数量 查看笔记 附录：和 Qwen-2.</description>
     </item>
     <item>
       <title>Attention Is All You Need 论文精读</title>

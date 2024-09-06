@@ -9,11 +9,11 @@
     <lastBuildDate>Sat, 06 Jul 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://luochang212.github.io/tags/transformer/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>文本情感分析</title>
+      <title>文本情感分析：使用 Bert 和 Transformer</title>
       <link>https://luochang212.github.io/posts/sentiment_analysis/</link>
       <pubDate>Sat, 06 Jul 2024 00:00:00 +0000</pubDate>
       <guid>https://luochang212.github.io/posts/sentiment_analysis/</guid>
-      <description>用 Bert + Transformer encoder + 全连接层 在 IMDB 电影评论数据集上做文本情感分析。&#xA;GitHub 项目地址：sentiment-analysis IMDB 数据集：imdb-dataset ✨ 本文在做什么：&#xA;建立 词向量 ⇋ CSV 文件 双向 Pipeline 用两种方法对 IMDB 电影评论做情感分析： Bert 预训练词向量 + MLP Bert + Transformer Encoder + 全连接层 前两章是模版代码，像是没营养但必须要搭的砖，您完全可以跳过，从第三章开始看起。&#xA;一、读写词向量 本节的主要目标是完成 词向量 -&amp;gt; CSV 文件 和 CSV 文件 -&amp;gt; 词向量 的 Pipeline。&#xA;对语料做预处理 获取词向量和句子向量 将词向量存入 csv 从 csv 中读取词向量 将读写词向量功能整合成函数 查看示例 二、获取 IMDB 数据集的 Embedding 将 IMDB 数据集中的电影评论转换成句子向量，然后存在 CSV 文件中。&#xA;文本预处理 计算句子向量 查看示例 三、用 MLP 做文本情感分析 用 Bert + MLP 做 IMDB 电影评论文本情感分析。</description>
+      <description>用 Bert + Transformer encoder + 全连接层 在 IMDB 电影评论数据集上做文本情感分析。&#xA;GitHub 项目地址：sentiment-analysis IMDB 数据集：imdb-dataset 本文干了啥：&#xA;建立 词向量 ⇋ CSV 文件 双向 Pipeline 用两种方法对 IMDB 电影评论做情感分析： Bert 预训练词向量 + MLP Bert + Transformer Encoder + 全连接层 前两章是模版代码，像是没营养但必须要搭的砖，您完全可以跳过，从第三章开始看起。&#xA;一、读写词向量 本节的主要目标是完成 词向量 -&amp;gt; CSV 文件 和 CSV 文件 -&amp;gt; 词向量 的 Pipeline。&#xA;对语料做预处理 获取词向量和句子向量 将词向量存入 csv 从 csv 中读取词向量 将读写词向量功能整合成函数 查看示例 二、获取 IMDB 数据集的 Embedding 将 IMDB 数据集中的电影评论转换成句子向量，然后存在 CSV 文件中。&#xA;文本预处理 计算句子向量 查看示例 三、用 MLP 做文本情感分析 用 Bert + MLP 做 IMDB 电影评论文本情感分析。</description>
     </item>
     <item>
       <title>Attention Is All You Need 论文精读</title>

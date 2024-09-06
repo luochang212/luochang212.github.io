@@ -588,14 +588,14 @@
 <p>GNN 处理图数据的方式还是很符合直觉的，基本沿袭了 CNN 的思路：每个神经元只看局部信息，通过层层汇聚掌握全貌。</p>
 </blockquote>
 <p>GitHub 项目地址：<a href="https://github.com/luochang212/graph-embedding" target="_blank">graph-embedding</a></p>
-<p>✨ 本文做了什么：</p>
+<p>本文做了什么：</p>
 <ul>
 <li>对 GraphSAGE 的简单实现做逐行注释</li>
 <li>在 Docker 环境运行 GraphSAGE 的原版示例</li>
 <li>用 <a href="https://pytorch-geometric.readthedocs.io/en/latest/" target="_blank">PyG</a> 实现了 GCN 和 GAT</li>
 <li>为运行 PyG 写了一些 pipeline 代码</li>
 </ul>
-<p>注意：运行以下代码依赖 <a href="https://github.com/luochang212/graph-embedding/blob/main/util.py" target="_blank">util.py</a> 文件。</p>
+<p>✨ 注意：运行以下代码依赖 <a href="https://github.com/luochang212/graph-embedding/blob/main/util.py" target="_blank">util.py</a> 文件。</p>
 <h2 id="一graphsage-的简单实现">一、GraphSAGE 的简单实现</h2>
 <p>主流图算法大致分两种：</p>
 <ul>
