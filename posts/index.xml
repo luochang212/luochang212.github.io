@@ -13,7 +13,7 @@
       <link>https://luochang212.github.io/posts/frequent_pattern_mining/</link>
       <pubDate>Thu, 05 Sep 2024 00:00:00 +0000</pubDate>
       <guid>https://luochang212.github.io/posts/frequent_pattern_mining/</guid>
-      <description> 挖掘 频繁项集 和 频繁序列 是频繁模式挖掘的两个经典任务。它俩的区别是：前者是顺序无关的，而后者关注顺序。对于这两种任务，Spark 已经有非常成熟的解决方案了。在当前主流公司的数据量级下是够用的。&#xA;GitHub 项目地址：frequent-pattern-mining&#xA;频繁项集 经常被念叨的一个用途是挖掘那些经常一起购买的商品。比如，奶粉和尿布、鼠标和键盘就经常一起被购买。如果知道哪些商品经常一起被购买，就可以将这些商品放在一起，打包出售。或者放在超市两端，诱导用户逛得更远。&#xA;频繁序列 也很有用。产品经理可以通过分析高频行为序列，发现用户习惯。进而调整页面顺序或功能排布，来优化整个链路的转化效果。&#xA;一、频繁项集算法：FPGrowth 数据预处理 频繁项挖掘 频繁项集 关联规则 查看示例 二、频繁序列算法：PrefixSpan 一个简单的例子 子序列挖掘 商品编码 生成商品序列 计算频繁子序列 通过子序列回溯原始数据 查看示例 参考：&#xA;Frequent Pattern Mining Market Basket Analysis with Apriori Algorithm × </description>
+      <description> 挖掘 频繁项集 和 频繁序列 是频繁模式挖掘的两个经典任务。它俩的区别是：前者是顺序无关的，而后者关注顺序。对于这两种任务，Spark 已经有非常成熟的解决方案了，在主流公司的数据量级下是够用的。&#xA;GitHub 项目地址：frequent-pattern-mining&#xA;频繁项集 经常被念叨的一个用途，是挖掘经常被一起购买的商品（比如奶粉和尿布）。如果知道哪些商品经常被一起购买，就可以将这些商品放在一起打包出售。或者放在超市相隔较远的两个地方，引导用户多逛。&#xA;频繁序列 也很有用。用户的连续行为可以看作一个序列。通过分析用户的频繁序列，产品经理可以发现用户习惯，进而优化功能排布或者页面顺序，达到提升链路转化效率的效果。&#xA;一、频繁项集算法：FPGrowth 数据预处理 频繁项挖掘 频繁项集 关联规则 查看示例 二、频繁序列算法：PrefixSpan 一个简单的例子 子序列挖掘 商品编码 生成商品序列 计算频繁子序列 通过子序列回溯原始数据 查看示例 参考：&#xA;Frequent Pattern Mining Market Basket Analysis with Apriori Algorithm × </description>
     </item>
     <item>
       <title>初见向量引擎：RediSearch 和 Milvus</title>
