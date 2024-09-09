@@ -25,13 +25,13 @@
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="文本情感分析">
-  <meta name="twitter:description" content="用 Bert &#43; Transformer 做文本情感分析">
+  <meta name="twitter:description" content="用 Bert &#43; Transformer Encoder &#43; MLP 做文本情感分析">
       <meta name="twitter:site" content="@MinosPalace">
 
 <meta property="og:url" content="https://luochang212.github.io/posts/sentiment_analysis/">
   <meta property="og:site_name" content="Chang Luo">
   <meta property="og:title" content="文本情感分析">
-  <meta property="og:description" content="用 Bert &#43; Transformer 做文本情感分析">
+  <meta property="og:description" content="用 Bert &#43; Transformer Encoder &#43; MLP 做文本情感分析">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -589,13 +589,13 @@
   
   <div class="post">
     <blockquote>
-<p>用 Bert + Transformer encoder + 全连接层 在 IMDB 电影评论数据集上做文本情感分析。</p>
+<p>用 Bert + Transformer Encoder + MLP 做文本情感分析。</p>
 </blockquote>
 <ul>
 <li>GitHub 项目地址：<a href="https://github.com/luochang212/sentiment-analysis" target="_blank">sentiment-analysis</a></li>
 <li>IMDB 数据集：<a href="https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews/data" target="_blank">imdb-dataset</a></li>
 </ul>
-<p>本文干了啥：</p>
+<p>本文做了什么：</p>
 <ol>
 <li>建立 词向量 ⇋ CSV 文件 双向 Pipeline</li>
 <li>用两种方法对 IMDB 电影评论做情感分析：
@@ -605,7 +605,7 @@
 </ul>
 </li>
 </ol>
-<p>前两章是模版代码，像是没营养但必须要搭的砖，您完全可以跳过，从第三章开始看起。</p>
+<p>前两章是 Pipeline 代码，可以跳过，建议从第三章看起。</p>
 <h3 id="一读写词向量">一、读写词向量</h3>
 <p>本节的主要目标是完成 <code>词向量 -&gt; CSV 文件</code> 和 <code>CSV 文件 -&gt; 词向量</code> 的 Pipeline。</p>
 <ol>
@@ -658,7 +658,7 @@
 </center>
 <br>
 <h3 id="五模块调用">五、模块调用</h3>
-<p>将第 4 节代码整合成 transformer_encoder.py 文件，再调用此文件做推理或训练模型。</p>
+<p>将第 4 节代码整合成 <code>transformer_encoder.py</code> 文件，再调用此文件做推理或训练模型。</p>
 <ol>
 <li>推理</li>
 <li>训练</li>
