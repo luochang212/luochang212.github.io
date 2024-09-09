@@ -25,13 +25,13 @@
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="初见向量引擎：RediSearch 和 Milvus">
-  <meta name="twitter:description" content="如果只想建索引，Redis 完全够用了。但是一旦需要计算向量相似度，就可以考虑向量引擎了">
+  <meta name="twitter:description" content="如果只想建索引，Redis 完全够用了。一旦需要计算向量相似度，就可以考虑向量引擎了">
       <meta name="twitter:site" content="@MinosPalace">
 
 <meta property="og:url" content="https://luochang212.github.io/posts/redis_util/">
   <meta property="og:site_name" content="Chang Luo">
   <meta property="og:title" content="初见向量引擎：RediSearch 和 Milvus">
-  <meta property="og:description" content="如果只想建索引，Redis 完全够用了。但是一旦需要计算向量相似度，就可以考虑向量引擎了">
+  <meta property="og:description" content="如果只想建索引，Redis 完全够用了。一旦需要计算向量相似度，就可以考虑向量引擎了">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -585,18 +585,18 @@
   
   <div class="post">
     <blockquote>
-<p>如果你只是想建立索引，通过文本存取对应的文本嵌入，Redis 完全够用了。但是一旦需要计算向量相似度，就可以考虑向量引擎了。</p>
+<p>建索引 Redis 够用了。一旦需要搜索向量，就可以考虑使用向量引擎。</p>
 </blockquote>
 <!-- > - **RediSearch** 是 Redis 的一个模块，支持向量相似度搜索，它的优点与 Redis 生态无缝衔接，可复制 Redis 的生态优势
 > - **Milvus** 是一个开箱即用的开源向量数据库，有预置的语言模型，可以方便地生成嵌入，且支持多种索引类型 -->
 <p>GitHub 项目地址：<a href="https://github.com/luochang212/redis-util" target="_blank">redis-util</a></p>
 <p>本文干了啥：</p>
 <ul>
-<li>使用容器启动 Redis，并将数据卷挂载到本地路径</li>
-<li>通过 Redis 的 Python API 进行基础的 CRUD 操作</li>
+<li>使用容器启动 Redis，并将数据卷挂载到本地</li>
+<li>通过 Redis 的 Python API 做基础的 CRUD 操作</li>
 <li>在不借助任何插件的情况下，使用原生 Redis 存取向量</li>
 <li>使用 RediSearch 存取向量，并获取 TOP N 最近邻向量</li>
-<li>初见向量引擎 Milvus，尝试使用一些基础功能</li>
+<li>尝试使用向量引擎 Milvus 的一些基础功能</li>
 <li>基于 Redis “自制”向量引擎，支持设置索引过期时间，支持生成文本嵌入</li>
 </ul>
 <p>✨ 注意：运行以下代码依赖 <a href="https://github.com/luochang212/redis-util/blob/main/util.py" target="_blank">util.py</a> 文件。</p>

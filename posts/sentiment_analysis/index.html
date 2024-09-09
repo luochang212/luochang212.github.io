@@ -19,18 +19,18 @@
     
     
 
-<title>文本情感分析：使用 Bert 和 Transformer • Chang Luo</title>
+<title>文本情感分析 • Chang Luo</title>
 
 
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="文本情感分析：使用 Bert 和 Transformer">
+  <meta name="twitter:title" content="文本情感分析">
   <meta name="twitter:description" content="用 Bert &#43; Transformer 做文本情感分析">
       <meta name="twitter:site" content="@MinosPalace">
 
 <meta property="og:url" content="https://luochang212.github.io/posts/sentiment_analysis/">
   <meta property="og:site_name" content="Chang Luo">
-  <meta property="og:title" content="文本情感分析：使用 Bert 和 Transformer">
+  <meta property="og:title" content="文本情感分析">
   <meta property="og:description" content="用 Bert &#43; Transformer 做文本情感分析">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
@@ -528,7 +528,7 @@
 
 <article>
   <header>
-    <h1>文本情感分析：使用 Bert 和 Transformer</h1>
+    <h1>文本情感分析</h1>
     
     
 <div class="post__meta">
@@ -645,7 +645,7 @@
 </center>
 <br>
 <h3 id="四用-transformer-做文本情感分析">四、用 Transformer 做文本情感分析</h3>
-<p>用 Bert + Transformer 的编码器部分 + 全连接层 做 IMDB 电影评论文本情感分析。</p>
+<p>用 Bert + Transformer Encoder + MLP 做 IMDB 电影评论文本情感分析。</p>
 <ol>
 <li>数据预处理</li>
 <li>加载数据集</li>
@@ -655,6 +655,17 @@
 <br>
 <center>
 <button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/sentiment-analysis/blob/main/4.sentiment_analysis_with_transformer.ipynb')">查看示例</button>
+</center>
+<br>
+<h3 id="五模块调用">五、模块调用</h3>
+<p>将第 4 节代码整合成 transformer_encoder.py 文件，再调用此文件做推理或训练模型。</p>
+<ol>
+<li>推理</li>
+<li>训练</li>
+</ol>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/sentiment-analysis/blob/main/5.transformer_encoder.ipynb')">查看示例</button>
 </center>
 <br>
 <div id="mini-overlay" onclick="overlay_off()"></div>
