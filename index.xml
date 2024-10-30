@@ -48,7 +48,7 @@
       <link>https://luochang212.github.io/posts/sentiment_analysis/</link>
       <pubDate>Sat, 06 Jul 2024 00:00:00 +0000</pubDate>
       <guid>https://luochang212.github.io/posts/sentiment_analysis/</guid>
-      <description>用 Bert + Transformer Encoder + MLP 做文本情感分析。&#xA;GitHub 项目地址：sentiment-analysis IMDB 数据集：imdb-dataset 本文做了什么：&#xA;建立 词向量 ⇋ CSV 文件 双向 Pipeline 用两种方法对 IMDB 电影评论做情感分析： Bert 预训练词向量 + MLP Bert + Transformer Encoder + 全连接层 前两章是 Pipeline 代码，可以跳过，建议从第三章看起。&#xA;一、读写词向量 本节的主要目标是完成 词向量 -&amp;gt; CSV 文件 和 CSV 文件 -&amp;gt; 词向量 的 Pipeline。&#xA;对语料做预处理 获取词向量和句子向量 将词向量存入 csv 从 csv 中读取词向量 将读写词向量功能整合成函数 查看示例 二、获取 IMDB 数据集的 Embedding 将 IMDB 数据集中的电影评论转换成句子向量，然后存在 CSV 文件中。&#xA;文本预处理 计算句子向量 查看示例 三、用 MLP 做文本情感分析 用 Bert + MLP 做 IMDB 电影评论文本情感分析。</description>
+      <description>用 Bert + Transformer Encoder + MLP 做文本情感分析。&#xA;GitHub 项目地址：sentiment-analysis IMDB 数据集：imdb-dataset 本文要点：&#xA;建立 词向量 ⇋ CSV 文件 双向 Pipeline 用两种方法对 IMDB 电影评论做情感分析： Bert 预训练词向量 + MLP Bert + Transformer Encoder + 全连接层 ✨ PS: 前两章是 Pipeline 代码，建议从第三章看起。&#xA;一、读写词向量 本节的主要目标是完成 词向量 -&amp;gt; CSV 文件 和 CSV 文件 -&amp;gt; 词向量 的 Pipeline。&#xA;对语料做预处理 获取词向量和句子向量 将词向量存入 csv 从 csv 中读取词向量 将读写词向量功能整合成函数 查看示例 二、获取 IMDB 数据集的 Embedding 将 IMDB 数据集中的电影评论转换成句子向量，然后存在 CSV 文件中。</description>
     </item>
     <item>
       <title>中文词向量生成</title>
@@ -90,7 +90,7 @@
       <link>https://luochang212.github.io/posts/jupyter_lab/</link>
       <pubDate>Wed, 15 May 2024 00:00:00 +0000</pubDate>
       <guid>https://luochang212.github.io/posts/jupyter_lab/</guid>
-      <description>JupyterLab 你是真的火了&amp;hellip;&#xA;5 月 14 号 OpenAI 春季发布会 出现了这个画面：&#xA;才知道 JupyterLab 是 OpenAI 的日常开发工具。感谢 OpenAI 亲自带货。&#xA;JupyterLab 拥有丰富的功能，并不只是 Python 解释器这么简单，让我来向你们展示它的强大！&#xA;〇、安装 JupyterLab 执行以下命令安装 JupyterLab：&#xA;mamba install -c conda-forge jupyterlab Note: mamba 是 miniforge 自带的包管理工具。大多数时候，你可以用 mamba 直接替代 conda，比如 mamba info --envs。使用 mamba 通常可以获得更高的下载速度。&#xA;一、制作 PPT 1.1 Notebook 转 PPT 只需两步，就能把 Notebook 转成 PPT：&#xA;设置 Slide Type：为保证页面被正确渲染，你需要设置 Cell 的 Slide Type。对于新版 Jupyter Lab，在右侧边栏上有带俩齿轮的按钮，点进去，然后一路点 [Property Inspector] -&amp;gt; [COMMON TOOLS] -&amp;gt; [Slide Type]，在这里对 Cell 进行设置。</description>
+      <description>JupyterLab 你是真的火了&amp;hellip;&#xA;5 月 14 号 OpenAI 春季发布会 出现了这个画面：&#xA;才知道 JupyterLab 是 OpenAI 的日常开发工具。感谢 OpenAI 亲自带货。&#xA;JupyterLab 拥有丰富的功能，并不只是 Python 解释器这么简单，让我向你们展示它的强大！&#xA;〇、安装 JupyterLab 执行以下命令安装 JupyterLab：&#xA;mamba install -c conda-forge jupyterlab Note: mamba 是 miniforge 自带的包管理工具。大多数时候，你可以用 mamba 直接替代 conda，比如 mamba info --envs。使用 mamba 通常可以获得更高的下载速度。&#xA;一、制作 PPT 1.1 Notebook 转 PPT 只需两步，就能把 Notebook 转成 PPT：&#xA;设置 Slide Type：为保证页面被正确渲染，你需要设置 Cell 的 Slide Type。对于新版 Jupyter Lab，在右侧边栏上有带俩齿轮的按钮，点进去，然后一路点 [Property Inspector] -&amp;gt; [COMMON TOOLS] -&amp;gt; [Slide Type]，在这里对 Cell 进行设置。</description>
     </item>
     <item>
       <title>LSTM 家庭用电预测</title>

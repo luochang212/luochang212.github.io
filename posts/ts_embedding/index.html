@@ -4,10 +4,10 @@
     
 
 
-    <head>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     
-    <link rel="canonical" href="https://luochang212.github.io/posts/synchrotrap/">
+    <link rel="canonical" href="http://localhost:1313/posts/ts_embedding/">
     
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,27 +19,27 @@
     
     
 
-<title>SynchroTrap 算法实现 • Chang Luo</title>
+<title>时间序列表示学习方法：TS2Vec • Chang Luo</title>
 
 
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="SynchroTrap 算法实现">
-  <meta name="twitter:description" content="基于 Jaccard 相似度和最大连通子图的异常挖掘算法">
+  <meta name="twitter:title" content="时间序列表示学习方法：TS2Vec">
+  <meta name="twitter:description" content="基于对比学习的时间序列表示学习方法">
       <meta name="twitter:site" content="@MinosPalace">
 
-<meta property="og:url" content="https://luochang212.github.io/posts/synchrotrap/">
+<meta property="og:url" content="http://localhost:1313/posts/ts_embedding/">
   <meta property="og:site_name" content="Chang Luo">
-  <meta property="og:title" content="SynchroTrap 算法实现">
-  <meta property="og:description" content="基于 Jaccard 相似度和最大连通子图的异常挖掘算法">
+  <meta property="og:title" content="时间序列表示学习方法：TS2Vec">
+  <meta property="og:description" content="基于对比学习的时间序列表示学习方法">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-07-27T00:00:00+00:00">
-    <meta property="article:modified_time" content="2024-07-27T00:00:00+00:00">
-    <meta property="article:tag" content="Jaccard Similarity">
-    <meta property="article:tag" content="Connected Component">
-    <meta property="article:tag" content="Graph">
+    <meta property="article:published_time" content="2024-09-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-09-15T00:00:00+00:00">
+    <meta property="article:tag" content="Time Series">
+    <meta property="article:tag" content="Representation Learning">
+    <meta property="article:tag" content="Contrast Learning">
 
 
     
@@ -227,13 +227,13 @@
     <div class="container ">
       <div class="sidebar-about">
         <span class="site__title">
-          <a href="https://luochang212.github.io/">Chang Luo</a>
+          <a href="http://localhost:1313/">Chang Luo</a>
         </span>
         
         
         
         <div class="author-image">
-          <a href="#" class="load-iframe" onclick="openNav()"><img src="https://luochang212.github.io//images/profile.webp" id="author-iamge"
+          <a href="#" class="load-iframe" onclick="openNav()"><img src="http://localhost:1313//images/profile.webp" id="author-iamge"
               alt="Author Image" class="img--circle img--headshot element--center"></a>
         </div>
         
@@ -527,13 +527,13 @@
 
 <article>
   <header>
-    <h1>SynchroTrap 算法实现</h1>
+    <h1>时间序列表示学习方法：TS2Vec</h1>
     
     
 <div class="post__meta">
     
     
-      <i class="fas fa-calendar-alt"></i> Jul 27, 2024
+      <i class="fas fa-calendar-alt"></i> Sep 15, 2024
     
     
     
@@ -542,7 +542,7 @@
           in
           
           
-              <a class="badge badge-category" href="/categories/algorithms">ALGORITHMS</a>
+              <a class="badge badge-category" href="/categories/deeplearning">DEEPLEARNING</a>
               
           
       
@@ -554,19 +554,19 @@
           <br/>
            <i class="fas fa-tags"></i>
           
-          <a class="badge badge-tag" href="/tags/jaccard-similarity">jaccard similarity</a>
+          <a class="badge badge-tag" href="/tags/time-series">time series</a>
            
       
-          <a class="badge badge-tag" href="/tags/connected-component">connected component</a>
+          <a class="badge badge-tag" href="/tags/representation-learning">representation learning</a>
            
       
-          <a class="badge badge-tag" href="/tags/graph">graph</a>
+          <a class="badge badge-tag" href="/tags/contrast-learning">contrast learning</a>
           
       
     
     
     <br/>
-    <i class="fas fa-clock"></i> 2 min read
+    <i class="fas fa-clock"></i> 1 min read
 </div>
 
 
@@ -585,159 +585,25 @@
   
   <div class="post">
     <blockquote>
-<p>SynchroTrap 是基于 Jaccard 相似度和最大连通子图的异常检测算法，出自 Facebook 的论文 <a href="https://users.cs.duke.edu/~xwy/publications/SynchroTrap-ccs14.pdf" target="_blank">Uncovering Large Groups of Active Malicious Accounts in Online Social Networks</a>.</p>
+<p>TS2Vec 是一种基于对比学习的时间序列表示学习方法。</p>
 </blockquote>
-<p>GitHub 项目地址：<a href="https://github.com/luochang212/SynchroTrap" target="_blank">SynchroTrap</a></p>
-<p>本文做了什么：</p>
+<p>GitHub 项目地址：<a href="https://github.com/luochang212/ts-embedding" target="_blank">ts_embedding</a></p>
+<p>参考：</p>
 <ul>
-<li>用 <code>mimesis</code> 生成源数据，并基于源数据构造正态分布的样本</li>
-<li>通过构造一个 $\lambda$ 可调的泊松过程，生成用户到访时间戳</li>
-<li>提供一个由 7 个变量控制的异常数据生成函数，见 <a href="https://github.com/luochang212/SynchroTrap/blob/main/utils.py#L236" target="_blank">gen_attack_df</a></li>
-<li>用 Jaccard 相似度构图，再用 <code>NetworkX</code> 对图做可视化</li>
-<li>用 Spark 的 <code>graphframes</code> 计算最大连通子图</li>
-<li>复现了论文 2.2 节的可视化效果，见 <a href="/posts/synchrotrap/#%E4%B8%89%E8%AF%84%E4%BC%B0%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96">评估与可视化</a></li>
-<li>介绍如何使用 <code>Docker</code> 构建 Spark 开发环境</li>
+<li>arXiv: <a href="https://arxiv.org/abs/2106.10466" target="_blank">TS2Vec: Towards Universal Representation of Time Series</a></li>
+<li>GitHub: <a href="https://github.com/zhihanyue/ts2vec" target="_blank">zhihanyue/ts2vec</a></li>
 </ul>
-<p>✨ 注意：运行以下代码依赖 <a href="https://github.com/luochang212/SynchroTrap/blob/main/utils.py" target="_blank">utils.py</a> 文件和 <a href="https://github.com/luochang212/SynchroTrap/tree/main/gen_data" target="_blank">gen_data</a> 库。</p>
-<h3 id="一样本生成">一、样本生成</h3>
-<p>脱离互联网企业，我们很难拿到可供挖掘的异常数据样本。一种方法是自己生成。自己生成样本的好处是能拿到真正的 ground truth，而且可以精细地控制异常的规模和程度。</p>
-<ol>
-<li>生成源数据</li>
-<li>生成大盘数据
-<ul>
-<li>生成正态样本分布</li>
-<li>生成 uid 并计算访问次数</li>
-<li>时间与时间戳</li>
-<li>用户日志表</li>
-</ul>
-</li>
-<li>生成异常数据
-<ul>
-<li>选择攻击开始时间</li>
-<li>获取 ip 池</li>
-<li>发起攻击</li>
-</ul>
-</li>
-<li>整合两份数据</li>
-</ol>
-<blockquote>
-<p><strong>Note:</strong> 与异常捕获的难度有关的变量：</p>
-<ul>
-<li>攻击持续的时间 <code>attack_duration</code></li>
-<li>正常 ip 的含量 <code>normal_ip_rate</code></li>
-<li>资源池的大小 <code>ip_num</code></li>
-<li>资源池的隔离 <code>uid_repeat_rate</code></li>
-<li>攻击间隔 <code>max_t - min_t</code></li>
-<li>攻击线程数 <code>epoch</code></li>
-</ul>
-</blockquote>
-<br>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/SynchroTrap/blob/main/1.样本生成.ipynb')">查看笔记</button>
-</center>
-<br>
-<h3 id="二算法实现">二、算法实现</h3>
-<p>SynchroTrap 通过构建 <code>&lt;U, T, C&gt;</code> 三元组来衡量用户与用户间的距离。U 代表用户，T 代表时间，C 代表限制项。</p>
-<ol>
-<li>SynchroTrap 的原理：
-<ol>
-<li>如果两条日志的时间差小于 $T_{\text {sim }}$，且限制项 $C_i$ 与 $C_j$ 相等的比例较高，则认为 $U_i$ 和 $U_j$ 有关联。当使用多个字段作为限制项时，uid 之间的相似度可由 Jaccard similarity 给出</li>
-<li>由于存在资源复用，一个 uid 往往对应多个限制项 <code>C</code>。比如，当多个 uid 使用同一个 IP 池，且 IP 池容量有限，那么 uid 之间的 Jaccard 相似度，会因 IP 复用而提高</li>
-<li>通过对相似 uid 建边，并作连通图，能发现更高层次的 uid 的连接，并将其纳入同一个社区。这样作出的社区，如果社区规模特别大，就说明这个社区是有问题的。因为一般情况下，不会存在如此大规模的资源复用</li>
-</ol>
-</li>
-<li>用 Jaccard 相似度建边</li>
-<li>可视化</li>
-<li>计算强连通图</li>
-</ol>
-<p><img src="/img/synchrotrap_ng.png" alt="synchrotrap_ng"></p>
-<br>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/SynchroTrap/blob/main/2.算法实现.ipynb')">查看笔记</button>
-</center>
-<br>
-<h3 id="三评估与可视化">三、评估与可视化</h3>
-<ol>
-<li>异常检测：
-<ul>
-<li>由于存在资源复用，坏人的 uid 之间的 Jaccard similarity 相似度较高。用高度相似的节点构图，并计算社区。我们发现，坏人用户的社区规模，通常比正常用户的社区规模大得多。</li>
-</ul>
-</li>
-<li>模型评估：
-<ul>
-<li>计算 SynchroTrap 算法的准确率、精确率、召回率等指标</li>
-</ul>
-</li>
-<li>可视化：
-<ul>
-<li>鉴于 SynchroTrap 是一种识别同步行为的算法。我们可以用 ip 和 timestamp 作图，看看能否发现黑产攻击的起停时间</li>
-</ul>
-</li>
-</ol>
-<p>下图中，Fraud IP 表示我们识别出的坏人 IP，Normal IP 表示未被识别的 IP（包含未召回部分）</p>
-<p><img src="/img/synchrotrap_ip.png" alt="synchrotrap_ip"></p>
-<br>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/SynchroTrap/blob/main/3.评估与可视化.ipynb')">查看笔记</button>
-</center>
-<br>
-<h3 id="附录1部署-spark-环境">附录1：部署 Spark 环境</h3>
-<ol>
-<li>使用 Docker 安装 Spark 环境
-<ul>
-<li>下载 Docker 镜像</li>
-<li>启动一个 Docker 容器</li>
-<li>Docker 常用命令</li>
-</ul>
-</li>
-<li>在 Docker 中使用 Spark
-<ul>
-<li>在本地浏览器访问 Jupyter Lab</li>
-<li>检查 Spark 是否已安装</li>
-<li>启动 PySpark</li>
-</ul>
-</li>
-</ol>
-<br>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/SynchroTrap/blob/main/附录1.部署Spark环境.ipynb')">查看笔记</button>
-</center>
-<br>
-<h3 id="附录2运行-spark">附录2：运行 Spark</h3>
-<ol>
-<li>检查 Spark 环境</li>
-<li>安装 &amp; 使用 graphframes</li>
-<li>定制 Python 环境</li>
-</ol>
-<br>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/SynchroTrap/blob/main/附录2.运行Spark.ipynb')">查看笔记</button>
-</center>
-<br>
-<p>参考</p>
-<ul>
-<li><a href="https://users.cs.duke.edu/~xwy/publications/SynchroTrap-ccs14.pdf" target="_blank">Uncovering Large Groups of Active Malicious Accounts in Online Social Networks</a></li>
-</ul>
-<div id="mini-overlay" onclick="overlay_off()"></div>
-<div id="mini-window"><iframe id="mini-iframe" frameBorder="0"></iframe></div>
-<button id="btn-close" onclick="overlay_off()">×</button>
-<script src="/python-tips/overlay.js"></script>
-<link rel="stylesheet" href="/python-tips/style.css">
+
   </div>
   
 
 <div class="navigation navigation-single">
     
-    <a href="/posts/dl_tricks/" class="navigation-prev">
+    <a href="/posts/frequent_pattern_mining/" class="navigation-prev">
       <i aria-hidden="true" class="fa fa-chevron-left"></i>
-      <span class="navigation-tittle">像搭积木一样搭神经网络</span>
+      <span class="navigation-tittle">频繁模式挖掘</span>
     </a>
     
-    
-    <a href="/posts/graph_embedding/" class="navigation-next">
-      <span class="navigation-tittle">三种图神经网络算法：GraphSAGE, GCN 和 GAT</span>
-      <i aria-hidden="true" class="fa fa-chevron-right"></i>
-    </a>
     
 </div>
 

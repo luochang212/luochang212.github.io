@@ -584,7 +584,7 @@
 <p>5 月 14 号 <a href="https://openai.com/index/spring-update/" target="_blank">OpenAI 春季发布会</a> 出现了这个画面：</p>
 <p><img src="/img/openai_jupyter_lab.PNG" alt="openai_jupyter_lab"></p>
 <p>才知道 <a href="https://jupyterlab.readthedocs.io/en/latest/" target="_blank">JupyterLab</a> 是 OpenAI 的日常开发工具。感谢 OpenAI 亲自带货。</p>
-<p>JupyterLab 拥有丰富的功能，并不只是 Python 解释器这么简单，让我来向你们展示它的强大！</p>
+<p>JupyterLab 拥有丰富的功能，并不只是 Python 解释器这么简单，让我向你们展示它的强大！</p>
 <h3 id="安装-jupyterlab">〇、安装 JupyterLab</h3>
 <p>执行以下命令安装 JupyterLab：</p>
 <pre tabindex="0"><code>mamba install -c conda-forge jupyterlab
@@ -613,10 +613,10 @@
 <li>把 PPT 网页路由的 <code>#</code> 号改成 <code>?print-pdf</code>。修改后的网址形如：
 <pre tabindex="0"><code>http://127.0.0.1:8000/[YOUR_SLIDE].slides.html?print-pdf
 </code></pre></li>
-<li>再用 Chrome 打印功能，把网页转存成 PDF 文件</li>
+<li>再用 Chrome 打印功能，把网页转存成 PDF 文件即可</li>
 </ol>
 <h3 id="二运行-java">二、运行 Java</h3>
-<p>在 Jupyter 中运行 Java 要用到 IJava。<a href="https://github.com/SpencerPark/IJava" target="_blank">IJava</a> 是一个 Java 内核，它允许用户使用 IPython 特性进行 Java 编程。</p>
+<p>在 Jupyter 上运行 Java 要用到 IJava。<a href="https://github.com/SpencerPark/IJava" target="_blank">IJava</a> 是一个 Java 内核，它允许用户使用 IPython 特性进行 Java 编程。</p>
 <h4 id="21-安装-ijava">2.1 安装 IJava</h4>
 <ol>
 <li>从 <a href="https://github.com/SpencerPark/IJava/releases" target="_blank">Releases</a> 下载安装包，安装包形如 <code>ijava-[VERSION].zip</code></li>
@@ -632,15 +632,15 @@ jupyter console --kernel=java
 </code></pre></li>
 </ol>
 <h4 id="22-内核管理">2.2 内核管理</h4>
-<p>要管理 IJava 内核，我们需要了解一点内核管理命令。以下是一些常用命令：</p>
+<p>为了管理 IJava 内核，我们需要了解一些常用的内核管理命令：</p>
 <ul>
 <li>列出内核：<code>jupyter kernelspec list</code></li>
 <li>安装内核：<code>jupyter kernelspec install [KERNEL_DIRECTORY]</code></li>
 <li>移除内核：<code>jupyter kernelspec uninstall [KERNEL_NAME]</code></li>
 </ul>
-<p>关于换 Kernel 方法，请参见 <a href="/posts/linux_handbook/#7miniconda3-%E6%8D%A2-kernal" target="_blank">miniconda3 换 Kernal</a></p>
+<p>关于换 Kernel 方法，参见 <a href="/posts/linux_handbook/#7miniconda3-%E6%8D%A2-kernal" target="_blank">miniconda3 换 Kernal</a></p>
 <blockquote>
-<p><strong>Note</strong>: 使用 <code>jupyter kernelspec install</code> 安装内核，可使用多项参数，下面是一个示例：</p>
+<p><strong>Note</strong>: 使用 <code>jupyter kernelspec install</code> 安装内核时可指定多项参数，下面是一个示例：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>jupyter kernelspec install <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  ~/miniforge3/share/jupyter/kernels/java <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --sys-prefix <span style="color:#ae81ff">\
@@ -655,10 +655,10 @@ jupyter console --kernel=java
 </ul>
 </blockquote>
 <h3 id="三绘制-mermaid-图表">三、绘制 Mermaid 图表</h3>
-<p>Mermaid 是一个流行的图表生成工具。用户可以在 markdown 单元格中使用 Mermaid 语法编写图表代码，并即时渲染。</p>
+<p>Mermaid 是一个流行的图表生成工具。它允许用户在 markdown 单元格中，使用 Mermaid 语法编写图表代码，并即时渲染。</p>
 <p>安装 Mermaid 插件：</p>
 <pre tabindex="0"><code>jupyter labextension install @jupyter-widgets/jupyterlab-mermaid
-</code></pre><p>Mermaid 图表效果如下：</p>
+</code></pre><p>图表效果如下：</p>
 <pre class="mermaid">
 sequenceDiagram
     participant Alice

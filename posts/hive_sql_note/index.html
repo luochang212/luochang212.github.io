@@ -1910,6 +1910,11 @@ FROM
 WHERE rk_25 = 1
     OR rk_50 = 1
     OR rk_75 = 1;
+</code></pre><p>简单方法：使用 <code>NTILE()</code> 函数</p>
+<pre tabindex="0"><code>SELECT
+    ttl_score,
+    NTILE(10) OVER (ORDER BY ttl_score) AS level
+FROM std.std_student_score
 </code></pre><h3 id="20-用户自定义函数">20. 用户自定义函数</h3>
 <h4 id="201-udf">20.1 UDF</h4>
 <p>Hive 允许用户编写 UDF (<strong>U</strong>ser-<strong>D</strong>efined <strong>F</strong>unction) 来拓展 Hive 的功能，以处理内置函数无法满足的需求。</p>
