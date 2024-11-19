@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CentOS on Chang Luo</title>
+    <link>https://luochang212.github.io/tags/centos/</link>
+    <description>Recent content in CentOS on Chang Luo</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 03 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://luochang212.github.io/tags/centos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux 运维手册</title>
+      <link>https://luochang212.github.io/posts/linux_handbook/</link>
+      <pubDate>Sat, 03 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/posts/linux_handbook/</guid>
+      <description>基于 CentOS 系统&#xA;一、常见操作 1）文件操作 命令 描述 ls 列出当前文件夹下的文件 ls -alh 列出包括隐藏文件在内的所有文件，显示详细信息，并以人类可读的方式显示占用的磁盘空间大小 touch [FILE] 创建文件 vim [FILE] 打开文件 cat [FILE] 打印文件 head [FILE] 打印文件头 10 行，展示 20 行用 head -n 20 [FILE] tail [FILE] 打印文件尾 10 行，展示 20 行用 tail -n 20 [FILE] tail -f [FILE] 实时查看文件的末尾新增的内容，一般用于打印监控日志 less [FILE] 打印文件，可以用 上键 下键 翻页 rm [FILE] 删除文件 rm -rf [DIR] 递归删除路径DIR下所有文件 mv [FILE_A] [FILE_B] 文件FILE_A改名为FILE_B mv [FILE] [DIR] 文件FILE移动到路径DIR cd [PATH] 打开目录PATH mkdir [PATH] 创建目录 mkdir -p [PATH/TO/DIR] 创建多级目录 tar cvf file.</description>
+    </item>
+  </channel>
+</rss>

@@ -38,7 +38,7 @@
     <meta property="article:published_time" content="2024-02-24T00:00:00+00:00">
     <meta property="article:modified_time" content="2024-02-24T00:00:00+00:00">
     <meta property="article:tag" content="Raspberry Pi 5">
-    <meta property="article:tag" content="Install">
+    <meta property="article:tag" content="Ubuntu">
 
 
     
@@ -556,7 +556,7 @@
           <a class="badge badge-tag" href="/tags/raspberry-pi-5">raspberry pi 5</a>
            
       
-          <a class="badge badge-tag" href="/tags/install">install</a>
+          <a class="badge badge-tag" href="/tags/ubuntu">ubuntu</a>
           
       
     
@@ -669,7 +669,10 @@ rm -rf ~/miniconda3/miniconda.sh
 </code></pre><pre tabindex="0"><code># 为 miniconda 配置初始化环境
 ~/miniconda3/bin/conda init bash
 ~/miniconda3/bin/conda init zsh
-</code></pre><pre tabindex="0"><code># 如果没啥事可以重启一下，重启后 miniconda 在命令行生效
+</code></pre><pre tabindex="0"><code># 一般来说，运行一下 ~/.bashrc 就行
+source ~/.bashrc
+
+# 如果没啥事，重启一下，miniconda 也会在命令行生效
 reboot
 </code></pre><p>关于 miniconda 的其他操作，可前往<a href="/posts/linux_handbook" target="_blank">《Linux 运维手册》</a>查阅。</p>
 <p>相关章节：<a href="/posts/linux_handbook/#5安装-miniconda3" target="_blank">安装 miniconda3</a>、<a href="/posts/linux_handbook/#7miniconda3-换-kernal" target="_blank">miniconda3 换 Kernal</a></p>

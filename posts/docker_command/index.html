@@ -4,10 +4,10 @@
     
 
 
-    <head>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     
-    <link rel="canonical" href="https://luochang212.github.io/posts/redis_util/">
+    <link rel="canonical" href="http://localhost:1313/posts/docker_command/">
     
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,27 +19,26 @@
     
     
 
-<title>初见向量引擎：RediSearch 和 Milvus • Chang Luo</title>
+<title>Docker 速查手册 • Chang Luo</title>
 
 
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="初见向量引擎：RediSearch 和 Milvus">
-  <meta name="twitter:description" content="只想建索引，Redis 够用了。如果要计算向量相似度，就可以考虑向量引擎了">
+  <meta name="twitter:title" content="Docker 速查手册">
+  <meta name="twitter:description" content="如果需要在低版本服务器运行高版本运行时环境，使用 Docker 是一个好办法">
       <meta name="twitter:site" content="@MinosPalace">
 
-<meta property="og:url" content="https://luochang212.github.io/posts/redis_util/">
+<meta property="og:url" content="http://localhost:1313/posts/docker_command/">
   <meta property="og:site_name" content="Chang Luo">
-  <meta property="og:title" content="初见向量引擎：RediSearch 和 Milvus">
-  <meta property="og:description" content="只想建索引，Redis 够用了。如果要计算向量相似度，就可以考虑向量引擎了">
+  <meta property="og:title" content="Docker 速查手册">
+  <meta property="og:description" content="如果需要在低版本服务器运行高版本运行时环境，使用 Docker 是一个好办法">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-08-18T00:00:00+00:00">
-    <meta property="article:modified_time" content="2024-08-18T00:00:00+00:00">
-    <meta property="article:tag" content="Vector Engine">
-    <meta property="article:tag" content="Redis">
-    <meta property="article:tag" content="Milvus">
+    <meta property="article:published_time" content="2024-11-19T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-11-19T00:00:00+00:00">
+    <meta property="article:tag" content="Docker">
+    <meta property="article:tag" content="Command">
 
 
     
@@ -227,13 +226,13 @@
     <div class="container ">
       <div class="sidebar-about">
         <span class="site__title">
-          <a href="https://luochang212.github.io/">Chang Luo</a>
+          <a href="http://localhost:1313/">Chang Luo</a>
         </span>
         
         
         
         <div class="author-image">
-          <a href="#" class="load-iframe" onclick="openNav()"><img src="https://luochang212.github.io//images/profile.webp" id="author-iamge"
+          <a href="#" class="load-iframe" onclick="openNav()"><img src="http://localhost:1313//images/profile.webp" id="author-iamge"
               alt="Author Image" class="img--circle img--headshot element--center"></a>
         </div>
         
@@ -527,13 +526,13 @@
 
 <article>
   <header>
-    <h1>初见向量引擎：RediSearch 和 Milvus</h1>
+    <h1>Docker 速查手册</h1>
     
     
 <div class="post__meta">
     
     
-      <i class="fas fa-calendar-alt"></i> Aug 18, 2024
+      <i class="fas fa-calendar-alt"></i> Nov 19, 2024
     
     
     
@@ -554,19 +553,16 @@
           <br/>
            <i class="fas fa-tags"></i>
           
-          <a class="badge badge-tag" href="/tags/vector-engine">vector engine</a>
+          <a class="badge badge-tag" href="/tags/docker">docker</a>
            
       
-          <a class="badge badge-tag" href="/tags/redis">redis</a>
-           
-      
-          <a class="badge badge-tag" href="/tags/milvus">milvus</a>
+          <a class="badge badge-tag" href="/tags/command">command</a>
           
       
     
     
     <br/>
-    <i class="fas fa-clock"></i> 1 min read
+    <i class="fas fa-clock"></i> 3 min read
 </div>
 
 
@@ -585,95 +581,429 @@
   
   <div class="post">
     <blockquote>
-<p>建索引 Redis 够用了。一旦需要搜索向量，就可以考虑使用向量引擎。</p>
+<p>Docker 命令速查</p>
 </blockquote>
-<!-- > - **RediSearch** 是 Redis 的一个模块，支持向量相似度搜索，它的优点与 Redis 生态无缝衔接，可复制 Redis 的生态优势
-> - **Milvus** 是一个开箱即用的开源向量数据库，有预置的语言模型，可以方便地生成嵌入，且支持多种索引类型 -->
-<p>GitHub 项目地址：<a href="https://github.com/luochang212/redis-util" target="_blank">redis-util</a></p>
-<p>本文干了啥：</p>
+<h3 id="一什么是-docker">一、什么是 Docker</h3>
+<p>Docker 是一种容器技术，它通过轻量级的虚拟化，将程序及其依赖打包到一个称为 <strong>容器</strong> 的独立运行环境中，从而保证应用在不同环境中的一致性。</p>
+<p>容器与虚拟机功能类似，但更加轻量化，这是因为容器提供的是操作系统级别的虚拟化，而虚拟机则是硬件级别的虚拟化。不同于虚拟机需要为每个实例运行一个完整的操作系统，容器共享操作系统内核，因此更轻量、更高效。不过，轻量化的设计也带来了一些限制，例如 systemctl 等服务管理工具通常在容器中不可用。</p>
+<h4 id="11-主要用途">1.1 主要用途</h4>
+<ol>
+<li>轻量级虚拟化：可以当作虚拟机使用。相比传统虚拟机，容器更轻量、启动速度更快、资源消耗更少</li>
+<li>一致的运行环境：通过容器确保开发、测试和生产环境的一致性。避免“在我的机器能运行”的问题</li>
+<li>支持微服务架构：每个服务运行在独立的容器中，易于扩展和管理</li>
+<li>支持 CI/CD 流水线：打包应用及其依赖，一次构建即可在任何环境中运行</li>
+</ol>
+<h4 id="12-核心组件">1.2 核心组件</h4>
+<ol>
+<li><strong>镜像 (Image)</strong>: 镜像是一个只读的模板，包含运行程序所需的一切，例如操作系统、环境变量、依赖包、代码以及配置文件等。镜像可以方便地复制和分发</li>
+<li><strong>容器 (Container)</strong>: 容器是由镜像创建的运行实例。一个镜像可以创建多个容器，且每个容器都拥有独立的运行环境。容器可以快速地部署服务</li>
+</ol>
+<p>如果你还不了解 Docker，请访问以下资源：</p>
 <ul>
-<li>使用容器启动 Redis，并将数据卷挂载到本地</li>
-<li>通过 Redis 的 Python API 做基础的 CRUD 操作</li>
-<li>在不借助任何插件的情况下，使用原生 Redis 存取向量</li>
-<li>使用 RediSearch 存取向量，并获取 TOP N 最近邻向量</li>
-<li>尝试使用向量引擎 Milvus 的一些基础功能</li>
-<li>基于 Redis “自制”向量引擎，支持设置索引过期时间，支持生成文本嵌入</li>
+<li>官网：<a href="https://www.docker.com/">https://www.docker.com/</a></li>
+<li>入门文档：<a href="https://docs.docker.com/guides/">https://docs.docker.com/guides/</a></li>
 </ul>
-<p>✨ 注意：运行以下代码依赖 <a href="https://github.com/luochang212/redis-util/blob/main/util.py" target="_blank">util.py</a> 文件。</p>
-<h2 id="一安装-redis">一、安装 Redis</h2>
-<ol>
-<li>下载镜像文件</li>
-<li>启动容器</li>
-<li>交互式 shell</li>
-<li>测试连接</li>
-<li>处理 CURD 逻辑</li>
-</ol>
-<br>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/redis-util/blob/main/1.安装Redis.ipynb')">查看笔记</button>
-</center>
-<br>
-<h2 id="二用-redis-存取-embedding">二、用 Redis 存取 Embedding</h2>
-<ol>
-<li>Word2vec 生成 Embedding</li>
-<li>数据类型转换</li>
-<li>存取 Embedding</li>
-</ol>
-<br>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/redis-util/blob/main/2.用Redis存取Embedding.ipynb')">查看笔记</button>
-</center>
-<br>
-<h2 id="三redisearch-模块">三、RediSearch 模块</h2>
-<ol>
-<li>安装 Docker 镜像</li>
-<li>存取向量</li>
-<li>查找最近邻向量</li>
-</ol>
-<br>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/redis-util/blob/main/3.RediSearch模块.ipynb')">查看笔记</button>
-</center>
-<br>
-<h2 id="四开源向量引擎-milvus">四、开源向量引擎 Milvus</h2>
-<p><a href="https://milvus.io/docs/quickstart.md" target="_blank">Milvue</a> 是一款为机器学习设计的开源向量数据库，支持存储、查询、索引向量。Milvus 的核心功能是向量相似度搜索，它使用近似最近邻搜索算法来加速搜索过程，找到与查询向量最相似的向量。Milvus 支持多种索引类型，包括 FLAT、IVF_FLAT、IVF_SQ8、IVF_PQ、HNSW 和 ANNOY，以适应不同的查询需求和数据规模。</p>
-<br>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/redis-util/blob/main/4.开源向量引擎Milvus.ipynb')">查看笔记</button>
-</center>
-<br>
-<h2 id="五自制强化版向量引擎">五、自制强化版向量引擎</h2>
-<p>Milvue 至今仍不支持设置索引过期时间。对我而言这是很重要的功能。毕竟本地机器内存有限，你也不想用着用着突然死机对吧。但我又眼馋 Milvue 方便的嵌入生成功能。怎么办呢？只能自己动手，写一个拥有嵌入生成功能的 Redis 向量索引工具。</p>
-<ol>
-<li>预训练模型 <code>all-MiniLM-L6-v2</code></li>
-<li>自制向量引擎</li>
-</ol>
-<br>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/redis-util/blob/main/5.自制强化版向量引擎.ipynb')">查看笔记</button>
-</center>
-<br>
-<div id="mini-overlay" onclick="overlay_off()"></div>
-<div id="mini-window"><iframe id="mini-iframe" frameBorder="0"></iframe></div>
-<button id="btn-close" onclick="overlay_off()">×</button>
-<script src="/python-tips/overlay.js"></script>
-<link rel="stylesheet" href="/python-tips/style.css">
+<h3 id="二常用命令">二、常用命令</h3>
+<h4 id="21-基础操作">2.1 基础操作</h4>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>docker info</code></td>
+<td>查看 docker 系统信息</td>
+</tr>
+<tr>
+<td><code>docker version</code></td>
+<td>查看 docker 版本信息</td>
+</tr>
+<tr>
+<td><code>docker --version</code></td>
+<td>查看 docker 简略版本信息</td>
+</tr>
+<tr>
+<td><code>docker login</code></td>
+<td>登录 DockerHub</td>
+</tr>
+<tr>
+<td><code>docker login nvcr.io </code></td>
+<td>登录 nvcr.io</td>
+</tr>
+</tbody>
+</table>
+<h4 id="22-镜像管理">2.2 镜像管理</h4>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>docker images</code></td>
+<td>查看镜像</td>
+</tr>
+<tr>
+<td><code>docker pull [IMAGE]</code></td>
+<td>拉取镜像</td>
+</tr>
+<tr>
+<td><code>docker rmi [IMAGE]</code></td>
+<td>删除镜像</td>
+</tr>
+<tr>
+<td><code>docker commit [CONTAINER] [IMAGE]:[TAG]</code></td>
+<td>将容器保存为新的镜像</td>
+</tr>
+<tr>
+<td><code>docker save -o myimage.tar [IMAGE]</code></td>
+<td>将镜像保存到指定路径</td>
+</tr>
+<tr>
+<td><code>docker load -i path/to/myimage.tar</code></td>
+<td>从 tar 文件中加载镜像</td>
+</tr>
+</tbody>
+</table>
+<h4 id="23-容器管理">2.3 容器管理</h4>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>docker create [IMAGE]</code></td>
+<td>创建容器</td>
+</tr>
+<tr>
+<td><code>docker run [IMAGE]</code></td>
+<td>创建并运行容器</td>
+</tr>
+<tr>
+<td><code>docker start [CONTAINER]</code></td>
+<td>启动容器</td>
+</tr>
+<tr>
+<td><code>docker stop [CONTAINER]</code></td>
+<td>停止容器</td>
+</tr>
+<tr>
+<td><code>docker restart [CONTAINER]</code></td>
+<td>重启容器</td>
+</tr>
+<tr>
+<td><code>docker ps</code></td>
+<td>列出运行容器</td>
+</tr>
+<tr>
+<td><code>docker ps -a</code></td>
+<td>列出所有容器</td>
+</tr>
+<tr>
+<td><code>docker exec -it [CONTAINER] /bin/bash</code></td>
+<td>启动交互模式</td>
+</tr>
+<tr>
+<td><code>docker rm [CONTAINER]</code></td>
+<td>删除容器</td>
+</tr>
+<tr>
+<td><code>docker port [CONTAINER]</code></td>
+<td>查看端口映射</td>
+</tr>
+<tr>
+<td><code>docker top [CONTAINER]</code></td>
+<td>查看容器内进程</td>
+</tr>
+<tr>
+<td><code>docker stats [CONTAINER]</code></td>
+<td>查看资源使用情况</td>
+</tr>
+<tr>
+<td><code>docker cp [CONTAINER]:[PATH] [LOCAL_PATH]</code></td>
+<td>拷贝文本到本地</td>
+</tr>
+<tr>
+<td><code>docker cp [LOCAL_PATH] [CONTAINER]:[PATH]</code></td>
+<td>拷贝文件到容器</td>
+</tr>
+<tr>
+<td><code>docker export -o mycontainer.tar [CONTAINER]</code></td>
+<td>将容器存成文件</td>
+</tr>
+<tr>
+<td><code>docker import path/to/mycontainer.tar [IMAGE]:[TAG]</code></td>
+<td>文件加载成镜像</td>
+</tr>
+</tbody>
+</table>
+<h4 id="24-容器运行">2.4 容器运行</h4>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>docker run --name [NAME] [IMAGE]</code></td>
+<td>创建运行并命名容器</td>
+</tr>
+<tr>
+<td><code>docker run -d [IMAGE]</code></td>
+<td>创建容器并在后台运行</td>
+</tr>
+<tr>
+<td><code>docker run -p [LOCAL_PORT]:[CONTAINER_PORT] [IMAGE]</code></td>
+<td>创建容器并指定端口映射</td>
+</tr>
+<tr>
+<td><code>docker run -v [LCOAL_PATH]:[CONTAINER_PATH] [IMAGE]</code></td>
+<td>创建容器并将本地目录挂载到容器目录</td>
+</tr>
+<tr>
+<td><code>docker run -it [IMAGE] /bin/bash</code></td>
+<td>创建容器并启动交互式 shell</td>
+</tr>
+</tbody>
+</table>
+<h3 id="三docker-的简单使用">三、Docker 的简单使用</h3>
+<p>Docker 是客户端 / 服务端分离的，因此在输入其他命令前，通常需要检查一下服务端和客户端是否都在运行：</p>
+<pre tabindex="0"><code>docker info
+</code></pre><h4 id="31-获取镜像的两种方法">3.1 获取镜像的两种方法</h4>
+<h5 id="311-从-docker-hub-获取镜像">3.1.1 从 Docker Hub 获取镜像</h5>
+<p>你可以用 <code>docker pull</code> 命令，从 <a href="https://hub.docker.com/">Docker Hub</a> 下载镜像。例如，可用以下命令，将带有 Nginx 服务的镜像下载到本地：</p>
+<pre tabindex="0"><code>docker pull nginx:stable-alpine-perl
+</code></pre><h5 id="312-用-dockerfile-构建镜像">3.1.2 用 Dockerfile 构建镜像</h5>
+<blockquote>
+<p><code>Dockerfile</code> 是一个文本文件，其中包含了一系列指令，用于自动构建 Docker 镜像。通过 Dockerfile，你可以定义一个镜像的构建过程，包括基础镜像、安装软件、环境变量等。</p>
+</blockquote>
+<p>以下是一个基于 Ubuntu 22.04 LTS 镜像的 Dockerfile，安装 Miniconda 和 Jupyter Lab，并将工作目录挂载到本地。Jupyter Lab 的密码将在构建时写入绑定目录的 <code>jupyter_lab.log</code> 文件中。</p>
+<p><code>Dockerfile</code> 文件：</p>
+<pre tabindex="0"><code># 使用 Ubuntu 22.04 LTS 作为基础镜像
+FROM ubuntu:22.04
+
+# 设置环境变量
+ENV DEBIAN_FRONTEND=noninteractive
+
+# 更新 apt-get 并安装必要的依赖
+RUN apt-get update &amp;&amp; apt-get install -y \
+    wget \
+    bzip2 \
+    curl \
+    git \
+    &amp;&amp; rm -rf /var/lib/apt/lists/*
+
+# 安装 Miniconda
+RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh &amp;&amp; \
+    bash miniconda.sh -b -f -p /opt/conda &amp;&amp; \
+    rm miniconda.sh &amp;&amp; \
+    /opt/conda/bin/conda init bash
+
+# 设置 conda 环境路径
+ENV PATH=/opt/conda/bin:$PATH
+
+# 安装 Jupyter Lab
+RUN conda install -y jupyterlab
+
+# 创建工作目录
+WORKDIR /workspace
+
+# 暴露 Jupyter Lab 默认端口
+EXPOSE 8888
+
+# 启动 Jupyter Lab，设置根目录为工作目录，禁用浏览器，禁用 token
+CMD [&#34;sh&#34;, &#34;-c&#34;, &#34;nohup jupyter lab --ip=0.0.0.0 --allow-root --notebook-dir=/ --no-browser &gt; /workspace/jupyter_lab.log 2&gt;&amp;1&#34;]
+</code></pre><p>使用以下命令构建镜像：</p>
+<pre tabindex="0"><code># 1. 检查 docker 环境是否正常
+docker info
+
+# 2. 构建镜像
+docker build -t jupyter_server_app .
+</code></pre><p>镜像构建完成后，可以在客户端查看镜像信息：</p>
+<p><img src="/img/docker-app.png" alt="docker-app"></p>
+<h4 id="32-启动容器">3.2 启动容器</h4>
+<p>一旦镜像完成构建，可以通过以下命令启动容器：</p>
+<pre tabindex="0"><code>docker run -d -p 9999:8888 -v $(pwd)/jupyter_workspace:/workspace jupyter_server_app
+</code></pre><p>运行选项说明：</p>
+<ul>
+<li><code>-d</code>: 以后台模式运行容器</li>
+<li><code>-p &lt;local-port&gt;:&lt;container-port&gt;</code>: 将主机端口映射到容器端口</li>
+<li><code>-v &lt;local-path&gt;:&lt;container-path&gt;</code>: 将主机路径挂载到容器路径</li>
+</ul>
+<h3 id="四docker-compose-的简单使用">四、Docker Compose 的简单使用</h3>
+<p>Docker Compose 是一个工具，用于定义和运行多容器 Docker 应用程序。通过 YAML 文件（<code>docker-compose.yml</code>），你可以定义多个服务及其配置，并快速启动和管理这些服务。</p>
+<h4 id="41-安装-docker-compose">4.1 安装 <code>docker-compose</code></h4>
+<pre tabindex="0"><code>curl -L &#34;https://github.com/docker/compose/releases/download/v2.20.0/docker-compose-$(uname -s)-$(uname -m)&#34; -o ~/docker-compose
+chmod +x ~/docker-compose
+sudo mv ~/docker-compose /usr/local/bin/docker-compose
+</code></pre><h4 id="42-常用命令">4.2 常用命令</h4>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>docker-compose version</code></td>
+<td>显示版本信息</td>
+</tr>
+<tr>
+<td><code>docker-compose up</code></td>
+<td>创建并启动容器</td>
+</tr>
+<tr>
+<td><code>docker-compose up -d</code></td>
+<td>以后台模式启动容器</td>
+</tr>
+<tr>
+<td><code>docker-compose down</code></td>
+<td>停止并移除容器和网络</td>
+</tr>
+<tr>
+<td><code>docker-compose restart</code></td>
+<td>重启容器</td>
+</tr>
+<tr>
+<td><code>docker-compose start</code></td>
+<td>启动容器</td>
+</tr>
+<tr>
+<td><code>docker-compose stop</code></td>
+<td>停止容器</td>
+</tr>
+<tr>
+<td><code>docker-compose rm</code></td>
+<td>移除容器</td>
+</tr>
+<tr>
+<td><code>docker-compose logs</code></td>
+<td>查看容器日志</td>
+</tr>
+<tr>
+<td><code>docker-compose top</code></td>
+<td>显示容器进程</td>
+</tr>
+<tr>
+<td><code>docker-compose build</code></td>
+<td>构建镜像</td>
+</tr>
+<tr>
+<td><code>docker-compose ps</code></td>
+<td>列出容器及其状态信息</td>
+</tr>
+<tr>
+<td><code>docker-compose config</code></td>
+<td>检查 Compose 文件是否有语法错误</td>
+</tr>
+<tr>
+<td><code>docker-compose exec</code></td>
+<td>在运行中的容器执行命令</td>
+</tr>
+<tr>
+<td><code>docker-compose kill</code></td>
+<td>强制终止容器</td>
+</tr>
+<tr>
+<td><code>docker-compose pause</code></td>
+<td>暂停服务容器</td>
+</tr>
+<tr>
+<td><code>docker-compose unpause</code></td>
+<td>恢复已暂停的服务容器</td>
+</tr>
+<tr>
+<td><code>docker-compose images</code></td>
+<td>列出使用的镜像</td>
+</tr>
+<tr>
+<td><code>docker-compose port</code></td>
+<td>显示端口绑定</td>
+</tr>
+<tr>
+<td><code>docker-compose help</code></td>
+<td>查看帮助信息</td>
+</tr>
+</tbody>
+</table>
+<!-- #### 4.3 使用 Docker Compose 管理多容器应用
+
+##### 4.2.1 安装 Docker Compose
+
+确保已经安装 Docker 和 Docker Compose
+
+```
+docker --version
+docker-compose --version
+```
+
+##### 4.2.2 编写 `docker-compose.yml` 文件
+
+用 YAML 文件配置一个 Nginx 服务和 MySQL 数据库。
+
+##### 4.2.3 启动多容器应用
+
+运行以下命令启动应用：
+
+```
+docker-compose up -d
+```
+
+验证容器是否启动成功
+
+```
+docker-compose ps
+```
+
+如果需要拓展服务，例如增加 web 服务实例数：
+
+```
+docker-compose up -d --scale web=3
+```
+
+##### 4.2.4 检查日志
+
+```
+# 查看所有容器的日志输出
+docker-compose logs
+
+# 查看特定服务的日志输出
+docker-compose logs web
+
+# 查看服务状态
+docker-compose ps
+
+# 查看网络状态
+docker network ls
+``` -->
+<h3 id="附录">附录</h3>
+<p>常用镜像下载地址：</p>
+<ul>
+<li><a href="https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch/tags">NVIDIA NGC Catalog - PyTorch</a></li>
+<li><a href="https://hub.docker.com/r/nvidia/cuda/tags">nvidia/cuda</a></li>
+</ul>
 
   </div>
   
 
 <div class="navigation navigation-single">
     
-    <a href="/posts/graph_embedding/" class="navigation-prev">
+    <a href="/posts/frequent_pattern_mining/" class="navigation-prev">
       <i aria-hidden="true" class="fa fa-chevron-left"></i>
-      <span class="navigation-tittle">三种图神经网络算法：GraphSAGE, GCN 和 GAT</span>
-    </a>
-    
-    
-    <a href="/posts/frequent_pattern_mining/" class="navigation-next">
       <span class="navigation-tittle">频繁模式挖掘</span>
-      <i aria-hidden="true" class="fa fa-chevron-right"></i>
     </a>
+    
     
 </div>
 

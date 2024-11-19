@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="en-us">
     
-    
-
-
-    <head>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     
-    <link rel="canonical" href="https://luochang212.github.io/posts/redis_util/">
+    <link rel="canonical" href="http://localhost:1313/tags/command/">
     
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,27 +16,19 @@
     
     
 
-<title>初见向量引擎：RediSearch 和 Milvus • Chang Luo</title>
+<title>Command • Chang Luo</title>
 
 
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="初见向量引擎：RediSearch 和 Milvus">
-  <meta name="twitter:description" content="只想建索引，Redis 够用了。如果要计算向量相似度，就可以考虑向量引擎了">
+  <meta name="twitter:title" content="Command">
       <meta name="twitter:site" content="@MinosPalace">
 
-<meta property="og:url" content="https://luochang212.github.io/posts/redis_util/">
+<meta property="og:url" content="http://localhost:1313/tags/command/">
   <meta property="og:site_name" content="Chang Luo">
-  <meta property="og:title" content="初见向量引擎：RediSearch 和 Milvus">
-  <meta property="og:description" content="只想建索引，Redis 够用了。如果要计算向量相似度，就可以考虑向量引擎了">
+  <meta property="og:title" content="Command">
   <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-08-18T00:00:00+00:00">
-    <meta property="article:modified_time" content="2024-08-18T00:00:00+00:00">
-    <meta property="article:tag" content="Vector Engine">
-    <meta property="article:tag" content="Redis">
-    <meta property="article:tag" content="Milvus">
+  <meta property="og:type" content="website">
 
 
     
@@ -74,7 +63,8 @@
     <!-- Icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
     <link rel="shortcut icon" href="/favicon.png">
-    
+    <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/command/index.xml" title="Chang Luo" />
+
     
 
 </head>
@@ -227,13 +217,13 @@
     <div class="container ">
       <div class="sidebar-about">
         <span class="site__title">
-          <a href="https://luochang212.github.io/">Chang Luo</a>
+          <a href="http://localhost:1313/">Chang Luo</a>
         </span>
         
         
         
         <div class="author-image">
-          <a href="#" class="load-iframe" onclick="openNav()"><img src="https://luochang212.github.io//images/profile.webp" id="author-iamge"
+          <a href="#" class="load-iframe" onclick="openNav()"><img src="http://localhost:1313//images/profile.webp" id="author-iamge"
               alt="Author Image" class="img--circle img--headshot element--center"></a>
         </div>
         
@@ -514,244 +504,27 @@
 
         <div class="content container">
             
-    <style>
-  .my-emoji {
-    height: 25px;
-    display: inline-block;
-    margin: 0;
-    vertical-align: text-bottom;
-  }
-</style>
+    <span class="section__title">Command</span>
+<ul class="posts">
+    
+        
+<li>
+  <span class="list__title--small">
+    <a href="/posts/docker_command/" >Docker 命令速查手册</a>
+      
+      <time class="pull-right hidden-tablet">Nov 19, 2024</time>
+      
+  </span>
+</li>
 
 
-
-<article>
-  <header>
-    <h1>初见向量引擎：RediSearch 和 Milvus</h1>
     
-    
-<div class="post__meta">
-    
-    
-      <i class="fas fa-calendar-alt"></i> Aug 18, 2024
-    
-    
-    
-      
-      
-          in
-          
-          
-              <a class="badge badge-category" href="/categories/devops">DEVOPS</a>
-              
-          
-      
-    
-    
-    
-      
-      
-          <br/>
-           <i class="fas fa-tags"></i>
-          
-          <a class="badge badge-tag" href="/tags/vector-engine">vector engine</a>
-           
-      
-          <a class="badge badge-tag" href="/tags/redis">redis</a>
-           
-      
-          <a class="badge badge-tag" href="/tags/milvus">milvus</a>
-          
-      
-    
-    
-    <br/>
-    <i class="fas fa-clock"></i> 1 min read
-</div>
-
-
-  </header>
-  
-  
-  
-  <div class="toc-wrapper">
-    <input type="checkbox" id="tocToggle">
-    <label for="tocToggle">目录</label>
-    
-    <div class="toc" id="TableOfContents"></div>
-    
-  </div>
-  
-  
-  <div class="post">
-    <blockquote>
-<p>建索引 Redis 够用了。一旦需要搜索向量，就可以考虑使用向量引擎。</p>
-</blockquote>
-<!-- > - **RediSearch** 是 Redis 的一个模块，支持向量相似度搜索，它的优点与 Redis 生态无缝衔接，可复制 Redis 的生态优势
-> - **Milvus** 是一个开箱即用的开源向量数据库，有预置的语言模型，可以方便地生成嵌入，且支持多种索引类型 -->
-<p>GitHub 项目地址：<a href="https://github.com/luochang212/redis-util" target="_blank">redis-util</a></p>
-<p>本文干了啥：</p>
-<ul>
-<li>使用容器启动 Redis，并将数据卷挂载到本地</li>
-<li>通过 Redis 的 Python API 做基础的 CRUD 操作</li>
-<li>在不借助任何插件的情况下，使用原生 Redis 存取向量</li>
-<li>使用 RediSearch 存取向量，并获取 TOP N 最近邻向量</li>
-<li>尝试使用向量引擎 Milvus 的一些基础功能</li>
-<li>基于 Redis “自制”向量引擎，支持设置索引过期时间，支持生成文本嵌入</li>
 </ul>
-<p>✨ 注意：运行以下代码依赖 <a href="https://github.com/luochang212/redis-util/blob/main/util.py" target="_blank">util.py</a> 文件。</p>
-<h2 id="一安装-redis">一、安装 Redis</h2>
-<ol>
-<li>下载镜像文件</li>
-<li>启动容器</li>
-<li>交互式 shell</li>
-<li>测试连接</li>
-<li>处理 CURD 逻辑</li>
-</ol>
-<br>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/redis-util/blob/main/1.安装Redis.ipynb')">查看笔记</button>
-</center>
-<br>
-<h2 id="二用-redis-存取-embedding">二、用 Redis 存取 Embedding</h2>
-<ol>
-<li>Word2vec 生成 Embedding</li>
-<li>数据类型转换</li>
-<li>存取 Embedding</li>
-</ol>
-<br>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/redis-util/blob/main/2.用Redis存取Embedding.ipynb')">查看笔记</button>
-</center>
-<br>
-<h2 id="三redisearch-模块">三、RediSearch 模块</h2>
-<ol>
-<li>安装 Docker 镜像</li>
-<li>存取向量</li>
-<li>查找最近邻向量</li>
-</ol>
-<br>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/redis-util/blob/main/3.RediSearch模块.ipynb')">查看笔记</button>
-</center>
-<br>
-<h2 id="四开源向量引擎-milvus">四、开源向量引擎 Milvus</h2>
-<p><a href="https://milvus.io/docs/quickstart.md" target="_blank">Milvue</a> 是一款为机器学习设计的开源向量数据库，支持存储、查询、索引向量。Milvus 的核心功能是向量相似度搜索，它使用近似最近邻搜索算法来加速搜索过程，找到与查询向量最相似的向量。Milvus 支持多种索引类型，包括 FLAT、IVF_FLAT、IVF_SQ8、IVF_PQ、HNSW 和 ANNOY，以适应不同的查询需求和数据规模。</p>
-<br>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/redis-util/blob/main/4.开源向量引擎Milvus.ipynb')">查看笔记</button>
-</center>
-<br>
-<h2 id="五自制强化版向量引擎">五、自制强化版向量引擎</h2>
-<p>Milvue 至今仍不支持设置索引过期时间。对我而言这是很重要的功能。毕竟本地机器内存有限，你也不想用着用着突然死机对吧。但我又眼馋 Milvue 方便的嵌入生成功能。怎么办呢？只能自己动手，写一个拥有嵌入生成功能的 Redis 向量索引工具。</p>
-<ol>
-<li>预训练模型 <code>all-MiniLM-L6-v2</code></li>
-<li>自制向量引擎</li>
-</ol>
-<br>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/redis-util/blob/main/5.自制强化版向量引擎.ipynb')">查看笔记</button>
-</center>
-<br>
-<div id="mini-overlay" onclick="overlay_off()"></div>
-<div id="mini-window"><iframe id="mini-iframe" frameBorder="0"></iframe></div>
-<button id="btn-close" onclick="overlay_off()">×</button>
-<script src="/python-tips/overlay.js"></script>
-<link rel="stylesheet" href="/python-tips/style.css">
 
-  </div>
-  
-
-<div class="navigation navigation-single">
-    
-    <a href="/posts/graph_embedding/" class="navigation-prev">
-      <i aria-hidden="true" class="fa fa-chevron-left"></i>
-      <span class="navigation-tittle">三种图神经网络算法：GraphSAGE, GCN 和 GAT</span>
-    </a>
-    
-    
-    <a href="/posts/frequent_pattern_mining/" class="navigation-next">
-      <span class="navigation-tittle">频繁模式挖掘</span>
-      <i aria-hidden="true" class="fa fa-chevron-right"></i>
-    </a>
-    
-</div>
-
-
-  
-
-  
-    
-
-
-</article>
 
         </div>
         
-    <script type="text/javascript" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-  MathJax.Hub.Config({
-  tex2jax: {
-    inlineMath: [['$','$'], ['\\(','\\)']],
-    displayMath: [['$$','$$']],
-    processEscapes: true,
-    processEnvironments: true,
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-    TeX: { equationNumbers: { autoNumber: "AMS" },
-         extensions: ["AMSmath.js", "AMSsymbols.js"] }
-  }
-  });
-  MathJax.Hub.Queue(function() {
-    
-    
-    
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i = 0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-
-  MathJax.Hub.Config({
-  
-  TeX: { equationNumbers: { autoNumber: "AMS" } }
-  });
-</script>
-
-
-
-
-<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
-
-
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
-        
-    <script type="text/javascript">
-        
-        hljs.initHighlightingOnLoad();
-    </script>
-    
-
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
-<script type="text/javascript">
-  if (tocbot) {
-    tocbot.init({
-      
-      tocSelector: '.toc',
-      
-      contentSelector: '.post',
-      
-      headingSelector: 'h2, h3, h4',
-      collapseDepth: 4
-    });
-  }
-</script>
-
-
-
-    
+    <script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
 
 
 

@@ -587,7 +587,11 @@
 <p>JupyterLab 拥有丰富的功能，并不只是 Python 解释器这么简单，让我向你们展示它的强大！</p>
 <h3 id="安装-jupyterlab">〇、安装 JupyterLab</h3>
 <p>执行以下命令安装 JupyterLab：</p>
-<pre tabindex="0"><code>mamba install -c conda-forge jupyterlab
+<pre tabindex="0"><code># For miniconda user
+conda install -c conda-forge jupyterlab
+
+# For conda-forge user
+# mamba install -c conda-forge jupyterlab
 </code></pre><blockquote>
 <p><strong>Note</strong>: <a href="https://github.com/mamba-org/mamba" target="_blank">mamba</a> 是 <a href="https://github.com/conda-forge/miniforge" target="_blank">miniforge</a> 自带的包管理工具。大多数时候，你可以用 <code>mamba</code> 直接替代 <code>conda</code>，比如 <code>mamba info --envs</code>。使用 mamba 通常可以获得更高的下载速度。</p>
 </blockquote>
