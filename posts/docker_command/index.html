@@ -4,10 +4,10 @@
     
 
 
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     
-    <link rel="canonical" href="http://localhost:1313/posts/docker_command/">
+    <link rel="canonical" href="https://luochang212.github.io/posts/docker_command/">
     
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,24 +19,24 @@
     
     
 
-<title>Docker 速查手册 • Chang Luo</title>
+<title>Docker 命令速查 • Chang Luo</title>
 
 
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Docker 速查手册">
+  <meta name="twitter:title" content="Docker 命令速查">
   <meta name="twitter:description" content="如果需要在低版本服务器运行高版本运行时环境，使用 Docker 是一个好办法">
       <meta name="twitter:site" content="@MinosPalace">
 
-<meta property="og:url" content="http://localhost:1313/posts/docker_command/">
+<meta property="og:url" content="https://luochang212.github.io/posts/docker_command/">
   <meta property="og:site_name" content="Chang Luo">
-  <meta property="og:title" content="Docker 速查手册">
+  <meta property="og:title" content="Docker 命令速查">
   <meta property="og:description" content="如果需要在低版本服务器运行高版本运行时环境，使用 Docker 是一个好办法">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-11-19T00:00:00+00:00">
-    <meta property="article:modified_time" content="2024-11-19T00:00:00+00:00">
+    <meta property="article:published_time" content="2024-11-20T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-11-20T00:00:00+00:00">
     <meta property="article:tag" content="Docker">
     <meta property="article:tag" content="Command">
 
@@ -226,13 +226,13 @@
     <div class="container ">
       <div class="sidebar-about">
         <span class="site__title">
-          <a href="http://localhost:1313/">Chang Luo</a>
+          <a href="https://luochang212.github.io/">Chang Luo</a>
         </span>
         
         
         
         <div class="author-image">
-          <a href="#" class="load-iframe" onclick="openNav()"><img src="http://localhost:1313//images/profile.webp" id="author-iamge"
+          <a href="#" class="load-iframe" onclick="openNav()"><img src="https://luochang212.github.io//images/profile.webp" id="author-iamge"
               alt="Author Image" class="img--circle img--headshot element--center"></a>
         </div>
         
@@ -526,13 +526,13 @@
 
 <article>
   <header>
-    <h1>Docker 速查手册</h1>
+    <h1>Docker 命令速查</h1>
     
     
 <div class="post__meta">
     
     
-      <i class="fas fa-calendar-alt"></i> Nov 19, 2024
+      <i class="fas fa-calendar-alt"></i> Nov 20, 2024
     
     
     
@@ -562,7 +562,7 @@
     
     
     <br/>
-    <i class="fas fa-clock"></i> 3 min read
+    <i class="fas fa-clock"></i> 4 min read
 </div>
 
 
@@ -583,25 +583,29 @@
     <blockquote>
 <p>Docker 命令速查</p>
 </blockquote>
+<p>GitHub 项目地址：<a href="https://github.com/luochang212/docker-command" target="_blank">docker-command</a></p>
 <h3 id="一什么是-docker">一、什么是 Docker</h3>
-<p>Docker 是一种容器技术，它通过轻量级的虚拟化，将程序及其依赖打包到一个称为 <strong>容器</strong> 的独立运行环境中，从而保证应用在不同环境中的一致性。</p>
-<p>容器与虚拟机功能类似，但更加轻量化，这是因为容器提供的是操作系统级别的虚拟化，而虚拟机则是硬件级别的虚拟化。不同于虚拟机需要为每个实例运行一个完整的操作系统，容器共享操作系统内核，因此更轻量、更高效。不过，轻量化的设计也带来了一些限制，例如 systemctl 等服务管理工具通常在容器中不可用。</p>
-<h4 id="11-主要用途">1.1 主要用途</h4>
+<p>Docker 是一种容器技术。它通过轻量级的虚拟化，将程序及其依赖打包到一个称为 <strong>容器</strong> 的独立运行环境中，从而保证应用在不同环境中的一致性。</p>
+<p>容器与虚拟机功能类似，但更加轻量化，这是因为容器提供操作系统级别的虚拟化，而虚拟机则是硬件级别的虚拟化。不同于虚拟机需要为每个实例运行一个完整的操作系统，容器共享操作系统内核，因此更轻量、更高效。不过，轻量化的设计也带来了一些限制，例如 systemctl 等服务管理工具通常在容器中不可用。</p>
+<h4 id="11-核心组件">1.1 核心组件</h4>
+<p>要上手 Docker，首先要认识两大核心组件：</p>
 <ol>
-<li>轻量级虚拟化：可以当作虚拟机使用。相比传统虚拟机，容器更轻量、启动速度更快、资源消耗更少</li>
-<li>一致的运行环境：通过容器确保开发、测试和生产环境的一致性。避免“在我的机器能运行”的问题</li>
-<li>支持微服务架构：每个服务运行在独立的容器中，易于扩展和管理</li>
-<li>支持 CI/CD 流水线：打包应用及其依赖，一次构建即可在任何环境中运行</li>
+<li><strong>镜像 (Image)</strong>: 镜像拥有运行应用所需的一切，包括操作系统、环境变量、代码、依赖包等等</li>
+<li><strong>容器 (Container)</strong>: 容器可由镜像创建，每个容器拥有独立的运行环境</li>
 </ol>
-<h4 id="12-核心组件">1.2 核心组件</h4>
+<p>镜像是无法直接运行的，需要由镜像创建对应的容器才能运行。可以认为容器是镜像的实例。镜像负责存储和分发，容器负责部署并提供服务。</p>
+<h4 id="12-主要用途">1.2 主要用途</h4>
+<p>很多场景能用上 Docker：</p>
 <ol>
-<li><strong>镜像 (Image)</strong>: 镜像是一个只读的模板，包含运行程序所需的一切，例如操作系统、环境变量、依赖包、代码以及配置文件等。镜像可以方便地复制和分发</li>
-<li><strong>容器 (Container)</strong>: 容器是由镜像创建的运行实例。一个镜像可以创建多个容器，且每个容器都拥有独立的运行环境。容器可以快速地部署服务</li>
+<li>轻量级虚拟化：可以当作虚拟机使用</li>
+<li>保证环境一致：确保开发、测试和生产环境的一致性</li>
+<li>支持微服务架构：让每个服务运行在独立的容器中，易于扩展和管理</li>
+<li>支持 CI/CD 流水线：打包依赖及应用时，一次构建即可在任何环境中运行</li>
 </ol>
 <p>如果你还不了解 Docker，请访问以下资源：</p>
 <ul>
-<li>官网：<a href="https://www.docker.com/">https://www.docker.com/</a></li>
-<li>入门文档：<a href="https://docs.docker.com/guides/">https://docs.docker.com/guides/</a></li>
+<li>官网：<a href="https://www.docker.com/" target="_blank"><a href="https://www.docker.com/">https://www.docker.com/</a></a></li>
+<li>入门文档：<a href="https://docs.docker.com/guides/" target="_blank"><a href="https://docs.docker.com/guides/">https://docs.docker.com/guides/</a></a></li>
 </ul>
 <h3 id="二常用命令">二、常用命令</h3>
 <h4 id="21-基础操作">2.1 基础操作</h4>
@@ -777,17 +781,17 @@
 </tbody>
 </table>
 <h3 id="三docker-的简单使用">三、Docker 的简单使用</h3>
-<p>Docker 是客户端 / 服务端分离的，因此在输入其他命令前，通常需要检查一下服务端和客户端是否都在运行：</p>
+<p>Docker 是客户端 / 服务端分离的，因此使用前，通常需要检查一下服务端和客户端是否都在运行：</p>
 <pre tabindex="0"><code>docker info
 </code></pre><h4 id="31-获取镜像的两种方法">3.1 获取镜像的两种方法</h4>
 <h5 id="311-从-docker-hub-获取镜像">3.1.1 从 Docker Hub 获取镜像</h5>
-<p>你可以用 <code>docker pull</code> 命令，从 <a href="https://hub.docker.com/">Docker Hub</a> 下载镜像。例如，可用以下命令，将带有 Nginx 服务的镜像下载到本地：</p>
+<p>可以用 <code>docker pull</code> 命令，从 <a href="https://hub.docker.com/">Docker Hub</a> 拉取镜像。例如，以下命令可拉取带有 Nginx 服务的镜像：</p>
 <pre tabindex="0"><code>docker pull nginx:stable-alpine-perl
 </code></pre><h5 id="312-用-dockerfile-构建镜像">3.1.2 用 Dockerfile 构建镜像</h5>
 <blockquote>
-<p><code>Dockerfile</code> 是一个文本文件，其中包含了一系列指令，用于自动构建 Docker 镜像。通过 Dockerfile，你可以定义一个镜像的构建过程，包括基础镜像、安装软件、环境变量等。</p>
+<p>通过 Dockerfile，你可以定义一个镜像的构建过程，包括基础镜像、安装软件、环境变量等。</p>
 </blockquote>
-<p>以下是一个基于 Ubuntu 22.04 LTS 镜像的 Dockerfile，安装 Miniconda 和 Jupyter Lab，并将工作目录挂载到本地。Jupyter Lab 的密码将在构建时写入绑定目录的 <code>jupyter_lab.log</code> 文件中。</p>
+<p>下面这个 <code>Dockerfile</code> 以 <code>Ubuntu 22.04</code> 为基础镜像，安装了 Miniconda 和 Jupyter Lab，并将 Jupyter Lab 日志写入工作目录的 <code>jupyter_lab.log</code> 文件。</p>
 <p><code>Dockerfile</code> 文件：</p>
 <pre tabindex="0"><code># 使用 Ubuntu 22.04 LTS 作为基础镜像
 FROM ubuntu:22.04
@@ -828,21 +832,64 @@ CMD [&#34;sh&#34;, &#34;-c&#34;, &#34;nohup jupyter lab --ip=0.0.0.0 --allow-roo
 docker info
 
 # 2. 构建镜像
-docker build -t jupyter_server_app .
-</code></pre><p>镜像构建完成后，可以在客户端查看镜像信息：</p>
+docker build -t jupyter_server_image .
+</code></pre><p>镜像构建完成后，可以在客户端中查看镜像信息：</p>
 <p><img src="/img/docker-app.png" alt="docker-app"></p>
-<h4 id="32-启动容器">3.2 启动容器</h4>
+<h4 id="32-如何启动容器">3.2 如何启动容器</h4>
 <p>一旦镜像完成构建，可以通过以下命令启动容器：</p>
-<pre tabindex="0"><code>docker run -d -p 9999:8888 -v $(pwd)/jupyter_workspace:/workspace jupyter_server_app
+<pre tabindex="0"><code># 3. 测试容器
+docker run \
+    --rm \
+    --gpus all \
+    -it \
+    --name jupyter_server_app \
+    jupyter_server_image /bin/bash
+
+# 4. 运行容器
+docker run \
+    --gpus all \
+    --name jupyter_server_app \
+    -d \
+    -p 9999:8888 \
+    -v $(pwd)/jupyter_workspace:/workspace \
+    jupyter_server_image
 </code></pre><p>运行选项说明：</p>
 <ul>
+<li><code>--rm</code>: 当容器退出时自动删除容器，常用于测试</li>
+<li><code>--gpus all</code>: 启用所有可用的 GPU 资源</li>
+<li><code>-it</code>: 启动交互式终端</li>
+<li><code>--name</code>: 为容器指定名字</li>
 <li><code>-d</code>: 以后台模式运行容器</li>
 <li><code>-p &lt;local-port&gt;:&lt;container-port&gt;</code>: 将主机端口映射到容器端口</li>
 <li><code>-v &lt;local-path&gt;:&lt;container-path&gt;</code>: 将主机路径挂载到容器路径</li>
 </ul>
-<h3 id="四docker-compose-的简单使用">四、Docker Compose 的简单使用</h3>
-<p>Docker Compose 是一个工具，用于定义和运行多容器 Docker 应用程序。通过 YAML 文件（<code>docker-compose.yml</code>），你可以定义多个服务及其配置，并快速启动和管理这些服务。</p>
-<h4 id="41-安装-docker-compose">4.1 安装 <code>docker-compose</code></h4>
+<h4 id="33-gpu-机器配置">3.3 GPU 机器配置</h4>
+<p><strong>1）检查 NVIDIA 驱动程序</strong></p>
+<p>确保你的系统上已经安装了 NVIDIA 驱动程序。你可以通过 <code>nvidia-smi</code> 命令来检查是否已安装并输出版本信息。</p>
+<pre tabindex="0"><code>nvidia-smi
+</code></pre><p><strong>2）安装 NVIDIA Container Toolkit</strong></p>
+<p>如果还没有安装 NVIDIA Container Toolkit，可以通过以下命令安装（以 Ubuntu 为例）：</p>
+<pre tabindex="0"><code># 1. 添加 NVIDIA 软件包列表
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
+curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+
+# 2. 更新 apt 缓存，并安装 NVIDIA Container Toolkit
+sudo apt-get update &amp;&amp; sudo apt-get install -y nvidia-container-toolkit
+
+# 3. 重启Docker服务
+sudo systemctl restart docker
+</code></pre><p><strong>3）检查 CUDA 和 PyTorch</strong></p>
+<p>通常 CUDA 和 PyTorch 在 NVIDIA 官方容器中已经安装好了。运行以下命令验证是否已安装：</p>
+<pre tabindex="0"><code># 输出 CUDA 版本
+nvcc --version
+
+# 输出 PyTorch 版本
+pip show torch
+</code></pre><h3 id="四docker-compose-的简单使用">四、Docker Compose 的简单使用</h3>
+<p>Docker Compose 是一个用于定义和运行多容器 Docker 应用的工具。通过 YAML 文件（<code>docker-compose.yml</code>），可定义多个服务及其配置。使用 <code>docker-compose</code> 命令可以快速部署和管理这些服务。</p>
+<h4 id="41-安装-docker-compose">4.1 安装 Docker Compose</h4>
+<p>对于 MacOS 和 Linux：</p>
 <pre tabindex="0"><code>curl -L &#34;https://github.com/docker/compose/releases/download/v2.20.0/docker-compose-$(uname -s)-$(uname -m)&#34; -o ~/docker-compose
 chmod +x ~/docker-compose
 sudo mv ~/docker-compose /usr/local/bin/docker-compose
@@ -988,10 +1035,11 @@ docker-compose ps
 docker network ls
 ``` -->
 <h3 id="附录">附录</h3>
-<p>常用镜像下载地址：</p>
+<p>资源列表：</p>
 <ul>
-<li><a href="https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch/tags">NVIDIA NGC Catalog - PyTorch</a></li>
-<li><a href="https://hub.docker.com/r/nvidia/cuda/tags">nvidia/cuda</a></li>
+<li><a href="https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch/tags">NVIDIA PyTorch 镜像</a></li>
+<li><a href="https://hub.docker.com/r/nvidia/cuda/tags">NVIDIA CUDA 镜像</a></li>
+<li><a href="https://org.ngc.nvidia.com/setup/api-key">NVIDIA api-key</a></li>
 </ul>
 
   </div>
