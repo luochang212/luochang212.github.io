@@ -6,14 +6,21 @@
     <description>Recent content on Chang Luo</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 20 Nov 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 30 Nov 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://luochang212.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Docker 命令速查</title>
+      <title>Triton 搭建 CLIP 图文 Embedding 推理服务</title>
+      <link>https://luochang212.github.io/posts/triton_server/</link>
+      <pubDate>Sat, 30 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/posts/triton_server/</guid>
+      <description>本文介绍如何用 Triton 在多 GPU 环境下部署高性能 CLIP 推理服务。&#xA;GitHub 项目地址：clip-server&#xA;CLIP 是一个多模态模型。它能将图像和文本映射到同一个向量空间中，由此可以产生诸多应用。比如，通过计算图片与文本的相似性，可以用近似最近邻 (ANN) 从相册中检索与给定 query 语义相近的图片。此外，CLIP 的 Vision Encoder 可以作为特征提取器使用，用于生成的图像 Embedding。如果在 Vision Encoder 后加一个 fc 层，并且冻住骨干网络仅对 fc 层做训练，通常可以得到一个效果不错的图像分类器。&#xA;本文涉及的内容包括：&#xA;用 transformers 库运行 openai/clip-vit-base-patch32 的简单示例 在 titanic 数据集上训练一个 MLP 并导出成 ONNX 格式 介绍如何安装预装了 Triton 的 Nvidia 官方 Docker 镜像 &amp;amp; 启动容器 介绍如何将 MLP 的 ONNX 模型配置到 Triton 模型仓库中 写了一个简单的 客户端 用于获取 Triton 的推理结果 介绍 Triton 的 Python Backend，其通常用于模型预处理和后处理 用 Model Ensemble 组装 Python Backend 和 ONNX 组成完整的推理服务 ✨ 注意：运行以下代码依赖 utils.</description>
+    </item>
+    <item>
+      <title>Docker 命令速查手册</title>
       <link>https://luochang212.github.io/posts/docker_command/</link>
-      <pubDate>Wed, 20 Nov 2024 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 23 Nov 2024 00:00:00 +0000</pubDate>
       <guid>https://luochang212.github.io/posts/docker_command/</guid>
-      <description>在低版本服务器运行高版本环境，使用 Docker 是一个好办法。&#xA;GitHub 项目地址：docker-command&#xA;一、什么是 Docker Docker 是一种容器技术。它通过轻量级的虚拟化，将程序及其依赖打包到一个称为 容器 的独立运行环境中，从而保证应用在不同环境中的一致性。&#xA;容器与虚拟机功能类似，但更加轻量化，这是因为容器提供操作系统级别的虚拟化，而虚拟机则是硬件级别的虚拟化。不同于虚拟机需要为每个实例运行一个完整的操作系统，容器共享操作系统内核，因此更轻量、更高效。不过，轻量化的设计也带来了一些限制，例如 systemctl 等服务管理工具通常在容器中不可用。&#xA;1.1 核心组件 要上手 Docker，首先要认识两大核心组件：&#xA;镜像 (Image): 镜像拥有运行应用所需的一切，包括操作系统、环境变量、代码、依赖包等等 容器 (Container): 容器可由镜像创建，每个容器拥有独立的运行环境 镜像是无法直接运行的，需要由镜像创建对应的容器才能运行。可以认为容器是镜像的实例。镜像负责存储和分发，容器负责部署并提供服务。&#xA;1.2 主要用途 很多场景能用上 Docker：&#xA;轻量级虚拟化：可以当作虚拟机使用 保证环境一致：确保开发、测试和生产环境的一致性 支持微服务架构：让每个服务运行在独立的容器中，易于扩展和管理 支持 CI/CD 流水线：打包依赖及应用时，一次构建即可在任何环境中运行 如果你还不了解 Docker，请访问以下资源：&#xA;官网：https://www.docker.com/ 入门文档：https://docs.docker.com/guides/ 二、常用命令 2.1 基础操作 命令 描述 docker info 查看 docker 系统信息 docker version 查看 docker 版本信息 docker --version 查看 docker 简略版本信息 docker login 登录 DockerHub docker login nvcr.io 登录 nvcr.io 2.2 镜像管理 命令 描述 docker images 查看镜像 docker pull [IMAGE] 拉取镜像 docker rmi [IMAGE] 删除镜像 docker commit [CONTAINER] [IMAGE]:[TAG] 将容器保存为新的镜像 docker save -o myimage.</description>
+      <description>在低版本的服务器或存在共用关系的大组环境里，Docker 是个好东西。Docker 可以提供独立的运行时环境，以免受其他服务和人的干扰。&#xA;GitHub 项目地址：docker-command&#xA;一、什么是 Docker Docker 是一种容器技术。它通过轻量级的虚拟化，将程序及其依赖打包到一个被称为 容器 的独立运行环境里，从而保证应用在不同环境中的一致性。&#xA;容器与虚拟机，在功能上类似，但更加轻量化。容器提供的是操作系统级别的虚拟化；而虚拟机提供的是硬件级别的虚拟化。不同于虚拟机要为每个实例运行完整的操作系统，容器共享操作系统内核，因此更轻量、更高效。不过，轻量化的设计也带来了一些限制，例如 systemctl 等服务管理工具通常在容器中不可用。&#xA;1.1 核心组件 在上手 Docker 前，有必要了解它的核心组件：&#xA;镜像 (Image): 镜像拥有运行应用所需的一切，包括操作系统、代码、依赖等 容器 (Container): 容器由镜像创建，每个容器拥有独立的运行环境 你无法直接运行镜像，必须由镜像创建对应的容器才能运行。可以认为容器是镜像的实例。镜像负责存储与分发，容器负责提供服务。&#xA;1.2 主要用途 Docker 的主要用途包括：&#xA;轻量级虚拟化：可以当成虚拟机使用 支持微服务架构：每个服务运行在独立容器中，易于扩展和管理 支持 CI/CD 流水线：一次打包，即可在所有环境中运行 保证环境的一致性：确保测试、开发、生产环境一致 如果你还不了解 Docker，可访问以下资源：&#xA;官网：https://www.docker.com/ 入门文档：https://docs.docker.com/guides/ 二、常用命令 2.1 基础操作 命令 描述 docker info 查看 docker 系统信息 docker version 查看 docker 版本信息 docker --version 查看 docker 简略版本信息 docker login 登录 DockerHub docker login nvcr.io 登录 nvcr.io 2.</description>
     </item>
     <item>
       <title>频繁模式挖掘</title>
@@ -97,7 +104,7 @@
       <link>https://luochang212.github.io/posts/jupyter_lab/</link>
       <pubDate>Wed, 15 May 2024 00:00:00 +0000</pubDate>
       <guid>https://luochang212.github.io/posts/jupyter_lab/</guid>
-      <description>JupyterLab 你是真的火了&amp;hellip;&#xA;5 月 14 号 OpenAI 春季发布会 出现了这个画面：&#xA;才知道 JupyterLab 是 OpenAI 的日常开发工具。感谢 OpenAI 亲自带货。&#xA;JupyterLab 拥有丰富的功能，并不只是 Python 解释器这么简单，让我向你们展示它的强大！&#xA;〇、安装 JupyterLab 执行以下命令安装 JupyterLab：&#xA;# For miniconda user conda install -c conda-forge jupyterlab # For conda-forge user # mamba install -c conda-forge jupyterlab Note: mamba 是 miniforge 自带的包管理工具。大多数时候，你可以用 mamba 直接替代 conda，比如 mamba info --envs。使用 mamba 通常可以获得更高的下载速度。&#xA;一、制作 PPT 1.1 Notebook 转 PPT 只需两步，就能把 Notebook 转成 PPT：&#xA;设置 Slide Type：为保证页面被正确渲染，你需要设置 Cell 的 Slide Type。对于新版 Jupyter Lab，在右侧边栏上有带俩齿轮的按钮，点进去，然后一路点 [Property Inspector] -&amp;gt; [COMMON TOOLS] -&amp;gt; [Slide Type]，在这里对 Cell 进行设置。</description>
+      <description>JupyterLab 你是真的火了&amp;hellip;&#xA;5 月 14 号 OpenAI 春季发布会 出现了这个画面：&#xA;才知道 JupyterLab 是 OpenAI 的日常开发工具。感谢 OpenAI 亲自带货。&#xA;JupyterLab 拥有丰富的功能，并不只是 Python 解释器这么简单，让我向你们展示它的强大！&#xA;〇、安装 JupyterLab 执行以下命令安装 JupyterLab：&#xA;# For miniconda user conda install -c conda-forge jupyterlab # For conda-forge user # mamba install -c conda-forge jupyterlab Note: mamba 是 miniforge 自带的包管理工具。在 miniforge 环境中，你可以用 mamba 替代 conda，比如 mamba info --envs。使用 mamba 通常可以获得更高的下载速度。&#xA;一、制作 PPT 1.1 Notebook 转 PPT 只需两步，就能把 Notebook 转成 PPT：&#xA;设置 Slide Type：为保证页面被正确渲染，你需要设置 Cell 的 Slide Type。对于新版 Jupyter Lab，在右侧边栏上有带俩齿轮的按钮，点进去，然后一路点 [Property Inspector] -&amp;gt; [COMMON TOOLS] -&amp;gt; [Slide Type]，在这里对 Cell 进行设置。</description>
     </item>
     <item>
       <title>LSTM 家庭用电预测</title>

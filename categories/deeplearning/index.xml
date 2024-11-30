@@ -6,8 +6,15 @@
     <description>Recent content in DeepLearning on Chang Luo</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 10 Aug 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 30 Nov 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://luochang212.github.io/categories/deeplearning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Triton 搭建 CLIP 图文 Embedding 推理服务</title>
+      <link>https://luochang212.github.io/posts/triton_server/</link>
+      <pubDate>Sat, 30 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/posts/triton_server/</guid>
+      <description>本文介绍如何用 Triton 在多 GPU 环境下部署高性能 CLIP 推理服务。&#xA;GitHub 项目地址：clip-server&#xA;CLIP 是一个多模态模型。它能将图像和文本映射到同一个向量空间中，由此可以产生诸多应用。比如，通过计算图片与文本的相似性，可以用近似最近邻 (ANN) 从相册中检索与给定 query 语义相近的图片。此外，CLIP 的 Vision Encoder 可以作为特征提取器使用，用于生成的图像 Embedding。如果在 Vision Encoder 后加一个 fc 层，并且冻住骨干网络仅对 fc 层做训练，通常可以得到一个效果不错的图像分类器。&#xA;本文涉及的内容包括：&#xA;用 transformers 库运行 openai/clip-vit-base-patch32 的简单示例 在 titanic 数据集上训练一个 MLP 并导出成 ONNX 格式 介绍如何安装预装了 Triton 的 Nvidia 官方 Docker 镜像 &amp;amp; 启动容器 介绍如何将 MLP 的 ONNX 模型配置到 Triton 模型仓库中 写了一个简单的 客户端 用于获取 Triton 的推理结果 介绍 Triton 的 Python Backend，其通常用于模型预处理和后处理 用 Model Ensemble 组装 Python Backend 和 ONNX 组成完整的推理服务 ✨ 注意：运行以下代码依赖 utils.</description>
+    </item>
     <item>
       <title>三种图神经网络算法：GraphSAGE, GCN 和 GAT</title>
       <link>https://luochang212.github.io/posts/graph_embedding/</link>

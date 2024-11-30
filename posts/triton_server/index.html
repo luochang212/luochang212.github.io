@@ -7,7 +7,7 @@
     <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     
-    <link rel="canonical" href="https://luochang212.github.io/posts/frequent_pattern_mining/">
+    <link rel="canonical" href="https://luochang212.github.io/posts/triton_server/">
     
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,26 +19,27 @@
     
     
 
-<title>频繁模式挖掘 • Chang Luo</title>
+<title>Triton 搭建 CLIP 图文 Embedding 推理服务 • Chang Luo</title>
 
 
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="频繁模式挖掘">
-  <meta name="twitter:description" content="频繁项集和频繁序列算法的 Spark 实现">
+  <meta name="twitter:title" content="Triton 搭建 CLIP 图文 Embedding 推理服务">
+  <meta name="twitter:description" content="本文介绍如何用 Triton 在多 GPU 环境下部署高性能 CLIP 推理服务">
       <meta name="twitter:site" content="@MinosPalace">
 
-<meta property="og:url" content="https://luochang212.github.io/posts/frequent_pattern_mining/">
+<meta property="og:url" content="https://luochang212.github.io/posts/triton_server/">
   <meta property="og:site_name" content="Chang Luo">
-  <meta property="og:title" content="频繁模式挖掘">
-  <meta property="og:description" content="频繁项集和频繁序列算法的 Spark 实现">
+  <meta property="og:title" content="Triton 搭建 CLIP 图文 Embedding 推理服务">
+  <meta property="og:description" content="本文介绍如何用 Triton 在多 GPU 环境下部署高性能 CLIP 推理服务">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-09-05T00:00:00+00:00">
-    <meta property="article:modified_time" content="2024-09-05T00:00:00+00:00">
-    <meta property="article:tag" content="FP-Growth">
-    <meta property="article:tag" content="PrefixSpan">
+    <meta property="article:published_time" content="2024-11-30T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-11-30T00:00:00+00:00">
+    <meta property="article:tag" content="Triton">
+    <meta property="article:tag" content="CLIP">
+    <meta property="article:tag" content="ONNX">
 
 
     
@@ -526,13 +527,13 @@
 
 <article>
   <header>
-    <h1>频繁模式挖掘</h1>
+    <h1>Triton 搭建 CLIP 图文 Embedding 推理服务</h1>
     
     
 <div class="post__meta">
     
     
-      <i class="fas fa-calendar-alt"></i> Sep 5, 2024
+      <i class="fas fa-calendar-alt"></i> Nov 30, 2024
     
     
     
@@ -541,7 +542,7 @@
           in
           
           
-              <a class="badge badge-category" href="/categories/algorithms">ALGORITHMS</a>
+              <a class="badge badge-category" href="/categories/deeplearning">DEEPLEARNING</a>
               
           
       
@@ -553,16 +554,19 @@
           <br/>
            <i class="fas fa-tags"></i>
           
-          <a class="badge badge-tag" href="/tags/fp-growth">fp-growth</a>
+          <a class="badge badge-tag" href="/tags/triton">triton</a>
            
       
-          <a class="badge badge-tag" href="/tags/prefixspan">prefixspan</a>
+          <a class="badge badge-tag" href="/tags/clip">clip</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/onnx">onnx</a>
           
       
     
     
     <br/>
-    <i class="fas fa-clock"></i> 1 min read
+    <i class="fas fa-clock"></i> 2 min read
 </div>
 
 
@@ -581,48 +585,132 @@
   
   <div class="post">
     <blockquote>
-<p>挖掘 <strong>频繁项集</strong> 和 <strong>频繁序列</strong> 是频繁模式挖掘的两个经典任务。它俩的区别是：前者是顺序无关的，而后者关注顺序。对于这两种任务，Spark 已经有非常成熟的解决方案了，在当前主流公司的数据量级下是够用的。</p>
+<p>本文介绍如何用 Triton 在多 GPU 环境下部署高性能 CLIP 推理服务。</p>
 </blockquote>
-<p>GitHub 项目地址：<a href="https://github.com/luochang212/frequent-pattern-mining" target="_blank">frequent-pattern-mining</a></p>
-<p><strong>频繁项集</strong> 经常被念叨的一个用途，是挖掘经常被一起购买的商品（比如奶粉和尿布）。如果知道哪些商品经常被一起购买，就可以将这些商品打包出售。或者放在超市里相隔较远的两个地方，引导用户多逛。</p>
-<p><strong>频繁序列</strong> 也很有用。用户的连续行为可以看作一个序列。通过分析用户的频繁序列，产品经理可以发现用户习惯，进而优化功能排布和页面顺序，达到提升链路转化效率的效果。</p>
-<p>✨ 注意：运行以下代码依赖 <a href="https://github.com/luochang212/frequent-pattern-mining/blob/main/utils.py" target="_blank">utils.py</a> 文件。</p>
-<h3 id="一频繁项集算法fpgrowth">一、频繁项集算法：FPGrowth</h3>
-<ol>
-<li>数据预处理</li>
-<li>频繁项挖掘
+<p>GitHub 项目地址：<a href="https://github.com/luochang212/clip-server" target="_blank">clip-server</a></p>
+<p>CLIP 是一个多模态模型。它能将图像和文本映射到同一个向量空间中，由此可以产生诸多应用。比如，通过计算图片与文本的相似性，可以用近似最近邻 (ANN) 从相册中检索与给定 query 语义相近的图片。此外，CLIP 的 Vision Encoder 可以作为特征提取器使用，用于生成的图像 Embedding。如果在 Vision Encoder 后加一个 fc 层，并且冻住骨干网络仅对 fc 层做训练，通常可以得到一个效果不错的图像分类器。</p>
+<p>本文涉及的内容包括：</p>
 <ul>
-<li>频繁项集</li>
-<li>关联规则</li>
+<li>用 <code>transformers</code> 库运行 <code>openai/clip-vit-base-patch32</code> 的简单示例</li>
+<li>在 <code>titanic</code> 数据集上训练一个 MLP 并导出成 ONNX 格式</li>
+<li>介绍如何安装预装了 Triton 的 Nvidia 官方 Docker 镜像 <code>&amp;</code> 启动容器</li>
+<li>介绍如何将 MLP 的 ONNX 模型配置到 Triton 模型仓库中</li>
+<li>写了一个简单的 <a href="https://github.com/luochang212/clip-server/blob/main/utils.py#L108" target="_blank">客户端</a> 用于获取 Triton 的推理结果</li>
+<li>介绍 Triton 的 Python Backend，其通常用于模型预处理和后处理</li>
+<li>用 Model Ensemble 组装 Python Backend 和 ONNX 组成完整的推理服务</li>
+</ul>
+<p>✨ 注意：运行以下代码依赖 <a href="https://github.com/luochang212/clip-server/blob/main/utils.py" target="_blank">utils.py</a> 文件和 <a href="https://github.com/luochang212/clip-server/blob/main/mlp.py" target="_blank">mlp.py</a> 文件。</p>
+<h3 id="一简单的-clip-模型">一、简单的 CLIP 模型</h3>
+<h4 id="1clip-模型介绍">1）CLIP 模型介绍</h4>
+<p>为了训练 CLIP，OpenAI 收集了 4 亿对图文数据进行训练。训练目标是让图片的特征向量与对应文本的特征向量在向量空间中靠得更近。训练采用多模态对比学习的方法。在一个 batch 中，对于每张图片，它的目标是找到当前 batch 中与之最匹配的文本，最大化与匹配文本的相似度（正样本），并同时最小化与其他文本的相似度（负样本）。</p>
+<p>CLIP 训练了两个独立的编码器：</p>
+<ul>
+<li><strong>图像编码器</strong>：通常使用 ResNet 或 Vision Transformer (ViT)。</li>
+<li><strong>文本编码器</strong>：基于 Transformer 结构。</li>
+</ul>
+<p>OpenAI 尝试了多种编码器，得出一个很直觉的结论：模型的效果与参数量呈现正相关。基本上使用参数越大的编码器，效果就越好。</p>
+<h4 id="2用-clip-计算图文相似性分数">2）用 CLIP 计算图文相似性分数</h4>
+<p>用 <code>transformers</code> 库加载 <code>openai/clip-vit-base-patch32</code>。并用一张猫的图片与两句话进行对比：</p>
+<ul>
+<li>a photo of a cat</li>
+<li>a photo of a dog</li>
+</ul>
+<p>使用 CLIP 模型，计算猫的图片与每句话的相似性分数，取分数最高的句子作为图片的分类标签。验证模型能否有效区分猫和狗。</p>
+<blockquote>
+<p><strong>Note:</strong> 值得注意的是 <code>a photo of {item}</code> 是一种 <a href="https://github.com/openai/CLIP/blob/main/> notebooks/Prompt_Engineering_for_ImageNet.ipynb" target="_blank">Prompt Engineer</a> 方法。除了前面这个，OpenAI 还用了很多其他标签。比如：</p>
+<pre tabindex="0"><code>a bad photo of a {}.
+a photo of many {}.
+a sculpture of a {}.
+a photo of the hard to see {}.
+a low resolution photo of the {}.
+a rendering of a {}.
+graffiti of a {}.
+</code></pre></blockquote>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/clip-server/blob/main/1.simple_clip_model.ipynb')">查看笔记</button>
+</center>
+<br>
+<h3 id="二onnx-模型格式导出">二、ONNX 模型格式导出</h3>
+<p>本节我们在 <a href="https://www.kaggle.com/datasets/heptapod/titanic/data" target="_blank">titanic</a> 数据集上训练一个 MLP 模型，并将它导出成 ONNX 格式。</p>
+<blockquote>
+<p><strong>Note:</strong> 需要特别注意，用 <code>torch.onnx.export</code> 导出模型时，一定要将所有可变维度都配置上。比如，如果 <code>batch_size</code>, <code>sequence_length</code> 这些维度都是可变的，一定要全部配上，否则后期写 Triton 的 <code>config.pbtxt</code> 配置的时候会出问题。</p>
+</blockquote>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/clip-server/blob/main/2.onnx_model.ipynb')">查看笔记</button>
+</center>
+<br>
+<h3 id="三搭建-triton-推理服务">三、搭建 Triton 推理服务</h3>
+<p>本节介绍如何下载、安装、配置、启动 Triton 服务，以及如何用客户端获取 Triton 的推理结果。</p>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/clip-server/blob/main/3.triton_inference_server.ipynb')">查看笔记</button>
+</center>
+<br>
+<h3 id="四python-backend-入门">四、Python Backend 入门</h3>
+<p>ONNX 只接受张量作为输入。如果希望给 Triton 提供图像或者文本，那就需要对输入做预处理，处理成张量后再传给 ONNX.</p>
+<p>在 Triton 中做图像、文本预处理，需要用到 <a href="https://github.com/triton-inference-server/python_backend" target="_blank">Python Backend</a>.</p>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/clip-server/blob/main/4.python_backend.ipynb')">查看笔记</button>
+</center>
+<br>
+<h3 id="五模型集成-model-ensembles">五、模型集成 Model Ensembles</h3>
+<p>前面所有小节都是准备工作，本节终于进入正题：<strong>如何用 Triton 搭建 CLIP 图文 Embedding 推理服务</strong>。</p>
+<p>步骤大致如下：</p>
+<ol>
+<li><strong>拆解模型</strong>：将模型预处理部分和主体部分的代码分开</li>
+<li><strong>预处理模型</strong>：
+<ul>
+<li><strong>新建模型</strong>：新建一个模型文件 <code>your_preprocess_model/1/model.py</code></li>
+<li><strong>编写预处理代码</strong>：将预处理过程写入 <code>model.py</code>，需要按文档要求实现 <code>TritonPythonModel</code> 的三个函数：<code>initialize</code>, <code>execute</code> 和 <code>finalize</code>。其中 <code>initialize</code> 只在模型初始化时执行一次，<code>execute</code> 负责处理请求，<code>finalize</code> 在模型卸载时调用</li>
+<li><strong>配置</strong>：写配置文 <code>your_preprocess_model/config.pbtxt</code></li>
+<li><strong>测试</strong>：用客户端测试预处理模型</li>
+</ul>
+</li>
+<li><strong>主体模型</strong>：
+<ul>
+<li><strong>新建模型</strong>：在模型仓库下，新建一个模型目录 <code>your_onnx_model/1/</code>，并将 ONNX 模型放入</li>
+<li><strong>模型格式转换</strong>：将主体模型转成 ONNX 格式，这样可以加速推理</li>
+<li><strong>配置</strong>：写配置文件 <code>your_onnx_model/config.pbtxt</code></li>
+<li><strong>测试</strong>：用客户端测试主体模型</li>
+</ul>
+</li>
+<li><strong>模型集成</strong>：
+<ul>
+<li><strong>新建模型</strong>：新建一个模型目录 <code>your_ensemble_model/1/</code>，只需要这个目录结构，不用往里放文件</li>
+<li><strong>配置</strong>：写配置文件 <code>your_ensemble_model/config.pbtxt</code></li>
+<li><strong>测试</strong>：用客户端测试集成模型</li>
 </ul>
 </li>
 </ol>
 <br>
 <center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/frequent-pattern-mining/blob/main/1.FP-Growth.ipynb')">查看示例</button>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/clip-server/blob/main/5.model_ensembles.ipynb')">查看笔记</button>
 </center>
 <br>
-<h3 id="二频繁序列算法prefixspan">二、频繁序列算法：PrefixSpan</h3>
-<ol>
-<li>一个简单的例子</li>
-<li>子序列挖掘
+<h3 id="参考资料">参考资料</h3>
+<h4 id="1github">1）GitHub</h4>
 <ul>
-<li>商品编码</li>
-<li>生成商品序列</li>
-<li>计算频繁子序列</li>
-<li>通过子序列回溯原始数据</li>
+<li><a href="https://github.com/openai/CLIP">openai/CLIP</a></li>
+<li><a href="https://github.com/triton-inference-server/server">triton-inference-server/server</a></li>
+<li><a href="https://github.com/triton-inference-server/python_backend">triton-inference-server/python_backend</a></li>
+<li><a href="https://github.com/triton-inference-server/tutorials">triton-inference-server/tutorials</a></li>
+<li><a href="https://github.com/triton-inference-server/server/blob/main/docs/user_guide/model_configuration.md">triton: model_configuration</a></li>
+<li><a href="https://github.com/onnx/onnx">onnx/onnx</a></li>
 </ul>
-</li>
-</ol>
-<br>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/frequent-pattern-mining/blob/main/2.PrefixSpan.ipynb')">查看示例</button>
-</center>
-<br>
-<p>参考：</p>
+<h4 id="2视频资源">2）视频资源</h4>
 <ul>
-<li><a href="https://spark.apache.org/docs/latest/ml-frequent-pattern-mining.html" target="_blank">Frequent Pattern Mining</a></li>
-<li><a href="https://www.kaggle.com/code/prasad22/market-basket-analysis-with-apriori-algorithm" target="_blank">Market Basket Analysis with Apriori Algorithm</a></li>
+<li><a href="https://www.bilibili.com/video/BV1SL4y1s7LQ">CLIP 论文逐段精读</a></li>
+<li><a href="https://www.bilibili.com/video/BV1FV4y1p7Lm">CLIP 改进工作串讲（上）</a></li>
+<li><a href="https://www.bilibili.com/video/BV1gg411U7n4">CLIP 改进工作串讲（下）</a></li>
+</ul>
+<h4 id="3其他资源">3）其他资源</h4>
+<ul>
+<li><a href="https://openai.com/index/clip/">OpenAI CLIP 官网</a></li>
+<li><a href="https://huggingface.co/docs/transformers/en/model_doc/clip">Hugging Face CLIP</a></li>
+<li><a href="https://arxiv.org/abs/2103.00020">arXiv: <em>Learning Transferable Visual Models From Natural Language Supervision</em></a></li>
 </ul>
 <div id="mini-overlay" onclick="overlay_off()"></div>
 <div id="mini-window"><iframe id="mini-iframe" frameBorder="0"></iframe></div>
@@ -635,16 +723,11 @@
 
 <div class="navigation navigation-single">
     
-    <a href="/posts/redis_util/" class="navigation-prev">
+    <a href="/posts/docker_command/" class="navigation-prev">
       <i aria-hidden="true" class="fa fa-chevron-left"></i>
-      <span class="navigation-tittle">初见向量引擎：RediSearch 和 Milvus</span>
-    </a>
-    
-    
-    <a href="/posts/docker_command/" class="navigation-next">
       <span class="navigation-tittle">Docker 命令速查手册</span>
-      <i aria-hidden="true" class="fa fa-chevron-right"></i>
     </a>
+    
     
 </div>
 

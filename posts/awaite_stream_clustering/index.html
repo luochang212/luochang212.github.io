@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en-us">
     
-  <head>
+    
+
+
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     
-    <link rel="canonical" href="https://luochang212.github.io/">
+    <link rel="canonical" href="http://localhost:1313/posts/awaite_stream_clustering/">
     
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,20 +16,29 @@
 <meta name="generator" content="Hugo 0.132.1">
 
     
+    
+    
 
-<title>Chang Luo</title>
+<title>流式聚类算法 DenStream • Chang Luo</title>
 
 
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Chang Luo">
+  <meta name="twitter:title" content="流式聚类算法 DenStream">
+  <meta name="twitter:description" content="Docker 命令速查和简单介绍">
       <meta name="twitter:site" content="@MinosPalace">
 
-<meta property="og:url" content="https://luochang212.github.io/">
+<meta property="og:url" content="http://localhost:1313/posts/awaite_stream_clustering/">
   <meta property="og:site_name" content="Chang Luo">
-  <meta property="og:title" content="Chang Luo">
+  <meta property="og:title" content="流式聚类算法 DenStream">
+  <meta property="og:description" content="Docker 命令速查和简单介绍">
   <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-11-21T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-11-21T00:00:00+00:00">
+    <meta property="article:tag" content="Stream">
+    <meta property="article:tag" content="Clustering">
 
 
     
@@ -61,8 +73,7 @@
     <!-- Icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
     <link rel="shortcut icon" href="/favicon.png">
-    <link rel="alternate" type="application/rss+xml" href="https://luochang212.github.io/index.xml" title="Chang Luo" />
-
+    
     
 
 </head>
@@ -215,13 +226,13 @@
     <div class="container ">
       <div class="sidebar-about">
         <span class="site__title">
-          <a href="https://luochang212.github.io/">Chang Luo</a>
+          <a href="http://localhost:1313/">Chang Luo</a>
         </span>
         
         
         
         <div class="author-image">
-          <a href="#" class="load-iframe" onclick="openNav()"><img src="https://luochang212.github.io//images/profile.webp" id="author-iamge"
+          <a href="#" class="load-iframe" onclick="openNav()"><img src="http://localhost:1313//images/profile.webp" id="author-iamge"
               alt="Author Image" class="img--circle img--headshot element--center"></a>
         </div>
         
@@ -502,264 +513,214 @@
 
         <div class="content container">
             
-  <div class="post-list">
+    <style>
+  .my-emoji {
+    height: 25px;
+    display: inline-block;
+    margin: 0;
+    vertical-align: text-bottom;
+  }
+</style>
+
+
+
+<article>
+  <header>
+    <h1>流式聚类算法 DenStream</h1>
     
     
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Nov 21, 2024
+    
+    
+    
       
-        
       
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/triton_server/" >Triton 搭建 CLIP 图文 Embedding 推理服务</a>
-        </span>
-        <span class="item__date">
-          Nov 30, 2024
-        </span>
-        <span >
-        
-        本文介绍如何用 Triton 在多 GPU 环境下部署高性能 CLIP 推理服务
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/triton_server/">➦</a>
-        
-        </div>
-        
-     
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/algorithms">ALGORITHMS</a>
+              
+          
       
-        
+    
+    
+    
       
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/docker_command/" >Docker 命令速查手册</a>
-        </span>
-        <span class="item__date">
-          Nov 23, 2024
-        </span>
-        <span >
-        
-        你这个无聊又不得不记的东西！
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/docker_command/">➦</a>
-        
-        </div>
-        
-     
       
-        
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/stream">stream</a>
+           
       
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/frequent_pattern_mining/" >频繁模式挖掘</a>
-        </span>
-        <span class="item__date">
-          Sep 5, 2024
-        </span>
-        <span >
-        
-        频繁项集和频繁序列算法的 Spark 实现
-        
-        </span>
-        
-        </div>
-        
-     
+          <a class="badge badge-tag" href="/tags/clustering">clustering</a>
+          
       
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/redis_util/" >初见向量引擎：RediSearch 和 Milvus</a>
-        </span>
-        <span class="item__date">
-          Aug 18, 2024
-        </span>
-        <span >
-        
-        只想建索引，Redis 够用了。如果要计算向量相似度，就可以用向量引擎了
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/redis_util/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/graph_embedding/" >三种图神经网络算法：GraphSAGE, GCN 和 GAT</a>
-        </span>
-        <span class="item__date">
-          Aug 10, 2024
-        </span>
-        <span >
-        
-        GNN 处理图数据的方式还是很符合直觉的，基本沿袭了 CNN 的思路：每个神经元只看局部信息，通过层层汇聚掌握全貌
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/graph_embedding/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/synchrotrap/" >SynchroTrap 算法实现</a>
-        </span>
-        <span class="item__date">
-          Jul 27, 2024
-        </span>
-        <span >
-        
-        基于 Jaccard 相似度和最大连通子图的异常挖掘算法
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/synchrotrap/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/dl_tricks/" >像搭积木一样搭神经网络</a>
-        </span>
-        <span class="item__date">
-          Jul 7, 2024
-        </span>
-        <span >
-        
-        对费曼学习法的拙劣戏仿
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/dl_tricks/">➦</a>
-        
-        </div>
-        
-     
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 1 min read
+</div>
+
+
+  </header>
+  
+  
+  
+  <div class="toc-wrapper">
+    <input type="checkbox" id="tocToggle">
+    <label for="tocToggle">目录</label>
+    
+    <div class="toc" id="TableOfContents"></div>
+    
+  </div>
+  
+  
+  <div class="post">
+    <blockquote>
+<p>在低版本服务器运行高版本环境，使用 Docker 是一个好办法。</p>
+</blockquote>
+<p>GitHub 项目地址：<a href="https://github.com/luochang212/docker-command" target="_blank">docker-command</a></p>
+<h3 id="一">一、</h3>
+<p>对于你描述的场景，即对嵌入（embedding）进行实时聚类，通常使用流式聚类算法。以下几种方法适合处理你的需求：</p>
+<ol>
+<li>
+<p><strong>Online k-means（Mini-Batch k-means）</strong>:</p>
+<ul>
+<li>适合实时数据，可以基于一个小批量的数据更新现有的聚类中心。在线 k-means 是通过不断更新簇中心来适应新数据的变化。</li>
+<li>如果聚类数是已知的或者可以通过实验找到一个合理的值，这个方法非常有效。</li>
+</ul>
+</li>
+<li>
+<p><strong>DBSTREAM</strong>:</p>
+<ul>
+<li>一种专门设计用于流数据的聚类算法，可以动态处理进入的数据并基于时间窗口管理不同的簇。</li>
+<li>它支持根据数据的过期时间（比如过去48小时）动态调整簇的组成，从而满足你对时间窗口的要求。</li>
+</ul>
+</li>
+<li>
+<p><strong>DenStream</strong>:</p>
+<ul>
+<li>DenStream 是 DBSCAN 的流式版本，它使用微簇（micro-clusters）来处理数据流，适用于处理具有噪声的嵌入。</li>
+<li>它对于保持长时间的流数据的聚类结构并支持基于时间窗口的聚类非常有效。</li>
+</ul>
+</li>
+<li>
+<p><strong>CluStream</strong>:</p>
+<ul>
+<li>CluStream 通过维护微簇，并在不同的时间点上对这些微簇进行宏观分析来形成更大的聚类。</li>
+<li>它非常适合时间窗口内的聚类分析，可以为你每48小时内的日志提供有效的聚类结构。</li>
+</ul>
+</li>
+<li>
+<p><strong>HDBSCAN（Hierarchy Density-Based Spatial Clustering of Applications with Noise）</strong>:</p>
+<ul>
+<li>虽然 HDBSCAN 是一种批量聚类算法，但它也可以用于流式环境下，通过增量的方式对新数据进行重聚类。</li>
+<li>对于数据流的应用，可以通过周期性地重新运行来调整现有的簇结构。</li>
+</ul>
+</li>
+</ol>
+<h3 id="总结建议">总结建议</h3>
+<p>考虑到你的数据是实时进入，并且希望根据过去48小时的数据动态生成簇，推荐使用 <strong>DenStream</strong> 或 <strong>DBSTREAM</strong>，因为它们能够处理时间窗口并应对数据流中的噪声。此外，如果你的数据是高维度的，利用这些算法的微簇管理可以更高效地处理嵌入。</p>
+<p>你也可以结合 <strong>Mini-Batch k-means</strong> 作为简单易实现的选择，如果你对簇的数量有合理的预估。</p>
+
   </div>
   
 
-<ul class="pagination">
+<div class="navigation navigation-single">
     
-    <li class="page-item">
-        <a href="/" class="page-link" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
-    </li>
+    <a href="/posts/docker_command/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Docker 命令速查手册</span>
+    </a>
     
-    <li class="page-item disabled">
-    <a href="" class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
-    </li>
     
+    <a href="/posts/triton_server/" class="navigation-next">
+      <span class="navigation-tittle">Triton</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
     
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item active"><a class="page-link" href="/">1</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="/page/2/">2</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="/page/3/">3</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item disabled"><span aria-hidden="true">&nbsp;&hellip;&nbsp;</span></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="/page/8/">8</a></li>
-    
-    
-    <li class="page-item">
-    <a href="/page/2/" class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
-    </li>
-    
-    <li class="page-item">
-        <a href="/page/8/" class="page-link" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
-    </li>
-    
-</ul>
+</div>
 
+
+  
+
+  
+    
+
+
+</article>
 
         </div>
         
-  <script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
+
+
+
+
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
+<script type="text/javascript">
+  if (tocbot) {
+    tocbot.init({
+      
+      tocSelector: '.toc',
+      
+      contentSelector: '.post',
+      
+      headingSelector: 'h2, h3, h4',
+      collapseDepth: 4
+    });
+  }
+</script>
+
+
+
+    
+
 
 
     </body>

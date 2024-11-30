@@ -19,24 +19,24 @@
     
     
 
-<title>Docker 命令速查 • Chang Luo</title>
+<title>Docker 命令速查手册 • Chang Luo</title>
 
 
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Docker 命令速查">
-  <meta name="twitter:description" content="Docker 命令速查和简单介绍">
+  <meta name="twitter:title" content="Docker 命令速查手册">
+  <meta name="twitter:description" content="你这个无聊又不得不记的东西！">
       <meta name="twitter:site" content="@MinosPalace">
 
 <meta property="og:url" content="https://luochang212.github.io/posts/docker_command/">
   <meta property="og:site_name" content="Chang Luo">
-  <meta property="og:title" content="Docker 命令速查">
-  <meta property="og:description" content="Docker 命令速查和简单介绍">
+  <meta property="og:title" content="Docker 命令速查手册">
+  <meta property="og:description" content="你这个无聊又不得不记的东西！">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-11-20T00:00:00+00:00">
-    <meta property="article:modified_time" content="2024-11-20T00:00:00+00:00">
+    <meta property="article:published_time" content="2024-11-23T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-11-23T00:00:00+00:00">
     <meta property="article:tag" content="Docker">
     <meta property="article:tag" content="Command">
 
@@ -526,13 +526,13 @@
 
 <article>
   <header>
-    <h1>Docker 命令速查</h1>
+    <h1>Docker 命令速查手册</h1>
     
     
 <div class="post__meta">
     
     
-      <i class="fas fa-calendar-alt"></i> Nov 20, 2024
+      <i class="fas fa-calendar-alt"></i> Nov 23, 2024
     
     
     
@@ -581,28 +581,28 @@
   
   <div class="post">
     <blockquote>
-<p>在低版本服务器运行高版本环境，使用 Docker 是一个好办法。</p>
+<p>在低版本的服务器或存在共用关系的大组环境里，Docker 是个好东西。Docker 可以提供独立的运行时环境，以免受其他服务和人的干扰。</p>
 </blockquote>
 <p>GitHub 项目地址：<a href="https://github.com/luochang212/docker-command" target="_blank">docker-command</a></p>
 <h3 id="一什么是-docker">一、什么是 Docker</h3>
-<p>Docker 是一种容器技术。它通过轻量级的虚拟化，将程序及其依赖打包到一个称为 <strong>容器</strong> 的独立运行环境中，从而保证应用在不同环境中的一致性。</p>
-<p>容器与虚拟机功能类似，但更加轻量化，这是因为容器提供操作系统级别的虚拟化，而虚拟机则是硬件级别的虚拟化。不同于虚拟机需要为每个实例运行一个完整的操作系统，容器共享操作系统内核，因此更轻量、更高效。不过，轻量化的设计也带来了一些限制，例如 systemctl 等服务管理工具通常在容器中不可用。</p>
+<p>Docker 是一种容器技术。它通过轻量级的虚拟化，将程序及其依赖打包到一个被称为 <strong>容器</strong> 的独立运行环境里，从而保证应用在不同环境中的一致性。</p>
+<p>容器与虚拟机，在功能上类似，但更加轻量化。容器提供的是操作系统级别的虚拟化；而虚拟机提供的是硬件级别的虚拟化。不同于虚拟机要为每个实例运行完整的操作系统，容器共享操作系统内核，因此更轻量、更高效。不过，轻量化的设计也带来了一些限制，例如 systemctl 等服务管理工具通常在容器中不可用。</p>
 <h4 id="11-核心组件">1.1 核心组件</h4>
-<p>要上手 Docker，首先要认识两大核心组件：</p>
+<p>在上手 Docker 前，有必要了解它的核心组件：</p>
 <ol>
-<li><strong>镜像 (Image)</strong>: 镜像拥有运行应用所需的一切，包括操作系统、环境变量、代码、依赖包等等</li>
-<li><strong>容器 (Container)</strong>: 容器可由镜像创建，每个容器拥有独立的运行环境</li>
+<li><strong>镜像</strong> (Image): 镜像拥有运行应用所需的一切，包括操作系统、代码、依赖等</li>
+<li><strong>容器</strong> (Container): 容器由镜像创建，每个容器拥有独立的运行环境</li>
 </ol>
-<p>镜像是无法直接运行的，需要由镜像创建对应的容器才能运行。可以认为容器是镜像的实例。镜像负责存储和分发，容器负责部署并提供服务。</p>
+<p>你无法直接运行镜像，必须由镜像创建对应的容器才能运行。可以认为容器是镜像的实例。镜像负责存储与分发，容器负责提供服务。</p>
 <h4 id="12-主要用途">1.2 主要用途</h4>
-<p>很多场景能用上 Docker：</p>
+<p>Docker 的主要用途包括：</p>
 <ol>
-<li>轻量级虚拟化：可以当作虚拟机使用</li>
-<li>保证环境一致：确保开发、测试和生产环境的一致性</li>
-<li>支持微服务架构：让每个服务运行在独立的容器中，易于扩展和管理</li>
-<li>支持 CI/CD 流水线：打包依赖及应用时，一次构建即可在任何环境中运行</li>
+<li>轻量级虚拟化：可以当成虚拟机使用</li>
+<li>支持微服务架构：每个服务运行在独立容器中，易于扩展和管理</li>
+<li>支持 CI/CD 流水线：一次打包，即可在所有环境中运行</li>
+<li>保证环境的一致性：确保测试、开发、生产环境一致</li>
 </ol>
-<p>如果你还不了解 Docker，请访问以下资源：</p>
+<p>如果你还不了解 Docker，可访问以下资源：</p>
 <ul>
 <li>官网：<a href="https://www.docker.com/" target="_blank"><a href="https://www.docker.com/">https://www.docker.com/</a></a></li>
 <li>入门文档：<a href="https://docs.docker.com/guides/" target="_blank"><a href="https://docs.docker.com/guides/">https://docs.docker.com/guides/</a></a></li>
@@ -785,15 +785,14 @@
 <pre tabindex="0"><code>docker info
 </code></pre><h4 id="31-获取镜像的两种方法">3.1 获取镜像的两种方法</h4>
 <h5 id="311-从-docker-hub-获取镜像">3.1.1 从 Docker Hub 获取镜像</h5>
-<p>可以用 <code>docker pull</code> 命令，从 <a href="https://hub.docker.com/">Docker Hub</a> 拉取镜像。例如，以下命令可拉取带有 Nginx 服务的镜像：</p>
+<p>可以用 <code>docker pull</code> 命令从 <a href="https://hub.docker.com/">Docker Hub</a> 拉取镜像。例如，以下命令可拉取带有 Nginx 服务的镜像：</p>
 <pre tabindex="0"><code>docker pull nginx:stable-alpine-perl
 </code></pre><h5 id="312-用-dockerfile-构建镜像">3.1.2 用 Dockerfile 构建镜像</h5>
-<blockquote>
-<p>通过 Dockerfile，你可以定义一个镜像的构建过程，包括基础镜像、安装软件、环境变量等。</p>
-</blockquote>
+<p>可以用 <code>Dockerfile</code> 定义一个镜像的构建过程，包括基础镜像、安装软件、环境变量等。</p>
 <p>下面这个 <code>Dockerfile</code> 以 <code>Ubuntu 22.04</code> 为基础镜像，安装了 Miniconda 和 Jupyter Lab，并将 Jupyter Lab 日志写入工作目录的 <code>jupyter_lab.log</code> 文件。</p>
-<p><code>Dockerfile</code> 文件：</p>
-<pre tabindex="0"><code># 使用 Ubuntu 22.04 LTS 作为基础镜像
+<pre tabindex="0"><code># Dockerfile 文件
+
+# 使用 Ubuntu 22.04 LTS 作为基础镜像
 FROM ubuntu:22.04
 
 # 设置环境变量
@@ -880,14 +879,14 @@ sudo apt-get update &amp;&amp; sudo apt-get install -y nvidia-container-toolkit
 # 3. 重启Docker服务
 sudo systemctl restart docker
 </code></pre><p><strong>3）检查 CUDA 和 PyTorch</strong></p>
-<p>通常 CUDA 和 PyTorch 在 NVIDIA 官方容器中已经安装好了。运行以下命令验证是否已安装：</p>
+<p>CUDA 和 PyTorch 通常在 NVIDIA 官方容器中已经安装好了。运行以下命令验证是否已安装：</p>
 <pre tabindex="0"><code># 输出 CUDA 版本
 nvcc --version
 
 # 输出 PyTorch 版本
 pip show torch
 </code></pre><h3 id="四docker-compose-的简单使用">四、Docker Compose 的简单使用</h3>
-<p>Docker Compose 是一个用于定义和运行多容器 Docker 应用的工具。通过 YAML 文件（<code>docker-compose.yml</code>），可定义多个服务及其配置。使用 <code>docker-compose</code> 命令可以快速部署和管理这些服务。</p>
+<p>Docker Compose 是一个用于运行多容器 Docker 应用的工具。通过 YAML 文件 (<code>docker-compose.yml</code>) 可定义多个服务及其配置，使用 <code>docker-compose</code> 命令可以快速部署和管理这些服务。</p>
 <h4 id="41-安装-docker-compose">4.1 安装 Docker Compose</h4>
 <p>对于 MacOS 和 Linux：</p>
 <pre tabindex="0"><code>curl -L &#34;https://github.com/docker/compose/releases/download/v2.20.0/docker-compose-$(uname -s)-$(uname -m)&#34; -o ~/docker-compose
@@ -1037,9 +1036,14 @@ docker network ls
 <h3 id="附录">附录</h3>
 <p>资源列表：</p>
 <ul>
+<li><a href="https://github.com/bitnami">bitnami</a></li>
 <li><a href="https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch/tags">NVIDIA PyTorch 镜像</a></li>
 <li><a href="https://hub.docker.com/r/nvidia/cuda/tags">NVIDIA CUDA 镜像</a></li>
 <li><a href="https://org.ngc.nvidia.com/setup/api-key">NVIDIA api-key</a></li>
+</ul>
+<p>参考：</p>
+<ul>
+<li><a href="https://s1mple.cc/2021/10/12/%E4%BD%BF%E7%94%A8-Docker-%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2-Spark-Hadoop-%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%9B%86%E7%BE%A4/">使用 Docker 快速部署 Spark + Hadoop 大数据集群</a></li>
 </ul>
 
   </div>
@@ -1052,6 +1056,11 @@ docker network ls
       <span class="navigation-tittle">频繁模式挖掘</span>
     </a>
     
+    
+    <a href="/posts/triton_server/" class="navigation-next">
+      <span class="navigation-tittle">Triton 搭建 CLIP 图文 Embedding 推理服务</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
     
 </div>
 

@@ -6,19 +6,40 @@
     <description>Recent content in Tags on Chang Luo</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 20 Nov 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 30 Nov 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://luochang212.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CLIP</title>
+      <link>https://luochang212.github.io/tags/clip/</link>
+      <pubDate>Sat, 30 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/tags/clip/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ONNX</title>
+      <link>https://luochang212.github.io/tags/onnx/</link>
+      <pubDate>Sat, 30 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/tags/onnx/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Triton</title>
+      <link>https://luochang212.github.io/tags/triton/</link>
+      <pubDate>Sat, 30 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/tags/triton/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Command</title>
       <link>https://luochang212.github.io/tags/command/</link>
-      <pubDate>Wed, 20 Nov 2024 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 23 Nov 2024 00:00:00 +0000</pubDate>
       <guid>https://luochang212.github.io/tags/command/</guid>
       <description></description>
     </item>
     <item>
       <title>Docker</title>
       <link>https://luochang212.github.io/tags/docker/</link>
-      <pubDate>Wed, 20 Nov 2024 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 23 Nov 2024 00:00:00 +0000</pubDate>
       <guid>https://luochang212.github.io/tags/docker/</guid>
       <description></description>
     </item>

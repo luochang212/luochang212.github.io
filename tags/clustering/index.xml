@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Clustering on Chang Luo</title>
+    <link>http://localhost:1313/tags/clustering/</link>
+    <description>Recent content in Clustering on Chang Luo</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 21 Nov 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/clustering/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>流式聚类算法 DenStream</title>
+      <link>http://localhost:1313/posts/stream_clustering/</link>
+      <pubDate>Thu, 21 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/stream_clustering/</guid>
+      <description>在低版本服务器运行高版本环境，使用 Docker 是一个好办法。&#xA;GitHub 项目地址：docker-command&#xA;一、 对于你描述的场景，即对嵌入（embedding）进行实时聚类，通常使用流式聚类算法。以下几种方法适合处理你的需求：&#xA;Online k-means（Mini-Batch k-means）:&#xA;适合实时数据，可以基于一个小批量的数据更新现有的聚类中心。在线 k-means 是通过不断更新簇中心来适应新数据的变化。 如果聚类数是已知的或者可以通过实验找到一个合理的值，这个方法非常有效。 DBSTREAM:&#xA;一种专门设计用于流数据的聚类算法，可以动态处理进入的数据并基于时间窗口管理不同的簇。 它支持根据数据的过期时间（比如过去48小时）动态调整簇的组成，从而满足你对时间窗口的要求。 DenStream:&#xA;DenStream 是 DBSCAN 的流式版本，它使用微簇（micro-clusters）来处理数据流，适用于处理具有噪声的嵌入。 它对于保持长时间的流数据的聚类结构并支持基于时间窗口的聚类非常有效。 CluStream:&#xA;CluStream 通过维护微簇，并在不同的时间点上对这些微簇进行宏观分析来形成更大的聚类。 它非常适合时间窗口内的聚类分析，可以为你每48小时内的日志提供有效的聚类结构。 HDBSCAN（Hierarchy Density-Based Spatial Clustering of Applications with Noise）:&#xA;虽然 HDBSCAN 是一种批量聚类算法，但它也可以用于流式环境下，通过增量的方式对新数据进行重聚类。 对于数据流的应用，可以通过周期性地重新运行来调整现有的簇结构。 总结建议 考虑到你的数据是实时进入，并且希望根据过去48小时的数据动态生成簇，推荐使用 DenStream 或 DBSTREAM，因为它们能够处理时间窗口并应对数据流中的噪声。此外，如果你的数据是高维度的，利用这些算法的微簇管理可以更高效地处理嵌入。&#xA;你也可以结合 Mini-Batch k-means 作为简单易实现的选择，如果你对簇的数量有合理的预估。</description>
+    </item>
+  </channel>
+</rss>
