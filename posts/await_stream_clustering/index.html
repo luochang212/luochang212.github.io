@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en-us">
     
-  <head>
+    
+
+
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     
-    <link rel="canonical" href="https://luochang212.github.io/">
+    <link rel="canonical" href="http://localhost:1313/posts/await_stream_clustering/">
     
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,20 +16,29 @@
 <meta name="generator" content="Hugo 0.132.1">
 
     
+    
+    
 
-<title>Chang Luo</title>
+<title>流式聚类算法：DenStream 和 CluStream • Chang Luo</title>
 
 
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Chang Luo">
+  <meta name="twitter:title" content="流式聚类算法：DenStream 和 CluStream">
+  <meta name="twitter:description" content="Docker 命令速查和简单介绍">
       <meta name="twitter:site" content="@MinosPalace">
 
-<meta property="og:url" content="https://luochang212.github.io/">
+<meta property="og:url" content="http://localhost:1313/posts/await_stream_clustering/">
   <meta property="og:site_name" content="Chang Luo">
-  <meta property="og:title" content="Chang Luo">
+  <meta property="og:title" content="流式聚类算法：DenStream 和 CluStream">
+  <meta property="og:description" content="Docker 命令速查和简单介绍">
   <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-12-01T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-12-01T00:00:00+00:00">
+    <meta property="article:tag" content="Stream">
+    <meta property="article:tag" content="Clustering">
 
 
     
@@ -61,8 +73,7 @@
     <!-- Icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
     <link rel="shortcut icon" href="/favicon.png">
-    <link rel="alternate" type="application/rss+xml" href="https://luochang212.github.io/index.xml" title="Chang Luo" />
-
+    
     
 
 </head>
@@ -215,13 +226,13 @@
     <div class="container ">
       <div class="sidebar-about">
         <span class="site__title">
-          <a href="https://luochang212.github.io/">Chang Luo</a>
+          <a href="http://localhost:1313/">Chang Luo</a>
         </span>
         
         
         
         <div class="author-image">
-          <a href="#" class="load-iframe" onclick="openNav()"><img src="https://luochang212.github.io//images/profile.webp" id="author-iamge"
+          <a href="#" class="load-iframe" onclick="openNav()"><img src="http://localhost:1313//images/profile.webp" id="author-iamge"
               alt="Author Image" class="img--circle img--headshot element--center"></a>
         </div>
         
@@ -502,201 +513,194 @@
 
         <div class="content container">
             
-  <div class="post-list">
+    <style>
+  .my-emoji {
+    height: 25px;
+    display: inline-block;
+    margin: 0;
+    vertical-align: text-bottom;
+  }
+</style>
+
+
+
+<article>
+  <header>
+    <h1>流式聚类算法：DenStream 和 CluStream</h1>
     
     
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Dec 1, 2024
+    
+    
+    
       
-        
       
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/python_math_problem/" >Python 解置换群问题</a>
-        </span>
-        <span class="item__date">
-          Mar 16, 2019
-        </span>
-        <span >
-        
-        室友问我一个问题，把我难住了。想不出解法，遂写了个程序暴力求解。这个题目是：已知将某个置换作用于字符串SUPERBGOLDHAT两次，生成字符串OGTHLEPDSUARB. 求该置换作用于字符串SUPERBGOLDHAT一次时，生成的结果。
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/python_math_problem/">➦</a>
-        
-        </div>
-        
-     
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/algorithms">ALGORITHMS</a>
+              
+          
       
-        
+    
+    
+    
       
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/kitchen_time_1/" >厨房笔记（一）：牛刀小试</a>
-        </span>
-        <span class="item__date">
-          Aug 6, 2018
-        </span>
-        <span >
-        
-        刚到英国那会儿，做饭的兴致很高。每天都跟过家家似的，买菜，钻研菜谱，然后做饭，在厨房里待上四五个小时也不觉得累，大概这就是“人生若只如初见”吧。
-        
-        </span>
-        
-        </div>
-        
-     
       
-        
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/stream">stream</a>
+           
       
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/markowitz_model/" >【项目】基于蚁群算法的证券投资组合优化</a>
-        </span>
-        <span class="item__date">
-          May 15, 2018
-        </span>
-        <span >
-        
-        在证券交易中，为了降低风险，经常使用一笔资金购买多支股票。那么，如何合理地选择证券组合，并确定每支证券的资金分配系数，以使预期风险最低，预期收益最高，就成了一个经典的经济学问题 -- 证券投资组合优化问题。
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/markowitz_model/">➦</a>
-        
-        </div>
-        
-     
+          <a class="badge badge-tag" href="/tags/clustering">clustering</a>
+          
       
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/nezha/" >观影：少女哪吒</a>
-        </span>
-        <span class="item__date">
-          Jul 11, 2017
-        </span>
-        <span >
-        
-        青春可贵，文学高华，可是越是珍贵就越脆弱越易碎。对于一般人来说，破碎的疼痛也许还能承受得住，可是对内心敏感的人，这几乎是欲死的折磨。
-        
-        </span>
-        
-        </div>
-        
-     
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 1 min read
+</div>
+
+
+  </header>
+  
+  
+  
+  <div class="toc-wrapper">
+    <input type="checkbox" id="tocToggle">
+    <label for="tocToggle">目录</label>
+    
+    <div class="toc" id="TableOfContents"></div>
+    
+  </div>
+  
+  
+  <div class="post">
+    <blockquote>
+<p>在低版本服务器运行高版本环境，使用 Docker 是一个好办法。</p>
+</blockquote>
+<p>GitHub 项目地址：<a href="https://github.com/luochang212/docker-command" target="_blank">docker-command</a></p>
+<!-- ### 一、
+
+对于你描述的场景，即对嵌入（embedding）进行实时聚类，通常使用流式聚类算法。以下几种方法适合处理你的需求：
+
+1. **Online k-means（Mini-Batch k-means）**:
+   - 适合实时数据，可以基于一个小批量的数据更新现有的聚类中心。在线 k-means 是通过不断更新簇中心来适应新数据的变化。
+   - 如果聚类数是已知的或者可以通过实验找到一个合理的值，这个方法非常有效。
+
+2. **DBSTREAM**:
+   - 一种专门设计用于流数据的聚类算法，可以动态处理进入的数据并基于时间窗口管理不同的簇。
+   - 它支持根据数据的过期时间（比如过去48小时）动态调整簇的组成，从而满足你对时间窗口的要求。
+
+3. **DenStream**:
+   - DenStream 是 DBSCAN 的流式版本，它使用微簇（micro-clusters）来处理数据流，适用于处理具有噪声的嵌入。
+   - 它对于保持长时间的流数据的聚类结构并支持基于时间窗口的聚类非常有效。
+
+4. **CluStream**:
+   - CluStream 通过维护微簇，并在不同的时间点上对这些微簇进行宏观分析来形成更大的聚类。
+   - 它非常适合时间窗口内的聚类分析，可以为你每48小时内的日志提供有效的聚类结构。
+
+5. **HDBSCAN（Hierarchy Density-Based Spatial Clustering of Applications with Noise）**:
+   - 虽然 HDBSCAN 是一种批量聚类算法，但它也可以用于流式环境下，通过增量的方式对新数据进行重聚类。
+   - 对于数据流的应用，可以通过周期性地重新运行来调整现有的簇结构。
+
+### 总结建议
+考虑到你的数据是实时进入，并且希望根据过去48小时的数据动态生成簇，推荐使用 **DenStream** 或 **DBSTREAM**，因为它们能够处理时间窗口并应对数据流中的噪声。此外，如果你的数据是高维度的，利用这些算法的微簇管理可以更高效地处理嵌入。
+
+你也可以结合 **Mini-Batch k-means** 作为简单易实现的选择，如果你对簇的数量有合理的预估。 -->
   </div>
   
 
-<ul class="pagination">
+<div class="navigation navigation-single">
     
-    <li class="page-item">
-        <a href="/" class="page-link" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
-    </li>
+    <a href="/posts/clip_triton_server/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Triton 部署 CLIP 图文 Embedding 推理服务</span>
+    </a>
     
-    <li class="page-item">
-    <a href="/page/7/" class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
-    </li>
     
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="/">1</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="/page/2/">2</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="/page/3/">3</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item disabled"><span aria-hidden="true">&nbsp;&hellip;&nbsp;</span></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="/page/7/">7</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item active"><a class="page-link" href="/page/8/">8</a></li>
-    
-    
-    <li class="page-item disabled">
-    <a href="" class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
-    </li>
-    
-    <li class="page-item">
-        <a href="/page/8/" class="page-link" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
-    </li>
-    
-</ul>
+</div>
 
+
+  
+
+  
+    
+
+
+</article>
 
         </div>
         
-  <script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
+
+
+
+
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
+<script type="text/javascript">
+  if (tocbot) {
+    tocbot.init({
+      
+      tocSelector: '.toc',
+      
+      contentSelector: '.post',
+      
+      headingSelector: 'h2, h3, h4',
+      collapseDepth: 4
+    });
+  }
+</script>
+
+
+
+    
+
 
 
     </body>

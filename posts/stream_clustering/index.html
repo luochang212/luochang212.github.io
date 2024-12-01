@@ -4,10 +4,10 @@
     
 
 
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     
-    <link rel="canonical" href="http://localhost:1313/posts/stream_clustering/">
+    <link rel="canonical" href="https://luochang212.github.io/posts/stream_clustering/">
     
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,26 +19,28 @@
     
     
 
-<title>流式聚类算法 DenStream • Chang Luo</title>
+<title>流式聚类算法：DenStream 和 CluStream • Chang Luo</title>
 
 
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="流式聚类算法 DenStream">
-  <meta name="twitter:description" content="Docker 命令速查和简单介绍">
+  <meta name="twitter:title" content="流式聚类算法：DenStream 和 CluStream">
+  <meta name="twitter:description" content="以 DBSCAN 算法为基线，对比 DenStream 和 CluStream 的聚类效果">
       <meta name="twitter:site" content="@MinosPalace">
 
-<meta property="og:url" content="http://localhost:1313/posts/stream_clustering/">
+<meta property="og:url" content="https://luochang212.github.io/posts/stream_clustering/">
   <meta property="og:site_name" content="Chang Luo">
-  <meta property="og:title" content="流式聚类算法 DenStream">
-  <meta property="og:description" content="Docker 命令速查和简单介绍">
+  <meta property="og:title" content="流式聚类算法：DenStream 和 CluStream">
+  <meta property="og:description" content="以 DBSCAN 算法为基线，对比 DenStream 和 CluStream 的聚类效果">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-11-21T00:00:00+00:00">
-    <meta property="article:modified_time" content="2024-11-21T00:00:00+00:00">
-    <meta property="article:tag" content="Stream">
+    <meta property="article:published_time" content="2024-12-01T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-12-01T00:00:00+00:00">
+    <meta property="article:tag" content="DenStream">
+    <meta property="article:tag" content="CluStream">
     <meta property="article:tag" content="Clustering">
+    <meta property="article:tag" content="River">
 
 
     
@@ -226,13 +228,13 @@
     <div class="container ">
       <div class="sidebar-about">
         <span class="site__title">
-          <a href="http://localhost:1313/">Chang Luo</a>
+          <a href="https://luochang212.github.io/">Chang Luo</a>
         </span>
         
         
         
         <div class="author-image">
-          <a href="#" class="load-iframe" onclick="openNav()"><img src="http://localhost:1313//images/profile.webp" id="author-iamge"
+          <a href="#" class="load-iframe" onclick="openNav()"><img src="https://luochang212.github.io//images/profile.webp" id="author-iamge"
               alt="Author Image" class="img--circle img--headshot element--center"></a>
         </div>
         
@@ -526,13 +528,13 @@
 
 <article>
   <header>
-    <h1>流式聚类算法 DenStream</h1>
+    <h1>流式聚类算法：DenStream 和 CluStream</h1>
     
     
 <div class="post__meta">
     
     
-      <i class="fas fa-calendar-alt"></i> Nov 21, 2024
+      <i class="fas fa-calendar-alt"></i> Dec 1, 2024
     
     
     
@@ -553,10 +555,16 @@
           <br/>
            <i class="fas fa-tags"></i>
           
-          <a class="badge badge-tag" href="/tags/stream">stream</a>
+          <a class="badge badge-tag" href="/tags/denstream">denstream</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/clustream">clustream</a>
            
       
           <a class="badge badge-tag" href="/tags/clustering">clustering</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/river">river</a>
           
       
     
@@ -581,67 +589,101 @@
   
   <div class="post">
     <blockquote>
-<p>在低版本服务器运行高版本环境，使用 Docker 是一个好办法。</p>
+<p>直接说结论：全量聚类用 DBSCAN；无监督流式聚类用 DenStream；已知聚类数、按较大时间间隔获取聚类标签且对计算量敏感，用 CluStream.</p>
 </blockquote>
-<p>GitHub 项目地址：<a href="https://github.com/luochang212/docker-command" target="_blank">docker-command</a></p>
-<h3 id="一">一、</h3>
-<p>对于你描述的场景，即对嵌入（embedding）进行实时聚类，通常使用流式聚类算法。以下几种方法适合处理你的需求：</p>
+<p>GitHub 项目地址：<a href="https://github.com/luochang212/stream-clustering" target="_blank">stream-clustering</a></p>
+<p>本文涉及的内容包括：</p>
+<ul>
+<li>提供 DBSCAN、DenStream 和 CluStream 三种聚类算法的使用示例</li>
+<li>开发对 DBSCAN 自动调参并输出聚类标签的函数 <a href="https://github.com/luochang212/stream-clustering/blob/main/utils.py#L76" target="_blank">auto_dbscan</a></li>
+<li>验证 DenStream 的推理结果（簇号）是否在学习过程中发生变化：会变</li>
+<li>DBSCAN、DenStream 和 CluStream 全量训练效果对比：DBSCAN 最好</li>
+<li>DenStream 和 CluStream 增量训练效果对比：DenStream 最好</li>
+</ul>
+<p>✨ 注意：运行以下代码依赖 <a href="https://github.com/luochang212/stream-clustering/blob/main/utils.py" target="_blank">utils.py</a> 文件。</p>
+<h3 id="一dbscan">一、DBSCAN</h3>
+<p>DBSCAN 是一种基于密度的聚类算法，用于从大量数据中识别出高密度区域并将其分为不同的簇。与传统的基于划分的聚类算法（如 K-means）不同，DBSCAN 不需要预先指定簇的数量，并且能够识别噪声数据和异常值。</p>
 <ol>
-<li>
-<p><strong>Online k-means（Mini-Batch k-means）</strong>:</p>
+<li>DBSCAN 算法介绍</li>
+<li>DBSCAN 的简单示例</li>
+<li>DBSCAN 的可选参数</li>
+<li>DBSCAN 自动调参：
 <ul>
-<li>适合实时数据，可以基于一个小批量的数据更新现有的聚类中心。在线 k-means 是通过不断更新簇中心来适应新数据的变化。</li>
-<li>如果聚类数是已知的或者可以通过实验找到一个合理的值，这个方法非常有效。</li>
+<li>基于 K 距离图选择 <code>eps</code></li>
+<li>选择 <code>min_samples</code> 的经验法则</li>
+<li>使用网格搜索结合合适的评估指标</li>
 </ul>
 </li>
-<li>
-<p><strong>DBSTREAM</strong>:</p>
-<ul>
-<li>一种专门设计用于流数据的聚类算法，可以动态处理进入的数据并基于时间窗口管理不同的簇。</li>
-<li>它支持根据数据的过期时间（比如过去48小时）动态调整簇的组成，从而满足你对时间窗口的要求。</li>
-</ul>
-</li>
-<li>
-<p><strong>DenStream</strong>:</p>
-<ul>
-<li>DenStream 是 DBSCAN 的流式版本，它使用微簇（micro-clusters）来处理数据流，适用于处理具有噪声的嵌入。</li>
-<li>它对于保持长时间的流数据的聚类结构并支持基于时间窗口的聚类非常有效。</li>
-</ul>
-</li>
-<li>
-<p><strong>CluStream</strong>:</p>
-<ul>
-<li>CluStream 通过维护微簇，并在不同的时间点上对这些微簇进行宏观分析来形成更大的聚类。</li>
-<li>它非常适合时间窗口内的聚类分析，可以为你每48小时内的日志提供有效的聚类结构。</li>
-</ul>
-</li>
-<li>
-<p><strong>HDBSCAN（Hierarchy Density-Based Spatial Clustering of Applications with Noise）</strong>:</p>
-<ul>
-<li>虽然 HDBSCAN 是一种批量聚类算法，但它也可以用于流式环境下，通过增量的方式对新数据进行重聚类。</li>
-<li>对于数据流的应用，可以通过周期性地重新运行来调整现有的簇结构。</li>
-</ul>
-</li>
+<li>使用 <code>best_params</code> 进行聚类</li>
+<li>一站式 DBSCAN 函数</li>
 </ol>
-<h3 id="总结建议">总结建议</h3>
-<p>考虑到你的数据是实时进入，并且希望根据过去48小时的数据动态生成簇，推荐使用 <strong>DenStream</strong> 或 <strong>DBSTREAM</strong>，因为它们能够处理时间窗口并应对数据流中的噪声。此外，如果你的数据是高维度的，利用这些算法的微簇管理可以更高效地处理嵌入。</p>
-<p>你也可以结合 <strong>Mini-Batch k-means</strong> 作为简单易实现的选择，如果你对簇的数量有合理的预估。</p>
-
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/stream-clustering/blob/main/1.DBSCAN.ipynb')">查看笔记</button>
+</center>
+<br>
+<h3 id="二denstream">二、DenStream</h3>
+<p>DenStream 适合不知道具体的聚类数，且需要实时获取聚类标签的情况。</p>
+<ol>
+<li>DenStream 算法介绍</li>
+<li>DenStream 的简单示例</li>
+<li>DenStream 的可选参数</li>
+<li>验证：推理结果是否随时间变化</li>
+<li>DBSCAN 与 DenStream 效果对比</li>
+<li>使用 DBSCAN 优化过的 <code>epsilon</code> 参数</li>
+</ol>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/stream-clustering/blob/main/2.DenStream.ipynb')">查看笔记</button>
+</center>
+<br>
+<h3 id="三clustream">三、CluStream</h3>
+<p>CluStream 是一种需要明确指定聚类数的算法。它在一段时间内的聚类效果不错，也就是说，如果你的需求是有时间间隔的，比如每 10 分钟获取一次聚类结果，CluStream 的效果是可以接受的。</p>
+<ol>
+<li>CluStream 算法介绍</li>
+<li>CluStream 的简单示例</li>
+<li>CluStream 的可选参数</li>
+<li>CluStream 全量训练：
+<ul>
+<li>宏簇数量 与 真实聚类数 相等的情况</li>
+<li>宏簇数量 与 真实聚类数 不等的情况</li>
+</ul>
+</li>
+<li>DenStream 与 CluStream 增量训练效果对比</li>
+</ol>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/stream-clustering/blob/main/3.CluStream.ipynb')">查看笔记</button>
+</center>
+<br>
+<h3 id="四附录轮廓系数">四、附录：轮廓系数</h3>
+<p>轮廓系数是一种用于评估聚类效果的指标，它从单个样本的角度衡量其聚类的合理性。轮廓系数综合考虑了样本与其所属簇内点的相似性（紧密度）和样本与其最近簇的点的相似性（分离度）。</p>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/stream-clustering/blob/main/4.silhouette_score.ipynb')">查看笔记</button>
+</center>
+<br>
+<h3 id="参考资料">参考资料</h3>
+<ul>
+<li><a href="https://riverml.xyz/latest/api/cluster/DenStream/" target="_blank">DenStream</a></li>
+<li><a href="https://riverml.xyz/latest/api/cluster/CluStream/" target="_blank">CluStream</a></li>
+<li><a href="https://riverml.xyz/latest/api/cluster/DBSTREAM/" target="_blank">DBSTREAM</a></li>
+</ul>
+<div id="mini-overlay" onclick="overlay_off()"></div>
+<div id="mini-window"><iframe id="mini-iframe" frameBorder="0"></iframe></div>
+<button id="btn-close" onclick="overlay_off()">×</button>
+<script src="/python-tips/overlay.js"></script>
+<link rel="stylesheet" href="/python-tips/style.css">
   </div>
   
 
 <div class="navigation navigation-single">
     
-    <a href="/posts/docker_command/" class="navigation-prev">
+    <a href="/posts/clip_triton_server/" class="navigation-prev">
       <i aria-hidden="true" class="fa fa-chevron-left"></i>
-      <span class="navigation-tittle">Docker 命令速查手册</span>
+      <span class="navigation-tittle">Triton 部署 CLIP 图文 Embedding 推理服务</span>
     </a>
     
-    
-    <a href="/posts/triton_server/" class="navigation-next">
-      <span class="navigation-tittle">Triton</span>
-      <i aria-hidden="true" class="fa fa-chevron-right"></i>
-    </a>
     
 </div>
 
