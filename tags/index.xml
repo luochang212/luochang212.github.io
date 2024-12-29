@@ -6,8 +6,29 @@
     <description>Recent content in Tags on Chang Luo</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 01 Dec 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 29 Dec 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://luochang212.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CLIP</title>
+      <link>https://luochang212.github.io/tags/clip/</link>
+      <pubDate>Sun, 29 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/tags/clip/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Faiss</title>
+      <link>https://luochang212.github.io/tags/faiss/</link>
+      <pubDate>Sun, 29 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/tags/faiss/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>FastAPI</title>
+      <link>https://luochang212.github.io/tags/fastapi/</link>
+      <pubDate>Sun, 29 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/tags/fastapi/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Clustering</title>
       <link>https://luochang212.github.io/tags/clustering/</link>
@@ -34,13 +55,6 @@
       <link>https://luochang212.github.io/tags/river/</link>
       <pubDate>Sun, 01 Dec 2024 00:00:00 +0000</pubDate>
       <guid>https://luochang212.github.io/tags/river/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>CLIP</title>
-      <link>https://luochang212.github.io/tags/clip/</link>
-      <pubDate>Sat, 30 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/tags/clip/</guid>
       <description></description>
     </item>
     <item>
@@ -433,13 +447,6 @@
       <link>https://luochang212.github.io/tags/api/</link>
       <pubDate>Sat, 21 Nov 2020 00:00:00 +0000</pubDate>
       <guid>https://luochang212.github.io/tags/api/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>FastAPI</title>
-      <link>https://luochang212.github.io/tags/fastapi/</link>
-      <pubDate>Sat, 21 Nov 2020 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/tags/fastapi/</guid>
       <description></description>
     </item>
     <item>

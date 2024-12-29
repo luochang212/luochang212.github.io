@@ -4,10 +4,10 @@
     
 
 
-    <head>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     
-    <link rel="canonical" href="https://luochang212.github.io/posts/stream_clustering/">
+    <link rel="canonical" href="http://localhost:1313/posts/graph_embedding-copy/">
     
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,28 +19,27 @@
     
     
 
-<title>流式聚类算法：DenStream 和 CluStream • Chang Luo</title>
+<title>三种图神经网络算法：GraphSAGE, GCN 和 GAT • Chang Luo</title>
 
 
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="流式聚类算法：DenStream 和 CluStream">
-  <meta name="twitter:description" content="以 DBSCAN 算法为基线，对比 DenStream 和 CluStream 的聚类效果">
+  <meta name="twitter:title" content="三种图神经网络算法：GraphSAGE, GCN 和 GAT">
+  <meta name="twitter:description" content="GNN 处理图数据的方式还是很符合直觉的，基本沿袭了 CNN 的思路：每个神经元只看局部信息，通过层层汇聚掌握全貌">
       <meta name="twitter:site" content="@MinosPalace">
 
-<meta property="og:url" content="https://luochang212.github.io/posts/stream_clustering/">
+<meta property="og:url" content="http://localhost:1313/posts/graph_embedding-copy/">
   <meta property="og:site_name" content="Chang Luo">
-  <meta property="og:title" content="流式聚类算法：DenStream 和 CluStream">
-  <meta property="og:description" content="以 DBSCAN 算法为基线，对比 DenStream 和 CluStream 的聚类效果">
+  <meta property="og:title" content="三种图神经网络算法：GraphSAGE, GCN 和 GAT">
+  <meta property="og:description" content="GNN 处理图数据的方式还是很符合直觉的，基本沿袭了 CNN 的思路：每个神经元只看局部信息，通过层层汇聚掌握全貌">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-12-01T00:00:00+00:00">
-    <meta property="article:modified_time" content="2024-12-01T00:00:00+00:00">
-    <meta property="article:tag" content="DenStream">
-    <meta property="article:tag" content="CluStream">
-    <meta property="article:tag" content="Clustering">
-    <meta property="article:tag" content="River">
+    <meta property="article:published_time" content="2024-08-10T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-08-10T00:00:00+00:00">
+    <meta property="article:tag" content="GraphSAGE">
+    <meta property="article:tag" content="GCN">
+    <meta property="article:tag" content="GAT">
 
 
     
@@ -228,13 +227,13 @@
     <div class="container ">
       <div class="sidebar-about">
         <span class="site__title">
-          <a href="https://luochang212.github.io/">Chang Luo</a>
+          <a href="http://localhost:1313/">Chang Luo</a>
         </span>
         
         
         
         <div class="author-image">
-          <a href="#" class="load-iframe" onclick="openNav()"><img src="https://luochang212.github.io//images/profile.webp" id="author-iamge"
+          <a href="#" class="load-iframe" onclick="openNav()"><img src="http://localhost:1313//images/profile.webp" id="author-iamge"
               alt="Author Image" class="img--circle img--headshot element--center"></a>
         </div>
         
@@ -528,13 +527,13 @@
 
 <article>
   <header>
-    <h1>流式聚类算法：DenStream 和 CluStream</h1>
+    <h1>三种图神经网络算法：GraphSAGE, GCN 和 GAT</h1>
     
     
 <div class="post__meta">
     
     
-      <i class="fas fa-calendar-alt"></i> Dec 1, 2024
+      <i class="fas fa-calendar-alt"></i> Aug 10, 2024
     
     
     
@@ -543,7 +542,7 @@
           in
           
           
-              <a class="badge badge-category" href="/categories/algorithms">ALGORITHMS</a>
+              <a class="badge badge-category" href="/categories/deeplearning">DEEPLEARNING</a>
               
           
       
@@ -555,22 +554,19 @@
           <br/>
            <i class="fas fa-tags"></i>
           
-          <a class="badge badge-tag" href="/tags/denstream">denstream</a>
+          <a class="badge badge-tag" href="/tags/graphsage">graphsage</a>
            
       
-          <a class="badge badge-tag" href="/tags/clustream">clustream</a>
+          <a class="badge badge-tag" href="/tags/gcn">gcn</a>
            
       
-          <a class="badge badge-tag" href="/tags/clustering">clustering</a>
-           
-      
-          <a class="badge badge-tag" href="/tags/river">river</a>
+          <a class="badge badge-tag" href="/tags/gat">gat</a>
           
       
     
     
     <br/>
-    <i class="fas fa-clock"></i> 1 min read
+    <i class="fas fa-clock"></i> 2 min read
 </div>
 
 
@@ -589,104 +585,234 @@
   
   <div class="post">
     <blockquote>
-<p>直接说结论：全量聚类用 DBSCAN；无监督流式聚类用 DenStream；已知聚类数、按较大时间间隔获取聚类标签且对计算量敏感，用 CluStream.</p>
+<p>GNN 处理图数据的方式还是很符合直觉的，基本沿袭了 CNN 的思路：每个神经元只看局部信息，通过层层汇聚掌握全貌。</p>
 </blockquote>
-<p>GitHub 项目地址：<a href="https://github.com/luochang212/stream-clustering" target="_blank">stream-clustering</a></p>
-<p>本文涉及的内容包括：</p>
+<p>GitHub 项目地址：<a href="https://github.com/luochang212/graph-embedding" target="_blank">graph-embedding</a></p>
+<p>本文做了什么：</p>
 <ul>
-<li>提供 DBSCAN、DenStream 和 CluStream 三种聚类算法的使用示例</li>
-<li>开发对 DBSCAN 自动调参并输出聚类标签的函数 <a href="https://github.com/luochang212/stream-clustering/blob/main/utils.py#L76" target="_blank">auto_dbscan</a></li>
-<li>验证 DenStream 的推理结果（簇号）是否在学习过程中发生变化：会变</li>
-<li>DBSCAN、DenStream 和 CluStream 全量训练效果对比：DBSCAN 最好</li>
-<li>DenStream 和 CluStream 增量训练效果对比：DenStream 最好</li>
+<li>对 GraphSAGE 的简单实现做逐行注释</li>
+<li>在 Docker 环境运行 GraphSAGE 的原版示例</li>
+<li>用 <a href="https://pytorch-geometric.readthedocs.io/en/latest/" target="_blank">PyG</a> 实现了 GCN 和 GAT</li>
+<li>为运行 PyG 写了一些 pipeline 代码</li>
 </ul>
-<p>✨ 注意：运行以下代码依赖 <a href="https://github.com/luochang212/stream-clustering/blob/main/utils.py" target="_blank">utils.py</a> 文件。</p>
-<h3 id="一dbscan">一、DBSCAN</h3>
-<p>DBSCAN 是一种基于密度的聚类算法，用于从大量数据中识别出高密度区域并将其分为不同的簇。与传统的基于划分的聚类算法（如 K-means）不同，DBSCAN 不需要预先指定簇的数量，并且能够识别噪声数据和异常值。</p>
+<p>✨ 注意：运行以下代码依赖 <a href="https://github.com/luochang212/graph-embedding/blob/main/util.py" target="_blank">util.py</a> 文件。</p>
+<h2 id="一graphsage-的简单实现">一、GraphSAGE 的简单实现</h2>
+<p>主流图算法大致分两种：</p>
+<ul>
+<li>图嵌入算法 (GE): DeepWalk, Node2Vec 等</li>
+<li>图神经网络算法 (GNN): GraphSAGE, GCN, GAT 等</li>
+</ul>
+<h3 id="11-绪论图神经网络">1.1 绪论：图神经网络</h3>
+<!-- 图神经网络的输入是 **节点间关联关系** 和 **节点特征**，输出是图嵌入。 -->
+<p>图神经网络算法做的事，相当于把图这种复杂的数据结构，转换成低维向量，而低维向量往往是很好用的。</p>
+<p>拿到图嵌入可以做很多事情，比如：</p>
+<ul>
+<li>节点分类</li>
+<li>链接预测</li>
+<li>社区发现</li>
+<li>相似度量</li>
+</ul>
+<p>总之，图嵌入是一种非常有用的特征。在实践中，甚至可以将图嵌入和其他特征 concat 起来，训练更复杂的模型。</p>
+<h4 id="111-gnn-和-cnn">1.1.1 GNN 和 CNN</h4>
+<p>GNN 和 CNN 的思路还挺像的，可以看作 CNN 在图数据上的推广。</p>
+<!-- GNN 基本沿袭了 CNN 的思路，GNN 像是 CNN 在图数据上的推广。 -->
+<p>CNN 有平移不变性和局部性。其中 <strong>局部性</strong> 指：每个神经元每次只看一小块像素，随着神经元层数的堆叠，层级越高的神经元，“看到”的像素量越多（如下图）。</p>
+<p><img src="/img/graphsage_partial.svg" alt=""></p>
+<p>假设 $C_1$ 能看到 4 个像素，$C_2$ 能看到 4 个像素。由于 $B_1$ 能看到 $C_1$ 和 $C_2$，相当于 $B_1$ 能够“看到” <code>4*2=8</code> 个像素。</p>
+<p>依此类推，$A$ 能看到 $B_1$ 和 $B_2$，相当于能“看到” <code>8*2=16</code> 个像素。</p>
+<p>层级越高的神经元，底下的“小弟”越多。尽管每个小弟只负责看一部分，但是高层级的神经元汇总了小弟们看见的部分，因此能够看到全局。这好比 merge 周报的老板，虽然细节知道的不如员工多，但比员工更了解公司的全貌。</p>
+<h4 id="112-aggregate-操作">1.1.2 Aggregate 操作</h4>
+<p>图神经网络也有和 CNN 类似的汇聚过程。图神经网络会执行一种叫 Aggregate 的操作。虽然每次 Aggregate 只是把邻居节点的特征聚合到自己身上。但随着聚合次数增加，四跳五跳甚至十八跳节点的信息，也会一步一步“挪”过来。</p>
+<p>更牛的是，Aggregate 是并行的。这意味着每轮迭代，所有节点都会收集邻居节点的信息。每个节点，都会构建一个属于自己的深度网络。而且随着迭代轮次增加，网络的深度和范围也会同步增加。</p>
+<blockquote>
+<p>迭代次数与聚合范围的关系是线性的：</p>
+<ul>
+<li>迭代 1 个轮次，将 1 跳之内的节点信息聚合到本节点</li>
+<li>迭代 2 个轮次，将 2 跳之内的节点信息聚合到本节点</li>
+<li>&hellip; &hellip;</li>
+<li>迭代 n 个轮次，将 n 跳之内的节点信息聚合到本节点</li>
+</ul>
+</blockquote>
+<h3 id="12-graphsage-的基本思想">1.2 GraphSAGE 的基本思想</h3>
+<p>GraphSAGE 是一种可实时计算的图嵌入算法。这意味着它不需要知道节点所在的整张图的信息，只需要知道某节点 n 跳之内的拓扑关系和节点特征，就能计算该节点的嵌入。</p>
+<p>它是如何做到这一点的呢？</p>
+<p>GraphSAGE 的基本思想是：不学节点的下标，只学节点的特征。</p>
+<table>
+<thead>
+<tr>
+<th>姓名</th>
+<th>唱歌</th>
+<th>跳舞</th>
+<th>Rap</th>
+<th>打篮球</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>小真</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>小弥</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>小鲲</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>如上表，我们只需要知道一个人是不是喜欢唱跳 rap 篮球就好了，至于这个人是谁，我们并不关心。</p>
+<h3 id="13-graphsage-的简单实现">1.3 GraphSAGE 的简单实现</h3>
+<!-- > 本节做了什么：在论文作者提供的 [简单版 GraphSAGE](https://github.com/williamleif/graphsage-simple) 之上进行改写，做了逐行注释、loss 可视化，并优化了部分代码细节。 -->
+<h4 id="131-cora-数据集">1.3.1 Cora 数据集</h4>
+<p><a href="https://paperswithcode.com/dataset/cora">Cora 数据集</a> 是一个经典的图数据集，GraphSAGE 的作者也在 Demo 中用了这个数据集。</p>
+<blockquote>
+<p><strong>Note:</strong> Cora 是一个论文引用关系数据集。它由 2708 篇科学论文组成。这些论文被分成 7 个类别，类别包括神经网络、强化学习、规则学习等。每篇论文由一个 1433 维的词向量表示，该向量的每一个元素对应一个词，元素值为 0 或 1，表示该词在论文中的是否存在。所有词均来自一个 1433 个词的字典。</p>
+</blockquote>
+<p>Cora 包含两个数据文件：</p>
+<ul>
+<li><code>cora.content</code>：记录论文的编号、特征和类别标签，每行代表一篇论文</li>
+<li><code>cora.cites</code>：记录论文间的引用关系，每一行表示一条引用关系</li>
+</ul>
+<h4 id="132-逐行注释">1.3.2 逐行注释</h4>
+<p>论文代码中定义了三个类：</p>
+<table>
+<thead>
+<tr>
+<th>class</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MeanAggregator</code></td>
+<td>聚合器，聚合邻居节点特征，相当于用邻居节点的表征来表示自己</td>
+</tr>
+<tr>
+<td><code>Encoder</code></td>
+<td>编码器，concat 当前节点的邻居特征和原始特征</td>
+</tr>
+<tr>
+<td><code>SupervisedGraphSage</code></td>
+<td>有监督学习器，用全连接层将嵌入结果 Embedding 与标号 label 连接，再用梯度下降更新 Embedding 以对齐 label</td>
+</tr>
+</tbody>
+</table>
+<p>这三个类很重要。只用这三个类，就可以把整个算法串起来。</p>
 <ol>
-<li>DBSCAN 算法介绍</li>
-<li>DBSCAN 的简单示例</li>
-<li>DBSCAN 的可选参数</li>
-<li>DBSCAN 自动调参：
-<ul>
-<li>基于 K 距离图选择 <code>eps</code></li>
-<li>选择 <code>min_samples</code> 的经验法则</li>
-<li>使用网格搜索结合合适的评估指标</li>
-</ul>
-</li>
-<li>使用 <code>best_params</code> 进行聚类</li>
-<li>一站式 DBSCAN 函数</li>
+<li><strong>MeanAggregator</strong> 的作用是将邻居节点特征转换为本节点的表征。由于是邻居的特征，可以把把这种表征记为节点的“关联表征”</li>
+<li>然后由 <strong>Encoder</strong> 将关联表征与原始特征 concat 起来。concat 后的结果输入带 RuLU 的全连接层。这一步的输出其实已经是节点的 Embedding 了。只不过还要经过监督学习的更新，才能保证 Embedding 具有良好的分类性能</li>
+<li>监督学习 <strong>SupervisedGraphSage</strong> 赋予 Embedding 分类性能。它用全连接层将图嵌入 Embedding 和标号 label 连接起来。经过多轮训练，最终得到包含 节点特征信息 和 关联信息，还对由 label 定义的类别具有良好分类性能的 Embedding</li>
 </ol>
 <br>
 <center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/stream-clustering/blob/main/1.DBSCAN.ipynb')">查看笔记</button>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/graph-embedding/blob/main/1.GraphSAGE的简单实现.ipynb')">查看笔记</button>
 </center>
 <br>
-<h3 id="二denstream">二、DenStream</h3>
-<p>DenStream 适合不知道具体的聚类数，且需要实时获取聚类标签的情况。</p>
+<h2 id="二graphsage-的原版实现">二、GraphSAGE 的原版实现</h2>
+<p>上一节我们尝试了 <a href="https://github.com/williamleif/graphsage-simple">GraphSAGE 的简单版实现</a>。在简单实现中，一些与理解无关的复杂性被省略了。作为一名严肃的工程师，当然要跑跑 <a href="https://github.com/williamleif/GraphSAGE">原版 GraphSAGE</a> 实现。</p>
+<h3 id="21-配置-docker-环境">2.1 配置 Docker 环境</h3>
+<p>看了作者的 <code>requirements.txt</code> 里一堆不知道是啥还锁版本的包就头大，所幸作者提供了 Docker。</p>
+<p>首先来到 Dockerfile 所在目录。</p>
+<blockquote>
+<p><strong>Note:</strong> 如果你是中国大陆网友，请等一等，你需要先修改 Dockerfile，否则大概率会运行失败。</p>
+<p>你需要打开 Dockerfile，为 pip 换源：</p>
+<pre tabindex="0"><code># 用阿里源
+RUN pip install networkx==1.11 \
+    -i https://mirrors.aliyun.com/pypi/simple/
+</code></pre></blockquote>
+<p>现在可以运行：</p>
+<pre tabindex="0"><code>docker build -t graphsage .
+</code></pre><p>一旦镜像安装完成，运行以下代码，启动容器：</p>
+<pre tabindex="0"><code># 映射到 9999 是因为我本地 8888 已经开了一个 Jupyter
+# 如果你啥也没开，映射到 8888 就好
+# docker run -it -p 8888:8888 graphsage
+
+docker run -it -p 9999:8888 graphsage
+</code></pre><p>容器启动后，在浏览器打开 <a href="http://localhost:9999">http://localhost:9999</a>。网页会要求输入 token，用容器日志里那个就行。</p>
+<h3 id="22-运行原版示例">2.2 运行原版示例</h3>
+<p>作者给了一些 demo，让我们能快速跑起来 ᕕ( ᐛ )ᕗ</p>
+<h4 id="221-有监督学习">2.2.1 有监督学习</h4>
+<p>在容器提供的 Jupyter Notebook 里打开 Terminal，运行：</p>
+<pre tabindex="0"><code>python -m graphsage.supervised_train \
+    --train_prefix ./example_data/toy-ppi \
+    --model graphsage_mean \
+    --sigmoid
+</code></pre><h4 id="222-无监督学习">2.2.2 无监督学习</h4>
+<pre tabindex="0"><code>python -m graphsage.unsupervised_train \
+    --train_prefix ./example_data/toy-ppi \
+    --model graphsage_mean \
+    --max_total_steps 1000 \
+    --validate_iter 10
+</code></pre><p>没有问题，都成功了。唯一需要注意的是，源码 <code>ppi</code> 前漏了一个 <code>toy-</code>。应该是作者光改数据忘改代码了。</p>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/graph-embedding/blob/main/2.GraphSAGE的原版实现.ipynb')">查看笔记</button>
+</center>
+<br>
+<h2 id="三图卷积网络-gcn">三、图卷积网络 GCN</h2>
+<ul>
+<li>PyG: <a href="https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.nn.conv.GCNConv.html#torch-geometric-nn-conv-gcnconv">conv.GCNConv</a></li>
+<li>arXiv: <a href="https://arxiv.org/abs/1609.02907">Semi-Supervised Classification with Graph Convolutional Networks</a></li>
+<li>GitHub: <a href="https://github.com/tkipf/gcn">tkipf/gcn</a></li>
+</ul>
 <ol>
-<li>DenStream 算法介绍</li>
-<li>DenStream 的简单示例</li>
-<li>DenStream 的可选参数</li>
-<li>验证：推理结果是否随时间变化</li>
-<li>DBSCAN 与 DenStream 效果对比</li>
-<li>使用 DBSCAN 优化过的 <code>epsilon</code> 参数</li>
+<li>加载数据的极简示例</li>
+<li>加载 Cora 数据集</li>
+<li>训练 GCN 模型</li>
+<li>预测与评估</li>
 </ol>
 <br>
 <center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/stream-clustering/blob/main/2.DenStream.ipynb')">查看笔记</button>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/graph-embedding/blob/main/3.图卷积网络GCN.ipynb')">查看笔记</button>
 </center>
 <br>
-<h3 id="三clustream">三、CluStream</h3>
-<p>CluStream 是一种需要明确指定聚类数的算法。它在一段时间内的聚类效果不错，也就是说，如果你的需求是有时间间隔的，比如每 10 分钟获取一次聚类结果，CluStream 的效果是可以接受的。</p>
+<h2 id="四图注意力网络-gat">四、图注意力网络 GAT</h2>
+<ul>
+<li>PyG: <a href="https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.nn.conv.GATConv.html#torch-geometric-nn-conv-gatconv">conv.GATConv</a></li>
+<li>arXiv: <a href="https://arxiv.org/abs/1710.10903">Graph Attention Networks</a></li>
+<li>GitHub: <a href="https://github.com/PetarV-/GAT">PetarV-/GAT</a></li>
+</ul>
 <ol>
-<li>CluStream 算法介绍</li>
-<li>CluStream 的简单示例</li>
-<li>CluStream 的可选参数</li>
-<li>CluStream 全量训练：
-<ul>
-<li>宏簇数量 与 真实聚类数 相等的情况</li>
-<li>宏簇数量 与 真实聚类数 不等的情况</li>
-</ul>
-</li>
-<li>DenStream 与 CluStream 增量训练效果对比</li>
+<li>加载 Cora 数据集</li>
+<li>训练 GAT 模型</li>
+<li>预测与评估</li>
 </ol>
+<p>说实话，这个 Accuracy 效果一般。如果要继续优化，感觉需要从抽样入手。</p>
 <br>
 <center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/stream-clustering/blob/main/3.CluStream.ipynb')">查看笔记</button>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/graph-embedding/blob/main/4.图注意力网络GAT.ipynb')">查看笔记</button>
 </center>
 <br>
-<h3 id="四附录轮廓系数">四、附录：轮廓系数</h3>
-<p>轮廓系数是一种用于评估聚类效果的指标，它从单个样本的角度衡量其聚类的合理性。轮廓系数综合考虑了样本与其所属簇内点的相似性（紧密度）和样本与其最近簇的点的相似性（分离度）。</p>
-<br>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/stream-clustering/blob/main/4.silhouette_score.ipynb')">查看笔记</button>
-</center>
-<br>
-<h3 id="参考资料">参考资料</h3>
-<ul>
-<li><a href="https://riverml.xyz/latest/api/cluster/DenStream/" target="_blank">DenStream</a></li>
-<li><a href="https://riverml.xyz/latest/api/cluster/CluStream/" target="_blank">CluStream</a></li>
-<li><a href="https://riverml.xyz/latest/api/cluster/DBSTREAM/" target="_blank">DBSTREAM</a></li>
-</ul>
 <div id="mini-overlay" onclick="overlay_off()"></div>
 <div id="mini-window"><iframe id="mini-iframe" frameBorder="0"></iframe></div>
 <button id="btn-close" onclick="overlay_off()">×</button>
 <script src="/python-tips/overlay.js"></script>
 <link rel="stylesheet" href="/python-tips/style.css">
+
   </div>
   
 
 <div class="navigation navigation-single">
     
-    <a href="/posts/clip_triton_server/" class="navigation-prev">
+    <a href="/posts/graph_embedding/" class="navigation-prev">
       <i aria-hidden="true" class="fa fa-chevron-left"></i>
-      <span class="navigation-tittle">Triton 部署 CLIP 图文 Embedding 推理服务</span>
+      <span class="navigation-tittle">三种图神经网络算法：GraphSAGE, GCN 和 GAT</span>
     </a>
     
     
-    <a href="/posts/clip_app/" class="navigation-next">
-      <span class="navigation-tittle">搭建一个简单的『以文搜图』应用</span>
+    <a href="/posts/redis_util/" class="navigation-next">
+      <span class="navigation-tittle">初见向量引擎：RediSearch 和 Milvus</span>
       <i aria-hidden="true" class="fa fa-chevron-right"></i>
     </a>
     

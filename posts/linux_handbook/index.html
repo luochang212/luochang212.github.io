@@ -855,6 +855,10 @@
 <td>conda clean &ndash;all</td>
 <td>conda缓存清理</td>
 </tr>
+<tr>
+<td>ldd &ndash;version</td>
+<td>查看 GLIBC 版本</td>
+</tr>
 </tbody>
 </table>
 <h4 id="4文本处理">4）文本处理</h4>
@@ -1157,7 +1161,20 @@ python -m ipykernel install --user --name py27 --display-name &#34;Python (py27)
 <pre tabindex="0"><code>import sys
 sys.executable
 </code></pre><p>输出：<code>'/home/[USER_NAME]/miniconda3/envs/py27/bin/python'</code></p>
-<h3 id="六文件传输">六、文件传输</h3>
+<h4 id="8虚拟环境安装-jupyterlab">8）虚拟环境安装 jupyterlab</h4>
+<p>适用于 GLIBC 版本较低的服务器。</p>
+<pre tabindex="0"><code># 安装虚拟环境，指定 Python 版本为 3.6
+mkdir -p ./venv/jupyter/
+python3.6 -m venv ./venv/jupyter/
+
+# 安装 jupyterlab 并激活
+cd ./venv/jupyter/bin
+./pip3 install jupyterlab -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
+./activate
+
+# 在后台启动 jupyterlab
+./jupyter-lab --notebook-dir=/ --ip=0.0.0.0 --port=8888 --no-browser
+</code></pre><h3 id="六文件传输">六、文件传输</h3>
 <h4 id="1使用-scp">1）使用 SCP</h4>
 <blockquote>
 <p>用于 远端服务器 之间互传文件。</p>

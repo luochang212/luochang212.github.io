@@ -6,8 +6,15 @@
     <description>Recent content in FastAPI on Chang Luo</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 21 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 29 Dec 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://luochang212.github.io/tags/fastapi/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>搭建一个简单的『以文搜图』应用</title>
+      <link>https://luochang212.github.io/posts/clip_app/</link>
+      <pubDate>Sun, 29 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/posts/clip_app/</guid>
+      <description>用手机相册搜索“身份证”这个关键词，即使身份证照片中没有“身份证”字样，照片依然可以被搜索到。这说明现代相册 APP 不仅使用图片 OCR 文本来召回搜索结果。它通常混合使用多种技术，包括多模态技术。本文使用一种基础的多模态模型 CLIP 搭建一个简单的『以文搜图』应用，实现与相册 APP 类似的搜索效果。&#xA;GitHub 项目地址：clip-app&#xA;本文涉及的内容包括：&#xA;用 FastAPI 搭建图文向量生成服务 用 FastAPI 搭建 Faiss 向量搜索服务 集成以上两个服务，实现『以文搜图』应用 使用 @torch.inference_mode() 装饰器，优化推理性能 ✨ 如果你对多模态模型的效果有更高的要求，可以使用 BLIP-2。&#xA;一、加载 CLIP 模型 加载 CLIP 模型，生成图文 Embedding。&#xA;获取文本 Embedding 获取图像 Embedding 多条文本对一张图片 一条文本对多张图片 多条文本对多张图片 查看笔记 二、Faiss 向量搜索 用 FastAPI + Faiss 写一个向量检索服务 faiss/server.py，该服务提供两个接口：&#xA;路由名 描述 add 用于向索引中添加新的 Embedding search 用于从索引中取回给定 Embedding 的最近邻 Embedding 查看笔记 三、CLIP 向量生成 用 FastAPI 写一个简单的 CLIP Embedding 生成服务 embedding/server.</description>
+    </item>
     <item>
       <title>FastAPI 初见</title>
       <link>https://luochang212.github.io/posts/fastapi/</link>
