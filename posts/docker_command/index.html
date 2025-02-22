@@ -312,7 +312,7 @@
       </div>
       
 <div class="copyright">
-  &copy; 2024 Chang Luo
+  &copy; 2025 Chang Luo
   
 </div>
 
@@ -885,6 +885,25 @@ nvcc --version
 
 # 输出 PyTorch 版本
 pip show torch
+</code></pre><h4 id="34-修改存储目录">3.4 修改存储目录</h4>
+<p>在 Linux 系统下，Docker 容器相关的数据存储，包括镜像、容器、数据卷，默认存储在 <code>/var/lib/docker</code> 目录下。如果你是 Docker 的重度使用者，物理机 <code>/var</code> 路径挂载的磁盘空间可能不够用。会有修改 Docker 默认存储目录的需求。以下是具体步骤：</p>
+<p><strong>1）停止 Docker 服务</strong></p>
+<p>在修改存储目录之前，需要先停止 Docker 服务，避免数据损坏：</p>
+<pre tabindex="0"><code>sudo systemctl stop docker
+</code></pre><p><strong>2）迁移现有数据（可选）</strong></p>
+<p>如果已经有 Docker 容器和镜像，需要将 /var/lib/docker 目录下的数据迁移到新的存储目录。假设新的存储目录为 /new_docker_location，可以使用以下命令进行迁移：</p>
+<pre tabindex="0"><code>sudo mkdir -p /new_docker_location
+sudo rsync -avzP /var/lib/docker/ /new_docker_location/
+</code></pre><p><strong>3）配置 Docker 的新存储目录</strong></p>
+<p>创建或编辑 /etc/docker/daemon.json 文件，如果文件不存在则创建它，并添加以下内容：</p>
+<pre tabindex="0"><code>{
+    &#34;data-root&#34;: &#34;/new_docker_location&#34;
+}
+</code></pre><p><strong>4）启动 Docker 服务</strong></p>
+<p>完成上述配置后，启动 Docker 服务：</p>
+<pre tabindex="0"><code>sudo systemctl start docker
+</code></pre><p>确认新的存储目录配置成功且 Docker 可以正常工作后，可以删除旧的存储目录：</p>
+<pre tabindex="0"><code>sudo rm -rf /var/lib/docker
 </code></pre><h3 id="四docker-compose-的简单使用">四、Docker Compose 的简单使用</h3>
 <p>Docker Compose 是一个用于运行多容器 Docker 应用的工具。通过 YAML 文件 (<code>docker-compose.yml</code>) 可定义多个服务及其配置，使用 <code>docker-compose</code> 命令可以快速部署和管理这些服务。</p>
 <h4 id="41-安装-docker-compose">4.1 安装 Docker Compose</h4>
