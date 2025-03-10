@@ -6,8 +6,15 @@
     <description>Recent content in Posts on Chang Luo</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 29 Dec 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 09 Mar 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://luochang212.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>深度嵌入聚类算法 DEC</title>
+      <link>https://luochang212.github.io/posts/dec_pytorch/</link>
+      <pubDate>Sun, 09 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/posts/dec_pytorch/</guid>
+      <description>如何对图片做聚类，我的直觉是：先用预训练模型计算图片 Embedding，然后用 cosine 度量的 DBSCAN 无监督地计算图片 label，再用 MLP 有监督地学习上一步产生的 label。DBSCAN 的好处是可以把无监督转为有监督，且由于它基于密度的特性，还不需要指定聚类的类别数，这方便了生产环境使用，因为生产环境通常也是不知道类别数的。MLP 的好处是可以对输入泛化，即使没见过的输入，在不重训练的情况下，也可以有一个对应输出。图片特征提取器 + 传统聚类 + 神经网络，是简单且符合直觉的方法，但恐怕不是最好的方法。&#xA;我们探索使用更端到端的方法实现图片聚类：DINOv2 特征提取器 + DEC 分类器&#xA;使用 DEC 的好处起码有两点。一是让训练过程更简单，端到端的架构肯定比两阶段模型的架构更简单。二是 DEC 用特征向量表示聚类中心，这和传统聚类用标签表示不同。特征向量表示的类心更便于微调和增量更新。K-Means 每次更新 label 都是乱的，需要用匈牙利算法，对前后两次结果进行桥接。神经网络在这一点上天生有优势，因为它是顺着梯度一点一点更新的，所以前后两次结果是天然有联系，并且可以限制更新的幅度。&#xA;GitHub 项目地址：dec-pytorch&#xA;本文的工作包括：&#xA;用 DINOv2 模型生成图片的 Embedding 用 FastAPI 开发 DINOv2 批量推理服务，支持分 batch 和 模型结果归一化 训练 DEC 模型的三阶段：训练降噪自编码器、初始化聚类中心、训练 DEC 开发集成的 DEC 训练框架，支持训算推存，详见 dec.py 在我的数据集上，对比 DEC 与传统聚类算法的效果：与 K-Means 接近 介绍 DEC 的创新点：软分配策略和目标分布优化 在线学习探索：尝试两种思路，对 DEC 模型做小幅度的增量更新 ✨ DEC 论文在这里 Unsupervised Deep Embedding for Clustering Analysis.</description>
+    </item>
     <item>
       <title>搭建一款简单的『以文搜图』应用</title>
       <link>https://luochang212.github.io/posts/clip_app/</link>

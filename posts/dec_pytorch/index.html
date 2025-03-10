@@ -7,7 +7,7 @@
     <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     
-    <link rel="canonical" href="https://luochang212.github.io/posts/clip_app/">
+    <link rel="canonical" href="https://luochang212.github.io/posts/dec_pytorch/">
     
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,27 +19,27 @@
     
     
 
-<title>搭建一款简单的『以文搜图』应用 • Chang Luo</title>
+<title>深度嵌入聚类算法 DEC • Chang Luo</title>
 
 
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="搭建一款简单的『以文搜图』应用">
-  <meta name="twitter:description" content="是 prototype，不是 app 哦">
+  <meta name="twitter:title" content="深度嵌入聚类算法 DEC">
+  <meta name="twitter:description" content="使用端到端的方法实现图片聚类：DINOv2 特征提取器 &#43; DEC 分类器">
       <meta name="twitter:site" content="@MinosPalace">
 
-<meta property="og:url" content="https://luochang212.github.io/posts/clip_app/">
+<meta property="og:url" content="https://luochang212.github.io/posts/dec_pytorch/">
   <meta property="og:site_name" content="Chang Luo">
-  <meta property="og:title" content="搭建一款简单的『以文搜图』应用">
-  <meta property="og:description" content="是 prototype，不是 app 哦">
+  <meta property="og:title" content="深度嵌入聚类算法 DEC">
+  <meta property="og:description" content="使用端到端的方法实现图片聚类：DINOv2 特征提取器 &#43; DEC 分类器">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-12-29T00:00:00+00:00">
-    <meta property="article:modified_time" content="2024-12-29T00:00:00+00:00">
-    <meta property="article:tag" content="CLIP">
-    <meta property="article:tag" content="FastAPI">
-    <meta property="article:tag" content="Faiss">
+    <meta property="article:published_time" content="2025-03-09T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-03-09T00:00:00+00:00">
+    <meta property="article:tag" content="DINOv2">
+    <meta property="article:tag" content="DEC">
+    <meta property="article:tag" content="Autoencoder">
 
 
     
@@ -527,13 +527,13 @@
 
 <article>
   <header>
-    <h1>搭建一款简单的『以文搜图』应用</h1>
+    <h1>深度嵌入聚类算法 DEC</h1>
     
     
 <div class="post__meta">
     
     
-      <i class="fas fa-calendar-alt"></i> Dec 29, 2024
+      <i class="fas fa-calendar-alt"></i> Mar 9, 2025
     
     
     
@@ -542,7 +542,7 @@
           in
           
           
-              <a class="badge badge-category" href="/categories/multimodal">MULTIMODAL</a>
+              <a class="badge badge-category" href="/categories/deeplearning">DEEPLEARNING</a>
               
           
       
@@ -554,19 +554,19 @@
           <br/>
            <i class="fas fa-tags"></i>
           
-          <a class="badge badge-tag" href="/tags/clip">clip</a>
+          <a class="badge badge-tag" href="/tags/dinov2">dinov2</a>
            
       
-          <a class="badge badge-tag" href="/tags/fastapi">fastapi</a>
+          <a class="badge badge-tag" href="/tags/dec">dec</a>
            
       
-          <a class="badge badge-tag" href="/tags/faiss">faiss</a>
+          <a class="badge badge-tag" href="/tags/autoencoder">autoencoder</a>
           
       
     
     
     <br/>
-    <i class="fas fa-clock"></i> 1 min read
+    <i class="fas fa-clock"></i> 2 min read
 </div>
 
 
@@ -585,144 +585,164 @@
   
   <div class="post">
     <blockquote>
-<p>在手机相册搜索框中输入“笔记本电脑”时，即使照片本身并未包含“笔记本电脑”这几个字，相关图片依然能够被精准地检索出来。这说明现代相册 APP 不仅使用图片 OCR 文本来召回搜索结果。它综合使用了多种技术，包括多模态技术。</p>
+<p>如何对图片做聚类，我的直觉是：先用预训练模型计算图片 Embedding，然后用 cosine 度量的 DBSCAN 无监督地计算图片 label，再用 MLP 有监督地学习上一步产生的 label。DBSCAN 的好处是可以把无监督转为有监督，且由于它基于密度的特性，还不需要指定聚类的类别数，这方便了生产环境使用，因为生产环境通常也是不知道类别数的。MLP 的好处是可以对输入泛化，即使没见过的输入，在不重训练的情况下，也可以有一个对应输出。图片特征提取器 + 传统聚类 + 神经网络，是简单且符合直觉的方法，但恐怕不是最好的方法。</p>
 </blockquote>
-<p>本文使用多模态模型 CLIP 搭建一个简单的『以文搜图』应用，实现与相册 APP 类似的搜索效果。</p>
-<p>GitHub 项目地址：<a href="https://github.com/luochang212/clip-app" target="_blank">clip-app</a></p>
-<p>本文涉及的内容包括：</p>
+<p>我们探索使用更端到端的方法实现图片聚类：DINOv2 特征提取器 + DEC 分类器</p>
+<p>使用 DEC 的好处起码有两点。一是让训练过程更简单，端到端的架构肯定比两阶段模型的架构更简单。二是 DEC 用特征向量表示聚类中心，这和传统聚类用标签表示不同。特征向量表示的类心更便于微调和增量更新。K-Means 每次更新 label 都是乱的，需要用匈牙利算法，对前后两次结果进行桥接。神经网络在这一点上天生有优势，因为它是顺着梯度一点一点更新的，所以前后两次结果是天然有联系，并且可以限制更新的幅度。</p>
+<p>GitHub 项目地址：<a href="https://github.com/luochang212/dec-pytorch" target="_blank">dec-pytorch</a></p>
+<p>本文的工作包括：</p>
 <ul>
-<li>用 FastAPI 搭建图文向量生成服务</li>
-<li>用 FastAPI 搭建 Faiss 向量搜索服务</li>
-<li>集成以上两个服务，实现『以文搜图』应用</li>
-<li>使用 <code>@torch.inference_mode()</code> 装饰器，优化推理性能</li>
+<li>用 DINOv2 模型生成图片的 Embedding</li>
+<li>用 FastAPI 开发 DINOv2 批量推理服务，支持分 batch 和 模型结果归一化</li>
+<li>训练 DEC 模型的三阶段：训练降噪自编码器、初始化聚类中心、训练 DEC</li>
+<li>开发集成的 DEC 训练框架，支持训算推存，详见 <a href="https://github.com/luochang212/dec-pytorch/blob/main/dec.py" target="_blank">dec.py</a></li>
+<li>在我的数据集上，对比 DEC 与传统聚类算法的效果：与 K-Means 接近</li>
+<li>介绍 DEC 的创新点：软分配策略和目标分布优化</li>
+<li>在线学习探索：尝试两种思路，对 DEC 模型做小幅度的增量更新</li>
 </ul>
-<p>✨ 如果你对多模态模型的效果有更高的要求，可以尝试 <a href="https://huggingface.co/docs/transformers/en/model_doc/blip-2" target="_blank">BLIP-2</a>。</p>
-<h2 id="一加载-clip-模型">一、加载 CLIP 模型</h2>
-<p>加载 CLIP 模型，生成图文 Embedding。</p>
+<p>✨ DEC 论文在这里 <a href="https://arxiv.org/abs/1511.06335" target="_blank"><em>Unsupervised Deep Embedding for Clustering Analysis</em></a>.</p>
+<h2 id="一使用-dinov2-生成图片-embedding">一、使用 DINOv2 生成图片 Embedding</h2>
+<p>本节我们来完成三项任务：</p>
 <ol>
-<li>获取文本 Embedding</li>
-<li>获取图像 Embedding</li>
-<li>多条文本对一张图片</li>
-<li>一条文本对多张图片</li>
-<li>多条文本对多张图片</li>
+<li>下载 DINOv2 模型文件，并完成单张图片的 Embedding 推理</li>
+<li>先实现多张图片在 CPU 上的推理。然后进阶一点，固定 batch_size 参数，在 GPU 上实现分 batch 批量推理</li>
+<li>开发 FastAPI 推理服务。输入图片的 base64，输出 Embedding</li>
+</ol>
+<p>dinov2:</p>
+<ul>
+<li>GitHub: <a href="https://github.com/facebookresearch/dinov2">facebookresearch/dinov2</a></li>
+<li>Hugging Face: <a href="https://huggingface.co/facebook/dinov2-base">facebook/dinov2-base</a></li>
+</ul>
+<p>目录：</p>
+<ol>
+<li>从 huggingface 下载模型文件</li>
+<li>计算图片 Embedding</li>
+<li>批量计算图片 Embedding
+<ul>
+<li>在 CPU 上批量推理</li>
+<li>在 GPU 上批量推理</li>
+</ul>
+</li>
+<li>批量推理服务化
+<ul>
+<li>启动服务端</li>
+<li>运行客户端</li>
+</ul>
+</li>
 </ol>
 <br>
 <center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/clip-app/blob/main/1.clip_model.ipynb')">查看笔记</button>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/dec-pytorch/blob/main/1.dinov2_model.ipynb')">查看笔记</button>
 </center>
 <br>
-<h2 id="二faiss-向量搜索">二、Faiss 向量搜索</h2>
-<p>用 FastAPI + Faiss 写一个向量检索服务 <a href="https://github.com/luochang212/clip-app/blob/main/faiss/server.py" target="_blank">faiss/server.py</a>，该服务提供两个接口：</p>
-<table>
-<thead>
-<tr>
-<th>路由名</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>add</code></td>
-<td>用于向索引中添加新的 Embedding</td>
-</tr>
-<tr>
-<td><code>search</code></td>
-<td>用于从索引中取回给定 Embedding 的最近邻 Embedding</td>
-</tr>
-</tbody>
-</table>
-<br>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/clip-app/blob/main/2.faiss_client.ipynb')">查看笔记</button>
-</center>
-<br>
-<h2 id="三clip-向量生成">三、CLIP 向量生成</h2>
-<p>用 FastAPI 写一个简单的 CLIP Embedding 生成服务 <a href="https://github.com/luochang212/clip-app/blob/main/embedding/server.py" target="_blank">embedding/server.py</a>。接口输入是图片、文本，输出是图文 Embedding。该服务提供 3 个 API 接口：</p>
-<table>
-<thead>
-<tr>
-<th>路由名</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>text_embedding</code></td>
-<td>用于获取文本的 Embedding</td>
-</tr>
-<tr>
-<td><code>image_embedding</code></td>
-<td>用于获取图片的 Embedding，输入是图片的 base64 编码</td>
-</tr>
-<tr>
-<td><code>similarity</code></td>
-<td>计算 Embedding 的相似度，输入是两个 Embedding 列表，输出是概率矩阵</td>
-</tr>
-</tbody>
-</table>
+<h2 id="二embedding-数据准备">二、Embedding 数据准备</h2>
+<p>上一节中，我们已经开发了一个 FastAPI 推理服务，用于将图片转成 DINOv2 推理的 Embedding。</p>
+<p>本节我们来做数据准备。首先下载 CIFAR-100 数据集，它是一个由 100 类图片组成的图片分类数据集，其中训练集有 5 万张图片，测试集有 1 万张图片。下载完成后，使用上一节搭建的 FastAPI 服务，将图片转成 Embedding，然后用 csv 格式存储 Embedding 和对应标签。</p>
+<p>为了方便 DataFrame 和 csv 之间的转换，我开发了两个工具函数，见 <code>utils.py</code>：</p>
+<ul>
+<li><code>embedding_df_to_csv()</code>: 将 DataFrame 存入 csv</li>
+<li><code>read_embedding_csv()</code>: 从 csv 读入 DataFrame</li>
+</ul>
+<p>目录：</p>
 <ol>
-<li>获取文本嵌入</li>
-<li>获取图片嵌入</li>
-<li>计算图文相似度</li>
+<li>下载 CIFAR-100 数据集</li>
+<li>图片转 Embedding</li>
 </ol>
 <br>
 <center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/clip-app/blob/main/3.clip_server.ipynb')">查看笔记</button>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/dec-pytorch/blob/main/2.prepare_data.ipynb')">查看笔记</button>
 </center>
 <br>
-<h2 id="四以文搜图">四、以文搜图</h2>
-<p>本节我们跑通以文搜图功能。</p>
+<h2 id="三dec-模型训练">三、DEC 模型训练</h2>
+<p>DEC（Deep Embedded Clustering，深度嵌入聚类）是一种结合深度学习与 K-Means 聚类的算法。核心思想是通过联合优化特征表示和聚类目标，提升传统聚类方法在高维数据上的效果。</p>
+<p>目录：</p>
 <ol>
-<li>将图片向量存入 Faiss</li>
-<li>获取文本嵌入</li>
-<li>取回 top k 相似图片</li>
-<li>用 <code>get_similarity</code> 验证 Faiss 取回结果是否正确</li>
+<li>加载 Embedding 数据</li>
+<li>训练 DEC 模型
+<ul>
+<li>初始化配置：初始化设备；定义评估指标函数</li>
+<li>定义降噪自编码器：支持加入掩蔽噪声或高斯噪声；添加了 L2 归一化</li>
+<li>定义主要组件：target_distribution, ClusterAssignment, DEC</li>
+<li>阶段一：训练降噪自编码器</li>
+<li>阶段二：初始化聚类中心</li>
+<li>阶段三：训练 DEC</li>
+<li>保存最优模型</li>
+<li>计算指标</li>
+</ul>
+</li>
+<li>推理新数据</li>
+<li>评估</li>
 </ol>
 <br>
 <center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/clip-app/blob/main/4.search_app.ipynb')">查看笔记</button>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/dec-pytorch/blob/main/3.dec_train.ipynb')">查看笔记</button>
 </center>
 <br>
-<h2 id="五功能集成">五、功能集成</h2>
-<p>经过前几节的探索，现在我们有足够的经验搭建一个『以文搜图』应用了。</p>
-<p>搭建应用的步骤归纳如下：</p>
+<h2 id="四对比传统聚类算法">四、对比传统聚类算法</h2>
+<p>在同一个数据集上，对比 DEC 与 K-Means, DBSCAN 两种传统聚类算法的效果。</p>
+<p>目录：</p>
 <ol>
-<li>计算图片 Embedding，并将 Embedding 存入 Faiss 索引</li>
-<li>将 Query 转成 Query Embedinng，用 Faiss 索引取回 Query Embedding 的 TOP K 最近邻图片</li>
-<li>将上一步获取的图片展示给用户</li>
+<li>加载数据</li>
+<li>评估函数</li>
+<li>K-means 算法</li>
+<li>DBSCAN 算法</li>
+<li>结论</li>
 </ol>
-<p>遵循以上步骤，编写以下功能集成函数，并存放到 <a href="https://github.com/luochang212/clip-app/blob/main/app.py" target="_blank">app.py</a></p>
-<table>
-<thead>
-<tr>
-<th>函数</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>save_to_faiss</code></td>
-<td>将图片向量化后存入 Faiss</td>
-</tr>
-<tr>
-<td><code>get_top_k_images</code></td>
-<td>从 Faiss 取回 Query 向量的 TOP K 最近邻图片向量，同时取回对应的图片路径</td>
-</tr>
-<tr>
-<td><code>show_pictures</code></td>
-<td>将获取的图片展示给用户</td>
-</tr>
-</tbody>
-</table>
-<p>使用应用前，需要先启动 CLIP 向量生成服务 和 Faiss 向量搜索服务。</p>
-<pre tabindex="0"><code># 启动嵌入生成服务
-cd embedding; uvicorn server:app --port 8787
-
-# 启动 Faiss 向量搜索服务
-cd faiss; uvicorn server:app --port 8383
-</code></pre><br>
+<br>
 <center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/clip-app/blob/main/5.easy_app.ipynb')">查看笔记</button>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/dec-pytorch/blob/main/4.compare.ipynb')">查看笔记</button>
+</center>
+<br>
+<h2 id="五深入学习-dec-模型">五、深入学习 DEC 模型</h2>
+<p>第三节，我通过吃百家饭复现了 <a href="https://arxiv.org/abs/1511.06335">DEC 模型</a>。不知道是不是我的问题，<a href="https://github.com/vlukiyanov/pt-dec">pt-dec</a> 仓库的 DEC 模型的 loss 不降反升（见 test_ptdec.ipynb）。好在该仓库已经实现了 DEC 论文中几个重要的类和函数，将它们拼接一番，也顺利把模型跑起来了。</p>
+<p>上一节，我们比较了 DEC 模型和传统的 K-Means 模型的准确率。在我的数据集上，它们准确率类似，都在 0.7 左右。这个结果不意外，因为 DEC 本身就是用 K-Means 来初始化聚类中心的。</p>
+<p>经过前两节的工作，我们对 DEC 模型有了初步的理解，希望在这里停下来总结一下。</p>
+<p>目录：</p>
+<ol>
+<li>模型的创新点
+<ul>
+<li>聚类中心初始化</li>
+<li>软分配策略</li>
+<li>目标分布优化</li>
+<li>模型训练</li>
+</ul>
+</li>
+<li>训练阶段</li>
+<li>聚类标签匹配问题（匈牙利算法）</li>
+<li>模型推理和优化
+<ul>
+<li>模型推理</li>
+<li>模型优化</li>
+</ul>
+</li>
+</ol>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/dec-pytorch/blob/main/5.dive_into_dec.ipynb')">查看笔记</button>
+</center>
+<br>
+<h2 id="六探索在线学习">六、探索：在线学习</h2>
+<p>我希望当新一批 embeddings 进入时，只进行少量的训练。既让模型适应新数据，又尽量不使原来的 embedding - label 映射发生偏移。</p>
+<p>我的计划是：</p>
+<ul>
+<li>先训练一次 DEC 模型</li>
+<li>再将原本一半样本丢弃，加入与丢弃数量相同的新样本</li>
+</ul>
+<p>观察模型在新数据集上准确率是否有改善，以及聚类中心的变动是否平缓。</p>
+<ol>
+<li>初次训练 DEC 模型</li>
+<li>生成新样本</li>
+<li>增量训练
+<ul>
+<li>原模型在新数据集上的效果</li>
+<li>思路一：移动聚类中心</li>
+<li>思路二：重训练拟合目标分布的阶段</li>
+</ul>
+</li>
+</ol>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/dec-pytorch/blob/main/6.online_learning.ipynb')">查看笔记</button>
 </center>
 <br>
 <div id="mini-overlay" onclick="overlay_off()"></div>
@@ -736,16 +756,11 @@ cd faiss; uvicorn server:app --port 8383
 
 <div class="navigation navigation-single">
     
-    <a href="/posts/stream_clustering/" class="navigation-prev">
+    <a href="/posts/clip_app/" class="navigation-prev">
       <i aria-hidden="true" class="fa fa-chevron-left"></i>
-      <span class="navigation-tittle">流式聚类算法：DenStream 和 CluStream</span>
+      <span class="navigation-tittle">搭建一款简单的『以文搜图』应用</span>
     </a>
     
-    
-    <a href="/posts/dec_pytorch/" class="navigation-next">
-      <span class="navigation-tittle">深度嵌入聚类算法 DEC</span>
-      <i aria-hidden="true" class="fa fa-chevron-right"></i>
-    </a>
     
 </div>
 

@@ -885,7 +885,7 @@ nvcc --version
 
 # 输出 PyTorch 版本
 pip show torch
-</code></pre><h4 id="34-修改存储目录">3.4 修改存储目录</h4>
+</code></pre><h4 id="34-修改默认存储目录">3.4 修改默认存储目录</h4>
 <p>在 Linux 系统下，Docker 容器相关的数据存储，包括镜像、容器、数据卷，默认存储在 <code>/var/lib/docker</code> 目录下。如果你是 Docker 的重度使用者，物理机 <code>/var</code> 路径挂载的磁盘空间可能不够用。会有修改 Docker 默认存储目录的需求。以下是具体步骤：</p>
 <p><strong>1）停止 Docker 服务</strong></p>
 <p>在修改存储目录之前，需要先停止 Docker 服务，避免数据损坏：</p>
