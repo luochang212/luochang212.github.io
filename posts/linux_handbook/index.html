@@ -1106,7 +1106,21 @@ pip3 --version
 
 # 验证 jupyter notebook 是否安装成功
 jupyter notebook --allow-root
-</code></pre><h4 id="5安装-miniconda3">5）安装 <code>miniconda3</code></h4>
+</code></pre><h4 id="5安装-rust">5）安装 <code>rust</code></h4>
+<p>参考：<a href="https://www.rust-lang.org/tools/install" target="_blank">rust-lang.org</a></p>
+<pre tabindex="0"><code># 安装
+curl --proto &#39;=https&#39; --tlsv1.2 -sSf https://sh.rustup.rs | sh
+</code></pre><p>运行 <code>vim ~/.bashrc</code>，将以下内容添加到 <code>.bashrc</code> 文件中</p>
+<pre tabindex="0"><code>rust_bin=~/.cargo/bin
+if [[ ! $rust_bin =~ [*$PATH*] ]]; then
+    export PATH=$rust_bin:$PATH
+fi
+</code></pre><p>运行 <code>source ~/.bashrc</code>，以初始化环境变量</p>
+<blockquote>
+<p><strong>Note</strong>: 卸载 rustup</p>
+<pre tabindex="0"><code>rustup self uninstall
+</code></pre></blockquote>
+<h4 id="6安装-miniconda3">6）安装 <code>miniconda3</code></h4>
 <p>参考：<a href="https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html" target="_blank">docs.conda.io</a></p>
 <pre tabindex="0"><code># 安装
 mkdir -p ~/miniconda3
@@ -1129,21 +1143,7 @@ which python
 jupyter notebook
 jupyter notebook --allow-root  # 在 root 环境打开
 nohup jupyter notebook --allow-root &amp;  # 在后台挂着
-</code></pre><h4 id="6安装-rust">6）安装 <code>rust</code></h4>
-<p>参考：<a href="https://www.rust-lang.org/tools/install" target="_blank">rust-lang.org</a></p>
-<pre tabindex="0"><code># 安装
-curl --proto &#39;=https&#39; --tlsv1.2 -sSf https://sh.rustup.rs | sh
-</code></pre><p>运行 <code>vim ~/.bashrc</code>，将以下内容添加到 <code>.bashrc</code> 文件中</p>
-<pre tabindex="0"><code>rust_bin=~/.cargo/bin
-if [[ ! $rust_bin =~ [*$PATH*] ]]; then
-    export PATH=$rust_bin:$PATH
-fi
-</code></pre><p>运行 <code>source ~/.bashrc</code>，以初始化环境变量</p>
-<blockquote>
-<p><strong>Note</strong>: 卸载 rustup</p>
-<pre tabindex="0"><code>rustup self uninstall
-</code></pre></blockquote>
-<h4 id="7miniconda3-换-kernal">7）<code>miniconda3</code> 换 Kernal</h4>
+</code></pre><h4 id="7miniconda3-换-kernal">7）<code>miniconda3</code> 换 Kernal</h4>
 <p>安装依赖</p>
 <pre tabindex="0"><code>pip install ipykernel
 </code></pre><p>创建虚拟环境</p>
@@ -1174,6 +1174,13 @@ cd ./venv/jupyter/bin
 
 # 在后台启动 jupyterlab
 ./jupyter-lab --notebook-dir=/ --ip=0.0.0.0 --port=8888 --no-browser
+</code></pre><h4 id="9为-conda-添加镜像源">9）为 conda 添加镜像源</h4>
+<p>如果国内 conda 下载速度慢，你需要切换镜像源。</p>
+<p>切换到清华源：</p>
+<pre tabindex="0"><code>conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+</code></pre><p><code>conda config --add channels</code> 会将新镜像源添加到频道列表的顶部 ，这意味着新添加的频道具有更高的优先级。使用以下命令可以查看当前频道列表：</p>
+<pre tabindex="0"><code>conda config --show channels
 </code></pre><h3 id="六文件传输">六、文件传输</h3>
 <h4 id="1使用-scp">1）使用 SCP</h4>
 <blockquote>
