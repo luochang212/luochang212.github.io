@@ -711,7 +711,7 @@
 <p>这三个类很重要。只用这三个类，就可以把整个算法串起来。</p>
 <ol>
 <li><strong>MeanAggregator</strong> 的作用是将邻居节点特征转换为本节点的表征。由于是邻居的特征，可以把把这种表征记为节点的“关联表征”</li>
-<li>然后由 <strong>Encoder</strong> 将关联表征与原始特征 concat 起来。concat 后的结果输入带 RuLU 的全连接层。这一步的输出其实已经是节点的 Embedding 了。只不过还要经过监督学习的更新，才能保证 Embedding 具有良好的分类性能</li>
+<li>然后由 <strong>Encoder</strong> 将关联表征与原始特征 concat 起来。concat 后的结果输入带 ReLU 的全连接层。这一步的输出其实已经是节点的 Embedding 了。只不过还要经过监督学习的更新，才能保证 Embedding 具有良好的分类性能</li>
 <li>监督学习 <strong>SupervisedGraphSage</strong> 赋予 Embedding 分类性能。它用全连接层将图嵌入 Embedding 和标号 label 连接起来。经过多轮训练，最终得到包含 节点特征信息 和 关联信息，还对由 label 定义的类别具有良好分类性能的 Embedding</li>
 </ol>
 <br>

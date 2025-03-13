@@ -27,7 +27,7 @@
       <link>https://luochang212.github.io/posts/hive_sql_note/</link>
       <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
       <guid>https://luochang212.github.io/posts/hive_sql_note/</guid>
-      <description>Hive SQL 不需要注释，它会自己解释自己&#xA;1. 数据表操作 1.1 创建 Hive 表 CREATE TABLE [DATABASE].[TABLE_NAME] ( `id` BIGINT COMMENT &amp;#39;学号&amp;#39;, name STRING COMMENT &amp;#39;姓名&amp;#39;, ttl_score DOUBLE COMMENT &amp;#39;总分&amp;#39; ) COMMENT &amp;#39;枝江中学五年级学生成绩明细表&amp;#39; PARTITIONED BY (day STRING COMMENT &amp;#39;day&amp;#39;, hour STRING COMMENT &amp;#39;hour&amp;#39;) ROW FORMAT [row_format] STORED AS [file_format]; Note: 想了解更多，请参考 CREATE TABLE with Hive format&#xA;1.2 删除 Hive 表 DROP TABLE [DATABASE].[TABLE_NAME]; DROP TABLE IF EXISTS [DATABASE].[TABLE_NAME]; ALTER TABLE [DATABASE].[TABLE_NAME] DROP IF EXISTS PARTITION (dt=&amp;#39;2024-09-01&amp;#39;, country=&amp;#39;US&amp;#39;); 1.</description>
+      <description>Hive SQL 不需要注释，它会自己解释自己&#xA;1. 数据表操作 1.1 创建 Hive 表 CREATE TABLE [DATABASE].[TABLE_NAME] ( `id` BIGINT COMMENT &amp;#39;学号&amp;#39;, name STRING COMMENT &amp;#39;姓名&amp;#39;, ttl_score DOUBLE COMMENT &amp;#39;总分&amp;#39; ) COMMENT &amp;#39;枝江中学五年级学生成绩明细表&amp;#39; PARTITIONED BY (day STRING COMMENT &amp;#39;day&amp;#39;, hour STRING COMMENT &amp;#39;hour&amp;#39;) ROW FORMAT DELIMITED FIELDS TERMINATED BY &amp;#39;,&amp;#39; STORED AS TEXTFILE; Note: 想了解更多，请参考 CREATE TABLE with Hive format&#xA;1.2 删除 Hive 表 DROP TABLE [DATABASE].[TABLE_NAME]; DROP TABLE IF EXISTS [DATABASE].[TABLE_NAME]; ALTER TABLE [DATABASE].</description>
     </item>
     <item>
       <title>统计学补完计划</title>

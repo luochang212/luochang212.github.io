@@ -592,8 +592,9 @@
 )
 COMMENT &#39;枝江中学五年级学生成绩明细表&#39;
 PARTITIONED BY (day STRING COMMENT &#39;day&#39;, hour STRING COMMENT &#39;hour&#39;)
-ROW FORMAT [row_format]
-STORED AS [file_format];
+ROW FORMAT DELIMITED 
+FIELDS TERMINATED BY &#39;,&#39; 
+STORED AS TEXTFILE;
 </code></pre><blockquote>
 <p><strong>Note</strong>: 想了解更多，请参考 <a href="https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/sql-ref-syntax-ddl-create-table-hiveformat">CREATE TABLE with Hive format</a></p>
 </blockquote>
@@ -608,7 +609,7 @@ SELECT id, name, department
 FROM [DATABASE].[TABLE_B]
 WHERE date = &#39;2024-05-30&#39;;
 </code></pre><p>直接插入特定值：</p>
-<pre tabindex="0"><code>INSERT INOT TABLE [DATABASE].[TABLE_A]
+<pre tabindex="0"><code>INSERT INTO TABLE [DATABASE].[TABLE_A]
 VALUES (1001, &#39;Alice Smith&#39;, &#39;HR&#39;),
        (1002, &#39;Bob Johnson&#39;, &#39;Finance&#39;);
 </code></pre><p>插入分区表：</p>
