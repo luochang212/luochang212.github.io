@@ -961,7 +961,7 @@ flowchart LR
 </tr>
 </tbody>
 </table>
-<p>当封装进行到网络层时，通过 IP 与 子网掩码 的与运算，发型目标 IP 和自己不在同一网段，会请网关帮忙转发。此时电脑配置的网关 IP 是路由器的内网 IP。从 ARP 缓存中，可以通过路由器的 IP 获取路由器的 MAC。</p>
+<p>当封装进行到网络层时，通过 IP 与 子网掩码 的与运算，发现目标 IP 和自己不在同一网段，会请网关帮忙转发。此时电脑配置的网关 IP 是路由器的内网 IP。从 ARP 缓存中，可以通过路由器的 IP 获取路由器的 MAC。</p>
 <p><strong>路由器</strong> 拿到 HTTP 请求，发现 MAC 是自己，但是目标 IP 不是自己，而是公网 IP，会将其转发到 WAN 口。</p>
 <p>路由器还发现源 IP 是内网 IP，无法在公网上使用，于是会做 <strong>网络地址转换</strong> (Network Address Translation, <strong>NAT</strong>) 将源 IP 地址修改为路由器 WAN 口的公网 IP 地址，同时随机选择一个空闲端口，替换源端口。</p>
 <p>然后将映射关系存到 <strong>NAT映射表</strong> 中：</p>

@@ -1,110 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Python on Chang Luo</title>
+    <title>Python&#34; on Chang Luo</title>
     <link>https://luochang212.github.io/tags/python/</link>
-    <description>Recent content in Python on Chang Luo</description>
+    <description>Recent content in Python&#34; on Chang Luo</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 09 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 20 Apr 2019 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://luochang212.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>手写深度学习</title>
-      <link>https://luochang212.github.io/posts/d2l_from_scratch/</link>
-      <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/posts/d2l_from_scratch/</guid>
-      <description>与其说深度学习是一门技术，不如说深度学习是一种语言&#xA;GitHub 项目地址：AI-Project/scratch&#xA;一、自动微分 1. 简单的例子 1.1 张量 x 的梯度&#xA;张量 $x$ 的梯度可以存储在 $x$ 上。&#xA;要点：&#xA;x.grad: 取 $x$ 的梯度 x.requires_grad_(True): 允许 tenser $x$ 存储自己的梯度 x.grad.zero_(): 将 $x$ 的梯度置零 import torch # 初始化张量 x (tenser x) x = torch.arange(4.0) x.requires_grad_(True) # 允许 tensor x 存储梯度 x.grad == None # 梯度默认为 None &amp;gt; True&#xA;初始化带梯度的张量，下面是两个例子：&#xA;torch.tensor([1., 2., 3.], requires_grad=True) &amp;gt; tensor([1., 2., 3.], requires_grad=True)&#xA;torch.randn((2, 5), requires_grad=True) &amp;gt; tensor([[ 0.4075, 1.</description>
-    </item>
-    <item>
-      <title>深度学习笔记</title>
-      <link>https://luochang212.github.io/posts/d2l/</link>
-      <pubDate>Sat, 11 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/posts/d2l/</guid>
-      <description>跟李沐老师学深度学习，课程见 d2l，如有错误，欢迎拍砖 GitHub 项目地址：AI-Project&#xA;〇、技术路线图 flowchart TD A[softmax 回归] --&gt;|无法拟合 XOR 函数| B[多层感知机] B --&gt; |高像素图片作为输入，模型参数爆炸| C[卷积] C --&gt;|数据的长宽下降太快| D[填充] C --&gt;|数据的长宽下降太慢| E[步幅] C --&gt;|缓解卷积对位置敏感| F[池化] C --&gt;|多模式识别与组合| G[多通道输入/输出] ❤️ powered by mermaid 一、softmax 回归 1. 虽然叫回归，但是softmax 解决的是分类问题 回归估计是一个连续值 分类预测是一个离散类别 2. 分类应用举例 MINIST ImageNet human-protein-atlas-image-classification (Kaggle) malware-classification (Kaggle) jigsaw-comment-classification (Kaggle) 3. 从回归到多类分类 &amp;ndash; 均方损失 对分类结果做 one-hot 编码：&#xA;$y = [y_1, y_2, , ... , y_n]^T$&#xA;$y_i=\left\{\begin{array}{l}1 \text { if } i=y \\ 0 \text { otherwise }\end{array}\right.</description>
-    </item>
-    <item>
-      <title>PyPI 打包小记</title>
-      <link>https://luochang212.github.io/posts/pypi_packaging/</link>
-      <pubDate>Wed, 18 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/posts/pypi_packaging/</guid>
-      <description>你们这些家伙，好好看看我是怎么打包的吧！&#xA;GitHub 项目地址：hit-and-blow&#xA;官方教程：Packaging Python Projects 背景知识：Modules 一、文件结构介绍 打包前，需构建如下文件结构：&#xA;packaging_tutorial/ ├── LICENSE ├── pyproject.toml ├── README.md ├── src/ │ └── YOUR_PACKAGE_NAME/ │ ├── __init__.py │ └── example.py └── tests/ 各个 文件 / 文件夹 说明：&#xA;packaging_tutorial: 项目文件夹 LICENSE: 开源协议，可由 GitHub 生成 pyproject.toml: 打包配置文件 README.md: 项目文档 src: 项目结构要求的，用来放主程序 YOUR_PACKAGE_NAME: 主程序文件夹，以“你的包名”命名文件夹 二、添加配置文件 将以下内容修改一下，改改名字邮箱什么的，存成配置文件 pyproject.toml&#xA;[build-system] requires = [&amp;#34;hatchling&amp;#34;] build-backend = &amp;#34;hatchling.build&amp;#34; [project] name = &amp;#34;example_package_YOUR_USERNAME_HERE&amp;#34; version = &amp;#34;0.0.1&amp;#34; authors = [ { name=&amp;#34;Example Author&amp;#34;, email=&amp;#34;author@example.</description>
-    </item>
-    <item>
-      <title>统计学补完计划</title>
-      <link>https://luochang212.github.io/posts/learning_statistics/</link>
-      <pubDate>Sat, 01 May 2021 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/posts/learning_statistics/</guid>
-      <description>统计学绝非一门生硬无趣的学科，它有着鲜活的案例和丰富的实验，让我们循着公式乘着代码在统计的海洋里尽情摇摆叭 1. 回归分析 1.1 简单线性回归模型 (1) 回归方程 许多回归分析都是在如下假设前提下开始的：$y$ 和 $x$ 是两个代表某个总体的变量，我们希望用 $x$ 解释 $y$，通过一个线性方程，我们可以刻画 $y$ 和 $x$ 之间的关系： $$y=\beta_{0}+\beta_{1} x+u \quad (1.1)$$ 假定方程 (1.1) 在我们所关注的总体中成立，它便定义了一个简单线性回归模型 (simple linear regression model).&#xA;其中，各符号含义如下：&#xA;$y$: 因变量（或被解释变量、回归子） $x$: 自变量（或解释变量、回归元） $u$: 误差项（或干扰项） $\beta_{1}$: 斜率参数 $\beta_{0}$: 截距参数 举例来说，假设我们用方程 (1.1) 来刻画大豆收成：$y$ 表示收成，$x$ 表示施肥量，$u$ 则包括了诸如土地质量、降水量等因素。&#xA;(2) 零条件均值假设 只有在我们对 $x$ 和 $u$ 之间的关系做出某种约束时，我们才能计算出 $\beta_{1}$ 和 $\beta_{0}$ 的可靠估计量。&#xA;🌟 零条件均值假定： $$\begin{aligned} &amp;amp;\mathrm{E}(u)=0 \quad (1.2) \\ &amp;amp;\mathrm{E}(u \mid x)=\mathrm{E}(u) \quad (1.3) \end{aligned}$$ 方程 (1.</description>
-    </item>
-    <item>
-      <title>泊松分布的仿真及可视化</title>
-      <link>https://luochang212.github.io/posts/poisson/</link>
-      <pubDate>Sat, 19 Sep 2020 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/posts/poisson/</guid>
-      <description>本文介绍泊松分布和泊松函数的定义，并通过 Python random 库对泊松分布进行仿真，带你触摸复杂表象下的简单本质。&#xA;GitHub 项目地址：python-tips/poisson&#xA;1. 从泊松函数讲起 泊松分布 表示在给定时间段内发生给定数量的事件的概率。这个定义比较抽象。举个具体的例子，假设你每小时接到电话的概率是固定的，比如每小时 0.05 个，那么你在接下来 1 小时内接到电话个数的概率，就服从泊松分布:&#xA;1 小时内接到 0 个电话，对应一个概率值 $P_0$；&#xA;1 小时内接到 1 个电话，对应一个概率值 $P_1$；&#xA;&amp;hellip; &amp;hellip;&#xA;1 小时内接到 n 个电话，也对应一个概率值$P_n$。&#xA;这些概率值组成一个概率分布列，它们的值 $(n, P_n)$ 在二维坐标下连成一条曲线。这条曲线所在的函数就是泊松分布的概率密度函数。其公式及图像如下：&#xA;$$\boxed{P(k | t, \lambda)=\frac{(\lambda t)^{k}}{k !} \exp (-\lambda t)}$$&#xA;从公式中，我们可以看出：只要确定了 $\lambda$ 和 $t$，该式就退化成了概率 $P$ 关于事件发生次数 $k$ 的函数。 类似地，如果我们确定了 $\lambda$ 和 $k$，则该式退化成概率$P$ 关于时间范围 $t$ 的函数。&#xA;“确定哪些参数，让函数最终退化成哪些参数的函数”，这个选择和我们的研究目的有关。如果你对不同 $k$ 如何影响 $P$ 值感兴趣，那么就应该确定参数 $\lambda$ 和 $t$。如果对 $t$ 和 $P$ 之间的关系感兴趣，那么就应该确定参数 $\lambda$ 和 $k$。</description>
-    </item>
-    <item>
-      <title>Python 工程化实践</title>
-      <link>https://luochang212.github.io/posts/python_practice/</link>
-      <pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/posts/python_practice/</guid>
-      <description>学 Python 不应仅限于学编程，同样应该学习工程知识，比如虚拟环境、编码风格以及单元测试等。本文致力于介绍 Python 工程化所需的前置知识。&#xA;⚠️ 注意：以下教程适用于 MacOS。&#xA;部署环境 1. Anaconda Anaconda 是一个包管理器，它能让你方便的管理 Python 版本和包版本。并且， Anaconda 聚合了 Jupyter notebook，使其大受数据科学家和人工智能工程师的欢迎。下面我们来介绍如何用 Anaconda 管理我们的 Python 环境。&#xA;如果你还没有 Anaconda，安装一个：&#xA;海外用户直接访问 Anaconda 官网 下载即可 国内用户无法访问Anaconda 官网(被墙)，建议选择清华镜像替代。 安装完以后，在命令行界面输入 conda，会打印一个帮助文档。&#xA;帮助文档大概是说 conda 有哪些常用命令，比如下面这些：&#xA;$ conda help # 打印帮助文档 $ conda info # 查看conda信息，包括当前在哪个环境，环境路径，Python版本等信息 $ conda list # 列出conda下安装了哪些包 $ conda install [package_name] # 在conda环境中安装某个包 $ conda update [package_name] # 升级conda环境中的某个包 Note：后文仅专注介绍虚拟环境相关内容，更多内容请在 Anaconda 官方文档 中查看。&#xA;Python 环境分为本地环境(lcoal env) 和全局环境 (global env) 。为一个项目配置环境，应该配置本地环境；为本机所有项目配置环境，则应该配置全局环境。</description>
-    </item>
-    <item>
-      <title>算法集萃</title>
-      <link>https://luochang212.github.io/posts/algorithms/</link>
-      <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/posts/algorithms/</guid>
-      <description> 算法学习笔记，长期更新 GitHub 项目地址：python-tips/algorithms&#xA;排序 本节介绍各种排序算法的思路和特点，并提供了示例代码。&#xA;插入排序 直接插入排序 希尔排序 交换排序 冒泡排序 快速排序 选择排序 简单选择排序 堆排序 归并排序 二路归并排序 查看示例 排列组合 排列 组合 子集 查看示例 深度优先搜索DFS 施工中&#xA;广度优先搜索BFS 施工中&#xA;二叉搜索树 施工中&#xA;动态规划 施工中&#xA;× </description>
-    </item>
-    <item>
-      <title>用魔法打败魔法！</title>
-      <link>https://luochang212.github.io/posts/chico_and_dico/</link>
-      <pubDate>Fri, 21 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/posts/chico_and_dico/</guid>
-      <description>Chico 和 Dico 是两位魔术师，他们有一个经典魔术：根据任意四张牌猜第五张牌。但完成这个魔术并不需要任何魔术师的技巧，因为它完全建立在数学原理之上。只需要一点数学知识和充分的练习，你也能表演这个魔术！&#xA;GitHub 项目地址：chico-and-dico&#xA;Chico 和 Dico 的魔术 Chico 和 Dico 是两位魔术师，他们经常表演的一个魔术是这样的：Chico 将一副 52 张的扑克牌交给一位观众，让他随机抽取其中的 5 张。然后 Chico 将这 5 张牌按一定的顺序重新排列，再将其还给观众。上述整个过程 Dico 都是看不见的。然而，当观众按 Chico 排好的顺序依次展示前四张牌之后，Dico 却能准确地说出第五张牌是什么。&#xA;乍一看这个魔术很神奇。随机抽取 5 张牌，你能从前 4 张牌中看出第 5 张牌是什么吗？对于普通人来说，当然不可能。Chico 和 Dico 的秘诀在于 Chico 有机会将扑克重新排序。如果两人事先约定好某种协议，Chico 是有可能通过扑克排列的顺序，向 Dico 传递关于第 5 张牌的信息的。&#xA;关键在于如何实现这种协议。&#xA;数学模型 在进行分析之前，我们需要把 Chico 和 Dico 的魔术抽象成一个数学模型。&#xA;魔术本身已经提供了一些建模信息。我们可以假设一共有 n 张牌，抽取其中的 k 张。在对牌组进行某种排序之后，我们需要利用前 (k - j) 张牌的信息，推测后 j 张牌是什么。&#xA;现在我们有 n, j, k 三个变量，下面我们来进一步探究三个变量之间究竟服从何种关系。&#xA;首先，我们知道从 n 张牌中抽取 k 张牌一共有 C(n, k) 种组合方式，而 (k - j) 张牌的排列方式则有 A(n, k-j) 种。按照模型的要求，我们要用后者对前者的信息进行编码。根据信息论中的信源编码理论，至少有：C(n, k) &amp;lt;= A(n, k-j)。</description>
-    </item>
-    <item>
-      <title>贝叶斯方法</title>
-      <link>https://luochang212.github.io/posts/bayesian/</link>
-      <pubDate>Fri, 31 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/posts/bayesian/</guid>
-      <description>统计学中有两大学派，频率学派和贝叶斯学派。频率派用总体信息和样本信息进行统计推断。而贝叶斯派除了使用以上两种信息之外，还使用先验信息进行统计推断。本文从数学原理和编程实践两个方向探究贝叶斯方法。&#xA;本文从数学原理和编程实践两个方面来介绍贝叶斯方法。&#xA;数学原理 贝叶斯理论包含很多内容。我们熟悉的利用先验分布推后验分布的方法被称为贝叶斯推理（Bayesian inference）。此外，还可以利用参数的后验分布的均值作为该参数的点估计，这种方法被称为贝叶斯估计（Bayesian estimation）。本文数学原理部分主要介绍贝叶斯推理和贝叶斯估计。&#xA;理论部分为六节，各节的主要内容如下。&#xA;章节 主要内容 第一节 用一个简单的实例，让大家对贝叶斯方法有一个形象的认识。 第二节 用一个复杂的实例，让大家对贝叶斯方法的术语有一个形象的认识。 第三节 介绍贝叶斯公式的事件形式及其推导。 第四节 介绍贝叶斯公式的密度函数形式及其推导。 第五节 介绍贝叶斯估计。 第六节 探索联合分布蕴含了哪些信息。 一、实例：癌症化验的准确率 下面请各位做题家们做一下你们最爱的经典老题 📖 题目 有两个可选的假设：&#xA;病人有癌症（cancer）、病人无癌症（normal）&#xA;可用数据来自化验结果：&#xA;正（+）、负（-）&#xA;有先验知识：&#xA;在所有人口中，患病率是 0.8%。对确实有病的患者的化验准确率为 98%，对确实无病的患者的化验准确率为 97%，总结如下：&#xA;$ P(cancer) = 0.008, P(normal) = 0.992 \\ P(+ | cancer) = 0.98, P(- | cancer) = 0.02 \\ P(+ | normal) = 0.03, P(- | normal) = 0.97 $&#xA;问题：&#xA;假定有一个新病人，化验结果为正，是否应将病人断定为有癌症？求后验概率 $ P(cancer | +) $。</description>
-    </item>
-    <item>
-      <title>我的 Python 不可能这么可爱</title>
-      <link>https://luochang212.github.io/posts/python_tips/</link>
-      <pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/posts/python_tips/</guid>
-      <description>Python 学习笔记，如有错误，欢迎指正 GitHub 项目地址：python-tips&#xA;相关书籍推荐：&#xA;入门：《Python编程从入门到实践》 [豆瓣链接] 初级：《Python学习手册》(英文名 Learning Python) [豆瓣链接] 中级：《流畅的Python》[豆瓣链接] PS: 针对每个阶段，我推荐的是我认为最好的那本书。&#xA;语言基础 列表 本文从以下几个方面介绍列表：&#xA;创建 获取 修改 添加 插入 删除 排序 逆序 索引 循环 列表推导 切片 复制 去重 计数 查找 查看示例 字典 鉴于 JSON 在数据处理中的大量使用，字典的重要性也不言而喻。&#xA;本文从以下几个方面介绍字典：&#xA;创建 获取 更新 遍历 排序 删除 字典与JSON collections.defaultdict() setdefault() 查看示例 字符串 除了列表和字典，字符串也是 Python 中一种非常重要的数据类型。&#xA;基本操作 格式化 字符串方法 查看示例 函数 本文目录：&#xA;形参和实参 位置实参 关键字实参 默认值 位置实参和关键字实参的混用 默认值、位置实参和关键字实参的混用 传递任意数量的位置实参 传递任意数量的关键字实参 由字符串函数名生成可调用的函数 查看示例 异常 程序会发生异常，比如试图在计算中除0。Python 提供了强大的异常处理机制。</description>
-    </item>
-    <item>
-      <title>PyQt5 侧边栏布局</title>
-      <link>https://luochang212.github.io/posts/pyqt5_layout_sidebar/</link>
-      <pubDate>Fri, 10 May 2019 21:43:09 +0100</pubDate>
-      <guid>https://luochang212.github.io/posts/pyqt5_layout_sidebar/</guid>
-      <description>GitHub 项目地址：pyqt5-demo&#xA;主流软件如网易云音乐、腾讯电脑管家，都有侧边栏。侧边栏能有效扩展应用空间，使软件功能的层次更加分明。&#xA;但PyQt5并没有一个专门的方法实现侧边栏。要实现侧边栏，主要有两种技术路线。一是从标签部件(QTabWidget)改造而来，二是用网格布局(QGridLayout)画出来。本文采用第一种技术路线，制作一个简单的侧边栏应用。&#xA;Note: 两种技术路线制作的侧边栏有细微的差别。如果采用第二种技术路线(QGridLayout)，侧边栏和内容页之间没有明显的分界。所以需要额外地在侧边栏和内容页之间加一条线，来突出两者属于不同的组件。而第一种技术路线(QTabWidget)不需要，创建的侧边栏和内容页之间的区别明显。&#xA;下图是一个用第二种技术路线(QGridLayout)制作的应用，可以看到侧边栏和内容页中间画了一条线，以突出两个组件的分界。&#xA;步骤分析 在开始写代码之前，我们先分析一下制作侧边栏需要几个步骤。&#xA;添加部件 为部件设置布局 将标签部件改造成侧边栏的内容页 为侧边栏按钮编写函数，实现内容页之间的跳转 添加部件并设置布局 此段不详述。关于部件和布局的基础知识，在上一篇中有介绍，详见PyQt5 布局浅析。&#xA;下面这段代码添加了部件且设置了布局。&#xA;from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__(self): super().__init__() # set the title of main window self.setWindowTitle(&amp;#39;Sidebar layout - www.luochang.ink&amp;#39;) # set the size of window self.Width = 800 self.height = int(0.618 * self.Width) self.resize(self.Width, self.height) # add all widgets self.btn_1 = QPushButton(&amp;#39;1&amp;#39;, self) self.btn_2 = QPushButton(&amp;#39;2&amp;#39;, self) self.btn_3 = QPushButton(&amp;#39;3&amp;#39;, self) self.</description>
-    </item>
-    <item>
-      <title>PyQt5 布局浅析</title>
-      <link>https://luochang212.github.io/posts/pyqt5_layout/</link>
-      <pubDate>Fri, 03 May 2019 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/posts/pyqt5_layout/</guid>
-      <description>PyQt5是Python环境下用来开发UI界面的一个包。它容易上手，对初学者友好，并且拥有丰富的函数库，可以实现大部分桌面应用的开发需求，且支持QSS语言，能够对界面风格做个性化调整。总体来说，PyQt5是一款开发效率极高的UI框架。这篇文章从零开始，教你搭建一个属于自己的桌面应用。&#xA;GitHub 项目地址：pyqt5-demo&#xA;创建第一个窗口 一般来说，桌面应用都以窗口(window)形式呈现。因此，要搭建桌面应用，首先要创建窗口。&#xA;下面这段代码创建了一个空的窗口。&#xA;from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__(self): super().__init__() # set the title of main window self.setWindowTitle(&amp;#39;My first window - www.luochang.ink&amp;#39;) # set the size of window self.Width = 500 self.height = int(0.618 * self.Width) self.resize(self.Width, self.height) if __name__ == &amp;#39;__main__&amp;#39;: app = QApplication(sys.argv) ex = Window() ex.show() sys.exit(app.exec_()) 这段代码仅仅设置了窗口的标题和大小。下一步，我们要往这个空的窗口里添加部件(widget). 为了规范性，我们在Window类里新建一个函数initUI, 然后在initUI里为窗口添加部件。&#xA;为窗口添加部件 下面这段代码为窗口添加了一个按钮部件(QPushButton).&#xA;from PyQt5.QtWidgets import * import sys class Window(QMainWindow): def __init__(self): super().</description>
-    </item>
-    <item>
-      <title>【项目】TSP旅行路线规划</title>
-      <link>https://luochang212.github.io/posts/tsp_route/</link>
-      <pubDate>Wed, 10 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/posts/tsp_route/</guid>
-      <description>GitHub 项目地址：tsp-route&#xA;对于在欧洲的小伙伴们，复活节假在这一周就正式开始啦。大家都是怎么计划旅行的呢？&#xA;我的习惯是在出发前最后一晚，花上半小时，搜索目的地景点 (Point of interest, POI), 然后在Google Maps上为它们点上小星星，以免和它们擦肩而过。我的地图经过一番操作，就成了下面这副模样。&#xA;此时此刻，望着这些密集的星星，我不禁自问：如何才能走最少的路，遍历所有景点呢?&#xA;搜索了谷歌和百度，都没找到我要路径规划功能。最接近需求的是谷歌地图的&amp;quot;Add destination&amp;quot;功能。然而这个功能只是依次连接你点选的地点。并不能由一组地点，确定连接它们的一条全局最短路径。&#xA;没有现成应用怎么办，我打算自己动手写一个。&#xA;下图是Google Add destination功能。&#xA;适用模型：TSP 模型 用一句话概括需求就是：我们需要一条从某地方出发，遍历所有地点，最终回到起点的最短路径。&#xA;这个需求其实就是运筹学的一个经典问题，旅行商问题(TSP)。旅行商问题的确切描述是这样的：一个商人在各个城市之间旅行，要求遍历所有城市并返回到出发点，要如何规划路线，才能使总路径最短。（打开维基百科了解更多)&#xA;解决思路 用googlemaps包获取纬度和经度信息 用OR-Tools包求解TSP问题 最后用gmaps可视化结果 在敲代码的过程中，最难的地方莫过于看文档查API, 搞清楚输入输出和调用结构。不过敲完这一顿之后我还是不禁感慨，GoogleI太为开发者着想了。一旦学会调用API，实现一个简单应用的代码量还是很小的 orz&#xA;食用指南 项目地址 &amp;ndash;&amp;gt; 传送门&#xA;在运行代码之前，你需要以下配置：&#xA;一个Jupyter Notebook. 你需要安装这些包：googleplaces, googlemaps, gmaps, ortools. 你需要一个Google Maps API key, 从这里获取API. 完成配置等于成功的一半。在Jupyter notebook打开TSPSolver.ipynb，将第二个代码块的所有变量，改成自己的，比如自己的目的地自己的区域和自己的API密码……最后从头到尾运行所有代码块，你就可以得到自己的定制路线辣~&#xA;配置代码如下。&#xA;# input the places of interest (POI) places = &amp;#39;YHA London Central Hostel&amp;#39;, &amp;#39;Coca-Cola London Eye&amp;#39;, &amp;#39;St. Paul\&amp;#39;s Cathedral&amp;#39;, &amp;#39;Leadenhall Market&amp;#39;, &amp;#39;The National Gallery&amp;#39; \ &amp;#39;Big Ben&amp;#39;, &amp;#39;Buckingham Palace&amp;#39;, &amp;#39;Waterloo Station&amp;#39; # the region Location=&amp;#39;London&amp;#39; # choose a mode Mode = &amp;#34;walking&amp;#34; # &amp;#34;driving&amp;#34;, &amp;#34;walking&amp;#34;, &amp;#34;bicycling&amp;#34;, &amp;#34;transit&amp;#34; # get Google API key from following website: # https://developers.</description>
-    </item>
-    <item>
-      <title>Python 解置换群问题</title>
-      <link>https://luochang212.github.io/posts/python_math_problem/</link>
-      <pubDate>Sat, 16 Mar 2019 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/posts/python_math_problem/</guid>
-      <description>室友问我一个问题，把我难住了。&#xA;想不出解法，遂写了个程序暴力求解。&#xA;**题目：**A permutation is applied to the string SUPERBGOLDHAT. The same permutation is applied to the output from this operation. The second output is OGTHLEPDSUARB. What was the first output? (Note: as an example, the permutation(1 3 4) applied to WOLF gives FOWL. Write your answer in capital letters inside quotation marks, e.g. &amp;ldquo;BEARDPLUGHOST&amp;rdquo;.)&#xA;把它译成中文就是：已知将某个置换作用于字符串SUPERBGOLDHAT两次，生成字符串OGTHLEPDSUARB. 求该置换作用于字符串SUPERBGOLDHAT一次时，生成的结果。&#xA;Note: 作用两次的意思就是，当一个置换规则作用于字符串一次时，会生成一个新字符串。将这个规则作用在这个新字符串上，又会生成一个字符串，这个字符串就是两次作用的结果。&#xA;近世代数基础 如果你不知道什么是置换的话，可以看一下本节。学过近世代数的同学请自觉跳过这部分ꉂ(ˊᗜˋ*)&#xA;我们给定一个序列$a ={1, 2, 3, 4, 5, 6} $ 。然后给定一个作用于该序列的置换：</description>
+      <title>微博数据可视化</title>
+      <link>https://luochang212.github.io/posts/my_weibo/</link>
+      <pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/posts/my_weibo/</guid>
+      <description>GitHub 项目地址：weibo-analysis&#xA;这次的数据用的是本科期间就已经爬好，但因为当时没有足够的处理技巧，这些数据在硬盘里一丢就是两年。如今，本Python初丁趁着还有机会摸鱼，赶紧把数据翻出来，让它们发光发热。&#xA;文本获取 因为新浪微博的严防死打，现如今微博的数据越来越不好爬。GitHub上的微博爬虫生存周期通常都很短，使爬取数据的成本大大增加。这里我用的是微博@失眠狸 同学的方法，用鼠标精灵写了个插件，控制快捷键和页面拖动，把内容从浏览器上粘贴到sublime里。&#xA;生成csv文件 有了原始数据，接下来我们要把数据归一化，做成方便处理的数据。一个常用的方法就是将数据整理成csv文件。&#xA;Step 1. 分析需要保存的字段以及数据的维度，从而设计出数据的存储结构。根据原数据，我划分了五个字段: id, date, time, device, content, 它们分别记录一条微博的文件位置、发布日期、发布时间、发送设备和文本内容。&#xA;Step 2. 分割raw data. 先用split函数进行粗略分割，再用find函数精确分割。接着将分割好的内容提取到各字段，并依次存入csv。&#xA;经过上述两步，数据的整理工作就做完啦。&#xA;可视化微博数据 有了csv文件，做数据可视化是分分钟的事。此时我把工作平台从PyCharm搬到了Jupyter Notebook。这是因为Jupyter Notebook可以制作的各式各样的可视化图表和窗口小工具(widget), 比PyCharm更适合数据处理。至于工具包，这里我选的是pandas和seaborn.&#xA;首先是需求分析，我的目标如下:&#xA;绘制日期分布热力图，观察今年使用微博频率的趋势&#xA;绘制设备使用直方图，看看平时最常用什么平台发博&#xA;绘制时间分布直方图，观察一天之中各时段的发博频率&#xA;使用窗口滑块小部件，拖动查看各个时间段都发了什么内容&#xA;这里不描述具体过程，详见GitHub Repository.&#xA;分析结果如下:&#xA;热力图总体来说颜色逐年加深，说明我正在逐渐成为一个微博控。而且注意到往年年初我是不怎么玩微博的，但随着年纪渐长，1-3月份我玩微博的频率越来越高，这意味着过年可能越来越无聊，没有年味，从而加长了我混迹微博的时间。&#xA;是你吗？华为的舔狗~&#xA;晚上2点不睡的坏小孩，早上10点起的偷懒者。（此处是一个卑微的笑容）&#xA;附录：部分代码 下面这段代码分割了文本。&#xA;def classification(self, txt_array, file_index): id = np.array([]) date = np.array([]) time = np.array([]) device = np.array([]) content = np.array([]) count = 0 for ite in range(1, np.size(txt_array), 1): if txt_array[ite].</description>
     </item>
   </channel>
 </rss>

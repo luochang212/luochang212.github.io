@@ -607,7 +607,7 @@
 <p><strong>Map</strong>：预处理。Shuffle 通常要耗费大量计算资源，因此传给 Shuffle 的数据越精简越好，这就要求我们在 Mapper 阶段把和研究问题无关的数据都丢掉。在本阶段的输出中，我们必须定义好主键。</p>
 </li>
 <li>
-<p><strong>Shuffle</strong>：Shuffle 的内涵包括两个部分：排序 (merge) 和 分桶 (merge)。Shuffle 首先对 Mapper 传来的数据按主键进行排序，继而将其分桶。分桶指将已排数据切割成分片，并将其发送给 Reducer。</p>
+<p><strong>Shuffle</strong>：Shuffle 的内涵包括两个部分：排序 (Sort) 和 分桶 (Partition)。Shuffle 首先对 Mapper 传来的数据按主键进行排序，继而将其分桶。分桶指将已排数据切割成分片，并将其发送给 Reducer。</p>
 </li>
 </ul>
 <!-- 分桶指的是将已排序数据切割，然后分发给 reducer 的过程。 （我有个疑问：主键相同的数据是否一定会被分入同一个桶中？懂的大神请告我一声） -->

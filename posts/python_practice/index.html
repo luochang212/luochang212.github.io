@@ -590,7 +590,7 @@
 <p>如果你还没有 Anaconda，安装一个：</p>
 <ul>
 <li>海外用户直接访问 <a href="https://www.anaconda.com/products/individual">Anaconda 官网</a> 下载即可</li>
-<li>国内用户无法访问Anaconda 官网(被墙)，建议选择<a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/">清华镜像</a>替代。</li>
+<li>国内用户无法访问 Anaconda 官网(被墙)，建议选择<a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/">清华镜像</a>替代。</li>
 </ul>
 <p>安装完以后，在命令行界面输入 <code>conda</code>，会打印一个帮助文档。</p>
 <p><img src="/img/conda-command.png" alt=""></p>
@@ -731,7 +731,7 @@ COPY calc.py .
 # Run the application
 CMD [&#34;python&#34;, &#34;calc.py&#34;]
 </code></pre><p>PS: Python 版本名可以在 <a href="https://hub.docker.com/_/python">Docker Hub</a> 中找。</p>
-<p>7.运行 Dokcer 以创建容器。</p>
+<p>7.运行 Docker 以创建容器。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker build -t dockerproject .
 </span></span></code></pre></div><p>8.运行容器中的应用。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker run dockerproject

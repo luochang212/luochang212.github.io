@@ -1181,6 +1181,8 @@ cd ./venv/jupyter/bin
 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
 </code></pre><p><code>conda config --add channels</code> 会将新镜像源添加到频道列表的顶部 ，这意味着新添加的频道具有更高的优先级。使用以下命令可以查看当前频道列表：</p>
 <pre tabindex="0"><code>conda config --show channels
+</code></pre><p>可以顺手更新下 conda：</p>
+<pre tabindex="0"><code>conda update conda
 </code></pre><h3 id="六文件传输">六、文件传输</h3>
 <h4 id="1使用-scp">1）使用 SCP</h4>
 <blockquote>
@@ -1190,7 +1192,7 @@ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/m
 </code></pre><p>上述命令的含义是：</p>
 <p>把当前路径下的 <code>[SOURCE_FILE]</code> <strong>文件</strong> 传到 <code>[DESTINATION_SERVER_IP]</code> <strong>主机</strong> 的 <code>[USERNAME]</code> <strong>用户</strong> 的 <code>[/PATH/TO/DIR]</code> <strong>目录</strong> 下。</p>
 <p>举个栗子 (=ﾟωﾟ)= 🌰</p>
-<pre tabindex="0"><code>scp data.tar jane@:132.43.75.194:/home/jane/code
+<pre tabindex="0"><code>scp data.tar jane@132.43.75.194:/home/jane/code
 </code></pre><blockquote>
 <p><strong>注意</strong>：SCP 只能传单个文件，不能传文件夹。传文件夹可以把它压缩成 <code>tar</code> 文件再传</p>
 </blockquote>
