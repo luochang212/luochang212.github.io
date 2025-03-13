@@ -602,7 +602,7 @@
 <p>✨ 注意：运行以下代码依赖 <a href="https://github.com/luochang212/clip-server/blob/main/utils.py" target="_blank">utils.py</a> 文件和 <a href="https://github.com/luochang212/clip-server/blob/main/mlp.py" target="_blank">mlp.py</a> 文件。</p>
 <h3 id="一简单的-clip-模型">一、简单的 CLIP 模型</h3>
 <h4 id="1clip-模型介绍">1）CLIP 模型介绍</h4>
-<p>为了训练 CLIP，OpenAI 收集了 4 亿对图文数据进行训练。训练目标是让图片的特征向量与对应文本的特征向量在向量空间中靠得更近。训练采用多模态对比学习的方法。在一个 batch 中，对于每张图片，它的目标是找到当前 batch 中与之最匹配的文本，最大化与匹配文本的相似度（正样本），并同时最小化与其他文本的相似度（负样本）。</p>
+<p>为了训练 CLIP，OpenAI 收集了 4 亿对图文数据进行训练。训练目标是让图片的特征向量与对应文本的特征向量在向量空间中靠得更近。训练采用多模态对比学习的方法。在一个 batch 中，对于每张图片，它的目标是找到当前 batch 中与之最匹配的文本，最大化与匹配文本的相似度（正样本），并同时最小化与其他文本的相似度（负样本）。CLIP 的对比损失是一个对称的损失函数，既计算图像到文本的相似度，也计算文本到图像的相似度。每个图像与整个 batch 的所有文本计算相似度，通过交叉熵损失同时优化两个方向的对齐。</p>
 <p>CLIP 训练了两个独立的编码器：</p>
 <ul>
 <li><strong>图像编码器</strong>：通常使用 ResNet 或 Vision Transformer (ViT)。</li>
@@ -617,7 +617,7 @@
 </ul>
 <p>使用 CLIP 模型，计算猫的图片与每句话的相似性分数，取分数最高的句子作为图片的分类标签。验证模型能否有效区分猫和狗。</p>
 <blockquote>
-<p><strong>Note:</strong> 值得注意的是 <code>a photo of {item}</code> 是一种 <a href="https://github.com/openai/CLIP/blob/main/> notebooks/Prompt_Engineering_for_ImageNet.ipynb" target="_blank">Prompt Engineer</a> 方法。除了前面这个，OpenAI 还用了很多其他标签。比如：</p>
+<p><strong>Note:</strong> 值得注意的是 <code>a photo of {item}</code> 是一种 <a href="https://github.com/openai/CLIP/blob/main/notebooks/Prompt_Engineering_for_ImageNet.ipynb" target="_blank">Prompt Engineer</a> 方法。除了前面这个，OpenAI 还用了很多其他标签。比如：</p>
 <pre tabindex="0"><code>a bad photo of a {}.
 a photo of many {}.
 a sculpture of a {}.

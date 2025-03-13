@@ -596,11 +596,11 @@
 </ul>
 <pre tabindex="0"><code>import torch
 
-# 初始化张量 x (tenser x)
+# 初始化张量 x (tensor x)
 x = torch.arange(4.0)
 
 x.requires_grad_(True)  # 允许 tensor x 存储梯度
-x.grad == None  # 梯度默认为 None
+x.grad is None  # 梯度默认为 None
 </code></pre><p><code>&gt; True</code></p>
 <p>初始化带梯度的张量，下面是两个例子：</p>
 <pre tabindex="0"><code>torch.tensor([1., 2., 3.], requires_grad=True)

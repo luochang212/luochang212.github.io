@@ -600,7 +600,7 @@ class DataLoader:
     def __init__(self, data: list, batch_size: int):
         self.i = 0
         self.batch_size = batch_size
-        self.batch_num = math.floor(len(data) / batch_size)
+        self.batch_num = math.ceil(len(data) / batch_size)
         self._data = self.gen_batch(data)
 
     def gen_batch(self, data):

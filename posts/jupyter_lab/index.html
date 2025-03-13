@@ -682,10 +682,10 @@ sequenceDiagram
 <p>在服务器上使用 JupyterLab 有诸多好处。比如无需再用 <code>sz rz</code> 传输文件，右击文件即可下载，拖拽文件即可上传。</p>
 <h4 id="51-启动-jupyterlab">5.1 启动 JupyterLab</h4>
 <pre tabindex="0"><code># 对于 HTTP，使用 80 端口
-jupyter lab --ip=&#39;0.0.0.0&#39; --port=80 --no-browser --allow-root
+jupyter lab --ip=&#39;0.0.0.0&#39; --port=80 --notebook-dir=/ --no-browser --allow-root
 
 # 对于 HTTPS，使用 443 端口
-jupyter lab --ip=&#39;0.0.0.0&#39; --port=443 --no-browser --allow-root
+jupyter lab --ip=&#39;0.0.0.0&#39; --port=443 --notebook-dir=/ --no-browser --allow-root
 </code></pre><blockquote>
 <p><strong>Note</strong>: 如需后台静默运行，大人请用：<code>nohup [CMD] &amp;</code></p>
 </blockquote>
