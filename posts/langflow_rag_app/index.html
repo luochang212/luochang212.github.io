@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en-us">
     
-  <head>
+    
+
+
+    <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     
-    <link rel="canonical" href="https://luochang212.github.io/">
+    <link rel="canonical" href="https://luochang212.github.io/posts/langflow_rag_app/">
     
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,20 +16,30 @@
 <meta name="generator" content="Hugo 0.132.1">
 
     
+    
+    
 
-<title>Chang Luo</title>
+<title>Langflow 实现本地知识库 • Chang Luo</title>
 
 
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Chang Luo">
+  <meta name="twitter:title" content="Langflow 实现本地知识库">
+  <meta name="twitter:description" content="纯本地部署的大模型应用">
       <meta name="twitter:site" content="@MinosPalace">
 
-<meta property="og:url" content="https://luochang212.github.io/">
+<meta property="og:url" content="https://luochang212.github.io/posts/langflow_rag_app/">
   <meta property="og:site_name" content="Chang Luo">
-  <meta property="og:title" content="Chang Luo">
+  <meta property="og:title" content="Langflow 实现本地知识库">
+  <meta property="og:description" content="纯本地部署的大模型应用">
   <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-03-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-03-15T00:00:00+00:00">
+    <meta property="article:tag" content="RAG">
+    <meta property="article:tag" content="Langflow">
+    <meta property="article:tag" content="Ollama">
 
 
     
@@ -61,8 +74,7 @@
     <!-- Icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
     <link rel="shortcut icon" href="/favicon.png">
-    <link rel="alternate" type="application/rss+xml" href="https://luochang212.github.io/index.xml" title="Chang Luo" />
-
+    
     
 
 </head>
@@ -502,268 +514,265 @@
 
         <div class="content container">
             
-  <div class="post-list">
+    <style>
+  .my-emoji {
+    height: 25px;
+    display: inline-block;
+    margin: 0;
+    vertical-align: text-bottom;
+  }
+</style>
+
+
+
+<article>
+  <header>
+    <h1>Langflow 实现本地知识库</h1>
     
     
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Mar 15, 2025
+    
+    
+    
       
-        
       
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/python_practice/" >Python 工程化实践</a>
-        </span>
-        <span class="item__date">
-          Jun 14, 2020
-        </span>
-        <span >
-        
-        学 Python 不应仅限于学编程，同样应该学习工程知识，比如虚拟环境、编码风格以及单元测试等。本文致力于介绍 Python 工程化所需的前置知识。
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/python_practice/">➦</a>
-        
-        </div>
-        
-     
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/llm">LLM</a>
+              
+          
       
-        
+    
+    
+    
       
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/algorithms/" >算法集萃</a>
-        </span>
-        <span class="item__date">
-          Apr 3, 2020
-        </span>
-        <span >
-        
-        算法学习笔记，长期更新
-        
-        </span>
-        
-        </div>
-        
-     
       
-        
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/rag">rag</a>
+           
       
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/chico_and_dico/" >用魔法打败魔法！</a>
-        </span>
-        <span class="item__date">
-          Feb 21, 2020
-        </span>
-        <span >
-        
-        告诉你任意四张牌，你能猜第五张牌吗？Chico 和 Dico 可以。他们变的是魔术，但是这个魔术具有坚实的数学原理。不需要魔力，只需要勤加练习，你也可以变这个魔术。
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/chico_and_dico/">➦</a>
-        
-        </div>
-        
-     
+          <a class="badge badge-tag" href="/tags/langflow">langflow</a>
+           
       
-        
+          <a class="badge badge-tag" href="/tags/ollama">ollama</a>
+          
       
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/uk_experience/" >达尔文的故乡</a>
-        </span>
-        <span class="item__date">
-          Feb 12, 2020
-        </span>
-        <span >
-        
-        英国小镇 Shrewsbury 是达尔文的故乡。这里有丰沛的水系、星罗棋布的公园、历史悠久的建筑。这里没有如织的游人，是一座安静的小镇。
-        
-        </span>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/bayesian/" >贝叶斯方法</a>
-        </span>
-        <span class="item__date">
-          Jan 31, 2020
-        </span>
-        <span >
-        
-        统计学中有两大学派，频率学派和贝叶斯学派。频率派用总体信息和样本信息进行统计推断。而贝叶斯派除了使用以上两种信息之外，还使用先验信息进行统计推断。本文从数学原理和编程实践两个方向探究贝叶斯方法。（已更新数学原理部分，编程实践蓄力中）
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/bayesian/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/python_tips/" >我的 Python 不可能这么可爱</a>
-        </span>
-        <span class="item__date">
-          Nov 14, 2019
-        </span>
-        <span >
-        
-        本文主要介绍 Python 的常用数据类型、内置函数、异常处理、装饰器、画图库等基础知识，也包含少量工程实践。
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/python_tips/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/elastic_search/" >Elasticsearch 初探</a>
-        </span>
-        <span class="item__date">
-          Oct 24, 2019
-        </span>
-        <span >
-        
-        Elasticsearch 是一个开源的分布式全文搜索引擎。它建立在当前最先进有效的搜索引擎库 Lucene 之上。Elasticsearch 集成了 Lucene 的全文检索功能，并通过一套简单的 API 隐藏了 Lucene 的复杂性，使之简单易用。
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/elastic_search/">➦</a>
-        
-        </div>
-        
-     
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 1 min read
+</div>
+
+
+  </header>
+  
+  
+  
+  <div class="toc-wrapper">
+    <input type="checkbox" id="tocToggle">
+    <label for="tocToggle">目录</label>
+    
+    <div class="toc" id="TableOfContents"></div>
+    
+  </div>
+  
+  
+  <div class="post">
+    <blockquote>
+<p>本项目将用 <a href="https://github.com/langflow-ai/langflow" target="_blank">langflow</a> 实现一个本地知识库。</p>
+</blockquote>
+<p>Langflow 是大模型可视化组件编排工具。它可以为大模型赋能，比如可以为大模型应用增加对话记忆、文档检索等等的功能。它基本上站到了 LangChain 类似的生态位。开发大模型应用的需求通常比较 flexible，在功能和性能都满足的条件下，Langflow 可以快速实现原型开发和模块复用，是目前的效率之选。</p>
+<p>GitHub 项目地址：<a href="https://github.com/luochang212/langflow-rag-app" target="_blank">langflow-rag-app</a></p>
+<p>本文的内容包括：</p>
+<ul>
+<li>介绍 RAG 的相关概念</li>
+<li>使用 Langflow 实现简单的知识库</li>
+<li>使用 Langflow 实现带对话记忆功能的知识库</li>
+<li>使用 Langflow 实现代码检查 (code review) 功能</li>
+</ul>
+<p>✨ 环境部署相关的脚本，我放在这里了 <a href="https://github.com/luochang212/langflow-rag-app/tree/main/deploy" target="_blank">deploy</a>.</p>
+<h2 id="一rag-的概念介绍">一、RAG 的概念介绍</h2>
+<p>这一节，我们先介绍 RAG 的相关概念，</p>
+<p><strong>知识库</strong> 就像大语言模型的“小抄”。在回答你之前，大模型先瞅一眼小抄，看有没有和你的问题相关的内容。如果有，就会从知识库中取回相应的文本片段，再结合大模型自身的能力生成最终回答。</p>
+<p>知识库使用了一种叫 <strong>RAG（检索增强生成）</strong> 的技术。通过 RAG，大模型可以检索我们给它的文档。比如我们给它数学、法律、金融相关的文档，它可以事先进行“消化”、“吸收”。当我们对它提问时，它就能够像真正的专家一样，结合这些领域知识回答问题。</p>
+<p>目录：</p>
+<ol>
+<li>提示词模板</li>
+<li>RAG 技术
+<ul>
+<li>文本向量化</li>
+<li>向量数据库</li>
+</ul>
+</li>
+</ol>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/langflow-rag-app/blob/main/1.road_map.ipynb')">查看笔记</button>
+</center>
+<br>
+<h2 id="二简单的-rag-应用">二、简单的 RAG 应用</h2>
+<p>本节我们完成一个简单的 RAG 应用。我们将一个文档向量化后，存入向量数据库中，然后用 deepseek-r1:1.5b 模型，整合 RAG 取回的内容后输出回答。</p>
+<p>最终的 langflow 工作流如下：</p>
+<p><img src="/img/simple_rag_app.jpg" alt=""></p>
+<p>目录：</p>
+<ol>
+<li>环境准备
+<ul>
+<li>安装 Ollama</li>
+<li>安装 langflow</li>
+<li>安装 chroma</li>
+</ul>
+</li>
+<li>langflow 搭建工作流
+<ul>
+<li>创建一个新的 Flow</li>
+<li>初始界面</li>
+<li>本地改造计划</li>
+<li>启动 Ollama 服务</li>
+<li>添加 Ollama Embeddings 组件</li>
+<li>添加 Chroma DB 组件</li>
+<li>添加 Ollama 组件</li>
+<li>传入文档</li>
+</ul>
+</li>
+</ol>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/langflow-rag-app/blob/main/2.simple_rag_app.ipynb')">查看笔记</button>
+</center>
+<br>
+<h2 id="三带对话记忆功能的-rag">三、带对话记忆功能的 RAG</h2>
+<p>通过添加 Messsage History 组件，就可以为 RAG 添加对历史对话的记忆。</p>
+<p><img src="/img/rag_flow_with_memory.jpg" alt=""></p>
+<p>目录：</p>
+<ol>
+<li>Messsage History 组件</li>
+<li>Directory 组件</li>
+</ol>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/langflow-rag-app/blob/main/3.rag_app_with_memory.ipynb')">查看笔记</button>
+</center>
+<br>
+<h2 id="四langflow-实现代码检查">四、Langflow 实现代码检查</h2>
+<blockquote>
+<p>最后，来开发一个没用到 RAG，但是很有用的大模型应用。</p>
+</blockquote>
+<p>工作中，我们在提交代码之前，需要找同事 code review。但是现在我们有大模型，在找同事前不先用大模型 review 一番，总感觉不尊重同事。即使有保密需求，本地部署大模型也可以满足。8G 显存就可以轻松运行 <code>deepseek-r1:14b</code>，在 code review 方面完全够用了。</p>
+<p>实现一个这样的工作流特别简单，最终完成的工作流如下：</p>
+<p><img src="/img/langflow_code_review.jpg" alt=""></p>
+<p>目录：</p>
+<ol>
+<li>提示词模板</li>
+<li>模型部分</li>
+<li>本地提交代码</li>
+</ol>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/langflow-rag-app/blob/main/4.code_review.ipynb')">查看笔记</button>
+</center>
+<br>
+<div id="mini-overlay" onclick="overlay_off()"></div>
+<div id="mini-window"><iframe id="mini-iframe" frameBorder="0"></iframe></div>
+<button id="btn-close" onclick="overlay_off()">×</button>
+<script src="/python-tips/overlay.js"></script>
+<link rel="stylesheet" href="/python-tips/style.css">
+
   </div>
   
 
-<ul class="pagination">
+<div class="navigation navigation-single">
     
-    <li class="page-item">
-        <a href="/" class="page-link" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
-    </li>
+    <a href="/posts/dec_pytorch/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">深度嵌入聚类算法 DEC</span>
+    </a>
     
-    <li class="page-item">
-    <a href="/page/5/" class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
-    </li>
     
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="/">1</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="/page/2/">2</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="/page/3/">3</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item disabled"><span aria-hidden="true">&nbsp;&hellip;&nbsp;</span></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="/page/5/">5</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item active"><a class="page-link" href="/page/6/">6</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="/page/7/">7</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="/page/8/">8</a></li>
-    
-    
-    <li class="page-item">
-    <a href="/page/7/" class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
-    </li>
-    
-    <li class="page-item">
-        <a href="/page/8/" class="page-link" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
-    </li>
-    
-</ul>
+</div>
 
+
+  
+
+  
+    
+
+
+</article>
 
         </div>
         
-  <script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
+
+
+
+
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
+<script type="text/javascript">
+  if (tocbot) {
+    tocbot.init({
+      
+      tocSelector: '.toc',
+      
+      contentSelector: '.post',
+      
+      headingSelector: 'h2, h3, h4',
+      collapseDepth: 4
+    });
+  }
+</script>
+
+
+
+    
+
 
 
     </body>
