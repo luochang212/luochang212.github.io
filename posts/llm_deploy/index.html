@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en-us">
     
-  <head>
+    
+
+
+    <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     
-    <link rel="canonical" href="https://luochang212.github.io/">
+    <link rel="canonical" href="https://luochang212.github.io/posts/llm_deploy/">
     
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,20 +16,30 @@
 <meta name="generator" content="Hugo 0.132.1">
 
     
+    
+    
 
-<title>Chang Luo</title>
+<title>大模型部署：Ollama, vLLM 和 Transformers • Chang Luo</title>
 
 
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Chang Luo">
+  <meta name="twitter:title" content="大模型部署：Ollama, vLLM 和 Transformers">
+  <meta name="twitter:description" content="大模型部署的门槛不在软件，而在有没有大显存的 GPU">
       <meta name="twitter:site" content="@MinosPalace">
 
-<meta property="og:url" content="https://luochang212.github.io/">
+<meta property="og:url" content="https://luochang212.github.io/posts/llm_deploy/">
   <meta property="og:site_name" content="Chang Luo">
-  <meta property="og:title" content="Chang Luo">
+  <meta property="og:title" content="大模型部署：Ollama, vLLM 和 Transformers">
+  <meta property="og:description" content="大模型部署的门槛不在软件，而在有没有大显存的 GPU">
   <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-03-21T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-03-21T00:00:00+00:00">
+    <meta property="article:tag" content="VLLM">
+    <meta property="article:tag" content="Ollama">
+    <meta property="article:tag" content="Transformers">
 
 
     
@@ -61,8 +74,7 @@
     <!-- Icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
     <link rel="shortcut icon" href="/favicon.png">
-    <link rel="alternate" type="application/rss+xml" href="https://luochang212.github.io/index.xml" title="Chang Luo" />
-
+    
     
 
 </head>
@@ -502,277 +514,312 @@
 
         <div class="content container">
             
-  <div class="post-list">
+    <style>
+  .my-emoji {
+    height: 25px;
+    display: inline-block;
+    margin: 0;
+    vertical-align: text-bottom;
+  }
+</style>
+
+
+
+<article>
+  <header>
+    <h1>大模型部署：Ollama, vLLM 和 Transformers</h1>
     
     
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Mar 21, 2025
+    
+    
+    
       
-        
       
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/pyqt5_layout_sidebar/" >PyQt5 侧边栏布局</a>
-        </span>
-        <span class="item__date">
-          May 10, 2019
-        </span>
-        <span >
-        
-        主流软件如网易云音乐、腾讯电脑管家，都有侧边栏。侧边栏能有效扩展应用空间，使软件功能的层次更加分明。但PyQt5并没有一个专门的方法实现侧边栏。要实现侧边栏，主要有两种技术路线。一是从标签部件(QTabWidget)改造而来，二是用网格布局(QGridLayout)画出来。本文采用第一种技术路线，制作一个简单的侧边栏应用。
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/pyqt5_layout_sidebar/">➦</a>
-        
-        </div>
-        
-     
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/llms">LLMS</a>
+              
+          
       
-        
+    
+    
+    
       
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/pyqt5_layout/" >PyQt5 布局浅析</a>
-        </span>
-        <span class="item__date">
-          May 3, 2019
-        </span>
-        <span >
-        
-        PyQt5是Python环境下用来开发UI界面的一个包。它容易上手，对初学者友好，并且拥有丰富的函数库，可以实现大部分桌面应用的开发需求，且支持QSS语言，能够对界面风格做个性化调整。总体来说，PyQt5是一款开发效率极高的UI框架。这篇文章从零开始，教你搭建一个属于自己的桌面应用。
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/pyqt5_layout/">➦</a>
-        
-        </div>
-        
-     
       
-        
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/vllm">vllm</a>
+           
       
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/my_weibo/" >微博数据可视化</a>
-        </span>
-        <span class="item__date">
-          Apr 20, 2019
-        </span>
-        <span >
-        
-        这次的数据用的是本科期间就已经爬好，但因为当时没有足够的处理技巧，这些数据在硬盘里一丢就是两年。如今，本Python初丁趁着还有机会摸鱼，赶紧把数据翻出来，让它们发光发热。
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/my_weibo/">➦</a>
-        
-        </div>
-        
-     
+          <a class="badge badge-tag" href="/tags/ollama">ollama</a>
+           
       
-        
+          <a class="badge badge-tag" href="/tags/transformers">transformers</a>
+          
       
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/tsp_route/" >【项目】TSP旅行路线规划</a>
-        </span>
-        <span class="item__date">
-          Apr 10, 2019
-        </span>
-        <span >
-        
-        对于在欧洲的小伙伴们，复活节假期在这一周就正式开始啦。大家都是怎么计划旅行的呢？我的习惯是在出发前最后一晚，花上半小时，搜索目的地景点 (Point of interest, POI), 然后在Google Maps上为它们点上小星星，以免和它们擦肩而过。
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/tsp_route/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/python_math_problem/" >Python 解置换群问题</a>
-        </span>
-        <span class="item__date">
-          Mar 16, 2019
-        </span>
-        <span >
-        
-        室友问我一个问题，把我难住了。想不出解法，遂写了个程序暴力求解。这个题目是：已知将某个置换作用于字符串SUPERBGOLDHAT两次，生成字符串OGTHLEPDSUARB. 求该置换作用于字符串SUPERBGOLDHAT一次时，生成的结果。
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/python_math_problem/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/kitchen_time_1/" >厨房笔记（一）：牛刀小试</a>
-        </span>
-        <span class="item__date">
-          Aug 6, 2018
-        </span>
-        <span >
-        
-        刚到英国那会儿，做饭的兴致很高。每天都跟过家家似的，买菜，钻研菜谱，然后做饭，在厨房里待上四五个小时也不觉得累，大概这就是“人生若只如初见”吧。
-        
-        </span>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/markowitz_model/" >【项目】基于蚁群算法的证券投资组合优化</a>
-        </span>
-        <span class="item__date">
-          May 15, 2018
-        </span>
-        <span >
-        
-        在证券交易中，为了降低风险，经常使用一笔资金购买多支股票。那么，如何合理地选择证券组合，并确定每支证券的资金分配系数，以使预期风险最低，预期收益最高，就成了一个经典的经济学问题 -- 证券投资组合优化问题。
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/markowitz_model/">➦</a>
-        
-        </div>
-        
-     
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 1 min read
+</div>
+
+
+  </header>
+  
+  
+  
+  <div class="toc-wrapper">
+    <input type="checkbox" id="tocToggle">
+    <label for="tocToggle">目录</label>
+    
+    <div class="toc" id="TableOfContents"></div>
+    
+  </div>
+  
+  
+  <div class="post">
+    <blockquote>
+<p>2023 年本地部署大模型的报价近千万，2024 年初便骤降至百万，如今是 2025 年，只需要一行 vLLM 命令就可以部署大模型，人工成几近于零。</p>
+</blockquote>
+<p>GitHub 项目地址：<a href="https://github.com/luochang212/llm-deploy" target="_blank">llm-deploy</a></p>
+<p>本文内容包括：</p>
+<ul>
+<li>三种方式部署 DeepSeek R1：Ollama, vLLM 和 Transformers</li>
+<li>使用 vLLM 部署 Qwen2.5-1.5B 模型</li>
+<li>安装 Open WebUI 作为本地部署模型的前端聊天框</li>
+<li>通过 <code>vllm serve</code> 实现一行代码启动 vLLM 推理服务</li>
+</ul>
+<p>✨ 快速部署说明在 <a href="https://github.com/luochang212/llm-deploy/tree/main/deploy" target="_blank">/deploy</a>，vLLM 服务启动脚本在 <a href="https://github.com/luochang212/llm-deploy/tree/main/server" target="_blank">/server</a>.</p>
+<h2 id="一3-种方式部署-deepseek-r1">一、3 种方式部署 DeepSeek R1</h2>
+<p>大模型本地部署依赖推理引擎，目前比较流行的推理引擎有：</p>
+<table>
+<thead>
+<tr>
+<th>引擎</th>
+<th>场景</th>
+<th>介绍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/ollama/ollama">Ollama</a></td>
+<td>适合个人开发者</td>
+<td>基于 <a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a> 开发，故能在 CPU 机器上使用</td>
+</tr>
+<tr>
+<td><a href="https://github.com/vllm-project/vllm">vLLM</a></td>
+<td>适合高并发、低延迟的场景</td>
+<td>支持多 GPU 并行、批处理，是 GPU 服务器部署的不二之选</td>
+</tr>
+<tr>
+<td><a href="https://github.com/huggingface/transformers">Transformers</a></td>
+<td>适合科研人员</td>
+<td>既支持推理，也支持训练，可以深度自定义推理过程，但性能一般</td>
+</tr>
+</tbody>
+</table>
+<p>下面介绍如何部署这三款推理引擎，简要部署步骤见本项目的 <a href="https://github.com/luochang212/llm-deploy/tree/main/deploy">deploy</a> 目录。</p>
+<p>目录：</p>
+<ol>
+<li>Ollama</li>
+<li>vLLM
+<ul>
+<li>安装 miniconda</li>
+<li>安装 jupyterlab</li>
+<li>为 vllm 创建虚拟环境，并绑定到 jupyterlab</li>
+<li>安装 vLLM 及相关依赖</li>
+<li>下载模型文件</li>
+<li>启动 jupyterlab</li>
+<li>验证 vLLM</li>
+</ul>
+</li>
+<li>Transformers</li>
+</ol>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/llm-deploy/blob/main/1.deepseek_deploy.ipynb')">查看笔记</button>
+</center>
+<br>
+<h2 id="二vllm-部署-qwen25">二、vLLM 部署 Qwen2.5</h2>
+<p>模型名带 <code>Instruct</code> 说明该模型是经过指令调优（Instruction Tuning）的版本，专为理解和执行用户指令优化，适合对话生成、任务导向型场景。</p>
+<p>部署前要先下载模型文件：</p>
+<pre tabindex="0"><code># 安装 huggingface_hub
+pip install -U huggingface_hub
+
+cd model
+huggingface-cli download \
+    --resume-download Qwen/Qwen2.5-1.5B-Instruct \
+    --local-dir ./Qwen2.5-1.5B-Instruct
+</code></pre><p>推理效果：</p>
+<p><img src="/img/qwen_result.png" alt=""></p>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/llm-deploy/blob/main/2.qwen_deploy.ipynb')">查看笔记</button>
+</center>
+<br>
+<h2 id="三open-webui-作为前端聊天框">三、Open WebUI 作为前端聊天框</h2>
+<p>第一节我用 3 种方式部署本地大模型：Ollama, vLLM 和 Transformers.</p>
+<p>有了本地部署的大模型作为推理后端，还要连接到前端聊天框，才算是完整。开源聊天框有很多，比如 AnythingLLM, LM Studio. 比较了一圈，姑且使用 <a href="https://github.com/open-webui/open-webui">Open WebUI</a>. 它有预开发的账号系统和历史记录，支持快速开发 RAG 和联网搜索。</p>
+<p>它的界面长这样：</p>
+<p><img src="/img/open_webui.jpg" alt=""></p>
+<p>目录：</p>
+<ol>
+<li>安装 Open WebUI
+<ul>
+<li>检查 Docker 环境</li>
+<li>下载镜像</li>
+<li>创建容器</li>
+<li>打开前端页面</li>
+</ul>
+</li>
+<li>为 WebUI 配置推理后端
+<ul>
+<li>Ollama</li>
+<li>vLLM</li>
+</ul>
+</li>
+</ol>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/llm-deploy/blob/main/3.open_webui.ipynb')">查看笔记</button>
+</center>
+<br>
+<h2 id="四vllm-推理服务">四、vLLM 推理服务</h2>
+<p>vLLM 官方支持一行 bash 命令，启动 API 服务：</p>
+<pre tabindex="0"><code>vllm serve [YOUR MODEL or MODEL PATH]
+</code></pre><p>当然对于不同的模型，启动参数也略有不同，需要做一定的配适。比如对于 <code>deepseek-r1</code> 这类推理模型，必须添加参数 <code>--enable-reasoning --reasoning-parser deepseek_r1</code>。具体每个模型如何使用 vLLM，可参考 vLLM 官方文档或模型文档。</p>
+<blockquote>
+<p><strong>PS:</strong> vLLM 的 API 服务遵循 OpenAI 的接口协议。</p>
+</blockquote>
+<p>目录：</p>
+<ol>
+<li>DeepSeek-R1
+<ul>
+<li>启动服务端</li>
+<li>运行客户端</li>
+</ul>
+</li>
+<li>Qwen
+<ul>
+<li>启动服务端</li>
+<li>运行客户端</li>
+</ul>
+</li>
+<li>符合 OpenAI 接口协议的 API 服务</li>
+<li>强制清理显存缓存</li>
+</ol>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/llm-deploy/blob/main/4.vllm_server.ipynb')">查看笔记</button>
+</center>
+<br>
+<p>参考：</p>
+<ul>
+<li>vLLM 仓库: <a href="https://github.com/vllm-project/vllm">vllm-project/vllm</a></li>
+<li>vLLM 文档: <a href="https://docs.vllm.ai/">docs.vllm.ai</a></li>
+<li>self-llm: <a href="https://github.com/datawhalechina/self-llm">datawhalechina/self-llm</a></li>
+</ul>
+<div id="mini-overlay" onclick="overlay_off()"></div>
+<div id="mini-window"><iframe id="mini-iframe" frameBorder="0"></iframe></div>
+<button id="btn-close" onclick="overlay_off()">×</button>
+<script src="/python-tips/overlay.js"></script>
+<link rel="stylesheet" href="/python-tips/style.css">
+
   </div>
   
 
-<ul class="pagination">
+<div class="navigation navigation-single">
     
-    <li class="page-item">
-        <a href="/" class="page-link" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
-    </li>
+    <a href="/posts/langflow_rag_app/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Langflow 实现本地知识库</span>
+    </a>
     
-    <li class="page-item">
-    <a href="/page/7/" class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
-    </li>
     
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="/">1</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="/page/2/">2</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="/page/3/">3</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item disabled"><span aria-hidden="true">&nbsp;&hellip;&nbsp;</span></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="/page/7/">7</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item active"><a class="page-link" href="/page/8/">8</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="/page/9/">9</a></li>
-    
-    
-    <li class="page-item">
-    <a href="/page/9/" class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
-    </li>
-    
-    <li class="page-item">
-        <a href="/page/9/" class="page-link" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
-    </li>
-    
-</ul>
+</div>
 
+
+  
+
+  
+    
+
+
+</article>
 
         </div>
         
-  <script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
+
+
+
+
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
+<script type="text/javascript">
+  if (tocbot) {
+    tocbot.init({
+      
+      tocSelector: '.toc',
+      
+      contentSelector: '.post',
+      
+      headingSelector: 'h2, h3, h4',
+      collapseDepth: 4
+    });
+  }
+</script>
+
+
+
+    
+
 
 
     </body>
