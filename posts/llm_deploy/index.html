@@ -19,18 +19,18 @@
     
     
 
-<title>大模型部署：Ollama, vLLM 和 Transformers • Chang Luo</title>
+<title>本地部署大模型：Ollama 和 vLLM • Chang Luo</title>
 
 
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="大模型部署：Ollama, vLLM 和 Transformers">
+  <meta name="twitter:title" content="本地部署大模型：Ollama 和 vLLM">
   <meta name="twitter:description" content="大模型部署的门槛不在软件，而在有没有大显存的 GPU">
       <meta name="twitter:site" content="@MinosPalace">
 
 <meta property="og:url" content="https://luochang212.github.io/posts/llm_deploy/">
   <meta property="og:site_name" content="Chang Luo">
-  <meta property="og:title" content="大模型部署：Ollama, vLLM 和 Transformers">
+  <meta property="og:title" content="本地部署大模型：Ollama 和 vLLM">
   <meta property="og:description" content="大模型部署的门槛不在软件，而在有没有大显存的 GPU">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
@@ -527,7 +527,7 @@
 
 <article>
   <header>
-    <h1>大模型部署：Ollama, vLLM 和 Transformers</h1>
+    <h1>本地部署大模型：Ollama 和 vLLM</h1>
     
     
 <div class="post__meta">
@@ -596,7 +596,7 @@
 <li>通过 <code>vllm serve</code> 实现一行代码启动 vLLM 推理服务</li>
 </ul>
 <p>✨ 快速部署说明在 <a href="https://github.com/luochang212/llm-deploy/tree/main/deploy" target="_blank">/deploy</a>，vLLM 服务启动脚本在 <a href="https://github.com/luochang212/llm-deploy/tree/main/server" target="_blank">/server</a>.</p>
-<h2 id="一3-种方式部署-deepseek-r1">一、3 种方式部署 DeepSeek R1</h2>
+<h2 id="一本地部署-deepseek-r1">一、本地部署 DeepSeek R1</h2>
 <p>大模型本地部署依赖推理引擎，目前比较流行的推理引擎有：</p>
 <table>
 <thead>
@@ -646,7 +646,7 @@
 <button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/llm-deploy/blob/main/1.deepseek_deploy.ipynb')">查看笔记</button>
 </center>
 <br>
-<h2 id="二vllm-部署-qwen25">二、vLLM 部署 Qwen2.5</h2>
+<h2 id="二本地部署-qwen25">二、本地部署 Qwen2.5</h2>
 <p>模型名带 <code>Instruct</code> 说明该模型是经过指令调优（Instruction Tuning）的版本，专为理解和执行用户指令优化，适合对话生成、任务导向型场景。</p>
 <p>部署前要先下载模型文件：</p>
 <pre tabindex="0"><code># 安装 huggingface_hub

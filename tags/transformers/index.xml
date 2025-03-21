@@ -9,11 +9,11 @@
     <lastBuildDate>Fri, 21 Mar 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://luochang212.github.io/tags/transformers/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>大模型部署：Ollama, vLLM 和 Transformers</title>
+      <title>本地部署大模型：Ollama 和 vLLM</title>
       <link>https://luochang212.github.io/posts/llm_deploy/</link>
       <pubDate>Fri, 21 Mar 2025 00:00:00 +0000</pubDate>
       <guid>https://luochang212.github.io/posts/llm_deploy/</guid>
-      <description>2023 年本地部署大模型的报价近千万，2024 年初便骤降至百万，如今是 2025 年，只需要一行 vLLM 命令就可以部署大模型，人工成几近于零。&#xA;GitHub 项目地址：llm-deploy&#xA;本文内容包括：&#xA;三种方式部署 DeepSeek R1：Ollama, vLLM 和 Transformers 使用 vLLM 部署 Qwen2.5-1.5B 模型 安装 Open WebUI 作为本地部署模型的前端聊天框 通过 vllm serve 实现一行代码启动 vLLM 推理服务 ✨ 快速部署说明在 /deploy，vLLM 服务启动脚本在 /server.&#xA;一、3 种方式部署 DeepSeek R1 大模型本地部署依赖推理引擎，目前比较流行的推理引擎有：&#xA;引擎 场景 介绍 Ollama 适合个人开发者 基于 llama.cpp 开发，故能在 CPU 机器上使用 vLLM 适合高并发、低延迟的场景 支持多 GPU 并行、批处理，是 GPU 服务器部署的不二之选 Transformers 适合科研人员 既支持推理，也支持训练，可以深度自定义推理过程，但性能一般 下面介绍如何部署这三款推理引擎，简要部署步骤见本项目的 deploy 目录。&#xA;目录：&#xA;Ollama vLLM 安装 miniconda 安装 jupyterlab 为 vllm 创建虚拟环境，并绑定到 jupyterlab 安装 vLLM 及相关依赖 下载模型文件 启动 jupyterlab 验证 vLLM Transformers 查看笔记 二、vLLM 部署 Qwen2.</description>
+      <description>2023 年本地部署大模型的报价近千万，2024 年初便骤降至百万，如今是 2025 年，只需要一行 vLLM 命令就可以部署大模型，人工成几近于零。&#xA;GitHub 项目地址：llm-deploy&#xA;本文内容包括：&#xA;三种方式部署 DeepSeek R1：Ollama, vLLM 和 Transformers 使用 vLLM 部署 Qwen2.5-1.5B 模型 安装 Open WebUI 作为本地部署模型的前端聊天框 通过 vllm serve 实现一行代码启动 vLLM 推理服务 ✨ 快速部署说明在 /deploy，vLLM 服务启动脚本在 /server.&#xA;一、本地部署 DeepSeek R1 大模型本地部署依赖推理引擎，目前比较流行的推理引擎有：&#xA;引擎 场景 介绍 Ollama 适合个人开发者 基于 llama.cpp 开发，故能在 CPU 机器上使用 vLLM 适合高并发、低延迟的场景 支持多 GPU 并行、批处理，是 GPU 服务器部署的不二之选 Transformers 适合科研人员 既支持推理，也支持训练，可以深度自定义推理过程，但性能一般 下面介绍如何部署这三款推理引擎，简要部署步骤见本项目的 deploy 目录。&#xA;目录：&#xA;Ollama vLLM 安装 miniconda 安装 jupyterlab 为 vllm 创建虚拟环境，并绑定到 jupyterlab 安装 vLLM 及相关依赖 下载模型文件 启动 jupyterlab 验证 vLLM Transformers 查看笔记 二、本地部署 Qwen2.</description>
     </item>
   </channel>
 </rss>
