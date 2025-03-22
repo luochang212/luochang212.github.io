@@ -601,7 +601,7 @@
 <table>
 <thead>
 <tr>
-<th>引擎</th>
+<th>推理引擎</th>
 <th>场景</th>
 <th>介绍</th>
 </tr>
@@ -609,22 +609,32 @@
 <tbody>
 <tr>
 <td><a href="https://github.com/ollama/ollama">Ollama</a></td>
-<td>适合个人开发者</td>
-<td>基于 <a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a> 开发，故能在 CPU 机器上使用</td>
+<td>适合个人开发者和轻量级应用</td>
+<td>基于 <a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a> 开发，支持 CPU 推理，安装简单，开箱即用，适合快速原型开发和测试</td>
 </tr>
 <tr>
 <td><a href="https://github.com/vllm-project/vllm">vLLM</a></td>
-<td>适合高并发、低延迟的场景</td>
-<td>支持多 GPU 并行、批处理，是 GPU 服务器部署的不二之选</td>
+<td>适合高并发生产环境</td>
+<td>支持多 GPU 并行、批处理、PagedAttention，吞吐量高，延迟低，适合大规模服务部署</td>
 </tr>
 <tr>
 <td><a href="https://github.com/huggingface/transformers">Transformers</a></td>
-<td>适合科研人员</td>
-<td>既支持推理，也支持训练，可以深度自定义推理过程，但性能一般</td>
+<td>适合模型研究和实验</td>
+<td>提供完整的模型训练和推理接口，支持模型微调、量化、加速，适合研究人员和需要深度定制的场景</td>
+</tr>
+<tr>
+<td><a href="https://github.com/sgl-project/sglang">SGLang</a></td>
+<td>适合需要复杂推理流程的场景</td>
+<td>支持结构化输出、并行推理、流式输出，特别适合需要多轮对话和复杂推理的应用</td>
+</tr>
+<tr>
+<td><a href="https://github.com/InternLM/lmdeploy">LMDeploy</a></td>
+<td>适合企业级部署和边缘计算</td>
+<td>由上海人工智能实验室开发，提供完整的模型量化、加速和部署工具链，支持多种硬件平台，特别适合资源受限场景</td>
 </tr>
 </tbody>
 </table>
-<p>下面介绍如何部署这三款推理引擎，简要部署步骤见本项目的 <a href="https://github.com/luochang212/llm-deploy/tree/main/deploy">deploy</a> 目录。</p>
+<p>下面介绍如何部署 Ollama, vLLM, Transformers 这三款推理引擎，简要部署步骤见本项目的 <a href="https://github.com/luochang212/llm-deploy/tree/main/deploy">deploy</a> 目录。</p>
 <p>目录：</p>
 <ol>
 <li>Ollama</li>
