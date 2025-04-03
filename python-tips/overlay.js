@@ -4,10 +4,15 @@
 function window_on(website) {
     overlay_on();
     document.getElementById("mini-window").style.width = "100%";
-    document.getElementById("mini-window").style.left = "60px";
+    // 在移动设备上使用更小的左侧距离
+    if (window.innerWidth <= 768) {
+        document.getElementById("mini-window").style.left = "30px";
+        document.getElementById("btn-close").style.left = "50px";
+    } else {
+        document.getElementById("mini-window").style.left = "60px";
+        document.getElementById("btn-close").style.left = "80px";
+    }
     document.body.style.backgroundColor = "rgba(0,0,0,0.5)";
-
-    document.getElementById("btn-close").style.left = "80px";
 
     // remove iframe
     var ifrm = document.getElementById('mini-iframe');
