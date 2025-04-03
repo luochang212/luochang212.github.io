@@ -6,9 +6,9 @@ function window_on(website) {
 
     // 在移动设备上使用更小的左侧距离
     if (window.innerWidth <= 768) {
-        w = window.innerWidth - 47;
+        w = window.innerWidth - 45;
         document.getElementById("mini-window").style.width = w.toString() + 'px';
-        document.getElementById("btn-close").style.right = "calc(100vw - 67px)";
+        document.getElementById("btn-close").style.right = "calc(100vw - 65px)";
     } else {
         w = window.innerWidth - 60;
         document.getElementById("mini-window").style.width = w.toString() + 'px';
