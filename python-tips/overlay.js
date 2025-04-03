@@ -1,17 +1,20 @@
-// var h = window.innerHeight;
-// var w = window.innerWidth;
+var h = window.innerHeight;
+var w = window.innerWidth;
 
 function window_on(website) {
     overlay_on();
-    document.getElementById("mini-window").style.width = "100%";
+
     // 在移动设备上使用更小的左侧距离
     if (window.innerWidth <= 768) {
-        document.getElementById("mini-window").style.left = "30px";
-        document.getElementById("btn-close").style.left = "50px";
+        w = window.innerWidth - 47;
+        document.getElementById("mini-window").style.width = w.toString() + 'px';
+        document.getElementById("btn-close").style.right = "calc(100vw - 67px)";
     } else {
-        document.getElementById("mini-window").style.left = "60px";
-        document.getElementById("btn-close").style.left = "80px";
+        w = window.innerWidth - 60;
+        document.getElementById("mini-window").style.width = w.toString() + 'px';
+        document.getElementById("btn-close").style.right = "calc(100vw - 80px)";
     }
+
     document.body.style.backgroundColor = "rgba(0,0,0,0.5)";
 
     // remove iframe
@@ -24,16 +27,15 @@ function window_on(website) {
     nifrm.id = 'mini-iframe';
     parent.appendChild(nifrm);
     nifrm.setAttribute("src", website);
-    nifrm.setAttribute("height", "100%");
-    nifrm.setAttribute("width", "100%");
+    nifrm.setAttribute("height", h);
+    nifrm.setAttribute("width", w);
     nifrm.setAttribute("frameBorder", "0");
 }
 
 function window_off() {
     document.getElementById("mini-window").style.width = "0";
-    document.getElementById("mini-window").style.left = "0";
     document.body.style.backgroundColor = "white";
-    document.getElementById("btn-close").style.left = "-50px";
+    document.getElementById("btn-close").style.right = "-50px";
 }
 
 function overlay_on() {
