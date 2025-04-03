@@ -277,7 +277,7 @@
 
           <section class="social">
 	
-	<a href="https://twitter.com/MinosPalace" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	<a href="https://twitter.com/MinosPalace" rel="me"><i class="fab fa-x-twitter fa-lg" aria-hidden="true"></i></a>
 	
 	
 	
@@ -293,6 +293,7 @@
 	
 	
 	<a href="https://linkedin.com/in/bupt-luochang" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
 	
 	
 	
@@ -519,6 +520,38 @@
     display: inline-block;
     margin: 0;
     vertical-align: text-bottom;
+  }
+
+  .social-links a {
+    color: rgba(120,120,120,1);
+    text-decoration: none;
+    outline: none !important;
+    cursor: pointer;
+    transition-property: padding, text-shadow, line-height, color, background, opacity, transform;
+    transition-duration: .25s;
+    transition-timing-function: ease-in-out;
+    display: inline-block;
+    white-space: nowrap;
+    position: relative;
+  }
+
+  .social-links a:after {
+    content: "";
+    display: block;
+    height: .125rem;
+    margin: -.125rem 0 0;
+    background: rgba(0,0,0,.5);
+    border-radius: 1px;
+    transform: scaleX(0);
+    transition: transform .25s ease-in-out;
+  }
+
+  .social-links a:hover:after {
+    transform: scaleX(1);
+  }
+
+  .social-links a:hover {
+    color: rgba(120,120,120,1);
   }
 </style>
 
@@ -799,6 +832,37 @@ $$\mathbf{g} \leftarrow \min\left(1, \frac{\theta}{|\mathbf{g}|}\right) \mathbf{
 <link rel="stylesheet" href="/python-tips/style.css">
 
   </div>
+
+  <div class="post-footer">
+    <p style="margin-bottom: 1rem;">欢迎关注我的其它发布渠道：</p>
+    <div class="social-links" style="display: flex; flex-direction: column; gap: 10px;">
+      
+      <a href="https://twitter.com/MinosPalace">
+        <i class="fab fa-twitter"></i> X
+      </a>
+      
+      
+      <a href="https://github.com/luochang212">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+      
+      
+      <a href="https://instagram.com/suphenshin">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+      
+      <a href="https://www.zhihu.com/people/Fashionable">
+        <i class="fab fa-zhihu"></i> 知乎
+      </a>
+
+      <a href="/index.xml">
+        <i class="fas fa-rss"></i> RSS
+      </a>
+
+    </div>
+    <div style="margin-bottom: 5rem;"></div>
+  </div>
+
   
 
 <div class="navigation navigation-single">
@@ -859,8 +923,8 @@ $$\mathbf{g} \leftarrow \min\left(1, \frac{\theta}{|\mathbf{g}|}\right) \mathbf{
 
 
 
-<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
 
+<script src="https://kit.fontawesome.com/2134995a39.js" crossorigin="anonymous"></script>
 
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>

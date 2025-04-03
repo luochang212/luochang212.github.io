@@ -275,7 +275,7 @@
 
           <section class="social">
 	
-	<a href="https://twitter.com/MinosPalace" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	<a href="https://twitter.com/MinosPalace" rel="me"><i class="fab fa-x-twitter fa-lg" aria-hidden="true"></i></a>
 	
 	
 	
@@ -291,6 +291,7 @@
 	
 	
 	<a href="https://linkedin.com/in/bupt-luochang" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
 	
 	
 	
@@ -518,6 +519,38 @@
     margin: 0;
     vertical-align: text-bottom;
   }
+
+  .social-links a {
+    color: rgba(120,120,120,1);
+    text-decoration: none;
+    outline: none !important;
+    cursor: pointer;
+    transition-property: padding, text-shadow, line-height, color, background, opacity, transform;
+    transition-duration: .25s;
+    transition-timing-function: ease-in-out;
+    display: inline-block;
+    white-space: nowrap;
+    position: relative;
+  }
+
+  .social-links a:after {
+    content: "";
+    display: block;
+    height: .125rem;
+    margin: -.125rem 0 0;
+    background: rgba(0,0,0,.5);
+    border-radius: 1px;
+    transform: scaleX(0);
+    transition: transform .25s ease-in-out;
+  }
+
+  .social-links a:hover:after {
+    transform: scaleX(1);
+  }
+
+  .social-links a:hover {
+    color: rgba(120,120,120,1);
+  }
 </style>
 
 
@@ -558,6 +591,37 @@
     <p>旅行中的一天通常这样度过：清晨从宾馆出发，去第一个景点。第一个景点逛完，去下一个景点&hellip;&hellip;直到最后一个景点逛完，行程结束返回宾馆。那么如何规划一条最短的路线走完一天的行程呢？这就涉及到一个经典的运筹学问题 &ndash; TSP问题。本项目用googlemaps库获取纬度和经度信息，用OR-Tools库求解TSP问题，用gmaps库可视化输出结果。利用本项目，用户只需输入景点名称，即可获得一张周游所有景点的最短路线图。可以说是一个即插即用的TSP路线规划工具。</p>
 
   </div>
+
+  <div class="post-footer">
+    <p style="margin-bottom: 1rem;">欢迎关注我的其它发布渠道：</p>
+    <div class="social-links" style="display: flex; flex-direction: column; gap: 10px;">
+      
+      <a href="https://twitter.com/MinosPalace">
+        <i class="fab fa-twitter"></i> X
+      </a>
+      
+      
+      <a href="https://github.com/luochang212">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+      
+      
+      <a href="https://instagram.com/suphenshin">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+      
+      <a href="https://www.zhihu.com/people/Fashionable">
+        <i class="fab fa-zhihu"></i> 知乎
+      </a>
+
+      <a href="/index.xml">
+        <i class="fas fa-rss"></i> RSS
+      </a>
+
+    </div>
+    <div style="margin-bottom: 5rem;"></div>
+  </div>
+
   
 
 <div class="navigation navigation-single">
@@ -618,8 +682,8 @@
 
 
 
-<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
 
+<script src="https://kit.fontawesome.com/2134995a39.js" crossorigin="anonymous"></script>
 
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
