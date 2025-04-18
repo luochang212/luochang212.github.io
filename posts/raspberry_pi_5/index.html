@@ -692,16 +692,16 @@ sudo apt install gnome-software-plugin-flatpak
 </code></pre><h4 id="3安装-jupyter-notebook">3）安装 <code>jupyter-notebook</code></h4>
 <pre tabindex="0"><code>sudo apt install jupyter-notebook
 </code></pre><h4 id="4安装-miniconda">4）安装 miniconda</h4>
-<p>官方文档：<a href="https://docs.anaconda.com/miniconda/" target="_blank"><a href="https://docs.anaconda.com/miniconda/">https://docs.anaconda.com/miniconda/</a></a></p>
+<!-- 官方文档：<a href="https://docs.anaconda.com/miniconda/" target="_blank">https://docs.anaconda.com/miniconda/</a> -->
+<p>官方文档：<a href="https://www.anaconda.com/docs/getting-started/miniconda/install#linux" target="_blank"><a href="https://www.anaconda.com/docs/getting-started/miniconda/install#linux">https://www.anaconda.com/docs/getting-started/miniconda/install#linux</a></a></p>
 <p>需要注意的是，树莓派 5 是 <code>aarch64</code> 架构，不能直接使用官方 Linux 安装命令。而是要用 <code>Miniconda3 Linux-aarch64 64-bit</code> 版本的下载链接，然后在安装命令中把对应的 <code>sh</code> 文件链接换成 <code>aarch64</code> 的才行。</p>
 <pre tabindex="0"><code># 下载并运行安装脚本
 mkdir -p ~/miniconda3
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh -O ~/miniconda3/miniconda.sh
 bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
-rm -rf ~/miniconda3/miniconda.sh
-</code></pre><pre tabindex="0"><code># 为 miniconda 配置初始化环境
-~/miniconda3/bin/conda init bash
-~/miniconda3/bin/conda init zsh
+rm ~/miniconda3/miniconda.sh
+</code></pre><pre tabindex="0"><code># 初始化 shell
+~/miniconda3/bin/conda init bash zsh
 </code></pre><pre tabindex="0"><code># 一般来说，运行一下 ~/.bashrc 就行
 source ~/.bashrc
 

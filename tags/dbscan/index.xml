@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DBSCAN on Chang Luo</title>
+    <link>https://luochang212.github.io/tags/dbscan/</link>
+    <description>Recent content in DBSCAN on Chang Luo</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 18 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://luochang212.github.io/tags/dbscan/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DNN 模型聚类特征的在线更新方法</title>
+      <link>https://luochang212.github.io/posts/cluster_label_assign/</link>
+      <pubDate>Fri, 18 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/posts/cluster_label_assign/</guid>
+      <description>发展到今天，多塔模型依旧以 ID 类特征为主。我们用多模态模型、大语言模型从业务上下文中提取到的信息，通常不会将 raw data 直接送入模型，而是先将特征 ID 化，接着用 mmh3 哈希打散，再送入模型。因此，搜广推工程师经常需要把模型特征 ID 化。&#xA;将模型特征 ID 化有很多方法，比如使用分类模型、量化等。但是其中有一种重要到不可忽视的方法，叫 聚类。&#xA;ID 特征通过嵌入层与深度模型相连。在嵌入层，每个聚类 ID 都对应一个可学习的 embedding。如下图，idx0, idx1, idx2 &amp;hellip; idx4 是索引，它将聚类 ID 索引到对应的 embedding。当一个样本进入时，它会根据 id 号（比如 0 号）去找对应的索引（idx0），然后将索引下的 N 维 embedding 取回。嵌入层在有些地方也被称为码本（codebook）&#xA;嵌入层中的 embedding 是可学习的，随着模型的训练，索引对应的 embedding 会被反向传播带来的梯度不断更新，这就是 表示学习 的过程。&#xA;我们观察到，聚类 ID 和 embedding 是绑定的。历史上模型对于这个聚类 ID 的表示学习，都积累在这个聚类 ID 对应的 embedding 上。&#xA;这里引出聚类模型的一个问题：聚类模型的输出是和输入的全集相关的。什么意思呢？如果聚类模型的输入不同，则输出的簇的大小和形状可能不同，并且用来标识簇的聚类 ID 也可能会被重置。这可要了命了。模型特征每天都在变，如果每次训练，同一个簇都会被映射到不同的聚类 ID 上，那么这个聚类 ID 绑定的 embedding 其实是用来“表示”别的簇的，那么这个 embedding 实际学不到任何东西，甚至会产生反效果。因此，我们需要做一些开发，将簇映射到正确的聚类 ID 上，多塔模型才能够正常运行。&#xA;在第二节，我的思路是重新训练，再用匈牙利算法匹配前后两次训练产生的 label.</description>
+    </item>
+  </channel>
+</rss>

@@ -7,7 +7,7 @@
     <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     
-    <link rel="canonical" href="https://luochang212.github.io/posts/llm_deploy/">
+    <link rel="canonical" href="https://luochang212.github.io/posts/cluster_label_assign/">
     
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,27 +19,27 @@
     
     
 
-<title>本地部署大模型：Ollama 和 vLLM • Chang Luo</title>
+<title>DNN 模型聚类特征的在线更新方法 • Chang Luo</title>
 
 
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="本地部署大模型：Ollama 和 vLLM">
-  <meta name="twitter:description" content="大模型部署的门槛不在软件，而在有没有大显存 GPU">
+  <meta name="twitter:title" content="DNN 模型聚类特征的在线更新方法">
+  <meta name="twitter:description" content="聚类特征在线更新方法调研">
       <meta name="twitter:site" content="@MinosPalace">
 
-<meta property="og:url" content="https://luochang212.github.io/posts/llm_deploy/">
+<meta property="og:url" content="https://luochang212.github.io/posts/cluster_label_assign/">
   <meta property="og:site_name" content="Chang Luo">
-  <meta property="og:title" content="本地部署大模型：Ollama 和 vLLM">
-  <meta property="og:description" content="大模型部署的门槛不在软件，而在有没有大显存 GPU">
+  <meta property="og:title" content="DNN 模型聚类特征的在线更新方法">
+  <meta property="og:description" content="聚类特征在线更新方法调研">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2025-03-21T00:00:00+00:00">
-    <meta property="article:modified_time" content="2025-03-21T00:00:00+00:00">
-    <meta property="article:tag" content="VLLM">
-    <meta property="article:tag" content="Ollama">
-    <meta property="article:tag" content="Transformers">
+    <meta property="article:published_time" content="2025-04-18T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-04-18T00:00:00+00:00">
+    <meta property="article:tag" content="BLIP2">
+    <meta property="article:tag" content="DBSCAN">
+    <meta property="article:tag" content="Hungarian Algorithm">
 
 
     
@@ -560,13 +560,13 @@
 
 <article>
   <header>
-    <h1>本地部署大模型：Ollama 和 vLLM</h1>
+    <h1>DNN 模型聚类特征的在线更新方法</h1>
     
     
 <div class="post__meta">
     
     
-      <i class="fas fa-calendar-alt"></i> Mar 21, 2025
+      <i class="fas fa-calendar-alt"></i> Apr 18, 2025
     
     
     
@@ -575,7 +575,7 @@
           in
           
           
-              <a class="badge badge-category" href="/categories/llms">LLMS</a>
+              <a class="badge badge-category" href="/categories/algorithms">ALGORITHMS</a>
               
           
       
@@ -587,19 +587,19 @@
           <br/>
            <i class="fas fa-tags"></i>
           
-          <a class="badge badge-tag" href="/tags/vllm">vllm</a>
+          <a class="badge badge-tag" href="/tags/blip2">blip2</a>
            
       
-          <a class="badge badge-tag" href="/tags/ollama">ollama</a>
+          <a class="badge badge-tag" href="/tags/dbscan">dbscan</a>
            
       
-          <a class="badge badge-tag" href="/tags/transformers">transformers</a>
+          <a class="badge badge-tag" href="/tags/hungarian-algorithm">hungarian algorithm</a>
           
       
     
     
     <br/>
-    <i class="fas fa-clock"></i> 1 min read
+    <i class="fas fa-clock"></i> 2 min read
 </div>
 
 
@@ -618,156 +618,112 @@
   
   <div class="post">
     <blockquote>
-<p>2023 年本地部署大模型的报价近千万，2024 年初便骤降至百万，如今是 2025 年，只需要一行 vLLM 命令就可以部署大模型，人工成本几近于零。</p>
+<p>发展到今天，多塔模型依旧以 ID 类特征为主。我们用多模态模型、大语言模型从业务上下文中提取到的信息，通常不会将 raw data 直接送入模型，而是先将特征 ID 化，接着用 <code>mmh3</code> 哈希打散，再送入模型。因此，搜广推工程师经常需要把模型特征 ID 化。</p>
 </blockquote>
-<p>GitHub 项目地址：<a href="https://github.com/luochang212/llm-deploy" target="_blank">llm-deploy</a></p>
-<p>本文内容包括：</p>
-<ul>
-<li>3 种方式部署 DeepSeek R1：Ollama, vLLM 和 Transformers</li>
-<li>使用 vLLM 部署 Qwen2.5 模型</li>
-<li>安装 Open WebUI 作为本地模型的前端聊天框</li>
-<li>通过 <code>vllm serve</code> 实现一行代码启动 vLLM 推理服务</li>
-</ul>
-<p>✨ 快速部署说明在 <a href="https://github.com/luochang212/llm-deploy/tree/main/deploy" target="_blank">/deploy</a>，vLLM 服务启动脚本在 <a href="https://github.com/luochang212/llm-deploy/tree/main/server" target="_blank">/server</a>.</p>
-<h2 id="一本地部署-deepseek-r1">一、本地部署 DeepSeek R1</h2>
-<p>大模型本地部署依赖推理引擎，目前比较流行的推理引擎有：</p>
-<table>
-<thead>
-<tr>
-<th>推理引擎</th>
-<th>场景</th>
-<th>介绍</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://github.com/ollama/ollama">Ollama</a></td>
-<td>适合个人开发者和轻量级应用</td>
-<td>基于 <a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a> 开发，支持 CPU 推理，安装简单，开箱即用，适合快速原型开发和测试</td>
-</tr>
-<tr>
-<td><a href="https://github.com/vllm-project/vllm">vLLM</a></td>
-<td>适合高并发生产环境</td>
-<td>支持多 GPU 并行、批处理、PagedAttention，吞吐量高，延迟低，适合大规模服务部署</td>
-</tr>
-<tr>
-<td><a href="https://github.com/huggingface/transformers">Transformers</a></td>
-<td>适合模型研究和实验</td>
-<td>提供完整的模型训练和推理接口，支持模型微调、量化、加速，适合研究人员和需要深度定制的场景</td>
-</tr>
-<tr>
-<td><a href="https://github.com/sgl-project/sglang">SGLang</a></td>
-<td>适合需要复杂推理流程的场景</td>
-<td>支持结构化输出、并行推理、流式输出，特别适合需要多轮对话和复杂推理的应用</td>
-</tr>
-<tr>
-<td><a href="https://github.com/InternLM/lmdeploy">LMDeploy</a></td>
-<td>适合企业级部署和边缘计算</td>
-<td>由上海人工智能实验室开发，提供完整的模型量化、加速和部署工具链，支持多种硬件平台，特别适合资源受限场景</td>
-</tr>
-</tbody>
-</table>
-<p>下面介绍如何部署 Ollama, vLLM, Transformers 这三款推理引擎，简要部署步骤见本项目的 <a href="https://github.com/luochang212/llm-deploy/tree/main/deploy">deploy</a> 目录。</p>
-<p>目录：</p>
+<p>将模型特征 ID 化有很多方法，比如使用分类模型、量化等。但是其中有一种重要到不可忽视的方法，叫 <strong>聚类</strong>。</p>
+<p><strong>ID 特征通过嵌入层与深度模型相连</strong>。在嵌入层，每个聚类 ID 都对应一个可学习的 embedding。如下图，<code>idx0</code>, <code>idx1</code>, <code>idx2</code> &hellip; <code>idx4</code> 是索引，它将聚类 ID 索引到对应的 embedding。当一个样本进入时，它会根据 id 号（比如 0 号）去找对应的索引（<code>idx0</code>），然后将索引下的 N 维 embedding 取回。嵌入层在有些地方也被称为码本（codebook）</p>
+<p><img src="/img/embedding_layer.png" alt="embedding_layer"></p>
+<p>嵌入层中的 embedding 是可学习的，随着模型的训练，索引对应的 embedding 会被反向传播带来的梯度不断更新，这就是 <strong>表示学习</strong> 的过程。</p>
+<p>我们观察到，聚类 ID 和 embedding 是绑定的。历史上模型对于这个聚类 ID 的表示学习，都积累在这个聚类 ID 对应的 embedding 上。</p>
+<p>这里引出聚类模型的一个问题：<strong>聚类模型的输出是和输入的全集相关的</strong>。什么意思呢？如果聚类模型的输入不同，则输出的簇的大小和形状可能不同，并且用来标识簇的聚类 ID 也可能会被重置。这可要了命了。模型特征每天都在变，如果每次训练，同一个簇都会被映射到不同的聚类 ID 上，那么这个聚类 ID 绑定的 embedding 其实是用来“表示”别的簇的，那么这个 embedding 实际学不到任何东西，甚至会产生反效果。因此，我们需要做一些开发，将簇映射到正确的聚类 ID 上，多塔模型才能够正常运行。</p>
+<p>在第二节，我的思路是重新训练，再用匈牙利算法匹配前后两次训练产生的 label.</p>
+<p>第三节不做重训练，而是利用聚类中心和 <code>eps</code> 邻域开发一种近似方法，将新样本快速归入某个簇中。</p>
+<p>GitHub 项目地址：<a href="https://github.com/luochang212/label-assignment" target="_blank">label-assignment</a></p>
+<p>本项目的主要内容包括：</p>
 <ol>
-<li>Ollama</li>
-<li>vLLM
+<li>使用 <code>BLIP-2</code> 模型将图片转为 embedding
 <ul>
-<li>安装 miniconda</li>
-<li>安装 jupyterlab</li>
-<li>为 vllm 创建虚拟环境，并绑定到 jupyterlab</li>
-<li>安装 vLLM 及相关依赖</li>
-<li>下载模型文件</li>
-<li>启动 jupyterlab</li>
-<li>验证 vLLM</li>
+<li>服务端代码：见本项目 <a href="https://github.com/luochang212/label-assignment/blob/main/server/blip2_server.py">blip2_server.py</a> 文件</li>
+<li>客户端代码：见 <a href="https://github.com/luochang212/label-assignment/blob/main/1.prepare.ipynb">1.prepare.ipynb</a> 第五节</li>
 </ul>
 </li>
-<li>Transformers</li>
+<li>使用匈牙利算法建立重训练标签到原标签的映射
+<ul>
+<li>开发以 <strong>样本重合率</strong> 为度量的方法</li>
+<li>开发以 <strong>类心距离</strong> 为度量的方法</li>
+</ul>
+</li>
+<li>实现一种为 embedding 赋予近似聚类 ID 的方法：最近邻法</li>
 </ol>
-<br>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/llm-deploy/blob/main/1.deepseek_deploy.ipynb')">查看笔记</button>
-</center>
-<br>
-<h2 id="二本地部署-qwen25">二、本地部署 Qwen2.5</h2>
-<p>模型名带 <code>Instruct</code> 说明该模型是经过指令调优（Instruction Tuning）的版本，专为理解和执行用户指令优化，适合对话生成、任务导向型场景。</p>
-<p>部署前要先下载模型文件：</p>
-<pre tabindex="0"><code># 安装 huggingface_hub
-pip install -U huggingface_hub
-
-cd model
-huggingface-cli download \
-    --resume-download Qwen/Qwen2.5-1.5B-Instruct \
-    --local-dir ./Qwen2.5-1.5B-Instruct
-</code></pre><p>推理效果：</p>
-<p><img src="/img/qwen_result.png" alt=""></p>
-<br>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/llm-deploy/blob/main/2.qwen_deploy.ipynb')">查看笔记</button>
-</center>
-<br>
-<h2 id="三open-webui-作为前端聊天框">三、Open WebUI 作为前端聊天框</h2>
-<p>第一节我用 3 种方式部署本地大模型：Ollama, vLLM 和 Transformers.</p>
-<p>有了本地部署的大模型作为推理后端，还要连接到前端聊天框，才算是完整。开源聊天框有很多，比如 AnythingLLM, LM Studio. 比较了一圈，姑且使用 <a href="https://github.com/open-webui/open-webui">Open WebUI</a>. 它有预开发的账号系统和历史记录，支持快速开发 RAG 和联网搜索。</p>
-<p>它的界面长这样：</p>
-<p><img src="/img/open_webui.jpg" alt=""></p>
-<p>目录：</p>
-<ol>
-<li>安装 Open WebUI
-<ul>
-<li>检查 Docker 环境</li>
-<li>下载镜像</li>
-<li>创建容器</li>
-<li>打开前端页面</li>
-</ul>
-</li>
-<li>为 WebUI 配置推理后端
-<ul>
-<li>Ollama</li>
-<li>vLLM</li>
-</ul>
-</li>
-</ol>
-<br>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/llm-deploy/blob/main/3.open_webui.ipynb')">查看笔记</button>
-</center>
-<br>
-<h2 id="四vllm-推理服务">四、vLLM 推理服务</h2>
-<p>vLLM 官方支持一行 bash 命令，启动 API 服务：</p>
-<pre tabindex="0"><code>vllm serve [YOUR MODEL or MODEL PATH]
-</code></pre><p>当然对于不同的模型，启动参数也略有不同，需要做一定的配适。比如对于 <code>deepseek-r1</code> 这类推理模型，必须添加参数 <code>--enable-reasoning --reasoning-parser deepseek_r1</code>。具体每个模型如何使用 vLLM，可参考 vLLM 官方文档或模型文档。</p>
+<h2 id="一使用-blip-2-生成图片-embedding">一、使用 BLIP-2 生成图片 Embedding</h2>
+<p>为了获取用于聚类的 Embedding，我们用 CIFAR-100 数据集作为图片来源，然后用 BLIP-2 模型生成图片的 Embedding。</p>
+<p>Huggingface: <a href="https://huggingface.co/Salesforce/blip2-opt-2.7b">Salesforce/blip2-opt-2.7b</a></p>
 <blockquote>
-<p><strong>PS:</strong> vLLM 的 API 服务遵循 OpenAI 的接口协议。</p>
+<p><strong>BLIP-2 (Bootstrapping Language-Image Pre-training 2)</strong> 是 Salesforce 研究院于 2023 年提出的多模态模型。它由三部分组成：</p>
+<ul>
+<li>图像编码器（类似 CLIP 的视觉模型）：用于提取图像特征</li>
+<li>查询变换器（Q-Former）：作为连接图像与文本的桥梁</li>
+<li>大型语言模型（LLM，如 OPT-2.7B）：用于生成文本</li>
+</ul>
+<p>BLIP-2 训练时，冻结图像编码器和大语言模型的参数，仅优化 Q-Former，这样既能充分利用已有的单模态能力，又能有效提升图文模型的交互效率。Q-Former 作为连接两个模态的桥梁，通过查询学习将视觉特征转换为与语言模型相兼容的表示，从而实现高效的跨模态对齐。</p>
 </blockquote>
-<p>目录：</p>
 <ol>
-<li>DeepSeek-R1
-<ul>
-<li>启动服务端</li>
-<li>运行客户端</li>
-</ul>
-</li>
-<li>Qwen
-<ul>
-<li>启动服务端</li>
-<li>运行客户端</li>
-</ul>
-</li>
-<li>符合 OpenAI 接口协议的 API 服务</li>
-<li>强制清理显存缓存</li>
+<li>下载 CIFAR-100 数据集</li>
+<li>下载 BLIP-2 模型文件</li>
+<li>计算图片 Embedding</li>
+<li>验证 BLIP-2 服务端代码</li>
+<li>开发 BLIP-2 客户端代码</li>
 </ol>
 <br>
 <center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/llm-deploy/blob/main/4.vllm_server.ipynb')">查看笔记</button>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/label-assignment/blob/main/1.prepare.ipynb')">查看笔记</button>
 </center>
 <br>
-<p>参考：</p>
+<h2 id="二聚类标签重匹配的两种度量">二、聚类标签重匹配的两种度量</h2>
+<p>可以用两种度量做重训练标签到原标签的匹配：</p>
 <ul>
-<li>vLLM 仓库: <a href="https://github.com/vllm-project/vllm">vllm-project/vllm</a></li>
-<li>vLLM 文档: <a href="https://docs.vllm.ai/">docs.vllm.ai</a></li>
-<li>self-llm: <a href="https://github.com/datawhalechina/self-llm">datawhalechina/self-llm</a></li>
+<li>样本重合率</li>
+<li>类心距离</li>
 </ul>
+<p><strong>样本重合率</strong> 的问题是不同标签的样本量不同，这意味着不同标签的敏感性是不同的。如果样本量较高，我们就有较高的置信水平认为该重合率可信；若样本量较低，这种匹配可能不置信。使用 <strong>类心距离</strong> 可以避免这个问题，在整个度量空间中，类心距离不会因标签的不同有所偏倚，是一种相对公平的匹配方法。</p>
+<p>因此，类心距离看起来更适合作为度量。但想了想，我还是决定两种方法都尝试一下。因为并非所有聚类都有“类心”。比如，对于物品 ITEM，很可能只有标签，没有类心。这时，样本重合率作为更通用的解决方案，便彰显其价值。下面我们来开发这两种标签重匹配方法。</p>
+<ol>
+<li>初次训练与重训练标签</li>
+<li>样本重合率</li>
+<li>类心距离</li>
+</ol>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/label-assignment/blob/main/2.label_assign.ipynb')">查看笔记</button>
+</center>
+<br>
+<h2 id="三近似赋值最近邻法">三、近似赋值：最近邻法</h2>
+<p>有一种方法工程难度较低，在 DNN 模型允许的情况下，可以这么开发。我把它称为 <strong>最近邻法</strong>。它的原理很简单：给定邻域 <code>eps</code>，若新加入 embedding 在某个簇的聚类中心的 <code>eps</code> 邻域范围内，则归该簇；否则 embedding 单独建簇。</p>
+<p>下面我们把它拆解为具体的开发步骤。</p>
+<p><strong>1）初始化</strong></p>
+<ol>
+<li>用 dbscan 计算每个 embedding 样本的簇 ID</li>
+<li>当样本的簇 ID 为 -1 时，说明该样本为离群点，为该样本生成一个与现有簇 ID 不重复的数作为簇 ID</li>
+<li>计算每个簇的聚类中心</li>
+<li>创建两个 DataFrame：
+<ul>
+<li><strong>聚类标签表</strong>：列名为 item_id, embeddings, cluster_id</li>
+<li><strong>聚类中心表</strong>：列名为 cluster_id, cluster_center</li>
+</ul>
+</li>
+</ol>
+<p><strong>2）更新</strong></p>
+<ol>
+<li>当有新 embedding 进入时，计算 embedding 是否在任一簇的聚类中心的 eps 邻域内：
+<ul>
+<li>如果在，让 embedding 加入该簇，然后更新该簇的聚类中心</li>
+<li>如果不在，创建一个新簇，该 embedding 自己作为聚类中心</li>
+</ul>
+</li>
+<li>更新两个 DataFrame 表，即 聚类标签表 和 聚类中心表</li>
+</ol>
+<p>为什么说它是一种近似方法，我画两张图大家就了解了。</p>
+<p><strong>1）错失样本 <code>X</code></strong></p>
+<p>第一张图如下，阴影部分是真正的聚类范围，聚类范围内的所有点都属于该簇。对于后续进入的新样本 <code>X</code>，由于我们认为只有聚类中心 <code>A</code> 的 <code>eps</code> 邻域内的点才是该簇的点，所以 <code>X</code> 不会被判定为该簇的点，但实际上 <code>X</code> 应该是该簇的点。结果莫名其妙，<code>X</code> 生成了一个新簇。</p>
+<p><img src="/img/label_assign_over.JPG" alt="label_assign_over"></p>
+<p><strong>2）聚类中心不属于簇</strong></p>
+<p>聚类中心是由簇内各点求平均得到的，考虑到 dbscan 可能形成任意非凸形状，聚类中心可能不属于该簇，遑论聚类中心的 <code>eps</code> 邻域，可能根本就和这个聚类没有关系。如果出现这种情况，那不是近似，而是完全的错误了。</p>
+<p><img src="/img/label_assign_outside.JPG" alt="label_assign_outside"></p>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/label-assignment/blob/main/3.nearest_neighbor.ipynb')">查看笔记</button>
+</center>
+<br>
 <div id="mini-overlay" onclick="overlay_off()"></div>
 <div id="mini-window"><iframe id="mini-iframe" frameBorder="0"></iframe></div>
 <button id="btn-close" onclick="overlay_off()">×</button>
@@ -810,16 +766,11 @@ huggingface-cli download \
 
 <div class="navigation navigation-single">
     
-    <a href="/posts/langflow_rag_app/" class="navigation-prev">
+    <a href="/posts/llm_deploy/" class="navigation-prev">
       <i aria-hidden="true" class="fa fa-chevron-left"></i>
-      <span class="navigation-tittle">Langflow 实现本地知识库</span>
+      <span class="navigation-tittle">本地部署大模型：Ollama 和 vLLM</span>
     </a>
     
-    
-    <a href="/posts/cluster_label_assign/" class="navigation-next">
-      <span class="navigation-tittle">DNN 模型聚类特征的在线更新方法</span>
-      <i aria-hidden="true" class="fa fa-chevron-right"></i>
-    </a>
     
 </div>
 
