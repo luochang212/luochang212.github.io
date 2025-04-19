@@ -25,13 +25,13 @@
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="DNN 模型聚类特征更新方法">
-  <meta name="twitter:description" content="如何在深度学习模型中保持聚类标签的连续性">
+  <meta name="twitter:description" content="本文探讨如何在 DNN 模型中天级更新聚类特征时，保持聚类标签的稳定性">
       <meta name="twitter:site" content="@MinosPalace">
 
 <meta property="og:url" content="https://luochang212.github.io/posts/cluster_label_assign/">
   <meta property="og:site_name" content="Chang Luo">
   <meta property="og:title" content="DNN 模型聚类特征更新方法">
-  <meta property="og:description" content="如何在深度学习模型中保持聚类标签的连续性">
+  <meta property="og:description" content="本文探讨如何在 DNN 模型中天级更新聚类特征时，保持聚类标签的稳定性">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -618,43 +618,33 @@
   
   <div class="post">
     <blockquote>
-<p>如何在深度学习模型中保持聚类标签的连续性</p>
+<p>本文探讨如何在 DNN 模型中天级更新聚类特征时，保持聚类标签的稳定性。</p>
 </blockquote>
 <p>GitHub 项目地址：<a href="https://github.com/luochang212/label-assignment" target="_blank">label-assignment</a></p>
 <p>本文的主要内容包括：</p>
 <ol>
-<li>使用 <code>BLIP-2</code> 模型将图片转为 embedding</li>
+<li>使用 <code>BLIP-2</code> 将图片转为 embedding</li>
 <li>使用匈牙利算法建立重训练标签到原标签的映射
 <ul>
 <li>开发以 <strong>样本重合率</strong> 为度量的方法</li>
 <li>开发以 <strong>类心距离</strong> 为度量的方法</li>
 </ul>
 </li>
-<li>实现赋予 embedding 近似聚类 ID 的方法：最近邻法</li>
+<li>赋予 embedding 近似聚类 ID 的方法：最近邻法</li>
 </ol>
-<h2 id="一引子">一、引子</h2>
-<!-- ### 1. 社区算法的 “社区 ID 漂移”
-
-两年前，我负责用户社区发现算法的开发。通过用户的关联关系，构建用户社区，最终产出 `用户-社区` 关系表。这个表是天级产出的。也就是说，每天都要用当天最新的关联关系，通过社区算法计算 `用户ID -> 社区ID` 的映射。
-
-社区算法有个特点：每天算出来社区，**即使社区内用户完全相同，用于标识该社区的社区号也可能发生变化**。举例来说，今天叫 “3 号社区” 的社区，明天可能叫 “7 号社区”。我也知道自己的数据存在这个问题。果然，在数据产出后不久，数据下游的使用方同学就找到我，希望我保持社区 ID 的稳定。时间紧任务重，为了解决迫在眉睫的 “社区 ID 漂移问题”，我抱着保准不保召的心理，写了一个让符合要求的社区继承前一天该社区的社区 ID 的脚本，算是部分解决了 ID 漂移问题。
-
-后来，我没有继续深究这个问题，没想到在做深度学习的时候，又遇到它。
-
-### 2. 多塔模型的 “聚类 ID 漂移”  -->
-<p>时至今日，多塔模型仍以 ID 类特征为主。我们通常不会将 <code>USER</code>, <code>ITEM</code> 特征以 raw data 的形式直接送入模型，而是先将特征 ID 化，接着用 <code>mmh3</code> 哈希打散，最后送入模型。因此开发多塔模型的时候，经常遇到把模型特征 ID 化的需求。将模型特征 ID 化有很多方法，比如分类、量化等。注意到，其中有一种非常重要的方法叫 <strong>聚类</strong>。</p>
-<p>为了理解聚类 ID 是如何在深度模型中发生作用的，有必要介绍一下 <strong>嵌入层 (Embedding Layer)</strong> 的工作原理。<strong>聚类 ID 通过嵌入层与深度模型相连</strong>。在嵌入层中，每个聚类 ID 都对应一个可学习的 embedding。如下图，<code>idx0</code>, <code>idx1</code> &hellip; <code>idx4</code> 是索引，它将聚类 ID 索引到对应的 embedding。当一个样本进入时，它会根据 id 号（比如 2 号）去找对应的索引（<code>idx2</code>），然后将索引下的 N 维 embedding 取回。嵌入层在有些地方也被称为码本（codebook）。</p>
+<p>时至今日，多塔模型仍以 ID 类特征为主。将模型特征以 raw data 的形式直接送入模型，效果往往不好。因此，我们通常先将特征 ID 化，然后用 <code>mmh3</code> 哈希打散后，再送入模型。其中，<strong>特征 ID 化</strong> 是一个重要步骤，如果 ID 的粒度太细，细到极致相当于每个样本一个 ID，这时样本就无法和与之相似的样本通过 ID 进行交互；如果 ID 的粒度太粗，则 ID 下的样本过多，此时模型无法从中学到指向足够明确的信息。</p>
+<p>将模型特征 ID 化有很多方法，比如 聚类（无监督）、分类（有监督）、量化等等。本文仅讨论 <strong>聚类算法</strong> 及其在深度学习模型中的应用。</p>
+<h2 id="一引子频繁变更索引的代价">一、引子：频繁变更索引的代价</h2>
+<p>为了理解聚类算法产生的聚类 ID 是如何在深度模型中发生作用的，有必要介绍一下 <strong>嵌入层 (Embedding Layer)</strong> 的工作原理。</p>
+<p><strong>嵌入层是聚类 ID 与深度模型连接的桥梁</strong>。嵌入层的输入是聚类 ID，输出是该聚类 ID 对应的 embedding。在嵌入层中，聚类 ID 的每个枚举值都对应一个可学习的 embedding。如下图，假设聚类 ID 有 5 个枚举值 <code>[0, 1, 2, 3, 4]</code>，枚举值对应的索引分别为 <code>idx0</code>, <code>idx1</code> &hellip; <code>idx4</code>。当一个样本进入模型，它会根据聚类 id 号（比如 2 号）去找对应的索引（<code>idx2</code>），然后将索引下的 N 维 embedding 取回。嵌入层在有些地方也被称为码本 (codebook).</p>
 <p><img src="/img/embedding_layer.png" alt="embedding_layer"></p>
-<p>嵌入层的 embedding 是可学习的，随着模型训练的进行，索引对应的 embedding 会被反向传播带来的梯度不断更新，这就是 <strong>表示学习</strong> 的过程。嵌入层中聚类 ID 和 embedding 是一一对应的。历史上模型对于这个聚类 ID 的学习，都会积累在其对应的 embedding 上。</p>
-<p>这里引出聚类模型的问题：<strong>聚类模型的输出和输入的全集有关</strong>。什么意思呢？如果聚类模型的输入不同，则输出簇的大小和形状可能不同，并且用来标识簇的聚类 ID 也可能不同。这可要了亲命了。模型特征每天都在变，如果每次训练，同一个簇都会被映射到不同的聚类 ID 上，那么这个聚类 ID 绑定的 embedding 其实是用来“表示”别的簇的，那么这个 embedding 实际学不到关于该簇的任何东西，甚至在模型推理中会产生反效果。因此，我们需要做一些开发，将簇持续映射到正确的聚类 ID 上，多塔模型才能够正常运行。</p>
-<p>关于如何将簇映射到正确的聚类 ID 上，本文介绍了两种方法：</p>
+<p>嵌入层的 embedding 是可学习的。随着模型训练的进行，索引对应的 embedding 会不断被反向传播带来的梯度更新，这就是 <strong>表示学习</strong> 的过程。在搜索、广告、推荐业务中，历史上模型关于这个聚类 ID 的“知识和经验”，都会积累在该 ID 对应的 embedding 上。</p>
+<p>聚类算法有个特点：模型输出和输入的全集有关。具体表现为，模型每次算出来的簇，<strong>即使簇内样本完全相同，用于标识该簇的聚类 ID 也可能发生变化</strong>。举例来说，今天叫 “3 号” 的簇，明天训练可能叫 “7 号”。这可要了亲命了。模型特征每天都在变，如果每次训练，同一个簇都会被映射到不同的聚类 ID，那么这个聚类 ID 绑定的 embedding 其实是用来&quot;表示&quot;别的簇的，此时这个 embedding 实际学不到关于该簇的任何东西，在模型推理中必然产生反效果。因此，我们需要做一些开发，将簇持续映射到一个稳定的聚类 ID 上，多塔模型才能够正常运行。</p>
+<p>如何将簇稳定地映射到一个聚类 ID 上，本文介绍了两种方法：</p>
 <ol>
 <li>使用匈牙利算法进行标签重匹配</li>
-<li>使用最近邻法进行近似赋值</li>
+<li>使用最近邻算法进行近似赋值</li>
 </ol>
-<!-- 在第二节，我的思路是重新训练，再用匈牙利算法匹配前后两次训练产生的 label.
-
-第三节不做重训练，而是利用聚类中心和 `eps` 邻域开发一种近似方法，将新样本快速归入某个簇中。 -->
 <h2 id="二使用-blip-2-生成图片-embedding">二、使用 BLIP-2 生成图片 Embedding</h2>
 <p>为了获取用于聚类的 Embedding，我们用 CIFAR-100 数据集作为图片来源，然后用 BLIP-2 模型生成图片的 Embedding。</p>
 <p>Huggingface: <a href="https://huggingface.co/Salesforce/blip2-opt-2.7b">Salesforce/blip2-opt-2.7b</a></p>
@@ -686,7 +676,7 @@
 <li>类心距离</li>
 </ul>
 <p><strong>样本重合率</strong> 的问题是不同标签的样本量不同，这意味着不同标签的敏感性是不同的。如果样本量较高，我们就有较高的置信水平认为该重合率可信；若样本量较低，这种匹配可能不置信。使用 <strong>类心距离</strong> 可以避免这个问题，在整个度量空间中，类心距离不会因标签的不同有所偏倚，是一种相对公平的匹配方法。</p>
-<p>因此，类心距离看起来更适合作为度量。但想了想，我还是决定两种方法都尝试一下。因为并非所有聚类都有“类心”。比如，对于物品 ITEM，很可能只有标签，没有类心。这时，样本重合率作为更通用的解决方案，便彰显其价值。下面我们来开发这两种标签重匹配方法。</p>
+<p>因此，类心距离看起来更适合作为度量。但想了想，我还是决定两种方法都尝试一下。因为并非所有聚类都有&quot;类心&quot;。比如，对于物品 ITEM，很可能只有标签，没有类心。这时，样本重合率作为更通用的解决方案，便彰显其价值。下面我们来开发这两种标签重匹配方法。</p>
 <ol>
 <li>初次训练与重训练标签</li>
 <li>样本重合率</li>
@@ -708,7 +698,7 @@
 <li>创建两个 DataFrame：
 <ul>
 <li><strong>聚类标签表</strong>：列名为 item_id, embeddings, cluster_id</li>
-<li><strong>聚类中心表</strong>：列名为 cluster_id, cluster_center</li>
+<li><strong>聚类中心表</strong>：列名为 cluster_id, cluster_center</li>
 </ul>
 </li>
 </ol>
