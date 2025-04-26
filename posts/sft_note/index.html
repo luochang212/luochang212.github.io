@@ -701,7 +701,6 @@
 <p>使用 <strong>医疗问答数据集 medical</strong> 对 <strong>Qwen 模型</strong> 做 <strong>SFT 监督微调</strong>。相关资源列表：</p>
 <ul>
 <li>medical 数据集：<a href="https://huggingface.co/datasets/shibing624/medical">shibing624/medical</a></li>
-<li>LLaMA Factory：</li>
 <li><code>Qwen2.5-0.5B-Instruct</code> 模型：<a href="https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct">Qwen/Qwen2.5-0.5B-Instruct</a></li>
 <li><code>Qwen2.5-7B-Instruct</code> 模型：<a href="https://huggingface.co/Qwen/Qwen2.5-7B-Instruct">Qwen/Qwen2.5-7B-Instruct</a></li>
 </ul>
@@ -713,7 +712,7 @@
 </ul>
 <p>本文旨在跑通流程，因此使用 <code>0.5B</code> 模型。这既能减少显存占用，也能更快完成任务。如果你有 RTX 5090 或者 GPU 服务器，可以考虑使用 <code>3B</code>, <code>7B</code> 等更大规模的模型。如果你计划用较多的样本进行训练，可以考虑使用非 Instruct 模型，关于这点建议参考文档 <a href="https://docs.unsloth.ai/get-started/beginner-start-here/what-model-should-i-use#instruct-or-base-model"><em>Instruct or Base Model?</em></a></p>
 <h2 id="二llama-factory">二、LLaMA-Factory</h2>
-<p>首先，我们来安装 <a href="https://github.com/hiyouga/LLaMA-Factory">LLaMA-Factory</a>。LLaMA Factory 是一个比较容易上手的微调框架，可以通过 WebUI 零代码微调大模型。</p>
+<p>首先，我们来安装 <a href="https://github.com/hiyouga/LLaMA-Factory">LLaMA-Factory</a>。LLaMA Factory 是一个比较容易上手的微调框架，可以通过 WebUI 来零代码微调大模型。</p>
 <ol>
 <li>环境准备
 <ul>
