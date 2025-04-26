@@ -7,7 +7,7 @@
     <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     
-    <link rel="canonical" href="https://luochang212.github.io/posts/llm_deploy/">
+    <link rel="canonical" href="https://luochang212.github.io/posts/sft_note/">
     
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,27 +19,27 @@
     
     
 
-<title>本地部署大模型：Ollama 和 vLLM • Chang Luo</title>
+<title>三种方法实现监督微调 (SFT)：LLaMA Factory, trl 和 unsloth • Chang Luo</title>
 
 
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="本地部署大模型：Ollama 和 vLLM">
-  <meta name="twitter:description" content="部署大模型的门槛不在软件，而在有没有大显存 GPU">
+  <meta name="twitter:title" content="三种方法实现监督微调 (SFT)：LLaMA Factory, trl 和 unsloth">
+  <meta name="twitter:description" content="最喜欢 unsloth，因为快才是硬道理">
       <meta name="twitter:site" content="@MinosPalace">
 
-<meta property="og:url" content="https://luochang212.github.io/posts/llm_deploy/">
+<meta property="og:url" content="https://luochang212.github.io/posts/sft_note/">
   <meta property="og:site_name" content="Chang Luo">
-  <meta property="og:title" content="本地部署大模型：Ollama 和 vLLM">
-  <meta property="og:description" content="部署大模型的门槛不在软件，而在有没有大显存 GPU">
+  <meta property="og:title" content="三种方法实现监督微调 (SFT)：LLaMA Factory, trl 和 unsloth">
+  <meta property="og:description" content="最喜欢 unsloth，因为快才是硬道理">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2025-03-21T00:00:00+00:00">
-    <meta property="article:modified_time" content="2025-03-21T00:00:00+00:00">
-    <meta property="article:tag" content="VLLM">
-    <meta property="article:tag" content="Ollama">
-    <meta property="article:tag" content="Transformers">
+    <meta property="article:published_time" content="2025-04-26T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-04-26T00:00:00+00:00">
+    <meta property="article:tag" content="Trl">
+    <meta property="article:tag" content="Unsloth">
+    <meta property="article:tag" content="LLaMA Factory">
 
 
     
@@ -560,13 +560,13 @@
 
 <article>
   <header>
-    <h1>本地部署大模型：Ollama 和 vLLM</h1>
+    <h1>三种方法实现监督微调 (SFT)：LLaMA Factory, trl 和 unsloth</h1>
     
     
 <div class="post__meta">
     
     
-      <i class="fas fa-calendar-alt"></i> Mar 21, 2025
+      <i class="fas fa-calendar-alt"></i> Apr 26, 2025
     
     
     
@@ -587,19 +587,19 @@
           <br/>
            <i class="fas fa-tags"></i>
           
-          <a class="badge badge-tag" href="/tags/vllm">vllm</a>
+          <a class="badge badge-tag" href="/tags/trl">trl</a>
            
       
-          <a class="badge badge-tag" href="/tags/ollama">ollama</a>
+          <a class="badge badge-tag" href="/tags/unsloth">unsloth</a>
            
       
-          <a class="badge badge-tag" href="/tags/transformers">transformers</a>
+          <a class="badge badge-tag" href="/tags/llama-factory">llama factory</a>
           
       
     
     
     <br/>
-    <i class="fas fa-clock"></i> 1 min read
+    <i class="fas fa-clock"></i> 2 min read
 </div>
 
 
@@ -618,156 +618,164 @@
   
   <div class="post">
     <blockquote>
-<p>2023 年本地部署大模型的报价近千万，2024 年初便骤降至百万，如今是 2025 年，只需要一行 vLLM 命令就可以部署大模型，人工成本几近于零。</p>
+<p>我尝试了目前流行的三种微调框架，最推荐 unsloth，因为它快！LLaMA Factory 和 trl 是在夜里跑的，显卡风扇响了一宿。第二天看日志时，发现它们跑了三个小时才跑完。但是 unsloth 五分钟就跑完了，快得都有些夸张了。当然，这么比较不是完全公平的，因为它们的量化方法、LoRA 参数都是不同的。但是 unsloth 快这一点依然是非常显著的。如果你想在 GPU 服务器上认真微调，那么用 LLaMA Factory 没毛病。但如果只是在笔记本上随便玩玩，unsloth 的优势就太明显了！</p>
 </blockquote>
-<p>GitHub 项目地址：<a href="https://github.com/luochang212/llm-deploy" target="_blank">llm-deploy</a></p>
-<p>本文内容包括：</p>
+<p>GitHub 项目地址：<a href="https://github.com/luochang212/sft-note" target="_blank">sft-note</a></p>
+<h2 id="一引言">一、引言</h2>
+<p>大语言模型有很强的通用能力，但在特定领域，它的表现不如领域小模型。为了让大模型适应特定任务，我们对大模型进行微调，使大模型在保持通用性的同时，兼具领域模型的专业知识、对话风格和输出格式等特质。</p>
+<p>微调大模型有三种范式：</p>
+<ol>
+<li><strong>无监督微调</strong>：在海量数据上进行二次预训练
 <ul>
-<li>3 种方式部署 DeepSeek R1：Ollama, vLLM 和 Transformers</li>
-<li>使用 vLLM 部署 Qwen2.5 模型</li>
-<li>安装 Open WebUI 作为本地模型的前端聊天框</li>
-<li>通过 <code>vllm serve</code> 实现一行代码启动 vLLM 推理服务</li>
+<li>PT 增量预训练</li>
 </ul>
-<p>✨ 快速部署说明在 <a href="https://github.com/luochang212/llm-deploy/tree/main/deploy" target="_blank">/deploy</a>，vLLM 服务启动脚本在 <a href="https://github.com/luochang212/llm-deploy/tree/main/server" target="_blank">/server</a>.</p>
-<h2 id="一本地部署-deepseek-r1">一、本地部署 DeepSeek R1</h2>
-<p>大模型本地部署依赖推理引擎，目前比较流行的推理引擎有：</p>
+</li>
+<li><strong>监督微调 (SFT)</strong>：构造领域数据集，增强模型的指令遵循能力，并注入领域知识
+<ul>
+<li>指令微调</li>
+</ul>
+</li>
+<li><strong>强化学习微调</strong>：通过 reward 引导模型优化
+<ul>
+<li><a href="https://arxiv.org/abs/2203.02155">RLHF</a> 基于人类反馈的强化学习</li>
+<li><a href="https://arxiv.org/abs/2305.18290">DPO</a> 直接偏好优化方法</li>
+<li><a href="https://arxiv.org/abs/2403.07691">ORPO</a> 比值比偏好优化</li>
+<li><a href="https://arxiv.org/abs/2402.03300">GRPO</a> 群体相对策略优化</li>
+</ul>
+</li>
+</ol>
+<p>本文聚焦 <strong>监督微调 (Supervised Fine-Tuning)</strong>。监督微调是一种简单但有效的微调方式，能够快速融合业务数据、适应业务场景，因此它的性价比极高！</p>
+<h3 id="1-sft-的简单介绍">1. SFT 的简单介绍</h3>
+<p>监督微调的优化目标是 <strong>最小化模型生成回答与目标回答之间的差异</strong>，通常使用交叉熵损失。为避免破坏预训练阶段获得的知识，SFT 阶段通常使用 <strong>较低的学习率</strong>，并且只更新部分参数层，其他参数保持不变。与预训练阶段所需的海量数据相比，SFT 只需 <strong>较小的数据量</strong>（数千到数十万样本），即可完成微调。</p>
+<h3 id="2-sft-的使用场景">2. SFT 的使用场景</h3>
+<p>为了让大家感受一下 SFT 能做什么，下面列举一些使用场景：</p>
 <table>
 <thead>
 <tr>
-<th>推理引擎</th>
-<th>场景</th>
-<th>介绍</th>
+<th>任务</th>
+<th>场景举例</th>
+<th>类型</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="https://github.com/ollama/ollama">Ollama</a></td>
-<td>适合个人开发者和轻量级应用</td>
-<td>基于 <a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a> 开发，支持 CPU 推理，安装简单，开箱即用，适合快速原型开发和测试</td>
+<td><strong>文案生成</strong></td>
+<td>输入标签：<code>红色#女士#卫衣</code>，输出文案：<code>女士专属红色卫衣，解锁秋冬时尚密码</code></td>
+<td>任务对齐</td>
 </tr>
 <tr>
-<td><a href="https://github.com/vllm-project/vllm">vLLM</a></td>
-<td>适合高并发生产环境</td>
-<td>支持多 GPU 并行、批处理、PagedAttention，吞吐量高，延迟低，适合大规模服务部署</td>
+<td><strong>情感分类</strong></td>
+<td>输入用户评论：<code>蓝牙连接不稳定</code>，输出情感标签：<code>负面</code></td>
+<td>任务对齐</td>
 </tr>
 <tr>
-<td><a href="https://github.com/huggingface/transformers">Transformers</a></td>
-<td>适合模型研究和实验</td>
-<td>提供完整的模型训练和推理接口，支持模型微调、量化、加速，适合研究人员和需要深度定制的场景</td>
-</tr>
-<tr>
-<td><a href="https://github.com/sgl-project/sglang">SGLang</a></td>
-<td>适合需要复杂推理流程的场景</td>
-<td>支持结构化输出、并行推理、流式输出，特别适合需要多轮对话和复杂推理的应用</td>
-</tr>
-<tr>
-<td><a href="https://github.com/InternLM/lmdeploy">LMDeploy</a></td>
-<td>适合企业级部署和边缘计算</td>
-<td>由上海人工智能实验室开发，提供完整的模型量化、加速和部署工具链，支持多种硬件平台，特别适合资源受限场景</td>
+<td><strong>合同审核</strong></td>
+<td>输入合同文本，输出潜在法律风险，并引述法条和案例</td>
+<td>知识迁移</td>
 </tr>
 </tbody>
 </table>
-<p>下面介绍如何部署 Ollama, vLLM, Transformers 这三款推理引擎，简要部署步骤见本项目的 <a href="https://github.com/luochang212/llm-deploy/tree/main/deploy">deploy</a> 目录。</p>
-<p>目录：</p>
-<ol>
-<li>Ollama</li>
-<li>vLLM
-<ul>
-<li>安装 miniconda</li>
-<li>安装 jupyterlab</li>
-<li>为 vllm 创建虚拟环境，并绑定到 jupyterlab</li>
-<li>安装 vLLM 及相关依赖</li>
-<li>下载模型文件</li>
-<li>启动 jupyterlab</li>
-<li>验证 vLLM</li>
-</ul>
-</li>
-<li>Transformers</li>
-</ol>
-<br>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/llm-deploy/blob/main/1.deepseek_deploy.ipynb')">查看笔记</button>
-</center>
-<br>
-<h2 id="二本地部署-qwen25">二、本地部署 Qwen2.5</h2>
-<p>模型名带 <code>Instruct</code> 说明该模型是经过指令调优（Instruction Tuning）的版本，专为理解和执行用户指令优化，适合对话生成、任务导向型场景。</p>
-<p>部署前要先下载模型文件：</p>
-<pre tabindex="0"><code># 安装 huggingface_hub
-pip install -U huggingface_hub
-
-cd model
-huggingface-cli download \
-    --resume-download Qwen/Qwen2.5-1.5B-Instruct \
-    --local-dir ./Qwen2.5-1.5B-Instruct
-</code></pre><p>推理效果：</p>
-<p><img src="/img/qwen_result.png" alt=""></p>
-<br>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/llm-deploy/blob/main/2.qwen_deploy.ipynb')">查看笔记</button>
-</center>
-<br>
-<h2 id="三open-webui-作为前端聊天框">三、Open WebUI 作为前端聊天框</h2>
-<p>第一节我用 3 种方式部署本地大模型：Ollama, vLLM 和 Transformers.</p>
-<p>有了本地部署的大模型作为推理后端，还要连接到前端聊天框，才算是完整。开源聊天框有很多，比如 AnythingLLM, LM Studio. 比较了一圈，姑且使用 <a href="https://github.com/open-webui/open-webui">Open WebUI</a>. 它有预开发的账号系统和历史记录，支持快速开发 RAG 和联网搜索。</p>
-<p>它的界面长这样：</p>
-<p><img src="/img/open_webui.jpg" alt=""></p>
-<p>目录：</p>
-<ol>
-<li>安装 Open WebUI
-<ul>
-<li>检查 Docker 环境</li>
-<li>下载镜像</li>
-<li>创建容器</li>
-<li>打开前端页面</li>
-</ul>
-</li>
-<li>为 WebUI 配置推理后端
-<ul>
-<li>Ollama</li>
-<li>vLLM</li>
-</ul>
-</li>
-</ol>
-<br>
-<center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/llm-deploy/blob/main/3.open_webui.ipynb')">查看笔记</button>
-</center>
-<br>
-<h2 id="四vllm-推理服务">四、vLLM 推理服务</h2>
-<p>vLLM 官方支持一行 bash 命令，启动 API 服务：</p>
-<pre tabindex="0"><code>vllm serve [YOUR MODEL or MODEL PATH]
-</code></pre><p>当然对于不同的模型，启动参数也略有不同，需要做一定的配适。比如对于 <code>deepseek-r1</code> 这类推理模型，必须添加参数 <code>--enable-reasoning --reasoning-parser deepseek_r1</code>。具体每个模型如何使用 vLLM，可参考 vLLM 官方文档或模型文档。</p>
+<h3 id="3-sft-的数据集格式">3. SFT 的数据集格式</h3>
+<p>SFT 通过人类精心设计的高质量数据集进行微调。</p>
+<p>微调使用的数据格式是灵活的。但是过于灵活的数据格式，可能导致加载数据的不便。SFT 经过几年时间，也逐渐发展出一些主流的数据格式。其中，<a href="https://github.com/tatsu-lab/stanford_alpaca">alpaca</a> 就是一种专为指令微调设计的数据格式。通常，每条 alpaca 数据由 <code>instruction</code>, <code>input</code>, <code>output</code> 三个字段组成。</p>
+<p><strong>1）问答数据集</strong></p>
+<pre tabindex="0"><code>{
+    &#34;instruction&#34;: &#34;帕金森叠加综合征的辅助治疗有些什么？&#34;,
+    &#34;input&#34;: &#34;&#34;,
+    &#34;output&#34;: &#34;综合治疗；康复训练；生活护理指导；低频重复经颅磁刺激治疗&#34;
+}
+</code></pre><p>上面是一条 alpaca 格式的问答数据。对于问答数据，<code>input</code> 字段可以留空。问题放在 <code>instruction</code> 字段；回答放在 <code>output</code> 字段。</p>
+<p><strong>2）指令微调数据集</strong></p>
+<pre tabindex="0"><code>{
+    &#34;instruction&#34;: &#34;请对下面这篇文章进行分类，分类标签从“教育”、“健康”、“游戏”、“其他”四个标签中选择。仅回答标签，不要回答除标签以外的任何内容。&#34;,
+    &#34;input&#34;: &#34;怪物猎人崛起实在是太好玩了！&#34;,
+    &#34;output&#34;: &#34;游戏&#34;
+}
+</code></pre><p>上面是一条 alpaca 格式的指令微调数据。指令微调数据的三个字段都有值。<code>instruction</code> 字段写我们希望模型做什么；<code>input</code> 字段写这次请求模型的输入，<code>output</code> 字段写这次请求我们希望模型输出什么。</p>
 <blockquote>
-<p><strong>PS:</strong> vLLM 的 API 服务遵循 OpenAI 的接口协议。</p>
+<p>SFT 还有其他数据格式，比如 <code>ShareGPT</code>, <code>ChatML</code> 等，参考 <a href="https://docs.unsloth.ai/basics/datasets-guide">datasets-guide</a></p>
 </blockquote>
-<p>目录：</p>
+<h3 id="4-本文的任务">4. 本文的任务</h3>
+<p>本文只有一个微调任务，但是通过三种框架实现。</p>
+<p><strong>一个任务：</strong></p>
+<p>使用 <strong>医疗问答数据集 medical</strong> 对 <strong>Qwen 模型</strong> 做 <strong>SFT 监督微调</strong>。相关资源列表：</p>
+<ul>
+<li>medical 数据集：<a href="https://huggingface.co/datasets/shibing624/medical">shibing624/medical</a></li>
+<li>LLaMA Factory：</li>
+<li><code>Qwen2.5-0.5B-Instruct</code> 模型：<a href="https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct">Qwen/Qwen2.5-0.5B-Instruct</a></li>
+<li><code>Qwen2.5-7B-Instruct</code> 模型：<a href="https://huggingface.co/Qwen/Qwen2.5-7B-Instruct">Qwen/Qwen2.5-7B-Instruct</a></li>
+</ul>
+<p><strong>三种框架：</strong></p>
+<ul>
+<li><strong>LLaMA Factory</strong>: 提供简洁的 UI 界面，支持零代码微调大模型</li>
+<li><strong>trl</strong>: 有 HuggingFace 生态支持，且工具链完备。不仅支持监督微调，对强化学习微调的支持也很好</li>
+<li><strong>unsloth</strong>: 擅长加速训练和量化技术，能显著减少显存使用量、加快训练速度</li>
+</ul>
+<p>本文旨在跑通流程，因此使用 <code>0.5B</code> 模型。这既能减少显存占用，也能更快完成任务。如果你有 RTX 5090 或者 GPU 服务器，可以考虑使用 <code>3B</code>, <code>7B</code> 等更大规模的模型。如果你计划用较多的样本进行训练，可以考虑使用非 Instruct 模型，关于这点建议参考文档 <a href="https://docs.unsloth.ai/get-started/beginner-start-here/what-model-should-i-use#instruct-or-base-model"><em>Instruct or Base Model?</em></a></p>
+<h2 id="二llama-factory">二、LLaMA-Factory</h2>
+<p>首先，我们来安装 <a href="https://github.com/hiyouga/LLaMA-Factory">LLaMA-Factory</a>。LLaMA Factory 是一个比较容易上手的微调框架，可以通过 WebUI 零代码微调大模型。</p>
 <ol>
-<li>DeepSeek-R1
+<li>环境准备
 <ul>
-<li>启动服务端</li>
-<li>运行客户端</li>
+<li>安装 LLaMA Factory</li>
+<li>下载 Qwen 模型</li>
+<li>模型推理测试</li>
 </ul>
 </li>
-<li>Qwen
+<li>数据准备
 <ul>
-<li>启动服务端</li>
-<li>运行客户端</li>
+<li>下载医疗对话数据集</li>
+<li>检查数据格式</li>
+<li>添加描述文件</li>
 </ul>
 </li>
-<li>符合 OpenAI 接口协议的 API 服务</li>
-<li>强制清理显存缓存</li>
+<li>微调大模型
+<ul>
+<li>SFT 监督微调</li>
+<li>加载训练好的 LoRA 文件</li>
+<li>导出微调后的模型</li>
+</ul>
+</li>
+<li>vLLM 作为推理后端
+<ul>
+<li>启动后端推理服务</li>
+<li>运行客户端获取结果</li>
+</ul>
+</li>
 </ol>
 <br>
 <center>
-<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/llm-deploy/blob/main/4.vllm_server.ipynb')">查看笔记</button>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/sft-note/blob/main/1.llama_factory.ipynb')">查看笔记</button>
 </center>
 <br>
-<p>参考：</p>
-<ul>
-<li>vLLM 仓库: <a href="https://github.com/vllm-project/vllm">vllm-project/vllm</a></li>
-<li>vLLM 文档: <a href="https://docs.vllm.ai/">docs.vllm.ai</a></li>
-<li>self-llm: <a href="https://github.com/datawhalechina/self-llm">datawhalechina/self-llm</a></li>
-</ul>
+<h2 id="三trl">三、trl</h2>
+<p><a href="https://github.com/huggingface/trl">trl</a> 的功能强大，支持 SFT, PPO, DPO, GRPO 等微调方法。并且有良好的生态支持，比如，trl 可以配合 <a href="https://github.com/huggingface/peft">peft</a> 的 <code>LoraConfig</code> 模块定义 LoRA 参数；配合 <a href="https://github.com/unslothai/unsloth">unsloth</a> 的 <code>FastLanguageModel</code> 模型加载模型。</p>
+<p>与上一节的 LLaMA Factory 相比，trl 可以更精细地定义训练中的行为。比如，如何加载数据集、如何构建损失函数、允许哪些参数层参与训练等等。适合需要深度控制训练过程的场景。</p>
+<ol>
+<li>加载数据集</li>
+<li>微调 Qwen 模型</li>
+<li>加载微调后的模型</li>
+</ol>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/sft-note/blob/main/2.trl.ipynb')">查看笔记</button>
+</center>
+<br>
+<h2 id="四unsloth">四、unsloth</h2>
+<p><a href="https://github.com/unslothai/unsloth">unsloth</a> 是目前最适合在消费级显卡上使用的微调框架，它的显存消耗少且速度极快。最感人的是它的文档也是最全的，回答了初学者的常见疑惑和一些很有价值的问题 &ndash;&gt; <a href="https://docs.unsloth.ai/get-started/beginner-start-here">⭐ Beginner? Start here!</a></p>
+<ol>
+<li>加载模型</li>
+<li>加载数据</li>
+<li>微调模型</li>
+<li>模型推理</li>
+<li>保存模型</li>
+<li>保存模型后重新加载</li>
+</ol>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/sft-note/blob/main/3.unsloth.ipynb')">查看笔记</button>
+</center>
+<br>
 <div id="mini-overlay" onclick="overlay_off()"></div>
 <div id="mini-window"><iframe id="mini-iframe" frameBorder="0"></iframe></div>
 <button id="btn-close" onclick="overlay_off()">×</button>
@@ -810,16 +818,11 @@ huggingface-cli download \
 
 <div class="navigation navigation-single">
     
-    <a href="/posts/langflow_rag_app/" class="navigation-prev">
+    <a href="/posts/cluster_label_assign/" class="navigation-prev">
       <i aria-hidden="true" class="fa fa-chevron-left"></i>
-      <span class="navigation-tittle">Langflow 实现本地知识库</span>
-    </a>
-    
-    
-    <a href="/posts/cluster_label_assign/" class="navigation-next">
       <span class="navigation-tittle">DNN 模型聚类特征更新方法</span>
-      <i aria-hidden="true" class="fa fa-chevron-right"></i>
     </a>
+    
     
 </div>
 
