@@ -9,7 +9,7 @@
     <lastBuildDate>Sat, 26 Apr 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://luochang212.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>三种方法实现监督微调 (SFT)：LLaMA Factory, trl 和 unsloth</title>
+      <title>三种方法实现监督微调：LLaMA Factory, trl 和 unsloth</title>
       <link>https://luochang212.github.io/posts/sft_note/</link>
       <pubDate>Sat, 26 Apr 2025 00:00:00 +0000</pubDate>
       <guid>https://luochang212.github.io/posts/sft_note/</guid>

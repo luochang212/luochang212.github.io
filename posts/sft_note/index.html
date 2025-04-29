@@ -19,18 +19,18 @@
     
     
 
-<title>三种方法实现监督微调 (SFT)：LLaMA Factory, trl 和 unsloth • Chang Luo</title>
+<title>三种方法实现监督微调：LLaMA Factory, trl 和 unsloth • Chang Luo</title>
 
 
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="三种方法实现监督微调 (SFT)：LLaMA Factory, trl 和 unsloth">
+  <meta name="twitter:title" content="三种方法实现监督微调：LLaMA Factory, trl 和 unsloth">
   <meta name="twitter:description" content="SFT 是一种简单有效的大模型微调方法，本文为了入门写的 side project">
       <meta name="twitter:site" content="@MinosPalace">
 
 <meta property="og:url" content="https://luochang212.github.io/posts/sft_note/">
   <meta property="og:site_name" content="Chang Luo">
-  <meta property="og:title" content="三种方法实现监督微调 (SFT)：LLaMA Factory, trl 和 unsloth">
+  <meta property="og:title" content="三种方法实现监督微调：LLaMA Factory, trl 和 unsloth">
   <meta property="og:description" content="SFT 是一种简单有效的大模型微调方法，本文为了入门写的 side project">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
@@ -560,7 +560,7 @@
 
 <article>
   <header>
-    <h1>三种方法实现监督微调 (SFT)：LLaMA Factory, trl 和 unsloth</h1>
+    <h1>三种方法实现监督微调：LLaMA Factory, trl 和 unsloth</h1>
     
     
 <div class="post__meta">
@@ -684,7 +684,7 @@
 </table>
 <h3 id="3-sft-的数据集格式">3. SFT 的数据集格式</h3>
 <p>SFT 通过人类精心设计的高质量数据集进行微调。</p>
-<p>微调使用的数据格式是灵活的。但是过于灵活的数据格式，可能导致加载数据的不便。SFT 经过几年时间，也逐渐发展出一些主流的数据格式。其中，<a href="https://github.com/tatsu-lab/stanford_alpaca">alpaca</a> 就是一种专为指令微调设计的数据格式。通常，每条 alpaca 数据由 <code>instruction</code>, <code>input</code>, <code>output</code> 三个字段组成。</p>
+<p>微调使用的数据格式是灵活的。但是过于灵活的数据格式，可能导致加载数据的不便。经过几年时间，逐渐发展出一些主流的数据格式。其中，<a href="https://github.com/tatsu-lab/stanford_alpaca">alpaca</a> 就是一种专为指令微调设计的数据格式。通常，每条 alpaca 数据由 <code>instruction</code>, <code>input</code>, <code>output</code> 三个字段组成。</p>
 <p><strong>1）问答数据集</strong></p>
 <pre tabindex="0"><code>{
     &#34;instruction&#34;: &#34;帕金森叠加综合征的辅助治疗有些什么？&#34;,
