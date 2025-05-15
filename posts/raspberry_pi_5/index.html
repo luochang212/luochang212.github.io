@@ -799,6 +799,25 @@ Enter same passphrase again:
 </ul>
 </li>
 </ul>
+<h4 id="9安装-code-server">9）安装 code-server</h4>
+<h2 id="ubuntu-系统安装-code-server">Ubuntu 系统安装 <code>code-server</code></h2>
+<p><a href="https://github.com/coder/code-server">code-server</a> 是服务器版的 VSCode。比起 jupyter lab，code-server 更适合对项目级的代码进行开发和管理。</p>
+<p>① 安装脚本</p>
+<pre tabindex="0"><code>curl -fsSL https://code-server.dev/install.sh | sh
+</code></pre><p>② 启动服务</p>
+<p>安装完成后，运行以下命令在后台启动 code-server 服务：</p>
+<pre tabindex="0"><code># 启动 code server
+code-server
+
+# 如果需要指定主机和端口
+code-server --host 0.0.0.0 --port 7635
+</code></pre><blockquote>
+<p>注：如无额外配置，服务在默认地址开启：<a href="http://127.0.0.1:8080">http://127.0.0.1:8080</a></p>
+</blockquote>
+<p>③ 获取密码</p>
+<p>初次进入需要密码，在 terminal 运行以下命令打印密码：</p>
+<pre tabindex="0"><code>cat ~/.config/code-server/config.yaml
+</code></pre><p>PS: 本教程来自 <a href="https://github.com/luochang212/mcp-project/blob/main/install_code_server.ipynb">luochang212/mcp-project</a>.</p>
 <h3 id="六软件推荐">六、软件推荐</h3>
 <table>
 <thead>
