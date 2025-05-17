@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://luochang212.github.io/posts/underground_idols/</loc>
+    <lastmod>2025-05-17T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://luochang212.github.io/posts/sft_note/</loc>
     <lastmod>2025-04-26T00:00:00+00:00</lastmod>
   </url><url>
@@ -180,21 +183,36 @@
     <lastmod>2017-07-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/categories/</loc>
-    <lastmod>2025-04-26T00:00:00+00:00</lastmod>
+    <lastmod>2025-05-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/</loc>
-    <lastmod>2025-04-26T00:00:00+00:00</lastmod>
+    <lastmod>2025-05-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/echo/</loc>
+    <lastmod>2025-05-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/categories/live/</loc>
+    <lastmod>2025-05-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/party2x/</loc>
+    <lastmod>2025-05-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/posts/</loc>
+    <lastmod>2025-05-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/realm/</loc>
+    <lastmod>2025-05-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/</loc>
+    <lastmod>2025-05-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/terepashi/</loc>
+    <lastmod>2025-05-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/tags/llama-factory/</loc>
     <lastmod>2025-04-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/categories/llms/</loc>
-    <lastmod>2025-04-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://luochang212.github.io/posts/</loc>
-    <lastmod>2025-04-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://luochang212.github.io/tags/</loc>
     <lastmod>2025-04-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/tags/trl/</loc>
