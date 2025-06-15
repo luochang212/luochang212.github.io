@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ReActChat on Chang Luo</title>
+    <link>http://localhost:1313/tags/reactchat/</link>
+    <description>Recent content in ReActChat on Chang Luo</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 08 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/reactchat/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Agent 实战：智能路由、任务拆解与链路工程</title>
+      <link>http://localhost:1313/posts/agent_project/</link>
+      <pubDate>Sun, 08 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/agent_project/</guid>
+      <description>大模型（LLM）的输入是语言，输出也是语言，它终究是一种语言模态。如果它想拥有影响真实世界的能力，就需要操纵代码、操纵机械臂。因为我们的大模型没有智能到自己适应工具，所以需要工程师帮它开发接口，通过接口桥接到各种工具上。这种想法是如此的平滑和自然，以至于它确实就是这么实现的 &amp;hellip;&amp;hellip;&#xA;2024 年 11 月，Anthropic MCP 发布 2025 年 1 月，Qwen Agent 发布 2025 年 3 月，OpenAI Agents 发布 2025 年 4 月，Google A2A 发布 这里的每项技术，都在解决我们关切的问题。MCP 解决模型与外部工具统一协议的问题；Agent 解决 LLM 之间如何沟通协作的问题；A2A 可能有点为时尚早，它解决的是 Agent 之间的组织问题。&#xA;一、引言 1. 尚未到来的涌现 We always overestimate the change that will occur in the next two years and underestimate the change that will occur in the next ten. &amp;ndash; Bill Gates&#xA;把大象放进冰箱只需要三步。让大模型实现自举，似乎也不需要太多步：&#xA;让大模型自己处理语料 让大模型自己训练自己 让大模型自己运行评估脚本、反思、优化、调整超参、继续实验 &amp;hellip;&amp;hellip; 完成这样一个循环，大模型就能自己提升自己，也就是能够 自举 了。只要完成一次，就意味着它能完成两次、三次，不断地自我进化，还蛮恐怖的。</description>
+    </item>
+  </channel>
+</rss>
