@@ -25,13 +25,13 @@
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Agent 实战：智能路由、任务拆解和链路工程">
-  <meta name="twitter:description" content="Agent 本质是 LLM 调度器，它能做的无非是 LLM 擅长的那些，外加一些由组织和规划所产生的能力">
+  <meta name="twitter:description" content="Agent 本质是 LLM 的调度器，它能做的无非是 LLM 擅长的那些，外加一些由组织和规划所产生的能力">
       <meta name="twitter:site" content="@_stellar_tide">
 
 <meta property="og:url" content="https://luochang212.github.io/posts/agent_project/">
   <meta property="og:site_name" content="Chang Luo">
   <meta property="og:title" content="Agent 实战：智能路由、任务拆解和链路工程">
-  <meta property="og:description" content="Agent 本质是 LLM 调度器，它能做的无非是 LLM 擅长的那些，外加一些由组织和规划所产生的能力">
+  <meta property="og:description" content="Agent 本质是 LLM 的调度器，它能做的无非是 LLM 擅长的那些，外加一些由组织和规划所产生的能力">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -771,8 +771,8 @@
 <h3 id="2-开发-webui">2. 开发 WebUI</h3>
 <p>我还开发了对应的 WebUI：</p>
 <ol>
-<li><strong>ReActChat WebUI</strong>：<a href="./gradio_postgres_agent.py">gradio_postgres_agent.py</a></li>
-<li><strong>Workflow WebUI</strong>：<a href="./gradio_postgres_workflow.py">gradio_postgres_workflow.py</a></li>
+<li><strong>ReActChat WebUI</strong>：<a href="https://github.com/luochang212/agent-project/blob/main/gradio_postgres_agent.py">gradio_postgres_agent.py</a></li>
+<li><strong>Workflow WebUI</strong>：<a href="https://github.com/luochang212/agent-project/blob/main/gradio_postgres_workflow.py">gradio_postgres_workflow.py</a></li>
 </ol>
 <p>在本地启动 WebUI 尝试哪种方法更优：</p>
 <p><strong>1）ReActChat WebUI</strong>：用于验证提示词工程思路</p>
@@ -844,10 +844,10 @@ python gradio_postgres_workflow.py
 <p>Agent 是调用 MCP 的最佳方法，两者无法分开，因此不得不将两者置于同一项目下。如此，项目便显得有些臃肿。为了让它条理清晰，我又不得不设置了一些阶段性的小目标。于是便有了预研计划。</p>
 <p>预研计划如下：</p>
 <ol>
-<li>Qwen3 推理脚本开发：<a href="./test_qwen3/README.md">test_qwen3</a></li>
-<li>基于 LangChain 实现 RAG：<a href="./test_rag/README.md">test_rag</a></li>
-<li>Qwen Agent 的简单使用：<a href="./test_qwen_agent/README.md">test_qwen_agent</a></li>
-<li>OpenAI Agents 的简单使用：<a href="./test_openai_agent/README.md">test_openai_agent</a></li>
+<li>Qwen3 推理脚本开发：<a href="https://github.com/luochang212/agent-project/tree/main/test_qwen3">test_qwen3</a></li>
+<li>基于 LangChain 实现 RAG：<a href="https://github.com/luochang212/agent-project/tree/main/test_rag">test_rag</a></li>
+<li>Qwen Agent 的简单使用：<a href="https://github.com/luochang212/agent-project/tree/main/test_qwen_agent">test_qwen_agent</a></li>
+<li>OpenAI Agents 的简单使用：<a href="https://github.com/luochang212/agent-project/tree/main/test_openai_agent">test_openai_agent</a></li>
 </ol>
 <p>关于预研计划的具体说明见 <a href="https://github.com/luochang212/agent-project?tab=readme-ov-file#%E4%BA%94%E9%A2%84%E7%A0%94%E8%AE%A1%E5%88%92">预研计划</a>。</p>
 <p>参考：</p>
