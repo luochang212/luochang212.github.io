@@ -760,7 +760,7 @@
 </center>
 <br>
 <h2 id="三数据库查询优化-nl2sql-优化">三、数据库查询优化 (NL2SQL 优化)</h2>
-<p>我发现只用 <a href="https://github.com/modelcontextprotocol/servers-archived/tree/main/src/postgres">Postgres MCP Server</a> 无法达到很好的查询效果。于是决定做一些 Agent 的链路工程开发，以提升 MCP 使用数据库数据的能力。我们注意到直接使用 MCP 无法达到很好效果的原因是：Agent 不会固定地“先获取表结构，再写 SQL”；而是“在缺乏背景信息地情况下，直接写 SQL”，由此产生了幻觉。</p>
+<p>我发现只用 <a href="https://github.com/modelcontextprotocol/servers-archived/tree/main/src/postgres">Postgres MCP Server</a> 无法达到很好的查询效果。于是决定做一些 Agent 的链路工程开发，以提升 MCP 使用数据库数据的能力。我们注意到直接使用 MCP 无法达到很好效果的原因是：Agent 不会固定地“先获取表结构，再写 SQL”；而是“在缺乏背景信息的情况下，直接写 SQL”，由此产生了幻觉。</p>
 <h3 id="1-两种思路">1. 两种思路</h3>
 <p>我们尝试以下两种思路，看一下哪种方法更优：</p>
 <p><strong>1）提示词工程</strong></p>
@@ -801,7 +801,7 @@ python gradio_postgres_workflow.py
 <blockquote>
 <p>注：数据库中的 <code>timestamp</code> 是以 UTC 格式存储的。</p>
 </blockquote>
-<h3 id="3-小节">3. 小节</h3>
+<h3 id="3-小结">3. 小结</h3>
 <p>好啦，两种思路的结果对比完成！</p>
 <p>在同样使用 <code>0.6B</code> 模型的情况下，链路工程显然更胜一筹。虽然开发链路工程很辛苦，但是我们的努力带来了回报！它最终提升了查询结果的准确性。</p>
 <p>下面，我们来看一下链路工程具体是怎么开发的。</p>
