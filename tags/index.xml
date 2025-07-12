@@ -6,8 +6,29 @@
     <description>Recent content in Tags on Chang Luo</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 15 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 12 Jul 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://luochang212.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Magic</title>
+      <link>https://luochang212.github.io/tags/magic/</link>
+      <pubDate>Sat, 12 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/tags/magic/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>MCP</title>
+      <link>https://luochang212.github.io/tags/mcp/</link>
+      <pubDate>Sat, 12 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/tags/mcp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Number-Theory</title>
+      <link>https://luochang212.github.io/tags/number-theory/</link>
+      <pubDate>Sat, 12 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/tags/number-theory/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Function Calling</title>
       <link>https://luochang212.github.io/tags/function-calling/</link>
@@ -37,10 +58,10 @@
       <description></description>
     </item>
     <item>
-      <title>ReAct</title>
-      <link>https://luochang212.github.io/tags/react/</link>
+      <title>ReActChat</title>
+      <link>https://luochang212.github.io/tags/reactchat/</link>
       <pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/tags/react/</guid>
+      <guid>https://luochang212.github.io/tags/reactchat/</guid>
       <description></description>
     </item>
     <item>
@@ -657,13 +678,6 @@
       <link>https://luochang212.github.io/tags/combinatorics/</link>
       <pubDate>Fri, 21 Feb 2020 00:00:00 +0000</pubDate>
       <guid>https://luochang212.github.io/tags/combinatorics/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Number-Theory</title>
-      <link>https://luochang212.github.io/tags/number-theory/</link>
-      <pubDate>Fri, 21 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/tags/number-theory/</guid>
       <description></description>
     </item>
     <item>

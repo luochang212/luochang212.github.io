@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://luochang212.github.io/posts/card_magic_mcp/</loc>
+    <lastmod>2025-07-12T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://luochang212.github.io/posts/agent_project/</loc>
     <lastmod>2025-06-15T00:00:00+00:00</lastmod>
   </url><url>
@@ -185,13 +188,31 @@
     <loc>https://luochang212.github.io/posts/nezha/</loc>
     <lastmod>2017-07-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://luochang212.github.io/categories/agent/</loc>
-    <lastmod>2025-06-15T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://luochang212.github.io/categories/</loc>
-    <lastmod>2025-06-15T00:00:00+00:00</lastmod>
+    <lastmod>2025-07-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/</loc>
+    <lastmod>2025-07-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/magic/</loc>
+    <lastmod>2025-07-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/mcp/</loc>
+    <lastmod>2025-07-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/number-theory/</loc>
+    <lastmod>2025-07-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/posts/</loc>
+    <lastmod>2025-07-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/categories/sota/</loc>
+    <lastmod>2025-07-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/</loc>
+    <lastmod>2025-07-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/categories/agent/</loc>
     <lastmod>2025-06-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/tags/function-calling/</loc>
@@ -203,16 +224,10 @@
     <loc>https://luochang212.github.io/tags/nl2sql/</loc>
     <lastmod>2025-06-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://luochang212.github.io/posts/</loc>
-    <lastmod>2025-06-15T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://luochang212.github.io/tags/qwen-agent/</loc>
     <lastmod>2025-06-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://luochang212.github.io/tags/react/</loc>
-    <lastmod>2025-06-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://luochang212.github.io/tags/</loc>
+    <loc>https://luochang212.github.io/tags/reactchat/</loc>
     <lastmod>2025-06-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/tags/workflow/</loc>
@@ -497,9 +512,6 @@
     <loc>https://luochang212.github.io/tags/app/</loc>
     <lastmod>2022-07-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://luochang212.github.io/categories/sota/</loc>
-    <lastmod>2022-07-03T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://luochang212.github.io/tags/api/</loc>
     <lastmod>2020-11-21T00:00:00+00:00</lastmod>
   </url><url>
@@ -516,9 +528,6 @@
     <lastmod>2020-06-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/tags/combinatorics/</loc>
-    <lastmod>2020-02-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://luochang212.github.io/tags/number-theory/</loc>
     <lastmod>2020-02-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/tags/experience/</loc>

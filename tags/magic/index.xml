@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Magic on Chang Luo</title>
+    <link>https://luochang212.github.io/tags/magic/</link>
+    <description>Recent content in Magic on Chang Luo</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 12 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://luochang212.github.io/tags/magic/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>新瓶装旧酒：纸牌魔术 MCP</title>
+      <link>https://luochang212.github.io/posts/card_magic_mcp/</link>
+      <pubDate>Sat, 12 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/posts/card_magic_mcp/</guid>
+      <description>Chico 和 Dico 是两名魔术师，他们有一个经典纸牌魔术：抽五张扑克牌，根据前四张，猜第五张是什么。完成这个魔术不需要任何魔术师的技巧，它完全建立在数学原理之上。只需要一点数学知识和充分的练习，你也能表演这个魔术。&#xA;GitHub 项目地址：card-magic-mcp&#xA;五年前，我写了一篇文章《用魔法打败魔法》，介绍 Chico &amp;amp; Dico 魔术的数学原理，并用 Python 实现了这个魔术。随着时代的发展、科技的进步，今天我们有更简单的方法来玩这个魔术，不需要运行 Python，不需要看懂公式，只需要打开 ModelScope 和大模型对话，就可以轻松体验这个魔术↓↓↓&#xA;访问 ModelScope Playground: card-magic-mcp&#xA;下面我将介绍这个魔术的数学原理和算法实现，然后讲解如何用 FastMCP 将魔术流程包装成大语言模型可以调用的工具（MCP Server）。&#xA;Chico &amp;amp; Dico 的魔术 Chico 和 Dico 是两位魔术师，他们经常表演的一个魔术是这样的：Chico 将一副 52 张的扑克牌交给观众，让他抽取其中的 5 张。然后 Chico 将这 5 张牌按一定的顺序重新排列，再将其还给观众。上述整个过程 Dico 都是看不见的。然而，当观众按 Chico 排好的顺序依次展示前四张牌之后，Dico 却能准确地说出第五张牌是什么。&#xA;乍一看这个魔术很神奇。随机抽取 5 张牌，你能从前 4 张牌中看出第 5 张牌是什么吗？对于普通人来说，当然不行。Chico 和 Dico 的秘诀在于 Chico 有机会将扑克重新排序。如果两人事先约定好某种协议，Chico 有可能通过前四张扑克排列的顺序，向 Dico 传递关于第 5 张牌的信息。&#xA;关键在于如何实现这种协议。&#xA;数学原理 在进行分析之前，我们需要把 Chico &amp;amp; Dico 的魔术抽象成一个数学模型。</description>
+    </item>
+  </channel>
+</rss>
