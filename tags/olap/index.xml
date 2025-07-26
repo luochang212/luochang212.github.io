@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Agent on Chang Luo</title>
-    <link>https://luochang212.github.io/categories/agent/</link>
-    <description>Recent content in Agent on Chang Luo</description>
+    <title>OLAP on Chang Luo</title>
+    <link>https://luochang212.github.io/tags/olap/</link>
+    <description>Recent content in OLAP on Chang Luo</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 26 Jul 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://luochang212.github.io/categories/agent/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://luochang212.github.io/tags/olap/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>耶是 ClickHouse！我们有救了！！</title>
       <link>https://luochang212.github.io/posts/chat_to_clickhouse/</link>
       <pubDate>Sat, 26 Jul 2025 00:00:00 +0000</pubDate>
       <guid>https://luochang212.github.io/posts/chat_to_clickhouse/</guid>
       <description>本来我是懒得装的，但是 MySQL 查询太慢了，遭不住，咱还是把 ClickHouse 装起来吧。&#xA;GitHub 项目地址：chat-to-clickhouse&#xA;在《Agent 实战：智能路由、任务拆解和链路工程》中，我实现了一个简单的 ChatBI，它能通过 MCP 访问 MySQL 数据库。对于千万量级的数据，一次查询需要耗时数秒甚至数十秒。兼以 Agent 的 NL2SQL 尚未做到 one-shot，它需要一个试错和改进的过程，整个任务的耗时只会更长。在这种情况下，查询效率变得尤为重要。&#xA;如何解决查询效率低下的问题呢？这便引入今天的主角：ClickHouse。&#xA;一、分析利器 ClickHouse 是 Yandex 旗下的一款开源的列式存储数据库，专为 联机分析处理 (OLAP) 场景设计。在做数据分析时，它比传统数据库快几倍到几十倍。分析场景的核心需求是「聚合计算」，即 GROUP BY 子句下的 SUM, AVG, COUNT 操作，这些正是 ClickHouse 的强项。&#xA;为什么它的聚合计算如此之快呢？因为它有以下特性：&#xA;列式存储：顾名思义，列存的数据是按列存储的。这种存储方式可以减少无效 I/O，因为列存可以只读取查询中涉及的列。而非行存那样，读取整行后再丢掉不需要的列 并行计算：列存的另一个优势是数据更容易切分。单列数据的连续性和同构性更强，无需考虑与其他列的关联，因此可以更方便地按维度（如时间区间、数值分段）拆分并分配到不同节点。当然，这种设计的代价是使得插入操作变得更加昂贵 物化视图：物化视图可以把高频分析的结果提前算好存在表里，后续查询直接读结果，无需重新计算 二、安装过程 用 Docker 安装，过程相对简单。工业界在集群上装，比咱们这个复杂不少。&#xA;1. 配置 Docker 镜像源 大陆使用 Docker，免不了配置镜像源。如果你是 Linux 系统 (Ubuntu, CentOS)，Docker 的配置文件在 /etc/docker/daemon.json。如果你是 Windows 或 MacOS 用户，可以在 Docker Desktop 的 Settings -&amp;gt; Docker Engine 里改 daemon.</description>
-    </item>
-    <item>
-      <title>Agent 实战：智能路由、任务拆解和链路工程</title>
-      <link>https://luochang212.github.io/posts/agent_project/</link>
-      <pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>https://luochang212.github.io/posts/agent_project/</guid>
-      <description>大模型天生具有幻觉，为了工程的准确性，我们奉行“非必要不Agent”原则。我们是专业的，除非忍不住，否则绝不用 Agent。&#xA;特别声明：本文使用 Qwen Agent 实现。&#xA;本文包含以下两个项目：&#xA;1）智能路由&#xA;概述：如果一个业务可以分很多种情况处理。针对每种情况，我们开发一个工具函数 (Function Calling)，来处理此种情况内部的复杂性。此时，Agent 充当智能路由的角色，将对应的情况路由到对应的工具函数。工具函数内部带有描述信息，Agent 可以访问这些信息，以此判断在何种情况下，调用这个工具函数。&#xA;具体来讲，本项目开发了一个 客诉核查 Agent。针对 物流逾期 和 假货 两种客诉，分别开发了对应的工具函数。Agent 通过接入工具函数，获得了核查以上两种客诉真实性的能力。当我们将客诉信息传递给 Agent，它会输出针对该客诉的 核查结论 和 相应证据。&#xA;2）数据库查询优化&#xA;概述：数据库查询是一个非常通用的需求，其中 NL2SQL 是难点。为了提升 NL2SQL 的准确性，很容易想到把数据表的 Schema、样例数据、个别字段的枚举值作为上下文 (context) 注入到原始 Prompt 中。本项目实现了这一点。&#xA;具体来说，本项目做了以下工作：&#xA;启用 Qwen Agent 的 ReActChat 模式，以提升多步骤情况下的性能 开发定制的 Workflow，用于将 Schema 等上下文信息注入原始 Prompt 中 开发可流式对话的 Gradio WebUI，以方便调试 Agent 和 Workflow ✨ 所有代码见 GitHub 仓库：luochang212/agent-project&#xA;一、引言 1. 尚未到来的涌现 We always overestimate the change that will occur in the next two years and underestimate the change that will occur in the next ten.</description>
     </item>
   </channel>
 </rss>

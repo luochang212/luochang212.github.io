@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="https://luochang212.github.io/posts/chat_to_clickhouse/">
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.132.1">
+
+    
+    
+    
+
+<title>耶是 ClickHouse！我们有救了！！ • Chang Luo</title>
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="耶是 ClickHouse！我们有救了！！">
+  <meta name="twitter:description" content="让 ChatBI 的查询速度 UP UP">
+      <meta name="twitter:site" content="@_stellar_tide">
+
+<meta property="og:url" content="https://luochang212.github.io/posts/chat_to_clickhouse/">
+  <meta property="og:site_name" content="Chang Luo">
+  <meta property="og:title" content="耶是 ClickHouse！我们有救了！！">
+  <meta property="og:description" content="让 ChatBI 的查询速度 UP UP">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-07-26T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-07-26T00:00:00+00:00">
+    <meta property="article:tag" content="OLAP">
+    <meta property="article:tag" content="ClickHouse">
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+
+<link rel="stylesheet" href="/scss/tocbot.5ef07cebc3c477b54270456f149ee02922479bb7555fd344b2c69f953b0e7e5e.css" integrity="sha256-XvB868PEd7VCcEVvFJ7gKSJHm7dVX9NEssaflTsOfl4=">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    
+
+</head>
+
+
+    <body class=" ">
+    <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://upcdn.b0.upaiyun.com/libs/jquery/jquery-1.9.0.min.js"></script>
+
+  <style>
+    body {
+      transition: background-color .5s;
+    }
+
+    #overlay {
+      position: fixed;
+      display: none;
+      width: calc(100vw - 580px);
+      height: 100%;
+      top: 0;
+      left: 0;
+       
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      right: 0;
+      background-color: #FFF;
+      overflow: hidden;
+      transition: 0.5s;
+    }
+
+    #main {
+      transition: margin-left .5s;
+       
+      padding: 16px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      overflow: hidden;
+    }
+
+     
+    .tab {
+      overflow: hidden;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+    }
+
+     
+    .tab button {
+      background-color: inherit;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      transition: 0.3s;
+      font-size: 17px;
+    }
+
+     
+    .tab button:hover {
+      background-color: #ddd;
+    }
+
+     
+    .tab button.active {
+      background-color: #ccc;
+    }
+
+     
+    .tabcontent {
+      display: flex;
+      padding: 12px 12px;
+      margin: 0;
+      border: 1px solid #ccc;
+      border-top: none;
+      overflow: hidden;
+      height: calc(100vh - 90px);
+    }
+
+    .dropbtn {
+      background-color: #3498DB;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+    }
+
+    .dropup {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropup-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      bottom: 50px;
+      z-index: 1;
+    }
+
+    .dropup-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropup-content a:hover {
+      background-color: #ccc
+    }
+
+    .dropup:hover .dropup-content {
+      display: block;
+    }
+
+    .dropup:hover .dropbtn {
+      background-color: #2980B9;
+    }
+
+    #video2,
+    #video3 {
+      display: none;
+    }
+
+    .myiframe {
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  
+  <div class="sidebar">
+    <div class="container ">
+      <div class="sidebar-about">
+        <span class="site__title">
+          <a href="https://luochang212.github.io/">Chang Luo</a>
+        </span>
+        
+        
+        
+        <div class="author-image">
+          <a href="#" class="load-iframe" onclick="openNav()"><img src="https://luochang212.github.io//images/profile.webp" id="author-iamge"
+              alt="Author Image" class="img--circle img--headshot element--center"></a>
+        </div>
+        
+        <p class="site__description">
+          
+        </p>
+      </div>
+      <div class="collapsible-menu">
+        <input type="checkbox" id="menuToggle">
+        <label for="menuToggle">Chang Luo</label>
+        <div class="menu-content">
+          <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/portfolio/">
+						<span>Projects</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+          <section class="social">
+	
+	<a href="https://twitter.com/_stellar_tide" rel="me"><i class="fab fa-x-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	<a href="https://github.com/luochang212" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	<a href="https://instagram.com/suphenshin" rel="me"><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></a>
+	
+	
+	<a href="https://linkedin.com/in/bupt-luochang" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</section>
+
+        </div>
+      </div>
+      
+<div class="copyright">
+  &copy; 2025 Chang Luo
+  
+</div>
+
+
+
+    </div>
+  </div>
+
+  
+  
+
+  <div id="overlay" onclick="off()"></div>
+
+  <div id="mySidenav" class="sidenav">
+
+    <div id="main">
+      <div class="tab">
+        <button id="default-tab" class="tablinks" onclick="openItem(event, 'Resources')">Resources</button>
+        <button class="tablinks" onclick="openItem(event, 'netease-player')">Music</button>
+        <button class="tablinks" onclick="openItem(event, 'video-player')">Video</button>
+        <button class="tablinks" onclick="openItem(event, 'gallery')">Gallery</button>
+        <button class="tablinks" onclick="openItem(event, 'gadget')">Gadget</button>
+        <button class="tablinks" onclick="openItem(event, 'categories')">Cats</button>
+      </div>
+
+      <div id="Resources" class="tabcontent">
+        <iframe class="myiframe"
+          src="about:blank"
+          data-src="/resources/"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          scrolling="auto"></iframe>
+      </div>
+
+      <div id="netease-player" class="tabcontent">
+        <iframe class="myiframe"
+          src="about:blank"
+          data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
+          frameborder="no"
+          marginheight="0"
+          marginwidth="0"
+          scrolling="auto"></iframe>
+      </div>
+
+      <div id="video-player" class="tabcontent">
+        <div id="video1">
+          <iframe src="about:blank"
+            data-src="//player.bilibili.com/player.html?bvid=BV1Ln4y1d7Z9&p=1&high_quality=1&danmaku=0&autoplay=0"
+            style="width:100%; height: 500px"
+            scrolling="no"
+            frameborder="no"
+            framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+        <div id="video2">
+          <iframe src="about:blank"
+            data-src="//player.bilibili.com/player.html?bvid=BV1rp4y1L7i4&p=1&high_quality=1&danmaku=0&autoplay=0"
+            style="width:100%; height: 500px"
+            scrolling="no"
+            frameborder="no"
+            framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+        <div id="video3">
+          <iframe src="about:blank"
+            data-src="//player.bilibili.com/player.html?bvid=BV1Av4y147QE&p=1&high_quality=1&danmaku=0&autoplay=0"
+            style="width:100%; height:500px"
+            scrolling="no"
+            frameborder="no"
+            framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+
+        
+
+        
+
+        <br>
+        <div class="dropup">
+          <button class="dropbtn">更多视频</button>
+          <div class="dropup-content">
+            <a onclick="link1()">ZUTOMYAO</a>
+            <a onclick="link2()">岁岁恋</a>
+            <a onclick="link3()">真物论</a>
+          </div>
+        </div>
+      </div>
+
+      <div id="gallery" class="tabcontent">
+        <iframe class="myiframe"
+        src="about:blank"
+        data-src="/gadget/gallery/#two"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        scrolling="auto"></iframe>
+      </div>
+
+      <div id="gadget" class="tabcontent">
+        <iframe class="myiframe"
+        src="about:blank"
+        data-src="/tool/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        scrolling="auto"></iframe>
+      </div>
+
+      <div id="categories" class="tabcontent">
+        <iframe class="myiframe"
+        src="about:blank"
+        data-src="/categories/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        scrolling="auto"></iframe>
+      </div>
+    </div>
+  </div>
+
+  
+  <script>
+    'use strict'
+
+    function openNav() {
+      on();
+      document.getElementById("mySidenav").style.width = "580px";
+      document.body.style.backgroundColor = "rgba(0,0,0,0.5)";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.body.style.backgroundColor = "white";
+    }
+
+    function on() {
+      document.getElementById("overlay").style.display = "block";
+    }
+
+    function off() {
+      closeNav();
+      document.getElementById("overlay").style.display = "none";
+    }
+
+    
+    document.getElementById('default-tab').click();
+
+    function openItem(evt, itemName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(itemName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+
+    function link1() {
+      document.getElementById("video1").style.display = "block";
+      document.getElementById("video2").style.display = "none";
+      document.getElementById("video3").style.display = "none";
+    }
+
+    function link2() {
+      document.getElementById("video1").style.display = "none";
+      document.getElementById("video2").style.display = "block";
+      document.getElementById("video3").style.display = "none";
+    }
+
+    function link3() {
+      document.getElementById("video1").style.display = "none";
+      document.getElementById("video2").style.display = "none";
+      document.getElementById("video3").style.display = "block";
+    }
+
+     
+    var flag = 0;
+
+     
+    $(".load-iframe").click(function () {
+      if (flag < 1) {
+        $("iframe").each(function () {
+          $(this).attr("src", $(this).data("src"));
+        });
+        flag = flag + 1;
+      }
+    });
+  </script>
+
+</body>
+
+
+
+        <div class="content container">
+            
+    <style>
+  .my-emoji {
+    height: 25px;
+    display: inline-block;
+    margin: 0;
+    vertical-align: text-bottom;
+  }
+
+  .social-links a {
+    color: rgba(120,120,120,1);
+    text-decoration: none;
+    outline: none !important;
+    cursor: pointer;
+    transition-property: padding, text-shadow, line-height, color, background, opacity, transform;
+    transition-duration: .25s;
+    transition-timing-function: ease-in-out;
+    display: inline-block;
+    white-space: nowrap;
+    position: relative;
+  }
+
+  .social-links a:after {
+    content: "";
+    display: block;
+    height: .125rem;
+    margin: -.125rem 0 0;
+    background: rgba(0,0,0,.5);
+    border-radius: 1px;
+    transform: scaleX(0);
+    transition: transform .25s ease-in-out;
+  }
+
+  .social-links a:hover:after {
+    transform: scaleX(1);
+  }
+
+  .social-links a:hover {
+    color: rgba(120,120,120,1);
+  }
+
+  .post {
+    margin-bottom: 0;
+  }
+
+  .post-footer {
+    margin-top: 0;
+    padding-top: 0.5rem;
+  }
+</style>
+
+
+
+<article>
+  <header>
+    <h1>耶是 ClickHouse！我们有救了！！</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Jul 26, 2025
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/agent">AGENT</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/olap">olap</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/clickhouse">clickhouse</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 4 min read
+</div>
+
+
+  </header>
+  
+  
+  
+  <div class="toc-wrapper">
+    <input type="checkbox" id="tocToggle">
+    <label for="tocToggle">目录</label>
+    
+    <div class="toc" id="TableOfContents"></div>
+    
+  </div>
+  
+  
+  <div class="post">
+    <blockquote>
+<p>本来我是懒得装的，但是 MySQL 查询太慢了，遭不住，咱还是把 ClickHouse 装起来吧。</p>
+</blockquote>
+<p>GitHub 项目地址：<a href="https://github.com/luochang212/chat-to-clickhouse" target="_blank">chat-to-clickhouse</a></p>
+<p>在<a href="https://luochang212.github.io/posts/agent_project/">《Agent 实战：智能路由、任务拆解和链路工程》</a>中，我实现了一个简单的 ChatBI，它能通过 MCP 访问 MySQL 数据库。对于千万量级的数据，一次查询需要耗时数秒甚至数十秒。兼以 Agent 的 NL2SQL 尚未做到 one-shot，它需要一个试错和改进的过程，整个任务的耗时只会更长。在这种情况下，查询效率变得尤为重要。</p>
+<p>如何解决查询效率低下的问题呢？这便引入今天的主角：ClickHouse。</p>
+<!-- GitHub 项目地址：<a href="https://github.com/luochang212/clickhouse-tutorial" target="_blank">clickhouse-tutorial</a> -->
+<h3 id="一分析利器">一、分析利器</h3>
+<p><a href="https://github.com/ClickHouse/ClickHouse">ClickHouse</a> 是 Yandex 旗下的一款开源的列式存储数据库，专为 <strong>联机分析处理</strong> (OLAP) 场景设计。在做数据分析时，它比传统数据库快几倍到几十倍。分析场景的核心需求是「聚合计算」，即 <code>GROUP BY</code> 子句下的 <code>SUM</code>, <code>AVG</code>, <code>COUNT</code> 操作，这些正是 ClickHouse 的强项。</p>
+<p>为什么它的聚合计算如此之快呢？因为它有以下特性：</p>
+<ul>
+<li><strong>列式存储</strong>：顾名思义，列存的数据是按列存储的。这种存储方式可以减少无效 I/O，因为列存可以只读取查询中涉及的列。而非行存那样，读取整行后再丢掉不需要的列</li>
+<li><strong>并行计算</strong>：列存的另一个优势是数据更容易切分。单列数据的连续性和同构性更强，无需考虑与其他列的关联，因此可以更方便地按维度（如时间区间、数值分段）拆分并分配到不同节点。当然，这种设计的代价是使得插入操作变得更加昂贵</li>
+<li><strong>物化视图</strong>：物化视图可以把高频分析的结果提前算好存在表里，后续查询直接读结果，无需重新计算</li>
+</ul>
+<h3 id="二安装过程">二、安装过程</h3>
+<p>用 <a href="https://hub.docker.com/r/clickhouse/clickhouse-server/">Docker</a> 安装，过程相对简单。工业界在集群上装，比咱们这个复杂不少。</p>
+<h4 id="1-配置-docker-镜像源">1. 配置 Docker 镜像源</h4>
+<p>大陆使用 Docker，免不了配置镜像源。如果你是 Linux 系统 (<code>Ubuntu</code>, <code>CentOS</code>)，Docker 的配置文件在 <code>/etc/docker/daemon.json</code>。如果你是 <code>Windows</code> 或 <code>MacOS</code> 用户，可以在 <code>Docker Desktop</code> 的 <code>Settings -&gt; Docker Engine</code> 里改 <code>daemon.json</code>。</p>
+<p>在配置文件 <code>daemon.json</code> 中添加镜像源 <code>registry-mirrors</code>：</p>
+<pre tabindex="0"><code>{
+  &#34;experimental&#34;: false,
+  &#34;registry-mirrors&#34;: [
+    &#34;https://do.nark.eu.org&#34;,
+    &#34;https://dc.j8.work&#34;,
+    &#34;https://docker.m.daocloud.io&#34;,
+    &#34;https://dockerproxy.com&#34;,
+    &#34;https://docker.mirrors.ustc.edu.cn&#34;,
+    &#34;https://docker.nju.edu.cn&#34;
+  ]
+}
+</code></pre><p>修改配置文件之后，需要重启 Docker 配置才能生效：</p>
+<pre tabindex="0"><code>sudo systemctl restart docker
+</code></pre><blockquote>
+<p><strong>Note:</strong> 镜像源并非万金油。如果你下载的镜像比较冷门，不在镜像网站的白名单里，而你又非下这个镜像不可，那就需要上科技了。</p>
+</blockquote>
+<h4 id="2-安装-clickhouse">2. 安装 ClickHouse</h4>
+<p><strong>1）拉取镜像</strong></p>
+<pre tabindex="0"><code># 下载镜像
+docker pull clickhouse/clickhouse-server
+
+# 下载完成后，查看所有镜像的列表，看下 clickhouse 在不在里面
+docker images
+</code></pre><p><strong>2）启动容器</strong></p>
+<p>在下面的命令中，我创建了一个名为 <code>admin</code> 的账户，当然你可以用其他名字。注意下面的 <code>[YOUR_PASSWORD_HERE]</code> 只是个占位符，请用「你的密码」替换它。</p>
+<pre tabindex="0"><code># 打开工程目录，如果没有请先新建：mkdir chat-to-clickhouse
+cd chat-to-clickhouse
+
+# 启动容器
+docker run -d \
+  --name clickhouse-server \
+  -p 18123:8123 \
+  -p 19000:9000 \
+  -v $(pwd)/ch_data:/var/lib/clickhouse/ \
+  -v $(pwd)/ch_logs:/var/log/clickhouse-server/ \
+  -e CLICKHOUSE_USER=admin \
+  -e CLICKHOUSE_PASSWORD=[YOUR_PASSWORD_HERE] \
+  --ulimit nofile=262144:262144 \
+  --cap-add=SYS_NICE \
+  --cap-add=IPC_LOCK \
+  clickhouse/clickhouse-server
+
+# 查看容器日志
+docker logs clickhouse-server
+</code></pre><p><strong>3）检查安装</strong></p>
+<p>尽管 ClickHouse 现在没有数据，我们仍可通过一些简单的查询，检查服务是否已经开启。注意把下面的 <code>[YOUR_PASSWORD_HERE]</code> 换成你的真实密码哦。</p>
+<pre tabindex="0"><code># 检查连通性，正常情况输出：Ok.
+curl -u admin:[YOUR_PASSWORD_HERE] &#34;http://localhost:18123/&#34;
+
+# 查询数据库版本
+curl -u admin:[YOUR_PASSWORD_HERE] &#34;http://localhost:18123/?query=SELECT%20version()&#34;
+</code></pre><h3 id="三写入数据">三、写入数据</h3>
+<p>向 ClickHouse 写入数据的方法很多。你可以从 MySQL 数据库迁移，也可以用 CSV 文件导入。下面我用一些例子展示如何导入数据。</p>
+<p>打开命令行，登录 ClickHouse 客户端：</p>
+<pre tabindex="0"><code># 登录 ClickHouse 客户端
+docker exec -it clickhouse-server \
+    clickhouse-client \
+    --user admin \
+    --password [YOUR_PASSWORD_HERE]
+</code></pre><h4 id="1-从-csv-文件导入">1. 从 CSV 文件导入</h4>
+<p>为了后面有数据可玩，这里我们真的向 ClickHouse 里写入数据。</p>
+<p>我找来一份大家都很感兴趣的数据，开源动漫数据集 <a href="https://www.kaggle.com/datasets/tanishksharma9905/top-popular-anime">top-popular-anime</a>。大家可以自行前往 Kaggle 下载 <code>popular_anime.csv</code>。</p>
+<p>老规矩我们先建库建表：</p>
+<pre tabindex="0"><code>-- 创建库
+CREATE DATABASE IF NOT EXISTS entertainment;
+
+-- 创建表
+CREATE TABLE IF NOT EXISTS entertainment.anime_info (
+  id UInt32 COMMENT &#39;动画唯一标识ID&#39;,
+  name String COMMENT &#39;动画名称&#39;,
+  genres String COMMENT &#39;动画类型&#39;,
+  type String COMMENT &#39;播出形式&#39;,
+  episodes Float32 COMMENT &#39;集数&#39;,
+  status String COMMENT &#39;播出状态&#39;,
+  aired_from DateTime COMMENT &#39;开始播出时间&#39;,
+  aired_to DateTime COMMENT &#39;结束播出时间&#39;,
+  duration_per_ep String COMMENT &#39;单集时长&#39;,
+  score Float32 COMMENT &#39;评分&#39;,
+  scored_by Float64 COMMENT &#39;评分人数&#39;,
+  `rank` Float32 COMMENT &#39;排名&#39;,
+  rating String COMMENT &#39;年龄分级&#39;,
+  studios String COMMENT &#39;制作工作室&#39;,
+  producers String COMMENT &#39;出品方&#39;,
+  image String COMMENT &#39;封面图片URL&#39;,
+  trailer String COMMENT &#39;预告片URL&#39;,
+  synopsis String COMMENT &#39;剧情简介&#39;
+)
+ENGINE = MergeTree()
+ORDER BY (`id`)
+COMMENT &#39;动画信息数据表&#39;;
+</code></pre><p>先将 <code>popular_anime.csv</code> 文件复制到容器挂载的数据卷 <code>ch_data</code> 上：</p>
+<pre tabindex="0"><code>cp /path/to/popular_anime.csv ./ch_data/user_files/
+</code></pre><p>再将 CSV 数据导入 ClickHouse 数据库：</p>
+<pre tabindex="0"><code>-- 将 csv 文件导入 clickhouse
+INSERT INTO entertainment.anime_info
+SELECT 
+  id,
+  name,
+  genres,
+  type,
+  episodes,
+  status,
+  toDateTime(replaceRegexpAll(aired_from, &#39;T|\\+.*&#39;, &#39; &#39;)) AS aired_from,
+  toDateTime(replaceRegexpAll(aired_to, &#39;T|\\+.*&#39;, &#39; &#39;)) AS aired_to,
+  duration_per_ep,
+  score,
+  scored_by,
+  `rank`,
+  rating,
+  studios,
+  producers,
+  image,
+  trailer,
+  synopsis
+FROM file(&#39;popular_anime.csv&#39;, &#39;CSVWithNames&#39;);
+
+-- 检查导入是否成功
+SELECT * FROM entertainment.anime_info LIMIT 2;
+
+-- 看一下行数
+SELECT count(*) FROM entertainment.anime_info;
+</code></pre><h4 id="2-从-mysql-导入">2. 从 MySQL 导入</h4>
+<p>进入客户端，创建 ClickHouse 数据库和数据表：</p>
+<pre tabindex="0"><code>-- 创建库
+CREATE DATABASE IF NOT EXISTS [CH_DB];
+
+-- 创建表
+CREATE TABLE IF NOT EXISTS [CH_DB].[CH_TABLE] (
+  `key` String NOT NULL COMMENT &#39;标识&#39;,
+  `value` String COMMENT &#39;内容&#39;,
+  `update_time` Date COMMENT &#39;更新日期&#39;
+)
+ENGINE = MergeTree()
+PARTITION BY update_time
+ORDER BY (`key`)
+COMMENT &#39;xxx数据表&#39;;
+</code></pre><p>然后用以下命令，将 MySQL 数据插入建好的 ClickHouse 数据表：</p>
+<pre tabindex="0"><code># 从 MySQL 数据库迁移数据
+INSERT INTO [CH_DB].[CH_TABLE]
+SELECT
+  `key`,
+  `value`,
+  `update_time`
+FROM mysql(
+  &#39;[MYSQL_HOST]:[MYSQL_PORT]&#39;,
+  &#39;[MYSQL_DB]&#39;,
+  &#39;[MYSQL_TABLE]&#39;,
+  &#39;[MYSQL_USER]&#39;,
+  &#39;[MYSQL_PASSWORD]&#39;
+);
+</code></pre><h3 id="四python-获取-clickhouse-数据">四、Python 获取 ClickHouse 数据</h3>
+<p>安装 <code>clickhouse-connect</code>：</p>
+<pre tabindex="0"><code>pip install clickhouse-connect
+</code></pre><p>运行 Python 代码，记得将 <code>[YOUR_PASSWORD_HERE]</code> 换成你的密码。</p>
+<pre tabindex="0"><code>import clickhouse_connect
+
+# 创建 ClickHouse 客户端连接
+client = clickhouse_connect.get_client(
+    host=&#39;localhost&#39;,                   # Docker 宿主机 IP
+    port=18123,                         # ClickHouse HTTP 端口
+    username=&#39;admin&#39;,                   # 用户名
+    password=&#39;[YOUR_PASSWORD_HERE]&#39;,    # 密码
+    database=&#39;entertainment&#39;            # 数据库名
+)
+
+query = &#34;SELECT * FROM entertainment.anime_info LIMIT 3&#34;
+try:
+    # 执行 SQL 查询
+    result = client.query(query)
+
+    # 打印查询结果
+    print(&#34;查询结果：&#34;)
+    for row in result.named_results():
+        print(row)
+
+    # 获取表结构信息
+    schema_result = client.query(&#34;DESCRIBE entertainment.anime_info&#34;)
+    print(&#34;\n表结构：&#34;)
+    for column in schema_result.named_results():
+        print(f&#34;{column[&#39;name&#39;]}: {column[&#39;type&#39;]}&#34;)
+
+except Exception as e:
+    print(f&#34;查询出错: {e}&#34;)
+finally:
+    client.close()
+</code></pre><h3 id="五chatbi-访问-clickhouse-数据">五、ChatBI 访问 ClickHouse 数据</h3>
+<p>下面是提问「评分人数最多的十部动漫是？」的回答。</p>
+<p><img src="/img/clickhouse_app.png" alt=""></p>
+<p>核心实现如下：</p>
+<pre tabindex="0"><code>from qwen_agent.agents import Assistant, ReActChat
+
+SYSTEM_PROMPT = &#34;&#34;&#34;
+你是一个数据库查询助手，专门帮助用户查询和分析 ClickHouse 数据库中的数据。
+
+规则：
+1. 始终确保 SQL 查询的安全性，避免修改数据
+2. 以清晰易懂的方式呈现查询结果
+&#34;&#34;&#34;
+
+class CHAgent:
+    &#34;&#34;&#34;ClickHouse Agent&#34;&#34;&#34;
+
+    def __init__(self, llm_cfg, db_config=None):
+        self.llm_cfg = llm_cfg
+
+        # ClickHouse 数据库配置
+        self.db_config = db_config
+
+    def create_tools(self):
+        &#34;&#34;&#34;获取工具列表&#34;&#34;&#34;
+
+        # 数据库配置
+        host = self.db_config.get(&#39;host&#39;)
+        port = self.db_config.get(&#39;port&#39;)
+        user = self.db_config.get(&#39;user&#39;)
+        password = self.db_config.get(&#39;password&#39;)
+
+        # 工具列表
+        tools = [
+            {
+            &#34;mcpServers&#34;: {
+                &#34;mcp-clickhouse&#34;: {
+                &#34;command&#34;: &#34;uv&#34;,
+                &#34;args&#34;: [
+                    &#34;run&#34;,
+                    &#34;--with&#34;,
+                    &#34;mcp-clickhouse&#34;,
+                    &#34;--python&#34;,
+                    &#34;3.10&#34;,
+                    &#34;mcp-clickhouse&#34;
+                ],
+                &#34;env&#34;: {
+                    &#34;CLICKHOUSE_HOST&#34;: host,
+                    &#34;CLICKHOUSE_PORT&#34;: port,
+                    &#34;CLICKHOUSE_USER&#34;: user,
+                    &#34;CLICKHOUSE_PASSWORD&#34;: password,
+                    &#34;CLICKHOUSE_SECURE&#34;: &#34;false&#34;,
+                    &#34;CLICKHOUSE_VERIFY&#34;: &#34;false&#34;,
+                    &#34;CLICKHOUSE_CONNECT_TIMEOUT&#34;: &#34;30&#34;,
+                    &#34;CLICKHOUSE_SEND_RECEIVE_TIMEOUT&#34;: &#34;30&#34;
+                }
+                }
+            }
+            },
+        ]
+
+        return tools
+
+    def create_react_agent(self):
+        &#34;&#34;&#34;创建 ReActChat 模式的 Agent&#34;&#34;&#34;
+        tools = self.create_tools()
+        return ReActChat(
+            llm=self.llm_cfg,
+            name=&#39;ClickHouse 数据库助手&#39;,
+            description=&#39;ReActChat 模式&#39;,
+            system_message=SYSTEM_PROMPT,
+            function_list=tools,
+        )
+
+    def ask(self, bot, messages: list) -&gt; str:
+        &#34;&#34;&#34;使用指定的 bot 进行查询&#34;&#34;&#34;
+        response = bot.run_nonstream(messages)
+        message = response[-1].get(&#39;content&#39;).strip()
+        return message
+</code></pre><p>完整代码见 GitHub：<a href="https://github.com/luochang212/chat-to-clickhouse">luochang212/chat-to-clickhouse</a></p>
+
+  </div>
+
+  <div class="post-footer">
+    <p style="margin-bottom: 1rem;">欢迎关注我的其它发布渠道：</p>
+    <div class="social-links" style="display: flex; flex-direction: column; gap: 10px;">
+      
+      <a href="https://twitter.com/_stellar_tide" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-twitter"></i> X
+      </a>
+      
+      
+      <a href="https://github.com/luochang212" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+      
+      
+      <a href="https://www.luochang.ink/images/wechat.jpg" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-weixin"></i> 公众号
+      </a>
+      
+      <a href="https://www.zhihu.com/people/Fashionable" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-zhihu"></i> 知乎
+      </a>
+
+      <a href="/index.xml" target="_blank" rel="noopener noreferrer">
+        <i class="fas fa-rss"></i> RSS
+      </a>
+
+    </div>
+    <div style="margin-bottom: 5rem;"></div>
+  </div>
+
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/card_magic_mcp/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">新瓶装旧酒：纸牌魔术 MCP</span>
+    </a>
+    
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+        </div>
+        
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
+
+
+
+
+
+<script src="https://kit.fontawesome.com/2134995a39.js" crossorigin="anonymous"></script>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
+<script type="text/javascript">
+  if (tocbot) {
+    tocbot.init({
+      
+      tocSelector: '.toc',
+      
+      contentSelector: '.post',
+      
+      headingSelector: 'h2, h3, h4',
+      collapseDepth: 4
+    });
+  }
+</script>
+
+
+
+    
+
+
+
+    </body>
+</html>

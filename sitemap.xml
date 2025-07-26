@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://luochang212.github.io/posts/chat_to_clickhouse/</loc>
+    <lastmod>2025-07-26T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://luochang212.github.io/posts/card_magic_mcp/</loc>
     <lastmod>2025-07-12T00:00:00+00:00</lastmod>
   </url><url>
@@ -188,11 +191,26 @@
     <loc>https://luochang212.github.io/posts/nezha/</loc>
     <lastmod>2017-07-11T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://luochang212.github.io/categories/agent/</loc>
+    <lastmod>2025-07-26T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://luochang212.github.io/categories/</loc>
-    <lastmod>2025-07-12T00:00:00+00:00</lastmod>
+    <lastmod>2025-07-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/</loc>
-    <lastmod>2025-07-12T00:00:00+00:00</lastmod>
+    <lastmod>2025-07-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/clickhouse/</loc>
+    <lastmod>2025-07-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/olap/</loc>
+    <lastmod>2025-07-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/posts/</loc>
+    <lastmod>2025-07-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/</loc>
+    <lastmod>2025-07-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/tags/magic/</loc>
     <lastmod>2025-07-12T00:00:00+00:00</lastmod>
@@ -203,17 +221,8 @@
     <loc>https://luochang212.github.io/tags/number-theory/</loc>
     <lastmod>2025-07-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://luochang212.github.io/posts/</loc>
-    <lastmod>2025-07-12T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://luochang212.github.io/categories/sota/</loc>
     <lastmod>2025-07-12T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://luochang212.github.io/tags/</loc>
-    <lastmod>2025-07-12T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://luochang212.github.io/categories/agent/</loc>
-    <lastmod>2025-06-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://luochang212.github.io/tags/function-calling/</loc>
     <lastmod>2025-06-15T00:00:00+00:00</lastmod>

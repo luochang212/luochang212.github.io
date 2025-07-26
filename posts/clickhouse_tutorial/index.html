@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en-us">
     
-  <head>
+    
+
+
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     
-    <link rel="canonical" href="https://luochang212.github.io/">
+    <link rel="canonical" href="http://localhost:1313/posts/clickhouse_tutorial/">
     
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,20 +16,36 @@
 <meta name="generator" content="Hugo 0.132.1">
 
     
+    
+    
 
-<title>Chang Luo</title>
+<title>小小改进：让 Agent 用上 ClickHouse • Chang Luo</title>
 
 
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Chang Luo">
+  <meta name="twitter:title" content="小小改进：让 Agent 用上 ClickHouse">
+  <meta name="twitter:description" content=" ClickHouse 比 MySQL 难装多了，本来我懒得装。但是 MySQL 这个慢啊，遭不住，咱还是把 ClickHouse 装起来吧。
+ClickHouse 是 Yandex 开源的一款列式存储数据库，专为联机分析处理 (OLAP) 场景设计。在执行数据分析任务时，它能比传统数据库快几倍到几十倍。
+分析场景的核心需求是「聚合计算」，即在 GROUP BY 子句下做 SUM, AVG, COUNT 等计算，这也正是 ClickHouse 的强项。它的优势体现在以下几点：
+列式存储：数据是按列存储的，这种存储方式可以有效减少 I/O。因为列存数据库可以只读取查询中涉及的列，而非像行存那样，整行读取后，再丢弃不需要的列 并行计算：列存数据库的另一个优势是更容易切分数据。单列数据的连续性和同构性更强，无需考虑行内其他列的关联，可以方便地按维度（如时间区间、数值分段）拆分，并分配到不同节点。当然，这种设计的代价是插入操作变得更加昂贵 物化视图：支持物化视图，可以提前把高频分析的结果算好存在表里，后续查询直接读结果，无需重新计算 ">
       <meta name="twitter:site" content="@_stellar_tide">
 
-<meta property="og:url" content="https://luochang212.github.io/">
+<meta property="og:url" content="http://localhost:1313/posts/clickhouse_tutorial/">
   <meta property="og:site_name" content="Chang Luo">
-  <meta property="og:title" content="Chang Luo">
+  <meta property="og:title" content="小小改进：让 Agent 用上 ClickHouse">
+  <meta property="og:description" content=" ClickHouse 比 MySQL 难装多了，本来我懒得装。但是 MySQL 这个慢啊，遭不住，咱还是把 ClickHouse 装起来吧。
+ClickHouse 是 Yandex 开源的一款列式存储数据库，专为联机分析处理 (OLAP) 场景设计。在执行数据分析任务时，它能比传统数据库快几倍到几十倍。
+分析场景的核心需求是「聚合计算」，即在 GROUP BY 子句下做 SUM, AVG, COUNT 等计算，这也正是 ClickHouse 的强项。它的优势体现在以下几点：
+列式存储：数据是按列存储的，这种存储方式可以有效减少 I/O。因为列存数据库可以只读取查询中涉及的列，而非像行存那样，整行读取后，再丢弃不需要的列 并行计算：列存数据库的另一个优势是更容易切分数据。单列数据的连续性和同构性更强，无需考虑行内其他列的关联，可以方便地按维度（如时间区间、数值分段）拆分，并分配到不同节点。当然，这种设计的代价是插入操作变得更加昂贵 物化视图：支持物化视图，可以提前把高频分析的结果算好存在表里，后续查询直接读结果，无需重新计算 ">
   <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-07-25T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-07-25T00:00:00+00:00">
+    <meta property="article:tag" content="MCP">
+    <meta property="article:tag" content="OLAP">
+    <meta property="article:tag" content="ClickHouse">
 
 
     
@@ -61,8 +80,7 @@
     <!-- Icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
     <link rel="shortcut icon" href="/favicon.png">
-    <link rel="alternate" type="application/rss+xml" href="https://luochang212.github.io/index.xml" title="Chang Luo" />
-
+    
     
 
 </head>
@@ -215,13 +233,13 @@
     <div class="container ">
       <div class="sidebar-about">
         <span class="site__title">
-          <a href="https://luochang212.github.io/">Chang Luo</a>
+          <a href="http://localhost:1313/">Chang Luo</a>
         </span>
         
         
         
         <div class="author-image">
-          <a href="#" class="load-iframe" onclick="openNav()"><img src="https://luochang212.github.io//images/profile.webp" id="author-iamge"
+          <a href="#" class="load-iframe" onclick="openNav()"><img src="http://localhost:1313//images/profile.webp" id="author-iamge"
               alt="Author Image" class="img--circle img--headshot element--center"></a>
         </div>
         
@@ -503,319 +521,250 @@
 
         <div class="content container">
             
-  <div class="post-list">
+    <style>
+  .my-emoji {
+    height: 25px;
+    display: inline-block;
+    margin: 0;
+    vertical-align: text-bottom;
+  }
+
+  .social-links a {
+    color: rgba(120,120,120,1);
+    text-decoration: none;
+    outline: none !important;
+    cursor: pointer;
+    transition-property: padding, text-shadow, line-height, color, background, opacity, transform;
+    transition-duration: .25s;
+    transition-timing-function: ease-in-out;
+    display: inline-block;
+    white-space: nowrap;
+    position: relative;
+  }
+
+  .social-links a:after {
+    content: "";
+    display: block;
+    height: .125rem;
+    margin: -.125rem 0 0;
+    background: rgba(0,0,0,.5);
+    border-radius: 1px;
+    transform: scaleX(0);
+    transition: transform .25s ease-in-out;
+  }
+
+  .social-links a:hover:after {
+    transform: scaleX(1);
+  }
+
+  .social-links a:hover {
+    color: rgba(120,120,120,1);
+  }
+
+  .post {
+    margin-bottom: 0;
+  }
+
+  .post-footer {
+    margin-top: 0;
+    padding-top: 0.5rem;
+  }
+</style>
+
+
+
+<article>
+  <header>
+    <h1>小小改进：让 Agent 用上 ClickHouse</h1>
     
     
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Jul 25, 2025
+    
+    
+    
       
-        
       
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/chat_to_clickhouse/" >耶是 ClickHouse！我们有救了！！</a>
-        </span>
-        <span class="item__date">
-          Jul 26, 2025
-        </span>
-        <span >
-        
-        让 ChatBI 的查询速度 UP UP
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/chat_to_clickhouse/">➦</a>
-        
-        </div>
-        
-     
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/agent">AGENT</a>
+              
+          
       
-        
+    
+    
+    
       
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/card_magic_mcp/" >新瓶装旧酒：纸牌魔术 MCP</a>
-        </span>
-        <span class="item__date">
-          Jul 12, 2025
-        </span>
-        <span >
-        
-        一个纸牌魔术
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/card_magic_mcp/">➦</a>
-        
-        </div>
-        
-     
       
-        
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/mcp">mcp</a>
+           
       
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/agent_project/" >Agent 实战：智能路由、任务拆解和链路工程</a>
-        </span>
-        <span class="item__date">
-          Jun 15, 2025
-        </span>
-        <span >
-        
-        Agent 本质是 LLM 的调度器，它能做的无非是 LLM 擅长的那些，外加一些由组织和规划所产生的能力
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/agent_project/">➦</a>
-        
-        </div>
-        
-     
+          <a class="badge badge-tag" href="/tags/olap">olap</a>
+           
       
-        
+          <a class="badge badge-tag" href="/tags/clickhouse">clickhouse</a>
+          
       
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/underground_idols/" >AUV～ 演出现场</a>
-        </span>
-        <span class="item__date">
-          May 17, 2025
-        </span>
-        <span >
-        
-        不过的话，手机这个快门速度，拍 live 就是会变得糊糊的
-        
-        </span>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/sft_note/" >三种方法实现监督微调：LLaMA Factory, trl 和 unsloth</a>
-        </span>
-        <span class="item__date">
-          Apr 26, 2025
-        </span>
-        <span >
-        
-        SFT 是一种简单有效的大模型微调方法，本文为了入门写的 side project
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/sft_note/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/cluster_label_assign/" >DNN 模型聚类特征更新方法</a>
-        </span>
-        <span class="item__date">
-          Apr 19, 2025
-        </span>
-        <span >
-        
-        如何在天级更新聚类特征时，保持聚类标签的稳定性
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/cluster_label_assign/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/llm_deploy/" >本地部署大模型：Ollama 和 vLLM</a>
-        </span>
-        <span class="item__date">
-          Mar 21, 2025
-        </span>
-        <span >
-        
-        部署大模型的门槛不在软件，而在有没有大显存 GPU
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/llm_deploy/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/langflow_rag_app/" >Langflow 实现本地知识库</a>
-        </span>
-        <span class="item__date">
-          Mar 15, 2025
-        </span>
-        <span >
-        
-        通过可视化编排组件，实现大模型应用的快速开发
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/langflow_rag_app/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/dec_pytorch/" >深度嵌入聚类算法 DEC</a>
-        </span>
-        <span class="item__date">
-          Mar 9, 2025
-        </span>
-        <span >
-        
-        实现端到端图片聚类：特征提取器 DINOv2 &#43; 聚类算法 DEC
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/dec_pytorch/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/clip_app/" >搭建一款简单的『以文搜图』应用</a>
-        </span>
-        <span class="item__date">
-          Dec 29, 2024
-        </span>
-        <span >
-        
-        是 prototype，不是 app 哦
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/clip_app/">➦</a>
-        
-        </div>
-        
-     
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 1 min read
+</div>
+
+
+  </header>
+  
+  
+  
+  <div class="toc-wrapper">
+    <input type="checkbox" id="tocToggle">
+    <label for="tocToggle">目录</label>
+    
+    <div class="toc" id="TableOfContents"></div>
+    
   </div>
   
-
-<ul class="pagination">
-    
-    <li class="page-item">
-        <a href="/" class="page-link" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
-    </li>
-    
-    <li class="page-item disabled">
-    <a href="" class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
-    </li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item active"><a class="page-link" href="/">1</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="/page/2/">2</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="/page/3/">3</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item disabled"><span aria-hidden="true">&nbsp;&hellip;&nbsp;</span></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="/page/7/">7</a></li>
-    
-    
-    <li class="page-item">
-    <a href="/page/2/" class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
-    </li>
-    
-    <li class="page-item">
-        <a href="/page/7/" class="page-link" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
-    </li>
-    
+  
+  <div class="post">
+    <blockquote>
+<p>ClickHouse 比 MySQL 难装多了，本来我懒得装。但是 MySQL 这个慢啊，遭不住，咱还是把 ClickHouse 装起来吧。</p>
+</blockquote>
+<!-- GitHub 项目地址：<a href="https://github.com/luochang212/clickhouse-tutorial" target="_blank">clickhouse-tutorial</a> -->
+<p><a href="https://github.com/ClickHouse/ClickHouse">ClickHouse</a> 是 Yandex 开源的一款列式存储数据库，专为联机分析处理 (OLAP) 场景设计。在执行数据分析任务时，它能比传统数据库快几倍到几十倍。</p>
+<p>分析场景的核心需求是「聚合计算」，即在 <code>GROUP BY</code> 子句下做 <code>SUM</code>, <code>AVG</code>, <code>COUNT</code> 等计算，这也正是 ClickHouse 的强项。它的优势体现在以下几点：</p>
+<ul>
+<li><strong>列式存储</strong>：数据是按列存储的，这种存储方式可以有效减少 I/O。因为列存数据库可以只读取查询中涉及的列，而非像行存那样，整行读取后，再丢弃不需要的列</li>
+<li><strong>并行计算</strong>：列存数据库的另一个优势是更容易切分数据。单列数据的连续性和同构性更强，无需考虑行内其他列的关联，可以方便地按维度（如时间区间、数值分段）拆分，并分配到不同节点。当然，这种设计的代价是插入操作变得更加昂贵</li>
+<li><strong>物化视图</strong>：支持物化视图，可以提前把高频分析的结果算好存在表里，后续查询直接读结果，无需重新计算</li>
 </ul>
 
+  </div>
+
+  <div class="post-footer">
+    <p style="margin-bottom: 1rem;">欢迎关注我的其它发布渠道：</p>
+    <div class="social-links" style="display: flex; flex-direction: column; gap: 10px;">
+      
+      <a href="https://twitter.com/_stellar_tide" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-twitter"></i> X
+      </a>
+      
+      
+      <a href="https://github.com/luochang212" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+      
+      
+      <a href="https://www.luochang.ink/images/wechat.jpg" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-weixin"></i> 公众号
+      </a>
+      
+      <a href="https://www.zhihu.com/people/Fashionable" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-zhihu"></i> 知乎
+      </a>
+
+      <a href="/index.xml" target="_blank" rel="noopener noreferrer">
+        <i class="fas fa-rss"></i> RSS
+      </a>
+
+    </div>
+    <div style="margin-bottom: 5rem;"></div>
+  </div>
+
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/card_magic_mcp/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">新瓶装旧酒：纸牌魔术 MCP</span>
+    </a>
+    
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
 
         </div>
         
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
   
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
+
+
+
+
+
 <script src="https://kit.fontawesome.com/2134995a39.js" crossorigin="anonymous"></script>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
+<script type="text/javascript">
+  if (tocbot) {
+    tocbot.init({
+      
+      tocSelector: '.toc',
+      
+      contentSelector: '.post',
+      
+      headingSelector: 'h2, h3, h4',
+      collapseDepth: 4
+    });
+  }
+</script>
+
+
+
+    
+
+
 
     </body>
 </html>
