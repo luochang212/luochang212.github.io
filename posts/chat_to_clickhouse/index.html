@@ -623,15 +623,14 @@
   
   <div class="post">
     <blockquote>
-<p>本来我是懒得装的，但是 MySQL 查询太慢了，遭不住，咱还是把 ClickHouse 装起来吧。</p>
+<p>本来我懒得装，但是 MySQL 太慢了，遭不住，咱还是把 ClickHouse 装起来吧。</p>
 </blockquote>
 <p>GitHub 项目地址：<a href="https://github.com/luochang212/chat-to-clickhouse" target="_blank">chat-to-clickhouse</a></p>
-<p>在<a href="https://luochang212.github.io/posts/agent_project/">《Agent 实战：智能路由、任务拆解和链路工程》</a>中，我实现了一个简单的 ChatBI，它能通过 MCP 访问 MySQL 数据库。对于千万量级的数据，一次查询需要耗时数秒甚至数十秒。兼以 Agent 的 NL2SQL 尚未做到 one-shot，它需要一个试错和改进的过程，整个任务的耗时只会更长。在这种情况下，查询效率变得尤为重要。</p>
+<p>在此前的文章<a href="https://luochang212.github.io/posts/agent_project/">《Agent 实战：智能路由、任务拆解和链路工程》</a>中，实现了一个 ChatBI，它能访问 MySQL 数据库。可是对于千万量级的数据，一次复杂查询需要消耗数秒甚至数十秒。并且 Agent 的 NL2SQL 尚未做到 one-shot，它需要不断试错，这进一步加剧了查询效率的问题。</p>
 <p>如何解决查询效率低下的问题呢？这便引入今天的主角：ClickHouse。</p>
-<!-- GitHub 项目地址：<a href="https://github.com/luochang212/clickhouse-tutorial" target="_blank">clickhouse-tutorial</a> -->
 <h3 id="一分析利器">一、分析利器</h3>
 <p><a href="https://github.com/ClickHouse/ClickHouse">ClickHouse</a> 是 Yandex 旗下的一款开源的列式存储数据库，专为 <strong>联机分析处理</strong> (OLAP) 场景设计。在做数据分析时，它比传统数据库快几倍到几十倍。分析场景的核心需求是「聚合计算」，即 <code>GROUP BY</code> 子句下的 <code>SUM</code>, <code>AVG</code>, <code>COUNT</code> 操作，这些正是 ClickHouse 的强项。</p>
-<p>为什么它的聚合计算如此之快呢？因为它有以下特性：</p>
+<p>为什么它的聚合计算如此之快呢？因为它具有如下特性：</p>
 <ul>
 <li><strong>列式存储</strong>：顾名思义，列存的数据是按列存储的。这种存储方式可以减少无效 I/O，因为列存可以只读取查询中涉及的列。而非行存那样，读取整行后再丢掉不需要的列</li>
 <li><strong>并行计算</strong>：列存的另一个优势是数据更容易切分。单列数据的连续性和同构性更强，无需考虑与其他列的关联，因此可以更方便地按维度（如时间区间、数值分段）拆分并分配到不同节点。当然，这种设计的代价是使得插入操作变得更加昂贵</li>
