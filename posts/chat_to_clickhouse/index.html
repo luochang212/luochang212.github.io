@@ -25,13 +25,13 @@
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="耶是 ClickHouse！我们有救了！！">
-  <meta name="twitter:description" content="让 ChatBI 的查询速度 UP UP">
+  <meta name="twitter:description" content="哼，不是 MySQL 太慢，我才懒得装咧！！">
       <meta name="twitter:site" content="@_stellar_tide">
 
 <meta property="og:url" content="https://luochang212.github.io/posts/chat_to_clickhouse/">
   <meta property="og:site_name" content="Chang Luo">
   <meta property="og:title" content="耶是 ClickHouse！我们有救了！！">
-  <meta property="og:description" content="让 ChatBI 的查询速度 UP UP">
+  <meta property="og:description" content="哼，不是 MySQL 太慢，我才懒得装咧！！">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -639,8 +639,9 @@
 <h3 id="二安装过程">二、安装过程</h3>
 <p>用 <a href="https://hub.docker.com/r/clickhouse/clickhouse-server/">Docker</a> 安装，过程相对简单。工业界在集群上装，比咱们这个复杂不少。</p>
 <h4 id="1-配置-docker-镜像源">1. 配置 Docker 镜像源</h4>
-<p>大陆使用 Docker，免不了配置镜像源。如果你是 Linux 系统 (<code>Ubuntu</code>, <code>CentOS</code>)，Docker 的配置文件在 <code>/etc/docker/daemon.json</code>。如果你是 <code>Windows</code> 或 <code>MacOS</code> 用户，可以在 <code>Docker Desktop</code> 的 <code>Settings -&gt; Docker Engine</code> 里改 <code>daemon.json</code>。</p>
-<p>在配置文件 <code>daemon.json</code> 中添加镜像源 <code>registry-mirrors</code>：</p>
+<p>中国大陆地区下载镜像，需要配置镜像源。</p>
+<p>对于 Linux 系统，需要在 <code>/etc/docker/daemon.json</code> 文件中配置镜像源（如下）。<code>Windows</code> 和 <code>MacOS</code> 系统更方便一点，可以直接在 <code>Docker Desktop</code> 的 <code>Settings -&gt; Docker Engine</code> 页面修改 <code>daemon.json</code> 文件。</p>
+<p>在 <code>daemon.json</code> 文件中，添加镜像源字段 <code>registry-mirrors</code>：</p>
 <pre tabindex="0"><code>{
   &#34;experimental&#34;: false,
   &#34;registry-mirrors&#34;: [
@@ -652,10 +653,10 @@
     &#34;https://docker.nju.edu.cn&#34;
   ]
 }
-</code></pre><p>修改配置文件之后，需要重启 Docker 配置才能生效：</p>
+</code></pre><p>运行以下命令重启 Docker，配置将在重启后生效：</p>
 <pre tabindex="0"><code>sudo systemctl restart docker
 </code></pre><blockquote>
-<p><strong>Note:</strong> 镜像源并非万金油。如果你下载的镜像比较冷门，不在镜像网站的白名单里，而你又非下这个镜像不可，那就需要上科技了。</p>
+<p><strong>Note:</strong> 镜像源网站通常有个白名单，只有白名单里的镜像才能下载到。如果你需要的镜像比较新或者比较冷门，那就需要借助某些科技了 (ﾉ)`ε´(ヾ)</p>
 </blockquote>
 <h4 id="2-安装-clickhouse">2. 安装 ClickHouse</h4>
 <p><strong>1）拉取镜像</strong></p>
