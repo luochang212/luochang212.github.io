@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.132.1">
+<meta name="generator" content="Hugo 0.148.2">
 
     
     
@@ -54,7 +54,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+<link rel="stylesheet" href="/scss/hyde-hyde.1354666f7c97c95b395dd180ab9cf1aca1ff0408c93996eed446576738e01579.css" integrity="sha256-E1Rmb3yXyVs5XdGAq5zxrKH/BAjJOZbu1EZXZzjgFXk=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -627,8 +627,7 @@
   
   <div class="post">
     <blockquote>
-<p>PyQt5是Python环境下用来开发UI界面的一个包。它容易上手，对初学者友好，并且拥有丰富的函数库，可以实现大部分桌面应用的开发需求，且支持QSS语言，能够对界面风格做个性化调整。总体来说，PyQt5是一款开发效率极高的UI框架。这篇文章从零开始，教你搭建一个属于自己的桌面应用。</p>
-</blockquote>
+<p>PyQt5是Python环境下用来开发UI界面的一个包。它容易上手，对初学者友好，并且拥有丰富的函数库，可以实现大部分桌面应用的开发需求，且支持QSS语言，能够对界面风格做个性化调整。总体来说，PyQt5是一款开发效率极高的UI框架。这篇文章从零开始，教你搭建一个属于自己的桌面应用。</p></blockquote>
 <p>GitHub 项目地址：<a href="https://github.com/luochang212/pyqt5-demo" target="_blank">pyqt5-demo</a></p>
 <h3 id="创建第一个窗口">创建第一个窗口</h3>
 <p>一般来说，桌面应用都以窗口(window)形式呈现。因此，要搭建桌面应用，首先要创建窗口。</p>
@@ -638,8 +637,8 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Window</span>(QMainWindow):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
-</span></span><span style="display:flex;"><span>        super()<span style="color:#f92672">.</span>__init__()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self):
+</span></span><span style="display:flex;"><span>        super()<span style="color:#f92672">.</span><span style="color:#a6e22e">__init__</span>()
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e"># set the title of main window</span>
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>setWindowTitle(<span style="color:#e6db74">&#39;My first window - www.luochang.ink&#39;</span>)
@@ -664,8 +663,8 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Window</span>(QMainWindow):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
-</span></span><span style="display:flex;"><span>        super()<span style="color:#f92672">.</span>__init__()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self):
+</span></span><span style="display:flex;"><span>        super()<span style="color:#f92672">.</span><span style="color:#a6e22e">__init__</span>()
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e"># set the title of main window</span>
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>setWindowTitle(<span style="color:#e6db74">&#39;My first window - www.luochang.ink&#39;</span>)
@@ -713,8 +712,7 @@
 <li>创建中心部件(central widget), 并为中心部件添加布局。</li>
 </ol>
 <blockquote>
-<p><b id="abstract_widget">Note:</b> 要理解这三步，首先要理解什么是中心部件(central widget)。中心部件和按钮部件(QPushButton)虽然都被称作部件(widget), 但它俩是完全不同的。与按钮部件相比，中心部件没有固定的功能和形态，它就像画布，本身是空白的，因此你无法直接在窗口中看到它。它的作用在于通过调整它的布局属性(setLayout)来对其他部件排版。通过<code>setLayout</code>函数，中心部件将名下各部件统一到一个<strong>部件的集合</strong>中，通过排版这个集合来排版集合里的所有部件。</p>
-</blockquote>
+<p><b id="abstract_widget">Note:</b> 要理解这三步，首先要理解什么是中心部件(central widget)。中心部件和按钮部件(QPushButton)虽然都被称作部件(widget), 但它俩是完全不同的。与按钮部件相比，中心部件没有固定的功能和形态，它就像画布，本身是空白的，因此你无法直接在窗口中看到它。它的作用在于通过调整它的布局属性(setLayout)来对其他部件排版。通过<code>setLayout</code>函数，中心部件将名下各部件统一到一个<strong>部件的集合</strong>中，通过排版这个集合来排版集合里的所有部件。</p></blockquote>
 <p><strong>窗口，中心部件，布局和按钮部件之间的逻辑关系如下：</strong></p>
 <html>
 <center>Window (窗口)
@@ -767,8 +765,7 @@
 <h3 id="布局进阶之部件迭代">布局进阶之部件迭代</h3>
 <p>在PyQt5里，类似中心部件这样的用于布局的部件可以多次迭代。这意味着你可以往布局部件里的布局部件里加布局部件。</p>
 <blockquote>
-<p><strong>Note:</strong> 这里所指的布局部件，其实是一类部件，上文所说的中心部件，就是此类中的一例，点击<a href="#abstract_widget">这里</a>回顾。</p>
-</blockquote>
+<p><strong>Note:</strong> 这里所指的布局部件，其实是一类部件，上文所说的中心部件，就是此类中的一例，点击<a href="#abstract_widget">这里</a>回顾。</p></blockquote>
 <p>下面这段代码阐释了这种迭代结构。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 创建孙子部件</span>
 </span></span><span style="display:flex;"><span>sub_sub_Layout <span style="color:#f92672">=</span> QHBoxLayout()
@@ -801,8 +798,8 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Window</span>(QMainWindow):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
-</span></span><span style="display:flex;"><span>        super()<span style="color:#f92672">.</span>__init__()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self):
+</span></span><span style="display:flex;"><span>        super()<span style="color:#f92672">.</span><span style="color:#a6e22e">__init__</span>()
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e"># set the title of main window</span>
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>setWindowTitle(<span style="color:#e6db74">&#39;PyQt5 desktop application - www.luochang.ink&#39;</span>)
 </span></span><span style="display:flex;"><span>

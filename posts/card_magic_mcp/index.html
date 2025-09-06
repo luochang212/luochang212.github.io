@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.132.1">
+<meta name="generator" content="Hugo 0.148.2">
 
     
     
@@ -25,13 +25,13 @@
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="新瓶装旧酒：纸牌魔术 MCP">
-  <meta name="twitter:description" content="一个魔术">
+  <meta name="twitter:description" content="一个由数学驱动的纸牌魔术，用 MCP 的形式呈现">
       <meta name="twitter:site" content="@_stellar_tide">
 
 <meta property="og:url" content="https://luochang212.github.io/posts/card_magic_mcp/">
   <meta property="og:site_name" content="Chang Luo">
   <meta property="og:title" content="新瓶装旧酒：纸牌魔术 MCP">
-  <meta property="og:description" content="一个魔术">
+  <meta property="og:description" content="一个由数学驱动的纸牌魔术，用 MCP 的形式呈现">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -54,7 +54,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+<link rel="stylesheet" href="/scss/hyde-hyde.1354666f7c97c95b395dd180ab9cf1aca1ff0408c93996eed446576738e01579.css" integrity="sha256-E1Rmb3yXyVs5XdGAq5zxrKH/BAjJOZbu1EZXZzjgFXk=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -627,8 +627,7 @@
   
   <div class="post">
     <blockquote>
-<p>Chico 和 Dico 是两名魔术师，他们有一个经典纸牌魔术：抽五张扑克牌，根据前四张，猜第五张是什么。完成这个魔术不需要任何魔术师的技巧，它完全建立在数学原理之上。只需要一点数学知识和充分的练习，你也能表演这个魔术。</p>
-</blockquote>
+<p>Chico 和 Dico 是两名魔术师，他们有一个经典纸牌魔术：抽五张扑克牌，根据前四张，猜第五张是什么。完成这个魔术不需要任何魔术师的技巧，它完全建立在数学原理之上。只需要一点数学知识和充分的练习，你也能表演这个魔术。</p></blockquote>
 <p>GitHub 项目地址：<a href="https://github.com/luochang212/card-magic-mcp" target="_blank">card-magic-mcp</a></p>
 <p>五年前，我写了一篇文章<a href="/posts/chico_and_dico/">《用魔法打败魔法》</a>，介绍 Chico &amp; Dico 魔术的数学原理，并用 Python 实现了这个魔术。随着时代的发展、科技的进步，今天我们有更简单的方法来玩这个魔术，不需要运行 Python，不需要看懂公式，只需要打开 <a href="https://www.modelscope.cn/mcp/servers/FMoBall/card-magic-mcp">ModelScope</a> 和大模型对话，就可以轻松体验这个魔术↓↓↓</p>
 <p>访问 <code>ModelScope Playground</code>: <a href="https://www.modelscope.cn/studios/modelscope/mcp-playground?studio_additional_params=%7B%0A%20%20%22mcpServers%22%3A%20%7B%0A%20%20%20%20%22card-magic-mcp%22%3A%20%7B%0A%20%20%20%20%20%20%22type%22%3A%20%22sse%22%2C%0A%20%20%20%20%20%20%22url%22%3A%20%22https%3A%2F%2Fmcp.api-inference.modelscope.net%2Ffcfa3b28ef6a4f%2Fsse%22%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D">card-magic-mcp</a></p>
@@ -684,261 +683,261 @@ for i in range(5, 0, -1):
 <summary style="outline: none;"><font color='blueviolet'>点击查看每轮迭代中的细节</font></summary>
 <p>初始化，s = 103：</p>
 <table>
-<thead>
-<tr>
-<th>i</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>card</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>NULL</td>
-<td></td>
-</tr>
-<tr>
-<td>q</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>s = 103</td>
-</tr>
-<tr>
-<td>r</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>NULL</td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>i</th>
+          <th>1</th>
+          <th>2</th>
+          <th>3</th>
+          <th>4</th>
+          <th>5</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>card</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>q</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>s = 103</td>
+      </tr>
+      <tr>
+          <td>r</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td></td>
+      </tr>
+  </tbody>
 </table>
 <p>当 i = 5 时，被除数初始化为 s。因此有 <code>$q_5 = s / i = 103/5 = 20, r_5 = s % i = 103%5 = 3$</code>。将列表 cards 中的索引为 <code>$r_5$</code>（= 3）的扑克，放入列表 reordered_cards 中。现在列表 cards 为 <code>$[4, 12, 18, 50]$</code>，列表 reordered_cards 为 <code>$[19]$</code>。具体结果如下：</p>
 <table>
-<thead>
-<tr>
-<th>i</th>
-<th>i_1 = 1</th>
-<th>i_2 = 2</th>
-<th>i_3 = 3</th>
-<th>i_4 = 4</th>
-<th>i_5 = 5</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>card</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>reordered_cards[0] = 19</td>
-<td></td>
-</tr>
-<tr>
-<td>q</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>q_5 = s / i_5 =  20</td>
-<td>s = 103</td>
-</tr>
-<tr>
-<td>r</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>r_5 = s % i_5 = 3</td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>i</th>
+          <th>i_1 = 1</th>
+          <th>i_2 = 2</th>
+          <th>i_3 = 3</th>
+          <th>i_4 = 4</th>
+          <th>i_5 = 5</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>card</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>reordered_cards[0] = 19</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>q</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>q_5 = s / i_5 =  20</td>
+          <td>s = 103</td>
+      </tr>
+      <tr>
+          <td>r</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>r_5 = s % i_5 = 3</td>
+          <td></td>
+      </tr>
+  </tbody>
 </table>
 <p>当 i = 4 时，有 <code>$q_4 = q_5 / i = 20/4 = 5, r_4 = q_5 % i = 20%4 = 0$</code>。也就是把上一轮的商作为本轮的被除数。本轮之后列表 cards 为 <code>$[12, 18, 50]$</code>。</p>
 <table>
-<thead>
-<tr>
-<th>i</th>
-<th>i_1 = 1</th>
-<th>i_2 = 2</th>
-<th>i_3 = 3</th>
-<th>i_4 = 4</th>
-<th>i_5 = 5</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>card</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>reordered_cards[1] = 4</td>
-<td>19</td>
-<td></td>
-</tr>
-<tr>
-<td>q</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>q_4 = q_5 / i_4 = 5</td>
-<td>q_5 = 20</td>
-<td>s = 103</td>
-</tr>
-<tr>
-<td>r</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>r_4 = q_5 % i_4 = 0</td>
-<td>r_5 = 3</td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>i</th>
+          <th>i_1 = 1</th>
+          <th>i_2 = 2</th>
+          <th>i_3 = 3</th>
+          <th>i_4 = 4</th>
+          <th>i_5 = 5</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>card</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>reordered_cards[1] = 4</td>
+          <td>19</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>q</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>q_4 = q_5 / i_4 = 5</td>
+          <td>q_5 = 20</td>
+          <td>s = 103</td>
+      </tr>
+      <tr>
+          <td>r</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>r_4 = q_5 % i_4 = 0</td>
+          <td>r_5 = 3</td>
+          <td></td>
+      </tr>
+  </tbody>
 </table>
 <p>当 i = 3 时，有 <code>$q_3 = q_4 / i = 5/3 = 1, r_3 = q_4 % i = 5%3 = 2$</code>。本轮之后列表 cards 为 <code>$[12, 18]$</code>。</p>
 <table>
-<thead>
-<tr>
-<th>i</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>card</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>50</td>
-<td>4</td>
-<td>19</td>
-<td></td>
-</tr>
-<tr>
-<td>q</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>q_3 = 1</td>
-<td>q_4 = 5</td>
-<td>q_5 = 20</td>
-<td>s = 103</td>
-</tr>
-<tr>
-<td>r</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>r_3 = 2</td>
-<td>r_4 = 0</td>
-<td>r_5 = 3</td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>i</th>
+          <th>1</th>
+          <th>2</th>
+          <th>3</th>
+          <th>4</th>
+          <th>5</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>card</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>50</td>
+          <td>4</td>
+          <td>19</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>q</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>q_3 = 1</td>
+          <td>q_4 = 5</td>
+          <td>q_5 = 20</td>
+          <td>s = 103</td>
+      </tr>
+      <tr>
+          <td>r</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>r_3 = 2</td>
+          <td>r_4 = 0</td>
+          <td>r_5 = 3</td>
+          <td></td>
+      </tr>
+  </tbody>
 </table>
 <p>当 i = 2 时，有 <code>$q_2 = q_3 / i = 1/2 = 0, r_2 = q_3 % i = 1%2 = 1$</code>。本轮之后列表 cards 为 <code>$[12]$</code>。</p>
 <table>
-<thead>
-<tr>
-<th>i</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>card</td>
-<td>NULL</td>
-<td>18</td>
-<td>50</td>
-<td>4</td>
-<td>19</td>
-<td></td>
-</tr>
-<tr>
-<td>q</td>
-<td>NULL</td>
-<td>q_2 = 0</td>
-<td>q_3 = 1</td>
-<td>q_4 = 5</td>
-<td>q_5 = 20</td>
-<td>s = 103</td>
-</tr>
-<tr>
-<td>r</td>
-<td>NULL</td>
-<td>r_2 = 1</td>
-<td>r_3 = 2</td>
-<td>r_4 = 0</td>
-<td>r_5 = 3</td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>i</th>
+          <th>1</th>
+          <th>2</th>
+          <th>3</th>
+          <th>4</th>
+          <th>5</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>card</td>
+          <td>NULL</td>
+          <td>18</td>
+          <td>50</td>
+          <td>4</td>
+          <td>19</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>q</td>
+          <td>NULL</td>
+          <td>q_2 = 0</td>
+          <td>q_3 = 1</td>
+          <td>q_4 = 5</td>
+          <td>q_5 = 20</td>
+          <td>s = 103</td>
+      </tr>
+      <tr>
+          <td>r</td>
+          <td>NULL</td>
+          <td>r_2 = 1</td>
+          <td>r_3 = 2</td>
+          <td>r_4 = 0</td>
+          <td>r_5 = 3</td>
+          <td></td>
+      </tr>
+  </tbody>
 </table>
 <p>当 i = 1 时，有 <code>$q_1 = q_2 / i = 0/1 = 0, r_1 = q_2 % i = 0%1 = 0$</code>。本轮之后列表 cards 为 <code>[]</code>。</p>
 <table>
-<thead>
-<tr>
-<th>i</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>card</td>
-<td>12</td>
-<td>18</td>
-<td>50</td>
-<td>4</td>
-<td>19</td>
-<td></td>
-</tr>
-<tr>
-<td>q</td>
-<td>q_1 = 0</td>
-<td>q_2 = 0</td>
-<td>q_3 = 1</td>
-<td>q_4 = 5</td>
-<td>q_5 = 20</td>
-<td>s = 103</td>
-</tr>
-<tr>
-<td>r</td>
-<td>r_1 = 0</td>
-<td>r_2 = 1</td>
-<td>r_3 = 2</td>
-<td>r_4 = 0</td>
-<td>r_5 = 3</td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>i</th>
+          <th>1</th>
+          <th>2</th>
+          <th>3</th>
+          <th>4</th>
+          <th>5</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>card</td>
+          <td>12</td>
+          <td>18</td>
+          <td>50</td>
+          <td>4</td>
+          <td>19</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>q</td>
+          <td>q_1 = 0</td>
+          <td>q_2 = 0</td>
+          <td>q_3 = 1</td>
+          <td>q_4 = 5</td>
+          <td>q_5 = 20</td>
+          <td>s = 103</td>
+      </tr>
+      <tr>
+          <td>r</td>
+          <td>r_1 = 0</td>
+          <td>r_2 = 1</td>
+          <td>r_3 = 2</td>
+          <td>r_4 = 0</td>
+          <td>r_5 = 3</td>
+          <td></td>
+      </tr>
+  </tbody>
 </table>
 </details>
 <p>最终，我们得到一个列表 <code>reordered_cards = [12, 18, 50, 4, 19]</code>。</p>
@@ -954,218 +953,218 @@ for i in range(5, 0, -1):
 <summary style="outline: none;"><font color='blueviolet'>点击查看每轮迭代中的细节</font></summary>
 <p>当 i = 1 时，有 <code>q_1 = 0, r_1 = 0</code>（证明略，提示：<code>$s &lt; 5!$</code>）。其次，由已知的前 4 张牌 <code>$[12, 18, 50, 4]$</code>，我们知道：</p>
 <table>
-<thead>
-<tr>
-<th>i</th>
-<th>i_1 = 1</th>
-<th>i_2 = 2</th>
-<th>i_3 = 3</th>
-<th>i_4 = 4</th>
-<th>i_5 = 5</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>card</td>
-<td>12</td>
-<td>18</td>
-<td>50</td>
-<td>4</td>
-<td>NULL</td>
-<td></td>
-</tr>
-<tr>
-<td>q</td>
-<td>q_1 = 0</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>s = NULL</td>
-</tr>
-<tr>
-<td>r</td>
-<td>r_1 = 0</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>NULL</td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>i</th>
+          <th>i_1 = 1</th>
+          <th>i_2 = 2</th>
+          <th>i_3 = 3</th>
+          <th>i_4 = 4</th>
+          <th>i_5 = 5</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>card</td>
+          <td>12</td>
+          <td>18</td>
+          <td>50</td>
+          <td>4</td>
+          <td>NULL</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>q</td>
+          <td>q_1 = 0</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>s = NULL</td>
+      </tr>
+      <tr>
+          <td>r</td>
+          <td>r_1 = 0</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td></td>
+      </tr>
+  </tbody>
 </table>
 <p>当 i = 2 时，有 <code>q_2 = i_1 * q_1 + r_1 = 0, r_2 = [12, 18].index(18) = 1</code>。</p>
 <table>
-<thead>
-<tr>
-<th>i</th>
-<th>i_1 = 1</th>
-<th>i_2 = 2</th>
-<th>i_3 = 3</th>
-<th>i_4 = 4</th>
-<th>i_5 = 5</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>card</td>
-<td>12</td>
-<td>18</td>
-<td>50</td>
-<td>4</td>
-<td>NULL</td>
-<td></td>
-</tr>
-<tr>
-<td>q</td>
-<td>q_1 = 0</td>
-<td>q_2 = 0</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>s = NULL</td>
-</tr>
-<tr>
-<td>r</td>
-<td>r_1 = 0</td>
-<td>r_2 = 1</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>NULL</td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>i</th>
+          <th>i_1 = 1</th>
+          <th>i_2 = 2</th>
+          <th>i_3 = 3</th>
+          <th>i_4 = 4</th>
+          <th>i_5 = 5</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>card</td>
+          <td>12</td>
+          <td>18</td>
+          <td>50</td>
+          <td>4</td>
+          <td>NULL</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>q</td>
+          <td>q_1 = 0</td>
+          <td>q_2 = 0</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>s = NULL</td>
+      </tr>
+      <tr>
+          <td>r</td>
+          <td>r_1 = 0</td>
+          <td>r_2 = 1</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td></td>
+      </tr>
+  </tbody>
 </table>
 <p>当 i = 3 时，有 <code>q_3 = i_2 * q_2 + r_2 = 1, r_3 = [12, 18, 50].index(50) = 2</code>。</p>
 <table>
-<thead>
-<tr>
-<th>i</th>
-<th>i_1 = 1</th>
-<th>i_2 = 2</th>
-<th>i_3 = 3</th>
-<th>i_4 = 4</th>
-<th>i_5 = 5</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>card</td>
-<td>12</td>
-<td>18</td>
-<td>50</td>
-<td>4</td>
-<td>NULL</td>
-<td></td>
-</tr>
-<tr>
-<td>q</td>
-<td>q_1 = 0</td>
-<td>q_2 = 0</td>
-<td>q_3 = 1</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>s = NULL</td>
-</tr>
-<tr>
-<td>r</td>
-<td>r_1 = 0</td>
-<td>r_2 = 1</td>
-<td>r_3 = 2</td>
-<td>NULL</td>
-<td>NULL</td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>i</th>
+          <th>i_1 = 1</th>
+          <th>i_2 = 2</th>
+          <th>i_3 = 3</th>
+          <th>i_4 = 4</th>
+          <th>i_5 = 5</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>card</td>
+          <td>12</td>
+          <td>18</td>
+          <td>50</td>
+          <td>4</td>
+          <td>NULL</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>q</td>
+          <td>q_1 = 0</td>
+          <td>q_2 = 0</td>
+          <td>q_3 = 1</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td>s = NULL</td>
+      </tr>
+      <tr>
+          <td>r</td>
+          <td>r_1 = 0</td>
+          <td>r_2 = 1</td>
+          <td>r_3 = 2</td>
+          <td>NULL</td>
+          <td>NULL</td>
+          <td></td>
+      </tr>
+  </tbody>
 </table>
 <p>当 i = 4 时，有 <code>q_4 = i_3 * q_3 + r_3 = 5, r_4 = [4, 12, 18, 50].index(4) = 0</code>。</p>
 <table>
-<thead>
-<tr>
-<th>i</th>
-<th>i_1 = 1</th>
-<th>i_2 = 2</th>
-<th>i_3 = 3</th>
-<th>i_4 = 4</th>
-<th>i_5 = 5</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>card</td>
-<td>12</td>
-<td>18</td>
-<td>50</td>
-<td>4</td>
-<td>NULL</td>
-<td></td>
-</tr>
-<tr>
-<td>q</td>
-<td>q_1 = 0</td>
-<td>q_2 = 0</td>
-<td>q_3 = 1</td>
-<td>q_4 = 5</td>
-<td>NULL</td>
-<td>s = NULL</td>
-</tr>
-<tr>
-<td>r</td>
-<td>r_1 = 0</td>
-<td>r_2 = 1</td>
-<td>r_3 = 2</td>
-<td>r_4 = 0</td>
-<td>NULL</td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>i</th>
+          <th>i_1 = 1</th>
+          <th>i_2 = 2</th>
+          <th>i_3 = 3</th>
+          <th>i_4 = 4</th>
+          <th>i_5 = 5</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>card</td>
+          <td>12</td>
+          <td>18</td>
+          <td>50</td>
+          <td>4</td>
+          <td>NULL</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>q</td>
+          <td>q_1 = 0</td>
+          <td>q_2 = 0</td>
+          <td>q_3 = 1</td>
+          <td>q_4 = 5</td>
+          <td>NULL</td>
+          <td>s = NULL</td>
+      </tr>
+      <tr>
+          <td>r</td>
+          <td>r_1 = 0</td>
+          <td>r_2 = 1</td>
+          <td>r_3 = 2</td>
+          <td>r_4 = 0</td>
+          <td>NULL</td>
+          <td></td>
+      </tr>
+  </tbody>
 </table>
 <p>当 i = 5 时，有 <code>q_5 = i_4 * q_4 + r_4 = 20</code>。</p>
 <table>
-<thead>
-<tr>
-<th>i</th>
-<th>i_1 = 1</th>
-<th>i_2 = 2</th>
-<th>i_3 = 3</th>
-<th>i_4 = 4</th>
-<th>i_5 = 5</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>card</td>
-<td>12</td>
-<td>18</td>
-<td>50</td>
-<td>4</td>
-<td>NULL</td>
-<td></td>
-</tr>
-<tr>
-<td>q</td>
-<td>q_1 = 0</td>
-<td>q_2 = 0</td>
-<td>q_3 = 1</td>
-<td>q_4 = 5</td>
-<td>q_5 = 20</td>
-<td>s = NULL</td>
-</tr>
-<tr>
-<td>r</td>
-<td>r_1 = 0</td>
-<td>r_2 = 1</td>
-<td>r_3 = 2</td>
-<td>r_4 = 0</td>
-<td>r_5 = NULL</td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>i</th>
+          <th>i_1 = 1</th>
+          <th>i_2 = 2</th>
+          <th>i_3 = 3</th>
+          <th>i_4 = 4</th>
+          <th>i_5 = 5</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>card</td>
+          <td>12</td>
+          <td>18</td>
+          <td>50</td>
+          <td>4</td>
+          <td>NULL</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>q</td>
+          <td>q_1 = 0</td>
+          <td>q_2 = 0</td>
+          <td>q_3 = 1</td>
+          <td>q_4 = 5</td>
+          <td>q_5 = 20</td>
+          <td>s = NULL</td>
+      </tr>
+      <tr>
+          <td>r</td>
+          <td>r_1 = 0</td>
+          <td>r_2 = 1</td>
+          <td>r_3 = 2</td>
+          <td>r_4 = 0</td>
+          <td>r_5 = NULL</td>
+          <td></td>
+      </tr>
+  </tbody>
 </table>
 </details>
 <p>第六步，推测第五张牌的值的取值范围。</p>

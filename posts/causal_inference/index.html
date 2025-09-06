@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.132.1">
+<meta name="generator" content="Hugo 0.148.2">
 
     
     
@@ -53,7 +53,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+<link rel="stylesheet" href="/scss/hyde-hyde.1354666f7c97c95b395dd180ab9cf1aca1ff0408c93996eed446576738e01579.css" integrity="sha256-E1Rmb3yXyVs5XdGAq5zxrKH/BAjJOZbu1EZXZzjgFXk=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -624,8 +624,7 @@
   <div class="post">
     <blockquote>
 <p>不谜语人的因果推断笔记！</p>
-<p>学习统计最好还是学习一下 <a href="https://www.r-project.org">R 语言</a>。相比 Python，R 是专门用于统计的语言，它提供了更细致的函数和更标准的实现方法。</p>
-</blockquote>
+<p>学习统计最好还是学习一下 <a href="https://www.r-project.org">R 语言</a>。相比 Python，R 是专门用于统计的语言，它提供了更细致的函数和更标准的实现方法。</p></blockquote>
 <h2 id="1-因果推断入门">1. 因果推断入门</h2>
 <p>小朋友感冒，家长给他吃药，一个星期后就痊愈了。那么“吃药”和“痊愈”是否有因果关系呢？</p>
 <p>我们知道普通的小感冒，即使不吃药，一个星期后也会痊愈。因此未必是因为吃药才痊愈的，也有可能是小朋友凭借抵抗力恢复了健康。此时，要进一步分析“吃药”与“痊愈”的因果关系，就要用到因果推断技术。</p>
@@ -641,8 +640,7 @@
 <p>不难发现，<code>$Y_{i}(1)$</code> 和 <code>$Y_{i}(0)$</code> 是无法同时观测到的。这被称为 <strong>因果推断的根本性问题</strong> (Holland, 1986)。正如“人不能两次踏入同一条河流”，一旦做出某种选择，其他选择的结果就无从观测了。</p>
 <p>由于此“根本性问题”的存在，对 <code>$\tau$</code> 算不了真实值，只能估计。因果效应 <code>$\tau$</code> 有三种常见的<strong>估计值</strong>：</p>
 <blockquote>
-<p>我们约定：是否吃药用 <code>$X$</code> 表示，<code>$X = 0 \space or \space 1$</code>，其中 1 代表吃药，0 代表不吃药。这里有必要区分下，<code>$Y_{i}|X=1$</code> 是指那些真的吃了药的人的 <code>$Y$</code> 值。<code>$Y_{i}(1)$</code>、<code>$Y_{i}(0)$</code> 则是看不到的一个潜在状态，可能是用统计方法算出的估计值，也可能是模型的外推。</p>
-</blockquote>
+<p>我们约定：是否吃药用 <code>$X$</code> 表示，<code>$X = 0 \space or \space 1$</code>，其中 1 代表吃药，0 代表不吃药。这里有必要区分下，<code>$Y_{i}|X=1$</code> 是指那些真的吃了药的人的 <code>$Y$</code> 值。<code>$Y_{i}(1)$</code>、<code>$Y_{i}(0)$</code> 则是看不到的一个潜在状态，可能是用统计方法算出的估计值，也可能是模型的外推。</p></blockquote>
 <p>1.<strong>ATT</strong> (average treatment effect on treated)：实验组平均因果效应
 <code>$$\tau_{ATT} = E( \space (Y_{i}|X=1) - Y_{i}(0) \space )$$</code>
 2.<strong>ATU</strong> (average treatment effect on untreated)：控制组平均因果处理效应
@@ -651,8 +649,7 @@
 <code>$$\tau_{ATE} = \pi * \tau_{ATT} + (1 - \pi) * \tau_{ATU} $$</code>
 其中，<code>$\pi$</code> 是吃药的人（即<code>$X=1$</code>）在所有样本中所占的比例。</p>
 <blockquote>
-<p><strong>扩展阅读</strong>：<a href="https://bookdown.org/paul/applied-causal-analysis/ate.html">ATE: Average Treatment Effect</a></p>
-</blockquote>
+<p><strong>扩展阅读</strong>：<a href="https://bookdown.org/paul/applied-causal-analysis/ate.html">ATE: Average Treatment Effect</a></p></blockquote>
 <h3 id="12-因果推断的前提假设">1.2 因果推断的前提假设</h3>
 <p>根据上一节内容我们知道，因果效应是由估计得来的。这也就不难理解，为了让“估计”成立，我们需要一些前提假设对问题进行约束。</p>
 <p>因果推断的4个前提假设：</p>
@@ -674,8 +671,7 @@
 <p>在观测性分析中，由于观测大都取决于客观条件，因此一般都有不满足上述四条假设的地方。为减小各种系统误差，往往要使用纠偏方法对结果进行校正。但纠偏方法并非是完全无害的，多多少少会引入新的问题。有些纠偏方法，使用不当甚至不如不用。</p>
 <p>正因为观测性分析存在如此多的问题，因此在有条件做随机实验的情况下，还是尽量做随机实验。随机实验是检验因果关系的 <strong>黄金标准</strong>。</p>
 <blockquote>
-<p>todo: 未完待续</p>
-</blockquote>
+<p>todo: 未完待续</p></blockquote>
 <!-- 
 
 > 本文是胡安宁老师《应用统计因果推论》的学习笔记。

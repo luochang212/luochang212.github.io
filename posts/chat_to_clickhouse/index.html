@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.132.1">
+<meta name="generator" content="Hugo 0.148.2">
 
     
     
@@ -25,13 +25,13 @@
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="耶是 ClickHouse！我们有救了！！">
-  <meta name="twitter:description" content="哼，不是 MySQL 太慢，我才懒得装咧！！">
+  <meta name="twitter:description" content="ClickHouse 查得太快，请等一等你的数据分析师">
       <meta name="twitter:site" content="@_stellar_tide">
 
 <meta property="og:url" content="https://luochang212.github.io/posts/chat_to_clickhouse/">
   <meta property="og:site_name" content="Chang Luo">
   <meta property="og:title" content="耶是 ClickHouse！我们有救了！！">
-  <meta property="og:description" content="哼，不是 MySQL 太慢，我才懒得装咧！！">
+  <meta property="og:description" content="ClickHouse 查得太快，请等一等你的数据分析师">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -53,7 +53,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+<link rel="stylesheet" href="/scss/hyde-hyde.1354666f7c97c95b395dd180ab9cf1aca1ff0408c93996eed446576738e01579.css" integrity="sha256-E1Rmb3yXyVs5XdGAq5zxrKH/BAjJOZbu1EZXZzjgFXk=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -623,11 +623,10 @@
   
   <div class="post">
     <blockquote>
-<p>本来我懒得装，但是 MySQL 太慢了，遭不住，咱还是把 ClickHouse 装起来吧。</p>
-</blockquote>
+<p>本来我懒得装，但是 MySQL 太慢了，遭不住，咱还是把 ClickHouse 装起来吧。</p></blockquote>
 <p>GitHub 项目地址：<a href="https://github.com/luochang212/chat-to-clickhouse" target="_blank">chat-to-clickhouse</a></p>
-<p>在此前的文章<a href="https://luochang212.github.io/posts/agent_project/">《Agent 实战：智能路由、任务拆解和链路工程》</a>中，实现了一个 ChatBI，它能访问 MySQL 数据库。可是对于千万量级的数据，一次复杂查询需要消耗数秒甚至数十秒。并且 Agent 的 NL2SQL 尚未做到 one-shot，它需要不断试错，这进一步加剧了查询效率的问题。</p>
-<p>如何解决查询效率低下的问题呢？这便引入今天的主角：ClickHouse。</p>
+<p>在<a href="https://luochang212.github.io/posts/agent_project/">《Agent 实战：智能路由、任务拆解和链路工程》</a>一文中，我实现了一个简单的 ChatBI，它能查询 MySQL 数据库。对于小批量数据量，MySQL 尚可应付，但是当数据量来到千万量级时，一次 MySQL 查询将消耗数秒甚至数十秒，这么长的等待时间是用户难以忍受的。而且 Agent 还有一个技术问题，它的 NL2SQL 尚未做到 one-shot，也就是说，在拿到最终结果前，它也许需要多次试错，这将进一步拉长查询时间。</p>
+<p>如何无痛解决查询效率低下的问题呢？很简单，只需要换数据库就可以做到。这便引入今天的主角：ClickHouse。</p>
 <h3 id="一分析利器">一、分析利器</h3>
 <p><a href="https://github.com/ClickHouse/ClickHouse">ClickHouse</a> 是 Yandex 旗下的一款开源的列式存储数据库，专为 <strong>联机分析处理</strong> (OLAP) 场景设计。在做数据分析时，它比传统数据库快几倍到几十倍。分析场景的核心需求是「聚合计算」，即 <code>GROUP BY</code> 子句下的 <code>SUM</code>, <code>AVG</code>, <code>COUNT</code> 操作，这些正是 ClickHouse 的强项。</p>
 <p>为什么它的聚合计算如此之快呢？因为它具有如下特性：</p>
@@ -656,8 +655,7 @@
 </code></pre><p>运行以下命令重启 Docker，配置将在重启后生效：</p>
 <pre tabindex="0"><code>sudo systemctl restart docker
 </code></pre><blockquote>
-<p><strong>Note:</strong> 镜像源网站通常有个白名单，只有白名单里的镜像才能下载到。如果你需要的镜像比较新或者比较冷门，那就需要借助某些科技了 (ﾉ)`ε´(ヾ)</p>
-</blockquote>
+<p><strong>Note:</strong> 镜像源网站通常有个白名单，只有白名单里的镜像才能下载到。如果你需要的镜像比较新或者比较冷门，那就需要借助某些科技了 (ﾉ)`ε´(ヾ)</p></blockquote>
 <h4 id="2-安装-clickhouse">2. 安装 ClickHouse</h4>
 <p><strong>1）拉取镜像</strong></p>
 <pre tabindex="0"><code># 下载镜像
@@ -949,6 +947,11 @@ class CHAgent:
       <span class="navigation-tittle">新瓶装旧酒：纸牌魔术 MCP</span>
     </a>
     
+    
+    <a href="/posts/quick_bi_intro/" class="navigation-next">
+      <span class="navigation-tittle">阿里发布新版 Quick BI，聊聊 ChatBI 的底层架构、交互设计和云计算生态</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
     
 </div>
 

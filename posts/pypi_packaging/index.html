@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.132.1">
+<meta name="generator" content="Hugo 0.148.2">
 
     
     
@@ -53,7 +53,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+<link rel="stylesheet" href="/scss/hyde-hyde.1354666f7c97c95b395dd180ab9cf1aca1ff0408c93996eed446576738e01579.css" integrity="sha256-E1Rmb3yXyVs5XdGAq5zxrKH/BAjJOZbu1EZXZzjgFXk=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -623,8 +623,7 @@
   
   <div class="post">
     <blockquote>
-<p>你们这些家伙，好好看看我是怎么打包的吧！</p>
-</blockquote>
+<p>你们这些家伙，好好看看我是怎么打包的吧！</p></blockquote>
 <p>GitHub 项目地址：<a href="https://github.com/luochang212/hit-and-blow" target="_blank">hit-and-blow</a></p>
 <ul>
 <li>官方教程：<a href="https://packaging.python.org/en/latest/tutorials/packaging-projects/">Packaging Python Projects</a></li>
@@ -700,8 +699,7 @@ conda deactivate
 # 删除环境（如需）
 conda env remove --name python_37
 </code></pre><blockquote>
-<p><strong>PS</strong>: Python 版本不能低于 <code>toml</code> 文件中 <code>requires-python</code> 的要求</p>
-</blockquote>
+<p><strong>PS</strong>: Python 版本不能低于 <code>toml</code> 文件中 <code>requires-python</code> 的要求</p></blockquote>
 <h4 id="42-本地安装">4.2 本地安装</h4>
 <p>从源代码安装软件包</p>
 <pre tabindex="0"><code># Install from source
@@ -721,29 +719,28 @@ pip uninstall [YOUR_PACKAGE]
 <p>PyPI 提供了测试服和正式服。测试上传选测试账号，正式上传选正式账号。</p>
 <p>注册账号后申请 API token.</p>
 <table>
-<thead>
-<tr>
-<th></th>
-<th>注册账号的链接</th>
-<th>获取 API token 的链接</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>测试服</td>
-<td><a href="https://test.pypi.org/account/register/">test.pypi.org/account/register</a></td>
-<td><a href="https://test.pypi.org/manage/account/#api-tokens">test.pypi.org/manage/account</a></td>
-</tr>
-<tr>
-<td>正式服</td>
-<td><a href="https://pypi.org/account/register/">pypi.org/account/register</a></td>
-<td><a href="https://pypi.org/manage/account/#api-tokens">pypi.org/manage/account</a></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th></th>
+          <th>注册账号的链接</th>
+          <th>获取 API token 的链接</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>测试服</td>
+          <td><a href="https://test.pypi.org/account/register/">test.pypi.org/account/register</a></td>
+          <td><a href="https://test.pypi.org/manage/account/#api-tokens">test.pypi.org/manage/account</a></td>
+      </tr>
+      <tr>
+          <td>正式服</td>
+          <td><a href="https://pypi.org/account/register/">pypi.org/account/register</a></td>
+          <td><a href="https://pypi.org/manage/account/#api-tokens">pypi.org/manage/account</a></td>
+      </tr>
+  </tbody>
 </table>
 <blockquote>
-<p><strong>Note</strong>: 正式服需要完成 2FA 验证才能获取 API token，测试服无需验证</p>
-</blockquote>
+<p><strong>Note</strong>: 正式服需要完成 2FA 验证才能获取 API token，测试服无需验证</p></blockquote>
 <h4 id="53-上传到-pypi">5.3 上传到 PyPI</h4>
 <p>两种情况：</p>
 <p>1）上传测试服 <a href="https://test.pypi.org/">TestPyPI</a>：</p>
@@ -759,8 +756,7 @@ pip uninstall [YOUR_PACKAGE]
 <p>现在可以用 <code>pip install [YOUR_PACKAGE]</code> 下载使用了！</p>
 <blockquote>
 <p>🖐️ 不要走开🖐️ 广告时间到！</p>
-<p>作为练习，我为豆瓣 9.1 分的 <a href="https://www.douban.com/game/35010128/">《世界游戏大全51》</a> 中的小游戏“猜颜色”写了解算器（作弊器）并打包上传到 PyPI。如果感兴趣，可以在 <a href="https://test.pypi.org/project/switch-hacker/">PyPI</a> 或 <a href="https://github.com/luochang212/hit-and-blow">GitHub</a> 下载～</p>
-</blockquote>
+<p>作为练习，我为豆瓣 9.1 分的 <a href="https://www.douban.com/game/35010128/">《世界游戏大全51》</a> 中的小游戏“猜颜色”写了解算器（作弊器）并打包上传到 PyPI。如果感兴趣，可以在 <a href="https://test.pypi.org/project/switch-hacker/">PyPI</a> 或 <a href="https://github.com/luochang212/hit-and-blow">GitHub</a> 下载～</p></blockquote>
 
   </div>
 

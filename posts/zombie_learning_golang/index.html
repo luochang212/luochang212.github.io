@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    
+    
+
+
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=61090&amp;path=livereload" data-no-instant defer></script>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://localhost:61090/posts/zombie_learning_golang/">
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.148.2">
+
+    
+    
+    
+
+<title> • Chang Luo</title>
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Chang Luo">
+  <meta name="twitter:description" content="author: “Chang Luo” date: 2019-07-12 title: “Golang 学习笔记” categories: [ “Development”, “Golang” ] tags: [“Golang”, “tutorial”] weight: 10 description: “Golang是2009年由谷歌的三位大佬创造的一门新语言。Goalng有很多优点。比如，作为静态类型语言，Golang的依赖少，易于部署。此外，它还支持协程并发，支持垃圾回收，可跨平台编译。Golang兼具动态语言的强大表达能力和C的执行效率，被誉为21世纪的C语言。” Golang是2009年由谷歌的三位大佬(Robert Griesemer, Rob Pike, Ken Thompson)创造的一门新语言。Goalng有很多优点。比如，作为静态类型语言，Golang的依赖少，易于部署。它还支持协程并发，支持垃圾回收，可跨平台编译。Golang兼具动态语言的强大表达能力和C的执行效率，被誉为21世纪的C语言。
+最近在学习Golang，为了寻找配置教程、优秀的电子书以及难度曲线适中的入门实践项目，我颇费了些功夫。趁着记忆还新鲜，我想分享一下我的学习路径以及学习资料。本文涉及Golang的安装、配置、运行以及实践项目。希望通过阅读本文，初学者们可以更快地找到适合自己的学习方向。
+下载安装 官网提供标准安装包，一路点击就能完成安装。
+安装包的链接是https://golang.org/dl/，更多关于安装的信息见安装 Go.
+环境配置 （一）在终端运行
+在命令行运行程序几乎不需要配置。只要下载Golang，然后按官方建议，创建一个名为gocode的文件夹，直接在里面写代码就可以了。为了防止以后import其他包发生错误，建议把gocode文件夹放在GOPATH下。如何知道Golang的工作路径(GOPATH)在哪里呢？打开命令行，输入go env，就能在输出里找到工作路径了（注意区别安装路径和工作路径，它们是两个不同的路径）。
+下面是Golang在命令行运行时的一些常用命令：
+Linux系统下的常用命令（点击展开） 新建目录 $ mkdir foldername 打开目录 ``` $ cd foldername ``` 返回上一级目录 ``` $ cd .. ``` 新建go文件 ``` $ touch filename.go ``` 删除go文件 ``` $ rm filename.go ``` 重命名go文件 ``` $ mv filename1.go filename2.go ``` 用vim打开go文件 ``` $ vim filename.go ``` 运行go程序 ``` $ go run filename.go ``` 生成可执行的二进制文件 ``` $ go build filename.go ``` 运行二进制文件 ``` $ ./filename ``` 注：用vim打开文件以后，需要按a键打开编辑模式。编辑结束后，按esc键退出编辑模式。如果需要保存后退出，输入`:wq`。如果不保存直接退出，输入`:q`。最后按回车执行。 （二）在VSCode上运行">
+      <meta name="twitter:site" content="@_stellar_tide">
+
+<meta property="og:url" content="http://localhost:61090/posts/zombie_learning_golang/">
+  <meta property="og:site_name" content="Chang Luo">
+  <meta property="og:title" content="Chang Luo">
+  <meta property="og:description" content="author: “Chang Luo” date: 2019-07-12 title: “Golang 学习笔记” categories: [ “Development”, “Golang” ] tags: [“Golang”, “tutorial”] weight: 10 description: “Golang是2009年由谷歌的三位大佬创造的一门新语言。Goalng有很多优点。比如，作为静态类型语言，Golang的依赖少，易于部署。此外，它还支持协程并发，支持垃圾回收，可跨平台编译。Golang兼具动态语言的强大表达能力和C的执行效率，被誉为21世纪的C语言。” Golang是2009年由谷歌的三位大佬(Robert Griesemer, Rob Pike, Ken Thompson)创造的一门新语言。Goalng有很多优点。比如，作为静态类型语言，Golang的依赖少，易于部署。它还支持协程并发，支持垃圾回收，可跨平台编译。Golang兼具动态语言的强大表达能力和C的执行效率，被誉为21世纪的C语言。
+最近在学习Golang，为了寻找配置教程、优秀的电子书以及难度曲线适中的入门实践项目，我颇费了些功夫。趁着记忆还新鲜，我想分享一下我的学习路径以及学习资料。本文涉及Golang的安装、配置、运行以及实践项目。希望通过阅读本文，初学者们可以更快地找到适合自己的学习方向。
+下载安装 官网提供标准安装包，一路点击就能完成安装。
+安装包的链接是https://golang.org/dl/，更多关于安装的信息见安装 Go.
+环境配置 （一）在终端运行
+在命令行运行程序几乎不需要配置。只要下载Golang，然后按官方建议，创建一个名为gocode的文件夹，直接在里面写代码就可以了。为了防止以后import其他包发生错误，建议把gocode文件夹放在GOPATH下。如何知道Golang的工作路径(GOPATH)在哪里呢？打开命令行，输入go env，就能在输出里找到工作路径了（注意区别安装路径和工作路径，它们是两个不同的路径）。
+下面是Golang在命令行运行时的一些常用命令：
+Linux系统下的常用命令（点击展开） 新建目录 $ mkdir foldername 打开目录 ``` $ cd foldername ``` 返回上一级目录 ``` $ cd .. ``` 新建go文件 ``` $ touch filename.go ``` 删除go文件 ``` $ rm filename.go ``` 重命名go文件 ``` $ mv filename1.go filename2.go ``` 用vim打开go文件 ``` $ vim filename.go ``` 运行go程序 ``` $ go run filename.go ``` 生成可执行的二进制文件 ``` $ go build filename.go ``` 运行二进制文件 ``` $ ./filename ``` 注：用vim打开文件以后，需要按a键打开编辑模式。编辑结束后，按esc键退出编辑模式。如果需要保存后退出，输入`:wq`。如果不保存直接退出，输入`:q`。最后按回车执行。 （二）在VSCode上运行">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.1354666f7c97c95b395dd180ab9cf1aca1ff0408c93996eed446576738e01579.css" integrity="sha256-E1Rmb3yXyVs5XdGAq5zxrKH/BAjJOZbu1EZXZzjgFXk=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+
+<link rel="stylesheet" href="/scss/tocbot.5ef07cebc3c477b54270456f149ee02922479bb7555fd344b2c69f953b0e7e5e.css" integrity="sha256-XvB868PEd7VCcEVvFJ7gKSJHm7dVX9NEssaflTsOfl4=">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    
+
+</head>
+
+
+    <body class=" ">
+    <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://upcdn.b0.upaiyun.com/libs/jquery/jquery-1.9.0.min.js"></script>
+
+  <style>
+    body {
+      transition: background-color .5s;
+    }
+
+    #overlay {
+      position: fixed;
+      display: none;
+      width: calc(100vw - 580px);
+      height: 100%;
+      top: 0;
+      left: 0;
+       
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      right: 0;
+      background-color: #FFF;
+      overflow: hidden;
+      transition: 0.5s;
+    }
+
+    #main {
+      transition: margin-left .5s;
+       
+      padding: 16px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      overflow: hidden;
+    }
+
+     
+    .tab {
+      overflow: hidden;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+    }
+
+     
+    .tab button {
+      background-color: inherit;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      transition: 0.3s;
+      font-size: 17px;
+    }
+
+     
+    .tab button:hover {
+      background-color: #ddd;
+    }
+
+     
+    .tab button.active {
+      background-color: #ccc;
+    }
+
+     
+    .tabcontent {
+      display: flex;
+      padding: 12px 12px;
+      margin: 0;
+      border: 1px solid #ccc;
+      border-top: none;
+      overflow: hidden;
+      height: calc(100vh - 90px);
+    }
+
+    .dropbtn {
+      background-color: #3498DB;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+    }
+
+    .dropup {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropup-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      bottom: 50px;
+      z-index: 1;
+    }
+
+    .dropup-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropup-content a:hover {
+      background-color: #ccc
+    }
+
+    .dropup:hover .dropup-content {
+      display: block;
+    }
+
+    .dropup:hover .dropbtn {
+      background-color: #2980B9;
+    }
+
+    #video2,
+    #video3 {
+      display: none;
+    }
+
+    .myiframe {
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  
+  <div class="sidebar">
+    <div class="container ">
+      <div class="sidebar-about">
+        <span class="site__title">
+          <a href="http://localhost:61090/">Chang Luo</a>
+        </span>
+        
+        
+        
+        <div class="author-image">
+          <a href="#" class="load-iframe" onclick="openNav()"><img src="http://localhost:61090//images/profile.webp" id="author-iamge"
+              alt="Author Image" class="img--circle img--headshot element--center"></a>
+        </div>
+        
+        <p class="site__description">
+          
+        </p>
+      </div>
+      <div class="collapsible-menu">
+        <input type="checkbox" id="menuToggle">
+        <label for="menuToggle">Chang Luo</label>
+        <div class="menu-content">
+          <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/portfolio/">
+						<span>Projects</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+          <section class="social">
+	
+	<a href="https://twitter.com/_stellar_tide" rel="me"><i class="fab fa-x-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	<a href="https://github.com/luochang212" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	<a href="https://instagram.com/suphenshin" rel="me"><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></a>
+	
+	
+	<a href="https://linkedin.com/in/bupt-luochang" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</section>
+
+        </div>
+      </div>
+      
+<div class="copyright">
+  &copy; 2025 Chang Luo
+  
+</div>
+
+
+
+    </div>
+  </div>
+
+  
+  
+
+  <div id="overlay" onclick="off()"></div>
+
+  <div id="mySidenav" class="sidenav">
+
+    <div id="main">
+      <div class="tab">
+        <button id="default-tab" class="tablinks" onclick="openItem(event, 'Resources')">Resources</button>
+        <button class="tablinks" onclick="openItem(event, 'netease-player')">Music</button>
+        <button class="tablinks" onclick="openItem(event, 'video-player')">Video</button>
+        <button class="tablinks" onclick="openItem(event, 'gallery')">Gallery</button>
+        <button class="tablinks" onclick="openItem(event, 'gadget')">Gadget</button>
+        <button class="tablinks" onclick="openItem(event, 'categories')">Cats</button>
+      </div>
+
+      <div id="Resources" class="tabcontent">
+        <iframe class="myiframe"
+          src="about:blank"
+          data-src="/resources/"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          scrolling="auto"></iframe>
+      </div>
+
+      <div id="netease-player" class="tabcontent">
+        <iframe class="myiframe"
+          src="about:blank"
+          data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
+          frameborder="no"
+          marginheight="0"
+          marginwidth="0"
+          scrolling="auto"></iframe>
+      </div>
+
+      <div id="video-player" class="tabcontent">
+        <div id="video1">
+          <iframe src="about:blank"
+            data-src="//player.bilibili.com/player.html?bvid=BV1Ln4y1d7Z9&p=1&high_quality=1&danmaku=0&autoplay=0"
+            style="width:100%; height: 500px"
+            scrolling="no"
+            frameborder="no"
+            framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+        <div id="video2">
+          <iframe src="about:blank"
+            data-src="//player.bilibili.com/player.html?bvid=BV1rp4y1L7i4&p=1&high_quality=1&danmaku=0&autoplay=0"
+            style="width:100%; height: 500px"
+            scrolling="no"
+            frameborder="no"
+            framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+        <div id="video3">
+          <iframe src="about:blank"
+            data-src="//player.bilibili.com/player.html?bvid=BV1Av4y147QE&p=1&high_quality=1&danmaku=0&autoplay=0"
+            style="width:100%; height:500px"
+            scrolling="no"
+            frameborder="no"
+            framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+
+        
+
+        
+
+        <br>
+        <div class="dropup">
+          <button class="dropbtn">更多视频</button>
+          <div class="dropup-content">
+            <a onclick="link1()">ZUTOMYAO</a>
+            <a onclick="link2()">岁岁恋</a>
+            <a onclick="link3()">真物论</a>
+          </div>
+        </div>
+      </div>
+
+      <div id="gallery" class="tabcontent">
+        <iframe class="myiframe"
+        src="about:blank"
+        data-src="/gadget/gallery/#two"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        scrolling="auto"></iframe>
+      </div>
+
+      <div id="gadget" class="tabcontent">
+        <iframe class="myiframe"
+        src="about:blank"
+        data-src="/tool/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        scrolling="auto"></iframe>
+      </div>
+
+      <div id="categories" class="tabcontent">
+        <iframe class="myiframe"
+        src="about:blank"
+        data-src="/categories/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        scrolling="auto"></iframe>
+      </div>
+    </div>
+  </div>
+
+  
+  <script>
+    'use strict'
+
+    function openNav() {
+      on();
+      document.getElementById("mySidenav").style.width = "580px";
+      document.body.style.backgroundColor = "rgba(0,0,0,0.5)";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.body.style.backgroundColor = "white";
+    }
+
+    function on() {
+      document.getElementById("overlay").style.display = "block";
+    }
+
+    function off() {
+      closeNav();
+      document.getElementById("overlay").style.display = "none";
+    }
+
+    
+    document.getElementById('default-tab').click();
+
+    function openItem(evt, itemName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(itemName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+
+    function link1() {
+      document.getElementById("video1").style.display = "block";
+      document.getElementById("video2").style.display = "none";
+      document.getElementById("video3").style.display = "none";
+    }
+
+    function link2() {
+      document.getElementById("video1").style.display = "none";
+      document.getElementById("video2").style.display = "block";
+      document.getElementById("video3").style.display = "none";
+    }
+
+    function link3() {
+      document.getElementById("video1").style.display = "none";
+      document.getElementById("video2").style.display = "none";
+      document.getElementById("video3").style.display = "block";
+    }
+
+     
+    var flag = 0;
+
+     
+    $(".load-iframe").click(function () {
+      if (flag < 1) {
+        $("iframe").each(function () {
+          $(this).attr("src", $(this).data("src"));
+        });
+        flag = flag + 1;
+      }
+    });
+  </script>
+
+</body>
+
+
+
+        <div class="content container">
+            
+    <style>
+  .my-emoji {
+    height: 25px;
+    display: inline-block;
+    margin: 0;
+    vertical-align: text-bottom;
+  }
+
+  .social-links a {
+    color: rgba(120,120,120,1);
+    text-decoration: none;
+    outline: none !important;
+    cursor: pointer;
+    transition-property: padding, text-shadow, line-height, color, background, opacity, transform;
+    transition-duration: .25s;
+    transition-timing-function: ease-in-out;
+    display: inline-block;
+    white-space: nowrap;
+    position: relative;
+  }
+
+  .social-links a:after {
+    content: "";
+    display: block;
+    height: .125rem;
+    margin: -.125rem 0 0;
+    background: rgba(0,0,0,.5);
+    border-radius: 1px;
+    transform: scaleX(0);
+    transition: transform .25s ease-in-out;
+  }
+
+  .social-links a:hover:after {
+    transform: scaleX(1);
+  }
+
+  .social-links a:hover {
+    color: rgba(120,120,120,1);
+  }
+
+  .post {
+    margin-bottom: 0;
+  }
+
+  .post-footer {
+    margin-top: 0;
+    padding-top: 0.5rem;
+  }
+</style>
+
+
+
+<article>
+  <header>
+    <h1></h1>
+    
+    
+<div class="post__meta">
+    
+    
+    
+    
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 6 min read
+</div>
+
+
+  </header>
+  
+  
+  
+  <div class="toc-wrapper">
+    <input type="checkbox" id="tocToggle">
+    <label for="tocToggle">目录</label>
+    
+    <div class="toc" id="TableOfContents"></div>
+    
+  </div>
+  
+  
+  <div class="post">
+    <hr>
+<h2 id="description-golang是2009年由谷歌的三位大佬创造的一门新语言goalng有很多优点比如作为静态类型语言golang的依赖少易于部署此外它还支持协程并发支持垃圾回收可跨平台编译golang兼具动态语言的强大表达能力和c的执行效率被誉为21世纪的c语言">author: &ldquo;Chang Luo&rdquo;
+date: 2019-07-12
+title: &ldquo;Golang 学习笔记&rdquo;
+categories: [ &ldquo;Development&rdquo;, &ldquo;Golang&rdquo; ]
+tags: [&ldquo;Golang&rdquo;, &ldquo;tutorial&rdquo;]
+weight: 10
+description: &ldquo;Golang是2009年由谷歌的三位大佬创造的一门新语言。Goalng有很多优点。比如，作为静态类型语言，Golang的依赖少，易于部署。此外，它还支持协程并发，支持垃圾回收，可跨平台编译。Golang兼具动态语言的强大表达能力和C的执行效率，被誉为21世纪的C语言。&rdquo;</h2>
+<blockquote>
+<p><a href="https://golang.org/">Golang</a>是2009年由谷歌的<a onclick="show_name()">三位大佬</a><span id="names" style="display: none;">(Robert Griesemer, Rob Pike, Ken Thompson)</span>创造的一门新语言。Goalng有很多优点。比如，作为静态类型语言，Golang的依赖少，易于部署。它还支持协程并发，支持垃圾回收，可跨平台编译。Golang兼具动态语言的强大表达能力和C的执行效率，被誉为21世纪的C语言。</p></blockquote>
+<script>
+    var i = 0;
+    function show_name() {
+        i += 1;
+        if (i%2 == 0) {
+            document.getElementById("names").style.display = "none";
+        } else {
+            document.getElementById("names").style.display = "inline";
+        }
+    }
+</script>
+<p>最近在学习Golang，为了寻找配置教程、优秀的电子书以及难度曲线适中的入门实践项目，我颇费了些功夫。趁着记忆还新鲜，我想分享一下我的学习路径以及学习资料。本文涉及Golang的安装、配置、运行以及实践项目。希望通过阅读本文，初学者们可以更快地找到适合自己的学习方向。</p>
+<h3 id="下载安装">下载安装</h3>
+<p>官网提供标准安装包，一路点击就能完成安装。</p>
+<p>安装包的链接是<a href="https://golang.org/dl/">https://golang.org/dl/</a>，更多关于安装的信息见<a href="https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/01.1.md#11%E5%AE%89%E8%A3%85-go">安装 Go</a>.</p>
+<h3 id="环境配置">环境配置</h3>
+<p>（一）在终端运行</p>
+<p>在命令行运行程序<!--，用vim写代码-->几乎不需要配置。只要下载Golang，然后按官方建议，创建一个名为gocode的文件夹，直接在里面写代码就可以了。为了防止以后import其他包发生错误，建议把gocode文件夹放在GOPATH下。如何知道Golang的工作路径(GOPATH)在哪里呢？打开命令行，输入<code>go env</code>，就能在输出里找到工作路径了（注意区别安装路径和工作路径，它们是两个不同的路径）。</p>
+<p>下面是Golang在命令行运行时的一些常用命令：</p>
+<details>
+<summary><font color='red'>Linux系统下的常用命令（点击展开）</font></summary>
+<br>
+新建目录
+<pre tabindex="0"><code>$ mkdir foldername
+</code></pre><br>
+打开目录
+```
+$ cd foldername
+```
+<br>
+返回上一级目录
+```
+$ cd ..
+```
+<br>
+新建go文件
+```
+$ touch filename.go
+```
+<br>
+删除go文件
+```
+$ rm filename.go
+```
+<br>
+重命名go文件
+```
+$ mv filename1.go filename2.go
+```
+<br>
+用vim打开go文件
+```
+$ vim filename.go
+```
+<br>
+运行go程序
+```
+$ go run filename.go
+```
+<br>
+生成可执行的二进制文件
+```
+$ go build filename.go
+```
+<br>
+运行二进制文件
+```
+$ ./filename
+```
+<br>
+注：用vim打开文件以后，需要按a键打开编辑模式。编辑结束后，按esc键退出编辑模式。如果需要保存后退出，输入`:wq`。如果不保存直接退出，输入`:q`。最后按回车执行。
+</details>
+<p>（二）在VSCode上运行</p>
+<p>关于如何在VSCode上配置Golang运行环境，这个Youtube视频讲得很细：<a href="https://youtu.be/NphW8lvJ_fg">How to Configure Visual Studio Code for Go?</a></p>
+<p>鉴于国内可能打不开YouTube，我用文字介绍一下配置步骤：</p>
+<ol>
+<li>在VSCode安装go插件</li>
+<li>打开Command Palette，输入<code>Go Install/Update Tools</code>。会弹出一列单选框，点全选，然后点OK安装</li>
+<li>再次打开Command Palette，输入<code>Shell Command: Install 'code' command in PATH</code>，按回车安装</li>
+</ol>
+<p>这样就配置完成啦！</p>
+<p>运行go程序时，在Command Palette输入<code>View: Toggle Integrated Terminal</code>，即可在VSCode内打开命令行界面。在命令行界面输入<code>go run filename.go</code>，即可运行go程序。使用VSCode快捷键，可以更快地完成上述步骤，在此就不多作介绍了。</p>
+<h3 id="学习路径">学习路径</h3>
+<p>（一）语言基础</p>
+<p>Golang是一门简捷的语言，遵循敏捷开发(Agile Development)的原则，语言本身并不难。而且Golang官网提供了相当丰富的教程和代码示例，因此入门还是相当容易的。</p>
+<p>对于初学者，建议先看官方的<a href="https://tour.golang.org/welcome/1">入门教程</a>，再跑跑<a href="https://gobyexample.com">Go by Example</a>上的Demo熟悉一下语言特性，就差不多了。</p>
+<p>（二）入门书籍</p>
+<p>入门书籍我推荐<a href="https://github.com/astaxie/build-web-application-with-golang">build-web-application-with-golang</a>。这本书对概念的讲解细致到位，示例代码丰富，学习曲线也很平滑，适合初学者学习理解。在开始项目实践之前，可以先快速地浏览一下这本书。建议读一读<a href="https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/02.2.md#22-go%E5%9F%BA%E7%A1%80">2.2 Go基础</a>中的代码，对深入了解Go语言还是挺有帮助的。</p>
+<p>（三）项目实践</p>
+<p>项目实践的最终目标是制作一个属于自己的Web application。为了实现这个目标，需要循序渐进。所以我们先用Go搭建我们的第一个静态网页，然后再尝试搭建动态网页。</p>
+<p>（1）用Go搭建静态网页</p>
+<p>搭建静态网页，我参考的是这个教程：<a href="https://www.alexedwards.net/blog/serving-static-sites-with-go">Serving Static Sites with Go</a> <a href="/pdf/serving-static-sites-with-go.pdf">[PDF]</a>。</p>
+<p>按教程做完之后，我打算把之前在<a href="/posts/to_do_list/">JavaScript初探</a>中写的网页移植到这里验证一下。</p>
+<details>
+<summary>详细代码（点击展开）</summary>
+<p>首先打开命令行，为项目创建目录。</p>
+<pre tabindex="0"><code>$ mkdir to-do-list
+$ cd to-do-list
+</code></pre><p>除了在app.go中放置我们的代码，我们还需要创建static文件夹放置网页内容，templates文件夹放置模版。</p>
+<pre tabindex="0"><code>$ touch app.go
+
+$ mkdir -p static/stylesheets
+$ touch static/example.html static/stylesheets/style.css
+
+$ mkdir -p static/javascript
+$ touch static/example.html static/javascript/main.js
+
+$ mkdir templates
+$ touch templates/layout.html templates/example.html
+</code></pre><br>
+File: app.go
+```
+package main
+<p>import (
+&ldquo;html/template&rdquo;
+&ldquo;log&rdquo;
+&ldquo;net/http&rdquo;
+&ldquo;os&rdquo;
+&ldquo;path/filepath&rdquo;
+)</p>
+<p>func main() {
+fs := http.FileServer(http.Dir(&ldquo;static&rdquo;))
+http.Handle(&quot;/static/&quot;, http.StripPrefix(&quot;/static/&quot;, fs))
+http.HandleFunc(&quot;/&quot;, serveTemplate)</p>
+<pre><code>log.Println(&quot;\nWeb Server is available at http://localhost:3000/example.html&quot;)
+http.ListenAndServe(&quot;:3000&quot;, nil)
+</code></pre>
+<p>}</p>
+<p>func serveTemplate(w http.ResponseWriter, r *http.Request) {
+lp := filepath.Join(&ldquo;templates&rdquo;, &ldquo;layout.html&rdquo;)
+fp := filepath.Join(&ldquo;templates&rdquo;, filepath.Clean(r.URL.Path))</p>
+<pre><code>// Return a 404 if the template doesn't exist
+info, err := os.Stat(fp)
+if err != nil {
+	if os.IsNotExist(err) {
+		http.NotFound(w, r)
+		return
+	}
+}
+
+// Return a 404 if the request is for a directory
+if info.IsDir() {
+	http.NotFound(w, r)
+	return
+}
+
+tmpl, err := template.ParseFiles(lp, fp)
+if err != nil {
+	// Log the detailed error
+	log.Println(err.Error())
+	// Return a generic &quot;Internal Server Error&quot; message
+	http.Error(w, http.StatusText(500), 500)
+	return
+}
+
+if err := tmpl.ExecuteTemplate(w, &quot;layout&quot;, nil); err != nil {
+	log.Println(err.Error())
+	http.Error(w, http.StatusText(500), 500)
+}
+</code></pre>
+<p>}</p>
+<pre tabindex="0"><code>&lt;br&gt;
+File: static/stylesheets/style.css
+</code></pre><p>body {
+font-family: &ldquo;Source Han Sans&rdquo;, &ldquo;San Francisco&rdquo;, &ldquo;PingFang SC&rdquo;, &ldquo;Hiragino Sans GB&rdquo;, &ldquo;Droid Sans Fallback&rdquo;, &ldquo;Microsoft YaHei&rdquo;, sans-serif;
+font-size: 14px;
+color: #333;
+}
+a {
+text-decoration: none;
+color: #f66;
+transition-property: color;
+transition-duration: .2s;
+transition-timing-function: ease-in-out;
+}
+a:hover {
+color: #333;
+}
+p {
+margin: 1em 0;
+}
+p:empty {
+height: 1.5em;
+}
+main {
+margin: 0 5em;
+max-width: 60em;
+}
+h1 {
+margin: 1em 0;
+font-size: 24px;
+font-weight: 300;
+}
+textarea, article {
+width: 100%;
+height: 12em;
+margin: 2em 0;
+padding: .5em;
+overflow-y: scroll;
+border: 1px solid #999;
+border-radius: 2px;
+line-height: 1.5;
+text-align: justify;
+text-justify: inter-ideograph;
+}
+textarea {
+height: 9em;
+font-size: 14px;
+font-family: &ldquo;Source Han Sans&rdquo;, &ldquo;San Francisco&rdquo;, &ldquo;PingFang SC&rdquo;, &ldquo;Hiragino Sans GB&rdquo;, &ldquo;Droid Sans Fallback&rdquo;, &ldquo;Microsoft YaHei&rdquo;, sans-serif;
+color: #333;
+}
+article {
+cursor: pointer;
+}
+button {
+background: #fff;
+border: 1px solid #ccc;
+border-radius: 2px;
+line-height: 1;
+padding: .5em;
+color: #666;
+transition-property: color, background, border;
+transition-duration: .2s;
+transition-timing-function: ease-in-out;
+}
+button[id] {
+border: 1px solid #999;
+color: #333;
+cursor: pointer;
+}
+button[id]:hover {
+background: #666;
+border-color: #666;
+color: #fff;
+}
+::selection {
+color: #fff;
+background: #666;
+}
+::-moz-selection {
+color: #fff;
+background: #666;
+}
+table, th, td {
+border: 1px solid black;
+border-collapse: collapse;
+text-align: center;
+}
+th, td {
+padding: 5px;
+}
+th {
+text-align: left;
+}</p>
+<pre tabindex="0"><code>&lt;br&gt;
+File: static/javascript/main.js
+</code></pre><p>&ldquo;use strict&rdquo;;
+var Items = {
+　　　　	name: &ldquo;&rdquo;,
+　　　　	isCheck: &ldquo;false&rdquo;,
+isDelete: &ldquo;false&rdquo;
+};</p>
+<p>var objArray = [];</p>
+<p>var subArray = [];</p>
+<p>var submit_flag = true;</p>
+<p>var delete_flag = true;</p>
+<p>function addElement() {
+submit_flag = true;
+var item = Object.create(Items);</p>
+<pre><code>var v = document.getElementById(&quot;myTextarea&quot;).value;
+item.name = v
+objArray.push(item);
+var body = '&lt;table&gt;&lt;tr&gt;&lt;th&gt;#&lt;/th&gt;&lt;th&gt;Name&lt;/th&gt;&lt;/tr&gt;'
+
+for (var i = 0; i &lt; objArray.length; i++) {
+    var index = i+1;
+    body += '&lt;tr&gt;';
+    body += '&lt;td&gt;' + index.toString(10) + '&lt;/td&gt;';
+    //body += '&lt;td&gt;' + '&lt;input type=&quot;checkbox&quot; id=\&quot;cb' + i.toString(10) + '\&quot; onclick=&quot;isChecked(this);&quot;&gt;' + '&lt;/td&gt;';
+    body += '&lt;td&gt;' + objArray[i].name + '&lt;/td&gt;';
+    //body += '&lt;td&gt;' + objArray[i].isDelete + '&lt;/td&gt;';
+    //body += '&lt;td&gt;' + '&lt;input type=&quot;button&quot; id=\&quot;btn' + i.toString(10) + '\&quot; onclick=&quot;isDeleted(this);&quot;&gt;' + '&lt;/td&gt;';
+    body += '&lt;/tr&gt;';
+}
+
+body += '&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;';
+
+document.getElementById(&quot;object_list&quot;).innerHTML = body;
+document.getElementById(&quot;myTextarea&quot;).value = '';
+</code></pre>
+<p>}</p>
+<p>function submit() {
+if (submit_flag == true) {
+submit_flag = false;
+subArray = objArray;
+objArray = [];
+var body = &lsquo;<table><tr><th>#</th><th>Check Box</th><th>Name</th><th>Delete</th></tr>&rsquo;</p>
+<pre><code>for (var i = 0; i &lt; subArray.length; i++) {
+    var index = i+1;
+    body += '&lt;tr&gt;';
+    body += '&lt;td&gt;' + index.toString(10) + '&lt;/td&gt;';
+    body += '&lt;td&gt;' + '&lt;input type=\&quot;checkbox\&quot; id=\&quot;cb' + i.toString(10) + '\&quot; onclick=\&quot;isChecked(this);\&quot;&gt;' + '&lt;/td&gt;';
+    body += '&lt;td&gt;' + subArray[i].name + '&lt;/td&gt;';
+    body += '&lt;td&gt;' + '&lt;input type=\&quot;button\&quot; id=\&quot;btn' + i.toString(10) + '\&quot; onclick=\&quot;isDeleted(this);\&quot;&gt;' + '&lt;/td&gt;';
+    body += '&lt;/tr&gt;';
+}
+
+body += '&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;';
+
+document.getElementById(&quot;object_list&quot;).innerHTML = body;
+}
+</code></pre>
+<p>}</p>
+<p>function finalSheet() {
+var myDate=new Date();
+var final_sheet = &lsquo;<html><head></head><style>html{background-position:center top;background-repeat:no-repeat;width:800px;margin:auto;}table, th, td {border: 1px solid black;border-collapse: collapse;}th, td {padding: 5px;}th {text-align: center;}</style><body><h1>计划完成统计表</h1><h4>&rsquo; + myDate + &lsquo;</h2>&rsquo;
+var body = &lsquo;<table><tr><th>#</th><th>Name</th><th>Done</th></tr>&rsquo;</p>
+<pre><code>var i = 0;
+var index = 1;
+var showtext = &quot;&quot;;
+while (i &lt; subArray.length) {
+    if (subArray[i].isDelete != &quot;true&quot; ) {
+        if (subArray[i].isCheck == &quot;true&quot;) {
+            showtext = &quot;√&quot;;
+        }else {
+            showtext = &quot;×&quot;;
+        }
+        body += '&lt;tr&gt;';
+        body += '&lt;td&gt;' + index.toString(10) + '&lt;/td&gt;';
+        body += '&lt;td&gt;' + subArray[i].name + '&lt;/td&gt;';
+        body += '&lt;td&gt;' + showtext + '&lt;/td&gt;';
+        body += '&lt;/tr&gt;';
+        index++;
+    }
+    i++;
+}
+
+body += '&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;';
+document.getElementById(&quot;object_list&quot;).innerHTML = body;
+
+final_sheet += body
+download('计划完成统计表.html', final_sheet)
+</code></pre>
+<p>}</p>
+<p>function handleEnter(event) {
+if (event.keyCode == 13 &amp;&amp; !event.shiftKey) {
+addElement();
+}
+}</p>
+<p>function clearText() {
+document.getElementById(&ldquo;myTextarea&rdquo;).value = &lsquo;&rsquo;;
+}</p>
+<p>function clearContents(element) {
+element.value = &lsquo;&rsquo;;
+}</p>
+<p>function isChecked(element) {
+var id_str = element.id
+id_str = id_str.replace(&ldquo;cb&rdquo;,&quot;&quot;);
+var id_num = parseInt(id_str)
+if (element.checked == true){
+subArray[id_num].isCheck = &ldquo;true&rdquo;;
+} else {
+subArray[id_num].isCheck = &ldquo;false&rdquo;;
+}
+}</p>
+<p>function isDeleted(element) {
+var id_str = element.id
+id_str = id_str.replace(&ldquo;btn&rdquo;,&quot;&quot;);
+var id_num = parseInt(id_str)</p>
+<pre><code>if (delete_flag == true) {
+delete_flag = false;
+subArray[id_num].isDelete = &quot;true&quot;;
+element.value=&quot;×&quot;
+} else {
+delete_flag = true;
+subArray[id_num].isDelete = &quot;false&quot;;
+element.value=&quot;&quot;
+}
+</code></pre>
+<p>}</p>
+<p>function download(filename, text) {
+var element = document.createElement(&lsquo;a&rsquo;);
+element.setAttribute(&lsquo;href&rsquo;, &lsquo;data:text/plain;charset=utf-8,&rsquo; + encodeURIComponent(text));
+element.setAttribute(&lsquo;download&rsquo;, filename);</p>
+<pre><code>element.style.display = 'none';
+document.body.appendChild(element);
+
+element.click();
+
+document.body.removeChild(element);
+</code></pre>
+<p>}</p>
+<pre tabindex="0"><code>&lt;br&gt;
+File: templates/layout.html
+</code></pre><p>{{define &ldquo;layout&rdquo;}}</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{template "title"}}</title>
+    <link rel="stylesheet" href="/static/stylesheets/style.css">
+    <script src="/static/javascript/main.js"></script>
+</head>
+<body>
+    {{template "body"}}
+</body>
+</html>
+{{end}}
+```
+<br>
+File: templates/example.html
+```
+{{define "title"}}To Do List{{end}}
+<p>{{define &ldquo;body&rdquo;}}</p>
+<main>
+<pre><code>&lt;h1&gt;计划表生成工具&lt;/h1&gt;
+&lt;p&gt;© 2019 Chang Luo | &lt;a href=&quot;https://luochang212.github.io&quot;&gt;Home&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;这是俺写的小工具，什么？居然被你发现了 O_O !!!&lt;/p&gt;
+
+
+&lt;textarea id=&quot;myTextarea&quot; onkeydown=&quot;handleEnter(event)&quot; onfocus=&quot;clearContents(this);&quot; style=&quot;width:32em&quot;&gt;使用说明：
+</code></pre>
+<p>在此框中输入你的计划，点击“添加计划”按钮，将你的计划添加至计划列表。接着点击“生成表格”按钮，通过勾选生成的表格中的复选框，告诉后台你的完成情况。最后点击“下载表格”按钮，下载计划完成统计表。</textarea><br></p>
+<pre><code>&lt;button type=&quot;button&quot; onclick=&quot;addElement()&quot;&gt;添加计划&lt;/button&gt; 
+&amp;nbsp &amp;nbsp &amp;nbsp
+→
+&amp;nbsp &amp;nbsp &amp;nbsp
+&lt;button type=&quot;button&quot; onclick=&quot;submit()&quot;&gt;生成表格&lt;/button&gt;
+&amp;nbsp &amp;nbsp &amp;nbsp 
+→
+&amp;nbsp &amp;nbsp &amp;nbsp 
+&lt;button type=&quot;button&quot; onclick=&quot;finalSheet()&quot;&gt;下载表格&lt;/button&gt;
+&amp;nbsp &amp;nbsp &amp;nbsp &amp;nbsp &amp;nbsp &amp;nbsp &amp;nbsp &amp;nbsp
+&lt;button id=&quot;btn_clear&quot; type=&quot;button&quot; onclick=&quot;clearText()&quot;&gt;清空&lt;/button&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;p id=&quot;object_list&quot;&gt;&lt;/p&gt;
+</code></pre>
+</main>
+{{end}}
+```
+</details>
+<p>（2）用Go搭建动态网页</p>
+<p>搭建动态网页，我参考了：</p>
+<ul>
+<li><a href="https://medium.com/@madhanganesh/golang-react-application-2aaf3bca92b1">A Golang + ReactJS Application</a></li>
+<li><a href="https://medium.com/@chrischuck35/how-to-build-a-simple-web-app-in-react-graphql-go-e71c79beb1d">How to Build a Simple Web App with React, Graphql, and Go</a></li>
+</ul>
+<h3 id="附录资源列表">附录：资源列表</h3>
+<ol>
+<li>
+<p>为什么学习Go语言：</p>
+<ul>
+<li><a href="https://www.zhihu.com/question/21409296">为什么要使用 Go 语言？Go 语言的优势在哪里？</a></li>
+<li><a href="https://medium.com/@kevalpatel2106/why-should-you-learn-go-f607681fad65">Why should you learn Go?</a></li>
+<li><a href="https://github.com/jobbole/awesome-go-cn">jobbole/awesome-go-cn</a></li>
+</ul>
+</li>
+<li>
+<p>Golang在VSCode上的配置：<a href="https://youtu.be/NphW8lvJ_fg">How to Configure Visual Studio Code for Go?</a>。</p>
+</li>
+<li>
+<p>Go的安装、运行、设计理念等基础知识，详见<a href="https://golang.org/doc/">官方文档</a>和<a href="https://tour.golang.org/welcome/1">入门教程</a>。</p>
+</li>
+<li>
+<p>通过例子<!--Demo-->学习Go语言的语法和特性，详见<a href="https://gobyexample.com">Go by Example</a>。</p>
+</li>
+<li>
+<p>一本讲解Go语言基础以及Web Application实现的电子书 <a href="https://github.com/astaxie/build-web-application-with-golang">build-web-application-with-golang</a>。</p>
+</li>
+<li>
+<p>第一个实践项目，用Golang搭建一个静态网站 <a href="https://www.alexedwards.net/blog/serving-static-sites-with-go">Serving Static Sites with Go</a> <a href="/pdf/serving-static-sites-with-go.pdf">[PDF]</a>。</p>
+</li>
+<li>
+<p>第二个实践项目，用Golang作后端，React作前端，搭建一个动态网站。</p>
+<ul>
+<li><a href="https://medium.com/@madhanganesh/golang-react-application-2aaf3bca92b1">A Golang + ReactJS Application</a></li>
+<li><a href="https://medium.com/@chrischuck35/how-to-build-a-simple-web-app-in-react-graphql-go-e71c79beb1d">How to Build a Simple Web App with React, Graphql, and Go</a></li>
+</ul>
+</li>
+</ol>
+
+  </div>
+
+  <div class="post-footer">
+    <p style="margin-bottom: 1rem;">欢迎关注我的其它发布渠道：</p>
+    <div class="social-links" style="display: flex; flex-direction: column; gap: 10px;">
+      
+      <a href="https://twitter.com/_stellar_tide" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-twitter"></i> X
+      </a>
+      
+      
+      <a href="https://github.com/luochang212" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+      
+      
+      <a href="https://www.luochang.ink/images/wechat.jpg" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-weixin"></i> 公众号
+      </a>
+      
+      <a href="https://www.zhihu.com/people/Fashionable" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-zhihu"></i> 知乎
+      </a>
+
+      <a href="/index.xml" target="_blank" rel="noopener noreferrer">
+        <i class="fas fa-rss"></i> RSS
+      </a>
+
+    </div>
+    <div style="margin-bottom: 5rem;"></div>
+  </div>
+
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/zombie_learning_next_js/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle"></span>
+    </a>
+    
+    
+    <a href="/posts/zombie_java_project/" class="navigation-next">
+      <span class="navigation-tittle"></span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+        </div>
+        
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
+
+
+
+
+
+<script src="https://kit.fontawesome.com/2134995a39.js" crossorigin="anonymous"></script>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
+<script type="text/javascript">
+  if (tocbot) {
+    tocbot.init({
+      
+      tocSelector: '.toc',
+      
+      contentSelector: '.post',
+      
+      headingSelector: 'h2, h3, h4',
+      collapseDepth: 4
+    });
+  }
+</script>
+
+
+
+    
+
+
+
+    </body>
+</html>

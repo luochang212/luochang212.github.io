@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.132.1">
+<meta name="generator" content="Hugo 0.148.2">
 
     
     
@@ -54,7 +54,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+<link rel="stylesheet" href="/scss/hyde-hyde.1354666f7c97c95b395dd180ab9cf1aca1ff0408c93996eed446576738e01579.css" integrity="sha256-E1Rmb3yXyVs5XdGAq5zxrKH/BAjJOZbu1EZXZzjgFXk=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -627,8 +627,7 @@
   
   <div class="post">
     <blockquote>
-<p>在手机相册搜索框中输入“笔记本电脑”时，即使照片本身并未包含“笔记本电脑”这几个字，相关图片依然能够被精准地检索出来。这说明现代相册 APP 不仅使用图片 OCR 文本来召回搜索结果。它综合使用了多种技术，包括多模态技术。</p>
-</blockquote>
+<p>在手机相册搜索框中输入“笔记本电脑”时，即使照片本身并未包含“笔记本电脑”这几个字，相关图片依然能够被精准地检索出来。这说明现代相册 APP 不仅使用图片 OCR 文本来召回搜索结果。它综合使用了多种技术，包括多模态技术。</p></blockquote>
 <p>本文使用多模态模型 CLIP 搭建一个简单的『以文搜图』应用，实现与相册 APP 类似的搜索效果。</p>
 <p>GitHub 项目地址：<a href="https://github.com/luochang212/clip-app" target="_blank">clip-app</a></p>
 <p>本文涉及的内容包括：</p>
@@ -656,22 +655,22 @@
 <h2 id="二faiss-向量搜索">二、Faiss 向量搜索</h2>
 <p>用 FastAPI + Faiss 写一个向量检索服务 <a href="https://github.com/luochang212/clip-app/blob/main/faiss/server.py" target="_blank">faiss/server.py</a>，该服务提供两个接口：</p>
 <table>
-<thead>
-<tr>
-<th>路由名</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>add</code></td>
-<td>用于向索引中添加新的 Embedding</td>
-</tr>
-<tr>
-<td><code>search</code></td>
-<td>用于从索引中取回给定 Embedding 的最近邻 Embedding</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>路由名</th>
+          <th>描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>add</code></td>
+          <td>用于向索引中添加新的 Embedding</td>
+      </tr>
+      <tr>
+          <td><code>search</code></td>
+          <td>用于从索引中取回给定 Embedding 的最近邻 Embedding</td>
+      </tr>
+  </tbody>
 </table>
 <br>
 <center>
@@ -681,26 +680,26 @@
 <h2 id="三clip-向量生成">三、CLIP 向量生成</h2>
 <p>用 FastAPI 写一个简单的 CLIP Embedding 生成服务 <a href="https://github.com/luochang212/clip-app/blob/main/embedding/server.py" target="_blank">embedding/server.py</a>。接口输入是图片、文本，输出是图文 Embedding。该服务提供 3 个 API 接口：</p>
 <table>
-<thead>
-<tr>
-<th>路由名</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>text_embedding</code></td>
-<td>用于获取文本的 Embedding</td>
-</tr>
-<tr>
-<td><code>image_embedding</code></td>
-<td>用于获取图片的 Embedding，输入是图片的 base64 编码</td>
-</tr>
-<tr>
-<td><code>similarity</code></td>
-<td>计算 Embedding 的相似度，输入是两个 Embedding 列表，输出是概率矩阵</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>路由名</th>
+          <th>描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>text_embedding</code></td>
+          <td>用于获取文本的 Embedding</td>
+      </tr>
+      <tr>
+          <td><code>image_embedding</code></td>
+          <td>用于获取图片的 Embedding，输入是图片的 base64 编码</td>
+      </tr>
+      <tr>
+          <td><code>similarity</code></td>
+          <td>计算 Embedding 的相似度，输入是两个 Embedding 列表，输出是概率矩阵</td>
+      </tr>
+  </tbody>
 </table>
 <ol>
 <li>获取文本嵌入</li>
@@ -735,26 +734,26 @@
 </ol>
 <p>遵循以上步骤，编写以下功能集成函数，并存放到 <a href="https://github.com/luochang212/clip-app/blob/main/app.py" target="_blank">app.py</a></p>
 <table>
-<thead>
-<tr>
-<th>函数</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>save_to_faiss</code></td>
-<td>将图片向量化后存入 Faiss</td>
-</tr>
-<tr>
-<td><code>get_top_k_images</code></td>
-<td>从 Faiss 取回 Query 向量的 TOP K 最近邻图片向量，同时取回对应的图片路径</td>
-</tr>
-<tr>
-<td><code>show_pictures</code></td>
-<td>将获取的图片展示给用户</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>函数</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>save_to_faiss</code></td>
+          <td>将图片向量化后存入 Faiss</td>
+      </tr>
+      <tr>
+          <td><code>get_top_k_images</code></td>
+          <td>从 Faiss 取回 Query 向量的 TOP K 最近邻图片向量，同时取回对应的图片路径</td>
+      </tr>
+      <tr>
+          <td><code>show_pictures</code></td>
+          <td>将获取的图片展示给用户</td>
+      </tr>
+  </tbody>
 </table>
 <p>使用应用前，需要先启动 CLIP 向量生成服务 和 Faiss 向量搜索服务。</p>
 <pre tabindex="0"><code># 启动嵌入生成服务

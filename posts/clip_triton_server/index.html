@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.132.1">
+<meta name="generator" content="Hugo 0.148.2">
 
     
     
@@ -54,7 +54,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+<link rel="stylesheet" href="/scss/hyde-hyde.1354666f7c97c95b395dd180ab9cf1aca1ff0408c93996eed446576738e01579.css" integrity="sha256-E1Rmb3yXyVs5XdGAq5zxrKH/BAjJOZbu1EZXZzjgFXk=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -627,8 +627,7 @@
   
   <div class="post">
     <blockquote>
-<p>本文介绍如何用 Triton 在多 GPU 环境下部署高性能 CLIP 推理服务。</p>
-</blockquote>
+<p>本文介绍如何用 Triton 在多 GPU 环境下部署高性能 CLIP 推理服务。</p></blockquote>
 <p>GitHub 项目地址：<a href="https://github.com/luochang212/clip-server" target="_blank">clip-server</a></p>
 <p>CLIP 是一个多模态模型。它能将图像和文本映射到同一个向量空间中，由此可以产生诸多应用。比如，通过计算图片与文本的相似性，可以用近似最近邻 (ANN) 从相册中检索与给定 query 语义相近的图片。此外，CLIP 的 Vision Encoder 可以作为特征提取器使用，用于生成的图像 Embedding。如果在 Vision Encoder 后加一个 fc 层，并且冻住骨干网络仅对 fc 层做训练，通常可以得到一个效果不错的图像分类器。</p>
 <p>本文涉及的内容包括：</p>
@@ -676,8 +675,7 @@ graffiti of a {}.
 <h3 id="二onnx-模型导出">二、ONNX 模型导出</h3>
 <p>本节我们在 <a href="https://www.kaggle.com/datasets/heptapod/titanic/data" target="_blank">titanic</a> 数据集上训练一个 MLP 模型，并将它导出成 ONNX 格式。</p>
 <blockquote>
-<p><strong>Note:</strong> 需要特别注意，用 <code>torch.onnx.export</code> 导出模型时，一定要将所有可变维度都配置上。比如，如果 <code>batch_size</code>, <code>sequence_length</code> 这些维度都是可变的，一定要全部配上，否则后期写 Triton 的 <code>config.pbtxt</code> 配置的时候会出问题。</p>
-</blockquote>
+<p><strong>Note:</strong> 需要特别注意，用 <code>torch.onnx.export</code> 导出模型时，一定要将所有可变维度都配置上。比如，如果 <code>batch_size</code>, <code>sequence_length</code> 这些维度都是可变的，一定要全部配上，否则后期写 Triton 的 <code>config.pbtxt</code> 配置的时候会出问题。</p></blockquote>
 <br>
 <center>
 <button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/clip-server/blob/main/2.onnx_model.ipynb')">查看笔记</button>

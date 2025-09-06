@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.132.1">
+<meta name="generator" content="Hugo 0.148.2">
 
     
     
@@ -53,7 +53,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+<link rel="stylesheet" href="/scss/hyde-hyde.1354666f7c97c95b395dd180ab9cf1aca1ff0408c93996eed446576738e01579.css" integrity="sha256-E1Rmb3yXyVs5XdGAq5zxrKH/BAjJOZbu1EZXZzjgFXk=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -623,8 +623,7 @@
   
   <div class="post">
     <blockquote>
-<p>跟李沐老师学深度学习，课程见 <a href="https://zh-v2.d2l.ai/index.html">d2l</a>，如有错误，欢迎拍砖 <img src="/img/quyin/witty.png" class="my-emoji" style = "height: 32px;"></p>
-</blockquote>
+<p>跟李沐老师学深度学习，课程见 <a href="https://zh-v2.d2l.ai/index.html">d2l</a>，如有错误，欢迎拍砖 <img src="/img/quyin/witty.png" class="my-emoji" style = "height: 32px;"></p></blockquote>
 <p>GitHub 项目地址：<a href="https://github.com/luochang212/AI-Project" target="_blank">AI-Project</a></p>
 <h3 id="技术路线图">〇、技术路线图</h3>
 <pre class="mermaid">
@@ -652,7 +651,7 @@ flowchart TD
 <li>malware-classification (<strong>Kaggle</strong>)</li>
 <li>jigsaw-comment-classification (<strong>Kaggle</strong>)</li>
 </ul>
-<h4 id="3-从回归到多类分类----均方损失">3. 从回归到多类分类 &ndash; 均方损失</h4>
+<h4 id="3-从回归到多类分类--均方损失">3. 从回归到多类分类 &ndash; 均方损失</h4>
 <p>对分类结果做 one-hot 编码：</p>
 <p><code>$y = [y_1, y_2, , ... , y_n]^T$</code></p>
 <p><code>$y_i=\left\{\begin{array}{l}1 \text { if } i=y \\ 0 \text { otherwise }\end{array}\right.$</code></p>
@@ -742,8 +741,7 @@ flowchart TD
 <blockquote>
 <p><strong>Note</strong>: 为什么需要非线性的激活函数？</p>
 <p>如果 <code>$\sigma$</code> 是线性的，把公式一的 <code>$\mathbf{h}$</code> 代入到公式二中，可得：</p>
-<p><code>$\mathbf{hence} \space \mathbf{o} = \mathbf{w}_2^T \mathbf{W}_1 \mathbf{o} + b^{\prime}$</code> 依然是线性，折腾半天发现我们得到的依旧是一个最简单的线性模型。</p>
-</blockquote>
+<p><code>$\mathbf{hence} \space \mathbf{o} = \mathbf{w}_2^T \mathbf{W}_1 \mathbf{o} + b^{\prime}$</code> 依然是线性，折腾半天发现我们得到的依旧是一个最简单的线性模型。</p></blockquote>
 <h4 id="7-sigmoid-激活函数">7. Sigmoid 激活函数</h4>
 <p>将输入投影到 <code>$(0, 1)$</code></p>
 <p><code>$sigmoid(x) = \frac{1}{1 + \mathbf{exp}(-x)}$</code></p>
@@ -941,26 +939,26 @@ flowchart TD
 <h4 id="4-alexnet架构">4. AlexNet架构</h4>
 <p>1）第一个卷积层和池化层的区别</p>
 <table>
-<thead>
-<tr>
-<th>AlexNet</th>
-<th>LeNet</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>image ($3 \times 224 \times 224$)</td>
-<td>image ($32 \times 32$)</td>
-</tr>
-<tr>
-<td>11*11 Conv(96), stride 4</td>
-<td>5*5 Conv(6), pad 2</td>
-</tr>
-<tr>
-<td>3*3 MaxPool, stride 2</td>
-<td>2*2 AvgPool, stride 2</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>AlexNet</th>
+          <th>LeNet</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>image ($3 \times 224 \times 224$)</td>
+          <td>image ($32 \times 32$)</td>
+      </tr>
+      <tr>
+          <td>11*11 Conv(96), stride 4</td>
+          <td>5*5 Conv(6), pad 2</td>
+      </tr>
+      <tr>
+          <td>3*3 MaxPool, stride 2</td>
+          <td>2*2 AvgPool, stride 2</td>
+      </tr>
+  </tbody>
 </table>
 <ul>
 <li>卷积：更大的窗口，更大的通道数，更大的步幅</li>
@@ -968,38 +966,38 @@ flowchart TD
 </ul>
 <p>2）接下来</p>
 <table>
-<thead>
-<tr>
-<th>AlexNet</th>
-<th>LeNet</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>5*5 Conv(256), pad 2</td>
-<td>5*5 Conv()</td>
-</tr>
-<tr>
-<td>3*3 MaxPool, stride 2</td>
-<td>2*2 AvgPool, stride 2</td>
-</tr>
-<tr>
-<td>3*3 Conv(384), pad 1</td>
-<td></td>
-</tr>
-<tr>
-<td>3*3 Conv(384), pad 1</td>
-<td></td>
-</tr>
-<tr>
-<td>3*3 Conv(384), pad 1</td>
-<td></td>
-</tr>
-<tr>
-<td>3*3 MaxPool, stride 2</td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>AlexNet</th>
+          <th>LeNet</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>5*5 Conv(256), pad 2</td>
+          <td>5*5 Conv()</td>
+      </tr>
+      <tr>
+          <td>3*3 MaxPool, stride 2</td>
+          <td>2*2 AvgPool, stride 2</td>
+      </tr>
+      <tr>
+          <td>3*3 Conv(384), pad 1</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>3*3 Conv(384), pad 1</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>3*3 Conv(384), pad 1</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>3*3 MaxPool, stride 2</td>
+          <td></td>
+      </tr>
+  </tbody>
 </table>
 <ul>
 <li>新增了3层卷积层</li>
@@ -1007,26 +1005,26 @@ flowchart TD
 </ul>
 <p>3）全连接层</p>
 <table>
-<thead>
-<tr>
-<th>AlexNet</th>
-<th>LeNet</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Dense(4096)</td>
-<td>Dense(120)</td>
-</tr>
-<tr>
-<td>Dense(4096)</td>
-<td>Dense(84)</td>
-</tr>
-<tr>
-<td>Dense(1000)</td>
-<td>Dense(10)</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>AlexNet</th>
+          <th>LeNet</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Dense(4096)</td>
+          <td>Dense(120)</td>
+      </tr>
+      <tr>
+          <td>Dense(4096)</td>
+          <td>Dense(84)</td>
+      </tr>
+      <tr>
+          <td>Dense(1000)</td>
+          <td>Dense(10)</td>
+      </tr>
+  </tbody>
 </table>
 <ul>
 <li>隐藏层大小：120 $\to$ 4096</li>

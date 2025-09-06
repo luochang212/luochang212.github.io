@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "tocbot.css",
-	"sourceRoot": "/Users/changluo/Documents/Sites/luochang212.github.io-hugo",
+	"sourceRoot": "/Users/luochang/Documents/Sites/luochang212.github.io-hugo",
 	"sources": [
 		"themes/my-hyde-hyde/assets/scss/tocbot.scss",
 		"themes/my-hyde-hyde/assets/scss/hugo-toc.scss"

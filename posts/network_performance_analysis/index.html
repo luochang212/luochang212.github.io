@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.132.1">
+<meta name="generator" content="Hugo 0.148.2">
 
     
     
@@ -54,7 +54,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+<link rel="stylesheet" href="/scss/hyde-hyde.1354666f7c97c95b395dd180ab9cf1aca1ff0408c93996eed446576738e01579.css" integrity="sha256-E1Rmb3yXyVs5XdGAq5zxrKH/BAjJOZbu1EZXZzjgFXk=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -627,17 +627,13 @@
   
   <div class="post">
     <blockquote>
-<p><strong>排队论</strong>(queueing theory)也称随机服务系统理论，它研究的内容有三部分：性态问题、最优化问题和统计推断问题。（《运筹学》清华大学出版社）</p>
-</blockquote>
+<p><strong>排队论</strong>(queueing theory)也称随机服务系统理论，它研究的内容有三部分：性态问题、最优化问题和统计推断问题。（《运筹学》清华大学出版社）</p></blockquote>
 <blockquote>
-<p>下图描述了排队过程的一般流程：</p>
-</blockquote>
+<p>下图描述了排队过程的一般流程：</p></blockquote>
 <blockquote>
-<p><img src="/img/queue.png" alt="排队论"></p>
-</blockquote>
+<p><img src="/img/queue.png" alt="排队论"></p></blockquote>
 <blockquote>
-<p>现实中的排队问题是多种多样的，对上述“顾客源”和“服务机构”应该作宽泛的理解。顾客和服务机构可以是生物，也可以是非生物；排队结构可以是有形的，也可以是无形的，比如向交换台要求通话的请求；顾客可以走向服务机构，也可以相反，比如送货上门。</p>
-</blockquote>
+<p>现实中的排队问题是多种多样的，对上述“顾客源”和“服务机构”应该作宽泛的理解。顾客和服务机构可以是生物，也可以是非生物；排队结构可以是有形的，也可以是无形的，比如向交换台要求通话的请求；顾客可以走向服务机构，也可以相反，比如送货上门。</p></blockquote>
 <p>在网络中，服务器和用户之间相互传送数据包。数据包的传送需要时间，因此或多或少都会产生延迟。为了分析这些延迟，我们引入了一系列假设，并利用排队论对网络延迟进行建模分析。</p>
 <p>本文将着重介绍<strong>网络性能分析</strong>(Network performance analysis)中几种常见的排队模型。它们是：</p>
 <ul>
@@ -715,8 +711,7 @@
 <p>一个交换机平均每分钟接收100个电话请求，按照泊松过程，该交换机连续五秒未收到电话请求的概率的多少？</p>
 <p><code>$$P\left(k=0 | t=\frac{1}{12}, \lambda=100\right)=\exp \left(-\frac{100}{12}\right)=0.00024$$</code></p>
 <blockquote>
-<p><strong>Note</strong>: 从上面这个实例我们能看出：k代表顾客的数量，t代表这段时间间隔的长度，$\lambda$代表平均每单位时间到达的顾客数。</p>
-</blockquote>
+<p><strong>Note</strong>: 从上面这个实例我们能看出：k代表顾客的数量，t代表这段时间间隔的长度，$\lambda$代表平均每单位时间到达的顾客数。</p></blockquote>
 <h3 id="排队系统的分类">排队系统的分类</h3>
 <p>排队系统的分类用Kendall符号表示，符号形式为：</p>
 <p><code>$$X/Y/Z/A/B/C$$</code></p>
@@ -731,23 +726,17 @@
 </ul>
 <p>比如，M/M/1 表示相继到达间隔时间为负指数分布、服务时间为负指数分布、单服务器的模型；D/M/5 表示确定的到达间隔、服务时间为负指数分布、5个平行服务器的模型。</p>
 <blockquote>
-<p><strong>Note</strong>: 从上述两个例子我们能看出：M代表负指数分布，D代表确定型。这里，M和D是概率分布类型的代号。常见概率分布类型的代号如下：</p>
-</blockquote>
+<p><strong>Note</strong>: 从上述两个例子我们能看出：M代表负指数分布，D代表确定型。这里，M和D是概率分布类型的代号。常见概率分布类型的代号如下：</p></blockquote>
 <blockquote>
-<p>$M$ —— 负指数分布(M是Markov的字头，因为负指数分布具有无记忆性，即Markov性) ;</p>
-</blockquote>
+<p>$M$ —— 负指数分布(M是Markov的字头，因为负指数分布具有无记忆性，即Markov性) ;</p></blockquote>
 <blockquote>
-<p>$D$ —— 确定型(deterministic);</p>
-</blockquote>
+<p>$D$ —— 确定型(deterministic);</p></blockquote>
 <blockquote>
-<p>$E_k$ —— k 阶爱尔朗(erlang)分布;</p>
-</blockquote>
+<p>$E_k$ —— k 阶爱尔朗(erlang)分布;</p></blockquote>
 <blockquote>
-<p>$GI$ —— 一般相互独立(general independent)的时间间隔的分布;</p>
-</blockquote>
+<p>$GI$ —— 一般相互独立(general independent)的时间间隔的分布;</p></blockquote>
 <blockquote>
-<p>$G$ —— 一般(general)服务时间的分布。</p>
-</blockquote>
+<p>$G$ —— 一般(general)服务时间的分布。</p></blockquote>
 <h3 id="the-mm1-queuing-system">The M/M/1 queuing system</h3>
 <p>（一）M/M/1排队系统的假设</p>
 <p>M/M/1排队系统是相继到达时间间隔为负指数分布、服务时间为负指数分布、单服务器的模型，且只有一个队列。<!--M/M/1 queue 也叫 birth death process, 因为到达即代表出生，服务即代表死亡。--></p>
@@ -755,13 +744,11 @@
 <p><img src="/img/mm1-queue-state.png" alt="M/M/1排队系统"></p>
 <p>图中，<code>$\lambda_k$</code>表示当系统处于状态k时的到达速率(arrival rate)，<code>$\mu_{k}$</code>表示当系统处于状态k时的服务速率(service rate).</p>
 <blockquote>
-<p><strong>Note</strong>: M/M/1排队系统的性质：</p>
-</blockquote>
+<p><strong>Note</strong>: M/M/1排队系统的性质：</p></blockquote>
 <blockquote>
 <ul>
 <li>系统处于状态n是指系统内有n位顾客，这n位顾客既包括正在排队的，也包括正在接受服务的；</li>
-</ul>
-</blockquote>
+</ul></blockquote>
 <ul>
 <li>如果状态n的情况已知，那么其他所有关于该队列的信息都可以被推断出来。</li>
 </ul>
@@ -789,14 +776,11 @@
 <p>解得：</p>
 <p><code>$$\lambda P_{k-1}=\mu P_{k}$$</code></p>
 <blockquote>
-<p><strong>Note</strong>: 稳定状态下，系统处于状态k的概率是稳定的、不随时间变化的，因此状态k的概率变化率为0，即<code>$\frac{d P_{k}(t)}{d t}=0$</code>。</p>
-</blockquote>
+<p><strong>Note</strong>: 稳定状态下，系统处于状态k的概率是稳定的、不随时间变化的，因此状态k的概率变化率为0，即<code>$\frac{d P_{k}(t)}{d t}=0$</code>。</p></blockquote>
 <blockquote>
-<p>下面是M/M/1 排队系统的通量图，由系统处于各状态的概率不随时间变化可知，从状态k-1转移到状态k的通量和从状态k转移到k-1的通量应该相等。从状态k-1到状态k的通量为<code>$\lambda P_{k-1}$</code>，从状态k到状态k-1的通量为<code>$\mu P_{k}$</code>。故即使不通过公式推导，我们也能得出<code>$\lambda P_{k-1}=\mu P_{k}$</code>的结论。</p>
-</blockquote>
+<p>下面是M/M/1 排队系统的通量图，由系统处于各状态的概率不随时间变化可知，从状态k-1转移到状态k的通量和从状态k转移到k-1的通量应该相等。从状态k-1到状态k的通量为<code>$\lambda P_{k-1}$</code>，从状态k到状态k-1的通量为<code>$\mu P_{k}$</code>。故即使不通过公式推导，我们也能得出<code>$\lambda P_{k-1}=\mu P_{k}$</code>的结论。</p></blockquote>
 <blockquote>
-<p><img src="/img/mm1-flow-rates.png" alt="通量图"></p>
-</blockquote>
+<p><img src="/img/mm1-flow-rates.png" alt="通量图"></p></blockquote>
 <p>整理上式得：</p>
 <p><code>$$P_{k}=\frac{\lambda}{\mu} P_{k-1}$$</code></p>
 <p>递推可得：</p>
@@ -817,13 +801,11 @@
 <p><img src="/img/mm1-state-probabilities.png" alt="M/M/1 排队系统在各状态下的概率"></p>
 <h3 id="the-birth-death-process">The birth-death process</h3>
 <blockquote>
-<p><strong>Note</strong>: The M/M/1 queuing system 和 The birth-death process 之间的关系:</p>
-</blockquote>
+<p><strong>Note</strong>: The M/M/1 queuing system 和 The birth-death process 之间的关系:</p></blockquote>
 <blockquote>
 <ul>
 <li>The M/M/1 queuing system - 只有一个队列，对队列中的顾客数量没有限制；有且仅有一个服务器；稳定状态下，到达速率和服务速率都是常数。</li>
-</ul>
-</blockquote>
+</ul></blockquote>
 <ul>
 <li>The birth-death process - 是 The M/M/1 queuing system 的推广。但是，稳定状态时，到达速率和服务速率是相互独立的，到达速率和服务速率随状态k的变化而变化。<!--（这一段我有可能翻译不到位，原文表达得很清晰。The birth-death process, which is an extension of the M/M/1 process in which the steady state arrival and service rates are dependent upon the state of the system）--></li>
 </ul>
@@ -876,11 +858,9 @@
 <p><code>$$\boxed{ P_{k}=\left\{\begin{array}{ll}{P_{0}\left(\frac{(m \rho)^{k}}{k !}\right)} &amp; {k \leq m} \\ {P_{0}\left(\frac{m^{m} \rho^{k}}{m !}\right)} &amp; {k \geq m}\end{array}, \quad \rho=\frac{\lambda}{m \mu}&lt;1\right. }$$</code></p>
 <p>其中，<code>$P_{0}=\left[\sum_{k=0}^{m-1} \frac{(m \rho)^{k}}{k !}+\frac{(m \rho)^{m}}{m !(1-\rho)}\right]^{-1}$</code>。</p>
 <blockquote>
-<p><strong>Note</strong>: 对于M/M/m 排队系统，一个重要的问题是系统内需要排队的概率。当系统内人数大于服务器数量时，顾客需要排队。需要排队的概率为：</p>
-</blockquote>
+<p><strong>Note</strong>: 对于M/M/m 排队系统，一个重要的问题是系统内需要排队的概率。当系统内人数大于服务器数量时，顾客需要排队。需要排队的概率为：</p></blockquote>
 <blockquote>
-<p><code>$$P_{k \geq m+1}=\sum_{k=m+1}^{\infty} P_{k}=\sum_{k=m}^{\infty} P_{k}-P_{m}=P_{0}\left(\frac{m^{m} \rho^{m+1}}{m !(1-\rho)}\right)$$</code></p>
-</blockquote>
+<p><code>$$P_{k \geq m+1}=\sum_{k=m+1}^{\infty} P_{k}=\sum_{k=m}^{\infty} P_{k}-P_{m}=P_{0}\left(\frac{m^{m} \rho^{m+1}}{m !(1-\rho)}\right)$$</code></p></blockquote>
 <h3 id="the-mm1m-queuing-system">The M/M/1/m queuing system</h3>
 <p>在之前的模型中，我们总是假设队列的长度是无限的。但现实中，由于缓存的限制，队列的长度通常是有限的。</p>
 <p>在一个M/M/1/m 排队系统中，如果系统内人数为m，那么任何后来者的服务请求都会被拒绝。对于M/M/1/m 排队系统，由于系统最多只能容纳m位顾客，且正在接受服务的那位顾客同样也需要占用1个位置，因此排队等待接受服务的队列的最大长度为m-1。</p>

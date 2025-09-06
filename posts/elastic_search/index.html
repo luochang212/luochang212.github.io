@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.132.1">
+<meta name="generator" content="Hugo 0.148.2">
 
     
     
@@ -53,7 +53,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+<link rel="stylesheet" href="/scss/hyde-hyde.1354666f7c97c95b395dd180ab9cf1aca1ff0408c93996eed446576738e01579.css" integrity="sha256-E1Rmb3yXyVs5XdGAq5zxrKH/BAjJOZbu1EZXZzjgFXk=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -623,8 +623,7 @@
   
   <div class="post">
     <blockquote>
-<p><a href="https://github.com/elastic/elasticsearch">Elasticsearch</a> 是一个开源分布式全文搜索引擎。它建立在当前最先进有效的搜索引擎库 <a href="https://lucene.apache.org/">Lucene</a> 之上。Elasticsearch 集成了 Lucene 的检索功能，并通过一套简单的 API 隐藏了 Lucene 的复杂性，使之简单易用。</p>
-</blockquote>
+<p><a href="https://github.com/elastic/elasticsearch">Elasticsearch</a> 是一个开源分布式全文搜索引擎。它建立在当前最先进有效的搜索引擎库 <a href="https://lucene.apache.org/">Lucene</a> 之上。Elasticsearch 集成了 Lucene 的检索功能，并通过一套简单的 API 隐藏了 Lucene 的复杂性，使之简单易用。</p></blockquote>
 <h2 id="初识">初识</h2>
 <hr>ES 的初步介绍
 <p>本节将介绍 ES 的几个特性。这些介绍能帮助我们理解 ES 是应什么需求诞生的？它解决了什么问题？它为何如此架构？以及这种架构方式为它带来哪些性能上的提升？这些信息虽然不能直接提升我们使用 ES 的能力，但能从更深的维度帮助我们使用好它。</p>
@@ -651,42 +650,42 @@
 <p>一个 Elasticsearch 请求由以下部件组成：</p>
 <pre tabindex="0"><code>curl -X&lt;VERB&gt; &#39;&lt;PROTOCOL&gt;://&lt;HOST&gt;:&lt;PORT&gt;/&lt;PATH&gt;?&lt;QUERY_STRING&gt;&#39; -d &#39;&lt;BODY&gt;&#39;
 </code></pre><table>
-<thead>
-<tr>
-<th>部件</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>&lt;VERB&gt;</td>
-<td>操作数据的方法，常见的有查询(GET)、上传(POST)、更新(PUT)</td>
-</tr>
-<tr>
-<td>&lt;PROTOCOL&gt;</td>
-<td><code>http</code> 或者 <code>https</code></td>
-</tr>
-<tr>
-<td>&lt;HOST&gt;</td>
-<td>主机名</td>
-</tr>
-<tr>
-<td>&lt;PORT&gt;</td>
-<td>HTTP 服务端口，默认是 9200</td>
-</tr>
-<tr>
-<td>&lt;PATH&gt;</td>
-<td>文档路径，由<code>_index</code>, <code>_type</code>, <code>_id</code>组成</td>
-</tr>
-<tr>
-<td>&lt;QUERY_STRING&gt;</td>
-<td>查询参数，<code>?pretty</code> 可以输出格式化的 JSON 值</td>
-</tr>
-<tr>
-<td>&lt;BODY&gt;</td>
-<td>JSON 请求体</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>部件</th>
+          <th>用途</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>&lt;VERB&gt;</td>
+          <td>操作数据的方法，常见的有查询(GET)、上传(POST)、更新(PUT)</td>
+      </tr>
+      <tr>
+          <td>&lt;PROTOCOL&gt;</td>
+          <td><code>http</code> 或者 <code>https</code></td>
+      </tr>
+      <tr>
+          <td>&lt;HOST&gt;</td>
+          <td>主机名</td>
+      </tr>
+      <tr>
+          <td>&lt;PORT&gt;</td>
+          <td>HTTP 服务端口，默认是 9200</td>
+      </tr>
+      <tr>
+          <td>&lt;PATH&gt;</td>
+          <td>文档路径，由<code>_index</code>, <code>_type</code>, <code>_id</code>组成</td>
+      </tr>
+      <tr>
+          <td>&lt;QUERY_STRING&gt;</td>
+          <td>查询参数，<code>?pretty</code> 可以输出格式化的 JSON 值</td>
+      </tr>
+      <tr>
+          <td>&lt;BODY&gt;</td>
+          <td>JSON 请求体</td>
+      </tr>
+  </tbody>
 </table>
 <!-- 上表十分抽象，那么举个例子。如果你想取回一个 `_index` 为 `website`，`_type` 为 `blog`，`_id` 为 `es` 的文档，请求应该是这样的：
 
@@ -717,8 +716,7 @@ cd bin
 <pre tabindex="0"><code>curl &#39;http://localhost:9200/?pretty&#39;
 </code></pre><p>如果 ES 正常运行，终端将会返回一条包含集群信息的 JSON 值。</p>
 <blockquote>
-<p><strong>Note</strong>: 更多有关安装的信息，参见 <a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/running-elasticsearch.html">安装并运行 Elasticsearch</a> 和 <a href="https://opensource.com/article/19/7/installing-elasticsearch-macos">How to install Elasticsearch on MacOS</a>。</p>
-</blockquote>
+<p><strong>Note</strong>: 更多有关安装的信息，参见 <a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/running-elasticsearch.html">安装并运行 Elasticsearch</a> 和 <a href="https://opensource.com/article/19/7/installing-elasticsearch-macos">How to install Elasticsearch on MacOS</a>。</p></blockquote>
 <h3 id="客户端">客户端</h3>
 <p>搭建好 ES 之后，我们还需要与 ES 交互。既然要交互，那么就有客户端和服务端。在生产环境中，服务端往往已经在服务器上搭好。这种情况下，我们只需要配置本地客户端就可以了。</p>
 <p>ES 支持多种客户端语言，比如 Java, Ruby, Python。这些语言都有相应的 ES 库，我们可以依据自己的喜好选择。下面主要介绍如何在 Python 环境下搭建 ES 客户端。</p>
@@ -785,8 +783,7 @@ es = init_es_client()
 <p>你可以进一步筛选数据、分析数据；也可以用各种可视化库绘制图表；甚至可以上一些 NLP 的手段训练模型。大门已经开启，一切随你心意。</p>
 <p>祝各位玩耍愉快 <img src="/img/quyin/watermaleon.png" class="my-emoji" style = "height: 32px;"></p>
 <blockquote>
-<p><strong>Note</strong>：更多信息参见 <a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html">ES 官方中文教程</a>。</p>
-</blockquote>
+<p><strong>Note</strong>：更多信息参见 <a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html">ES 官方中文教程</a>。</p></blockquote>
 
   </div>
 

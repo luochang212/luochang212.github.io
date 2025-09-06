@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.132.1">
+<meta name="generator" content="Hugo 0.148.2">
 
     
     
@@ -54,7 +54,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+<link rel="stylesheet" href="/scss/hyde-hyde.1354666f7c97c95b395dd180ab9cf1aca1ff0408c93996eed446576738e01579.css" integrity="sha256-E1Rmb3yXyVs5XdGAq5zxrKH/BAjJOZbu1EZXZzjgFXk=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -627,8 +627,7 @@
   
   <div class="post">
     <blockquote>
-<p>在上一篇博客<a href="/posts/lightgbm_practice/" target="_blank">《LightGBM 工程实践》</a>中，我把通用函数写到 <a href="https://github.com/luochang212/lightgbm-binary/blob/main/util.py" target="_blank">util.py</a> 文件，以实现代码复用。但是这么复用好麻烦，每次开新项目，得把 util.py 文件贴过去才行。为了省下这个贴的动作，我把它写成 Python 包了。现在下载一次，就可以到处使用啦！</p>
-</blockquote>
+<p>在上一篇博客<a href="/posts/lightgbm_practice/" target="_blank">《LightGBM 工程实践》</a>中，我把通用函数写到 <a href="https://github.com/luochang212/lightgbm-binary/blob/main/util.py" target="_blank">util.py</a> 文件，以实现代码复用。但是这么复用好麻烦，每次开新项目，得把 util.py 文件贴过去才行。为了省下这个贴的动作，我把它写成 Python 包了。现在下载一次，就可以到处使用啦！</p></blockquote>
 <p>GitHub 项目地址：<a href="https://github.com/luochang212/flameai" target="_blank">flameai</a></p>
 <h3 id="一简单介绍">一、简单介绍</h3>
 <p>我的这个包叫 <a href="https://pypi.org/project/flameai" target="_blank">FlameAI</a>。作为一个深度学习工具包，它的主要功能是 <strong>数据预处理</strong> 和 <strong>模型评估</strong>。FlameAI 旨在解决最后一公里问题。即在框架之外，业务代码之内，寻求最佳实践。为了让我的包看起来上流一点，我让 Kimi 帮我想了几个名字，最后还是选择了 FlameAI，因为这个名字最霸气。</p>
@@ -662,8 +661,7 @@ pip cache purge
 <h5 id="1简单用法">1）简单用法</h5>
 <p>你可以直接指定阈值，下面代码中指定阈值为 <code>0.5</code>。</p>
 <blockquote>
-<p><strong>Note</strong>: 这里的阈值指二分类模型划分正负样本的阈值。对每个样本，模型输出一个概率值，一般而言，若概率小于阈值，则判为负类；若大于等于阈值，则判为正类。</p>
-</blockquote>
+<p><strong>Note</strong>: 这里的阈值指二分类模型划分正负样本的阈值。对每个样本，模型输出一个概率值，一般而言，若概率小于阈值，则判为负类；若大于等于阈值，则判为正类。</p></blockquote>
 <pre tabindex="0"><code>import flameai
 
 # y_true 是真实标号，y_pred 是模型预测标号为 1 的概率
@@ -798,8 +796,7 @@ print([e for e in dt])
             raise StopIteration
 </code></pre><!-- ![](/img/DataLoader.png) -->
 <blockquote>
-<p>PS: 装饰器所在的两个函数不是必须的。如果把它们去掉，还能变得更短</p>
-</blockquote>
+<p>PS: 装饰器所在的两个函数不是必须的。如果把它们去掉，还能变得更短</p></blockquote>
 <h4 id="26-hive-命令行工具">2.6 Hive 命令行工具</h4>
 <p>FlameAI 提供了一个 Hive 命令行工具，支持把 <code>hql</code> 文件的查询结果，输出到同名 <code>csv</code> 文件。下面是一个例子：</p>
 <p>假设你已经把 HQL 查询语句写到 <code>query.hql</code> 文件里了。执行以下命令，将执行查询，并把查询结果输出到 <code>query.csv</code> 文件。</p>

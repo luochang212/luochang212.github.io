@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.132.1">
+<meta name="generator" content="Hugo 0.148.2">
 
     
     
@@ -53,7 +53,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+<link rel="stylesheet" href="/scss/hyde-hyde.1354666f7c97c95b395dd180ab9cf1aca1ff0408c93996eed446576738e01579.css" integrity="sha256-E1Rmb3yXyVs5XdGAq5zxrKH/BAjJOZbu1EZXZzjgFXk=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -623,8 +623,7 @@
   
   <div class="post">
     <blockquote>
-<p>Hive SQL 不需要注释，它会自己解释自己</p>
-</blockquote>
+<p>Hive SQL 不需要注释，它会自己解释自己</p></blockquote>
 <h3 id="1-数据表操作">1. 数据表操作</h3>
 <h4 id="11-创建-hive-表">1.1 创建 Hive 表</h4>
 <pre tabindex="0"><code>CREATE TABLE [DATABASE].[TABLE_NAME] (
@@ -638,8 +637,7 @@ ROW FORMAT DELIMITED
 FIELDS TERMINATED BY &#39;,&#39; 
 STORED AS TEXTFILE;
 </code></pre><blockquote>
-<p><strong>Note</strong>: 想了解更多，请参考 <a href="https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/sql-ref-syntax-ddl-create-table-hiveformat">CREATE TABLE with Hive format</a></p>
-</blockquote>
+<p><strong>Note</strong>: 想了解更多，请参考 <a href="https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/sql-ref-syntax-ddl-create-table-hiveformat">CREATE TABLE with Hive format</a></p></blockquote>
 <h4 id="12-删除-hive-表">1.2 删除 Hive 表</h4>
 <pre tabindex="0"><code>DROP TABLE [DATABASE].[TABLE_NAME];
 </code></pre><pre tabindex="0"><code>DROP TABLE IF EXISTS [DATABASE].[TABLE_NAME];
@@ -666,8 +664,7 @@ SELECT id, name, department
 FROM [DATABASE].[TABLE_B]
 WHERE date = &#39;2024-05-30&#39;;
 </code></pre><blockquote>
-<p>PS: 对于分区表，仅覆盖分区数据</p>
-</blockquote>
+<p>PS: 对于分区表，仅覆盖分区数据</p></blockquote>
 <h4 id="15-增加新的列">1.5 增加新的列</h4>
 <pre tabindex="0"><code>ALTER TABLE [DATABASE].[TABLE_NAME] ADD COLUMNS (
     sub_score    ARRAY&lt;DOUBLE&gt;    COMMENT &#39;分科成绩&#39;,
@@ -738,40 +735,40 @@ FROM
 </code></pre><h3 id="3-数据类型">3. 数据类型</h3>
 <h4 id="31-常用数据类型">3.1 常用数据类型</h4>
 <table>
-<thead>
-<tr>
-<th>数据类型</th>
-<th>示例</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>BIGINT</td>
-<td><code>3</code></td>
-<td>整型</td>
-</tr>
-<tr>
-<td>DOUBLE</td>
-<td><code>3.5</code></td>
-<td>双精度浮点型</td>
-</tr>
-<tr>
-<td>STRING</td>
-<td><code>apple</code></td>
-<td>字符串</td>
-</tr>
-<tr>
-<td>ARRAY&lt;BIGINT&gt;</td>
-<td><code>[1,2,3]</code></td>
-<td>列表，列表元素可以是 BIGINT, DOUBLE, STRING 等</td>
-</tr>
-<tr>
-<td>MAP&lt;BIGINT,STRING&gt;</td>
-<td><code>{1:'A+',2:'B-'}</code></td>
-<td>字典，字典的 key 和 value 可以是 BIGINT, DOUBLE, STRING 等</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>数据类型</th>
+          <th>示例</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>BIGINT</td>
+          <td><code>3</code></td>
+          <td>整型</td>
+      </tr>
+      <tr>
+          <td>DOUBLE</td>
+          <td><code>3.5</code></td>
+          <td>双精度浮点型</td>
+      </tr>
+      <tr>
+          <td>STRING</td>
+          <td><code>apple</code></td>
+          <td>字符串</td>
+      </tr>
+      <tr>
+          <td>ARRAY&lt;BIGINT&gt;</td>
+          <td><code>[1,2,3]</code></td>
+          <td>列表，列表元素可以是 BIGINT, DOUBLE, STRING 等</td>
+      </tr>
+      <tr>
+          <td>MAP&lt;BIGINT,STRING&gt;</td>
+          <td><code>{1:'A+',2:'B-'}</code></td>
+          <td>字典，字典的 key 和 value 可以是 BIGINT, DOUBLE, STRING 等</td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="32-数据类型转换">3.2 数据类型转换</h4>
 <p>1）DOUBLE 转成 STRING</p>
@@ -890,34 +887,34 @@ GROUP BY gender;
 </code></pre><h3 id="9-join-方法">9. JOIN 方法</h3>
 <h4 id="91-常见的-join-方法">9.1 常见的 JOIN 方法</h4>
 <table>
-<thead>
-<tr>
-<th>方法</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>LEFT JOIN</code></td>
-<td>保留左表所有记录，保留右表与左表连接键相同的记录，连接键有多值时做笛卡尔积</td>
-</tr>
-<tr>
-<td><code>INNER JOIN</code></td>
-<td>保留左表与右表连接键存在且相同的记录，连接键有多值时做笛卡尔积</td>
-</tr>
-<tr>
-<td><code>FULL OUTER JOIN</code></td>
-<td>保留左表与右表所有记录，连接键值相等时连接，连接键有多值时做笛卡尔积</td>
-</tr>
-<tr>
-<td><code>LEFT SEMI JOIN</code></td>
-<td>如果左表的数据行在右表中存在匹配项，则返回左表这一行。它不会返回右表的任何列，结果集只包含左表的列</td>
-</tr>
-<tr>
-<td><code>MAP JOIN</code></td>
-<td>适用于大小表 JOIN，MAP JOIN 实现时，会将小表数据广播到所有 MAP 任务节点，所有 MAP 任务都会在本地缓存小表数据。由于 JOIN 操作在 MAP 阶段完成，不需要 shuffle 和 reduce，因此大大减少了计算资源的消耗</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>方法</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>LEFT JOIN</code></td>
+          <td>保留左表所有记录，保留右表与左表连接键相同的记录，连接键有多值时做笛卡尔积</td>
+      </tr>
+      <tr>
+          <td><code>INNER JOIN</code></td>
+          <td>保留左表与右表连接键存在且相同的记录，连接键有多值时做笛卡尔积</td>
+      </tr>
+      <tr>
+          <td><code>FULL OUTER JOIN</code></td>
+          <td>保留左表与右表所有记录，连接键值相等时连接，连接键有多值时做笛卡尔积</td>
+      </tr>
+      <tr>
+          <td><code>LEFT SEMI JOIN</code></td>
+          <td>如果左表的数据行在右表中存在匹配项，则返回左表这一行。它不会返回右表的任何列，结果集只包含左表的列</td>
+      </tr>
+      <tr>
+          <td><code>MAP JOIN</code></td>
+          <td>适用于大小表 JOIN，MAP JOIN 实现时，会将小表数据广播到所有 MAP 任务节点，所有 MAP 任务都会在本地缓存小表数据。由于 JOIN 操作在 MAP 阶段完成，不需要 shuffle 和 reduce，因此大大减少了计算资源的消耗</td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="92-left-join-示例">9.2 LEFT JOIN 示例</h4>
 <pre tabindex="0"><code>SELECT
@@ -974,19 +971,19 @@ LEFT SEMI JOIN orders o
 ON p.product_id = o.product_id;
 </code></pre><p>输出：</p>
 <table>
-<thead>
-<tr>
-<th>product_name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>A</td>
-</tr>
-<tr>
-<td>B</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>product_name</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>A</td>
+      </tr>
+      <tr>
+          <td>B</td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="94-map-join-示例">9.4 MAP JOIN 示例</h4>
 <p>复用上面的两张临时表，计算 MAP JOIN</p>
@@ -1029,30 +1026,30 @@ INNER JOIN products p
 ON o.product_id = p.product_id;
 </code></pre><p>输出：</p>
 <table>
-<thead>
-<tr>
-<th>order_id</th>
-<th>product_id</th>
-<th>product_name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1001</td>
-<td>1</td>
-<td>A</td>
-</tr>
-<tr>
-<td>1002</td>
-<td>2</td>
-<td>B</td>
-</tr>
-<tr>
-<td>1004</td>
-<td>1</td>
-<td>A</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>order_id</th>
+          <th>product_id</th>
+          <th>product_name</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1001</td>
+          <td>1</td>
+          <td>A</td>
+      </tr>
+      <tr>
+          <td>1002</td>
+          <td>2</td>
+          <td>B</td>
+      </tr>
+      <tr>
+          <td>1004</td>
+          <td>1</td>
+          <td>A</td>
+      </tr>
+  </tbody>
 </table>
 <blockquote>
 <p><strong>Note</strong>: 如果你不确定 MAP JOIN 是否实际生效，可以使用 <code>EXPLAIN</code> 关键字，获取查询计划</p>
@@ -1204,22 +1201,22 @@ LATERAL VIEW OUTER EXPLODE(sub_score) e AS k, v
 GROUP BY `id`;
 </code></pre><p>output:</p>
 <table>
-<thead>
-<tr>
-<th>id</th>
-<th>my_map</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td><code>{&quot;语文&quot;:&quot;80&quot;,&quot;数学&quot;:&quot;85&quot;,&quot;英语&quot;:&quot;95&quot;,&quot;政治&quot;:&quot;90&quot;}</code></td>
-</tr>
-<tr>
-<td>2</td>
-<td><code>{&quot;法律&quot;:&quot;90&quot;,&quot;英语&quot;:&quot;75&quot;,&quot;政治&quot;:&quot;92&quot;}</code></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>id</th>
+          <th>my_map</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td><code>{&quot;语文&quot;:&quot;80&quot;,&quot;数学&quot;:&quot;85&quot;,&quot;英语&quot;:&quot;95&quot;,&quot;政治&quot;:&quot;90&quot;}</code></td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td><code>{&quot;法律&quot;:&quot;90&quot;,&quot;英语&quot;:&quot;75&quot;,&quot;政治&quot;:&quot;92&quot;}</code></td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="123-构造形如-arraymapstringstring-的字符串">12.3 构造形如 <code>ARRAY&lt;MAP&lt;STRING,STRING&gt;&gt;</code> 的字符串</h4>
 <pre tabindex="0"><code>SELECT
@@ -1258,13 +1255,11 @@ FROM std.std_level_map;
 <ul>
 <li><code>ARRAY_CONTAINS(MAP_KEYS(sub_score), '[YOUR_KEY_HERE]')</code></li>
 <li><code>SIZE(MAP_KEYS(sub_score)) &gt; 0</code></li>
-</ul>
-</blockquote>
+</ul></blockquote>
 <h4 id="125-利用跨行数据构造-json">12.5 利用跨行数据构造 JSON</h4>
 <blockquote>
 <p><strong>Note</strong>: 凡是有<code>CONCAT_WS</code>的地方，里面都可以套一层<code>COLLECT_SET</code>或者<code>COLLECT_LIST</code>做跨行处理。</p>
-<p>可以参考 <code>2）</code> 和 <code>4）</code>，这两条代码实际都有跨行处理能力</p>
-</blockquote>
+<p>可以参考 <code>2）</code> 和 <code>4）</code>，这两条代码实际都有跨行处理能力</p></blockquote>
 <h3 id="13-解析-json">13. 解析 JSON</h3>
 <h4 id="131-用-get_json_object-解析单个字段">13.1 用 <code>get_json_object</code> 解析单个字段</h4>
 <pre tabindex="0"><code>SELECT get_json_object(json_column, &#39;$.name&#39;)
@@ -1293,34 +1288,34 @@ LATERAL VIEW OUTER EXPLODE(group_id) g AS gid
 WHERE id IN (1,3);
 </code></pre><p>output:</p>
 <table>
-<thead>
-<tr>
-<th>id</th>
-<th>gid</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr>
-<td>1</td>
-<td>2</td>
-</tr>
-<tr>
-<td>1</td>
-<td>3</td>
-</tr>
-<tr>
-<td>1</td>
-<td>5</td>
-</tr>
-<tr>
-<td>1</td>
-<td>5</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>id</th>
+          <th>gid</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>1</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>1</td>
+          <td>3</td>
+      </tr>
+      <tr>
+          <td>1</td>
+          <td>5</td>
+      </tr>
+      <tr>
+          <td>1</td>
+          <td>5</td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="142-将-array-展成多行更复杂的例子">14.2 将 ARRAY 展成多行：更复杂的例子</h4>
 <pre tabindex="0"><code>SELECT
@@ -1341,30 +1336,30 @@ WHERE gid &gt; 1
 GROUP BY gid;
 </code></pre><p>output:</p>
 <table>
-<thead>
-<tr>
-<th>gid</th>
-<th>id_list</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>2</td>
-<td>1,2</td>
-</tr>
-<tr>
-<td>3</td>
-<td>1,2</td>
-</tr>
-<tr>
-<td>4</td>
-<td>1,2</td>
-</tr>
-<tr>
-<td>5</td>
-<td>1</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>gid</th>
+          <th>id_list</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>2</td>
+          <td>1,2</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>1,2</td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td>1,2</td>
+      </tr>
+      <tr>
+          <td>5</td>
+          <td>1</td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="143-多个-array-展开group_id-与-level-之间做笛卡尔积">14.3 多个 ARRAY 展开：<code>group_id</code> 与 <code>level</code> 之间做笛卡尔积</h4>
 <pre tabindex="0"><code>SELECT
@@ -1382,40 +1377,39 @@ LATERAL VIEW OUTER EXPLODE(group_id) g AS gid
 LATERAL VIEW OUTER EXPLODE(level) l AS lvl;
 </code></pre><p>output:</p>
 <table>
-<thead>
-<tr>
-<th>id</th>
-<th>gid</th>
-<th>lvl</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>1</td>
-<td>A</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1</td>
-<td>B</td>
-</tr>
-<tr>
-<td>1</td>
-<td>2</td>
-<td>A</td>
-</tr>
-<tr>
-<td>1</td>
-<td>2</td>
-<td>B</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>id</th>
+          <th>gid</th>
+          <th>lvl</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>1</td>
+          <td>A</td>
+      </tr>
+      <tr>
+          <td>1</td>
+          <td>1</td>
+          <td>B</td>
+      </tr>
+      <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>A</td>
+      </tr>
+      <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>B</td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="144-map-也能展开">14.4 MAP 也能展开</h4>
 <blockquote>
-<p><strong>Note</strong>: 请看 <a href="/posts/hive_sql_note/#122-%E5%B0%86-map-%E8%BD%AC%E6%8D%A2%E4%B8%BA-json-%E6%A0%BC%E5%BC%8F%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2">12.2 将 MAP 转换为 JSON 格式的字符串</a>。同理，多个 MAP 也能像多个 ARRAY 一样展开，这里就不多做演示了。</p>
-</blockquote>
+<p><strong>Note</strong>: 请看 <a href="/posts/hive_sql_note/#122-%E5%B0%86-map-%E8%BD%AC%E6%8D%A2%E4%B8%BA-json-%E6%A0%BC%E5%BC%8F%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2">12.2 将 MAP 转换为 JSON 格式的字符串</a>。同理，多个 MAP 也能像多个 ARRAY 一样展开，这里就不多做演示了。</p></blockquote>
 <h3 id="15-窗口函数">15. 窗口函数</h3>
 <p>窗口函数的处理效果，是输入 n 行，输出 n 行。但这不意味窗口函数是行处理的，它可以综合其他行的信息对当前行做运算。</p>
 <h4 id="151-找同班同学-partition-by">15.1 找同班同学: PARTITION BY</h4>
@@ -1437,30 +1431,30 @@ FROM
 ) t;
 </code></pre><p>output:</p>
 <table>
-<thead>
-<tr>
-<th>id</th>
-<th>class</th>
-<th>id_list</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>A</td>
-<td>[1,2]</td>
-</tr>
-<tr>
-<td>2</td>
-<td>A</td>
-<td>[1,2]</td>
-</tr>
-<tr>
-<td>3</td>
-<td>B</td>
-<td>[3]</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>id</th>
+          <th>class</th>
+          <th>id_list</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>A</td>
+          <td>[1,2]</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>A</td>
+          <td>[1,2]</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>B</td>
+          <td>[3]</td>
+      </tr>
+  </tbody>
 </table>
 <blockquote>
 <p><strong>Note</strong>: 常用的聚合函数，都可以替换本例中的 <code>COLLECT_SET(id)</code>，比如：</p>
@@ -1469,8 +1463,7 @@ FROM
 <li><code>COUNT()</code></li>
 <li><code>MAX()</code></li>
 </ul>
-<p>等等&hellip;&hellip;</p>
-</blockquote>
+<p>等等&hellip;&hellip;</p></blockquote>
 <h4 id="152-为每个数据行生成序号-row_number-函数">15.2 为每个数据行生成序号: ROW_NUMBER 函数</h4>
 <pre tabindex="0"><code>SELECT
     id,
@@ -1489,44 +1482,43 @@ FROM
 ) t;
 </code></pre><p>output:</p>
 <table>
-<thead>
-<tr>
-<th>id</th>
-<th>class</th>
-<th>score</th>
-<th>class_no</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>A</td>
-<td>90</td>
-<td>3</td>
-</tr>
-<tr>
-<td>2</td>
-<td>A</td>
-<td>91</td>
-<td>1</td>
-</tr>
-<tr>
-<td>3</td>
-<td>A</td>
-<td>91</td>
-<td>2</td>
-</tr>
-<tr>
-<td>4</td>
-<td>B</td>
-<td>100</td>
-<td>1</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>id</th>
+          <th>class</th>
+          <th>score</th>
+          <th>class_no</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>A</td>
+          <td>90</td>
+          <td>3</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>A</td>
+          <td>91</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>A</td>
+          <td>91</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td>B</td>
+          <td>100</td>
+          <td>1</td>
+      </tr>
+  </tbody>
 </table>
 <blockquote>
-<p><strong>Note</strong>: 注意到虽然学生2和学生3分数都是91分，但他们的班级序号（class_no）不重叠。2号学生班级序号是1，3号学生班级序号是2</p>
-</blockquote>
+<p><strong>Note</strong>: 注意到虽然学生2和学生3分数都是91分，但他们的班级序号（class_no）不重叠。2号学生班级序号是1，3号学生班级序号是2</p></blockquote>
 <h4 id="153-排名-rank-函数">15.3 排名: RANK 函数</h4>
 <pre tabindex="0"><code>SELECT
     id,
@@ -1545,44 +1537,43 @@ FROM
 ) t;
 </code></pre><p>output:</p>
 <table>
-<thead>
-<tr>
-<th>id</th>
-<th>class</th>
-<th>score</th>
-<th>class_rk</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>A</td>
-<td>90</td>
-<td>3</td>
-</tr>
-<tr>
-<td>2</td>
-<td>A</td>
-<td>91</td>
-<td>1</td>
-</tr>
-<tr>
-<td>3</td>
-<td>A</td>
-<td>91</td>
-<td>1</td>
-</tr>
-<tr>
-<td>4</td>
-<td>B</td>
-<td>100</td>
-<td>1</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>id</th>
+          <th>class</th>
+          <th>score</th>
+          <th>class_rk</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>A</td>
+          <td>90</td>
+          <td>3</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>A</td>
+          <td>91</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>A</td>
+          <td>91</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td>B</td>
+          <td>100</td>
+          <td>1</td>
+      </tr>
+  </tbody>
 </table>
 <blockquote>
-<p><strong>Note</strong>: 注意看，虽然学生2和学生3分数都是91分，但他们的班级排名（class_rk）是相同的。2号同学与3号同学并列第一，1号学生由于有2位同学排在他前面，直接变成第3名。</p>
-</blockquote>
+<p><strong>Note</strong>: 注意看，虽然学生2和学生3分数都是91分，但他们的班级排名（class_rk）是相同的。2号同学与3号同学并列第一，1号学生由于有2位同学排在他前面，直接变成第3名。</p></blockquote>
 <h4 id="154-不计人头排名-dense_rank-函数">15.4 不计人头排名: DENSE_RANK 函数</h4>
 <p><code>DENSE_RANK()</code> 是不计人头，纯计分数的排名方式。</p>
 <p>上例中的1号同学，在考试中获得了90分，虽然按人头数计，有两位同学排在他前面，因此成为了第三名。但如果纯以分数计，他的90分是仅次于91分的班级第二好名次。如果我们希望不考虑人头数，仅考虑分数在排序中的位置，那么可以使用DENSE_RANK函数。</p>
@@ -1603,40 +1594,40 @@ FROM
 ) t;
 </code></pre><p>output:</p>
 <table>
-<thead>
-<tr>
-<th>id</th>
-<th>class</th>
-<th>score</th>
-<th>class_rk</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>A</td>
-<td>90</td>
-<td>2</td>
-</tr>
-<tr>
-<td>2</td>
-<td>A</td>
-<td>91</td>
-<td>1</td>
-</tr>
-<tr>
-<td>3</td>
-<td>A</td>
-<td>91</td>
-<td>1</td>
-</tr>
-<tr>
-<td>4</td>
-<td>B</td>
-<td>100</td>
-<td>1</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>id</th>
+          <th>class</th>
+          <th>score</th>
+          <th>class_rk</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>A</td>
+          <td>90</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>A</td>
+          <td>91</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>A</td>
+          <td>91</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td>B</td>
+          <td>100</td>
+          <td>1</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="16-尾缀方法">16. 尾缀方法</h3>
 <h4 id="161-对结果排序-order-by-方法">16.1 对结果排序: ORDER BY 方法</h4>
@@ -1704,8 +1695,7 @@ SORT BY id;
 <p>对某字段使用 <code>CLUSTER BY</code>，等于对该字段既使用DISTRIBUTE BY，又使用SORT BY，一种语法糖了属于是。</p>
 <blockquote>
 <p><strong>Note</strong>: 这三个语句日常不太常见，什么场景能用上呢？</p>
-<p>举个例子，用户 (uid) 的购物车订单 (oid) 有时候会被拆成多个包裹，这时每个包裹会对应一个子单 (sub_oid)。这种情况下，一个订单就会对应多个子单。假设我们只知道 <code>uid - oid</code> 的关系与 <code>uid - sub_oid</code> 的关系。如果已知 sub_oid 是 oid 后加下划线加子单单号，我们希望获取 <code>oid - sub_oid</code> 的关系。这种情况就可以使用 <code>DISTRIBUTE BY uid</code>，这可以大幅节省算力。</p>
-</blockquote>
+<p>举个例子，用户 (uid) 的购物车订单 (oid) 有时候会被拆成多个包裹，这时每个包裹会对应一个子单 (sub_oid)。这种情况下，一个订单就会对应多个子单。假设我们只知道 <code>uid - oid</code> 的关系与 <code>uid - sub_oid</code> 的关系。如果已知 sub_oid 是 oid 后加下划线加子单单号，我们希望获取 <code>oid - sub_oid</code> 的关系。这种情况就可以使用 <code>DISTRIBUTE BY uid</code>，这可以大幅节省算力。</p></blockquote>
 <h3 id="17-transform-关键字">17. TRANSFORM 关键字</h3>
 <p>HQL 部分：</p>
 <pre tabindex="0"><code>SELECT TRANSFORM
@@ -1771,19 +1761,19 @@ FROM
 ) t;
 </code></pre><p>output:</p>
 <table>
-<thead>
-<tr>
-<th>res</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>10</td>
-</tr>
-<tr>
-<td>0</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>res</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>10</td>
+      </tr>
+      <tr>
+          <td>0</td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="182-nvl-函数">18.2 NVL 函数</h4>
 <p><strong>NVL 函数</strong>：接受两个参数。如果第一个参数为 <code>NULL</code>，返回第二个参数，否则返回第一个参数</p>
@@ -1799,22 +1789,22 @@ FROM
 ) t;
 </code></pre><p>output:</p>
 <table>
-<thead>
-<tr>
-<th>res</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>10</td>
-</tr>
-<tr>
-<td>NULL</td>
-</tr>
-<tr>
-<td>100</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>res</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>10</td>
+      </tr>
+      <tr>
+          <td>NULL</td>
+      </tr>
+      <tr>
+          <td>100</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="19-useful-codes">19. Useful Codes</h3>
 <h4 id="191-行内跨字段计算最大--最小值">19.1 行内跨字段计算最大 / 最小值</h4>
@@ -1824,18 +1814,18 @@ FROM
     LEAST(6,5,7) AS least_num;
 </code></pre><p>output:</p>
 <table>
-<thead>
-<tr>
-<th>greatest_num</th>
-<th>least_num</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>3</td>
-<td>5</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>greatest_num</th>
+          <th>least_num</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>3</td>
+          <td>5</td>
+      </tr>
+  </tbody>
 </table>
 <p>场景：计算一天中最贵/最便宜的一餐</p>
 <pre tabindex="0"><code>SELECT
@@ -1851,26 +1841,26 @@ FROM
 ) t;
 </code></pre><p>output:</p>
 <table>
-<thead>
-<tr>
-<th>cheapest_meal</th>
-<th>expensive_meal</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>3</td>
-<td>25</td>
-</tr>
-<tr>
-<td>0</td>
-<td>20</td>
-</tr>
-<tr>
-<td>0</td>
-<td>35</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>cheapest_meal</th>
+          <th>expensive_meal</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>3</td>
+          <td>25</td>
+      </tr>
+      <tr>
+          <td>0</td>
+          <td>20</td>
+      </tr>
+      <tr>
+          <td>0</td>
+          <td>35</td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="192-计算分位数">19.2 计算分位数</h4>
 <p>简单的例子：计算学生分数的95分位数</p>
@@ -2087,8 +2077,7 @@ select uniq_count(&#34;apple,orange,banana,apple&#34;) as fruit_cnt;
 <blockquote>
 <p><strong>Note</strong>: <code>UniqueCountUDF.java</code> 文件是老版写法（但也能跑）。对于高版本的 Hive，推荐使用：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>import org.apache.hadoop.hive.ql.udf.generic.GenericUDF;
-</span></span></code></pre></div><p>你需要创建一个继承自 <code>GenericUDF</code> 的类，并重写父类方法。</p>
-</blockquote>
+</span></span></code></pre></div><p>你需要创建一个继承自 <code>GenericUDF</code> 的类，并重写父类方法。</p></blockquote>
 <h4 id="202-udaf">20.2 UDAF</h4>
 <p>如果你的数据涉及“聚合”操作（可以简单理解为跨行处理），那么 UDF 已经满足不了你，你需要 UDAF (<strong>U</strong>ser-<strong>D</strong>efined <strong>A</strong>ggregate <strong>F</strong>unction)</p>
 <pre tabindex="0"><code>import org.apache.hadoop.hive.ql.udf.generic.AbstractGenericUDAFResolver;

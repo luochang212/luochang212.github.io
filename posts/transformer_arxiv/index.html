@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.132.1">
+<meta name="generator" content="Hugo 0.148.2">
 
     
     
@@ -53,7 +53,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+<link rel="stylesheet" href="/scss/hyde-hyde.1354666f7c97c95b395dd180ab9cf1aca1ff0408c93996eed446576738e01579.css" integrity="sha256-E1Rmb3yXyVs5XdGAq5zxrKH/BAjJOZbu1EZXZzjgFXk=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -623,8 +623,7 @@
   
   <div class="post">
     <blockquote>
-<p>Transformer 的编码器变成了 BERT，解码器变成了 GPT。BERT 推动过去几年搜广推算法增长，而 GPT 促成了今天 GenAI 浪潮的爆发。这篇发表于 2017 年的论文，对今天产生了难以估量的影响。</p>
-</blockquote>
+<p>Transformer 的编码器变成了 BERT，解码器变成了 GPT。BERT 推动过去几年搜广推算法增长，而 GPT 促成了今天 GenAI 浪潮的爆发。这篇发表于 2017 年的论文，对今天产生了难以估量的影响。</p></blockquote>
 <p>原文：<a href="/gadget/attention-is-all-you-need/" target="_blank">Attention Is All You Need</a></p>
 <h2 id="论文翻译">论文翻译</h2>
 <h3 id="摘要">摘要</h3>
@@ -663,8 +662,7 @@
 <h5 id="322-多头注意力">3.2.2 多头注意力</h5>
 <p>我们发现，与使用 $d_{model}$ 维 QKV 的单一注意力相比，使用不同的、由学习得到的线性变换将 QKV 分别投影到 $d_k$, $d_k$, $d_v$ 维。我们并行地在这些投影后的 QKV 上计算注意力函数，得到 $d_v$ 维的输出值。将输出值连接起来 (concatenated) 并再次投影，得到最终的值。</p>
 <blockquote>
-<p>TODO: 施工中</p>
-</blockquote>
+<p>TODO: 施工中</p></blockquote>
 <h2 id="后日谈">后日谈</h2>
 <p>最近看论文的感受是需要一群追得上业界最新进展的人对领域进行深入的研究，这样当一种理论潜力耗尽时，最佳的优化方向就是提出一种彻底颠覆之前做法的新架构。万一新架构成功，就能带来新一波技术红利。而如果老架构仍有潜力，大部分聪明的脑袋还是会去挖老架构的潜力，因为这是最优的！</p>
 <p>最近看到好多新方向，包括 <a href="https://arxiv.org/abs/2312.00752" target="_blank">mamba</a> 和 <a href="https://arxiv.org/abs/2406.02528" target="_blank">MatMul-free</a>。过去几年深度学习在底层技术上并没有跨越式的发展。最近成果的本质还是基于对 next token 的无监督学习和 Scaling Law 产生的效果。Transformer 的潜力差不多挖尽了，也许新技术就快要来了吧！</p>

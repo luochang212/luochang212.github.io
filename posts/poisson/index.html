@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.132.1">
+<meta name="generator" content="Hugo 0.148.2">
 
     
     
@@ -53,7 +53,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+<link rel="stylesheet" href="/scss/hyde-hyde.1354666f7c97c95b395dd180ab9cf1aca1ff0408c93996eed446576738e01579.css" integrity="sha256-E1Rmb3yXyVs5XdGAq5zxrKH/BAjJOZbu1EZXZzjgFXk=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -623,8 +623,7 @@
   
   <div class="post">
     <blockquote>
-<p>本文介绍泊松分布和泊松函数的定义，并通过 Python random 库对泊松分布进行仿真，带你触摸复杂表象下的简单本质。</p>
-</blockquote>
+<p>本文介绍泊松分布和泊松函数的定义，并通过 Python random 库对泊松分布进行仿真，带你触摸复杂表象下的简单本质。</p></blockquote>
 <p>GitHub 项目地址：<a href="https://github.com/luochang212/python-tips/blob/master/poisson/poisson.py" target="_blank">python-tips/poisson</a></p>
 <h3 id="1-从泊松函数讲起">1. 从泊松函数讲起</h3>
 <p><a href="https://en.wikipedia.org/wiki/Poisson_distribution">泊松分布</a> 表示在<strong>给定时间段</strong>内发生<strong>给定数量的事件</strong>的概率。这个定义比较抽象。举个具体的例子，假设你每小时接到电话的概率是固定的，比如每小时 0.05 个，那么你在接下来 1 小时内接到电话个数的概率，就服从泊松分布:</p>
@@ -648,8 +647,7 @@
 <p><code>$\lambda$</code>, <code>$k$</code>, <code>$t$</code> 三者的关系：</p>
 <p>泊松分布衡量的是<strong>多长时间</strong>内，<strong>某事件发生多少次</strong>的概率。这里 <code>$t$</code> 指代的是<strong>多长时间</strong>；<code>$k$</code> 指代的是<strong>某事件发生多少次</strong>。<code>$\lambda$</code> 则类似该事件的一个<strong>固有属性</strong>，<code>$\lambda$</code> 越大，可以简单理解为该事件在一段时间内发生的概率越大。</p>
 <blockquote>
-<p><strong>Note</strong>: <code>$t$</code> 的量纲必须和 <code>$\lambda$</code>的量纲相对应。如果 <code>$\lambda$</code> 的单位是 <code>次/小时</code>，则 <code>$t$</code> 应该取 <code>小时</code> 为单位；如果 <code>$\lambda$</code> 的单位是 <code>次/分钟</code>，则 <code>$t$</code> 也应该取 <code>分钟</code> 为单位。</p>
-</blockquote>
+<p><strong>Note</strong>: <code>$t$</code> 的量纲必须和 <code>$\lambda$</code>的量纲相对应。如果 <code>$\lambda$</code> 的单位是 <code>次/小时</code>，则 <code>$t$</code> 应该取 <code>小时</code> 为单位；如果 <code>$\lambda$</code> 的单位是 <code>次/分钟</code>，则 <code>$t$</code> 也应该取 <code>分钟</code> 为单位。</p></blockquote>
 <h3 id="2-引入一个实例">2. 引入一个实例</h3>
 <p>接下来我们用一个直观的实例，解释泊松分布在实际问题中是如何运用的。</p>
 <p><strong>Q</strong>: 一个淘宝客服，平均每 10 分钟接听 1 个电话，那么他连续 1 小时没接到任何电话的概率是多少？</p>
@@ -679,7 +677,7 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Poisson</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, rate<span style="color:#f92672">=</span>sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">1</span>]):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self, rate<span style="color:#f92672">=</span>sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">1</span>]):
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>rate <span style="color:#f92672">=</span> int(rate)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>time <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>  <span style="color:#75715e"># 单位时间</span>
@@ -771,8 +769,7 @@
 <p><img src="/img/poisson_3d.png" alt=""></p>
 <!-- ![](/img/poisson_3d_dynamic.gif) -->
 <blockquote>
-<p><strong>Note</strong>: 绘图代码见 <a href="https://github.com/luochang212/python-tips/blob/master/poisson/3dplot.py">3dplot.py</a></p>
-</blockquote>
+<p><strong>Note</strong>: 绘图代码见 <a href="https://github.com/luochang212/python-tips/blob/master/poisson/3dplot.py">3dplot.py</a></p></blockquote>
 <!-- 
 ### 6. 泊松的应用
 

@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.132.1">
+<meta name="generator" content="Hugo 0.148.2">
 
     
     
@@ -53,7 +53,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+<link rel="stylesheet" href="/scss/hyde-hyde.1354666f7c97c95b395dd180ab9cf1aca1ff0408c93996eed446576738e01579.css" integrity="sha256-E1Rmb3yXyVs5XdGAq5zxrKH/BAjJOZbu1EZXZzjgFXk=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -623,8 +623,7 @@
   
   <div class="post">
     <blockquote>
-<p>本文介绍家庭局域网的数据传输过程。</p>
-</blockquote>
+<p>本文介绍家庭局域网的数据传输过程。</p></blockquote>
 <p>常见家庭网络拓扑如下：</p>
 <pre class="mermaid">
 flowchart LR
@@ -639,62 +638,62 @@ flowchart LR
 <h4 id="1光猫">1）光猫</h4>
 <p>光猫一般放在弱电箱，它有一个 WAN 口和多个 LAN 口。我们把路由器插在其中一个 LAN 口上，假设插的是 LAN1</p>
 <table>
-<thead>
-<tr>
-<th>WAN</th>
-<th>LAN1</th>
-<th>LAN2</th>
-<th>LAN3</th>
-<th><code>...</code></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>接外网网线</td>
-<td><font color="red">接路由器</font></td>
-<td>空闲</td>
-<td>空闲</td>
-<td>空闲</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>WAN</th>
+          <th>LAN1</th>
+          <th>LAN2</th>
+          <th>LAN3</th>
+          <th><code>...</code></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>接外网网线</td>
+          <td><font color="red">接路由器</font></td>
+          <td>空闲</td>
+          <td>空闲</td>
+          <td>空闲</td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="2光猫-接-路由器">2）光猫 接 路由器</h4>
 <p>然后将网线从光猫 LAN1 接到路由器 WAN</p>
 <table>
-<thead>
-<tr>
-<th>WAN</th>
-<th>LAN</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><font color="red">接光猫 LAN1</font></td>
-<td><font color="blue">接交换机</font>（为了便于理解，虚拟出来的 LAN，实际不存在）</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>WAN</th>
+          <th>LAN</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><font color="red">接光猫 LAN1</font></td>
+          <td><font color="blue">接交换机</font>（为了便于理解，虚拟出来的 LAN，实际不存在）</td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="3路由器-接-交换机">3）路由器 接 交换机</h4>
 <p>最后将网线从路由器 LAN 接到交换机 WAN</p>
 <table>
-<thead>
-<tr>
-<th>WAN</th>
-<th>LAN1</th>
-<th>LAN2</th>
-<th>LAN3</th>
-<th><code>...</code></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><font color="blue">接路由器 LAN</font></td>
-<td>接电脑</td>
-<td>接笔记本</td>
-<td>接电视机盒子</td>
-<td>空闲</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>WAN</th>
+          <th>LAN1</th>
+          <th>LAN2</th>
+          <th>LAN3</th>
+          <th><code>...</code></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><font color="blue">接路由器 LAN</font></td>
+          <td>接电脑</td>
+          <td>接笔记本</td>
+          <td>接电视机盒子</td>
+          <td>空闲</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="二局域网概念">二、局域网概念</h3>
 <p>当我们把网线从光猫到路由器再到设备一路接好，就有了一个 <strong>局域网</strong> (Local Area Network，LAN)。由于我们主要关心局域网中发生了什么，因此不画光猫。下图是我们的局域网：</p>
@@ -732,8 +731,7 @@ flowchart LR
 </ol>
 <p>因此，设备必须在同一局域网，同一子网掩码号段下，才能直接通信。如果不在同一子网，会请网关帮忙转发。</p>
 <blockquote>
-<p><strong>Note</strong>: 从光猫中牵出两条网线，分别连接两个路由器。如果两个路由器不做任何特殊配置，它们会创建各自的局域网。</p>
-</blockquote>
+<p><strong>Note</strong>: 从光猫中牵出两条网线，分别连接两个路由器。如果两个路由器不做任何特殊配置，它们会创建各自的局域网。</p></blockquote>
 <h3 id="三dhcp-协议">三、DHCP 协议</h3>
 <p>为了方便描述，我们约定各网络设备的 IP 和 MAC 如下：</p>
 <pre class="mermaid">
@@ -761,30 +759,30 @@ flowchart LR
 <p>首先，电脑要上网，必须要有本机 IP。通过 DHCP 协议可以自动获取 IP。下面描述了 DHCP 协议的过程。</p>
 <p><strong>电脑</strong>：发出一个 DHCP 协议数据包，我们用简化的四层结构表示该数据包。</p>
 <table>
-<thead>
-<tr>
-<th>DHCP 协议</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>应用层 (DHCP)</td>
-<td>内容：请给我分配一个 IP</td>
-</tr>
-<tr>
-<td>传输层 (UDP)</td>
-<td>目标端口：<strong>67</strong><code> </code>源端口：<strong>68</strong></td>
-</tr>
-<tr>
-<td>网络层</td>
-<td>目标 IP：<strong>255.255.255.255</strong><code> </code>源 IP：<strong>0.0.0.0</strong></td>
-</tr>
-<tr>
-<td>网络接口层</td>
-<td>目标 MAC：<strong>FF:FF:FF:FF:FF:FF</strong><code> </code>源 MAC：<strong>BB:BB:BB:BB:BB:BB</strong></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>DHCP 协议</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>应用层 (DHCP)</td>
+          <td>内容：请给我分配一个 IP</td>
+      </tr>
+      <tr>
+          <td>传输层 (UDP)</td>
+          <td>目标端口：<strong>67</strong><code> </code>源端口：<strong>68</strong></td>
+      </tr>
+      <tr>
+          <td>网络层</td>
+          <td>目标 IP：<strong>255.255.255.255</strong><code> </code>源 IP：<strong>0.0.0.0</strong></td>
+      </tr>
+      <tr>
+          <td>网络接口层</td>
+          <td>目标 MAC：<strong>FF:FF:FF:FF:FF:FF</strong><code> </code>源 MAC：<strong>BB:BB:BB:BB:BB:BB</strong></td>
+      </tr>
+  </tbody>
 </table>
 <p>注：广播 IP 地址 <code>255.255.255.255</code> 和 广播 MAC 地址 <code>FF:FF:FF:FF:FF:FF</code> 是用于向同一子网内所有设备发送数据包的特殊地址。</p>
 <p><strong>交换机</strong>：转发数据包给其他网络设备，包括路由器</p>
@@ -803,8 +801,7 @@ flowchart LR
 <p>现在，电脑得到了局域网中的局域网 IP。</p>
 <blockquote>
 <p>Note 1: DHCP 请求太长时间没有回应，电脑会认为这个局域网唯一的 DHCP 服务挂了。</p>
-<p>此时会自动将 IP 地址设为 169.254.1.1，子网掩码设为 255.255.0.0，这样起码让局域网内可以通信。</p>
-</blockquote>
+<p>此时会自动将 IP 地址设为 169.254.1.1，子网掩码设为 255.255.0.0，这样起码让局域网内可以通信。</p></blockquote>
 <blockquote>
 <p>Note 2: 也可以不用 DHCP 协议，手动配置 IP，但需要 IP 在局域网的网段内</p>
 <ul>
@@ -814,48 +811,47 @@ flowchart LR
 <li>默认网关一般为路由器的内网 IP：192.168.1.1</li>
 <li>DNS 服务器 IP 也是路由器的内网 IP：192.168.1.1</li>
 </ul>
-<p>DHCP 也可以通过 MAC 地址绑定内网 IP 做静态 IP 分配</p>
-</blockquote>
+<p>DHCP 也可以通过 MAC 地址绑定内网 IP 做静态 IP 分配</p></blockquote>
 <h3 id="四arp-协议">四、ARP 协议</h3>
 <p>ARP (Address Resolution Protocol) 协议用于知道对方 IP 但不知道 MAC 的情形。假设现在电脑知道了路由器的 IP，但是不知道路由器的 MAC，它需要发起 ARP 请求。</p>
 <p><strong>电脑</strong>：发起 ARP 请求。</p>
 <table>
-<thead>
-<tr>
-<th>ARP 协议</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>应用层</td>
-<td>我是 <strong>192.168.1.1</strong>，<strong>192.168.1.2</strong> 的 MAC 是？</td>
-</tr>
-<tr>
-<td>网络接口层</td>
-<td>目标 MAC：<strong>FF:FF:FF:FF:FF:FF</strong><code> </code>源 MAC：简写为 <strong>BB:BB</strong></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>ARP 协议</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>应用层</td>
+          <td>我是 <strong>192.168.1.1</strong>，<strong>192.168.1.2</strong> 的 MAC 是？</td>
+      </tr>
+      <tr>
+          <td>网络接口层</td>
+          <td>目标 MAC：<strong>FF:FF:FF:FF:FF:FF</strong><code> </code>源 MAC：简写为 <strong>BB:BB</strong></td>
+      </tr>
+  </tbody>
 </table>
 <p><strong>笔记本</strong>：笔记本电脑 <code>192.168.1.3</code> 听到广播，发现数据包不是发给自己的。但是知道了内网 IP 为 <code>192.168.1.2</code> 的电脑的 MAC 地址是 <code>BB:BB</code>，于是将 <code>IP2MAC</code> 的 KV 对 保存在自己 ARP 缓存表中。这样想和 <code>192.168.1.2</code> 通信时，就可以直接发给对应的 MAC 地址，不需要广播了。</p>
 <p><strong>路由器</strong>：路由器也收到了数据包。它将电脑的 <code>IP2MAC</code> 信息存入自己的 ARP 缓存中，以备下次使用。并对电脑的 ARP 请求作出响应：</p>
 <table>
-<thead>
-<tr>
-<th>ARP 协议</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>应用层</td>
-<td>我是 <strong>192.168.1.2</strong>，MAC 是 <strong>AA:AA</strong></td>
-</tr>
-<tr>
-<td>网络接口层</td>
-<td>目标 MAC：简写为 <strong>AA:AA</strong><code> </code>源 MAC：简写为 <strong>BB:BB</strong></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>ARP 协议</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>应用层</td>
+          <td>我是 <strong>192.168.1.2</strong>，MAC 是 <strong>AA:AA</strong></td>
+      </tr>
+      <tr>
+          <td>网络接口层</td>
+          <td>目标 MAC：简写为 <strong>AA:AA</strong><code> </code>源 MAC：简写为 <strong>BB:BB</strong></td>
+      </tr>
+  </tbody>
 </table>
 <p><strong>电脑</strong>：收到路由器发的数据包，并将路由器的 <code>IP2MAC</code> 信息存入 ARP 缓存。</p>
 <h3 id="五dns-协议">五、DNS 协议</h3>
@@ -863,114 +859,114 @@ flowchart LR
 <p><code>www.baidu.com</code> 的域名是为人类可读设计的，机器并不知道域名对应的地址。机器需要通过 DNS (Domain Name System) 服务获取域名对应的 IP 地址。</p>
 <p><strong>电脑</strong>：浏览器发起DNS请求</p>
 <table>
-<thead>
-<tr>
-<th>DNS 协议</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>应用层 (DNS)</td>
-<td>内容：<code>www.baidu.com</code> 的 IP 是什么？</td>
-</tr>
-<tr>
-<td>传输层 (UDP)</td>
-<td>目标端口：<strong>53</strong><code> </code>源端口：<strong>9523</strong>（随便选的未占用端口）</td>
-</tr>
-<tr>
-<td>网络层</td>
-<td>目标 IP：路由器 IP <strong>192.168.1.1</strong><code> </code>源 IP：电脑 IP <strong>192.168.1.2</strong></td>
-</tr>
-<tr>
-<td>网络接口层</td>
-<td>目标 MAC：路由器 MAC 【<strong>? ? ?</strong>】<code> </code>源 MAC：电脑 MAC <strong>BB:BB</strong></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>DNS 协议</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>应用层 (DNS)</td>
+          <td>内容：<code>www.baidu.com</code> 的 IP 是什么？</td>
+      </tr>
+      <tr>
+          <td>传输层 (UDP)</td>
+          <td>目标端口：<strong>53</strong><code> </code>源端口：<strong>9523</strong>（随便选的未占用端口）</td>
+      </tr>
+      <tr>
+          <td>网络层</td>
+          <td>目标 IP：路由器 IP <strong>192.168.1.1</strong><code> </code>源 IP：电脑 IP <strong>192.168.1.2</strong></td>
+      </tr>
+      <tr>
+          <td>网络接口层</td>
+          <td>目标 MAC：路由器 MAC 【<strong>? ? ?</strong>】<code> </code>源 MAC：电脑 MAC <strong>BB:BB</strong></td>
+      </tr>
+  </tbody>
 </table>
 <p>路由器的 MAC 会优先从 ARP 缓存中查询，如果查不到，会发起 ARP 请求。填上目标 MAC 地址后，电脑继续发起 DNS 请求。</p>
 <p><strong>路由器</strong>：经过交换机转发，数据包到了路由器。路由器 DNS 服务监听的 <strong>53</strong> 号端口收到请求。将该请求转发给它的上游 DNS 服务器获取百度的 IP 地址。上游通过 <strong>PPPoE 拨号</strong> 获取运营商提供的 DNS 服务器。以下是路由器发给上游 DNS 服务器的数据包：</p>
 <table>
-<thead>
-<tr>
-<th>DNS 协议</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>应用层 (DNS)</td>
-<td>内容：<code>www.baidu.com</code> 的 IP 是什么？</td>
-</tr>
-<tr>
-<td>传输层 (UDP)</td>
-<td>目标端口：<strong>53</strong><code> </code>源端口：<strong>3691</strong>（随便选的未占用端口）</td>
-</tr>
-<tr>
-<td>网络层</td>
-<td>目标 IP：上游 DNS 服务器 IP<code> </code>源 IP：路由器外网 IP <strong>1.1.1.1</strong></td>
-</tr>
-<tr>
-<td>网络接口层</td>
-<td>目标 MAC：上游 DNS 服务器 MAC<code> </code>源 MAC：电脑 MAC <strong>BB:BB</strong></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>DNS 协议</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>应用层 (DNS)</td>
+          <td>内容：<code>www.baidu.com</code> 的 IP 是什么？</td>
+      </tr>
+      <tr>
+          <td>传输层 (UDP)</td>
+          <td>目标端口：<strong>53</strong><code> </code>源端口：<strong>3691</strong>（随便选的未占用端口）</td>
+      </tr>
+      <tr>
+          <td>网络层</td>
+          <td>目标 IP：上游 DNS 服务器 IP<code> </code>源 IP：路由器外网 IP <strong>1.1.1.1</strong></td>
+      </tr>
+      <tr>
+          <td>网络接口层</td>
+          <td>目标 MAC：上游 DNS 服务器 MAC<code> </code>源 MAC：电脑 MAC <strong>BB:BB</strong></td>
+      </tr>
+  </tbody>
 </table>
 <p><strong>外网行为</strong>：省略 &hellip; &hellip;</p>
 <p><strong>路由器</strong>：收到上游 DNS 服务器的响应：</p>
 <table>
-<thead>
-<tr>
-<th>DNS 协议</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>应用层 (DNS)</td>
-<td>内容：<code>www.baidu.com</code> 的 IP 是 6.6.6.6</td>
-</tr>
-<tr>
-<td>传输层 (UDP)</td>
-<td>目标端口：<strong>3691</strong><code> </code>源端口：<strong>53</strong></td>
-</tr>
-<tr>
-<td>网络层</td>
-<td>目标 IP：路由器外网 IP <strong>1.1.1.1</strong><code> </code>源 IP：上游 DNS 服务器 IP</td>
-</tr>
-<tr>
-<td>网络接口层</td>
-<td>目标 MAC：电脑 MAC <strong>BB:BB</strong><code> </code>源 MAC：上游 DNS 服务器 MAC</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>DNS 协议</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>应用层 (DNS)</td>
+          <td>内容：<code>www.baidu.com</code> 的 IP 是 6.6.6.6</td>
+      </tr>
+      <tr>
+          <td>传输层 (UDP)</td>
+          <td>目标端口：<strong>3691</strong><code> </code>源端口：<strong>53</strong></td>
+      </tr>
+      <tr>
+          <td>网络层</td>
+          <td>目标 IP：路由器外网 IP <strong>1.1.1.1</strong><code> </code>源 IP：上游 DNS 服务器 IP</td>
+      </tr>
+      <tr>
+          <td>网络接口层</td>
+          <td>目标 MAC：电脑 MAC <strong>BB:BB</strong><code> </code>源 MAC：上游 DNS 服务器 MAC</td>
+      </tr>
+  </tbody>
 </table>
 <p>路由器将百度的IP地址存到 <strong>DNS 缓存</strong>，DNS 缓存是 域名 到 IP 的映射，每行还附有 TTL (Time To Live). 局域网内其他设备再获取百度的 IP 地址就会直接从 DNS 缓存中读取。</p>
 <p>路由器发给电脑的 DNS 响应：</p>
 <table>
-<thead>
-<tr>
-<th>DNS 协议</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>应用层 (DNS)</td>
-<td>内容：<code>www.baidu.com</code> 的 IP 是 <strong>6.6.6.6</strong></td>
-</tr>
-<tr>
-<td>传输层 (UDP)</td>
-<td>目标端口：<strong>9523</strong><code> </code>源端口：<strong>53</strong></td>
-</tr>
-<tr>
-<td>网络层</td>
-<td>目标 IP：电脑 IP <strong>192.168.1.2</strong><code> </code>源 IP：路由器内网 IP <strong>192.168.1.1</strong></td>
-</tr>
-<tr>
-<td>网络接口层</td>
-<td>目标 MAC：电脑 MAC <strong>BB:BB</strong><code> </code>源 MAC：路由器 MAC <strong>AA:AA</strong></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>DNS 协议</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>应用层 (DNS)</td>
+          <td>内容：<code>www.baidu.com</code> 的 IP 是 <strong>6.6.6.6</strong></td>
+      </tr>
+      <tr>
+          <td>传输层 (UDP)</td>
+          <td>目标端口：<strong>9523</strong><code> </code>源端口：<strong>53</strong></td>
+      </tr>
+      <tr>
+          <td>网络层</td>
+          <td>目标 IP：电脑 IP <strong>192.168.1.2</strong><code> </code>源 IP：路由器内网 IP <strong>192.168.1.1</strong></td>
+      </tr>
+      <tr>
+          <td>网络接口层</td>
+          <td>目标 MAC：电脑 MAC <strong>BB:BB</strong><code> </code>源 MAC：路由器 MAC <strong>AA:AA</strong></td>
+      </tr>
+  </tbody>
 </table>
 <p><strong>电脑</strong>：收到 DNS 响应，发现目标 MAC 和目标 IP 都是自己，所以会一层层解封装。</p>
 <p>当解封到：目标端口：<strong>9523</strong><code> </code>源端口：<strong>53</strong></p>
@@ -978,108 +974,108 @@ flowchart LR
 <h3 id="六http-协议">六、HTTP 协议</h3>
 <p><strong>电脑</strong>：拿到百度的 IP 后，会向这个 IP 发起 HTTP 请求。</p>
 <table>
-<thead>
-<tr>
-<th>HTTP 协议</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>应用层 (HTTP)</td>
-<td>内容：请求百度的首页</td>
-</tr>
-<tr>
-<td>传输层 (TCP)</td>
-<td>目标端口：<strong>80</strong><code> </code>源端口：<strong>4026</strong>，浏览器开的随机端口</td>
-</tr>
-<tr>
-<td>网络层</td>
-<td>目标 IP：百度 IP <strong>6.6.6.6</strong><code> </code>源 IP：电脑 IP <strong>192.168.1.2</strong></td>
-</tr>
-<tr>
-<td>网络接口层</td>
-<td>目标 MAC：路由器 MAC <strong>AA:AA</strong><code> </code>源 MAC：电脑 MAC <strong>BB:BB</strong></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>HTTP 协议</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>应用层 (HTTP)</td>
+          <td>内容：请求百度的首页</td>
+      </tr>
+      <tr>
+          <td>传输层 (TCP)</td>
+          <td>目标端口：<strong>80</strong><code> </code>源端口：<strong>4026</strong>，浏览器开的随机端口</td>
+      </tr>
+      <tr>
+          <td>网络层</td>
+          <td>目标 IP：百度 IP <strong>6.6.6.6</strong><code> </code>源 IP：电脑 IP <strong>192.168.1.2</strong></td>
+      </tr>
+      <tr>
+          <td>网络接口层</td>
+          <td>目标 MAC：路由器 MAC <strong>AA:AA</strong><code> </code>源 MAC：电脑 MAC <strong>BB:BB</strong></td>
+      </tr>
+  </tbody>
 </table>
 <p>当封装进行到网络层时，通过 IP 与 子网掩码 的与运算，发现目标 IP 和自己不在同一网段，会请网关帮忙转发。此时电脑配置的网关 IP 是路由器的内网 IP。从 ARP 缓存中，可以通过路由器的 IP 获取路由器的 MAC。</p>
 <p><strong>路由器</strong> 拿到 HTTP 请求，发现 MAC 是自己，但是目标 IP 不是自己，而是公网 IP，会将其转发到 WAN 口。</p>
 <p>路由器还发现源 IP 是内网 IP，无法在公网上使用，于是会做 <strong>网络地址转换</strong> (Network Address Translation, <strong>NAT</strong>) 将源 IP 地址修改为路由器 WAN 口的公网 IP 地址，同时随机选择一个空闲端口，替换源端口。</p>
 <p>然后将映射关系存到 <strong>NAT映射表</strong> 中：</p>
 <table>
-<thead>
-<tr>
-<th>原IP</th>
-<th>映射IP</th>
-<th>原端口</th>
-<th>映射端口</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>电脑 IP <strong>192.168.1.2</strong></td>
-<td>路由器外网 IP <strong>1.1.1.1</strong></td>
-<td><strong>4026</strong></td>
-<td><strong>8309</strong>（路由器随机空闲端口）</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>原IP</th>
+          <th>映射IP</th>
+          <th>原端口</th>
+          <th>映射端口</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>电脑 IP <strong>192.168.1.2</strong></td>
+          <td>路由器外网 IP <strong>1.1.1.1</strong></td>
+          <td><strong>4026</strong></td>
+          <td><strong>8309</strong>（路由器随机空闲端口）</td>
+      </tr>
+  </tbody>
 </table>
 <p>接着封装 MAC 地址，源 MAC 是路由器的 MAC，目标 MAC 是下一跳某个路由设备的 MAC。</p>
 <p>路由器给外网的 HTTP 请求如下：</p>
 <table>
-<thead>
-<tr>
-<th>HTTP 协议</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>应用层 (HTTP)</td>
-<td>内容：请求百度的首页</td>
-</tr>
-<tr>
-<td>传输层 (TCP)</td>
-<td>目标端口：<strong>80</strong><code> </code>源端口：<strong>8309</strong>，NAT 映射端口</td>
-</tr>
-<tr>
-<td>网络层</td>
-<td>目标 IP：百度 IP <strong>6.6.6.6</strong><code> </code>源 IP：路由器外网 IP <strong>1.1.1.1</strong></td>
-</tr>
-<tr>
-<td>网络接口层</td>
-<td>目标 MAC：下一跳路由设备 MAC<code> </code>源 MAC：路由器的 MAC <strong>AA:AA</strong></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>HTTP 协议</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>应用层 (HTTP)</td>
+          <td>内容：请求百度的首页</td>
+      </tr>
+      <tr>
+          <td>传输层 (TCP)</td>
+          <td>目标端口：<strong>80</strong><code> </code>源端口：<strong>8309</strong>，NAT 映射端口</td>
+      </tr>
+      <tr>
+          <td>网络层</td>
+          <td>目标 IP：百度 IP <strong>6.6.6.6</strong><code> </code>源 IP：路由器外网 IP <strong>1.1.1.1</strong></td>
+      </tr>
+      <tr>
+          <td>网络接口层</td>
+          <td>目标 MAC：下一跳路由设备 MAC<code> </code>源 MAC：路由器的 MAC <strong>AA:AA</strong></td>
+      </tr>
+  </tbody>
 </table>
 <p><strong>外网行为</strong>：省略 &hellip; &hellip;</p>
 <p><strong>路由器</strong>：拿到 HTTP 响应</p>
 <table>
-<thead>
-<tr>
-<th>HTTP 协议</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>应用层 (HTTP)</td>
-<td>内容：百度首页数据</td>
-</tr>
-<tr>
-<td>传输层 (TCP)</td>
-<td>目标端口：<strong>8309</strong><code> </code>源端口：<strong>80</strong></td>
-</tr>
-<tr>
-<td>网络层</td>
-<td>目标 IP：路由器外网 IP <strong>1.1.1.1</strong><code> </code>百度 IP <strong>6.6.6.6</strong></td>
-</tr>
-<tr>
-<td>网络接口层</td>
-<td>目标 MAC：路由器的 MAC <strong>AA:AA</strong><code> </code>源 MAC：下一跳路由设备 MAC</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>HTTP 协议</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>应用层 (HTTP)</td>
+          <td>内容：百度首页数据</td>
+      </tr>
+      <tr>
+          <td>传输层 (TCP)</td>
+          <td>目标端口：<strong>8309</strong><code> </code>源端口：<strong>80</strong></td>
+      </tr>
+      <tr>
+          <td>网络层</td>
+          <td>目标 IP：路由器外网 IP <strong>1.1.1.1</strong><code> </code>百度 IP <strong>6.6.6.6</strong></td>
+      </tr>
+      <tr>
+          <td>网络接口层</td>
+          <td>目标 MAC：路由器的 MAC <strong>AA:AA</strong><code> </code>源 MAC：下一跳路由设备 MAC</td>
+      </tr>
+  </tbody>
 </table>
 <p>发现端口 <strong>8309</strong> 是 NAT 转换端口，将 NAT 映射端口替换为原端口，NAT 映射 IP 换为原 IP，即电脑的内网 IP，再转发给电脑。</p>
 <!--

@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.132.1">
+<meta name="generator" content="Hugo 0.148.2">
 
     
     
@@ -53,7 +53,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+<link rel="stylesheet" href="/scss/hyde-hyde.1354666f7c97c95b395dd180ab9cf1aca1ff0408c93996eed446576738e01579.css" integrity="sha256-E1Rmb3yXyVs5XdGAq5zxrKH/BAjJOZbu1EZXZzjgFXk=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -623,8 +623,7 @@
   
   <div class="post">
     <blockquote>
-<p>与其说深度学习是一门技术，不如说深度学习是一种语言</p>
-</blockquote>
+<p>与其说深度学习是一门技术，不如说深度学习是一种语言</p></blockquote>
 <p>GitHub 项目地址：<a href="https://github.com/luochang212/AI-Project/tree/main/scratch" target="_blank">AI-Project/scratch</a></p>
 <h3 id="一自动微分">一、自动微分</h3>
 <h4 id="1-简单的例子">1. 简单的例子</h4>
@@ -1372,15 +1371,13 @@ pred: tensor(6)
 </code></pre><p><img src="/img/softmax_pred.png" alt=""></p>
 <h4 id="13-xor问题-minsky--papert-1969">13. XOR问题 (Minsky &amp; Papert, 1969)</h4>
 <blockquote>
-<p><strong>Q</strong>: 能不能描述一下XOR问题 (Minsky &amp; Papert, 1969)</p>
-</blockquote>
+<p><strong>Q</strong>: 能不能描述一下XOR问题 (Minsky &amp; Papert, 1969)</p></blockquote>
 <blockquote>
 <p><strong>文心一言</strong>：在1969年，Marvin Minsky和Seymour Papert提出了一个关于单层神经网络（也称为感知机）的功能及局限性的重要观点，并以XOR问题为例进行了阐述。</p>
 <p>XOR问题是一个简单的逻辑运算问题，其规则是：当两个输入中有一个为1且另一个为0时，输出为1；否则，输出为0。这个问题对于人类来说很简单，但对于单层神经网络来说却是一个挑战。</p>
 <p>Minsky和Papert通过分析单层神经网络的工作原理，证明了单层神经网络无法准确解决XOR问题。单层神经网络只能产生线性分割面，而XOR问题是一个非线性问题，无法用单一的线性分割面来解决。因此，单层神经网络无法拟合XOR函数。</p>
 <p>这个发现对神经网络的发展产生了深远的影响。它揭示了单层神经网络的局限性，并推动了多层神经网络（如深度神经网络）的研究和发展。多层神经网络通过引入隐藏层，可以产生更复杂的非线性分割面，从而解决XOR等非线性问题。</p>
-<p>总的来说，Minsky和Papert在1969年提出的XOR问题是对单层神经网络功能及局限性的一个重要探讨，它揭示了单层神经网络的局限性，并推动了神经网络领域的发展。</p>
-</blockquote>
+<p>总的来说，Minsky和Papert在1969年提出的XOR问题是对单层神经网络功能及局限性的一个重要探讨，它揭示了单层神经网络的局限性，并推动了神经网络领域的发展。</p></blockquote>
 <p>我们构作一个类 XOR 样本集。生成 12 个簇，并把其中任意 4 个簇合并，使用同一种标号，此时 12 个簇一共产生 <code>12 / 4 = 3</code> 种标号</p>
 <pre tabindex="0"><code>def gen_xor_samples(clustr_num, partition):
     samples = dict(generate_sample(clustr_num))

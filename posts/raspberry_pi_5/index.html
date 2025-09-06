@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.132.1">
+<meta name="generator" content="Hugo 0.148.2">
 
     
     
@@ -53,7 +53,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+<link rel="stylesheet" href="/scss/hyde-hyde.1354666f7c97c95b395dd180ab9cf1aca1ff0408c93996eed446576738e01579.css" integrity="sha256-E1Rmb3yXyVs5XdGAq5zxrKH/BAjJOZbu1EZXZzjgFXk=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -623,8 +623,7 @@
   
   <div class="post">
     <blockquote>
-<p>2024 年 2 月，给我的 Raspberry Pi 5 安装 Ubuntu，最后踩了两次坑才装好。感觉搜索前几的教程都不对，没一个让我顺利装完的。那么我来记录一下安装过程吧</p>
-</blockquote>
+<p>2024 年 2 月，给我的 Raspberry Pi 5 安装 Ubuntu，最后踩了两次坑才装好。感觉搜索前几的教程都不对，没一个让我顺利装完的。那么我来记录一下安装过程吧</p></blockquote>
 <h3 id="一下载">一、下载</h3>
 <p>你需要下载两个东西：</p>
 <ul>
@@ -737,8 +736,7 @@ conda activate  # 启动 miniforge
 <p>① 下载 <code>.deb</code> 安装包</p>
 <p>官方下载页面：<a href="https://code.visualstudio.com/Download" target="_blank">code.visualstudio.com/Download</a></p>
 <blockquote>
-<p>⚠️ 注意，要下载 <code>.deb</code> 的 <code>Arm64</code> 版本，红框里那个</p>
-</blockquote>
+<p>⚠️ 注意，要下载 <code>.deb</code> 的 <code>Arm64</code> 版本，红框里那个</p></blockquote>
 <p><img src="/img/rasp_vscode.png" alt=""></p>
 <p>② 安装，把 <code>&lt;filename&gt;</code> 换成实际下载文件的文件名</p>
 <pre tabindex="0"><code>sudo apt install ./&lt;filename&gt;.deb
@@ -748,8 +746,7 @@ conda activate  # 启动 miniforge
 </code></pre><p>配置 Samba 可以参考 <a href="/posts/linux_handbook/#%E5%85%AD%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93" target="_blank">Linux 运维手册</a>，这里不再赘述。</p>
 <h4 id="7连接-github">7）连接 GitHub</h4>
 <blockquote>
-<p>以下内容来自阿里云云效 <a href="https://help.aliyun.com/document_detail/153709.html" target="_blank">配置 SSH 密钥</a></p>
-</blockquote>
+<p>以下内容来自阿里云云效 <a href="https://help.aliyun.com/document_detail/153709.html" target="_blank">配置 SSH 密钥</a></p></blockquote>
 <p>① 查看已存在的 SSH 密钥</p>
 <p>在生成新的 SSH 密钥前，请先确认是否需要使用本地已生成的SSH密钥，SSH 密钥对一般存放在本地用户的根目录下。</p>
 <p>Linux、Mac 请直接使用以下命令查看已存在的公钥，Windows 用户在 WSL（需要 windows10 或以上）或 Git Bash下使用以下命令查看已生成公钥：</p>
@@ -820,68 +817,67 @@ code-server
 # 如果需要指定主机和端口
 code-server --host 0.0.0.0 --port 7635
 </code></pre><blockquote>
-<p>注：如无额外配置，服务在默认地址开启：<a href="http://127.0.0.1:8080">http://127.0.0.1:8080</a></p>
-</blockquote>
+<p>注：如无额外配置，服务在默认地址开启：<a href="http://127.0.0.1:8080">http://127.0.0.1:8080</a></p></blockquote>
 <p>③ 获取密码</p>
 <p>初次进入需要密码，在 terminal 运行以下命令打印密码：</p>
 <pre tabindex="0"><code>cat ~/.config/code-server/config.yaml
 </code></pre><p>PS: 本教程来自 <a href="https://github.com/luochang212/mcp-project/blob/main/install_code_server.ipynb">luochang212/mcp-project</a>.</p>
 <h3 id="六软件推荐">六、软件推荐</h3>
 <table>
-<thead>
-<tr>
-<th>软件名</th>
-<th>用途</th>
-<th>下载方式</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Firefox</td>
-<td>浏览器</td>
-<td>官方自带的 App Center</td>
-</tr>
-<tr>
-<td>Chromium</td>
-<td>浏览器</td>
-<td>官方自带的 App Center</td>
-</tr>
-<tr>
-<td>VSCode</td>
-<td>代码编辑器</td>
-<td><a href="https://code.visualstudio.com/Download" target="_blank">visualstudio</a> 官网</td>
-</tr>
-<tr>
-<td>Sublime</td>
-<td>代码编辑器</td>
-<td>官方自带的 App Center</td>
-</tr>
-<tr>
-<td>IntelliJ IDEA</td>
-<td>代码编辑器</td>
-<td><a href="https://www.jetbrains.com/idea/download" target="_blank">jetbrains</a> 官网</td>
-</tr>
-<tr>
-<td>Alacritty</td>
-<td>Terminal</td>
-<td><code>sudo apt install alacritty</code></td>
-</tr>
-<tr>
-<td>VLC</td>
-<td>视频播放器</td>
-<td><code>sudo apt install vlc</code></td>
-</tr>
-<tr>
-<td>UFW</td>
-<td>防火墙</td>
-<td>官方自带的 App Center</td>
-</tr>
-<tr>
-<td>cmatrix</td>
-<td>黑客帝国风格的“数字雨”</td>
-<td><code>sudo apt install cmatrix</code></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>软件名</th>
+          <th>用途</th>
+          <th>下载方式</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Firefox</td>
+          <td>浏览器</td>
+          <td>官方自带的 App Center</td>
+      </tr>
+      <tr>
+          <td>Chromium</td>
+          <td>浏览器</td>
+          <td>官方自带的 App Center</td>
+      </tr>
+      <tr>
+          <td>VSCode</td>
+          <td>代码编辑器</td>
+          <td><a href="https://code.visualstudio.com/Download" target="_blank">visualstudio</a> 官网</td>
+      </tr>
+      <tr>
+          <td>Sublime</td>
+          <td>代码编辑器</td>
+          <td>官方自带的 App Center</td>
+      </tr>
+      <tr>
+          <td>IntelliJ IDEA</td>
+          <td>代码编辑器</td>
+          <td><a href="https://www.jetbrains.com/idea/download" target="_blank">jetbrains</a> 官网</td>
+      </tr>
+      <tr>
+          <td>Alacritty</td>
+          <td>Terminal</td>
+          <td><code>sudo apt install alacritty</code></td>
+      </tr>
+      <tr>
+          <td>VLC</td>
+          <td>视频播放器</td>
+          <td><code>sudo apt install vlc</code></td>
+      </tr>
+      <tr>
+          <td>UFW</td>
+          <td>防火墙</td>
+          <td>官方自带的 App Center</td>
+      </tr>
+      <tr>
+          <td>cmatrix</td>
+          <td>黑客帝国风格的“数字雨”</td>
+          <td><code>sudo apt install cmatrix</code></td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="七物料清单">七、物料清单</h3>
 <ul>

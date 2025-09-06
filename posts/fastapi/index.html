@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.132.1">
+<meta name="generator" content="Hugo 0.148.2">
 
     
     
@@ -53,7 +53,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+<link rel="stylesheet" href="/scss/hyde-hyde.1354666f7c97c95b395dd180ab9cf1aca1ff0408c93996eed446576738e01579.css" integrity="sha256-E1Rmb3yXyVs5XdGAq5zxrKH/BAjJOZbu1EZXZzjgFXk=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -623,8 +623,7 @@
   
   <div class="post">
     <blockquote>
-<p>什么是 API？如何从零开始，搭建自己的第一个API？本文带你搭建一个 API 小应用以了解 FastAPI 的使用细节</p>
-</blockquote>
+<p>什么是 API？如何从零开始，搭建自己的第一个API？本文带你搭建一个 API 小应用以了解 FastAPI 的使用细节</p></blockquote>
 <!-- > 什么是 API？API 有什么用？本文从零开始教你搭建 API，认识 API 服务中的组件和 FastAPI 的使用细节。 -->
 <p>GitHub 项目地址：<a href="https://github.com/luochang212/calendar-api" target="_blank">calendar-api</a></p>
 <p>什么是 API？</p>
@@ -644,8 +643,7 @@
 <li>Layered system</li>
 <li>Code on demand (optional)</li>
 </ul>
-<p>[<a href="https://restfulapi.net/">了解更多</a>]</p>
-</blockquote>
+<p>[<a href="https://restfulapi.net/">了解更多</a>]</p></blockquote>
 <p>FastAPI 对构建 REST 风格的 API 提供了良好的支持。</p>
 <!-- ### 1. 技术选型
 
@@ -680,8 +678,7 @@ FastAPI 和以上两者的区别是：它就是被设计成用来开发 API 的�
 <p>Uvicorn is a lightning-fast ASGI server implementation, using uvloop and httptools. [<a href="https://www.uvicorn.org/">reference</a>]</p>
 <p>❓ 什么是 <code>ASGI server</code>？</p>
 <p>ASGI (Asynchronous Server Gateway Interface) is a spiritual successor to WSGI, intended to provide a standard interface between async-capable Python web servers, frameworks, and applications.</p>
-<p>Where WSGI provided a standard for synchronous Python apps, ASGI provides one for both asynchronous and synchronous apps, with a WSGI backwards-compatibility implementation and multiple servers and application frameworks. [<a href="https://asgi.readthedocs.io/en/latest/">reference</a>]</p>
-</blockquote>
+<p>Where WSGI provided a standard for synchronous Python apps, ASGI provides one for both asynchronous and synchronous apps, with a WSGI backwards-compatibility implementation and multiple servers and application frameworks. [<a href="https://asgi.readthedocs.io/en/latest/">reference</a>]</p></blockquote>
 <h3 id="3-测试安装是否成功">3. 测试安装是否成功</h3>
 <p>安装完后，我们来搭一个超级简单的 API，来验证安装是否成功。调用此 API，它将回调一条 JSON 信息: <code>{'key': 'value'}</code>。下面的代码实现了这个功能。</p>
 <p>首先，新建 <code>main.py</code> 文件，并在文件中写入如下内容。</p>
@@ -724,8 +721,7 @@ FastAPI 和以上两者的区别是：它就是被设计成用来开发 API 的�
 <p>这里数据库采用 <code>SQLite</code>。</p>
 <!-- 有很多数据库可供选择，这里我们采用 `SQLite`。因为它是 Python 自带的，无需安装，符合我们希望本文是“包含 FastAPI 的最小子集”的愿望。而且本文不打算搭建一个正经的 API，所以没必要采用正经的数据库，比如 MySQL. -->
 <blockquote>
-<p><strong>Note</strong>: <code>Python3</code> 下使用 <code>SQLite</code> 的介绍可以看 <a href="https://docs.python.org/3/library/sqlite3.html">这里</a>。</p>
-</blockquote>
+<p><strong>Note</strong>: <code>Python3</code> 下使用 <code>SQLite</code> 的介绍可以看 <a href="https://docs.python.org/3/library/sqlite3.html">这里</a>。</p></blockquote>
 <p>以下提供了有关<a href="https://en.wikipedia.org/wiki/Database_transaction">数据库事务</a>的额外知识，它们是操作数据库的指导性原则。事先了解它们对搭建服务有帮助。</p>
 <blockquote>
 <p><strong>Note</strong>: 数据库事务的 ACID 特性</p>
@@ -735,8 +731,7 @@ FastAPI 和以上两者的区别是：它就是被设计成用来开发 API 的�
 <li>隔离性 (isolation)</li>
 <li>持久性 (durability)</li>
 </ul>
-<p>了解更多：[<a href="https://baike.baidu.com/item/acid/10738">百度</a>] [<a href="https://en.wikipedia.org/wiki/ACID">维基</a>]</p>
-</blockquote>
+<p>了解更多：[<a href="https://baike.baidu.com/item/acid/10738">百度</a>] [<a href="https://en.wikipedia.org/wiki/ACID">维基</a>]</p></blockquote>
 <p>本文一共有两个数据库相关的脚本。<code>build.py</code> 用于新建 <code>SQLite</code> 数据库，它只需在首次启动服务前执行一次。<code>database_handler.py</code> 是一个数据库操作类，集成了一些常用数据库操作。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># -*- coding:utf-8 -*-</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># build.py</span>
@@ -770,7 +765,7 @@ FastAPI 和以上两者的区别是：它就是被设计成用来开发 API 的�
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DatabaseHandler</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;database handler&#34;&#34;&#34;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, db_name: str, check_same_thread: bool <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self, db_name: str, check_same_thread: bool <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>):
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;init&#34;&#34;&#34;</span>
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>db_name <span style="color:#f92672">=</span> db_name
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>conn <span style="color:#f92672">=</span> sqlite3<span style="color:#f92672">.</span>connect(
@@ -898,7 +893,7 @@ FastAPI 和以上两者的区别是：它就是被设计成用来开发 API 的�
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Method</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;API 操作方法&#34;&#34;&#34;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, conf_file):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self, conf_file):
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;init&#34;&#34;&#34;</span>
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>config <span style="color:#f92672">=</span> configparser<span style="color:#f92672">.</span>ConfigParser()
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>config<span style="color:#f92672">.</span>read(conf_file)  <span style="color:#75715e"># &#39;db.conf&#39;</span>
@@ -1074,13 +1069,11 @@ FastAPI 和以上两者的区别是：它就是被设计成用来开发 API 的�
 <li>DELETE: As the name applies, DELETE APIs are used to delete resources.</li>
 <li>PATCH: HTTP PATCH requests are to make partial update on a resource.</li>
 </ul>
-<p>[<a href="https://restfulapi.net/http-methods/">了解更多</a>]</p>
-</blockquote>
+<p>[<a href="https://restfulapi.net/http-methods/">了解更多</a>]</p></blockquote>
 <p>客户端的职责就是用正确的 HTTP 方法，向服务端发送格式正确的请求信息。然后待服务端处理完成后，解析回调信息，以确认请求是否被成功执行。</p>
 <p>使用 HTTP 协议与服务端通信需要用到 requests.</p>
 <blockquote>
-<p>关于在 Python3 中使用 requests 的介绍请看<a href="https://requests.readthedocs.io/en/master/">这里</a>。</p>
-</blockquote>
+<p>关于在 Python3 中使用 requests 的介绍请看<a href="https://requests.readthedocs.io/en/master/">这里</a>。</p></blockquote>
 <p>用于构建客户端的脚本仅有一个：<code>client.py</code>。调试 <code>client.py</code> 时，请务必确保操作顺序符合逻辑。比如，如果要删除一条数据，那么必须先添加它；如果要更新/删除一条数据，那么它必须已经存在于数据库中。另外，请求 JSON 的格式同时在 <code>db.conf</code> 文件和 <code>Schedule</code> 类中定义。如果你需要修改消息格式，请同时修改这两处地方。</p>
 <p>PS: 如果调试 <code>client.py</code> 时遭遇障碍，可先在 FastAPI
 提供的单页应用 <code>http://127.0.0.1:8000/docs</code> 上进行调试。</p>
@@ -1100,7 +1093,7 @@ FastAPI 和以上两者的区别是：它就是被设计成用来开发 API 的�
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Interface</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;client interface&#34;&#34;&#34;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, url, app_name):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self, url, app_name):
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>url <span style="color:#f92672">=</span> url
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>app_url <span style="color:#f92672">=</span> url <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;/&#39;</span> <span style="color:#f92672">+</span> app_name
 </span></span><span style="display:flex;"><span>

@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.132.1">
+<meta name="generator" content="Hugo 0.148.2">
 
     
     
@@ -54,7 +54,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+<link rel="stylesheet" href="/scss/hyde-hyde.1354666f7c97c95b395dd180ab9cf1aca1ff0408c93996eed446576738e01579.css" integrity="sha256-E1Rmb3yXyVs5XdGAq5zxrKH/BAjJOZbu1EZXZzjgFXk=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -627,8 +627,7 @@
   
   <div class="post">
     <blockquote>
-<p>2023 年本地部署大模型的报价近千万，2024 年初便骤降至百万，如今是 2025 年，只需要一行 vLLM 命令就可以部署大模型，人工成本几近于零。</p>
-</blockquote>
+<p>2023 年本地部署大模型的报价近千万，2024 年初便骤降至百万，如今是 2025 年，只需要一行 vLLM 命令就可以部署大模型，人工成本几近于零。</p></blockquote>
 <p>GitHub 项目地址：<a href="https://github.com/luochang212/llm-deploy" target="_blank">llm-deploy</a></p>
 <p>本文内容包括：</p>
 <ul>
@@ -641,40 +640,40 @@
 <h2 id="一本地部署-deepseek-r1">一、本地部署 DeepSeek R1</h2>
 <p>大模型本地部署依赖推理引擎，目前比较流行的推理引擎有：</p>
 <table>
-<thead>
-<tr>
-<th>推理引擎</th>
-<th>场景</th>
-<th>介绍</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://github.com/ollama/ollama">Ollama</a></td>
-<td>适合个人开发者和轻量级应用</td>
-<td>基于 <a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a> 开发，支持 CPU 推理，安装简单，开箱即用，适合快速原型开发和测试</td>
-</tr>
-<tr>
-<td><a href="https://github.com/vllm-project/vllm">vLLM</a></td>
-<td>适合高并发生产环境</td>
-<td>支持多 GPU 并行、批处理、PagedAttention，吞吐量高，延迟低，适合大规模服务部署</td>
-</tr>
-<tr>
-<td><a href="https://github.com/huggingface/transformers">Transformers</a></td>
-<td>适合模型研究和实验</td>
-<td>提供完整的模型训练和推理接口，支持模型微调、量化、加速，适合研究人员和需要深度定制的场景</td>
-</tr>
-<tr>
-<td><a href="https://github.com/sgl-project/sglang">SGLang</a></td>
-<td>适合需要复杂推理流程的场景</td>
-<td>支持结构化输出、并行推理、流式输出，特别适合需要多轮对话和复杂推理的应用</td>
-</tr>
-<tr>
-<td><a href="https://github.com/InternLM/lmdeploy">LMDeploy</a></td>
-<td>适合企业级部署和边缘计算</td>
-<td>由上海人工智能实验室开发，提供完整的模型量化、加速和部署工具链，支持多种硬件平台，特别适合资源受限场景</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>推理引擎</th>
+          <th>场景</th>
+          <th>介绍</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="https://github.com/ollama/ollama">Ollama</a></td>
+          <td>适合个人开发者和轻量级应用</td>
+          <td>基于 <a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a> 开发，支持 CPU 推理，安装简单，开箱即用，适合快速原型开发和测试</td>
+      </tr>
+      <tr>
+          <td><a href="https://github.com/vllm-project/vllm">vLLM</a></td>
+          <td>适合高并发生产环境</td>
+          <td>支持多 GPU 并行、批处理、PagedAttention，吞吐量高，延迟低，适合大规模服务部署</td>
+      </tr>
+      <tr>
+          <td><a href="https://github.com/huggingface/transformers">Transformers</a></td>
+          <td>适合模型研究和实验</td>
+          <td>提供完整的模型训练和推理接口，支持模型微调、量化、加速，适合研究人员和需要深度定制的场景</td>
+      </tr>
+      <tr>
+          <td><a href="https://github.com/sgl-project/sglang">SGLang</a></td>
+          <td>适合需要复杂推理流程的场景</td>
+          <td>支持结构化输出、并行推理、流式输出，特别适合需要多轮对话和复杂推理的应用</td>
+      </tr>
+      <tr>
+          <td><a href="https://github.com/InternLM/lmdeploy">LMDeploy</a></td>
+          <td>适合企业级部署和边缘计算</td>
+          <td>由上海人工智能实验室开发，提供完整的模型量化、加速和部署工具链，支持多种硬件平台，特别适合资源受限场景</td>
+      </tr>
+  </tbody>
 </table>
 <p>下面介绍如何部署 Ollama, vLLM, Transformers 这三款推理引擎，简要部署步骤见本项目的 <a href="https://github.com/luochang212/llm-deploy/tree/main/deploy">deploy</a> 目录。</p>
 <p>目录：</p>
@@ -747,8 +746,7 @@ huggingface-cli download \
 <pre tabindex="0"><code>vllm serve [YOUR MODEL or MODEL PATH]
 </code></pre><p>当然对于不同的模型，启动参数也略有不同，需要做一定的配适。比如对于 <code>deepseek-r1</code> 这类推理模型，必须添加参数 <code>--enable-reasoning --reasoning-parser deepseek_r1</code>。具体每个模型如何使用 vLLM，可参考 vLLM 官方文档或模型文档。</p>
 <blockquote>
-<p><strong>PS:</strong> vLLM 的 API 服务遵循 OpenAI 的接口协议。</p>
-</blockquote>
+<p><strong>PS:</strong> vLLM 的 API 服务遵循 OpenAI 的接口协议。</p></blockquote>
 <p>目录：</p>
 <ol>
 <li>DeepSeek-R1

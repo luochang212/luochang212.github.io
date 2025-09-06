@@ -4,42 +4,53 @@
     
 
 
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=61090&amp;path=livereload" data-no-instant defer></script>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     
-    <link rel="canonical" href="http://localhost:1313/posts/contrastive_learning/">
+    <link rel="canonical" href="http://localhost:61090/posts/contrastive_learning/">
     
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.132.1">
+<meta name="generator" content="Hugo 0.148.2">
 
     
     
     
 
-<title>对比学习入门 • Chang Luo</title>
+<title> • Chang Luo</title>
 
 
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="对比学习入门">
-  <meta name="twitter:description" content="对比学习题太大了不好写，入个门先">
-      <meta name="twitter:site" content="@MinosPalace">
+  <meta name="twitter:title" content="Chang Luo">
+  <meta name="twitter:description" content="author: “Chang Luo” date: 2024-10-03 title: “对比学习入门” categories: [ “DeepLearning” ] tags: [ “Sentiment”, “Bert”, “Transformer” ] weight: 10 description: “对比学习题太大了不好写，入个门先” 一种无监督表示学习方法。
+GitHub 项目地址：sentiment-analysis
+论文列表：
+Unsupervised Feature Learning via Non-Parametric Instance Discrimination 对比学习是一种表示学习技术。表示学习 是一种从原始数据抽取 Embedding 的技术。比如，丢给它一幅图片，它会输出包含图片语义信息的 Embedding.
+举个具体的例子，我们有以下两幅图片，一张笑着的女人，一张不笑的女人。我们希望从图片中抽取关于“人是否在笑”的语义信息。那么，一个训得比较好的表示学习模型，当我们输入以下两张图片，应该吐出两个 Embedding，且两个 Embedding 相距较远。
+如果 Embedding 相距较远，可以方便我们区分关心的语义信息，这就很接近对比学习的实质了。顾名思义，对比学习就是对比着学，通过对比正负样本之间的差异性，来学习有意义的表征。
+一、无监督学习 对比学习是一种 无监督学习 方法。
+你可能会问，它对比的是正样本和负样本，正负样本难道不需要人工标注吗？
+对比学习还真不需要人工标注数据。在 ImageNet 图像分类任务中，它的套路是这样的：对任意样本 $q$，通过 随机裁剪 &#43; 数据增强 构作正样本 $q_{&#43;}$，再将同 batch 中的其他样本当作负样本。这样正负样本就被自然地定义出来了，并不需要人工标注。因此它确实是一种无监督学习方法。">
+      <meta name="twitter:site" content="@_stellar_tide">
 
-<meta property="og:url" content="http://localhost:1313/posts/contrastive_learning/">
+<meta property="og:url" content="http://localhost:61090/posts/contrastive_learning/">
   <meta property="og:site_name" content="Chang Luo">
-  <meta property="og:title" content="对比学习入门">
-  <meta property="og:description" content="对比学习题太大了不好写，入个门先">
+  <meta property="og:title" content="Chang Luo">
+  <meta property="og:description" content="author: “Chang Luo” date: 2024-10-03 title: “对比学习入门” categories: [ “DeepLearning” ] tags: [ “Sentiment”, “Bert”, “Transformer” ] weight: 10 description: “对比学习题太大了不好写，入个门先” 一种无监督表示学习方法。
+GitHub 项目地址：sentiment-analysis
+论文列表：
+Unsupervised Feature Learning via Non-Parametric Instance Discrimination 对比学习是一种表示学习技术。表示学习 是一种从原始数据抽取 Embedding 的技术。比如，丢给它一幅图片，它会输出包含图片语义信息的 Embedding.
+举个具体的例子，我们有以下两幅图片，一张笑着的女人，一张不笑的女人。我们希望从图片中抽取关于“人是否在笑”的语义信息。那么，一个训得比较好的表示学习模型，当我们输入以下两张图片，应该吐出两个 Embedding，且两个 Embedding 相距较远。
+如果 Embedding 相距较远，可以方便我们区分关心的语义信息，这就很接近对比学习的实质了。顾名思义，对比学习就是对比着学，通过对比正负样本之间的差异性，来学习有意义的表征。
+一、无监督学习 对比学习是一种 无监督学习 方法。
+你可能会问，它对比的是正样本和负样本，正负样本难道不需要人工标注吗？
+对比学习还真不需要人工标注数据。在 ImageNet 图像分类任务中，它的套路是这样的：对任意样本 $q$，通过 随机裁剪 &#43; 数据增强 构作正样本 $q_{&#43;}$，再将同 batch 中的其他样本当作负样本。这样正负样本就被自然地定义出来了，并不需要人工标注。因此它确实是一种无监督学习方法。">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-10-03T00:00:00+00:00">
-    <meta property="article:modified_time" content="2024-10-03T00:00:00+00:00">
-    <meta property="article:tag" content="Sentiment">
-    <meta property="article:tag" content="Bert">
-    <meta property="article:tag" content="Transformer">
 
 
     
@@ -54,7 +65,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+<link rel="stylesheet" href="/scss/hyde-hyde.1354666f7c97c95b395dd180ab9cf1aca1ff0408c93996eed446576738e01579.css" integrity="sha256-E1Rmb3yXyVs5XdGAq5zxrKH/BAjJOZbu1EZXZzjgFXk=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -227,13 +238,13 @@
     <div class="container ">
       <div class="sidebar-about">
         <span class="site__title">
-          <a href="http://localhost:1313/">Chang Luo</a>
+          <a href="http://localhost:61090/">Chang Luo</a>
         </span>
         
         
         
         <div class="author-image">
-          <a href="#" class="load-iframe" onclick="openNav()"><img src="http://localhost:1313//images/profile.webp" id="author-iamge"
+          <a href="#" class="load-iframe" onclick="openNav()"><img src="http://localhost:61090//images/profile.webp" id="author-iamge"
               alt="Author Image" class="img--circle img--headshot element--center"></a>
         </div>
         
@@ -278,7 +289,7 @@
 
           <section class="social">
 	
-	<a href="https://twitter.com/MinosPalace" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	<a href="https://twitter.com/_stellar_tide" rel="me"><i class="fab fa-x-twitter fa-lg" aria-hidden="true"></i></a>
 	
 	
 	
@@ -307,13 +318,14 @@
 	
 	
 	
+	
 </section>
 
         </div>
       </div>
       
 <div class="copyright">
-  &copy; 2024 Chang Luo
+  &copy; 2025 Chang Luo
   
 </div>
 
@@ -521,48 +533,61 @@
     margin: 0;
     vertical-align: text-bottom;
   }
+
+  .social-links a {
+    color: rgba(120,120,120,1);
+    text-decoration: none;
+    outline: none !important;
+    cursor: pointer;
+    transition-property: padding, text-shadow, line-height, color, background, opacity, transform;
+    transition-duration: .25s;
+    transition-timing-function: ease-in-out;
+    display: inline-block;
+    white-space: nowrap;
+    position: relative;
+  }
+
+  .social-links a:after {
+    content: "";
+    display: block;
+    height: .125rem;
+    margin: -.125rem 0 0;
+    background: rgba(0,0,0,.5);
+    border-radius: 1px;
+    transform: scaleX(0);
+    transition: transform .25s ease-in-out;
+  }
+
+  .social-links a:hover:after {
+    transform: scaleX(1);
+  }
+
+  .social-links a:hover {
+    color: rgba(120,120,120,1);
+  }
+
+  .post {
+    margin-bottom: 0;
+  }
+
+  .post-footer {
+    margin-top: 0;
+    padding-top: 0.5rem;
+  }
 </style>
 
 
 
 <article>
   <header>
-    <h1>对比学习入门</h1>
+    <h1></h1>
     
     
 <div class="post__meta">
     
     
-      <i class="fas fa-calendar-alt"></i> Oct 3, 2024
     
     
-    
-      
-      
-          in
-          
-          
-              <a class="badge badge-category" href="/categories/deeplearning">DEEPLEARNING</a>
-              
-          
-      
-    
-    
-    
-      
-      
-          <br/>
-           <i class="fas fa-tags"></i>
-          
-          <a class="badge badge-tag" href="/tags/sentiment">sentiment</a>
-           
-      
-          <a class="badge badge-tag" href="/tags/bert">bert</a>
-           
-      
-          <a class="badge badge-tag" href="/tags/transformer">transformer</a>
-          
-      
     
     
     <br/>
@@ -584,9 +609,16 @@
   
   
   <div class="post">
-    <blockquote>
-<p>一种无监督表示学习方法。</p>
-</blockquote>
+    <hr>
+<h2 id="description-对比学习题太大了不好写入个门先">author: &ldquo;Chang Luo&rdquo;
+date: 2024-10-03
+title: &ldquo;对比学习入门&rdquo;
+categories: [ &ldquo;DeepLearning&rdquo; ]
+tags: [ &ldquo;Sentiment&rdquo;, &ldquo;Bert&rdquo;, &ldquo;Transformer&rdquo; ]
+weight: 10
+description: &ldquo;对比学习题太大了不好写，入个门先&rdquo;</h2>
+<blockquote>
+<p>一种无监督表示学习方法。</p></blockquote>
 <p>GitHub 项目地址：<a href="https://github.com/luochang212/sentiment-analysis" target="_blank">sentiment-analysis</a></p>
 <p>论文列表：</p>
 <ul>
@@ -635,15 +667,51 @@ SimCLR
 -->
 
   </div>
+
+  <div class="post-footer">
+    <p style="margin-bottom: 1rem;">欢迎关注我的其它发布渠道：</p>
+    <div class="social-links" style="display: flex; flex-direction: column; gap: 10px;">
+      
+      <a href="https://twitter.com/_stellar_tide" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-twitter"></i> X
+      </a>
+      
+      
+      <a href="https://github.com/luochang212" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+      
+      
+      <a href="https://www.luochang.ink/images/wechat.jpg" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-weixin"></i> 公众号
+      </a>
+      
+      <a href="https://www.zhihu.com/people/Fashionable" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-zhihu"></i> 知乎
+      </a>
+
+      <a href="/index.xml" target="_blank" rel="noopener noreferrer">
+        <i class="fas fa-rss"></i> RSS
+      </a>
+
+    </div>
+    <div style="margin-bottom: 5rem;"></div>
+  </div>
+
   
 
 <div class="navigation navigation-single">
     
-    <a href="/posts/frequent_pattern_mining/" class="navigation-prev">
+    <a href="/posts/zombie_american_factory/" class="navigation-prev">
       <i aria-hidden="true" class="fa fa-chevron-left"></i>
-      <span class="navigation-tittle">频繁模式挖掘</span>
+      <span class="navigation-tittle"></span>
     </a>
     
+    
+    <a href="/posts/await_ts_embedding/" class="navigation-next">
+      <span class="navigation-tittle"></span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
     
 </div>
 
@@ -690,8 +758,8 @@ SimCLR
 
 
 
-<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
 
+<script src="https://kit.fontawesome.com/2134995a39.js" crossorigin="anonymous"></script>
 
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>

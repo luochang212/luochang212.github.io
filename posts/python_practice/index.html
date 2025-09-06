@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.132.1">
+<meta name="generator" content="Hugo 0.148.2">
 
     
     
@@ -53,7 +53,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+<link rel="stylesheet" href="/scss/hyde-hyde.1354666f7c97c95b395dd180ab9cf1aca1ff0408c93996eed446576738e01579.css" integrity="sha256-E1Rmb3yXyVs5XdGAq5zxrKH/BAjJOZbu1EZXZzjgFXk=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -623,8 +623,7 @@
   
   <div class="post">
     <blockquote>
-<p>学 Python 不应仅限于学编程，同样应该学习工程知识，比如虚拟环境、编码风格以及单元测试等。本文致力于介绍 Python 工程化所需的前置知识。</p>
-</blockquote>
+<p>学 Python 不应仅限于学编程，同样应该学习工程知识，比如虚拟环境、编码风格以及单元测试等。本文致力于介绍 Python 工程化所需的前置知识。</p></blockquote>
 <p><font color="red">⚠️</font> 注意：以下教程适用于 MacOS。</p>
 <h2 id="部署环境">部署环境</h2>
 <h3 id="1-anaconda">1. Anaconda</h3>
@@ -643,8 +642,7 @@
 </span></span><span style="display:flex;"><span>$ conda install <span style="color:#f92672">[</span>package_name<span style="color:#f92672">]</span>  <span style="color:#75715e"># 在conda环境中安装某个包</span>
 </span></span><span style="display:flex;"><span>$ conda update <span style="color:#f92672">[</span>package_name<span style="color:#f92672">]</span>  <span style="color:#75715e"># 升级conda环境中的某个包</span>
 </span></span></code></pre></div><blockquote>
-<p><strong>Note</strong>：后文仅专注介绍虚拟环境相关内容，更多内容请在 <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">Anaconda 官方文档</a> 中查看。</p>
-</blockquote>
+<p><strong>Note</strong>：后文仅专注介绍虚拟环境相关内容，更多内容请在 <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">Anaconda 官方文档</a> 中查看。</p></blockquote>
 <p>Python 环境分为本地环境(lcoal env) 和全局环境 (global env) 。为一个项目配置环境，应该配置本地环境；为本机所有项目配置环境，则应该配置全局环境。</p>
 <h4 id="-部署全局环境">① 部署全局环境</h4>
 <p>📖 新建环境</p>
@@ -665,8 +663,7 @@
 </span></span></code></pre></div><p>上述命令用于退出当前 conda 环境。在非 base 环境里，会退出到 base 环境；而在 base 环境里，则会退出到系统环境。</p>
 <blockquote>
 <p><strong>Note</strong>: 退到系统环境以后，在命令行输入 <code>which python</code> 会打印系统 Python 的路径。再次进入 conda 环境以后，输入 <code>which python</code> 则会打印 conda 下的 Python 路径。</p>
-<p>鉴于今年（2020年）的 MacOS 系统依旧默认安装 Python2.7，因此建议把 conda 作为默认运行环境以享受 Python3 的便利！</p>
-</blockquote>
+<p>鉴于今年（2020年）的 MacOS 系统依旧默认安装 Python2.7，因此建议把 conda 作为默认运行环境以享受 Python3 的便利！</p></blockquote>
 <p>🚮 移除环境</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ conda env remove --name myenv
 </span></span></code></pre></div><p>上述命令移除名为 <code>myenv</code> 的全局环境。</p>
@@ -685,15 +682,13 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ pip install <span style="color:#f92672">[</span>package_name<span style="color:#f92672">]</span>
 </span></span></code></pre></div><p>有些包 conda 安装不了，可以<a href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#using-pip-in-an-environment">使用 pip 安装</a>。</p>
 <blockquote>
-<p><strong>Note</strong>: conda 集成了 pip，所以在 conda 环境下也可以使用 pip 命令。在 conda 环境下，试试 <code>pip list</code> 吧～</p>
-</blockquote>
+<p><strong>Note</strong>: conda 集成了 pip，所以在 conda 环境下也可以使用 pip 命令。在 conda 环境下，试试 <code>pip list</code> 吧～</p></blockquote>
 <p>🚮 移除环境</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ rm -rf ./envs
 </span></span></code></pre></div><p>移除环境只需要删除对应的安装目录就可以了。注意，<code>rm -rf</code> 是一个极其危险的命令，使用时请务必小心。</p>
 <h3 id="2-virtualenv">2. Virtualenv</h3>
 <blockquote>
-<p><strong>Note</strong>: Virtualenv 的好处在于体积小，适合开发机之类的环境。如果我们在笔记本电脑上做开发，还是用 conda 部署环境更方便～</p>
-</blockquote>
+<p><strong>Note</strong>: Virtualenv 的好处在于体积小，适合开发机之类的环境。如果我们在笔记本电脑上做开发，还是用 conda 部署环境更方便～</p></blockquote>
 <p>Virtualenv 用于为 Python 项目创建独立的运行环境。</p>
 <p>作为一门动态语言，Python 程序能否正确运行和环境配置密切相关。当我们下载好一个 Python 项目代码，通常需要先配置环境，然后才能运行。为了防止这个外来的 Python 项目污染我们的全局环境(global environment)，我们应该为它配置独立的运行环境。这时 Virtualenv 就派上用场了。</p>
 <p>在 Virtualenv 创建的虚拟环境中，我们可以指定特定的包版本甚至Python版本，而不影响全局环境。但需要注意的是，因为 Virtualenv 依赖于全局环境，因此如果你更新了 Python 全局环境，有可能对 Virtualenv 造成影响。</p>
@@ -737,8 +732,7 @@
 <p><a href="https://www.docker.com/">Docker</a> 是什么？</p>
 <p>Docker 是一项虚拟化技术，它将软件和配置文件、依赖库封装在一起，放到一个操作系统级别的虚拟化环境中。这个环境我们称作容器 (container)。容器和容器之前是相互隔离的，但是也能通过优良定义的接口进行交互。因为容器运行在一个单独的操作系统内核上，因此它占用的资源比虚拟机更少。</p>
 <blockquote>
-<p>原文：<strong>Docker</strong> is a set of platform as a service (PaaS) products that use OS-level virtualization to deliver software in packages called containers. Containers are isolated from one another and bundle their own software, libraries and configuration files; they can communicate with each other through well-defined channels. All containers are run by a single operating system kernel and therefore use fewer resources than virtual machines. &ndash; from wikipedia</p>
-</blockquote>
+<p>原文：<strong>Docker</strong> is a set of platform as a service (PaaS) products that use OS-level virtualization to deliver software in packages called containers. Containers are isolated from one another and bundle their own software, libraries and configuration files; they can communicate with each other through well-defined channels. All containers are run by a single operating system kernel and therefore use fewer resources than virtual machines. &ndash; from wikipedia</p></blockquote>
 <p>✨ 下面我们来介绍如何使用 Docker。</p>
 <p>1.首先去官网下载 <a href="https://www.docker.com/products/docker-desktop">Docker Desktop</a>。</p>
 <p>2.安装 Docker，装完后执行 <code>docker -v</code> 以检查安装是否成功。</p>
@@ -789,8 +783,7 @@ CMD [&#34;python&#34;, &#34;calc.py&#34;]
 <ol>
 <li><a href="https://www.runoob.com/docker/docker-tutorial.html">菜鸟教程</a></li>
 <li><a href="https://docs.docker.com/get-started/">Docker Documentation</a></li>
-</ol>
-</blockquote>
+</ol></blockquote>
 <br>
 <h2 id="代码风格">代码风格</h2>
 <blockquote>
@@ -798,8 +791,7 @@ CMD [&#34;python&#34;, &#34;calc.py&#34;]
 <ol>
 <li>按某种约定风格写代码，可以让团队项目的风格更统一，有利于团队成员间交接工作。</li>
 <li>工程项目通常代码量较大。随着代码量的增加，debug 变得愈发困难。按约定好的风格写代码，能有效预防代码发生未预期的错误。</li>
-</ol>
-</blockquote>
+</ol></blockquote>
 <p>建议通过 <a href="http://google.github.io/styleguide/pyguide.html"><em>Google Python Style Guide</em></a> 学习代码风格，该指南非常中肯地提出了每项建议的优缺点以及例外的情况。</p>
 <p>下面列几条我认为重要的代码风格建议：</p>
 <h3 id="1-docstrings">1. Docstrings</h3>
@@ -823,85 +815,83 @@ CMD [&#34;python&#34;, &#34;calc.py&#34;]
 </span></span></code></pre></div><p>And the proper way to write its negation is:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>x <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>
 </span></span></code></pre></div><p>The <code>is</code> operator is faster than <code>==</code>, because it cannot be overloaded, so Python does not have to find and invoke special methods to evaluate it, and computing is as simple as comparing two integer IDs. In contrast, <code>a == b</code> is syntactic sugar for <code>a.__eq__(b)</code>. The <code>__eq__</code> method inherited from object compares object IDs, so it produces the same result as is. But most built-in types override <code>__eq__</code> with more meaningful implementations that actually take into account the values of the object attributes. Equality may involve a lot of processing —- for example, when comparing large collections or deeply nested structures.</p>
-<p>摘自 <em>Fluent Python</em> CHAPTER 8</p>
-</blockquote>
+<p>摘自 <em>Fluent Python</em> CHAPTER 8</p></blockquote>
 </details>
 <p>总结来说就是，虽然 <code>==</code> 和 <code>is</code> 的运算结果相同，但 <code>==</code> 其实是 <code>__eq__</code> 的语法糖，而 <code>__eq__</code> 在实际调用中经常被重载，导致程序进入一系列繁琐的步骤中。而 <code>is</code> 则直接比较两个对象的整数ID得出结果，所以比 <code>==</code> 效率更高。</p>
 <h3 id="3-命名">3. 命名</h3>
 <!-- # 这里还有东西要写 -->
 <p>命名规范见下表：</p>
 <table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Public</th>
-<th>Internal</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Packages</td>
-<td>lower_with_under</td>
-<td></td>
-</tr>
-<tr>
-<td>Modules</td>
-<td>lower_with_under</td>
-<td>_lower_with_under</td>
-</tr>
-<tr>
-<td>Classes</td>
-<td>CapWords</td>
-<td>_CapWords</td>
-</tr>
-<tr>
-<td>Exceptions</td>
-<td>CapWords</td>
-<td></td>
-</tr>
-<tr>
-<td>Functions</td>
-<td>lower_with_under()</td>
-<td>_lower_with_under()</td>
-</tr>
-<tr>
-<td>Global/Class Constants</td>
-<td>CAPS_WITH_UNDER</td>
-<td>_CAPS_WITH_UNDER</td>
-</tr>
-<tr>
-<td>Global/Class Variables</td>
-<td>lower_with_under</td>
-<td>_lower_with_under</td>
-</tr>
-<tr>
-<td>Instance Variables</td>
-<td>lower_with_under</td>
-<td>_lower_with_under (protected)</td>
-</tr>
-<tr>
-<td>Method Names</td>
-<td>lower_with_under()</td>
-<td>_lower_with_under() (protected)</td>
-</tr>
-<tr>
-<td>Function/Method Parameters</td>
-<td>lower_with_under</td>
-<td></td>
-</tr>
-<tr>
-<td>Local Variables</td>
-<td>lower_with_under</td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>Type</th>
+          <th>Public</th>
+          <th>Internal</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Packages</td>
+          <td>lower_with_under</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>Modules</td>
+          <td>lower_with_under</td>
+          <td>_lower_with_under</td>
+      </tr>
+      <tr>
+          <td>Classes</td>
+          <td>CapWords</td>
+          <td>_CapWords</td>
+      </tr>
+      <tr>
+          <td>Exceptions</td>
+          <td>CapWords</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>Functions</td>
+          <td>lower_with_under()</td>
+          <td>_lower_with_under()</td>
+      </tr>
+      <tr>
+          <td>Global/Class Constants</td>
+          <td>CAPS_WITH_UNDER</td>
+          <td>_CAPS_WITH_UNDER</td>
+      </tr>
+      <tr>
+          <td>Global/Class Variables</td>
+          <td>lower_with_under</td>
+          <td>_lower_with_under</td>
+      </tr>
+      <tr>
+          <td>Instance Variables</td>
+          <td>lower_with_under</td>
+          <td>_lower_with_under (protected)</td>
+      </tr>
+      <tr>
+          <td>Method Names</td>
+          <td>lower_with_under()</td>
+          <td>_lower_with_under() (protected)</td>
+      </tr>
+      <tr>
+          <td>Function/Method Parameters</td>
+          <td>lower_with_under</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>Local Variables</td>
+          <td>lower_with_under</td>
+          <td></td>
+      </tr>
+  </tbody>
 </table>
 <p>摘自 Google Python Style Guide</p>
 <br>
 <h2 id="单元测试">单元测试</h2>
 <blockquote>
-<p>关于 &ldquo;The best way of unit test&rdquo;，大家有不同的意见，有人觉得 nose 好用，有人觉得原生的 unittest 好用。但是我有不同的见解，个人觉得 Jupyter notebook 才是最好用的单测工具。<img src="/img/quyin/huaji.png" class="my-emoji" style = "height: 32px;"></p>
-</blockquote>
+<p>关于 &ldquo;The best way of unit test&rdquo;，大家有不同的意见，有人觉得 nose 好用，有人觉得原生的 unittest 好用。但是我有不同的见解，个人觉得 Jupyter notebook 才是最好用的单测工具。<img src="/img/quyin/huaji.png" class="my-emoji" style = "height: 32px;"></p></blockquote>
 <p>GitHub 项目地址：<a href="https://github.com/luochang212/python-tips/tree/master/test" target="_blank">python-tips/test</a></p>
 <p>当然言归正传，我们还是得正经地学习一下单测的。单测可以确保每个函数每个模块都按照我们预期的方式运行。如果你不是在写完代码以后，才写单测代码，而是一边开发一边测试，那么你其实遵循了<strong>测试驱动开发</strong>(Test-Driven Development)的开发方式。这种开发方式的好处是，在开发的全生命周期内，我们都能确保代码正确运行。</p>
 <h3 id="unittest">unittest</h3>
@@ -920,71 +910,69 @@ CMD [&#34;python&#34;, &#34;calc.py&#34;]
 <p><img src="/img/unittest-res.png" alt=""></p>
 <p>在上面这个例子中 <code>assertEqual(a, b)</code> 用于判断 <code>a</code> 和 <code>b</code> 是否相等。像这样的 assert 方法还有很多，下面是它们的用法：</p>
 <table>
-<thead>
-<tr>
-<th>Method</th>
-<th>Checks that</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>assertEqual(a, b)</td>
-<td><code>a == b</code></td>
-</tr>
-<tr>
-<td>assertNotEqual(a, b)</td>
-<td><code>a != b</code></td>
-</tr>
-<tr>
-<td>assertTrue(x)</td>
-<td><code>bool(x) is True</code></td>
-</tr>
-<tr>
-<td>assertFalse(x)</td>
-<td><code>bool(x) is False</code></td>
-</tr>
-<tr>
-<td>assertIs(a, b)</td>
-<td><code>a is b</code></td>
-</tr>
-<tr>
-<td>assertIsNot(a, b)</td>
-<td><code>a is not b</code></td>
-</tr>
-<tr>
-<td>assertIsNone(x)</td>
-<td><code>x is None</code></td>
-</tr>
-<tr>
-<td>assertIsNotNone(x)</td>
-<td><code>x is not None</code></td>
-</tr>
-<tr>
-<td>assertIn(a, b)</td>
-<td><code>a in b</code></td>
-</tr>
-<tr>
-<td>assertNotIn(a, b)</td>
-<td><code>a not in b</code></td>
-</tr>
-<tr>
-<td>assertIsInstance(a, b)</td>
-<td><code>isinstance(a, b)</code></td>
-</tr>
-<tr>
-<td>assertNotIsInstance(a, b)</td>
-<td><code>not isinstance(a, b)</code></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>Method</th>
+          <th>Checks that</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>assertEqual(a, b)</td>
+          <td><code>a == b</code></td>
+      </tr>
+      <tr>
+          <td>assertNotEqual(a, b)</td>
+          <td><code>a != b</code></td>
+      </tr>
+      <tr>
+          <td>assertTrue(x)</td>
+          <td><code>bool(x) is True</code></td>
+      </tr>
+      <tr>
+          <td>assertFalse(x)</td>
+          <td><code>bool(x) is False</code></td>
+      </tr>
+      <tr>
+          <td>assertIs(a, b)</td>
+          <td><code>a is b</code></td>
+      </tr>
+      <tr>
+          <td>assertIsNot(a, b)</td>
+          <td><code>a is not b</code></td>
+      </tr>
+      <tr>
+          <td>assertIsNone(x)</td>
+          <td><code>x is None</code></td>
+      </tr>
+      <tr>
+          <td>assertIsNotNone(x)</td>
+          <td><code>x is not None</code></td>
+      </tr>
+      <tr>
+          <td>assertIn(a, b)</td>
+          <td><code>a in b</code></td>
+      </tr>
+      <tr>
+          <td>assertNotIn(a, b)</td>
+          <td><code>a not in b</code></td>
+      </tr>
+      <tr>
+          <td>assertIsInstance(a, b)</td>
+          <td><code>isinstance(a, b)</code></td>
+      </tr>
+      <tr>
+          <td>assertNotIsInstance(a, b)</td>
+          <td><code>not isinstance(a, b)</code></td>
+      </tr>
+  </tbody>
 </table>
 <blockquote>
-<p><strong>Note</strong>: <code>setUp()</code> 方法运行在测试前，可将测试前需要运行的代码放在该函数内。<code>tearDown()</code> 方法运行在测试后，一般用于清理测试产生的变量。如果想要全面地了解单测，请阅读 <a href="https://docs.python.org/3/library/unittest.html">unittest 文档</a>，文档的作用是任何教程都无法替代的。</p>
-</blockquote>
+<p><strong>Note</strong>: <code>setUp()</code> 方法运行在测试前，可将测试前需要运行的代码放在该函数内。<code>tearDown()</code> 方法运行在测试后，一般用于清理测试产生的变量。如果想要全面地了解单测，请阅读 <a href="https://docs.python.org/3/library/unittest.html">unittest 文档</a>，文档的作用是任何教程都无法替代的。</p></blockquote>
 <br>
 <h2 id="从命令行运行-python">从命令行运行 Python</h2>
 <blockquote>
-<p>运行 Python 的方法很多，常用的有 Pycharm, Jupyter notebook, VSCode 等。但是，公司的 Python 环境通常搭建在开发机上，而开发机安装的是 Linux 的各种发行版。这就需要我们<a href="https://wangdoc.com/bash/">熟悉 bash 编程</a>，以及 Python 的命令行选项。</p>
-</blockquote>
+<p>运行 Python 的方法很多，常用的有 Pycharm, Jupyter notebook, VSCode 等。但是，公司的 Python 环境通常搭建在开发机上，而开发机安装的是 Linux 的各种发行版。这就需要我们<a href="https://wangdoc.com/bash/">熟悉 bash 编程</a>，以及 Python 的命令行选项。</p></blockquote>
 <p>GitHub 项目地址：<a href="https://github.com/luochang212/python-tips/tree/master/command_line" target="_blank">python-tips/command_line</a></p>
 <h3 id="1-命令行选项">1. 命令行选项</h3>
 <p>最常用的从命令行执行 Python 的方法是，在 Terminal 中进入脚本所在的工作路径下，执行：</p>
@@ -1010,8 +998,7 @@ CMD [&#34;python&#34;, &#34;calc.py&#34;]
 <ul>
 <li>关于原生命令行选项，可参考 <a href="https://docs.python.org/3/using/cmdline.html">Command line and environment</a></li>
 <li>关于自定义命令行选项，可参考 <a href="https://docs.python.org/3/library/argparse.html">argparse</a></li>
-</ul>
-</blockquote>
+</ul></blockquote>
 <h3 id="2-从标准输入获取文本">2. 从标准输入获取文本</h3>
 <p>Python 可以利用标准输入 <a href="https://docs.python.org/3/library/sys.html#sys.stdin">sys.stdin</a>，从命令行获取文本。</p>
 <h4 id="-使用-echo-从命令行获取输入">① 使用 <code>echo</code> 从命令行获取输入</h4>
@@ -1084,8 +1071,7 @@ $ python get_argv.py hi nihao
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ python gen_error.py 1&gt;&gt; result.log 2&gt;&gt; error.log
 </span></span></code></pre></div><p>上述的代码通过 <code>1&gt;&gt;</code>（1可省略）将正常信息打印到日志 <code>result.log</code>；通过 <code>2&gt;&gt;</code> 将错误信息打印到日志 <code>error.log</code>。</p>
 <blockquote>
-<p><strong>Note</strong>: 关于 Terminal 快捷键，Mac 用户可以看看 <a href="https://support.apple.com/en-gb/guide/terminal/trmlshtcts/mac">Keyboard shortcuts in Terminal on Mac</a>.</p>
-</blockquote>
+<p><strong>Note</strong>: 关于 Terminal 快捷键，Mac 用户可以看看 <a href="https://support.apple.com/en-gb/guide/terminal/trmlshtcts/mac">Keyboard shortcuts in Terminal on Mac</a>.</p></blockquote>
 <!-- ## 设计模式 -->
 <p>参考：</p>
 <ol>

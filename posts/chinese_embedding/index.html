@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.132.1">
+<meta name="generator" content="Hugo 0.148.2">
 
     
     
@@ -53,7 +53,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+<link rel="stylesheet" href="/scss/hyde-hyde.1354666f7c97c95b395dd180ab9cf1aca1ff0408c93996eed446576738e01579.css" integrity="sha256-E1Rmb3yXyVs5XdGAq5zxrKH/BAjJOZbu1EZXZzjgFXk=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -623,8 +623,7 @@
   
   <div class="post">
     <blockquote>
-<p>本文做了一件有意思的事，用 Bert 生成《红楼梦》人名的词嵌入，再用 t-SNE 将高维的词向量降为二维后做可视化。结果发现，主角团三人的名字在向量空间中是紧紧挨在一起的。</p>
-</blockquote>
+<p>本文做了一件有意思的事，用 Bert 生成《红楼梦》人名的词嵌入，再用 t-SNE 将高维的词向量降为二维后做可视化。结果发现，主角团三人的名字在向量空间中是紧紧挨在一起的。</p></blockquote>
 <p>GitHub 项目地址：<a href="https://github.com/luochang212/chinese-embedding" target="_blank">luochang212/chinese-embedding</a></p>
 <p>本文探索的内容包括：</p>
 <ul>
@@ -704,8 +703,7 @@
 <p>总结来说，<code>nn.Embedding</code>是一个工具，它允许你在神经网络中使用并且学习词嵌入，但它本身不包含预训练的过程。预训练的词向量可以被用来初始化<code>nn.Embedding</code>层，但它们是分开的概念。</p>
 <p><strong>Q:</strong> nn.Embedding 中每个词的对应的向量在训练过程中会发生变化吗</p>
 <p><strong>A:</strong> 是的，在使用<code>nn.Embedding</code>的训练过程中，每个词对应的向量会发生变化。这是因为在PyTorch中，<code>nn.Embedding</code>层的权重是模型参数的一部分，它们会随着反向传播和优化算法（如梯度下降）的进行而更新。这意味着在训练迭代中，根据网络的损失函数以及优化目标，词嵌入向量会被调整以更好地捕获输入数据中的模式和语义关系。</p>
-<p>简而言之，<code>nn.Embedding</code>层中的词嵌入向量不是静态不变的，而是可以根据训练数据动态学习和优化的，这一特性使得它们能够为特定任务提供更合适的词表示。</p>
-</blockquote>
+<p>简而言之，<code>nn.Embedding</code>层中的词嵌入向量不是静态不变的，而是可以根据训练数据动态学习和优化的，这一特性使得它们能够为特定任务提供更合适的词表示。</p></blockquote>
 <h3 id="参考资料">参考资料</h3>
 <ul>
 <li><a href="https://medium.com/better-ml/embedding-learning-for-retrieval-29af1c9a1e65" target="_blank">Embedding based retrieval for search &amp; recommendation</a></li>

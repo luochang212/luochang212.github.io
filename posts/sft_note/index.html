@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.132.1">
+<meta name="generator" content="Hugo 0.148.2">
 
     
     
@@ -54,7 +54,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+<link rel="stylesheet" href="/scss/hyde-hyde.1354666f7c97c95b395dd180ab9cf1aca1ff0408c93996eed446576738e01579.css" integrity="sha256-E1Rmb3yXyVs5XdGAq5zxrKH/BAjJOZbu1EZXZzjgFXk=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -627,8 +627,7 @@
   
   <div class="post">
     <blockquote>
-<p>尝试了三种流行的微调框架，其中最推荐的是 unsloth，因为快！另外两种框架 LLaMA Factory 和 trl 是在夜里跑的，显卡风扇响了一宿。第二天看日志，它们都跑了三个多小时才跑完。但是同样的任务，unsloth 只需要五分钟，快得有点离谱。当然，这么比不是完全公平的，因为它们的量化方法、LoRA 参数是不同的。但是 unsloth 快这一点依然是无可质疑的。如果在 GPU 服务器上认真微调，那么用 LLaMA Factory 没毛病；但如果只是在笔记本上随便玩玩，unsloth 的优势就太大了。</p>
-</blockquote>
+<p>尝试了三种流行的微调框架，其中最推荐的是 unsloth，因为快！另外两种框架 LLaMA Factory 和 trl 是在夜里跑的，显卡风扇响了一宿。第二天看日志，它们都跑了三个多小时才跑完。但是同样的任务，unsloth 只需要五分钟，快得有点离谱。当然，这么比不是完全公平的，因为它们的量化方法、LoRA 参数是不同的。但是 unsloth 快这一点依然是无可质疑的。如果在 GPU 服务器上认真微调，那么用 LLaMA Factory 没毛病；但如果只是在笔记本上随便玩玩，unsloth 的优势就太大了。</p></blockquote>
 <p>GitHub 项目地址：<a href="https://github.com/luochang212/sft-note" target="_blank">sft-note</a></p>
 <p>⭐ 本文的内容包括：</p>
 <ol>
@@ -666,30 +665,30 @@
 <h3 id="2-sft-的使用场景">2. SFT 的使用场景</h3>
 <p>为了让大家感受一下 SFT 能做什么，下面列举一些使用场景：</p>
 <table>
-<thead>
-<tr>
-<th>任务</th>
-<th>场景举例</th>
-<th>类型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>文案生成</strong></td>
-<td>输入标签：<code>红色#女士#卫衣</code>，输出文案：<code>女士专属红色卫衣，解锁秋冬时尚密码</code></td>
-<td>任务对齐</td>
-</tr>
-<tr>
-<td><strong>情感分类</strong></td>
-<td>输入用户评论：<code>蓝牙连接不稳定</code>，输出情感标签：<code>负面</code></td>
-<td>任务对齐</td>
-</tr>
-<tr>
-<td><strong>合同审核</strong></td>
-<td>输入合同文本，输出潜在法律风险，并引述法条和案例</td>
-<td>知识迁移</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>任务</th>
+          <th>场景举例</th>
+          <th>类型</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>文案生成</strong></td>
+          <td>输入标签：<code>红色#女士#卫衣</code>，输出文案：<code>女士专属红色卫衣，解锁秋冬时尚密码</code></td>
+          <td>任务对齐</td>
+      </tr>
+      <tr>
+          <td><strong>情感分类</strong></td>
+          <td>输入用户评论：<code>蓝牙连接不稳定</code>，输出情感标签：<code>负面</code></td>
+          <td>任务对齐</td>
+      </tr>
+      <tr>
+          <td><strong>合同审核</strong></td>
+          <td>输入合同文本，输出潜在法律风险，并引述法条和案例</td>
+          <td>知识迁移</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="3-sft-的数据集格式">3. SFT 的数据集格式</h3>
 <p>SFT 通过人类精心设计的高质量数据集进行微调。</p>
@@ -709,8 +708,7 @@
 }
 </code></pre><p>上面是一条 alpaca 格式的指令微调数据。指令微调数据的三个字段都有值。<code>instruction</code> 字段写我们希望模型做什么；<code>input</code> 字段写这次请求模型的输入，<code>output</code> 字段写这次请求我们希望模型输出什么。</p>
 <blockquote>
-<p>SFT 还有其他数据格式，比如 <code>ShareGPT</code>, <code>ChatML</code> 等，参考 <a href="https://docs.unsloth.ai/basics/datasets-guide">datasets-guide</a></p>
-</blockquote>
+<p>SFT 还有其他数据格式，比如 <code>ShareGPT</code>, <code>ChatML</code> 等，参考 <a href="https://docs.unsloth.ai/basics/datasets-guide">datasets-guide</a></p></blockquote>
 <h3 id="4-本文的任务">4. 本文的任务</h3>
 <p>本文只有一个微调任务，但是通过三种框架实现。</p>
 <p><strong>一个任务：</strong></p>

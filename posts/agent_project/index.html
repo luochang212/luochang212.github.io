@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.132.1">
+<meta name="generator" content="Hugo 0.148.2">
 
     
     
@@ -25,13 +25,13 @@
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Agent 实战：智能路由、任务拆解和链路工程">
-  <meta name="twitter:description" content="Agent 本质是 LLM 的调度器，它能做的无非是 LLM 擅长的那些，外加一些由组织和规划所产生的能力">
+  <meta name="twitter:description" content="Agent 的本质是 LLM 调度器，它做的无非是 LLM 擅长的那些，外加一些由组织和规划所产生的能力">
       <meta name="twitter:site" content="@_stellar_tide">
 
 <meta property="og:url" content="https://luochang212.github.io/posts/agent_project/">
   <meta property="og:site_name" content="Chang Luo">
   <meta property="og:title" content="Agent 实战：智能路由、任务拆解和链路工程">
-  <meta property="og:description" content="Agent 本质是 LLM 的调度器，它能做的无非是 LLM 擅长的那些，外加一些由组织和规划所产生的能力">
+  <meta property="og:description" content="Agent 的本质是 LLM 调度器，它做的无非是 LLM 擅长的那些，外加一些由组织和规划所产生的能力">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -57,7 +57,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+<link rel="stylesheet" href="/scss/hyde-hyde.1354666f7c97c95b395dd180ab9cf1aca1ff0408c93996eed446576738e01579.css" integrity="sha256-E1Rmb3yXyVs5XdGAq5zxrKH/BAjJOZbu1EZXZzjgFXk=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -639,8 +639,7 @@
   
   <div class="post">
     <blockquote>
-<p>大模型天生具有幻觉，为了工程的准确性，我们奉行“非必要不Agent”原则。我们是专业的，除非忍不住，否则绝不用 Agent。</p>
-</blockquote>
+<p>大模型天生具有幻觉，为了工程的准确性，我们奉行“非必要不Agent”原则。我们是专业的，除非忍不住，否则绝不用 Agent。</p></blockquote>
 <p>特别声明：本文使用 <a href="https://github.com/QwenLM/Qwen-Agent">Qwen Agent</a> 实现。</p>
 <p>本文包含以下两个项目：</p>
 <p><strong>1）智能路由</strong></p>
@@ -662,8 +661,7 @@
 <h2 id="一引言">一、引言</h2>
 <h3 id="1-尚未到来的涌现">1. 尚未到来的涌现</h3>
 <blockquote>
-<p>We always overestimate the change that will occur in the next two years and underestimate the change that will occur in the next ten. &ndash; Bill Gates</p>
-</blockquote>
+<p>We always overestimate the change that will occur in the next two years and underestimate the change that will occur in the next ten. &ndash; Bill Gates</p></blockquote>
 <p>把大象放进冰箱只需要三步。让大模型实现自举，也只需要三步：</p>
 <ol>
 <li>让大模型自己处理语料</li>
@@ -698,8 +696,7 @@
 <p>Agent 兼具眼和脑的功能，加上 MCP 这个手，事情变得有趣起来。毕竟人类也是靠 <strong>眼 -&gt; 脑 -&gt; 手</strong> 循环，把活干起来的。</p>
 <h3 id="4-agent-能做什么">4. Agent 能做什么</h3>
 <blockquote>
-<p>回到务实的问题，Agent 能做什么？Agent 可以看作是大模型的调度器，它擅长的无非是大模型擅长的那些，外加一些由组织和规划产生的能力。</p>
-</blockquote>
+<p>回到务实的问题，Agent 能做什么？Agent 可以看作是大模型的调度器，它擅长的无非是大模型擅长的那些，外加一些由组织和规划产生的能力。</p></blockquote>
 <p>有些公司，把 Agent 当作中台服务的调度器。用 MCP 把中台服务轮询一遍，再用大模型把轮询的结果总结一下。这当然也是一种用法，但是有点画蛇添足。因为用传统的 <code>for loop</code> 和 <code>if else</code> 控制块，也能实现相同的逻辑。</p>
 <p><strong>Agent 的价值在传统编程的能力圈之外。</strong></p>
 <p>新技术的落地是这样的，总有一个拿着锤子找钉子的过程，但终究要做真正有收益的事。</p>
@@ -707,8 +704,7 @@
 <p>我们确实可以把 Agent 当调度器，但不能是简单的 <code>if else</code> 可以实现的那种。</p>
 <p><img src="/img/agent_1_2.png" alt=""></p>
 <blockquote>
-<p><strong>Note:</strong> 举个例子，我们写一个 Agent 来 <strong>核查客诉是否属实</strong>。如果用户投诉“商家未发货”，就查发货记录；如果投诉“好几天了，还没收到货”，就去查物流表；如果投诉“商家真没素质”，就去查聊天记录。传统编程处理这种问题，遇到长尾 case 会没法解，需要人工介入。这种本身属于语言模态，问题又无法特别明确定义的，就适合用 <strong>智能路由</strong> 的方式解决。</p>
-</blockquote>
+<p><strong>Note:</strong> 举个例子，我们写一个 Agent 来 <strong>核查客诉是否属实</strong>。如果用户投诉“商家未发货”，就查发货记录；如果投诉“好几天了，还没收到货”，就去查物流表；如果投诉“商家真没素质”，就去查聊天记录。传统编程处理这种问题，遇到长尾 case 会没法解，需要人工介入。这种本身属于语言模态，问题又无法特别明确定义的，就适合用 <strong>智能路由</strong> 的方式解决。</p></blockquote>
 <p><strong>2）任务拆解（ReActChat）</strong></p>
 <p>理想情况下，我们把 MCP 开发好丢给 Agent，告诉它我们想要什么。Agent 应该自己将任务拆解成若干步骤，再将每个步骤交由 MCP 处理。遇到错误会自己重试。这种功能已经被开发出来了，它叫 <strong>ReAct 模式</strong>。</p>
 <p>ReAct (Reasoning-Action) 是一种结合了 <strong>思考决策 (Reasoning)</strong> 和 <strong>环境交互 (Action)</strong> 的智能体模式。其核心逻辑是：先规划一系列操作，依次执行，再基于操作结果进一步思考，循环往复直至问题解决。ReAct 模式并非银弹，即使上了 <code>Qwen3</code> 和 <code>Deepseek-0528</code> 最大尺寸的模型，只要问题一难，就会有相当程度的失败概率。我们遇到失败，就往里掺链路工程，一点点地把良率做上去。因此和同事戏言：有多少人工，就有多少人工智能。</p>
@@ -799,8 +795,7 @@ python gradio_postgres_workflow.py
 <img src="/img/workflow_engineering.jpg" style="height:750px" alt="workflow_engineering">
 <p>我们对比数据库中的真实数据，发现 Agent 的结果完全正确。</p>
 <blockquote>
-<p>注：数据库中的 <code>timestamp</code> 是以 UTC 格式存储的。</p>
-</blockquote>
+<p>注：数据库中的 <code>timestamp</code> 是以 UTC 格式存储的。</p></blockquote>
 <h3 id="3-小结">3. 小结</h3>
 <p>好啦，两种思路的结果对比完成！</p>
 <p>在同样使用 <code>0.6B</code> 模型的情况下，链路工程显然更胜一筹。虽然开发链路工程很辛苦，但是我们的努力带来了回报！它最终提升了查询结果的准确性。</p>
@@ -820,8 +815,7 @@ python gradio_postgres_workflow.py
 <br>
 <h2 id="四后日谈">四、后日谈</h2>
 <blockquote>
-<p>一些碎碎念。</p>
-</blockquote>
+<p>一些碎碎念。</p></blockquote>
 <h3 id="1-技术大爆发">1. 技术大爆发</h3>
 <p>大模型输入是语言，输出也是语言，它终究是一种语言模态的东西。想要影响现实世界，比如执行程序、操纵机械臂，就需要一种通信协议，来实现自然语言到接口语言的转换，于是 <strong>MCP</strong> 出现了；囿于单个大模型的上下文窗口限制、参数量限制、思考时间限制，它无法完成复杂且长程的工作。如果有一个框架，把多个乃至多种大模型组织起来，通力协作，共同完成一项任务该有多好，于是 <strong>Agent</strong> 又出现了。</p>
 <p>蛮不可思议的。短短数年间，我们经历了：</p>

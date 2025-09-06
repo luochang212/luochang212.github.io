@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.132.1">
+<meta name="generator" content="Hugo 0.148.2">
 
     
     
@@ -54,7 +54,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+<link rel="stylesheet" href="/scss/hyde-hyde.1354666f7c97c95b395dd180ab9cf1aca1ff0408c93996eed446576738e01579.css" integrity="sha256-E1Rmb3yXyVs5XdGAq5zxrKH/BAjJOZbu1EZXZzjgFXk=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -627,8 +627,7 @@
   
   <div class="post">
     <blockquote>
-<p>如何对图片做聚类，我的直觉是：先用预训练模型计算图片 Embedding，然后用 cosine 度量的 DBSCAN 无监督地计算图片 label，再用 MLP 有监督地学习上一步产生的 label。DBSCAN 的好处是可以把无监督转为有监督，且由于它基于密度的特性，还不需要指定聚类的类别数，这方便了生产环境使用，因为生产环境通常也是不知道类别数的。MLP 的好处是可以对输入泛化，即使没见过的输入，在不重训练的情况下，也可以有一个对应输出。图片特征提取器 + 传统聚类 + 神经网络，是简单且符合直觉的方法，但恐怕不是最好的方法。</p>
-</blockquote>
+<p>如何对图片做聚类，我的直觉是：先用预训练模型计算图片 Embedding，然后用 cosine 度量的 DBSCAN 无监督地计算图片 label，再用 MLP 有监督地学习上一步产生的 label。DBSCAN 的好处是可以把无监督转为有监督，且由于它基于密度的特性，还不需要指定聚类的类别数，这方便了生产环境使用，因为生产环境通常也是不知道类别数的。MLP 的好处是可以对输入泛化，即使没见过的输入，在不重训练的情况下，也可以有一个对应输出。图片特征提取器 + 传统聚类 + 神经网络，是简单且符合直觉的方法，但恐怕不是最好的方法。</p></blockquote>
 <p>我们探索使用更端到端的方法实现图片聚类：DINOv2 特征提取器 + DEC 聚类器</p>
 <p>使用 DEC 的好处起码有两点。一是让训练过程更简单，端到端的架构肯定比两阶段模型的架构更简单。二是 DEC 用特征向量表示聚类中心，这和传统聚类用标签表示不同。特征向量表示的类心更便于微调和增量更新。K-Means 每次更新 label 都是乱的，需要用匈牙利算法，对前后两次结果进行桥接。神经网络在这一点上天生有优势，因为它是顺着梯度一点一点更新的，所以前后两次结果是天然有联系，并且可以限制更新的幅度。</p>
 <p>GitHub 项目地址：<a href="https://github.com/luochang212/dec-pytorch" target="_blank">dec-pytorch</a></p>

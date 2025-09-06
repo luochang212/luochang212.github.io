@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.132.1">
+<meta name="generator" content="Hugo 0.148.2">
 
     
     
@@ -53,7 +53,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+<link rel="stylesheet" href="/scss/hyde-hyde.1354666f7c97c95b395dd180ab9cf1aca1ff0408c93996eed446576738e01579.css" integrity="sha256-E1Rmb3yXyVs5XdGAq5zxrKH/BAjJOZbu1EZXZzjgFXk=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -624,8 +624,7 @@
   <div class="post">
     <blockquote>
 <p>呀嘞呀嘞，我的 JupyterLab 怎么又挂了。</p>
-<p>简单的 <code>nohup [CMD] &amp;</code> 已经不够用，该研究一下后台管理工具了。</p>
-</blockquote>
+<p>简单的 <code>nohup [CMD] &amp;</code> 已经不够用，该研究一下后台管理工具了。</p></blockquote>
 <p>问了一下 Qwen，大概有五款后台管理工具可用。这五款工具大致可分为两类：</p>
 <ul>
 <li>进程管理器：<code>systemd</code>, <code>pm2</code>, <code>supervisor</code></li>
@@ -663,8 +662,7 @@ WantedBy=multi-user.target
 </code></pre><p>2）启动 jupyter lab 服务</p>
 <pre tabindex="0"><code>sudo systemctl start jupyterlab
 </code></pre><blockquote>
-<p>注意，这里的服务名应和 jupyterlab.service 文件名相同</p>
-</blockquote>
+<p>注意，这里的服务名应和 jupyterlab.service 文件名相同</p></blockquote>
 <p>3）开机自启</p>
 <pre tabindex="0"><code>sudo systemctl enable jupyterlab
 </code></pre><p>4）检查服务状态</p>
@@ -675,8 +673,7 @@ ps -ef | grep jupyter
 <pre tabindex="0"><code>sudo systemctl stop jupyterlab
 sudo systemctl restart jupyterlab
 </code></pre><blockquote>
-<p>平替：<a href="https://github.com/Supervisor/supervisor" target="_blank">supervisor</a> 是一款 systemd 的平替，操作都蛮像的。</p>
-</blockquote>
+<p>平替：<a href="https://github.com/Supervisor/supervisor" target="_blank">supervisor</a> 是一款 systemd 的平替，操作都蛮像的。</p></blockquote>
 <h3 id="二pm2">二、pm2</h3>
 <p><a href="https://github.com/Unitech/pm2" target="_blank">pm2</a> 是一个自带负载均衡的生产环境进程管理器。</p>
 <h4 id="21-安装">2.1 安装</h4>
@@ -760,8 +757,7 @@ screen --version
 </code></pre><p>退出会话：</p>
 <pre tabindex="0"><code>exit
 </code></pre><blockquote>
-<p>平替：<a href="https://github.com/tmux/tmux/wiki" target="_blank">tmux</a> 也很常用，两款工具都支持分屏。没有深究它俩有什么区别，看上去就是界面风格的区别。</p>
-</blockquote>
+<p>平替：<a href="https://github.com/tmux/tmux/wiki" target="_blank">tmux</a> 也很常用，两款工具都支持分屏。没有深究它俩有什么区别，看上去就是界面风格的区别。</p></blockquote>
 <!-- Docker -->
 <p>参考：</p>
 <ul>

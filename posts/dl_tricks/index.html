@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.132.1">
+<meta name="generator" content="Hugo 0.148.2">
 
     
     
@@ -53,7 +53,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+<link rel="stylesheet" href="/scss/hyde-hyde.1354666f7c97c95b395dd180ab9cf1aca1ff0408c93996eed446576738e01579.css" integrity="sha256-E1Rmb3yXyVs5XdGAq5zxrKH/BAjJOZbu1EZXZzjgFXk=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -623,8 +623,7 @@
   
   <div class="post">
     <blockquote>
-<p>搭积木的时候，需要将不同类型的积木搭在一起：门框、窗子、走廊、屋顶。对每一种类型的积木，又有多种变体可供选择。比如，屋顶可以用文艺复兴风格，也可以用中式庭园风格。神经网络也是，学神经网络，本质上就是认识各种各样“积木”的过程。</p>
-</blockquote>
+<p>搭积木的时候，需要将不同类型的积木搭在一起：门框、窗子、走廊、屋顶。对每一种类型的积木，又有多种变体可供选择。比如，屋顶可以用文艺复兴风格，也可以用中式庭园风格。神经网络也是，学神经网络，本质上就是认识各种各样“积木”的过程。</p></blockquote>
 <p>GitHub 项目地址：<a href="https://github.com/luochang212/dl-tricks/blob/main/note.ipynb" target="_blank">dl-tricks/note.ipynb</a></p>
 <h3 id="一必要组件">一、必要组件</h3>
 <h4 id="11-从-mlp-说起">1.1 从 MLP 说起</h4>
@@ -681,8 +680,7 @@ for X, y in DataLoader(data=raw_data, batch_size=batch_size):
 </code></pre><p>在实际训练过程中，如果把全部 10 个批量的数据全训了一遍，就叫完成一个轮次 (epoch) 的训练。深度神经网络通常需要多个轮次训练才会收敛。</p>
 <p><img src="/img/epoch_and_batch.png" alt=""></p>
 <blockquote>
-<p><strong>Note:</strong> 为什么要做成批量？因为批量计算提高了反向传播的效率。你可以问 GPT：批量随机梯度下降比随机梯度下降好在哪儿？</p>
-</blockquote>
+<p><strong>Note:</strong> 为什么要做成批量？因为批量计算提高了反向传播的效率。你可以问 GPT：批量随机梯度下降比随机梯度下降好在哪儿？</p></blockquote>
 <h4 id="13-神经元里发生了什么">1.3 神经元里发生了什么</h4>
 <p>为了考察神经元里发生了什么。我们假设输入样本有 10 个特征 (features). 我们构建一个四层 MLP，假定各层神经元数量如下：</p>
 <pre tabindex="0"><code>[Layer 0] 第一层维数为 10
@@ -695,8 +693,7 @@ for X, y in DataLoader(data=raw_data, batch_size=batch_size):
 <li>第一层神经元数量需与样本特征数相同</li>
 <li>最后一层神经元数量需与预测的类别数相同</li>
 <li>中间隐藏层的神经元数量比较自由，可以灵活地调整</li>
-</ul>
-</blockquote>
+</ul></blockquote>
 <p>现在，我们来考虑一个样本在 MLP 的前两层做正向传播的情况：</p>
 <p><strong>第一层：</strong></p>
 <p>把样本的 10 个特征直接填入 10 个神经元就好了。</p>
@@ -716,34 +713,34 @@ x_00, x_01, x_02, x_03, x_04, x_05, x_06, x_07, x_08, x_09 = *features
 <p>$$ x_{1i} = ReLU (W_{0i} X_0 + b_{0i}) $$</p>
 <p>其中：</p>
 <table>
-<thead>
-<tr>
-<th>符号</th>
-<th>解释</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>$ReLU$</code></td>
-<td>是激活函数</td>
-</tr>
-<tr>
-<td><code>$W_{0i}$</code></td>
-<td>第 2 层第 i 个神经元上的可学习权重，是长为 10 的一维向量</td>
-</tr>
-<tr>
-<td><code>$X_0$</code></td>
-<td>第 1 层所有神经元 <code>x</code> 值 concat 成的向量，是长为 10 的一维向量</td>
-</tr>
-<tr>
-<td><code>$b_{0i}$</code></td>
-<td>第 2 层第 i 个神经元上的可学习偏置，是标量</td>
-</tr>
-<tr>
-<td><code>$x_{1i}$</code></td>
-<td>第 2 层第 i 个神经元的值，是标量（对于最后一层，它就是输出值 <code>$\hat{y}_{i}$</code>）</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>符号</th>
+          <th>解释</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>$ReLU$</code></td>
+          <td>是激活函数</td>
+      </tr>
+      <tr>
+          <td><code>$W_{0i}$</code></td>
+          <td>第 2 层第 i 个神经元上的可学习权重，是长为 10 的一维向量</td>
+      </tr>
+      <tr>
+          <td><code>$X_0$</code></td>
+          <td>第 1 层所有神经元 <code>x</code> 值 concat 成的向量，是长为 10 的一维向量</td>
+      </tr>
+      <tr>
+          <td><code>$b_{0i}$</code></td>
+          <td>第 2 层第 i 个神经元上的可学习偏置，是标量</td>
+      </tr>
+      <tr>
+          <td><code>$x_{1i}$</code></td>
+          <td>第 2 层第 i 个神经元的值，是标量（对于最后一层，它就是输出值 <code>$\hat{y}_{i}$</code>）</td>
+      </tr>
+  </tbody>
 </table>
 <p>以下三个参数可以被认为是“包含”在第 i 个神经元中：</p>
 <ul>
@@ -755,8 +752,7 @@ x_00, x_01, x_02, x_03, x_04, x_05, x_06, x_07, x_08, x_09 = *features
 <p>下图解释了这种情况形成的原因：我们认为 <code>$x_{1i}$</code> 的计算过程发生在第二层中，因此 <code>$X_0$</code> 被看作是来自上一层的输入。因此 <code>$W_{0i}$</code> 和 <code>$b_{0i}$</code> 也应被视为在第二层上进行更新的参数。但是计算时，这俩参数实际与 <code>$X_0$</code> 发生运算，在等式中又位于 <code>$X_0$</code> 那边，因此具有 0 下标.</p>
 <img src="/img/calc_net.png" alt="描述信息" style="height: 450px; display: block; margin-left: auto; margin-right: auto;">
 <blockquote>
-<p>好崩溃，画个图把 <a href="https://lucid.app/" target="_blank">Lucid</a> 免费额度用完了 (´;ω;`)</p>
-</blockquote>
+<p>好崩溃，画个图把 <a href="https://lucid.app/" target="_blank">Lucid</a> 免费额度用完了 (´;ω;`)</p></blockquote>
 <h4 id="14-层视角而非神经元视角">1.4 层视角，而非神经元视角</h4>
 <p>如果从层视角，而非从神经元视角看。</p>
 <p>我们把：</p>

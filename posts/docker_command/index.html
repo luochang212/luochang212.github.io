@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.132.1">
+<meta name="generator" content="Hugo 0.148.2">
 
     
     
@@ -53,7 +53,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+<link rel="stylesheet" href="/scss/hyde-hyde.1354666f7c97c95b395dd180ab9cf1aca1ff0408c93996eed446576738e01579.css" integrity="sha256-E1Rmb3yXyVs5XdGAq5zxrKH/BAjJOZbu1EZXZzjgFXk=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -623,8 +623,7 @@
   
   <div class="post">
     <blockquote>
-<p>在低版本的服务器或存在共用关系的大组环境里，Docker 是个好东西。Docker 可以提供独立的运行时环境，以免受其他服务和人的干扰。</p>
-</blockquote>
+<p>在低版本的服务器或存在共用关系的大组环境里，Docker 是个好东西。Docker 可以提供独立的运行时环境，以免受其他服务和人的干扰。</p></blockquote>
 <p>GitHub 项目地址：<a href="https://github.com/luochang212/docker-command" target="_blank">docker-command</a></p>
 <h3 id="一什么是-docker">一、什么是 Docker</h3>
 <p>Docker 是一种容器技术。它通过轻量级的虚拟化，将程序及其依赖打包到一个被称为 <strong>容器</strong> 的独立运行环境里，从而保证应用在不同环境中的一致性。</p>
@@ -652,179 +651,179 @@
 <h3 id="二常用命令">二、常用命令</h3>
 <h4 id="21-基础操作">2.1 基础操作</h4>
 <table>
-<thead>
-<tr>
-<th>命令</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>docker info</code></td>
-<td>查看 docker 系统信息</td>
-</tr>
-<tr>
-<td><code>docker version</code></td>
-<td>查看 docker 版本信息</td>
-</tr>
-<tr>
-<td><code>docker --version</code></td>
-<td>查看 docker 简略版本信息</td>
-</tr>
-<tr>
-<td><code>docker login</code></td>
-<td>登录 DockerHub</td>
-</tr>
-<tr>
-<td><code>docker login nvcr.io </code></td>
-<td>登录 nvcr.io</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>命令</th>
+          <th>描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>docker info</code></td>
+          <td>查看 docker 系统信息</td>
+      </tr>
+      <tr>
+          <td><code>docker version</code></td>
+          <td>查看 docker 版本信息</td>
+      </tr>
+      <tr>
+          <td><code>docker --version</code></td>
+          <td>查看 docker 简略版本信息</td>
+      </tr>
+      <tr>
+          <td><code>docker login</code></td>
+          <td>登录 DockerHub</td>
+      </tr>
+      <tr>
+          <td><code>docker login nvcr.io </code></td>
+          <td>登录 nvcr.io</td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="22-镜像管理">2.2 镜像管理</h4>
 <table>
-<thead>
-<tr>
-<th>命令</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>docker images</code></td>
-<td>查看镜像</td>
-</tr>
-<tr>
-<td><code>docker pull [IMAGE]</code></td>
-<td>拉取镜像</td>
-</tr>
-<tr>
-<td><code>docker rmi [IMAGE]</code></td>
-<td>删除镜像</td>
-</tr>
-<tr>
-<td><code>docker commit [CONTAINER] [IMAGE]:[TAG]</code></td>
-<td>将容器保存为新的镜像</td>
-</tr>
-<tr>
-<td><code>docker save -o myimage.tar [IMAGE]</code></td>
-<td>将镜像保存到指定路径</td>
-</tr>
-<tr>
-<td><code>docker load -i path/to/myimage.tar</code></td>
-<td>从 tar 文件中加载镜像</td>
-</tr>
-<tr>
-<td><code>docker tag [IMAGE_ID] [NEW_NAME]:[NEW_TAG]</code></td>
-<td>重命名 docker 镜像</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>命令</th>
+          <th>描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>docker images</code></td>
+          <td>查看镜像</td>
+      </tr>
+      <tr>
+          <td><code>docker pull [IMAGE]</code></td>
+          <td>拉取镜像</td>
+      </tr>
+      <tr>
+          <td><code>docker rmi [IMAGE]</code></td>
+          <td>删除镜像</td>
+      </tr>
+      <tr>
+          <td><code>docker commit [CONTAINER] [IMAGE]:[TAG]</code></td>
+          <td>将容器保存为新的镜像</td>
+      </tr>
+      <tr>
+          <td><code>docker save -o myimage.tar [IMAGE]</code></td>
+          <td>将镜像保存到指定路径</td>
+      </tr>
+      <tr>
+          <td><code>docker load -i path/to/myimage.tar</code></td>
+          <td>从 tar 文件中加载镜像</td>
+      </tr>
+      <tr>
+          <td><code>docker tag [IMAGE_ID] [NEW_NAME]:[NEW_TAG]</code></td>
+          <td>重命名 docker 镜像</td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="23-容器管理">2.3 容器管理</h4>
 <table>
-<thead>
-<tr>
-<th>命令</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>docker create [IMAGE]</code></td>
-<td>创建容器</td>
-</tr>
-<tr>
-<td><code>docker run [IMAGE]</code></td>
-<td>创建并运行容器</td>
-</tr>
-<tr>
-<td><code>docker start [CONTAINER]</code></td>
-<td>启动容器</td>
-</tr>
-<tr>
-<td><code>docker stop [CONTAINER]</code></td>
-<td>停止容器</td>
-</tr>
-<tr>
-<td><code>docker restart [CONTAINER]</code></td>
-<td>重启容器</td>
-</tr>
-<tr>
-<td><code>docker ps</code></td>
-<td>列出运行容器</td>
-</tr>
-<tr>
-<td><code>docker ps -a</code></td>
-<td>列出所有容器</td>
-</tr>
-<tr>
-<td><code>docker exec -it [CONTAINER] /bin/bash</code></td>
-<td>启动交互模式</td>
-</tr>
-<tr>
-<td><code>docker rm [CONTAINER]</code></td>
-<td>删除容器</td>
-</tr>
-<tr>
-<td><code>docker port [CONTAINER]</code></td>
-<td>查看端口映射</td>
-</tr>
-<tr>
-<td><code>docker top [CONTAINER]</code></td>
-<td>查看容器内进程</td>
-</tr>
-<tr>
-<td><code>docker stats [CONTAINER]</code></td>
-<td>查看资源使用情况</td>
-</tr>
-<tr>
-<td><code>docker cp [CONTAINER]:[PATH] [LOCAL_PATH]</code></td>
-<td>拷贝文本到本地</td>
-</tr>
-<tr>
-<td><code>docker cp [LOCAL_PATH] [CONTAINER]:[PATH]</code></td>
-<td>拷贝文件到容器</td>
-</tr>
-<tr>
-<td><code>docker export -o mycontainer.tar [CONTAINER]</code></td>
-<td>将容器存成文件</td>
-</tr>
-<tr>
-<td><code>docker import path/to/mycontainer.tar [IMAGE]:[TAG]</code></td>
-<td>文件加载成镜像</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>命令</th>
+          <th>描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>docker create [IMAGE]</code></td>
+          <td>创建容器</td>
+      </tr>
+      <tr>
+          <td><code>docker run [IMAGE]</code></td>
+          <td>创建并运行容器</td>
+      </tr>
+      <tr>
+          <td><code>docker start [CONTAINER]</code></td>
+          <td>启动容器</td>
+      </tr>
+      <tr>
+          <td><code>docker stop [CONTAINER]</code></td>
+          <td>停止容器</td>
+      </tr>
+      <tr>
+          <td><code>docker restart [CONTAINER]</code></td>
+          <td>重启容器</td>
+      </tr>
+      <tr>
+          <td><code>docker ps</code></td>
+          <td>列出运行容器</td>
+      </tr>
+      <tr>
+          <td><code>docker ps -a</code></td>
+          <td>列出所有容器</td>
+      </tr>
+      <tr>
+          <td><code>docker exec -it [CONTAINER] /bin/bash</code></td>
+          <td>启动交互模式</td>
+      </tr>
+      <tr>
+          <td><code>docker rm [CONTAINER]</code></td>
+          <td>删除容器</td>
+      </tr>
+      <tr>
+          <td><code>docker port [CONTAINER]</code></td>
+          <td>查看端口映射</td>
+      </tr>
+      <tr>
+          <td><code>docker top [CONTAINER]</code></td>
+          <td>查看容器内进程</td>
+      </tr>
+      <tr>
+          <td><code>docker stats [CONTAINER]</code></td>
+          <td>查看资源使用情况</td>
+      </tr>
+      <tr>
+          <td><code>docker cp [CONTAINER]:[PATH] [LOCAL_PATH]</code></td>
+          <td>拷贝文本到本地</td>
+      </tr>
+      <tr>
+          <td><code>docker cp [LOCAL_PATH] [CONTAINER]:[PATH]</code></td>
+          <td>拷贝文件到容器</td>
+      </tr>
+      <tr>
+          <td><code>docker export -o mycontainer.tar [CONTAINER]</code></td>
+          <td>将容器存成文件</td>
+      </tr>
+      <tr>
+          <td><code>docker import path/to/mycontainer.tar [IMAGE]:[TAG]</code></td>
+          <td>文件加载成镜像</td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="24-容器运行">2.4 容器运行</h4>
 <table>
-<thead>
-<tr>
-<th>命令</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>docker run --name [NAME] [IMAGE]</code></td>
-<td>创建运行并命名容器</td>
-</tr>
-<tr>
-<td><code>docker run -d [IMAGE]</code></td>
-<td>创建容器并在后台运行</td>
-</tr>
-<tr>
-<td><code>docker run -p [LOCAL_PORT]:[CONTAINER_PORT] [IMAGE]</code></td>
-<td>创建容器并指定端口映射</td>
-</tr>
-<tr>
-<td><code>docker run -v [LOCAL_PATH]:[CONTAINER_PATH] [IMAGE]</code></td>
-<td>创建容器并将本地目录挂载到容器目录</td>
-</tr>
-<tr>
-<td><code>docker run -it [IMAGE] /bin/bash</code></td>
-<td>创建容器并启动交互式 shell</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>命令</th>
+          <th>描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>docker run --name [NAME] [IMAGE]</code></td>
+          <td>创建运行并命名容器</td>
+      </tr>
+      <tr>
+          <td><code>docker run -d [IMAGE]</code></td>
+          <td>创建容器并在后台运行</td>
+      </tr>
+      <tr>
+          <td><code>docker run -p [LOCAL_PORT]:[CONTAINER_PORT] [IMAGE]</code></td>
+          <td>创建容器并指定端口映射</td>
+      </tr>
+      <tr>
+          <td><code>docker run -v [LOCAL_PATH]:[CONTAINER_PATH] [IMAGE]</code></td>
+          <td>创建容器并将本地目录挂载到容器目录</td>
+      </tr>
+      <tr>
+          <td><code>docker run -it [IMAGE] /bin/bash</code></td>
+          <td>创建容器并启动交互式 shell</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="三docker-的简单使用">三、Docker 的简单使用</h3>
 <p>Docker 是客户端 / 服务端分离的，因此使用前，通常需要检查一下服务端和客户端是否都在运行：</p>
@@ -959,94 +958,94 @@ chmod +x ~/docker-compose
 sudo mv ~/docker-compose /usr/local/bin/docker-compose
 </code></pre><h4 id="42-常用命令">4.2 常用命令</h4>
 <table>
-<thead>
-<tr>
-<th>命令</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>docker-compose version</code></td>
-<td>显示版本信息</td>
-</tr>
-<tr>
-<td><code>docker-compose up</code></td>
-<td>创建并启动容器</td>
-</tr>
-<tr>
-<td><code>docker-compose up -d</code></td>
-<td>以后台模式启动容器</td>
-</tr>
-<tr>
-<td><code>docker-compose down</code></td>
-<td>停止并移除容器和网络</td>
-</tr>
-<tr>
-<td><code>docker-compose restart</code></td>
-<td>重启容器</td>
-</tr>
-<tr>
-<td><code>docker-compose start</code></td>
-<td>启动容器</td>
-</tr>
-<tr>
-<td><code>docker-compose stop</code></td>
-<td>停止容器</td>
-</tr>
-<tr>
-<td><code>docker-compose rm</code></td>
-<td>移除容器</td>
-</tr>
-<tr>
-<td><code>docker-compose logs</code></td>
-<td>查看容器日志</td>
-</tr>
-<tr>
-<td><code>docker-compose top</code></td>
-<td>显示容器进程</td>
-</tr>
-<tr>
-<td><code>docker-compose build</code></td>
-<td>构建镜像</td>
-</tr>
-<tr>
-<td><code>docker-compose ps</code></td>
-<td>列出容器及其状态信息</td>
-</tr>
-<tr>
-<td><code>docker-compose config</code></td>
-<td>检查 Compose 文件是否有语法错误</td>
-</tr>
-<tr>
-<td><code>docker-compose exec</code></td>
-<td>在运行中的容器执行命令</td>
-</tr>
-<tr>
-<td><code>docker-compose kill</code></td>
-<td>强制终止容器</td>
-</tr>
-<tr>
-<td><code>docker-compose pause</code></td>
-<td>暂停服务容器</td>
-</tr>
-<tr>
-<td><code>docker-compose unpause</code></td>
-<td>恢复已暂停的服务容器</td>
-</tr>
-<tr>
-<td><code>docker-compose images</code></td>
-<td>列出使用的镜像</td>
-</tr>
-<tr>
-<td><code>docker-compose port</code></td>
-<td>显示端口绑定</td>
-</tr>
-<tr>
-<td><code>docker-compose help</code></td>
-<td>查看帮助信息</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>命令</th>
+          <th>描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>docker-compose version</code></td>
+          <td>显示版本信息</td>
+      </tr>
+      <tr>
+          <td><code>docker-compose up</code></td>
+          <td>创建并启动容器</td>
+      </tr>
+      <tr>
+          <td><code>docker-compose up -d</code></td>
+          <td>以后台模式启动容器</td>
+      </tr>
+      <tr>
+          <td><code>docker-compose down</code></td>
+          <td>停止并移除容器和网络</td>
+      </tr>
+      <tr>
+          <td><code>docker-compose restart</code></td>
+          <td>重启容器</td>
+      </tr>
+      <tr>
+          <td><code>docker-compose start</code></td>
+          <td>启动容器</td>
+      </tr>
+      <tr>
+          <td><code>docker-compose stop</code></td>
+          <td>停止容器</td>
+      </tr>
+      <tr>
+          <td><code>docker-compose rm</code></td>
+          <td>移除容器</td>
+      </tr>
+      <tr>
+          <td><code>docker-compose logs</code></td>
+          <td>查看容器日志</td>
+      </tr>
+      <tr>
+          <td><code>docker-compose top</code></td>
+          <td>显示容器进程</td>
+      </tr>
+      <tr>
+          <td><code>docker-compose build</code></td>
+          <td>构建镜像</td>
+      </tr>
+      <tr>
+          <td><code>docker-compose ps</code></td>
+          <td>列出容器及其状态信息</td>
+      </tr>
+      <tr>
+          <td><code>docker-compose config</code></td>
+          <td>检查 Compose 文件是否有语法错误</td>
+      </tr>
+      <tr>
+          <td><code>docker-compose exec</code></td>
+          <td>在运行中的容器执行命令</td>
+      </tr>
+      <tr>
+          <td><code>docker-compose kill</code></td>
+          <td>强制终止容器</td>
+      </tr>
+      <tr>
+          <td><code>docker-compose pause</code></td>
+          <td>暂停服务容器</td>
+      </tr>
+      <tr>
+          <td><code>docker-compose unpause</code></td>
+          <td>恢复已暂停的服务容器</td>
+      </tr>
+      <tr>
+          <td><code>docker-compose images</code></td>
+          <td>列出使用的镜像</td>
+      </tr>
+      <tr>
+          <td><code>docker-compose port</code></td>
+          <td>显示端口绑定</td>
+      </tr>
+      <tr>
+          <td><code>docker-compose help</code></td>
+          <td>查看帮助信息</td>
+      </tr>
+  </tbody>
 </table>
 <!-- #### 4.3 使用 Docker Compose 管理多容器应用
 
