@@ -626,7 +626,7 @@
   
   
   <div class="post">
-    <p>8月28日，阿里云发布了数据分析工具 <a href="https://cn.aliyun.com/product/quick-bi">Quick BI</a> 的全新版本。它是大模型应用在 BI 行业的最新实践。Quick BI 在云计算基础设施之上，搭建了一个 ChatBI 应用。阿里为这个应用起了一个拟人化的名字：智能小Q。智能小Q允许用户以对话的形式探索数据。无需写 SQL，只需与小Q对话，即可获得想要的统计数据。</p>
+    <p>8月28日，阿里云发布了数据分析工具 <a href="https://cn.aliyun.com/product/quick-bi">Quick BI</a> 的全新版本。它是大模型应用在 BI 行业的最新实践。Quick BI 在云计算基础设施之上，搭建了一个 ChatBI 应用。阿里为这个应用起了一个拟人化的名字：智能小Q。智能小Q允许用户以对话的形式探索数据。无需写 SQL，只需与小Q对话，即可获得想要的统计信息。</p>
 <p><img src="/img/quick-bi-func.png" alt=""></p>
 <p>智能小Q其实是一个多智能体系统（multi-agent system），包含多个 Agent：</p>
 <ul>
@@ -758,6 +758,8 @@
 <p>这些都是 Agent 目前无法彻底解决的问题。</p>
 <p>未来 Agent 技术突破时，ChatBI 能力也会随之提升。</p>
 <h3 id="三产品如此重要">三、产品如此重要</h3>
+<blockquote>
+<p>好的产品设计，既能降低用户的使用门槛，又能降低工程的实现难度。</p></blockquote>
 <p><a href="https://space.coze.cn/">扣子空间</a> 的「华泰A股观察助手」提供了一个很棒的设计思路。</p>
 <p><img src="/img/coze-dropdown.png" alt=""></p>
 <p>它通过下拉栏提供「选项」，再基于选项生成 Prompt（如下）。</p>
@@ -765,8 +767,6 @@
 </code></pre><p>这么做的好处是什么？</p>
 <p>面对一个空白聊天框，用户容易感到困惑。因为用户不知道有哪些选项。通过下拉栏的方式，将选项提供出来，可以说是降低了用户的使用门槛。</p>
 <p>另外在这种设计下，前端 prompt 模板可以为后端 Agent 提供额外的业务信息。比如，你可以在 prompt 模板中提及该业务所需的数据表、API 等上下文信息。这能提高后端程序执行的成功率。</p>
-<blockquote>
-<p>好的产品设计，既能降低用户的使用门槛，又能降低工程的实现难度。</p></blockquote>
 <h3 id="四云ai的战略">四、云+AI的战略</h3>
 <p>听完 Quick BI 发布会，我发觉 Quick BI 是阿里不得不做的项目。阿里正在逐步构建「云基础设施 + 开源大模型 + 开源 Agent 框架 + 商业应用」的生态闭环。Quick BI 就是商业应用之一。</p>
 <h4 id="1云计算和-quick-bi-耦合得有多紧密">1）云计算和 Quick BI 耦合得有多紧密？</h4>
