@@ -674,18 +674,18 @@
 </ol>
 <p>好了，现在魔术正式开始 <img src="/img/hanser/png/cece.png" class="my-emoji" style = "height: 64px;"></p>
 <p>第一步，我们让观众取出 5 张牌。假设观众取出的是 <code>$[18, 50, 12, 19, 4]$</code>，我们要对这 5 张牌从小到大进行排序。</p>
-<pre tabindex="0"><code>cards = [18, 50, 12, 19, 4]
-cards = sorted(cards)
-# cards = [4, 12, 18, 19, 50]
-</code></pre><p>第二步，计算 <code>s = sum(cards) mod k!</code> 的值。</p>
-<pre tabindex="0"><code>s = sum(cards) % factorial(5)
-# s = 103
-</code></pre><p>第三步，对这 5 张牌按如下规则进行编码：</p>
-<pre tabindex="0"><code>q = s
-for i in range(5, 0, -1):
-    q, r = divmod(q, i)
-    reordered_cards.append(cards.pop(r))
-</code></pre><p>为了理解这一步做了什么，我们将上述循环展开。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>cards <span style="color:#0550ae">=</span> <span style="color:#1f2328">[</span><span style="color:#0550ae">18</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">50</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">12</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">19</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">4</span><span style="color:#1f2328">]</span>
+</span></span><span style="display:flex;"><span>cards <span style="color:#0550ae">=</span> <span style="color:#6639ba">sorted</span><span style="color:#1f2328">(</span>cards<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># cards = [4, 12, 18, 19, 50]</span>
+</span></span></code></pre></div><p>第二步，计算 <code>s = sum(cards) mod k!</code> 的值。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>s <span style="color:#0550ae">=</span> <span style="color:#6639ba">sum</span><span style="color:#1f2328">(</span>cards<span style="color:#1f2328">)</span> <span style="color:#0550ae">%</span> factorial<span style="color:#1f2328">(</span><span style="color:#0550ae">5</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># s = 103</span>
+</span></span></code></pre></div><p>第三步，对这 5 张牌按如下规则进行编码：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>q <span style="color:#0550ae">=</span> s
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">for</span> i <span style="color:#0550ae">in</span> <span style="color:#6639ba">range</span><span style="color:#1f2328">(</span><span style="color:#0550ae">5</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">0</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">-</span><span style="color:#0550ae">1</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>    q<span style="color:#1f2328">,</span> r <span style="color:#0550ae">=</span> <span style="color:#6639ba">divmod</span><span style="color:#1f2328">(</span>q<span style="color:#1f2328">,</span> i<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>    reordered_cards<span style="color:#0550ae">.</span>append<span style="color:#1f2328">(</span>cards<span style="color:#0550ae">.</span>pop<span style="color:#1f2328">(</span>r<span style="color:#1f2328">))</span>
+</span></span></code></pre></div><p>为了理解这一步做了什么，我们将上述循环展开。</p>
 <details>
 <summary style="outline: none;"><font color='blueviolet'>点击查看每轮迭代中的细节</font></summary>
 <p>初始化，s = 103：</p>
@@ -950,12 +950,12 @@ for i in range(5, 0, -1):
 <p>最终，我们得到一个列表 <code>reordered_cards = [12, 18, 50, 4, 19]</code>。</p>
 <p>第四步，我们对上一步中得到的列表 <code>$[12, 18, 50, 4, 19]$</code> 进行分割，将前 4 张牌 <code>$[12, 18, 50, 4]$</code> 送入解码器中，最后一个值 19 作为答案保存下来，用于最后魔术成功与否的判定。</p>
 <p>第五步，将前 4 张牌 <code>$[12, 18, 50, 4]$</code> 解码。此步相当于是第三步的逆过程。我们将牌组按如下规则进行解码：</p>
-<pre tabindex="0"><code>for i in range(1, 5, 1):
-    q_list[i] = i * q_list[i-1] + r_list[i-1]
-    if i != 4:
-        visible_cards.append(first_four[i])
-        r_list[i] = sorted(visible_cards).index(first_four[i])
-</code></pre><p>为了理解这一步做了什么，我们将上述循环展开。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#cf222e">for</span> i <span style="color:#0550ae">in</span> <span style="color:#6639ba">range</span><span style="color:#1f2328">(</span><span style="color:#0550ae">1</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">5</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">1</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>    q_list<span style="color:#1f2328">[</span>i<span style="color:#1f2328">]</span> <span style="color:#0550ae">=</span> i <span style="color:#0550ae">*</span> q_list<span style="color:#1f2328">[</span>i<span style="color:#0550ae">-</span><span style="color:#0550ae">1</span><span style="color:#1f2328">]</span> <span style="color:#0550ae">+</span> r_list<span style="color:#1f2328">[</span>i<span style="color:#0550ae">-</span><span style="color:#0550ae">1</span><span style="color:#1f2328">]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">if</span> i <span style="color:#0550ae">!=</span> <span style="color:#0550ae">4</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>        visible_cards<span style="color:#0550ae">.</span>append<span style="color:#1f2328">(</span>first_four<span style="color:#1f2328">[</span>i<span style="color:#1f2328">])</span>
+</span></span><span style="display:flex;"><span>        r_list<span style="color:#1f2328">[</span>i<span style="color:#1f2328">]</span> <span style="color:#0550ae">=</span> <span style="color:#6639ba">sorted</span><span style="color:#1f2328">(</span>visible_cards<span style="color:#1f2328">)</span><span style="color:#0550ae">.</span>index<span style="color:#1f2328">(</span>first_four<span style="color:#1f2328">[</span>i<span style="color:#1f2328">])</span>
+</span></span></code></pre></div><p>为了理解这一步做了什么，我们将上述循环展开。</p>
 <details>
 <summary style="outline: none;"><font color='blueviolet'>点击查看每轮迭代中的细节</font></summary>
 <p>当 i = 1 时，有 <code>q_1 = 0, r_1 = 0</code>（证明略，提示：<code>$s &lt; 5!$</code>）。其次，由已知的前 4 张牌 <code>$[12, 18, 50, 4]$</code>，我们知道：</p>
@@ -1181,36 +1181,36 @@ for i in range(5, 0, -1):
 又 <code>$ 1 \leq v \leq 52 $</code>，故：
 <code>$$ 16 \leq v \leq 20 $$</code>
 上述过程的代码如下：</p>
-<pre tabindex="0"><code># 总结当前信息
-sum_of_first_four = sum(first_four)
-q = q_list[-1]
-
-# 计算编码时q的初始值s的范围
-range_l = 5 * q_list[-1]  # range_l &lt;= s的值
-range_r = 5 * q_list[-1] + 4  # s的值 &lt;= range_r
-
-# 计算第五张牌的值v的范围
-times = 0
-while True:
-    v_l = range_l + times * factorial(5) - sum_of_first_four
-    v_r = range_r + times * factorial(5) - sum_of_first_four
-    times += 1
-    if (v_r &gt;= 1) and (v_l &lt;= 52):
-        break
-    elif times &gt; 2:
-        raise ValueError(&#39;can not find the range of v.&#39;)
-</code></pre><p>第七步，尝试可行域中的每一种取值。唯一可行的取值即为第五张牌的值。</p>
-<pre tabindex="0"><code># 猜解码时第五次迭代的余数r
-for v in range(v_l, v_r+1):
-    if v not in first_four:
-        temp = first_four[:]
-        temp.append(v)
-        test_r = sorted(temp).index(v)
-        s = 5 * q + test_r
-        guess_v = s + (times - 1) * factorial(5) - sum_of_first_four
-        if v == guess_v:
-            return v
-</code></pre><h3 id="mcp-实现">MCP 实现</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#57606a"># 总结当前信息</span>
+</span></span><span style="display:flex;"><span>sum_of_first_four <span style="color:#0550ae">=</span> <span style="color:#6639ba">sum</span><span style="color:#1f2328">(</span>first_four<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>q <span style="color:#0550ae">=</span> q_list<span style="color:#1f2328">[</span><span style="color:#0550ae">-</span><span style="color:#0550ae">1</span><span style="color:#1f2328">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 计算编码时q的初始值s的范围</span>
+</span></span><span style="display:flex;"><span>range_l <span style="color:#0550ae">=</span> <span style="color:#0550ae">5</span> <span style="color:#0550ae">*</span> q_list<span style="color:#1f2328">[</span><span style="color:#0550ae">-</span><span style="color:#0550ae">1</span><span style="color:#1f2328">]</span>  <span style="color:#57606a"># range_l &lt;= s的值</span>
+</span></span><span style="display:flex;"><span>range_r <span style="color:#0550ae">=</span> <span style="color:#0550ae">5</span> <span style="color:#0550ae">*</span> q_list<span style="color:#1f2328">[</span><span style="color:#0550ae">-</span><span style="color:#0550ae">1</span><span style="color:#1f2328">]</span> <span style="color:#0550ae">+</span> <span style="color:#0550ae">4</span>  <span style="color:#57606a"># s的值 &lt;= range_r</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 计算第五张牌的值v的范围</span>
+</span></span><span style="display:flex;"><span>times <span style="color:#0550ae">=</span> <span style="color:#0550ae">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">while</span> <span style="color:#cf222e">True</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>    v_l <span style="color:#0550ae">=</span> range_l <span style="color:#0550ae">+</span> times <span style="color:#0550ae">*</span> factorial<span style="color:#1f2328">(</span><span style="color:#0550ae">5</span><span style="color:#1f2328">)</span> <span style="color:#0550ae">-</span> sum_of_first_four
+</span></span><span style="display:flex;"><span>    v_r <span style="color:#0550ae">=</span> range_r <span style="color:#0550ae">+</span> times <span style="color:#0550ae">*</span> factorial<span style="color:#1f2328">(</span><span style="color:#0550ae">5</span><span style="color:#1f2328">)</span> <span style="color:#0550ae">-</span> sum_of_first_four
+</span></span><span style="display:flex;"><span>    times <span style="color:#0550ae">+=</span> <span style="color:#0550ae">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">if</span> <span style="color:#1f2328">(</span>v_r <span style="color:#0550ae">&gt;=</span> <span style="color:#0550ae">1</span><span style="color:#1f2328">)</span> <span style="color:#0550ae">and</span> <span style="color:#1f2328">(</span>v_l <span style="color:#0550ae">&lt;=</span> <span style="color:#0550ae">52</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">break</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">elif</span> times <span style="color:#0550ae">&gt;</span> <span style="color:#0550ae">2</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">raise</span> ValueError<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;can not find the range of v.&#39;</span><span style="color:#1f2328">)</span>
+</span></span></code></pre></div><p>第七步，尝试可行域中的每一种取值。唯一可行的取值即为第五张牌的值。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#57606a"># 猜解码时第五次迭代的余数r</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">for</span> v <span style="color:#0550ae">in</span> <span style="color:#6639ba">range</span><span style="color:#1f2328">(</span>v_l<span style="color:#1f2328">,</span> v_r<span style="color:#0550ae">+</span><span style="color:#0550ae">1</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">if</span> v <span style="color:#0550ae">not</span> <span style="color:#0550ae">in</span> first_four<span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>        temp <span style="color:#0550ae">=</span> first_four<span style="color:#1f2328">[:]</span>
+</span></span><span style="display:flex;"><span>        temp<span style="color:#0550ae">.</span>append<span style="color:#1f2328">(</span>v<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        test_r <span style="color:#0550ae">=</span> <span style="color:#6639ba">sorted</span><span style="color:#1f2328">(</span>temp<span style="color:#1f2328">)</span><span style="color:#0550ae">.</span>index<span style="color:#1f2328">(</span>v<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        s <span style="color:#0550ae">=</span> <span style="color:#0550ae">5</span> <span style="color:#0550ae">*</span> q <span style="color:#0550ae">+</span> test_r
+</span></span><span style="display:flex;"><span>        guess_v <span style="color:#0550ae">=</span> s <span style="color:#0550ae">+</span> <span style="color:#1f2328">(</span>times <span style="color:#0550ae">-</span> <span style="color:#0550ae">1</span><span style="color:#1f2328">)</span> <span style="color:#0550ae">*</span> factorial<span style="color:#1f2328">(</span><span style="color:#0550ae">5</span><span style="color:#1f2328">)</span> <span style="color:#0550ae">-</span> sum_of_first_four
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">if</span> v <span style="color:#0550ae">==</span> guess_v<span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#cf222e">return</span> v
+</span></span></code></pre></div><h3 id="mcp-实现">MCP 实现</h3>
 <p>我们可以通过 MCP，实现可供大模型调用的外部工具。</p>
 <p>在 MCP 出现以前，大模型就可以通过 Function Calling 的方式调用外部工具。但是每个大模型有每个模型的 Function Calling，相互之间并不兼容，缺少统一的、标准化的工具调用方法。于是 MCP 应运而生。</p>
 <p>MCP（Model Context Protocol，模型上下文协议）是一种通信协议，它统一了大模型与外部工具的交互方法。目前 MCP 提供三种通信方式：</p>
@@ -1222,64 +1222,64 @@ for v in range(v_l, v_r+1):
 <p>Stdio 适合本地运行，每次运行需要重新加载依赖的资源。SSE 和 Streamable HTTP 是提供远程 MCP 服务的方式。关于两者的区别，可以参考阿里云的文章 <a href="https://zhuanlan.zhihu.com/p/1900195324611499288">MCP 协议：为什么 Streamable HTTP 是最佳选择？</a></p>
 <p><a href="https://gofastmcp.com/getting-started/welcome">FastMCP</a> 是当下编写 MCP Server 的最佳方式。FastMCP 能够处理与 LLM 通信过程中的复杂性，让开发者得以聚焦功能性代码。只需要写非常少的代码，就可以实现完整的 MCP 功能。</p>
 <p>在我的 <a href="https://github.com/luochang212/card-magic-mcp/blob/main/src/card_magic_mcp/server.py">代码仓库</a> 中，MCP 的实现只有寥寥几行。</p>
-<pre tabindex="0"><code>from fastmcp import FastMCP
-from .magic import decode_cards, encode_cards
-
-mcp = FastMCP(&#34;card_magic_sse&#34;)
-
-@mcp.tool
-async def encode_cards_tool(cards: str) -&gt; str:
-    &#34;&#34;&#34;本函数实现魔术师 Chico 的操作：将五张牌重新排序，
-    并在排序过程中将第五张牌的信息编码在前四张的排序信息中
-
-    :param cards: 该参数接受 5 张牌，形如 ♥K ♣3 ♠7 ♦5 ♠A
-                  每张牌由【花色】和【数字】组成：
-                    - 可选的花色:
-                      - ♠ (黑桃, Spades)
-                      - ♥ (红心, Hearts)
-                      - ♦ (方块/方片, Diamonds)
-                      - ♣ (梅花, Clubs)
-                    - 可选的数字: A 2 3 4 5 6 7 8 9 10 J Q K
-                  注意：请将花色和数字标准化后再作为参数传入
-    :return: 本函数返回前四张牌和第五张牌的值
-    &#34;&#34;&#34;
-    return encode_cards(cards)
-
-@mcp.tool
-async def decode_cards_tool(cards: str) -&gt; str:
-    &#34;&#34;&#34;本函数实现魔术师 Dico 的操作：根据前四张牌猜第五张牌
-
-    :param cards: 该参数接受 4 张牌，形如 ♠A ♥3 ♣10 ♦K
-                  每张牌由【花色】和【数字】组成：
-                    - 可选的花色:
-                      - ♠ (黑桃, Spades)
-                      - ♥ (红心, Hearts)
-                      - ♦ (方块/方片, Diamonds)
-                      - ♣ (梅花, Clubs)
-                    - 可选的数字: A 2 3 4 5 6 7 8 9 10 J Q K
-                  注意：请将花色和数字标准化后再作为参数传入
-    :return: 本函数返回第五张牌的值
-    &#34;&#34;&#34;
-    return decode_cards(cards)
-
-if __name__ == &#34;__main__&#34;:
-    mcp.run()
-</code></pre><p>只需要将装饰器 <code>@mcp.tool</code> 添加到工具函数上，FastMCP 会自动读取函数的 docstring 作为该工具函数的解释文本。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#cf222e">from</span> <span style="color:#24292e">fastmcp</span> <span style="color:#cf222e">import</span> FastMCP
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">from</span> <span style="color:#24292e">.magic</span> <span style="color:#cf222e">import</span> decode_cards<span style="color:#1f2328">,</span> encode_cards
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mcp <span style="color:#0550ae">=</span> FastMCP<span style="color:#1f2328">(</span><span style="color:#0a3069">&#34;card_magic_sse&#34;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#0550ae">@mcp.tool</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">async</span> <span style="color:#cf222e">def</span> <span style="color:#6639ba">encode_cards_tool</span><span style="color:#1f2328">(</span>cards<span style="color:#1f2328">:</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">)</span> <span style="color:#0550ae">-&gt;</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#0a3069">&#34;&#34;&#34;本函数实现魔术师 Chico 的操作：将五张牌重新排序，
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">    并在排序过程中将第五张牌的信息编码在前四张的排序信息中
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">    :param cards: 该参数接受 5 张牌，形如 ♥K ♣3 ♠7 ♦5 ♠A
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">                  每张牌由【花色】和【数字】组成：
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">                    - 可选的花色:
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">                      - ♠ (黑桃, Spades)
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">                      - ♥ (红心, Hearts)
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">                      - ♦ (方块/方片, Diamonds)
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">                      - ♣ (梅花, Clubs)
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">                    - 可选的数字: A 2 3 4 5 6 7 8 9 10 J Q K
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">                  注意：请将花色和数字标准化后再作为参数传入
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">    :return: 本函数返回前四张牌和第五张牌的值
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">return</span> encode_cards<span style="color:#1f2328">(</span>cards<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#0550ae">@mcp.tool</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">async</span> <span style="color:#cf222e">def</span> <span style="color:#6639ba">decode_cards_tool</span><span style="color:#1f2328">(</span>cards<span style="color:#1f2328">:</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">)</span> <span style="color:#0550ae">-&gt;</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#0a3069">&#34;&#34;&#34;本函数实现魔术师 Dico 的操作：根据前四张牌猜第五张牌
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">    :param cards: 该参数接受 4 张牌，形如 ♠A ♥3 ♣10 ♦K
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">                  每张牌由【花色】和【数字】组成：
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">                    - 可选的花色:
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">                      - ♠ (黑桃, Spades)
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">                      - ♥ (红心, Hearts)
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">                      - ♦ (方块/方片, Diamonds)
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">                      - ♣ (梅花, Clubs)
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">                    - 可选的数字: A 2 3 4 5 6 7 8 9 10 J Q K
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">                  注意：请将花色和数字标准化后再作为参数传入
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">    :return: 本函数返回第五张牌的值
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">return</span> decode_cards<span style="color:#1f2328">(</span>cards<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">if</span> <span style="color:#953800">__name__</span> <span style="color:#0550ae">==</span> <span style="color:#0a3069">&#34;__main__&#34;</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>    mcp<span style="color:#0550ae">.</span>run<span style="color:#1f2328">()</span>
+</span></span></code></pre></div><p>只需要将装饰器 <code>@mcp.tool</code> 添加到工具函数上，FastMCP 会自动读取函数的 docstring 作为该工具函数的解释文本。</p>
 <p>如果你希望改变通信方式，也非常简单。只需要修改 <code>mcp.run()</code> 的 <code>transport</code> 参数就可以。<code>transport</code> 参数默认为 <code>stdio</code>，可以通过指定不同的 <code>transport</code> 值，改变 FastMCP 的通信方式。</p>
-<pre tabindex="0"><code># Stdio
-mcp.run(transport=&#34;stdio&#34;)
-
-# SSE
-mcp.run(transport=&#34;sse&#34;,
-        host=&#39;0.0.0.0&#39;,
-        port=&#39;8000&#39;)
-
-# Streamable HTTP
-mcp.run(transport=&#34;http&#34;,
-        host=&#39;0.0.0.0&#39;,
-        port=&#39;8000&#39;,
-        path=&#34;/mcp&#34;)
-</code></pre><p>目前，使用 MCP 的最佳方式依然是使用 Agent。主流的 Agent 框架全都支持 MCP，比如 <a href="https://github.com/QwenLM/Qwen-Agent">Qwen Agent</a>。直接使用大语言模型，也可以调用 MCP Server，但是需要一定的开发量，不如直接用 Agent 省事。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#57606a"># Stdio</span>
+</span></span><span style="display:flex;"><span>mcp<span style="color:#0550ae">.</span>run<span style="color:#1f2328">(</span>transport<span style="color:#0550ae">=</span><span style="color:#0a3069">&#34;stdio&#34;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># SSE</span>
+</span></span><span style="display:flex;"><span>mcp<span style="color:#0550ae">.</span>run<span style="color:#1f2328">(</span>transport<span style="color:#0550ae">=</span><span style="color:#0a3069">&#34;sse&#34;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>        host<span style="color:#0550ae">=</span><span style="color:#0a3069">&#39;0.0.0.0&#39;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>        port<span style="color:#0550ae">=</span><span style="color:#0a3069">&#39;8000&#39;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># Streamable HTTP</span>
+</span></span><span style="display:flex;"><span>mcp<span style="color:#0550ae">.</span>run<span style="color:#1f2328">(</span>transport<span style="color:#0550ae">=</span><span style="color:#0a3069">&#34;http&#34;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>        host<span style="color:#0550ae">=</span><span style="color:#0a3069">&#39;0.0.0.0&#39;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>        port<span style="color:#0550ae">=</span><span style="color:#0a3069">&#39;8000&#39;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>        path<span style="color:#0550ae">=</span><span style="color:#0a3069">&#34;/mcp&#34;</span><span style="color:#1f2328">)</span>
+</span></span></code></pre></div><p>目前，使用 MCP 的最佳方式依然是使用 Agent。主流的 Agent 框架全都支持 MCP，比如 <a href="https://github.com/QwenLM/Qwen-Agent">Qwen Agent</a>。直接使用大语言模型，也可以调用 MCP Server，但是需要一定的开发量，不如直接用 Agent 省事。</p>
 <h3 id="推至极限">推至极限</h3>
 <p>作为项目升级的一部分，我将五年前特定情形的算法（<code>$n = 52, k = 5, j = 1$</code>），推广到任意 <code>$n, k, j$</code> 的情形。当然，参数 <code>$n, k, j$</code> 依然受信息论的约束：
 <code>$$ n \leq k! + k - j $$</code>
@@ -1386,7 +1386,10 @@ class MagicMax:
       </a>
       
       <a href="https://www.zhihu.com/people/Fashionable" target="_blank" rel="noopener noreferrer">
-        <i class="fab fa-zhihu"></i> 知乎
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2" 
+             stroke-linecap="round" stroke-linejoin="round" style="width: 1em; height: 1em; vertical-align: -0.125em; display: inline-block;">
+          <path d="m13.3334,3.60098l0,17.1471l1.79582,0l0.75424,2.13703l3.18459,-2.13703l3.93584,0l0,-17.1471l-9.6705,0zm7.41375,14.87538l-1.79283,0l-2.24777,1.50849l-0.53276,-1.50849l-0.53875,0l0,-12.53483l5.10911,0l0,12.53483l0.00299,0zm-8.56906,-7.18927l-3.97475,0c0.06285,-1.34387 0.1287,-3.12174 0.19754,-5.17496l3.91788,0l-0.00299,-0.24244c0,-0.01796 -0.00599,-0.43998 -0.06884,-0.87097c-0.06285,-0.44896 -0.19754,-1.04457 -0.62854,-1.04457l-6.5727,0c0.13169,-0.61657 0.46991,-2.08615 0.87995,-2.80747l0.19155,-0.33522l-0.3861,-0.02095c-0.02394,0 -0.58663,-0.02694 -1.23912,0.31726c-1.06851,0.56868 -1.5474,1.68807 -1.75691,2.52612c-0.55072,2.18791 -1.33489,3.70837 -1.66712,4.35786c-0.09877,0.19155 -0.15863,0.30529 -0.18557,0.38311c-0.05387,0.14666 -0.02394,0.29332 0.0838,0.38909c0.31427,0.28434 1.14334,-0.0868 1.15232,-0.08979c0.01796,-0.00898 0.03891,-0.01796 0.06585,-0.02993c0.41603,-0.18856 1.64916,-0.74826 2.08914,-2.52911l1.69705,0c0.02095,0.96376 0.09278,4.14236 0.0868,5.17496l-4.22018,0l-0.06285,0.0449c-0.69139,0.50582 -0.91288,1.8916 -0.92185,1.95146l-0.0419,0.27536l4.99837,0c-0.36814,2.34355 -0.79315,3.3941 -1.01763,3.81313c-0.11074,0.20951 -0.21849,0.41902 -0.32025,0.62255c-0.63752,1.26306 -1.29898,2.56802 -3.7802,4.5973c-0.10775,0.0838 -0.20951,0.23944 -0.14367,0.41005c0.07183,0.18856 0.27835,0.27237 0.73629,0.27237c0.16162,0 0.35318,-0.00898 0.58065,-0.02993c1.49352,-0.13169 3.01698,-0.53875 4.04359,-2.6219c0.50882,-1.05056 0.94879,-2.14601 1.31394,-3.25941l4.08549,4.78886l0.14965,-0.35916c0.02394,-0.05687 0.56868,-1.38578 0.15264,-2.87032l-0.01497,-0.05387l-3.23547,-3.68143l-0.65847,0.49684c0.19155,-0.78118 0.31726,-1.49352 0.37413,-2.12805l4.74995,0l0,-0.23944c0,-1.20021 -0.55371,-1.91255 -0.57466,-1.94248l-0.07183,-0.08979z" />
+        </svg> 知乎
       </a>
 
       <a href="/index.xml" target="_blank" rel="noopener noreferrer">

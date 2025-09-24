@@ -665,17 +665,17 @@
 <p>好了。现在我宣布，从这里开始，这个广场就叫作魔术广场！</p>
 <p>魔术正式开始 <img src="/img/hanser/png/cece.png" class="my-emoji" style = "height: 64px;"></p>
 <p>第一步，我们让观众取出 5 张牌。假设观众取出的是 {18, 50, 12, 19, 4}。我们先要对这 5 张牌从小到大进行排序。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>selected_cards <span style="color:#f92672">=</span> [<span style="color:#ae81ff">18</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">19</span>, <span style="color:#ae81ff">4</span>]
-</span></span><span style="display:flex;"><span>selected_cards <span style="color:#f92672">=</span> sorted(selected_cards)
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># selected_cards = [4, 12, 18, 19, 50]</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>selected_cards <span style="color:#0550ae">=</span> <span style="color:#1f2328">[</span><span style="color:#0550ae">18</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">50</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">12</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">19</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">4</span><span style="color:#1f2328">]</span>
+</span></span><span style="display:flex;"><span>selected_cards <span style="color:#0550ae">=</span> <span style="color:#6639ba">sorted</span><span style="color:#1f2328">(</span>selected_cards<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># selected_cards = [4, 12, 18, 19, 50]</span>
 </span></span></code></pre></div><p>第二步，计算 s = sum(selected_cards) mod k! 的值。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>s <span style="color:#f92672">=</span> sum(selected_cards) <span style="color:#f92672">%</span> factorial(<span style="color:#ae81ff">5</span>)
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># s = 103</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>s <span style="color:#0550ae">=</span> <span style="color:#6639ba">sum</span><span style="color:#1f2328">(</span>selected_cards<span style="color:#1f2328">)</span> <span style="color:#0550ae">%</span> factorial<span style="color:#1f2328">(</span><span style="color:#0550ae">5</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># s = 103</span>
 </span></span></code></pre></div><p>第三步，对这 5 张牌按如下规则进行编码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>q <span style="color:#f92672">=</span> s
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>):
-</span></span><span style="display:flex;"><span>    q, r <span style="color:#f92672">=</span> divmod(q, i)
-</span></span><span style="display:flex;"><span>    reordered_cards<span style="color:#f92672">.</span>append(selected_cards<span style="color:#f92672">.</span>pop(r))
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>q <span style="color:#0550ae">=</span> s
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">for</span> i <span style="color:#0550ae">in</span> <span style="color:#6639ba">range</span><span style="color:#1f2328">(</span><span style="color:#0550ae">5</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">0</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">-</span><span style="color:#0550ae">1</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>    q<span style="color:#1f2328">,</span> r <span style="color:#0550ae">=</span> <span style="color:#6639ba">divmod</span><span style="color:#1f2328">(</span>q<span style="color:#1f2328">,</span> i<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>    reordered_cards<span style="color:#0550ae">.</span>append<span style="color:#1f2328">(</span>selected_cards<span style="color:#0550ae">.</span>pop<span style="color:#1f2328">(</span>r<span style="color:#1f2328">))</span>
 </span></span></code></pre></div><p>为了理解这一步做了什么，我们将上述循环展开。</p>
 <details>
 <summary style="outline: none;"><font color='blueviolet'>点击查看每轮迭代中的细节</font></summary>
@@ -941,11 +941,11 @@
 <p>最终，我们得到一个列表 reordered_cards = [12, 18, 50, 4, 19]。</p>
 <p>第四步，我们对上一步中得到的列表 [12, 18, 50, 4, 19] 进行分割，将前 4 张牌 [12, 18, 50, 4] 送入解码器中，最后一个值 19 作为答案保存下来，用于最后魔术成功与否的判定。</p>
 <p>第五步，将前 4 张牌 [12, 18, 50, 4] 解码。此步相当于是第三步的逆过程。我们将牌组按如下规则进行解码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">1</span>):
-</span></span><span style="display:flex;"><span>    q_list[i] <span style="color:#f92672">=</span> i <span style="color:#f92672">*</span> q_list[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> r_list[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> i <span style="color:#f92672">!=</span> <span style="color:#ae81ff">4</span>:
-</span></span><span style="display:flex;"><span>        visible_cards<span style="color:#f92672">.</span>append(first_four[i])
-</span></span><span style="display:flex;"><span>        r_list[i] <span style="color:#f92672">=</span> sorted(visible_cards)<span style="color:#f92672">.</span>index(first_four[i])
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#cf222e">for</span> i <span style="color:#0550ae">in</span> <span style="color:#6639ba">range</span><span style="color:#1f2328">(</span><span style="color:#0550ae">1</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">5</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">1</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>    q_list<span style="color:#1f2328">[</span>i<span style="color:#1f2328">]</span> <span style="color:#0550ae">=</span> i <span style="color:#0550ae">*</span> q_list<span style="color:#1f2328">[</span>i<span style="color:#0550ae">-</span><span style="color:#0550ae">1</span><span style="color:#1f2328">]</span> <span style="color:#0550ae">+</span> r_list<span style="color:#1f2328">[</span>i<span style="color:#0550ae">-</span><span style="color:#0550ae">1</span><span style="color:#1f2328">]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">if</span> i <span style="color:#0550ae">!=</span> <span style="color:#0550ae">4</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>        visible_cards<span style="color:#0550ae">.</span>append<span style="color:#1f2328">(</span>first_four<span style="color:#1f2328">[</span>i<span style="color:#1f2328">])</span>
+</span></span><span style="display:flex;"><span>        r_list<span style="color:#1f2328">[</span>i<span style="color:#1f2328">]</span> <span style="color:#0550ae">=</span> <span style="color:#6639ba">sorted</span><span style="color:#1f2328">(</span>visible_cards<span style="color:#1f2328">)</span><span style="color:#0550ae">.</span>index<span style="color:#1f2328">(</span>first_four<span style="color:#1f2328">[</span>i<span style="color:#1f2328">])</span>
 </span></span></code></pre></div><p>为了理解这一步做了什么，我们将上述循环展开。</p>
 <details>
 <summary style="outline: none;"><font color='blueviolet'>点击查看每轮迭代中的细节</font></summary>
@@ -1172,35 +1172,35 @@
 又 <code>$ 1 \leq v \leq 52 $</code>，故：
 <code>$$ 16 \leq v \leq 20 $$</code>
 上述过程的代码如下：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 总结当前信息</span>
-</span></span><span style="display:flex;"><span>sum_of_first_four <span style="color:#f92672">=</span> sum(first_four)
-</span></span><span style="display:flex;"><span>q <span style="color:#f92672">=</span> q_list[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#57606a"># 总结当前信息</span>
+</span></span><span style="display:flex;"><span>sum_of_first_four <span style="color:#0550ae">=</span> <span style="color:#6639ba">sum</span><span style="color:#1f2328">(</span>first_four<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>q <span style="color:#0550ae">=</span> q_list<span style="color:#1f2328">[</span><span style="color:#0550ae">-</span><span style="color:#0550ae">1</span><span style="color:#1f2328">]</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 计算编码时q的初始值s的范围</span>
-</span></span><span style="display:flex;"><span>range_l <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span> <span style="color:#f92672">*</span> q_list[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]  <span style="color:#75715e"># range_l &lt;= s的值</span>
-</span></span><span style="display:flex;"><span>range_r <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span> <span style="color:#f92672">*</span> q_list[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> <span style="color:#ae81ff">4</span>  <span style="color:#75715e"># s的值 &lt;= range_r</span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 计算编码时q的初始值s的范围</span>
+</span></span><span style="display:flex;"><span>range_l <span style="color:#0550ae">=</span> <span style="color:#0550ae">5</span> <span style="color:#0550ae">*</span> q_list<span style="color:#1f2328">[</span><span style="color:#0550ae">-</span><span style="color:#0550ae">1</span><span style="color:#1f2328">]</span>  <span style="color:#57606a"># range_l &lt;= s的值</span>
+</span></span><span style="display:flex;"><span>range_r <span style="color:#0550ae">=</span> <span style="color:#0550ae">5</span> <span style="color:#0550ae">*</span> q_list<span style="color:#1f2328">[</span><span style="color:#0550ae">-</span><span style="color:#0550ae">1</span><span style="color:#1f2328">]</span> <span style="color:#0550ae">+</span> <span style="color:#0550ae">4</span>  <span style="color:#57606a"># s的值 &lt;= range_r</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 计算第五张牌的值v的范围</span>
-</span></span><span style="display:flex;"><span>times <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
-</span></span><span style="display:flex;"><span>    v_l <span style="color:#f92672">=</span> range_l <span style="color:#f92672">+</span> times <span style="color:#f92672">*</span> factorial(<span style="color:#ae81ff">5</span>) <span style="color:#f92672">-</span> sum_of_first_four
-</span></span><span style="display:flex;"><span>    v_r <span style="color:#f92672">=</span> range_r <span style="color:#f92672">+</span> times <span style="color:#f92672">*</span> factorial(<span style="color:#ae81ff">5</span>) <span style="color:#f92672">-</span> sum_of_first_four
-</span></span><span style="display:flex;"><span>    times <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (v_r <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">and</span> (v_l <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">52</span>):
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> times <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">&#39;can not find the range of v.&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 计算第五张牌的值v的范围</span>
+</span></span><span style="display:flex;"><span>times <span style="color:#0550ae">=</span> <span style="color:#0550ae">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">while</span> <span style="color:#cf222e">True</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>    v_l <span style="color:#0550ae">=</span> range_l <span style="color:#0550ae">+</span> times <span style="color:#0550ae">*</span> factorial<span style="color:#1f2328">(</span><span style="color:#0550ae">5</span><span style="color:#1f2328">)</span> <span style="color:#0550ae">-</span> sum_of_first_four
+</span></span><span style="display:flex;"><span>    v_r <span style="color:#0550ae">=</span> range_r <span style="color:#0550ae">+</span> times <span style="color:#0550ae">*</span> factorial<span style="color:#1f2328">(</span><span style="color:#0550ae">5</span><span style="color:#1f2328">)</span> <span style="color:#0550ae">-</span> sum_of_first_four
+</span></span><span style="display:flex;"><span>    times <span style="color:#0550ae">+=</span> <span style="color:#0550ae">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">if</span> <span style="color:#1f2328">(</span>v_r <span style="color:#0550ae">&gt;=</span> <span style="color:#0550ae">1</span><span style="color:#1f2328">)</span> <span style="color:#0550ae">and</span> <span style="color:#1f2328">(</span>v_l <span style="color:#0550ae">&lt;=</span> <span style="color:#0550ae">52</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">break</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">elif</span> times <span style="color:#0550ae">&gt;</span> <span style="color:#0550ae">2</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">raise</span> ValueError<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;can not find the range of v.&#39;</span><span style="color:#1f2328">)</span>
 </span></span></code></pre></div><p>第七步，尝试可行域中的每一种取值。唯一可行的取值即为第五张牌的值。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 猜解码时第五次迭代的余数r</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> range(v_l, v_r<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> v <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> first_four:
-</span></span><span style="display:flex;"><span>        temp <span style="color:#f92672">=</span> first_four[:]
-</span></span><span style="display:flex;"><span>        temp<span style="color:#f92672">.</span>append(v)
-</span></span><span style="display:flex;"><span>        test_r <span style="color:#f92672">=</span> sorted(temp)<span style="color:#f92672">.</span>index(v)
-</span></span><span style="display:flex;"><span>        s <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span> <span style="color:#f92672">*</span> q <span style="color:#f92672">+</span> test_r
-</span></span><span style="display:flex;"><span>        guess_v <span style="color:#f92672">=</span> s <span style="color:#f92672">+</span> (times <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> factorial(<span style="color:#ae81ff">5</span>) <span style="color:#f92672">-</span> sum_of_first_four
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> v <span style="color:#f92672">==</span> guess_v:
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> v
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#57606a"># 猜解码时第五次迭代的余数r</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">for</span> v <span style="color:#0550ae">in</span> <span style="color:#6639ba">range</span><span style="color:#1f2328">(</span>v_l<span style="color:#1f2328">,</span> v_r<span style="color:#0550ae">+</span><span style="color:#0550ae">1</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">if</span> v <span style="color:#0550ae">not</span> <span style="color:#0550ae">in</span> first_four<span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>        temp <span style="color:#0550ae">=</span> first_four<span style="color:#1f2328">[:]</span>
+</span></span><span style="display:flex;"><span>        temp<span style="color:#0550ae">.</span>append<span style="color:#1f2328">(</span>v<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        test_r <span style="color:#0550ae">=</span> <span style="color:#6639ba">sorted</span><span style="color:#1f2328">(</span>temp<span style="color:#1f2328">)</span><span style="color:#0550ae">.</span>index<span style="color:#1f2328">(</span>v<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        s <span style="color:#0550ae">=</span> <span style="color:#0550ae">5</span> <span style="color:#0550ae">*</span> q <span style="color:#0550ae">+</span> test_r
+</span></span><span style="display:flex;"><span>        guess_v <span style="color:#0550ae">=</span> s <span style="color:#0550ae">+</span> <span style="color:#1f2328">(</span>times <span style="color:#0550ae">-</span> <span style="color:#0550ae">1</span><span style="color:#1f2328">)</span> <span style="color:#0550ae">*</span> factorial<span style="color:#1f2328">(</span><span style="color:#0550ae">5</span><span style="color:#1f2328">)</span> <span style="color:#0550ae">-</span> sum_of_first_four
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">if</span> v <span style="color:#0550ae">==</span> guess_v<span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#cf222e">return</span> v
 </span></span></code></pre></div><p>参考：</p>
 <ol>
 <li><a href="https://www.brand.site.co.il/riddles/200705q.html">Chico and Dico</a></li>
@@ -1228,7 +1228,10 @@
       </a>
       
       <a href="https://www.zhihu.com/people/Fashionable" target="_blank" rel="noopener noreferrer">
-        <i class="fab fa-zhihu"></i> 知乎
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2" 
+             stroke-linecap="round" stroke-linejoin="round" style="width: 1em; height: 1em; vertical-align: -0.125em; display: inline-block;">
+          <path d="m13.3334,3.60098l0,17.1471l1.79582,0l0.75424,2.13703l3.18459,-2.13703l3.93584,0l0,-17.1471l-9.6705,0zm7.41375,14.87538l-1.79283,0l-2.24777,1.50849l-0.53276,-1.50849l-0.53875,0l0,-12.53483l5.10911,0l0,12.53483l0.00299,0zm-8.56906,-7.18927l-3.97475,0c0.06285,-1.34387 0.1287,-3.12174 0.19754,-5.17496l3.91788,0l-0.00299,-0.24244c0,-0.01796 -0.00599,-0.43998 -0.06884,-0.87097c-0.06285,-0.44896 -0.19754,-1.04457 -0.62854,-1.04457l-6.5727,0c0.13169,-0.61657 0.46991,-2.08615 0.87995,-2.80747l0.19155,-0.33522l-0.3861,-0.02095c-0.02394,0 -0.58663,-0.02694 -1.23912,0.31726c-1.06851,0.56868 -1.5474,1.68807 -1.75691,2.52612c-0.55072,2.18791 -1.33489,3.70837 -1.66712,4.35786c-0.09877,0.19155 -0.15863,0.30529 -0.18557,0.38311c-0.05387,0.14666 -0.02394,0.29332 0.0838,0.38909c0.31427,0.28434 1.14334,-0.0868 1.15232,-0.08979c0.01796,-0.00898 0.03891,-0.01796 0.06585,-0.02993c0.41603,-0.18856 1.64916,-0.74826 2.08914,-2.52911l1.69705,0c0.02095,0.96376 0.09278,4.14236 0.0868,5.17496l-4.22018,0l-0.06285,0.0449c-0.69139,0.50582 -0.91288,1.8916 -0.92185,1.95146l-0.0419,0.27536l4.99837,0c-0.36814,2.34355 -0.79315,3.3941 -1.01763,3.81313c-0.11074,0.20951 -0.21849,0.41902 -0.32025,0.62255c-0.63752,1.26306 -1.29898,2.56802 -3.7802,4.5973c-0.10775,0.0838 -0.20951,0.23944 -0.14367,0.41005c0.07183,0.18856 0.27835,0.27237 0.73629,0.27237c0.16162,0 0.35318,-0.00898 0.58065,-0.02993c1.49352,-0.13169 3.01698,-0.53875 4.04359,-2.6219c0.50882,-1.05056 0.94879,-2.14601 1.31394,-3.25941l4.08549,4.78886l0.14965,-0.35916c0.02394,-0.05687 0.56868,-1.38578 0.15264,-2.87032l-0.01497,-0.05387l-3.23547,-3.68143l-0.65847,0.49684c0.19155,-0.78118 0.31726,-1.49352 0.37413,-2.12805l4.74995,0l0,-0.23944c0,-1.20021 -0.55371,-1.91255 -0.57466,-1.94248l-0.07183,-0.08979z" />
+        </svg> 知乎
       </a>
 
       <a href="/index.xml" target="_blank" rel="noopener noreferrer">

@@ -639,78 +639,78 @@
 <h3 id="创建第一个窗口">创建第一个窗口</h3>
 <p>一般来说，桌面应用都以窗口(window)形式呈现。因此，要搭建桌面应用，首先要创建窗口。</p>
 <p>下面这段代码创建了一个空的窗口。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> PyQt5.QtWidgets <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#cf222e">from</span> <span style="color:#24292e">PyQt5.QtWidgets</span> <span style="color:#cf222e">import</span> <span style="color:#0550ae">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">import</span> <span style="color:#24292e">sys</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Window</span>(QMainWindow):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self):
-</span></span><span style="display:flex;"><span>        super()<span style="color:#f92672">.</span><span style="color:#a6e22e">__init__</span>()
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">class</span> <span style="color:#1f2328">Window</span><span style="color:#1f2328">(</span>QMainWindow<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">__init__</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6639ba">super</span><span style="color:#1f2328">()</span><span style="color:#0550ae">.</span><span style="color:#6639ba">__init__</span><span style="color:#1f2328">()</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># set the title of main window</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>setWindowTitle(<span style="color:#e6db74">&#39;My first window - www.luochang.ink&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#57606a"># set the title of main window</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>setWindowTitle<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;My first window - www.luochang.ink&#39;</span><span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># set the size of window</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>Width <span style="color:#f92672">=</span> <span style="color:#ae81ff">500</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>height <span style="color:#f92672">=</span> int(<span style="color:#ae81ff">0.618</span> <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>Width)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>resize(self<span style="color:#f92672">.</span>Width, self<span style="color:#f92672">.</span>height)
+</span></span><span style="display:flex;"><span>        <span style="color:#57606a"># set the size of window</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>Width <span style="color:#0550ae">=</span> <span style="color:#0550ae">500</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>height <span style="color:#0550ae">=</span> <span style="color:#6639ba">int</span><span style="color:#1f2328">(</span><span style="color:#0550ae">0.618</span> <span style="color:#0550ae">*</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>Width<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>resize<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>Width<span style="color:#1f2328">,</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>height<span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
-</span></span><span style="display:flex;"><span>    app <span style="color:#f92672">=</span> QApplication(sys<span style="color:#f92672">.</span>argv)
-</span></span><span style="display:flex;"><span>    ex <span style="color:#f92672">=</span> Window()
-</span></span><span style="display:flex;"><span>    ex<span style="color:#f92672">.</span>show()
-</span></span><span style="display:flex;"><span>    sys<span style="color:#f92672">.</span>exit(app<span style="color:#f92672">.</span>exec_())
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">if</span> <span style="color:#953800">__name__</span> <span style="color:#0550ae">==</span> <span style="color:#0a3069">&#39;__main__&#39;</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>    app <span style="color:#0550ae">=</span> QApplication<span style="color:#1f2328">(</span>sys<span style="color:#0550ae">.</span>argv<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>    ex <span style="color:#0550ae">=</span> Window<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>    ex<span style="color:#0550ae">.</span>show<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>    sys<span style="color:#0550ae">.</span>exit<span style="color:#1f2328">(</span>app<span style="color:#0550ae">.</span>exec_<span style="color:#1f2328">())</span>
 </span></span></code></pre></div><p><img src="/img/blankWindow.png" alt="blank window"></p>
 <p>这段代码仅仅设置了窗口的标题和大小。下一步，我们要往这个空的窗口里添加部件(widget). 为了规范性，我们在Window类里新建一个函数initUI, 然后在initUI里为窗口添加部件。</p>
 <h3 id="为窗口添加部件">为窗口添加部件</h3>
 <p>下面这段代码为窗口添加了一个按钮部件(QPushButton).</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> PyQt5.QtWidgets <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#cf222e">from</span> <span style="color:#24292e">PyQt5.QtWidgets</span> <span style="color:#cf222e">import</span> <span style="color:#0550ae">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">import</span> <span style="color:#24292e">sys</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Window</span>(QMainWindow):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self):
-</span></span><span style="display:flex;"><span>        super()<span style="color:#f92672">.</span><span style="color:#a6e22e">__init__</span>()
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">class</span> <span style="color:#1f2328">Window</span><span style="color:#1f2328">(</span>QMainWindow<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">__init__</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6639ba">super</span><span style="color:#1f2328">()</span><span style="color:#0550ae">.</span><span style="color:#6639ba">__init__</span><span style="color:#1f2328">()</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># set the title of main window</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>setWindowTitle(<span style="color:#e6db74">&#39;My first window - www.luochang.ink&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#57606a"># set the title of main window</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>setWindowTitle<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;My first window - www.luochang.ink&#39;</span><span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># set the size of window</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>Width <span style="color:#f92672">=</span> <span style="color:#ae81ff">500</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>height <span style="color:#f92672">=</span> int(<span style="color:#ae81ff">0.618</span> <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>Width)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>resize(self<span style="color:#f92672">.</span>Width, self<span style="color:#f92672">.</span>height)
+</span></span><span style="display:flex;"><span>        <span style="color:#57606a"># set the size of window</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>Width <span style="color:#0550ae">=</span> <span style="color:#0550ae">500</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>height <span style="color:#0550ae">=</span> <span style="color:#6639ba">int</span><span style="color:#1f2328">(</span><span style="color:#0550ae">0.618</span> <span style="color:#0550ae">*</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>Width<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>resize<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>Width<span style="color:#1f2328">,</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>height<span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>initUI()
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>initUI<span style="color:#1f2328">()</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">initUI</span>(self):
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">initUI</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">):</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># create a new button</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>btn <span style="color:#f92672">=</span> QPushButton(<span style="color:#e6db74">&#39;first Button&#39;</span>, self)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>btn<span style="color:#f92672">.</span>resize(<span style="color:#ae81ff">300</span>,<span style="color:#ae81ff">90</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#57606a"># create a new button</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>btn <span style="color:#0550ae">=</span> QPushButton<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;first Button&#39;</span><span style="color:#1f2328">,</span> <span style="color:#6a737d">self</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>btn<span style="color:#0550ae">.</span>resize<span style="color:#1f2328">(</span><span style="color:#0550ae">300</span><span style="color:#1f2328">,</span><span style="color:#0550ae">90</span><span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
-</span></span><span style="display:flex;"><span>    app <span style="color:#f92672">=</span> QApplication(sys<span style="color:#f92672">.</span>argv)
-</span></span><span style="display:flex;"><span>    ex <span style="color:#f92672">=</span> Window()
-</span></span><span style="display:flex;"><span>    ex<span style="color:#f92672">.</span>show()
-</span></span><span style="display:flex;"><span>    sys<span style="color:#f92672">.</span>exit(app<span style="color:#f92672">.</span>exec_())
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">if</span> <span style="color:#953800">__name__</span> <span style="color:#0550ae">==</span> <span style="color:#0a3069">&#39;__main__&#39;</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>    app <span style="color:#0550ae">=</span> QApplication<span style="color:#1f2328">(</span>sys<span style="color:#0550ae">.</span>argv<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>    ex <span style="color:#0550ae">=</span> Window<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>    ex<span style="color:#0550ae">.</span>show<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>    sys<span style="color:#0550ae">.</span>exit<span style="color:#1f2328">(</span>app<span style="color:#0550ae">.</span>exec_<span style="color:#1f2328">())</span>
 </span></span></code></pre></div><p><img src="/img/firstWidget.png" alt="first widget"></p>
 <p>但是我们发现，如果没有添加任何布局，我们创建的按钮(self.btn), 永远被放置在窗口的左上角。即使我们可以用move函数移动它，排版作用也非常有限。因此我们需要为窗口添加布局。</p>
 <h3 id="为窗口添加布局">为窗口添加布局</h3>
 <p>PyQt5的布局(layout)有很多，比较常见的有QBoxLayout, QGridLayout, QFormLayout. 但我要说，后两种布局都有其局限性，一般只适用于特殊场景，但QBoxLayout却是一招鲜吃遍天。大部分情况下，QBoxLayout都可以替代其他两种布局方式。</p>
 <p>QBoxLayout的布局思想是：通过定义部件之间的上下左右关系来定义空间结构。因此它有两个函数QHBoxLayout和QVBoxLayout, 函数名里的H和V分别对应英文单词horizontal和vertical, 代表水平和竖直。所以，QHBoxLayout代表横向排版，QVBoxLayout表示纵向排版。</p>
 <p>下面这段代码是一个QHBoxLayout的例子。为了简洁，重复的代码就不放了，这里只贴initUI的部分。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">initUI</span>(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># setting up a layout</span>
-</span></span><span style="display:flex;"><span>        main_layout <span style="color:#f92672">=</span> QHBoxLayout()
-</span></span><span style="display:flex;"><span>        main_layout<span style="color:#f92672">.</span>addWidget(self<span style="color:#f92672">.</span>btn_left)
-</span></span><span style="display:flex;"><span>        main_layout<span style="color:#f92672">.</span>addWidget(self<span style="color:#f92672">.</span>btn_right)
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#cf222e">def</span> <span style="color:#6639ba">initUI</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#57606a"># setting up a layout</span>
+</span></span><span style="display:flex;"><span>        main_layout <span style="color:#0550ae">=</span> QHBoxLayout<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        main_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>btn_left<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        main_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>btn_right<span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># create the central widget</span>
-</span></span><span style="display:flex;"><span>        main_widget <span style="color:#f92672">=</span> QWidget()
-</span></span><span style="display:flex;"><span>        main_widget<span style="color:#f92672">.</span>setLayout(main_layout)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>setCentralWidget(main_widget)
+</span></span><span style="display:flex;"><span>        <span style="color:#57606a"># create the central widget</span>
+</span></span><span style="display:flex;"><span>        main_widget <span style="color:#0550ae">=</span> QWidget<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        main_widget<span style="color:#0550ae">.</span>setLayout<span style="color:#1f2328">(</span>main_layout<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>setCentralWidget<span style="color:#1f2328">(</span>main_widget<span style="color:#1f2328">)</span>
 </span></span></code></pre></div><p><img src="/img/firstLayout.png" alt="first layout"></p>
 <p><strong>可以看出，创建一个布局只需要三步：</strong></p>
 <ol>
@@ -740,24 +740,24 @@
 <h3 id="布局进阶之部件缩放">布局进阶之部件缩放</h3>
 <p>布局定义了部件之间的位置关系，但有了布局还不够，我们还需要定义部件之间的比例关系。这需要用到setStretch函数。</p>
 <p>下面这段代码将两个按钮之间的比例调整为1:3。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">initUI</span>(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># create a new button</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>btn_left <span style="color:#f92672">=</span> QPushButton(<span style="color:#e6db74">&#39;left&#39;</span>, self)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>btn_right <span style="color:#f92672">=</span> QPushButton(<span style="color:#e6db74">&#39;right&#39;</span>, self)
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#cf222e">def</span> <span style="color:#6639ba">initUI</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#57606a"># create a new button</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>btn_left <span style="color:#0550ae">=</span> QPushButton<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;left&#39;</span><span style="color:#1f2328">,</span> <span style="color:#6a737d">self</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>btn_right <span style="color:#0550ae">=</span> QPushButton<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;right&#39;</span><span style="color:#1f2328">,</span> <span style="color:#6a737d">self</span><span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># setting up a layout</span>
-</span></span><span style="display:flex;"><span>        main_layout <span style="color:#f92672">=</span> QHBoxLayout()
-</span></span><span style="display:flex;"><span>        main_layout<span style="color:#f92672">.</span>addWidget(self<span style="color:#f92672">.</span>btn_left)
-</span></span><span style="display:flex;"><span>        main_layout<span style="color:#f92672">.</span>addWidget(self<span style="color:#f92672">.</span>btn_right)
+</span></span><span style="display:flex;"><span>        <span style="color:#57606a"># setting up a layout</span>
+</span></span><span style="display:flex;"><span>        main_layout <span style="color:#0550ae">=</span> QHBoxLayout<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        main_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>btn_left<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        main_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>btn_right<span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># set stretch for main layout</span>
-</span></span><span style="display:flex;"><span>        main_layout<span style="color:#f92672">.</span>setStretch(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>        main_layout<span style="color:#f92672">.</span>setStretch(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#57606a"># set stretch for main layout</span>
+</span></span><span style="display:flex;"><span>        main_layout<span style="color:#0550ae">.</span>setStretch<span style="color:#1f2328">(</span><span style="color:#0550ae">0</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">1</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        main_layout<span style="color:#0550ae">.</span>setStretch<span style="color:#1f2328">(</span><span style="color:#0550ae">1</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">3</span><span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># create the central widget</span>
-</span></span><span style="display:flex;"><span>        main_widget <span style="color:#f92672">=</span> QWidget()
-</span></span><span style="display:flex;"><span>        main_widget<span style="color:#f92672">.</span>setLayout(main_layout)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>setCentralWidget(main_widget)
+</span></span><span style="display:flex;"><span>        <span style="color:#57606a"># create the central widget</span>
+</span></span><span style="display:flex;"><span>        main_widget <span style="color:#0550ae">=</span> QWidget<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        main_widget<span style="color:#0550ae">.</span>setLayout<span style="color:#1f2328">(</span>main_layout<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>setCentralWidget<span style="color:#1f2328">(</span>main_widget<span style="color:#1f2328">)</span>
 </span></span></code></pre></div><p><img src="/img/layoutStretch.png" alt="layout stretch"></p>
 <p>上述代码只在原基础上加了两行。</p>
 <ul>
@@ -774,23 +774,23 @@
 <blockquote>
 <p><strong>Note:</strong> 这里所指的布局部件，其实是一类部件，上文所说的中心部件，就是此类中的一例，点击<a href="#abstract_widget">这里</a>回顾。</p></blockquote>
 <p>下面这段代码阐释了这种迭代结构。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 创建孙子部件</span>
-</span></span><span style="display:flex;"><span>sub_sub_Layout <span style="color:#f92672">=</span> QHBoxLayout()
-</span></span><span style="display:flex;"><span>sub_sub_widget <span style="color:#f92672">=</span> QWidget()
-</span></span><span style="display:flex;"><span>sub_sub_widget<span style="color:#f92672">.</span>setLayout(sub_sub_Layout)
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#57606a"># 创建孙子部件</span>
+</span></span><span style="display:flex;"><span>sub_sub_Layout <span style="color:#0550ae">=</span> QHBoxLayout<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>sub_sub_widget <span style="color:#0550ae">=</span> QWidget<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>sub_sub_widget<span style="color:#0550ae">.</span>setLayout<span style="color:#1f2328">(</span>sub_sub_Layout<span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 创建儿子部件</span>
-</span></span><span style="display:flex;"><span>sub_Layout <span style="color:#f92672">=</span> QHBoxLayout()
-</span></span><span style="display:flex;"><span>sub_Layout<span style="color:#f92672">.</span>addWidget(sub_sub_widget)  <span style="color:#75715e"># 儿子认孙子</span>
-</span></span><span style="display:flex;"><span>sub_widget <span style="color:#f92672">=</span> QWidget()
-</span></span><span style="display:flex;"><span>sub_widget<span style="color:#f92672">.</span>setLayout(sub_Layout)
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 创建儿子部件</span>
+</span></span><span style="display:flex;"><span>sub_Layout <span style="color:#0550ae">=</span> QHBoxLayout<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>sub_Layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span>sub_sub_widget<span style="color:#1f2328">)</span>  <span style="color:#57606a"># 儿子认孙子</span>
+</span></span><span style="display:flex;"><span>sub_widget <span style="color:#0550ae">=</span> QWidget<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>sub_widget<span style="color:#0550ae">.</span>setLayout<span style="color:#1f2328">(</span>sub_Layout<span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 创建父亲部件</span>
-</span></span><span style="display:flex;"><span>main_layout <span style="color:#f92672">=</span> QHBoxLayout()
-</span></span><span style="display:flex;"><span>main_layout<span style="color:#f92672">.</span>addWidget(sub_widget)  <span style="color:#75715e"># 父亲认儿子</span>
-</span></span><span style="display:flex;"><span>main_widget <span style="color:#f92672">=</span> QWidget()
-</span></span><span style="display:flex;"><span>main_widget<span style="color:#f92672">.</span>setLayout(main_layout)
-</span></span><span style="display:flex;"><span>self<span style="color:#f92672">.</span>setCentralWidget(main_widget)
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 创建父亲部件</span>
+</span></span><span style="display:flex;"><span>main_layout <span style="color:#0550ae">=</span> QHBoxLayout<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>main_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span>sub_widget<span style="color:#1f2328">)</span>  <span style="color:#57606a"># 父亲认儿子</span>
+</span></span><span style="display:flex;"><span>main_widget <span style="color:#0550ae">=</span> QWidget<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>main_widget<span style="color:#0550ae">.</span>setLayout<span style="color:#1f2328">(</span>main_layout<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>setCentralWidget<span style="color:#1f2328">(</span>main_widget<span style="color:#1f2328">)</span>
 </span></span></code></pre></div><h3 id="制作一个布局灵活的ui界面">制作一个布局灵活的UI界面</h3>
 <p>学会了以上这些方法，再配合一些奇技淫巧，比如加空白占位的addStretch(int), 你基本上就可以随心所欲地控制布局了。</p>
 <p>附录中的代码制作了一个有意思的桌面应用：夸夸机器人。</p>
@@ -799,145 +799,145 @@
 <p>怎么让他夸你？告诉他你的姓名、性别并选择你要他夸点啥，然后点praise me, 他就会开始夸你。</p>
 <p>他还很笨，只会说很少的话，但我才不许你叫他复读机呢，哼！╭(╯^╰)╮</p>
 <h3 id="附录夸夸机器人的完整代码">附录：夸夸机器人的完整代码</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> PyQt5.QtWidgets <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> PyQt5.QtGui <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> sys<span style="color:#f92672">,</span> random
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#cf222e">from</span> <span style="color:#24292e">PyQt5.QtWidgets</span> <span style="color:#cf222e">import</span> <span style="color:#0550ae">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">from</span> <span style="color:#24292e">PyQt5.QtGui</span> <span style="color:#cf222e">import</span> <span style="color:#0550ae">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">import</span> <span style="color:#24292e">sys</span><span style="color:#0550ae">,</span> <span style="color:#24292e">random</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Window</span>(QMainWindow):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self):
-</span></span><span style="display:flex;"><span>        super()<span style="color:#f92672">.</span><span style="color:#a6e22e">__init__</span>()
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># set the title of main window</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>setWindowTitle(<span style="color:#e6db74">&#39;PyQt5 desktop application - www.luochang.ink&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">class</span> <span style="color:#1f2328">Window</span><span style="color:#1f2328">(</span>QMainWindow<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">__init__</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6639ba">super</span><span style="color:#1f2328">()</span><span style="color:#0550ae">.</span><span style="color:#6639ba">__init__</span><span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#57606a"># set the title of main window</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>setWindowTitle<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;PyQt5 desktop application - www.luochang.ink&#39;</span><span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># set the size of window</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>Width <span style="color:#f92672">=</span> <span style="color:#ae81ff">700</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>height <span style="color:#f92672">=</span> int(<span style="color:#ae81ff">0.618</span> <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>Width)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>resize(self<span style="color:#f92672">.</span>Width, self<span style="color:#f92672">.</span>height)
+</span></span><span style="display:flex;"><span>        <span style="color:#57606a"># set the size of window</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>Width <span style="color:#0550ae">=</span> <span style="color:#0550ae">700</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>height <span style="color:#0550ae">=</span> <span style="color:#6639ba">int</span><span style="color:#1f2328">(</span><span style="color:#0550ae">0.618</span> <span style="color:#0550ae">*</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>Width<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>resize<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>Width<span style="color:#1f2328">,</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>height<span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># create all widgets</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>Label1 <span style="color:#f92672">=</span> QLabel(<span style="color:#e6db74">&#34;夸夸机器人 - Praise me please&#34;</span>)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>Label1<span style="color:#f92672">.</span>setFont(QFont(<span style="color:#e6db74">&#39;bold&#39;</span>, <span style="color:#ae81ff">14</span>))
+</span></span><span style="display:flex;"><span>        <span style="color:#57606a"># create all widgets</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>Label1 <span style="color:#0550ae">=</span> QLabel<span style="color:#1f2328">(</span><span style="color:#0a3069">&#34;夸夸机器人 - Praise me please&#34;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>Label1<span style="color:#0550ae">.</span>setFont<span style="color:#1f2328">(</span>QFont<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;bold&#39;</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">14</span><span style="color:#1f2328">))</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>Label2 <span style="color:#f92672">=</span> QLabel(<span style="color:#e6db74">&#34;created by luochang&#34;</span>)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>Label2<span style="color:#f92672">.</span>setFont(QFont(<span style="color:#e6db74">&#39;bold&#39;</span>, <span style="color:#ae81ff">7</span>))
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>Label2 <span style="color:#0550ae">=</span> QLabel<span style="color:#1f2328">(</span><span style="color:#0a3069">&#34;created by luochang&#34;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>Label2<span style="color:#0550ae">.</span>setFont<span style="color:#1f2328">(</span>QFont<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;bold&#39;</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">7</span><span style="color:#1f2328">))</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>nameBox <span style="color:#f92672">=</span> QLineEdit(<span style="color:#e6db74">&#39;你&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>nameBox <span style="color:#0550ae">=</span> QLineEdit<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;你&#39;</span><span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>genderBox <span style="color:#f92672">=</span> QComboBox()
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>genderBox<span style="color:#f92672">.</span>addItem(<span style="color:#e6db74">&#39;all&#39;</span>)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>genderBox<span style="color:#f92672">.</span>addItem(<span style="color:#e6db74">&#39;female&#39;</span>)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>genderBox<span style="color:#f92672">.</span>addItem(<span style="color:#e6db74">&#39;male&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>genderBox <span style="color:#0550ae">=</span> QComboBox<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>genderBox<span style="color:#0550ae">.</span>addItem<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;all&#39;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>genderBox<span style="color:#0550ae">.</span>addItem<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;female&#39;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>genderBox<span style="color:#0550ae">.</span>addItem<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;male&#39;</span><span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>advantageBox <span style="color:#f92672">=</span> QComboBox()
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>advantageBox<span style="color:#f92672">.</span>addItem(<span style="color:#e6db74">&#39;all&#39;</span>)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>advantageBox<span style="color:#f92672">.</span>addItem(<span style="color:#e6db74">&#39;character&#39;</span>)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>advantageBox<span style="color:#f92672">.</span>addItem(<span style="color:#e6db74">&#39;intelligence&#39;</span>)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>advantageBox<span style="color:#f92672">.</span>addItem(<span style="color:#e6db74">&#39;appearance&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>advantageBox <span style="color:#0550ae">=</span> QComboBox<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>advantageBox<span style="color:#0550ae">.</span>addItem<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;all&#39;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>advantageBox<span style="color:#0550ae">.</span>addItem<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;character&#39;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>advantageBox<span style="color:#0550ae">.</span>addItem<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;intelligence&#39;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>advantageBox<span style="color:#0550ae">.</span>addItem<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;appearance&#39;</span><span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>textBox <span style="color:#f92672">=</span> QTextEdit(self)
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>textBox <span style="color:#0550ae">=</span> QTextEdit<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>btn <span style="color:#f92672">=</span> QPushButton(<span style="color:#e6db74">&#39;Praise me&#39;</span>, self)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>btn<span style="color:#f92672">.</span>clicked<span style="color:#f92672">.</span>connect(self<span style="color:#f92672">.</span>praise_me)
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>btn <span style="color:#0550ae">=</span> QPushButton<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;Praise me&#39;</span><span style="color:#1f2328">,</span> <span style="color:#6a737d">self</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>btn<span style="color:#0550ae">.</span>clicked<span style="color:#0550ae">.</span>connect<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>praise_me<span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>initUI()
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>initUI<span style="color:#1f2328">()</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">initUI</span>(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># setting up layout of main window</span>
-</span></span><span style="display:flex;"><span>        upper_widget <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>create_upper_widget()
-</span></span><span style="display:flex;"><span>        lower_widget <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>create_lower_widget()
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">initUI</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#57606a"># setting up layout of main window</span>
+</span></span><span style="display:flex;"><span>        upper_widget <span style="color:#0550ae">=</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>create_upper_widget<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        lower_widget <span style="color:#0550ae">=</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>create_lower_widget<span style="color:#1f2328">()</span>
 </span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        main_layout <span style="color:#f92672">=</span> QVBoxLayout()
-</span></span><span style="display:flex;"><span>        main_layout<span style="color:#f92672">.</span>addWidget(upper_widget)
-</span></span><span style="display:flex;"><span>        main_layout<span style="color:#f92672">.</span>addWidget(lower_widget)
-</span></span><span style="display:flex;"><span>        main_layout<span style="color:#f92672">.</span>setStretch(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>        main_layout<span style="color:#f92672">.</span>setStretch(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">4</span>)
-</span></span><span style="display:flex;"><span>        main_widget <span style="color:#f92672">=</span> QWidget()
-</span></span><span style="display:flex;"><span>        main_widget<span style="color:#f92672">.</span>setLayout(main_layout)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>setCentralWidget(main_widget)
+</span></span><span style="display:flex;"><span>        main_layout <span style="color:#0550ae">=</span> QVBoxLayout<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        main_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span>upper_widget<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        main_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span>lower_widget<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        main_layout<span style="color:#0550ae">.</span>setStretch<span style="color:#1f2328">(</span><span style="color:#0550ae">0</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">1</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        main_layout<span style="color:#0550ae">.</span>setStretch<span style="color:#1f2328">(</span><span style="color:#0550ae">1</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">4</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        main_widget <span style="color:#0550ae">=</span> QWidget<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        main_widget<span style="color:#0550ae">.</span>setLayout<span style="color:#1f2328">(</span>main_layout<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>setCentralWidget<span style="color:#1f2328">(</span>main_widget<span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">create_upper_widget</span>(self):
-</span></span><span style="display:flex;"><span>        upper_layout <span style="color:#f92672">=</span> QVBoxLayout()
-</span></span><span style="display:flex;"><span>        upper_layout<span style="color:#f92672">.</span>addWidget(self<span style="color:#f92672">.</span>Label1)
-</span></span><span style="display:flex;"><span>        upper_layout<span style="color:#f92672">.</span>addStretch(<span style="color:#ae81ff">5</span>)
-</span></span><span style="display:flex;"><span>        upper_layout<span style="color:#f92672">.</span>addWidget(self<span style="color:#f92672">.</span>Label2)
-</span></span><span style="display:flex;"><span>        upper_layout<span style="color:#f92672">.</span>addStretch(<span style="color:#ae81ff">5</span>)
-</span></span><span style="display:flex;"><span>        upper_widget <span style="color:#f92672">=</span> QWidget()
-</span></span><span style="display:flex;"><span>        upper_widget<span style="color:#f92672">.</span>setLayout(upper_layout)
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> upper_widget
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">create_upper_widget</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        upper_layout <span style="color:#0550ae">=</span> QVBoxLayout<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        upper_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>Label1<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        upper_layout<span style="color:#0550ae">.</span>addStretch<span style="color:#1f2328">(</span><span style="color:#0550ae">5</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        upper_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>Label2<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        upper_layout<span style="color:#0550ae">.</span>addStretch<span style="color:#1f2328">(</span><span style="color:#0550ae">5</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        upper_widget <span style="color:#0550ae">=</span> QWidget<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        upper_widget<span style="color:#0550ae">.</span>setLayout<span style="color:#1f2328">(</span>upper_layout<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> upper_widget
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">create_lower_widget</span>(self):
-</span></span><span style="display:flex;"><span>        lower_left_widget <span style="color:#f92672">=</span> QGroupBox(<span style="color:#e6db74">&#34;Selections&#34;</span>)
-</span></span><span style="display:flex;"><span>        lower_left_layout <span style="color:#f92672">=</span> QVBoxLayout()        
-</span></span><span style="display:flex;"><span>        lower_left_layout<span style="color:#f92672">.</span>addWidget(QLabel(<span style="color:#e6db74">&#34;Your name:&#34;</span>))
-</span></span><span style="display:flex;"><span>        lower_left_layout<span style="color:#f92672">.</span>addWidget(self<span style="color:#f92672">.</span>nameBox)
-</span></span><span style="display:flex;"><span>        lower_left_layout<span style="color:#f92672">.</span>addWidget(QLabel(<span style="color:#e6db74">&#34;Your gender:&#34;</span>))
-</span></span><span style="display:flex;"><span>        lower_left_layout<span style="color:#f92672">.</span>addWidget(self<span style="color:#f92672">.</span>genderBox)
-</span></span><span style="display:flex;"><span>        lower_left_layout<span style="color:#f92672">.</span>addWidget(QLabel(<span style="color:#e6db74">&#34;Your advantage:&#34;</span>))
-</span></span><span style="display:flex;"><span>        lower_left_layout<span style="color:#f92672">.</span>addWidget(self<span style="color:#f92672">.</span>advantageBox)
-</span></span><span style="display:flex;"><span>        lower_left_layout<span style="color:#f92672">.</span>addStretch(<span style="color:#ae81ff">5</span>)
-</span></span><span style="display:flex;"><span>        lower_left_layout<span style="color:#f92672">.</span>addWidget(self<span style="color:#f92672">.</span>btn)
-</span></span><span style="display:flex;"><span>        lower_left_widget<span style="color:#f92672">.</span>setLayout(lower_left_layout)
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">create_lower_widget</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        lower_left_widget <span style="color:#0550ae">=</span> QGroupBox<span style="color:#1f2328">(</span><span style="color:#0a3069">&#34;Selections&#34;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        lower_left_layout <span style="color:#0550ae">=</span> QVBoxLayout<span style="color:#1f2328">()</span>        
+</span></span><span style="display:flex;"><span>        lower_left_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span>QLabel<span style="color:#1f2328">(</span><span style="color:#0a3069">&#34;Your name:&#34;</span><span style="color:#1f2328">))</span>
+</span></span><span style="display:flex;"><span>        lower_left_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>nameBox<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        lower_left_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span>QLabel<span style="color:#1f2328">(</span><span style="color:#0a3069">&#34;Your gender:&#34;</span><span style="color:#1f2328">))</span>
+</span></span><span style="display:flex;"><span>        lower_left_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>genderBox<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        lower_left_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span>QLabel<span style="color:#1f2328">(</span><span style="color:#0a3069">&#34;Your advantage:&#34;</span><span style="color:#1f2328">))</span>
+</span></span><span style="display:flex;"><span>        lower_left_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>advantageBox<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        lower_left_layout<span style="color:#0550ae">.</span>addStretch<span style="color:#1f2328">(</span><span style="color:#0550ae">5</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        lower_left_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>btn<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        lower_left_widget<span style="color:#0550ae">.</span>setLayout<span style="color:#1f2328">(</span>lower_left_layout<span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        lower_right_layout <span style="color:#f92672">=</span> QVBoxLayout()
-</span></span><span style="display:flex;"><span>        lower_right_layout<span style="color:#f92672">.</span>addWidget(self<span style="color:#f92672">.</span>textBox)
-</span></span><span style="display:flex;"><span>        lower_right_widget <span style="color:#f92672">=</span> QWidget()
-</span></span><span style="display:flex;"><span>        lower_right_widget<span style="color:#f92672">.</span>setLayout(lower_right_layout)
+</span></span><span style="display:flex;"><span>        lower_right_layout <span style="color:#0550ae">=</span> QVBoxLayout<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        lower_right_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>textBox<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        lower_right_widget <span style="color:#0550ae">=</span> QWidget<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        lower_right_widget<span style="color:#0550ae">.</span>setLayout<span style="color:#1f2328">(</span>lower_right_layout<span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        lower_layout <span style="color:#f92672">=</span> QHBoxLayout()
-</span></span><span style="display:flex;"><span>        lower_layout<span style="color:#f92672">.</span>addWidget(lower_left_widget)
-</span></span><span style="display:flex;"><span>        lower_layout<span style="color:#f92672">.</span>addWidget(lower_right_widget)
-</span></span><span style="display:flex;"><span>        lower_layout<span style="color:#f92672">.</span>setStretch(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>        lower_layout<span style="color:#f92672">.</span>setStretch(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>)
-</span></span><span style="display:flex;"><span>        lower_widget <span style="color:#f92672">=</span> QWidget()
-</span></span><span style="display:flex;"><span>        lower_widget<span style="color:#f92672">.</span>setLayout(lower_layout)
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> lower_widget
+</span></span><span style="display:flex;"><span>        lower_layout <span style="color:#0550ae">=</span> QHBoxLayout<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        lower_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span>lower_left_widget<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        lower_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span>lower_right_widget<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        lower_layout<span style="color:#0550ae">.</span>setStretch<span style="color:#1f2328">(</span><span style="color:#0550ae">0</span><span style="color:#1f2328">,</span><span style="color:#0550ae">1</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        lower_layout<span style="color:#0550ae">.</span>setStretch<span style="color:#1f2328">(</span><span style="color:#0550ae">1</span><span style="color:#1f2328">,</span><span style="color:#0550ae">2</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        lower_widget <span style="color:#0550ae">=</span> QWidget<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        lower_widget<span style="color:#0550ae">.</span>setLayout<span style="color:#1f2328">(</span>lower_layout<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> lower_widget
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">praise_me</span>(self):
-</span></span><span style="display:flex;"><span>        name <span style="color:#f92672">=</span> str(self<span style="color:#f92672">.</span>nameBox<span style="color:#f92672">.</span>text())
-</span></span><span style="display:flex;"><span>        gender <span style="color:#f92672">=</span> str(self<span style="color:#f92672">.</span>genderBox<span style="color:#f92672">.</span>currentText())
-</span></span><span style="display:flex;"><span>        advantage <span style="color:#f92672">=</span> str(self<span style="color:#f92672">.</span>advantageBox<span style="color:#f92672">.</span>currentText())
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">praise_me</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        name <span style="color:#0550ae">=</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>nameBox<span style="color:#0550ae">.</span>text<span style="color:#1f2328">())</span>
+</span></span><span style="display:flex;"><span>        gender <span style="color:#0550ae">=</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>genderBox<span style="color:#0550ae">.</span>currentText<span style="color:#1f2328">())</span>
+</span></span><span style="display:flex;"><span>        advantage <span style="color:#0550ae">=</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>advantageBox<span style="color:#0550ae">.</span>currentText<span style="color:#1f2328">())</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        sentence <span style="color:#f92672">=</span> [[<span style="color:#e6db74">&#39;怎么可以这么好！&#39;</span>, <span style="color:#e6db74">&#39;是要萌死我吗？&#39;</span>, <span style="color:#e6db74">&#39;举止端方，温文尔雅&#39;</span>, <span style="color:#e6db74">&#39;知书达理&#39;</span>, <span style="color:#e6db74">&#39;言谈可亲&#39;</span>, <span style="color:#e6db74">&#39;是我的小天使&#39;</span>,\
-</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#39;豁达开朗&#39;</span>, <span style="color:#e6db74">&#39;温柔体贴善解人意&#39;</span>, <span style="color:#e6db74">&#39;非常绅士&#39;</span>, <span style="color:#e6db74">&#39;为人大方，乐于助人&#39;</span>, <span style="color:#e6db74">&#39;重情重义&#39;</span>, <span style="color:#e6db74">&#39;是个值得信任的男人&#39;</span>], 
-</span></span><span style="display:flex;"><span>                    [<span style="color:#e6db74">&#39;博闻强记&#39;</span>, <span style="color:#e6db74">&#39;才高八斗&#39;</span>, <span style="color:#e6db74">&#39;饱读诗书&#39;</span>, <span style="color:#e6db74">&#39;秀外慧中&#39;</span>, <span style="color:#e6db74">&#39;真是个小机灵鬼&#39;</span>, <span style="color:#e6db74">&#39;明明可以靠脸吃饭，非要靠才华&#39;</span>,\
-</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#39;品学兼优&#39;</span>, <span style="color:#e6db74">&#39;学富五车&#39;</span>, <span style="color:#e6db74">&#39;上知天文下知地理&#39;</span>,<span style="color:#e6db74">&#39;是诸葛亮转世&#39;</span>, <span style="color:#e6db74">&#39;有颜又有才&#39;</span>, <span style="color:#e6db74">&#39;可以说是“上得厅堂，下得厨房”&#39;</span>],
-</span></span><span style="display:flex;"><span>                    [<span style="color:#e6db74">&#39;好苗条哦！我好酸&#39;</span>, <span style="color:#e6db74">&#39;是我的梦中女神&#39;</span>, <span style="color:#e6db74">&#39;美丽大方&#39;</span>, <span style="color:#e6db74">&#39;刚一出来我还以为是刘亦菲&#39;</span>, <span style="color:#e6db74">&#39;好可爱，像洋娃娃&#39;</span>, <span style="color:#e6db74">&#39;的可爱值得我用一生来守护&#39;</span>,\
-</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#39;好帅！！我想给你生猴子&#39;</span>, <span style="color:#e6db74">&#39;可太帅了，我能爱一辈子&#39;</span>, <span style="color:#e6db74">&#39;帅气又迷人&#39;</span>, <span style="color:#e6db74">&#39;是酷酷男孩！&#39;</span>, <span style="color:#e6db74">&#39;有着大海般深邃的眼睛&#39;</span>, <span style="color:#e6db74">&#39;是个帅小伙&#39;</span>]]
+</span></span><span style="display:flex;"><span>        sentence <span style="color:#0550ae">=</span> <span style="color:#1f2328">[[</span><span style="color:#0a3069">&#39;怎么可以这么好！&#39;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;是要萌死我吗？&#39;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;举止端方，温文尔雅&#39;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;知书达理&#39;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;言谈可亲&#39;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;是我的小天使&#39;</span><span style="color:#1f2328">,</span>\
+</span></span><span style="display:flex;"><span>                    <span style="color:#0a3069">&#39;豁达开朗&#39;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;温柔体贴善解人意&#39;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;非常绅士&#39;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;为人大方，乐于助人&#39;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;重情重义&#39;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;是个值得信任的男人&#39;</span><span style="color:#1f2328">],</span> 
+</span></span><span style="display:flex;"><span>                    <span style="color:#1f2328">[</span><span style="color:#0a3069">&#39;博闻强记&#39;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;才高八斗&#39;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;饱读诗书&#39;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;秀外慧中&#39;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;真是个小机灵鬼&#39;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;明明可以靠脸吃饭，非要靠才华&#39;</span><span style="color:#1f2328">,</span>\
+</span></span><span style="display:flex;"><span>                    <span style="color:#0a3069">&#39;品学兼优&#39;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;学富五车&#39;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;上知天文下知地理&#39;</span><span style="color:#1f2328">,</span><span style="color:#0a3069">&#39;是诸葛亮转世&#39;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;有颜又有才&#39;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;可以说是“上得厅堂，下得厨房”&#39;</span><span style="color:#1f2328">],</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#1f2328">[</span><span style="color:#0a3069">&#39;好苗条哦！我好酸&#39;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;是我的梦中女神&#39;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;美丽大方&#39;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;刚一出来我还以为是刘亦菲&#39;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;好可爱，像洋娃娃&#39;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;的可爱值得我用一生来守护&#39;</span><span style="color:#1f2328">,</span>\
+</span></span><span style="display:flex;"><span>                    <span style="color:#0a3069">&#39;好帅！！我想给你生猴子&#39;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;可太帅了，我能爱一辈子&#39;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;帅气又迷人&#39;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;是酷酷男孩！&#39;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;有着大海般深邃的眼睛&#39;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;是个帅小伙&#39;</span><span style="color:#1f2328">]]</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> gender <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;all&#39;</span>:
-</span></span><span style="display:flex;"><span>            column_start <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-</span></span><span style="display:flex;"><span>            column_stop <span style="color:#f92672">=</span> len(sentence[<span style="color:#ae81ff">0</span>])
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elif</span> gender <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;female&#39;</span>:
-</span></span><span style="display:flex;"><span>            column_start <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-</span></span><span style="display:flex;"><span>            column_stop <span style="color:#f92672">=</span> int(len(sentence[<span style="color:#ae81ff">0</span>])<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>)
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elif</span> gender <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;male&#39;</span>:
-</span></span><span style="display:flex;"><span>            column_start <span style="color:#f92672">=</span> int(len(sentence[<span style="color:#ae81ff">0</span>])<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>)
-</span></span><span style="display:flex;"><span>            column_stop <span style="color:#f92672">=</span> len(sentence[<span style="color:#ae81ff">0</span>])
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
-</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#39;genderBox error&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">if</span> gender <span style="color:#0550ae">==</span> <span style="color:#0a3069">&#39;all&#39;</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>            column_start <span style="color:#0550ae">=</span> <span style="color:#0550ae">0</span>
+</span></span><span style="display:flex;"><span>            column_stop <span style="color:#0550ae">=</span> <span style="color:#6639ba">len</span><span style="color:#1f2328">(</span>sentence<span style="color:#1f2328">[</span><span style="color:#0550ae">0</span><span style="color:#1f2328">])</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">elif</span> gender <span style="color:#0550ae">==</span> <span style="color:#0a3069">&#39;female&#39;</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>            column_start <span style="color:#0550ae">=</span> <span style="color:#0550ae">0</span>
+</span></span><span style="display:flex;"><span>            column_stop <span style="color:#0550ae">=</span> <span style="color:#6639ba">int</span><span style="color:#1f2328">(</span><span style="color:#6639ba">len</span><span style="color:#1f2328">(</span>sentence<span style="color:#1f2328">[</span><span style="color:#0550ae">0</span><span style="color:#1f2328">])</span><span style="color:#0550ae">/</span><span style="color:#0550ae">2</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">elif</span> gender <span style="color:#0550ae">==</span> <span style="color:#0a3069">&#39;male&#39;</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>            column_start <span style="color:#0550ae">=</span> <span style="color:#6639ba">int</span><span style="color:#1f2328">(</span><span style="color:#6639ba">len</span><span style="color:#1f2328">(</span>sentence<span style="color:#1f2328">[</span><span style="color:#0550ae">0</span><span style="color:#1f2328">])</span><span style="color:#0550ae">/</span><span style="color:#0550ae">2</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>            column_stop <span style="color:#0550ae">=</span> <span style="color:#6639ba">len</span><span style="color:#1f2328">(</span>sentence<span style="color:#1f2328">[</span><span style="color:#0550ae">0</span><span style="color:#1f2328">])</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">else</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#6639ba">print</span><span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;genderBox error&#39;</span><span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> advantage <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;all&#39;</span>:
-</span></span><span style="display:flex;"><span>            row <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>randrange(<span style="color:#ae81ff">0</span>, len(sentence))
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elif</span> advantage <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;character&#39;</span>:
-</span></span><span style="display:flex;"><span>            row <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elif</span> advantage <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;intelligence&#39;</span>:
-</span></span><span style="display:flex;"><span>            row <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elif</span> advantage <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;appearance&#39;</span>:
-</span></span><span style="display:flex;"><span>            row <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
-</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#39;advantageBox error&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">if</span> advantage <span style="color:#0550ae">==</span> <span style="color:#0a3069">&#39;all&#39;</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>            row <span style="color:#0550ae">=</span> random<span style="color:#0550ae">.</span>randrange<span style="color:#1f2328">(</span><span style="color:#0550ae">0</span><span style="color:#1f2328">,</span> <span style="color:#6639ba">len</span><span style="color:#1f2328">(</span>sentence<span style="color:#1f2328">))</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">elif</span> advantage <span style="color:#0550ae">==</span> <span style="color:#0a3069">&#39;character&#39;</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>            row <span style="color:#0550ae">=</span> <span style="color:#0550ae">0</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">elif</span> advantage <span style="color:#0550ae">==</span> <span style="color:#0a3069">&#39;intelligence&#39;</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>            row <span style="color:#0550ae">=</span> <span style="color:#0550ae">1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">elif</span> advantage <span style="color:#0550ae">==</span> <span style="color:#0a3069">&#39;appearance&#39;</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>            row <span style="color:#0550ae">=</span> <span style="color:#0550ae">2</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">else</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#6639ba">print</span><span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;advantageBox error&#39;</span><span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        praise_sentence <span style="color:#f92672">=</span> sentence[row][random<span style="color:#f92672">.</span>randrange(column_start, column_stop)]
+</span></span><span style="display:flex;"><span>        praise_sentence <span style="color:#0550ae">=</span> sentence<span style="color:#1f2328">[</span>row<span style="color:#1f2328">][</span>random<span style="color:#0550ae">.</span>randrange<span style="color:#1f2328">(</span>column_start<span style="color:#1f2328">,</span> column_stop<span style="color:#1f2328">)]</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>textBox<span style="color:#f92672">.</span>setText(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{}{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(name, praise_sentence))
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>textBox<span style="color:#0550ae">.</span>setText<span style="color:#1f2328">(</span><span style="color:#0a3069">&#34;</span><span style="color:#0a3069">{}{}</span><span style="color:#0a3069">&#34;</span><span style="color:#0550ae">.</span>format<span style="color:#1f2328">(</span>name<span style="color:#1f2328">,</span> praise_sentence<span style="color:#1f2328">))</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
-</span></span><span style="display:flex;"><span>    app <span style="color:#f92672">=</span> QApplication(sys<span style="color:#f92672">.</span>argv)
-</span></span><span style="display:flex;"><span>    ex <span style="color:#f92672">=</span> Window()
-</span></span><span style="display:flex;"><span>    ex<span style="color:#f92672">.</span>show()
-</span></span><span style="display:flex;"><span>    sys<span style="color:#f92672">.</span>exit(app<span style="color:#f92672">.</span>exec_())
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">if</span> <span style="color:#953800">__name__</span> <span style="color:#0550ae">==</span> <span style="color:#0a3069">&#39;__main__&#39;</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>    app <span style="color:#0550ae">=</span> QApplication<span style="color:#1f2328">(</span>sys<span style="color:#0550ae">.</span>argv<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>    ex <span style="color:#0550ae">=</span> Window<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>    ex<span style="color:#0550ae">.</span>show<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>    sys<span style="color:#0550ae">.</span>exit<span style="color:#1f2328">(</span>app<span style="color:#0550ae">.</span>exec_<span style="color:#1f2328">())</span>
 </span></span></code></pre></div>
   </div>
 
@@ -960,7 +960,10 @@
       </a>
       
       <a href="https://www.zhihu.com/people/Fashionable" target="_blank" rel="noopener noreferrer">
-        <i class="fab fa-zhihu"></i> 知乎
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2" 
+             stroke-linecap="round" stroke-linejoin="round" style="width: 1em; height: 1em; vertical-align: -0.125em; display: inline-block;">
+          <path d="m13.3334,3.60098l0,17.1471l1.79582,0l0.75424,2.13703l3.18459,-2.13703l3.93584,0l0,-17.1471l-9.6705,0zm7.41375,14.87538l-1.79283,0l-2.24777,1.50849l-0.53276,-1.50849l-0.53875,0l0,-12.53483l5.10911,0l0,12.53483l0.00299,0zm-8.56906,-7.18927l-3.97475,0c0.06285,-1.34387 0.1287,-3.12174 0.19754,-5.17496l3.91788,0l-0.00299,-0.24244c0,-0.01796 -0.00599,-0.43998 -0.06884,-0.87097c-0.06285,-0.44896 -0.19754,-1.04457 -0.62854,-1.04457l-6.5727,0c0.13169,-0.61657 0.46991,-2.08615 0.87995,-2.80747l0.19155,-0.33522l-0.3861,-0.02095c-0.02394,0 -0.58663,-0.02694 -1.23912,0.31726c-1.06851,0.56868 -1.5474,1.68807 -1.75691,2.52612c-0.55072,2.18791 -1.33489,3.70837 -1.66712,4.35786c-0.09877,0.19155 -0.15863,0.30529 -0.18557,0.38311c-0.05387,0.14666 -0.02394,0.29332 0.0838,0.38909c0.31427,0.28434 1.14334,-0.0868 1.15232,-0.08979c0.01796,-0.00898 0.03891,-0.01796 0.06585,-0.02993c0.41603,-0.18856 1.64916,-0.74826 2.08914,-2.52911l1.69705,0c0.02095,0.96376 0.09278,4.14236 0.0868,5.17496l-4.22018,0l-0.06285,0.0449c-0.69139,0.50582 -0.91288,1.8916 -0.92185,1.95146l-0.0419,0.27536l4.99837,0c-0.36814,2.34355 -0.79315,3.3941 -1.01763,3.81313c-0.11074,0.20951 -0.21849,0.41902 -0.32025,0.62255c-0.63752,1.26306 -1.29898,2.56802 -3.7802,4.5973c-0.10775,0.0838 -0.20951,0.23944 -0.14367,0.41005c0.07183,0.18856 0.27835,0.27237 0.73629,0.27237c0.16162,0 0.35318,-0.00898 0.58065,-0.02993c1.49352,-0.13169 3.01698,-0.53875 4.04359,-2.6219c0.50882,-1.05056 0.94879,-2.14601 1.31394,-3.25941l4.08549,4.78886l0.14965,-0.35916c0.02394,-0.05687 0.56868,-1.38578 0.15264,-2.87032l-0.01497,-0.05387l-3.23547,-3.68143l-0.65847,0.49684c0.19155,-0.78118 0.31726,-1.49352 0.37413,-2.12805l4.74995,0l0,-0.23944c0,-1.20021 -0.55371,-1.91255 -0.57466,-1.94248l-0.07183,-0.08979z" />
+        </svg> 知乎
       </a>
 
       <a href="/index.xml" target="_blank" rel="noopener noreferrer">

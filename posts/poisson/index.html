@@ -670,95 +670,95 @@
 <p>这里还有个技巧。因为在假设中，<code>$\Delta t$</code> 代表无限小的时间间隔，但在编程中，我们没法写出无限小这种东西（其实可以，求别杠）。因此只能量力而行。比如，如果 <code>$t$</code> 代表一个小时，而 <code>$\lambda$</code> 表示 20 次每小时，则我们的时间片只要切到比 20 这个数字大一到两个数量级即可。20 是的数量级是十，大两个数量级是千。这里我们把一小时时间切割为一千个时间片，并将每个时间片内事件发生的概率设为 <sup>20</sup>⁄<sub>1000</sub>，就保证了一小时内，事件发生次数的期望是 20 了。也就在千分之一小时的精度内，满足了 <code>$P = \lambda \Delta t$</code> 这个公式。</p>
 <!-- 时间片当然是分得越细越好，这里一到两个数量级也只是个人之见，具体效果可以自行试验。 -->
 <p>OK，闲言少叙，我们这就开始建模仿真。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># -*- coding: utf-8 -*-</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#57606a"># -*- coding: utf-8 -*-</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;泊松仿真
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   author: github@luochang212
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   usage: python poisson.py [RATE] </span><span style="color:#e6db74">{TIME}</span><span style="color:#e6db74">
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#0a3069">&#34;&#34;&#34;泊松仿真
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">   author: github@luochang212
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">   usage: python poisson.py [RATE] </span><span style="color:#0a3069">{TIME}</span><span style="color:#0a3069">
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">&#34;&#34;&#34;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> random
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> collections
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">import</span> <span style="color:#24292e">sys</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">import</span> <span style="color:#24292e">random</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">import</span> <span style="color:#24292e">collections</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">import</span> <span style="color:#24292e">matplotlib.pyplot</span> <span style="color:#cf222e">as</span> <span style="color:#24292e">plt</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Poisson</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self, rate<span style="color:#f92672">=</span>sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">1</span>]):
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>rate <span style="color:#f92672">=</span> int(rate)
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">class</span> <span style="color:#1f2328">Poisson</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">__init__</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">,</span> rate<span style="color:#0550ae">=</span>sys<span style="color:#0550ae">.</span>argv<span style="color:#1f2328">[</span><span style="color:#0550ae">1</span><span style="color:#1f2328">]):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>rate <span style="color:#0550ae">=</span> <span style="color:#6639ba">int</span><span style="color:#1f2328">(</span>rate<span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>time <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>  <span style="color:#75715e"># 单位时间</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> len(sys<span style="color:#f92672">.</span>argv) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">and</span> sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;&#34;</span>:
-</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>time <span style="color:#f92672">=</span> int(sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">2</span>])  <span style="color:#75715e"># 手动指定时间范围</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>time <span style="color:#0550ae">=</span> <span style="color:#0550ae">1</span>  <span style="color:#57606a"># 单位时间</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">if</span> <span style="color:#6639ba">len</span><span style="color:#1f2328">(</span>sys<span style="color:#0550ae">.</span>argv<span style="color:#1f2328">)</span> <span style="color:#0550ae">&gt;</span> <span style="color:#0550ae">2</span> <span style="color:#0550ae">and</span> sys<span style="color:#0550ae">.</span>argv<span style="color:#1f2328">[</span><span style="color:#0550ae">2</span><span style="color:#1f2328">]</span> <span style="color:#0550ae">!=</span> <span style="color:#0a3069">&#34;&#34;</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>time <span style="color:#0550ae">=</span> <span style="color:#6639ba">int</span><span style="color:#1f2328">(</span>sys<span style="color:#0550ae">.</span>argv<span style="color:#1f2328">[</span><span style="color:#0550ae">2</span><span style="color:#1f2328">])</span>  <span style="color:#57606a"># 手动指定时间范围</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>EXP_NUM <span style="color:#f92672">=</span> <span style="color:#ae81ff">100000</span>  <span style="color:#75715e"># 实验次数</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>NUM_LEVEL <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>  <span style="color:#75715e"># 数量级</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>EXP_NUM <span style="color:#0550ae">=</span> <span style="color:#0550ae">100000</span>  <span style="color:#57606a"># 实验次数</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>NUM_LEVEL <span style="color:#0550ae">=</span> <span style="color:#0550ae">2</span>  <span style="color:#57606a"># 数量级</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">generator</span>(self, prob):
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;仿真结果生成器&#34;&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> random<span style="color:#f92672">.</span>random() <span style="color:#f92672">&lt;</span> prob:
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">yield</span> <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span>:
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">yield</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">generator</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">,</span> prob<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;&#34;&#34;仿真结果生成器&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">while</span> <span style="color:#cf222e">True</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#cf222e">if</span> random<span style="color:#0550ae">.</span>random<span style="color:#1f2328">()</span> <span style="color:#0550ae">&lt;</span> prob<span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#cf222e">yield</span> <span style="color:#0550ae">1</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#cf222e">else</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#cf222e">yield</span> <span style="color:#0550ae">0</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">perform_exp</span>(self, rate, time):
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;进行一次实验
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        每次实验中，时间分片的数量比rate高两个数量级
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>        level <span style="color:#f92672">=</span> len(str(rate))
-</span></span><span style="display:flex;"><span>        shard_num <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">**</span> (level <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>NUM_LEVEL)  <span style="color:#75715e"># 计算时间分片的数量</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">perform_exp</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">,</span> rate<span style="color:#1f2328">,</span> time<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;&#34;&#34;进行一次实验
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">        每次实验中，时间分片的数量比rate高两个数量级
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">        &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        level <span style="color:#0550ae">=</span> <span style="color:#6639ba">len</span><span style="color:#1f2328">(</span><span style="color:#6639ba">str</span><span style="color:#1f2328">(</span>rate<span style="color:#1f2328">))</span>
+</span></span><span style="display:flex;"><span>        shard_num <span style="color:#0550ae">=</span> <span style="color:#0550ae">10</span> <span style="color:#0550ae">**</span> <span style="color:#1f2328">(</span>level <span style="color:#0550ae">+</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>NUM_LEVEL<span style="color:#1f2328">)</span>  <span style="color:#57606a"># 计算时间分片的数量</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        gen <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>generator(rate <span style="color:#f92672">/</span> shard_num)
+</span></span><span style="display:flex;"><span>        gen <span style="color:#0550ae">=</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>generator<span style="color:#1f2328">(</span>rate <span style="color:#0550ae">/</span> shard_num<span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        cnt <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(time <span style="color:#f92672">*</span> shard_num):
-</span></span><span style="display:flex;"><span>            cnt <span style="color:#f92672">+=</span> next(gen)
+</span></span><span style="display:flex;"><span>        cnt <span style="color:#0550ae">=</span> <span style="color:#0550ae">0</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">for</span> _ <span style="color:#0550ae">in</span> <span style="color:#6639ba">range</span><span style="color:#1f2328">(</span>time <span style="color:#0550ae">*</span> shard_num<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>            cnt <span style="color:#0550ae">+=</span> <span style="color:#6639ba">next</span><span style="color:#1f2328">(</span>gen<span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> cnt
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> cnt
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">perform_exps</span>(self, exp_num, rate, time):
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;多次实验，得到分布&#34;&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>        lst <span style="color:#f92672">=</span> []
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(exp_num):
-</span></span><span style="display:flex;"><span>            lst<span style="color:#f92672">.</span>append(self<span style="color:#f92672">.</span>perform_exp(rate, time))
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">perform_exps</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">,</span> exp_num<span style="color:#1f2328">,</span> rate<span style="color:#1f2328">,</span> time<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;&#34;&#34;多次实验，得到分布&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        lst <span style="color:#0550ae">=</span> <span style="color:#1f2328">[]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">for</span> _ <span style="color:#0550ae">in</span> <span style="color:#6639ba">range</span><span style="color:#1f2328">(</span>exp_num<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>            lst<span style="color:#0550ae">.</span>append<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>perform_exp<span style="color:#1f2328">(</span>rate<span style="color:#1f2328">,</span> time<span style="color:#1f2328">))</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> sorted(collections<span style="color:#f92672">.</span>Counter(lst)<span style="color:#f92672">.</span>items(), key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> e: e[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> <span style="color:#6639ba">sorted</span><span style="color:#1f2328">(</span>collections<span style="color:#0550ae">.</span>Counter<span style="color:#1f2328">(</span>lst<span style="color:#1f2328">)</span><span style="color:#0550ae">.</span>items<span style="color:#1f2328">(),</span> key<span style="color:#0550ae">=</span><span style="color:#cf222e">lambda</span> e<span style="color:#1f2328">:</span> e<span style="color:#1f2328">[</span><span style="color:#0550ae">0</span><span style="color:#1f2328">])</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">draw</span>(self, sorted_list):
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;画图&#34;&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>        s <span style="color:#f92672">=</span> sum([e[<span style="color:#ae81ff">1</span>] <span style="color:#66d9ef">for</span> e <span style="color:#f92672">in</span> sorted_list])
-</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> [e[<span style="color:#ae81ff">0</span>] <span style="color:#66d9ef">for</span> e <span style="color:#f92672">in</span> sorted_list]
-</span></span><span style="display:flex;"><span>        y <span style="color:#f92672">=</span> [e[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">/</span> s <span style="color:#66d9ef">for</span> e <span style="color:#f92672">in</span> sorted_list]
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">draw</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">,</span> sorted_list<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;&#34;&#34;画图&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        s <span style="color:#0550ae">=</span> <span style="color:#6639ba">sum</span><span style="color:#1f2328">([</span>e<span style="color:#1f2328">[</span><span style="color:#0550ae">1</span><span style="color:#1f2328">]</span> <span style="color:#cf222e">for</span> e <span style="color:#0550ae">in</span> sorted_list<span style="color:#1f2328">])</span>
+</span></span><span style="display:flex;"><span>        x <span style="color:#0550ae">=</span> <span style="color:#1f2328">[</span>e<span style="color:#1f2328">[</span><span style="color:#0550ae">0</span><span style="color:#1f2328">]</span> <span style="color:#cf222e">for</span> e <span style="color:#0550ae">in</span> sorted_list<span style="color:#1f2328">]</span>
+</span></span><span style="display:flex;"><span>        y <span style="color:#0550ae">=</span> <span style="color:#1f2328">[</span>e<span style="color:#1f2328">[</span><span style="color:#0550ae">1</span><span style="color:#1f2328">]</span> <span style="color:#0550ae">/</span> s <span style="color:#cf222e">for</span> e <span style="color:#0550ae">in</span> sorted_list<span style="color:#1f2328">]</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        plt<span style="color:#f92672">.</span>plot(x, y)
+</span></span><span style="display:flex;"><span>        plt<span style="color:#0550ae">.</span>plot<span style="color:#1f2328">(</span>x<span style="color:#1f2328">,</span> y<span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#34;k&#34;</span>)
-</span></span><span style="display:flex;"><span>        plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#34;P(k)&#34;</span>)
-</span></span><span style="display:flex;"><span>        plt<span style="color:#f92672">.</span>show()
+</span></span><span style="display:flex;"><span>        plt<span style="color:#0550ae">.</span>xlabel<span style="color:#1f2328">(</span><span style="color:#0a3069">&#34;k&#34;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        plt<span style="color:#0550ae">.</span>ylabel<span style="color:#1f2328">(</span><span style="color:#0a3069">&#34;P(k)&#34;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        plt<span style="color:#0550ae">.</span>show<span style="color:#1f2328">()</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>(self):
-</span></span><span style="display:flex;"><span>        sorted_list <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>perform_exps(self<span style="color:#f92672">.</span>EXP_NUM, self<span style="color:#f92672">.</span>rate, self<span style="color:#f92672">.</span>time)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>draw(sorted_list)
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">main</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        sorted_list <span style="color:#0550ae">=</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>perform_exps<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>EXP_NUM<span style="color:#1f2328">,</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>rate<span style="color:#1f2328">,</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>time<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>draw<span style="color:#1f2328">(</span>sorted_list<span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@staticmethod</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculator</span>(rate, t, k):
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;用于计算泊松函数的概率 P(k|t,lambda)
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">           rate: lambda
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">           t: t
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">           k: k
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">import</span> math
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> (rate <span style="color:#f92672">*</span> t) <span style="color:#f92672">**</span> k <span style="color:#f92672">/</span> math<span style="color:#f92672">.</span>factorial(k) <span style="color:#f92672">*</span> math<span style="color:#f92672">.</span>exp(<span style="color:#f92672">-</span>rate <span style="color:#f92672">*</span> t)
+</span></span><span style="display:flex;"><span>    <span style="color:#0550ae">@staticmethod</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">calculator</span><span style="color:#1f2328">(</span>rate<span style="color:#1f2328">,</span> t<span style="color:#1f2328">,</span> k<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;&#34;&#34;用于计算泊松函数的概率 P(k|t,lambda)
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">           rate: lambda
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">           t: t
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">           k: k
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">        &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">import</span> <span style="color:#24292e">math</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> <span style="color:#1f2328">(</span>rate <span style="color:#0550ae">*</span> t<span style="color:#1f2328">)</span> <span style="color:#0550ae">**</span> k <span style="color:#0550ae">/</span> math<span style="color:#0550ae">.</span>factorial<span style="color:#1f2328">(</span>k<span style="color:#1f2328">)</span> <span style="color:#0550ae">*</span> math<span style="color:#0550ae">.</span>exp<span style="color:#1f2328">(</span><span style="color:#0550ae">-</span>rate <span style="color:#0550ae">*</span> t<span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
-</span></span><span style="display:flex;"><span>    p <span style="color:#f92672">=</span> Poisson()
-</span></span><span style="display:flex;"><span>    p<span style="color:#f92672">.</span>main()
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">if</span> <span style="color:#953800">__name__</span> <span style="color:#0550ae">==</span> <span style="color:#0a3069">&#39;__main__&#39;</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>    p <span style="color:#0550ae">=</span> Poisson<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>    p<span style="color:#0550ae">.</span>main<span style="color:#1f2328">()</span>
 </span></span></code></pre></div><p>看完代码，聪明的你一定已经知道这段代码在干什么了 <img src="/img/hanser/motou.JPG" class="my-emoji" style = "height: 64px;"></p>
 <p>那我们直接来说如何使用代码吧！</p>
 <p>如果你想知道 <code>$\lambda = 3, t = 2$</code> 情况下泊松函数的图像，在命令行执行：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>python poisson.py <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">2</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>python poisson.py <span style="color:#0550ae">3</span> <span style="color:#0550ae">2</span>
 </span></span></code></pre></div><p>如果不设置 <code>$t$</code> 的值，则 <code>$t$</code> 的值默认为 1。</p>
 <p>下面放一些仿真结果：</p>
 <ol>
@@ -821,7 +821,10 @@
       </a>
       
       <a href="https://www.zhihu.com/people/Fashionable" target="_blank" rel="noopener noreferrer">
-        <i class="fab fa-zhihu"></i> 知乎
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2" 
+             stroke-linecap="round" stroke-linejoin="round" style="width: 1em; height: 1em; vertical-align: -0.125em; display: inline-block;">
+          <path d="m13.3334,3.60098l0,17.1471l1.79582,0l0.75424,2.13703l3.18459,-2.13703l3.93584,0l0,-17.1471l-9.6705,0zm7.41375,14.87538l-1.79283,0l-2.24777,1.50849l-0.53276,-1.50849l-0.53875,0l0,-12.53483l5.10911,0l0,12.53483l0.00299,0zm-8.56906,-7.18927l-3.97475,0c0.06285,-1.34387 0.1287,-3.12174 0.19754,-5.17496l3.91788,0l-0.00299,-0.24244c0,-0.01796 -0.00599,-0.43998 -0.06884,-0.87097c-0.06285,-0.44896 -0.19754,-1.04457 -0.62854,-1.04457l-6.5727,0c0.13169,-0.61657 0.46991,-2.08615 0.87995,-2.80747l0.19155,-0.33522l-0.3861,-0.02095c-0.02394,0 -0.58663,-0.02694 -1.23912,0.31726c-1.06851,0.56868 -1.5474,1.68807 -1.75691,2.52612c-0.55072,2.18791 -1.33489,3.70837 -1.66712,4.35786c-0.09877,0.19155 -0.15863,0.30529 -0.18557,0.38311c-0.05387,0.14666 -0.02394,0.29332 0.0838,0.38909c0.31427,0.28434 1.14334,-0.0868 1.15232,-0.08979c0.01796,-0.00898 0.03891,-0.01796 0.06585,-0.02993c0.41603,-0.18856 1.64916,-0.74826 2.08914,-2.52911l1.69705,0c0.02095,0.96376 0.09278,4.14236 0.0868,5.17496l-4.22018,0l-0.06285,0.0449c-0.69139,0.50582 -0.91288,1.8916 -0.92185,1.95146l-0.0419,0.27536l4.99837,0c-0.36814,2.34355 -0.79315,3.3941 -1.01763,3.81313c-0.11074,0.20951 -0.21849,0.41902 -0.32025,0.62255c-0.63752,1.26306 -1.29898,2.56802 -3.7802,4.5973c-0.10775,0.0838 -0.20951,0.23944 -0.14367,0.41005c0.07183,0.18856 0.27835,0.27237 0.73629,0.27237c0.16162,0 0.35318,-0.00898 0.58065,-0.02993c1.49352,-0.13169 3.01698,-0.53875 4.04359,-2.6219c0.50882,-1.05056 0.94879,-2.14601 1.31394,-3.25941l4.08549,4.78886l0.14965,-0.35916c0.02394,-0.05687 0.56868,-1.38578 0.15264,-2.87032l-0.01497,-0.05387l-3.23547,-3.68143l-0.65847,0.49684c0.19155,-0.78118 0.31726,-1.49352 0.37413,-2.12805l4.74995,0l0,-0.23944c0,-1.20021 -0.55371,-1.91255 -0.57466,-1.94248l-0.07183,-0.08979z" />
+        </svg> 知乎
       </a>
 
       <a href="/index.xml" target="_blank" rel="noopener noreferrer">

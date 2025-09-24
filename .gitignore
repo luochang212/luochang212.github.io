@@ -1,9 +1,0 @@
-# macOS
-.DS_Store
-
-# IDE and editor files
-*.swp
-*.swo
-
-# Source maps (found in project)
-*.map

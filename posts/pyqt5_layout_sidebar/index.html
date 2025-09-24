@@ -657,59 +657,59 @@
 <h3 id="添加部件并设置布局">添加部件并设置布局</h3>
 <p>此段不详述。关于部件和布局的基础知识，在上一篇中有介绍，详见<a href="https://www.luochang.ink/posts/pyqt5_layout/">PyQt5 布局浅析</a>。</p>
 <p><strong>下面这段代码添加了部件且设置了布局。</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> PyQt5.QtWidgets <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#cf222e">from</span> <span style="color:#24292e">PyQt5.QtWidgets</span> <span style="color:#cf222e">import</span> <span style="color:#0550ae">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">import</span> <span style="color:#24292e">sys</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Window</span>(QMainWindow):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self):
-</span></span><span style="display:flex;"><span>        super()<span style="color:#f92672">.</span><span style="color:#a6e22e">__init__</span>()
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">class</span> <span style="color:#1f2328">Window</span><span style="color:#1f2328">(</span>QMainWindow<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">__init__</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6639ba">super</span><span style="color:#1f2328">()</span><span style="color:#0550ae">.</span><span style="color:#6639ba">__init__</span><span style="color:#1f2328">()</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># set the title of main window</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>setWindowTitle(<span style="color:#e6db74">&#39;Sidebar layout - www.luochang.ink&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#57606a"># set the title of main window</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>setWindowTitle<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;Sidebar layout - www.luochang.ink&#39;</span><span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># set the size of window</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>width <span style="color:#f92672">=</span> <span style="color:#ae81ff">800</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>height <span style="color:#f92672">=</span> int(<span style="color:#ae81ff">0.618</span> <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>width)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>resize(self<span style="color:#f92672">.</span>width, self<span style="color:#f92672">.</span>height)
+</span></span><span style="display:flex;"><span>        <span style="color:#57606a"># set the size of window</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>width <span style="color:#0550ae">=</span> <span style="color:#0550ae">800</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>height <span style="color:#0550ae">=</span> <span style="color:#6639ba">int</span><span style="color:#1f2328">(</span><span style="color:#0550ae">0.618</span> <span style="color:#0550ae">*</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>width<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>resize<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>width<span style="color:#1f2328">,</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>height<span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>		
-</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># add all widgets</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>btn_1 <span style="color:#f92672">=</span> QPushButton(<span style="color:#e6db74">&#39;1&#39;</span>, self)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>btn_2 <span style="color:#f92672">=</span> QPushButton(<span style="color:#e6db74">&#39;2&#39;</span>, self)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>btn_3 <span style="color:#f92672">=</span> QPushButton(<span style="color:#e6db74">&#39;3&#39;</span>, self)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>btn_4 <span style="color:#f92672">=</span> QPushButton(<span style="color:#e6db74">&#39;4&#39;</span>, self)
+</span></span><span style="display:flex;"><span>		<span style="color:#57606a"># add all widgets</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>btn_1 <span style="color:#0550ae">=</span> QPushButton<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;1&#39;</span><span style="color:#1f2328">,</span> <span style="color:#6a737d">self</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>btn_2 <span style="color:#0550ae">=</span> QPushButton<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;2&#39;</span><span style="color:#1f2328">,</span> <span style="color:#6a737d">self</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>btn_3 <span style="color:#0550ae">=</span> QPushButton<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;3&#39;</span><span style="color:#1f2328">,</span> <span style="color:#6a737d">self</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>btn_4 <span style="color:#0550ae">=</span> QPushButton<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;4&#39;</span><span style="color:#1f2328">,</span> <span style="color:#6a737d">self</span><span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>initUI()
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>initUI<span style="color:#1f2328">()</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">initUI</span>(self):
-</span></span><span style="display:flex;"><span>        left_layout <span style="color:#f92672">=</span> QVBoxLayout()
-</span></span><span style="display:flex;"><span>        left_layout<span style="color:#f92672">.</span>addWidget(self<span style="color:#f92672">.</span>btn_1)
-</span></span><span style="display:flex;"><span>        left_layout<span style="color:#f92672">.</span>addWidget(self<span style="color:#f92672">.</span>btn_2)
-</span></span><span style="display:flex;"><span>        left_layout<span style="color:#f92672">.</span>addWidget(self<span style="color:#f92672">.</span>btn_3)
-</span></span><span style="display:flex;"><span>        left_layout<span style="color:#f92672">.</span>addWidget(self<span style="color:#f92672">.</span>btn_4)
-</span></span><span style="display:flex;"><span>        left_layout<span style="color:#f92672">.</span>addStretch(<span style="color:#ae81ff">5</span>)
-</span></span><span style="display:flex;"><span>        left_layout<span style="color:#f92672">.</span>setSpacing(<span style="color:#ae81ff">20</span>)
-</span></span><span style="display:flex;"><span>        left_widget <span style="color:#f92672">=</span> QWidget()
-</span></span><span style="display:flex;"><span>        left_widget<span style="color:#f92672">.</span>setLayout(left_layout)
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">initUI</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        left_layout <span style="color:#0550ae">=</span> QVBoxLayout<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        left_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>btn_1<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        left_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>btn_2<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        left_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>btn_3<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        left_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>btn_4<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        left_layout<span style="color:#0550ae">.</span>addStretch<span style="color:#1f2328">(</span><span style="color:#0550ae">5</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        left_layout<span style="color:#0550ae">.</span>setSpacing<span style="color:#1f2328">(</span><span style="color:#0550ae">20</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        left_widget <span style="color:#0550ae">=</span> QWidget<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        left_widget<span style="color:#0550ae">.</span>setLayout<span style="color:#1f2328">(</span>left_layout<span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>right_widget <span style="color:#f92672">=</span> QTabWidget()
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>tabBar()<span style="color:#f92672">.</span>setObjectName(<span style="color:#e6db74">&#34;mainTab&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>right_widget <span style="color:#0550ae">=</span> QTabWidget<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>right_widget<span style="color:#0550ae">.</span>tabBar<span style="color:#1f2328">()</span><span style="color:#0550ae">.</span>setObjectName<span style="color:#1f2328">(</span><span style="color:#0a3069">&#34;mainTab&#34;</span><span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        main_layout <span style="color:#f92672">=</span> QHBoxLayout()
-</span></span><span style="display:flex;"><span>        main_layout<span style="color:#f92672">.</span>addWidget(left_widget)
-</span></span><span style="display:flex;"><span>        main_layout<span style="color:#f92672">.</span>addWidget(self<span style="color:#f92672">.</span>right_widget)
-</span></span><span style="display:flex;"><span>        main_layout<span style="color:#f92672">.</span>setStretch(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">40</span>)
-</span></span><span style="display:flex;"><span>        main_layout<span style="color:#f92672">.</span>setStretch(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">200</span>)
-</span></span><span style="display:flex;"><span>        main_widget <span style="color:#f92672">=</span> QWidget()
-</span></span><span style="display:flex;"><span>        main_widget<span style="color:#f92672">.</span>setLayout(main_layout)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>setCentralWidget(main_widget)
+</span></span><span style="display:flex;"><span>        main_layout <span style="color:#0550ae">=</span> QHBoxLayout<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        main_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span>left_widget<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        main_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>right_widget<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        main_layout<span style="color:#0550ae">.</span>setStretch<span style="color:#1f2328">(</span><span style="color:#0550ae">0</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">40</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        main_layout<span style="color:#0550ae">.</span>setStretch<span style="color:#1f2328">(</span><span style="color:#0550ae">1</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">200</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        main_widget <span style="color:#0550ae">=</span> QWidget<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        main_widget<span style="color:#0550ae">.</span>setLayout<span style="color:#1f2328">(</span>main_layout<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>setCentralWidget<span style="color:#1f2328">(</span>main_widget<span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
-</span></span><span style="display:flex;"><span>    app <span style="color:#f92672">=</span> QApplication(sys<span style="color:#f92672">.</span>argv)
-</span></span><span style="display:flex;"><span>    ex <span style="color:#f92672">=</span> Window()
-</span></span><span style="display:flex;"><span>    ex<span style="color:#f92672">.</span>show()
-</span></span><span style="display:flex;"><span>    sys<span style="color:#f92672">.</span>exit(app<span style="color:#f92672">.</span>exec_())
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">if</span> <span style="color:#953800">__name__</span> <span style="color:#0550ae">==</span> <span style="color:#0a3069">&#39;__main__&#39;</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>    app <span style="color:#0550ae">=</span> QApplication<span style="color:#1f2328">(</span>sys<span style="color:#0550ae">.</span>argv<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>    ex <span style="color:#0550ae">=</span> Window<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>    ex<span style="color:#0550ae">.</span>show<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>    sys<span style="color:#0550ae">.</span>exit<span style="color:#1f2328">(</span>app<span style="color:#0550ae">.</span>exec_<span style="color:#1f2328">())</span>
 </span></span></code></pre></div><p><img src="/img/sidebar_basic.JPG" alt="sidebar_basic"></p>
 <p>上述代码，在<code>__init__</code>内添加了部件，在<code>initUI</code>里设置了部件的布局。但因为我们并没有给标签部件(QTabWidget)添加页面，所以现在标签页面正好是没有标签的。后续加上内容页之后，标签(Tab)又会出现，到那是我们要用技巧再把标签隐去。</p>
 <p>布局都好了，但这时的标签部件还没有内容页。没有内容页的标签部件是没有灵魂的，所以下面，我们给标签部件添加内容页。</p>
@@ -722,215 +722,215 @@
 </ol>
 <p>我们首先编写定义内容页的函数。</p>
 <p><strong>下面这段代码定义了内容页。</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ui1</span>(self):
-</span></span><span style="display:flex;"><span>		main_layout <span style="color:#f92672">=</span> QVBoxLayout()
-</span></span><span style="display:flex;"><span>		main_layout<span style="color:#f92672">.</span>addWidget(QLabel(<span style="color:#e6db74">&#39;page 1&#39;</span>))
-</span></span><span style="display:flex;"><span>		main_layout<span style="color:#f92672">.</span>addStretch(<span style="color:#ae81ff">5</span>)
-</span></span><span style="display:flex;"><span>		main <span style="color:#f92672">=</span> QWidget()
-</span></span><span style="display:flex;"><span>		main<span style="color:#f92672">.</span>setLayout(main_layout)
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> main
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>	<span style="color:#cf222e">def</span> <span style="color:#6639ba">ui1</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>		main_layout <span style="color:#0550ae">=</span> QVBoxLayout<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>		main_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span>QLabel<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;page 1&#39;</span><span style="color:#1f2328">))</span>
+</span></span><span style="display:flex;"><span>		main_layout<span style="color:#0550ae">.</span>addStretch<span style="color:#1f2328">(</span><span style="color:#0550ae">5</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>		main <span style="color:#0550ae">=</span> QWidget<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>		main<span style="color:#0550ae">.</span>setLayout<span style="color:#1f2328">(</span>main_layout<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#cf222e">return</span> main
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ui2</span>(self):
-</span></span><span style="display:flex;"><span>		main_layout <span style="color:#f92672">=</span> QVBoxLayout()
-</span></span><span style="display:flex;"><span>		main_layout<span style="color:#f92672">.</span>addWidget(QLabel(<span style="color:#e6db74">&#39;page 2&#39;</span>))
-</span></span><span style="display:flex;"><span>		main_layout<span style="color:#f92672">.</span>addStretch(<span style="color:#ae81ff">5</span>)
-</span></span><span style="display:flex;"><span>		main <span style="color:#f92672">=</span> QWidget()
-</span></span><span style="display:flex;"><span>		main<span style="color:#f92672">.</span>setLayout(main_layout)
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> main
+</span></span><span style="display:flex;"><span>	<span style="color:#cf222e">def</span> <span style="color:#6639ba">ui2</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>		main_layout <span style="color:#0550ae">=</span> QVBoxLayout<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>		main_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span>QLabel<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;page 2&#39;</span><span style="color:#1f2328">))</span>
+</span></span><span style="display:flex;"><span>		main_layout<span style="color:#0550ae">.</span>addStretch<span style="color:#1f2328">(</span><span style="color:#0550ae">5</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>		main <span style="color:#0550ae">=</span> QWidget<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>		main<span style="color:#0550ae">.</span>setLayout<span style="color:#1f2328">(</span>main_layout<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#cf222e">return</span> main
 </span></span><span style="display:flex;"><span>			
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ui3</span>(self):
-</span></span><span style="display:flex;"><span>		main_layout <span style="color:#f92672">=</span> QVBoxLayout()
-</span></span><span style="display:flex;"><span>		main_layout<span style="color:#f92672">.</span>addWidget(QLabel(<span style="color:#e6db74">&#39;page 3&#39;</span>))
-</span></span><span style="display:flex;"><span>		main_layout<span style="color:#f92672">.</span>addStretch(<span style="color:#ae81ff">5</span>)
-</span></span><span style="display:flex;"><span>		main <span style="color:#f92672">=</span> QWidget()
-</span></span><span style="display:flex;"><span>		main<span style="color:#f92672">.</span>setLayout(main_layout)
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> main
+</span></span><span style="display:flex;"><span>	<span style="color:#cf222e">def</span> <span style="color:#6639ba">ui3</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>		main_layout <span style="color:#0550ae">=</span> QVBoxLayout<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>		main_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span>QLabel<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;page 3&#39;</span><span style="color:#1f2328">))</span>
+</span></span><span style="display:flex;"><span>		main_layout<span style="color:#0550ae">.</span>addStretch<span style="color:#1f2328">(</span><span style="color:#0550ae">5</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>		main <span style="color:#0550ae">=</span> QWidget<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>		main<span style="color:#0550ae">.</span>setLayout<span style="color:#1f2328">(</span>main_layout<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#cf222e">return</span> main
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ui4</span>(self):
-</span></span><span style="display:flex;"><span>		main_layout <span style="color:#f92672">=</span> QVBoxLayout()
-</span></span><span style="display:flex;"><span>		main_layout<span style="color:#f92672">.</span>addWidget(QLabel(<span style="color:#e6db74">&#39;page 4&#39;</span>))
-</span></span><span style="display:flex;"><span>		main_layout<span style="color:#f92672">.</span>addStretch(<span style="color:#ae81ff">5</span>)
-</span></span><span style="display:flex;"><span>		main <span style="color:#f92672">=</span> QWidget()
-</span></span><span style="display:flex;"><span>		main<span style="color:#f92672">.</span>setLayout(main_layout)
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> main
+</span></span><span style="display:flex;"><span>	<span style="color:#cf222e">def</span> <span style="color:#6639ba">ui4</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>		main_layout <span style="color:#0550ae">=</span> QVBoxLayout<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>		main_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span>QLabel<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;page 4&#39;</span><span style="color:#1f2328">))</span>
+</span></span><span style="display:flex;"><span>		main_layout<span style="color:#0550ae">.</span>addStretch<span style="color:#1f2328">(</span><span style="color:#0550ae">5</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>		main <span style="color:#0550ae">=</span> QWidget<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>		main<span style="color:#0550ae">.</span>setLayout<span style="color:#1f2328">(</span>main_layout<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#cf222e">return</span> main
 </span></span></code></pre></div><p>下一步，在<code>__init__</code>里调用上述函数以生成内容页。</p>
 <p><strong>下面这段代码生成了内容页。</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    <span style="color:#75715e"># def __init__(self):</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#     super().__init__()</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    <span style="color:#57606a"># def __init__(self):</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#57606a">#     super().__init__()</span>
 </span></span><span style="display:flex;"><span>	
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># add tabs</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>tab1 <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>ui1()
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>tab2 <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>ui2()
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>tab3 <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>ui3()
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>tab4 <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>ui4()
+</span></span><span style="display:flex;"><span>        <span style="color:#57606a"># add tabs</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>tab1 <span style="color:#0550ae">=</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>ui1<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>tab2 <span style="color:#0550ae">=</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>ui2<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>tab3 <span style="color:#0550ae">=</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>ui3<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>tab4 <span style="color:#0550ae">=</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>ui4<span style="color:#1f2328">()</span>
 </span></span></code></pre></div><p>在<code>initUI</code>函数里，将内容页加入标签部件。请注意下面这段代码添加的位置，它必须在语句<code>main_layout.addWidget(self.right_widget)</code>之前，否则程序有可能出错。</p>
 <p><strong>下面这段代码将内容页加入标签部件。</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    <span style="color:#75715e"># def initUI(self):</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>addTab(self<span style="color:#f92672">.</span>tab1, <span style="color:#e6db74">&#39;&#39;</span>)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>addTab(self<span style="color:#f92672">.</span>tab2, <span style="color:#e6db74">&#39;&#39;</span>)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>addTab(self<span style="color:#f92672">.</span>tab3, <span style="color:#e6db74">&#39;&#39;</span>)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>addTab(self<span style="color:#f92672">.</span>tab4, <span style="color:#e6db74">&#39;&#39;</span>)
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    <span style="color:#57606a"># def initUI(self):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>right_widget<span style="color:#0550ae">.</span>addTab<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>tab1<span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;&#39;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>right_widget<span style="color:#0550ae">.</span>addTab<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>tab2<span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;&#39;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>right_widget<span style="color:#0550ae">.</span>addTab<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>tab3<span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;&#39;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>right_widget<span style="color:#0550ae">.</span>addTab<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>tab4<span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;&#39;</span><span style="color:#1f2328">)</span>
 </span></span></code></pre></div><p><img src="/img/sidebar_tab.JPG" alt="sidebar_tab"></p>
 <p>在上图中可以看见，标签部件的顶上冒出了小方头，在第二节中提到的<strong>标签</strong>(Tab)出现了。这时我们需要改造标签部件，隐去标签，并将原先点击标签触发的页面跳转功能，迁移到侧边栏按钮上。</p>
 <h3 id="改造标签部件">改造标签部件</h3>
 <p>隐藏标签部件的标签，其实只需要一行。下面用QSS隐去标签。<!--所谓QSS，就是下述`setStyleSheet`函数内的语句。--></p>
 <p><strong>下面这段代码隐藏了标签部件的标签并初始化显示页面。</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    <span style="color:#75715e"># def initUI(self):</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>setCurrentIndex(<span style="color:#ae81ff">0</span>)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>setStyleSheet(<span style="color:#e6db74">&#39;&#39;&#39;QTabBar::tab{width: 0; </span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">            height: 0; margin: 0; padding: 0; border: none;}&#39;&#39;&#39;</span>)
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    <span style="color:#57606a"># def initUI(self):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>right_widget<span style="color:#0550ae">.</span>setCurrentIndex<span style="color:#1f2328">(</span><span style="color:#0550ae">0</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>right_widget<span style="color:#0550ae">.</span>setStyleSheet<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;&#39;&#39;QTabBar::tab{width: 0; </span><span style="color:#0a3069">\
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069"></span><span style="color:#0a3069">            height: 0; margin: 0; padding: 0; border: none;}&#39;&#39;&#39;</span><span style="color:#1f2328">)</span>
 </span></span></code></pre></div><h3 id="通过按钮实现页面跳转">通过按钮实现页面跳转</h3>
 <p>页面跳转功能本质上是通过<code>QTabWidget</code>的<code>setCurrentIndex(int)</code>函数实现的，知道这一点就好办了。把按钮代表的页面的索引作为<code>setCurrentIndex(int)</code>函数的输入，为每个按钮设定如下，即可实现页面跳转。</p>
 <p><strong>下面这段代码定义了按钮函数。</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">button1</span>(self):
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>setCurrentIndex(<span style="color:#ae81ff">0</span>)
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">button1</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>right_widget<span style="color:#0550ae">.</span>setCurrentIndex<span style="color:#1f2328">(</span><span style="color:#0550ae">0</span><span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">button2</span>(self):
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>setCurrentIndex(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">button2</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>right_widget<span style="color:#0550ae">.</span>setCurrentIndex<span style="color:#1f2328">(</span><span style="color:#0550ae">1</span><span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">button3</span>(self):
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>setCurrentIndex(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">button3</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>right_widget<span style="color:#0550ae">.</span>setCurrentIndex<span style="color:#1f2328">(</span><span style="color:#0550ae">2</span><span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">button4</span>(self):
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>setCurrentIndex(<span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">button4</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>right_widget<span style="color:#0550ae">.</span>setCurrentIndex<span style="color:#1f2328">(</span><span style="color:#0550ae">3</span><span style="color:#1f2328">)</span>
 </span></span></code></pre></div><p>最后，在<code>__init__</code>函数里，将按钮部件和函数绑定，一个简单的侧边栏就大功告成了！</p>
 <p><strong>下面这段代码为按钮部件绑定函数。</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    <span style="color:#75715e"># def __init__(self):</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#     super().__init__()</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    <span style="color:#57606a"># def __init__(self):</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#57606a">#     super().__init__()</span>
 </span></span><span style="display:flex;"><span>	
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>btn_1<span style="color:#f92672">.</span>clicked<span style="color:#f92672">.</span>connect(self<span style="color:#f92672">.</span>button1)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>btn_2<span style="color:#f92672">.</span>clicked<span style="color:#f92672">.</span>connect(self<span style="color:#f92672">.</span>button2)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>btn_3<span style="color:#f92672">.</span>clicked<span style="color:#f92672">.</span>connect(self<span style="color:#f92672">.</span>button3)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>btn_4<span style="color:#f92672">.</span>clicked<span style="color:#f92672">.</span>connect(self<span style="color:#f92672">.</span>button4)
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>btn_1<span style="color:#0550ae">.</span>clicked<span style="color:#0550ae">.</span>connect<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>button1<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>btn_2<span style="color:#0550ae">.</span>clicked<span style="color:#0550ae">.</span>connect<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>button2<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>btn_3<span style="color:#0550ae">.</span>clicked<span style="color:#0550ae">.</span>connect<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>button3<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>btn_4<span style="color:#0550ae">.</span>clicked<span style="color:#0550ae">.</span>connect<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>button4<span style="color:#1f2328">)</span>
 </span></span></code></pre></div><p><img src="/img/sidebar_hidetab.JPG" alt="sidebar_tab"></p>
 <blockquote>
 <p><strong>Note1:</strong> 为了让代码结构清晰，易于理解，本例只有最简单的功能和布局。如果你对进一步完善侧边栏感兴趣，请参阅<a href="https://github.com/luochang212/pyqt5-demo/blob/master/Demo/sidebar.py" target="_blank">sidebar.py</a>。</p></blockquote>
 <blockquote>
 <p><strong>Note2:</strong> 此外，我在网络上搜了很久，没有搜到一篇关于制作侧边栏的文章。一番折腾后，我在GitHub找到了开源项目<a href="https://github.com/HuberTRoy/MusicBox" target="_blank">MusicBox</a>，然后才从中学会了这个构建侧边栏的方法。这个项目不错，在里面我学到了很多PyQt5的使用方法。在此感谢作者，并默默替他安利一波。</p></blockquote>
 <h3 id="附录本教程完整代码">附录：本教程完整代码</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> PyQt5.QtWidgets <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#cf222e">from</span> <span style="color:#24292e">PyQt5.QtWidgets</span> <span style="color:#cf222e">import</span> <span style="color:#0550ae">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">import</span> <span style="color:#24292e">sys</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Window</span>(QMainWindow):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self):
-</span></span><span style="display:flex;"><span>        super()<span style="color:#f92672">.</span><span style="color:#a6e22e">__init__</span>()
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">class</span> <span style="color:#1f2328">Window</span><span style="color:#1f2328">(</span>QMainWindow<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">__init__</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6639ba">super</span><span style="color:#1f2328">()</span><span style="color:#0550ae">.</span><span style="color:#6639ba">__init__</span><span style="color:#1f2328">()</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># set the title of main window</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>setWindowTitle(<span style="color:#e6db74">&#39;Sidebar layout - www.luochang.ink&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#57606a"># set the title of main window</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>setWindowTitle<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;Sidebar layout - www.luochang.ink&#39;</span><span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># set the size of window</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>Width <span style="color:#f92672">=</span> <span style="color:#ae81ff">800</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>height <span style="color:#f92672">=</span> int(<span style="color:#ae81ff">0.618</span> <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>Width)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>resize(self<span style="color:#f92672">.</span>Width, self<span style="color:#f92672">.</span>height)
+</span></span><span style="display:flex;"><span>        <span style="color:#57606a"># set the size of window</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>Width <span style="color:#0550ae">=</span> <span style="color:#0550ae">800</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>height <span style="color:#0550ae">=</span> <span style="color:#6639ba">int</span><span style="color:#1f2328">(</span><span style="color:#0550ae">0.618</span> <span style="color:#0550ae">*</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>Width<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>resize<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>Width<span style="color:#1f2328">,</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>height<span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>		
-</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># add all widgets</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>btn_1 <span style="color:#f92672">=</span> QPushButton(<span style="color:#e6db74">&#39;1&#39;</span>, self)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>btn_2 <span style="color:#f92672">=</span> QPushButton(<span style="color:#e6db74">&#39;2&#39;</span>, self)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>btn_3 <span style="color:#f92672">=</span> QPushButton(<span style="color:#e6db74">&#39;3&#39;</span>, self)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>btn_4 <span style="color:#f92672">=</span> QPushButton(<span style="color:#e6db74">&#39;4&#39;</span>, self)
+</span></span><span style="display:flex;"><span>		<span style="color:#57606a"># add all widgets</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>btn_1 <span style="color:#0550ae">=</span> QPushButton<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;1&#39;</span><span style="color:#1f2328">,</span> <span style="color:#6a737d">self</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>btn_2 <span style="color:#0550ae">=</span> QPushButton<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;2&#39;</span><span style="color:#1f2328">,</span> <span style="color:#6a737d">self</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>btn_3 <span style="color:#0550ae">=</span> QPushButton<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;3&#39;</span><span style="color:#1f2328">,</span> <span style="color:#6a737d">self</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>btn_4 <span style="color:#0550ae">=</span> QPushButton<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;4&#39;</span><span style="color:#1f2328">,</span> <span style="color:#6a737d">self</span><span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>btn_1<span style="color:#f92672">.</span>clicked<span style="color:#f92672">.</span>connect(self<span style="color:#f92672">.</span>button1)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>btn_2<span style="color:#f92672">.</span>clicked<span style="color:#f92672">.</span>connect(self<span style="color:#f92672">.</span>button2)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>btn_3<span style="color:#f92672">.</span>clicked<span style="color:#f92672">.</span>connect(self<span style="color:#f92672">.</span>button3)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>btn_4<span style="color:#f92672">.</span>clicked<span style="color:#f92672">.</span>connect(self<span style="color:#f92672">.</span>button4)
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>btn_1<span style="color:#0550ae">.</span>clicked<span style="color:#0550ae">.</span>connect<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>button1<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>btn_2<span style="color:#0550ae">.</span>clicked<span style="color:#0550ae">.</span>connect<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>button2<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>btn_3<span style="color:#0550ae">.</span>clicked<span style="color:#0550ae">.</span>connect<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>button3<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>btn_4<span style="color:#0550ae">.</span>clicked<span style="color:#0550ae">.</span>connect<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>button4<span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># add tabs</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>tab1 <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>ui1()
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>tab2 <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>ui2()
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>tab3 <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>ui3()
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>tab4 <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>ui4()
+</span></span><span style="display:flex;"><span>        <span style="color:#57606a"># add tabs</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>tab1 <span style="color:#0550ae">=</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>ui1<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>tab2 <span style="color:#0550ae">=</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>ui2<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>tab3 <span style="color:#0550ae">=</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>ui3<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>tab4 <span style="color:#0550ae">=</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>ui4<span style="color:#1f2328">()</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>initUI()
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>initUI<span style="color:#1f2328">()</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">initUI</span>(self):
-</span></span><span style="display:flex;"><span>        left_layout <span style="color:#f92672">=</span> QVBoxLayout()
-</span></span><span style="display:flex;"><span>        left_layout<span style="color:#f92672">.</span>addWidget(self<span style="color:#f92672">.</span>btn_1)
-</span></span><span style="display:flex;"><span>        left_layout<span style="color:#f92672">.</span>addWidget(self<span style="color:#f92672">.</span>btn_2)
-</span></span><span style="display:flex;"><span>        left_layout<span style="color:#f92672">.</span>addWidget(self<span style="color:#f92672">.</span>btn_3)
-</span></span><span style="display:flex;"><span>        left_layout<span style="color:#f92672">.</span>addWidget(self<span style="color:#f92672">.</span>btn_4)
-</span></span><span style="display:flex;"><span>        left_layout<span style="color:#f92672">.</span>addStretch(<span style="color:#ae81ff">5</span>)
-</span></span><span style="display:flex;"><span>        left_layout<span style="color:#f92672">.</span>setSpacing(<span style="color:#ae81ff">20</span>)
-</span></span><span style="display:flex;"><span>        left_widget <span style="color:#f92672">=</span> QWidget()
-</span></span><span style="display:flex;"><span>        left_widget<span style="color:#f92672">.</span>setLayout(left_layout)
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">initUI</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        left_layout <span style="color:#0550ae">=</span> QVBoxLayout<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        left_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>btn_1<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        left_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>btn_2<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        left_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>btn_3<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        left_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>btn_4<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        left_layout<span style="color:#0550ae">.</span>addStretch<span style="color:#1f2328">(</span><span style="color:#0550ae">5</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        left_layout<span style="color:#0550ae">.</span>setSpacing<span style="color:#1f2328">(</span><span style="color:#0550ae">20</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        left_widget <span style="color:#0550ae">=</span> QWidget<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        left_widget<span style="color:#0550ae">.</span>setLayout<span style="color:#1f2328">(</span>left_layout<span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>right_widget <span style="color:#f92672">=</span> QTabWidget()
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>tabBar()<span style="color:#f92672">.</span>setObjectName(<span style="color:#e6db74">&#34;mainTab&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>right_widget <span style="color:#0550ae">=</span> QTabWidget<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>right_widget<span style="color:#0550ae">.</span>tabBar<span style="color:#1f2328">()</span><span style="color:#0550ae">.</span>setObjectName<span style="color:#1f2328">(</span><span style="color:#0a3069">&#34;mainTab&#34;</span><span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>addTab(self<span style="color:#f92672">.</span>tab1, <span style="color:#e6db74">&#39;&#39;</span>)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>addTab(self<span style="color:#f92672">.</span>tab2, <span style="color:#e6db74">&#39;&#39;</span>)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>addTab(self<span style="color:#f92672">.</span>tab3, <span style="color:#e6db74">&#39;&#39;</span>)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>addTab(self<span style="color:#f92672">.</span>tab4, <span style="color:#e6db74">&#39;&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>right_widget<span style="color:#0550ae">.</span>addTab<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>tab1<span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;&#39;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>right_widget<span style="color:#0550ae">.</span>addTab<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>tab2<span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;&#39;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>right_widget<span style="color:#0550ae">.</span>addTab<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>tab3<span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;&#39;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>right_widget<span style="color:#0550ae">.</span>addTab<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>tab4<span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;&#39;</span><span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>setCurrentIndex(<span style="color:#ae81ff">0</span>)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>setStyleSheet(<span style="color:#e6db74">&#39;&#39;&#39;QTabBar::tab{width: 0; </span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">            height: 0; margin: 0; padding: 0; border: none;}&#39;&#39;&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>right_widget<span style="color:#0550ae">.</span>setCurrentIndex<span style="color:#1f2328">(</span><span style="color:#0550ae">0</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>right_widget<span style="color:#0550ae">.</span>setStyleSheet<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;&#39;&#39;QTabBar::tab{width: 0; </span><span style="color:#0a3069">\
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069"></span><span style="color:#0a3069">            height: 0; margin: 0; padding: 0; border: none;}&#39;&#39;&#39;</span><span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        main_layout <span style="color:#f92672">=</span> QHBoxLayout()
-</span></span><span style="display:flex;"><span>        main_layout<span style="color:#f92672">.</span>addWidget(left_widget)
-</span></span><span style="display:flex;"><span>        main_layout<span style="color:#f92672">.</span>addWidget(self<span style="color:#f92672">.</span>right_widget)
-</span></span><span style="display:flex;"><span>        main_layout<span style="color:#f92672">.</span>setStretch(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">40</span>)
-</span></span><span style="display:flex;"><span>        main_layout<span style="color:#f92672">.</span>setStretch(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">200</span>)
-</span></span><span style="display:flex;"><span>        main_widget <span style="color:#f92672">=</span> QWidget()
-</span></span><span style="display:flex;"><span>        main_widget<span style="color:#f92672">.</span>setLayout(main_layout)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>setCentralWidget(main_widget)
+</span></span><span style="display:flex;"><span>        main_layout <span style="color:#0550ae">=</span> QHBoxLayout<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        main_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span>left_widget<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        main_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>right_widget<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        main_layout<span style="color:#0550ae">.</span>setStretch<span style="color:#1f2328">(</span><span style="color:#0550ae">0</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">40</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        main_layout<span style="color:#0550ae">.</span>setStretch<span style="color:#1f2328">(</span><span style="color:#0550ae">1</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">200</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        main_widget <span style="color:#0550ae">=</span> QWidget<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        main_widget<span style="color:#0550ae">.</span>setLayout<span style="color:#1f2328">(</span>main_layout<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>setCentralWidget<span style="color:#1f2328">(</span>main_widget<span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ----------------- </span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># buttons</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#57606a"># ----------------- </span>
+</span></span><span style="display:flex;"><span>    <span style="color:#57606a"># buttons</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">button1</span>(self):
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>setCurrentIndex(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">button1</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>right_widget<span style="color:#0550ae">.</span>setCurrentIndex<span style="color:#1f2328">(</span><span style="color:#0550ae">0</span><span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">button2</span>(self):
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>setCurrentIndex(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">button2</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>right_widget<span style="color:#0550ae">.</span>setCurrentIndex<span style="color:#1f2328">(</span><span style="color:#0550ae">1</span><span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">button3</span>(self):
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>setCurrentIndex(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">button3</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>right_widget<span style="color:#0550ae">.</span>setCurrentIndex<span style="color:#1f2328">(</span><span style="color:#0550ae">2</span><span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">button4</span>(self):
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>right_widget<span style="color:#f92672">.</span>setCurrentIndex(<span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">button4</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>right_widget<span style="color:#0550ae">.</span>setCurrentIndex<span style="color:#1f2328">(</span><span style="color:#0550ae">3</span><span style="color:#1f2328">)</span>
 </span></span><span style="display:flex;"><span>	
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># ----------------- </span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># pages</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#57606a"># ----------------- </span>
+</span></span><span style="display:flex;"><span>    <span style="color:#57606a"># pages</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ui1</span>(self):
-</span></span><span style="display:flex;"><span>        main_layout <span style="color:#f92672">=</span> QVBoxLayout()
-</span></span><span style="display:flex;"><span>        main_layout<span style="color:#f92672">.</span>addWidget(QLabel(<span style="color:#e6db74">&#39;page 1&#39;</span>))
-</span></span><span style="display:flex;"><span>        main_layout<span style="color:#f92672">.</span>addStretch(<span style="color:#ae81ff">5</span>)
-</span></span><span style="display:flex;"><span>        main <span style="color:#f92672">=</span> QWidget()
-</span></span><span style="display:flex;"><span>        main<span style="color:#f92672">.</span>setLayout(main_layout)
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> main
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">ui1</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        main_layout <span style="color:#0550ae">=</span> QVBoxLayout<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        main_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span>QLabel<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;page 1&#39;</span><span style="color:#1f2328">))</span>
+</span></span><span style="display:flex;"><span>        main_layout<span style="color:#0550ae">.</span>addStretch<span style="color:#1f2328">(</span><span style="color:#0550ae">5</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        main <span style="color:#0550ae">=</span> QWidget<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        main<span style="color:#0550ae">.</span>setLayout<span style="color:#1f2328">(</span>main_layout<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> main
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ui2</span>(self):
-</span></span><span style="display:flex;"><span>        main_layout <span style="color:#f92672">=</span> QVBoxLayout()
-</span></span><span style="display:flex;"><span>        main_layout<span style="color:#f92672">.</span>addWidget(QLabel(<span style="color:#e6db74">&#39;page 2&#39;</span>))
-</span></span><span style="display:flex;"><span>        main_layout<span style="color:#f92672">.</span>addStretch(<span style="color:#ae81ff">5</span>)
-</span></span><span style="display:flex;"><span>        main <span style="color:#f92672">=</span> QWidget()
-</span></span><span style="display:flex;"><span>        main<span style="color:#f92672">.</span>setLayout(main_layout)
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> main
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">ui2</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        main_layout <span style="color:#0550ae">=</span> QVBoxLayout<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        main_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span>QLabel<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;page 2&#39;</span><span style="color:#1f2328">))</span>
+</span></span><span style="display:flex;"><span>        main_layout<span style="color:#0550ae">.</span>addStretch<span style="color:#1f2328">(</span><span style="color:#0550ae">5</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        main <span style="color:#0550ae">=</span> QWidget<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        main<span style="color:#0550ae">.</span>setLayout<span style="color:#1f2328">(</span>main_layout<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> main
 </span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ui3</span>(self):
-</span></span><span style="display:flex;"><span>        main_layout <span style="color:#f92672">=</span> QVBoxLayout()
-</span></span><span style="display:flex;"><span>        main_layout<span style="color:#f92672">.</span>addWidget(QLabel(<span style="color:#e6db74">&#39;page 3&#39;</span>))
-</span></span><span style="display:flex;"><span>        main_layout<span style="color:#f92672">.</span>addStretch(<span style="color:#ae81ff">5</span>)
-</span></span><span style="display:flex;"><span>        main <span style="color:#f92672">=</span> QWidget()
-</span></span><span style="display:flex;"><span>        main<span style="color:#f92672">.</span>setLayout(main_layout)
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> main
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">ui3</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        main_layout <span style="color:#0550ae">=</span> QVBoxLayout<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        main_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span>QLabel<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;page 3&#39;</span><span style="color:#1f2328">))</span>
+</span></span><span style="display:flex;"><span>        main_layout<span style="color:#0550ae">.</span>addStretch<span style="color:#1f2328">(</span><span style="color:#0550ae">5</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        main <span style="color:#0550ae">=</span> QWidget<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        main<span style="color:#0550ae">.</span>setLayout<span style="color:#1f2328">(</span>main_layout<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> main
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ui4</span>(self):
-</span></span><span style="display:flex;"><span>        main_layout <span style="color:#f92672">=</span> QVBoxLayout()
-</span></span><span style="display:flex;"><span>        main_layout<span style="color:#f92672">.</span>addWidget(QLabel(<span style="color:#e6db74">&#39;page 4&#39;</span>))
-</span></span><span style="display:flex;"><span>        main_layout<span style="color:#f92672">.</span>addStretch(<span style="color:#ae81ff">5</span>)
-</span></span><span style="display:flex;"><span>        main <span style="color:#f92672">=</span> QWidget()
-</span></span><span style="display:flex;"><span>        main<span style="color:#f92672">.</span>setLayout(main_layout)
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> main
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">ui4</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        main_layout <span style="color:#0550ae">=</span> QVBoxLayout<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        main_layout<span style="color:#0550ae">.</span>addWidget<span style="color:#1f2328">(</span>QLabel<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;page 4&#39;</span><span style="color:#1f2328">))</span>
+</span></span><span style="display:flex;"><span>        main_layout<span style="color:#0550ae">.</span>addStretch<span style="color:#1f2328">(</span><span style="color:#0550ae">5</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        main <span style="color:#0550ae">=</span> QWidget<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        main<span style="color:#0550ae">.</span>setLayout<span style="color:#1f2328">(</span>main_layout<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> main
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
-</span></span><span style="display:flex;"><span>    app <span style="color:#f92672">=</span> QApplication(sys<span style="color:#f92672">.</span>argv)
-</span></span><span style="display:flex;"><span>    ex <span style="color:#f92672">=</span> Window()
-</span></span><span style="display:flex;"><span>    ex<span style="color:#f92672">.</span>show()
-</span></span><span style="display:flex;"><span>    sys<span style="color:#f92672">.</span>exit(app<span style="color:#f92672">.</span>exec_())
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">if</span> <span style="color:#953800">__name__</span> <span style="color:#0550ae">==</span> <span style="color:#0a3069">&#39;__main__&#39;</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>    app <span style="color:#0550ae">=</span> QApplication<span style="color:#1f2328">(</span>sys<span style="color:#0550ae">.</span>argv<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>    ex <span style="color:#0550ae">=</span> Window<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>    ex<span style="color:#0550ae">.</span>show<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>    sys<span style="color:#0550ae">.</span>exit<span style="color:#1f2328">(</span>app<span style="color:#0550ae">.</span>exec_<span style="color:#1f2328">())</span>
 </span></span></code></pre></div>
   </div>
 
@@ -953,7 +953,10 @@
       </a>
       
       <a href="https://www.zhihu.com/people/Fashionable" target="_blank" rel="noopener noreferrer">
-        <i class="fab fa-zhihu"></i> 知乎
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2" 
+             stroke-linecap="round" stroke-linejoin="round" style="width: 1em; height: 1em; vertical-align: -0.125em; display: inline-block;">
+          <path d="m13.3334,3.60098l0,17.1471l1.79582,0l0.75424,2.13703l3.18459,-2.13703l3.93584,0l0,-17.1471l-9.6705,0zm7.41375,14.87538l-1.79283,0l-2.24777,1.50849l-0.53276,-1.50849l-0.53875,0l0,-12.53483l5.10911,0l0,12.53483l0.00299,0zm-8.56906,-7.18927l-3.97475,0c0.06285,-1.34387 0.1287,-3.12174 0.19754,-5.17496l3.91788,0l-0.00299,-0.24244c0,-0.01796 -0.00599,-0.43998 -0.06884,-0.87097c-0.06285,-0.44896 -0.19754,-1.04457 -0.62854,-1.04457l-6.5727,0c0.13169,-0.61657 0.46991,-2.08615 0.87995,-2.80747l0.19155,-0.33522l-0.3861,-0.02095c-0.02394,0 -0.58663,-0.02694 -1.23912,0.31726c-1.06851,0.56868 -1.5474,1.68807 -1.75691,2.52612c-0.55072,2.18791 -1.33489,3.70837 -1.66712,4.35786c-0.09877,0.19155 -0.15863,0.30529 -0.18557,0.38311c-0.05387,0.14666 -0.02394,0.29332 0.0838,0.38909c0.31427,0.28434 1.14334,-0.0868 1.15232,-0.08979c0.01796,-0.00898 0.03891,-0.01796 0.06585,-0.02993c0.41603,-0.18856 1.64916,-0.74826 2.08914,-2.52911l1.69705,0c0.02095,0.96376 0.09278,4.14236 0.0868,5.17496l-4.22018,0l-0.06285,0.0449c-0.69139,0.50582 -0.91288,1.8916 -0.92185,1.95146l-0.0419,0.27536l4.99837,0c-0.36814,2.34355 -0.79315,3.3941 -1.01763,3.81313c-0.11074,0.20951 -0.21849,0.41902 -0.32025,0.62255c-0.63752,1.26306 -1.29898,2.56802 -3.7802,4.5973c-0.10775,0.0838 -0.20951,0.23944 -0.14367,0.41005c0.07183,0.18856 0.27835,0.27237 0.73629,0.27237c0.16162,0 0.35318,-0.00898 0.58065,-0.02993c1.49352,-0.13169 3.01698,-0.53875 4.04359,-2.6219c0.50882,-1.05056 0.94879,-2.14601 1.31394,-3.25941l4.08549,4.78886l0.14965,-0.35916c0.02394,-0.05687 0.56868,-1.38578 0.15264,-2.87032l-0.01497,-0.05387l-3.23547,-3.68143l-0.65847,0.49684c0.19155,-0.78118 0.31726,-1.49352 0.37413,-2.12805l4.74995,0l0,-0.23944c0,-1.20021 -0.55371,-1.91255 -0.57466,-1.94248l-0.07183,-0.08979z" />
+        </svg> 知乎
       </a>
 
       <a href="/index.xml" target="_blank" rel="noopener noreferrer">
