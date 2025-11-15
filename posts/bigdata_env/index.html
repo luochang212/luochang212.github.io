@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="https://luochang212.github.io/posts/bigdata_env/">
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.148.2">
+
+    
+    
+    
+
+<title>使用 Docker Compose 部署大数据集群：Spark &#43; Hadoop &#43; Hive &#43; JupyterLab • Chang Luo</title>
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="使用 Docker Compose 部署大数据集群：Spark &#43; Hadoop &#43; Hive &#43; JupyterLab">
+  <meta name="twitter:description" content="麻雀虽小，五脏俱全。
+GitHub 项目地址：bigdata-env
+引子 我有两台树莓派。
+凭借超高颜值，只要安安静静摆在那里，就是超绝桌搭。担心没有实用性？有的兄弟，包有的。装上 JupyterLab，它是数据科学工作站；装上 Kali Linux，它是黑客界的瑞士军刀；装上 llama.cpp，它是你的私有 LLM 推理服务器。
+你可能不屑一顾，这些事一台树莓派也能办到，何必弄两台呢？必须要做一些只有集群能做到的事，才能物尽其用。所以我计划用它们部署一个大数据集群。部署大数据集群可是一个技术活，不要期待一开始就直接在硬件上部署。应该先在 Docker Compose 上跑通，再尝试硬件部署。
+Note: 如果对装机过程感兴趣，可以参考我的博客《树莓派 5 装机指南》
+一、集群功能 「大数据集群」是个宽泛的词儿。
+装了 Spark 的，可以是大数据集群；装了 Spark &#43; Hadoop 的，也可以是大数据集群。那么到底要装到什么程度呢？这取决于我们的需求。作为一个常年耕作在数据一线的工程师，我认为基础需求包括：
+必须能分布式计算 必须能分布式存储 必须可以建分区表 必须能使用分布式机器学习库 pyspark.ml 必须有调度工具（当然 crontab 也算） 必须有 JupyterLab 我们的目标就是搭建一个满足这些需求的集群。但是我们没有必要从零开始工作，因为前人已经有很优秀的工作。只需要在前人工作的基础上做一些拓展，就能实现我们想要的功能。s1mplecc 大佬的博客《使用 Docker 快速部署 Spark &#43; Hadoop 大数据集群》就是一个很棒的基础工作。
+s1mplecc 大佬已经实现了 Spark &#43; Hadoop 集群 的搭建。我在大佬工作的基础上，新增了以下内容：
+沿用了一主（Master）二从（Worker）的配置 在 Worker 节点启用 DataNode 以支持数据同步 安装 Hive 环境 安装并初始化 miniconda3 安装与 Spark 版本配适的 Python 和 PySpark 安装 JupyterLab 主要增加了 Hive、JupyterLab 和 miniconda3。Hive 让我们更轻松地管理分区表；JupyterLab 提供浏览器操作页面，便于调试和开发；miniconda3 让安装 Python 包更方便。">
+      <meta name="twitter:site" content="@_stellar_tide">
+
+<meta property="og:url" content="https://luochang212.github.io/posts/bigdata_env/">
+  <meta property="og:site_name" content="Chang Luo">
+  <meta property="og:title" content="使用 Docker Compose 部署大数据集群：Spark &#43; Hadoop &#43; Hive &#43; JupyterLab">
+  <meta property="og:description" content="麻雀虽小，五脏俱全。
+GitHub 项目地址：bigdata-env
+引子 我有两台树莓派。
+凭借超高颜值，只要安安静静摆在那里，就是超绝桌搭。担心没有实用性？有的兄弟，包有的。装上 JupyterLab，它是数据科学工作站；装上 Kali Linux，它是黑客界的瑞士军刀；装上 llama.cpp，它是你的私有 LLM 推理服务器。
+你可能不屑一顾，这些事一台树莓派也能办到，何必弄两台呢？必须要做一些只有集群能做到的事，才能物尽其用。所以我计划用它们部署一个大数据集群。部署大数据集群可是一个技术活，不要期待一开始就直接在硬件上部署。应该先在 Docker Compose 上跑通，再尝试硬件部署。
+Note: 如果对装机过程感兴趣，可以参考我的博客《树莓派 5 装机指南》
+一、集群功能 「大数据集群」是个宽泛的词儿。
+装了 Spark 的，可以是大数据集群；装了 Spark &#43; Hadoop 的，也可以是大数据集群。那么到底要装到什么程度呢？这取决于我们的需求。作为一个常年耕作在数据一线的工程师，我认为基础需求包括：
+必须能分布式计算 必须能分布式存储 必须可以建分区表 必须能使用分布式机器学习库 pyspark.ml 必须有调度工具（当然 crontab 也算） 必须有 JupyterLab 我们的目标就是搭建一个满足这些需求的集群。但是我们没有必要从零开始工作，因为前人已经有很优秀的工作。只需要在前人工作的基础上做一些拓展，就能实现我们想要的功能。s1mplecc 大佬的博客《使用 Docker 快速部署 Spark &#43; Hadoop 大数据集群》就是一个很棒的基础工作。
+s1mplecc 大佬已经实现了 Spark &#43; Hadoop 集群 的搭建。我在大佬工作的基础上，新增了以下内容：
+沿用了一主（Master）二从（Worker）的配置 在 Worker 节点启用 DataNode 以支持数据同步 安装 Hive 环境 安装并初始化 miniconda3 安装与 Spark 版本配适的 Python 和 PySpark 安装 JupyterLab 主要增加了 Hive、JupyterLab 和 miniconda3。Hive 让我们更轻松地管理分区表；JupyterLab 提供浏览器操作页面，便于调试和开发；miniconda3 让安装 Python 包更方便。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-11-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-11-15T00:00:00+00:00">
+    <meta property="article:tag" content="Spark">
+    <meta property="article:tag" content="Hadoop">
+    <meta property="article:tag" content="HDFS">
+    <meta property="article:tag" content="Hive">
+    <meta property="article:tag" content="JupyterLab">
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.1354666f7c97c95b395dd180ab9cf1aca1ff0408c93996eed446576738e01579.css" integrity="sha256-E1Rmb3yXyVs5XdGAq5zxrKH/BAjJOZbu1EZXZzjgFXk=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+
+<link rel="stylesheet" href="/scss/tocbot.5ef07cebc3c477b54270456f149ee02922479bb7555fd344b2c69f953b0e7e5e.css" integrity="sha256-XvB868PEd7VCcEVvFJ7gKSJHm7dVX9NEssaflTsOfl4=">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    
+
+</head>
+
+
+    <body class=" ">
+    <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://upcdn.b0.upaiyun.com/libs/jquery/jquery-1.9.0.min.js"></script>
+
+  <style>
+    body {
+      transition: background-color .5s;
+    }
+
+    #overlay {
+      position: fixed;
+      display: none;
+      width: calc(100vw - 580px);
+      height: 100%;
+      top: 0;
+      left: 0;
+       
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      right: 0;
+      background-color: #FFF;
+      overflow: hidden;
+      transition: 0.5s;
+    }
+
+    #main {
+      transition: margin-left .5s;
+       
+      padding: 16px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      overflow: hidden;
+    }
+
+     
+    .tab {
+      overflow: hidden;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+    }
+
+     
+    .tab button {
+      background-color: inherit;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      transition: 0.3s;
+      font-size: 17px;
+    }
+
+     
+    .tab button:hover {
+      background-color: #ddd;
+    }
+
+     
+    .tab button.active {
+      background-color: #ccc;
+    }
+
+     
+    .tabcontent {
+      display: flex;
+      padding: 12px 12px;
+      margin: 0;
+      border: 1px solid #ccc;
+      border-top: none;
+      overflow: hidden;
+      height: calc(100vh - 90px);
+    }
+
+    .dropbtn {
+      background-color: #3498DB;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+    }
+
+    .dropup {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropup-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      bottom: 50px;
+      z-index: 1;
+    }
+
+    .dropup-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropup-content a:hover {
+      background-color: #ccc
+    }
+
+    .dropup:hover .dropup-content {
+      display: block;
+    }
+
+    .dropup:hover .dropbtn {
+      background-color: #2980B9;
+    }
+
+    #video2,
+    #video3 {
+      display: none;
+    }
+
+    .myiframe {
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  
+  <div class="sidebar">
+    <div class="container ">
+      <div class="sidebar-about">
+        <span class="site__title">
+          <a href="https://luochang212.github.io/">Chang Luo</a>
+        </span>
+        
+        
+        
+        <div class="author-image">
+          <a href="#" class="load-iframe" onclick="openNav()"><img src="https://luochang212.github.io//images/profile.webp" id="author-iamge"
+              alt="Author Image" class="img--circle img--headshot element--center"></a>
+        </div>
+        
+        <p class="site__description">
+          
+        </p>
+      </div>
+      <div class="collapsible-menu">
+        <input type="checkbox" id="menuToggle">
+        <label for="menuToggle">Chang Luo</label>
+        <div class="menu-content">
+          <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/portfolio/">
+						<span>Projects</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+          <section class="social">
+	
+	<a href="https://twitter.com/_stellar_tide" rel="me"><i class="fab fa-x-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	<a href="https://github.com/luochang212" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	<a href="https://instagram.com/suphenshin" rel="me"><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	<a href="https://www.zhihu.com/people/Fashionable" rel="me">
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2" 
+			 stroke-linecap="round" stroke-linejoin="round" style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+			<path d="m13.3334,3.60098l0,17.1471l1.79582,0l0.75424,2.13703l3.18459,-2.13703l3.93584,0l0,-17.1471l-9.6705,0zm7.41375,14.87538l-1.79283,0l-2.24777,1.50849l-0.53276,-1.50849l-0.53875,0l0,-12.53483l5.10911,0l0,12.53483l0.00299,0zm-8.56906,-7.18927l-3.97475,0c0.06285,-1.34387 0.1287,-3.12174 0.19754,-5.17496l3.91788,0l-0.00299,-0.24244c0,-0.01796 -0.00599,-0.43998 -0.06884,-0.87097c-0.06285,-0.44896 -0.19754,-1.04457 -0.62854,-1.04457l-6.5727,0c0.13169,-0.61657 0.46991,-2.08615 0.87995,-2.80747l0.19155,-0.33522l-0.3861,-0.02095c-0.02394,0 -0.58663,-0.02694 -1.23912,0.31726c-1.06851,0.56868 -1.5474,1.68807 -1.75691,2.52612c-0.55072,2.18791 -1.33489,3.70837 -1.66712,4.35786c-0.09877,0.19155 -0.15863,0.30529 -0.18557,0.38311c-0.05387,0.14666 -0.02394,0.29332 0.0838,0.38909c0.31427,0.28434 1.14334,-0.0868 1.15232,-0.08979c0.01796,-0.00898 0.03891,-0.01796 0.06585,-0.02993c0.41603,-0.18856 1.64916,-0.74826 2.08914,-2.52911l1.69705,0c0.02095,0.96376 0.09278,4.14236 0.0868,5.17496l-4.22018,0l-0.06285,0.0449c-0.69139,0.50582 -0.91288,1.8916 -0.92185,1.95146l-0.0419,0.27536l4.99837,0c-0.36814,2.34355 -0.79315,3.3941 -1.01763,3.81313c-0.11074,0.20951 -0.21849,0.41902 -0.32025,0.62255c-0.63752,1.26306 -1.29898,2.56802 -3.7802,4.5973c-0.10775,0.0838 -0.20951,0.23944 -0.14367,0.41005c0.07183,0.18856 0.27835,0.27237 0.73629,0.27237c0.16162,0 0.35318,-0.00898 0.58065,-0.02993c1.49352,-0.13169 3.01698,-0.53875 4.04359,-2.6219c0.50882,-1.05056 0.94879,-2.14601 1.31394,-3.25941l4.08549,4.78886l0.14965,-0.35916c0.02394,-0.05687 0.56868,-1.38578 0.15264,-2.87032l-0.01497,-0.05387l-3.23547,-3.68143l-0.65847,0.49684c0.19155,-0.78118 0.31726,-1.49352 0.37413,-2.12805l4.74995,0l0,-0.23944c0,-1.20021 -0.55371,-1.91255 -0.57466,-1.94248l-0.07183,-0.08979z" />
+		</svg>
+	</a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</section>
+
+        </div>
+      </div>
+      
+<div class="copyright">
+  &copy; 2025 Chang Luo
+  
+</div>
+
+
+
+    </div>
+  </div>
+
+  
+  
+
+  <div id="overlay" onclick="off()"></div>
+
+  <div id="mySidenav" class="sidenav">
+
+    <div id="main">
+      <div class="tab">
+        <button id="default-tab" class="tablinks" onclick="openItem(event, 'Resources')">Resources</button>
+        <button class="tablinks" onclick="openItem(event, 'netease-player')">Music</button>
+        <button class="tablinks" onclick="openItem(event, 'video-player')">Video</button>
+        <button class="tablinks" onclick="openItem(event, 'gallery')">Gallery</button>
+        <button class="tablinks" onclick="openItem(event, 'gadget')">Gadget</button>
+        <button class="tablinks" onclick="openItem(event, 'categories')">Cats</button>
+      </div>
+
+      <div id="Resources" class="tabcontent">
+        <iframe class="myiframe"
+          src="about:blank"
+          data-src="/resources/"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          scrolling="auto"></iframe>
+      </div>
+
+      <div id="netease-player" class="tabcontent">
+        <iframe class="myiframe"
+          src="about:blank"
+          data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
+          frameborder="no"
+          marginheight="0"
+          marginwidth="0"
+          scrolling="auto"></iframe>
+      </div>
+
+      <div id="video-player" class="tabcontent">
+        <div id="video1">
+          <iframe src="about:blank"
+            data-src="//player.bilibili.com/player.html?bvid=BV1Ln4y1d7Z9&p=1&high_quality=1&danmaku=0&autoplay=0"
+            style="width:100%; height: 500px"
+            scrolling="no"
+            frameborder="no"
+            framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+        <div id="video2">
+          <iframe src="about:blank"
+            data-src="//player.bilibili.com/player.html?bvid=BV1rp4y1L7i4&p=1&high_quality=1&danmaku=0&autoplay=0"
+            style="width:100%; height: 500px"
+            scrolling="no"
+            frameborder="no"
+            framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+        <div id="video3">
+          <iframe src="about:blank"
+            data-src="//player.bilibili.com/player.html?bvid=BV1Av4y147QE&p=1&high_quality=1&danmaku=0&autoplay=0"
+            style="width:100%; height:500px"
+            scrolling="no"
+            frameborder="no"
+            framespacing="0"
+            allowfullscreen="true"></iframe>
+        </div>
+
+        
+
+        
+
+        <br>
+        <div class="dropup">
+          <button class="dropbtn">更多视频</button>
+          <div class="dropup-content">
+            <a onclick="link1()">ZUTOMYAO</a>
+            <a onclick="link2()">岁岁恋</a>
+            <a onclick="link3()">真物论</a>
+          </div>
+        </div>
+      </div>
+
+      <div id="gallery" class="tabcontent">
+        <iframe class="myiframe"
+        src="about:blank"
+        data-src="/gadget/gallery/#two"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        scrolling="auto"></iframe>
+      </div>
+
+      <div id="gadget" class="tabcontent">
+        <iframe class="myiframe"
+        src="about:blank"
+        data-src="/tool/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        scrolling="auto"></iframe>
+      </div>
+
+      <div id="categories" class="tabcontent">
+        <iframe class="myiframe"
+        src="about:blank"
+        data-src="/categories/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        scrolling="auto"></iframe>
+      </div>
+    </div>
+  </div>
+
+  
+  <script>
+    'use strict'
+
+    function openNav() {
+      on();
+      document.getElementById("mySidenav").style.width = "580px";
+      document.body.style.backgroundColor = "rgba(0,0,0,0.5)";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.body.style.backgroundColor = "white";
+    }
+
+    function on() {
+      document.getElementById("overlay").style.display = "block";
+    }
+
+    function off() {
+      closeNav();
+      document.getElementById("overlay").style.display = "none";
+    }
+
+    
+    document.getElementById('default-tab').click();
+
+    function openItem(evt, itemName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(itemName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+
+    function link1() {
+      document.getElementById("video1").style.display = "block";
+      document.getElementById("video2").style.display = "none";
+      document.getElementById("video3").style.display = "none";
+    }
+
+    function link2() {
+      document.getElementById("video1").style.display = "none";
+      document.getElementById("video2").style.display = "block";
+      document.getElementById("video3").style.display = "none";
+    }
+
+    function link3() {
+      document.getElementById("video1").style.display = "none";
+      document.getElementById("video2").style.display = "none";
+      document.getElementById("video3").style.display = "block";
+    }
+
+     
+    var flag = 0;
+
+     
+    $(".load-iframe").click(function () {
+      if (flag < 1) {
+        $("iframe").each(function () {
+          $(this).attr("src", $(this).data("src"));
+        });
+        flag = flag + 1;
+      }
+    });
+  </script>
+
+</body>
+
+
+
+        <div class="content container">
+            
+    <style>
+  .my-emoji {
+    height: 25px;
+    display: inline-block;
+    margin: 0;
+    vertical-align: text-bottom;
+  }
+
+  .social-links a {
+    color: rgba(120,120,120,1);
+    text-decoration: none;
+    outline: none !important;
+    cursor: pointer;
+    transition-property: padding, text-shadow, line-height, color, background, opacity, transform;
+    transition-duration: .25s;
+    transition-timing-function: ease-in-out;
+    display: inline-block;
+    white-space: nowrap;
+    position: relative;
+  }
+
+  .social-links a:after {
+    content: "";
+    display: block;
+    height: .125rem;
+    margin: -.125rem 0 0;
+    background: rgba(0,0,0,.5);
+    border-radius: 1px;
+    transform: scaleX(0);
+    transition: transform .25s ease-in-out;
+  }
+
+  .social-links a:hover:after {
+    transform: scaleX(1);
+  }
+
+  .social-links a:hover {
+    color: rgba(120,120,120,1);
+  }
+
+  .post {
+    margin-bottom: 0;
+  }
+
+  .post-footer {
+    margin-top: 0;
+    padding-top: 0.5rem;
+  }
+</style>
+
+
+
+<article>
+  <header>
+    <h1>使用 Docker Compose 部署大数据集群：Spark &#43; Hadoop &#43; Hive &#43; JupyterLab</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Nov 15, 2025
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/bigdata">BIGDATA</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/spark">spark</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/hadoop">hadoop</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/hdfs">hdfs</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/hive">hive</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/jupyterlab">jupyterlab</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 4 min read
+</div>
+
+
+  </header>
+  
+  
+  
+  <div class="toc-wrapper">
+    <input type="checkbox" id="tocToggle">
+    <label for="tocToggle">目录</label>
+    
+    <div class="toc" id="TableOfContents"></div>
+    
+  </div>
+  
+  
+  <div class="post">
+    <blockquote>
+<p>麻雀虽小，五脏俱全。</p></blockquote>
+<p>GitHub 项目地址：<a href="https://github.com/luochang212/bigdata-env" target="_blank">bigdata-env</a></p>
+<h3 id="引子">引子</h3>
+<p>我有两台树莓派。</p>
+<p>凭借超高颜值，只要安安静静摆在那里，就是超绝桌搭。担心没有实用性？有的兄弟，包有的。装上 <a href="https://jupyterlab.readthedocs.io/en/stable/">JupyterLab</a>，它是数据科学工作站；装上 <a href="https://www.kali.org/">Kali Linux</a>，它是黑客界的瑞士军刀；装上 <a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a>，它是你的私有 LLM 推理服务器。</p>
+<p><img src="/img/raspberry_pi_cluster.JPG" alt="raspberry_pi_cluster"></p>
+<p>你可能不屑一顾，这些事一台树莓派也能办到，何必弄两台呢？必须要做一些只有集群能做到的事，才能物尽其用。所以我计划用它们部署一个大数据集群。部署大数据集群可是一个技术活，不要期待一开始就直接在硬件上部署。应该先在 Docker Compose 上跑通，再尝试硬件部署。</p>
+<blockquote>
+<p><strong>Note:</strong> 如果对装机过程感兴趣，可以参考我的博客<a href="/posts/raspberry_pi_5/">《树莓派 5 装机指南》</a></p></blockquote>
+<h3 id="一集群功能">一、集群功能</h3>
+<p>「大数据集群」是个宽泛的词儿。</p>
+<p>装了 Spark 的，可以是大数据集群；装了 Spark + Hadoop 的，也可以是大数据集群。那么到底要装到什么程度呢？这取决于我们的需求。作为一个常年耕作在数据一线的工程师，我认为基础需求包括：</p>
+<ul>
+<li>必须能分布式计算</li>
+<li>必须能分布式存储</li>
+<li>必须可以建分区表</li>
+<li>必须能使用分布式机器学习库 <a href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.ml.html">pyspark.ml</a></li>
+<li>必须有调度工具（当然 crontab 也算）</li>
+<li>必须有 JupyterLab</li>
+</ul>
+<p>我们的目标就是搭建一个满足这些需求的集群。但是我们没有必要从零开始工作，因为前人已经有很优秀的工作。只需要在前人工作的基础上做一些拓展，就能实现我们想要的功能。<a href="https://github.com/s1mplecc">s1mplecc</a> 大佬的博客<a href="https://s1mple.cc/2021/10/12/%E4%BD%BF%E7%94%A8-Docker-%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2-Spark-Hadoop-%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%9B%86%E7%BE%A4/">《使用 Docker 快速部署 Spark + Hadoop 大数据集群》</a>就是一个很棒的基础工作。</p>
+<p>s1mplecc 大佬已经实现了 <a href="https://github.com/s1mplecc/spark-hadoop-docker">Spark + Hadoop 集群</a> 的搭建。我在大佬工作的基础上，新增了以下内容：</p>
+<ol>
+<li>沿用了一主（Master）二从（Worker）的配置</li>
+<li>在 Worker 节点启用 DataNode 以支持数据同步</li>
+<li>安装 Hive 环境</li>
+<li>安装并初始化 miniconda3</li>
+<li>安装与 Spark 版本配适的 Python 和 PySpark</li>
+<li>安装 JupyterLab</li>
+</ol>
+<p>主要增加了 Hive、JupyterLab 和 miniconda3。Hive 让我们更轻松地管理分区表；JupyterLab 提供浏览器操作页面，便于调试和开发；miniconda3 让安装 Python 包更方便。</p>
+<h3 id="二稍作讲解">二、稍作讲解</h3>
+<p>Docker Compose 使用 <code>docker-compose.yml</code> 文件定义容器的配置、数据卷、网络、依赖关系等信息。并允许用户使用 <code>Dockerfile</code> 文件制作自定义镜像。所以，这两个文件是本项目的核心，本节将简略介绍这两个文件。</p>
+<blockquote>
+<p><strong>Note:</strong> 完整的部署代码见 GitHub 仓库：<a href="https://github.com/luochang212/bigdata-env">luochang212/bigdata-env</a></p></blockquote>
+<h4 id="1docker-composeyml-文件">1）docker-compose.yml 文件</h4>
+<p>下面是 <code>docker-compose.yml</code> 文件：</p>
+<pre tabindex="0"><code>services:
+  mysql:
+    image: mysql:8.0
+    # platform: linux/amd64
+    hostname: mysql
+    container_name: hive-mysql
+    networks:
+      - bigdata-base-network
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=hive_metastore
+      - MYSQL_USER=hive
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - &#39;3306:3306&#39;
+    command: --default-authentication-plugin=mysql_native_password
+    healthcheck:
+      test: [&#34;CMD&#34;, &#34;mysqladmin&#34;, &#34;ping&#34;, &#34;-h&#34;, &#34;localhost&#34;, &#34;-u&#34;, &#34;root&#34;, &#34;-p${MYSQL_ROOT_PASSWORD}&#34;]
+      timeout: 10s
+      retries: 3
+      interval: 10s
+      start_period: 20s
+
+  spark:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: spark-hadoop-hive:latest
+    # platform: linux/amd64
+    hostname: master
+    container_name: spark-hadoop-hive-master
+    networks:
+      - bigdata-base-network
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      - SPARK_MODE=master
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+      - HIVE_DB_USER=hive
+      - HIVE_DB_PASSWORD=${HIVE_DB_PASSWORD}
+    volumes:
+      - ./share:/opt/share
+    ports:
+      - &#39;8080:8080&#39;
+      - &#39;4040:4040&#39;
+      - &#39;7077:7077&#39;
+      - &#39;8088:8088&#39;
+      - &#39;8042:8042&#39;
+      - &#39;9870:9870&#39;
+      - &#39;19888:19888&#39;
+      - &#39;9083:9083&#39;
+      - &#39;10000:10000&#39;
+      - &#39;8888:8888&#39;
+    command: bash /opt/start-master.sh
+
+  spark-worker-1:
+    image: spark-hadoop-hive:latest
+    # platform: linux/amd64
+    hostname: worker1
+    container_name: spark-hadoop-hive-worker-1
+    networks:
+      - bigdata-base-network
+    depends_on:
+      - spark
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://master:7077
+      - SPARK_WORKER_MEMORY=1G
+      - SPARK_WORKER_CORES=1
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+    volumes:
+      - ./share:/opt/share
+    ports:
+      - &#39;8081:8081&#39;
+    command: bash /opt/start-worker.sh
+
+  spark-worker-2:
+    image: spark-hadoop-hive:latest
+    # platform: linux/amd64
+    hostname: worker2
+    container_name: spark-hadoop-hive-worker-2
+    networks:
+      - bigdata-base-network
+    depends_on:
+      - spark
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://master:7077
+      - SPARK_WORKER_MEMORY=1G
+      - SPARK_WORKER_CORES=1
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+    volumes:
+      - ./share:/opt/share
+    ports:
+      - &#39;8082:8081&#39;
+    command: bash /opt/start-worker.sh
+
+networks:
+  bigdata-base-network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+</code></pre><p>该文件创建了四个容器、一个网络、一个数据卷：</p>
+<ul>
+<li>容器：
+<ul>
+<li><code>mysql</code>：用于存储 Hive 表的元数据</li>
+<li><code>spark</code>：主节点</li>
+<li><code>spark-worker-1</code>：工作节点 1 号</li>
+<li><code>spark-worker-2</code>：工作节点 2 号</li>
+</ul>
+</li>
+<li>网络：
+<ul>
+<li><code>bigdata-base-network</code>：启用桥接（bridge）模式</li>
+</ul>
+</li>
+<li>数据卷：
+<ul>
+<li><code>mysql_data</code>：<code>mysql</code> 容器挂载的数据卷</li>
+</ul>
+</li>
+</ul>
+<h4 id="2dockerfile-文件">2）Dockerfile 文件</h4>
+<p>下面是 <code>Dockerfile</code> 文件：</p>
+<pre tabindex="0"><code>FROM --platform=$BUILDPLATFORM docker.io/bitnami/spark:3
+LABEL maintainer=&#34;luochang212&#34;
+LABEL description=&#34;Docker image with Spark (3.3.0) and Hadoop (3.3.2), based on bitnami/spark:3. \
+For more information, please visit https://github.com/luochang212/bigdata-env.&#34;
+
+USER root
+
+ENV HADOOP_HOME=&#34;/opt/hadoop&#34;
+ENV HADOOP_CONF_DIR=&#34;$HADOOP_HOME/etc/hadoop&#34;
+ENV HADOOP_LOG_DIR=&#34;/var/log/hadoop&#34;
+ENV HIVE_HOME=&#34;/opt/hive&#34;
+ENV HIVE_CONF_DIR=&#34;$HIVE_HOME/conf&#34;
+ENV MINICONDA_HOME=&#34;/opt/miniconda3&#34;
+ENV PATH=&#34;$MINICONDA_HOME/bin:$HADOOP_HOME/sbin:$HADOOP_HOME/bin:$HIVE_HOME/bin:$PATH&#34;
+
+WORKDIR /opt
+
+RUN apt-get update &amp;&amp; apt-get install -y openssh-server
+
+# Create spark user for Spark services
+RUN useradd -r -m -s /bin/bash spark &amp;&amp; \
+    usermod -aG sudo spark
+
+RUN ssh-keygen -t rsa -f /root/.ssh/id_rsa -P &#39;&#39; &amp;&amp; \
+    cat /root/.ssh/id_rsa.pub &gt;&gt; /root/.ssh/authorized_keys
+
+# RUN curl -OL https://archive.apache.org/dist/hadoop/common/hadoop-3.3.2/hadoop-3.3.2.tar.gz
+RUN curl -OL https://mirrors.huaweicloud.com/apache/hadoop/common/hadoop-3.3.2/hadoop-3.3.2.tar.gz
+RUN tar -xzvf hadoop-3.3.2.tar.gz &amp;&amp; \
+  mv hadoop-3.3.2 hadoop &amp;&amp; \
+  rm -rf hadoop-3.3.2.tar.gz &amp;&amp; \
+  mkdir /var/log/hadoop
+
+# Install Hive
+RUN curl -OL https://mirrors.huaweicloud.com/apache/hive/hive-3.1.3/apache-hive-3.1.3-bin.tar.gz
+RUN tar -xzvf apache-hive-3.1.3-bin.tar.gz &amp;&amp; \
+  mv apache-hive-3.1.3-bin hive &amp;&amp; \
+  rm -rf apache-hive-3.1.3-bin.tar.gz
+
+# Install Miniconda
+RUN curl -OL https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh &amp;&amp; \
+    bash Miniconda3-latest-Linux-x86_64.sh -b -p $MINICONDA_HOME &amp;&amp; \
+    rm -rf Miniconda3-latest-Linux-x86_64.sh &amp;&amp; \
+    . $MINICONDA_HOME/bin/activate &amp;&amp; \
+    conda init --all
+    # conda config --set auto_activate_base false
+
+# Install JupyterLab and common data science packages
+RUN /bin/bash -c &#34;source $MINICONDA_HOME/bin/activate &amp;&amp; \
+    conda config --set channel_priority flexible &amp;&amp; \
+    conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main &amp;&amp; \
+    conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r &amp;&amp; \
+    conda install -n base -y python=3.9 jupyterlab ipykernel &amp;&amp; \
+    pip install --no-cache-dir pyspark==3.3.0 &amp;&amp; \
+    conda clean -a -y&#34;
+
+# Install MySQL connector for Hive metastore
+RUN curl -OL https://repo1.maven.org/maven2/com/mysql/mysql-connector-j/8.0.33/mysql-connector-j-8.0.33.jar &amp;&amp; \
+  mv mysql-connector-j-8.0.33.jar $HIVE_HOME/lib/mysql-connector-java.jar
+
+RUN mkdir -p /root/hdfs/namenode &amp;&amp; \
+    mkdir -p /root/hdfs/datanode 
+
+COPY config/* /tmp/
+
+RUN mv /tmp/ssh_config /root/.ssh/config &amp;&amp; \
+    mv /tmp/hadoop-env.sh $HADOOP_CONF_DIR/hadoop-env.sh &amp;&amp; \
+    mv /tmp/hdfs-site.xml $HADOOP_CONF_DIR/hdfs-site.xml &amp;&amp; \
+    mv /tmp/core-site.xml $HADOOP_CONF_DIR/core-site.xml &amp;&amp; \
+    mv /tmp/mapred-site.xml $HADOOP_CONF_DIR/mapred-site.xml &amp;&amp; \
+    mv /tmp/yarn-site.xml $HADOOP_CONF_DIR/yarn-site.xml &amp;&amp; \
+    mv /tmp/workers $HADOOP_CONF_DIR/workers &amp;&amp; \
+    mv /tmp/hive-site.xml $HIVE_CONF_DIR/hive-site.xml
+
+COPY start-master.sh /opt/start-master.sh
+COPY start-worker.sh /opt/start-worker.sh
+COPY set-conda-env.sh /opt/set-conda-env.sh
+COPY set-jupyter-env.sh /opt/set-jupyter-env.sh
+COPY jupyter_server_config.py /opt/jupyter_server_config.py
+
+RUN chmod +x /opt/start-master.sh &amp;&amp; \
+    chmod +x /opt/start-worker.sh &amp;&amp; \
+    chmod +x $HADOOP_HOME/sbin/start-dfs.sh &amp;&amp; \
+    chmod +x $HADOOP_HOME/sbin/start-yarn.sh &amp;&amp; \
+    chmod +x /opt/set-conda-env.sh &amp;&amp; \
+    chmod +x /opt/set-jupyter-env.sh &amp;&amp; \
+    chmod +x /opt/jupyter_server_config.py
+
+RUN hdfs namenode -format
+RUN sed -i &#34;1 a /etc/init.d/ssh start &gt; /dev/null &amp;&#34; /opt/bitnami/scripts/spark/entrypoint.sh
+
+ENTRYPOINT [ &#34;/opt/bitnami/scripts/spark/entrypoint.sh&#34; ]
+CMD [ &#34;/opt/bitnami/scripts/spark/run.sh&#34; ]
+</code></pre><p>使用 <code>Dockerfile</code> 文件可以制作自定义镜像，从而创建自定义容器。从我们的 <code>docker-compose.yml</code> 文件可以看出，<code>spark</code>、<code>spark-worker-1</code>、<code>spark-worker-2</code> 三个容器，共用一个 <code>Dockerfile</code> 文件。也就是说，这三个容器的基础环境是相同的，只是配置和启动命令有所不同。</p>
+<h3 id="三本地运行">三、本地运行</h3>
+<p>如果你希望在本地运行本文创建的大数据集群，请参考以下步骤。</p>
+<h4 id="1克隆仓库">1）克隆仓库</h4>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/luochang212/bigdata-env.git
+</span></span><span style="display:flex;"><span><span style="color:#6639ba">cd</span> bigdata-env
+</span></span></code></pre></div><h4 id="2配置-env-文件">2）配置 <code>.env</code> 文件</h4>
+<p>以 <code>.env.example</code> 为模板，创建你的 <code>.env</code> 文件：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cp .env.example .env
+</span></span></code></pre></div><p>编辑 <code>.env</code> 文件，改成你的密码（可选）：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#953800">MYSQL_ROOT_PASSWORD</span><span style="color:#0550ae">=[</span>your-mysql-root-password<span style="color:#0550ae">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#953800">MYSQL_PASSWORD</span><span style="color:#0550ae">=[</span>your-mysql-password<span style="color:#0550ae">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#953800">HIVE_DB_PASSWORD</span><span style="color:#0550ae">=[</span>your-hive-db-password<span style="color:#0550ae">]</span>
+</span></span></code></pre></div><blockquote>
+<p>⚠️ <strong>注意</strong>：</p>
+<ul>
+<li>若修改 <code>.env</code> 中 <code>MYSQL_PASSWORD</code> 的密码，需要将 <code>hive-site.xml</code> 中 <code>javax.jdo.option.ConnectionPassword</code> 的密码同步修改为你的新密码</li>
+<li>由于 <code>hive-site.xml</code> 无法使用 <code>.env</code> 配置环境变量，因此该文件中依然包含明文密码。请注意不要在上传 <code>hive-site.xml</code> 文件时泄漏密码</li>
+</ul></blockquote>
+<h4 id="3启动-docker-服务">3）启动 docker 服务</h4>
+<p>启动服务之前，请确保你已经安装并启动了 docker 服务。中国大陆地区需要额外配置一下镜像源，否则无法正常下载镜像文件。配置镜像源的方法在 <a href="https://www.luochang.ink/posts/chat_to_clickhouse/#1-%E9%85%8D%E7%BD%AE-docker-%E9%95%9C%E5%83%8F%E6%BA%90">《耶是 ClickHouse！我们有救了！！》</a> 一文中有详细介绍。</p>
+<blockquote>
+<p>为避免脚本在 docker 中运行出错，<strong>Windows 用户</strong> 请先运行以下脚本：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#1f2328">.\</span>convert<span style="color:#1f2328">.</span>ps1
+</span></span></code></pre></div><p><a href="https://github.com/luochang212/bigdata-env/blob/main/convert.ps1">此脚本</a> 将项目下 Windows 风格的换行符转换为 Unix 风格的换行符。</p></blockquote>
+<p>构建镜像：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker compose build --no-cache
+</span></span></code></pre></div><p>启动所有服务：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker compose up -d
+</span></span></code></pre></div><p>完全启动大约需要 30 秒，如果觉得等待无聊，可以打印实时日志：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker compose logs -f
+</span></span></code></pre></div><!--
+以下两行日志出现表示启动完成：
+
+```
+spark-hadoop-hive-worker-1  | 25/10/02 11:01:36 INFO Worker: Successfully registered with master spark://master:7077
+spark-hadoop-hive-worker-2  | 25/10/02 11:01:36 INFO Worker: Successfully registered with master spark://master:7077
+``` -->
+<h4 id="4打开-jupyterlab">4）打开 JupyterLab</h4>
+<p>在浏览器打开 JupyterLab：<a href="http://localhost:8888/lab">http://localhost:8888/lab</a></p>
+<p>这里需要输入 token 以获得访问权限，执行以下命令获取 token：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker compose <span style="color:#6639ba">exec</span> -it spark jupyter lab list
+</span></span></code></pre></div><p>进入 JupyterLab 后，使用 JupyterLab 的终端即可访问大数据环境。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#57606a"># 验证 Hive 服务可用</span>
+</span></span><span style="display:flex;"><span>hive -e <span style="color:#0a3069">&#39;SHOW DATABASES;&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 确认 Spark 服务可用</span>
+</span></span><span style="display:flex;"><span>pyspark
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 也可启动 Spark 交互式命令行</span>
+</span></span><span style="display:flex;"><span>spark-shell
+</span></span></code></pre></div>
+  </div>
+
+  <div class="post-footer">
+    <p style="margin-bottom: 1rem;">欢迎关注我的其它发布渠道：</p>
+    <div class="social-links" style="display: flex; flex-direction: column; gap: 10px;">
+      
+      <a href="https://twitter.com/_stellar_tide" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-twitter"></i> X
+      </a>
+      
+      
+      <a href="https://github.com/luochang212" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+      
+      
+      <a href="https://www.luochang.ink/images/wechat.jpg" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-weixin"></i> 公众号
+      </a>
+      
+      <a href="https://www.zhihu.com/people/Fashionable" target="_blank" rel="noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2" 
+             stroke-linecap="round" stroke-linejoin="round" style="width: 1em; height: 1em; vertical-align: -0.125em; display: inline-block;">
+          <path d="m13.3334,3.60098l0,17.1471l1.79582,0l0.75424,2.13703l3.18459,-2.13703l3.93584,0l0,-17.1471l-9.6705,0zm7.41375,14.87538l-1.79283,0l-2.24777,1.50849l-0.53276,-1.50849l-0.53875,0l0,-12.53483l5.10911,0l0,12.53483l0.00299,0zm-8.56906,-7.18927l-3.97475,0c0.06285,-1.34387 0.1287,-3.12174 0.19754,-5.17496l3.91788,0l-0.00299,-0.24244c0,-0.01796 -0.00599,-0.43998 -0.06884,-0.87097c-0.06285,-0.44896 -0.19754,-1.04457 -0.62854,-1.04457l-6.5727,0c0.13169,-0.61657 0.46991,-2.08615 0.87995,-2.80747l0.19155,-0.33522l-0.3861,-0.02095c-0.02394,0 -0.58663,-0.02694 -1.23912,0.31726c-1.06851,0.56868 -1.5474,1.68807 -1.75691,2.52612c-0.55072,2.18791 -1.33489,3.70837 -1.66712,4.35786c-0.09877,0.19155 -0.15863,0.30529 -0.18557,0.38311c-0.05387,0.14666 -0.02394,0.29332 0.0838,0.38909c0.31427,0.28434 1.14334,-0.0868 1.15232,-0.08979c0.01796,-0.00898 0.03891,-0.01796 0.06585,-0.02993c0.41603,-0.18856 1.64916,-0.74826 2.08914,-2.52911l1.69705,0c0.02095,0.96376 0.09278,4.14236 0.0868,5.17496l-4.22018,0l-0.06285,0.0449c-0.69139,0.50582 -0.91288,1.8916 -0.92185,1.95146l-0.0419,0.27536l4.99837,0c-0.36814,2.34355 -0.79315,3.3941 -1.01763,3.81313c-0.11074,0.20951 -0.21849,0.41902 -0.32025,0.62255c-0.63752,1.26306 -1.29898,2.56802 -3.7802,4.5973c-0.10775,0.0838 -0.20951,0.23944 -0.14367,0.41005c0.07183,0.18856 0.27835,0.27237 0.73629,0.27237c0.16162,0 0.35318,-0.00898 0.58065,-0.02993c1.49352,-0.13169 3.01698,-0.53875 4.04359,-2.6219c0.50882,-1.05056 0.94879,-2.14601 1.31394,-3.25941l4.08549,4.78886l0.14965,-0.35916c0.02394,-0.05687 0.56868,-1.38578 0.15264,-2.87032l-0.01497,-0.05387l-3.23547,-3.68143l-0.65847,0.49684c0.19155,-0.78118 0.31726,-1.49352 0.37413,-2.12805l4.74995,0l0,-0.23944c0,-1.20021 -0.55371,-1.91255 -0.57466,-1.94248l-0.07183,-0.08979z" />
+        </svg> 知乎
+      </a>
+
+      <a href="/index.xml" target="_blank" rel="noopener noreferrer">
+        <i class="fas fa-rss"></i> RSS
+      </a>
+
+    </div>
+    <div style="margin-bottom: 5rem;"></div>
+  </div>
+
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/quick_bi_intro/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">阿里发布新版 Quick BI，聊聊 ChatBI 的底层架构、交互设计和云计算生态</span>
+    </a>
+    
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+        </div>
+        
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
+
+
+
+
+
+<script src="https://kit.fontawesome.com/2134995a39.js" crossorigin="anonymous"></script>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
+<script type="text/javascript">
+  if (tocbot) {
+    tocbot.init({
+      
+      tocSelector: '.toc',
+      
+      contentSelector: '.post',
+      
+      headingSelector: 'h2, h3, h4',
+      collapseDepth: 4
+    });
+  }
+</script>
+
+
+
+    
+
+
+
+    </body>
+</html>

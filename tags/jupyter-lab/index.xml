@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jupyter Lab on Chang Luo</title>
+    <link>http://localhost:1313/tags/jupyter-lab/</link>
+    <description>Recent content in Jupyter Lab on Chang Luo</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 15 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/jupyter-lab/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 Docker Compose 部署大数据集群：Spark &#43; Hadoop &#43; Hive &#43; JupyterLab</title>
+      <link>http://localhost:1313/posts/bigdata_env/</link>
+      <pubDate>Sat, 15 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/bigdata_env/</guid>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;麻雀虽小，五脏俱全。&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;GitHub 项目地址：&lt;a href=&#34;https://github.com/luochang212/bigdata-env&#34; target=&#34;_blank&#34;&gt;bigdata-env&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;引子&#34;&gt;引子&lt;/h3&gt;&#xA;&lt;p&gt;我有一个树莓派集群。&lt;/p&gt;&#xA;&lt;p&gt;凭借超高颜值，只要安安静静摆在那里，就是超绝桌搭。担心没有实用性？有的兄弟，包有的。装上 &lt;a href=&#34;https://jupyterlab.readthedocs.io/en/stable/&#34;&gt;Jupyterlab&lt;/a&gt;，它是数据科学工作站；装上 &lt;a href=&#34;https://www.kali.org/&#34;&gt;Kali Linux&lt;/a&gt;，它是黑客届的瑞士军刀；装上 &lt;a href=&#34;https://github.com/ggml-org/llama.cpp&#34;&gt;llama.cpp&lt;/a&gt;，它是你的私有 LLM 推理服务器。&lt;/p&gt;&#xA;&lt;p&gt;可能你不屑一顾，这些事一台树莓派也能办到，何必弄一个集群呢？所以必须部署一个大数据集群，才能物尽其用。部署大数据集群可是一个技术活，我们不要期待一开始就在硬件上部署。最好先在 Docker Compose 上跑通，再尝试在树莓派上部署。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/raspberry_pi_cluster.JPG&#34; alt=&#34;raspberry_pi_cluster&#34;&gt;&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;如果你对装机感兴趣，可以参考我的另一篇博客&lt;a href=&#34;http://localhost:1313/posts/raspberry_pi_5/&#34;&gt;《树莓派 5 装机指南》&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;h3 id=&#34;一工作总览&#34;&gt;一、工作总览&lt;/h3&gt;&#xA;&lt;p&gt;大数据集群是个宽泛的词儿。装了 Spark 的，是大数据集群；装了 Spark + Hadoop，也是大数据集群。那么到底要装到什么程度，才能称之为大数据集群？这取决于我们的需求。作为一个常年耕作在数据一线的 SQL boy，我认为基础需求包括：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;必须能分布式计算&lt;/li&gt;&#xA;&lt;li&gt;必须能分布式存储&lt;/li&gt;&#xA;&lt;li&gt;必须可以建分区表&lt;/li&gt;&#xA;&lt;li&gt;必须能用分布式机器学习库 &lt;a href=&#34;https://spark.apache.org/docs/latest/api/python/reference/pyspark.ml.html&#34;&gt;pyspark.ml&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;必须有调度工具（当然 crontab 也算）&lt;/li&gt;&#xA;&lt;li&gt;必须有 Jupyter Lab&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;!-- 相信我，这些需求都是有根据的，少了其中任何一项都不免别手别脚。 --&gt;&#xA;&lt;p&gt;我们没有必要从零开始实现这些功能。事实上，已经有很好地教程带我们入门部署大数据集群这件事，那就是 &lt;a href=&#34;https://github.com/s1mplecc&#34;&gt;s1mplecc&lt;/a&gt; 大佬的&lt;a href=&#34;https://s1mple.cc/2021/10/12/%E4%BD%BF%E7%94%A8-Docker-%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2-Spark-Hadoop-%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%9B%86%E7%BE%A4/&#34;&gt;《使用 Docker 快速部署 Spark + Hadoop 大数据集群》&lt;/a&gt;这篇博客，非常推荐大家阅读。&lt;/p&gt;&#xA;&lt;p&gt;s1mplecc 大佬已经实现了 Spark + Hadoop 集群的搭建。我在 &lt;a href=&#34;https://github.com/s1mplecc/spark-hadoop-docker&#34;&gt;s1mplecc 佬工作&lt;/a&gt; 的基础上新增了以下内容：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;沿用了一主（Master）二从（Worker）的配置&lt;/li&gt;&#xA;&lt;li&gt;在 Worker 中新增 DataNode 以支持数据同步&lt;/li&gt;&#xA;&lt;li&gt;安装 Hive 环境&lt;/li&gt;&#xA;&lt;li&gt;安装并初始化 miniconda3&lt;/li&gt;&#xA;&lt;li&gt;安装与 Spark 版本配适的 python 和 pyspark&lt;/li&gt;&#xA;&lt;li&gt;安装 Jupyter Lab&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;二稍作讲解&#34;&gt;二、稍作讲解&lt;/h3&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;本节只介绍关键代码，完整项目代码见 &lt;a href=&#34;https://github.com/luochang212/bigdata-env&#34;&gt;luochang212/bigdata-env&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

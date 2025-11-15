@@ -6,8 +6,43 @@
     <description>Recent content in Tags on Chang Luo</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 06 Sep 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 15 Nov 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://luochang212.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hadoop</title>
+      <link>https://luochang212.github.io/tags/hadoop/</link>
+      <pubDate>Sat, 15 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/tags/hadoop/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>HDFS</title>
+      <link>https://luochang212.github.io/tags/hdfs/</link>
+      <pubDate>Sat, 15 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/tags/hdfs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hive</title>
+      <link>https://luochang212.github.io/tags/hive/</link>
+      <pubDate>Sat, 15 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/tags/hive/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>JupyterLab</title>
+      <link>https://luochang212.github.io/tags/jupyterlab/</link>
+      <pubDate>Sat, 15 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/tags/jupyterlab/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Spark</title>
+      <link>https://luochang212.github.io/tags/spark/</link>
+      <pubDate>Sat, 15 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/tags/spark/</guid>
+      <description></description>
+    </item>
     <item>
       <title>ChatBI</title>
       <link>https://luochang212.github.io/tags/chatbi/</link>
