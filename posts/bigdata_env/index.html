@@ -648,7 +648,7 @@
 <p>我有两台树莓派。</p>
 <p>凭借超高颜值，安安静静地摆在那里，就是超绝桌搭。担心没有实用性？有的兄弟，包有的。装上 <a href="https://jupyterlab.readthedocs.io/en/stable/">JupyterLab</a>，它是数据科学工作站；装上 <a href="https://www.kali.org/">Kali Linux</a>，它是黑客界的瑞士军刀；装上 <a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a>，它是你的私有 LLM 推理服务器。</p>
 <p><img src="/img/raspberry_pi_cluster.JPG" alt="raspberry_pi_cluster"></p>
-<p>你可能不屑一顾，这些事一台树莓派也能搞定，何必弄两台呢？看来只有做一些两台机器才能办到的事，才算物尽其用。因此，我计划部署一个大数据集群。部署大数据集群是个技术活，不要期待一开始就在硬件上部署，可以先在 Docker Compose 上跑通，再尝试硬件部署。</p>
+<p>你可能不屑一顾，这些事一台树莓派也能搞定，何必弄两台呢？看来只有做一些两台机器才能办到的事，才算物尽其用。因此，我计划部署一个大数据集群。部署大数据集群是个技术活，不要期待一开始就在硬件上部署。可以先在 Docker Compose 上跑通，再尝试硬件部署。</p>
 <blockquote>
 <p><strong>Note:</strong> 如果对装机过程感兴趣，可以参考我的博客<a href="/posts/raspberry_pi_5/">《树莓派 5 装机指南》</a></p></blockquote>
 <h3 id="一集群功能">一、集群功能</h3>
@@ -932,8 +932,9 @@ CMD [ &#34;/opt/bitnami/scripts/spark/run.sh&#34; ]
 <li>由于 <code>hive-site.xml</code> 无法使用 <code>.env</code> 配置环境变量，因此该文件中依然包含明文密码。请注意不要在上传 <code>hive-site.xml</code> 文件时泄漏密码</li>
 </ul></blockquote>
 <h4 id="3启动-docker-服务">3）启动 docker 服务</h4>
-<p>启动服务之前，请确保你已经安装并启动了 docker 服务。中国大陆地区需要额外配置一下镜像源，否则无法正常下载镜像文件。配置镜像源的方法在 <a href="https://www.luochang.ink/posts/chat_to_clickhouse/#1-%E9%85%8D%E7%BD%AE-docker-%E9%95%9C%E5%83%8F%E6%BA%90">《耶是 ClickHouse！我们有救了！！》</a> 一文中有详细介绍。</p>
+<p>启动服务之前，请确保已经安装并启动了 docker 服务。中国大陆地区需要额外配置一下镜像源，否则无法正常下载镜像文件。配置镜像源的方法在 <a href="https://www.luochang.ink/posts/chat_to_clickhouse/#1-%E9%85%8D%E7%BD%AE-docker-%E9%95%9C%E5%83%8F%E6%BA%90">《耶是 ClickHouse！我们有救了！！》</a> 一文中有详细介绍。</p>
 <blockquote>
+<p>⚠️ <strong>注意</strong>：</p>
 <p>为避免脚本在 docker 中运行出错，<strong>Windows 用户</strong> 请先运行以下脚本：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#1f2328">.\</span>convert<span style="color:#1f2328">.</span>ps1
 </span></span></code></pre></div><p><a href="https://github.com/luochang212/bigdata-env/blob/main/convert.ps1">此脚本</a> 将项目下 Windows 风格的换行符转换为 Unix 风格的换行符。</p></blockquote>
