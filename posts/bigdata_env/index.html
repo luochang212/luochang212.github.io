@@ -653,7 +653,7 @@
 <p><strong>Note:</strong> 如果对装机过程感兴趣，可以参考我的博客<a href="/posts/raspberry_pi_5/">《树莓派 5 装机指南》</a></p></blockquote>
 <h3 id="一集群功能">一、集群功能</h3>
 <p>「大数据集群」是个宽泛的词儿。</p>
-<p>装了 Spark 的，可以是大数据集群；装了 Spark + Hadoop 的，也可以是大数据集群。那么到底要装到什么程度呢？这取决于我们的需求。作为一个常年耕作在数据一线的工程师，我认为基础需求包括：</p>
+<p>装了 Spark 的，是大数据集群；装了 Spark + Hadoop 的，也是大数据集群。那么到底要装到什么程度呢？这取决于我们的需求。作为常年耕作在数据一线的工程师，我认为基础需求包括：</p>
 <ul>
 <li>必须能分布式计算</li>
 <li>必须能分布式存储</li>
@@ -662,21 +662,21 @@
 <li>必须有调度工具（当然 crontab 也算）</li>
 <li>必须有 JupyterLab</li>
 </ul>
-<p>我们的目标就是搭建一个满足这些需求的集群。当然，我们没有必要从零开始工作，因为前人已经有很优秀的工作。只需要在前人工作的基础上做一些拓展，就能实现我们想要的功能。<a href="https://github.com/s1mplecc">s1mplecc</a> 大佬的博客<a href="https://s1mple.cc/2021/10/12/%E4%BD%BF%E7%94%A8-Docker-%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2-Spark-Hadoop-%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%9B%86%E7%BE%A4/">《使用 Docker 快速部署 Spark + Hadoop 大数据集群》</a>就是一个很棒的基础工作。</p>
-<p>s1mplecc 大佬已经实现了 <a href="https://github.com/s1mplecc/spark-hadoop-docker">Spark + Hadoop 集群</a> 的搭建。我在大佬工作的基础上，新增了以下内容：</p>
+<p>我的目标是搭建一个满足这些需求的集群。当然，没有必要从零开始搭建，前人已经有很优秀的工作。只需要基于前人的工作做一些拓展，就能实现我们想要的功能。<a href="https://github.com/s1mplecc">s1mplecc</a> 大佬的<a href="https://s1mple.cc/2021/10/12/%E4%BD%BF%E7%94%A8-Docker-%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2-Spark-Hadoop-%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%9B%86%E7%BE%A4/">《使用 Docker 快速部署 Spark + Hadoop 大数据集群》</a>就是一个很棒的基础工作。</p>
+<p>大佬已经实现了 <a href="https://github.com/s1mplecc/spark-hadoop-docker">Spark + Hadoop 集群</a>，我只需要新增以下内容：</p>
 <ol>
-<li>沿用了一主（Master）二从（Worker）的配置</li>
-<li>在 Worker 节点启用 DataNode 以支持数据同步</li>
+<li>沿用一主（Master）二从（Worker）的配置</li>
+<li>启用 Worker 节点的 DataNode 以支持数据同步</li>
 <li>安装 Hive 环境</li>
 <li>安装并初始化 miniconda3</li>
 <li>安装与 Spark 版本配适的 Python 和 PySpark</li>
 <li>安装 JupyterLab</li>
 </ol>
-<p>主要增加了 Hive、JupyterLab 和 miniconda3。Hive 让我们更轻松地管理分区表；JupyterLab 提供浏览器操作页面，便于调试和开发；miniconda3 让安装 Python 包更方便。</p>
+<p>主要增加了 Hive、JupyterLab 和 miniconda3。Hive 让我们更轻松地管理分区表；JupyterLab 提供了用于调试开发的浏览器界面；miniconda3 用作 Python 包管理。</p>
 <h3 id="二稍作讲解">二、稍作讲解</h3>
-<p>Docker Compose 使用 <code>docker-compose.yml</code> 文件定义容器的配置、数据卷、网络、依赖关系等信息。并允许用户使用 <code>Dockerfile</code> 文件制作自定义镜像。所以，这两个文件是本项目的核心，本节将简略介绍这两个文件。</p>
+<p>Docker Compose 使用 <code>docker-compose.yml</code> 文件定义容器的环境变量、数据卷、网络、依赖关系等配置。并允许用户使用 <code>Dockerfile</code> 文件制作自定义镜像。这两个文件是本项目的核心，下面我将介绍这两个文件的具体作用。</p>
 <blockquote>
-<p><strong>Note:</strong> 完整的部署代码见 GitHub 仓库：<a href="https://github.com/luochang212/bigdata-env">luochang212/bigdata-env</a></p></blockquote>
+<p><strong>Note:</strong> 完整部署代码见 GitHub 仓库：<a href="https://github.com/luochang212/bigdata-env">luochang212/bigdata-env</a></p></blockquote>
 <h4 id="1docker-composeyml-文件">1）docker-compose.yml 文件</h4>
 <p>下面是 <code>docker-compose.yml</code> 文件：</p>
 <pre tabindex="0"><code>services:
@@ -794,7 +794,7 @@ networks:
 
 volumes:
   mysql_data:
-</code></pre><p>该文件创建了四个容器、一个网络、一个数据卷：</p>
+</code></pre><p><code>docker-compose.yml</code> 文件创建了四个容器、一个网络、一个数据卷。</p>
 <ul>
 <li>容器：
 <ul>
@@ -910,7 +910,8 @@ RUN sed -i &#34;1 a /etc/init.d/ssh start &gt; /dev/null &amp;&#34; /opt/bitnami
 
 ENTRYPOINT [ &#34;/opt/bitnami/scripts/spark/entrypoint.sh&#34; ]
 CMD [ &#34;/opt/bitnami/scripts/spark/run.sh&#34; ]
-</code></pre><p>使用 <code>Dockerfile</code> 文件可以制作自定义镜像，从而创建自定义容器。从我们的 <code>docker-compose.yml</code> 文件可以看出，<code>spark</code>、<code>spark-worker-1</code>、<code>spark-worker-2</code> 三个容器，共用一个 <code>Dockerfile</code> 文件。也就是说，这三个容器的基础环境是相同的，只是配置和启动命令有所不同。</p>
+</code></pre><p>在 <code>docker-compose.yml</code> 中，我们看到 <code>spark</code>、<code>spark-worker-1</code>、<code>spark-worker-2</code> 三个容器共用一个 <code>Dockerfile</code> 文件。也就是说，这三个容器的镜像相同，只是环境变量和启动命令不同。</p>
+<p><code>Dockerfile</code> 主要承担了软件安装的工作，它在 <code>bitnami/spark:3</code> 镜像的基础上，又安装了 Hadoop、Hive、miniconda3、JupyterLab 等工具。</p>
 <h3 id="三本地运行">三、本地运行</h3>
 <p>如果你希望在本地运行本文创建的大数据集群，请参考以下步骤。</p>
 <h4 id="1克隆仓库">1）克隆仓库</h4>
