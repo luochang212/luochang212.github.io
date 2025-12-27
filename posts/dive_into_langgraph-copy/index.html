@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
     
-    <head>
+    
+
+
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     
-    <link rel="canonical" href="https://luochang212.github.io/tags/rag/">
+    <link rel="canonical" href="http://localhost:1313/posts/dive_into_langgraph-copy/">
     
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,19 +19,27 @@
     
     
 
-<title>RAG • Chang Luo</title>
+<title>《LangGraph 1.0 完全指南》发布 • Chang Luo</title>
 
 
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="RAG">
+  <meta name="twitter:title" content="《LangGraph 1.0 完全指南》发布">
+  <meta name="twitter:description" content="对费曼学习法的又一次拙劣戏仿">
       <meta name="twitter:site" content="@_stellar_tide">
 
-<meta property="og:url" content="https://luochang212.github.io/tags/rag/">
+<meta property="og:url" content="http://localhost:1313/posts/dive_into_langgraph-copy/">
   <meta property="og:site_name" content="Chang Luo">
-  <meta property="og:title" content="RAG">
+  <meta property="og:title" content="《LangGraph 1.0 完全指南》发布">
+  <meta property="og:description" content="对费曼学习法的又一次拙劣戏仿">
   <meta property="og:locale" content="zh_cn">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-11-23T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-11-23T00:00:00+00:00">
+    <meta property="article:tag" content="LangGraph">
+    <meta property="article:tag" content="LangChain">
+    <meta property="article:tag" content="Middleware">
 
 
     
@@ -63,8 +74,7 @@
     <!-- Icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
     <link rel="shortcut icon" href="/favicon.png">
-    <link rel="alternate" type="application/rss+xml" href="https://luochang212.github.io/tags/rag/index.xml" title="Chang Luo" />
-
+    
     
 
 </head>
@@ -217,13 +227,13 @@
     <div class="container ">
       <div class="sidebar-about">
         <span class="site__title">
-          <a href="https://luochang212.github.io/">Chang Luo</a>
+          <a href="http://localhost:1313/">Chang Luo</a>
         </span>
         
         
         
         <div class="author-image">
-          <a href="#" class="load-iframe" onclick="openNav()"><img src="https://luochang212.github.io//images/profile.webp" id="author-iamge"
+          <a href="#" class="load-iframe" onclick="openNav()"><img src="http://localhost:1313//images/profile.webp" id="author-iamge"
               alt="Author Image" class="img--circle img--headshot element--center"></a>
         </div>
         
@@ -512,37 +522,355 @@
 
         <div class="content container">
             
-    <span class="section__title">RAG</span>
-<ul class="posts">
+    <style>
+  .my-emoji {
+    height: 25px;
+    display: inline-block;
+    margin: 0;
+    vertical-align: text-bottom;
+  }
+
+  .social-links a {
+    color: rgba(120,120,120,1);
+    text-decoration: none;
+    outline: none !important;
+    cursor: pointer;
+    transition-property: padding, text-shadow, line-height, color, background, opacity, transform;
+    transition-duration: .25s;
+    transition-timing-function: ease-in-out;
+    display: inline-block;
+    white-space: nowrap;
+    position: relative;
+  }
+
+  .social-links a:after {
+    content: "";
+    display: block;
+    height: .125rem;
+    margin: -.125rem 0 0;
+    background: rgba(0,0,0,.5);
+    border-radius: 1px;
+    transform: scaleX(0);
+    transition: transform .25s ease-in-out;
+  }
+
+  .social-links a:hover:after {
+    transform: scaleX(1);
+  }
+
+  .social-links a:hover {
+    color: rgba(120,120,120,1);
+  }
+
+  .post {
+    margin-bottom: 0;
+  }
+
+  .post-footer {
+    margin-top: 0;
+    padding-top: 0.5rem;
+  }
+</style>
+
+
+
+<article>
+  <header>
+    <h1>《LangGraph 1.0 完全指南》发布</h1>
     
-        
-<li>
-  <span class="list__title--small">
-    <a href="/posts/rag_intro/" >RAG：大模型时代的搜索基座</a>
-      
-      <time class="pull-right hidden-tablet">Dec 27, 2025</time>
-      
-  </span>
-</li>
-
-<li>
-  <span class="list__title--small">
-    <a href="/posts/langflow_rag_app/" >Langflow 实现本地知识库</a>
-      
-      <time class="pull-right hidden-tablet">Mar 15, 2025</time>
-      
-  </span>
-</li>
-
-
     
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Nov 23, 2025
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/agent">AGENT</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/langgraph">langgraph</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/langchain">langchain</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/middleware">middleware</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 1 min read
+</div>
+
+
+  </header>
+  
+  
+  
+  <div class="toc-wrapper">
+    <input type="checkbox" id="tocToggle">
+    <label for="tocToggle">目录</label>
+    
+    <div class="toc" id="TableOfContents"></div>
+    
+  </div>
+  
+  
+  <div class="post">
+    <blockquote>
+<p>经过三个星期的努力，<a href="https://luochang212.github.io/dive-into-langgraph/" target="_blank">《LangGraph 1.0 完全指南》</a>终于面世啦！</p></blockquote>
+<p>10 月中旬，LangGraph 1.0 发布。开发团队承诺这是一个稳定版本，未来不会大改。因此，现在正是学习它的好时候。</p>
+<p>LangGraph 是由 LangChain 团队开发的开源智能体框架。使用时它俩是紧密耦合的：LangChain 提供底层功能，LangGraph 负责状态管理。因此，两个库的文档都需要学习，这无疑加重了使用者的负担。为了让大家快速入门，我将两个库的主要功能提取出来，分成 13 个章节进行介绍。</p>
+<p>这是一个开源电子书项目，使用 GitHub Action 自动构建，欢迎 <a href="https://github.com/luochang212/dive-into-langgraph/pulls" target="_blank">Pull Request</a>。如果你觉得本教程对你有帮助，也欢迎 Star 本教程仓库 <a href="https://github.com/luochang212/dive-into-langgraph" target="_blank">luochang212/dive-into-langgraph</a>。</p>
+<p><img src="/img/d2lg-overview.png" alt="overview"></p>
+<h3 id="一在线资源">一、在线资源</h3>
+<p>可以通过以下链接，访问本项目的仓库和在线文档：</p>
+<table>
+  <thead>
+      <tr>
+          <th>资源</th>
+          <th>链接</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>GitHub 仓库</td>
+          <td><a href="https://github.com/luochang212/dive-into-langgraph" target="_blank">luochang212/dive-into-langgraph</a></td>
+      </tr>
+      <tr>
+          <td>电子书</td>
+          <td><a href="https://luochang212.github.io/dive-into-langgraph/" target="_blank">《LangGraph 1.0 完全指南》</a></td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="二章节介绍">二、章节介绍</h3>
+<p>本教程的内容速览：</p>
+<table>
+  <thead>
+      <tr>
+          <th>序号</th>
+          <th>章节</th>
+          <th>主要内容</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td><a href="/dive-into-langgraph/quickstart/">快速入门</a></td>
+          <td>创建你的第一个 ReAct Agent</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td><a href="/dive-into-langgraph/stategraph/">状态图</a></td>
+          <td>使用 StateGraph 创建工作流</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td><a href="/dive-into-langgraph/middleware/">中间件</a></td>
+          <td>使用自定义中间件实现四个功能：预算控制、消息截断、敏感词过滤、PII 检测</td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td><a href="/dive-into-langgraph/human_in_the_loop/">人机交互</a></td>
+          <td>使用内置的 HITL 中间件实现人机交互</td>
+      </tr>
+      <tr>
+          <td>5</td>
+          <td><a href="/dive-into-langgraph/memory/">记忆</a></td>
+          <td>创建短期记忆、长期记忆</td>
+      </tr>
+      <tr>
+          <td>6</td>
+          <td><a href="/dive-into-langgraph/context/">上下文工程</a></td>
+          <td>使用 State、Store、Runtime 管理上下文</td>
+      </tr>
+      <tr>
+          <td>7</td>
+          <td><a href="/dive-into-langgraph/mcp_server/">MCP Server</a></td>
+          <td>创建 MCP Server 并接入 LangGraph</td>
+      </tr>
+      <tr>
+          <td>8</td>
+          <td><a href="/dive-into-langgraph/supervisor/">监督者模式</a></td>
+          <td>两种方法实现监督者模式：tool-calling、langgraph-supervisor</td>
+      </tr>
+      <tr>
+          <td>9</td>
+          <td><a href="/dive-into-langgraph/parallelization/">并行</a></td>
+          <td>如何实现并发：节点并发、<code>@task</code> 装饰器、Map-reduce、Sub-graphs</td>
+      </tr>
+      <tr>
+          <td>10</td>
+          <td><a href="/dive-into-langgraph/rag/">RAG</a></td>
+          <td>三种方式实现 RAG：向量检索、关键词检索、混合检索</td>
+      </tr>
+      <tr>
+          <td>11</td>
+          <td><a href="/dive-into-langgraph/web_search/">网络搜索</a></td>
+          <td>实现联网搜索：DashScope、Tavily 和 DDGS</td>
+      </tr>
+      <tr>
+          <td>12</td>
+          <td><a href="/dive-into-langgraph/deep_agents/">Deep Agents</a></td>
+          <td>简单介绍 Deep Agents</td>
+      </tr>
+      <tr>
+          <td>13</td>
+          <td><a href="/dive-into-langgraph/langgraph_cli/">调试页面</a></td>
+          <td>介绍 langgraph-cli 提供的调试页面</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="三拓展阅读">三、拓展阅读</h3>
+<p>以下是推荐阅读的文档和教程：</p>
+<ul>
+<li><a href="https://docs.langchain.com/oss/python/langchain/overview">LangChain</a></li>
+<li><a href="https://docs.langchain.com/oss/python/langgraph/overview">LangGraph</a></li>
+<li><a href="https://docs.langchain.com/oss/python/deepagents/overview">Deep Agents</a></li>
+<li><a href="https://langchain-ai.github.io/langmem/">LangMem</a></li>
+<li><a href="https://github.com/langchain-ai/langgraph-101">langgraph-101</a></li>
+<li><a href="https://github.com/langchain-ai/langchain-academy">langchain-academy</a></li>
 </ul>
 
+  </div>
+
+  <div class="post-footer">
+    <p style="margin-bottom: 1rem;">欢迎关注我的其它发布渠道：</p>
+    <div class="social-links" style="display: flex; flex-direction: column; gap: 10px;">
+      
+      <a href="https://twitter.com/_stellar_tide" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-twitter"></i> X
+      </a>
+      
+      
+      <a href="https://github.com/luochang212" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+      
+      
+      <a href="https://www.luochang.ink/images/wechat.jpg" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-weixin"></i> 公众号
+      </a>
+      
+      <a href="https://www.zhihu.com/people/Fashionable" target="_blank" rel="noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2" 
+             stroke-linecap="round" stroke-linejoin="round" style="width: 1em; height: 1em; vertical-align: -0.125em; display: inline-block;">
+          <path d="m13.3334,3.60098l0,17.1471l1.79582,0l0.75424,2.13703l3.18459,-2.13703l3.93584,0l0,-17.1471l-9.6705,0zm7.41375,14.87538l-1.79283,0l-2.24777,1.50849l-0.53276,-1.50849l-0.53875,0l0,-12.53483l5.10911,0l0,12.53483l0.00299,0zm-8.56906,-7.18927l-3.97475,0c0.06285,-1.34387 0.1287,-3.12174 0.19754,-5.17496l3.91788,0l-0.00299,-0.24244c0,-0.01796 -0.00599,-0.43998 -0.06884,-0.87097c-0.06285,-0.44896 -0.19754,-1.04457 -0.62854,-1.04457l-6.5727,0c0.13169,-0.61657 0.46991,-2.08615 0.87995,-2.80747l0.19155,-0.33522l-0.3861,-0.02095c-0.02394,0 -0.58663,-0.02694 -1.23912,0.31726c-1.06851,0.56868 -1.5474,1.68807 -1.75691,2.52612c-0.55072,2.18791 -1.33489,3.70837 -1.66712,4.35786c-0.09877,0.19155 -0.15863,0.30529 -0.18557,0.38311c-0.05387,0.14666 -0.02394,0.29332 0.0838,0.38909c0.31427,0.28434 1.14334,-0.0868 1.15232,-0.08979c0.01796,-0.00898 0.03891,-0.01796 0.06585,-0.02993c0.41603,-0.18856 1.64916,-0.74826 2.08914,-2.52911l1.69705,0c0.02095,0.96376 0.09278,4.14236 0.0868,5.17496l-4.22018,0l-0.06285,0.0449c-0.69139,0.50582 -0.91288,1.8916 -0.92185,1.95146l-0.0419,0.27536l4.99837,0c-0.36814,2.34355 -0.79315,3.3941 -1.01763,3.81313c-0.11074,0.20951 -0.21849,0.41902 -0.32025,0.62255c-0.63752,1.26306 -1.29898,2.56802 -3.7802,4.5973c-0.10775,0.0838 -0.20951,0.23944 -0.14367,0.41005c0.07183,0.18856 0.27835,0.27237 0.73629,0.27237c0.16162,0 0.35318,-0.00898 0.58065,-0.02993c1.49352,-0.13169 3.01698,-0.53875 4.04359,-2.6219c0.50882,-1.05056 0.94879,-2.14601 1.31394,-3.25941l4.08549,4.78886l0.14965,-0.35916c0.02394,-0.05687 0.56868,-1.38578 0.15264,-2.87032l-0.01497,-0.05387l-3.23547,-3.68143l-0.65847,0.49684c0.19155,-0.78118 0.31726,-1.49352 0.37413,-2.12805l4.74995,0l0,-0.23944c0,-1.20021 -0.55371,-1.91255 -0.57466,-1.94248l-0.07183,-0.08979z" />
+        </svg> 知乎
+      </a>
+
+      <a href="/index.xml" target="_blank" rel="noopener noreferrer">
+        <i class="fas fa-rss"></i> RSS
+      </a>
+
+    </div>
+    <div style="margin-bottom: 5rem;"></div>
+  </div>
+
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/dive_into_langgraph/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">《LangGraph 1.0 完全指南》发布</span>
+    </a>
+    
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
 
         </div>
         
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
     
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
+
+
+
+
+
 <script src="https://kit.fontawesome.com/2134995a39.js" crossorigin="anonymous"></script>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
+<script type="text/javascript">
+  if (tocbot) {
+    tocbot.init({
+      
+      tocSelector: '.toc',
+      
+      contentSelector: '.post',
+      
+      headingSelector: 'h2, h3, h4',
+      collapseDepth: 4
+    });
+  }
+</script>
+
+
+
+    
+
 
 
     </body>

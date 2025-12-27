@@ -636,7 +636,7 @@
     <blockquote>
 <p>经过三个星期的努力，<a href="https://luochang212.github.io/dive-into-langgraph/" target="_blank">《LangGraph 1.0 完全指南》</a>终于面世啦！</p></blockquote>
 <p>10 月中旬，LangGraph 1.0 发布。开发团队承诺这是一个稳定版本，未来不会大改。因此，现在正是学习它的好时候。</p>
-<p>LangGraph 是由 LangChain 团队开发的开源智能体框架。使用时它俩是紧密耦合的：LangChain 提供底层功能，LangGraph 负责状态管理。因此，两个库的文档都需要学习，这无疑加重了使用者的负担。为了让大家快速入门，我将两个库的主要功能提取出来，分成 11 个章节进行介绍。</p>
+<p>LangGraph 是由 LangChain 团队开发的开源智能体框架。使用时它俩是紧密耦合的：LangChain 提供底层功能，LangGraph 负责状态管理。因此，两个库的文档都需要学习，这无疑加重了使用者的负担。为了让大家快速入门，我将两个库的主要功能提取出来，分成 13 个章节进行介绍。</p>
 <p>这是一个开源电子书项目，使用 GitHub Action 自动构建，欢迎 <a href="https://github.com/luochang212/dive-into-langgraph/pulls" target="_blank">Pull Request</a>。如果你觉得本教程对你有帮助，也欢迎 Star 本教程仓库 <a href="https://github.com/luochang212/dive-into-langgraph" target="_blank">luochang212/dive-into-langgraph</a>。</p>
 <p><img src="/img/d2lg-overview.png" alt="overview"></p>
 <h3 id="一在线资源">一、在线资源</h3>
@@ -660,20 +660,83 @@
   </tbody>
 </table>
 <h3 id="二章节介绍">二、章节介绍</h3>
-<p>本教程分十一个章节，分别是：</p>
-<ol>
-<li><a href="https://luochang212.github.io/dive-into-langgraph/quickstart">快速入门</a></li>
-<li><a href="https://luochang212.github.io/dive-into-langgraph/stategraph">状态图</a></li>
-<li><a href="https://luochang212.github.io/dive-into-langgraph/middleware">中间件</a></li>
-<li><a href="https://luochang212.github.io/dive-into-langgraph/human-in-the-loop/">人机交互</a></li>
-<li><a href="https://luochang212.github.io/dive-into-langgraph/memory">记忆</a></li>
-<li><a href="https://luochang212.github.io/dive-into-langgraph/context">上下文工程</a></li>
-<li><a href="https://luochang212.github.io/dive-into-langgraph/mcp-server">MCP Server</a></li>
-<li><a href="https://luochang212.github.io/dive-into-langgraph/supervisor">监督者模式</a></li>
-<li><a href="https://luochang212.github.io/dive-into-langgraph/parallel">并行</a></li>
-<li><a href="https://luochang212.github.io/dive-into-langgraph/deep-agents">Deep Agents</a></li>
-<li><a href="https://luochang212.github.io/dive-into-langgraph/langgraph-cli">调试界面</a></li>
-</ol>
+<p>本教程的内容速览：</p>
+<table>
+  <thead>
+      <tr>
+          <th>序号</th>
+          <th>章节</th>
+          <th>主要内容</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td><a href="/dive-into-langgraph/quickstart/">快速入门</a></td>
+          <td>创建你的第一个 ReAct Agent</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td><a href="/dive-into-langgraph/stategraph/">状态图</a></td>
+          <td>使用 StateGraph 创建工作流</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td><a href="/dive-into-langgraph/middleware/">中间件</a></td>
+          <td>使用自定义中间件实现四个功能：预算控制、消息截断、敏感词过滤、PII 检测</td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td><a href="/dive-into-langgraph/human_in_the_loop/">人机交互</a></td>
+          <td>使用内置的 HITL 中间件实现人机交互</td>
+      </tr>
+      <tr>
+          <td>5</td>
+          <td><a href="/dive-into-langgraph/memory/">记忆</a></td>
+          <td>创建短期记忆、长期记忆</td>
+      </tr>
+      <tr>
+          <td>6</td>
+          <td><a href="/dive-into-langgraph/context/">上下文工程</a></td>
+          <td>使用 State、Store、Runtime 管理上下文</td>
+      </tr>
+      <tr>
+          <td>7</td>
+          <td><a href="/dive-into-langgraph/mcp_server/">MCP Server</a></td>
+          <td>创建 MCP Server 并接入 LangGraph</td>
+      </tr>
+      <tr>
+          <td>8</td>
+          <td><a href="/dive-into-langgraph/supervisor/">监督者模式</a></td>
+          <td>两种方法实现监督者模式：tool-calling、langgraph-supervisor</td>
+      </tr>
+      <tr>
+          <td>9</td>
+          <td><a href="/dive-into-langgraph/parallelization/">并行</a></td>
+          <td>如何实现并发：节点并发、<code>@task</code> 装饰器、Map-reduce、Sub-graphs</td>
+      </tr>
+      <tr>
+          <td>10</td>
+          <td><a href="/dive-into-langgraph/rag/">RAG</a></td>
+          <td>三种方式实现 RAG：向量检索、关键词检索、混合检索</td>
+      </tr>
+      <tr>
+          <td>11</td>
+          <td><a href="/dive-into-langgraph/web_search/">网络搜索</a></td>
+          <td>实现联网搜索：DashScope、Tavily 和 DDGS</td>
+      </tr>
+      <tr>
+          <td>12</td>
+          <td><a href="/dive-into-langgraph/deep_agents/">Deep Agents</a></td>
+          <td>简单介绍 Deep Agents</td>
+      </tr>
+      <tr>
+          <td>13</td>
+          <td><a href="/dive-into-langgraph/langgraph_cli/">调试页面</a></td>
+          <td>介绍 langgraph-cli 提供的调试页面</td>
+      </tr>
+  </tbody>
+</table>
 <h3 id="三拓展阅读">三、拓展阅读</h3>
 <p>以下是推荐阅读的文档和教程：</p>
 <ul>
@@ -682,6 +745,7 @@
 <li><a href="https://docs.langchain.com/oss/python/deepagents/overview">Deep Agents</a></li>
 <li><a href="https://langchain-ai.github.io/langmem/">LangMem</a></li>
 <li><a href="https://github.com/langchain-ai/langgraph-101">langgraph-101</a></li>
+<li><a href="https://github.com/langchain-ai/langchain-academy">langchain-academy</a></li>
 </ul>
 
   </div>
@@ -728,6 +792,11 @@
       <span class="navigation-tittle">使用 Docker Compose 部署大数据集群：Spark &#43; Hadoop &#43; Hive &#43; JupyterLab</span>
     </a>
     
+    
+    <a href="/posts/rag_intro/" class="navigation-next">
+      <span class="navigation-tittle">RAG：大模型时代的搜索基座</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
     
 </div>
 
