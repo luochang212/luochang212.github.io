@@ -25,13 +25,13 @@
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="RAG：大模型时代的搜索基座">
-  <meta name="twitter:description" content="基于 LangChain 实现向量检索、关键词检索、混合检索、联网搜索">
+  <meta name="twitter:description" content="基于 LangChain 实现的向量检索、关键词检索、混合检索">
       <meta name="twitter:site" content="@_stellar_tide">
 
 <meta property="og:url" content="https://luochang212.github.io/posts/rag_intro/">
   <meta property="og:site_name" content="Chang Luo">
   <meta property="og:title" content="RAG：大模型时代的搜索基座">
-  <meta property="og:description" content="基于 LangChain 实现向量检索、关键词检索、混合检索、联网搜索">
+  <meta property="og:description" content="基于 LangChain 实现的向量检索、关键词检索、混合检索">
   <meta property="og:locale" content="zh_cn">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -650,13 +650,13 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>回答： 
 </span></span></code></pre></div><p>使用该模板时，将召回文本填入 <code>{context}</code>，将用户问题填入 <code>{question}</code>。然后把填好的提示词模板交给大模型推理。</p>
-<p>RAG 主要做了两件事：一是从知识库中 <strong>召回</strong> 与用户问题有关的文本，二是使用提示词模板 <strong>拼接</strong> 召回文本与用户问题。拼接很容易做到，难度主要集中在召回上。在下一小节中，我将介绍如何召回相关文本。</p>
+<p>RAG 主要做了两件事：一是从知识库中 <strong>召回</strong> 与用户问题有关的文本，二是使用提示词模板 <strong>拼接</strong> 召回文本与用户问题。拼接很容易做到，难度主要集中在召回上。在下一小节中，我将介绍如何召回与用户问题有关的文本。</p>
 <h2 id="二向量检索">二、向量检索</h2>
-<p>完成「召回相关文本」这件事，需要用到检索器。实现检索器的方式有 <a href="https://docs.langchain.com/oss/python/integrations/retrievers">很多</a>，比如基于关键词检索的 <a href="https://docs.langchain.com/oss/python/integrations/retrievers/bm25">BM25</a> 算法，但本节主要介绍基于 Embedding 的检索方法：<strong>向量检索</strong>。</p>
+<p>完成「召回与用户问题有关的」这件事，需要用到检索器。实现检索器的方式有 <a href="https://docs.langchain.com/oss/python/integrations/retrievers">很多</a>，比如基于关键词检索的 <a href="https://docs.langchain.com/oss/python/integrations/retrievers/bm25">BM25</a> 算法，但本节主要介绍基于 Embedding 的检索方法：<strong>向量检索</strong>。</p>
 <h3 id="1从文本向量化说起">1）从文本向量化说起</h3>
 <p>Embedding 是一种将文本转为向量的技术。它的输入是一段文本，输出是一个定长的向量。</p>
 <pre tabindex="0"><code>&#34;好喜欢你&#34; --&gt; [0.190012, 0.123555, .... ]
-</code></pre><p>将文本转为向量的目的，是把语义相近的词分配到同一片向量空间。所以，一对近义词转成向量后，它们的向量之间的距离通常比其他词更近一些。比如，足球和篮球在向量空间中的距离更近一些，而足球和篮筐之间的距离更远。Embedding 的本质是压缩。从编码角度讲，自然语言存在冗余信息。Embedding 相当于对自然语言进行重编码，用最少的 token 表达最多的语义。</p>
+</code></pre><p>将文本转为向量的目的，是把语义相近的词分配到同一片向量空间。所以，一对近义词转成向量后，它们的向量之间的距离通常比其他词更近。比如，足球和篮球在向量空间中的距离更近一些，而足球和篮筐之间的距离更远。Embedding 的本质是压缩。从编码角度讲，自然语言存在冗余信息。Embedding 相当于对自然语言进行重编码，用最少的 token 表达最多的语义。</p>
 <p>Embedding 在多语言场景下也有优势。经过充分训练的 Embedding 模型，会将多语言内容在语义层面上对齐。也就是说，一个向量可以在多语言环境中保持同一语义。这种特性让大模型得以兼容并包。即使加入多语言材料，也不会因为字面上的词不同，而产生“理解”上的混乱。</p>
 <h3 id="2向量检索的原理">2）向量检索的原理</h3>
 <p>由于 Embedding 模型具有将相似语义的词训练成距离相近的向量的特性，我们可以把「用户问题」与「知识库内容」都转成 Embedding 向量。然后计算向量之间的距离。向量之间的距离越小，则语料之间的相似度越高。借助这个原理，最后返回知识库中与问题向量距离最小的 Top-K 份语料即可。</p>
@@ -1004,7 +1004,7 @@
   <tbody>
       <tr>
           <td>2-Step RAG</td>
-          <td>总是先检索，再生成</td>
+          <td>先检索，再生成</td>
       </tr>
       <tr>
           <td>Agentic RAG</td>
