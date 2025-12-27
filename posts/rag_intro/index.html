@@ -631,7 +631,6 @@
   <div class="post">
     <blockquote>
 <p>没有一条帆船能吹动自己行驶，它需要外面的风。 &ndash; 因可觅《量子离歌》</p></blockquote>
-<p>注：本文节选自<a href="https://www.luochang.ink/dive-into-langgraph/">《LangGraph 1.0 完全指南》</a></p>
 <p>大模型的训练数据有截止日期，在此之后的事它不知道；大模型的参数量有限，无法容纳所有专业知识。也就是说，大模型在实时性和专业性上都有所欠缺。</p>
 <p>如何让大模型变得实时且专业呢？最省力的方法是“打小抄”。<strong>知识库</strong> 就像大模型的“小抄”。在回答问题之前，先瞅一眼小抄，看有没有与问题相关的内容。如果有，就从知识库中取回这段内容，结合大模型的推理能力，生成最终答案。</p>
 <p>这里「打小抄」的动作，就是 <a href="https://docs.langchain.com/oss/python/langchain/retrieval"><strong>RAG</strong></a>（Retrieval-Augmented Generation, 检索增强生成）。</p>
