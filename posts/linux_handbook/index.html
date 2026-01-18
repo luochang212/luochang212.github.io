@@ -321,7 +321,7 @@
       </div>
       
 <div class="copyright">
-  &copy; 2025 Chang Luo
+  &copy; 2026 Chang Luo
   
 </div>
 
@@ -1217,8 +1217,9 @@ python3.6 -m venv ./venv/jupyter/
 
 # 安装 jupyterlab 并激活
 cd ./venv/jupyter/bin
-./pip3 install jupyterlab -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
-./activate
+./pip3 install --upgrade pip
+./pip3 install jupyterlab==3.2.9 -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
+. ./activate
 
 # 在后台启动 jupyterlab
 ./jupyter-lab --notebook-dir=/ --ip=0.0.0.0 --port=8888 --no-browser
