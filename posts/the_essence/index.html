@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
     
-  <head>
+    
+
+
+    <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     
-    <link rel="canonical" href="https://luochang212.github.io/">
+    <link rel="canonical" href="https://luochang212.github.io/posts/the_essence/">
     
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,20 +16,30 @@
 <meta name="generator" content="Hugo 0.148.2">
 
     
+    
+    
 
-<title>Chang Luo</title>
+<title>智能的本质是对抗不确定 • Chang Luo</title>
 
 
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Chang Luo">
+  <meta name="twitter:title" content="智能的本质是对抗不确定">
+  <meta name="twitter:description" content="智能的本质是泛化，而泛化的本质是对抗不确定">
       <meta name="twitter:site" content="@_stellar_tide">
 
-<meta property="og:url" content="https://luochang212.github.io/">
+<meta property="og:url" content="https://luochang212.github.io/posts/the_essence/">
   <meta property="og:site_name" content="Chang Luo">
-  <meta property="og:title" content="Chang Luo">
+  <meta property="og:title" content="智能的本质是对抗不确定">
+  <meta property="og:description" content="智能的本质是泛化，而泛化的本质是对抗不确定">
   <meta property="og:locale" content="zh_cn">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-01-29T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-01-29T00:00:00+00:00">
+    <meta property="article:tag" content="Essence">
+    <meta property="article:tag" content="Intelligence">
+    <meta property="article:tag" content="Uncertainty">
 
 
     
@@ -61,8 +74,7 @@
     <!-- Icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
     <link rel="shortcut icon" href="/favicon.png">
-    <link rel="alternate" type="application/rss+xml" href="https://luochang212.github.io/index.xml" title="Chang Luo" />
-
+    
     
 
 </head>
@@ -510,323 +522,256 @@
 
         <div class="content container">
             
-  <div class="post-list">
+    <style>
+  .my-emoji {
+    height: 25px;
+    display: inline-block;
+    margin: 0;
+    vertical-align: text-bottom;
+  }
+
+  .social-links a {
+    color: rgba(120,120,120,1);
+    text-decoration: none;
+    outline: none !important;
+    cursor: pointer;
+    transition-property: padding, text-shadow, line-height, color, background, opacity, transform;
+    transition-duration: .25s;
+    transition-timing-function: ease-in-out;
+    display: inline-block;
+    white-space: nowrap;
+    position: relative;
+  }
+
+  .social-links a:after {
+    content: "";
+    display: block;
+    height: .125rem;
+    margin: -.125rem 0 0;
+    background: rgba(0,0,0,.5);
+    border-radius: 1px;
+    transform: scaleX(0);
+    transition: transform .25s ease-in-out;
+  }
+
+  .social-links a:hover:after {
+    transform: scaleX(1);
+  }
+
+  .social-links a:hover {
+    color: rgba(120,120,120,1);
+  }
+
+  .post {
+    margin-bottom: 0;
+  }
+
+  .post-footer {
+    margin-top: 0;
+    padding-top: 0.5rem;
+  }
+</style>
+
+
+
+<article>
+  <header>
+    <h1>智能的本质是对抗不确定</h1>
     
     
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Jan 29, 2026
+    
+    
+    
       
-        
       
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/redis_util/" >初见向量引擎：RediSearch 和 Milvus</a>
-        </span>
-        <span class="item__date">
-          Aug 18, 2024
-        </span>
-        <span >
-        
-        只想建索引，Redis 够用了。如果要计算向量相似度，就可以用向量引擎了
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/redis_util/">➦</a>
-        
-        </div>
-        
-     
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/prose">PROSE</a>
+              
+          
       
-        
+    
+    
+    
       
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/graph_embedding/" >三种图神经网络算法：GraphSAGE, GCN 和 GAT</a>
-        </span>
-        <span class="item__date">
-          Aug 10, 2024
-        </span>
-        <span >
-        
-        GNN 处理图数据的方式还是很符合直觉的，基本沿袭了 CNN 的思路：每个神经元只看局部信息，通过层层汇聚掌握全貌
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/graph_embedding/">➦</a>
-        
-        </div>
-        
-     
       
-        
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/essence">essence</a>
+           
       
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/synchrotrap/" >SynchroTrap 算法实现</a>
-        </span>
-        <span class="item__date">
-          Jul 27, 2024
-        </span>
-        <span >
-        
-        基于 Jaccard 相似度和最大连通子图的异常挖掘算法
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/synchrotrap/">➦</a>
-        
-        </div>
-        
-     
+          <a class="badge badge-tag" href="/tags/intelligence">intelligence</a>
+           
       
-        
+          <a class="badge badge-tag" href="/tags/uncertainty">uncertainty</a>
+          
       
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/dl_tricks/" >像搭积木一样搭神经网络</a>
-        </span>
-        <span class="item__date">
-          Jul 7, 2024
-        </span>
-        <span >
-        
-        对费曼学习法的拙劣戏仿
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/dl_tricks/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/sentiment_analysis/" >文本情感分析</a>
-        </span>
-        <span class="item__date">
-          Jul 6, 2024
-        </span>
-        <span >
-        
-        用 Bert &#43; Transformer Encoder &#43; MLP 做文本情感分析
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/sentiment_analysis/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/chinese_embedding/" >中文词向量生成</a>
-        </span>
-        <span class="item__date">
-          Jun 29, 2024
-        </span>
-        <span >
-        
-        Embedding 把词映射成向量，使语义相近的词在向量空间中的距离也相近
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/chinese_embedding/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/transformer_arxiv/" >Attention Is All You Need 论文精读</a>
-        </span>
-        <span class="item__date">
-          Jun 16, 2024
-        </span>
-        <span >
-        
-        注意力机制是个挺 fancy 的词，起一个 fancy 的名字也是学术能力的一环
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/transformer_arxiv/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/attention_note/" >注意力机制笔记</a>
-        </span>
-        <span class="item__date">
-          Jun 9, 2024
-        </span>
-        <span >
-        
-        智能产生的根源：并行、查询、压缩
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/attention_note/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/process_manager/" >后台管理工具介绍</a>
-        </span>
-        <span class="item__date">
-          May 30, 2024
-        </span>
-        <span >
-        
-        呀嘞呀嘞，JupyterLab 怎么又挂了
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/process_manager/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/flameai/" >深度学习工具箱 FlameAI</a>
-        </span>
-        <span class="item__date">
-          May 25, 2024
-        </span>
-        <span >
-        
-        开发属于自己的深度学习工具箱
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/flameai/">➦</a>
-        
-        </div>
-        
-     
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 1 min read
+</div>
+
+
+  </header>
+  
+  
+  
+  <div class="toc-wrapper">
+    <input type="checkbox" id="tocToggle">
+    <label for="tocToggle">目录</label>
+    
+    <div class="toc" id="TableOfContents"></div>
+    
   </div>
   
+  
+  <div class="post">
+    <p>2019 年春，在晨光熹微的餐厅里，我独自坐在角落，思考智能如何产生。餐厅的名字已经忘了，只记得离开时，老板送我一根棒棒糖。糖很甜，我舔着糖回家。此后多年，这个问题一直萦绕在我心间，却没有答案。时间来到 2026 年，当我再度思考这个问题，发现如今对智能的理解不是太少，而是太多。</p>
+<blockquote>
+<p>一千个人对智能有一千五百种理解。</p></blockquote>
+<p>Ilya 说，智能的本质是压缩。</p>
+<p>这是一种相当工程的理解。想象你学了很多驳杂无用的知识。某天偶得机缘，将它们融会贯通。原本分散在大脑中的知识骤然凝聚、浓缩。此刻，它们占据比往常更少的存储空间，却拥有更快的推理速度。这就是压缩。</p>
+<p>融会贯通的关键，在于找到引发知识凝聚的「内在关联」。在深度学习中，找这种内在关联有一种方法，叫作「注意力机制」。其虽名为注意力，却和注意力关系不大，本质上是一种搜索。通过反复迭代 Q, K, V 三矩阵，逐渐精炼出更好的 Q（问题），更好的 KV（答案的键值），从而实现对文本信息的高维抽取。</p>
+<p>Ilya 的理解已经足够触及本质，但我更想给出我的版本。如果 Ilya 是工程视角，回答的是如何训练出智能；那我就是演化视角，试图分析智能将往何处去。</p>
+<blockquote>
+<p>智能的本质是泛化，而泛化的本质是对抗不确定。</p></blockquote>
+<p>这句话是未经允许擅自出现在我脑海中的。它是一个典型的三段论：因为智能的本质是泛化，而泛化的本质是对抗不确定，所以智能的本质是对抗不确定。</p>
+<p>虽然这句话属于浴中奇思，但推究下来居然挺有道理。早期智能只能完成图像识别、命名实体识别、文本摘要这种零散琐碎的任务。随着模型的演化，泛化能力逐渐增强，最终在语言这种泛化能力极强的模态中，诞生了大语言模型这个庞然大物。</p>
+<p>业界目前有种认知，就是大语言模型有缺陷，是因为缺少对物理世界的感知，所以大模型的下一站应该是「世界模型」。我认同这种观点，因为这是沿着泛化能力逐渐增强的路子往下走的。人类正是因为拥有无比强大的泛化能力，才能在自然界中生存下来。模型如果要超越人类，即 AGI，必然要在泛化性上超越人。所以在泛化性上做横向拓展，应该是确定的下一步。</p>
+<p>至于泛化的本质是对抗不确定，这个更好理解了。一个常见的用于解释泛化性的例子是：一个苹果被咬了一口，如果模型的泛化性好，依然可以被识别为苹果。泛化本身做的就是对抗不确定的事情，这个描述倒是浅白到无需解释。</p>
+<!-- 你们认为智能的本质是什么？欢迎在评论区留下看法。 -->
 
-<ul class="pagination">
-    
-    <li class="page-item">
-        <a href="/" class="page-link" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
-    </li>
-    
-    <li class="page-item">
-    <a href="/page/2/" class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
-    </li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="/">1</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="/page/2/">2</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item active"><a class="page-link" href="/page/3/">3</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="/page/4/">4</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item disabled"><span aria-hidden="true">&nbsp;&hellip;&nbsp;</span></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="/page/7/">7</a></li>
-    
-    
-    <li class="page-item">
-    <a href="/page/4/" class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
-    </li>
-    
-    <li class="page-item">
-        <a href="/page/7/" class="page-link" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
-    </li>
-    
-</ul>
+  </div>
 
+  <div class="post-footer">
+    <p style="margin-bottom: 1rem;">欢迎关注我的其它发布渠道：</p>
+    <div class="social-links" style="display: flex; flex-direction: column; gap: 10px;">
+      
+      <a href="https://twitter.com/_stellar_tide" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-twitter"></i> X
+      </a>
+      
+      
+      <a href="https://github.com/luochang212" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+      
+      
+      <a href="https://www.luochang.ink/images/wechat.jpg" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-weixin"></i> 公众号
+      </a>
+      
+      <a href="https://www.zhihu.com/people/Fashionable" target="_blank" rel="noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2" 
+             stroke-linecap="round" stroke-linejoin="round" style="width: 1em; height: 1em; vertical-align: -0.125em; display: inline-block;">
+          <path d="m13.3334,3.60098l0,17.1471l1.79582,0l0.75424,2.13703l3.18459,-2.13703l3.93584,0l0,-17.1471l-9.6705,0zm7.41375,14.87538l-1.79283,0l-2.24777,1.50849l-0.53276,-1.50849l-0.53875,0l0,-12.53483l5.10911,0l0,12.53483l0.00299,0zm-8.56906,-7.18927l-3.97475,0c0.06285,-1.34387 0.1287,-3.12174 0.19754,-5.17496l3.91788,0l-0.00299,-0.24244c0,-0.01796 -0.00599,-0.43998 -0.06884,-0.87097c-0.06285,-0.44896 -0.19754,-1.04457 -0.62854,-1.04457l-6.5727,0c0.13169,-0.61657 0.46991,-2.08615 0.87995,-2.80747l0.19155,-0.33522l-0.3861,-0.02095c-0.02394,0 -0.58663,-0.02694 -1.23912,0.31726c-1.06851,0.56868 -1.5474,1.68807 -1.75691,2.52612c-0.55072,2.18791 -1.33489,3.70837 -1.66712,4.35786c-0.09877,0.19155 -0.15863,0.30529 -0.18557,0.38311c-0.05387,0.14666 -0.02394,0.29332 0.0838,0.38909c0.31427,0.28434 1.14334,-0.0868 1.15232,-0.08979c0.01796,-0.00898 0.03891,-0.01796 0.06585,-0.02993c0.41603,-0.18856 1.64916,-0.74826 2.08914,-2.52911l1.69705,0c0.02095,0.96376 0.09278,4.14236 0.0868,5.17496l-4.22018,0l-0.06285,0.0449c-0.69139,0.50582 -0.91288,1.8916 -0.92185,1.95146l-0.0419,0.27536l4.99837,0c-0.36814,2.34355 -0.79315,3.3941 -1.01763,3.81313c-0.11074,0.20951 -0.21849,0.41902 -0.32025,0.62255c-0.63752,1.26306 -1.29898,2.56802 -3.7802,4.5973c-0.10775,0.0838 -0.20951,0.23944 -0.14367,0.41005c0.07183,0.18856 0.27835,0.27237 0.73629,0.27237c0.16162,0 0.35318,-0.00898 0.58065,-0.02993c1.49352,-0.13169 3.01698,-0.53875 4.04359,-2.6219c0.50882,-1.05056 0.94879,-2.14601 1.31394,-3.25941l4.08549,4.78886l0.14965,-0.35916c0.02394,-0.05687 0.56868,-1.38578 0.15264,-2.87032l-0.01497,-0.05387l-3.23547,-3.68143l-0.65847,0.49684c0.19155,-0.78118 0.31726,-1.49352 0.37413,-2.12805l4.74995,0l0,-0.23944c0,-1.20021 -0.55371,-1.91255 -0.57466,-1.94248l-0.07183,-0.08979z" />
+        </svg> 知乎
+      </a>
+
+      <a href="/index.xml" target="_blank" rel="noopener noreferrer">
+        <i class="fas fa-rss"></i> RSS
+      </a>
+
+    </div>
+    <div style="margin-bottom: 5rem;"></div>
+  </div>
+
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/rpi_agent_server/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">在树莓派上搭建家用 Agent 服务</span>
+    </a>
+    
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
 
         </div>
         
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
   
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
+
+
+
+
+
 <script src="https://kit.fontawesome.com/2134995a39.js" crossorigin="anonymous"></script>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
+<script type="text/javascript">
+  if (tocbot) {
+    tocbot.init({
+      
+      tocSelector: '.toc',
+      
+      contentSelector: '.post',
+      
+      headingSelector: 'h2, h3, h4',
+      collapseDepth: 4
+    });
+  }
+</script>
+
+
+
+    
+
+
 
     </body>
 </html>

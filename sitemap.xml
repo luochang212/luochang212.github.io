@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://luochang212.github.io/posts/the_essence/</loc>
+    <lastmod>2026-01-29T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://luochang212.github.io/posts/rpi_agent_server/</loc>
     <lastmod>2026-01-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -342,17 +347,47 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://luochang212.github.io/categories/agent/</loc>
-    <lastmod>2026-01-18T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://luochang212.github.io/categories/</loc>
-    <lastmod>2026-01-18T00:00:00+00:00</lastmod>
+    <lastmod>2026-01-29T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://luochang212.github.io/</loc>
+    <lastmod>2026-01-29T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/essence/</loc>
+    <lastmod>2026-01-29T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/intelligence/</loc>
+    <lastmod>2026-01-29T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://luochang212.github.io/posts/</loc>
+    <lastmod>2026-01-29T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://luochang212.github.io/categories/prose/</loc>
+    <lastmod>2026-01-29T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/</loc>
+    <lastmod>2026-01-29T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/uncertainty/</loc>
+    <lastmod>2026-01-29T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://luochang212.github.io/categories/agent/</loc>
     <lastmod>2026-01-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -367,17 +402,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://luochang212.github.io/posts/</loc>
-    <lastmod>2026-01-18T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://luochang212.github.io/tags/raspberry-pi/</loc>
-    <lastmod>2026-01-18T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://luochang212.github.io/tags/</loc>
     <lastmod>2026-01-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
