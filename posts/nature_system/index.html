@@ -720,10 +720,10 @@
 <p>无论是狼还是麋鹿，食物水平都会随着时间流逝而下降。</p>
 <p>对于麋鹿，每次迭代中如果没有吃到食物，它的food属性值将会减1。吃到食物时，food属性值则会加2，但减去随时间流逝下降的1点食物值，在数值变动上实际只增加了1。</p>
 <p>对于狼，它捕食麋鹿为生。在本模型中，狼的速度值与搜索范围值相等。如果一只麋鹿出现在狼的搜索范围内，则麋鹿和狼的距离越近，越容易被判定为被狼捕获。代码实现如下：</p>
-<pre tabindex="0"><code>		pk = 1 - (d/spd)
-		if pk &gt; rand
-			{麋鹿死，狼食物加1，狼移动到麋鹿原先的位置}
-		end
+<pre tabindex="0"><code>        pk = 1 - (d/spd)
+        if pk &gt; rand
+            {麋鹿死，狼食物加1，狼移动到麋鹿原先的位置}
+        end
 </code></pre><p>其中，pk是麋鹿被捕杀的概率。d是麋鹿和狼之间的距离，spd是狼的速度，rand是一个介于0到1之间的随机数。距离(d)越短，狼的速度(spd)越大，pk值就越大，pk &gt; rand的可能性就越大，因此麋鹿被捕获的概率就越高。</p>
 <p>吃到麋鹿时，狼的food属性值加2。同时因为本轮迭代下降的1点food值，实际只增长1点food值。</p>
 <h3 id="整体架构">整体架构</h3>
@@ -849,10 +849,10 @@ end
         % moose
         if isa(curr,&#39;moose&#39;)&amp;klld==0
             new=[];
-            [curr,new]=breed(curr,cn);			%breeding rule
-            if ~isempty(new)					%if current agent has bred during this iteration
-                n_new=n_new+1;                 %increase new agent number
-                agent{n+n_new}=new;			%add new to end of agent list
+            [curr,new]=breed(curr,cn);     %breeding rule
+            if ~isempty(new)               %if current agent has bred during this iteration
+                n_new=n_new+1;             %increase new agent number
+                agent{n+n_new}=new;        %add new to end of agent list
             end
         end
         
@@ -860,11 +860,11 @@ end
         % only alphaWolf can breed, wolf can not
         if isa(curr,&#39;alphaWolf&#39;)&amp;klld==0
             new=[];
-            [curr,new]=breed(curr,cn);			%breeding rule
-            if ~isempty(new)					%if current agent has bred during this iteration
+            [curr,new]=breed(curr,cn);           %breeding rule
+            if ~isempty(new)                     %if current agent has bred during this iteration
                 for ite = 1:length(new)
-                    n_new=n_new+1;                 %increase new agent number
-                    agent{n+n_new}=new{ite};			%add new to end of agent list
+                    n_new=n_new+1;               %increase new agent number
+                    agent{n+n_new}=new{ite};     %add new to end of agent list
                 end
             end
         end
