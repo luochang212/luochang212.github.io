@@ -5,6 +5,13 @@
 <title>计划表生成工具</title>
 <script>
 	"use strict";
+
+	function escapeHtml(text) {
+		const div = document.createElement('div');
+		div.textContent = text;
+		return div.innerHTML;
+	}
+
 	var Items = {
 　　　　	name: "",
 　　　　	isCheck: "false",
@@ -33,7 +40,7 @@
             body += '<tr>';
             body += '<td>' + index.toString(10) + '</td>';
 			//body += '<td>' + '<input type="checkbox" id=\"cb' + i.toString(10) + '\" onclick="isChecked(this);">' + '</td>';
-            body += '<td>' + objArray[i].name + '</td>';
+            body += '<td>' + escapeHtml(objArray[i].name) + '</td>';
 			//body += '<td>' + objArray[i].isDelete + '</td>';
 			//body += '<td>' + '<input type="button" id=\"btn' + i.toString(10) + '\" onclick="isDeleted(this);">' + '</td>';
             body += '</tr>';
@@ -57,7 +64,7 @@
             body += '<tr>';
             body += '<td>' + index.toString(10) + '</td>';
 			body += '<td>' + '<input type=\"checkbox\" id=\"cb' + i.toString(10) + '\" onclick=\"isChecked(this);\">' + '</td>';
-            body += '<td>' + subArray[i].name + '</td>';
+            body += '<td>' + escapeHtml(subArray[i].name) + '</td>';
 			body += '<td>' + '<input type=\"button\" id=\"btn' + i.toString(10) + '\" onclick=\"isDeleted(this);\">' + '</td>';
             body += '</tr>';
 		}
@@ -85,7 +92,7 @@
 				}
 				body += '<tr>';
 				body += '<td>' + index.toString(10) + '</td>';
-				body += '<td>' + subArray[i].name + '</td>';
+				body += '<td>' + escapeHtml(subArray[i].name) + '</td>';
 				body += '<td>' + showtext + '</td>';
 				body += '</tr>';
 				index++;
