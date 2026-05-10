@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://luochang212.github.io/posts/cc-enhance/</loc>
+    <lastmod>2026-05-10T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://luochang212.github.io/posts/the_essence/</loc>
     <lastmod>2026-01-29T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -347,13 +352,48 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://luochang212.github.io/categories/agent/</loc>
+    <lastmod>2026-05-10T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/agent-harness/</loc>
+    <lastmod>2026-05-10T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/agent-skills/</loc>
+    <lastmod>2026-05-10T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/boot.md/</loc>
+    <lastmod>2026-05-10T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://luochang212.github.io/categories/</loc>
-    <lastmod>2026-01-29T00:00:00+00:00</lastmod>
+    <lastmod>2026-05-10T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://luochang212.github.io/</loc>
-    <lastmod>2026-01-29T00:00:00+00:00</lastmod>
+    <lastmod>2026-05-10T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/claude-code/</loc>
+    <lastmod>2026-05-10T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://luochang212.github.io/posts/</loc>
+    <lastmod>2026-05-10T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/</loc>
+    <lastmod>2026-05-10T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -367,28 +407,13 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://luochang212.github.io/posts/</loc>
-    <lastmod>2026-01-29T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://luochang212.github.io/categories/prose/</loc>
-    <lastmod>2026-01-29T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://luochang212.github.io/tags/</loc>
     <lastmod>2026-01-29T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://luochang212.github.io/tags/uncertainty/</loc>
     <lastmod>2026-01-29T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://luochang212.github.io/categories/agent/</loc>
-    <lastmod>2026-01-18T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>

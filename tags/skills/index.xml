@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Skills on Chang Luo</title>
+    <link>http://localhost:1313/tags/skills/</link>
+    <description>Recent content in Skills on Chang Luo</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 10 May 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/skills/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Claude Code 自我提升计划</title>
+      <link>http://localhost:1313/posts/cc-enhance/</link>
+      <pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/cc-enhance/</guid>
+      <description>&lt;p&gt;OpenClaw 发布之初，它的安装引导程序令人印象深刻。得益于良好的 TUI 设计，虽然选项众多，整个安装过程依然十分丝滑。用户只需要一路选选选，就能获得属于自己的 OpenClaw。这种丝滑主要来自“卷工程师”：工程师处理各种边界情况，让程序在不同设备上运行良好。&lt;/p&gt;&#xA;&lt;p&gt;这本质是人与机器的摩擦：由于设备之间的微小差异，人被迫写 if else 来处理这种摩擦。自 Coding Agent 诞生以来，它一直在降低人与机器的摩擦。有没有可能我们不卷工程师，而是将这种摩擦转嫁给 Coding Agent，让它自己解决环境配置问题呢？这当然是可能的，本项目就计划进行这方面的尝试。&lt;/p&gt;&#xA;&lt;h3 id=&#34;一bootmd-的诞生&#34;&gt;一、BOOT.md 的诞生&lt;/h3&gt;&#xA;&lt;p&gt;我尝试在 &lt;strong&gt;BOOT.md&lt;/strong&gt; 里，用自然语言写软件的安装步骤，这包括：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;安装指引&lt;/strong&gt;：用户想安什么&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;环境检测&lt;/strong&gt;：用户环境是什么&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;依赖下载&lt;/strong&gt;：当前环境要下载什么&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;执行安装&lt;/strong&gt;：安装软件及其环境依赖&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;引导体验&lt;/strong&gt;：引导用户使用我们的工具&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;BOOT.md 是一个纯文本文件，我把这个文件丢给 Claude Code，只要 Claude Code 能识别其意图，就能帮我们安装软件，在这个过程中不需要写一行代码。实测下来效果非常好，因为 Claude Code 的 TUI 有多选框、单选框等交互方式，能代替安装引导程序与用户交互，获得安装所需信息，然后自动安装软件。&lt;/p&gt;&#xA;&lt;p&gt;也许未来所有软件都不需要写安装引导程序了，这件事交给 Coding Agent 来做就很好。其实 OpenClaw 已经做到这件事了：一个对话框做所有事，区区一个安装引导程序不过是它的子集。不过人的惯性足够大，切换到新习惯、新范式总归是一个缓慢的过程。&lt;/p&gt;&#xA;&lt;p&gt;我不知道我是不是第一个这么做的人，但这只是肌肉记忆的延伸。以前喜欢写 &lt;strong&gt;boot.sh&lt;/strong&gt; 文件，里面放安装软件的代码。现在不需要写 bash 了，只需要人类语言就能让 Claude Code 安装软件，这种体验还挺新奇的。说起来，以前的 bash 不过是粘合剂而已，现在 Coding Agent 变成了更好的粘合剂。&lt;/p&gt;&#xA;&lt;h3 id=&#34;二claude-code-自我提升计划&#34;&gt;二、Claude Code 自我提升计划&lt;/h3&gt;&#xA;&lt;p&gt;我们知道，“裸的” Claude Code 能力受限。因为它很多能力是依赖生态的。比如，Claude Code 想要搜索信息，就需要使用搜索 API。因为搜索引擎有反爬机制，机器无论是直接请求，还是用无头浏览器访问，都会被拒绝。&lt;/p&gt;&#xA;&lt;p&gt;我们说生态能力已经有点 low 了，现在有个时髦的词叫 Agent Harness。Agent Harness 其实不是什么抽象的东西，它就是 Coding Agent 赖以生存的基建。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

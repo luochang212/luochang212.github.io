@@ -6,8 +6,15 @@
     <description>Recent content in Agent on Chang Luo</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 18 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 10 May 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://luochang212.github.io/categories/agent/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Claude Code 自我提升之路：从 BOOT.md 到 Agent Harness</title>
+      <link>https://luochang212.github.io/posts/cc-enhance/</link>
+      <pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/posts/cc-enhance/</guid>
+      <description>&lt;p&gt;OpenClaw 发布之初，它的安装引导程序令人印象深刻。得益于良好的 TUI 交互设计，即使配置项众多，安装体验依然十分丝滑。用户只需要一路选选选，就能获得属于自己的 OpenClaw。这种丝滑体验主要来自“卷工程师”：工程师处理各种边界情况，让程序在不同设备上运行良好。&lt;/p&gt;&#xA;&lt;p&gt;这本质是人与机器的摩擦：由于设备之间的微小差异，人被迫写 if else 来处理各种边界情况。有没有可能我们不卷工程师，而是将这种摩擦转嫁给 Coding Agent，让它自己解决环境配置问题呢？这当然是可能的，本文就将进行这方面的尝试。&lt;/p&gt;&#xA;&lt;h3 id=&#34;一bootmd-的诞生&#34;&gt;一、BOOT.md 的诞生&lt;/h3&gt;&#xA;&lt;p&gt;BOOT.md 是一个纯文本文件。首先，我们在 &lt;strong&gt;BOOT.md&lt;/strong&gt; 里面，用自然语言写软件的安装步骤，包括以下内容：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;安装指引&lt;/strong&gt;：用户想安什么&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;环境检测&lt;/strong&gt;：用户环境是什么&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;依赖下载&lt;/strong&gt;：当前环境要下载什么&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;执行安装&lt;/strong&gt;：安装软件及其环境依赖&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;引导体验&lt;/strong&gt;：引导用户使用我们的工具&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;然后把这个文件丢给 Claude Code，只要 Claude Code 能识别其意图，就能帮我们安装，整个过程不用写一行代码。实测下来效果非常好，因为 Claude Code 的 TUI 有多选框、单选框等交互方式，能代替安装引导程序与用户交互，获得安装所需信息，然后自动安装软件。&lt;/p&gt;&#xA;&lt;p&gt;我不知道我是不是第一个这么做的人，但这只是肌肉记忆的延伸。以前喜欢写 &lt;strong&gt;boot.sh&lt;/strong&gt; 文件，里面放安装软件的代码。现在不需要写 bash 了，只需要人类语言就能让 Claude Code 安装软件。这种体验还挺新奇的。说起来，以前写的 bash 不过是粘合剂而已，现在 Coding Agent 变成了更好的粘合剂。&lt;/p&gt;&#xA;&lt;h3 id=&#34;二claude-code-自我提升计划&#34;&gt;二、Claude Code 自我提升计划&lt;/h3&gt;&#xA;&lt;p&gt;我们知道，“裸的” Claude Code 能力受限。因为它很多能力是依赖生态的。比如，Claude Code 想搜索信息，就需要使用搜索 API。因为搜索引擎有反爬机制，机器无论是直接请求，还是用无头浏览器访问，都会被拒绝。所以像外部 API 这种生态能力是很关键的。&lt;/p&gt;&#xA;&lt;p&gt;我们说生态能力已经有点 low 了，现在有个时髦的词叫 Agent Harness。Agent Harness 其实不是什么抽象东西，它就是 Coding Agent 赖以生存的基建。&lt;/p&gt;&#xA;&lt;p&gt;Agent Harness 一览表&lt;/p&gt;</description>
+    </item>
     <item>
       <title>在树莓派上搭建家用 Agent 服务</title>
       <link>https://luochang212.github.io/posts/rpi_agent_server/</link>
