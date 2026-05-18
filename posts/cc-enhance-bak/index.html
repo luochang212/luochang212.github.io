@@ -4,10 +4,10 @@
     
 
 
-    <head>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     
-    <link rel="canonical" href="https://luochang212.github.io/posts/cc-enhance/">
+    <link rel="canonical" href="http://localhost:1313/posts/cc-enhance-bak/">
     
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,18 +19,18 @@
     
     
 
-<title>Claude Code 自我提升计划 • Chang Luo</title>
+<title>Claude Code 自我提升之路：从 BOOT.md 到 Agent Harness • Chang Luo</title>
 
 
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Claude Code 自我提升计划">
+  <meta name="twitter:title" content="Claude Code 自我提升之路：从 BOOT.md 到 Agent Harness">
   <meta name="twitter:description" content="Coding Agent 是人与机器的粘合剂">
       <meta name="twitter:site" content="@_stellar_tide">
 
-<meta property="og:url" content="https://luochang212.github.io/posts/cc-enhance/">
+<meta property="og:url" content="http://localhost:1313/posts/cc-enhance-bak/">
   <meta property="og:site_name" content="Chang Luo">
-  <meta property="og:title" content="Claude Code 自我提升计划">
+  <meta property="og:title" content="Claude Code 自我提升之路：从 BOOT.md 到 Agent Harness">
   <meta property="og:description" content="Coding Agent 是人与机器的粘合剂">
   <meta property="og:locale" content="zh_cn">
   <meta property="og:type" content="article">
@@ -228,13 +228,13 @@
     <div class="container ">
       <div class="sidebar-about">
         <span class="site__title">
-          <a href="https://luochang212.github.io/">Chang Luo</a>
+          <a href="http://localhost:1313/">Chang Luo</a>
         </span>
         
         
         
         <div class="author-image">
-          <a href="#" class="load-iframe" onclick="openNav()"><img src="https://luochang212.github.io//images/profile.webp" id="author-iamge"
+          <a href="#" class="load-iframe" onclick="openNav()"><img src="http://localhost:1313//images/profile.webp" id="author-iamge"
               alt="Author Image" class="img--circle img--headshot element--center"></a>
         </div>
         
@@ -577,7 +577,7 @@
 
 <article>
   <header>
-    <h1>Claude Code 自我提升计划</h1>
+    <h1>Claude Code 自我提升之路：从 BOOT.md 到 Agent Harness</h1>
     
     
 <div class="post__meta">
@@ -637,43 +637,34 @@
   
   
   <div class="post">
-    <blockquote>
-<p>让 Claude Code 自己配置自己</p></blockquote>
-<p>GitHub 项目地址：<a href="https://github.com/luochang212/cc-enhance" target="_blank">cc-enhance</a></p>
-<p>Claude Code 的能力依赖生态。如果你想收集网络信息，就需要搜索 API，直接访问容易触发反爬和风控；如果你想用 Claude Code 做开发，也需要配置一些基础的 agent skills 和 plugin。我们固然可以手动为 Claude Code 配置这些技能和工具，但这不符合 Coding Agent 时代的风格。</p>
-<p>有没有更简单的方法，为一个新 Claude Code 配置基础依赖呢？本文来做一些微小的尝试 ଘ(੭ˊᵕˋ)੭*</p>
-<h3 id="一文档驱动安装">一、文档驱动安装</h3>
-<p>我们在 GitHub 项目 <a href="https://github.com/luochang212/cc-enhance">cc-enhance</a> 中定义了标准安装步骤及用户交互流程。用户只需要在 Claude Code 会话中输入：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>请使用 https://github.com/luochang212/cc-enhance 项目增强我的 Claude Code
-</span></span></code></pre></div><p>就会触发安装引导程序。如果用户同意，就会安装对应的工具或者技能👇</p>
-<p><img src="/img/cc-enhance.png" alt="cc-enhance"></p>
-<p>实测下来安装体验非常好，因为 Claude Code 自带 TUI 交互界面，完全可以替代 exe 的安装引导 GUI。而且整个过程不需要写一行代码，只需要在文档中指定安装步骤即可。我把这种安装方式称为 <strong>文档驱动安装</strong>。</p>
-<p>这种安装方式有很多好处：</p>
+    <p>OpenClaw 发布之初，它的安装引导程序令人印象深刻。得益于良好的 TUI 交互设计，即使配置项众多，安装体验依然十分丝滑。用户只需要一路选选选，就能获得属于自己的 OpenClaw。这种丝滑体验主要来自“卷工程师”：工程师处理各种边界情况，让程序在不同设备上运行良好。</p>
+<p>这本质是人与机器的摩擦：由于设备之间的微小差异，人被迫写 if else 来处理各种边界情况。有没有可能我们不卷工程师，而是将这种摩擦转嫁给 Coding Agent，让它自己解决环境配置问题呢？这当然是可能的，本文就将进行这方面的尝试。</p>
+<h3 id="一bootmd-的诞生">一、BOOT.md 的诞生</h3>
+<p>BOOT.md 是一个纯文本文件。首先，我们在 <strong>BOOT.md</strong> 里面，用自然语言写软件的安装步骤，包括以下内容：</p>
 <ol>
-<li><strong>极度柔性</strong>：我们只定义安装资源和步骤，设备差异交给 agent 处理</li>
-<li><strong>个性化</strong>：用户可以只安装自己感兴趣的技能和工具</li>
-<li><strong>开发者友好</strong>：写安装步骤文档比写处理边缘 case 的代码更简单</li>
+<li><strong>安装指引</strong>：用户想安什么</li>
+<li><strong>环境检测</strong>：用户环境是什么</li>
+<li><strong>依赖下载</strong>：当前环境要下载什么</li>
+<li><strong>执行安装</strong>：安装软件及其环境依赖</li>
+<li><strong>引导体验</strong>：引导用户使用我们的工具</li>
 </ol>
-<p>以前用 bash 来安装依赖，现在用 markdown 来安装依赖，这种体验还蛮新奇的。说起来，以前 bash 也只是粘合剂而已，现在 Coding Agent 变成了新的粘合剂。</p>
-<h3 id="二深入理解-cc-enhance">二、深入理解 cc-enhance</h3>
-<p>cc-enhance 主要发挥作用的是 <strong>BOOT.md</strong> 文件，它是安装流程的组织者。我们在 README.md 里面提及它，聪明的 Coding Agent 就知道去找这个文件，开启安装流程。我们设计的 pipeline 是：</p>
-<ol>
-<li>Claude Code 读我们的代码仓库，先读 BOOT.md</li>
-<li>BOOT.md 引导 Claude Code 展示技能安装选项让用户选择</li>
-<li>对每一个选中的技能，检测未安装的环境依赖，逐项询问是否安装</li>
-</ol>
-<p>具体来讲，cc-enhance 提供了以下技能和工具：</p>
+<p>然后把这个文件丢给 Claude Code，只要 Claude Code 能识别其意图，就能帮我们安装，整个过程不用写一行代码。实测下来效果非常好，因为 Claude Code 的 TUI 有多选框、单选框等交互方式，能代替安装引导程序与用户交互，获得安装所需信息，然后自动安装软件。</p>
+<p>我不知道我是不是第一个这么做的人，但这只是肌肉记忆的延伸。以前喜欢写 <strong>boot.sh</strong> 文件，里面放安装软件的代码。现在不需要写 bash 了，只需要人类语言就能让 Claude Code 安装软件。这种体验还挺新奇的。说起来，以前写的 bash 不过是粘合剂而已，现在 Coding Agent 变成了更好的粘合剂。</p>
+<h3 id="二claude-code-自我提升计划">二、Claude Code 自我提升计划</h3>
+<p>我们知道，“裸的” Claude Code 能力受限。因为它很多能力是依赖生态的。比如，Claude Code 想搜索信息，就需要使用搜索 API。因为搜索引擎有反爬机制，机器无论是直接请求，还是用无头浏览器访问，都会被拒绝。所以像外部 API 这种生态能力是很关键的。</p>
+<p>我们说生态能力已经有点 low 了，现在有个时髦的词叫 Agent Harness。Agent Harness 其实不是什么抽象东西，它就是 Coding Agent 赖以生存的基建。</p>
+<p>Agent Harness 一览表</p>
 <table>
   <thead>
       <tr>
-          <th>技能</th>
-          <th>工具</th>
+          <th>Agent 能力</th>
+          <th>Agent Harness</th>
       </tr>
   </thead>
   <tbody>
       <tr>
           <td>网络搜索</td>
-          <td><a href="https://tavily.com/">Tavily</a>、<a href="https://github.com/searxng/searxng">SearXNG</a>、<a href="https://github.com/deedy5/ddgs">ddgs</a></td>
+          <td><a href="https://tavily.com/">Tavily</a>、<a href="https://jina.ai/">Jina</a>、<a href="https://github.com/searxng/searxng">SearXNG</a>、<a href="https://github.com/deedy5/ddgs">ddgs</a></td>
       </tr>
       <tr>
           <td>网页爬取</td>
@@ -681,19 +672,63 @@
       </tr>
       <tr>
           <td>技能管理</td>
-          <td><a href="https://github.com/vercel-labs/skills">npx skills</a></td>
+          <td><a href="https://github.com/vercel-labs/skills">npx skills</a>、<a href="https://clawhub.ai/">ClawHub</a></td>
+      </tr>
+      <tr>
+          <td>代码执行</td>
+          <td><a href="https://www.anaconda.com/docs/getting-started/miniconda/install/overview">Miniconda</a>、<a href="https://github.com/astral-sh/uv">uv</a>、<a href="https://nodejs.org/en">Node.js</a>、<a href="https://github.com/oven-sh/bun">Bun</a></td>
+      </tr>
+      <tr>
+          <td>沙箱</td>
+          <td><a href="https://github.com/firecracker-microvm/firecracker">Firecracker</a>、<a href="https://github.com/google/gvisor">gVisor</a>、<a href="https://github.com/anthropic-experimental/sandbox-runtime">sandbox-runtime</a></td>
+      </tr>
+      <tr>
+          <td>记忆</td>
+          <td><a href="https://github.com/martian-engineering/lossless-claw">lossless-claw</a>、<a href="https://docs.openclaw.ai/plugins/memory-wiki">memory-wiki</a></td>
       </tr>
   </tbody>
 </table>
-<p>工具和技能是有对应关系的：工具提供执行能力，技能提供使用说明。所以我们没有提供单独安装工具的选项，安装工具之前，必须安装对应的技能。</p>
-<p>这个项目真的很简单，写到这里已经介绍完了。但这个项目确实帮到了我，所以我才为它写了这篇文章。如果你觉得我的描述很抽象，建议直接看 <a href="https://github.com/luochang212/cc-enhance/blob/main/BOOT.md">BOOT.md</a>，我贴一张截图在这里：</p>
-<p><img src="/img/boot-md.png" alt="boot-md"></p>
-<h3 id="三后日谈">三、后日谈</h3>
-<p>我们今天走到这里，只是历史的一个小脚印，因为未来网页终究是要给 Agent 读的。我观察到很多网站都有这种迹象，比如 <a href="https://lobehub.com/skills">lobehub skills</a>，首页上赫然写着一行文字「Send this prompt to your agent to discover the right skill」，这就是一种 <strong>面向 Agent 设计</strong>。</p>
-<p><img src="/img/lobehub-skills.png" alt="lobehub-skills"></p>
-<p>讲真，安装只是一个很小的事情。更重要的是工具链、开发流程甚至 SaaS 的本质都正在发生变化。这次 Coding Agent 带来的变革足够大，以至于人的观念、开发工具、环境依赖都无法在短时间内更新和适配。变化是一个缓慢的过程，它不会一夜之间发生。</p>
-<p>从更高的时空维度上看，技术发展依然是线性的。当模型能力遭遇瓶颈，大家就开始搞 Agent Harness；当工程基建足够完善，工程能力又被训回模型。现在我们就在这个剧烈循环迭代的过程当中。可是，即便演进如此剧烈，它泛化到其他领域了吗？本质也没有，Coding 模型最厉害的还是 Coding，它尚未带来自动驾驶、视频生成、具身智能的 GPT-3 时刻。我们依然需要像 seq2seq、transformer 这样灵光一闪的工作，来帮助我们突破桎梏。</p>
-<p>在这篇文章发布的最后时刻，我得知了 Anthropic 发布官方插件 <a href="https://claude.com/plugins/claude-code-setup">claude-code-setup</a> 的消息，这让我的尝试变成了官方插件的弱化版。我只能佩服他们的嗅觉和执行力。他们总是能找到梯度下降最快的方向，并快速将它推向极致。</p>
+<p>可以说，没有配置 Agent Harness 的 Claude Code 只是半个 Claude Code。可是 Harness 还需要一个一个去安装，怎样才能无痛安装 Harness 呢？</p>
+<p>哎呀，这就轮到 <strong>BOOT.md</strong> 出场了。</p>
+<p>我的设想是：</p>
+<ol>
+<li>让 Claude Code 读 BOOT.md</li>
+<li>BOOT.md 引导 Claude 展示技能让用户选：搜索、爬虫、技能管理</li>
+<li>对每个选中的技能，检查对应 Harness 的依赖，逐项询问是否安装</li>
+</ol>
+<p>按这个思路，只要把包含 BOOT.md 在内的文档放到一个 GitHub 仓库。任何读了这个仓库的 Claude Code，都能够知道如何用 Agent Harness 武装自己。</p>
+<p>我花了半天时间，把这个仓库写出来了👇👇</p>
+<center>
+    <a href="https://github.com/luochang212/cc-enhance" style="color:#ee9a9a; text-decoration:underline; text-decoration-style:dashed;">https://github.com/luochang212/cc-enhance</a>
+</center>
+<p>现在，你只需要在 Claude Code 会话中输入：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>用 https://github.com/luochang212/cc-enhance 武装我的 Claude Code
+</span></span></code></pre></div><p>就能下载以下技能（可选）：</p>
+<ul>
+<li>web-search-cce: 网络搜索</li>
+<li>web-fetch-cce: 网页提取</li>
+<li>agent-skills-cce: 技能管理</li>
+<li>tool-registry-cce: 工具管理</li>
+</ul>
+<p>还有技能关联的 Agent Harness（可选）：</p>
+<ul>
+<li>Tavily API</li>
+<li>ddgs</li>
+<li>Crawl4AI</li>
+<li>Playwright</li>
+<li>npx skills</li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong> 技能的 <code>-cce</code> 尾缀是 cc-enhance 的缩写，加它是为了防止我们的技能名与用户已有技能撞车。</p></blockquote>
+<h3 id="三文档驱动安装">三、文档驱动安装</h3>
+<blockquote>
+<p><a href="https://github.com/karpathy/autoresearch">自举</a> 是一种循环，但 Harness 只需要安装一次。</p></blockquote>
+<p>这种安装方式的新奇之处在于：它完全由文档驱动，不需要代码文件。</p>
+<p>未来的安装程序可能是一套基于共识的文档系统。比如 98% 使用了 Ubuntu 的 Claude Code 认为，遇到 A 问题可以用 B 命令解决，那么文档就会这么写。如果概率五五开，那文档系统就向 Claude Code 发出指令，让它们进一步 diff 系统环境的差别。</p>
+<p>这在前 Agent 时代不可能发生，因为积累共识是一件成本高昂的事情。很少有人愿意为了解决分歧而发起投票，即使有结果也不置信。但对于 Agent 来说，可能顺手就做了。虽然每个 Agent 都只安装一次，但是如果有很多 Agent 安装，就能给系统带来源源不断的反馈，让系统自发变好用，想想还蛮玄幻的。</p>
+<!-- 要达成这一步，可能需要搭建可信系统和共识网络。 -->
+<p><img src="/img/cc-enhance.png" alt="cc-enhance"></p>
+<p>拉回我们的思绪。我刚刚在 macOS 上试了一下，目前状态一切良好。但我还没有测它在 Windows 上的表现。这个项目目前还在开发中，如果你有任何改进意见或想法，欢迎提 Issue 或直接提 PR。非常感谢！！</p>
 
   </div>
 
@@ -734,9 +769,9 @@
 
 <div class="navigation navigation-single">
     
-    <a href="/posts/the_essence/" class="navigation-prev">
+    <a href="/posts/cc-enhance/" class="navigation-prev">
       <i aria-hidden="true" class="fa fa-chevron-left"></i>
-      <span class="navigation-tittle">智能的本质是对抗不确定</span>
+      <span class="navigation-tittle">Claude Code 自我提升计划</span>
     </a>
     
     
