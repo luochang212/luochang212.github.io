@@ -643,21 +643,21 @@
 <p>Claude Code 的能力依赖配置。如果你想收集网络信息，就需要搜索 API；如果你想做开发，就需要 agent skills 和 plugins。我们固然可以手动配置这些技能和工具，但这不符合 Coding Agent 时代的作风。</p>
 <p>有没有一种简单的方法，为新 Claude Code 配置基础依赖呢？本文来做一些微小的尝试 ଘ(੭ˊᵕˋ)੭*</p>
 <h3 id="一文档驱动安装">一、文档驱动安装</h3>
-<p>我写了一个代码仓库 <a href="https://github.com/luochang212/cc-enhance">cc-enhance</a>，里面放了我觉得重要的工具和技能。并且在仓库里面定义了标准安装步骤和用户交互流程。</p>
+<p>写了一个代码仓库 <a href="https://github.com/luochang212/cc-enhance">cc-enhance</a>，里面放了我觉得重要的工具和技能。并且在仓库里面定义了标准安装步骤和用户交互流程。</p>
 <p>用户只需要在 Claude Code 会话中输入：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>请使用 https://github.com/luochang212/cc-enhance 项目增强我的 Claude Code
-</span></span></code></pre></div><p>就会触发安装引导程序。实测下来安装体验非常好，因为 Claude Code 自带 TUI 交互界面，可以替代 exe 的安装引导 GUI。用户可以通过 TUI 选择需要安装的工具和技能👇</p>
+</span></span></code></pre></div><p>就会触发安装引导程序。实测安装体验非常好，因为 Claude Code 自带 TUI 交互界面，可以替代安装引导 GUI。用户可以通过 TUI 选择需要的工具和技能👇</p>
 <p><img src="/img/cc-enhance.png" alt="cc-enhance"></p>
 <p>整个过程不依赖特定安装脚本，而是根据文档的指引进行安装，我把这种安装方式称为 <strong>文档驱动安装</strong>。</p>
 <p>这么做的好处有很多：</p>
 <ol>
-<li><strong>极度柔性</strong>：只定义安装资源和步骤，设备差异交给 agent 处理</li>
+<li><strong>极度柔性</strong>：只定义安装步骤，设备差异交给 agent 处理</li>
 <li><strong>自带说明</strong>：用户可以让 Claude Code 说明工具或技能的用途</li>
 <li><strong>开发者友好</strong>：开发者只需要写安装步骤文档，不需要处理复杂的边缘情况</li>
 </ol>
-<p>过去我们需要写 bash 来安装程序，现在我们只需要提供 Claude Code 可读的安装文档就可以了，这种体验还蛮新奇的。说起来，bash 也只是粘合剂而已，现在 Coding Agent 变成了新的粘合剂。</p>
+<p>过去我们写 bash 来安装程序，现在我们只需要提供 Claude Code 可读的文档就可以，这种体验还蛮新奇的。说起来，bash 也只是粘合剂而已，现在 Coding Agent 变成了新的粘合剂。</p>
 <h3 id="二深入理解-cc-enhance">二、深入理解 cc-enhance</h3>
-<p>cc-enhance 发挥作用的主要是 <strong>BOOT.md</strong> 文件，它是安装流程的组织者。通过在 README.md 里面提及它，聪明的 Coding Agent 知道去找这个文件，开始安装流程。BOOT.md 会引导 Claude Code 向用户展示可选技能。待用户选择后，获取技能对应的未安装工具列表，逐项询问用户是否安装。</p>
+<p>cc-enhance 发挥作用的主要是 <strong>BOOT.md</strong> 文件，它是安装流程的组织者。通过在 README.md 里面提及它，聪明的 Coding Agent 知道去找这个文件，开启安装流程。BOOT.md 会引导 Claude Code 向用户展示可选技能。待用户选择后，获取技能对应的未安装工具列表，逐项询问用户是否安装。</p>
 <p>具体来讲，cc-enhance 提供以下技能和工具：</p>
 <table>
   <thead>
@@ -669,11 +669,11 @@
   <tbody>
       <tr>
           <td>网络搜索</td>
-          <td><a href="https://tavily.com/">Tavily</a>、<a href="https://github.com/searxng/searxng">SearXNG</a>、<a href="https://github.com/deedy5/ddgs">ddgs</a></td>
+          <td><a href="https://tavily.com/">Tavily</a>, <a href="https://github.com/searxng/searxng">SearXNG</a>, <a href="https://github.com/deedy5/ddgs">ddgs</a></td>
       </tr>
       <tr>
           <td>网页爬取</td>
-          <td><a href="https://github.com/microsoft/playwright">Playwright</a>、<a href="https://github.com/unclecode/crawl4ai">Crawl4AI</a></td>
+          <td><a href="https://github.com/microsoft/playwright">Playwright</a>, <a href="https://github.com/unclecode/crawl4ai">Crawl4AI</a></td>
       </tr>
       <tr>
           <td>技能管理</td>
@@ -681,15 +681,15 @@
       </tr>
   </tbody>
 </table>
-<p>cc-enhance 的技能和工具是有对应关系的：工具提供执行能力，技能提供使用说明，所以没有单独安装工具的选项。安装工具之前，必须安装对应的技能。</p>
-<p>如果你觉得我的描述很抽象，建议直接看 <a href="https://github.com/luochang212/cc-enhance/blob/main/BOOT.md">BOOT.md</a>。贴一张截图在这里：</p>
+<p>cc-enhance 的技能和工具有对应关系：工具提供执行能力，技能提供使用说明，所以我们没有提供单独安装工具的选项。安装工具之前，必须安装对应的技能。</p>
+<p>如果你觉得上面的描述很抽象，建议直接看 <a href="https://github.com/luochang212/cc-enhance/blob/main/BOOT.md">BOOT.md</a>。贴一张截图在这里：</p>
 <p><img src="/img/boot-md.png" alt="boot-md"></p>
 <h3 id="三coding-agent-的下一步">三、Coding Agent 的下一步</h3>
-<p>大家有没有发现，工具正在向便于 Agent 调用的方向演进，比如 <a href="https://lobehub.com/skills">lobehub skills</a> 的首页上写着「Send this prompt to your agent to discover the right skill」，这就是一种 <strong>面向 Agent 的设计</strong>。</p>
+<p>大家有没有发现，工具正在向便于 Agent 调用的方向演进。比如 <a href="https://lobehub.com/skills">lobehub skills</a> 的首页上写着「Send this prompt to your agent to discover the right skill」，这就是一种 <strong>面向 Agent 的设计</strong>。</p>
 <p><img src="/img/lobehub-skills.png" alt="lobehub-skills"></p>
-<p>这一波 Coding Agent 带来的变革足够大，工具链、开发流程甚至 SaaS 的本质都在发生变化。但是这些变化又不会一夜之间发生：路线试错需要时间、工具开发需要时间、习惯改变需要时间。Coding Agent 影响力的释放会是一个渐进的过程。</p>
+<p>这一波 Coding Agent 带来的变革很大，工具链、开发流程甚至 SaaS 的本质都正在发生变化。但是这些变化又不会一夜之间发生：路线试错需要时间、工具开发需要时间、习惯改变需要时间。影响力的释放是一个渐进的过程。</p>
 <!-- 当模型能力遭遇瓶颈，大家就开始搞 Agent Harness；当工程基建足够完善，工程能力又被训回模型。现在我们就在这个剧烈循环迭代的过程当中。 -->
-<p>从更长的时间维度看，技术发展依然是线性的。即使今天技术演进得如此剧烈，它泛化到其他领域了吗？也没有，Coding 模型最厉害的还是 Coding，它没有带来自动驾驶、视频生成、具身智能的 GPT-3 时刻。我们依然需要像 seq2seq、transformer 这样灵光一闪的工作，帮助我们突破桎梏。</p>
+<p>从更长时间维度看，技术的发展依然是线性的。即使今天技术演进得如此剧烈，它泛化到其他领域了吗？也没有。Coding 模型最厉害的还是 Coding，它没有带来自动驾驶、视频生成、具身智能的 GPT-3 时刻。我们依然需要 seq2seq、transformer 这样灵光一闪的工作帮助我们突破桎梏。</p>
 <!-- ### 四、后日谈
 
 博客发布之前，我看到了 Anthropic 发布官方插件 [claude-code-setup](https://claude.com/plugins/claude-code-setup) 的消息。这个插件可以扫描你的代码仓库，推荐合适的 Claude Code 配置，包括五类：
