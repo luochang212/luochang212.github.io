@@ -640,27 +640,27 @@
     <blockquote>
 <p>让 Claude Code 自己配置自己</p></blockquote>
 <p>GitHub 项目地址：<a href="https://github.com/luochang212/cc-enhance" target="_blank">cc-enhance</a></p>
-<p>Claude Code 的能力依赖生态。如果你想收集网络信息，就需要搜索 API，直接访问容易触发反爬和风控；如果你想用 Claude Code 做开发，也需要配置一些基础的 agent skills 和 plugin。我们固然可以手动为 Claude Code 配置这些技能和工具，但这不符合 Coding Agent 时代的风格。</p>
+<p>Claude Code 的能力依赖配置。如果你想收集网络信息，就需要搜索 API；如果你想做开发，就需要配置 agent skills 和 plugins。我们固然可以手动配置这些技能和工具，但这不符合 Coding Agent 时代的作风。</p>
 <p>有没有更简单的方法，为一个新 Claude Code 配置基础依赖呢？本文来做一些微小的尝试 ଘ(੭ˊᵕˋ)੭*</p>
 <h3 id="一文档驱动安装">一、文档驱动安装</h3>
-<p>我们在 GitHub 项目 <a href="https://github.com/luochang212/cc-enhance">cc-enhance</a> 中定义了标准安装步骤及用户交互流程。用户只需要在 Claude Code 会话中输入：</p>
+<p>我在 GitHub 项目 <a href="https://github.com/luochang212/cc-enhance">cc-enhance</a> 中定义了标准安装步骤和用户交互流程。用户只需要在 Claude Code 会话中输入：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>请使用 https://github.com/luochang212/cc-enhance 项目增强我的 Claude Code
-</span></span></code></pre></div><p>就会触发安装引导程序。如果用户同意，就会安装对应的工具或者技能👇</p>
+</span></span></code></pre></div><p>就会触发安装引导程序，用户可以选择安装所需的工具和技能👇</p>
 <p><img src="/img/cc-enhance.png" alt="cc-enhance"></p>
-<p>实测下来安装体验非常好，因为 Claude Code 自带 TUI 交互界面，完全可以替代 exe 的安装引导 GUI。而且整个过程不需要写一行代码，只需要在文档中指定安装步骤即可。我把这种安装方式称为 <strong>文档驱动安装</strong>。</p>
-<p>这种安装方式有很多好处：</p>
+<p>实测下来安装体验非常好，Claude Code 自带 TUI 交互界面，完全可以替代 exe 的安装引导 GUI。而且整个过程不依赖特定的安装脚本，而是根据文档的指引进行安装，我把这种安装方式称为 <strong>文档驱动安装</strong>。</p>
+<p>这么做的好处有很多：</p>
 <ol>
-<li><strong>极度柔性</strong>：我们只定义安装资源和步骤，设备差异交给 agent 处理</li>
-<li><strong>个性化</strong>：用户可以只安装自己感兴趣的技能和工具</li>
-<li><strong>开发者友好</strong>：写安装步骤文档比写处理边缘 case 的代码更简单</li>
+<li><strong>极度柔性</strong>：只定义安装资源和步骤，设备差异交给 agent 处理</li>
+<li><strong>自带说明</strong>：用户可以让 Claude Code 说明工具或技能的用途</li>
+<li><strong>开发者友好</strong>：开发者只需要写安装步骤文档，不需要处理复杂的边缘情况</li>
 </ol>
-<p>以前用 bash 来安装依赖，现在用 markdown 来安装依赖，这种体验还蛮新奇的。说起来，以前 bash 也只是粘合剂而已，现在 Coding Agent 变成了新的粘合剂。</p>
+<p>突然不需要写 bash 了，而是写 markdown 来安装工具，是一种新奇的体验。说起来，过去 bash 也只是粘合剂而已，现在 Coding Agent 变成了新的粘合剂。</p>
 <h3 id="二深入理解-cc-enhance">二、深入理解 cc-enhance</h3>
-<p>cc-enhance 主要发挥作用的是 <strong>BOOT.md</strong> 文件，它是安装流程的组织者。我们在 README.md 里面提及它，聪明的 Coding Agent 就知道去找这个文件，开启安装流程。我们设计的 pipeline 是：</p>
+<p>cc-enhance 主要发挥作用的是 <strong>BOOT.md</strong> 文件，它是安装流程的组织者。只需要在 README.md 里面提及它，聪明的 Coding Agent 就知道去找这个文件，开启安装流程。我们设计的 pipeline 是：</p>
 <ol>
 <li>Claude Code 读我们的代码仓库，先读 BOOT.md</li>
-<li>BOOT.md 引导 Claude Code 展示技能安装选项让用户选择</li>
-<li>对每一个选中的技能，检测未安装的环境依赖，逐项询问是否安装</li>
+<li>BOOT.md 引导 Claude Code 展示技能，让用户选择</li>
+<li>对每个选中的技能，检测未安装的工具依赖，逐项询问是否安装</li>
 </ol>
 <p>具体来讲，cc-enhance 提供了以下技能和工具：</p>
 <table>
@@ -685,15 +685,17 @@
       </tr>
   </tbody>
 </table>
-<p>工具和技能是有对应关系的：工具提供执行能力，技能提供使用说明。所以我们没有提供单独安装工具的选项，安装工具之前，必须安装对应的技能。</p>
-<p>这个项目真的很简单，写到这里已经介绍完了。但这个项目确实帮到了我，所以我才为它写了这篇文章。如果你觉得我的描述很抽象，建议直接看 <a href="https://github.com/luochang212/cc-enhance/blob/main/BOOT.md">BOOT.md</a>，我贴一张截图在这里：</p>
+<p>我们的技能和工具是有对应关系的：工具提供执行能力，技能负责使用说明。所以我没有单独安装工具的选项，安装工具之前，必须安装对应的技能。</p>
+<p>这个项目真的很简单，写到这里已经写完了。如果你觉得我的描述很抽象，建议直接看 <a href="https://github.com/luochang212/cc-enhance/blob/main/BOOT.md">BOOT.md</a>，我贴一张截图在这里：</p>
 <p><img src="/img/boot-md.png" alt="boot-md"></p>
-<h3 id="三后日谈">三、后日谈</h3>
-<p>我们今天走到这里，只是历史的一个小脚印，因为未来网页终究是要给 Agent 读的。我观察到很多网站都有这种迹象，比如 <a href="https://lobehub.com/skills">lobehub skills</a>，首页上赫然写着一行文字「Send this prompt to your agent to discover the right skill」，这就是一种 <strong>面向 Agent 设计</strong>。</p>
+<h3 id="三迷茫的未来">三、迷茫的未来</h3>
+<p>今天走到这里，只是历史的一小步。因为未来网页终究是要给 Agent 看的。我观察到很多网站都有这种趋势，比如 <a href="https://lobehub.com/skills">lobehub skills</a>。它的首页赫然写着「Send this prompt to your agent to discover the right skill」，这就是一种 <strong>面向 Agent 的设计</strong>。</p>
 <p><img src="/img/lobehub-skills.png" alt="lobehub-skills"></p>
-<p>讲真，安装只是一个很小的事情。更重要的是工具链、开发流程甚至 SaaS 的本质都正在发生变化。这次 Coding Agent 带来的变革足够大，以至于人的观念、开发工具、环境依赖都无法在短时间内更新和适配。变化是一个缓慢的过程，它不会一夜之间发生。</p>
-<p>从更高的时空维度上看，技术发展依然是线性的。当模型能力遭遇瓶颈，大家就开始搞 Agent Harness；当工程基建足够完善，工程能力又被训回模型。现在我们就在这个剧烈循环迭代的过程当中。可是，即便演进如此剧烈，它泛化到其他领域了吗？本质也没有，Coding 模型最厉害的还是 Coding，它尚未带来自动驾驶、视频生成、具身智能的 GPT-3 时刻。我们依然需要像 seq2seq、transformer 这样灵光一闪的工作，来帮助我们突破桎梏。</p>
-<p>在这篇文章发布的最后时刻，我得知了 Anthropic 发布官方插件 <a href="https://claude.com/plugins/claude-code-setup">claude-code-setup</a> 的消息，这让我的尝试变成了官方插件的弱化版。我只能佩服他们的嗅觉和执行力。他们总是能找到梯度下降最快的方向，并快速将它推向极致。</p>
+<p>这种趋势会在越来越多的地方看见。因为这一波 Coding Agent 带来的变革足够大，工具链、开发流程甚至 SaaS 的本质都会发生变化。但是这些变化不会一夜之间发生：路线试错需要时间、工具开发需要时间、习惯的改变需要时间。Coding Agent 影响力的释放将是一个缓慢的过程。</p>
+<!-- 当模型能力遭遇瓶颈，大家就开始搞 Agent Harness；当工程基建足够完善，工程能力又被训回模型。现在我们就在这个剧烈循环迭代的过程当中。 -->
+<p>从更长的时间维度上看，技术发展依然是线性的。即便今天技术演进得如此剧烈，它泛化到其他领域了吗？本质也没有，Coding 模型最厉害的还是 Coding，它还没有带来自动驾驶、视频生成、具身智能的 GPT-3 时刻。我们依然非常需要像 seq2seq、transformer 这样灵光一闪的工作，帮助我们突破桎梏。</p>
+<blockquote>
+<p><strong>Note:</strong> 在这篇博客发布之前，我收到了 Anthropic 发布官方插件 <a href="https://claude.com/plugins/claude-code-setup">claude-code-setup</a> 的消息，这让我们的项目变成了官方插件的弱化版。我佩服 Anthropic 的嗅觉和执行力。他们好像总能踩中梯度下降最快的方向，并快速将之推向极致。</p></blockquote>
 
   </div>
 

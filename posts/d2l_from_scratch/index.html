@@ -904,8 +904,7 @@ def generate_sample(clustr_num, width=30, std=3, smin=600, smax=700, gen_seed=96
 
     plt.show()
 </code></pre><pre tabindex="0"><code>_3d_plot(samples)
-</code></pre><p><img src="/img/samples.png" alt=""></p>
-<h4 id="2-分割-训练集-和-预测集">2. 分割 训练集 和 预测集</h4>
+</code></pre><h4 id="2-分割-训练集-和-预测集">2. 分割 训练集 和 预测集</h4>
 <pre tabindex="0"><code>def load_data(samples, div_rate=0.8):
     X, Y = [], []
 
@@ -1375,8 +1374,7 @@ pred: tensor(6)
     sd = sorted(pred_samples.items(), key=lambda e: e[0])
     _3d_plot(collections.OrderedDict(sd))
 </code></pre><pre tabindex="0"><code>predict_plot(net, test_dt)
-</code></pre><p><img src="/img/softmax_pred.png" alt=""></p>
-<h4 id="13-xor问题-minsky--papert-1969">13. XOR问题 (Minsky &amp; Papert, 1969)</h4>
+</code></pre><h4 id="13-xor问题-minsky--papert-1969">13. XOR问题 (Minsky &amp; Papert, 1969)</h4>
 <blockquote>
 <p><strong>Q</strong>: 能不能描述一下XOR问题 (Minsky &amp; Papert, 1969)</p></blockquote>
 <blockquote>
