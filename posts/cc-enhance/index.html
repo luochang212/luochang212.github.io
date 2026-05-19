@@ -688,14 +688,27 @@
 <p>我们的技能和工具是有对应关系的：工具提供执行能力，技能负责使用说明。所以我没有单独安装工具的选项，安装工具之前，必须安装对应的技能。</p>
 <p>这个项目真的很简单，写到这里已经写完了。如果你觉得我的描述很抽象，建议直接看 <a href="https://github.com/luochang212/cc-enhance/blob/main/BOOT.md">BOOT.md</a>，我贴一张截图在这里：</p>
 <p><img src="/img/boot-md.png" alt="boot-md"></p>
-<h3 id="三迷茫的未来">三、迷茫的未来</h3>
+<h3 id="三coding-agent-的下一步">三、Coding Agent 的下一步</h3>
 <p>今天走到这里，只是历史的一小步。因为未来网页终究是要给 Agent 看的。我观察到很多网站都有这种趋势，比如 <a href="https://lobehub.com/skills">lobehub skills</a>。它的首页赫然写着「Send this prompt to your agent to discover the right skill」，这就是一种 <strong>面向 Agent 的设计</strong>。</p>
 <p><img src="/img/lobehub-skills.png" alt="lobehub-skills"></p>
 <p>这种趋势会在越来越多的地方看见。因为这一波 Coding Agent 带来的变革足够大，工具链、开发流程甚至 SaaS 的本质都会发生变化。但是这些变化不会一夜之间发生：路线试错需要时间、工具开发需要时间、习惯的改变需要时间。Coding Agent 影响力的释放将是一个缓慢的过程。</p>
 <!-- 当模型能力遭遇瓶颈，大家就开始搞 Agent Harness；当工程基建足够完善，工程能力又被训回模型。现在我们就在这个剧烈循环迭代的过程当中。 -->
-<p>从更长的时间维度上看，技术发展依然是线性的。即便今天技术演进得如此剧烈，它泛化到其他领域了吗？本质也没有，Coding 模型最厉害的还是 Coding，它还没有带来自动驾驶、视频生成、具身智能的 GPT-3 时刻。我们依然非常需要像 seq2seq、transformer 这样灵光一闪的工作，帮助我们突破桎梏。</p>
-<blockquote>
-<p><strong>Note:</strong> 在这篇博客发布之前，我收到了 Anthropic 发布官方插件 <a href="https://claude.com/plugins/claude-code-setup">claude-code-setup</a> 的消息，这让我们的项目变成了官方插件的弱化版。我佩服 Anthropic 的嗅觉和执行力。他们好像总能踩中梯度下降最快的方向，并快速将之推向极致。</p></blockquote>
+<p>从更长的时间维度上看，技术发展依然是线性的。即使今天技术演进得如此剧烈，它泛化到其他领域了吗？本质也没有，Coding 模型最厉害的还是 Coding，它还没有带来自动驾驶、视频生成、具身智能的 GPT-3 时刻。我们依然非常需要像 seq2seq、transformer 这样灵光一闪的工作，帮助我们突破桎梏。</p>
+<h3 id="四后日谈">四、后日谈</h3>
+<p>博客发布之前，我看到了 Anthropic 发布官方插件 <a href="https://claude.com/plugins/claude-code-setup">claude-code-setup</a> 的消息。这个插件可以扫描你的代码仓库，推荐合适的 Claude Code 配置，包括五类：</p>
+<ul>
+<li><strong>MCP 服务器</strong>：比如 context7 拉实时文档</li>
+<li><strong>Skills</strong>：自定义项目级技能</li>
+<li><strong>Hooks</strong>：编辑后自动 lint / format</li>
+<li><strong>Subagents</strong>：专门的审查 agent</li>
+<li><strong>Slash Commands</strong>：自定义快捷命令</li>
+</ul>
+<p>我在 <a href="https://github.com/luochang212/skill-zoo">skill-zoo</a> 仓库上试了一把，效果不错。我依照推荐安装了 context7，确实是一个不错的文档查询 MCP 服务。</p>
+<p><img src="/img/claude-code-setup-plugin.png" alt="claude-code-setup-plugin"></p>
+<p>如果你也想试一下，可以在 Claude Code 对话中输入以下命令安装插件：</p>
+<pre tabindex="0"><code>/plugin install claude-code-setup
+</code></pre><p>这个插件主要做项目级的配置推荐，我们项目则聚焦于通用配置的安装，两者关注的需求并不一致。它们不是一个相互替代的关系。这样我就放心了，我们的项目依然有用！！</p>
+<!-- 这就是今天最有意思的点。总有人敏锐地察觉到梯度下降最快的方向，并快速将之推向极致。我们的工作很容易被技术进步的浪潮淹没。 -->
 
   </div>
 
