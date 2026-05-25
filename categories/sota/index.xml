@@ -6,8 +6,15 @@
     <description>Recent content in SOTA on Chang Luo</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 12 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 24 May 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://luochang212.github.io/categories/sota/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Skill Zoo：一站式技能管理工具</title>
+      <link>https://luochang212.github.io/posts/skill_zoo/</link>
+      <pubDate>Sun, 24 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://luochang212.github.io/posts/skill_zoo/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://luochang212.github.io/img/header-image.webp&#34; alt=&#34;header-image&#34;&gt;&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;一站式 Agent Skills 管理工具，一个 App 管所有 Coding Agent 的技能。&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;GitHub 项目地址：&lt;a href=&#34;https://github.com/luochang212/skill-zoo&#34; target=&#34;_blank&#34;&gt;skill-zoo&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;自从去年 12 月 Coding Agent 大爆发，Agent Skills 作为其能力的重要载体也备受关注。虽然 Agent Skills 本质上是文档形式的 prompt，但是因为它们有可热插拔、任务间通用和渐进式披露的特性，并且通常被用来针对性地弥补大模型的不足，客观上确实提升了大模型的能力和执行稳定性。&lt;/p&gt;&#xA;&lt;p&gt;Agent Skills 的大手首先伸向的是那些有套路、有固定 SOP、风格可迁移的任务，比如网页设计、数据分析、PPT 制作。下面是我用 ThariqS 佬开源的 HTML 风格示例做的 Slide。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://luochang212.github.io/img/skill-zoo-slide.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;我觉得它做得比我好，我以后应该不会手工做 PPT 了。&lt;/p&gt;&#xA;&lt;h3 id=&#34;一需要被管理&#34;&gt;一、需要被管理&lt;/h3&gt;&#xA;&lt;p&gt;市面上涌现出一大批 Agent Skills，但是良莠不齐。我们下载下来，用不用得上另说，反正大模型的上下文是被占满了。如果技能数量太多，读取时技能列表还可能被截断，Coding Agent 就读不到了。&lt;/p&gt;&#xA;&lt;p&gt;技能是需要管理的。不用的要删除，过时的要更新。但是管理技能是一个挺主观的事，哪些技能好，哪些技能用得上，取决于我们的意图。而我们的意图大概率只有我们自己知道。&lt;/p&gt;&#xA;&lt;p&gt;所以呢，真的非常需要一个 App 拉近我们和技能的距离，并且降低技能的管理成本。Skill Zoo 就打算做到这件事。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://luochang212.github.io/img/skill-zoo-view.png&#34; alt=&#34;home&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;官方网站：&lt;a href=&#34;https://www.luochang.ink/skill-zoo/&#34; target=&#34;_blank&#34;&gt;luochang.ink/skill-zoo&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;二产品设计&#34;&gt;二、产品设计&lt;/h3&gt;&#xA;&lt;p&gt;为了达成这个目标，我断断续续 Vibe 了一个月，付出了上百元的 token 费用。&lt;/p&gt;&#xA;&lt;h4 id=&#34;21-ssot-模式&#34;&gt;2.1 SSOT 模式&lt;/h4&gt;&#xA;&lt;p&gt;Skill Zoo 是为多 Coding Agent 设计的技能管理工具，必须解决技能复用问题。我们采用 &lt;strong&gt;唯一真实源（SSOT）+ 软链接&lt;/strong&gt; 的方法，这是目前主流的解决方案。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>新瓶装旧酒：纸牌魔术 MCP</title>
       <link>https://luochang212.github.io/posts/card_magic_mcp/</link>

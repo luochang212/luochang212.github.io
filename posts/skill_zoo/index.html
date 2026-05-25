@@ -4,10 +4,10 @@
     
 
 
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     
-    <link rel="canonical" href="http://localhost:1313/posts/the/">
+    <link rel="canonical" href="https://luochang212.github.io/posts/skill_zoo/">
     
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,27 +19,28 @@
     
     
 
-<title>智能的本质是对抗不确定 • Chang Luo</title>
+<title>Skill Zoo：一站式技能管理工具 • Chang Luo</title>
 
 
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="智能的本质是对抗不确定">
-  <meta name="twitter:description" content="智能的本质是泛化，而泛化的本质是对抗不确定">
+  <meta name="twitter:title" content="Skill Zoo：一站式技能管理工具">
+  <meta name="twitter:description" content="上一次认真做产品，已经是七年前了">
       <meta name="twitter:site" content="@_stellar_tide">
 
-<meta property="og:url" content="http://localhost:1313/posts/the/">
+<meta property="og:url" content="https://luochang212.github.io/posts/skill_zoo/">
   <meta property="og:site_name" content="Chang Luo">
-  <meta property="og:title" content="智能的本质是对抗不确定">
-  <meta property="og:description" content="智能的本质是泛化，而泛化的本质是对抗不确定">
+  <meta property="og:title" content="Skill Zoo：一站式技能管理工具">
+  <meta property="og:description" content="上一次认真做产品，已经是七年前了">
   <meta property="og:locale" content="zh_cn">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2026-01-29T00:00:00+00:00">
-    <meta property="article:modified_time" content="2026-01-29T00:00:00+00:00">
-    <meta property="article:tag" content="Essence">
-    <meta property="article:tag" content="Intelligence">
-    <meta property="article:tag" content="Uncertainty">
+    <meta property="article:published_time" content="2026-05-24T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-05-24T00:00:00+00:00">
+    <meta property="article:tag" content="Desktop App">
+    <meta property="article:tag" content="Agent Skills">
+    <meta property="article:tag" content="Rust">
+    <meta property="article:tag" content="Tauri">
 
 
     
@@ -227,13 +228,13 @@
     <div class="container ">
       <div class="sidebar-about">
         <span class="site__title">
-          <a href="http://localhost:1313/">Chang Luo</a>
+          <a href="https://luochang212.github.io/">Chang Luo</a>
         </span>
         
         
         
         <div class="author-image">
-          <a href="#" class="load-iframe" onclick="openNav()"><img src="http://localhost:1313//images/profile.webp" id="author-iamge"
+          <a href="#" class="load-iframe" onclick="openNav()"><img src="https://luochang212.github.io//images/profile.webp" id="author-iamge"
               alt="Author Image" class="img--circle img--headshot element--center"></a>
         </div>
         
@@ -576,13 +577,13 @@
 
 <article>
   <header>
-    <h1>智能的本质是对抗不确定</h1>
+    <h1>Skill Zoo：一站式技能管理工具</h1>
     
     
 <div class="post__meta">
     
     
-      <i class="fas fa-calendar-alt"></i> Jan 29, 2026
+      <i class="fas fa-calendar-alt"></i> May 24, 2026
     
     
     
@@ -591,7 +592,7 @@
           in
           
           
-              <a class="badge badge-category" href="/categories/prose">PROSE</a>
+              <a class="badge badge-category" href="/categories/sota">SOTA</a>
               
           
       
@@ -603,13 +604,16 @@
           <br/>
            <i class="fas fa-tags"></i>
           
-          <a class="badge badge-tag" href="/tags/essence">essence</a>
+          <a class="badge badge-tag" href="/tags/desktop-app">desktop app</a>
            
       
-          <a class="badge badge-tag" href="/tags/intelligence">intelligence</a>
+          <a class="badge badge-tag" href="/tags/agent-skills">agent skills</a>
            
       
-          <a class="badge badge-tag" href="/tags/uncertainty">uncertainty</a>
+          <a class="badge badge-tag" href="/tags/rust">rust</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/tauri">tauri</a>
           
       
     
@@ -633,19 +637,55 @@
   
   
   <div class="post">
-    <p>2019 年春，在晨光熹微的餐厅里，我独自坐在角落，思考智能如何产生。餐厅的名字已经忘了，只记得离开时，老板送我一根棒棒糖。糖很甜，我舔着糖回家。此后多年，这个问题一直萦绕在我心间，却没有答案。时间来到 2026 年，当我再度思考这个问题，发现如今对智能的理解不是太少，而是太多。</p>
+    <p><img src="/img/header-image.webp" alt="header-image"></p>
 <blockquote>
-<p>一千个人对智能有一千五百种理解。</p></blockquote>
-<p>Ilya 说，智能的本质是压缩。</p>
-<p>这是一种相当工程的理解。想象你学了很多驳杂无用的知识。某天偶得机缘，将它们融会贯通。原本分散在大脑中的知识骤然凝聚、浓缩。此刻，它们占据比往常更少的存储空间，却拥有更快的推理速度。这就是压缩。</p>
-<p>融会贯通的关键，在于找到引发知识凝聚的「内在关联」。在深度学习中，找这种内在关联有一种方法，叫作「注意力机制」。其虽名为注意力，却和注意力关系不大，本质上是一种搜索。通过反复迭代 Q, K, V 三矩阵，逐渐精炼出更好的 Q（问题），更好的 KV（答案的键值），从而实现对文本信息的高维抽取。</p>
-<p>Ilya 的理解已经足够触及本质，但我更想给出我的版本。如果 Ilya 是工程视角，回答的是如何训练出智能；那我就是演化视角，试图分析智能将往何处去。</p>
-<blockquote>
-<p>智能的本质是泛化，而泛化的本质是对抗不确定。</p></blockquote>
-<p>这句话是未经允许擅自出现在我脑海中的。它是一个典型的三段论：因为智能的本质是泛化，而泛化的本质是对抗不确定，所以智能的本质是对抗不确定。</p>
-<p>虽然这句话属于浴中奇思，但推究下来居然挺有道理。早期智能只能完成图像识别、命名实体识别、文本摘要这种零散琐碎的任务。随着模型的演化，泛化能力逐渐增强，最终在语言这种泛化能力极强的模态中，诞生了大语言模型这个庞然大物。</p>
-<p>业界目前有种认知，就是大语言模型有缺陷，是因为缺少对物理世界的感知，所以大模型的下一站应该是「世界模型」。我认同这种观点，因为这是沿着泛化能力逐渐增强的路子往下走的。人类正是因为拥有无比强大的泛化能力，才能在自然界中生存下来。模型如果要超越人类，即 AGI，必然要在泛化性上超越人。所以在泛化性上做横向拓展，应该是确定的下一步。</p>
-<p>至于泛化的本质是对抗不确定，这个更好理解了。一个常见的用于解释泛化性的例子是：一个苹果被咬了一口，如果模型的泛化性好，依然可以被识别为苹果。泛化本身做的就是对抗不确定的事情，这个描述倒是浅白到无需解释。</p>
+<p>一站式 Agent Skills 管理工具，一个 App 管所有 Coding Agent 的技能。</p></blockquote>
+<p>GitHub 项目地址：<a href="https://github.com/luochang212/skill-zoo" target="_blank">skill-zoo</a></p>
+<p>自从去年 12 月 Coding Agent 大爆发，Agent Skills 作为其能力的重要载体也备受关注。虽然 Agent Skills 本质上是文档形式的 prompt，但是因为它们有可热插拔、任务间通用和渐进式披露的特性，并且通常被用来针对性地弥补大模型的不足，客观上确实提升了大模型的能力和执行稳定性。</p>
+<p>Agent Skills 的大手首先伸向的是那些有套路、有固定 SOP、风格可迁移的任务，比如网页设计、数据分析、PPT 制作。下面是我用 ThariqS 佬开源的 HTML 风格示例做的 Slide。</p>
+<p><img src="/img/skill-zoo-slide.jpg" alt=""></p>
+<p>我觉得它做得比我好，我以后应该不会手工做 PPT 了。</p>
+<h3 id="一需要被管理">一、需要被管理</h3>
+<p>市面上涌现出一大批 Agent Skills，但是良莠不齐。我们下载下来，用不用得上另说，反正大模型的上下文是被占满了。如果技能数量太多，读取时技能列表还可能被截断，Coding Agent 就读不到了。</p>
+<p>技能是需要管理的。不用的要删除，过时的要更新。但是管理技能是一个挺主观的事，哪些技能好，哪些技能用得上，取决于我们的意图。而我们的意图大概率只有我们自己知道。</p>
+<p>所以呢，真的非常需要一个 App 拉近我们和技能的距离，并且降低技能的管理成本。Skill Zoo 就打算做到这件事。</p>
+<p><img src="/img/skill-zoo-view.png" alt="home"></p>
+<p>官方网站：<a href="https://www.luochang.ink/skill-zoo/" target="_blank">luochang.ink/skill-zoo</a></p>
+<h3 id="二产品设计">二、产品设计</h3>
+<p>为了达成这个目标，我断断续续 Vibe 了一个月，付出了上百元的 token 费用。</p>
+<h4 id="21-ssot-模式">2.1 SSOT 模式</h4>
+<p>Skill Zoo 是为多 Coding Agent 设计的技能管理工具，必须解决技能复用问题。我们采用 <strong>唯一真实源（SSOT）+ 软链接</strong> 的方法，这是目前主流的解决方案。</p>
+<p>SSOT 是什么意思呢？Claude Code 有技能文件夹，Codex 也有技能文件夹。如果两个完全相同的技能分别存放在各自的技能目录里，会造成技能重复存放；如果同一个技能的不同版本存放在各自的技能目录里，可能导致 Agent 行为不一致。SSOT 就是维护一个唯一的技能文件夹 <code>~/.agents/skills/</code>，实际文件只存放在这一个地方，Claude、OpenCode、Codex 的技能目录放的都是指向它的软链接。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#57606a"># 唯一真实源</span>
+</span></span><span style="display:flex;"><span>~/.agents/skills/web-search/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># Agent 目录只放软链接</span>
+</span></span><span style="display:flex;"><span>~/.claude/skills/web-search  →  ~/.agents/skills/web-search/
+</span></span><span style="display:flex;"><span>~/.codex/skills/web-search   →  ~/.agents/skills/web-search/
+</span></span></code></pre></div><p>虽然我们推崇 SSOT 模式，但是我们不会将自己的想法强加于人。对于不遵循 SSOT 的情况，我们也做了兼容。我们尊重用户对自己文件的控制权，并且把不隐式删除、移动用户的实际文件作为我们的技术红线。我们通过软链接层的设计，兼容了放在 Coding Agent 文件夹下的技能。</p>
+<p>但是我们没有放弃对 SSOT 模式的主张。我们通过主页侧边栏的「不一致」栏目，将文件重复、冲突等问题主动暴露给用户，由用户自行决定如何处理这些问题。如下图，对于技能重复问题，我们提供了解决方案，用户可以一键处理。</p>
+<p><img src="/img/skill-zoo-ssot.png" alt="ssot"></p>
+<h4 id="22-技能管理">2.2 技能管理</h4>
+<p>Skill Zoo 提供一整套技能管理能力：</p>
+<ul>
+<li><strong>生命周期</strong>：支持安装、更新、删除、软链接、收藏技能</li>
+<li><strong>筛选与排序</strong>：支持按 Coding Agent 筛选、按仓库筛选；支持按技能名排序、按仓库名排序、按更新时间排序</li>
+<li><strong>一致性校验</strong>：可检测三种不一致情形，同名同内容（重复）、同名不同内容（冲突）、目录名与 SKILL.md 内声明的技能名不一致（命名不一致）</li>
+<li><strong>自动扫描</strong>：后端用 Rust notify crate 监听文件系统变动，你在终端里手动改了 Skill 文件，App 界面秒级自动刷新</li>
+<li><strong>安全审计</strong>：可在技能详情页查看技能的安全审计结果（如下图）</li>
+</ul>
+<p><img src="/img/skill-zoo-skill.png" alt=""></p>
+<h4 id="23-技能发现">2.3 技能发现</h4>
+<p>Skill Zoo 提供了强大的技能搜索和安装功能。你可以模糊匹配搜索：</p>
+<p><img src="/img/skill-zoo-search.jpg" alt=""></p>
+<p>点击某个搜索结果，App 会自动下载该技能所在仓库，并将仓库内所有技能解析出来，在前端提供安装选项：</p>
+<p><img src="/img/skill-zoo-install.png" alt=""></p>
+<p>为了让这个页面拥有类似 App Store 的下载体验，我打磨了很久。</p>
+<h3 id="三开源免费">三、开源免费</h3>
+<p>Coding Agent 时代其实是降低开源意愿的。因为我们已经很难从 Coding，尤其是工程 Coding 中学到东西，反而要为 token 付费，如果还要无偿地分享工作成果，这里面显然存在结构性失衡。</p>
+<p>那我为什么还要开源呢？因为这是 Desktop App，这种运行在个人电脑里面的东西，如果不开源，要我我也不敢用。透明、可审计是桌面应用生存的前提。我们要做的事决定了它不可能做成 MCP 或 SaaS，它只能是桌面应用这个形态，所以我还是选择开源。</p>
+<h3 id="四下载安装">四、下载安装</h3>
+<p>你可以从 <a href="https://www.luochang.ink/skill-zoo/">官方网站</a> 或 <a href="https://github.com/luochang212/skill-zoo/releases">GitHub Releases</a> 页下载「Skill Zoo」App。期待你用 Skill Zoo 探索和使用更多技能。如果你觉得这个 App 对你有帮助，也欢迎 Star 我们的 GitHub 仓库 <a href="https://github.com/luochang212/skill-zoo">luochang212/skill-zoo</a>。</p>
 
   </div>
 
@@ -686,9 +726,9 @@
 
 <div class="navigation navigation-single">
     
-    <a href="/posts/the_essence/" class="navigation-prev">
+    <a href="/posts/cc_enhance/" class="navigation-prev">
       <i aria-hidden="true" class="fa fa-chevron-left"></i>
-      <span class="navigation-tittle">智能的本质是对抗不确定</span>
+      <span class="navigation-tittle">Claude Code 自我提升计划</span>
     </a>
     
     

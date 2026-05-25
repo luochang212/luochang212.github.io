@@ -2,7 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://luochang212.github.io/posts/cc-enhance/</loc>
+    <loc>https://luochang212.github.io/posts/skill_zoo/</loc>
+    <lastmod>2026-05-24T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://luochang212.github.io/posts/cc_enhance/</loc>
     <lastmod>2026-05-10T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -352,6 +357,51 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://luochang212.github.io/tags/agent-skills/</loc>
+    <lastmod>2026-05-24T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://luochang212.github.io/categories/</loc>
+    <lastmod>2026-05-24T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://luochang212.github.io/</loc>
+    <lastmod>2026-05-24T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/desktop-app/</loc>
+    <lastmod>2026-05-24T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://luochang212.github.io/posts/</loc>
+    <lastmod>2026-05-24T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/rust/</loc>
+    <lastmod>2026-05-24T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://luochang212.github.io/categories/sota/</loc>
+    <lastmod>2026-05-24T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/</loc>
+    <lastmod>2026-05-24T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://luochang212.github.io/tags/tauri/</loc>
+    <lastmod>2026-05-24T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://luochang212.github.io/categories/agent/</loc>
     <lastmod>2026-05-10T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -362,37 +412,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://luochang212.github.io/tags/agent-skills/</loc>
-    <lastmod>2026-05-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://luochang212.github.io/tags/boot.md/</loc>
     <lastmod>2026-05-10T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://luochang212.github.io/categories/</loc>
-    <lastmod>2026-05-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://luochang212.github.io/</loc>
-    <lastmod>2026-05-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://luochang212.github.io/tags/claude-code/</loc>
-    <lastmod>2026-05-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://luochang212.github.io/posts/</loc>
-    <lastmod>2026-05-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://luochang212.github.io/tags/</loc>
     <lastmod>2026-05-10T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -508,11 +533,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://luochang212.github.io/tags/number-theory/</loc>
-    <lastmod>2025-07-12T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://luochang212.github.io/categories/sota/</loc>
     <lastmod>2025-07-12T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
