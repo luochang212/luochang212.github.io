@@ -89,6 +89,7 @@ document.querySelectorAll('.video-item').forEach(function (item) {
   item.addEventListener('click', function () {
     if (!this.classList.contains('active')) {
       selectVideo(this)
+      playCurrentVideo()
     }
   })
 })
