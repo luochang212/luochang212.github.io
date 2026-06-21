@@ -1,0 +1,748 @@
+<!doctype html>
+<html lang="zh-CN">
+  
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="https://www.luochang.ink/posts/learning_statistics/">
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.163.3">
+
+    
+    
+    
+
+<title>统计学补完计划 • Chang Luo</title>
+
+
+    
+
+
+<meta name="description" content="统计学绝非一门生硬无趣的学科，它有着鲜活的案例和丰富的实验，让我们循着公式乘着代码在统计的海洋里尽情摇摆叭">
+
+
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://www.luochang.ink/images/og-default.jpg">
+	<meta name="twitter:title" content="统计学补完计划">
+	<meta name="twitter:description" content="统计学绝非一门生硬无趣的学科，它有着鲜活的案例和丰富的实验，让我们循着公式乘着代码在统计的海洋里尽情摇摆叭">
+			<meta name="twitter:site" content="@_stellar_tide">
+
+<meta property="og:url" content="https://www.luochang.ink/posts/learning_statistics/">
+	<meta property="og:site_name" content="Chang Luo">
+	<meta property="og:title" content="统计学补完计划">
+	<meta property="og:description" content="统计学绝非一门生硬无趣的学科，它有着鲜活的案例和丰富的实验，让我们循着公式乘着代码在统计的海洋里尽情摇摆叭">
+	<meta property="og:locale" content="zh_CN">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2021-05-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2021-05-01T00:00:00+00:00">
+		<meta property="article:tag" content="Python">
+		<meta property="article:tag" content="Note">
+		<meta property="og:image" content="https://www.luochang.ink/images/og-default.jpg">
+
+
+    
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.26b99d1b39c55b25f45753962fee8b8024e3b7525afe742fbbc09e044247c0db.css" integrity="sha256-JrmdGznFWyX0V1OWL&#43;6LgCTjt1Ja/nQvu8CeBEJHwNs=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+
+<link rel="stylesheet" href="/scss/tocbot.5ef07cebc3c477b54270456f149ee02922479bb7555fd344b2c69f953b0e7e5e.css" integrity="sha256-XvB868PEd7VCcEVvFJ7gKSJHm7dVX9NEssaflTsOfl4=">
+
+
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#202020">
+    
+    
+
+</head>
+
+
+  <body
+    class=" "
+  >
+    <div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="https://www.luochang.ink/">Chang Luo</a>
+      </span>
+      
+      
+      
+      <div class="author-image">
+        <button type="button" class="author-trigger" onclick="openNav()" aria-label="打开个人收藏侧栏"
+          aria-controls="mySidenav" aria-expanded="false"><img src="https://www.luochang.ink//images/profile.webp"
+            alt="Chang Luo" class="img--circle img--headshot element--center"></button>
+      </div>
+      
+      <p class="site__description">
+        
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Chang Luo</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		<li class="sidebar-nav__home">
+			<a href="https://www.luochang.ink/"><span>Home</span></a>
+		</li>
+		
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/portfolio/">
+						<span>Projects</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+		
+		<a href="https://twitter.com/_stellar_tide" rel="me" title="X">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		<a href="https://github.com/luochang212" rel="me" title="GitHub">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		<a href="https://mp.weixin.qq.com/s/He-04l46xJTM_MJ3AyTwWQ" rel="me" title="微信">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.35em; height: 1.35em; vertical-align: -0.28em;">
+				<path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135-.01-.27-.027-.407-.03zm-2.53 3.274c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982z"/>
+			</svg>
+		</a>
+		
+		
+		<a href="https://www.zhihu.com/people/Fashionable" rel="me" title="知乎">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2"
+				 stroke-linecap="round" stroke-linejoin="round" style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="m13.3334,3.60098l0,17.1471l1.79582,0l0.75424,2.13703l3.18459,-2.13703l3.93584,0l0,-17.1471l-9.6705,0zm7.41375,14.87538l-1.79283,0l-2.24777,1.50849l-0.53276,-1.50849l-0.53875,0l0,-12.53483l5.10911,0l0,12.53483l0.00299,0zm-8.56906,-7.18927l-3.97475,0c0.06285,-1.34387 0.1287,-3.12174 0.19754,-5.17496l3.91788,0l-0.00299,-0.24244c0,-0.01796 -0.00599,-0.43998 -0.06884,-0.87097c-0.06285,-0.44896 -0.19754,-1.04457 -0.62854,-1.04457l-6.5727,0c0.13169,-0.61657 0.46991,-2.08615 0.87995,-2.80747l0.19155,-0.33522l-0.3861,-0.02095c-0.02394,0 -0.58663,-0.02694 -1.23912,0.31726c-1.06851,0.56868 -1.5474,1.68807 -1.75691,2.52612c-0.55072,2.18791 -1.33489,3.70837 -1.66712,4.35786c-0.09877,0.19155 -0.15863,0.30529 -0.18557,0.38311c-0.05387,0.14666 -0.02394,0.29332 0.0838,0.38909c0.31427,0.28434 1.14334,-0.0868 1.15232,-0.08979c0.01796,-0.00898 0.03891,-0.01796 0.06585,-0.02993c0.41603,-0.18856 1.64916,-0.74826 2.08914,-2.52911l1.69705,0c0.02095,0.96376 0.09278,4.14236 0.0868,5.17496l-4.22018,0l-0.06285,0.0449c-0.69139,0.50582 -0.91288,1.8916 -0.92185,1.95146l-0.0419,0.27536l4.99837,0c-0.36814,2.34355 -0.79315,3.3941 -1.01763,3.81313c-0.11074,0.20951 -0.21849,0.41902 -0.32025,0.62255c-0.63752,1.26306 -1.29898,2.56802 -3.7802,4.5973c-0.10775,0.0838 -0.20951,0.23944 -0.14367,0.41005c0.07183,0.18856 0.27835,0.27237 0.73629,0.27237c0.16162,0 0.35318,-0.00898 0.58065,-0.02993c1.49352,-0.13169 3.01698,-0.53875 4.04359,-2.6219c0.50882,-1.05056 0.94879,-2.14601 1.31394,-3.25941l4.08549,4.78886l0.14965,-0.35916c0.02394,-0.05687 0.56868,-1.38578 0.15264,-2.87032l-0.01497,-0.05387l-3.23547,-3.68143l-0.65847,0.49684c0.19155,-0.78118 0.31726,-1.49352 0.37413,-2.12805l4.74995,0l0,-0.23944c0,-1.20021 -0.55371,-1.91255 -0.57466,-1.94248l-0.07183,-0.08979z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+</section>
+
+      </div>
+    </div>
+    
+<div class="copyright">
+  &copy; 2026 Chang Luo
+  
+</div>
+
+
+
+  </div>
+</div>
+
+<div id="overlay" onclick="closeNav()" aria-hidden="true"></div>
+
+<div id="mySidenav" class="sidenav" role="dialog" aria-label="个人收藏" aria-hidden="true">
+  <div id="main">
+    <div class="tab">
+      <button id="default-tab" class="tablinks active" onclick="openItem(event, 'Resources')"
+        aria-controls="Resources" aria-pressed="true">Resources</button>
+      <button class="tablinks" onclick="openItem(event, 'netease-player')"
+        aria-controls="netease-player" aria-pressed="false">Music</button>
+      <button class="tablinks" onclick="openItem(event, 'video-player')"
+        aria-controls="video-player" aria-pressed="false">Video</button>
+      <button class="tablinks" onclick="openItem(event, 'gallery')"
+        aria-controls="gallery" aria-pressed="false">Gallery</button>
+      <button class="tablinks" onclick="openItem(event, 'gadget')"
+        aria-controls="gadget" aria-pressed="false">Gadget</button>
+      <button class="tablinks" onclick="openItem(event, 'categories')"
+        aria-controls="categories" aria-pressed="false">Cats</button>
+    </div>
+
+    <div id="Resources" class="tabcontent">
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/resources/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Resources"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="netease-player" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
+        frameborder="no"
+        marginheight="0"
+        marginwidth="0"
+        title="Music player"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="video-player" class="tabcontent" hidden>
+      <div class="video-layout">
+        <div class="video-main">
+          <div class="video-cover" id="video-cover">
+            <img id="video-cover-img" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-cover-overlay">
+              <button class="video-play-btn" id="video-play-btn" aria-label="播放视频">
+                <svg viewBox="0 0 24 24" width="48" height="48"><path d="M8 5v14l11-7z" fill="white"/></svg>
+              </button>
+              <span class="video-cover-title" id="video-cover-title">四月是你的谎言</span>
+            </div>
+          </div>
+          <div class="video-frame" id="video-frame" hidden>
+            <iframe src="about:blank"
+              data-src="//player.bilibili.com/player.html?bvid=BV1Ms411D7in&p=1&high_quality=1&danmaku=0&autoplay=0"
+              style="width:100%;"
+              scrolling="no"
+              frameborder="no"
+              framespacing="0"
+              title="Bilibili video player"
+              allowfullscreen="true"></iframe>
+          </div>
+        </div>
+        <div class="video-playlist">
+          <button class="video-item active" data-bvid="BV1Ms411D7in"
+            data-title="四月是你的谎言"
+            data-cover="/images/video-covers/zutomayo.jpg"
+            data-duration="4:04">
+            <img class="video-item-cover" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">四月是你的谎言</span>
+              <span class="video-item-meta">4:04</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1LW411j7dK"
+            data-title="Kids by One republic — 三羊"
+            data-cover="/images/video-covers/sanyang.jpg"
+            data-duration="2:54">
+            <img class="video-item-cover" src="/images/video-covers/sanyang.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">Kids by One republic</span>
+              <span class="video-item-meta">三羊 · 2:54</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Yx411U7Lx"
+            data-title="交织together — M78"
+            data-cover="/images/video-covers/jiaozhi.jpg"
+            data-duration="6:06">
+            <img class="video-item-cover" src="/images/video-covers/jiaozhi.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">交织together</span>
+              <span class="video-item-meta">M78 · 6:06</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1rp4y1L7i4"
+            data-title="新员工入职大会 — 岁己SUI/恋诗夜Koxia"
+            data-cover="/images/video-covers/suisui.jpg"
+            data-duration="2:33">
+            <img class="video-item-cover" src="/images/video-covers/suisui.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">新员工入职大会</span>
+              <span class="video-item-meta">岁己SUI/恋诗夜Koxia · 2:33</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Av4y147QE"
+            data-title="真物论 — 悠亚"
+            data-cover="/images/video-covers/zhenwulun.jpg"
+            data-duration="3:30">
+            <img class="video-item-cover" src="/images/video-covers/zhenwulun.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">真物论</span>
+              <span class="video-item-meta">悠亚 · 3:30</span>
+            </div>
+          </button>
+        </div>        </div>
+      </div>
+
+
+    <div id="gallery" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/gadget/gallery/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Gallery"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="gadget" class="tabcontent drawer-native" hidden>
+      <div class="drawer-native-content">
+        
+          <br>
+<table>
+	<thead>
+			<tr>
+					<th>#</th>
+					<th>name</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td><a href="/gadget/hydra" target="_blank">Hydra</a></td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td><a href="/mozi/" target="_blank">墨子</a></td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td><a href="/gadget/how-old-are-you" target="_blank">年龄可视化</a></td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td><a href="/gadget/plan" target="_blank">计划书</a></td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td><a href="/gadget/piano" target="_blank">Piano</a></td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td><a href="/flockn-roll/" target="_blank">Flock&rsquo;n Roll</a></td>
+			</tr>
+	</tbody>
+</table>
+
+        
+      </div>
+    </div>
+
+    <div id="categories" class="tabcontent drawer-native" hidden>
+      <ul class="drawer-category-list">
+        
+          <li>
+            <a href="/categories/devops/" target="_blank" rel="noopener noreferrer">
+              <span>DevOps</span>
+              <span class="drawer-category-count">12</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/deeplearning/" target="_blank" rel="noopener noreferrer">
+              <span>DeepLearning</span>
+              <span class="drawer-category-count">11</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/agent/" target="_blank" rel="noopener noreferrer">
+              <span>Agent</span>
+              <span class="drawer-category-count">7</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/algorithms/" target="_blank" rel="noopener noreferrer">
+              <span>Algorithms</span>
+              <span class="drawer-category-count">6</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/life/" target="_blank" rel="noopener noreferrer">
+              <span>Life</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/sota/" target="_blank" rel="noopener noreferrer">
+              <span>SOTA</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/bigdata/" target="_blank" rel="noopener noreferrer">
+              <span>BigData</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/statistics/" target="_blank" rel="noopener noreferrer">
+              <span>Statistics</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/frontend/" target="_blank" rel="noopener noreferrer">
+              <span>FrontEnd</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/llms/" target="_blank" rel="noopener noreferrer">
+              <span>LLMs</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/math/" target="_blank" rel="noopener noreferrer">
+              <span>Math</span>
+              <span class="drawer-category-count">2</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/datavisualization/" target="_blank" rel="noopener noreferrer">
+              <span>DataVisualization</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/hardware/" target="_blank" rel="noopener noreferrer">
+              <span>Hardware</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/machinelearning/" target="_blank" rel="noopener noreferrer">
+              <span>MachineLearning</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/modeling/" target="_blank" rel="noopener noreferrer">
+              <span>Modeling</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/multimodal/" target="_blank" rel="noopener noreferrer">
+              <span>Multimodal</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/network/" target="_blank" rel="noopener noreferrer">
+              <span>Network</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/prose/" target="_blank" rel="noopener noreferrer">
+              <span>Prose</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="/js/drawer.js"></script>
+
+
+    <div class="content container">
+    
+<article>
+  <header>
+    <h1>统计学补完计划</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> May 1, 2021
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/statistics">STATISTICS</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/python">python</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/note">note</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 3 min read
+</div>
+
+
+  </header>
+  
+  
+  
+    <div class="toc-wrapper">
+      <input type="checkbox" id="tocToggle">
+      <label for="tocToggle">Table of Content</label>
+      
+        <div class="toc" id="TableOfContents"></div>
+      
+    </div>
+  
+  
+  <div class="post">
+    <!-- > 统计并非抽象的学科。虽然派生了推断、估计等抽象概念，但它并非为抽象而抽象，为思辩而思辨。
+> 
+> 统计发展抽象概念，通常是为了解决现实中的问题。举个例子，一根头发也没有的人是秃子。那么有十根头发的人呢？有二十根头发的人呢？在一般的认识里，我们认为他们也是秃子。那么究竟要达到多少根毛，才能不被称为秃子呢？统计推断可以利用样本的分布信息，给这个问题一个量化的解答。这就是统计的魅力所在。 -->
+<blockquote>
+<p>统计学绝非一门生硬无趣的学科，它有着鲜活的案例和丰富的实验，让我们循着公式乘着代码在统计的海洋里尽情摇摆叭 <img src="/img/quyin/maimeng.png" class="my-emoji" style = "height: 32px;"></p>
+</blockquote>
+<h3 id="1-回归分析">1. 回归分析</h3>
+<h4 id="11-简单线性回归模型">1.1 简单线性回归模型</h4>
+<h5 id="1-回归方程">(1) 回归方程</h5>
+<p>许多回归分析都是在如下假设前提下开始的：\( y \) 和 \( x \) 是两个代表某个总体的变量，我们希望用 \( x \) 解释 \( y \)，通过一个线性方程，我们可以刻画 \( y \) 和 \( x \) 之间的关系：
+</p>
+$$y=\beta_{0}+\beta_{1} x+u \quad (1.1)$$<p>
+假定方程 (1.1) 在我们所关注的总体中成立，它便定义了一个<strong>简单线性回归模型</strong> (simple linear regression model).</p>
+<p>其中，各符号含义如下：</p>
+<ul>
+<li>\( y \): 因变量（或被解释变量、回归子）</li>
+<li>\( x \): 自变量（或解释变量、回归元）</li>
+<li>\( u \): 误差项（或干扰项）</li>
+<li>\( \beta_{1} \): 斜率参数</li>
+<li>\( \beta_{0} \): 截距参数</li>
+</ul>
+<p>举例来说，假设我们用方程 (1.1) 来刻画大豆收成：\( y \) 表示收成，\( x \) 表示施肥量，\( u \) 则包括了诸如土地质量、降水量等因素。</p>
+<h5 id="2-零条件均值假设">(2) 零条件均值假设</h5>
+<p>只有在我们对 \( x \) 和 \( u \) 之间的关系做出<strong>某种约束</strong>时，我们才能计算出 \( \beta_{1} \) 和 \( \beta_{0} \) 的可靠估计量。</p>
+<p>🌟 零条件均值假定：
+</p>
+$$\begin{aligned} &\mathrm{E}(u)=0  \quad (1.2) \\ &\mathrm{E}(u \mid x)=\mathrm{E}(u)  \quad (1.3) \end{aligned}$$<p>
+方程 (1.2) 和 (1.3) 称作<strong>零条件均值假定</strong> (zero conditional mean assumption). 有了这两个约束，我们就能计算 \( \beta_{1} \) 和 \( \beta_{0} \) 了。</p>
+<blockquote>
+<p><strong>Note</strong>: 尽管 \( \mathrm{E}(u)=0  \quad (1.2) \) 未必成立，但是只要方程中包含 \( \beta_{0} \)，那么我们假设方程 (1.2) 成立也不会失掉什么。</p>
+<p>方程 \( \mathrm{E}(u \mid x)=\mathrm{E}(u)  \quad (1.3) \) 说的是 \( u \) 的平均值和 \( x \) 无关。在统计概率中，当 (1.3) 式成立时，我们称 \( u \) 均值独立 (mean independent) 于 \( x \).</p>
+<p>当 (1.2) 与 (1.3) 式均成立时，我们便得到了零条件均值假定。</p>
+</blockquote>
+<h5 id="3-普通最小二乘法的推导">(3) 普通最小二乘法的推导</h5>
+<p>普通最小二乘法推导的核心就是计算 \( \beta_{1} \) 和 \( \beta_{0} \). 为此，我们需要从总体中抽取一个<strong>容量为 n 的随机样本</strong>：
+</p>
+$$\left\{\left(x_{i}, y_{i}\right):(i=1,2, \cdots, n)\right\}$$<p>
+由于我们采用了简单线性回归模型，因此对每个 \( i \)，我们都可以写为：
+</p>
+$$y_{i}=\beta_{0}+\beta_{1} x_{i}+u_{i} \quad (1.4)$$<p>
+根据方程 (1.2) 和 (1.3), 我们有：
+</p>
+$$ \begin{aligned} &\mathrm{E}(u)=0 \quad (1.5) \\ &\operatorname{Cov}(x, u)=\mathrm{E}(x u)-\mathrm{E}(x) \mathrm{E}(u)=\mathrm{E}(x u)=\mathrm{E}(u \mid x) \mathrm{E}(x)=\mathrm{E}(u) \mathrm{E}(x)=0 \quad (1.6) \end{aligned} $$<p>
+以上两个方程可分别写作：
+</p>
+$$ \begin{aligned} &\mathrm{E}\left(y-\beta_{0}-\beta_{1} x\right)=0 \quad (1.7) \\ &\mathrm{E}\left[x\left(y-\beta_{0}-\beta_{1} x\right)\right]=0 \quad (1.8) \end{aligned} $$<p>
+将样本数据代入上式得：
+</p>
+$$ \begin{aligned} &n^{-1} \sum_{i=1}^{n}\left(y_{i}-\hat{\beta}_{0}-\hat{\beta}_{1} x_{i}\right)=0 \quad (1.9) \\ &n^{-1} \sum_{i=1}^{n} x_{i}\left(y_{i}-\hat{\beta}_{0}-\hat{\beta}_{1} x_{i}\right)=0 \quad (1.10) \end{aligned} $$<p>
+由 (1.9) 得：
+</p>
+$$ \bar{y}=\hat{\beta}_{0}+\hat{\beta}_{1} \bar{x} \quad (1.11) $$<p>
+将 (1.11) 代入 (1.10) 得：
+</p>
+$$\sum_{i=1}^{n} x_{i}\left(y_{i}-(\bar{y}-\hat{\beta_{1}}\bar{x})-\hat{\beta}_{1} x_{i}\right)=0 \quad (1.12)$$<p>
+整理后得到：
+</p>
+$$ \sum_{i=1}^{n} x_{i}\left(y_{i}-\bar{y}\right)=\hat{\beta}_{1} \sum_{i=1}^{n} x_{i}\left(x_{i}-\bar{x}\right) \quad (1.13) $$<p>
+又由于：
+</p>
+$$ \begin{aligned} &\sum_{i=1}^{n} x_{i}\left(x_{i}-\bar{x}\right)=\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}  \quad (1.14) \\ &\sum_{i=1}^{n} x_{i}\left(y_{i}-\bar{y}\right)=\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)\left(y_{i}-\bar{y}\right)  \quad (1.15) \end{aligned} $$<p>
+因此，只要满足：
+</p>
+$$ \sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}>0   \quad (1.16) $$<p>
+估计的斜率就为：
+</p>
+$$ \hat{\beta}_{1}=\frac{\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)\left(y_{i}-\bar{y}\right)}{\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}} \quad (1.17) $$<p>
+(1.11) 和 (1.17) 给出的估计值叫作 \( \beta_{0} \) 和 \( \beta_{1} \) 的普通最小二乘法 (ordinary least squares, OLS) 估计值。</p>
+<h5 id="4-拟合值和残差">(4) 拟合值和残差</h5>
+<p>给定 \( \beta_{0} \) 和 \( \beta_{1} \), 我们能够获得每次观测的<strong>拟合值</strong> \( \hat{y}_{i} \).</p>
+<p>第 \( i \) 次观测的OLS<strong>残差</strong> \( \hat{u}_{i} \) 是 \( y_{i} \) 与其拟合值之差：\( \hat{u}_{i}=y_{i}-\hat{y}_{i} \).</p>
+<h5 id="5-拟合优度">(5) 拟合优度</h5>
+<p>我们定义：</p>
+<ul>
+<li>总和平方和 (total sum of squares, SST): \( SST = \sum_{i=1}^{n} (y_{i} - \bar{y})^{2} \)</li>
+<li>解释平方和 (explained sum of squares, SSE): \( SSE = \sum_{i=1}^{n} (\hat{y}_{i} - \bar{y})^{2} \)</li>
+<li>残差平方和 (residual sum of squares, SSR): \( SSR = \sum_{i=1}^{n} \hat{u}_{i}^{2} \)</li>
+</ul>
+<p>可以证明：</p>
+$$SST = SSE + SSR$$<p>迄今为止，我们还没有办法衡量解释变量或自变量 \( x \) 究竟多好地解释了因变量 \( y \)。如果能计算出一个数值，用以概括OLS曲线对数据拟合得有多好，对我们就非常有帮助。回归的 \( R^{2} \) (R-squared)，有时又称为<strong>判定系数</strong> (coefficient of determination)，被定义为：</p>
+$$R^{2}=SSE/SST=1-SSR/SST$$<p>\( R^{2} \) 是可解释波动与总波动之比，因此被解释成 \( y \) 的样本波动中被 \( x \) 解释的部分。因为 \( SSE \) 不可能大于 \( SST \)，所以 \( R^{2} \) 的值总是介于 0 和 1 之间。</p>
+<h5 id="6-探索最小化残差平方和">(6) 探索：最小化残差平方和</h5>
+<p>本节中，我们将尝试用遗传算法通过最小化残差平方和来计算 \( \beta_{0} \) 和 \( \beta_{1} \) 的估计值。然后将此估计值与<a href="/posts/learning_statistics/#3-普通最小二乘法的推导">第3节</a>中利用公式计算的OLS估计值进行比较。</p>
+<p>一般认为，推导出OLS估计值的两个方程 (1.5) 和 (1.6) 是最小化残差平方和的必要条件。因此如果“通过最小化残差平方和”得到的参数估计值和OLS估计值几近相等，则我们可以从直觉上认定上述关于必要条件的说法大约是成立的。</p>
+<p>下面，我们就通过两种计算方法估计 \( \beta_{0} \) 和 \( \beta_{1} \) 的估计值，来看看最终结果是否符合我们的预期和直觉！</p>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/learning-statistics/blob/main/genetic_algorithm.ipynb')">查看示例</button>
+</center>
+<h5 id="7-探索关于拟合优度的经验性探索">(7) 探索：关于拟合优度的经验性探索</h5>
+<p>我们构造几组样本数据，并作出其对应的 OLS 曲线，来观测拟合优度值的变化方向是否符合预期。</p>
+<blockquote>
+<p>todo</p>
+</blockquote>
+<h4 id="12-多元回归分析估计">1.2 多元回归分析：估计</h4>
+<blockquote>
+<p>todo</p>
+</blockquote>
+<div id="mini-overlay" onclick="overlay_off()"></div>
+<div id="mini-window"><iframe id="mini-iframe" frameBorder="0"></iframe></div>
+<button id="btn-close" onclick="overlay_off()">×</button>
+<script src="/mini-viewer/overlay.js"></script>
+<link rel="stylesheet" href="/mini-viewer/style.css">
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/fastapi/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">FastAPI 初见</span>
+    </a>
+    
+    
+    <a href="/posts/moyu_bash/" class="navigation-next">
+      <span class="navigation-tittle">摸鱼侠极客版</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+</div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.js" defer></script>
+
+
+<script defer src="https://kit.fontawesome.com/2134995a39.js" crossorigin="anonymous"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/tocbot@4.36.8/dist/tocbot.min.js"></script>
+<script type="text/javascript">
+  if (window.tocbot) {
+    tocbot.init({
+      
+      tocSelector: '.toc',
+      
+      contentSelector: '.post',
+      
+      headingSelector: 'h2, h3, h4',
+      collapseDepth: 4
+    });
+  }
+</script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    mediumZoom('.post img', {
+      background: 'rgba(0,0,0,0.82)',
+      margin: 24,
+      scrollOffset: 0
+    });
+  });
+</script>
+
+
+
+    
+
+
+
+  </body>
+</html>

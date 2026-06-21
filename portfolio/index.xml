@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Projects on Chang Luo</title>
+		<link>https://www.luochang.ink/portfolio/</link>
+		<description>Recent content in Projects on Chang Luo</description>
+		<generator>Hugo</generator>
+		<language>zh-CN</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 24 May 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://www.luochang.ink/portfolio/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Skill Zoo</title>
+				<link>https://www.luochang.ink/portfolio/1/</link>
+				<pubDate>Sun, 24 May 2026 00:00:00 +0000</pubDate>
+				<guid>https://www.luochang.ink/portfolio/1/</guid>
+				<description>&lt;p&gt;Skill Zoo 是一款面向 Agent Skills 的跨平台桌面管理工具，通过可视化界面统一完成技能搜索、安装、阅读、编辑、归档、批量操作和一致性检查。相比命令行工具，它更强调技能的可读性和日常维护体验，帮助用户更高效地发现、管理和评估技能。&lt;/p&gt;&#xA;&lt;p&gt;应用通过唯一真实源（SSOT）与软链接，让 Claude Code、Codex 等多个 Coding Agent 复用同一套技能文件，减少重复存储和版本冲突。同时保留用户原有的目录结构，不强制迁移已有技能。&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>LangGraph 1.0 完全指南</title>
+				<link>https://www.luochang.ink/portfolio/3/</link>
+				<pubDate>Sun, 23 Nov 2025 00:00:00 +0000</pubDate>
+				<guid>https://www.luochang.ink/portfolio/3/</guid>
+				<description>&lt;p&gt;一套面向 Agent 开发者的开源教程，共 14 章，从构建第一个 ReAct Agent 开始，逐步讲解状态图、中间件、人机交互、记忆、上下文工程、MCP、多智能体协作、并行处理、RAG 等核心概念。教程兼顾原理与实践。在实践章节中，通过 Gradio 流式对话应用，展示如何用 LangChain 与 LangGraph 搭建智能体应用。&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>TSP旅行路线规划</title>
+				<link>https://www.luochang.ink/portfolio/2/</link>
+				<pubDate>Wed, 01 May 2019 00:00:00 +0000</pubDate>
+				<guid>https://www.luochang.ink/portfolio/2/</guid>
+				<description>&lt;p&gt;旅行中的一天通常这样度过：清晨从宾馆出发，去第一个景点。第一个景点逛完，去下一个景点&amp;hellip;&amp;hellip;直到最后一个景点逛完，行程结束返回宾馆。那么如何规划一条最短的路线走完一天的行程呢？这就涉及到一个经典的运筹学问题 &amp;ndash; TSP 问题。本项目用 googlemaps 库获取纬度和经度信息，用 OR-Tools 库求解 TSP 问题，用 gmaps 库可视化输出结果。利用本项目，用户只需输入景点名称，即可获得一张周游所有景点的最短路线图。可以说是一个即插即用的 TSP 路线规划工具。&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>自然系统的建模与仿真</title>
+				<link>https://www.luochang.ink/portfolio/4/</link>
+				<pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
+				<guid>https://www.luochang.ink/portfolio/4/</guid>
+				<description>&lt;p&gt;本项目采用 Agent-based model 的方式，为狼-麋鹿-草生态系统建模。技术上采用了 MATLAB 面向对象编程，为狼和麋鹿的四种行为，分别是捕食、迁徙、生育、死亡，编写了规则。其中狼群拥有智能，可以利用有限信息搜索羊群，并且在头狼的带领下，狼群还表现出集群行为。给定初始条件以后，本模型会模拟生态系统的运作，输出一个时刻更新的二维图以展示各生物位置的变化情况。此外，还会输出一个折线图以表示各生物数量的变化情况。&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

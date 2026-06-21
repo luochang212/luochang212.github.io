@@ -1,0 +1,817 @@
+<!doctype html>
+<html lang="zh-CN">
+  
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="https://www.luochang.ink/posts/poisson/">
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.163.3">
+
+    
+    
+    
+
+<title>泊松分布的仿真及可视化 • Chang Luo</title>
+
+
+    
+
+
+<meta name="description" content="本文介绍泊松分布和泊松函数的定义，并通过 Python random 库对泊松分布进行仿真，带你触摸复杂表象下的简单本质。">
+
+
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://www.luochang.ink/images/og-default.jpg">
+	<meta name="twitter:title" content="泊松分布的仿真及可视化">
+	<meta name="twitter:description" content="本文介绍泊松分布和泊松函数的定义，并通过 Python random 库对泊松分布进行仿真，带你触摸复杂表象下的简单本质。">
+			<meta name="twitter:site" content="@_stellar_tide">
+
+<meta property="og:url" content="https://www.luochang.ink/posts/poisson/">
+	<meta property="og:site_name" content="Chang Luo">
+	<meta property="og:title" content="泊松分布的仿真及可视化">
+	<meta property="og:description" content="本文介绍泊松分布和泊松函数的定义，并通过 Python random 库对泊松分布进行仿真，带你触摸复杂表象下的简单本质。">
+	<meta property="og:locale" content="zh_CN">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2020-09-19T00:00:00+00:00">
+		<meta property="article:modified_time" content="2020-09-19T00:00:00+00:00">
+		<meta property="article:tag" content="Python">
+		<meta property="article:tag" content="Poisson-Distribution">
+		<meta property="og:image" content="https://www.luochang.ink/images/og-default.jpg">
+
+
+    
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.26b99d1b39c55b25f45753962fee8b8024e3b7525afe742fbbc09e044247c0db.css" integrity="sha256-JrmdGznFWyX0V1OWL&#43;6LgCTjt1Ja/nQvu8CeBEJHwNs=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+
+<link rel="stylesheet" href="/scss/tocbot.5ef07cebc3c477b54270456f149ee02922479bb7555fd344b2c69f953b0e7e5e.css" integrity="sha256-XvB868PEd7VCcEVvFJ7gKSJHm7dVX9NEssaflTsOfl4=">
+
+
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#202020">
+    
+    
+
+</head>
+
+
+  <body
+    class=" "
+  >
+    <div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="https://www.luochang.ink/">Chang Luo</a>
+      </span>
+      
+      
+      
+      <div class="author-image">
+        <button type="button" class="author-trigger" onclick="openNav()" aria-label="打开个人收藏侧栏"
+          aria-controls="mySidenav" aria-expanded="false"><img src="https://www.luochang.ink//images/profile.webp"
+            alt="Chang Luo" class="img--circle img--headshot element--center"></button>
+      </div>
+      
+      <p class="site__description">
+        
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Chang Luo</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		<li class="sidebar-nav__home">
+			<a href="https://www.luochang.ink/"><span>Home</span></a>
+		</li>
+		
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/portfolio/">
+						<span>Projects</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+		
+		<a href="https://twitter.com/_stellar_tide" rel="me" title="X">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		<a href="https://github.com/luochang212" rel="me" title="GitHub">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		<a href="https://mp.weixin.qq.com/s/He-04l46xJTM_MJ3AyTwWQ" rel="me" title="微信">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.35em; height: 1.35em; vertical-align: -0.28em;">
+				<path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135-.01-.27-.027-.407-.03zm-2.53 3.274c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982z"/>
+			</svg>
+		</a>
+		
+		
+		<a href="https://www.zhihu.com/people/Fashionable" rel="me" title="知乎">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2"
+				 stroke-linecap="round" stroke-linejoin="round" style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="m13.3334,3.60098l0,17.1471l1.79582,0l0.75424,2.13703l3.18459,-2.13703l3.93584,0l0,-17.1471l-9.6705,0zm7.41375,14.87538l-1.79283,0l-2.24777,1.50849l-0.53276,-1.50849l-0.53875,0l0,-12.53483l5.10911,0l0,12.53483l0.00299,0zm-8.56906,-7.18927l-3.97475,0c0.06285,-1.34387 0.1287,-3.12174 0.19754,-5.17496l3.91788,0l-0.00299,-0.24244c0,-0.01796 -0.00599,-0.43998 -0.06884,-0.87097c-0.06285,-0.44896 -0.19754,-1.04457 -0.62854,-1.04457l-6.5727,0c0.13169,-0.61657 0.46991,-2.08615 0.87995,-2.80747l0.19155,-0.33522l-0.3861,-0.02095c-0.02394,0 -0.58663,-0.02694 -1.23912,0.31726c-1.06851,0.56868 -1.5474,1.68807 -1.75691,2.52612c-0.55072,2.18791 -1.33489,3.70837 -1.66712,4.35786c-0.09877,0.19155 -0.15863,0.30529 -0.18557,0.38311c-0.05387,0.14666 -0.02394,0.29332 0.0838,0.38909c0.31427,0.28434 1.14334,-0.0868 1.15232,-0.08979c0.01796,-0.00898 0.03891,-0.01796 0.06585,-0.02993c0.41603,-0.18856 1.64916,-0.74826 2.08914,-2.52911l1.69705,0c0.02095,0.96376 0.09278,4.14236 0.0868,5.17496l-4.22018,0l-0.06285,0.0449c-0.69139,0.50582 -0.91288,1.8916 -0.92185,1.95146l-0.0419,0.27536l4.99837,0c-0.36814,2.34355 -0.79315,3.3941 -1.01763,3.81313c-0.11074,0.20951 -0.21849,0.41902 -0.32025,0.62255c-0.63752,1.26306 -1.29898,2.56802 -3.7802,4.5973c-0.10775,0.0838 -0.20951,0.23944 -0.14367,0.41005c0.07183,0.18856 0.27835,0.27237 0.73629,0.27237c0.16162,0 0.35318,-0.00898 0.58065,-0.02993c1.49352,-0.13169 3.01698,-0.53875 4.04359,-2.6219c0.50882,-1.05056 0.94879,-2.14601 1.31394,-3.25941l4.08549,4.78886l0.14965,-0.35916c0.02394,-0.05687 0.56868,-1.38578 0.15264,-2.87032l-0.01497,-0.05387l-3.23547,-3.68143l-0.65847,0.49684c0.19155,-0.78118 0.31726,-1.49352 0.37413,-2.12805l4.74995,0l0,-0.23944c0,-1.20021 -0.55371,-1.91255 -0.57466,-1.94248l-0.07183,-0.08979z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+</section>
+
+      </div>
+    </div>
+    
+<div class="copyright">
+  &copy; 2026 Chang Luo
+  
+</div>
+
+
+
+  </div>
+</div>
+
+<div id="overlay" onclick="closeNav()" aria-hidden="true"></div>
+
+<div id="mySidenav" class="sidenav" role="dialog" aria-label="个人收藏" aria-hidden="true">
+  <div id="main">
+    <div class="tab">
+      <button id="default-tab" class="tablinks active" onclick="openItem(event, 'Resources')"
+        aria-controls="Resources" aria-pressed="true">Resources</button>
+      <button class="tablinks" onclick="openItem(event, 'netease-player')"
+        aria-controls="netease-player" aria-pressed="false">Music</button>
+      <button class="tablinks" onclick="openItem(event, 'video-player')"
+        aria-controls="video-player" aria-pressed="false">Video</button>
+      <button class="tablinks" onclick="openItem(event, 'gallery')"
+        aria-controls="gallery" aria-pressed="false">Gallery</button>
+      <button class="tablinks" onclick="openItem(event, 'gadget')"
+        aria-controls="gadget" aria-pressed="false">Gadget</button>
+      <button class="tablinks" onclick="openItem(event, 'categories')"
+        aria-controls="categories" aria-pressed="false">Cats</button>
+    </div>
+
+    <div id="Resources" class="tabcontent">
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/resources/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Resources"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="netease-player" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
+        frameborder="no"
+        marginheight="0"
+        marginwidth="0"
+        title="Music player"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="video-player" class="tabcontent" hidden>
+      <div class="video-layout">
+        <div class="video-main">
+          <div class="video-cover" id="video-cover">
+            <img id="video-cover-img" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-cover-overlay">
+              <button class="video-play-btn" id="video-play-btn" aria-label="播放视频">
+                <svg viewBox="0 0 24 24" width="48" height="48"><path d="M8 5v14l11-7z" fill="white"/></svg>
+              </button>
+              <span class="video-cover-title" id="video-cover-title">四月是你的谎言</span>
+            </div>
+          </div>
+          <div class="video-frame" id="video-frame" hidden>
+            <iframe src="about:blank"
+              data-src="//player.bilibili.com/player.html?bvid=BV1Ms411D7in&p=1&high_quality=1&danmaku=0&autoplay=0"
+              style="width:100%;"
+              scrolling="no"
+              frameborder="no"
+              framespacing="0"
+              title="Bilibili video player"
+              allowfullscreen="true"></iframe>
+          </div>
+        </div>
+        <div class="video-playlist">
+          <button class="video-item active" data-bvid="BV1Ms411D7in"
+            data-title="四月是你的谎言"
+            data-cover="/images/video-covers/zutomayo.jpg"
+            data-duration="4:04">
+            <img class="video-item-cover" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">四月是你的谎言</span>
+              <span class="video-item-meta">4:04</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1LW411j7dK"
+            data-title="Kids by One republic — 三羊"
+            data-cover="/images/video-covers/sanyang.jpg"
+            data-duration="2:54">
+            <img class="video-item-cover" src="/images/video-covers/sanyang.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">Kids by One republic</span>
+              <span class="video-item-meta">三羊 · 2:54</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Yx411U7Lx"
+            data-title="交织together — M78"
+            data-cover="/images/video-covers/jiaozhi.jpg"
+            data-duration="6:06">
+            <img class="video-item-cover" src="/images/video-covers/jiaozhi.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">交织together</span>
+              <span class="video-item-meta">M78 · 6:06</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1rp4y1L7i4"
+            data-title="新员工入职大会 — 岁己SUI/恋诗夜Koxia"
+            data-cover="/images/video-covers/suisui.jpg"
+            data-duration="2:33">
+            <img class="video-item-cover" src="/images/video-covers/suisui.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">新员工入职大会</span>
+              <span class="video-item-meta">岁己SUI/恋诗夜Koxia · 2:33</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Av4y147QE"
+            data-title="真物论 — 悠亚"
+            data-cover="/images/video-covers/zhenwulun.jpg"
+            data-duration="3:30">
+            <img class="video-item-cover" src="/images/video-covers/zhenwulun.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">真物论</span>
+              <span class="video-item-meta">悠亚 · 3:30</span>
+            </div>
+          </button>
+        </div>        </div>
+      </div>
+
+
+    <div id="gallery" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/gadget/gallery/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Gallery"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="gadget" class="tabcontent drawer-native" hidden>
+      <div class="drawer-native-content">
+        
+          <br>
+<table>
+	<thead>
+			<tr>
+					<th>#</th>
+					<th>name</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td><a href="/gadget/hydra" target="_blank">Hydra</a></td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td><a href="/mozi/" target="_blank">墨子</a></td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td><a href="/gadget/how-old-are-you" target="_blank">年龄可视化</a></td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td><a href="/gadget/plan" target="_blank">计划书</a></td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td><a href="/gadget/piano" target="_blank">Piano</a></td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td><a href="/flockn-roll/" target="_blank">Flock&rsquo;n Roll</a></td>
+			</tr>
+	</tbody>
+</table>
+
+        
+      </div>
+    </div>
+
+    <div id="categories" class="tabcontent drawer-native" hidden>
+      <ul class="drawer-category-list">
+        
+          <li>
+            <a href="/categories/devops/" target="_blank" rel="noopener noreferrer">
+              <span>DevOps</span>
+              <span class="drawer-category-count">12</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/deeplearning/" target="_blank" rel="noopener noreferrer">
+              <span>DeepLearning</span>
+              <span class="drawer-category-count">11</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/agent/" target="_blank" rel="noopener noreferrer">
+              <span>Agent</span>
+              <span class="drawer-category-count">7</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/algorithms/" target="_blank" rel="noopener noreferrer">
+              <span>Algorithms</span>
+              <span class="drawer-category-count">6</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/life/" target="_blank" rel="noopener noreferrer">
+              <span>Life</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/sota/" target="_blank" rel="noopener noreferrer">
+              <span>SOTA</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/bigdata/" target="_blank" rel="noopener noreferrer">
+              <span>BigData</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/statistics/" target="_blank" rel="noopener noreferrer">
+              <span>Statistics</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/frontend/" target="_blank" rel="noopener noreferrer">
+              <span>FrontEnd</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/llms/" target="_blank" rel="noopener noreferrer">
+              <span>LLMs</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/math/" target="_blank" rel="noopener noreferrer">
+              <span>Math</span>
+              <span class="drawer-category-count">2</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/datavisualization/" target="_blank" rel="noopener noreferrer">
+              <span>DataVisualization</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/hardware/" target="_blank" rel="noopener noreferrer">
+              <span>Hardware</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/machinelearning/" target="_blank" rel="noopener noreferrer">
+              <span>MachineLearning</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/modeling/" target="_blank" rel="noopener noreferrer">
+              <span>Modeling</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/multimodal/" target="_blank" rel="noopener noreferrer">
+              <span>Multimodal</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/network/" target="_blank" rel="noopener noreferrer">
+              <span>Network</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/prose/" target="_blank" rel="noopener noreferrer">
+              <span>Prose</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="/js/drawer.js"></script>
+
+
+    <div class="content container">
+    
+<article>
+  <header>
+    <h1>泊松分布的仿真及可视化</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Sep 19, 2020
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/statistics">STATISTICS</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/python">python</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/poisson-distribution">poisson-distribution</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 3 min read
+</div>
+
+
+  </header>
+  
+  
+  
+    <div class="toc-wrapper">
+      <input type="checkbox" id="tocToggle">
+      <label for="tocToggle">Table of Content</label>
+      
+        <div class="toc" id="TableOfContents"></div>
+      
+    </div>
+  
+  
+  <div class="post">
+    <blockquote>
+<p>本文介绍泊松分布和泊松函数的定义，并通过 Python random 库对泊松分布进行仿真，带你触摸复杂表象下的简单本质。</p>
+</blockquote>
+<p>GitHub 项目地址：<a href="https://github.com/luochang212/python-tips/blob/master/poisson/poisson.py" target="_blank">python-tips/poisson</a></p>
+<h3 id="1-从泊松函数讲起">1. 从泊松函数讲起</h3>
+<p><a href="https://en.wikipedia.org/wiki/Poisson_distribution">泊松分布</a> 表示在<strong>给定时间段</strong>内发生<strong>给定数量的事件</strong>的概率。这个定义比较抽象。举个具体的例子，假设你每小时接到电话的概率是固定的，比如每小时 0.05 个，那么你在接下来 1 小时内接到电话个数的概率，就服从泊松分布:</p>
+<p>1 小时内接到 0 个电话，对应一个概率值 \( P_0 \)；</p>
+<p>1 小时内接到 1 个电话，对应一个概率值 \( P_1 \)；</p>
+<p>&hellip; &hellip;</p>
+<p>1 小时内接到 n 个电话，也对应一个概率值\( P_n \)。</p>
+<p>这些概率值组成一个概率分布列，它们的值  \( (n, P_n) \)  在二维坐标下连成一条<strong>曲线</strong>。这条曲线所在的函数就是<strong>泊松分布的概率密度函数</strong>。其公式及图像如下：</p>
+$$\boxed{P(k | t, \lambda)=\frac{(\lambda t)^{k}}{k !} \exp (-\lambda t)}$$<p><img src="/img/The-Poisson-distribution.png" alt="image"></p>
+<p>从公式中，我们可以看出：只要确定了 \( \lambda \) 和 \( t \)，该式就退化成了概率 \( P \) 关于事件发生次数 \( k \) 的函数。 类似地，如果我们确定了 \( \lambda \) 和 \( k \)，则该式退化成概率\( P \) 关于时间范围 \( t \) 的函数。</p>
+<p>“确定哪些参数，让函数最终退化成哪些参数的函数”，这个选择和我们的研究目的有关。如果你对不同 \( k \) 如何影响 \( P \) 值感兴趣，那么就应该确定参数 \( \lambda \) 和 \( t \)。如果对 \( t \) 和 \( P \) 之间的关系感兴趣，那么就应该确定参数 \( \lambda \) 和 \( k \)。</p>
+<p>\( \lambda \), \( k \), \( t \) 的定义：</p>
+<!-- 例如：某事件一分钟发生两次，则 `\( \lambda \) = 2 次/分钟`。 -->
+<ul>
+<li>\( \lambda \): 单位时间内，事件发生的频率</li>
+<li>\( k \): 事件发生次数</li>
+<li>\( t \): 观测事件发生次数的时间范围</li>
+</ul>
+<!-- \( t \) 的量纲必须和 \( \lambda \) 相符。如果 \( \lambda \) 的单位为 `次/分钟`，则 \( t \) 的单位应为 `分钟`。 -->
+<p>\( \lambda \), \( k \), \( t \) 三者的关系：</p>
+<p>泊松分布衡量的是<strong>多长时间</strong>内，<strong>某事件发生多少次</strong>的概率。这里 \( t \) 指代的是<strong>多长时间</strong>；\( k \) 指代的是<strong>某事件发生多少次</strong>。\( \lambda \) 则类似该事件的一个<strong>固有属性</strong>，\( \lambda \) 越大，可以简单理解为该事件在一段时间内发生的概率越大。</p>
+<blockquote>
+<p><strong>Note</strong>: \( t \) 的量纲必须和 \( \lambda \)的量纲相对应。如果 \( \lambda \) 的单位是 <code>次/小时</code>，则 \( t \) 应该取 <code>小时</code> 为单位；如果 \( \lambda \) 的单位是 <code>次/分钟</code>，则 \( t \) 也应该取 <code>分钟</code> 为单位。</p>
+</blockquote>
+<h3 id="2-引入一个实例">2. 引入一个实例</h3>
+<p>接下来我们用一个直观的实例，解释泊松分布在实际问题中是如何运用的。</p>
+<p><strong>Q</strong>: 一个淘宝客服，平均每 10 分钟接听 1 个电话，那么他连续 1 小时没接到任何电话的概率是多少？</p>
+<p><strong>A</strong>: \( P\left(k=0 | t=1, \lambda=6\right)=\exp \left(-6\right)=0.0024 \)</p>
+<p>其中，\( t = 1 小时，\lambda = 6 次/小时 \)。</p>
+<p>我们发现，这个概率是极低的。这说明该客服也许正在上夜班，或者电话断线了，总之他很可能处在一种非正常的状况下。否则在正常情况下，连续 1 小时没接到任何电话的概率仅有千分之二，是极其罕见的。</p>
+<h3 id="3-泊松分布的本质">3. 泊松分布的本质</h3>
+<p>尽管泊松分布的函数形式看起来很复杂，但它本质上其实很简单。泊松函数的本质，也就是它的基本假设，可以追溯到一个简单的公式：</p>
+$$\boxed{P = \lambda \Delta t}$$<p>这个公式看起来太过简单，以至于你可能不相信它能推导出上文那个复杂的泊松分布函数。如果你想了解推导过程，可以看我之前写的博客 <a href="/posts/network_performance_analysis/#%E6%9F%8F%E6%9D%BE%E8%BF%87%E7%A8%8B%E7%9A%84%E6%8E%A8%E5%AF%BC">排队论在网络性能分析中的应用</a>，里面有详细证明。本文的主题不在于此，就不展开讲了。</p>
+<h3 id="4-建模仿真">4. 建模仿真</h3>
+<p>这个简单公式，就是泊松分布的核心假设。也就是说，我们只需要用这个公式，就能对泊松分布做仿真了。</p>
+<p>这里还有个技巧。因为在假设中，\( \Delta t \) 代表无限小的时间间隔，但在编程中，我们没法写出无限小这种东西（其实可以，求别杠）。因此只能量力而行。比如，如果 \( t \) 代表一个小时，而 \( \lambda \) 表示 20 次每小时，则我们的时间片只要切到比 20 这个数字大一到两个数量级即可。20 是的数量级是十，大两个数量级是千。这里我们把一小时时间切割为一千个时间片，并将每个时间片内事件发生的概率设为 <sup>20</sup>⁄<sub>1000</sub>，就保证了一小时内，事件发生次数的期望是 20 了。也就在千分之一小时的精度内，满足了 \( P = \lambda \Delta t \) 这个公式。</p>
+<!-- 时间片当然是分得越细越好，这里一到两个数量级也只是个人之见，具体效果可以自行试验。 -->
+<p>OK，闲言少叙，我们这就开始建模仿真。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#57606a"># -*- coding: utf-8 -*-</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#0a3069">&#34;&#34;&#34;泊松仿真
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">   author: github@luochang212
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">   usage: python poisson.py [RATE] </span><span style="color:#0a3069">{TIME}</span><span style="color:#0a3069">
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">import</span> <span style="color:#24292e">sys</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">import</span> <span style="color:#24292e">random</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">import</span> <span style="color:#24292e">collections</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">import</span> <span style="color:#24292e">matplotlib.pyplot</span> <span style="color:#cf222e">as</span> <span style="color:#24292e">plt</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">class</span> <span style="color:#1f2328">Poisson</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">__init__</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">,</span> rate<span style="color:#0550ae">=</span>sys<span style="color:#0550ae">.</span>argv<span style="color:#1f2328">[</span><span style="color:#0550ae">1</span><span style="color:#1f2328">]):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>rate <span style="color:#0550ae">=</span> <span style="color:#6639ba">int</span><span style="color:#1f2328">(</span>rate<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>time <span style="color:#0550ae">=</span> <span style="color:#0550ae">1</span>  <span style="color:#57606a"># 单位时间</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">if</span> <span style="color:#6639ba">len</span><span style="color:#1f2328">(</span>sys<span style="color:#0550ae">.</span>argv<span style="color:#1f2328">)</span> <span style="color:#0550ae">&gt;</span> <span style="color:#0550ae">2</span> <span style="color:#0550ae">and</span> sys<span style="color:#0550ae">.</span>argv<span style="color:#1f2328">[</span><span style="color:#0550ae">2</span><span style="color:#1f2328">]</span> <span style="color:#0550ae">!=</span> <span style="color:#0a3069">&#34;&#34;</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>time <span style="color:#0550ae">=</span> <span style="color:#6639ba">int</span><span style="color:#1f2328">(</span>sys<span style="color:#0550ae">.</span>argv<span style="color:#1f2328">[</span><span style="color:#0550ae">2</span><span style="color:#1f2328">])</span>  <span style="color:#57606a"># 手动指定时间范围</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>EXP_NUM <span style="color:#0550ae">=</span> <span style="color:#0550ae">100000</span>  <span style="color:#57606a"># 实验次数</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>NUM_LEVEL <span style="color:#0550ae">=</span> <span style="color:#0550ae">2</span>  <span style="color:#57606a"># 数量级</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">generator</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">,</span> prob<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;&#34;&#34;仿真结果生成器&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">while</span> <span style="color:#cf222e">True</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#cf222e">if</span> random<span style="color:#0550ae">.</span>random<span style="color:#1f2328">()</span> <span style="color:#0550ae">&lt;</span> prob<span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#cf222e">yield</span> <span style="color:#0550ae">1</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#cf222e">else</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#cf222e">yield</span> <span style="color:#0550ae">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">perform_exp</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">,</span> rate<span style="color:#1f2328">,</span> time<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;&#34;&#34;进行一次实验
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">        每次实验中，时间分片的数量比rate高两个数量级
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">        &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        level <span style="color:#0550ae">=</span> <span style="color:#6639ba">len</span><span style="color:#1f2328">(</span><span style="color:#6639ba">str</span><span style="color:#1f2328">(</span>rate<span style="color:#1f2328">))</span>
+</span></span><span style="display:flex;"><span>        shard_num <span style="color:#0550ae">=</span> <span style="color:#0550ae">10</span> <span style="color:#0550ae">**</span> <span style="color:#1f2328">(</span>level <span style="color:#0550ae">+</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>NUM_LEVEL<span style="color:#1f2328">)</span>  <span style="color:#57606a"># 计算时间分片的数量</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        gen <span style="color:#0550ae">=</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>generator<span style="color:#1f2328">(</span>rate <span style="color:#0550ae">/</span> shard_num<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        cnt <span style="color:#0550ae">=</span> <span style="color:#0550ae">0</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">for</span> _ <span style="color:#0550ae">in</span> <span style="color:#6639ba">range</span><span style="color:#1f2328">(</span>time <span style="color:#0550ae">*</span> shard_num<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>            cnt <span style="color:#0550ae">+=</span> <span style="color:#6639ba">next</span><span style="color:#1f2328">(</span>gen<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> cnt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">perform_exps</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">,</span> exp_num<span style="color:#1f2328">,</span> rate<span style="color:#1f2328">,</span> time<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;&#34;&#34;多次实验，得到分布&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        lst <span style="color:#0550ae">=</span> <span style="color:#1f2328">[]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">for</span> _ <span style="color:#0550ae">in</span> <span style="color:#6639ba">range</span><span style="color:#1f2328">(</span>exp_num<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>            lst<span style="color:#0550ae">.</span>append<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>perform_exp<span style="color:#1f2328">(</span>rate<span style="color:#1f2328">,</span> time<span style="color:#1f2328">))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> <span style="color:#6639ba">sorted</span><span style="color:#1f2328">(</span>collections<span style="color:#0550ae">.</span>Counter<span style="color:#1f2328">(</span>lst<span style="color:#1f2328">)</span><span style="color:#0550ae">.</span>items<span style="color:#1f2328">(),</span> key<span style="color:#0550ae">=</span><span style="color:#cf222e">lambda</span> e<span style="color:#1f2328">:</span> e<span style="color:#1f2328">[</span><span style="color:#0550ae">0</span><span style="color:#1f2328">])</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">draw</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">,</span> sorted_list<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;&#34;&#34;画图&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        s <span style="color:#0550ae">=</span> <span style="color:#6639ba">sum</span><span style="color:#1f2328">([</span>e<span style="color:#1f2328">[</span><span style="color:#0550ae">1</span><span style="color:#1f2328">]</span> <span style="color:#cf222e">for</span> e <span style="color:#0550ae">in</span> sorted_list<span style="color:#1f2328">])</span>
+</span></span><span style="display:flex;"><span>        x <span style="color:#0550ae">=</span> <span style="color:#1f2328">[</span>e<span style="color:#1f2328">[</span><span style="color:#0550ae">0</span><span style="color:#1f2328">]</span> <span style="color:#cf222e">for</span> e <span style="color:#0550ae">in</span> sorted_list<span style="color:#1f2328">]</span>
+</span></span><span style="display:flex;"><span>        y <span style="color:#0550ae">=</span> <span style="color:#1f2328">[</span>e<span style="color:#1f2328">[</span><span style="color:#0550ae">1</span><span style="color:#1f2328">]</span> <span style="color:#0550ae">/</span> s <span style="color:#cf222e">for</span> e <span style="color:#0550ae">in</span> sorted_list<span style="color:#1f2328">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        plt<span style="color:#0550ae">.</span>plot<span style="color:#1f2328">(</span>x<span style="color:#1f2328">,</span> y<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        plt<span style="color:#0550ae">.</span>xlabel<span style="color:#1f2328">(</span><span style="color:#0a3069">&#34;k&#34;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        plt<span style="color:#0550ae">.</span>ylabel<span style="color:#1f2328">(</span><span style="color:#0a3069">&#34;P(k)&#34;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        plt<span style="color:#0550ae">.</span>show<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">main</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        sorted_list <span style="color:#0550ae">=</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>perform_exps<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>EXP_NUM<span style="color:#1f2328">,</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>rate<span style="color:#1f2328">,</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>time<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>draw<span style="color:#1f2328">(</span>sorted_list<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#0550ae">@staticmethod</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">calculator</span><span style="color:#1f2328">(</span>rate<span style="color:#1f2328">,</span> t<span style="color:#1f2328">,</span> k<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;&#34;&#34;用于计算泊松函数的概率 P(k|t,lambda)
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">           rate: lambda
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">           t: t
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">           k: k
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">        &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">import</span> <span style="color:#24292e">math</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> <span style="color:#1f2328">(</span>rate <span style="color:#0550ae">*</span> t<span style="color:#1f2328">)</span> <span style="color:#0550ae">**</span> k <span style="color:#0550ae">/</span> math<span style="color:#0550ae">.</span>factorial<span style="color:#1f2328">(</span>k<span style="color:#1f2328">)</span> <span style="color:#0550ae">*</span> math<span style="color:#0550ae">.</span>exp<span style="color:#1f2328">(</span><span style="color:#0550ae">-</span>rate <span style="color:#0550ae">*</span> t<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">if</span> <span style="color:#953800">__name__</span> <span style="color:#0550ae">==</span> <span style="color:#0a3069">&#39;__main__&#39;</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>    p <span style="color:#0550ae">=</span> Poisson<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>    p<span style="color:#0550ae">.</span>main<span style="color:#1f2328">()</span>
+</span></span></code></pre></div><p>看完代码，聪明的你一定已经知道这段代码在干什么了 <img src="/img/hanser/motou.JPG" class="my-emoji" style = "height: 64px;"></p>
+<p>那我们直接来说如何使用代码吧！</p>
+<p>如果你想知道 \( \lambda = 3, t = 2 \) 情况下泊松函数的图像，在命令行执行：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>python poisson.py <span style="color:#0550ae">3</span> <span style="color:#0550ae">2</span>
+</span></span></code></pre></div><p>如果不设置 \( t \) 的值，则 \( t \) 的值默认为 1。</p>
+<p>下面放一些仿真结果：</p>
+<ol>
+<li>\( \lambda = 2, t = 1 \)
+<img src="/img/poisson_2.png" alt="image"></li>
+<li>\( \lambda = 5, t = 1 \)
+<img src="/img/poisson_5.png" alt="image"></li>
+<li>\( \lambda = 10, t = 1 \)
+<img src="/img/poisson_10.png" alt="image"></li>
+<li>\( \lambda = 80, t = 1 \)
+<img src="/img/poisson_80.png" alt="image"></li>
+</ol>
+<h3 id="5-三维可视化">5. 三维可视化</h3>
+<p>泊松分布有三个自变量，一个因变量，需要四维空间才能把它完整地绘制出来。但幸好，通过观察我们发现 \( \lambda \) 和 \( t \) 的关系很近，可以归约成一个变量 \( \mu \)。我们设 \( \mu = \lambda t \)，则绘制 \( P =  f(\mu, k) \) 的图像，就足以表达泊松函数四个变量间的函数关系了。</p>
+<p><img src="/img/poisson_3d.png" alt="image"></p>
+<!-- ![image](/img/poisson_3d_dynamic.gif) -->
+<blockquote>
+<p><strong>Note</strong>: 绘图代码见 <a href="https://github.com/luochang212/python-tips/blob/master/poisson/3dplot.py">3dplot.py</a></p>
+</blockquote>
+<!-- 
+### 6. 泊松的应用
+
+> 泊松分布在生活中也有很多应用，下面我举一个比较贴近生活的例子。
+
+**停车问题**：公司有个自行车停车场，临近上班就停满了车。停车区域是一个长条形，从这头走到那头的过程中，我们需要找到合适的车位将车停入。但是，车位有宽有窄，我们倾向于选择比较宽的车位。我们需要一种判断方式，来决定何时将车停入是合适的。
+
+![image](/img/poisson_parking.PNG)
+
+为了简化问题，我们做出如下假设：
+
+- 假设1：车辆在停车区域内均匀分布
+- 假设2：车辆到达的速率是一个常数 \( \lambda \)
+- 假设3：假设在某个时间点 `T`，停车场被停满。此刻，我们让时间倒流，由于车辆停放的逆过程是车辆离开。因此对于时间 `T - x`，车辆离开的过程可视作时间为 `x` 离开速率为 \( \lambda \) 的泊松过程。
+
+现在我们提出某种策略：首先将长条停车场均分为前后两段。前段用于观察车辆的分布，后段用于实际停放车辆。假设我们在前段发现有 5 个勉强能将车停入的车位，则**大胆估计**前段停车场的车位数量服从 \( \lambda t = 5 \) 的泊松分布。由于存在假设1，因此我们可以**近似认为**后段停车场的车位数量也服从 \( \lambda t = 5 \) 泊松分布。
+
+\( \lambda t = 5 \) 泊松分布在前文中已经出现过了，它的图像如下：
+
+![image](/img/poisson_5.png)
+
+由上图可知，在后段停车场中，遇不见类似之前 5 个车位那样，能将车勉强停入的车位的概率仅为 **0.7%** 左右，这是真的是非常低的概率。**尽管这是一个近似的结果**，但也能帮助我们判断，目前停车场的车位状况是比较宽松的。这时我们就可以有信心找个好车位停车，而不是找个狭窄的位置硬挤。 -->
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/hadoop_intro/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">漫谈 Hadoop Streaming</span>
+    </a>
+    
+    
+    <a href="/posts/fastapi/" class="navigation-next">
+      <span class="navigation-tittle">FastAPI 初见</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+</div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.js" defer></script>
+
+
+<script defer src="https://kit.fontawesome.com/2134995a39.js" crossorigin="anonymous"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/tocbot@4.36.8/dist/tocbot.min.js"></script>
+<script type="text/javascript">
+  if (window.tocbot) {
+    tocbot.init({
+      
+      tocSelector: '.toc',
+      
+      contentSelector: '.post',
+      
+      headingSelector: 'h2, h3, h4',
+      collapseDepth: 4
+    });
+  }
+</script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    mediumZoom('.post img', {
+      background: 'rgba(0,0,0,0.82)',
+      margin: 24,
+      scrollOffset: 0
+    });
+  });
+</script>
+
+
+
+    
+
+
+
+  </body>
+</html>

@@ -1,0 +1,811 @@
+<!doctype html>
+<html lang="zh-CN">
+  
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="https://www.luochang.ink/posts/elastic_search/">
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.163.3">
+
+    
+    
+    
+
+<title>Elasticsearch 初探 • Chang Luo</title>
+
+
+    
+
+
+<meta name="description" content="Elasticsearch 是一个开源的分布式全文搜索引擎。它建立在当前最先进有效的搜索引擎库 Lucene 之上。Elasticsearch 集成了 Lucene 的全文检索功能，并通过一套简单的 API 隐藏了 Lucene 的复杂性，使之简单易用。">
+
+
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://www.luochang.ink/images/og-default.jpg">
+	<meta name="twitter:title" content="Elasticsearch 初探">
+	<meta name="twitter:description" content="Elasticsearch 是一个开源的分布式全文搜索引擎。它建立在当前最先进有效的搜索引擎库 Lucene 之上。Elasticsearch 集成了 Lucene 的全文检索功能，并通过一套简单的 API 隐藏了 Lucene 的复杂性，使之简单易用。">
+			<meta name="twitter:site" content="@_stellar_tide">
+
+<meta property="og:url" content="https://www.luochang.ink/posts/elastic_search/">
+	<meta property="og:site_name" content="Chang Luo">
+	<meta property="og:title" content="Elasticsearch 初探">
+	<meta property="og:description" content="Elasticsearch 是一个开源的分布式全文搜索引擎。它建立在当前最先进有效的搜索引擎库 Lucene 之上。Elasticsearch 集成了 Lucene 的全文检索功能，并通过一套简单的 API 隐藏了 Lucene 的复杂性，使之简单易用。">
+	<meta property="og:locale" content="zh_CN">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2019-10-24T00:00:00+00:00">
+		<meta property="article:modified_time" content="2019-10-24T00:00:00+00:00">
+		<meta property="article:tag" content="Elasticsearch">
+		<meta property="article:tag" content="Search-Engine">
+		<meta property="og:image" content="https://www.luochang.ink/images/og-default.jpg">
+
+
+    
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.26b99d1b39c55b25f45753962fee8b8024e3b7525afe742fbbc09e044247c0db.css" integrity="sha256-JrmdGznFWyX0V1OWL&#43;6LgCTjt1Ja/nQvu8CeBEJHwNs=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+
+<link rel="stylesheet" href="/scss/tocbot.5ef07cebc3c477b54270456f149ee02922479bb7555fd344b2c69f953b0e7e5e.css" integrity="sha256-XvB868PEd7VCcEVvFJ7gKSJHm7dVX9NEssaflTsOfl4=">
+
+
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#202020">
+    
+    
+
+</head>
+
+
+  <body
+    class=" "
+  >
+    <div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="https://www.luochang.ink/">Chang Luo</a>
+      </span>
+      
+      
+      
+      <div class="author-image">
+        <button type="button" class="author-trigger" onclick="openNav()" aria-label="打开个人收藏侧栏"
+          aria-controls="mySidenav" aria-expanded="false"><img src="https://www.luochang.ink//images/profile.webp"
+            alt="Chang Luo" class="img--circle img--headshot element--center"></button>
+      </div>
+      
+      <p class="site__description">
+        
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Chang Luo</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		<li class="sidebar-nav__home">
+			<a href="https://www.luochang.ink/"><span>Home</span></a>
+		</li>
+		
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/portfolio/">
+						<span>Projects</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+		
+		<a href="https://twitter.com/_stellar_tide" rel="me" title="X">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		<a href="https://github.com/luochang212" rel="me" title="GitHub">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		<a href="https://mp.weixin.qq.com/s/He-04l46xJTM_MJ3AyTwWQ" rel="me" title="微信">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.35em; height: 1.35em; vertical-align: -0.28em;">
+				<path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135-.01-.27-.027-.407-.03zm-2.53 3.274c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982z"/>
+			</svg>
+		</a>
+		
+		
+		<a href="https://www.zhihu.com/people/Fashionable" rel="me" title="知乎">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2"
+				 stroke-linecap="round" stroke-linejoin="round" style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="m13.3334,3.60098l0,17.1471l1.79582,0l0.75424,2.13703l3.18459,-2.13703l3.93584,0l0,-17.1471l-9.6705,0zm7.41375,14.87538l-1.79283,0l-2.24777,1.50849l-0.53276,-1.50849l-0.53875,0l0,-12.53483l5.10911,0l0,12.53483l0.00299,0zm-8.56906,-7.18927l-3.97475,0c0.06285,-1.34387 0.1287,-3.12174 0.19754,-5.17496l3.91788,0l-0.00299,-0.24244c0,-0.01796 -0.00599,-0.43998 -0.06884,-0.87097c-0.06285,-0.44896 -0.19754,-1.04457 -0.62854,-1.04457l-6.5727,0c0.13169,-0.61657 0.46991,-2.08615 0.87995,-2.80747l0.19155,-0.33522l-0.3861,-0.02095c-0.02394,0 -0.58663,-0.02694 -1.23912,0.31726c-1.06851,0.56868 -1.5474,1.68807 -1.75691,2.52612c-0.55072,2.18791 -1.33489,3.70837 -1.66712,4.35786c-0.09877,0.19155 -0.15863,0.30529 -0.18557,0.38311c-0.05387,0.14666 -0.02394,0.29332 0.0838,0.38909c0.31427,0.28434 1.14334,-0.0868 1.15232,-0.08979c0.01796,-0.00898 0.03891,-0.01796 0.06585,-0.02993c0.41603,-0.18856 1.64916,-0.74826 2.08914,-2.52911l1.69705,0c0.02095,0.96376 0.09278,4.14236 0.0868,5.17496l-4.22018,0l-0.06285,0.0449c-0.69139,0.50582 -0.91288,1.8916 -0.92185,1.95146l-0.0419,0.27536l4.99837,0c-0.36814,2.34355 -0.79315,3.3941 -1.01763,3.81313c-0.11074,0.20951 -0.21849,0.41902 -0.32025,0.62255c-0.63752,1.26306 -1.29898,2.56802 -3.7802,4.5973c-0.10775,0.0838 -0.20951,0.23944 -0.14367,0.41005c0.07183,0.18856 0.27835,0.27237 0.73629,0.27237c0.16162,0 0.35318,-0.00898 0.58065,-0.02993c1.49352,-0.13169 3.01698,-0.53875 4.04359,-2.6219c0.50882,-1.05056 0.94879,-2.14601 1.31394,-3.25941l4.08549,4.78886l0.14965,-0.35916c0.02394,-0.05687 0.56868,-1.38578 0.15264,-2.87032l-0.01497,-0.05387l-3.23547,-3.68143l-0.65847,0.49684c0.19155,-0.78118 0.31726,-1.49352 0.37413,-2.12805l4.74995,0l0,-0.23944c0,-1.20021 -0.55371,-1.91255 -0.57466,-1.94248l-0.07183,-0.08979z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+</section>
+
+      </div>
+    </div>
+    
+<div class="copyright">
+  &copy; 2026 Chang Luo
+  
+</div>
+
+
+
+  </div>
+</div>
+
+<div id="overlay" onclick="closeNav()" aria-hidden="true"></div>
+
+<div id="mySidenav" class="sidenav" role="dialog" aria-label="个人收藏" aria-hidden="true">
+  <div id="main">
+    <div class="tab">
+      <button id="default-tab" class="tablinks active" onclick="openItem(event, 'Resources')"
+        aria-controls="Resources" aria-pressed="true">Resources</button>
+      <button class="tablinks" onclick="openItem(event, 'netease-player')"
+        aria-controls="netease-player" aria-pressed="false">Music</button>
+      <button class="tablinks" onclick="openItem(event, 'video-player')"
+        aria-controls="video-player" aria-pressed="false">Video</button>
+      <button class="tablinks" onclick="openItem(event, 'gallery')"
+        aria-controls="gallery" aria-pressed="false">Gallery</button>
+      <button class="tablinks" onclick="openItem(event, 'gadget')"
+        aria-controls="gadget" aria-pressed="false">Gadget</button>
+      <button class="tablinks" onclick="openItem(event, 'categories')"
+        aria-controls="categories" aria-pressed="false">Cats</button>
+    </div>
+
+    <div id="Resources" class="tabcontent">
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/resources/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Resources"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="netease-player" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
+        frameborder="no"
+        marginheight="0"
+        marginwidth="0"
+        title="Music player"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="video-player" class="tabcontent" hidden>
+      <div class="video-layout">
+        <div class="video-main">
+          <div class="video-cover" id="video-cover">
+            <img id="video-cover-img" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-cover-overlay">
+              <button class="video-play-btn" id="video-play-btn" aria-label="播放视频">
+                <svg viewBox="0 0 24 24" width="48" height="48"><path d="M8 5v14l11-7z" fill="white"/></svg>
+              </button>
+              <span class="video-cover-title" id="video-cover-title">四月是你的谎言</span>
+            </div>
+          </div>
+          <div class="video-frame" id="video-frame" hidden>
+            <iframe src="about:blank"
+              data-src="//player.bilibili.com/player.html?bvid=BV1Ms411D7in&p=1&high_quality=1&danmaku=0&autoplay=0"
+              style="width:100%;"
+              scrolling="no"
+              frameborder="no"
+              framespacing="0"
+              title="Bilibili video player"
+              allowfullscreen="true"></iframe>
+          </div>
+        </div>
+        <div class="video-playlist">
+          <button class="video-item active" data-bvid="BV1Ms411D7in"
+            data-title="四月是你的谎言"
+            data-cover="/images/video-covers/zutomayo.jpg"
+            data-duration="4:04">
+            <img class="video-item-cover" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">四月是你的谎言</span>
+              <span class="video-item-meta">4:04</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1LW411j7dK"
+            data-title="Kids by One republic — 三羊"
+            data-cover="/images/video-covers/sanyang.jpg"
+            data-duration="2:54">
+            <img class="video-item-cover" src="/images/video-covers/sanyang.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">Kids by One republic</span>
+              <span class="video-item-meta">三羊 · 2:54</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Yx411U7Lx"
+            data-title="交织together — M78"
+            data-cover="/images/video-covers/jiaozhi.jpg"
+            data-duration="6:06">
+            <img class="video-item-cover" src="/images/video-covers/jiaozhi.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">交织together</span>
+              <span class="video-item-meta">M78 · 6:06</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1rp4y1L7i4"
+            data-title="新员工入职大会 — 岁己SUI/恋诗夜Koxia"
+            data-cover="/images/video-covers/suisui.jpg"
+            data-duration="2:33">
+            <img class="video-item-cover" src="/images/video-covers/suisui.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">新员工入职大会</span>
+              <span class="video-item-meta">岁己SUI/恋诗夜Koxia · 2:33</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Av4y147QE"
+            data-title="真物论 — 悠亚"
+            data-cover="/images/video-covers/zhenwulun.jpg"
+            data-duration="3:30">
+            <img class="video-item-cover" src="/images/video-covers/zhenwulun.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">真物论</span>
+              <span class="video-item-meta">悠亚 · 3:30</span>
+            </div>
+          </button>
+        </div>        </div>
+      </div>
+
+
+    <div id="gallery" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/gadget/gallery/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Gallery"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="gadget" class="tabcontent drawer-native" hidden>
+      <div class="drawer-native-content">
+        
+          <br>
+<table>
+	<thead>
+			<tr>
+					<th>#</th>
+					<th>name</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td><a href="/gadget/hydra" target="_blank">Hydra</a></td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td><a href="/mozi/" target="_blank">墨子</a></td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td><a href="/gadget/how-old-are-you" target="_blank">年龄可视化</a></td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td><a href="/gadget/plan" target="_blank">计划书</a></td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td><a href="/gadget/piano" target="_blank">Piano</a></td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td><a href="/flockn-roll/" target="_blank">Flock&rsquo;n Roll</a></td>
+			</tr>
+	</tbody>
+</table>
+
+        
+      </div>
+    </div>
+
+    <div id="categories" class="tabcontent drawer-native" hidden>
+      <ul class="drawer-category-list">
+        
+          <li>
+            <a href="/categories/devops/" target="_blank" rel="noopener noreferrer">
+              <span>DevOps</span>
+              <span class="drawer-category-count">12</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/deeplearning/" target="_blank" rel="noopener noreferrer">
+              <span>DeepLearning</span>
+              <span class="drawer-category-count">11</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/agent/" target="_blank" rel="noopener noreferrer">
+              <span>Agent</span>
+              <span class="drawer-category-count">7</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/algorithms/" target="_blank" rel="noopener noreferrer">
+              <span>Algorithms</span>
+              <span class="drawer-category-count">6</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/life/" target="_blank" rel="noopener noreferrer">
+              <span>Life</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/sota/" target="_blank" rel="noopener noreferrer">
+              <span>SOTA</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/bigdata/" target="_blank" rel="noopener noreferrer">
+              <span>BigData</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/statistics/" target="_blank" rel="noopener noreferrer">
+              <span>Statistics</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/frontend/" target="_blank" rel="noopener noreferrer">
+              <span>FrontEnd</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/llms/" target="_blank" rel="noopener noreferrer">
+              <span>LLMs</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/math/" target="_blank" rel="noopener noreferrer">
+              <span>Math</span>
+              <span class="drawer-category-count">2</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/datavisualization/" target="_blank" rel="noopener noreferrer">
+              <span>DataVisualization</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/hardware/" target="_blank" rel="noopener noreferrer">
+              <span>Hardware</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/machinelearning/" target="_blank" rel="noopener noreferrer">
+              <span>MachineLearning</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/modeling/" target="_blank" rel="noopener noreferrer">
+              <span>Modeling</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/multimodal/" target="_blank" rel="noopener noreferrer">
+              <span>Multimodal</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/network/" target="_blank" rel="noopener noreferrer">
+              <span>Network</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/prose/" target="_blank" rel="noopener noreferrer">
+              <span>Prose</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="/js/drawer.js"></script>
+
+
+    <div class="content container">
+    
+<article>
+  <header>
+    <h1>Elasticsearch 初探</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Oct 24, 2019
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/bigdata">BIGDATA</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/elasticsearch">elasticsearch</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/search-engine">search-engine</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 2 min read
+</div>
+
+
+  </header>
+  
+  
+  
+    <div class="toc-wrapper">
+      <input type="checkbox" id="tocToggle">
+      <label for="tocToggle">Table of Content</label>
+      
+        <div class="toc" id="TableOfContents"></div>
+      
+    </div>
+  
+  
+  <div class="post">
+    <blockquote>
+<p><a href="https://github.com/elastic/elasticsearch">Elasticsearch</a> 是一个开源分布式全文搜索引擎。它建立在当前最先进有效的搜索引擎库 <a href="https://lucene.apache.org/">Lucene</a> 之上。Elasticsearch 集成了 Lucene 的检索功能，并通过一套简单的 API 隐藏了 Lucene 的复杂性，使之简单易用。</p>
+</blockquote>
+<h2 id="初识">初识</h2>
+<hr>ES 的初步介绍
+<p>本节将介绍 ES 的几个特性。这些介绍能帮助我们理解 ES 是应什么需求诞生的？它解决了什么问题？它为何如此架构？以及这种架构方式为它带来哪些性能上的提升？这些信息虽然不能直接提升我们使用 ES 的能力，但能从更深的维度帮助我们使用好它。</p>
+<h3 id="不仅仅是搜索">不仅仅是搜索</h3>
+<p>ES 不仅能够搜索，它还提供一套分布式实时存储文档的解决方案。 ES 允许用户将数据存储在多个服务器节点上。这些节点能实时共享数据。一旦主节点的内容发生改变，这些改变会实时传递到副节点上，以保证主副节点的内容一致。如果主节点掉线，ES 能立即选举出一个副节点充当主节点。选举过程就像切换开关一样，能够在瞬间完成，从而保证了 ES 的可靠性。</p>
+<p>分布式的存储方案不仅仅是基于数据安全的考量，同时也是为了加快检索的速度。利用 <a href="https://research.google.com/archive/mapreduce-osdi04-slides/index.html">MapReduce</a>，ES 可以在多个节点上并行地检索数据，大大缩短了海量数据处理的时间。</p>
+<h3 id="领域专用语言">领域专用语言</h3>
+<p>为了统一查询语法，ES 设计了一套领域专用语言 (DSL, domain specific language)。这套语言基于 JSON，优点是简单易学，缺点是在表达复杂的查询时，会显得格外冗长，阅读起来也不太友好。</p>
+<h3 id="sql-和-nosql">SQL 和 NoSQL</h3>
+<p>SQL 全称 Structured Query Language。SQL 中的 Structured 突出了它是结构化的查询语言。结构化即受字段限制。SQL 数据库中的每条数据都具有相同的长度，因此可以被视作一张数据表。<!-- 比如有一组结构化的数据，已知它有3条数据、5个字段，那么我们可以确定它就是一张3乘5的数据表。-->相比于 SQL，NoSQL 能表达更复杂的内部数据结构。字段之间不相互影响，可以拥有各自的层级结构。因此 NoSQL 数据库要比 SQL 数据库更加灵活且易于拓展。NoSQL 数据库中的数据通常用 JSON 表示。</p>
+<h2 id="入门">入门</h2>
+<hr>一些简单概念
+<h3 id="文档">文档</h3>
+<p>在 ES 中，文档是一个特定的术语。它表示用来存储对象的存储单元。一个对象通常不会是简单的键值对，它可能包含更复杂的数据结构，比如日期、地理数据、数组等。为表达这种复杂的、多层次的数据，ES 将 JSON 作为文档存储的固定格式。也就是说在 ES 里，一个文档被存成一个 JSON 值。</p>
+<p>一个文档必须包含三个<a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/_Document_Metadata.html">元数据</a>：</p>
+<ul>
+<li>_index：文档在哪存放</li>
+<li>_type：文档表示的对象类别</li>
+<li>_id：文档的唯一标识</li>
+</ul>
+<p>文档中的其他字段，则可以视需求定义。</p>
+<h3 id="请求">请求</h3>
+<p>一个个文档存在于 ES 中，如果我们想要查询、添加、删除、更新某个文档，那么我们就必须向 ES 发送请求。</p>
+<p>一个 Elasticsearch 请求由以下部件组成：</p>
+<pre tabindex="0"><code>curl -X&lt;VERB&gt; &#39;&lt;PROTOCOL&gt;://&lt;HOST&gt;:&lt;PORT&gt;/&lt;PATH&gt;?&lt;QUERY_STRING&gt;&#39; -d &#39;&lt;BODY&gt;&#39;
+</code></pre><table>
+	<thead>
+			<tr>
+					<th>部件</th>
+					<th>用途</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>&lt;VERB&gt;</td>
+					<td>操作数据的方法，常见的有查询(GET)、上传(POST)、更新(PUT)</td>
+			</tr>
+			<tr>
+					<td>&lt;PROTOCOL&gt;</td>
+					<td><code>http</code> 或者 <code>https</code></td>
+			</tr>
+			<tr>
+					<td>&lt;HOST&gt;</td>
+					<td>主机名</td>
+			</tr>
+			<tr>
+					<td>&lt;PORT&gt;</td>
+					<td>HTTP 服务端口，默认是 9200</td>
+			</tr>
+			<tr>
+					<td>&lt;PATH&gt;</td>
+					<td>文档路径，由<code>_index</code>, <code>_type</code>, <code>_id</code>组成</td>
+			</tr>
+			<tr>
+					<td>&lt;QUERY_STRING&gt;</td>
+					<td>查询参数，<code>?pretty</code> 可以输出格式化的 JSON 值</td>
+			</tr>
+			<tr>
+					<td>&lt;BODY&gt;</td>
+					<td>JSON 请求体</td>
+			</tr>
+	</tbody>
+</table>
+<!-- 上表十分抽象，那么举个例子。如果你想取回一个 `_index` 为 `website`，`_type` 为 `blog`，`_id` 为 `es` 的文档，请求应该是这样的：
+
+```
+curl -XGET 'http://localhost:9200/website/blog/es'
+``` -->
+<h2 id="实践">实践</h2>
+<hr>君 ES 本当上手
+<h3 id="安装与运行">安装与运行</h3>
+<ol>
+<li>
+<p>首先打开<a href="https://www.elastic.co/downloads/elasticsearch">https://www.elastic.co/downloads/elasticsearch</a>，下载操作系统对应版本的 ES。</p>
+</li>
+<li>
+<p>解压下载的文件，将解压出的文件夹放在你希望的目录下。</p>
+</li>
+<li>
+<p>打开 Terminal (MacOS) 或者 PowerShell (Windows)，将当前目录切换到放解压文件夹的目录，然后运行：</p>
+</li>
+</ol>
+<pre tabindex="0"><code>cd elasticsearch-7.4.0
+cd bin
+./elasticsearch
+</code></pre><p>这将在当前 Terminal 窗口运行 ES。如果你不希望 ES 服务中止，请勿关闭窗口。</p>
+<ol start="4">
+<li>另外打开一个新的 Terminal 窗口，运行：</li>
+</ol>
+<pre tabindex="0"><code>curl &#39;http://localhost:9200/?pretty&#39;
+</code></pre><p>如果 ES 正常运行，终端将会返回一条包含集群信息的 JSON 值。</p>
+<blockquote>
+<p><strong>Note</strong>: 更多有关安装的信息，参见 <a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/running-elasticsearch.html">安装并运行 Elasticsearch</a> 和 <a href="https://opensource.com/article/19/7/installing-elasticsearch-macos">How to install Elasticsearch on MacOS</a>。</p>
+</blockquote>
+<h3 id="客户端">客户端</h3>
+<p>搭建好 ES 之后，我们还需要与 ES 交互。既然要交互，那么就有客户端和服务端。在生产环境中，服务端往往已经在服务器上搭好。这种情况下，我们只需要配置本地客户端就可以了。</p>
+<p>ES 支持多种客户端语言，比如 Java, Ruby, Python。这些语言都有相应的 ES 库，我们可以依据自己的喜好选择。下面主要介绍如何在 Python 环境下搭建 ES 客户端。</p>
+<ol>
+<li>
+<p>首先确保你已经安装了 Python 及 Python 相关依赖。</p>
+</li>
+<li>
+<p>安装 <a href="https://pypi.org/project/elasticsearch/">Elasticsearch</a>。</p>
+</li>
+</ol>
+<pre tabindex="0"><code>pip install elasticsearch
+</code></pre><ol start="3">
+<li>新建一个 <code>.py</code> 文件。</li>
+</ol>
+<pre tabindex="0"><code>touch my_es.py
+</code></pre><ol start="4">
+<li>在你喜欢的 IDE 里打开它，输入以下内容，这将初始化一个名为 <code>es</code> 的客户端。</li>
+</ol>
+<pre tabindex="0"><code># 初始化 ES 客户端
+import elasticsearch
+
+
+def init_es_client():
+    es = elasticsearch.Elasticsearch(
+        hosts=&#34;[YOUR-HOST-NAME]&#34;, http_auth=(&#34;[YOUR-ACCOUNT]&#34;, &#34;[YOUR-PASSWORD]&#34;)
+    )
+
+    return es
+
+es = init_es_client()
+</code></pre><ol start="5">
+<li>为测试客户端是否搭建成功，可以 <code>print</code> 一下客户端信息。在前文代码之后加上：</li>
+</ol>
+<pre tabindex="0"><code>print(es.info())
+</code></pre><p>运行 <code>my_es.py</code>，如果收到一条包含 <code>name</code>, <code>cluster_name</code> 等字段的 JSON 返回值，那么恭喜你已经搭建成功了。</p>
+<h3 id="客户端请求">客户端请求</h3>
+<p>搭完客户端，我们就可以向 ES 发送请求了。<!--一个请求常常被写成一个函数。-->下面这个函数就是一个查询请求。其中 <code>body</code> 里的内容是请求体，它用 DSL 语法写成。</p>
+<pre tabindex="0"><code>def search(es_client, start, end):
+    result = es_client.search(index=&#34;[YOUR-INDEX]&#34;, body={
+        &#34;query&#34;: {
+            &#34;bool&#34;: {
+                &#34;must&#34;:[
+                    { &#34;range&#34;: { &#34;[YOUR-DATE]&#34;:{ &#34;gte&#34;: start, &#34;lte&#34;: end }}}, 
+                    {
+                        &#34;bool&#34;: {
+                            &#34;should&#34;: [
+                                { &#34;match_phrase&#34;: { &#34;[YOUR-CONTENT]&#34;: &#34;[KEYWORD-1]&#34;}},
+                                { &#34;match_phrase&#34;: { &#34;[YOUR-CONTENT]&#34;: &#34;[KEYWORD-2]&#34;}}
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    })
+    return result
+</code></pre><p>收到这段请求，服务端将返回同时符合以下两个条件的数据：</p>
+<ol>
+<li>时间字段的值的范围在 <code>start</code> 和 <code>end</code> 之间</li>
+<li>内容字段的值包含短语 <code>[KEYWORD-1]</code> 或 <code>[KEYWORD-2]</code></li>
+</ol>
+<p>通过请求拿到数据，就到了你大展身手的时候啦！</p>
+<p>你可以进一步筛选数据、分析数据；也可以用各种可视化库绘制图表；甚至可以上一些 NLP 的手段训练模型。大门已经开启，一切随你心意。</p>
+<p>祝各位玩耍愉快 <img src="/img/quyin/watermaleon.png" class="my-emoji" style = "height: 32px;"></p>
+<blockquote>
+<p><strong>Note</strong>：更多信息参见 <a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html">ES 官方中文教程</a>。</p>
+</blockquote>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/monaco_editor_tutorial/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Monaco Editor 入门指南</span>
+    </a>
+    
+    
+    <a href="/posts/python_tips/" class="navigation-next">
+      <span class="navigation-tittle">我的 Python 不可能这么可爱</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+</div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.js" defer></script>
+
+
+<script defer src="https://kit.fontawesome.com/2134995a39.js" crossorigin="anonymous"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/tocbot@4.36.8/dist/tocbot.min.js"></script>
+<script type="text/javascript">
+  if (window.tocbot) {
+    tocbot.init({
+      
+      tocSelector: '.toc',
+      
+      contentSelector: '.post',
+      
+      headingSelector: 'h2, h3, h4',
+      collapseDepth: 4
+    });
+  }
+</script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    mediumZoom('.post img', {
+      background: 'rgba(0,0,0,0.82)',
+      margin: 24,
+      scrollOffset: 0
+    });
+  });
+</script>
+
+
+
+    
+
+
+
+  </body>
+</html>

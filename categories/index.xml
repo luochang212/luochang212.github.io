@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Categories on Chang Luo</title>
+		<link>https://www.luochang.ink/categories/</link>
+		<description>Recent content in Categories on Chang Luo</description>
+		<generator>Hugo</generator>
+		<language>zh-CN</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 24 May 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://www.luochang.ink/categories/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>SOTA</title>
+				<link>https://www.luochang.ink/categories/sota/</link>
+				<pubDate>Sun, 24 May 2026 00:00:00 +0000</pubDate>
+				<guid>https://www.luochang.ink/categories/sota/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Agent</title>
+				<link>https://www.luochang.ink/categories/agent/</link>
+				<pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
+				<guid>https://www.luochang.ink/categories/agent/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Prose</title>
+				<link>https://www.luochang.ink/categories/prose/</link>
+				<pubDate>Thu, 29 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>https://www.luochang.ink/categories/prose/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>BigData</title>
+				<link>https://www.luochang.ink/categories/bigdata/</link>
+				<pubDate>Sat, 15 Nov 2025 00:00:00 +0000</pubDate>
+				<guid>https://www.luochang.ink/categories/bigdata/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>LLMs</title>
+				<link>https://www.luochang.ink/categories/llms/</link>
+				<pubDate>Sat, 26 Apr 2025 00:00:00 +0000</pubDate>
+				<guid>https://www.luochang.ink/categories/llms/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Algorithms</title>
+				<link>https://www.luochang.ink/categories/algorithms/</link>
+				<pubDate>Sat, 19 Apr 2025 00:00:00 +0000</pubDate>
+				<guid>https://www.luochang.ink/categories/algorithms/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>DeepLearning</title>
+				<link>https://www.luochang.ink/categories/deeplearning/</link>
+				<pubDate>Sun, 09 Mar 2025 00:00:00 +0000</pubDate>
+				<guid>https://www.luochang.ink/categories/deeplearning/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Multimodal</title>
+				<link>https://www.luochang.ink/categories/multimodal/</link>
+				<pubDate>Sun, 29 Dec 2024 00:00:00 +0000</pubDate>
+				<guid>https://www.luochang.ink/categories/multimodal/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>DevOps</title>
+				<link>https://www.luochang.ink/categories/devops/</link>
+				<pubDate>Sat, 23 Nov 2024 00:00:00 +0000</pubDate>
+				<guid>https://www.luochang.ink/categories/devops/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>MachineLearning</title>
+				<link>https://www.luochang.ink/categories/machinelearning/</link>
+				<pubDate>Sat, 13 Apr 2024 00:00:00 +0000</pubDate>
+				<guid>https://www.luochang.ink/categories/machinelearning/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Network</title>
+				<link>https://www.luochang.ink/categories/network/</link>
+				<pubDate>Sat, 02 Mar 2024 00:00:00 +0000</pubDate>
+				<guid>https://www.luochang.ink/categories/network/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Hardware</title>
+				<link>https://www.luochang.ink/categories/hardware/</link>
+				<pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
+				<guid>https://www.luochang.ink/categories/hardware/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Life</title>
+				<link>https://www.luochang.ink/categories/life/</link>
+				<pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+				<guid>https://www.luochang.ink/categories/life/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Statistics</title>
+				<link>https://www.luochang.ink/categories/statistics/</link>
+				<pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
+				<guid>https://www.luochang.ink/categories/statistics/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>FrontEnd</title>
+				<link>https://www.luochang.ink/categories/frontend/</link>
+				<pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
+				<guid>https://www.luochang.ink/categories/frontend/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Math</title>
+				<link>https://www.luochang.ink/categories/math/</link>
+				<pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
+				<guid>https://www.luochang.ink/categories/math/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Modeling</title>
+				<link>https://www.luochang.ink/categories/modeling/</link>
+				<pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
+				<guid>https://www.luochang.ink/categories/modeling/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>DataVisualization</title>
+				<link>https://www.luochang.ink/categories/datavisualization/</link>
+				<pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
+				<guid>https://www.luochang.ink/categories/datavisualization/</guid>
+				<description></description>
+			</item>
+	</channel>
+</rss>

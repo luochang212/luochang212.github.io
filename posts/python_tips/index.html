@@ -1,0 +1,1139 @@
+<!doctype html>
+<html lang="zh-CN">
+  
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="https://www.luochang.ink/posts/python_tips/">
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.163.3">
+
+    
+    
+    
+
+<title>我的 Python 不可能这么可爱 • Chang Luo</title>
+
+
+    
+
+
+<meta name="description" content="本文主要介绍 Python 的常用数据类型、内置函数、异常处理、装饰器、画图库等基础知识，也包含少量工程实践。">
+
+
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://www.luochang.ink/images/og-default.jpg">
+	<meta name="twitter:title" content="我的 Python 不可能这么可爱">
+	<meta name="twitter:description" content="本文主要介绍 Python 的常用数据类型、内置函数、异常处理、装饰器、画图库等基础知识，也包含少量工程实践。">
+			<meta name="twitter:site" content="@_stellar_tide">
+
+<meta property="og:url" content="https://www.luochang.ink/posts/python_tips/">
+	<meta property="og:site_name" content="Chang Luo">
+	<meta property="og:title" content="我的 Python 不可能这么可爱">
+	<meta property="og:description" content="本文主要介绍 Python 的常用数据类型、内置函数、异常处理、装饰器、画图库等基础知识，也包含少量工程实践。">
+	<meta property="og:locale" content="zh_CN">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2019-11-14T00:00:00+00:00">
+		<meta property="article:modified_time" content="2019-11-14T00:00:00+00:00">
+		<meta property="article:tag" content="Python">
+		<meta property="article:tag" content="Tips">
+		<meta property="og:image" content="https://www.luochang.ink/images/og-default.jpg">
+
+
+    
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.26b99d1b39c55b25f45753962fee8b8024e3b7525afe742fbbc09e044247c0db.css" integrity="sha256-JrmdGznFWyX0V1OWL&#43;6LgCTjt1Ja/nQvu8CeBEJHwNs=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+
+<link rel="stylesheet" href="/scss/tocbot.5ef07cebc3c477b54270456f149ee02922479bb7555fd344b2c69f953b0e7e5e.css" integrity="sha256-XvB868PEd7VCcEVvFJ7gKSJHm7dVX9NEssaflTsOfl4=">
+
+
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#202020">
+    
+    
+
+</head>
+
+
+  <body
+    class=" "
+  >
+    <div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="https://www.luochang.ink/">Chang Luo</a>
+      </span>
+      
+      
+      
+      <div class="author-image">
+        <button type="button" class="author-trigger" onclick="openNav()" aria-label="打开个人收藏侧栏"
+          aria-controls="mySidenav" aria-expanded="false"><img src="https://www.luochang.ink//images/profile.webp"
+            alt="Chang Luo" class="img--circle img--headshot element--center"></button>
+      </div>
+      
+      <p class="site__description">
+        
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Chang Luo</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		<li class="sidebar-nav__home">
+			<a href="https://www.luochang.ink/"><span>Home</span></a>
+		</li>
+		
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/portfolio/">
+						<span>Projects</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+		
+		<a href="https://twitter.com/_stellar_tide" rel="me" title="X">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		<a href="https://github.com/luochang212" rel="me" title="GitHub">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		<a href="https://mp.weixin.qq.com/s/He-04l46xJTM_MJ3AyTwWQ" rel="me" title="微信">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.35em; height: 1.35em; vertical-align: -0.28em;">
+				<path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135-.01-.27-.027-.407-.03zm-2.53 3.274c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982z"/>
+			</svg>
+		</a>
+		
+		
+		<a href="https://www.zhihu.com/people/Fashionable" rel="me" title="知乎">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2"
+				 stroke-linecap="round" stroke-linejoin="round" style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="m13.3334,3.60098l0,17.1471l1.79582,0l0.75424,2.13703l3.18459,-2.13703l3.93584,0l0,-17.1471l-9.6705,0zm7.41375,14.87538l-1.79283,0l-2.24777,1.50849l-0.53276,-1.50849l-0.53875,0l0,-12.53483l5.10911,0l0,12.53483l0.00299,0zm-8.56906,-7.18927l-3.97475,0c0.06285,-1.34387 0.1287,-3.12174 0.19754,-5.17496l3.91788,0l-0.00299,-0.24244c0,-0.01796 -0.00599,-0.43998 -0.06884,-0.87097c-0.06285,-0.44896 -0.19754,-1.04457 -0.62854,-1.04457l-6.5727,0c0.13169,-0.61657 0.46991,-2.08615 0.87995,-2.80747l0.19155,-0.33522l-0.3861,-0.02095c-0.02394,0 -0.58663,-0.02694 -1.23912,0.31726c-1.06851,0.56868 -1.5474,1.68807 -1.75691,2.52612c-0.55072,2.18791 -1.33489,3.70837 -1.66712,4.35786c-0.09877,0.19155 -0.15863,0.30529 -0.18557,0.38311c-0.05387,0.14666 -0.02394,0.29332 0.0838,0.38909c0.31427,0.28434 1.14334,-0.0868 1.15232,-0.08979c0.01796,-0.00898 0.03891,-0.01796 0.06585,-0.02993c0.41603,-0.18856 1.64916,-0.74826 2.08914,-2.52911l1.69705,0c0.02095,0.96376 0.09278,4.14236 0.0868,5.17496l-4.22018,0l-0.06285,0.0449c-0.69139,0.50582 -0.91288,1.8916 -0.92185,1.95146l-0.0419,0.27536l4.99837,0c-0.36814,2.34355 -0.79315,3.3941 -1.01763,3.81313c-0.11074,0.20951 -0.21849,0.41902 -0.32025,0.62255c-0.63752,1.26306 -1.29898,2.56802 -3.7802,4.5973c-0.10775,0.0838 -0.20951,0.23944 -0.14367,0.41005c0.07183,0.18856 0.27835,0.27237 0.73629,0.27237c0.16162,0 0.35318,-0.00898 0.58065,-0.02993c1.49352,-0.13169 3.01698,-0.53875 4.04359,-2.6219c0.50882,-1.05056 0.94879,-2.14601 1.31394,-3.25941l4.08549,4.78886l0.14965,-0.35916c0.02394,-0.05687 0.56868,-1.38578 0.15264,-2.87032l-0.01497,-0.05387l-3.23547,-3.68143l-0.65847,0.49684c0.19155,-0.78118 0.31726,-1.49352 0.37413,-2.12805l4.74995,0l0,-0.23944c0,-1.20021 -0.55371,-1.91255 -0.57466,-1.94248l-0.07183,-0.08979z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+</section>
+
+      </div>
+    </div>
+    
+<div class="copyright">
+  &copy; 2026 Chang Luo
+  
+</div>
+
+
+
+  </div>
+</div>
+
+<div id="overlay" onclick="closeNav()" aria-hidden="true"></div>
+
+<div id="mySidenav" class="sidenav" role="dialog" aria-label="个人收藏" aria-hidden="true">
+  <div id="main">
+    <div class="tab">
+      <button id="default-tab" class="tablinks active" onclick="openItem(event, 'Resources')"
+        aria-controls="Resources" aria-pressed="true">Resources</button>
+      <button class="tablinks" onclick="openItem(event, 'netease-player')"
+        aria-controls="netease-player" aria-pressed="false">Music</button>
+      <button class="tablinks" onclick="openItem(event, 'video-player')"
+        aria-controls="video-player" aria-pressed="false">Video</button>
+      <button class="tablinks" onclick="openItem(event, 'gallery')"
+        aria-controls="gallery" aria-pressed="false">Gallery</button>
+      <button class="tablinks" onclick="openItem(event, 'gadget')"
+        aria-controls="gadget" aria-pressed="false">Gadget</button>
+      <button class="tablinks" onclick="openItem(event, 'categories')"
+        aria-controls="categories" aria-pressed="false">Cats</button>
+    </div>
+
+    <div id="Resources" class="tabcontent">
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/resources/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Resources"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="netease-player" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
+        frameborder="no"
+        marginheight="0"
+        marginwidth="0"
+        title="Music player"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="video-player" class="tabcontent" hidden>
+      <div class="video-layout">
+        <div class="video-main">
+          <div class="video-cover" id="video-cover">
+            <img id="video-cover-img" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-cover-overlay">
+              <button class="video-play-btn" id="video-play-btn" aria-label="播放视频">
+                <svg viewBox="0 0 24 24" width="48" height="48"><path d="M8 5v14l11-7z" fill="white"/></svg>
+              </button>
+              <span class="video-cover-title" id="video-cover-title">四月是你的谎言</span>
+            </div>
+          </div>
+          <div class="video-frame" id="video-frame" hidden>
+            <iframe src="about:blank"
+              data-src="//player.bilibili.com/player.html?bvid=BV1Ms411D7in&p=1&high_quality=1&danmaku=0&autoplay=0"
+              style="width:100%;"
+              scrolling="no"
+              frameborder="no"
+              framespacing="0"
+              title="Bilibili video player"
+              allowfullscreen="true"></iframe>
+          </div>
+        </div>
+        <div class="video-playlist">
+          <button class="video-item active" data-bvid="BV1Ms411D7in"
+            data-title="四月是你的谎言"
+            data-cover="/images/video-covers/zutomayo.jpg"
+            data-duration="4:04">
+            <img class="video-item-cover" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">四月是你的谎言</span>
+              <span class="video-item-meta">4:04</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1LW411j7dK"
+            data-title="Kids by One republic — 三羊"
+            data-cover="/images/video-covers/sanyang.jpg"
+            data-duration="2:54">
+            <img class="video-item-cover" src="/images/video-covers/sanyang.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">Kids by One republic</span>
+              <span class="video-item-meta">三羊 · 2:54</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Yx411U7Lx"
+            data-title="交织together — M78"
+            data-cover="/images/video-covers/jiaozhi.jpg"
+            data-duration="6:06">
+            <img class="video-item-cover" src="/images/video-covers/jiaozhi.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">交织together</span>
+              <span class="video-item-meta">M78 · 6:06</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1rp4y1L7i4"
+            data-title="新员工入职大会 — 岁己SUI/恋诗夜Koxia"
+            data-cover="/images/video-covers/suisui.jpg"
+            data-duration="2:33">
+            <img class="video-item-cover" src="/images/video-covers/suisui.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">新员工入职大会</span>
+              <span class="video-item-meta">岁己SUI/恋诗夜Koxia · 2:33</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Av4y147QE"
+            data-title="真物论 — 悠亚"
+            data-cover="/images/video-covers/zhenwulun.jpg"
+            data-duration="3:30">
+            <img class="video-item-cover" src="/images/video-covers/zhenwulun.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">真物论</span>
+              <span class="video-item-meta">悠亚 · 3:30</span>
+            </div>
+          </button>
+        </div>        </div>
+      </div>
+
+
+    <div id="gallery" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/gadget/gallery/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Gallery"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="gadget" class="tabcontent drawer-native" hidden>
+      <div class="drawer-native-content">
+        
+          <br>
+<table>
+	<thead>
+			<tr>
+					<th>#</th>
+					<th>name</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td><a href="/gadget/hydra" target="_blank">Hydra</a></td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td><a href="/mozi/" target="_blank">墨子</a></td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td><a href="/gadget/how-old-are-you" target="_blank">年龄可视化</a></td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td><a href="/gadget/plan" target="_blank">计划书</a></td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td><a href="/gadget/piano" target="_blank">Piano</a></td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td><a href="/flockn-roll/" target="_blank">Flock&rsquo;n Roll</a></td>
+			</tr>
+	</tbody>
+</table>
+
+        
+      </div>
+    </div>
+
+    <div id="categories" class="tabcontent drawer-native" hidden>
+      <ul class="drawer-category-list">
+        
+          <li>
+            <a href="/categories/devops/" target="_blank" rel="noopener noreferrer">
+              <span>DevOps</span>
+              <span class="drawer-category-count">12</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/deeplearning/" target="_blank" rel="noopener noreferrer">
+              <span>DeepLearning</span>
+              <span class="drawer-category-count">11</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/agent/" target="_blank" rel="noopener noreferrer">
+              <span>Agent</span>
+              <span class="drawer-category-count">7</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/algorithms/" target="_blank" rel="noopener noreferrer">
+              <span>Algorithms</span>
+              <span class="drawer-category-count">6</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/life/" target="_blank" rel="noopener noreferrer">
+              <span>Life</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/sota/" target="_blank" rel="noopener noreferrer">
+              <span>SOTA</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/bigdata/" target="_blank" rel="noopener noreferrer">
+              <span>BigData</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/statistics/" target="_blank" rel="noopener noreferrer">
+              <span>Statistics</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/frontend/" target="_blank" rel="noopener noreferrer">
+              <span>FrontEnd</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/llms/" target="_blank" rel="noopener noreferrer">
+              <span>LLMs</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/math/" target="_blank" rel="noopener noreferrer">
+              <span>Math</span>
+              <span class="drawer-category-count">2</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/datavisualization/" target="_blank" rel="noopener noreferrer">
+              <span>DataVisualization</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/hardware/" target="_blank" rel="noopener noreferrer">
+              <span>Hardware</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/machinelearning/" target="_blank" rel="noopener noreferrer">
+              <span>MachineLearning</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/modeling/" target="_blank" rel="noopener noreferrer">
+              <span>Modeling</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/multimodal/" target="_blank" rel="noopener noreferrer">
+              <span>Multimodal</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/network/" target="_blank" rel="noopener noreferrer">
+              <span>Network</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/prose/" target="_blank" rel="noopener noreferrer">
+              <span>Prose</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="/js/drawer.js"></script>
+
+
+    <div class="content container">
+    
+<article>
+  <header>
+    <h1>我的 Python 不可能这么可爱</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Nov 14, 2019
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/devops">DEVOPS</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/python">python</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/tips">tips</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 3 min read
+</div>
+
+
+  </header>
+  
+  
+  
+    <div class="toc-wrapper">
+      <input type="checkbox" id="tocToggle">
+      <label for="tocToggle">Table of Content</label>
+      
+        <div class="toc" id="TableOfContents"></div>
+      
+    </div>
+  
+  
+  <div class="post">
+    <blockquote>
+<p>Python 学习笔记，如有错误，欢迎指正 <img src="/img/quyin/witty.png" class="my-emoji" style = "height: 32px;"></p>
+</blockquote>
+<p>GitHub 项目地址：<a href="https://github.com/luochang212/python-tips" target="_blank">python-tips</a></p>
+<!-- 本文从 2019 年 11 月一路更新到了 2020 年 11 月，我也从实习转向了正式工作。一年前，我尚未将 Python 视作主力编程语言。但今天，它毫无疑问已经是我最熟稔的伙伴之一了。
+
+Python 有许多缺点，但是它在机器学习、科学计算、可视化、网络编程等方面的优势，几乎无可匹敌。它的身影在一些不追求高性能的、离线低频次的场景下频繁出现。在诸如数据分析、算法预研、仿真建模等领域，都将 Python 作为首选语言。 -->
+<!-- 它的实用性毋庸置疑，在与计算机有学科交叉的科研院所，包括物理学、天文学、地质学、飞行动力学、地理信息系统、药学等领域的学术研究中都有 Python 的身影；此外，在大厂的数据中台，诸如数据开发、数据分析、数据挖掘等工作，通常也都是用 Python 完成的。 -->
+<!-- 但是，入门 Python 并不容易。因为除了学习使用 Python 写代码，你还要学习关于这门语言自身的知识。例如，Python 有将文件视作模块 (module) 的机制。如果你要具体地理解这件事，你还需要深究 `import` 、 `if __name__ == "__main__"` 和 `__init__.py` 的含义。
+
+Python 语言就像一棵枝叶繁茂的树。如果你找不到枝干，就会被无数琐碎细节淹没，无从入手。《大学》云，知所先后则近道矣，正有其意。我衷心希望本文能成为学习你 Python 的“枝干”和“抓手”。 -->
+<blockquote>
+<p><strong>相关书籍推荐</strong>：</p>
+<ul>
+<li>入门：《Python编程从入门到实践》 [<a href="https://book.douban.com/subject/26829016/">豆瓣链接</a>]</li>
+<li>初级：《Python学习手册》(英文名 <em>Learning Python</em>) [<a href="https://book.douban.com/subject/30364619/">豆瓣链接</a>]</li>
+<li>中级：《流畅的Python》[<a href="https://book.douban.com/subject/27028517/">豆瓣链接</a>]</li>
+</ul>
+<p>PS: 针对每个阶段，我推荐的是我认为最好的那本书。</p>
+</blockquote>
+<h2 id="语言基础">语言基础</h2>
+<h3 id="列表">列表</h3>
+<p>本文从以下几个方面介绍列表：</p>
+<ol>
+<li>创建</li>
+<li>获取</li>
+<li>修改</li>
+<li>添加</li>
+<li>插入</li>
+<li>删除</li>
+<li>排序</li>
+<li>逆序</li>
+<li>索引</li>
+<li>循环</li>
+<li>列表推导</li>
+<li>切片</li>
+<li>复制</li>
+<li>去重</li>
+<li>计数</li>
+<li>查找</li>
+</ol>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/list.ipynb')">查看示例</button>
+</center>
+<h3 id="字典">字典</h3>
+<p>鉴于 JSON 在数据处理中的大量使用，字典的重要性也不言而喻。</p>
+<p>本文从以下几个方面介绍字典：</p>
+<ol>
+<li>创建</li>
+<li>获取</li>
+<li>更新</li>
+<li>遍历</li>
+<li>排序</li>
+<li>删除</li>
+<li>字典与JSON</li>
+<li><code>collections.defaultdict()</code></li>
+<li><code>setdefault()</code></li>
+</ol>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/dict.ipynb')">查看示例</button>
+</center>
+<h3 id="字符串">字符串</h3>
+<p>除了列表和字典，字符串也是 Python 中一种非常重要的数据类型。</p>
+<ol>
+<li>基本操作</li>
+<li>格式化</li>
+<li>字符串方法</li>
+</ol>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/str.ipynb')">查看示例</button>
+</center>
+<h3 id="函数">函数</h3>
+<p>本文目录：</p>
+<ol>
+<li>形参和实参</li>
+<li>位置实参</li>
+<li>关键字实参</li>
+<li>默认值</li>
+<li>位置实参和关键字实参的混用</li>
+<li>默认值、位置实参和关键字实参的混用</li>
+<li>传递任意数量的位置实参</li>
+<li>传递任意数量的关键字实参</li>
+<li>由字符串函数名生成可调用的函数</li>
+</ol>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/func.ipynb')">查看示例</button>
+</center>
+<h3 id="异常">异常</h3>
+<p>程序会发生异常，比如试图在计算中除0。Python 提供了强大的异常处理机制。</p>
+<ol>
+<li>引发异常</li>
+<li>捕捉异常</li>
+<li>捕捉多种异常</li>
+<li>捕捉所有异常</li>
+<li>输出异常</li>
+<li>使用 else</li>
+<li>手动触发异常</li>
+<li>使用 finally</li>
+</ol>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/exception.ipynb')">查看示例</button>
+</center>
+<h3 id="闭包">闭包</h3>
+<blockquote>
+<p><strong>Actually, a closure is a function with an extended scope that encompasses nonglobal variables referenced in the body of the function but not defined there.</strong> It does not matter whether the function is anonymous or not; <strong>what matters is that it can access nonglobal variables that are defined outside of its body.</strong> (<em>Fluent Python</em>)</p>
+</blockquote>
+<p>上面这段话告诉我们，闭包是一个有延伸作用域的函数。该延伸作用域包含非全局变量，这个非全局变量在闭包内引用，但不在闭包内定义。</p>
+<p>这听起来挺抽象的。</p>
+<p>简而言之，闭包本质上是嵌套函数的内层函数。但是嵌套函数的内层函数要成为闭包，还需要满足：</p>
+<ol>
+<li>有延伸作用域；</li>
+<li>该延伸作用域内包含非全局变量；</li>
+<li>该非全局变量在闭包内引用，但不在闭包内定义。</li>
+</ol>
+<p>依旧抽象，直接上例子。</p>
+<p> …………</p>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/closures.ipynb')">查看示例</button>
+</center>
+<h3 id="生成器">生成器</h3>
+<blockquote>
+<p>Every generator is an iterator: generators fully implement the iterator interface. But an iterator—as defined in the GoF book— retrieves items from a collection, while a generator can produce items “out of thin air.” That’s why the Fibonacci sequence gener‐ ator is a common example: an infinite series of numbers cannot be stored in a collection.  &ndash; <em>Fluent Pyton</em></p>
+</blockquote>
+<p>《流畅的Python》这本书中告诉我们：每个生成器都是一个迭代器。为什么这么说？因为生成器完全实现了迭代器的接口。但是一个迭代器需要从集合中取出元素，而生成器却可以无中生有。</p>
+<p>本文目录：</p>
+<ol>
+<li>可迭代对象</li>
+<li>可迭代对象与迭代器的对比</li>
+<li>典型的迭代器</li>
+<li>Sentence 类第3版: 生成器函数</li>
+<li>Sentence 类第4版: 惰性实现</li>
+<li>Sentence类第5版: 生成器表达式</li>
+<li>等差数列生成器</li>
+<li>标准库中的生成器函数</li>
+<li>Python 3.3 中新出现的句法: yield from</li>
+<li>可迭代的归约函数</li>
+<li>深入分析iter函数</li>
+</ol>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/iter.ipynb')">查看示例</button>
+</center>
+<h3 id="装饰器">装饰器</h3>
+<p>本代码基于博文: <a href="https://pouannes.github.io/blog/decorators/" target="_blank">《Finally understanding decorators in Python》</a></p>
+<p>一个带装饰器的函数看起来是这样的：</p>
+<pre tabindex="0"><code>def decorator_name(func):
+    def f():
+        rv = func()
+        return rv
+    return f
+
+@decorator_name
+def func_name():
+    pass
+</code></pre><p>在上面这段代码中，<code>@decorator_name</code> 就是装饰器。</p>
+<p>顾名思义，装饰器是用来装饰东西的。用来装饰什么东西呢？</p>
+<p>它是用来装饰<strong>函数</strong>的。从作用上来说，就是把函数捉出来“装饰”一番，然后放回去。</p>
+<p>下面通过一些例子说明装饰器的用法和意义&hellip;&hellip;</p>
+<p>本文目录：</p>
+<ol>
+<li>装饰器基础</li>
+<li>一个小练习</li>
+<li>使用 <code>*args</code> 和 <code>**kwargs</code></li>
+<li>高阶装饰器</li>
+<li><code>@functools.lru_cache()</code></li>
+</ol>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/decorator.ipynb')">查看示例</button>
+</center>
+<h3 id="内置函数">内置函数</h3>
+<p>Python 是一门实用主义的语言，很多常用的功能都已经封装在内置函数里了。学习一些常用的内置函数，能提高我们使用 Python 的效率。</p>
+<p>本文提及的内置函数包括：</p>
+<ul>
+<li>
+<p>abs()</p>
+</li>
+<li>
+<p>hash()</p>
+</li>
+<li>
+<p>divmod()</p>
+<p>&hellip;&hellip;</p>
+</li>
+<li>
+<p>open()</p>
+</li>
+<li>
+<p>pow()</p>
+</li>
+<li>
+<p>join()</p>
+</li>
+</ul>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/builtInFunction.ipynb')">查看示例</button>
+</center>
+<h3 id="多线程">多线程</h3>
+<p>善用多线程，能提高程序的运行速度。</p>
+<p>本节内容包括：</p>
+<ol>
+<li>多线程的首次尝试</li>
+<li>利用 for loop 创建多线程</li>
+<li>带参数的线程</li>
+</ol>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/thread.ipynb')">查看示例</button>
+</center>
+<h2 id="常用库">常用库</h2>
+<h3 id="numpy">NumPy</h3>
+<p>NumPy 是用于科学计算的库。</p>
+<p>本文的内容包括：</p>
+<ol>
+<li>ndarray
+<ul>
+<li>初始化</li>
+<li>索引</li>
+<li>转置</li>
+</ul>
+</li>
+<li>通用函数
+<ul>
+<li>一元ufunc</li>
+<li>二元ufunc</li>
+<li>用于聚合计算的函数</li>
+<li>排序</li>
+<li>去重</li>
+<li>成员资格</li>
+</ul>
+</li>
+<li>数组文件</li>
+<li>线性代数
+<ul>
+<li>点乘</li>
+<li>求逆</li>
+<li>qr分解</li>
+</ul>
+</li>
+</ol>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/numpy.ipynb')">查看示例</button>
+</center>
+<h3 id="pandas">pandas</h3>
+<p>pandas 是用于数据分析的库。</p>
+<p>本文的内容包括：</p>
+<ol>
+<li>基本数据类型
+<ul>
+<li>Series</li>
+<li>DataFrame</li>
+</ul>
+</li>
+<li>基本功能
+<ul>
+<li>重新索引</li>
+<li>丢弃指定轴上的项</li>
+<li>索引</li>
+<li>算术运算</li>
+<li>算术方法</li>
+<li>DataFrame 和 Series 之间的运算</li>
+<li>函数</li>
+<li>排序</li>
+<li>排名</li>
+<li>带有重复值的索引</li>
+</ul>
+</li>
+<li>统计描述
+<ul>
+<li>求和</li>
+<li>取到最大值时的索引值</li>
+<li>累计求和</li>
+<li>均值</li>
+<li>汇总统计</li>
+<li>相关系数</li>
+<li>协方差</li>
+<li>去重</li>
+<li>值计数</li>
+<li>成员资格</li>
+</ul>
+</li>
+<li>缺失数据
+<ul>
+<li>处理缺失数据</li>
+<li>过滤缺失数据</li>
+<li>填充缺失数据</li>
+</ul>
+</li>
+<li>层次化索引
+<ul>
+<li>构建层次化索引的 Series</li>
+<li>选取数据子集</li>
+<li>stack 和 unstack</li>
+<li>构建层次化索引的 DataFrame</li>
+<li>调整某条轴上索引级别的顺序</li>
+<li>根据级别进行汇总统计</li>
+<li>将 DataFrame 的列作为索引</li>
+</ul>
+</li>
+<li>整数索引</li>
+<li>合并
+<ul>
+<li>默认合并方式</li>
+<li>显式指定作为键的列名</li>
+<li>连接方式</li>
+<li>多对多的合并</li>
+</ul>
+</li>
+</ol>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/pandas.ipynb')">查看示例</button>
+</center>
+<h3 id="datetime">datetime</h3>
+<p>datetime 模块用于操作日期和时间。</p>
+<p>本文目录：</p>
+<ol>
+<li>timedelta 对象
+<ul>
+<li>构造函数</li>
+<li>支持的操作</li>
+</ul>
+</li>
+<li>date 对象
+<ul>
+<li>构造函数</li>
+<li>类方法</li>
+<li>类属性</li>
+<li>支持的操作</li>
+<li>实例方法</li>
+</ul>
+</li>
+<li>datetime 对象
+<ul>
+<li>构造函数</li>
+<li>类方法</li>
+<li>类属性</li>
+<li>实例属性</li>
+<li>支持的操作</li>
+<li>实例方法</li>
+</ul>
+</li>
+<li>time 对象
+<ul>
+<li>构造函数</li>
+<li>类方法</li>
+<li>类属性</li>
+<li>实例方法</li>
+</ul>
+</li>
+<li>tzinfo 对象</li>
+<li>timezone 对象
+<ul>
+<li>构造函数</li>
+<li>实例方法</li>
+</ul>
+</li>
+</ol>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/datetime.ipynb')">查看示例</button>
+</center>
+<h3 id="logging">logging</h3>
+<p>logging 是用于打印日志的 Python 内置库。</p>
+<p>logging 和普通的 print 函数的区别在于，使用 logging 一般是为了报告代码运行的状态，而非输出结果。logging 提供了一系列功能，使打印日志更加方便快捷，比如使用 formatter 可以轻松定制日志的打印格式。</p>
+<p>本文目录：</p>
+<ol>
+<li>简单使用</li>
+<li>在单个脚本中使用
+<ul>
+<li>威胁等级 - level</li>
+<li>日志打印格式 - format</li>
+</ul>
+</li>
+<li>涉及多个模块的使用
+<ul>
+<li>无法被重写</li>
+<li>Logger</li>
+</ul>
+</li>
+</ol>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/logging.ipynb')">查看示例</button>
+</center>
+<h3 id="argparse">argparse</h3>
+<p>本文目录：</p>
+<ol>
+<li>help 参数</li>
+<li>add_argument
+<ul>
+<li>位置参数</li>
+<li>可选参数</li>
+<li>同时使用位置参数与可选参数</li>
+<li>具有flag功能的参数</li>
+<li>更具普适性的方法：const 和 default 的组合</li>
+<li>重命名</li>
+</ul>
+</li>
+</ol>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/argparse.ipynb')">查看示例</button>
+</center>
+<h2 id="代码模版">代码模版</h2>
+<h3 id="画图">画图</h3>
+<p><a href="https://matplotlib.org/">Matplotlib</a> 和 <a href="https://seaborn.pydata.org/">Seaborn</a> 是 Python 环境下比较常用的两个画图库。本例展示了用 Matplotlib 绘制条形图、饼图、折线图和用 Seaborn 绘制复杂折线图的方法。下图展示了本例中实现的图像类型。</p>
+<p><img src="/img/python-tips-1.jpg" alt="image"></p>
+<blockquote>
+<p><strong>Note</strong>: 这里专门提一下 Seaborn 的一个坑。</p>
+<p>Seaborn 的 <code>lineplot()</code> 方法会将横轴标签按 <code>String</code> 的默认方法进行排序。例如，你要画一副横轴标签是 1 - 12 月份的函数图像，那么在 <code>lineplot()</code> 画出的图像里，横轴的实际排序将变成：1月，10月，11月，12月，2月，&hellip; 这完全打乱了我们希望图像展现的月份间的趋势变化。</p>
+<p>为了避免 <code>lineplot()</code> 对横轴标签进行默认排序，需要在函数内添加 <code>sort</code> 参数，并设置 <code>sort=False</code>。</p>
+<p>下图展示了默认情况下，Seaborn 对中文横轴标签的迷之排序。</p>
+<p><img src="/img/python-tips-2.png" alt="image"></p>
+</blockquote>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/plot.ipynb')">查看示例</button>
+</center>
+<h3 id="读写-csv">读写 CSV</h3>
+<p>CSV 是数据表的常用存储方式。除第一行外，每行表示一条信息，行内各字段用英文逗号分隔开。</p>
+<p>本例介绍了从读取 CSV 文件，修改 CSV 文件，到重新写入 CSV 文件的一般流程。</p>
+<p>本文目录：</p>
+<ol>
+<li>读取 CSV 文件</li>
+<li>用 DataFrame 展示数据</li>
+<li>处理数据</li>
+<li>导出数据到 CSV 文件</li>
+<li>用 pandas 读 CSV 文件</li>
+<li>用 pandas 随机读取 CSV 文件</li>
+</ol>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/csv.ipynb')">查看示例</button>
+</center>
+<h2 id="玩转-python">玩转 Python</h2>
+<h3 id="词云">词云</h3>
+<p>本文目录：</p>
+<ol>
+<li>最简单的词云</li>
+<li>几何形状的词云</li>
+<li>以 png 图片作遮罩的词云</li>
+<li>中文词云</li>
+</ol>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/wordCloud.ipynb')">查看示例</button>
+</center>
+<h3 id="图像处理">图像处理</h3>
+<p>本文主要介绍 Python 图像处理的常用库和函数。</p>
+<ol>
+<li>PIL
+<ul>
+<li>颜色转换</li>
+<li>转换图像格式</li>
+<li>创建缩略图</li>
+<li>裁剪</li>
+<li>调整尺寸</li>
+<li>旋转</li>
+<li>粘贴</li>
+</ul>
+</li>
+<li>Matplotlib
+<ul>
+<li>绘制图像、点和线</li>
+<li>图像中的像素点</li>
+<li>图像轮廓</li>
+<li>直方图</li>
+</ul>
+</li>
+<li>Numpy
+<ul>
+<li>像素数组</li>
+<li>灰度变换</li>
+<li>直方图均衡化</li>
+<li>图像平均</li>
+<li>图像的主成分分析</li>
+<li>使用pickle模块</li>
+</ul>
+</li>
+<li>SciPy
+<ul>
+<li>图像模糊</li>
+<li>图像导数</li>
+<li>形态学:对象计数</li>
+<li>图像去噪</li>
+</ul>
+</li>
+<li>GIF图像处理
+<ul>
+<li>将 GIF 图像拆分为图片</li>
+<li>制作逆序gif图像</li>
+</ul>
+</li>
+</ol>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/python-tips/blob/master/image.ipynb')">查看示例</button>
+</center>
+<div id="mini-overlay" onclick="overlay_off()"></div>
+<div id="mini-window"><iframe id="mini-iframe" frameBorder="0"></iframe></div>
+<button id="btn-close" onclick="overlay_off()">×</button>
+<script src="/mini-viewer/overlay.js"></script>
+<link rel="stylesheet" href="/mini-viewer/style.css">
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/elastic_search/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Elasticsearch 初探</span>
+    </a>
+    
+    
+    <a href="/posts/bayesian/" class="navigation-next">
+      <span class="navigation-tittle">贝叶斯方法</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+</div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.js" defer></script>
+
+
+<script defer src="https://kit.fontawesome.com/2134995a39.js" crossorigin="anonymous"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/tocbot@4.36.8/dist/tocbot.min.js"></script>
+<script type="text/javascript">
+  if (window.tocbot) {
+    tocbot.init({
+      
+      tocSelector: '.toc',
+      
+      contentSelector: '.post',
+      
+      headingSelector: 'h2, h3, h4',
+      collapseDepth: 4
+    });
+  }
+</script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    mediumZoom('.post img', {
+      background: 'rgba(0,0,0,0.82)',
+      margin: 24,
+      scrollOffset: 0
+    });
+  });
+</script>
+
+
+
+    
+
+
+
+  </body>
+</html>

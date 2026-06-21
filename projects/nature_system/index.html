@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="author" content="luochang" />
+    <link rel="shortcut icon" type="image/png" href="/img/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300..800;1,300..600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/project-detail.css" />
+    <title>自然系统的建模与仿真</title>
+  </head>
+  <body>
+    <nav class="nav">
+      <a class="back" href="/projects/">← <span>cd ../projects</span></a>
+      <span class="crumb">~/projects/<b>nature_system</b></span>
+      <a
+        class="gh"
+        href="https://github.com/luochang212/nature-system"
+        target="_blank"
+        rel="noopener noreferrer"
+        >GITHUB ↗</a
+      >
+    </nav>
+
+    <div class="wrap">
+      <section class="hero">
+        <div>
+          <div class="tag">
+            nature_system <span class="slash">//</span> abm · agent-based ·
+            ecosystem
+          </div>
+          <h1 class="title">
+            基于<span class="accent">Agent</span>的<br />生态系统建模与仿真
+          </h1>
+          <p class="lede">
+            用 <b>Agent-Based Model（ABM）</b>方法对<b>狼 · 麋鹿 · 草</b>三者构成的生态系统建模，
+            模拟狼群在头狼带领下的<b>集群捕食行为</b>与种群动态演化。
+          </p>
+          <p class="meta">MATLAB OOP &middot; 34 个 m 文件 &middot; 1846 行代码</p>
+          <div class="cta-row">
+            <a
+              class="btn btn-primary"
+              href="https://github.com/luochang212/nature-system"
+              target="_blank"
+              rel="noopener noreferrer"
+              >查看源码 <span class="arrow">→</span></a
+            >
+            <a class="btn btn-ghost" href="/posts/nature_system/">阅读全文</a>
+          </div>
+        </div>
+
+        <aside class="term" aria-hidden="true">
+          <div class="term-bar">
+            <span class="dots"><i></i><i></i><i></i></span>
+            <span class="title">ecolab://simulate</span>
+            <span class="ver">v1.0.0</span>
+          </div>
+          <div class="term-body">
+            <div class="stat-grid">
+              <div class="stat">
+                <div class="k">ENTITIES</div>
+                <div class="v">3<span class="u">wolf·moose·grass</span></div>
+              </div>
+              <div class="stat">
+                <div class="k">BEHAVIORS</div>
+                <div class="v">4<span class="u">eat·migrate·die·breed</span></div>
+              </div>
+            </div>
+            <div class="stat" style="margin-bottom: 14px">
+              <div class="k">WOLF_PACK_AI</div>
+              <div class="v">cluster<span class="u">hunt</span></div>
+              <div class="bar"><i></i></div>
+            </div>
+            <div class="logs">
+              <div class="row">
+                <span class="gt">&gt;</span
+                ><span><span class="k">ecolab</span>(30, 100, 5, 4, 60)</span
+                ><span class="ok">✓</span>
+              </div>
+              <div class="row">
+                <span class="gt">&gt;</span
+                ><span><span class="k">init</span> agents: moose=100, wolf_packs=4</span>
+              </div>
+              <div class="row">
+                <span class="gt">&gt;</span
+                ><span>iter <span class="num">60</span>: moose=<span class="kw2">~</span>, wolves=<span class="kw2">~</span></span>
+              </div>
+              <div class="row">
+                <span class="gt">&gt;</span
+                ><span><span class="k">plot</span> population · position</span
+                ><span class="ok">✓</span>
+              </div>
+            </div>
+            <div class="term-foot">
+              <span><span class="online">● SYSTEM: ONLINE</span></span>
+              <span>MEM 4.2GB / 128GB</span>
+              <span>2019</span>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section">
+        <h2>
+          <span class="hash">//</span> <span class="num">01</span> 建模方法
+          <span class="en">approach</span>
+        </h2>
+        <div class="card">
+          <p>
+            <strong>Agent-Based Model</strong> 以个体为中心建模——虚拟实体与现实个体一一对应，属性是对现实特征的抽象，行为按既定规则迭代演化。与 <span class="kw">Equation-Based Model</span> 关注系统平均状态不同，ABM 擅长表达<strong>每个个体身上发生了什么</strong>，尤其适合以研究个体行为规则为目的的建模。
+          </p>
+          <p>本模型包含三种 Agent，各有不同属性与角色分工：</p>
+          <ul class="specs">
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>狼（Wolf）</b><br /><span class="v"
+                  >分头狼与普通狼。头狼拥有集群行为决策权——根据上一轮捕猎结果判断迁徙方向（吃到 → 朝成功狼移动；没吃到 → 随机探索）。头狼还维护 <code>population</code>（群规模）、<code>range</code>（活动范围）、<code>eaten</code>（捕食数）等群级属性。普通狼在头狼活动范围内随机分布，不参与决策</span
+                ></span
+              >
+            </li>
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>麋鹿（Moose）</b><br /><span class="v"
+                  >以草为食，位置草被吃尽后迁徙。被捕食概率与狼的距离成反比：<code>p = 1 - d/spd</code></span
+                ></span
+              >
+            </li>
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>草（Grass）</b><br /><span class="v"
+                  >均匀平铺于地图，被吃后不生长，驱动麋鹿持续迁徙寻找新食物源。简单但关键的底层驱动力</span
+                ></span
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>
+          <span class="hash">//</span> <span class="num">02</span> 行为规则
+          <span class="en">behaviors</span>
+        </h2>
+        <div class="card">
+          <p>每种 Agent 每轮迭代按 <code>eat → migrate → die → breed</code> 顺序执行四类行为：</p>
+          <ul class="specs">
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>捕食（eat）</b><br /><span class="v"
+                  >狼：麋鹿出现在搜索范围内即判定，距离越近捕获概率越高（<code>pk = 1 - d/spd</code>，随机数判定）。麋鹿：吃所在位置的草，food 属性 ± 1</span
+                ></span
+              >
+            </li>
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>迁徙（migrate）</b><br /><span class="v"
+                  >头狼利用局部信息决策（吃到麋鹿 → 朝成功狼移动；没吃到 → 随机探索）。大狼群更活跃，小狼群更谨慎。麋鹿仅当所在地没草时才移动</span
+                ></span
+              >
+            </li>
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>死亡（die）</b><br /><span class="v"
+                  >狼：饿死或老死（max 25 轮）；狼群共享 food，为 0 时死亡一只普通狼。麋鹿：饿死、老死或被吃。头狼死后由普通狼继任，保证狼群延续</span
+                ></span
+              >
+            </li>
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>生育（breed）</b><br /><span class="v"
+                  >麋鹿每次生 1 只（间隔 ≥ 10 轮，food > 10）。狼群以群为单位生育，数量与群规模成正比、与食物富余程度挂钩。生育后母体食物分给孩子</span
+                ></span
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>
+          <span class="hash">//</span> <span class="num">03</span> 技术架构
+          <span class="en">architecture</span>
+        </h2>
+        <div class="card">
+          <p>
+            采用 <strong>MATLAB 面向对象编程</strong>，总计 <span class="num">34</span> 个 m 文件、<span class="num">1846</span> 行代码。
+            主函数 <code>ecolab.m</code> 搭建基本参数与数据结构后，通过核心调度器 <code>agent_solve</code> 按序调用各 Agent 的行为函数。
+            全局变量 <span class="kw">MESSAGES</span> 维护迭代间状态传递——只要 MESSAGES 和 agent 在每轮正常更新，模型就能稳定运行。
+          </p>
+          <p>
+            调用命令：<code>ecolab(30, 100, 5, 4, 60, false, false)</code> — 环境 30×30，100 只麋鹿，每群 5 只狼，4 个狼群，迭代 60 轮。
+          </p>
+          <figure class="figure">
+            <figcaption>函数调用流程图 — 从 ecolab 主函数到各 Agent 行为模块</figcaption>
+            <img src="/img/nature_system.png" alt="自然系统建模函数调用流程图" loading="lazy" />
+          </figure>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>
+          <span class="hash">//</span> <span class="num">04</span> 运行结果
+          <span class="en">results</span>
+        </h2>
+        <div class="card">
+          <p>
+            运行后输出两张图：<strong>种群数量变化图</strong>展示狼、麋鹿数量随时间波动，以及每次迭代狼群捕食麋鹿的数量；<strong>空间位置分布图</strong>以二维散点展示麋鹿、头狼和普通狼在最终时刻的空间分布。
+          </p>
+          <figure class="figure">
+            <figcaption>种群数量变化曲线 — 麋鹿（蓝）与狼（红）的种群动态，黄色线为每次迭代狼群捕食数</figcaption>
+            <img src="/img/state.jpg" alt="生态系统种群数量变化曲线" loading="lazy" />
+          </figure>
+        </div>
+      </section>
+
+      <div class="foot">
+        <span>© 2019 Chang Luo</span>
+        <span><span class="sys">●</span> BUILD: STABLE · UTF-8 · zh-Hans</span>
+      </div>
+    </div>
+  </body>
+</html>
+

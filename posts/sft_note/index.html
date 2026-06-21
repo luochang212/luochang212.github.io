@@ -1,0 +1,820 @@
+<!doctype html>
+<html lang="zh-CN">
+  
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="https://www.luochang.ink/posts/sft_note/">
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.163.3">
+
+    
+    
+    
+
+<title>三种方法实现监督微调：LLaMA Factory, trl 和 unsloth • Chang Luo</title>
+
+
+    
+
+
+<meta name="description" content="SFT 是一种简单有效的大模型微调方法，本文为了入门写的 side project">
+
+
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://www.luochang.ink/images/og-default.jpg">
+	<meta name="twitter:title" content="三种方法实现监督微调：LLaMA Factory, trl 和 unsloth">
+	<meta name="twitter:description" content="SFT 是一种简单有效的大模型微调方法，本文为了入门写的 side project">
+			<meta name="twitter:site" content="@_stellar_tide">
+
+<meta property="og:url" content="https://www.luochang.ink/posts/sft_note/">
+	<meta property="og:site_name" content="Chang Luo">
+	<meta property="og:title" content="三种方法实现监督微调：LLaMA Factory, trl 和 unsloth">
+	<meta property="og:description" content="SFT 是一种简单有效的大模型微调方法，本文为了入门写的 side project">
+	<meta property="og:locale" content="zh_CN">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2025-04-26T00:00:00+00:00">
+		<meta property="article:modified_time" content="2025-04-26T00:00:00+00:00">
+		<meta property="article:tag" content="Trl">
+		<meta property="article:tag" content="Unsloth">
+		<meta property="article:tag" content="LLaMA Factory">
+		<meta property="og:image" content="https://www.luochang.ink/images/og-default.jpg">
+
+
+    
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.26b99d1b39c55b25f45753962fee8b8024e3b7525afe742fbbc09e044247c0db.css" integrity="sha256-JrmdGznFWyX0V1OWL&#43;6LgCTjt1Ja/nQvu8CeBEJHwNs=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+
+<link rel="stylesheet" href="/scss/tocbot.5ef07cebc3c477b54270456f149ee02922479bb7555fd344b2c69f953b0e7e5e.css" integrity="sha256-XvB868PEd7VCcEVvFJ7gKSJHm7dVX9NEssaflTsOfl4=">
+
+
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#202020">
+    
+    
+
+</head>
+
+
+  <body
+    class=" "
+  >
+    <div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="https://www.luochang.ink/">Chang Luo</a>
+      </span>
+      
+      
+      
+      <div class="author-image">
+        <button type="button" class="author-trigger" onclick="openNav()" aria-label="打开个人收藏侧栏"
+          aria-controls="mySidenav" aria-expanded="false"><img src="https://www.luochang.ink//images/profile.webp"
+            alt="Chang Luo" class="img--circle img--headshot element--center"></button>
+      </div>
+      
+      <p class="site__description">
+        
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Chang Luo</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		<li class="sidebar-nav__home">
+			<a href="https://www.luochang.ink/"><span>Home</span></a>
+		</li>
+		
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/portfolio/">
+						<span>Projects</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+		
+		<a href="https://twitter.com/_stellar_tide" rel="me" title="X">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		<a href="https://github.com/luochang212" rel="me" title="GitHub">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		<a href="https://mp.weixin.qq.com/s/He-04l46xJTM_MJ3AyTwWQ" rel="me" title="微信">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.35em; height: 1.35em; vertical-align: -0.28em;">
+				<path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135-.01-.27-.027-.407-.03zm-2.53 3.274c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982z"/>
+			</svg>
+		</a>
+		
+		
+		<a href="https://www.zhihu.com/people/Fashionable" rel="me" title="知乎">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2"
+				 stroke-linecap="round" stroke-linejoin="round" style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="m13.3334,3.60098l0,17.1471l1.79582,0l0.75424,2.13703l3.18459,-2.13703l3.93584,0l0,-17.1471l-9.6705,0zm7.41375,14.87538l-1.79283,0l-2.24777,1.50849l-0.53276,-1.50849l-0.53875,0l0,-12.53483l5.10911,0l0,12.53483l0.00299,0zm-8.56906,-7.18927l-3.97475,0c0.06285,-1.34387 0.1287,-3.12174 0.19754,-5.17496l3.91788,0l-0.00299,-0.24244c0,-0.01796 -0.00599,-0.43998 -0.06884,-0.87097c-0.06285,-0.44896 -0.19754,-1.04457 -0.62854,-1.04457l-6.5727,0c0.13169,-0.61657 0.46991,-2.08615 0.87995,-2.80747l0.19155,-0.33522l-0.3861,-0.02095c-0.02394,0 -0.58663,-0.02694 -1.23912,0.31726c-1.06851,0.56868 -1.5474,1.68807 -1.75691,2.52612c-0.55072,2.18791 -1.33489,3.70837 -1.66712,4.35786c-0.09877,0.19155 -0.15863,0.30529 -0.18557,0.38311c-0.05387,0.14666 -0.02394,0.29332 0.0838,0.38909c0.31427,0.28434 1.14334,-0.0868 1.15232,-0.08979c0.01796,-0.00898 0.03891,-0.01796 0.06585,-0.02993c0.41603,-0.18856 1.64916,-0.74826 2.08914,-2.52911l1.69705,0c0.02095,0.96376 0.09278,4.14236 0.0868,5.17496l-4.22018,0l-0.06285,0.0449c-0.69139,0.50582 -0.91288,1.8916 -0.92185,1.95146l-0.0419,0.27536l4.99837,0c-0.36814,2.34355 -0.79315,3.3941 -1.01763,3.81313c-0.11074,0.20951 -0.21849,0.41902 -0.32025,0.62255c-0.63752,1.26306 -1.29898,2.56802 -3.7802,4.5973c-0.10775,0.0838 -0.20951,0.23944 -0.14367,0.41005c0.07183,0.18856 0.27835,0.27237 0.73629,0.27237c0.16162,0 0.35318,-0.00898 0.58065,-0.02993c1.49352,-0.13169 3.01698,-0.53875 4.04359,-2.6219c0.50882,-1.05056 0.94879,-2.14601 1.31394,-3.25941l4.08549,4.78886l0.14965,-0.35916c0.02394,-0.05687 0.56868,-1.38578 0.15264,-2.87032l-0.01497,-0.05387l-3.23547,-3.68143l-0.65847,0.49684c0.19155,-0.78118 0.31726,-1.49352 0.37413,-2.12805l4.74995,0l0,-0.23944c0,-1.20021 -0.55371,-1.91255 -0.57466,-1.94248l-0.07183,-0.08979z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+</section>
+
+      </div>
+    </div>
+    
+<div class="copyright">
+  &copy; 2026 Chang Luo
+  
+</div>
+
+
+
+  </div>
+</div>
+
+<div id="overlay" onclick="closeNav()" aria-hidden="true"></div>
+
+<div id="mySidenav" class="sidenav" role="dialog" aria-label="个人收藏" aria-hidden="true">
+  <div id="main">
+    <div class="tab">
+      <button id="default-tab" class="tablinks active" onclick="openItem(event, 'Resources')"
+        aria-controls="Resources" aria-pressed="true">Resources</button>
+      <button class="tablinks" onclick="openItem(event, 'netease-player')"
+        aria-controls="netease-player" aria-pressed="false">Music</button>
+      <button class="tablinks" onclick="openItem(event, 'video-player')"
+        aria-controls="video-player" aria-pressed="false">Video</button>
+      <button class="tablinks" onclick="openItem(event, 'gallery')"
+        aria-controls="gallery" aria-pressed="false">Gallery</button>
+      <button class="tablinks" onclick="openItem(event, 'gadget')"
+        aria-controls="gadget" aria-pressed="false">Gadget</button>
+      <button class="tablinks" onclick="openItem(event, 'categories')"
+        aria-controls="categories" aria-pressed="false">Cats</button>
+    </div>
+
+    <div id="Resources" class="tabcontent">
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/resources/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Resources"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="netease-player" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
+        frameborder="no"
+        marginheight="0"
+        marginwidth="0"
+        title="Music player"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="video-player" class="tabcontent" hidden>
+      <div class="video-layout">
+        <div class="video-main">
+          <div class="video-cover" id="video-cover">
+            <img id="video-cover-img" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-cover-overlay">
+              <button class="video-play-btn" id="video-play-btn" aria-label="播放视频">
+                <svg viewBox="0 0 24 24" width="48" height="48"><path d="M8 5v14l11-7z" fill="white"/></svg>
+              </button>
+              <span class="video-cover-title" id="video-cover-title">四月是你的谎言</span>
+            </div>
+          </div>
+          <div class="video-frame" id="video-frame" hidden>
+            <iframe src="about:blank"
+              data-src="//player.bilibili.com/player.html?bvid=BV1Ms411D7in&p=1&high_quality=1&danmaku=0&autoplay=0"
+              style="width:100%;"
+              scrolling="no"
+              frameborder="no"
+              framespacing="0"
+              title="Bilibili video player"
+              allowfullscreen="true"></iframe>
+          </div>
+        </div>
+        <div class="video-playlist">
+          <button class="video-item active" data-bvid="BV1Ms411D7in"
+            data-title="四月是你的谎言"
+            data-cover="/images/video-covers/zutomayo.jpg"
+            data-duration="4:04">
+            <img class="video-item-cover" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">四月是你的谎言</span>
+              <span class="video-item-meta">4:04</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1LW411j7dK"
+            data-title="Kids by One republic — 三羊"
+            data-cover="/images/video-covers/sanyang.jpg"
+            data-duration="2:54">
+            <img class="video-item-cover" src="/images/video-covers/sanyang.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">Kids by One republic</span>
+              <span class="video-item-meta">三羊 · 2:54</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Yx411U7Lx"
+            data-title="交织together — M78"
+            data-cover="/images/video-covers/jiaozhi.jpg"
+            data-duration="6:06">
+            <img class="video-item-cover" src="/images/video-covers/jiaozhi.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">交织together</span>
+              <span class="video-item-meta">M78 · 6:06</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1rp4y1L7i4"
+            data-title="新员工入职大会 — 岁己SUI/恋诗夜Koxia"
+            data-cover="/images/video-covers/suisui.jpg"
+            data-duration="2:33">
+            <img class="video-item-cover" src="/images/video-covers/suisui.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">新员工入职大会</span>
+              <span class="video-item-meta">岁己SUI/恋诗夜Koxia · 2:33</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Av4y147QE"
+            data-title="真物论 — 悠亚"
+            data-cover="/images/video-covers/zhenwulun.jpg"
+            data-duration="3:30">
+            <img class="video-item-cover" src="/images/video-covers/zhenwulun.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">真物论</span>
+              <span class="video-item-meta">悠亚 · 3:30</span>
+            </div>
+          </button>
+        </div>        </div>
+      </div>
+
+
+    <div id="gallery" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/gadget/gallery/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Gallery"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="gadget" class="tabcontent drawer-native" hidden>
+      <div class="drawer-native-content">
+        
+          <br>
+<table>
+	<thead>
+			<tr>
+					<th>#</th>
+					<th>name</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td><a href="/gadget/hydra" target="_blank">Hydra</a></td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td><a href="/mozi/" target="_blank">墨子</a></td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td><a href="/gadget/how-old-are-you" target="_blank">年龄可视化</a></td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td><a href="/gadget/plan" target="_blank">计划书</a></td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td><a href="/gadget/piano" target="_blank">Piano</a></td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td><a href="/flockn-roll/" target="_blank">Flock&rsquo;n Roll</a></td>
+			</tr>
+	</tbody>
+</table>
+
+        
+      </div>
+    </div>
+
+    <div id="categories" class="tabcontent drawer-native" hidden>
+      <ul class="drawer-category-list">
+        
+          <li>
+            <a href="/categories/devops/" target="_blank" rel="noopener noreferrer">
+              <span>DevOps</span>
+              <span class="drawer-category-count">12</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/deeplearning/" target="_blank" rel="noopener noreferrer">
+              <span>DeepLearning</span>
+              <span class="drawer-category-count">11</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/agent/" target="_blank" rel="noopener noreferrer">
+              <span>Agent</span>
+              <span class="drawer-category-count">7</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/algorithms/" target="_blank" rel="noopener noreferrer">
+              <span>Algorithms</span>
+              <span class="drawer-category-count">6</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/life/" target="_blank" rel="noopener noreferrer">
+              <span>Life</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/sota/" target="_blank" rel="noopener noreferrer">
+              <span>SOTA</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/bigdata/" target="_blank" rel="noopener noreferrer">
+              <span>BigData</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/statistics/" target="_blank" rel="noopener noreferrer">
+              <span>Statistics</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/frontend/" target="_blank" rel="noopener noreferrer">
+              <span>FrontEnd</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/llms/" target="_blank" rel="noopener noreferrer">
+              <span>LLMs</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/math/" target="_blank" rel="noopener noreferrer">
+              <span>Math</span>
+              <span class="drawer-category-count">2</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/datavisualization/" target="_blank" rel="noopener noreferrer">
+              <span>DataVisualization</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/hardware/" target="_blank" rel="noopener noreferrer">
+              <span>Hardware</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/machinelearning/" target="_blank" rel="noopener noreferrer">
+              <span>MachineLearning</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/modeling/" target="_blank" rel="noopener noreferrer">
+              <span>Modeling</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/multimodal/" target="_blank" rel="noopener noreferrer">
+              <span>Multimodal</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/network/" target="_blank" rel="noopener noreferrer">
+              <span>Network</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/prose/" target="_blank" rel="noopener noreferrer">
+              <span>Prose</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="/js/drawer.js"></script>
+
+
+    <div class="content container">
+    
+<article>
+  <header>
+    <h1>三种方法实现监督微调：LLaMA Factory, trl 和 unsloth</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Apr 26, 2025
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/llms">LLMS</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/trl">trl</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/unsloth">unsloth</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/llama-factory">llama factory</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 2 min read
+</div>
+
+
+  </header>
+  
+  
+  
+    <div class="toc-wrapper">
+      <input type="checkbox" id="tocToggle">
+      <label for="tocToggle">Table of Content</label>
+      
+        <div class="toc" id="TableOfContents"></div>
+      
+    </div>
+  
+  
+  <div class="post">
+    <blockquote>
+<p>尝试了三种流行的微调框架，其中最推荐的是 unsloth，因为快！另外两种框架 LLaMA Factory 和 trl 是在夜里跑的，显卡风扇响了一宿。第二天看日志，它们都跑了三个多小时才跑完。但是同样的任务，unsloth 只需要五分钟，快得有点离谱。当然，这么比不是完全公平的，因为它们的量化方法、LoRA 参数是不同的。但是 unsloth 快这一点依然是无可质疑的。如果在 GPU 服务器上认真微调，那么用 LLaMA Factory 没毛病；但如果只是在笔记本上随便玩玩，unsloth 的优势就太大了。</p>
+</blockquote>
+<p>GitHub 项目地址：<a href="https://github.com/luochang212/sft-note" target="_blank">sft-note</a></p>
+<p>⭐ 本文的内容包括：</p>
+<ol>
+<li>大模型微调的三种范式：无监督微调、监督微调、强化学习微调</li>
+<li>介绍用于监督微调的数据格式，以及如何加载数据集</li>
+<li>如何下载 Qwen 模型，代码见 <a href="https://github.com/luochang212/sft-note/blob/main/model/download_qwen.py" target="_blank">download_qwen.py</a></li>
+<li>使用三种框架微调大模型：LLaMA Factory, trl, unsloth</li>
+</ol>
+<h2 id="一引言">一、引言</h2>
+<p>大语言模型有很强的通用能力，但在特定领域，它的表现不如领域小模型。为了让大模型适应特定任务，我们对大模型进行微调，使大模型在保持通用性的同时，兼具领域模型的专业知识、对话风格和输出格式等特质。</p>
+<p>微调大模型有三种范式：</p>
+<ol>
+<li><strong>无监督微调</strong>：在海量数据上进行二次预训练
+<ul>
+<li>PT 增量预训练</li>
+</ul>
+</li>
+<li><strong>监督微调 (SFT)</strong>：构造领域数据集，增强模型的指令遵循能力，并注入领域知识
+<ul>
+<li>指令微调</li>
+</ul>
+</li>
+<li><strong>强化学习微调</strong>：通过 reward 引导模型优化
+<ul>
+<li><a href="https://arxiv.org/abs/2203.02155">RLHF</a> 基于人类反馈的强化学习</li>
+<li><a href="https://arxiv.org/abs/2305.18290">DPO</a> 直接偏好优化方法</li>
+<li><a href="https://arxiv.org/abs/2403.07691">ORPO</a> 比值比偏好优化</li>
+<li><a href="https://arxiv.org/abs/2402.03300">GRPO</a> 群体相对策略优化</li>
+</ul>
+</li>
+</ol>
+<p>本文聚焦 <strong>监督微调 (Supervised Fine-Tuning)</strong>。监督微调是一种简单但有效的微调方式，能够快速融合业务数据、适应业务场景，因此它的性价比极高！</p>
+<h3 id="1-sft-的简单介绍">1. SFT 的简单介绍</h3>
+<p>监督微调的优化目标是 <strong>最小化模型生成回答与目标回答之间的差异</strong>，通常使用交叉熵损失。为避免破坏预训练阶段获得的知识，SFT 阶段通常使用 <strong>较低的学习率</strong>，并且只更新部分参数层，其他参数保持不变。与预训练阶段所需的海量数据相比，SFT 只需 <strong>较小的数据量</strong>（数千到数十万样本），即可完成微调。</p>
+<h3 id="2-sft-的使用场景">2. SFT 的使用场景</h3>
+<p>为了让大家感受一下 SFT 能做什么，下面列举一些使用场景：</p>
+<table>
+	<thead>
+			<tr>
+					<th>任务</th>
+					<th>场景举例</th>
+					<th>类型</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>文案生成</strong></td>
+					<td>输入标签：<code>红色#女士#卫衣</code>，输出文案：<code>女士专属红色卫衣，解锁秋冬时尚密码</code></td>
+					<td>任务对齐</td>
+			</tr>
+			<tr>
+					<td><strong>情感分类</strong></td>
+					<td>输入用户评论：<code>蓝牙连接不稳定</code>，输出情感标签：<code>负面</code></td>
+					<td>任务对齐</td>
+			</tr>
+			<tr>
+					<td><strong>合同审核</strong></td>
+					<td>输入合同文本，输出潜在法律风险，并引述法条和案例</td>
+					<td>知识迁移</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="3-sft-的数据集格式">3. SFT 的数据集格式</h3>
+<p>SFT 通过人类精心设计的高质量数据集进行微调。</p>
+<p>微调使用的数据格式是灵活的。但是过于灵活的数据格式，可能导致加载数据的不便。经过几年时间，逐渐发展出一些主流的数据格式。其中，<a href="https://github.com/tatsu-lab/stanford_alpaca">alpaca</a> 就是一种专为指令微调设计的数据格式。通常，每条 alpaca 数据由 <code>instruction</code>, <code>input</code>, <code>output</code> 三个字段组成。</p>
+<p><strong>1）问答数据集</strong></p>
+<pre tabindex="0"><code>{
+    &#34;instruction&#34;: &#34;帕金森叠加综合征的辅助治疗有些什么？&#34;,
+    &#34;input&#34;: &#34;&#34;,
+    &#34;output&#34;: &#34;综合治疗；康复训练；生活护理指导；低频重复经颅磁刺激治疗&#34;
+}
+</code></pre><p>上面是一条 alpaca 格式的问答数据。对于问答数据，<code>input</code> 字段可以留空。问题放在 <code>instruction</code> 字段；回答放在 <code>output</code> 字段。</p>
+<p><strong>2）指令微调数据集</strong></p>
+<pre tabindex="0"><code>{
+    &#34;instruction&#34;: &#34;请对下面这篇文章进行分类，分类标签从“教育”、“健康”、“游戏”、“其他”四个标签中选择。仅回答标签，不要回答除标签以外的任何内容。&#34;,
+    &#34;input&#34;: &#34;怪物猎人崛起实在是太好玩了！&#34;,
+    &#34;output&#34;: &#34;游戏&#34;
+}
+</code></pre><p>上面是一条 alpaca 格式的指令微调数据。指令微调数据的三个字段都有值。<code>instruction</code> 字段写我们希望模型做什么；<code>input</code> 字段写这次请求模型的输入，<code>output</code> 字段写这次请求我们希望模型输出什么。</p>
+<blockquote>
+<p>SFT 还有其他数据格式，比如 <code>ShareGPT</code>, <code>ChatML</code> 等，参考 <a href="https://docs.unsloth.ai/basics/datasets-guide">datasets-guide</a></p>
+</blockquote>
+<h3 id="4-本文的任务">4. 本文的任务</h3>
+<p>本文只有一个微调任务，但是通过三种框架实现。</p>
+<p><strong>一个任务：</strong></p>
+<p>使用 <strong>医疗问答数据集 medical</strong> 对 <strong>Qwen 模型</strong> 做 <strong>SFT 监督微调</strong>。相关资源列表如下：</p>
+<ul>
+<li>medical 数据集：<a href="https://huggingface.co/datasets/shibing624/medical">shibing624/medical</a></li>
+<li><code>Qwen2.5-0.5B-Instruct</code> 模型：<a href="https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct">Qwen/Qwen2.5-0.5B-Instruct</a></li>
+<li><code>Qwen2.5-7B-Instruct</code> 模型：<a href="https://huggingface.co/Qwen/Qwen2.5-7B-Instruct">Qwen/Qwen2.5-7B-Instruct</a></li>
+</ul>
+<p><strong>三种框架：</strong></p>
+<ul>
+<li><strong>LLaMA Factory</strong>: 提供简洁的 UI 界面，支持零代码微调大模型</li>
+<li><strong>trl</strong>: 有 HuggingFace 生态支持，且工具链完备。不仅支持监督微调，对强化学习微调的支持也很好</li>
+<li><strong>unsloth</strong>: 擅长加速训练和量化技术，能显著减少显存使用量、加快训练速度</li>
+</ul>
+<p>本文旨在跑通流程，因此使用 <code>0.5B</code> 模型。这既能减少显存占用，也能更快完成任务。如果你有 RTX 5090 或者 GPU 服务器，可以考虑使用 <code>3B</code>, <code>7B</code> 等更大规模的模型。如果你计划用较多的样本进行训练，可以考虑使用非 Instruct 模型，关于这点建议参考文档 <a href="https://docs.unsloth.ai/get-started/beginner-start-here/what-model-should-i-use#instruct-or-base-model"><em>Instruct or Base Model?</em></a></p>
+<h2 id="二llama-factory">二、LLaMA-Factory</h2>
+<p>首先，我们来安装 <a href="https://github.com/hiyouga/LLaMA-Factory">LLaMA-Factory</a>。LLaMA Factory 是一个比较容易上手的微调框架，可以通过 WebUI 来零代码微调大模型。</p>
+<ol>
+<li>环境准备
+<ul>
+<li>安装 LLaMA Factory</li>
+<li>下载 Qwen 模型</li>
+<li>模型推理测试</li>
+</ul>
+</li>
+<li>数据准备
+<ul>
+<li>下载医疗对话数据集</li>
+<li>检查数据格式</li>
+<li>添加描述文件</li>
+</ul>
+</li>
+<li>微调大模型
+<ul>
+<li>SFT 监督微调</li>
+<li>加载训练好的 LoRA 文件</li>
+<li>导出微调后的模型</li>
+</ul>
+</li>
+<li>vLLM 作为推理后端
+<ul>
+<li>启动后端推理服务</li>
+<li>运行客户端获取结果</li>
+</ul>
+</li>
+</ol>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/sft-note/blob/main/1.llama_factory.ipynb')">查看笔记</button>
+</center>
+<br>
+<h2 id="三trl">三、trl</h2>
+<p><a href="https://github.com/huggingface/trl">trl</a> 的功能强大，支持 SFT, PPO, DPO, GRPO 等微调方法。并且有良好的生态支持，比如，trl 可以配合 <a href="https://github.com/huggingface/peft">peft</a> 的 <code>LoraConfig</code> 模块定义 LoRA 参数；配合 <a href="https://github.com/unslothai/unsloth">unsloth</a> 的 <code>FastLanguageModel</code> 模型加载模型。</p>
+<p>与上一节的 LLaMA Factory 相比，trl 可以更精细地定义训练中的行为。比如，如何加载数据集、如何构建损失函数、允许哪些参数层参与训练等等。适合需要深度控制训练过程的场景。</p>
+<ol>
+<li>加载数据集</li>
+<li>微调 Qwen 模型</li>
+<li>加载微调后的模型</li>
+</ol>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/sft-note/blob/main/2.trl.ipynb')">查看笔记</button>
+</center>
+<br>
+<h2 id="四unsloth">四、unsloth</h2>
+<p><a href="https://github.com/unslothai/unsloth">unsloth</a> 是目前最适合在消费级显卡上使用的微调框架，它的显存消耗少且速度极快。最感人的是它的文档也是最全的，回答了初学者的常见疑惑和一些很有价值的问题 &ndash;&gt; <a href="https://docs.unsloth.ai/get-started/beginner-start-here">⭐ Beginner? Start here!</a></p>
+<ol>
+<li>加载模型</li>
+<li>加载数据</li>
+<li>微调模型</li>
+<li>模型推理</li>
+<li>保存模型</li>
+<li>保存模型后重新加载</li>
+</ol>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/sft-note/blob/main/3.unsloth.ipynb')">查看笔记</button>
+</center>
+<br>
+<div id="mini-overlay" onclick="overlay_off()"></div>
+<div id="mini-window"><iframe id="mini-iframe" frameBorder="0"></iframe></div>
+<button id="btn-close" onclick="overlay_off()">×</button>
+<script src="/mini-viewer/overlay.js"></script>
+<link rel="stylesheet" href="/mini-viewer/style.css">
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/cluster_label_assign/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">DNN 模型聚类特征更新方法</span>
+    </a>
+    
+    
+    <a href="/posts/agent_project/" class="navigation-next">
+      <span class="navigation-tittle">Agent 实战：智能路由、任务拆解和链路工程</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+</div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.js" defer></script>
+
+
+<script defer src="https://kit.fontawesome.com/2134995a39.js" crossorigin="anonymous"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/tocbot@4.36.8/dist/tocbot.min.js"></script>
+<script type="text/javascript">
+  if (window.tocbot) {
+    tocbot.init({
+      
+      tocSelector: '.toc',
+      
+      contentSelector: '.post',
+      
+      headingSelector: 'h2, h3, h4',
+      collapseDepth: 4
+    });
+  }
+</script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    mediumZoom('.post img', {
+      background: 'rgba(0,0,0,0.82)',
+      margin: 24,
+      scrollOffset: 0
+    });
+  });
+</script>
+
+
+
+    
+
+
+
+  </body>
+</html>

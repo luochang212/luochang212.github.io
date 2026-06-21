@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="author" content="luochang" />
+    <link rel="shortcut icon" type="image/png" href="/img/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300..800;1,300..600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/project-detail.css" />
+    <title>Monaco Speech Editor</title>
+  </head>
+  <body>
+    <nav class="nav">
+      <a class="back" href="/projects/">← <span>cd ../projects</span></a>
+      <span class="crumb">~/projects/<b>monaco_speech_editor</b></span>
+      <a
+        class="gh"
+        href="https://github.com/luochang212/monaco-speech-editor"
+        target="_blank"
+        rel="noopener noreferrer"
+        >GITHUB ↗</a
+      >
+    </nav>
+
+    <div class="wrap">
+      <section class="hero">
+        <div>
+          <div class="tag">
+            monaco_speech_editor <span class="slash">//</span> accessibility ·
+            web-speech-api · react
+          </div>
+          <h1 class="title">
+            <span class="accent">Monaco</span><br />Speech Editor
+          </h1>
+          <p class="lede">
+            在开源编辑器 <b>Monaco Editor</b> 基础上，集成
+            <b>Web Speech API</b> 语音模块与定制操作界面，为视障人群打造可用的在线代码编辑器。
+          </p>
+          <p class="meta">Accessibility · 语音辅助 · 无障碍编程</p>
+          <div class="cta-row">
+            <a
+              class="btn btn-primary"
+              href="/gadget/monaco-speech-editor"
+              target="_blank"
+              rel="noopener noreferrer"
+              >在线体验 <span class="arrow">→</span></a
+            >
+            <a
+              class="btn btn-ghost"
+              href="https://github.com/luochang212/monaco-speech-editor"
+              target="_blank"
+              rel="noopener noreferrer"
+              >查看源码</a
+            >
+          </div>
+        </div>
+
+        <aside class="term" aria-hidden="true">
+          <div class="term-bar">
+            <span class="dots"><i></i><i></i><i></i></span>
+            <span class="title">speech_editor://listen</span>
+            <span class="ver">v1.0.0</span>
+          </div>
+          <div class="term-body">
+            <div class="stat-grid">
+              <div class="stat">
+                <div class="k">ENGINE</div>
+                <div class="v">Monaco<span class="u">VS Code</span></div>
+              </div>
+              <div class="stat">
+                <div class="k">SPEECH_API</div>
+                <div class="v">Web<span class="u">Speech</span></div>
+              </div>
+            </div>
+            <div class="stat" style="margin-bottom: 14px">
+              <div class="k">MODES</div>
+              <div class="v">4<span class="u">char·code·music·global</span></div>
+              <div class="bar"><i></i></div>
+            </div>
+            <div class="logs">
+              <div class="row">
+                <span class="gt">&gt;</span
+                ><span><span class="k">init</span> Monaco Editor</span
+                ><span class="ok">✓</span>
+              </div>
+              <div class="row">
+                <span class="gt">&gt;</span
+                ><span><span class="k">register</span> SpeechSynthesis API</span>
+              </div>
+              <div class="row">
+                <span class="gt">&gt;</span
+                ><span><span class="k">bind</span> keyboard shortcuts</span>
+              </div>
+              <div class="row">
+                <span class="gt">&gt;</span
+                ><span>mode = <span class="num">"char"</span></span
+                ><span class="ok">✓</span>
+              </div>
+            </div>
+            <div class="term-foot">
+              <span><span class="online">● SYSTEM: ONLINE</span></span>
+              <span>MEM 4.2GB / 128GB</span>
+              <span>2019</span>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section">
+        <h2>
+          <span class="hash">//</span> <span class="num">01</span> 项目背景
+          <span class="en">background</span>
+        </h2>
+        <div class="card">
+          <p>
+            编程领域对<strong>视障人群</strong>的支持长期不足。本项目在 VS Code 同款内核
+            <span class="kw">Monaco Editor</span> 上集成语音辅助功能，让视障用户也能通过键盘导航和语音反馈高效编程。
+          </p>
+          <p>
+            核心创新在于针对编码场景设计了<strong>四种差异化语音模式</strong>，覆盖阅读、调试、浏览等不同需求阶段。
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>
+          <span class="hash">//</span> <span class="num">02</span> 功能特性
+          <span class="en">features</span>
+        </h2>
+        <div class="card">
+          <ul class="specs">
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>鼠标悬浮提示</b><br /><span class="v"
+                  >光标 hover 时语音读出变量名、类型等信息</span
+                ></span
+              >
+            </li>
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>快捷键操作</b><br /><span class="v"
+                  >纯键盘操控，无需鼠标即可完成代码导航与编辑</span
+                ></span
+              >
+            </li>
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>字符模式</b><br /><span class="v"
+                  >逐字符朗读，适用于 <span class="kw">debug</span> 场景</span
+                ></span
+              >
+            </li>
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>代码模式</b><br /><span class="v"
+                  >按语法结构朗读，适用于代码浏览</span
+                ></span
+              >
+            </li>
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>音乐模式 / 全局模式</b><br /><span class="v"
+                  >非语音音频反馈与全局概览，适配不同阅读需求</span
+                ></span
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <div class="foot">
+        <span>© 2019 Chang Luo</span>
+        <span><span class="sys">●</span> BUILD: STABLE · UTF-8 · zh-Hans</span>
+      </div>
+    </div>
+  </body>
+</html>
+

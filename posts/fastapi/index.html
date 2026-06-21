@@ -1,0 +1,1174 @@
+<!doctype html>
+<html lang="zh-CN">
+  
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="https://www.luochang.ink/posts/fastapi/">
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.163.3">
+
+    
+    
+    
+
+<title>FastAPI 初见 • Chang Luo</title>
+
+
+    
+
+
+<meta name="description" content="什么是 API？如何从零开始，搭建自己的第一个API？本文带你搭建一个 API 小应用以了解 FastAPI 的使用细节">
+
+
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://www.luochang.ink/images/og-default.jpg">
+	<meta name="twitter:title" content="FastAPI 初见">
+	<meta name="twitter:description" content="什么是 API？如何从零开始，搭建自己的第一个API？本文带你搭建一个 API 小应用以了解 FastAPI 的使用细节">
+			<meta name="twitter:site" content="@_stellar_tide">
+
+<meta property="og:url" content="https://www.luochang.ink/posts/fastapi/">
+	<meta property="og:site_name" content="Chang Luo">
+	<meta property="og:title" content="FastAPI 初见">
+	<meta property="og:description" content="什么是 API？如何从零开始，搭建自己的第一个API？本文带你搭建一个 API 小应用以了解 FastAPI 的使用细节">
+	<meta property="og:locale" content="zh_CN">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2020-11-21T00:00:00+00:00">
+		<meta property="article:modified_time" content="2020-11-21T00:00:00+00:00">
+		<meta property="article:tag" content="API">
+		<meta property="article:tag" content="FastAPI">
+		<meta property="og:image" content="https://www.luochang.ink/images/og-default.jpg">
+
+
+    
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.26b99d1b39c55b25f45753962fee8b8024e3b7525afe742fbbc09e044247c0db.css" integrity="sha256-JrmdGznFWyX0V1OWL&#43;6LgCTjt1Ja/nQvu8CeBEJHwNs=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+
+<link rel="stylesheet" href="/scss/tocbot.5ef07cebc3c477b54270456f149ee02922479bb7555fd344b2c69f953b0e7e5e.css" integrity="sha256-XvB868PEd7VCcEVvFJ7gKSJHm7dVX9NEssaflTsOfl4=">
+
+
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#202020">
+    
+    
+
+</head>
+
+
+  <body
+    class=" "
+  >
+    <div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="https://www.luochang.ink/">Chang Luo</a>
+      </span>
+      
+      
+      
+      <div class="author-image">
+        <button type="button" class="author-trigger" onclick="openNav()" aria-label="打开个人收藏侧栏"
+          aria-controls="mySidenav" aria-expanded="false"><img src="https://www.luochang.ink//images/profile.webp"
+            alt="Chang Luo" class="img--circle img--headshot element--center"></button>
+      </div>
+      
+      <p class="site__description">
+        
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Chang Luo</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		<li class="sidebar-nav__home">
+			<a href="https://www.luochang.ink/"><span>Home</span></a>
+		</li>
+		
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/portfolio/">
+						<span>Projects</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+		
+		<a href="https://twitter.com/_stellar_tide" rel="me" title="X">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		<a href="https://github.com/luochang212" rel="me" title="GitHub">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		<a href="https://mp.weixin.qq.com/s/He-04l46xJTM_MJ3AyTwWQ" rel="me" title="微信">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.35em; height: 1.35em; vertical-align: -0.28em;">
+				<path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135-.01-.27-.027-.407-.03zm-2.53 3.274c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982z"/>
+			</svg>
+		</a>
+		
+		
+		<a href="https://www.zhihu.com/people/Fashionable" rel="me" title="知乎">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2"
+				 stroke-linecap="round" stroke-linejoin="round" style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="m13.3334,3.60098l0,17.1471l1.79582,0l0.75424,2.13703l3.18459,-2.13703l3.93584,0l0,-17.1471l-9.6705,0zm7.41375,14.87538l-1.79283,0l-2.24777,1.50849l-0.53276,-1.50849l-0.53875,0l0,-12.53483l5.10911,0l0,12.53483l0.00299,0zm-8.56906,-7.18927l-3.97475,0c0.06285,-1.34387 0.1287,-3.12174 0.19754,-5.17496l3.91788,0l-0.00299,-0.24244c0,-0.01796 -0.00599,-0.43998 -0.06884,-0.87097c-0.06285,-0.44896 -0.19754,-1.04457 -0.62854,-1.04457l-6.5727,0c0.13169,-0.61657 0.46991,-2.08615 0.87995,-2.80747l0.19155,-0.33522l-0.3861,-0.02095c-0.02394,0 -0.58663,-0.02694 -1.23912,0.31726c-1.06851,0.56868 -1.5474,1.68807 -1.75691,2.52612c-0.55072,2.18791 -1.33489,3.70837 -1.66712,4.35786c-0.09877,0.19155 -0.15863,0.30529 -0.18557,0.38311c-0.05387,0.14666 -0.02394,0.29332 0.0838,0.38909c0.31427,0.28434 1.14334,-0.0868 1.15232,-0.08979c0.01796,-0.00898 0.03891,-0.01796 0.06585,-0.02993c0.41603,-0.18856 1.64916,-0.74826 2.08914,-2.52911l1.69705,0c0.02095,0.96376 0.09278,4.14236 0.0868,5.17496l-4.22018,0l-0.06285,0.0449c-0.69139,0.50582 -0.91288,1.8916 -0.92185,1.95146l-0.0419,0.27536l4.99837,0c-0.36814,2.34355 -0.79315,3.3941 -1.01763,3.81313c-0.11074,0.20951 -0.21849,0.41902 -0.32025,0.62255c-0.63752,1.26306 -1.29898,2.56802 -3.7802,4.5973c-0.10775,0.0838 -0.20951,0.23944 -0.14367,0.41005c0.07183,0.18856 0.27835,0.27237 0.73629,0.27237c0.16162,0 0.35318,-0.00898 0.58065,-0.02993c1.49352,-0.13169 3.01698,-0.53875 4.04359,-2.6219c0.50882,-1.05056 0.94879,-2.14601 1.31394,-3.25941l4.08549,4.78886l0.14965,-0.35916c0.02394,-0.05687 0.56868,-1.38578 0.15264,-2.87032l-0.01497,-0.05387l-3.23547,-3.68143l-0.65847,0.49684c0.19155,-0.78118 0.31726,-1.49352 0.37413,-2.12805l4.74995,0l0,-0.23944c0,-1.20021 -0.55371,-1.91255 -0.57466,-1.94248l-0.07183,-0.08979z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+</section>
+
+      </div>
+    </div>
+    
+<div class="copyright">
+  &copy; 2026 Chang Luo
+  
+</div>
+
+
+
+  </div>
+</div>
+
+<div id="overlay" onclick="closeNav()" aria-hidden="true"></div>
+
+<div id="mySidenav" class="sidenav" role="dialog" aria-label="个人收藏" aria-hidden="true">
+  <div id="main">
+    <div class="tab">
+      <button id="default-tab" class="tablinks active" onclick="openItem(event, 'Resources')"
+        aria-controls="Resources" aria-pressed="true">Resources</button>
+      <button class="tablinks" onclick="openItem(event, 'netease-player')"
+        aria-controls="netease-player" aria-pressed="false">Music</button>
+      <button class="tablinks" onclick="openItem(event, 'video-player')"
+        aria-controls="video-player" aria-pressed="false">Video</button>
+      <button class="tablinks" onclick="openItem(event, 'gallery')"
+        aria-controls="gallery" aria-pressed="false">Gallery</button>
+      <button class="tablinks" onclick="openItem(event, 'gadget')"
+        aria-controls="gadget" aria-pressed="false">Gadget</button>
+      <button class="tablinks" onclick="openItem(event, 'categories')"
+        aria-controls="categories" aria-pressed="false">Cats</button>
+    </div>
+
+    <div id="Resources" class="tabcontent">
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/resources/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Resources"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="netease-player" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
+        frameborder="no"
+        marginheight="0"
+        marginwidth="0"
+        title="Music player"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="video-player" class="tabcontent" hidden>
+      <div class="video-layout">
+        <div class="video-main">
+          <div class="video-cover" id="video-cover">
+            <img id="video-cover-img" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-cover-overlay">
+              <button class="video-play-btn" id="video-play-btn" aria-label="播放视频">
+                <svg viewBox="0 0 24 24" width="48" height="48"><path d="M8 5v14l11-7z" fill="white"/></svg>
+              </button>
+              <span class="video-cover-title" id="video-cover-title">四月是你的谎言</span>
+            </div>
+          </div>
+          <div class="video-frame" id="video-frame" hidden>
+            <iframe src="about:blank"
+              data-src="//player.bilibili.com/player.html?bvid=BV1Ms411D7in&p=1&high_quality=1&danmaku=0&autoplay=0"
+              style="width:100%;"
+              scrolling="no"
+              frameborder="no"
+              framespacing="0"
+              title="Bilibili video player"
+              allowfullscreen="true"></iframe>
+          </div>
+        </div>
+        <div class="video-playlist">
+          <button class="video-item active" data-bvid="BV1Ms411D7in"
+            data-title="四月是你的谎言"
+            data-cover="/images/video-covers/zutomayo.jpg"
+            data-duration="4:04">
+            <img class="video-item-cover" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">四月是你的谎言</span>
+              <span class="video-item-meta">4:04</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1LW411j7dK"
+            data-title="Kids by One republic — 三羊"
+            data-cover="/images/video-covers/sanyang.jpg"
+            data-duration="2:54">
+            <img class="video-item-cover" src="/images/video-covers/sanyang.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">Kids by One republic</span>
+              <span class="video-item-meta">三羊 · 2:54</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Yx411U7Lx"
+            data-title="交织together — M78"
+            data-cover="/images/video-covers/jiaozhi.jpg"
+            data-duration="6:06">
+            <img class="video-item-cover" src="/images/video-covers/jiaozhi.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">交织together</span>
+              <span class="video-item-meta">M78 · 6:06</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1rp4y1L7i4"
+            data-title="新员工入职大会 — 岁己SUI/恋诗夜Koxia"
+            data-cover="/images/video-covers/suisui.jpg"
+            data-duration="2:33">
+            <img class="video-item-cover" src="/images/video-covers/suisui.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">新员工入职大会</span>
+              <span class="video-item-meta">岁己SUI/恋诗夜Koxia · 2:33</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Av4y147QE"
+            data-title="真物论 — 悠亚"
+            data-cover="/images/video-covers/zhenwulun.jpg"
+            data-duration="3:30">
+            <img class="video-item-cover" src="/images/video-covers/zhenwulun.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">真物论</span>
+              <span class="video-item-meta">悠亚 · 3:30</span>
+            </div>
+          </button>
+        </div>        </div>
+      </div>
+
+
+    <div id="gallery" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/gadget/gallery/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Gallery"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="gadget" class="tabcontent drawer-native" hidden>
+      <div class="drawer-native-content">
+        
+          <br>
+<table>
+	<thead>
+			<tr>
+					<th>#</th>
+					<th>name</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td><a href="/gadget/hydra" target="_blank">Hydra</a></td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td><a href="/mozi/" target="_blank">墨子</a></td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td><a href="/gadget/how-old-are-you" target="_blank">年龄可视化</a></td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td><a href="/gadget/plan" target="_blank">计划书</a></td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td><a href="/gadget/piano" target="_blank">Piano</a></td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td><a href="/flockn-roll/" target="_blank">Flock&rsquo;n Roll</a></td>
+			</tr>
+	</tbody>
+</table>
+
+        
+      </div>
+    </div>
+
+    <div id="categories" class="tabcontent drawer-native" hidden>
+      <ul class="drawer-category-list">
+        
+          <li>
+            <a href="/categories/devops/" target="_blank" rel="noopener noreferrer">
+              <span>DevOps</span>
+              <span class="drawer-category-count">12</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/deeplearning/" target="_blank" rel="noopener noreferrer">
+              <span>DeepLearning</span>
+              <span class="drawer-category-count">11</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/agent/" target="_blank" rel="noopener noreferrer">
+              <span>Agent</span>
+              <span class="drawer-category-count">7</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/algorithms/" target="_blank" rel="noopener noreferrer">
+              <span>Algorithms</span>
+              <span class="drawer-category-count">6</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/life/" target="_blank" rel="noopener noreferrer">
+              <span>Life</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/sota/" target="_blank" rel="noopener noreferrer">
+              <span>SOTA</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/bigdata/" target="_blank" rel="noopener noreferrer">
+              <span>BigData</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/statistics/" target="_blank" rel="noopener noreferrer">
+              <span>Statistics</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/frontend/" target="_blank" rel="noopener noreferrer">
+              <span>FrontEnd</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/llms/" target="_blank" rel="noopener noreferrer">
+              <span>LLMs</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/math/" target="_blank" rel="noopener noreferrer">
+              <span>Math</span>
+              <span class="drawer-category-count">2</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/datavisualization/" target="_blank" rel="noopener noreferrer">
+              <span>DataVisualization</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/hardware/" target="_blank" rel="noopener noreferrer">
+              <span>Hardware</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/machinelearning/" target="_blank" rel="noopener noreferrer">
+              <span>MachineLearning</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/modeling/" target="_blank" rel="noopener noreferrer">
+              <span>Modeling</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/multimodal/" target="_blank" rel="noopener noreferrer">
+              <span>Multimodal</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/network/" target="_blank" rel="noopener noreferrer">
+              <span>Network</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/prose/" target="_blank" rel="noopener noreferrer">
+              <span>Prose</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="/js/drawer.js"></script>
+
+
+    <div class="content container">
+    
+<article>
+  <header>
+    <h1>FastAPI 初见</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Nov 21, 2020
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/devops">DEVOPS</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/api">api</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/fastapi">fastapi</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 7 min read
+</div>
+
+
+  </header>
+  
+  
+  
+    <div class="toc-wrapper">
+      <input type="checkbox" id="tocToggle">
+      <label for="tocToggle">Table of Content</label>
+      
+        <div class="toc" id="TableOfContents"></div>
+      
+    </div>
+  
+  
+  <div class="post">
+    <blockquote>
+<p>什么是 API？如何从零开始，搭建自己的第一个API？本文带你搭建一个 API 小应用以了解 FastAPI 的使用细节</p>
+</blockquote>
+<!-- > 什么是 API？API 有什么用？本文从零开始教你搭建 API，认识 API 服务中的组件和 FastAPI 的使用细节。 -->
+<p>GitHub 项目地址：<a href="https://github.com/luochang212/calendar-api" target="_blank">calendar-api</a></p>
+<p>什么是 API？</p>
+<p>简单来说，<a href="https://en.wikipedia.org/wiki/API">API</a> <!-- (application programming interface, 应用编程接口)  -->是软件间相互传输数据的接口。它在生活中十分常见，比如博物馆订票系统中就使用了 API. 当你在手机应用上订票时，手机实际上发送了一个 HTTP 请求给远程服务器。远程服务器解析该请求。当确认所有字段信息均准确无误后，它才会把你的订票信息录入数据库，并回调成功标识。只有当上述操作全都被正确执行时，你的手机才会显示订票成功。</p>
+<p><img src="/img/fastapi-2.PNG" alt="image"></p>
+<p>API 程序通常运行在服务端 (server) 上。<strong>客户端</strong> (client) 通过向 API 提供的网络接口发送请求，以实现对<strong>服务端</strong>的通信。服务端收到请求后，对请求进行解析。如果请求是合法的，则执行该请求，并将请求结果回调给客户端。一次典型的 API 请求大体上是这么个过程。</p>
+<p>在业务中，有时需要记录每次请求产生的中间状态、运行结果和日志数据。这时就需要 <strong>服务端</strong> 调用 <strong>数据库</strong> (database) 以存储业务中产生的各种信息。</p>
+<h3 id="1-rest-api">1. REST API</h3>
+<p>API 本身是高度个性化的，软件间可以用任意数据类型进行通信。但如果 API 缺少规范、各行其是，就会导致软件间沟通成本高企。<a href="https://restfulapi.net/">REST API</a> 就是其中一种规范。REST API 提出了六项指导原则，只要 API 符合这六项指导原则，就可称之为“符合 REST 风格的 API”。</p>
+<blockquote>
+<p>REST API 提出的六项指导原则分别是：</p>
+<ul>
+<li>Client–server</li>
+<li>Stateless</li>
+<li>Cacheable</li>
+<li>Uniform interface</li>
+<li>Layered system</li>
+<li>Code on demand (optional)</li>
+</ul>
+<p>[<a href="https://restfulapi.net/">了解更多</a>]</p>
+</blockquote>
+<p>FastAPI 对构建 REST 风格的 API 提供了良好的支持。</p>
+<!-- ### 1. 技术选型
+
+API 是一种后端服务，很多后端编程语言都支持构建 API，并拥有各自的轮子。下面列举了一些后端语言构建 API 的包：
+
+- Golang, Node.js, Rust, Python
+
+由于我个人能力有限，以上选项只是作为一种参考背景。本文实际上只考虑了 Python 下的技术选择。那么可选的范围就缩小了：
+
+- Django
+- Flask
+- FastAPI
+
+**Django** 是一个强大的网络编程框架。但是 Django 太大了，用 Django 构建 API，有点杀鸡用牛刀的感觉。你需要付出额外的成本，来学习非 API 构建的知识，使你得以驾驭 Django。
+
+**Flask** 和 Django 很像，你可以把它想象成是精华版 Django。如果搭建的网站很简单，不需要定制插件，不需要复杂的功能，那么 Flask 是一个很 Geek 的选择。它简单干练，适合敏捷开发。你可以用它来开发 API，完全没问题。
+
+**FastAPI** 呢？
+
+FastAPI 和以上两者的区别是：它就是被设计成用来开发 API 的。代码精简，服务快速且稳定，支持异步。并且无需学习任何额外的知识，你需要的只是专心构建 API。 -->
+<h3 id="2-安装-fastapi">2. 安装 FastAPI</h3>
+<p><a href="https://fastapi.tiangolo.com/">FastAPI</a> 是 Python 下用于开发 API 的一个包。它有代码量少、服务稳定、支持异步等特点。</p>
+<p>Let&rsquo;s start!!!</p>
+<p>安装 FastAPI 之前，需要先安装两个依赖包。有关这步的详细信息，参见<a href="https://fastapi.tiangolo.com/#installation">这里</a>。</p>
+<p>1.安装 <code>fastapi</code></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>pip install fastapi
+</span></span></code></pre></div><p>2.安装 <code>uvicorn</code> (或 <code>hypercorn</code>)</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>pip install uvicorn
+</span></span></code></pre></div><blockquote>
+<p><strong>FAQ:</strong></p>
+<p>❓ 什么是 <code>uvicorn</code>？</p>
+<p>Uvicorn is a lightning-fast ASGI server implementation, using uvloop and httptools. [<a href="https://www.uvicorn.org/">reference</a>]</p>
+<p>❓ 什么是 <code>ASGI server</code>？</p>
+<p>ASGI (Asynchronous Server Gateway Interface) is a spiritual successor to WSGI, intended to provide a standard interface between async-capable Python web servers, frameworks, and applications.</p>
+<p>Where WSGI provided a standard for synchronous Python apps, ASGI provides one for both asynchronous and synchronous apps, with a WSGI backwards-compatibility implementation and multiple servers and application frameworks. [<a href="https://asgi.readthedocs.io/en/latest/">reference</a>]</p>
+</blockquote>
+<h3 id="3-测试安装是否成功">3. 测试安装是否成功</h3>
+<p>安装完后，我们来搭一个超级简单的 API，来验证安装是否成功。调用此 API，它将回调一条 JSON 信息: <code>{'key': 'value'}</code>。下面的代码实现了这个功能。</p>
+<p>首先，新建 <code>main.py</code> 文件，并在文件中写入如下内容。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#57606a"># main.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">from</span> <span style="color:#24292e">fastapi</span> <span style="color:#cf222e">import</span> FastAPI
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app <span style="color:#0550ae">=</span> FastAPI<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#0550ae">@app.get</span><span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;/&#39;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">def</span> <span style="color:#6639ba">index</span><span style="color:#1f2328">():</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">return</span> <span style="color:#1f2328">{</span><span style="color:#0a3069">&#39;key&#39;</span><span style="color:#1f2328">:</span> <span style="color:#0a3069">&#39;value&#39;</span><span style="color:#1f2328">}</span>
+</span></span></code></pre></div><p>然后，打开命令行界面，在 <code>main.py</code> 的同级目录下，执行如下命令。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>uvicorn main:app --reload
+</span></span></code></pre></div><p>PS: 此命令中，<code>main</code> 是脚本的名称（脚本名为 <code>main.py</code>），<code>--reload</code> 代表在每次脚本更新时重启 ASGI 服务。</p>
+<p>最后，在浏览器中打开 <code>http://127.0.0.1:8000</code>，如果网页显示 <code>{'key': 'value'}</code>，就说明我们的 API 搭建成功啦！</p>
+<p><img src="/img/fastapi-1.png" alt="image"></p>
+<h3 id="4-搭建一个日程-api">4. 搭建一个日程 API</h3>
+<p>为了能展开介绍 API 的组件和 FastAPI 的细节。接下来我打算写点有用的代码。</p>
+<p>我的计划是写一个 <strong>日程 API</strong>。想象一下，一台服务器的数据库中存储着你的日程信息，服务器同时开着一个 server，你在 server 上开启一个 api 服务，然后在本地 client 上，通过 api 对日程数据库进行增、删、改、查等操作。</p>
+<h4 id="41-消息格式的设计">4.1 消息格式的设计</h4>
+<p>在开始动工前，我们首先要把日程的数据格式设计好。字段名及其数据类型如下：</p>
+<!-- 这就像是在搭建管道前，你得决定管道里将来流的是自来水还是石油。API 就像管道，数据就像流淌在管子里的内容物。因此在决定造什么管子之前，我们得先搞清楚我们的运输对象。 
+
+以下是我的设计方案，各字段的数据类型和含义如下： -->
+<pre tabindex="0"><code>{
+    sid: str  # 日程 ID
+    name: str  # 名称
+    content: str  # 内容
+    category: str  # 分类
+    level: int  # 重要程度, 0: 未定义  1: 低  2: 中  3: 高 
+    status: float  # 当前进度, 0 &lt;= status &lt;= 1
+    creation_time: str  # 创建时间
+    start_time: str  # 开始时间
+    end_time: str  # 结束时间
+}
+</code></pre><p>我们把 <code>sid</code> 作为主键，sid 是 schedule id 的缩写。</p>
+<p><code>creation_time</code>, <code>start_time</code>, <code>end_time</code> 被设计为 <code>str</code> 而非 <code>datetime</code>，是为了方便存储。为防止用户在上述三个字段中输入不合法的值，服务端在读取这些字段时会加一道校验，将不符合日期和时间规范的消息过滤掉。</p>
+<h4 id="42-数据库">4.2 数据库</h4>
+<p>接下来，我们来建数据库 (database)。由于依赖顺序是：客户端 &ndash;&gt; 服务端 &ndash;&gt; 数据库。因此编写顺序是：数据库 –&gt; 服务端 –&gt; 客户端。</p>
+<p>这里数据库采用 <code>SQLite</code>。</p>
+<!-- 有很多数据库可供选择，这里我们采用 `SQLite`。因为它是 Python 自带的，无需安装，符合我们希望本文是“包含 FastAPI 的最小子集”的愿望。而且本文不打算搭建一个正经的 API，所以没必要采用正经的数据库，比如 MySQL. -->
+<blockquote>
+<p><strong>Note</strong>: <code>Python3</code> 下使用 <code>SQLite</code> 的介绍可以看 <a href="https://docs.python.org/3/library/sqlite3.html">这里</a>。</p>
+</blockquote>
+<p>以下提供了有关<a href="https://en.wikipedia.org/wiki/Database_transaction">数据库事务</a>的额外知识，它们是操作数据库的指导性原则。事先了解它们对搭建服务有帮助。</p>
+<blockquote>
+<p><strong>Note</strong>: 数据库事务的 ACID 特性</p>
+<ul>
+<li>原子性 (atomicity)</li>
+<li>一致性 (consistency)</li>
+<li>隔离性 (isolation)</li>
+<li>持久性 (durability)</li>
+</ul>
+<p>了解更多：[<a href="https://baike.baidu.com/item/acid/10738">百度</a>] [<a href="https://en.wikipedia.org/wiki/ACID">维基</a>]</p>
+</blockquote>
+<p>本文一共有两个数据库相关的脚本。<code>build.py</code> 用于新建 <code>SQLite</code> 数据库，它只需在首次启动服务前执行一次。<code>database_handler.py</code> 是一个数据库操作类，集成了一些常用数据库操作。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#57606a"># -*- coding:utf-8 -*-</span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># build.py</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">import</span> <span style="color:#24292e">configparser</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">import</span> <span style="color:#24292e">json</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">import</span> <span style="color:#24292e">database_handler</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">def</span> <span style="color:#6639ba">build_bd</span><span style="color:#1f2328">():</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#0a3069">&#34;&#34;&#34;创建数据库&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    config <span style="color:#0550ae">=</span> configparser<span style="color:#0550ae">.</span>ConfigParser<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>    config<span style="color:#0550ae">.</span>read<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;db.conf&#39;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>    info <span style="color:#0550ae">=</span> config<span style="color:#1f2328">[</span><span style="color:#0a3069">&#39;DEFAULT&#39;</span><span style="color:#1f2328">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    dbh <span style="color:#0550ae">=</span> database_handler<span style="color:#0550ae">.</span>DatabaseHandler<span style="color:#1f2328">(</span>db_name<span style="color:#0550ae">=</span>info<span style="color:#1f2328">[</span><span style="color:#0a3069">&#39;db_name&#39;</span><span style="color:#1f2328">])</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    dbh<span style="color:#0550ae">.</span>create_table<span style="color:#1f2328">(</span>
+</span></span><span style="display:flex;"><span>        table_name<span style="color:#0550ae">=</span>info<span style="color:#1f2328">[</span><span style="color:#0a3069">&#39;table_name&#39;</span><span style="color:#1f2328">],</span>
+</span></span><span style="display:flex;"><span>        columns<span style="color:#0550ae">=</span>json<span style="color:#0550ae">.</span>loads<span style="color:#1f2328">(</span>info<span style="color:#1f2328">[</span><span style="color:#0a3069">&#39;columns&#39;</span><span style="color:#1f2328">]))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">if</span> <span style="color:#953800">__name__</span> <span style="color:#0550ae">==</span> <span style="color:#0a3069">&#39;__main__&#39;</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>    build_bd<span style="color:#1f2328">()</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#57606a"># -*- coding:utf-8 -*-</span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># database_handler.py</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">import</span> <span style="color:#24292e">sqlite3</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">class</span> <span style="color:#1f2328">DatabaseHandler</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#0a3069">&#34;&#34;&#34;database handler&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">__init__</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">,</span> db_name<span style="color:#1f2328">:</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">,</span> check_same_thread<span style="color:#1f2328">:</span> <span style="color:#6639ba">bool</span> <span style="color:#0550ae">=</span> <span style="color:#cf222e">True</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;&#34;&#34;init&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>db_name <span style="color:#0550ae">=</span> db_name
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>conn <span style="color:#0550ae">=</span> sqlite3<span style="color:#0550ae">.</span>connect<span style="color:#1f2328">(</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#0a3069">&#39;</span><span style="color:#0a3069">{}</span><span style="color:#0a3069">.db&#39;</span><span style="color:#0550ae">.</span>format<span style="color:#1f2328">(</span>db_name<span style="color:#1f2328">),</span> check_same_thread<span style="color:#0550ae">=</span>check_same_thread<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>c <span style="color:#0550ae">=</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>conn<span style="color:#0550ae">.</span>cursor<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">execute</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">,</span> cmd<span style="color:#1f2328">:</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;&#34;&#34;Execute command&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>c<span style="color:#0550ae">.</span>execute<span style="color:#1f2328">(</span>cmd<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>conn<span style="color:#0550ae">.</span>commit<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">create_table</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">,</span> table_name<span style="color:#1f2328">:</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">,</span> columns<span style="color:#1f2328">:</span> <span style="color:#6639ba">dict</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;&#34;&#34;Create table&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        lst <span style="color:#0550ae">=</span> <span style="color:#1f2328">[</span><span style="color:#6639ba">str</span><span style="color:#1f2328">(</span>k<span style="color:#1f2328">)</span> <span style="color:#0550ae">+</span> <span style="color:#0a3069">&#39; &#39;</span> <span style="color:#0550ae">+</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">(</span>v<span style="color:#1f2328">)</span> <span style="color:#cf222e">for</span> k<span style="color:#1f2328">,</span> v <span style="color:#0550ae">in</span> columns<span style="color:#0550ae">.</span>items<span style="color:#1f2328">()]</span>
+</span></span><span style="display:flex;"><span>        columns_str <span style="color:#0550ae">=</span> <span style="color:#0a3069">&#39;,&#39;</span><span style="color:#0550ae">.</span>join<span style="color:#1f2328">(</span>lst<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        cmd <span style="color:#0550ae">=</span> <span style="color:#0a3069">&#39;CREATE TABLE </span><span style="color:#0a3069">{table_name}</span><span style="color:#0a3069">(</span><span style="color:#0a3069">{columns_str}</span><span style="color:#0a3069">)&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>execute<span style="color:#1f2328">(</span>cmd<span style="color:#0550ae">.</span>format<span style="color:#1f2328">(</span>
+</span></span><span style="display:flex;"><span>            table_name<span style="color:#0550ae">=</span>table_name<span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>            columns_str<span style="color:#0550ae">=</span>columns_str<span style="color:#1f2328">))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">insert_data</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">,</span> table_name<span style="color:#1f2328">:</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">,</span> columns<span style="color:#1f2328">:</span> <span style="color:#6639ba">dict</span><span style="color:#1f2328">,</span> data<span style="color:#1f2328">:</span> <span style="color:#6639ba">dict</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;&#34;&#34;Insert a row of data&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        lst <span style="color:#0550ae">=</span> <span style="color:#1f2328">[</span><span style="color:#0a3069">&#34;&#39;&#34;</span> <span style="color:#0550ae">+</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">(</span>v<span style="color:#1f2328">)</span> <span style="color:#0550ae">+</span> <span style="color:#0a3069">&#34;&#39;&#34;</span> <span style="color:#cf222e">if</span> columns<span style="color:#1f2328">[</span>k<span style="color:#1f2328">]</span> <span style="color:#0550ae">==</span> <span style="color:#0a3069">&#39;TEXT&#39;</span> <span style="color:#cf222e">else</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">(</span>v<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#cf222e">for</span> k<span style="color:#1f2328">,</span> v <span style="color:#0550ae">in</span> data<span style="color:#0550ae">.</span>items<span style="color:#1f2328">()]</span>
+</span></span><span style="display:flex;"><span>        data_str <span style="color:#0550ae">=</span> <span style="color:#0a3069">&#39;,&#39;</span><span style="color:#0550ae">.</span>join<span style="color:#1f2328">(</span>lst<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        cmd <span style="color:#0550ae">=</span> <span style="color:#0a3069">&#39;INSERT INTO </span><span style="color:#0a3069">{table_name}</span><span style="color:#0a3069"> VALUES (</span><span style="color:#0a3069">{data_str}</span><span style="color:#0a3069">)&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>execute<span style="color:#1f2328">(</span>cmd<span style="color:#0550ae">.</span>format<span style="color:#1f2328">(</span>
+</span></span><span style="display:flex;"><span>            table_name<span style="color:#0550ae">=</span>table_name<span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>            data_str<span style="color:#0550ae">=</span>data_str<span style="color:#1f2328">))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">update_data</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">,</span> table_name<span style="color:#1f2328">:</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">,</span> columns<span style="color:#1f2328">:</span> <span style="color:#6639ba">dict</span><span style="color:#1f2328">,</span> data<span style="color:#1f2328">:</span> <span style="color:#6639ba">dict</span><span style="color:#1f2328">,</span> condition<span style="color:#1f2328">:</span> <span style="color:#6639ba">dict</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;&#34;&#34;Update data&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        lst1 <span style="color:#0550ae">=</span> <span style="color:#1f2328">[</span><span style="color:#6639ba">str</span><span style="color:#1f2328">(</span>k<span style="color:#1f2328">)</span> <span style="color:#0550ae">+</span> <span style="color:#0a3069">&#39;=&#39;</span> <span style="color:#0550ae">+</span> <span style="color:#0a3069">&#34;&#39;&#34;</span> <span style="color:#0550ae">+</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">(</span>v<span style="color:#1f2328">)</span> <span style="color:#0550ae">+</span> <span style="color:#0a3069">&#34;&#39;&#34;</span> <span style="color:#cf222e">if</span> columns<span style="color:#1f2328">[</span>k<span style="color:#1f2328">]</span> <span style="color:#0550ae">==</span> <span style="color:#0a3069">&#39;TEXT&#39;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#cf222e">else</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">(</span>k<span style="color:#1f2328">)</span> <span style="color:#0550ae">+</span> <span style="color:#0a3069">&#39;=&#39;</span> <span style="color:#0550ae">+</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">(</span>v<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#cf222e">for</span> k<span style="color:#1f2328">,</span> v <span style="color:#0550ae">in</span> data<span style="color:#0550ae">.</span>items<span style="color:#1f2328">()]</span>
+</span></span><span style="display:flex;"><span>        value_str <span style="color:#0550ae">=</span> <span style="color:#0a3069">&#39;,&#39;</span><span style="color:#0550ae">.</span>join<span style="color:#1f2328">(</span>lst1<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        lst2 <span style="color:#0550ae">=</span> <span style="color:#1f2328">[</span><span style="color:#6639ba">str</span><span style="color:#1f2328">(</span>k<span style="color:#1f2328">)</span> <span style="color:#0550ae">+</span> <span style="color:#0a3069">&#39;=&#39;</span> <span style="color:#0550ae">+</span> <span style="color:#0a3069">&#34;&#39;&#34;</span> <span style="color:#0550ae">+</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">(</span>v<span style="color:#1f2328">)</span> <span style="color:#0550ae">+</span> <span style="color:#0a3069">&#34;&#39;&#34;</span> <span style="color:#cf222e">if</span> columns<span style="color:#1f2328">[</span>k<span style="color:#1f2328">]</span> <span style="color:#0550ae">==</span> <span style="color:#0a3069">&#39;TEXT&#39;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#cf222e">else</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">(</span>k<span style="color:#1f2328">)</span> <span style="color:#0550ae">+</span> <span style="color:#0a3069">&#39;=&#39;</span> <span style="color:#0550ae">+</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">(</span>v<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#cf222e">for</span> k<span style="color:#1f2328">,</span> v <span style="color:#0550ae">in</span> condition<span style="color:#0550ae">.</span>items<span style="color:#1f2328">()]</span>
+</span></span><span style="display:flex;"><span>        condition_str <span style="color:#0550ae">=</span> <span style="color:#0a3069">&#39; AND &#39;</span><span style="color:#0550ae">.</span>join<span style="color:#1f2328">(</span>lst2<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        cmd <span style="color:#0550ae">=</span> <span style="color:#0a3069">&#39;UPDATE </span><span style="color:#0a3069">{table_name}</span><span style="color:#0a3069"> SET </span><span style="color:#0a3069">{value_str}</span><span style="color:#0a3069"> WHERE </span><span style="color:#0a3069">{condition_str}</span><span style="color:#0a3069">&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>execute<span style="color:#1f2328">(</span>cmd<span style="color:#0550ae">.</span>format<span style="color:#1f2328">(</span>
+</span></span><span style="display:flex;"><span>            table_name<span style="color:#0550ae">=</span>table_name<span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>            value_str<span style="color:#0550ae">=</span>value_str<span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>            condition_str<span style="color:#0550ae">=</span>condition_str<span style="color:#1f2328">))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">delete_data</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">,</span> table_name<span style="color:#1f2328">:</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">,</span> columns<span style="color:#1f2328">:</span> <span style="color:#6639ba">dict</span><span style="color:#1f2328">,</span> condition<span style="color:#1f2328">:</span> <span style="color:#6639ba">dict</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;&#34;&#34;Delete data&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        lst <span style="color:#0550ae">=</span> <span style="color:#1f2328">[</span><span style="color:#6639ba">str</span><span style="color:#1f2328">(</span>k<span style="color:#1f2328">)</span> <span style="color:#0550ae">+</span> <span style="color:#0a3069">&#39;=&#39;</span> <span style="color:#0550ae">+</span> <span style="color:#0a3069">&#34;&#39;&#34;</span> <span style="color:#0550ae">+</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">(</span>v<span style="color:#1f2328">)</span> <span style="color:#0550ae">+</span> <span style="color:#0a3069">&#34;&#39;&#34;</span> <span style="color:#cf222e">if</span> columns<span style="color:#1f2328">[</span>k<span style="color:#1f2328">]</span> <span style="color:#0550ae">==</span> <span style="color:#0a3069">&#39;TEXT&#39;</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#cf222e">else</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">(</span>k<span style="color:#1f2328">)</span> <span style="color:#0550ae">+</span> <span style="color:#0a3069">&#39;=&#39;</span> <span style="color:#0550ae">+</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">(</span>v<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#cf222e">for</span> k<span style="color:#1f2328">,</span> v <span style="color:#0550ae">in</span> condition<span style="color:#0550ae">.</span>items<span style="color:#1f2328">()]</span>
+</span></span><span style="display:flex;"><span>        condition_str <span style="color:#0550ae">=</span> <span style="color:#0a3069">&#39; AND &#39;</span><span style="color:#0550ae">.</span>join<span style="color:#1f2328">(</span>lst<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        cmd <span style="color:#0550ae">=</span> <span style="color:#0a3069">&#39;DELETE FROM </span><span style="color:#0a3069">{table_name}</span><span style="color:#0a3069"> WHERE </span><span style="color:#0a3069">{condition_str}</span><span style="color:#0a3069">&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>execute<span style="color:#1f2328">(</span>cmd<span style="color:#0550ae">.</span>format<span style="color:#1f2328">(</span>
+</span></span><span style="display:flex;"><span>            table_name<span style="color:#0550ae">=</span>table_name<span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>            condition_str<span style="color:#0550ae">=</span>condition_str<span style="color:#1f2328">))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">fetch_data</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">,</span> table_name<span style="color:#1f2328">:</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">,</span> columns<span style="color:#1f2328">:</span> <span style="color:#6639ba">dict</span><span style="color:#1f2328">,</span> condition<span style="color:#1f2328">:</span> <span style="color:#6639ba">dict</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;&#34;&#34;Fetch data&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        lst <span style="color:#0550ae">=</span> <span style="color:#1f2328">[</span><span style="color:#6639ba">str</span><span style="color:#1f2328">(</span>k<span style="color:#1f2328">)</span> <span style="color:#0550ae">+</span> <span style="color:#0a3069">&#39;=&#39;</span> <span style="color:#0550ae">+</span> <span style="color:#0a3069">&#34;&#39;&#34;</span> <span style="color:#0550ae">+</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">(</span>v<span style="color:#1f2328">)</span> <span style="color:#0550ae">+</span> <span style="color:#0a3069">&#34;&#39;&#34;</span> <span style="color:#cf222e">if</span> columns<span style="color:#1f2328">[</span>k<span style="color:#1f2328">]</span> <span style="color:#0550ae">==</span> <span style="color:#0a3069">&#39;TEXT&#39;</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#cf222e">else</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">(</span>k<span style="color:#1f2328">)</span> <span style="color:#0550ae">+</span> <span style="color:#0a3069">&#39;=&#39;</span> <span style="color:#0550ae">+</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">(</span>v<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#cf222e">for</span> k<span style="color:#1f2328">,</span> v <span style="color:#0550ae">in</span> condition<span style="color:#0550ae">.</span>items<span style="color:#1f2328">()]</span>
+</span></span><span style="display:flex;"><span>        condition_str <span style="color:#0550ae">=</span> <span style="color:#0a3069">&#39; AND &#39;</span><span style="color:#0550ae">.</span>join<span style="color:#1f2328">(</span>lst<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        cmd <span style="color:#0550ae">=</span> <span style="color:#0a3069">&#39;SELECT * FROM </span><span style="color:#0a3069">{table_name}</span><span style="color:#0a3069"> WHERE </span><span style="color:#0a3069">{condition_str}</span><span style="color:#0a3069">&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>execute<span style="color:#1f2328">(</span>cmd<span style="color:#0550ae">.</span>format<span style="color:#1f2328">(</span>
+</span></span><span style="display:flex;"><span>            table_name<span style="color:#0550ae">=</span>table_name<span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>            condition_str<span style="color:#0550ae">=</span>condition_str<span style="color:#1f2328">))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>c<span style="color:#0550ae">.</span>fetchall<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">fetch_all</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">,</span> table_name<span style="color:#1f2328">:</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;&#34;&#34;Fetch data&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        cmd <span style="color:#0550ae">=</span> <span style="color:#0a3069">&#39;SELECT * FROM </span><span style="color:#0a3069">{table_name}</span><span style="color:#0a3069">&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>execute<span style="color:#1f2328">(</span>cmd<span style="color:#0550ae">.</span>format<span style="color:#1f2328">(</span>
+</span></span><span style="display:flex;"><span>            table_name<span style="color:#0550ae">=</span>table_name<span style="color:#1f2328">))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>c<span style="color:#0550ae">.</span>fetchall<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">check_existence</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">,</span> table_name<span style="color:#1f2328">:</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">,</span> columns<span style="color:#1f2328">:</span> <span style="color:#6639ba">dict</span><span style="color:#1f2328">,</span> condition<span style="color:#1f2328">:</span> <span style="color:#6639ba">dict</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;&#34;&#34;check the existence of item&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">try</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>            res <span style="color:#0550ae">=</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>fetch_data<span style="color:#1f2328">(</span>table_name<span style="color:#1f2328">,</span> columns<span style="color:#1f2328">,</span> condition<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#cf222e">if</span> <span style="color:#6639ba">len</span><span style="color:#1f2328">(</span>res<span style="color:#1f2328">)</span> <span style="color:#0550ae">==</span> <span style="color:#0550ae">0</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#cf222e">return</span> <span style="color:#cf222e">False</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">except</span> Exception<span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#cf222e">return</span> <span style="color:#cf222e">False</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> <span style="color:#cf222e">True</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">if</span> <span style="color:#953800">__name__</span> <span style="color:#0550ae">==</span> <span style="color:#0a3069">&#39;__main__&#39;</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>    dbh <span style="color:#0550ae">=</span> DatabaseHandler<span style="color:#1f2328">(</span>db_name<span style="color:#0550ae">=</span><span style="color:#0a3069">&#34;CalendarDB&#34;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6639ba">print</span><span style="color:#1f2328">(</span>dbh<span style="color:#0550ae">.</span>check_existence<span style="color:#1f2328">(</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#39;calendar&#39;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#1f2328">{</span><span style="color:#0a3069">&#34;sid&#34;</span><span style="color:#1f2328">:</span> <span style="color:#0a3069">&#34;TEXT&#34;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#34;name&#34;</span><span style="color:#1f2328">:</span> <span style="color:#0a3069">&#34;TEXT&#34;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#34;content&#34;</span><span style="color:#1f2328">:</span> <span style="color:#0a3069">&#34;TEXT&#34;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#34;category&#34;</span><span style="color:#1f2328">:</span> <span style="color:#0a3069">&#34;TEXT&#34;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#34;level&#34;</span><span style="color:#1f2328">:</span> <span style="color:#0a3069">&#34;INTEGER&#34;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#34;status&#34;</span><span style="color:#1f2328">:</span> <span style="color:#0a3069">&#34;REAL&#34;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#34;creation_time&#34;</span><span style="color:#1f2328">:</span> <span style="color:#0a3069">&#34;TEXT&#34;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#34;start_time&#34;</span><span style="color:#1f2328">:</span> <span style="color:#0a3069">&#34;TEXT&#34;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#34;end_time&#34;</span><span style="color:#1f2328">:</span> <span style="color:#0a3069">&#34;TEXT&#34;</span><span style="color:#1f2328">},</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#1f2328">{</span><span style="color:#0a3069">&#34;sid&#34;</span><span style="color:#1f2328">:</span> <span style="color:#0a3069">&#34;22&#34;</span><span style="color:#1f2328">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#1f2328">))</span>
+</span></span></code></pre></div><h4 id="43-服务端">4.3 服务端</h4>
+<p>服务端 (server) 程序负责两项功能：</p>
+<ol>
+<li>提供 API 接口</li>
+<li>处理用户请求</li>
+</ol>
+<p>为了实现 1，服务端需要定义 post, delete, put, get 四种方法的响应方式。在 FastAPI 中，四种方法分别由四个函数定义。这四个函数的函数名可以随便取，但必须用装饰器标记该函数是用于何种方法的响应。下文的 <code>server.py</code> 中定义了 post, delete, put, get 的响应方式。</p>
+<p>在本文实现的日程 API 中，post, delete, put, get 四种方法又操纵了数据库的增、删、改、查操作，这些数据库操作细节在 <code>method.py</code> 中定义。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#57606a"># -*- coding:utf-8 -*-</span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># method.py</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">import</span> <span style="color:#24292e">configparser</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">import</span> <span style="color:#24292e">json</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">import</span> <span style="color:#24292e">datetime</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">class</span> <span style="color:#1f2328">Method</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#0a3069">&#34;&#34;&#34;API 操作方法&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">__init__</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">,</span> conf_file<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;&#34;&#34;init&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>config <span style="color:#0550ae">=</span> configparser<span style="color:#0550ae">.</span>ConfigParser<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>config<span style="color:#0550ae">.</span>read<span style="color:#1f2328">(</span>conf_file<span style="color:#1f2328">)</span>  <span style="color:#57606a"># &#39;db.conf&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>info <span style="color:#0550ae">=</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>config<span style="color:#1f2328">[</span><span style="color:#0a3069">&#39;DEFAULT&#39;</span><span style="color:#1f2328">]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>columns <span style="color:#0550ae">=</span> json<span style="color:#0550ae">.</span>loads<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>info<span style="color:#1f2328">[</span><span style="color:#0a3069">&#39;columns&#39;</span><span style="color:#1f2328">])</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">check_params</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">,</span> jsn<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;&#34;&#34;检查参数值&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">if</span> jsn<span style="color:#1f2328">[</span><span style="color:#0a3069">&#39;level&#39;</span><span style="color:#1f2328">]</span> <span style="color:#0550ae">not</span> <span style="color:#0550ae">in</span> <span style="color:#1f2328">[</span><span style="color:#0550ae">0</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">1</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">2</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">3</span><span style="color:#1f2328">]:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#cf222e">return</span> <span style="color:#cf222e">False</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">if</span> jsn<span style="color:#1f2328">[</span><span style="color:#0a3069">&#39;status&#39;</span><span style="color:#1f2328">]</span> <span style="color:#0550ae">&lt;</span> <span style="color:#0550ae">0</span> <span style="color:#0550ae">or</span> jsn<span style="color:#1f2328">[</span><span style="color:#0a3069">&#39;status&#39;</span><span style="color:#1f2328">]</span> <span style="color:#0550ae">&gt;</span> <span style="color:#0550ae">1</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#cf222e">return</span> <span style="color:#cf222e">False</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">try</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>            lst <span style="color:#0550ae">=</span> <span style="color:#1f2328">[</span>
+</span></span><span style="display:flex;"><span>                jsn<span style="color:#1f2328">[</span><span style="color:#0a3069">&#39;creation_time&#39;</span><span style="color:#1f2328">],</span>
+</span></span><span style="display:flex;"><span>                jsn<span style="color:#1f2328">[</span><span style="color:#0a3069">&#39;start_time&#39;</span><span style="color:#1f2328">],</span>
+</span></span><span style="display:flex;"><span>                jsn<span style="color:#1f2328">[</span><span style="color:#0a3069">&#39;end_time&#39;</span><span style="color:#1f2328">]</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#1f2328">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#cf222e">for</span> t <span style="color:#0550ae">in</span> lst<span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#57606a"># 尝试解析时间</span>
+</span></span><span style="display:flex;"><span>                _ <span style="color:#0550ae">=</span> datetime<span style="color:#0550ae">.</span>datetime<span style="color:#0550ae">.</span>strptime<span style="color:#1f2328">(</span>t<span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;%Y-%m-</span><span style="color:#0a3069">%d</span><span style="color:#0a3069"> %H:%M:%S&#39;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">except</span> Exception<span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#cf222e">return</span> <span style="color:#cf222e">False</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> <span style="color:#cf222e">True</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">get</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">,</span> dbh<span style="color:#1f2328">,</span> schedule_id<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> dbh<span style="color:#0550ae">.</span>fetch_data<span style="color:#1f2328">(</span>
+</span></span><span style="display:flex;"><span>            table_name<span style="color:#0550ae">=</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>info<span style="color:#1f2328">[</span><span style="color:#0a3069">&#39;table_name&#39;</span><span style="color:#1f2328">],</span>
+</span></span><span style="display:flex;"><span>            columns<span style="color:#0550ae">=</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>columns<span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>            condition<span style="color:#0550ae">=</span><span style="color:#1f2328">{</span><span style="color:#0a3069">&#39;sid&#39;</span><span style="color:#1f2328">:</span> schedule_id<span style="color:#1f2328">})</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">post</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">,</span> dbh<span style="color:#1f2328">,</span> schedule<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#57606a"># 检查item是否存在</span>
+</span></span><span style="display:flex;"><span>        schedule_id <span style="color:#0550ae">=</span> schedule<span style="color:#0550ae">.</span>dict<span style="color:#1f2328">()[</span><span style="color:#0a3069">&#39;sid&#39;</span><span style="color:#1f2328">]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">if</span> dbh<span style="color:#0550ae">.</span>check_existence<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>info<span style="color:#1f2328">[</span><span style="color:#0a3069">&#39;table_name&#39;</span><span style="color:#1f2328">],</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>columns<span style="color:#1f2328">,</span> <span style="color:#1f2328">{</span><span style="color:#0a3069">&#39;sid&#39;</span><span style="color:#1f2328">:</span> schedule_id<span style="color:#1f2328">}):</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#57606a"># 如果存在</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#cf222e">return</span> <span style="color:#cf222e">False</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#57606a"># 检查参数值是否符合规范</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">if</span> <span style="color:#0550ae">not</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>check_params<span style="color:#1f2328">(</span>schedule<span style="color:#0550ae">.</span>dict<span style="color:#1f2328">()):</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#cf222e">return</span> <span style="color:#cf222e">False</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        dbh<span style="color:#0550ae">.</span>insert_data<span style="color:#1f2328">(</span>
+</span></span><span style="display:flex;"><span>            table_name<span style="color:#0550ae">=</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>info<span style="color:#1f2328">[</span><span style="color:#0a3069">&#39;table_name&#39;</span><span style="color:#1f2328">],</span>
+</span></span><span style="display:flex;"><span>            columns<span style="color:#0550ae">=</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>columns<span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>            data<span style="color:#0550ae">=</span>schedule<span style="color:#0550ae">.</span>dict<span style="color:#1f2328">())</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> <span style="color:#cf222e">True</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">update</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">,</span> dbh<span style="color:#1f2328">,</span> schedule_id<span style="color:#1f2328">,</span> schedule<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#57606a"># 检查item是否存在</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">if</span> <span style="color:#0550ae">not</span> dbh<span style="color:#0550ae">.</span>check_existence<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>info<span style="color:#1f2328">[</span><span style="color:#0a3069">&#39;table_name&#39;</span><span style="color:#1f2328">],</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>columns<span style="color:#1f2328">,</span> <span style="color:#1f2328">{</span><span style="color:#0a3069">&#39;sid&#39;</span><span style="color:#1f2328">:</span> schedule_id<span style="color:#1f2328">}):</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#57606a"># 如果不存在</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#cf222e">return</span> <span style="color:#cf222e">False</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#57606a"># 检查参数值是否符合规范</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">if</span> <span style="color:#0550ae">not</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>check_params<span style="color:#1f2328">(</span>schedule<span style="color:#0550ae">.</span>dict<span style="color:#1f2328">()):</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#cf222e">return</span> <span style="color:#cf222e">False</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        dbh<span style="color:#0550ae">.</span>update_data<span style="color:#1f2328">(</span>
+</span></span><span style="display:flex;"><span>            table_name<span style="color:#0550ae">=</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>info<span style="color:#1f2328">[</span><span style="color:#0a3069">&#39;table_name&#39;</span><span style="color:#1f2328">],</span>
+</span></span><span style="display:flex;"><span>            columns<span style="color:#0550ae">=</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>columns<span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>            data<span style="color:#0550ae">=</span>schedule<span style="color:#0550ae">.</span>dict<span style="color:#1f2328">(),</span>
+</span></span><span style="display:flex;"><span>            condition<span style="color:#0550ae">=</span><span style="color:#1f2328">{</span><span style="color:#0a3069">&#39;sid&#39;</span><span style="color:#1f2328">:</span> schedule_id<span style="color:#1f2328">})</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> <span style="color:#cf222e">True</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">delete</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">,</span> dbh<span style="color:#1f2328">,</span> schedule_id<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#57606a"># 检查item是否存在</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">if</span> <span style="color:#0550ae">not</span> dbh<span style="color:#0550ae">.</span>check_existence<span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>info<span style="color:#1f2328">[</span><span style="color:#0a3069">&#39;table_name&#39;</span><span style="color:#1f2328">],</span> <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>columns<span style="color:#1f2328">,</span> <span style="color:#1f2328">{</span><span style="color:#0a3069">&#39;sid&#39;</span><span style="color:#1f2328">:</span> schedule_id<span style="color:#1f2328">}):</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#57606a"># 如果不存在</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#cf222e">return</span> <span style="color:#cf222e">False</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        dbh<span style="color:#0550ae">.</span>delete_data<span style="color:#1f2328">(</span>
+</span></span><span style="display:flex;"><span>            table_name<span style="color:#0550ae">=</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>info<span style="color:#1f2328">[</span><span style="color:#0a3069">&#39;table_name&#39;</span><span style="color:#1f2328">],</span>
+</span></span><span style="display:flex;"><span>            columns<span style="color:#0550ae">=</span><span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>columns<span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>            condition<span style="color:#0550ae">=</span><span style="color:#1f2328">{</span><span style="color:#0a3069">&#39;sid&#39;</span><span style="color:#1f2328">:</span> schedule_id<span style="color:#1f2328">})</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> <span style="color:#cf222e">True</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">if</span> <span style="color:#953800">__name__</span> <span style="color:#0550ae">==</span> <span style="color:#0a3069">&#39;__main__&#39;</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">pass</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#57606a"># -*- coding:utf-8 -*-</span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># server.py</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">from</span> <span style="color:#24292e">fastapi</span> <span style="color:#cf222e">import</span> FastAPI
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">from</span> <span style="color:#24292e">pydantic</span> <span style="color:#cf222e">import</span> BaseModel
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">import</span> <span style="color:#24292e">configparser</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">import</span> <span style="color:#24292e">json</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">import</span> <span style="color:#24292e">database_handler</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">import</span> <span style="color:#24292e">method</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app <span style="color:#0550ae">=</span> FastAPI<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>config <span style="color:#0550ae">=</span> configparser<span style="color:#0550ae">.</span>ConfigParser<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>config<span style="color:#0550ae">.</span>read<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;db.conf&#39;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>info <span style="color:#0550ae">=</span> config<span style="color:#1f2328">[</span><span style="color:#0a3069">&#39;DEFAULT&#39;</span><span style="color:#1f2328">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>dbh <span style="color:#0550ae">=</span> database_handler<span style="color:#0550ae">.</span>DatabaseHandler<span style="color:#1f2328">(</span>
+</span></span><span style="display:flex;"><span>    db_name<span style="color:#0550ae">=</span>info<span style="color:#1f2328">[</span><span style="color:#0a3069">&#39;db_name&#39;</span><span style="color:#1f2328">],</span>
+</span></span><span style="display:flex;"><span>    check_same_thread<span style="color:#0550ae">=</span><span style="color:#cf222e">False</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>m <span style="color:#0550ae">=</span> method<span style="color:#0550ae">.</span>Method<span style="color:#1f2328">(</span>conf_file<span style="color:#0550ae">=</span><span style="color:#0a3069">&#39;db.conf&#39;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">class</span> <span style="color:#1f2328">Schedule</span><span style="color:#1f2328">(</span>BaseModel<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>    sid<span style="color:#1f2328">:</span> <span style="color:#6639ba">str</span>  <span style="color:#57606a"># ID</span>
+</span></span><span style="display:flex;"><span>    name<span style="color:#1f2328">:</span> <span style="color:#6639ba">str</span>  <span style="color:#57606a"># 名称</span>
+</span></span><span style="display:flex;"><span>    content<span style="color:#1f2328">:</span> <span style="color:#6639ba">str</span>  <span style="color:#57606a"># 内容</span>
+</span></span><span style="display:flex;"><span>    category<span style="color:#1f2328">:</span> <span style="color:#6639ba">str</span>  <span style="color:#57606a"># 分类</span>
+</span></span><span style="display:flex;"><span>    level<span style="color:#1f2328">:</span> <span style="color:#6639ba">int</span>  <span style="color:#57606a"># 重要程度, 0: 未定义  1: 低  2: 中  3: 高</span>
+</span></span><span style="display:flex;"><span>    status<span style="color:#1f2328">:</span> <span style="color:#6639ba">float</span>  <span style="color:#57606a"># 当前进度, 0 &lt;= status &lt;= 1</span>
+</span></span><span style="display:flex;"><span>    creation_time<span style="color:#1f2328">:</span> <span style="color:#6639ba">str</span>  <span style="color:#57606a"># 创建时间</span>
+</span></span><span style="display:flex;"><span>    start_time<span style="color:#1f2328">:</span> <span style="color:#6639ba">str</span>  <span style="color:#57606a"># 开始时间</span>
+</span></span><span style="display:flex;"><span>    end_time<span style="color:#1f2328">:</span> <span style="color:#6639ba">str</span>  <span style="color:#57606a"># 结束时间</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#0550ae">@app.get</span><span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;/&#39;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">def</span> <span style="color:#6639ba">index</span><span style="color:#1f2328">():</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">return</span> <span style="color:#1f2328">{</span><span style="color:#0a3069">&#39;app_name&#39;</span><span style="color:#1f2328">:</span> <span style="color:#0a3069">&#39;calendar&#39;</span><span style="color:#1f2328">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#0550ae">@app.get</span><span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;/schedules&#39;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">def</span> <span style="color:#6639ba">get_schedules</span><span style="color:#1f2328">():</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">return</span> dbh<span style="color:#0550ae">.</span>fetch_all<span style="color:#1f2328">(</span>
+</span></span><span style="display:flex;"><span>        table_name<span style="color:#0550ae">=</span>info<span style="color:#1f2328">[</span><span style="color:#0a3069">&#39;table_name&#39;</span><span style="color:#1f2328">])</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#0550ae">@app.get</span><span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;/schedules/</span><span style="color:#0a3069">{schedule_id}</span><span style="color:#0a3069">&#39;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">def</span> <span style="color:#6639ba">get_schedule</span><span style="color:#1f2328">(</span>schedule_id<span style="color:#1f2328">:</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">return</span> m<span style="color:#0550ae">.</span>get<span style="color:#1f2328">(</span>dbh<span style="color:#1f2328">,</span> schedule_id<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#0550ae">@app.post</span><span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;/schedules&#39;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">def</span> <span style="color:#6639ba">create_schedule</span><span style="color:#1f2328">(</span>schedule<span style="color:#1f2328">:</span> Schedule<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">if</span> m<span style="color:#0550ae">.</span>post<span style="color:#1f2328">(</span>dbh<span style="color:#1f2328">,</span> schedule<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> schedule
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">else</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> <span style="color:#1f2328">{</span><span style="color:#0a3069">&#34;errno&#34;</span><span style="color:#1f2328">:</span> <span style="color:#0a3069">&#34;1&#34;</span><span style="color:#1f2328">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#0550ae">@app.put</span><span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;/schedules/</span><span style="color:#0a3069">{schedule_id}</span><span style="color:#0a3069">&#39;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">def</span> <span style="color:#6639ba">update_schedule</span><span style="color:#1f2328">(</span>schedule_id<span style="color:#1f2328">:</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">,</span> schedule<span style="color:#1f2328">:</span> Schedule<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">if</span> m<span style="color:#0550ae">.</span>update<span style="color:#1f2328">(</span>dbh<span style="color:#1f2328">,</span> schedule_id<span style="color:#1f2328">,</span> schedule<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> schedule
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">else</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> <span style="color:#1f2328">{</span><span style="color:#0a3069">&#34;errno&#34;</span><span style="color:#1f2328">:</span> <span style="color:#0a3069">&#34;2&#34;</span><span style="color:#1f2328">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#0550ae">@app.delete</span><span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;/schedules/</span><span style="color:#0a3069">{schedule_id}</span><span style="color:#0a3069">&#39;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">def</span> <span style="color:#6639ba">delete_schedule</span><span style="color:#1f2328">(</span>schedule_id<span style="color:#1f2328">:</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">if</span> m<span style="color:#0550ae">.</span>delete<span style="color:#1f2328">(</span>dbh<span style="color:#1f2328">,</span> schedule_id<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> <span style="color:#1f2328">{</span><span style="color:#0a3069">&#34;msg&#34;</span><span style="color:#1f2328">:</span> <span style="color:#0a3069">&#34;success&#34;</span><span style="color:#1f2328">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">else</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> <span style="color:#1f2328">{</span><span style="color:#0a3069">&#34;errno&#34;</span><span style="color:#1f2328">:</span> <span style="color:#0a3069">&#34;3&#34;</span><span style="color:#1f2328">}</span>
+</span></span></code></pre></div><h4 id="44-客户端">4.4 客户端</h4>
+<p>客户端负责发送 HTTP 请求。HTTP 请求包含多种 HTTP 方法，其中 get, post, put, delete 四种方法最为常用。</p>
+<blockquote>
+<p><strong>Note</strong>: HTTP methods</p>
+<ul>
+<li>GET: Use GET requests to retrieve resource representation/information only – and not to modify it in any way.</li>
+<li>POST: Use POST APIs to create new subordinate resources.</li>
+<li>PUT: Use PUT APIs primarily to update existing resource.</li>
+<li>DELETE: As the name applies, DELETE APIs are used to delete resources.</li>
+<li>PATCH: HTTP PATCH requests are to make partial update on a resource.</li>
+</ul>
+<p>[<a href="https://restfulapi.net/http-methods/">了解更多</a>]</p>
+</blockquote>
+<p>客户端的职责就是用正确的 HTTP 方法，向服务端发送格式正确的请求信息。然后待服务端处理完成后，解析回调信息，以确认请求是否被成功执行。</p>
+<p>使用 HTTP 协议与服务端通信需要用到 requests.</p>
+<blockquote>
+<p>关于在 Python3 中使用 requests 的介绍请看<a href="https://requests.readthedocs.io/en/master/">这里</a>。</p>
+</blockquote>
+<p>用于构建客户端的脚本仅有一个：<code>client.py</code>。调试 <code>client.py</code> 时，请务必确保操作顺序符合逻辑。比如，如果要删除一条数据，那么必须先添加它；如果要更新/删除一条数据，那么它必须已经存在于数据库中。另外，请求 JSON 的格式同时在 <code>db.conf</code> 文件和 <code>Schedule</code> 类中定义。如果你需要修改消息格式，请同时修改这两处地方。</p>
+<p>PS: 如果调试 <code>client.py</code> 时遭遇障碍，可先在 FastAPI
+提供的单页应用 <code>http://127.0.0.1:8000/docs</code> 上进行调试。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#57606a"># -*- coding:utf-8 -*-</span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># client.py</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#0a3069">&#34;&#34;&#34;客户端
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">    Author: github@luochang212
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">    Date: 2020-11-15
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">    Usage: python client.py
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">import</span> <span style="color:#24292e">requests</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">import</span> <span style="color:#24292e">json</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">class</span> <span style="color:#1f2328">Interface</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#0a3069">&#34;&#34;&#34;client interface&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">__init__</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">,</span> url<span style="color:#1f2328">,</span> app_name<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>url <span style="color:#0550ae">=</span> url
+</span></span><span style="display:flex;"><span>        <span style="color:#6a737d">self</span><span style="color:#0550ae">.</span>app_url <span style="color:#0550ae">=</span> url <span style="color:#0550ae">+</span> <span style="color:#0a3069">&#39;/&#39;</span> <span style="color:#0550ae">+</span> app_name
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">get</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">,</span> url<span style="color:#1f2328">,</span> sid<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;&#34;&#34;get schedule&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        url <span style="color:#0550ae">=</span> url <span style="color:#0550ae">+</span> <span style="color:#0a3069">&#39;/&#39;</span> <span style="color:#0550ae">+</span> sid
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> requests<span style="color:#0550ae">.</span>get<span style="color:#1f2328">(</span>url<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">get_all</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">,</span> url<span style="color:#1f2328">,</span> payload<span style="color:#0550ae">=</span><span style="color:#cf222e">None</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;&#34;&#34;get schedules&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> requests<span style="color:#0550ae">.</span>get<span style="color:#1f2328">(</span>url<span style="color:#1f2328">,</span> params<span style="color:#0550ae">=</span>payload<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">post</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">,</span> url<span style="color:#1f2328">,</span> data<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;&#34;&#34;post schedule&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> requests<span style="color:#0550ae">.</span>post<span style="color:#1f2328">(</span>url<span style="color:#1f2328">,</span> data<span style="color:#0550ae">=</span>json<span style="color:#0550ae">.</span>dumps<span style="color:#1f2328">(</span>data<span style="color:#1f2328">))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">update</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">,</span> url<span style="color:#1f2328">,</span> data<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;&#34;&#34;update schedule&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        sid <span style="color:#0550ae">=</span> data<span style="color:#1f2328">[</span><span style="color:#0a3069">&#39;sid&#39;</span><span style="color:#1f2328">]</span>
+</span></span><span style="display:flex;"><span>        url <span style="color:#0550ae">=</span> url <span style="color:#0550ae">+</span> <span style="color:#0a3069">&#39;/&#39;</span> <span style="color:#0550ae">+</span> sid
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> requests<span style="color:#0550ae">.</span>put<span style="color:#1f2328">(</span>url<span style="color:#1f2328">,</span> data<span style="color:#0550ae">=</span>json<span style="color:#0550ae">.</span>dumps<span style="color:#1f2328">(</span>data<span style="color:#1f2328">))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">def</span> <span style="color:#6639ba">delete</span><span style="color:#1f2328">(</span><span style="color:#6a737d">self</span><span style="color:#1f2328">,</span> url<span style="color:#1f2328">,</span> sid<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;&#34;&#34;delete schedule&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        url <span style="color:#0550ae">=</span> url <span style="color:#0550ae">+</span> <span style="color:#0a3069">&#39;/&#39;</span> <span style="color:#0550ae">+</span> sid
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> requests<span style="color:#0550ae">.</span>delete<span style="color:#1f2328">(</span>url<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">if</span> <span style="color:#953800">__name__</span> <span style="color:#0550ae">==</span> <span style="color:#0a3069">&#39;__main__&#39;</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>    url <span style="color:#0550ae">=</span> <span style="color:#0a3069">&#34;http://127.0.0.1:8000&#34;</span>
+</span></span><span style="display:flex;"><span>    i <span style="color:#0550ae">=</span> Interface<span style="color:#1f2328">(</span>url<span style="color:#1f2328">,</span> <span style="color:#0a3069">&#39;schedules&#39;</span><span style="color:#1f2328">)</span>
+</span></span></code></pre></div><h3 id="5-日程-api-食用方法">5. 日程 API 食用方法</h3>
+<ol>
+<li>从 GitHub 上克隆本项目的 <a href="https://github.com/luochang212/calendar-api">代码仓库</a></li>
+<li>安装 FastAPI 的依赖包，参考本文第 1 节</li>
+<li>运行 <code>python build.py</code> 以创建 SQLite 数据库（仅需第一次使用时执行）</li>
+<li>运行 <code>uvicorn server:app --reload</code> 以启用 API 服务</li>
+<li>运行 <code>client.py</code> 中的测试代码，或在 <code>http://127.0.0.1:8000/docs</code> 中进行调试</li>
+</ol>
+<!-- todo: FastAPI 异步
+
+```shell
+pip install requests
+```
+
+```
+pip install python-multipart
+```  
+-->
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/poisson/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">泊松分布的仿真及可视化</span>
+    </a>
+    
+    
+    <a href="/posts/learning_statistics/" class="navigation-next">
+      <span class="navigation-tittle">统计学补完计划</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+</div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.js" defer></script>
+
+
+<script defer src="https://kit.fontawesome.com/2134995a39.js" crossorigin="anonymous"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/tocbot@4.36.8/dist/tocbot.min.js"></script>
+<script type="text/javascript">
+  if (window.tocbot) {
+    tocbot.init({
+      
+      tocSelector: '.toc',
+      
+      contentSelector: '.post',
+      
+      headingSelector: 'h2, h3, h4',
+      collapseDepth: 4
+    });
+  }
+</script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    mediumZoom('.post img', {
+      background: 'rgba(0,0,0,0.82)',
+      margin: 24,
+      scrollOffset: 0
+    });
+  });
+</script>
+
+
+
+    
+
+
+
+  </body>
+</html>

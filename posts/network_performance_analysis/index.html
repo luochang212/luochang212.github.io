@@ -1,0 +1,893 @@
+<!doctype html>
+<html lang="zh-CN">
+  
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="https://www.luochang.ink/posts/network_performance_analysis/">
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.163.3">
+
+    
+    
+    
+
+<title>排队论在网络性能分析中的应用 • Chang Luo</title>
+
+
+    
+
+
+<meta name="description" content="在网络中，服务器和用户之间相互传送数据包。数据包的传送需要时间，因此或多或少都会产生延迟。为了分析这些延迟，我们引入了一系列假设，并利用排队论对网络延迟进行建模分析。本文将着重介绍网络性能分析中几种常见的排队模型。">
+
+
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://www.luochang.ink/images/og-default.jpg">
+	<meta name="twitter:title" content="排队论在网络性能分析中的应用">
+	<meta name="twitter:description" content="在网络中，服务器和用户之间相互传送数据包。数据包的传送需要时间，因此或多或少都会产生延迟。为了分析这些延迟，我们引入了一系列假设，并利用排队论对网络延迟进行建模分析。本文将着重介绍网络性能分析中几种常见的排队模型。">
+			<meta name="twitter:site" content="@_stellar_tide">
+
+<meta property="og:url" content="https://www.luochang.ink/posts/network_performance_analysis/">
+	<meta property="og:site_name" content="Chang Luo">
+	<meta property="og:title" content="排队论在网络性能分析中的应用">
+	<meta property="og:description" content="在网络中，服务器和用户之间相互传送数据包。数据包的传送需要时间，因此或多或少都会产生延迟。为了分析这些延迟，我们引入了一系列假设，并利用排队论对网络延迟进行建模分析。本文将着重介绍网络性能分析中几种常见的排队模型。">
+	<meta property="og:locale" content="zh_CN">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2019-07-04T00:00:00+00:00">
+		<meta property="article:modified_time" content="2019-07-04T00:00:00+00:00">
+		<meta property="article:tag" content="Network-Performance-Analysis">
+		<meta property="article:tag" content="Queuing-Theory">
+		<meta property="article:tag" content="Poisson-Process">
+		<meta property="og:image" content="https://www.luochang.ink/images/og-default.jpg">
+
+
+    
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.26b99d1b39c55b25f45753962fee8b8024e3b7525afe742fbbc09e044247c0db.css" integrity="sha256-JrmdGznFWyX0V1OWL&#43;6LgCTjt1Ja/nQvu8CeBEJHwNs=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+
+<link rel="stylesheet" href="/scss/tocbot.5ef07cebc3c477b54270456f149ee02922479bb7555fd344b2c69f953b0e7e5e.css" integrity="sha256-XvB868PEd7VCcEVvFJ7gKSJHm7dVX9NEssaflTsOfl4=">
+
+
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#202020">
+    
+    
+
+</head>
+
+
+  <body
+    class=" "
+  >
+    <div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="https://www.luochang.ink/">Chang Luo</a>
+      </span>
+      
+      
+      
+      <div class="author-image">
+        <button type="button" class="author-trigger" onclick="openNav()" aria-label="打开个人收藏侧栏"
+          aria-controls="mySidenav" aria-expanded="false"><img src="https://www.luochang.ink//images/profile.webp"
+            alt="Chang Luo" class="img--circle img--headshot element--center"></button>
+      </div>
+      
+      <p class="site__description">
+        
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Chang Luo</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		<li class="sidebar-nav__home">
+			<a href="https://www.luochang.ink/"><span>Home</span></a>
+		</li>
+		
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/portfolio/">
+						<span>Projects</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+		
+		<a href="https://twitter.com/_stellar_tide" rel="me" title="X">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		<a href="https://github.com/luochang212" rel="me" title="GitHub">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		<a href="https://mp.weixin.qq.com/s/He-04l46xJTM_MJ3AyTwWQ" rel="me" title="微信">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.35em; height: 1.35em; vertical-align: -0.28em;">
+				<path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135-.01-.27-.027-.407-.03zm-2.53 3.274c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982z"/>
+			</svg>
+		</a>
+		
+		
+		<a href="https://www.zhihu.com/people/Fashionable" rel="me" title="知乎">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2"
+				 stroke-linecap="round" stroke-linejoin="round" style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="m13.3334,3.60098l0,17.1471l1.79582,0l0.75424,2.13703l3.18459,-2.13703l3.93584,0l0,-17.1471l-9.6705,0zm7.41375,14.87538l-1.79283,0l-2.24777,1.50849l-0.53276,-1.50849l-0.53875,0l0,-12.53483l5.10911,0l0,12.53483l0.00299,0zm-8.56906,-7.18927l-3.97475,0c0.06285,-1.34387 0.1287,-3.12174 0.19754,-5.17496l3.91788,0l-0.00299,-0.24244c0,-0.01796 -0.00599,-0.43998 -0.06884,-0.87097c-0.06285,-0.44896 -0.19754,-1.04457 -0.62854,-1.04457l-6.5727,0c0.13169,-0.61657 0.46991,-2.08615 0.87995,-2.80747l0.19155,-0.33522l-0.3861,-0.02095c-0.02394,0 -0.58663,-0.02694 -1.23912,0.31726c-1.06851,0.56868 -1.5474,1.68807 -1.75691,2.52612c-0.55072,2.18791 -1.33489,3.70837 -1.66712,4.35786c-0.09877,0.19155 -0.15863,0.30529 -0.18557,0.38311c-0.05387,0.14666 -0.02394,0.29332 0.0838,0.38909c0.31427,0.28434 1.14334,-0.0868 1.15232,-0.08979c0.01796,-0.00898 0.03891,-0.01796 0.06585,-0.02993c0.41603,-0.18856 1.64916,-0.74826 2.08914,-2.52911l1.69705,0c0.02095,0.96376 0.09278,4.14236 0.0868,5.17496l-4.22018,0l-0.06285,0.0449c-0.69139,0.50582 -0.91288,1.8916 -0.92185,1.95146l-0.0419,0.27536l4.99837,0c-0.36814,2.34355 -0.79315,3.3941 -1.01763,3.81313c-0.11074,0.20951 -0.21849,0.41902 -0.32025,0.62255c-0.63752,1.26306 -1.29898,2.56802 -3.7802,4.5973c-0.10775,0.0838 -0.20951,0.23944 -0.14367,0.41005c0.07183,0.18856 0.27835,0.27237 0.73629,0.27237c0.16162,0 0.35318,-0.00898 0.58065,-0.02993c1.49352,-0.13169 3.01698,-0.53875 4.04359,-2.6219c0.50882,-1.05056 0.94879,-2.14601 1.31394,-3.25941l4.08549,4.78886l0.14965,-0.35916c0.02394,-0.05687 0.56868,-1.38578 0.15264,-2.87032l-0.01497,-0.05387l-3.23547,-3.68143l-0.65847,0.49684c0.19155,-0.78118 0.31726,-1.49352 0.37413,-2.12805l4.74995,0l0,-0.23944c0,-1.20021 -0.55371,-1.91255 -0.57466,-1.94248l-0.07183,-0.08979z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+</section>
+
+      </div>
+    </div>
+    
+<div class="copyright">
+  &copy; 2026 Chang Luo
+  
+</div>
+
+
+
+  </div>
+</div>
+
+<div id="overlay" onclick="closeNav()" aria-hidden="true"></div>
+
+<div id="mySidenav" class="sidenav" role="dialog" aria-label="个人收藏" aria-hidden="true">
+  <div id="main">
+    <div class="tab">
+      <button id="default-tab" class="tablinks active" onclick="openItem(event, 'Resources')"
+        aria-controls="Resources" aria-pressed="true">Resources</button>
+      <button class="tablinks" onclick="openItem(event, 'netease-player')"
+        aria-controls="netease-player" aria-pressed="false">Music</button>
+      <button class="tablinks" onclick="openItem(event, 'video-player')"
+        aria-controls="video-player" aria-pressed="false">Video</button>
+      <button class="tablinks" onclick="openItem(event, 'gallery')"
+        aria-controls="gallery" aria-pressed="false">Gallery</button>
+      <button class="tablinks" onclick="openItem(event, 'gadget')"
+        aria-controls="gadget" aria-pressed="false">Gadget</button>
+      <button class="tablinks" onclick="openItem(event, 'categories')"
+        aria-controls="categories" aria-pressed="false">Cats</button>
+    </div>
+
+    <div id="Resources" class="tabcontent">
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/resources/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Resources"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="netease-player" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
+        frameborder="no"
+        marginheight="0"
+        marginwidth="0"
+        title="Music player"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="video-player" class="tabcontent" hidden>
+      <div class="video-layout">
+        <div class="video-main">
+          <div class="video-cover" id="video-cover">
+            <img id="video-cover-img" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-cover-overlay">
+              <button class="video-play-btn" id="video-play-btn" aria-label="播放视频">
+                <svg viewBox="0 0 24 24" width="48" height="48"><path d="M8 5v14l11-7z" fill="white"/></svg>
+              </button>
+              <span class="video-cover-title" id="video-cover-title">四月是你的谎言</span>
+            </div>
+          </div>
+          <div class="video-frame" id="video-frame" hidden>
+            <iframe src="about:blank"
+              data-src="//player.bilibili.com/player.html?bvid=BV1Ms411D7in&p=1&high_quality=1&danmaku=0&autoplay=0"
+              style="width:100%;"
+              scrolling="no"
+              frameborder="no"
+              framespacing="0"
+              title="Bilibili video player"
+              allowfullscreen="true"></iframe>
+          </div>
+        </div>
+        <div class="video-playlist">
+          <button class="video-item active" data-bvid="BV1Ms411D7in"
+            data-title="四月是你的谎言"
+            data-cover="/images/video-covers/zutomayo.jpg"
+            data-duration="4:04">
+            <img class="video-item-cover" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">四月是你的谎言</span>
+              <span class="video-item-meta">4:04</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1LW411j7dK"
+            data-title="Kids by One republic — 三羊"
+            data-cover="/images/video-covers/sanyang.jpg"
+            data-duration="2:54">
+            <img class="video-item-cover" src="/images/video-covers/sanyang.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">Kids by One republic</span>
+              <span class="video-item-meta">三羊 · 2:54</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Yx411U7Lx"
+            data-title="交织together — M78"
+            data-cover="/images/video-covers/jiaozhi.jpg"
+            data-duration="6:06">
+            <img class="video-item-cover" src="/images/video-covers/jiaozhi.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">交织together</span>
+              <span class="video-item-meta">M78 · 6:06</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1rp4y1L7i4"
+            data-title="新员工入职大会 — 岁己SUI/恋诗夜Koxia"
+            data-cover="/images/video-covers/suisui.jpg"
+            data-duration="2:33">
+            <img class="video-item-cover" src="/images/video-covers/suisui.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">新员工入职大会</span>
+              <span class="video-item-meta">岁己SUI/恋诗夜Koxia · 2:33</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Av4y147QE"
+            data-title="真物论 — 悠亚"
+            data-cover="/images/video-covers/zhenwulun.jpg"
+            data-duration="3:30">
+            <img class="video-item-cover" src="/images/video-covers/zhenwulun.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">真物论</span>
+              <span class="video-item-meta">悠亚 · 3:30</span>
+            </div>
+          </button>
+        </div>        </div>
+      </div>
+
+
+    <div id="gallery" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/gadget/gallery/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Gallery"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="gadget" class="tabcontent drawer-native" hidden>
+      <div class="drawer-native-content">
+        
+          <br>
+<table>
+	<thead>
+			<tr>
+					<th>#</th>
+					<th>name</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td><a href="/gadget/hydra" target="_blank">Hydra</a></td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td><a href="/mozi/" target="_blank">墨子</a></td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td><a href="/gadget/how-old-are-you" target="_blank">年龄可视化</a></td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td><a href="/gadget/plan" target="_blank">计划书</a></td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td><a href="/gadget/piano" target="_blank">Piano</a></td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td><a href="/flockn-roll/" target="_blank">Flock&rsquo;n Roll</a></td>
+			</tr>
+	</tbody>
+</table>
+
+        
+      </div>
+    </div>
+
+    <div id="categories" class="tabcontent drawer-native" hidden>
+      <ul class="drawer-category-list">
+        
+          <li>
+            <a href="/categories/devops/" target="_blank" rel="noopener noreferrer">
+              <span>DevOps</span>
+              <span class="drawer-category-count">12</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/deeplearning/" target="_blank" rel="noopener noreferrer">
+              <span>DeepLearning</span>
+              <span class="drawer-category-count">11</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/agent/" target="_blank" rel="noopener noreferrer">
+              <span>Agent</span>
+              <span class="drawer-category-count">7</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/algorithms/" target="_blank" rel="noopener noreferrer">
+              <span>Algorithms</span>
+              <span class="drawer-category-count">6</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/life/" target="_blank" rel="noopener noreferrer">
+              <span>Life</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/sota/" target="_blank" rel="noopener noreferrer">
+              <span>SOTA</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/bigdata/" target="_blank" rel="noopener noreferrer">
+              <span>BigData</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/statistics/" target="_blank" rel="noopener noreferrer">
+              <span>Statistics</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/frontend/" target="_blank" rel="noopener noreferrer">
+              <span>FrontEnd</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/llms/" target="_blank" rel="noopener noreferrer">
+              <span>LLMs</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/math/" target="_blank" rel="noopener noreferrer">
+              <span>Math</span>
+              <span class="drawer-category-count">2</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/datavisualization/" target="_blank" rel="noopener noreferrer">
+              <span>DataVisualization</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/hardware/" target="_blank" rel="noopener noreferrer">
+              <span>Hardware</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/machinelearning/" target="_blank" rel="noopener noreferrer">
+              <span>MachineLearning</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/modeling/" target="_blank" rel="noopener noreferrer">
+              <span>Modeling</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/multimodal/" target="_blank" rel="noopener noreferrer">
+              <span>Multimodal</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/network/" target="_blank" rel="noopener noreferrer">
+              <span>Network</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/prose/" target="_blank" rel="noopener noreferrer">
+              <span>Prose</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="/js/drawer.js"></script>
+
+
+    <div class="content container">
+    
+<article>
+  <header>
+    <h1>排队论在网络性能分析中的应用</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Jul 4, 2019
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/math">MATH</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/network-performance-analysis">network-performance-analysis</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/queuing-theory">queuing-theory</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/poisson-process">poisson-process</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 5 min read
+</div>
+
+
+  </header>
+  
+  
+  
+    <div class="toc-wrapper">
+      <input type="checkbox" id="tocToggle">
+      <label for="tocToggle">Table of Content</label>
+      
+        <div class="toc" id="TableOfContents"></div>
+      
+    </div>
+  
+  
+  <div class="post">
+    <blockquote>
+<p><strong>排队论</strong>(queueing theory)也称随机服务系统理论，它研究的内容有三部分：性态问题、最优化问题和统计推断问题。（《运筹学》清华大学出版社）</p>
+</blockquote>
+<blockquote>
+<p>下图描述了排队过程的一般流程：</p>
+</blockquote>
+<blockquote>
+<p><img src="/img/queue.png" alt="排队论"></p>
+</blockquote>
+<blockquote>
+<p>现实中的排队问题是多种多样的，对上述“顾客源”和“服务机构”应该作宽泛的理解。顾客和服务机构可以是生物，也可以是非生物；排队结构可以是有形的，也可以是无形的，比如向交换台要求通话的请求；顾客可以走向服务机构，也可以相反，比如送货上门。</p>
+</blockquote>
+<p>在网络中，服务器和用户之间相互传送数据包。数据包的传送需要时间，因此或多或少都会产生延迟。为了分析这些延迟，我们引入了一系列假设，并利用排队论对网络延迟进行建模分析。</p>
+<p>本文将着重介绍<strong>网络性能分析</strong>(Network performance analysis)中几种常见的排队模型。它们是：</p>
+<ul>
+<li>The M/M/1 queuing system</li>
+<li>The birth-death process</li>
+<li>The M/M/m queuing system</li>
+<li>The M/M/1/m queuing system</li>
+<li>The M/M/∞ queuing system</li>
+<li>The M/M/m/m queuing system</li>
+</ul>
+<p>另外，作为以上模型的理论基础，本文将首先介绍<strong>泊松过程</strong>(Poisson process)。</p>
+<h3 id="泊松过程的推导">泊松过程的推导</h3>
+<p>泊松过程是马尔可夫过程的一个特例，在排队论中经常被用来估计顾客到达的概率分布。</p>
+<p>（一）泊松过程的假设</p>
+<ul>
+<li>
+<p>在时间间隔\( \Delta t \)内，有且仅有一位顾客到达的概率\( P \)和\( \Delta t \)成比例，比例系数为\( \lambda \)</p>
+</li>
+<li>
+<p>在时间间隔\( \Delta t \)内，至多只允许一位顾客到达（否则应该选取一个更短的时间间隔）
+</p>
+$$\begin{aligned} P(\text { 在时间间隔 }[t, t+\Delta t] \text { 内，有且仅有一位顾客到达 }) &=\lambda \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，没有顾客到达 }) &=1-\lambda \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，多于一位顾客到达 }) &=0 \end{aligned}$$</li>
+<li>
+<p>泊松过程是对顾客到达过程的估计，故不考虑顾客的离开情况，所以到达人数只增不减</p>
+</li>
+<li>
+<p>只考虑一阶无穷小对结果的影响，忽略二阶无穷小，\( \Delta t \gg(\Delta t)^{2} \approx 0 \)</p>
+</li>
+<li>
+<p>\( P_{k}(t) \)表示在时间间隔\( t \)内有k位顾客到达的概率</p>
+</li>
+<li>
+<p>\( p_{i, j}(\Delta t) \)表示在时间间隔\( \Delta t \)内到达总人数由\( i \)变为\( j \)的概率</p>
+</li>
+</ul>
+<p>（二）推导过程</p>
+<p>泊松过程的状态转移图如下：
+<br><br><br>
+<img src="/img/The-Poisson-distribution-state.png" alt="泊松过程图像">
+<br>
+由于总人数单调递增，且在时间间隔\( \Delta t \)内，到达总人数最多增加1。因此，如果\( t+\Delta t \)时刻的到达人数是k，那么在\( t \)时刻的到达人数只有两种情况：k或者k-1.</p>
+<div id="Poisson">
+<p>根据上述推断，时间间隔\( t+\Delta t \)内到达总人数为k的概率可由时间间隔\( t \)内到达总人数为k和k-1的概率表示：</p>
+$$\begin{aligned} P_{k}(t+\Delta t) &=P_{k}(t) p_{k, k}(\Delta t)+P_{k-1}(t) p_{k-1, k}(\Delta t) \\ P_{0}(t+\Delta t) &=P_{0}(t) p_{0,0}(\Delta t) \quad k=0 \text { (起始状态) } \end{aligned}$$<div>
+<p>由泊松过程的假设可知：</p>
+$$p_{k, k}(\Delta t)=(1-\lambda \Delta t) \quad \text { and } \quad p_{k-1, k}(\Delta t)=\lambda \Delta t$$<p>代入上式可得：</p>
+$$\begin{aligned} P_{k}(t+\Delta t) &=P_{k}(t)(1-\lambda \Delta t)+P_{k-1}(t)(\lambda \Delta t) \\ P_{0}(t+\Delta t) &=P_{0}(t)(1-\lambda \Delta t) \quad k=0 \text { (starting condition) } \end{aligned}$$<p>整理得：</p>
+$$\begin{aligned} \frac{P_{k}(t+\Delta t)-P_{k}(t)}{\Delta t} &=-\lambda P_{k}(t)+\lambda P_{k-1}(t) \\ \frac{P_{0}(t+\Delta t)-P_{0}(t)}{\Delta t} &=-\lambda P_{0}(t) \end{aligned}$$<p>当\( \Delta t \rightarrow 0 \)时有：</p>
+$$\begin{aligned} \frac{d P_{k}(t)}{d t} &=-\lambda P_{k}(t)+\lambda P_{k-1}(t) \quad (k \geq 1) \quad (1) \\ \frac{d P_{0}(t)}{d t} &=-\lambda P_{0}(t) \quad \quad \quad \quad \quad \quad \quad \quad (2) \end{aligned} $$<p>解方程(2)可得：</p>
+$$P_{0}(t)=A \exp (-\lambda t)$$<p>其中\( A \)是任意常数。设方程(1)的\( k=1 \)，把方程(2)的解代入方程(1)中有：</p>
+$$\frac{d P_{1}(t)}{d t}=-\lambda P_{1}(t)+A \lambda \exp (-\lambda t)$$<p>解得：</p>
+$$P_{1}(t)=A \lambda t \exp (-\lambda t)$$<p>\( k=2 \)时同理：</p>
+$$\frac{d P_{2}(t)}{d t}=-\lambda P_{2}(t)+A \lambda^{2} t \exp (-\lambda t)$$<p>解得：</p>
+$$P_{2}(t)=\frac{A(\lambda t)^{2}}{2} \exp (-\lambda t)$$<p> 对任意常数k，解为：</p>
+$$P_{k}(t)=\frac{A(\lambda t)^{k}}{k !} \exp (-\lambda t)$$<p>下面计算\( A \)的值，由于系统处于各状态的概率之和为1，故有：</p>
+$$P_{0}(t)+P_{1}(t)+P_{2}(t)+\cdots=\sum_{i=0}^{\infty} P_{i}(t)=1$$<p>即：</p>
+$$A \exp (-\lambda t) \sum_{k=0}^{\infty} \frac{(\lambda t)^{k}}{k !}=1$$<p>由泰勒展开解得\( A=1 \)。因此，泊松过程的概率密度函数为：</p>
+$$\boxed{P(k | t, \lambda)=\frac{(\lambda t)^{k}}{k !} \exp (-\lambda t)}$$<p>下图是几个不同\( \mu \)值对应的泊松过程函数图像：</p>
+<p><img src="/img/The-Poisson-distribution.png" alt="泊松过程图像"></p>
+<p>（三）泊松过程实例</p>
+<p>一个交换机平均每分钟接收100个电话请求，按照泊松过程，该交换机连续五秒未收到电话请求的概率的多少？</p>
+$$P\left(k=0 | t=\frac{1}{12}, \lambda=100\right)=\exp \left(-\frac{100}{12}\right)=0.00024$$<blockquote>
+<p><strong>Note</strong>: 从上面这个实例我们能看出：k代表顾客的数量，t代表这段时间间隔的长度，\( \lambda \)代表平均每单位时间到达的顾客数。</p>
+</blockquote>
+<h3 id="排队系统的分类">排队系统的分类</h3>
+<p>排队系统的分类用Kendall符号表示，符号形式为：</p>
+$$X/Y/Z/A/B/C$$<p>填写规则如下：</p>
+<ul>
+<li>X 处填写表示相继到达间隔时间的分布;</li>
+<li>Y 处填写表示服务时间的分布;</li>
+<li>Z 处填写并列的服务器的数目;</li>
+<li>A 处填写系统容量限制 N;</li>
+<li>B 处填写顾客源数目 m;</li>
+<li>C处填写服务规则，如先到先服务( FCFS)，后到后服务( LCFS)等。</li>
+</ul>
+<p>比如，M/M/1 表示相继到达间隔时间为负指数分布、服务时间为负指数分布、单服务器的模型；D/M/5 表示确定的到达间隔、服务时间为负指数分布、5个平行服务器的模型。</p>
+<blockquote>
+<p><strong>Note</strong>: 从上述两个例子我们能看出：M代表负指数分布，D代表确定型。这里，M和D是概率分布类型的代号。常见概率分布类型的代号如下：</p>
+</blockquote>
+<blockquote>
+<p>\( M \) —— 负指数分布(M是Markov的字头，因为负指数分布具有无记忆性，即Markov性) ;</p>
+</blockquote>
+<blockquote>
+<p>\( D \) —— 确定型(deterministic);</p>
+</blockquote>
+<blockquote>
+<p>\( E_k \) —— k 阶爱尔朗(erlang)分布;</p>
+</blockquote>
+<blockquote>
+<p>\( GI \) —— 一般相互独立(general independent)的时间间隔的分布;</p>
+</blockquote>
+<blockquote>
+<p>\( G \) —— 一般(general)服务时间的分布。</p>
+</blockquote>
+<h3 id="the-mm1-queuing-system">The M/M/1 queuing system</h3>
+<p>（一）M/M/1排队系统的假设</p>
+<p>M/M/1排队系统是相继到达时间间隔为负指数分布、服务时间为负指数分布、单服务器的模型，且只有一个队列。<!--M/M/1 queue 也叫 birth death process, 因为到达即代表出生，服务即代表死亡。--></p>
+<p>M/M/1排队系统的状态转移图如下：</p>
+<p><img src="/img/mm1-queue-state.png" alt="M/M/1排队系统"></p>
+<p>图中，\( \lambda_k \)表示当系统处于状态k时的到达速率(arrival rate)，\( \mu_{k} \)表示当系统处于状态k时的服务速率(service rate).</p>
+<blockquote>
+<p><strong>Note</strong>: M/M/1排队系统的性质：</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>系统处于状态n是指系统内有n位顾客，这n位顾客既包括正在排队的，也包括正在接受服务的；</li>
+</ul>
+</blockquote>
+<ul>
+<li>如果状态n的情况已知，那么其他所有关于该队列的信息都可以被推断出来。</li>
+</ul>
+<p>(二)推导过程</p>
+<p>回忆前文泊松过程的假设：</p>
+$$\begin{aligned} P(\text { 在时间间隔 }[t, t+\Delta t] \text { 内，有且仅有一位顾客到达 }) &=\lambda \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，没有顾客到达 }) &=1-\lambda \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，多于一位顾客到达 }) &=0 \end{aligned}$$<p>上述公式是对到达速率\( \lambda \)而言的，对服务速率\( \mu \)也采用相同的模型假设：</p>
+$$\begin{aligned} P(\text { 在时间间隔 }[t, t+\Delta t] \text { 内，有且仅有一位顾客服务完成 }) &=\mu \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，没有顾客服务完成 }) &=1-\mu \Delta t \\ P(\text { 在时间间隔 }[t, t+\Delta t]\text { 内，多于一位顾客服务完成 }) &=0 \end{aligned}$$<p>约定：</p>
+<ol>
+<li>\( P_{k}(t) \)表示在时间间隔\( t \)内，系统内有\( k \)位顾客的概率</li>
+<li>\( p_{i, j}(\Delta t) \)表示在时间间隔\( \Delta t \)内，系统内人数由\( i \)变为\( j \)的概率</li>
+</ol>
+<p>时间间隔\( t+\Delta t \)内系统内人数为k的概率可由时间间隔\( t \)内系统内人数为k和k-1的概率表示：</p>
+$$\begin{aligned} P_{k}(t+\Delta t)=& P_{k}(t) p_{k, k}(\Delta t)+P_{k-1}(t) p_{k-1, k}(\Delta t) \\ &+P_{k+1}(t) p_{k+1, k}(\Delta t) \\ P_{0}(t+\Delta t)=& P_{0}(t) p_{0,0}(\Delta t)+P_{1}(t) p_{1,0}(\Delta t) \quad k=0 \text { (起始状态) } \end{aligned}$$<p>和泊松过程比较，M/M/1 排队模型的转移概率多了从状态 k+1 转到状态 k 的一项。点击<a href="#Poisson">这里</a>回顾泊松过程的相关公式。</p>
+<p>将泊松过程的模型假设公式和M/M/1 排队系统的假设公式，代入上述公式：</p>
+$$\begin{aligned} P_{k}(t+\Delta t)=& P_{k}(t)(1-\lambda \Delta t)(1-\mu \Delta t)+P_{k-1}(t)(\lambda \Delta t)(1-\mu \Delta t) \\ &+P_{k+1}(t)(\mu \Delta t)(1-\lambda \Delta t) \\ P_{0}(t+\Delta t)=& P_{0}(t)(1-\lambda \Delta t)+P_{1}(t)(\mu \Delta t)(1-\lambda \Delta t), \quad k=0 \end{aligned}$$<p>当\( \Delta t \rightarrow 0 \)时有：</p>
+$$\begin{aligned} \frac{d P_{k}(t)}{d t} &=-(\lambda+\mu) P_{k}(t)+\lambda P_{k-1}(t)+\mu P_{k+1}(t), \quad k \geq 1 \\ \frac{d P_{0}(t)}{d t} &=-\lambda P_{0}(t)+\mu P_{1}(t) \end{aligned}$$<p>考虑系统处于稳定状态(steady state)的情况，有：</p>
+$$\frac{d P_{k}(t)}{d t}=0, \qquad k \geq 0$$<p>代入上式可得：</p>
+$$\begin{aligned} (\lambda+\mu) P_{k}-\lambda P_{k-1}-\mu P_{k+1} = 0, \quad k \geq 1 \\ \lambda P_{0}-\mu P_{1} = 0, \quad k = 0 \end{aligned}$$<p>解得：</p>
+$$\lambda P_{k-1}=\mu P_{k}$$<blockquote>
+<p><strong>Note</strong>: 稳定状态下，系统处于状态k的概率是稳定的、不随时间变化的，因此状态k的概率变化率为0，即\( \frac{d P_{k}(t)}{d t}=0 \)。</p>
+</blockquote>
+<blockquote>
+<p>下面是M/M/1 排队系统的通量图，由系统处于各状态的概率不随时间变化可知，从状态k-1转移到状态k的通量和从状态k转移到k-1的通量应该相等。从状态k-1到状态k的通量为\( \lambda P_{k-1} \)，从状态k到状态k-1的通量为\( \mu P_{k} \)。故即使不通过公式推导，我们也能得出\( \lambda P_{k-1}=\mu P_{k} \)的结论。</p>
+</blockquote>
+<blockquote>
+<p><img src="/img/mm1-flow-rates.png" alt="通量图"></p>
+</blockquote>
+<p>整理上式得：</p>
+$$P_{k}=\frac{\lambda}{\mu} P_{k-1}$$<p>递推可得：</p>
+$$P_{k}=\left(\frac{\lambda}{\mu}\right)^{k} P_{0}=\rho^{k} P_{0}, \text { 其中 } \rho = \frac{\lambda}{\mu}$$<p>下面计算\( P_{0} \)的值，由于：</p>
+$$\sum_{k=0}^{\infty} P_{k}=1$$<p>将\( P_{k}=\rho^{k} P_{0} \)代入上式有：</p>
+$$P_{0} \sum_{k=0}^{\infty} \rho^{k}=1$$<p>整理得：</p>
+$$P_{0}=\frac{1}{\sum_{k=0}^{\infty} \rho^{k}}$$<p>当\( \rho<1 \)时有：</p>
+$$\sum_{k=0}^{\infty} \rho^{k}=\frac{1}{1-\rho} \quad \text { for } \rho<1$$<p>故：</p>
+$$P_{0}=(1-\rho)$$<p>综上，处于稳定状态的M/M/1 排队系统的概率分布为：</p>
+$$\boxed{ P_{k}=\rho^{k}(1-\rho), \rho<1}$$<p>下图是不同的\( \rho \)值下M/M/1 排队系统概率分布的函数图像：</p>
+<p><img src="/img/mm1-state-probabilities.png" alt="M/M/1 排队系统在各状态下的概率"></p>
+<h3 id="the-birth-death-process">The birth-death process</h3>
+<blockquote>
+<p><strong>Note</strong>: The M/M/1 queuing system 和 The birth-death process 之间的关系:</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>The M/M/1 queuing system - 只有一个队列，对队列中的顾客数量没有限制；有且仅有一个服务器；稳定状态下，到达速率和服务速率都是常数。</li>
+</ul>
+</blockquote>
+<ul>
+<li>The birth-death process - 是 The M/M/1 queuing system 的推广。但是，稳定状态时，到达速率和服务速率是相互独立的，到达速率和服务速率随状态k的变化而变化。<!--（这一段我有可能翻译不到位，原文表达得很清晰。The birth-death process, which is an extension of the M/M/1 process in which the steady state arrival and service rates are dependent upon the state of the system）--></li>
+</ul>
+<p>从上面的描述我们知道，The M/M/1 queuing system 和 The birth-death process是很相像的，唯一的区别在于系数。在 M/M/1 排队系统中，系数都是常数，而 The birth-death process 中的系数是随状态k的变化而变化的。也就是说，在 The birth-death process 的模型中，只需要把 The M/M/1 queuing system 中所有的\( \lambda \)和\( \mu \)替换成\( \lambda_k \)和\( \mu_k \)即可。</p>
+<p>\( \lambda \)和\( \mu \)是所有状态的平均值，而\( \lambda_k \)和\( \mu_k \)是状态k下的到达概率通量(arrival probability flux)和服务概率通量(service probability flux)。它们之间的关系可以表示为:</p>
+$$\lambda_{k}=\lambda P_{k} \quad \text { and } \quad \mu_{k}=\mu P_{k}$$<p>The birth-death process 的通量图如下：</p>
+<p><img src="/img/bd-flow-rates.png" alt="The birth-death process 的通量图"></p>
+<p>稳定状态下，由经过边界的通量相互抵消可得：</p>
+$$\lambda_{k} P_{k}=\mu_{k+1} P_{k+1}$$<p>后续的推导过程和 M/M/1 排队系统的推导十分相似，就不再赘述了。这里直接给出 The birth-death process 的状态概率分布函数：</p>
+$$\boxed{ P_{k}=\left(\frac{\prod_{i=0}^{k-1} \lambda_{i}}{\prod_{i=1}^{k} \mu_{i}}\right) P_{0}, \qquad k \geq 1 }$$<h3 id="the-mmm-queuing-system">The M/M/m queuing system</h3>
+<p>M/M/m 排队系统考虑有一个队列和m个服务器的情况。该排队系统的状态转移图如下：</p>
+<p><img src="/img/mmm-state-transition.png" alt="M/M/m 排队系统状态转移图"></p>
+<p>M/M/m 排队系统的性质：</p>
+<ul>
+<li>因为只有一个队列，因此所有的状态下，到达速率都是常数\( \lambda \)</li>
+<li>如果系统内人数小于或等于m，那么队列一定为空。且状态k的服务速率为\( \mu_{k}=k \mu \)，这是因为此时系统内的所有人都正在接受服务</li>
+<li>如果系统内人数大于m，那么至少有一个人在队列中排队等待</li>
+</ul>
+<p>各状态下的到达速率和服务速率分别为：</p>
+$$\begin{aligned} \lambda_{k} &=\lambda, \quad k=0,1,2, \ldots \\ \mu_{k} &=\left\{\begin{array}{ll}{k \mu} & {k=0,1,2, \ldots, m-1, m} \\ {m \mu} & {k \geq m}\end{array}\right.\end{aligned}$$<p>如果系统处于稳定状态，由状态k进入状态k-1的通量和状态k-1进入状态k的通量相等可知：</p>
+$$\begin{aligned} \lambda P_{k-1} &=k \mu P_{k}, \quad k \leq m \\ \lambda P_{k-1} &=m \mu P_{k}, \quad k \geq m \end{aligned}$$<p>首先考虑 k &lt; m 的情况：</p>
+$$P_{k}=\frac{1}{k}(\rho m) P_{k-1}, \qquad \frac{\lambda}{\mu}=\rho m$$<p>递推可得：</p>
+$$\begin{aligned} P_{1} &=(\rho m) P_{0} \\ P_{2} &=\frac{(\rho m)}{2} P_{1}=\frac{(\rho m)^{2}}{2 !} P_{0} \\ P_{3} &=\frac{(\rho m)}{3} P_{2}=\frac{(\rho m)^{3}}{3 !} P_{0} \end{aligned}$$<p>故 k &lt; m 时的一般式为：</p>
+$$P_{k}=\left(\frac{(m \rho)^{k}}{k !}\right) P_{0}, \qquad k<m$$<p>再考虑 k &gt; m 的情况：</p>
+$$P_{k}=\frac{\lambda}{m \mu} P_{k-1}=\rho P_{k-1}$$<p>递推可得：</p>
+$$\begin{aligned} P_{m} &=\rho P_{m-1} \\ P_{m+1} &=\rho P_{m}=\rho^{2} P_{m-1} \\ P_{m+2} &=\rho P_{m+1}=\rho^{3} P_{m-1} \end{aligned}$$<p>故 k &gt; m 时的一般式为：</p>
+$$P_{k}=\rho^{k-m+1} P_{m-1} \qquad k=m, m+1, \ldots$$<p>由 k &lt; m 情况下的概率分布函数\( P_{k} \)，可知：</p>
+$$P_{m-1}=\left(\frac{(m \rho)^{m-1}}{(m-1) !}\right) P_{0}$$<p>由上述两式整理得：</p>
+$$P_{k}=\left(\frac{m^{m} \rho^{k}}{m !}\right) P_{0}, \quad k=m, m+1, \ldots$$<p>综上，稳定状态下，M/M/m 排队系统的状态概率分布为：</p>
+$$P_{k}=\left\{\begin{array}{l}{P_{0}\left(\frac{(m \rho)^{k}}{k !}\right) \qquad k \leq m} \\ {P_{0}\left(\frac{m^{m} \rho^{k}}{m !}\right) \quad k \geq m}\end{array}\right.$$<p>其中，\( \rho=\frac{\lambda}{m \mu}<1 \)。</p>
+<p>下面计算\( P_{0} \)，由于：</p>
+$$\sum_{k=0}^{\infty} P_{k}=1$$<p>可得：</p>
+$$P_{0}\left[\sum_{k=0}^{m-1} \frac{(m \rho)^{k}}{k !}+\sum_{k=m}^{\infty} \frac{m^{m} \rho^{k}}{m !}\right]=1$$<p>故当\( \rho<1 \)时，M/M/m 排队系统的稳定状态概率分布为：</p>
+$$\boxed{ P_{k}=\left\{\begin{array}{ll}{P_{0}\left(\frac{(m \rho)^{k}}{k !}\right)} & {k \leq m} \\ {P_{0}\left(\frac{m^{m} \rho^{k}}{m !}\right)} & {k \geq m}\end{array}, \quad \rho=\frac{\lambda}{m \mu}<1\right. }$$<p>其中，\( P_{0}=\left[\sum_{k=0}^{m-1} \frac{(m \rho)^{k}}{k !}+\frac{(m \rho)^{m}}{m !(1-\rho)}\right]^{-1} \)。</p>
+<blockquote>
+<p><strong>Note</strong>: 对于M/M/m 排队系统，一个重要的问题是系统内需要排队的概率。当系统内人数大于服务器数量时，顾客需要排队。需要排队的概率为：</p>
+</blockquote>
+<blockquote>
+$$P_{k \geq m+1}=\sum_{k=m+1}^{\infty} P_{k}=\sum_{k=m}^{\infty} P_{k}-P_{m}=P_{0}\left(\frac{m^{m} \rho^{m+1}}{m !(1-\rho)}\right)$$</blockquote>
+<h3 id="the-mm1m-queuing-system">The M/M/1/m queuing system</h3>
+<p>在之前的模型中，我们总是假设队列的长度是无限的。但现实中，由于缓存的限制，队列的长度通常是有限的。</p>
+<p>在一个M/M/1/m 排队系统中，如果系统内人数为m，那么任何后来者的服务请求都会被拒绝。对于M/M/1/m 排队系统，由于系统最多只能容纳m位顾客，且正在接受服务的那位顾客同样也需要占用1个位置，因此排队等待接受服务的队列的最大长度为m-1。</p>
+<p>M/M/1/m 排队系统的状态转移图如下：</p>
+<p><img src="/img/mm1m-state-diagram.png" alt="M/M/1/m 排队系统的状态转移图"></p>
+<p>M/M/1/m 排队系统的前半部分推导过程和M/M/1 排队系统十分相像。唯一的区别在于，由于M/M/1/m 排队系统在状态k处截断，故其\( P_0 \)值与M/M/1 排队系统的\( P_0 \)值不同。</p>
+<p>下面是M/M/1/m 排队系统的通量图：</p>
+<p><img src="/img/mm1m-flow-rates.png" alt="M/M/1/m 排队系统的通量图"></p>
+<p>由通量图可知:</p>
+$$\lambda_{k-1} P_{k-1}+\mu_{k+1} P_{k+1}=\mu_{k} P_{k}+\lambda_{k} P_{k}, \quad k=1, \ldots, m-1$$<p>解得：</p>
+$$\lambda_{k} P_{k}=\mu_{k+1} P_{k+1}, \qquad k=0, \dots, m-1$$<p>递推可得：</p>
+$$\begin{aligned} P_{1} &=\left(\frac{\lambda_{0}}{\mu_{1}}\right) P_{0} \\ P_{2} &=\left(\frac{\lambda_{1}}{\mu_{2}}\right) P_{1}=\left(\frac{\lambda_{0} \lambda_{1}}{\mu_{1} \mu_{2}}\right) P_{0} \\ P_{3} &=\left(\frac{\lambda_{2}}{\mu_{3}}\right) P_{1}=\left(\frac{\lambda_{0} \lambda_{1} \lambda_{2}}{\mu_{1} \mu_{2} \mu_{3}}\right) P_{0} \end{aligned}$$<p>由上述递推公式可知一般式为：</p>
+$$P_{k}=\left(\frac{\prod_{i=0}^{k-1} \lambda_{i}}{\prod_{i=1}^{k} \mu_{i}}\right) P_{0}=\left(\frac{\lambda}{\mu}\right)^{k} P_{0}, \qquad k=0, \ldots, m$$<p>下面求\( P_0 \)，由于：</p>
+$$\sum_{i=0}^{m} P_{i}=\left(1+\rho+\rho^{2}+\cdots+\rho^{m}\right) P_{0}=1, \qquad \rho=\frac{\lambda}{\mu}$$<p>导出：</p>
+$$P_{0}=\frac{1-\rho}{1-\rho^{m+1}}$$<p>故M/M/1/m 排队系统在稳定状态下的概率分布为：</p>
+$$\boxed{ P_{k}=\frac{(1-\rho) \rho^{k}}{1-\rho^{m+1}} \qquad k=0, \ldots, m }$$<p>其中，\( \rho=\frac{\lambda}{\mu} \)。</p>
+<h3 id="the-mm-queuing-system">The M/M/∞ queuing system</h3>
+<p>M/M/∞ 排队系统考虑有一个队列，无穷个服务器的情况。下面是M/M/∞ 排队系统的状态转移图：</p>
+<p><img src="/img/mm-state-diagram.png" alt="M/M/∞ 排队系统的状态转移图"></p>
+<p>通量图如下：</p>
+<p><img src="/img/mm-flow-rates.png" alt="通量图"></p>
+<p>由通量图可知：</p>
+$$\lambda_{k-1} P_{k-1}=\mu_{k} P_{k}$$<p>又\( \lambda_{k}=\lambda, \mu_{k}=k \mu \)，等式可化为：</p>
+$$\lambda P_{k-1}=k \mu P_{k}$$<p>由递推公式可得：</p>
+$$P_{k}=\frac{1}{k !}\left(\frac{\lambda}{\mu}\right)^{k} P_{0}$$<p>依照之前的方法，求出\( P_0 \)为：</p>
+$$P_{0}=\left[\sum_{k=0}^{\infty}\left(\frac{\lambda}{\mu}\right)^{k} \frac{1}{k !}\right]^{-1}=\exp \left(-\frac{\lambda}{\mu}\right)$$<p>综上，M/M/∞ 排队系统的状态概率分布为：</p>
+$$\boxed { P_{k}=\frac{1}{k !}\left(\frac{\lambda}{\mu}\right)^{k} \exp \left(-\frac{\lambda}{\mu}\right) }$$<h3 id="the-mmmm-queuing-system">The M/M/m/m queuing system</h3>
+<p>M/M/m/m 排队系统有m个服务器，同时系统内最多容纳m位顾客。它的状态转移图如下：</p>
+<p><img src="/img/mmmm-state-diagram.png" alt="M/M/m/m 排队系统的状态转移图"></p>
+<p>到达速率和服务速率表达如下：</p>
+$$\lambda_{k}=\left\{\begin{array}{cl}{\lambda} & {k=0,1, \ldots, m-1} \\ {0} & {k \geq m}\end{array}\right.$$$$\mu_{k}=\left\{\begin{array}{ll}{k \mu} & {k=0,1, \ldots, m} \\ {0} & {k>m}\end{array}\right.$$<p>通量图如下：</p>
+<p><img src="/img/mmmm-flow-rates.png" alt="image"></p>
+<p>由通量图可得：</p>
+$$\lambda P_{k-1}=k \mu P_{k}, \qquad k=1, \ldots, m$$<p>整理得：</p>
+$$P_{k}=\frac{\lambda}{k \mu} P_{k-1}=\frac{a}{k} P_{k-1}, \qquad k=1, \ldots, m$$<p>由递推公式解得：</p>
+$$P_{k}=P_{0}\left(\prod_{n=1}^{k} \frac{a}{n}\right)=\frac{a^{k}}{k !} P_{0}, \quad k=0, \ldots, m$$<p>下面计算\( P_0 \)，由于：</p>
+$$P_{0} \sum_{k=0}^{m} \frac{a^{k}}{k !}=1$$<p>故：</p>
+$$P_{0}=\frac{1}{\sum_{k=0}^{m} \frac{a^{k}}{k !}}$$<p>因此，M/M/m/m 排队系统的状态概率分布为：</p>
+$$\boxed { P_{k}=\frac{\frac{a^{k}}{k !}}{\sum_{n=0}^{m} \frac{a^{n}}{n !}}, \qquad a=\frac{\lambda}{\mu}, \qquad k=0, \ldots, m }$$
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/kitchen_time_2/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">厨房笔记（二）：快手菜合集</span>
+    </a>
+    
+    
+    <a href="/posts/monaco_speech_editor/" class="navigation-next">
+      <span class="navigation-tittle">【项目】摩纳哥语音编辑器</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+</div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.js" defer></script>
+
+
+<script defer src="https://kit.fontawesome.com/2134995a39.js" crossorigin="anonymous"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/tocbot@4.36.8/dist/tocbot.min.js"></script>
+<script type="text/javascript">
+  if (window.tocbot) {
+    tocbot.init({
+      
+      tocSelector: '.toc',
+      
+      contentSelector: '.post',
+      
+      headingSelector: 'h2, h3, h4',
+      collapseDepth: 4
+    });
+  }
+</script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    mediumZoom('.post img', {
+      background: 'rgba(0,0,0,0.82)',
+      margin: 24,
+      scrollOffset: 0
+    });
+  });
+</script>
+
+
+
+    
+
+
+
+  </body>
+</html>

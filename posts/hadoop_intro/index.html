@@ -1,0 +1,906 @@
+<!doctype html>
+<html lang="zh-CN">
+  
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="https://www.luochang.ink/posts/hadoop_intro/">
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.163.3">
+
+    
+    
+    
+
+<title>漫谈 Hadoop Streaming • Chang Luo</title>
+
+
+    
+
+
+<meta name="description" content="Hadoop 简化了分布式计算的难度，让没有分布式背景的程序员也能轻松写出分布式程序。本文介绍如何用 Python 编写 Hadoop 程序。">
+
+
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://www.luochang.ink/images/og-default.jpg">
+	<meta name="twitter:title" content="漫谈 Hadoop Streaming">
+	<meta name="twitter:description" content="Hadoop 简化了分布式计算的难度，让没有分布式背景的程序员也能轻松写出分布式程序。本文介绍如何用 Python 编写 Hadoop 程序。">
+			<meta name="twitter:site" content="@_stellar_tide">
+
+<meta property="og:url" content="https://www.luochang.ink/posts/hadoop_intro/">
+	<meta property="og:site_name" content="Chang Luo">
+	<meta property="og:title" content="漫谈 Hadoop Streaming">
+	<meta property="og:description" content="Hadoop 简化了分布式计算的难度，让没有分布式背景的程序员也能轻松写出分布式程序。本文介绍如何用 Python 编写 Hadoop 程序。">
+	<meta property="og:locale" content="zh_CN">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2020-07-25T00:00:00+00:00">
+		<meta property="article:modified_time" content="2020-07-25T00:00:00+00:00">
+		<meta property="article:tag" content="Hadoop-Streaming">
+		<meta property="article:tag" content="MapReduce">
+		<meta property="og:image" content="https://www.luochang.ink/images/og-default.jpg">
+
+
+    
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.26b99d1b39c55b25f45753962fee8b8024e3b7525afe742fbbc09e044247c0db.css" integrity="sha256-JrmdGznFWyX0V1OWL&#43;6LgCTjt1Ja/nQvu8CeBEJHwNs=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+
+<link rel="stylesheet" href="/scss/tocbot.5ef07cebc3c477b54270456f149ee02922479bb7555fd344b2c69f953b0e7e5e.css" integrity="sha256-XvB868PEd7VCcEVvFJ7gKSJHm7dVX9NEssaflTsOfl4=">
+
+
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#202020">
+    
+    
+
+</head>
+
+
+  <body
+    class=" "
+  >
+    <div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="https://www.luochang.ink/">Chang Luo</a>
+      </span>
+      
+      
+      
+      <div class="author-image">
+        <button type="button" class="author-trigger" onclick="openNav()" aria-label="打开个人收藏侧栏"
+          aria-controls="mySidenav" aria-expanded="false"><img src="https://www.luochang.ink//images/profile.webp"
+            alt="Chang Luo" class="img--circle img--headshot element--center"></button>
+      </div>
+      
+      <p class="site__description">
+        
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Chang Luo</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		<li class="sidebar-nav__home">
+			<a href="https://www.luochang.ink/"><span>Home</span></a>
+		</li>
+		
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/portfolio/">
+						<span>Projects</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+		
+		<a href="https://twitter.com/_stellar_tide" rel="me" title="X">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		<a href="https://github.com/luochang212" rel="me" title="GitHub">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		<a href="https://mp.weixin.qq.com/s/He-04l46xJTM_MJ3AyTwWQ" rel="me" title="微信">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.35em; height: 1.35em; vertical-align: -0.28em;">
+				<path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135-.01-.27-.027-.407-.03zm-2.53 3.274c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982z"/>
+			</svg>
+		</a>
+		
+		
+		<a href="https://www.zhihu.com/people/Fashionable" rel="me" title="知乎">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2"
+				 stroke-linecap="round" stroke-linejoin="round" style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="m13.3334,3.60098l0,17.1471l1.79582,0l0.75424,2.13703l3.18459,-2.13703l3.93584,0l0,-17.1471l-9.6705,0zm7.41375,14.87538l-1.79283,0l-2.24777,1.50849l-0.53276,-1.50849l-0.53875,0l0,-12.53483l5.10911,0l0,12.53483l0.00299,0zm-8.56906,-7.18927l-3.97475,0c0.06285,-1.34387 0.1287,-3.12174 0.19754,-5.17496l3.91788,0l-0.00299,-0.24244c0,-0.01796 -0.00599,-0.43998 -0.06884,-0.87097c-0.06285,-0.44896 -0.19754,-1.04457 -0.62854,-1.04457l-6.5727,0c0.13169,-0.61657 0.46991,-2.08615 0.87995,-2.80747l0.19155,-0.33522l-0.3861,-0.02095c-0.02394,0 -0.58663,-0.02694 -1.23912,0.31726c-1.06851,0.56868 -1.5474,1.68807 -1.75691,2.52612c-0.55072,2.18791 -1.33489,3.70837 -1.66712,4.35786c-0.09877,0.19155 -0.15863,0.30529 -0.18557,0.38311c-0.05387,0.14666 -0.02394,0.29332 0.0838,0.38909c0.31427,0.28434 1.14334,-0.0868 1.15232,-0.08979c0.01796,-0.00898 0.03891,-0.01796 0.06585,-0.02993c0.41603,-0.18856 1.64916,-0.74826 2.08914,-2.52911l1.69705,0c0.02095,0.96376 0.09278,4.14236 0.0868,5.17496l-4.22018,0l-0.06285,0.0449c-0.69139,0.50582 -0.91288,1.8916 -0.92185,1.95146l-0.0419,0.27536l4.99837,0c-0.36814,2.34355 -0.79315,3.3941 -1.01763,3.81313c-0.11074,0.20951 -0.21849,0.41902 -0.32025,0.62255c-0.63752,1.26306 -1.29898,2.56802 -3.7802,4.5973c-0.10775,0.0838 -0.20951,0.23944 -0.14367,0.41005c0.07183,0.18856 0.27835,0.27237 0.73629,0.27237c0.16162,0 0.35318,-0.00898 0.58065,-0.02993c1.49352,-0.13169 3.01698,-0.53875 4.04359,-2.6219c0.50882,-1.05056 0.94879,-2.14601 1.31394,-3.25941l4.08549,4.78886l0.14965,-0.35916c0.02394,-0.05687 0.56868,-1.38578 0.15264,-2.87032l-0.01497,-0.05387l-3.23547,-3.68143l-0.65847,0.49684c0.19155,-0.78118 0.31726,-1.49352 0.37413,-2.12805l4.74995,0l0,-0.23944c0,-1.20021 -0.55371,-1.91255 -0.57466,-1.94248l-0.07183,-0.08979z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+</section>
+
+      </div>
+    </div>
+    
+<div class="copyright">
+  &copy; 2026 Chang Luo
+  
+</div>
+
+
+
+  </div>
+</div>
+
+<div id="overlay" onclick="closeNav()" aria-hidden="true"></div>
+
+<div id="mySidenav" class="sidenav" role="dialog" aria-label="个人收藏" aria-hidden="true">
+  <div id="main">
+    <div class="tab">
+      <button id="default-tab" class="tablinks active" onclick="openItem(event, 'Resources')"
+        aria-controls="Resources" aria-pressed="true">Resources</button>
+      <button class="tablinks" onclick="openItem(event, 'netease-player')"
+        aria-controls="netease-player" aria-pressed="false">Music</button>
+      <button class="tablinks" onclick="openItem(event, 'video-player')"
+        aria-controls="video-player" aria-pressed="false">Video</button>
+      <button class="tablinks" onclick="openItem(event, 'gallery')"
+        aria-controls="gallery" aria-pressed="false">Gallery</button>
+      <button class="tablinks" onclick="openItem(event, 'gadget')"
+        aria-controls="gadget" aria-pressed="false">Gadget</button>
+      <button class="tablinks" onclick="openItem(event, 'categories')"
+        aria-controls="categories" aria-pressed="false">Cats</button>
+    </div>
+
+    <div id="Resources" class="tabcontent">
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/resources/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Resources"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="netease-player" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
+        frameborder="no"
+        marginheight="0"
+        marginwidth="0"
+        title="Music player"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="video-player" class="tabcontent" hidden>
+      <div class="video-layout">
+        <div class="video-main">
+          <div class="video-cover" id="video-cover">
+            <img id="video-cover-img" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-cover-overlay">
+              <button class="video-play-btn" id="video-play-btn" aria-label="播放视频">
+                <svg viewBox="0 0 24 24" width="48" height="48"><path d="M8 5v14l11-7z" fill="white"/></svg>
+              </button>
+              <span class="video-cover-title" id="video-cover-title">四月是你的谎言</span>
+            </div>
+          </div>
+          <div class="video-frame" id="video-frame" hidden>
+            <iframe src="about:blank"
+              data-src="//player.bilibili.com/player.html?bvid=BV1Ms411D7in&p=1&high_quality=1&danmaku=0&autoplay=0"
+              style="width:100%;"
+              scrolling="no"
+              frameborder="no"
+              framespacing="0"
+              title="Bilibili video player"
+              allowfullscreen="true"></iframe>
+          </div>
+        </div>
+        <div class="video-playlist">
+          <button class="video-item active" data-bvid="BV1Ms411D7in"
+            data-title="四月是你的谎言"
+            data-cover="/images/video-covers/zutomayo.jpg"
+            data-duration="4:04">
+            <img class="video-item-cover" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">四月是你的谎言</span>
+              <span class="video-item-meta">4:04</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1LW411j7dK"
+            data-title="Kids by One republic — 三羊"
+            data-cover="/images/video-covers/sanyang.jpg"
+            data-duration="2:54">
+            <img class="video-item-cover" src="/images/video-covers/sanyang.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">Kids by One republic</span>
+              <span class="video-item-meta">三羊 · 2:54</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Yx411U7Lx"
+            data-title="交织together — M78"
+            data-cover="/images/video-covers/jiaozhi.jpg"
+            data-duration="6:06">
+            <img class="video-item-cover" src="/images/video-covers/jiaozhi.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">交织together</span>
+              <span class="video-item-meta">M78 · 6:06</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1rp4y1L7i4"
+            data-title="新员工入职大会 — 岁己SUI/恋诗夜Koxia"
+            data-cover="/images/video-covers/suisui.jpg"
+            data-duration="2:33">
+            <img class="video-item-cover" src="/images/video-covers/suisui.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">新员工入职大会</span>
+              <span class="video-item-meta">岁己SUI/恋诗夜Koxia · 2:33</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Av4y147QE"
+            data-title="真物论 — 悠亚"
+            data-cover="/images/video-covers/zhenwulun.jpg"
+            data-duration="3:30">
+            <img class="video-item-cover" src="/images/video-covers/zhenwulun.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">真物论</span>
+              <span class="video-item-meta">悠亚 · 3:30</span>
+            </div>
+          </button>
+        </div>        </div>
+      </div>
+
+
+    <div id="gallery" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/gadget/gallery/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Gallery"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="gadget" class="tabcontent drawer-native" hidden>
+      <div class="drawer-native-content">
+        
+          <br>
+<table>
+	<thead>
+			<tr>
+					<th>#</th>
+					<th>name</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td><a href="/gadget/hydra" target="_blank">Hydra</a></td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td><a href="/mozi/" target="_blank">墨子</a></td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td><a href="/gadget/how-old-are-you" target="_blank">年龄可视化</a></td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td><a href="/gadget/plan" target="_blank">计划书</a></td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td><a href="/gadget/piano" target="_blank">Piano</a></td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td><a href="/flockn-roll/" target="_blank">Flock&rsquo;n Roll</a></td>
+			</tr>
+	</tbody>
+</table>
+
+        
+      </div>
+    </div>
+
+    <div id="categories" class="tabcontent drawer-native" hidden>
+      <ul class="drawer-category-list">
+        
+          <li>
+            <a href="/categories/devops/" target="_blank" rel="noopener noreferrer">
+              <span>DevOps</span>
+              <span class="drawer-category-count">12</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/deeplearning/" target="_blank" rel="noopener noreferrer">
+              <span>DeepLearning</span>
+              <span class="drawer-category-count">11</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/agent/" target="_blank" rel="noopener noreferrer">
+              <span>Agent</span>
+              <span class="drawer-category-count">7</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/algorithms/" target="_blank" rel="noopener noreferrer">
+              <span>Algorithms</span>
+              <span class="drawer-category-count">6</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/life/" target="_blank" rel="noopener noreferrer">
+              <span>Life</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/sota/" target="_blank" rel="noopener noreferrer">
+              <span>SOTA</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/bigdata/" target="_blank" rel="noopener noreferrer">
+              <span>BigData</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/statistics/" target="_blank" rel="noopener noreferrer">
+              <span>Statistics</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/frontend/" target="_blank" rel="noopener noreferrer">
+              <span>FrontEnd</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/llms/" target="_blank" rel="noopener noreferrer">
+              <span>LLMs</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/math/" target="_blank" rel="noopener noreferrer">
+              <span>Math</span>
+              <span class="drawer-category-count">2</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/datavisualization/" target="_blank" rel="noopener noreferrer">
+              <span>DataVisualization</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/hardware/" target="_blank" rel="noopener noreferrer">
+              <span>Hardware</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/machinelearning/" target="_blank" rel="noopener noreferrer">
+              <span>MachineLearning</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/modeling/" target="_blank" rel="noopener noreferrer">
+              <span>Modeling</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/multimodal/" target="_blank" rel="noopener noreferrer">
+              <span>Multimodal</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/network/" target="_blank" rel="noopener noreferrer">
+              <span>Network</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/prose/" target="_blank" rel="noopener noreferrer">
+              <span>Prose</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="/js/drawer.js"></script>
+
+
+    <div class="content container">
+    
+<article>
+  <header>
+    <h1>漫谈 Hadoop Streaming</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Jul 25, 2020
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/bigdata">BIGDATA</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/hadoop-streaming">hadoop-streaming</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/mapreduce">mapreduce</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 4 min read
+</div>
+
+
+  </header>
+  
+  
+  
+    <div class="toc-wrapper">
+      <input type="checkbox" id="tocToggle">
+      <label for="tocToggle">Table of Content</label>
+      
+        <div class="toc" id="TableOfContents"></div>
+      
+    </div>
+  
+  
+  <div class="post">
+    <blockquote>
+<p>本文聚焦如何通过 Hadoop Streaming + Python 编写 Hadoop 程序。</p>
+</blockquote>
+<!-- [Hadoop](https://hadoop.apache.org/) 是一个用于大数据处理的分布式计算框架。 -->
+<p>众所周知，实现分布式计算是一个繁琐的过程。<a href="https://hadoop.apache.org/">Hadoop</a> 通过一个标准化的数据处理流程，简化操作步骤，让没有分布式计算背景的程序员也能轻松写出分布式程序。Hadoop 本身是用 Java 写的，因此对于非 Java 程序员来说，学 Hadoop 必须先学 Java，这大大降低了 Hadoop 的友好程度。</p>
+<p><a href="https://hadoop.apache.org/docs/current/hadoop-streaming/HadoopStreaming.html">Hadoop Streaming</a> 就是为了解决这个问题而生的，它支持用其他编程语言编写 Hadoop 程序。</p>
+<h3 id="1-分布式系统的由来">1. 分布式系统的由来</h3>
+<p>经历半个多世纪的高速增长，半导体工业在本世纪初触及了它的物理瓶颈，摩尔定律失灵，硬件算力不再高速增长，人们开始关注利用软件方法来提升算力。</p>
+<p>2003年，两名谷歌工程师开发了一个分布式存储系统，这是它的前身。经过几位后来者添枝加叶，该系统在 2006 年开源，并发展成为今天我们熟知的 Hadoop。</p>
+<p>使用分布式系统，显而易见的好处是能够缩短程序运行的时间。在常规时间就能跑完的程序上使用 Hadoop 无异于画蛇添足。但是对大数据开发人员来说，使用 Hadoop 意味着不必坐在电脑前为了结果等上一整天。如果集群效率够高，完全可能在几分钟内完成单机一天的计算量。</p>
+<h3 id="2-hadoop-基本介绍">2. Hadoop 基本介绍</h3>
+<p>Hadoop 有两个重要的组成部分：HDFS 和 MapReduce。</p>
+<p><strong>HDFS</strong> 是一个分布式存储系统，它负责将文件切割成分片，然后分发到集群中的目标机器上进行存储；<strong>MapReduce</strong> 负责构建一个标准化的数据处理流程，在完成其规定的几道数据处理流程之后，用户将得到他们期望的结果。</p>
+<p>这意味着 Hadoop 的学习至少包括两个部分。要掌握 HDFS，你需要掌握 Hadoop 命令行命令，这将在第7节详细介绍。要掌握 MapReduce，如果你是 Python 开发者，你需要掌握 Hadoop Streaming，这将在下一节中介绍。</p>
+<h3 id="3-mapreduce">3. MapReduce</h3>
+<p>MapReduce 的重要性不言而喻，它定义了数据在 Hadoop 中被如何处理。MapReduce 包含三个重要过程：Map, Shuffle 和 Reduce。其中，Map 和 Reduce 由我们来编写，Shuffle 则由系统自动完成。</p>
+<h4 id="31-map-shuffle-和-reduce">3.1 Map, Shuffle 和 Reduce</h4>
+<p>下面这张流程图展示了这三道数据处理工序在整个数据处理流中的位置。</p>
+<p><img src="/img//hadoop-streaming.png" alt="image"></p>
+<p>观察这张图，我们发现数据首先被切割 (split)，然后被分发到 Map，之后又经历 sort 和 merge 步骤，接着来到 Reduce，最后输出到 HDFS 上。</p>
+<p>这种工序经过了严密设计，是为了尽可能多地保持适应力，使其在能够适应各种数据处理需求的同时，又能兼顾效率。它保证了多数需求，在这种框架下，都能被适当处理。</p>
+<p>Map, Shuffle 和 Reduce 三阶段的作用分别是：</p>
+<ul>
+<li>
+<p><strong>Map</strong>：预处理。Shuffle 通常要耗费大量计算资源，因此传给 Shuffle 的数据越精简越好，这就要求我们在 Mapper 阶段把和研究问题无关的数据都丢掉。在本阶段的输出中，我们必须定义好主键。</p>
+</li>
+<li>
+<p><strong>Shuffle</strong>：Shuffle 的内涵包括两个部分：排序 (Sort) 和 分桶 (Partition)。Shuffle 首先对 Mapper 传来的数据按主键进行排序，继而将其分桶。分桶指将已排数据切割成分片，并将其发送给 Reducer。</p>
+</li>
+</ul>
+<!-- 分桶指的是将已排序数据切割，然后分发给 reducer 的过程。 （我有个疑问：主键相同的数据是否一定会被分入同一个桶中？懂的大神请告我一声） -->
+<ul>
+<li><strong>Reduce</strong>: 不知道怎么翻译，我翻译成“规约”。它就是将冗杂的数据，规约成用户期望、感兴趣的数据结果。这种数据结果可能是一个或者一组统计量，也可能是输入数据的处理结果。</li>
+</ul>
+<h4 id="32-kv-表数据传输的格式">3.2 kv 表：数据传输的格式</h4>
+<p>数据在上述三个处理阶段之间，是以 <strong>kv表</strong> 为数据传输格式的。kv 表由 key（主键）和 value 组成，key 和 value 都可以包含一个或多个字段。</p>
+<p>kv 表在 Unix 中长这样👇。每行数据中的各字段以制表符 <code>\t</code> 为分隔。</p>
+<!-- 当然 Hadoop 也接受其他分割符，自己去参数里设就好啦。 -->
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>dogs    1    happy
+</span></span><span style="display:flex;"><span>cats    3    happy
+</span></span><span style="display:flex;"><span>pigs    2    sleeping
+</span></span><span style="display:flex;"><span>cats    1    sad
+</span></span></code></pre></div><!-- 生产环境下日志肯定不止这几列，有时会有三四十列之多，颇有乱花迷人眼的阵势。 -->
+<h4 id="33-实例wordcount">3.3 实例：WordCount</h4>
+<p>为了说明数据在 Hadoop 中是如何被处理的。我们引入一个实例 WordCount 来讲解。WordCount 是一个简单的数据处理任务，它要求我们统计文章中每个单词出现的频率。</p>
+<p>本来我们只要几行 Python 代码就能完成 👇</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#57606a"># word_count.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># usage: cat test_file.txt | python word_count.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">import</span> <span style="color:#24292e">sys</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">import</span> <span style="color:#24292e">collections</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>words_dict <span style="color:#0550ae">=</span> collections<span style="color:#0550ae">.</span>defaultdict<span style="color:#1f2328">(</span><span style="color:#6639ba">int</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">for</span> line <span style="color:#0550ae">in</span> sys<span style="color:#0550ae">.</span>stdin<span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>    line <span style="color:#0550ae">=</span> line<span style="color:#0550ae">.</span>strip<span style="color:#1f2328">()</span><span style="color:#0550ae">.</span>split<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39; &#39;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">if</span> <span style="color:#0550ae">not</span> line<span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">continue</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">for</span> word <span style="color:#0550ae">in</span> line<span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>        words_dict<span style="color:#1f2328">[</span>word<span style="color:#1f2328">]</span> <span style="color:#0550ae">+=</span> <span style="color:#0550ae">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">for</span> k<span style="color:#1f2328">,</span> v <span style="color:#0550ae">in</span> words_dict<span style="color:#0550ae">.</span>items<span style="color:#1f2328">():</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6639ba">print</span><span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;</span><span style="color:#0a3069">{}</span><span style="color:#0a3069">: </span><span style="color:#0a3069">{}</span><span style="color:#0a3069">&#39;</span><span style="color:#0550ae">.</span>format<span style="color:#1f2328">(</span>k<span style="color:#1f2328">,</span> v<span style="color:#1f2328">))</span>
+</span></span></code></pre></div><p>换成 Hadoop 的写法，它会变得很冗长。但回馈就是，在数据量庞大的情况下，原本需要巨量时间的任务，现在能在短时间内完成。</p>
+<p>☆ <strong>Hadoop 方法</strong>：</p>
+<p>在贴上代码之前，我们先来看看 Hadoop 是如何一步步将数据改造成我们期望的模样的。</p>
+<ol>
+<li>
+<p>这是原始数据。</p>
+<pre tabindex="0"><code>i love you
+you love him
+he loves her
+she loves him
+</code></pre></li>
+<li>
+<p>首先将数据切割成多个分片 (split 阶段)。</p>
+<pre tabindex="0"><code># part_1
+i love you
+you love him
+✄ -----------------
+# part_2
+he loves her
+she loves him
+</code></pre></li>
+<li>
+<p>将各个分片分别送入各自的 Mapper 中做预处理，然后返回以单词为主键的 kv 表 (map 阶段)。</p>
+<pre tabindex="0"><code># part_1
+i    1
+love    1
+you    1
+you    1
+love    1
+him    1
+✄ -----------------
+# part_2
+he    1
+loves    1
+her    1
+she    1
+loves    1
+him    1
+</code></pre></li>
+<li>
+<p>按主键排序后分桶 (shuffle 阶段)。</p>
+<pre tabindex="0"><code># part_1
+he    1
+her    1
+him    1
+him    1
+i    1
+✄ -----------------
+# part_2
+love    1
+love    1
+loves    1
+loves    1
+she    1
+you    1
+you    1
+</code></pre></li>
+<li>
+<p>将数据捏成我们想要的形状 (reduce 阶段)。</p>
+<pre tabindex="0"><code># part-00000
+he    1
+her    1
+him    2
+i    1
+✄ -----------------
+# part-00001
+love    2
+loves    2
+she    1
+you    2
+</code></pre></li>
+</ol>
+<p>经历上述步骤后，我们会得到两个文件：<code>part-00000</code> 和 <code>part-00001</code>。得到文件的数量和 reducer 数相同。因本例有两个 reducer，故我们最终得到两个输出文件。</p>
+<h3 id="4-用-python-开发-mapreduce">4. 用 Python 开发 MapReduce</h3>
+<p>嘟噜噜，下面开始写 MapReduce 代码。</p>
+<p>因为我懒，不想重复写代码，所以这里贴上 <a href="https://www.michael-noll.com/tutorials/writing-an-hadoop-mapreduce-program-in-python/"><em>Writing An Hadoop MapReduce Program In Python</em></a> 的代码原文。这篇文章本身也非常好，推荐大家看看 <img src="/img/quyin/OK.png" class="my-emoji" style = "height: 32px;"></p>
+<p>mapper</p>
+<pre tabindex="0"><code>#!/usr/bin/env python
+&#34;&#34;&#34;mapper.py&#34;&#34;&#34;
+
+import sys
+
+# input comes from STDIN (standard input)
+for line in sys.stdin:
+    # remove leading and trailing whitespace
+    line = line.strip()
+    # split the line into words
+    words = line.split()
+    # increase counters
+    for word in words:
+        # write the results to STDOUT (standard output);
+        # what we output here will be the input for the
+        # Reduce step, i.e. the input for reducer.py
+        #
+        # tab-delimited; the trivial word count is 1
+        print &#39;%s\t%s&#39; % (word, 1)
+</code></pre><p>reducer</p>
+<pre tabindex="0"><code>#!/usr/bin/env python
+&#34;&#34;&#34;reducer.py&#34;&#34;&#34;
+
+from operator import itemgetter
+import sys
+
+current_word = None
+current_count = 0
+word = None
+
+# input comes from STDIN
+for line in sys.stdin:
+    # remove leading and trailing whitespace
+    line = line.strip()
+
+    # parse the input we got from mapper.py
+    word, count = line.split(&#39;\t&#39;, 1)
+
+    # convert count (currently a string) to int
+    try:
+        count = int(count)
+    except ValueError:
+        # count was not a number, so silently
+        # ignore/discard this line
+        continue
+
+    # this IF-switch only works because Hadoop sorts map output
+    # by key (here: word) before it is passed to the reducer
+    if current_word == word:
+        current_count += count
+    else:
+        if current_word:
+            # write result to STDOUT
+            print &#39;%s\t%s&#39; % (current_word, current_count)
+        current_count = count
+        current_word = word
+
+# do not forget to output the last word if needed!
+if current_word == word:
+    print &#39;%s\t%s&#39; % (current_word, current_count)
+</code></pre><h3 id="5-启动脚本">5. 启动脚本</h3>
+<p>只有 Mapper 和 Reducer 没用啊，Hadoop 要从命令行启动，因此我们还需要一个 bash 脚本帮我们启动 Hadoop。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hadoop streaming <span style="color:#0a3069">\
+</span></span></span><span style="display:flex;"><span>  -D mapred.job.priority<span style="color:#0550ae">=</span>VERY_HIGH  <span style="color:#0a3069">\
+</span></span></span><span style="display:flex;"><span>  -D stream.num.map.output.key.fields<span style="color:#0550ae">=</span><span style="color:#0550ae">4</span> <span style="color:#0a3069">\
+</span></span></span><span style="display:flex;"><span>  -D num.key.fields.for.partition<span style="color:#0550ae">=</span><span style="color:#0550ae">1</span> <span style="color:#0a3069">\
+</span></span></span><span style="display:flex;"><span>  -input myInputDirs <span style="color:#0a3069">\
+</span></span></span><span style="display:flex;"><span>  -output myOutputDir <span style="color:#0a3069">\
+</span></span></span><span style="display:flex;"><span>  -mapper <span style="color:#0a3069">&#34;python mapper.py&#34;</span> <span style="color:#0a3069">\
+</span></span></span><span style="display:flex;"><span>  -reducer <span style="color:#0a3069">&#34;python reducer.py&#34;</span> <span style="color:#0a3069">\
+</span></span></span><span style="display:flex;"><span>  -file <span style="color:#0a3069">&#34;./mapper.py&#34;</span> <span style="color:#0a3069">\
+</span></span></span><span style="display:flex;"><span>  -file <span style="color:#0a3069">&#34;./reducer.py&#34;</span> <span style="color:#0a3069">\
+</span></span></span><span style="display:flex;"><span>  -file <span style="color:#0a3069">&#34;./additional_file.txt&#34;</span> <span style="color:#0a3069">\
+</span></span></span><span style="display:flex;"><span>  -jobconf mapred.job.name<span style="color:#0550ae">=</span><span style="color:#0a3069">&#34;yourJobName&#34;</span> <span style="color:#0a3069">\
+</span></span></span><span style="display:flex;"><span>  -jobconf mapred.reduce.tasks<span style="color:#0550ae">=</span><span style="color:#0550ae">100</span> <span style="color:#0a3069">\
+</span></span></span><span style="display:flex;"><span>  -jobconf mapred.job.map.capacity<span style="color:#0550ae">=</span><span style="color:#0550ae">2000</span> <span style="color:#0a3069">\
+</span></span></span><span style="display:flex;"><span>  -jobconf mapred.job.reduce.capacity<span style="color:#0550ae">=</span><span style="color:#0550ae">300</span> <span style="color:#0a3069">\
+</span></span></span><span style="display:flex;"><span>  -jobconf mapred.map.over.capacity.allowed<span style="color:#0550ae">=</span><span style="color:#6639ba">true</span> <span style="color:#0a3069">\
+</span></span></span><span style="display:flex;"><span>  -jobconf mapred.reduce.over.capacity.allowed<span style="color:#0550ae">=</span><span style="color:#6639ba">true</span> <span style="color:#0a3069">\
+</span></span></span></code></pre></div><p>参数 reduce.tasks 有时设为 1 (<code>-jobconf mapred.reduce.tasks=1</code>)，这样最终输出的文件数也为1。虽然这个设置会影响性能，但由于输出文件只有1个的缘故，输出文件不需要额外的 merge 处理，在 reducer 压力不大时可以考虑。</p>
+<h3 id="6-测试">6. 测试</h3>
+<p>即使是 Hadoop 集群，在处理超大数据集的时候，跑一两个小时也是惯常现象。如果你的程序因为有 bug 运行中止，那你就亏大了。因为你又得 debug，然后重跑。</p>
+<p>为了避免这种情况出现，测试是必要的。我一般会按照这个流程进行测试：</p>
+<ol>
+<li>code review</li>
+<li>local test</li>
+<li>check try except</li>
+</ol>
+<p>Code review 的作用就是，看一样程序，然后确认“这个程序看起来没什么问题”。这能有效阻挡大部分显而易见的错误。</p>
+<p>Local test 是本地小数据集测试。开始前要先构造数据文件 <code>test_file</code>，然后用 <code>cat test_file | python mapper.py | sort | python reducer.py</code> 命令在本地运行测试。这主要是为了测试语法的正确性；</p>
+<p>Check try except 指检查是否写了充分的 try except 语句来处理可能出现的异常，例如字段缺失、数据类型异常、数值异常等等。因为代码需要经受住大数据量的考验，因此对健壮性的要求很高。</p>
+<h3 id="7-文件操作">7. 文件操作</h3>
+<p>Hadoop 通过 <a href="https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html">HDFS</a> (Hadoop Distributed File System) 来管理集群上的文件。</p>
+<p>常见的文件操作命令：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#57606a"># 查看帮助文档</span>
+</span></span><span style="display:flex;"><span>hadoop fs -help
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 查看当前文件夹的文件</span>
+</span></span><span style="display:flex;"><span>hadoop fs -ls
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 下载文件到本地</span>
+</span></span><span style="display:flex;"><span>hadoop fs -copyToLocal <span style="color:#0550ae">[</span>hdfs路径<span style="color:#0550ae">]</span> <span style="color:#0550ae">[</span>本地路径<span style="color:#0550ae">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 上传文件到HDFS</span>
+</span></span><span style="display:flex;"><span>hadoop fs -copyFromLocal <span style="color:#0550ae">[</span>本地路径<span style="color:#0550ae">]</span> <span style="color:#0550ae">[</span>hdfs路径<span style="color:#0550ae">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 新建HDFS目录</span>
+</span></span><span style="display:flex;"><span>hadoop fs -mkdir <span style="color:#0550ae">[</span>hdfs路径<span style="color:#0550ae">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 删除HDFS文件</span>
+</span></span><span style="display:flex;"><span>hadoop fs -rm <span style="color:#0550ae">[</span>hdfs路径<span style="color:#0550ae">]</span>
+</span></span></code></pre></div><h3 id="8-只言片语">8. 只言片语</h3>
+<p>Hadoop MapReduce 是一套编程模型，基本思路是先把数据切成不同分片，然后基于键值对排序并在机器间交换一次数据，再然后按主键对数据分桶，最后规约到结果。这套模式是死的，也就是你只能按照既定的运算框架和运算顺序来处理数据。</p>
+<p>既然模式是死的，就一定存在一部分问题天然不适合用 Hadoop 解决。具体到每个问题，Hadoop 的适用程度都是不一样的。有些本来不合适但又不得不用的项目，我们还是得拆分需求、设计运算流程，尽量地去贴合 MapReduce 这套模型。需求拆得对不对，流程设计得好不好，在很大程度上会影响程序的运行效率。</p>
+<p>参考文献：</p>
+<ol>
+<li><a href="https://hadoop.apache.org/">Hadoop 官网</a></li>
+<li><a href="https://hadoop.apache.org/docs/current/">Apache Hadoop Documentation</a></li>
+<li><a href="https://research.google.com/archive/mapreduce-osdi04-slides/index.html">MapReduce: Simplified Data Processing on Large Clusters</a></li>
+<li><a href="https://www.michael-noll.com/tutorials/writing-an-hadoop-mapreduce-program-in-python/">Writing An Hadoop MapReduce Program In Python</a></li>
+<li><a href="https://data-flair.training/blogs/top-hadoop-hdfs-commands-tutorial/">Top 10 Hadoop HDFS Commands with Examples and Usage</a></li>
+<li>《Hadoop权威指南》</li>
+</ol>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/python_practice/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Python 工程化实践</span>
+    </a>
+    
+    
+    <a href="/posts/poisson/" class="navigation-next">
+      <span class="navigation-tittle">泊松分布的仿真及可视化</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+</div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.js" defer></script>
+
+
+<script defer src="https://kit.fontawesome.com/2134995a39.js" crossorigin="anonymous"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/tocbot@4.36.8/dist/tocbot.min.js"></script>
+<script type="text/javascript">
+  if (window.tocbot) {
+    tocbot.init({
+      
+      tocSelector: '.toc',
+      
+      contentSelector: '.post',
+      
+      headingSelector: 'h2, h3, h4',
+      collapseDepth: 4
+    });
+  }
+</script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    mediumZoom('.post img', {
+      background: 'rgba(0,0,0,0.82)',
+      margin: 24,
+      scrollOffset: 0
+    });
+  });
+</script>
+
+
+
+    
+
+
+
+  </body>
+</html>

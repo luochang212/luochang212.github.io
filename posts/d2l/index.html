@@ -1,0 +1,1091 @@
+<!doctype html>
+<html lang="zh-CN">
+  
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="https://www.luochang.ink/posts/d2l/">
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.163.3">
+
+    
+    
+    
+
+<title>深度学习笔记 • Chang Luo</title>
+
+
+    
+
+
+<meta name="description" content="我踏马记记记">
+
+
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://www.luochang.ink/images/og-default.jpg">
+	<meta name="twitter:title" content="深度学习笔记">
+	<meta name="twitter:description" content="我踏马记记记">
+			<meta name="twitter:site" content="@_stellar_tide">
+
+<meta property="og:url" content="https://www.luochang.ink/posts/d2l/">
+	<meta property="og:site_name" content="Chang Luo">
+	<meta property="og:title" content="深度学习笔记">
+	<meta property="og:description" content="我踏马记记记">
+	<meta property="og:locale" content="zh_CN">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2023-11-11T00:00:00+00:00">
+		<meta property="article:modified_time" content="2023-11-11T00:00:00+00:00">
+		<meta property="article:tag" content="Python">
+		<meta property="article:tag" content="Note">
+		<meta property="og:image" content="https://www.luochang.ink/images/og-default.jpg">
+
+
+    
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.26b99d1b39c55b25f45753962fee8b8024e3b7525afe742fbbc09e044247c0db.css" integrity="sha256-JrmdGznFWyX0V1OWL&#43;6LgCTjt1Ja/nQvu8CeBEJHwNs=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+
+<link rel="stylesheet" href="/scss/tocbot.5ef07cebc3c477b54270456f149ee02922479bb7555fd344b2c69f953b0e7e5e.css" integrity="sha256-XvB868PEd7VCcEVvFJ7gKSJHm7dVX9NEssaflTsOfl4=">
+
+
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#202020">
+    
+    
+
+</head>
+
+
+  <body
+    class=" "
+  >
+    <div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="https://www.luochang.ink/">Chang Luo</a>
+      </span>
+      
+      
+      
+      <div class="author-image">
+        <button type="button" class="author-trigger" onclick="openNav()" aria-label="打开个人收藏侧栏"
+          aria-controls="mySidenav" aria-expanded="false"><img src="https://www.luochang.ink//images/profile.webp"
+            alt="Chang Luo" class="img--circle img--headshot element--center"></button>
+      </div>
+      
+      <p class="site__description">
+        
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Chang Luo</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		<li class="sidebar-nav__home">
+			<a href="https://www.luochang.ink/"><span>Home</span></a>
+		</li>
+		
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/portfolio/">
+						<span>Projects</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+		
+		<a href="https://twitter.com/_stellar_tide" rel="me" title="X">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		<a href="https://github.com/luochang212" rel="me" title="GitHub">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		<a href="https://mp.weixin.qq.com/s/He-04l46xJTM_MJ3AyTwWQ" rel="me" title="微信">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.35em; height: 1.35em; vertical-align: -0.28em;">
+				<path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135-.01-.27-.027-.407-.03zm-2.53 3.274c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982z"/>
+			</svg>
+		</a>
+		
+		
+		<a href="https://www.zhihu.com/people/Fashionable" rel="me" title="知乎">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2"
+				 stroke-linecap="round" stroke-linejoin="round" style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="m13.3334,3.60098l0,17.1471l1.79582,0l0.75424,2.13703l3.18459,-2.13703l3.93584,0l0,-17.1471l-9.6705,0zm7.41375,14.87538l-1.79283,0l-2.24777,1.50849l-0.53276,-1.50849l-0.53875,0l0,-12.53483l5.10911,0l0,12.53483l0.00299,0zm-8.56906,-7.18927l-3.97475,0c0.06285,-1.34387 0.1287,-3.12174 0.19754,-5.17496l3.91788,0l-0.00299,-0.24244c0,-0.01796 -0.00599,-0.43998 -0.06884,-0.87097c-0.06285,-0.44896 -0.19754,-1.04457 -0.62854,-1.04457l-6.5727,0c0.13169,-0.61657 0.46991,-2.08615 0.87995,-2.80747l0.19155,-0.33522l-0.3861,-0.02095c-0.02394,0 -0.58663,-0.02694 -1.23912,0.31726c-1.06851,0.56868 -1.5474,1.68807 -1.75691,2.52612c-0.55072,2.18791 -1.33489,3.70837 -1.66712,4.35786c-0.09877,0.19155 -0.15863,0.30529 -0.18557,0.38311c-0.05387,0.14666 -0.02394,0.29332 0.0838,0.38909c0.31427,0.28434 1.14334,-0.0868 1.15232,-0.08979c0.01796,-0.00898 0.03891,-0.01796 0.06585,-0.02993c0.41603,-0.18856 1.64916,-0.74826 2.08914,-2.52911l1.69705,0c0.02095,0.96376 0.09278,4.14236 0.0868,5.17496l-4.22018,0l-0.06285,0.0449c-0.69139,0.50582 -0.91288,1.8916 -0.92185,1.95146l-0.0419,0.27536l4.99837,0c-0.36814,2.34355 -0.79315,3.3941 -1.01763,3.81313c-0.11074,0.20951 -0.21849,0.41902 -0.32025,0.62255c-0.63752,1.26306 -1.29898,2.56802 -3.7802,4.5973c-0.10775,0.0838 -0.20951,0.23944 -0.14367,0.41005c0.07183,0.18856 0.27835,0.27237 0.73629,0.27237c0.16162,0 0.35318,-0.00898 0.58065,-0.02993c1.49352,-0.13169 3.01698,-0.53875 4.04359,-2.6219c0.50882,-1.05056 0.94879,-2.14601 1.31394,-3.25941l4.08549,4.78886l0.14965,-0.35916c0.02394,-0.05687 0.56868,-1.38578 0.15264,-2.87032l-0.01497,-0.05387l-3.23547,-3.68143l-0.65847,0.49684c0.19155,-0.78118 0.31726,-1.49352 0.37413,-2.12805l4.74995,0l0,-0.23944c0,-1.20021 -0.55371,-1.91255 -0.57466,-1.94248l-0.07183,-0.08979z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+</section>
+
+      </div>
+    </div>
+    
+<div class="copyright">
+  &copy; 2026 Chang Luo
+  
+</div>
+
+
+
+  </div>
+</div>
+
+<div id="overlay" onclick="closeNav()" aria-hidden="true"></div>
+
+<div id="mySidenav" class="sidenav" role="dialog" aria-label="个人收藏" aria-hidden="true">
+  <div id="main">
+    <div class="tab">
+      <button id="default-tab" class="tablinks active" onclick="openItem(event, 'Resources')"
+        aria-controls="Resources" aria-pressed="true">Resources</button>
+      <button class="tablinks" onclick="openItem(event, 'netease-player')"
+        aria-controls="netease-player" aria-pressed="false">Music</button>
+      <button class="tablinks" onclick="openItem(event, 'video-player')"
+        aria-controls="video-player" aria-pressed="false">Video</button>
+      <button class="tablinks" onclick="openItem(event, 'gallery')"
+        aria-controls="gallery" aria-pressed="false">Gallery</button>
+      <button class="tablinks" onclick="openItem(event, 'gadget')"
+        aria-controls="gadget" aria-pressed="false">Gadget</button>
+      <button class="tablinks" onclick="openItem(event, 'categories')"
+        aria-controls="categories" aria-pressed="false">Cats</button>
+    </div>
+
+    <div id="Resources" class="tabcontent">
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/resources/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Resources"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="netease-player" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
+        frameborder="no"
+        marginheight="0"
+        marginwidth="0"
+        title="Music player"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="video-player" class="tabcontent" hidden>
+      <div class="video-layout">
+        <div class="video-main">
+          <div class="video-cover" id="video-cover">
+            <img id="video-cover-img" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-cover-overlay">
+              <button class="video-play-btn" id="video-play-btn" aria-label="播放视频">
+                <svg viewBox="0 0 24 24" width="48" height="48"><path d="M8 5v14l11-7z" fill="white"/></svg>
+              </button>
+              <span class="video-cover-title" id="video-cover-title">四月是你的谎言</span>
+            </div>
+          </div>
+          <div class="video-frame" id="video-frame" hidden>
+            <iframe src="about:blank"
+              data-src="//player.bilibili.com/player.html?bvid=BV1Ms411D7in&p=1&high_quality=1&danmaku=0&autoplay=0"
+              style="width:100%;"
+              scrolling="no"
+              frameborder="no"
+              framespacing="0"
+              title="Bilibili video player"
+              allowfullscreen="true"></iframe>
+          </div>
+        </div>
+        <div class="video-playlist">
+          <button class="video-item active" data-bvid="BV1Ms411D7in"
+            data-title="四月是你的谎言"
+            data-cover="/images/video-covers/zutomayo.jpg"
+            data-duration="4:04">
+            <img class="video-item-cover" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">四月是你的谎言</span>
+              <span class="video-item-meta">4:04</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1LW411j7dK"
+            data-title="Kids by One republic — 三羊"
+            data-cover="/images/video-covers/sanyang.jpg"
+            data-duration="2:54">
+            <img class="video-item-cover" src="/images/video-covers/sanyang.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">Kids by One republic</span>
+              <span class="video-item-meta">三羊 · 2:54</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Yx411U7Lx"
+            data-title="交织together — M78"
+            data-cover="/images/video-covers/jiaozhi.jpg"
+            data-duration="6:06">
+            <img class="video-item-cover" src="/images/video-covers/jiaozhi.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">交织together</span>
+              <span class="video-item-meta">M78 · 6:06</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1rp4y1L7i4"
+            data-title="新员工入职大会 — 岁己SUI/恋诗夜Koxia"
+            data-cover="/images/video-covers/suisui.jpg"
+            data-duration="2:33">
+            <img class="video-item-cover" src="/images/video-covers/suisui.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">新员工入职大会</span>
+              <span class="video-item-meta">岁己SUI/恋诗夜Koxia · 2:33</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Av4y147QE"
+            data-title="真物论 — 悠亚"
+            data-cover="/images/video-covers/zhenwulun.jpg"
+            data-duration="3:30">
+            <img class="video-item-cover" src="/images/video-covers/zhenwulun.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">真物论</span>
+              <span class="video-item-meta">悠亚 · 3:30</span>
+            </div>
+          </button>
+        </div>        </div>
+      </div>
+
+
+    <div id="gallery" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/gadget/gallery/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Gallery"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="gadget" class="tabcontent drawer-native" hidden>
+      <div class="drawer-native-content">
+        
+          <br>
+<table>
+	<thead>
+			<tr>
+					<th>#</th>
+					<th>name</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td><a href="/gadget/hydra" target="_blank">Hydra</a></td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td><a href="/mozi/" target="_blank">墨子</a></td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td><a href="/gadget/how-old-are-you" target="_blank">年龄可视化</a></td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td><a href="/gadget/plan" target="_blank">计划书</a></td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td><a href="/gadget/piano" target="_blank">Piano</a></td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td><a href="/flockn-roll/" target="_blank">Flock&rsquo;n Roll</a></td>
+			</tr>
+	</tbody>
+</table>
+
+        
+      </div>
+    </div>
+
+    <div id="categories" class="tabcontent drawer-native" hidden>
+      <ul class="drawer-category-list">
+        
+          <li>
+            <a href="/categories/devops/" target="_blank" rel="noopener noreferrer">
+              <span>DevOps</span>
+              <span class="drawer-category-count">12</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/deeplearning/" target="_blank" rel="noopener noreferrer">
+              <span>DeepLearning</span>
+              <span class="drawer-category-count">11</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/agent/" target="_blank" rel="noopener noreferrer">
+              <span>Agent</span>
+              <span class="drawer-category-count">7</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/algorithms/" target="_blank" rel="noopener noreferrer">
+              <span>Algorithms</span>
+              <span class="drawer-category-count">6</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/life/" target="_blank" rel="noopener noreferrer">
+              <span>Life</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/sota/" target="_blank" rel="noopener noreferrer">
+              <span>SOTA</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/bigdata/" target="_blank" rel="noopener noreferrer">
+              <span>BigData</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/statistics/" target="_blank" rel="noopener noreferrer">
+              <span>Statistics</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/frontend/" target="_blank" rel="noopener noreferrer">
+              <span>FrontEnd</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/llms/" target="_blank" rel="noopener noreferrer">
+              <span>LLMs</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/math/" target="_blank" rel="noopener noreferrer">
+              <span>Math</span>
+              <span class="drawer-category-count">2</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/datavisualization/" target="_blank" rel="noopener noreferrer">
+              <span>DataVisualization</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/hardware/" target="_blank" rel="noopener noreferrer">
+              <span>Hardware</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/machinelearning/" target="_blank" rel="noopener noreferrer">
+              <span>MachineLearning</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/modeling/" target="_blank" rel="noopener noreferrer">
+              <span>Modeling</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/multimodal/" target="_blank" rel="noopener noreferrer">
+              <span>Multimodal</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/network/" target="_blank" rel="noopener noreferrer">
+              <span>Network</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/prose/" target="_blank" rel="noopener noreferrer">
+              <span>Prose</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="/js/drawer.js"></script>
+
+
+    <div class="content container">
+    
+<article>
+  <header>
+    <h1>深度学习笔记</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Nov 11, 2023
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/deeplearning">DEEPLEARNING</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/python">python</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/note">note</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 5 min read
+</div>
+
+
+  </header>
+  
+  
+  
+    <div class="toc-wrapper">
+      <input type="checkbox" id="tocToggle">
+      <label for="tocToggle">Table of Content</label>
+      
+        <div class="toc" id="TableOfContents"></div>
+      
+    </div>
+  
+  
+  <div class="post">
+    <blockquote>
+<p>跟李沐老师学深度学习，课程见 <a href="https://zh-v2.d2l.ai/index.html">d2l</a>，如有错误，欢迎拍砖 <img src="/img/quyin/witty.png" class="my-emoji" style = "height: 32px;"></p>
+</blockquote>
+<p>GitHub 项目地址：<a href="https://github.com/luochang212/AI-Project" target="_blank">AI-Project</a></p>
+<h3 id="技术路线图">〇、技术路线图</h3>
+<pre class="mermaid">
+flowchart TD
+    A[softmax 回归] -->|无法拟合 XOR 函数| B[多层感知机]
+    B --> |高像素图片作为输入，模型参数爆炸| C[卷积]
+    C -->|数据的长宽下降太快| D[填充]
+    C -->|数据的长宽下降太慢| E[步幅]
+    C -->|缓解卷积对位置敏感| F[池化]
+    C -->|多模式识别与组合| G[多通道输入/输出]
+
+</pre>
+<center>❤️ powered by <a href="https://github.com/mermaid-js/mermaid" target="_blank">mermaid</a></center>
+<h3 id="一softmax-回归">一、softmax 回归</h3>
+<h4 id="1-虽然叫回归但是softmax-解决的是分类问题">1. 虽然叫回归，但是softmax 解决的是分类问题</h4>
+<ul>
+<li>回归估计是一个连续值</li>
+<li>分类预测是一个离散类别</li>
+</ul>
+<h4 id="2-分类应用举例">2. 分类应用举例</h4>
+<ul>
+<li>MINIST</li>
+<li>ImageNet</li>
+<li>human-protein-atlas-image-classification (<strong>Kaggle</strong>)</li>
+<li>malware-classification (<strong>Kaggle</strong>)</li>
+<li>jigsaw-comment-classification (<strong>Kaggle</strong>)</li>
+</ul>
+<h4 id="3-从回归到多类分类--均方损失">3. 从回归到多类分类 &ndash; 均方损失</h4>
+<p>对分类结果做 one-hot 编码：</p>
+<p>\( y = [y_1, y_2, , ... , y_n]^T \)</p>
+<p>\( y_i=\left\{\begin{array}{l}1 \text { if } i=y \\ 0 \text { otherwise }\end{array}\right. \)</p>
+<p>使用均方损失 (\( O_i \)) 训练：</p>
+<p>\( \hat{y}=\underset{i}{\operatorname{argmax}} o_i \)</p>
+<p>该式含义为：取最大化 \( O_i \) 对应的 \( i \) 作为 \( \hat{y} \) 的估计值</p>
+<h4 id="4-无校验比例">4. 无校验比例</h4>
+<p>需要更置信地识别正确类（大余量）</p>
+<p>\( O_y - O_i \geq \Delta (y, i) \)</p>
+<h4 id="5-校验比例">5. 校验比例</h4>
+<p>现在我们得到的输出 \( O_i \) 是一个向量，我们希望把它转化成每一种分类对应的概率。我们可以通过添加 softmax 操作子实现这一目标，它对 \( O_i \) 做如下操作：</p>
+<p>\( \hat{y_i} = \frac{\exp(O_i)}{\sum_{k} \exp(O_k)} \)</p>
+<p>此时，\( y \) 与 \( \hat{y} \) 都是概率，我们可以把两个概率的区别 \( y - \hat{y} \) 作为损失</p>
+<h4 id="6-交叉熵损失">6. 交叉熵损失</h4>
+<p>交叉熵常用来衡量两个概率的区别 \( H(p, q) = \sum_{i} - P_i log(q_i) \)</p>
+<p>将它作为损失：</p>
+<p>\( l(\mathbf{y}, \hat{\mathbf{y}})=-\sum_i y_i \log \hat{y}_i=-\log \hat{y}_y \)</p>
+<p>PS：因为除了 \( i = y \) 的情况，\( i \) 为其他值时 \( y_i \) 为 0</p>
+<p>其梯度是真实概率和预测概率的区别：</p>
+<p>\( \partial_{o_i} l(\mathbf{y}, \hat{\mathbf{y}})=\operatorname{softmax}(\mathbf{o})_i-y_i \)</p>
+<h4 id="7-总结">7. 总结</h4>
+<ul>
+<li>Softmax回归是一个多类分类模型</li>
+<li>使用Softmax操作子得到每个类的预测置信度</li>
+<li>使用交叉熵来衡量预测和标号的区别</li>
+</ul>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/AI-Project/blob/main/src/09.softmax回归.ipynb')">查看示例</button>
+</center>
+<h3 id="二多层感知机">二、多层感知机</h3>
+<p>感知机解决的是二分类问题</p>
+<h4 id="1-什么是感知机">1. 什么是感知机</h4>
+<p>给定输入 \( x \)，权重 \( w \)，和偏移 \( b \)，感知机输出：</p>
+<p>\( o = \sigma \left(\left<W, X\right> + b\right) \)</p>
+<p>\( \sigma(x) = \left\{\begin{array}{l}1 \text { if } x > 0 \\ -1 \text { otherwise }\end{array}\right. \)</p>
+<h4 id="2-训练感知机">2. 训练感知机</h4>
+<ol>
+<li>初始化：w = 0, b = 0</li>
+<li>如果分类分错：\( y_i [\left< W, X_i \right>] \leq 0 \text{ then } w \gets w + y_i x_i \text{ and } b \gets b + y_i  \)</li>
+<li>停止条件：所有类别都分对的时候停止</li>
+</ol>
+<p>等价于使用批量大小为1的梯度下降，并使用如下损失函数：</p>
+<p>\( l\left(y, X, W\right) = max\left(0, -y\left<W, X\right>\right) \)</p>
+<h4 id="3-收敛定理">3. 收敛定理</h4>
+<p>对于：</p>
+<ul>
+<li>数据在半径 \( r \) 内</li>
+<li>余量 \( \rho \) 将数据点分两类</li>
+<li>\( \lvert\lvert w \rvert\rvert^{2} + b^2 \leq 1 \)</li>
+</ul>
+<p>感知机保证在 \( \frac{r^2 + 1}{\rho^2} \) 步后收敛</p>
+<h4 id="4-xor问题-minsky--papert-1969">4. XOR问题 (Minsky &amp; Papert, 1969)</h4>
+<p>感知机不能拟合 XOR 函数，它只能产生线性分割面</p>
+<pre tabindex="0"><code>        |
+    1   |   -1
+        |
+-----------------
+        |
+   -1   |    1
+        |
+</code></pre><p>由于感知机无法拟合 XOR 函数，导致了第一次 AI 寒冬。但是其实有办法解决这个问题，解决的方法叫 <strong>多层感知机</strong>。</p>
+<h4 id="5-多层感知机">5. 多层感知机</h4>
+<pre tabindex="0"><code>    　   |
+   ①    |    ②
+    　   |
+-------------------
+    　   |
+   ③    |    ④
+    　   |
+</code></pre><ul>
+<li>先学一次：对于竖线，左边为 \( + \) ，右边为 \( - \)</li>
+<li>再学一次：对于横线：上边为 \( + \) ，下边为 \( - \)</li>
+</ul>
+<p>把两次分类结果组合一下（做乘法），就能表达 XOR 了。</p>
+<p>对于我们的启发是：如果一个复杂问题一次性做不了，可以先用一个简单函数，再用一个简单函数，接着用一个简单函数组合这两者。也就是一层变多层，就可以表达复杂结果。</p>
+<p><img src="../img/perceptron-1.png" alt="image"></p>
+<p>为什么说隐藏层的层数是超参？因为输入数据的维度 \( n \) 和输出数据的维度 \( m \) 都是由数据决定的，我们惟一能调的，只有隐藏层的层数。</p>
+<h4 id="6-单隐藏层">6. 单隐藏层</h4>
+<ul>
+<li>输入：\( \mathbf{x} \in \mathbb{R}^{n} \)</li>
+<li>隐藏层：\( \mathbf{W}_1 \in \mathbb{R}^{m \times n}, \mathbf{b}_1 \in \mathbb{R}^m \)</li>
+<li>输出层：\( \mathbf{w}_2 \in \mathbb{R}^{m}, \mathbf{b}_2 \in \mathbb{R} \)</li>
+</ul>
+<p>\( ~~~~~~~~~\mathbf{h} = \sigma \left( \mathbf{W}_1 + \mathbf{b}_1 \right) \)</p>
+<p>\( ~~~~~~~~~\mathbf{o} = \mathbf{w}_2^\mathbf{T} \mathbf{h} + \mathbf{b}_2 \)</p>
+<p>\( \sigma \) 是按元素的<strong>激活函数</strong></p>
+<blockquote>
+<p><strong>Note</strong>: 为什么需要非线性的激活函数？</p>
+<p>如果 \( \sigma \) 是线性的，把公式一的 \( \mathbf{h} \) 代入到公式二中，可得：</p>
+<p>\( \mathbf{hence} \space \mathbf{o} = \mathbf{w}_2^T \mathbf{W}_1 \mathbf{o} + b^{\prime} \) 依然是线性，折腾半天发现我们得到的依旧是一个最简单的线性模型。</p>
+</blockquote>
+<h4 id="7-sigmoid-激活函数">7. Sigmoid 激活函数</h4>
+<p>将输入投影到 \( (0, 1) \)</p>
+<p>\( sigmoid(x) = \frac{1}{1 + \mathbf{exp}(-x)} \)</p>
+<p><img src="/img/Sigmoid-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.png" alt="Sigmoid-激活函数"></p>
+<h4 id="8-tanh-激活函数">8. Tanh 激活函数</h4>
+<p>将输入投影到 \( (-1, 1) \)</p>
+<p>\( tanh(x) = \frac{1 - \mathbf{exp}(-2x)}{1 + \mathbf{exp}(-2x)} \)</p>
+<p><img src="/img/Tanh-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.png" alt="Tanh-激活函数"></p>
+<h4 id="9-relu-激活函数">9. ReLU 激活函数</h4>
+<p>ReLU: rectified linear unit</p>
+<p>将输入投影到 \( (0, +\infty) \)</p>
+<p>\( ReLU(x) = \mathbf{max}(x, 0) \)</p>
+<p>指数运算是一个很贵的操作，所以为什么大家爱用ReLU，因为一个max就好了</p>
+<p><img src="/img/ReLU-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.png" alt="ReLU-激活函数"></p>
+<h4 id="10-多类分类借鉴-softmax">10. 多类分类：借鉴 softmax</h4>
+<p>\( softmax \) 就是输出一个堆概率 \( y_1, y_2, ..., y_k \)，所有这些加起来等于1</p>
+<p>\( y_1, y_2, ..., y_k = softmax(o_1, o_1, ... , o_k) \)</p>
+<h4 id="11-多隐藏层">11. 多隐藏层</h4>
+<p>\( \mathbf{h}_1 = \sigma(\mathbf{W}_1\mathbf{x} + b_1) \)</p>
+<p>\( \mathbf{h}_2 = \sigma(\mathbf{W}_2\mathbf{h}_1 + b_2) \)</p>
+<p>\( \mathbf{h}_3 = \sigma(\mathbf{W}_3\mathbf{h}_2 + b_3) \)</p>
+<p>\( \mathbf{o} = \mathbf{W}_4\mathbf{h}_3 + b_4 \)</p>
+<p>激活函数主要是为了防止层数的塌陷，所以最后一层输出层不需要激活函数。</p>
+<p>超参数：</p>
+<ul>
+<li>隐藏层数</li>
+<li>每层隐藏层的大小</li>
+</ul>
+<h4 id="12-总结">12. 总结</h4>
+<ul>
+<li>多层感知机使用隐藏层和激活函数来得到非线性模型</li>
+<li>常用激活函数是Sigmoid, Tanh, ReLU</li>
+<li>使用Softmax来处理多类分类</li>
+<li>超参数为隐藏层数，和各个隐藏层大小</li>
+</ul>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/AI-Project/blob/main/src/10.多层感知机.ipynb')">查看示例</button>
+</center>
+<h3 id="三卷积层">三、卷积层</h3>
+<p>一张 12,000,000 像素的猫或者狗的图片，分RGB三种颜色，如果使用单隐藏层的 MLP 处理，模型有 3.6B 个参数，远多于世界上所有猫和狗的数量。</p>
+<h4 id="1-识别器的原则">1. 识别器的原则</h4>
+<ul>
+<li>平移不变性（在图片的哪个位置都能识别到）</li>
+<li>局部性（不需要看整张图就能识别）</li>
+</ul>
+<h4 id="2-重新考察全连接层">2. 重新考察全连接层</h4>
+<ul>
+<li>将输入和输出变形为矩阵（宽度，高度）</li>
+<li>将权重变形为4-D张量 \( (h, w) \) 到 \( (h^\prime, w^\prime) \)
+\( h_{i,j} = \sum_{k,l} w_{i,j,k,l}x_{k,l} = \sum_{a,b} v_{i,j,a,b}x_{i+a,j+b} \)</li>
+<li>\( v \) 是 \( w \) 的重新索引 \( v_{i,j,i+a,j+b} \)</li>
+</ul>
+<h4 id="3-原则-1---平移不变性">3. 原则 #1 - 平移不变性</h4>
+<ul>
+<li>x的平移导致h的平移 \( h_{i,j} = \sum_{a,b} v_{i,j,a,b} x_{i+a,j+b} \)</li>
+<li>v不应该依赖于(i, j)</li>
+<li>解决方案：\( v_{i,j,a,b} = v_{a,b} \)
+\( h_{i,j} = \sum_{a,b} v_{a,b}x_{i+a,j+b} \)</li>
+</ul>
+<p>这就是二维<del>卷积</del>交叉相关</p>
+<h4 id="4-原则-2---局部性">4. 原则 #2 - 局部性</h4>
+<p>\( h_{i,j} = \sum_{a,b} \mathbf{v}_{a,b} \mathbf{x}_{i+a,j+b} \)</p>
+<ul>
+<li>当评估 \( h_{i,j} \) 时，我们不应该用远离 \( x_{i,j} \) 的参数</li>
+<li>解决方案：当 \( |a|, |b| > \Delta \) 时，使得 \( v_{a,b} = 0 \)
+\( h_{i,j} = \sum_{a=-\Delta}^{\Delta} \sum_{b=-\Delta}^{\Delta} v_{a,b} x_{i+a,j+b} \)</li>
+</ul>
+<h4 id="5-小结">5. 小结</h4>
+<ul>
+<li>对全连接层使用平移不变性和局部性得到卷积层</li>
+</ul>
+<p>\( ~~~~~~~~~~~h_{i,j} = \sum_{a,b} \mathbf{v}_{i,j,a,b} \mathbf{x}_{i+a,j+b} \)</p>
+<p>\( ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \)⬇</p>
+<p>\( ~~~~~~~~~~~h_{i,j} = \sum_{a=-\Delta}^{\Delta} \sum_{b=-\Delta}^{\Delta} \mathbf{v}_{a,b} \mathbf{x}_{i+a,j+b} \)</p>
+<h4 id="6-二维交叉相关">6. 二维交叉相关</h4>
+<ul>
+<li>卷积核 (Kernel)，其实就是 \( \mathbf{w} \)</li>
+<li>核是不随扫描的位置变化的，这就实现了平移不变性</li>
+</ul>
+<h4 id="7-二维卷积层">7. 二维卷积层</h4>
+<ul>
+<li>输入 \( \mathbf{X}: n_h \times n_w \)</li>
+<li>核 \( \mathbf{W}: k_h \times k_w \)</li>
+<li>偏差 \( b \in \mathbb{R} \)</li>
+<li>输出 \( \mathbf{Y}: (n_h - k_h + 1) \times (n_w - k_w + 1) \)</li>
+</ul>
+<p>\( \mathbf{Y} = \mathbf{X} \mathbf{W} + b \)</p>
+<p>\( \mathbf{W} \) 和 \( b \) 是可学习的参数</p>
+<h4 id="8-例子">8. 例子</h4>
+<p>不同的卷积核，会得到不同的效果</p>
+<p><strong>边缘检测</strong></p>
+<p>\( \left[\begin{array}{c}
+-1 & -1 & -1 \\
+-1 & 8 & -1 \\
+-1 & -1 & -1
+\end{array}\right] \)</p>
+<p><img src="/img/conv-1.png" alt="image"></p>
+<p><strong>锐化</strong></p>
+<p>\( \left[\begin{array}{c}
+0 & -1 & 0 \\
+-1 & 5 & -1 \\
+0 & -1 & 0
+\end{array}\right] \)</p>
+<p><img src="/img/conv-2.png" alt="image"></p>
+<p><strong>高斯模糊</strong></p>
+<p>\( \frac{1}{16}\left[\begin{array}{c}
+1 & 2 & 1 \\
+2 & 4 & 2 \\
+1 & 2 & 1
+\end{array}\right] \)</p>
+<p><img src="/img/conv-3.png" alt="image"></p>
+<h4 id="9-交叉相关-vs-卷积">9. 交叉相关 vs 卷积</h4>
+<ul>
+<li>二维交叉相关</li>
+<li>二维卷积</li>
+<li>由于对称性，在实际使用中没有区别</li>
+</ul>
+<p>因为使用是一样的，所以没有使用数学上严格定义的卷积</p>
+<h4 id="10-一维和三维交叉相关">10. 一维和三维交叉相关</h4>
+<ul>
+<li>一维：文本、语言、时需序列</li>
+<li>二维：视频、医学图像、气象图像</li>
+</ul>
+<h4 id="11-总结">11. 总结</h4>
+<ul>
+<li>卷积层将输入和核矩阵进行交叉相关，加上偏移后得到输出</li>
+<li>核矩阵和偏移是可学习的参数</li>
+<li>核矩阵的大小是超参数</li>
+</ul>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/AI-Project/blob/main/src/19.卷积层.ipynb')">查看示例</button>
+</center>
+<h3 id="四lenet">四、LeNet</h3>
+<p><a href="https://en.wikipedia.org/wiki/LeNet">LeNet</a> is a convolutional neural network structure proposed by LeCun et al. in 1998.</p>
+<p>最早应用于手写数字识别。</p>
+<p>MNIST 是 LeNet 附带的数据集</p>
+<ul>
+<li>5w个训练数据</li>
+<li>1w个测试数据</li>
+<li>图像大小\( 28 \times 28 \)</li>
+<li>10类</li>
+</ul>
+<p><img src="/img/lenet-1.png" alt="LeNet"></p>
+<h4 id="1-小结">1. 小结</h4>
+<ul>
+<li>LeNet是早期成功的神经网络</li>
+<li>先使用卷积层来学习图片空间信息</li>
+<li>然后使用全连接层来转换到类别空间</li>
+</ul>
+<h4 id="2-卷积神经网络lenet">2. 卷积神经网络（LeNet）</h4>
+<p>LeNet (LeNet-5) 由两个部分组成：卷积编码器和全连接层密集块</p>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/AI-Project/blob/main/src/23.经典卷积神经网络LeNet.ipynb')">查看示例</button>
+</center>
+<h3 id="五alexnet">五、AlexNet</h3>
+<h4 id="1-技术回顾">1. 技术回顾</h4>
+<p>1）支持向量机</p>
+<p>在2000年左右，最流行的机器学习的算法是核方法 (Learning with Kernels).</p>
+<p>the Support Vector Machine (SVM)</p>
+<ul>
+<li>特征提取</li>
+<li>选择核函数来计算相似性</li>
+<li>凸优化问题</li>
+<li>漂亮的定理（来自泛函）</li>
+</ul>
+<p>优点：对调参不敏感，闭着眼睛都可以用</p>
+<p>2）几何学</p>
+<ul>
+<li>抽取特征</li>
+<li>描述几何（例如多相机）</li>
+<li>（非）凸优化</li>
+<li>漂亮定理</li>
+<li>如果假设满足，效果很好</li>
+</ul>
+<p>3）特征工程</p>
+<p>直接把特征放到SVM里效果非常差，所以需要做特征工程</p>
+<ul>
+<li>（在计算机视觉里）特征工程是关键</li>
+<li>特征描述子：SIFT, SURF</li>
+</ul>
+<h4 id="2-imagenet-2020">2. ImageNet (2020)</h4>
+<ul>
+<li>图片：自然物体的彩色图片</li>
+<li>大小：\( 469 \times 387 \)</li>
+<li>样本数 1.2M</li>
+<li>类数：1000</li>
+</ul>
+<p>因为你有了更大的数据集，所以允许用更深的神经网络，用来抽取信息</p>
+<h4 id="3-alexnet">3. AlexNet</h4>
+<ul>
+<li>AlexNet赢了2012年ImageNet竞赛</li>
+<li>更深更大的 LeNet</li>
+<li>主要改进：
+<ul>
+<li>丢弃法（因为模型大了，所以用丢弃做一点正则）</li>
+<li>ReLU（\( Sigmoid \space (LeNet) \to ReLU \)，ReLU在零点的一阶导更好，梯度更大）</li>
+<li>MaxPooling（数值比较大，梯度比较大，使得训练比较容易）</li>
+<li>计算机视觉方法论的改变
+<ul>
+<li>核方法：人工特征提取 \( \to \) SVM</li>
+<li>神经网络：通过 CNN 学习特征 \( \to \) Softmax回归</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-alexnet架构">4. AlexNet架构</h4>
+<p>1）第一个卷积层和池化层的区别</p>
+<table>
+	<thead>
+			<tr>
+					<th>AlexNet</th>
+					<th>LeNet</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>image (\( 3 \times 224 \times 224 \))</td>
+					<td>image (\( 32 \times 32 \))</td>
+			</tr>
+			<tr>
+					<td>11*11 Conv(96), stride 4</td>
+					<td>5*5 Conv(6), pad 2</td>
+			</tr>
+			<tr>
+					<td>3*3 MaxPool, stride 2</td>
+					<td>2*2 AvgPool, stride 2</td>
+			</tr>
+	</tbody>
+</table>
+<ul>
+<li>卷积：更大的窗口，更大的通道数，更大的步幅</li>
+<li>池化：更大的窗口且stride不变（对位置更不敏感），使用MaxPool</li>
+</ul>
+<p>2）接下来</p>
+<table>
+	<thead>
+			<tr>
+					<th>AlexNet</th>
+					<th>LeNet</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>5*5 Conv(256), pad 2</td>
+					<td>5*5 Conv()</td>
+			</tr>
+			<tr>
+					<td>3*3 MaxPool, stride 2</td>
+					<td>2*2 AvgPool, stride 2</td>
+			</tr>
+			<tr>
+					<td>3*3 Conv(384), pad 1</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>3*3 Conv(384), pad 1</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>3*3 Conv(384), pad 1</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>3*3 MaxPool, stride 2</td>
+					<td></td>
+			</tr>
+	</tbody>
+</table>
+<ul>
+<li>新增了3层卷积层</li>
+<li>更多的输出通道</li>
+</ul>
+<p>3）全连接层</p>
+<table>
+	<thead>
+			<tr>
+					<th>AlexNet</th>
+					<th>LeNet</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Dense(4096)</td>
+					<td>Dense(120)</td>
+			</tr>
+			<tr>
+					<td>Dense(4096)</td>
+					<td>Dense(84)</td>
+			</tr>
+			<tr>
+					<td>Dense(1000)</td>
+					<td>Dense(10)</td>
+			</tr>
+	</tbody>
+</table>
+<ul>
+<li>隐藏层大小：120 \( \to \) 4096</li>
+<li>输出类别：10 \( \to \) 1000</li>
+</ul>
+<h4 id="5-更多细节">5. 更多细节</h4>
+<ul>
+<li>激活函数从 Sigmoid 变到了 ReLU（减缓梯度消失，因为梯度比较大）</li>
+<li>隐藏全连接层后加入了丢弃层</li>
+<li>数据增强（随机截取采样，调亮度/色温。神经网络会记住所有数据，数据增强能让记住数据的能力变低）</li>
+</ul>
+<h4 id="6-总结">6. 总结</h4>
+<ul>
+<li>AlexNet是更大更深的LeNet，10x参数个数，260x计算复杂度</li>
+<li>新加入了丢弃法，ReLU，最大池化层，和数据增强</li>
+<li>AlexNet赢下了2012ImageNet竞赛后，标志着新的一轮神经网络热潮的开始</li>
+</ul>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.jupyter.org/github/luochang212/AI-Project/blob/main/src/24.深度卷积神经网络AlexNet.ipynb')">查看示例</button>
+</center>
+<div id="mini-overlay" onclick="overlay_off()"></div>
+<div id="mini-window"><iframe id="mini-iframe" frameBorder="0"></iframe></div>
+<button id="btn-close" onclick="overlay_off()">×</button>
+<script src="/mini-viewer/overlay.js"></script>
+<link rel="stylesheet" href="/mini-viewer/style.css">
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+</script>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/pypi_packaging/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">PyPI 打包小记</span>
+    </a>
+    
+    
+    <a href="/posts/inventory_list/" class="navigation-next">
+      <span class="navigation-tittle">居家物资清单</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+</div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.js" defer></script>
+
+
+<script defer src="https://kit.fontawesome.com/2134995a39.js" crossorigin="anonymous"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/tocbot@4.36.8/dist/tocbot.min.js"></script>
+<script type="text/javascript">
+  if (window.tocbot) {
+    tocbot.init({
+      
+      tocSelector: '.toc',
+      
+      contentSelector: '.post',
+      
+      headingSelector: 'h2, h3, h4',
+      collapseDepth: 4
+    });
+  }
+</script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    mediumZoom('.post img', {
+      background: 'rgba(0,0,0,0.82)',
+      margin: 24,
+      scrollOffset: 0
+    });
+  });
+</script>
+
+
+
+    
+
+
+
+  </body>
+</html>
