@@ -1,0 +1,1134 @@
+<!doctype html>
+<html lang="zh-CN">
+  
+    
+
+
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=61229&amp;path=livereload" data-no-instant defer></script>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://localhost:61229/posts/docker_command/">
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.163.3">
+
+    
+    
+    
+
+<title>Docker 命令速查手册 • Chang Luo</title>
+
+
+    
+
+
+<meta name="description" content="你这个无聊又不得不记的东西！">
+
+
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="http://localhost:61229/images/og-default.jpg">
+	<meta name="twitter:title" content="Docker 命令速查手册">
+	<meta name="twitter:description" content="你这个无聊又不得不记的东西！">
+			<meta name="twitter:site" content="@_stellar_tide">
+
+<meta property="og:url" content="http://localhost:61229/posts/docker_command/">
+	<meta property="og:site_name" content="Chang Luo">
+	<meta property="og:title" content="Docker 命令速查手册">
+	<meta property="og:description" content="你这个无聊又不得不记的东西！">
+	<meta property="og:locale" content="zh_CN">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2024-11-23T00:00:00+00:00">
+		<meta property="article:modified_time" content="2024-11-23T00:00:00+00:00">
+		<meta property="article:tag" content="Docker">
+		<meta property="article:tag" content="Command">
+		<meta property="og:image" content="http://localhost:61229/images/og-default.jpg">
+
+
+    
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.f9da2b005f03c27beab06923e896c9a3875472209210a9177205d391257298b2.css" integrity="sha256-&#43;dorAF8DwnvqsGkj6JbJo4dUciCSEKkXcgXTkSVymLI=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+
+<link rel="stylesheet" href="/scss/tocbot.5ef07cebc3c477b54270456f149ee02922479bb7555fd344b2c69f953b0e7e5e.css" integrity="sha256-XvB868PEd7VCcEVvFJ7gKSJHm7dVX9NEssaflTsOfl4=">
+
+
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#202020">
+    
+    
+
+</head>
+
+
+  <body
+    class=" "
+  >
+    <div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="http://localhost:61229/">Chang Luo</a>
+      </span>
+      
+      
+      
+      <div class="author-image">
+        <button type="button" class="author-trigger" onclick="openNav()" aria-label="打开个人收藏侧栏"
+          aria-controls="mySidenav" aria-expanded="false"><img src="http://localhost:61229//images/profile.webp"
+            alt="Chang Luo" class="img--circle img--headshot element--center"></button>
+      </div>
+      
+      <p class="site__description">
+        
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Chang Luo</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		<li class="sidebar-nav__home">
+			<a href="http://localhost:61229/"><span>Home</span></a>
+		</li>
+		
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/portfolio/">
+						<span>Projects</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+		
+		<a href="https://twitter.com/_stellar_tide" rel="me" title="X">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		<a href="https://github.com/luochang212" rel="me" title="GitHub">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		<a href="https://mp.weixin.qq.com/s/He-04l46xJTM_MJ3AyTwWQ" rel="me" title="微信">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.35em; height: 1.35em; vertical-align: -0.28em;">
+				<path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135-.01-.27-.027-.407-.03zm-2.53 3.274c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982z"/>
+			</svg>
+		</a>
+		
+		
+		<a href="https://www.zhihu.com/people/Fashionable" rel="me" title="知乎">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2"
+				 stroke-linecap="round" stroke-linejoin="round" style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="m13.3334,3.60098l0,17.1471l1.79582,0l0.75424,2.13703l3.18459,-2.13703l3.93584,0l0,-17.1471l-9.6705,0zm7.41375,14.87538l-1.79283,0l-2.24777,1.50849l-0.53276,-1.50849l-0.53875,0l0,-12.53483l5.10911,0l0,12.53483l0.00299,0zm-8.56906,-7.18927l-3.97475,0c0.06285,-1.34387 0.1287,-3.12174 0.19754,-5.17496l3.91788,0l-0.00299,-0.24244c0,-0.01796 -0.00599,-0.43998 -0.06884,-0.87097c-0.06285,-0.44896 -0.19754,-1.04457 -0.62854,-1.04457l-6.5727,0c0.13169,-0.61657 0.46991,-2.08615 0.87995,-2.80747l0.19155,-0.33522l-0.3861,-0.02095c-0.02394,0 -0.58663,-0.02694 -1.23912,0.31726c-1.06851,0.56868 -1.5474,1.68807 -1.75691,2.52612c-0.55072,2.18791 -1.33489,3.70837 -1.66712,4.35786c-0.09877,0.19155 -0.15863,0.30529 -0.18557,0.38311c-0.05387,0.14666 -0.02394,0.29332 0.0838,0.38909c0.31427,0.28434 1.14334,-0.0868 1.15232,-0.08979c0.01796,-0.00898 0.03891,-0.01796 0.06585,-0.02993c0.41603,-0.18856 1.64916,-0.74826 2.08914,-2.52911l1.69705,0c0.02095,0.96376 0.09278,4.14236 0.0868,5.17496l-4.22018,0l-0.06285,0.0449c-0.69139,0.50582 -0.91288,1.8916 -0.92185,1.95146l-0.0419,0.27536l4.99837,0c-0.36814,2.34355 -0.79315,3.3941 -1.01763,3.81313c-0.11074,0.20951 -0.21849,0.41902 -0.32025,0.62255c-0.63752,1.26306 -1.29898,2.56802 -3.7802,4.5973c-0.10775,0.0838 -0.20951,0.23944 -0.14367,0.41005c0.07183,0.18856 0.27835,0.27237 0.73629,0.27237c0.16162,0 0.35318,-0.00898 0.58065,-0.02993c1.49352,-0.13169 3.01698,-0.53875 4.04359,-2.6219c0.50882,-1.05056 0.94879,-2.14601 1.31394,-3.25941l4.08549,4.78886l0.14965,-0.35916c0.02394,-0.05687 0.56868,-1.38578 0.15264,-2.87032l-0.01497,-0.05387l-3.23547,-3.68143l-0.65847,0.49684c0.19155,-0.78118 0.31726,-1.49352 0.37413,-2.12805l4.74995,0l0,-0.23944c0,-1.20021 -0.55371,-1.91255 -0.57466,-1.94248l-0.07183,-0.08979z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+</section>
+
+      </div>
+    </div>
+    
+<div class="copyright">
+  &copy; 2026 Chang Luo
+  
+</div>
+
+
+
+  </div>
+</div>
+
+<div id="overlay" onclick="closeNav()" aria-hidden="true"></div>
+
+<div id="mySidenav" class="sidenav" role="dialog" aria-label="个人收藏" aria-hidden="true">
+  <div id="main">
+    <div class="tab">
+      <button id="default-tab" class="tablinks active" onclick="openItem(event, 'Resources')"
+        aria-controls="Resources" aria-pressed="true">Resources</button>
+      <button class="tablinks" onclick="openItem(event, 'netease-player')"
+        aria-controls="netease-player" aria-pressed="false">Music</button>
+      <button class="tablinks" onclick="openItem(event, 'video-player')"
+        aria-controls="video-player" aria-pressed="false">Video</button>
+      <button class="tablinks" onclick="openItem(event, 'gallery')"
+        aria-controls="gallery" aria-pressed="false">Gallery</button>
+      <button class="tablinks" onclick="openItem(event, 'gadget')"
+        aria-controls="gadget" aria-pressed="false">Gadget</button>
+      <button class="tablinks" onclick="openItem(event, 'categories')"
+        aria-controls="categories" aria-pressed="false">Cats</button>
+    </div>
+
+    <div id="Resources" class="tabcontent">
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/resources/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Resources"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="netease-player" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
+        frameborder="no"
+        marginheight="0"
+        marginwidth="0"
+        title="Music player"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="video-player" class="tabcontent" hidden>
+      <div class="video-layout">
+        <div class="video-main">
+          <div class="video-cover" id="video-cover">
+            <img id="video-cover-img" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-cover-overlay">
+              <button class="video-play-btn" id="video-play-btn" aria-label="播放视频">
+                <svg viewBox="0 0 24 24" width="48" height="48"><path d="M8 5v14l11-7z" fill="white"/></svg>
+              </button>
+              <span class="video-cover-title" id="video-cover-title">四月是你的谎言</span>
+            </div>
+          </div>
+          <div class="video-frame" id="video-frame" hidden>
+            <iframe src="about:blank"
+              data-src="//player.bilibili.com/player.html?bvid=BV1Ms411D7in&p=1&high_quality=1&danmaku=0&autoplay=0"
+              style="width:100%;"
+              scrolling="no"
+              frameborder="no"
+              framespacing="0"
+              title="Bilibili video player"
+              allowfullscreen="true"></iframe>
+          </div>
+        </div>
+        <div class="video-playlist">
+          <button class="video-item active" data-bvid="BV1Ms411D7in"
+            data-title="四月是你的谎言"
+            data-cover="/images/video-covers/zutomayo.jpg"
+            data-duration="4:04">
+            <img class="video-item-cover" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">四月是你的谎言</span>
+              <span class="video-item-meta">4:04</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1LW411j7dK"
+            data-title="Kids by One republic — 三羊"
+            data-cover="/images/video-covers/sanyang.jpg"
+            data-duration="2:54">
+            <img class="video-item-cover" src="/images/video-covers/sanyang.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">Kids by One republic</span>
+              <span class="video-item-meta">三羊 · 2:54</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Yx411U7Lx"
+            data-title="交织together — M78"
+            data-cover="/images/video-covers/jiaozhi.jpg"
+            data-duration="6:06">
+            <img class="video-item-cover" src="/images/video-covers/jiaozhi.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">交织together</span>
+              <span class="video-item-meta">M78 · 6:06</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1rp4y1L7i4"
+            data-title="新员工入职大会 — 岁己SUI/恋诗夜Koxia"
+            data-cover="/images/video-covers/suisui.jpg"
+            data-duration="2:33">
+            <img class="video-item-cover" src="/images/video-covers/suisui.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">新员工入职大会</span>
+              <span class="video-item-meta">岁己SUI/恋诗夜Koxia · 2:33</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Av4y147QE"
+            data-title="真物论 — 悠亚"
+            data-cover="/images/video-covers/zhenwulun.jpg"
+            data-duration="3:30">
+            <img class="video-item-cover" src="/images/video-covers/zhenwulun.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">真物论</span>
+              <span class="video-item-meta">悠亚 · 3:30</span>
+            </div>
+          </button>
+        </div>        </div>
+      </div>
+
+
+    <div id="gallery" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/gadget/gallery/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Gallery"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="gadget" class="tabcontent drawer-native" hidden>
+      <div class="drawer-native-content">
+        
+          <br>
+<table>
+	<thead>
+			<tr>
+					<th>#</th>
+					<th>name</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td><a href="/gadget/hydra" target="_blank">Hydra</a></td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td><a href="/mozi/" target="_blank">墨子</a></td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td><a href="/gadget/how-old-are-you" target="_blank">年龄可视化</a></td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td><a href="/gadget/piano" target="_blank">Piano</a></td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td><a href="/flockn-roll/" target="_blank">Flock&rsquo;n Roll</a></td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td><a href="/monaco-speech-editor/" target="_blank">Monaco Speech Editor</a></td>
+			</tr>
+	</tbody>
+</table>
+
+        
+      </div>
+    </div>
+
+    <div id="categories" class="tabcontent drawer-native" hidden>
+      <ul class="drawer-category-list">
+        
+          <li>
+            <a href="/categories/devops/" target="_blank" rel="noopener noreferrer">
+              <span>DevOps</span>
+              <span class="drawer-category-count">12</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/deeplearning/" target="_blank" rel="noopener noreferrer">
+              <span>DeepLearning</span>
+              <span class="drawer-category-count">11</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/agent/" target="_blank" rel="noopener noreferrer">
+              <span>Agent</span>
+              <span class="drawer-category-count">7</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/algorithms/" target="_blank" rel="noopener noreferrer">
+              <span>Algorithms</span>
+              <span class="drawer-category-count">6</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/life/" target="_blank" rel="noopener noreferrer">
+              <span>Life</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/sota/" target="_blank" rel="noopener noreferrer">
+              <span>SOTA</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/bigdata/" target="_blank" rel="noopener noreferrer">
+              <span>BigData</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/statistics/" target="_blank" rel="noopener noreferrer">
+              <span>Statistics</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/frontend/" target="_blank" rel="noopener noreferrer">
+              <span>FrontEnd</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/llms/" target="_blank" rel="noopener noreferrer">
+              <span>LLMs</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/machinelearning/" target="_blank" rel="noopener noreferrer">
+              <span>MachineLearning</span>
+              <span class="drawer-category-count">2</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/math/" target="_blank" rel="noopener noreferrer">
+              <span>Math</span>
+              <span class="drawer-category-count">2</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/datavisualization/" target="_blank" rel="noopener noreferrer">
+              <span>DataVisualization</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/hardware/" target="_blank" rel="noopener noreferrer">
+              <span>Hardware</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/modeling/" target="_blank" rel="noopener noreferrer">
+              <span>Modeling</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/multimodal/" target="_blank" rel="noopener noreferrer">
+              <span>Multimodal</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/network/" target="_blank" rel="noopener noreferrer">
+              <span>Network</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/prose/" target="_blank" rel="noopener noreferrer">
+              <span>Prose</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="/js/drawer.js"></script>
+
+
+    <div class="content container">
+    
+<article>
+  <header>
+    <h1>Docker 命令速查手册</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Nov 23, 2024
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/devops">DEVOPS</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/docker">docker</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/command">command</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 4 min read
+</div>
+
+
+  </header>
+  
+  
+  
+    <div class="toc-wrapper">
+      <input type="checkbox" id="tocToggle">
+      <label for="tocToggle">Table of Content</label>
+      
+        <div class="toc" id="TableOfContents"></div>
+      
+    </div>
+  
+  
+  <div class="post">
+    <blockquote>
+<p>在低版本的服务器或存在共用关系的大组环境里，Docker 是个好东西。Docker 可以提供独立的运行时环境，以免受其他服务和人的干扰。</p>
+</blockquote>
+<p>GitHub 项目地址：<a href="https://github.com/luochang212/docker-command" target="_blank">docker-command</a></p>
+<h3 id="一什么是-docker">一、什么是 Docker</h3>
+<p>Docker 是一种容器技术。它通过轻量级的虚拟化，将程序及其依赖打包到一个被称为 <strong>容器</strong> 的独立运行环境里，从而保证应用在不同环境中的一致性。</p>
+<p>容器与虚拟机，在功能上类似，但更加轻量化。容器提供的是操作系统级别的虚拟化；而虚拟机提供的是硬件级别的虚拟化。不同于虚拟机要为每个实例运行完整的操作系统，容器共享操作系统内核，因此更轻量、更高效。不过，轻量化的设计也带来了一些限制，例如 systemctl 等服务管理工具通常在容器中不可用。</p>
+<h4 id="11-核心组件">1.1 核心组件</h4>
+<p>在上手 Docker 前，有必要了解它的核心组件：</p>
+<ol>
+<li><strong>镜像</strong> (Image): 镜像拥有运行应用所需的一切，包括操作系统、代码、依赖等</li>
+<li><strong>容器</strong> (Container): 容器由镜像创建，每个容器拥有独立的运行环境</li>
+</ol>
+<p>你无法直接运行镜像，必须由镜像创建对应的容器才能运行。可以认为容器是镜像的实例。镜像负责存储与分发，容器负责提供服务。</p>
+<h4 id="12-主要用途">1.2 主要用途</h4>
+<p>Docker 的主要用途包括：</p>
+<ol>
+<li>轻量级虚拟化：可以当成虚拟机使用</li>
+<li>支持微服务架构：每个服务运行在独立容器中，易于扩展和管理</li>
+<li>支持 CI/CD 流水线：一次打包，即可在所有环境中运行</li>
+<li>保证环境的一致性：确保测试、开发、生产环境一致</li>
+</ol>
+<p>如果你还不了解 Docker，可访问以下资源：</p>
+<ul>
+<li>官网：<a href="https://www.docker.com/" target="_blank"><a href="https://www.docker.com/">https://www.docker.com/</a></a></li>
+<li>入门文档：<a href="https://docs.docker.com/guides/" target="_blank"><a href="https://docs.docker.com/guides/">https://docs.docker.com/guides/</a></a></li>
+</ul>
+<h3 id="二常用命令">二、常用命令</h3>
+<h4 id="21-基础操作">2.1 基础操作</h4>
+<table>
+	<thead>
+			<tr>
+					<th>命令</th>
+					<th>描述</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>docker info</code></td>
+					<td>查看 docker 系统信息</td>
+			</tr>
+			<tr>
+					<td><code>docker version</code></td>
+					<td>查看 docker 版本信息</td>
+			</tr>
+			<tr>
+					<td><code>docker --version</code></td>
+					<td>查看 docker 简略版本信息</td>
+			</tr>
+			<tr>
+					<td><code>docker login</code></td>
+					<td>登录 DockerHub</td>
+			</tr>
+			<tr>
+					<td><code>docker login nvcr.io</code></td>
+					<td>登录 nvcr.io</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="22-镜像管理">2.2 镜像管理</h4>
+<table>
+	<thead>
+			<tr>
+					<th>命令</th>
+					<th>描述</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>docker images</code></td>
+					<td>查看镜像</td>
+			</tr>
+			<tr>
+					<td><code>docker pull [IMAGE]</code></td>
+					<td>拉取镜像</td>
+			</tr>
+			<tr>
+					<td><code>docker rmi [IMAGE]</code></td>
+					<td>删除镜像</td>
+			</tr>
+			<tr>
+					<td><code>docker commit [CONTAINER] [IMAGE]:[TAG]</code></td>
+					<td>将容器保存为新的镜像</td>
+			</tr>
+			<tr>
+					<td><code>docker save -o myimage.tar [IMAGE]</code></td>
+					<td>将镜像保存到指定路径</td>
+			</tr>
+			<tr>
+					<td><code>docker load -i path/to/myimage.tar</code></td>
+					<td>从 tar 文件中加载镜像</td>
+			</tr>
+			<tr>
+					<td><code>docker tag [IMAGE_ID] [NEW_NAME]:[NEW_TAG]</code></td>
+					<td>重命名 docker 镜像</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="23-容器管理">2.3 容器管理</h4>
+<table>
+	<thead>
+			<tr>
+					<th>命令</th>
+					<th>描述</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>docker create [IMAGE]</code></td>
+					<td>创建容器</td>
+			</tr>
+			<tr>
+					<td><code>docker run [IMAGE]</code></td>
+					<td>创建并运行容器</td>
+			</tr>
+			<tr>
+					<td><code>docker start [CONTAINER]</code></td>
+					<td>启动容器</td>
+			</tr>
+			<tr>
+					<td><code>docker stop [CONTAINER]</code></td>
+					<td>停止容器</td>
+			</tr>
+			<tr>
+					<td><code>docker restart [CONTAINER]</code></td>
+					<td>重启容器</td>
+			</tr>
+			<tr>
+					<td><code>docker ps</code></td>
+					<td>列出运行容器</td>
+			</tr>
+			<tr>
+					<td><code>docker ps -a</code></td>
+					<td>列出所有容器</td>
+			</tr>
+			<tr>
+					<td><code>docker exec -it [CONTAINER] /bin/bash</code></td>
+					<td>启动交互模式</td>
+			</tr>
+			<tr>
+					<td><code>docker rm [CONTAINER]</code></td>
+					<td>删除容器</td>
+			</tr>
+			<tr>
+					<td><code>docker port [CONTAINER]</code></td>
+					<td>查看端口映射</td>
+			</tr>
+			<tr>
+					<td><code>docker top [CONTAINER]</code></td>
+					<td>查看容器内进程</td>
+			</tr>
+			<tr>
+					<td><code>docker stats [CONTAINER]</code></td>
+					<td>查看资源使用情况</td>
+			</tr>
+			<tr>
+					<td><code>docker cp [CONTAINER]:[PATH] [LOCAL_PATH]</code></td>
+					<td>拷贝文本到本地</td>
+			</tr>
+			<tr>
+					<td><code>docker cp [LOCAL_PATH] [CONTAINER]:[PATH]</code></td>
+					<td>拷贝文件到容器</td>
+			</tr>
+			<tr>
+					<td><code>docker export -o mycontainer.tar [CONTAINER]</code></td>
+					<td>将容器存成文件</td>
+			</tr>
+			<tr>
+					<td><code>docker import path/to/mycontainer.tar [IMAGE]:[TAG]</code></td>
+					<td>文件加载成镜像</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="24-容器运行">2.4 容器运行</h4>
+<table>
+	<thead>
+			<tr>
+					<th>命令</th>
+					<th>描述</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>docker run --name [NAME] [IMAGE]</code></td>
+					<td>创建运行并命名容器</td>
+			</tr>
+			<tr>
+					<td><code>docker run -d [IMAGE]</code></td>
+					<td>创建容器并在后台运行</td>
+			</tr>
+			<tr>
+					<td><code>docker run -p [LOCAL_PORT]:[CONTAINER_PORT] [IMAGE]</code></td>
+					<td>创建容器并指定端口映射</td>
+			</tr>
+			<tr>
+					<td><code>docker run -v [LOCAL_PATH]:[CONTAINER_PATH] [IMAGE]</code></td>
+					<td>创建容器并将本地目录挂载到容器目录</td>
+			</tr>
+			<tr>
+					<td><code>docker run -it [IMAGE] /bin/bash</code></td>
+					<td>创建容器并启动交互式 shell</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="三docker-的简单使用">三、Docker 的简单使用</h3>
+<p>Docker 是客户端 / 服务端分离的，因此使用前，通常需要检查一下服务端和客户端是否都在运行：</p>
+<pre tabindex="0"><code>docker info
+</code></pre><h4 id="31-获取镜像的两种方法">3.1 获取镜像的两种方法</h4>
+<h5 id="311-从-docker-hub-获取镜像">3.1.1 从 Docker Hub 获取镜像</h5>
+<p>可以用 <code>docker pull</code> 命令从 <a href="https://hub.docker.com/">Docker Hub</a> 拉取镜像。例如，以下命令可拉取带有 Nginx 服务的镜像：</p>
+<pre tabindex="0"><code>docker pull nginx:stable-alpine-perl
+</code></pre><h5 id="312-用-dockerfile-构建镜像">3.1.2 用 Dockerfile 构建镜像</h5>
+<p>可以用 <code>Dockerfile</code> 定义一个镜像的构建过程，包括基础镜像、安装软件、环境变量等。</p>
+<p>下面这个 <code>Dockerfile</code> 以 <code>Ubuntu 22.04</code> 为基础镜像，安装了 Miniconda 和 Jupyter Lab，并将 Jupyter Lab 日志写入工作目录的 <code>jupyter_lab.log</code> 文件。</p>
+<pre tabindex="0"><code># Dockerfile 文件
+
+# 使用 Ubuntu 22.04 LTS 作为基础镜像
+FROM ubuntu:22.04
+
+# 设置环境变量
+ENV DEBIAN_FRONTEND=noninteractive
+
+# 更新 apt-get 并安装必要的依赖
+RUN apt-get update &amp;&amp; apt-get install -y \
+    wget \
+    bzip2 \
+    curl \
+    git \
+    &amp;&amp; rm -rf /var/lib/apt/lists/*
+
+# 安装 Miniconda
+RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh &amp;&amp; \
+    bash miniconda.sh -b -f -p /opt/conda &amp;&amp; \
+    rm miniconda.sh &amp;&amp; \
+    /opt/conda/bin/conda init bash
+
+# 设置 conda 环境路径
+ENV PATH=/opt/conda/bin:\( PATH
+
+# 安装 Jupyter Lab
+RUN conda install -y jupyterlab
+
+# 创建工作目录
+WORKDIR /workspace
+
+# 暴露 Jupyter Lab 默认端口
+EXPOSE 8888
+
+# 启动 Jupyter Lab，设置根目录为工作目录，禁用浏览器，禁用 token
+CMD [&#34;sh&#34;, &#34;-c&#34;, &#34;nohup jupyter lab --ip=0.0.0.0 --allow-root --notebook-dir=/ --no-browser &gt; /workspace/jupyter_lab.log 2&gt;&amp;1&#34;]
+</code></pre><p>使用以下命令构建镜像：</p>
+<pre tabindex="0"><code># 1. 检查 docker 环境是否正常
+docker info
+
+# 2. 构建镜像
+docker build -t jupyter_server_image .
+</code></pre><p>镜像构建完成后，可以在客户端中查看镜像信息：</p>
+<p><img src="/img/docker-app.png" alt="docker-app"></p>
+<h4 id="32-如何启动容器">3.2 如何启动容器</h4>
+<p>一旦镜像完成构建，可以通过以下命令启动容器：</p>
+<pre tabindex="0"><code># 3. 测试容器
+docker run \
+    --rm \
+    --gpus all \
+    -it \
+    --name jupyter_server_app \
+    jupyter_server_image /bin/bash
+
+# 4. 运行容器
+docker run \
+    --gpus all \
+    --name jupyter_server_app \
+    -d \
+    -p 9999:8888 \
+    -v  \)(pwd)/jupyter_workspace:/workspace \
+    jupyter_server_image
+</code></pre><p>运行选项说明：</p>
+<ul>
+<li><code>--rm</code>: 当容器退出时自动删除容器，常用于测试</li>
+<li><code>--gpus all</code>: 启用所有可用的 GPU 资源</li>
+<li><code>-it</code>: 启动交互式终端</li>
+<li><code>--name</code>: 为容器指定名字</li>
+<li><code>-d</code>: 以后台模式运行容器</li>
+<li><code>-p &lt;local-port&gt;:&lt;container-port&gt;</code>: 将主机端口映射到容器端口</li>
+<li><code>-v &lt;local-path&gt;:&lt;container-path&gt;</code>: 将主机路径挂载到容器路径</li>
+</ul>
+<h4 id="33-gpu-机器配置">3.3 GPU 机器配置</h4>
+<p><strong>1）检查 NVIDIA 驱动程序</strong></p>
+<p>确保你的系统上已经安装了 NVIDIA 驱动程序。你可以通过 <code>nvidia-smi</code> 命令来检查是否已安装并输出版本信息。</p>
+<pre tabindex="0"><code>nvidia-smi
+</code></pre><p><strong>2）安装 NVIDIA Container Toolkit</strong></p>
+<p>如果还没有安装 NVIDIA Container Toolkit，可以通过以下命令安装（以 Ubuntu 为例）：</p>
+<pre tabindex="0"><code># 1. 添加 NVIDIA 软件包列表
+distribution=\( (. /etc/os-release;echo  \)ID\( VERSION_ID)
+curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
+curl -s -L https://nvidia.github.io/nvidia-docker/ \)distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+
+# 2. 更新 apt 缓存，并安装 NVIDIA Container Toolkit
+sudo apt-get update &amp;&amp; sudo apt-get install -y nvidia-container-toolkit
+
+# 3. 重启Docker服务
+sudo systemctl restart docker
+</code></pre><p><strong>3）检查 CUDA 和 PyTorch</strong></p>
+<p>CUDA 和 PyTorch 通常在 NVIDIA 官方容器中已经安装好了。运行以下命令验证是否已安装：</p>
+<pre tabindex="0"><code># 输出 CUDA 版本
+nvcc --version
+
+# 输出 PyTorch 版本
+pip show torch
+</code></pre><h4 id="34-修改默认存储目录">3.4 修改默认存储目录</h4>
+<p>在 Linux 系统下，Docker 容器相关的数据存储，包括镜像、容器、数据卷，默认存储在 <code>/var/lib/docker</code> 目录下。如果你是 Docker 的重度使用者，物理机 <code>/var</code> 路径挂载的磁盘空间可能不够用。会有修改 Docker 默认存储目录的需求。以下是具体步骤：</p>
+<p><strong>1）停止 Docker 服务</strong></p>
+<p>在修改存储目录之前，需要先停止 Docker 服务，避免数据损坏：</p>
+<pre tabindex="0"><code>sudo systemctl stop docker
+</code></pre><p><strong>2）迁移现有数据（可选）</strong></p>
+<p>如果已经有 Docker 容器和镜像，需要将 /var/lib/docker 目录下的数据迁移到新的存储目录。假设新的存储目录为 /new_docker_location，可以使用以下命令进行迁移：</p>
+<pre tabindex="0"><code>sudo mkdir -p /new_docker_location
+sudo rsync -avzP /var/lib/docker/ /new_docker_location/
+</code></pre><p><strong>3）配置 Docker 的新存储目录</strong></p>
+<p>创建或编辑 /etc/docker/daemon.json 文件，如果文件不存在则创建它，并添加以下内容：</p>
+<pre tabindex="0"><code>{
+    &#34;data-root&#34;: &#34;/new_docker_location&#34;
+}
+</code></pre><p><strong>4）启动 Docker 服务</strong></p>
+<p>完成上述配置后，启动 Docker 服务：</p>
+<pre tabindex="0"><code>sudo systemctl start docker
+</code></pre><p>确认新的存储目录配置成功且 Docker 可以正常工作后，可以删除旧的存储目录：</p>
+<pre tabindex="0"><code>sudo rm -rf /var/lib/docker
+</code></pre><h3 id="四docker-compose-的简单使用">四、Docker Compose 的简单使用</h3>
+<p>Docker Compose 是一个用于运行多容器 Docker 应用的工具。通过 YAML 文件 (<code>docker-compose.yml</code>) 可定义多个服务及其配置，使用 <code>docker-compose</code> 命令可以快速部署和管理这些服务。</p>
+<h4 id="41-安装-docker-compose">4.1 安装 Docker Compose</h4>
+<p>对于 MacOS 和 Linux：</p>
+<pre tabindex="0"><code>curl -L &#34;https://github.com/docker/compose/releases/download/v2.20.0/docker-compose-\( (uname -s)- \)(uname -m)&#34; -o ~/docker-compose
+chmod +x ~/docker-compose
+sudo mv ~/docker-compose /usr/local/bin/docker-compose
+</code></pre><h4 id="42-常用命令">4.2 常用命令</h4>
+<table>
+	<thead>
+			<tr>
+					<th>命令</th>
+					<th>描述</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>docker-compose version</code></td>
+					<td>显示版本信息</td>
+			</tr>
+			<tr>
+					<td><code>docker-compose up</code></td>
+					<td>创建并启动容器</td>
+			</tr>
+			<tr>
+					<td><code>docker-compose up -d</code></td>
+					<td>以后台模式启动容器</td>
+			</tr>
+			<tr>
+					<td><code>docker-compose down</code></td>
+					<td>停止并移除容器和网络</td>
+			</tr>
+			<tr>
+					<td><code>docker-compose restart</code></td>
+					<td>重启容器</td>
+			</tr>
+			<tr>
+					<td><code>docker-compose start</code></td>
+					<td>启动容器</td>
+			</tr>
+			<tr>
+					<td><code>docker-compose stop</code></td>
+					<td>停止容器</td>
+			</tr>
+			<tr>
+					<td><code>docker-compose rm</code></td>
+					<td>移除容器</td>
+			</tr>
+			<tr>
+					<td><code>docker-compose logs</code></td>
+					<td>查看容器日志</td>
+			</tr>
+			<tr>
+					<td><code>docker-compose top</code></td>
+					<td>显示容器进程</td>
+			</tr>
+			<tr>
+					<td><code>docker-compose build</code></td>
+					<td>构建镜像</td>
+			</tr>
+			<tr>
+					<td><code>docker-compose ps</code></td>
+					<td>列出容器及其状态信息</td>
+			</tr>
+			<tr>
+					<td><code>docker-compose config</code></td>
+					<td>检查 Compose 文件是否有语法错误</td>
+			</tr>
+			<tr>
+					<td><code>docker-compose exec</code></td>
+					<td>在运行中的容器执行命令</td>
+			</tr>
+			<tr>
+					<td><code>docker-compose kill</code></td>
+					<td>强制终止容器</td>
+			</tr>
+			<tr>
+					<td><code>docker-compose pause</code></td>
+					<td>暂停服务容器</td>
+			</tr>
+			<tr>
+					<td><code>docker-compose unpause</code></td>
+					<td>恢复已暂停的服务容器</td>
+			</tr>
+			<tr>
+					<td><code>docker-compose images</code></td>
+					<td>列出使用的镜像</td>
+			</tr>
+			<tr>
+					<td><code>docker-compose port</code></td>
+					<td>显示端口绑定</td>
+			</tr>
+			<tr>
+					<td><code>docker-compose help</code></td>
+					<td>查看帮助信息</td>
+			</tr>
+	</tbody>
+</table>
+<!-- #### 4.3 使用 Docker Compose 管理多容器应用
+
+##### 4.2.1 安装 Docker Compose
+
+确保已经安装 Docker 和 Docker Compose
+
+```
+docker --version
+docker-compose --version
+```
+
+##### 4.2.2 编写 `docker-compose.yml` 文件
+
+用 YAML 文件配置一个 Nginx 服务和 MySQL 数据库。
+
+##### 4.2.3 启动多容器应用
+
+运行以下命令启动应用：
+
+```
+docker-compose up -d
+```
+
+验证容器是否启动成功
+
+```
+docker-compose ps
+```
+
+如果需要拓展服务，例如增加 web 服务实例数：
+
+```
+docker-compose up -d --scale web=3
+```
+
+##### 4.2.4 检查日志
+
+```
+# 查看所有容器的日志输出
+docker-compose logs
+
+# 查看特定服务的日志输出
+docker-compose logs web
+
+# 查看服务状态
+docker-compose ps
+
+# 查看网络状态
+docker network ls
+``` -->
+<h3 id="附录">附录</h3>
+<p>资源列表：</p>
+<ul>
+<li><a href="https://github.com/bitnami">bitnami</a></li>
+<li><a href="https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch/tags">NVIDIA PyTorch 镜像</a></li>
+<li><a href="https://hub.docker.com/r/nvidia/cuda/tags">NVIDIA CUDA 镜像</a></li>
+<li><a href="https://org.ngc.nvidia.com/setup/api-key">NVIDIA api-key</a></li>
+</ul>
+<p>参考：</p>
+<ul>
+<li><a href="https://s1mple.cc/2021/10/12/%E4%BD%BF%E7%94%A8-Docker-%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2-Spark-Hadoop-%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%9B%86%E7%BE%A4/">使用 Docker 快速部署 Spark + Hadoop 大数据集群</a></li>
+</ul>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/frequent_pattern_mining/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">频繁模式挖掘</span>
+    </a>
+    
+    
+    <a href="/posts/clip_triton_server/" class="navigation-next">
+      <span class="navigation-tittle">Triton 部署 CLIP 图文 Embedding 推理服务</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+</div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.js" defer></script>
+
+
+<script defer src="https://kit.fontawesome.com/2134995a39.js" crossorigin="anonymous"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/tocbot@4.36.8/dist/tocbot.min.js"></script>
+<script type="text/javascript">
+  if (window.tocbot) {
+    tocbot.init({
+      
+      tocSelector: '.toc',
+      
+      contentSelector: '.post',
+      
+      headingSelector: 'h2, h3, h4',
+      collapseDepth: 4
+    });
+  }
+</script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    mediumZoom('.post img', {
+      background: 'rgba(0,0,0,0.82)',
+      margin: 24,
+      scrollOffset: 0
+    });
+  });
+</script>
+
+
+
+    
+
+
+
+  </body>
+</html>

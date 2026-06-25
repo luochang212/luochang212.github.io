@@ -1,0 +1,1117 @@
+<!doctype html>
+<html lang="zh-CN">
+  
+    
+
+
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=61229&amp;path=livereload" data-no-instant defer></script>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://localhost:61229/posts/home_network_topology/">
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.163.3">
+
+    
+    
+    
+
+<title>家庭网络拓扑 • Chang Luo</title>
+
+
+    
+
+
+<meta name="description" content="家庭局域网的数据传输过程">
+
+
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="http://localhost:61229/images/og-default.jpg">
+	<meta name="twitter:title" content="家庭网络拓扑">
+	<meta name="twitter:description" content="家庭局域网的数据传输过程">
+			<meta name="twitter:site" content="@_stellar_tide">
+
+<meta property="og:url" content="http://localhost:61229/posts/home_network_topology/">
+	<meta property="og:site_name" content="Chang Luo">
+	<meta property="og:title" content="家庭网络拓扑">
+	<meta property="og:description" content="家庭局域网的数据传输过程">
+	<meta property="og:locale" content="zh_CN">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2024-03-02T00:00:00+00:00">
+		<meta property="article:modified_time" content="2024-03-02T00:00:00+00:00">
+		<meta property="article:tag" content="Web">
+		<meta property="article:tag" content="HTTP">
+		<meta property="og:image" content="http://localhost:61229/images/og-default.jpg">
+
+
+    
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.f9da2b005f03c27beab06923e896c9a3875472209210a9177205d391257298b2.css" integrity="sha256-&#43;dorAF8DwnvqsGkj6JbJo4dUciCSEKkXcgXTkSVymLI=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+
+<link rel="stylesheet" href="/scss/tocbot.5ef07cebc3c477b54270456f149ee02922479bb7555fd344b2c69f953b0e7e5e.css" integrity="sha256-XvB868PEd7VCcEVvFJ7gKSJHm7dVX9NEssaflTsOfl4=">
+
+
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#202020">
+    
+    
+
+</head>
+
+
+  <body
+    class=" "
+  >
+    <div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="http://localhost:61229/">Chang Luo</a>
+      </span>
+      
+      
+      
+      <div class="author-image">
+        <button type="button" class="author-trigger" onclick="openNav()" aria-label="打开个人收藏侧栏"
+          aria-controls="mySidenav" aria-expanded="false"><img src="http://localhost:61229//images/profile.webp"
+            alt="Chang Luo" class="img--circle img--headshot element--center"></button>
+      </div>
+      
+      <p class="site__description">
+        
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Chang Luo</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		<li class="sidebar-nav__home">
+			<a href="http://localhost:61229/"><span>Home</span></a>
+		</li>
+		
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/portfolio/">
+						<span>Projects</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+		
+		<a href="https://twitter.com/_stellar_tide" rel="me" title="X">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		<a href="https://github.com/luochang212" rel="me" title="GitHub">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		<a href="https://mp.weixin.qq.com/s/He-04l46xJTM_MJ3AyTwWQ" rel="me" title="微信">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.35em; height: 1.35em; vertical-align: -0.28em;">
+				<path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135-.01-.27-.027-.407-.03zm-2.53 3.274c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982z"/>
+			</svg>
+		</a>
+		
+		
+		<a href="https://www.zhihu.com/people/Fashionable" rel="me" title="知乎">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2"
+				 stroke-linecap="round" stroke-linejoin="round" style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="m13.3334,3.60098l0,17.1471l1.79582,0l0.75424,2.13703l3.18459,-2.13703l3.93584,0l0,-17.1471l-9.6705,0zm7.41375,14.87538l-1.79283,0l-2.24777,1.50849l-0.53276,-1.50849l-0.53875,0l0,-12.53483l5.10911,0l0,12.53483l0.00299,0zm-8.56906,-7.18927l-3.97475,0c0.06285,-1.34387 0.1287,-3.12174 0.19754,-5.17496l3.91788,0l-0.00299,-0.24244c0,-0.01796 -0.00599,-0.43998 -0.06884,-0.87097c-0.06285,-0.44896 -0.19754,-1.04457 -0.62854,-1.04457l-6.5727,0c0.13169,-0.61657 0.46991,-2.08615 0.87995,-2.80747l0.19155,-0.33522l-0.3861,-0.02095c-0.02394,0 -0.58663,-0.02694 -1.23912,0.31726c-1.06851,0.56868 -1.5474,1.68807 -1.75691,2.52612c-0.55072,2.18791 -1.33489,3.70837 -1.66712,4.35786c-0.09877,0.19155 -0.15863,0.30529 -0.18557,0.38311c-0.05387,0.14666 -0.02394,0.29332 0.0838,0.38909c0.31427,0.28434 1.14334,-0.0868 1.15232,-0.08979c0.01796,-0.00898 0.03891,-0.01796 0.06585,-0.02993c0.41603,-0.18856 1.64916,-0.74826 2.08914,-2.52911l1.69705,0c0.02095,0.96376 0.09278,4.14236 0.0868,5.17496l-4.22018,0l-0.06285,0.0449c-0.69139,0.50582 -0.91288,1.8916 -0.92185,1.95146l-0.0419,0.27536l4.99837,0c-0.36814,2.34355 -0.79315,3.3941 -1.01763,3.81313c-0.11074,0.20951 -0.21849,0.41902 -0.32025,0.62255c-0.63752,1.26306 -1.29898,2.56802 -3.7802,4.5973c-0.10775,0.0838 -0.20951,0.23944 -0.14367,0.41005c0.07183,0.18856 0.27835,0.27237 0.73629,0.27237c0.16162,0 0.35318,-0.00898 0.58065,-0.02993c1.49352,-0.13169 3.01698,-0.53875 4.04359,-2.6219c0.50882,-1.05056 0.94879,-2.14601 1.31394,-3.25941l4.08549,4.78886l0.14965,-0.35916c0.02394,-0.05687 0.56868,-1.38578 0.15264,-2.87032l-0.01497,-0.05387l-3.23547,-3.68143l-0.65847,0.49684c0.19155,-0.78118 0.31726,-1.49352 0.37413,-2.12805l4.74995,0l0,-0.23944c0,-1.20021 -0.55371,-1.91255 -0.57466,-1.94248l-0.07183,-0.08979z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+</section>
+
+      </div>
+    </div>
+    
+<div class="copyright">
+  &copy; 2026 Chang Luo
+  
+</div>
+
+
+
+  </div>
+</div>
+
+<div id="overlay" onclick="closeNav()" aria-hidden="true"></div>
+
+<div id="mySidenav" class="sidenav" role="dialog" aria-label="个人收藏" aria-hidden="true">
+  <div id="main">
+    <div class="tab">
+      <button id="default-tab" class="tablinks active" onclick="openItem(event, 'Resources')"
+        aria-controls="Resources" aria-pressed="true">Resources</button>
+      <button class="tablinks" onclick="openItem(event, 'netease-player')"
+        aria-controls="netease-player" aria-pressed="false">Music</button>
+      <button class="tablinks" onclick="openItem(event, 'video-player')"
+        aria-controls="video-player" aria-pressed="false">Video</button>
+      <button class="tablinks" onclick="openItem(event, 'gallery')"
+        aria-controls="gallery" aria-pressed="false">Gallery</button>
+      <button class="tablinks" onclick="openItem(event, 'gadget')"
+        aria-controls="gadget" aria-pressed="false">Gadget</button>
+      <button class="tablinks" onclick="openItem(event, 'categories')"
+        aria-controls="categories" aria-pressed="false">Cats</button>
+    </div>
+
+    <div id="Resources" class="tabcontent">
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/resources/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Resources"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="netease-player" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
+        frameborder="no"
+        marginheight="0"
+        marginwidth="0"
+        title="Music player"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="video-player" class="tabcontent" hidden>
+      <div class="video-layout">
+        <div class="video-main">
+          <div class="video-cover" id="video-cover">
+            <img id="video-cover-img" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-cover-overlay">
+              <button class="video-play-btn" id="video-play-btn" aria-label="播放视频">
+                <svg viewBox="0 0 24 24" width="48" height="48"><path d="M8 5v14l11-7z" fill="white"/></svg>
+              </button>
+              <span class="video-cover-title" id="video-cover-title">四月是你的谎言</span>
+            </div>
+          </div>
+          <div class="video-frame" id="video-frame" hidden>
+            <iframe src="about:blank"
+              data-src="//player.bilibili.com/player.html?bvid=BV1Ms411D7in&p=1&high_quality=1&danmaku=0&autoplay=0"
+              style="width:100%;"
+              scrolling="no"
+              frameborder="no"
+              framespacing="0"
+              title="Bilibili video player"
+              allowfullscreen="true"></iframe>
+          </div>
+        </div>
+        <div class="video-playlist">
+          <button class="video-item active" data-bvid="BV1Ms411D7in"
+            data-title="四月是你的谎言"
+            data-cover="/images/video-covers/zutomayo.jpg"
+            data-duration="4:04">
+            <img class="video-item-cover" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">四月是你的谎言</span>
+              <span class="video-item-meta">4:04</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1LW411j7dK"
+            data-title="Kids by One republic — 三羊"
+            data-cover="/images/video-covers/sanyang.jpg"
+            data-duration="2:54">
+            <img class="video-item-cover" src="/images/video-covers/sanyang.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">Kids by One republic</span>
+              <span class="video-item-meta">三羊 · 2:54</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Yx411U7Lx"
+            data-title="交织together — M78"
+            data-cover="/images/video-covers/jiaozhi.jpg"
+            data-duration="6:06">
+            <img class="video-item-cover" src="/images/video-covers/jiaozhi.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">交织together</span>
+              <span class="video-item-meta">M78 · 6:06</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1rp4y1L7i4"
+            data-title="新员工入职大会 — 岁己SUI/恋诗夜Koxia"
+            data-cover="/images/video-covers/suisui.jpg"
+            data-duration="2:33">
+            <img class="video-item-cover" src="/images/video-covers/suisui.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">新员工入职大会</span>
+              <span class="video-item-meta">岁己SUI/恋诗夜Koxia · 2:33</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Av4y147QE"
+            data-title="真物论 — 悠亚"
+            data-cover="/images/video-covers/zhenwulun.jpg"
+            data-duration="3:30">
+            <img class="video-item-cover" src="/images/video-covers/zhenwulun.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">真物论</span>
+              <span class="video-item-meta">悠亚 · 3:30</span>
+            </div>
+          </button>
+        </div>        </div>
+      </div>
+
+
+    <div id="gallery" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/gadget/gallery/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Gallery"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="gadget" class="tabcontent drawer-native" hidden>
+      <div class="drawer-native-content">
+        
+          <br>
+<table>
+	<thead>
+			<tr>
+					<th>#</th>
+					<th>name</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td><a href="/gadget/hydra" target="_blank">Hydra</a></td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td><a href="/mozi/" target="_blank">墨子</a></td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td><a href="/gadget/how-old-are-you" target="_blank">年龄可视化</a></td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td><a href="/gadget/piano" target="_blank">Piano</a></td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td><a href="/flockn-roll/" target="_blank">Flock&rsquo;n Roll</a></td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td><a href="/monaco-speech-editor/" target="_blank">Monaco Speech Editor</a></td>
+			</tr>
+	</tbody>
+</table>
+
+        
+      </div>
+    </div>
+
+    <div id="categories" class="tabcontent drawer-native" hidden>
+      <ul class="drawer-category-list">
+        
+          <li>
+            <a href="/categories/devops/" target="_blank" rel="noopener noreferrer">
+              <span>DevOps</span>
+              <span class="drawer-category-count">12</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/deeplearning/" target="_blank" rel="noopener noreferrer">
+              <span>DeepLearning</span>
+              <span class="drawer-category-count">11</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/agent/" target="_blank" rel="noopener noreferrer">
+              <span>Agent</span>
+              <span class="drawer-category-count">7</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/algorithms/" target="_blank" rel="noopener noreferrer">
+              <span>Algorithms</span>
+              <span class="drawer-category-count">6</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/life/" target="_blank" rel="noopener noreferrer">
+              <span>Life</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/sota/" target="_blank" rel="noopener noreferrer">
+              <span>SOTA</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/bigdata/" target="_blank" rel="noopener noreferrer">
+              <span>BigData</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/statistics/" target="_blank" rel="noopener noreferrer">
+              <span>Statistics</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/frontend/" target="_blank" rel="noopener noreferrer">
+              <span>FrontEnd</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/llms/" target="_blank" rel="noopener noreferrer">
+              <span>LLMs</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/machinelearning/" target="_blank" rel="noopener noreferrer">
+              <span>MachineLearning</span>
+              <span class="drawer-category-count">2</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/math/" target="_blank" rel="noopener noreferrer">
+              <span>Math</span>
+              <span class="drawer-category-count">2</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/datavisualization/" target="_blank" rel="noopener noreferrer">
+              <span>DataVisualization</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/hardware/" target="_blank" rel="noopener noreferrer">
+              <span>Hardware</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/modeling/" target="_blank" rel="noopener noreferrer">
+              <span>Modeling</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/multimodal/" target="_blank" rel="noopener noreferrer">
+              <span>Multimodal</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/network/" target="_blank" rel="noopener noreferrer">
+              <span>Network</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/prose/" target="_blank" rel="noopener noreferrer">
+              <span>Prose</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="/js/drawer.js"></script>
+
+
+    <div class="content container">
+    
+<article>
+  <header>
+    <h1>家庭网络拓扑</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Mar 2, 2024
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/network">NETWORK</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/web">web</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/http">http</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 4 min read
+</div>
+
+
+  </header>
+  
+  
+  
+    <div class="toc-wrapper">
+      <input type="checkbox" id="tocToggle">
+      <label for="tocToggle">Table of Content</label>
+      
+        <div class="toc" id="TableOfContents"></div>
+      
+    </div>
+  
+  
+  <div class="post">
+    <blockquote>
+<p>本文介绍家庭局域网的数据传输过程。</p>
+</blockquote>
+<p>常见家庭网络拓扑如下：</p>
+<pre class="mermaid">
+flowchart LR
+    A[外网] -->|光纤入户| B[光猫] -->|路由器WAN| C[路由器] --> D[交换机]
+    D -->|交换机LAN1| E[电脑]
+    D -->|交换机LAN2| F[笔记本]
+    D-->|交换机LAN3| G[电视机盒子]
+</pre>
+<p>现代的 <strong>路由器</strong> 和 <strong>交换机</strong> 其实是一个设备，统称路由器。为了便于理解，我们还是把它们拆开。</p>
+<h3 id="一局域网设备">一、局域网设备</h3>
+<p>光猫、路由器、交换机 的连接方法。</p>
+<h4 id="1光猫">1）光猫</h4>
+<p>光猫一般放在弱电箱，它有一个 WAN 口和多个 LAN 口。我们把路由器插在其中一个 LAN 口上，假设插的是 LAN1</p>
+<table>
+	<thead>
+			<tr>
+					<th>WAN</th>
+					<th>LAN1</th>
+					<th>LAN2</th>
+					<th>LAN3</th>
+					<th><code>...</code></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>接外网网线</td>
+					<td><font color="red">接路由器</font></td>
+					<td>空闲</td>
+					<td>空闲</td>
+					<td>空闲</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="2光猫-接-路由器">2）光猫 接 路由器</h4>
+<p>然后将网线从光猫 LAN1 接到路由器 WAN</p>
+<table>
+	<thead>
+			<tr>
+					<th>WAN</th>
+					<th>LAN</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><font color="red">接光猫 LAN1</font></td>
+					<td><font color="blue">接交换机</font>（为了便于理解，虚拟出来的 LAN，实际不存在）</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="3路由器-接-交换机">3）路由器 接 交换机</h4>
+<p>最后将网线从路由器 LAN 接到交换机 WAN</p>
+<table>
+	<thead>
+			<tr>
+					<th>WAN</th>
+					<th>LAN1</th>
+					<th>LAN2</th>
+					<th>LAN3</th>
+					<th><code>...</code></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><font color="blue">接路由器 LAN</font></td>
+					<td>接电脑</td>
+					<td>接笔记本</td>
+					<td>接电视机盒子</td>
+					<td>空闲</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="二局域网概念">二、局域网概念</h3>
+<p>当我们把网线从光猫到路由器再到设备一路接好，就有了一个 <strong>局域网</strong> (Local Area Network，LAN)。由于我们主要关心局域网中发生了什么，因此不画光猫。下图是我们的局域网：</p>
+<pre class="mermaid">
+flowchart LR
+    C[路由器] --> D[交换机]
+    D -->|交换机LAN1| E[电脑]
+    D -->|交换机LAN2| F[笔记本]
+    D-->|交换机LAN3| G[电视机盒子]
+</pre>
+<p>其中，路由器作为局域网的 <strong>网关</strong>，拥有 <strong>DHCP</strong> 地址池，并为接入其 LAN 口的所有设备提供 <strong>局域网 IP</strong> 和 <strong>子网掩码</strong>。</p>
+<h4 id="1网关">1）网关</h4>
+<p>网关 (Gateway) 作为局域网的出入口。有协议转换、路由决策等功能。</p>
+<h4 id="2dhcp">2）DHCP</h4>
+<p>动态主机配置协议 (Dynamic Host Configuration Protocol, DHCP) 是一种网络协议，用于在局域网内自动为设备分配 IP 地址、子网掩码、默认网关、DNS 服务器等网络信息。</p>
+<!-- DHCP 地址池中保存局域网的 IP 与客户端设备信息。可以看作一个数据表，数据表的列 包括但不限于：
+
+- IP 地址
+- 子网掩码
+- 默认网关
+- 租约期限 -->
+<h4 id="3局域网-ip">3）局域网 IP</h4>
+<p>局域网 IP 属于私有 IP，不会在 Internet 上被路由。我国常见的局域网 IP 地址范围是：<code>192.168.0.0 - 192.168.255.255</code>。</p>
+<h4 id="4子网掩码">4）子网掩码</h4>
+<p>子网掩码 (Subnet Mask) 用于定义网络设备是否在同一子网中。IP 与 子网掩码 进行按位与运算，如果两 IP 运算结果相同，则属于同一子网。</p>
+<p>子网掩码可用以下两种方法表示：</p>
+<ol>
+<li>形如 <code>255.255.255.0</code>：转换成二进制后，为 1 的是网段部分，为 0 的是主机部分。二进制 <code>11111111.11111111.11111111.00000000</code> 可以看出前 <code>3 * 8 = 24</code> 比特为 1，也就是 IP 前三段为网段部分。因此对于该子网掩码，如果两台设备 IP 前三段相同，则两台设备在同一子网中。</li>
+<li>形如 <code>192.168.0.0/16</code>：其中，<code>/16</code> 表示 IP 前 16 比特为网段部分。此时如果 IP 前两段是相同的，说明在同一网段。</li>
+</ol>
+<p>为了理解子网掩码的作用，我们来看以下两种情形：</p>
+<ol>
+<li>不同局域网中的两台设备，即使拥有相同的子网掩码，也不属于同一子网，无法直接通信。</li>
+<li>同一局域网中的两台设备，如果其 IP 在子网掩码的定义下属于不同网段，同样无法直接通信。</li>
+</ol>
+<p>因此，设备必须在同一局域网，同一子网掩码号段下，才能直接通信。如果不在同一子网，会请网关帮忙转发。</p>
+<blockquote>
+<p><strong>Note</strong>: 从光猫中牵出两条网线，分别连接两个路由器。如果两个路由器不做任何特殊配置，它们会创建各自的局域网。</p>
+</blockquote>
+<h3 id="三dhcp-协议">三、DHCP 协议</h3>
+<p>为了方便描述，我们约定各网络设备的 IP 和 MAC 如下：</p>
+<pre class="mermaid">
+flowchart LR
+    A["`路由器
+        外网 IP: 1.1.1.1
+        内网 IP: 192.168.1.1
+        MAC: AA:AA:AA:AA:AA:AA`"]
+    B[交换机]
+    C["`电脑
+        IP: 192.168.1.2
+        MAC: BB:BB:BB:BB:BB:BB`"]
+    D["`笔记本
+        IP: 192.168.1.3
+        MAC: CC:CC:CC:CC:CC:CC`"]
+    E["`电视机盒子
+        IP: 192.168.1.4
+        MAC: DD:DD:DD:DD:DD:DD`"]
+
+    A --> B
+    B -->|LAN1| C
+    B -->|LAN2| D
+    B-->|LAN3| E
+</pre>
+<p>首先，电脑要上网，必须要有本机 IP。通过 DHCP 协议可以自动获取 IP。下面描述了 DHCP 协议的过程。</p>
+<p><strong>电脑</strong>：发出一个 DHCP 协议数据包，我们用简化的四层结构表示该数据包。</p>
+<table>
+	<thead>
+			<tr>
+					<th>DHCP 协议</th>
+					<th></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>应用层 (DHCP)</td>
+					<td>内容：请给我分配一个 IP</td>
+			</tr>
+			<tr>
+					<td>传输层 (UDP)</td>
+					<td>目标端口：<strong>67</strong><code> </code>源端口：<strong>68</strong></td>
+			</tr>
+			<tr>
+					<td>网络层</td>
+					<td>目标 IP：<strong>255.255.255.255</strong><code> </code>源 IP：<strong>0.0.0.0</strong></td>
+			</tr>
+			<tr>
+					<td>网络接口层</td>
+					<td>目标 MAC：<strong>FF:FF:FF:FF:FF:FF</strong><code> </code>源 MAC：<strong>BB:BB:BB:BB:BB:BB</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p>注：广播 IP 地址 <code>255.255.255.255</code> 和 广播 MAC 地址 <code>FF:FF:FF:FF:FF:FF</code> 是用于向同一子网内所有设备发送数据包的特殊地址。</p>
+<p><strong>交换机</strong>：转发数据包给其他网络设备，包括路由器</p>
+<p>数据包传给交换机，交换机解析网络接口层数据，看到电脑的 MAC 为 BB:BB。于是将接口 LAN1 与 BB:BB 建立映射，并将该映射存储在 <strong>MAC 地址映射表</strong> 中。</p>
+<p>由于这是一条广播数据包，最终子网中所有设备都会收到。但读到目标端口，因为只有路由器开启了 DHCP 服务的 67 端口，因此只有路由器会对该数据包进行处理和响应。如果子网中除路由器外的其他设备也开启了 DHCP 服务，那么网络就会发生故障。</p>
+<p><strong>路由器</strong>：路由器监听 67 端口，接受请求</p>
+<p>路由器从 DHCP 地址池中选择一个未被占用的 IP</p>
+<p>DHCP 地址池存储的信息包括：</p>
+<ul>
+<li>IP</li>
+<li>子网掩码</li>
+<li>网关地址</li>
+<li>剩余租约（剩余时间）</li>
+</ul>
+<p><strong>二次确认</strong>：路由器分配好 IP 后，将带有 IP 信息的数据包发给电脑。电脑会再次向路由发送请求，确认分配的 IP 有效。</p>
+<p>现在，电脑得到了局域网中的局域网 IP。</p>
+<blockquote>
+<p>Note 1: DHCP 请求太长时间没有回应，电脑会认为这个局域网唯一的 DHCP 服务挂了。</p>
+<p>此时会自动将 IP 地址设为 169.254.1.1，子网掩码设为 255.255.0.0，这样起码让局域网内可以通信。</p>
+</blockquote>
+<blockquote>
+<p>Note 2: 也可以不用 DHCP 协议，手动配置 IP，但需要 IP 在局域网的网段内</p>
+<ul>
+<li>路由器一般是：192.168.1.1</li>
+<li>本机 IP 范围：192.168.1.2 ~ 192.168.1.254</li>
+<li>子网掩码默认为：255.255.255.0</li>
+<li>默认网关一般为路由器的内网 IP：192.168.1.1</li>
+<li>DNS 服务器 IP 也是路由器的内网 IP：192.168.1.1</li>
+</ul>
+<p>DHCP 也可以通过 MAC 地址绑定内网 IP 做静态 IP 分配</p>
+</blockquote>
+<h3 id="四arp-协议">四、ARP 协议</h3>
+<p>ARP (Address Resolution Protocol) 协议用于知道对方 IP 但不知道 MAC 的情形。假设现在电脑知道了路由器的 IP，但是不知道路由器的 MAC，它需要发起 ARP 请求。</p>
+<p><strong>电脑</strong>：发起 ARP 请求。</p>
+<table>
+	<thead>
+			<tr>
+					<th>ARP 协议</th>
+					<th></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>应用层</td>
+					<td>我是 <strong>192.168.1.1</strong>，<strong>192.168.1.2</strong> 的 MAC 是？</td>
+			</tr>
+			<tr>
+					<td>网络接口层</td>
+					<td>目标 MAC：<strong>FF:FF:FF:FF:FF:FF</strong><code> </code>源 MAC：简写为 <strong>BB:BB</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>笔记本</strong>：笔记本电脑 <code>192.168.1.3</code> 听到广播，发现数据包不是发给自己的。但是知道了内网 IP 为 <code>192.168.1.2</code> 的电脑的 MAC 地址是 <code>BB:BB</code>，于是将 <code>IP2MAC</code> 的 KV 对 保存在自己 ARP 缓存表中。这样想和 <code>192.168.1.2</code> 通信时，就可以直接发给对应的 MAC 地址，不需要广播了。</p>
+<p><strong>路由器</strong>：路由器也收到了数据包。它将电脑的 <code>IP2MAC</code> 信息存入自己的 ARP 缓存中，以备下次使用。并对电脑的 ARP 请求作出响应：</p>
+<table>
+	<thead>
+			<tr>
+					<th>ARP 协议</th>
+					<th></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>应用层</td>
+					<td>我是 <strong>192.168.1.2</strong>，MAC 是 <strong>AA:AA</strong></td>
+			</tr>
+			<tr>
+					<td>网络接口层</td>
+					<td>目标 MAC：简写为 <strong>AA:AA</strong><code> </code>源 MAC：简写为 <strong>BB:BB</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>电脑</strong>：收到路由器发的数据包，并将路由器的 <code>IP2MAC</code> 信息存入 ARP 缓存。</p>
+<h3 id="五dns-协议">五、DNS 协议</h3>
+<p>当我们在导航栏输入 <code>www.baidu.com</code> 并按下回车，网络中发生了什么？</p>
+<p><code>www.baidu.com</code> 的域名是为人类可读设计的，机器并不知道域名对应的地址。机器需要通过 DNS (Domain Name System) 服务获取域名对应的 IP 地址。</p>
+<p><strong>电脑</strong>：浏览器发起DNS请求</p>
+<table>
+	<thead>
+			<tr>
+					<th>DNS 协议</th>
+					<th></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>应用层 (DNS)</td>
+					<td>内容：<code>www.baidu.com</code> 的 IP 是什么？</td>
+			</tr>
+			<tr>
+					<td>传输层 (UDP)</td>
+					<td>目标端口：<strong>53</strong><code> </code>源端口：<strong>9523</strong>（随便选的未占用端口）</td>
+			</tr>
+			<tr>
+					<td>网络层</td>
+					<td>目标 IP：路由器 IP <strong>192.168.1.1</strong><code> </code>源 IP：电脑 IP <strong>192.168.1.2</strong></td>
+			</tr>
+			<tr>
+					<td>网络接口层</td>
+					<td>目标 MAC：路由器 MAC 【<strong>? ? ?</strong>】<code> </code>源 MAC：电脑 MAC <strong>BB:BB</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p>路由器的 MAC 会优先从 ARP 缓存中查询，如果查不到，会发起 ARP 请求。填上目标 MAC 地址后，电脑继续发起 DNS 请求。</p>
+<p><strong>路由器</strong>：经过交换机转发，数据包到了路由器。路由器 DNS 服务监听的 <strong>53</strong> 号端口收到请求。将该请求转发给它的上游 DNS 服务器获取百度的 IP 地址。上游通过 <strong>PPPoE 拨号</strong> 获取运营商提供的 DNS 服务器。以下是路由器发给上游 DNS 服务器的数据包：</p>
+<table>
+	<thead>
+			<tr>
+					<th>DNS 协议</th>
+					<th></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>应用层 (DNS)</td>
+					<td>内容：<code>www.baidu.com</code> 的 IP 是什么？</td>
+			</tr>
+			<tr>
+					<td>传输层 (UDP)</td>
+					<td>目标端口：<strong>53</strong><code> </code>源端口：<strong>3691</strong>（随便选的未占用端口）</td>
+			</tr>
+			<tr>
+					<td>网络层</td>
+					<td>目标 IP：上游 DNS 服务器 IP<code> </code>源 IP：路由器外网 IP <strong>1.1.1.1</strong></td>
+			</tr>
+			<tr>
+					<td>网络接口层</td>
+					<td>目标 MAC：上游 DNS 服务器 MAC<code> </code>源 MAC：电脑 MAC <strong>BB:BB</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>外网行为</strong>：省略 &hellip; &hellip;</p>
+<p><strong>路由器</strong>：收到上游 DNS 服务器的响应：</p>
+<table>
+	<thead>
+			<tr>
+					<th>DNS 协议</th>
+					<th></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>应用层 (DNS)</td>
+					<td>内容：<code>www.baidu.com</code> 的 IP 是 6.6.6.6</td>
+			</tr>
+			<tr>
+					<td>传输层 (UDP)</td>
+					<td>目标端口：<strong>3691</strong><code> </code>源端口：<strong>53</strong></td>
+			</tr>
+			<tr>
+					<td>网络层</td>
+					<td>目标 IP：路由器外网 IP <strong>1.1.1.1</strong><code> </code>源 IP：上游 DNS 服务器 IP</td>
+			</tr>
+			<tr>
+					<td>网络接口层</td>
+					<td>目标 MAC：电脑 MAC <strong>BB:BB</strong><code> </code>源 MAC：上游 DNS 服务器 MAC</td>
+			</tr>
+	</tbody>
+</table>
+<p>路由器将百度的IP地址存到 <strong>DNS 缓存</strong>，DNS 缓存是 域名 到 IP 的映射，每行还附有 TTL (Time To Live). 局域网内其他设备再获取百度的 IP 地址就会直接从 DNS 缓存中读取。</p>
+<p>路由器发给电脑的 DNS 响应：</p>
+<table>
+	<thead>
+			<tr>
+					<th>DNS 协议</th>
+					<th></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>应用层 (DNS)</td>
+					<td>内容：<code>www.baidu.com</code> 的 IP 是 <strong>6.6.6.6</strong></td>
+			</tr>
+			<tr>
+					<td>传输层 (UDP)</td>
+					<td>目标端口：<strong>9523</strong><code> </code>源端口：<strong>53</strong></td>
+			</tr>
+			<tr>
+					<td>网络层</td>
+					<td>目标 IP：电脑 IP <strong>192.168.1.2</strong><code> </code>源 IP：路由器内网 IP <strong>192.168.1.1</strong></td>
+			</tr>
+			<tr>
+					<td>网络接口层</td>
+					<td>目标 MAC：电脑 MAC <strong>BB:BB</strong><code> </code>源 MAC：路由器 MAC <strong>AA:AA</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>电脑</strong>：收到 DNS 响应，发现目标 MAC 和目标 IP 都是自己，所以会一层层解封装。</p>
+<p>当解封到：目标端口：<strong>9523</strong><code> </code>源端口：<strong>53</strong></p>
+<p>由于 <strong>9523</strong> 端口是浏览器开启的，浏览器一直在监听该端口，因此收到了 DNS 响应。此时就获得了百度的 IP 地址，并存储到 DNS 缓存中。</p>
+<h3 id="六http-协议">六、HTTP 协议</h3>
+<p><strong>电脑</strong>：拿到百度的 IP 后，会向这个 IP 发起 HTTP 请求。</p>
+<table>
+	<thead>
+			<tr>
+					<th>HTTP 协议</th>
+					<th></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>应用层 (HTTP)</td>
+					<td>内容：请求百度的首页</td>
+			</tr>
+			<tr>
+					<td>传输层 (TCP)</td>
+					<td>目标端口：<strong>80</strong><code> </code>源端口：<strong>4026</strong>，浏览器开的随机端口</td>
+			</tr>
+			<tr>
+					<td>网络层</td>
+					<td>目标 IP：百度 IP <strong>6.6.6.6</strong><code> </code>源 IP：电脑 IP <strong>192.168.1.2</strong></td>
+			</tr>
+			<tr>
+					<td>网络接口层</td>
+					<td>目标 MAC：路由器 MAC <strong>AA:AA</strong><code> </code>源 MAC：电脑 MAC <strong>BB:BB</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p>当封装进行到网络层时，通过 IP 与 子网掩码 的与运算，发现目标 IP 和自己不在同一网段，会请网关帮忙转发。此时电脑配置的网关 IP 是路由器的内网 IP。从 ARP 缓存中，可以通过路由器的 IP 获取路由器的 MAC。</p>
+<p><strong>路由器</strong> 拿到 HTTP 请求，发现 MAC 是自己，但是目标 IP 不是自己，而是公网 IP，会将其转发到 WAN 口。</p>
+<p>路由器还发现源 IP 是内网 IP，无法在公网上使用，于是会做 <strong>网络地址转换</strong> (Network Address Translation, <strong>NAT</strong>) 将源 IP 地址修改为路由器 WAN 口的公网 IP 地址，同时随机选择一个空闲端口，替换源端口。</p>
+<p>然后将映射关系存到 <strong>NAT映射表</strong> 中：</p>
+<table>
+	<thead>
+			<tr>
+					<th>原IP</th>
+					<th>映射IP</th>
+					<th>原端口</th>
+					<th>映射端口</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>电脑 IP <strong>192.168.1.2</strong></td>
+					<td>路由器外网 IP <strong>1.1.1.1</strong></td>
+					<td><strong>4026</strong></td>
+					<td><strong>8309</strong>（路由器随机空闲端口）</td>
+			</tr>
+	</tbody>
+</table>
+<p>接着封装 MAC 地址，源 MAC 是路由器的 MAC，目标 MAC 是下一跳某个路由设备的 MAC。</p>
+<p>路由器给外网的 HTTP 请求如下：</p>
+<table>
+	<thead>
+			<tr>
+					<th>HTTP 协议</th>
+					<th></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>应用层 (HTTP)</td>
+					<td>内容：请求百度的首页</td>
+			</tr>
+			<tr>
+					<td>传输层 (TCP)</td>
+					<td>目标端口：<strong>80</strong><code> </code>源端口：<strong>8309</strong>，NAT 映射端口</td>
+			</tr>
+			<tr>
+					<td>网络层</td>
+					<td>目标 IP：百度 IP <strong>6.6.6.6</strong><code> </code>源 IP：路由器外网 IP <strong>1.1.1.1</strong></td>
+			</tr>
+			<tr>
+					<td>网络接口层</td>
+					<td>目标 MAC：下一跳路由设备 MAC<code> </code>源 MAC：路由器的 MAC <strong>AA:AA</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>外网行为</strong>：省略 &hellip; &hellip;</p>
+<p><strong>路由器</strong>：拿到 HTTP 响应</p>
+<table>
+	<thead>
+			<tr>
+					<th>HTTP 协议</th>
+					<th></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>应用层 (HTTP)</td>
+					<td>内容：百度首页数据</td>
+			</tr>
+			<tr>
+					<td>传输层 (TCP)</td>
+					<td>目标端口：<strong>8309</strong><code> </code>源端口：<strong>80</strong></td>
+			</tr>
+			<tr>
+					<td>网络层</td>
+					<td>目标 IP：路由器外网 IP <strong>1.1.1.1</strong><code> </code>百度 IP <strong>6.6.6.6</strong></td>
+			</tr>
+			<tr>
+					<td>网络接口层</td>
+					<td>目标 MAC：路由器的 MAC <strong>AA:AA</strong><code> </code>源 MAC：下一跳路由设备 MAC</td>
+			</tr>
+	</tbody>
+</table>
+<p>发现端口 <strong>8309</strong> 是 NAT 转换端口，将 NAT 映射端口替换为原端口，NAT 映射 IP 换为原 IP，即电脑的内网 IP，再转发给电脑。</p>
+<!--
+参考：
+
+- [家庭网络速通](https://youtu.be/P38FmPAq09E)
+- [局域网共享](https://youtu.be/GjhetHGIKLg)
+- [三次握手四次挥手](https://youtu.be/Iuvjwrm_O5g)
+- [面试官，不要再问我三次握手和四次挥手](https://zhuanlan.zhihu.com/p/86426969)
+-->
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+</script>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/graph_algorithms/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">图算法笔记</span>
+    </a>
+    
+    
+    <a href="/posts/lightgbm_practice/" class="navigation-next">
+      <span class="navigation-tittle">LightGBM 工程实践</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+</div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.js" defer></script>
+
+
+<script defer src="https://kit.fontawesome.com/2134995a39.js" crossorigin="anonymous"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/tocbot@4.36.8/dist/tocbot.min.js"></script>
+<script type="text/javascript">
+  if (window.tocbot) {
+    tocbot.init({
+      
+      tocSelector: '.toc',
+      
+      contentSelector: '.post',
+      
+      headingSelector: 'h2, h3, h4',
+      collapseDepth: 4
+    });
+  }
+</script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    mediumZoom('.post img', {
+      background: 'rgba(0,0,0,0.82)',
+      margin: 24,
+      scrollOffset: 0
+    });
+  });
+</script>
+
+
+
+    
+
+
+
+  </body>
+</html>

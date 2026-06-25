@@ -1,0 +1,931 @@
+<!doctype html>
+<html lang="zh-CN">
+  
+    
+
+
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=61229&amp;path=livereload" data-no-instant defer></script>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://localhost:61229/posts/chat_to_clickhouse/">
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.163.3">
+
+    
+    
+    
+
+<title>耶是 ClickHouse！我们有救了！！ • Chang Luo</title>
+
+
+    
+
+
+<meta name="description" content="ClickHouse 跑得太快，等一等你的数据分析师">
+
+
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="http://localhost:61229/images/og-default.jpg">
+	<meta name="twitter:title" content="耶是 ClickHouse！我们有救了！！">
+	<meta name="twitter:description" content="ClickHouse 跑得太快，等一等你的数据分析师">
+			<meta name="twitter:site" content="@_stellar_tide">
+
+<meta property="og:url" content="http://localhost:61229/posts/chat_to_clickhouse/">
+	<meta property="og:site_name" content="Chang Luo">
+	<meta property="og:title" content="耶是 ClickHouse！我们有救了！！">
+	<meta property="og:description" content="ClickHouse 跑得太快，等一等你的数据分析师">
+	<meta property="og:locale" content="zh_CN">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2025-07-26T00:00:00+00:00">
+		<meta property="article:modified_time" content="2025-07-26T00:00:00+00:00">
+		<meta property="article:tag" content="OLAP">
+		<meta property="article:tag" content="ClickHouse">
+		<meta property="og:image" content="http://localhost:61229/images/og-default.jpg">
+
+
+    
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.f9da2b005f03c27beab06923e896c9a3875472209210a9177205d391257298b2.css" integrity="sha256-&#43;dorAF8DwnvqsGkj6JbJo4dUciCSEKkXcgXTkSVymLI=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+
+<link rel="stylesheet" href="/scss/tocbot.5ef07cebc3c477b54270456f149ee02922479bb7555fd344b2c69f953b0e7e5e.css" integrity="sha256-XvB868PEd7VCcEVvFJ7gKSJHm7dVX9NEssaflTsOfl4=">
+
+
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#202020">
+    
+    
+
+</head>
+
+
+  <body
+    class=" "
+  >
+    <div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="http://localhost:61229/">Chang Luo</a>
+      </span>
+      
+      
+      
+      <div class="author-image">
+        <button type="button" class="author-trigger" onclick="openNav()" aria-label="打开个人收藏侧栏"
+          aria-controls="mySidenav" aria-expanded="false"><img src="http://localhost:61229//images/profile.webp"
+            alt="Chang Luo" class="img--circle img--headshot element--center"></button>
+      </div>
+      
+      <p class="site__description">
+        
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Chang Luo</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		<li class="sidebar-nav__home">
+			<a href="http://localhost:61229/"><span>Home</span></a>
+		</li>
+		
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/portfolio/">
+						<span>Projects</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+		
+		<a href="https://twitter.com/_stellar_tide" rel="me" title="X">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		<a href="https://github.com/luochang212" rel="me" title="GitHub">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		<a href="https://mp.weixin.qq.com/s/He-04l46xJTM_MJ3AyTwWQ" rel="me" title="微信">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.35em; height: 1.35em; vertical-align: -0.28em;">
+				<path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135-.01-.27-.027-.407-.03zm-2.53 3.274c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982z"/>
+			</svg>
+		</a>
+		
+		
+		<a href="https://www.zhihu.com/people/Fashionable" rel="me" title="知乎">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2"
+				 stroke-linecap="round" stroke-linejoin="round" style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="m13.3334,3.60098l0,17.1471l1.79582,0l0.75424,2.13703l3.18459,-2.13703l3.93584,0l0,-17.1471l-9.6705,0zm7.41375,14.87538l-1.79283,0l-2.24777,1.50849l-0.53276,-1.50849l-0.53875,0l0,-12.53483l5.10911,0l0,12.53483l0.00299,0zm-8.56906,-7.18927l-3.97475,0c0.06285,-1.34387 0.1287,-3.12174 0.19754,-5.17496l3.91788,0l-0.00299,-0.24244c0,-0.01796 -0.00599,-0.43998 -0.06884,-0.87097c-0.06285,-0.44896 -0.19754,-1.04457 -0.62854,-1.04457l-6.5727,0c0.13169,-0.61657 0.46991,-2.08615 0.87995,-2.80747l0.19155,-0.33522l-0.3861,-0.02095c-0.02394,0 -0.58663,-0.02694 -1.23912,0.31726c-1.06851,0.56868 -1.5474,1.68807 -1.75691,2.52612c-0.55072,2.18791 -1.33489,3.70837 -1.66712,4.35786c-0.09877,0.19155 -0.15863,0.30529 -0.18557,0.38311c-0.05387,0.14666 -0.02394,0.29332 0.0838,0.38909c0.31427,0.28434 1.14334,-0.0868 1.15232,-0.08979c0.01796,-0.00898 0.03891,-0.01796 0.06585,-0.02993c0.41603,-0.18856 1.64916,-0.74826 2.08914,-2.52911l1.69705,0c0.02095,0.96376 0.09278,4.14236 0.0868,5.17496l-4.22018,0l-0.06285,0.0449c-0.69139,0.50582 -0.91288,1.8916 -0.92185,1.95146l-0.0419,0.27536l4.99837,0c-0.36814,2.34355 -0.79315,3.3941 -1.01763,3.81313c-0.11074,0.20951 -0.21849,0.41902 -0.32025,0.62255c-0.63752,1.26306 -1.29898,2.56802 -3.7802,4.5973c-0.10775,0.0838 -0.20951,0.23944 -0.14367,0.41005c0.07183,0.18856 0.27835,0.27237 0.73629,0.27237c0.16162,0 0.35318,-0.00898 0.58065,-0.02993c1.49352,-0.13169 3.01698,-0.53875 4.04359,-2.6219c0.50882,-1.05056 0.94879,-2.14601 1.31394,-3.25941l4.08549,4.78886l0.14965,-0.35916c0.02394,-0.05687 0.56868,-1.38578 0.15264,-2.87032l-0.01497,-0.05387l-3.23547,-3.68143l-0.65847,0.49684c0.19155,-0.78118 0.31726,-1.49352 0.37413,-2.12805l4.74995,0l0,-0.23944c0,-1.20021 -0.55371,-1.91255 -0.57466,-1.94248l-0.07183,-0.08979z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+</section>
+
+      </div>
+    </div>
+    
+<div class="copyright">
+  &copy; 2026 Chang Luo
+  
+</div>
+
+
+
+  </div>
+</div>
+
+<div id="overlay" onclick="closeNav()" aria-hidden="true"></div>
+
+<div id="mySidenav" class="sidenav" role="dialog" aria-label="个人收藏" aria-hidden="true">
+  <div id="main">
+    <div class="tab">
+      <button id="default-tab" class="tablinks active" onclick="openItem(event, 'Resources')"
+        aria-controls="Resources" aria-pressed="true">Resources</button>
+      <button class="tablinks" onclick="openItem(event, 'netease-player')"
+        aria-controls="netease-player" aria-pressed="false">Music</button>
+      <button class="tablinks" onclick="openItem(event, 'video-player')"
+        aria-controls="video-player" aria-pressed="false">Video</button>
+      <button class="tablinks" onclick="openItem(event, 'gallery')"
+        aria-controls="gallery" aria-pressed="false">Gallery</button>
+      <button class="tablinks" onclick="openItem(event, 'gadget')"
+        aria-controls="gadget" aria-pressed="false">Gadget</button>
+      <button class="tablinks" onclick="openItem(event, 'categories')"
+        aria-controls="categories" aria-pressed="false">Cats</button>
+    </div>
+
+    <div id="Resources" class="tabcontent">
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/resources/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Resources"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="netease-player" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
+        frameborder="no"
+        marginheight="0"
+        marginwidth="0"
+        title="Music player"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="video-player" class="tabcontent" hidden>
+      <div class="video-layout">
+        <div class="video-main">
+          <div class="video-cover" id="video-cover">
+            <img id="video-cover-img" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-cover-overlay">
+              <button class="video-play-btn" id="video-play-btn" aria-label="播放视频">
+                <svg viewBox="0 0 24 24" width="48" height="48"><path d="M8 5v14l11-7z" fill="white"/></svg>
+              </button>
+              <span class="video-cover-title" id="video-cover-title">四月是你的谎言</span>
+            </div>
+          </div>
+          <div class="video-frame" id="video-frame" hidden>
+            <iframe src="about:blank"
+              data-src="//player.bilibili.com/player.html?bvid=BV1Ms411D7in&p=1&high_quality=1&danmaku=0&autoplay=0"
+              style="width:100%;"
+              scrolling="no"
+              frameborder="no"
+              framespacing="0"
+              title="Bilibili video player"
+              allowfullscreen="true"></iframe>
+          </div>
+        </div>
+        <div class="video-playlist">
+          <button class="video-item active" data-bvid="BV1Ms411D7in"
+            data-title="四月是你的谎言"
+            data-cover="/images/video-covers/zutomayo.jpg"
+            data-duration="4:04">
+            <img class="video-item-cover" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">四月是你的谎言</span>
+              <span class="video-item-meta">4:04</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1LW411j7dK"
+            data-title="Kids by One republic — 三羊"
+            data-cover="/images/video-covers/sanyang.jpg"
+            data-duration="2:54">
+            <img class="video-item-cover" src="/images/video-covers/sanyang.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">Kids by One republic</span>
+              <span class="video-item-meta">三羊 · 2:54</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Yx411U7Lx"
+            data-title="交织together — M78"
+            data-cover="/images/video-covers/jiaozhi.jpg"
+            data-duration="6:06">
+            <img class="video-item-cover" src="/images/video-covers/jiaozhi.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">交织together</span>
+              <span class="video-item-meta">M78 · 6:06</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1rp4y1L7i4"
+            data-title="新员工入职大会 — 岁己SUI/恋诗夜Koxia"
+            data-cover="/images/video-covers/suisui.jpg"
+            data-duration="2:33">
+            <img class="video-item-cover" src="/images/video-covers/suisui.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">新员工入职大会</span>
+              <span class="video-item-meta">岁己SUI/恋诗夜Koxia · 2:33</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Av4y147QE"
+            data-title="真物论 — 悠亚"
+            data-cover="/images/video-covers/zhenwulun.jpg"
+            data-duration="3:30">
+            <img class="video-item-cover" src="/images/video-covers/zhenwulun.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">真物论</span>
+              <span class="video-item-meta">悠亚 · 3:30</span>
+            </div>
+          </button>
+        </div>        </div>
+      </div>
+
+
+    <div id="gallery" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/gadget/gallery/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Gallery"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="gadget" class="tabcontent drawer-native" hidden>
+      <div class="drawer-native-content">
+        
+          <br>
+<table>
+	<thead>
+			<tr>
+					<th>#</th>
+					<th>name</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td><a href="/gadget/hydra" target="_blank">Hydra</a></td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td><a href="/mozi/" target="_blank">墨子</a></td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td><a href="/gadget/how-old-are-you" target="_blank">年龄可视化</a></td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td><a href="/gadget/piano" target="_blank">Piano</a></td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td><a href="/flockn-roll/" target="_blank">Flock&rsquo;n Roll</a></td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td><a href="/monaco-speech-editor/" target="_blank">Monaco Speech Editor</a></td>
+			</tr>
+	</tbody>
+</table>
+
+        
+      </div>
+    </div>
+
+    <div id="categories" class="tabcontent drawer-native" hidden>
+      <ul class="drawer-category-list">
+        
+          <li>
+            <a href="/categories/devops/" target="_blank" rel="noopener noreferrer">
+              <span>DevOps</span>
+              <span class="drawer-category-count">12</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/deeplearning/" target="_blank" rel="noopener noreferrer">
+              <span>DeepLearning</span>
+              <span class="drawer-category-count">11</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/agent/" target="_blank" rel="noopener noreferrer">
+              <span>Agent</span>
+              <span class="drawer-category-count">7</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/algorithms/" target="_blank" rel="noopener noreferrer">
+              <span>Algorithms</span>
+              <span class="drawer-category-count">6</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/life/" target="_blank" rel="noopener noreferrer">
+              <span>Life</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/sota/" target="_blank" rel="noopener noreferrer">
+              <span>SOTA</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/bigdata/" target="_blank" rel="noopener noreferrer">
+              <span>BigData</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/statistics/" target="_blank" rel="noopener noreferrer">
+              <span>Statistics</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/frontend/" target="_blank" rel="noopener noreferrer">
+              <span>FrontEnd</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/llms/" target="_blank" rel="noopener noreferrer">
+              <span>LLMs</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/machinelearning/" target="_blank" rel="noopener noreferrer">
+              <span>MachineLearning</span>
+              <span class="drawer-category-count">2</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/math/" target="_blank" rel="noopener noreferrer">
+              <span>Math</span>
+              <span class="drawer-category-count">2</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/datavisualization/" target="_blank" rel="noopener noreferrer">
+              <span>DataVisualization</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/hardware/" target="_blank" rel="noopener noreferrer">
+              <span>Hardware</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/modeling/" target="_blank" rel="noopener noreferrer">
+              <span>Modeling</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/multimodal/" target="_blank" rel="noopener noreferrer">
+              <span>Multimodal</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/network/" target="_blank" rel="noopener noreferrer">
+              <span>Network</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/prose/" target="_blank" rel="noopener noreferrer">
+              <span>Prose</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="/js/drawer.js"></script>
+
+
+    <div class="content container">
+    
+<article>
+  <header>
+    <h1>耶是 ClickHouse！我们有救了！！</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Jul 26, 2025
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/agent">AGENT</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/olap">olap</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/clickhouse">clickhouse</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 4 min read
+</div>
+
+
+  </header>
+  
+  
+  
+    <div class="toc-wrapper">
+      <input type="checkbox" id="tocToggle">
+      <label for="tocToggle">Table of Content</label>
+      
+        <div class="toc" id="TableOfContents"></div>
+      
+    </div>
+  
+  
+  <div class="post">
+    <blockquote>
+<p>本来我懒得装，但是 MySQL 太慢了，遭不住，咱还是把 ClickHouse 装起来吧。</p>
+</blockquote>
+<p>GitHub 项目地址：<a href="https://github.com/luochang212/chat-to-clickhouse" target="_blank">chat-to-clickhouse</a></p>
+<p>在<a href="https://luochang212.github.io/posts/agent_project/">《Agent 实战：智能路由、任务拆解和链路工程》</a>一文中，我实现了一个简单的 ChatBI，它能查询 MySQL 数据库。对于小批量数据量，MySQL 尚可应付，但是当数据量来到千万量级时，一次 MySQL 查询将消耗数秒甚至数十秒，这么长的等待时间是用户难以忍受的。而且 Agent 还有一个技术问题，它的 NL2SQL 尚未做到 one-shot，也就是说，在拿到最终结果前，它也许需要多次试错，这将进一步拉长查询时间。</p>
+<p>如何无痛解决查询效率低下的问题呢？很简单，只需要换数据库就可以做到。这便引入今天的主角：ClickHouse。</p>
+<h3 id="一分析利器">一、分析利器</h3>
+<p><a href="https://github.com/ClickHouse/ClickHouse">ClickHouse</a> 是 Yandex 旗下的一款开源的列式存储数据库，专为 <strong>联机分析处理</strong> (OLAP) 场景设计。在做数据分析时，它比传统数据库快几倍到几十倍。分析场景的核心需求是「聚合计算」，即 <code>GROUP BY</code> 子句下的 <code>SUM</code>, <code>AVG</code>, <code>COUNT</code> 操作，这些正是 ClickHouse 的强项。</p>
+<p>为什么它的聚合计算如此之快呢？因为它具有如下特性：</p>
+<ul>
+<li><strong>列式存储</strong>：顾名思义，列存的数据是按列存储的。这种存储方式可以减少无效 I/O，因为列存可以只读取查询中涉及的列。而非行存那样，读取整行后再丢掉不需要的列</li>
+<li><strong>并行计算</strong>：列存的另一个优势是数据更容易切分。单列数据的连续性和同构性更强，无需考虑与其他列的关联，因此可以更方便地按维度（如时间区间、数值分段）拆分并分配到不同节点。当然，这种设计的代价是使得插入操作变得更加昂贵</li>
+<li><strong>物化视图</strong>：物化视图可以把高频分析的结果提前算好存在表里，后续查询直接读结果，无需重新计算</li>
+</ul>
+<h3 id="二安装过程">二、安装过程</h3>
+<p>用 <a href="https://hub.docker.com/r/clickhouse/clickhouse-server/">Docker</a> 安装，过程相对简单。工业界在集群上装，比咱们这个复杂不少。</p>
+<h4 id="1-配置-docker-镜像源">1. 配置 Docker 镜像源</h4>
+<p>中国大陆地区下载镜像，需要配置镜像源。</p>
+<p>对于 Linux 系统，需要在 <code>/etc/docker/daemon.json</code> 文件中配置镜像源（如下）。<code>Windows</code> 和 <code>MacOS</code> 系统更方便一点，可以直接在 <code>Docker Desktop</code> 的 <code>Settings -&gt; Docker Engine</code> 页面修改 <code>daemon.json</code> 文件。</p>
+<p>在 <code>daemon.json</code> 文件中，添加镜像源字段 <code>registry-mirrors</code>：</p>
+<pre tabindex="0"><code>{
+  &#34;experimental&#34;: false,
+  &#34;registry-mirrors&#34;: [
+    &#34;https://do.nark.eu.org&#34;,
+    &#34;https://dc.j8.work&#34;,
+    &#34;https://docker.m.daocloud.io&#34;,
+    &#34;https://dockerproxy.com&#34;,
+    &#34;https://docker.mirrors.ustc.edu.cn&#34;,
+    &#34;https://docker.nju.edu.cn&#34;
+  ]
+}
+</code></pre><p>运行以下命令重启 Docker，配置将在重启后生效：</p>
+<pre tabindex="0"><code>sudo systemctl restart docker
+</code></pre><blockquote>
+<p><strong>Note:</strong> 镜像源网站通常有个白名单，只有白名单里的镜像才能下载到。如果你需要的镜像比较新或者比较冷门，那就需要借助某些科技了 (ﾉ)`ε´(ヾ)</p>
+</blockquote>
+<h4 id="2-安装-clickhouse">2. 安装 ClickHouse</h4>
+<p><strong>1）拉取镜像</strong></p>
+<pre tabindex="0"><code># 下载镜像
+docker pull clickhouse/clickhouse-server
+
+# 下载完成后，查看所有镜像的列表，看下 clickhouse 在不在里面
+docker images
+</code></pre><p><strong>2）启动容器</strong></p>
+<p>在下面的命令中，我创建了一个名为 <code>admin</code> 的账户，当然你可以用其他名字。注意下面的 <code>[YOUR_PASSWORD_HERE]</code> 只是个占位符，请用「你的密码」替换它。</p>
+<pre tabindex="0"><code># 打开工程目录，如果没有请先新建：mkdir chat-to-clickhouse
+cd chat-to-clickhouse
+
+# 启动容器
+docker run -d \
+  --name clickhouse-server \
+  -p 18123:8123 \
+  -p 19000:9000 \
+  -v $(pwd)/ch_data:/var/lib/clickhouse/ \
+  -v $(pwd)/ch_logs:/var/log/clickhouse-server/ \
+  -e CLICKHOUSE_USER=admin \
+  -e CLICKHOUSE_PASSWORD=[YOUR_PASSWORD_HERE] \
+  --ulimit nofile=262144:262144 \
+  --cap-add=SYS_NICE \
+  --cap-add=IPC_LOCK \
+  clickhouse/clickhouse-server
+
+# 查看容器日志
+docker logs clickhouse-server
+</code></pre><p><strong>3）检查安装</strong></p>
+<p>尽管 ClickHouse 现在没有数据，我们仍可通过一些简单的查询，检查服务是否已经开启。注意把下面的 <code>[YOUR_PASSWORD_HERE]</code> 换成你的真实密码哦。</p>
+<pre tabindex="0"><code># 检查连通性，正常情况输出：Ok.
+curl -u admin:[YOUR_PASSWORD_HERE] &#34;http://localhost:18123/&#34;
+
+# 查询数据库版本
+curl -u admin:[YOUR_PASSWORD_HERE] &#34;http://localhost:18123/?query=SELECT%20version()&#34;
+</code></pre><h3 id="三写入数据">三、写入数据</h3>
+<p>向 ClickHouse 写入数据的方法很多。你可以从 MySQL 数据库迁移，也可以用 CSV 文件导入。下面我用一些例子展示如何导入数据。</p>
+<p>打开命令行，登录 ClickHouse 客户端：</p>
+<pre tabindex="0"><code># 登录 ClickHouse 客户端
+docker exec -it clickhouse-server \
+    clickhouse-client \
+    --user admin \
+    --password [YOUR_PASSWORD_HERE]
+</code></pre><h4 id="1-从-csv-文件导入">1. 从 CSV 文件导入</h4>
+<p>为了后面有数据可玩，这里我们真的向 ClickHouse 里写入数据。</p>
+<p>我找来一份大家都很感兴趣的数据，开源动漫数据集 <a href="https://www.kaggle.com/datasets/tanishksharma9905/top-popular-anime">top-popular-anime</a>。大家可以自行前往 Kaggle 下载 <code>popular_anime.csv</code>。</p>
+<p>老规矩我们先建库建表：</p>
+<pre tabindex="0"><code>-- 创建库
+CREATE DATABASE IF NOT EXISTS entertainment;
+
+-- 创建表
+CREATE TABLE IF NOT EXISTS entertainment.anime_info (
+  id UInt32 COMMENT &#39;动画唯一标识ID&#39;,
+  name String COMMENT &#39;动画名称&#39;,
+  genres String COMMENT &#39;动画类型&#39;,
+  type String COMMENT &#39;播出形式&#39;,
+  episodes Float32 COMMENT &#39;集数&#39;,
+  status String COMMENT &#39;播出状态&#39;,
+  aired_from DateTime COMMENT &#39;开始播出时间&#39;,
+  aired_to DateTime COMMENT &#39;结束播出时间&#39;,
+  duration_per_ep String COMMENT &#39;单集时长&#39;,
+  score Float32 COMMENT &#39;评分&#39;,
+  scored_by Float64 COMMENT &#39;评分人数&#39;,
+  `rank` Float32 COMMENT &#39;排名&#39;,
+  rating String COMMENT &#39;年龄分级&#39;,
+  studios String COMMENT &#39;制作工作室&#39;,
+  producers String COMMENT &#39;出品方&#39;,
+  image String COMMENT &#39;封面图片URL&#39;,
+  trailer String COMMENT &#39;预告片URL&#39;,
+  synopsis String COMMENT &#39;剧情简介&#39;
+)
+ENGINE = MergeTree()
+ORDER BY (`id`)
+COMMENT &#39;动画信息数据表&#39;;
+</code></pre><p>先将 <code>popular_anime.csv</code> 文件复制到容器挂载的数据卷 <code>ch_data</code> 上：</p>
+<pre tabindex="0"><code>cp /path/to/popular_anime.csv ./ch_data/user_files/
+</code></pre><p>再将 CSV 数据导入 ClickHouse 数据库：</p>
+<pre tabindex="0"><code>-- 将 csv 文件导入 clickhouse
+INSERT INTO entertainment.anime_info
+SELECT 
+  id,
+  name,
+  genres,
+  type,
+  episodes,
+  status,
+  toDateTime(replaceRegexpAll(aired_from, &#39;T|\\+.*&#39;, &#39; &#39;)) AS aired_from,
+  toDateTime(replaceRegexpAll(aired_to, &#39;T|\\+.*&#39;, &#39; &#39;)) AS aired_to,
+  duration_per_ep,
+  score,
+  scored_by,
+  `rank`,
+  rating,
+  studios,
+  producers,
+  image,
+  trailer,
+  synopsis
+FROM file(&#39;popular_anime.csv&#39;, &#39;CSVWithNames&#39;);
+
+-- 检查导入是否成功
+SELECT * FROM entertainment.anime_info LIMIT 2;
+
+-- 看一下行数
+SELECT count(*) FROM entertainment.anime_info;
+</code></pre><h4 id="2-从-mysql-导入">2. 从 MySQL 导入</h4>
+<p>进入客户端，创建 ClickHouse 数据库和数据表：</p>
+<pre tabindex="0"><code>-- 创建库
+CREATE DATABASE IF NOT EXISTS [CH_DB];
+
+-- 创建表
+CREATE TABLE IF NOT EXISTS [CH_DB].[CH_TABLE] (
+  `key` String NOT NULL COMMENT &#39;标识&#39;,
+  `value` String COMMENT &#39;内容&#39;,
+  `update_time` Date COMMENT &#39;更新日期&#39;
+)
+ENGINE = MergeTree()
+PARTITION BY update_time
+ORDER BY (`key`)
+COMMENT &#39;xxx数据表&#39;;
+</code></pre><p>然后用以下命令，将 MySQL 数据插入建好的 ClickHouse 数据表：</p>
+<pre tabindex="0"><code># 从 MySQL 数据库迁移数据
+INSERT INTO [CH_DB].[CH_TABLE]
+SELECT
+  `key`,
+  `value`,
+  `update_time`
+FROM mysql(
+  &#39;[MYSQL_HOST]:[MYSQL_PORT]&#39;,
+  &#39;[MYSQL_DB]&#39;,
+  &#39;[MYSQL_TABLE]&#39;,
+  &#39;[MYSQL_USER]&#39;,
+  &#39;[MYSQL_PASSWORD]&#39;
+);
+</code></pre><h3 id="四python-获取-clickhouse-数据">四、Python 获取 ClickHouse 数据</h3>
+<p>安装 <code>clickhouse-connect</code>：</p>
+<pre tabindex="0"><code>pip install clickhouse-connect
+</code></pre><p>运行 Python 代码，记得将 <code>[YOUR_PASSWORD_HERE]</code> 换成你的密码。</p>
+<pre tabindex="0"><code>import clickhouse_connect
+
+# 创建 ClickHouse 客户端连接
+client = clickhouse_connect.get_client(
+    host=&#39;localhost&#39;,                   # Docker 宿主机 IP
+    port=18123,                         # ClickHouse HTTP 端口
+    username=&#39;admin&#39;,                   # 用户名
+    password=&#39;[YOUR_PASSWORD_HERE]&#39;,    # 密码
+    database=&#39;entertainment&#39;            # 数据库名
+)
+
+query = &#34;SELECT * FROM entertainment.anime_info LIMIT 3&#34;
+try:
+    # 执行 SQL 查询
+    result = client.query(query)
+
+    # 打印查询结果
+    print(&#34;查询结果：&#34;)
+    for row in result.named_results():
+        print(row)
+
+    # 获取表结构信息
+    schema_result = client.query(&#34;DESCRIBE entertainment.anime_info&#34;)
+    print(&#34;\n表结构：&#34;)
+    for column in schema_result.named_results():
+        print(f&#34;{column[&#39;name&#39;]}: {column[&#39;type&#39;]}&#34;)
+
+except Exception as e:
+    print(f&#34;查询出错: {e}&#34;)
+finally:
+    client.close()
+</code></pre><h3 id="五chatbi-访问-clickhouse-数据">五、ChatBI 访问 ClickHouse 数据</h3>
+<p>下面是提问「评分人数最多的十部动漫是？」的回答。</p>
+<p><img src="/img/clickhouse_app.png" alt="image"></p>
+<p>核心实现如下：</p>
+<pre tabindex="0"><code>from qwen_agent.agents import Assistant, ReActChat
+
+SYSTEM_PROMPT = &#34;&#34;&#34;
+你是一个数据库查询助手，专门帮助用户查询和分析 ClickHouse 数据库中的数据。
+
+规则：
+1. 始终确保 SQL 查询的安全性，避免修改数据
+2. 以清晰易懂的方式呈现查询结果
+&#34;&#34;&#34;
+
+class CHAgent:
+    &#34;&#34;&#34;ClickHouse Agent&#34;&#34;&#34;
+
+    def __init__(self, llm_cfg, db_config=None):
+        self.llm_cfg = llm_cfg
+
+        # ClickHouse 数据库配置
+        self.db_config = db_config
+
+    def create_tools(self):
+        &#34;&#34;&#34;获取工具列表&#34;&#34;&#34;
+
+        # 数据库配置
+        host = self.db_config.get(&#39;host&#39;)
+        port = self.db_config.get(&#39;port&#39;)
+        user = self.db_config.get(&#39;user&#39;)
+        password = self.db_config.get(&#39;password&#39;)
+
+        # 工具列表
+        tools = [
+            {
+            &#34;mcpServers&#34;: {
+                &#34;mcp-clickhouse&#34;: {
+                &#34;command&#34;: &#34;uv&#34;,
+                &#34;args&#34;: [
+                    &#34;run&#34;,
+                    &#34;--with&#34;,
+                    &#34;mcp-clickhouse&#34;,
+                    &#34;--python&#34;,
+                    &#34;3.10&#34;,
+                    &#34;mcp-clickhouse&#34;
+                ],
+                &#34;env&#34;: {
+                    &#34;CLICKHOUSE_HOST&#34;: host,
+                    &#34;CLICKHOUSE_PORT&#34;: port,
+                    &#34;CLICKHOUSE_USER&#34;: user,
+                    &#34;CLICKHOUSE_PASSWORD&#34;: password,
+                    &#34;CLICKHOUSE_SECURE&#34;: &#34;false&#34;,
+                    &#34;CLICKHOUSE_VERIFY&#34;: &#34;false&#34;,
+                    &#34;CLICKHOUSE_CONNECT_TIMEOUT&#34;: &#34;30&#34;,
+                    &#34;CLICKHOUSE_SEND_RECEIVE_TIMEOUT&#34;: &#34;30&#34;
+                }
+                }
+            }
+            },
+        ]
+
+        return tools
+
+    def create_react_agent(self):
+        &#34;&#34;&#34;创建 ReActChat 模式的 Agent&#34;&#34;&#34;
+        tools = self.create_tools()
+        return ReActChat(
+            llm=self.llm_cfg,
+            name=&#39;ClickHouse 数据库助手&#39;,
+            description=&#39;ReActChat 模式&#39;,
+            system_message=SYSTEM_PROMPT,
+            function_list=tools,
+        )
+
+    def ask(self, bot, messages: list) -&gt; str:
+        &#34;&#34;&#34;使用指定的 bot 进行查询&#34;&#34;&#34;
+        response = bot.run_nonstream(messages)
+        message = response[-1].get(&#39;content&#39;).strip()
+        return message
+</code></pre><p>完整代码见 GitHub：<a href="https://github.com/luochang212/chat-to-clickhouse">luochang212/chat-to-clickhouse</a></p>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/card_magic_mcp/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">新瓶装旧酒：纸牌魔术 MCP</span>
+    </a>
+    
+    
+    <a href="/posts/quick_bi_intro/" class="navigation-next">
+      <span class="navigation-tittle">阿里发布新版 Quick BI，聊聊 ChatBI 的底层架构、交互设计和云计算生态</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+</div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.js" defer></script>
+
+
+<script defer src="https://kit.fontawesome.com/2134995a39.js" crossorigin="anonymous"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/tocbot@4.36.8/dist/tocbot.min.js"></script>
+<script type="text/javascript">
+  if (window.tocbot) {
+    tocbot.init({
+      
+      tocSelector: '.toc',
+      
+      contentSelector: '.post',
+      
+      headingSelector: 'h2, h3, h4',
+      collapseDepth: 4
+    });
+  }
+</script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    mediumZoom('.post img', {
+      background: 'rgba(0,0,0,0.82)',
+      margin: 24,
+      scrollOffset: 0
+    });
+  });
+</script>
+
+
+
+    
+
+
+
+  </body>
+</html>

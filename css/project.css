@@ -1,0 +1,143 @@
+body {
+	background: #ffc19f;
+	font-family: Georgia, Times New Roman, Times, serif;
+  font-size: 1.875rem;  /* 30px; */
+	text-align: center;
+  margin: 0;
+  padding: 0;
+	width: 100%;
+  height: 100%;
+	/* overflow:hidden; */
+}
+
+h2 {
+  font-size: 3.75rem;  /* 60px; */
+	font-weight: normal;
+	margin: 0;
+	color: #cc4037;
+  font-family: 'Chelsea Market', Georgia, serif;
+}
+
+p {
+	/* width: 960px; */
+	margin: 40px auto;
+	color: #000;
+  line-height: 200%;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.resources-links p a { color: #FFF; font-size: 40px; font-weight: normal;font-style: normal; background-color: #06406c; padding: 10px 15px; border-radius: 10px; text-decoration: none; }
+.resources-links p a:hover { text-decoration: underline; }
+
+#menu {
+  background-color: #ffd59f;  /* whiteSmoke; */
+  text-align: center;
+}
+
+#menu a {
+  font-size: 0.85rem;  /* 14px; */
+  color: #8F8F8F;
+  display: inline-block;
+  padding: .5em 1em;
+  text-shadow: 0 1px 0 #EDEDED;
+  text-decoration: none;
+}
+
+#menu a:hover {
+  background: #ffad8b;
+}
+
+#menu .home-link {
+  margin-right: 1em;
+}
+
+#page-title {
+  position: absolute;
+  width: 100%;
+  top: 14%;
+}
+  
+#page-sub-title {
+  position: absolute;
+  width: 100%;
+  top: 28%;
+  /* padding:.25rem; */
+}
+
+#page-content {
+  position: absolute;
+  width: 100%;
+  top: 38%;
+}
+
+#copy-right {
+  position: absolute;
+  width: 100%;
+  top: 87%;
+  font-size: 1.7rem;  /* 27px; */
+  color: #7d1f19;
+}
+
+@media only screen and (min-width:1025px) {
+
+  #menu {
+    position: absolute;
+    top: -16px;
+    left: -16px;
+    width: 250px;
+    padding-top: 1.7em;
+    -webkit-transform-origin: 0 0;
+       -moz-transform-origin: 0 0;
+        -ms-transform-origin: 0 0;
+         -o-transform-origin: 0 0;
+            transform-origin: 0 0;
+    -webkit-transform: rotate(-35deg) translate(-92px, 22px);  /* Safari 3.1+, Chrome */
+       -moz-transform: rotate(-35deg) translate(-92px, 22px);  /* Firefox 3.5-15 */
+        -ms-transform: rotate(-35deg) translate(-92px, 22px);  /* IE9+ */
+         -o-transform: rotate(-35deg) translate(-92px, 22px);  /* Opera 10.5-12.00 */
+            transform: rotate(-35deg) translate(-92px, 22px);  /* Firefox 16+, Opera 12.50+ */
+  }
+
+  .rtl #menu {
+    position: absolute;
+    top: -16px;
+    left: auto;
+    right: -20px;
+    width: 250px;
+    padding-top: 2em;
+    -webkit-transform-origin: 0 0;
+       -moz-transform-origin: 0 0;
+        -ms-transform-origin: 0 0;
+         -o-transform-origin: 0 0;
+            transform-origin: 0 0;
+    -webkit-transform: rotate(35deg) translate(62px, -129px);  /* Safari 3.1+, Chrome */
+       -moz-transform: rotate(35deg) translate(62px, -129px);  /* Firefox 3.5-15 */
+        -ms-transform: rotate(35deg) translate(62px, -129px);  /* IE9+ */
+         -o-transform: rotate(35deg) translate(62px, -129px);  /* Opera 10.5-12.00 */
+            transform: rotate(35deg) translate(62px, -129px);  /* Firefox 16+, Opera 12.50+ */
+  }
+
+  #menu a {
+    display: block;
+    padding: .6em 0;
+  }
+  
+  #menu a:hover {
+    background: #ffad8b;
+  }
+
+}
+
+@media only screen and (max-width: 1024px) {
+  #menu {
+	visibility: hidden;
+  }
+
+  #menu a {
+	visibility: hidden;
+  }
+
+}

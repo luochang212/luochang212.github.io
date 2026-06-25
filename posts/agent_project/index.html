@@ -1,0 +1,884 @@
+<!doctype html>
+<html lang="zh-CN">
+  
+    
+
+
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=61229&amp;path=livereload" data-no-instant defer></script>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://localhost:61229/posts/agent_project/">
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.163.3">
+
+    
+    
+    
+
+<title>Agent 实战：智能路由、任务拆解和链路工程 • Chang Luo</title>
+
+
+    
+
+
+<meta name="description" content="Agent 的本质是 LLM 调度器，它做的无非是 LLM 擅长的那些，外加一些由组织和规划所产生的能力">
+
+
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="http://localhost:61229/images/og-default.jpg">
+	<meta name="twitter:title" content="Agent 实战：智能路由、任务拆解和链路工程">
+	<meta name="twitter:description" content="Agent 的本质是 LLM 调度器，它做的无非是 LLM 擅长的那些，外加一些由组织和规划所产生的能力">
+			<meta name="twitter:site" content="@_stellar_tide">
+
+<meta property="og:url" content="http://localhost:61229/posts/agent_project/">
+	<meta property="og:site_name" content="Chang Luo">
+	<meta property="og:title" content="Agent 实战：智能路由、任务拆解和链路工程">
+	<meta property="og:description" content="Agent 的本质是 LLM 调度器，它做的无非是 LLM 擅长的那些，外加一些由组织和规划所产生的能力">
+	<meta property="og:locale" content="zh_CN">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2025-06-15T00:00:00+00:00">
+		<meta property="article:modified_time" content="2025-06-15T00:00:00+00:00">
+		<meta property="article:tag" content="Qwen Agent">
+		<meta property="article:tag" content="ReActChat">
+		<meta property="article:tag" content="Function Calling">
+		<meta property="article:tag" content="NL2SQL">
+		<meta property="article:tag" content="Workflow">
+		<meta property="article:tag" content="Gradio">
+		<meta property="og:image" content="http://localhost:61229/images/og-default.jpg">
+
+
+    
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.f9da2b005f03c27beab06923e896c9a3875472209210a9177205d391257298b2.css" integrity="sha256-&#43;dorAF8DwnvqsGkj6JbJo4dUciCSEKkXcgXTkSVymLI=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+
+<link rel="stylesheet" href="/scss/tocbot.5ef07cebc3c477b54270456f149ee02922479bb7555fd344b2c69f953b0e7e5e.css" integrity="sha256-XvB868PEd7VCcEVvFJ7gKSJHm7dVX9NEssaflTsOfl4=">
+
+
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#202020">
+    
+    
+
+</head>
+
+
+  <body
+    class=" "
+  >
+    <div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="http://localhost:61229/">Chang Luo</a>
+      </span>
+      
+      
+      
+      <div class="author-image">
+        <button type="button" class="author-trigger" onclick="openNav()" aria-label="打开个人收藏侧栏"
+          aria-controls="mySidenav" aria-expanded="false"><img src="http://localhost:61229//images/profile.webp"
+            alt="Chang Luo" class="img--circle img--headshot element--center"></button>
+      </div>
+      
+      <p class="site__description">
+        
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Chang Luo</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		<li class="sidebar-nav__home">
+			<a href="http://localhost:61229/"><span>Home</span></a>
+		</li>
+		
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/portfolio/">
+						<span>Projects</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+		
+		<a href="https://twitter.com/_stellar_tide" rel="me" title="X">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		<a href="https://github.com/luochang212" rel="me" title="GitHub">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		<a href="https://mp.weixin.qq.com/s/He-04l46xJTM_MJ3AyTwWQ" rel="me" title="微信">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.35em; height: 1.35em; vertical-align: -0.28em;">
+				<path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135-.01-.27-.027-.407-.03zm-2.53 3.274c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982z"/>
+			</svg>
+		</a>
+		
+		
+		<a href="https://www.zhihu.com/people/Fashionable" rel="me" title="知乎">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2"
+				 stroke-linecap="round" stroke-linejoin="round" style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="m13.3334,3.60098l0,17.1471l1.79582,0l0.75424,2.13703l3.18459,-2.13703l3.93584,0l0,-17.1471l-9.6705,0zm7.41375,14.87538l-1.79283,0l-2.24777,1.50849l-0.53276,-1.50849l-0.53875,0l0,-12.53483l5.10911,0l0,12.53483l0.00299,0zm-8.56906,-7.18927l-3.97475,0c0.06285,-1.34387 0.1287,-3.12174 0.19754,-5.17496l3.91788,0l-0.00299,-0.24244c0,-0.01796 -0.00599,-0.43998 -0.06884,-0.87097c-0.06285,-0.44896 -0.19754,-1.04457 -0.62854,-1.04457l-6.5727,0c0.13169,-0.61657 0.46991,-2.08615 0.87995,-2.80747l0.19155,-0.33522l-0.3861,-0.02095c-0.02394,0 -0.58663,-0.02694 -1.23912,0.31726c-1.06851,0.56868 -1.5474,1.68807 -1.75691,2.52612c-0.55072,2.18791 -1.33489,3.70837 -1.66712,4.35786c-0.09877,0.19155 -0.15863,0.30529 -0.18557,0.38311c-0.05387,0.14666 -0.02394,0.29332 0.0838,0.38909c0.31427,0.28434 1.14334,-0.0868 1.15232,-0.08979c0.01796,-0.00898 0.03891,-0.01796 0.06585,-0.02993c0.41603,-0.18856 1.64916,-0.74826 2.08914,-2.52911l1.69705,0c0.02095,0.96376 0.09278,4.14236 0.0868,5.17496l-4.22018,0l-0.06285,0.0449c-0.69139,0.50582 -0.91288,1.8916 -0.92185,1.95146l-0.0419,0.27536l4.99837,0c-0.36814,2.34355 -0.79315,3.3941 -1.01763,3.81313c-0.11074,0.20951 -0.21849,0.41902 -0.32025,0.62255c-0.63752,1.26306 -1.29898,2.56802 -3.7802,4.5973c-0.10775,0.0838 -0.20951,0.23944 -0.14367,0.41005c0.07183,0.18856 0.27835,0.27237 0.73629,0.27237c0.16162,0 0.35318,-0.00898 0.58065,-0.02993c1.49352,-0.13169 3.01698,-0.53875 4.04359,-2.6219c0.50882,-1.05056 0.94879,-2.14601 1.31394,-3.25941l4.08549,4.78886l0.14965,-0.35916c0.02394,-0.05687 0.56868,-1.38578 0.15264,-2.87032l-0.01497,-0.05387l-3.23547,-3.68143l-0.65847,0.49684c0.19155,-0.78118 0.31726,-1.49352 0.37413,-2.12805l4.74995,0l0,-0.23944c0,-1.20021 -0.55371,-1.91255 -0.57466,-1.94248l-0.07183,-0.08979z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+</section>
+
+      </div>
+    </div>
+    
+<div class="copyright">
+  &copy; 2026 Chang Luo
+  
+</div>
+
+
+
+  </div>
+</div>
+
+<div id="overlay" onclick="closeNav()" aria-hidden="true"></div>
+
+<div id="mySidenav" class="sidenav" role="dialog" aria-label="个人收藏" aria-hidden="true">
+  <div id="main">
+    <div class="tab">
+      <button id="default-tab" class="tablinks active" onclick="openItem(event, 'Resources')"
+        aria-controls="Resources" aria-pressed="true">Resources</button>
+      <button class="tablinks" onclick="openItem(event, 'netease-player')"
+        aria-controls="netease-player" aria-pressed="false">Music</button>
+      <button class="tablinks" onclick="openItem(event, 'video-player')"
+        aria-controls="video-player" aria-pressed="false">Video</button>
+      <button class="tablinks" onclick="openItem(event, 'gallery')"
+        aria-controls="gallery" aria-pressed="false">Gallery</button>
+      <button class="tablinks" onclick="openItem(event, 'gadget')"
+        aria-controls="gadget" aria-pressed="false">Gadget</button>
+      <button class="tablinks" onclick="openItem(event, 'categories')"
+        aria-controls="categories" aria-pressed="false">Cats</button>
+    </div>
+
+    <div id="Resources" class="tabcontent">
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/resources/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Resources"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="netease-player" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
+        frameborder="no"
+        marginheight="0"
+        marginwidth="0"
+        title="Music player"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="video-player" class="tabcontent" hidden>
+      <div class="video-layout">
+        <div class="video-main">
+          <div class="video-cover" id="video-cover">
+            <img id="video-cover-img" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-cover-overlay">
+              <button class="video-play-btn" id="video-play-btn" aria-label="播放视频">
+                <svg viewBox="0 0 24 24" width="48" height="48"><path d="M8 5v14l11-7z" fill="white"/></svg>
+              </button>
+              <span class="video-cover-title" id="video-cover-title">四月是你的谎言</span>
+            </div>
+          </div>
+          <div class="video-frame" id="video-frame" hidden>
+            <iframe src="about:blank"
+              data-src="//player.bilibili.com/player.html?bvid=BV1Ms411D7in&p=1&high_quality=1&danmaku=0&autoplay=0"
+              style="width:100%;"
+              scrolling="no"
+              frameborder="no"
+              framespacing="0"
+              title="Bilibili video player"
+              allowfullscreen="true"></iframe>
+          </div>
+        </div>
+        <div class="video-playlist">
+          <button class="video-item active" data-bvid="BV1Ms411D7in"
+            data-title="四月是你的谎言"
+            data-cover="/images/video-covers/zutomayo.jpg"
+            data-duration="4:04">
+            <img class="video-item-cover" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">四月是你的谎言</span>
+              <span class="video-item-meta">4:04</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1LW411j7dK"
+            data-title="Kids by One republic — 三羊"
+            data-cover="/images/video-covers/sanyang.jpg"
+            data-duration="2:54">
+            <img class="video-item-cover" src="/images/video-covers/sanyang.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">Kids by One republic</span>
+              <span class="video-item-meta">三羊 · 2:54</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Yx411U7Lx"
+            data-title="交织together — M78"
+            data-cover="/images/video-covers/jiaozhi.jpg"
+            data-duration="6:06">
+            <img class="video-item-cover" src="/images/video-covers/jiaozhi.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">交织together</span>
+              <span class="video-item-meta">M78 · 6:06</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1rp4y1L7i4"
+            data-title="新员工入职大会 — 岁己SUI/恋诗夜Koxia"
+            data-cover="/images/video-covers/suisui.jpg"
+            data-duration="2:33">
+            <img class="video-item-cover" src="/images/video-covers/suisui.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">新员工入职大会</span>
+              <span class="video-item-meta">岁己SUI/恋诗夜Koxia · 2:33</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Av4y147QE"
+            data-title="真物论 — 悠亚"
+            data-cover="/images/video-covers/zhenwulun.jpg"
+            data-duration="3:30">
+            <img class="video-item-cover" src="/images/video-covers/zhenwulun.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">真物论</span>
+              <span class="video-item-meta">悠亚 · 3:30</span>
+            </div>
+          </button>
+        </div>        </div>
+      </div>
+
+
+    <div id="gallery" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/gadget/gallery/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Gallery"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="gadget" class="tabcontent drawer-native" hidden>
+      <div class="drawer-native-content">
+        
+          <br>
+<table>
+	<thead>
+			<tr>
+					<th>#</th>
+					<th>name</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td><a href="/gadget/hydra" target="_blank">Hydra</a></td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td><a href="/mozi/" target="_blank">墨子</a></td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td><a href="/gadget/how-old-are-you" target="_blank">年龄可视化</a></td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td><a href="/gadget/piano" target="_blank">Piano</a></td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td><a href="/flockn-roll/" target="_blank">Flock&rsquo;n Roll</a></td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td><a href="/monaco-speech-editor/" target="_blank">Monaco Speech Editor</a></td>
+			</tr>
+	</tbody>
+</table>
+
+        
+      </div>
+    </div>
+
+    <div id="categories" class="tabcontent drawer-native" hidden>
+      <ul class="drawer-category-list">
+        
+          <li>
+            <a href="/categories/devops/" target="_blank" rel="noopener noreferrer">
+              <span>DevOps</span>
+              <span class="drawer-category-count">12</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/deeplearning/" target="_blank" rel="noopener noreferrer">
+              <span>DeepLearning</span>
+              <span class="drawer-category-count">11</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/agent/" target="_blank" rel="noopener noreferrer">
+              <span>Agent</span>
+              <span class="drawer-category-count">7</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/algorithms/" target="_blank" rel="noopener noreferrer">
+              <span>Algorithms</span>
+              <span class="drawer-category-count">6</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/life/" target="_blank" rel="noopener noreferrer">
+              <span>Life</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/sota/" target="_blank" rel="noopener noreferrer">
+              <span>SOTA</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/bigdata/" target="_blank" rel="noopener noreferrer">
+              <span>BigData</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/statistics/" target="_blank" rel="noopener noreferrer">
+              <span>Statistics</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/frontend/" target="_blank" rel="noopener noreferrer">
+              <span>FrontEnd</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/llms/" target="_blank" rel="noopener noreferrer">
+              <span>LLMs</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/machinelearning/" target="_blank" rel="noopener noreferrer">
+              <span>MachineLearning</span>
+              <span class="drawer-category-count">2</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/math/" target="_blank" rel="noopener noreferrer">
+              <span>Math</span>
+              <span class="drawer-category-count">2</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/datavisualization/" target="_blank" rel="noopener noreferrer">
+              <span>DataVisualization</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/hardware/" target="_blank" rel="noopener noreferrer">
+              <span>Hardware</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/modeling/" target="_blank" rel="noopener noreferrer">
+              <span>Modeling</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/multimodal/" target="_blank" rel="noopener noreferrer">
+              <span>Multimodal</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/network/" target="_blank" rel="noopener noreferrer">
+              <span>Network</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/prose/" target="_blank" rel="noopener noreferrer">
+              <span>Prose</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="/js/drawer.js"></script>
+
+
+    <div class="content container">
+    
+<article>
+  <header>
+    <h1>Agent 实战：智能路由、任务拆解和链路工程</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Jun 15, 2025
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/agent">AGENT</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/qwen-agent">qwen agent</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/reactchat">reactchat</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/function-calling">function calling</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/nl2sql">nl2sql</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/workflow">workflow</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/gradio">gradio</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 3 min read
+</div>
+
+
+  </header>
+  
+  
+  
+    <div class="toc-wrapper">
+      <input type="checkbox" id="tocToggle">
+      <label for="tocToggle">Table of Content</label>
+      
+        <div class="toc" id="TableOfContents"></div>
+      
+    </div>
+  
+  
+  <div class="post">
+    <blockquote>
+<p>大模型天生具有幻觉，为了工程的准确性，我们奉行“非必要不Agent”原则。我们是专业的，除非忍不住，否则绝不用 Agent。</p>
+</blockquote>
+<p>特别声明：本文使用 <a href="https://github.com/QwenLM/Qwen-Agent">Qwen Agent</a> 实现。</p>
+<p>本文包含以下两个项目：</p>
+<p><strong>1）智能路由</strong></p>
+<p><strong>概述</strong>：如果一个业务可以分很多种情况处理。针对每种情况，我们开发一个工具函数 (Function Calling)，来处理此种情况内部的复杂性。此时，Agent 充当智能路由的角色，将对应的情况路由到对应的工具函数。工具函数内部带有描述信息，Agent 可以访问这些信息，以此判断在何种情况下，调用这个工具函数。</p>
+<p>具体来讲，本项目开发了一个 <strong>客诉核查 Agent</strong>。针对 物流逾期 和 假货 两种客诉，分别开发了对应的工具函数。<strong>Agent 通过接入工具函数，获得了核查以上两种客诉真实性的能力</strong>。当我们将客诉信息传递给 Agent，它会输出针对该客诉的 <strong>核查结论</strong> 和 <strong>相应证据</strong>。</p>
+<p><strong>2）数据库查询优化</strong></p>
+<p><strong>概述</strong>：数据库查询是一个非常通用的需求，其中 <strong>NL2SQL</strong> 是难点。为了提升 NL2SQL 的准确性，很容易想到把数据表的 Schema、样例数据、个别字段的枚举值作为上下文 (context) 注入到原始 Prompt 中。本项目实现了这一点。</p>
+<p>具体来说，本项目做了以下工作：</p>
+<ul>
+<li>启用 Qwen Agent 的 <strong>ReActChat</strong> 模式，以提升多步骤情况下的性能</li>
+<li>开发定制的 <strong>Workflow</strong>，用于将 Schema 等上下文信息注入原始 Prompt 中</li>
+<li>开发可流式对话的 <strong>Gradio WebUI</strong>，以方便调试 Agent 和 Workflow</li>
+</ul>
+<p>✨ 所有代码见 GitHub 仓库：<a href="https://github.com/luochang212/agent-project">luochang212/agent-project</a></p>
+<!-- - 智能路由代码见：[intelligent_routing](https://github.com/luochang212/agent-project/tree/main/intelligent_routing)
+- 数据库查询优化代码见：
+    - Agent: [gradio_postgres_agent.py](https://github.com/luochang212/agent-project/blob/main/gradio_postgres_agent.py)
+    - Workflow: [gradio_postgres_workflow.py](https://github.com/luochang212/agent-project/blob/main/gradio_postgres_workflow.py) -->
+<h2 id="一引言">一、引言</h2>
+<h3 id="1-尚未到来的涌现">1. 尚未到来的涌现</h3>
+<blockquote>
+<p>We always overestimate the change that will occur in the next two years and underestimate the change that will occur in the next ten. &ndash; Bill Gates</p>
+</blockquote>
+<p>把大象放进冰箱只需要三步。让大模型实现自举，也只需要三步：</p>
+<ol>
+<li>让大模型自己处理语料</li>
+<li>让大模型自己训练自己</li>
+<li>让大模型自己评估自己、反思、优化、调整超参、继续实验 &hellip;&hellip;</li>
+</ol>
+<p>只要完成一次循环，即一次自我进化，就能完成两次、三次、乃至 N 次，这就是 <strong>自举</strong>。一旦大模型能够自我演化，某种意义上，它就成了生物，也意味着 AGI 真正到来。至少目前，我们尚未触发这样的循环。可能是基座模型不够强大，也可能是 Agent 框架不够成熟，或者是什么我们还不了解的原因。</p>
+<p>就这个比较初级的 Agent 看，它对智能的提升幅度有限。并不是说，只要把大模型连起来，智能就会成倍地增加。要实现 AGI，恐怕还是要基座模型本身 AGI 才行。Agent 不是 Alpha，顶多是 Smart Beta.</p>
+<p>2024 年，Agent 曾被寄予厚望。那一年，Sora, <a href="https://arxiv.org/abs/2402.17152">GR</a>, GPT-4o 等新技术层出不穷，大家对 AI 前景无限乐观。马斯克甚至说，到 2025 年，AI 可能比任何一个人都聪明 [<a href="https://x.com/elonmusk/status/1767738797276451090">原文</a>]。然而事实是，2025 年最大的红利是 Agent，当红利释放后，想象中的智能涌现没有来。今年就 AGI 的概率已经很小很小了。</p>
+<p><img src="/img/agent_elon.png" alt="image"></p>
+<h3 id="2-小米加步枪">2. 小米加步枪</h3>
+<p>Agent 的本质是：模型能力不够，工程方法来凑。</p>
+<p>单个大模型的能力有限。通过组织多个模型一起工作，每个模型负责其中一块，分而治之。如此便能突破单个模型能力的上限，做更多更复杂的事情。</p>
+<p><img src="/img/agent_1_1.png" alt="image"></p>
+<p>Agent 工作时大多遵循以下模式：</p>
+<ul>
+<li><strong>感知</strong>：一个任务过来，无论是 <strong>被动接受</strong> 任务信息，还是 <strong>主动探索</strong> 与任务有关的线索，这都属于“感知”。</li>
+<li><strong>规划</strong>：有了对任务的感知，我们拆解任务，规划出一条或多条实现路径</li>
+<li><strong>控制</strong>：有了实现路径，在路径上的每一个节点，通过 MCP 调用资源，执行任务；如果当前节点遇到困难，则动态地创建 sub-agent 继续分解任务</li>
+<li><strong>反思</strong>：对各个路径的实现结果进行评估。如果某条路径失败，总结失败经验，重新来过，直到抵达重试次数上限</li>
+<li><strong>记忆</strong>：收集本次任务信息，提炼重点，存入知识库。下次执行相似任务时，从知识库中取出，作为先验知识</li>
+</ul>
+<p>一个大模型搞不定，就用多个大模型解决；没有大炮没关系，就用小米加步枪战斗。</p>
+<h3 id="3-还有-mcp">3. 还有 MCP</h3>
+<p>MCP 相当于引入了 <code>Action -&gt; React</code> Pair。大模型可以通过 MCP 与现实世界交互，获得即时反馈。它可以交互的东西很多，比如：</p>
+<ul>
+<li><strong>FastAPI</strong>（接入中台能力）</li>
+<li><strong>PostgreSQL</strong>（长期记忆）</li>
+<li><strong>Redis</strong>（短期记忆）</li>
+<li><strong>Docker</strong>（代码执行能力）</li>
+</ul>
+<p>Agent 兼具眼和脑的功能，加上 MCP 这个手，事情变得有趣起来。毕竟人类也是靠 <strong>眼 -&gt; 脑 -&gt; 手</strong> 循环，把活干起来的。</p>
+<h3 id="4-agent-能做什么">4. Agent 能做什么</h3>
+<blockquote>
+<p>回到务实的问题，Agent 能做什么？Agent 可以看作是大模型的调度器，它擅长的无非是大模型擅长的那些，外加一些由组织和规划产生的能力。</p>
+</blockquote>
+<p>有些公司，把 Agent 当作中台服务的调度器。用 MCP 把中台服务轮询一遍，再用大模型把轮询的结果总结一下。这当然也是一种用法，但是有点画蛇添足。因为用传统的 <code>for loop</code> 和 <code>if else</code> 控制块，也能实现相同的逻辑。</p>
+<p><strong>Agent 的价值在传统编程的能力圈之外。</strong></p>
+<p>新技术的落地是这样的，总有一个拿着锤子找钉子的过程，但终究要做真正有收益的事。</p>
+<p><strong>1）智能路由 (Function Calling)</strong></p>
+<p>我们确实可以把 Agent 当调度器，但不能是简单的 <code>if else</code> 可以实现的那种。</p>
+<p><img src="/img/agent_1_2.png" alt="image"></p>
+<blockquote>
+<p><strong>Note:</strong> 举个例子，我们写一个 Agent 来 <strong>核查客诉是否属实</strong>。如果用户投诉“商家未发货”，就查发货记录；如果投诉“好几天了，还没收到货”，就去查物流表；如果投诉“商家真没素质”，就去查聊天记录。传统编程处理这种问题，遇到长尾 case 会没法解，需要人工介入。这种本身属于语言模态，问题又无法特别明确定义的，就适合用 <strong>智能路由</strong> 的方式解决。</p>
+</blockquote>
+<p><strong>2）任务拆解（ReActChat）</strong></p>
+<p>理想情况下，我们把 MCP 开发好丢给 Agent，告诉它我们想要什么。Agent 应该自己将任务拆解成若干步骤，再将每个步骤交由 MCP 处理。遇到错误会自己重试。这种功能已经被开发出来了，它叫 <strong>ReAct 模式</strong>。</p>
+<p>ReAct (Reasoning-Action) 是一种结合了 <strong>思考决策 (Reasoning)</strong> 和 <strong>环境交互 (Action)</strong> 的智能体模式。其核心逻辑是：先规划一系列操作，依次执行，再基于操作结果进一步思考，循环往复直至问题解决。ReAct 模式并非银弹，即使上了 <code>Qwen3</code> 和 <code>Deepseek-0528</code> 最大尺寸的模型，只要问题一难，就会有相当程度的失败概率。我们遇到失败，就往里掺链路工程，一点点地把良率做上去。因此和同事戏言：有多少人工，就有多少人工智能。</p>
+<p><img src="/img/agent_1_3.png" alt="image"></p>
+<p><strong>3）深度研究（Deep Research）</strong></p>
+<p>当你需要解决业务难题时，仅凭 Function Calling 或 ReActChat 是不够的，你要做 Agent 的 <strong>链路工程</strong>。具体来说，你要将 Function Calling 和 ReAct 作为基础组件，开发许多工作流。</p>
+<p><img src="/img/agent_1_4.png" alt="image"></p>
+<p>以上是一个 Agentic 风格的 <strong>风控引擎</strong>。当监控发现用户在支付路由下有风险时，监控立即向风控引擎发送一条消息，形如：</p>
+<pre tabindex="0"><code>{
+    &#34;uid&#34;: 19335701,
+    &#34;route&#34;: &#34;pay&#34;,
+    &#34;reason&#34;: &#34;card_fraud&#34;,
+    &#34;timestamp&#34;: &#34;2025-06-01 19:21:09&#34;
+}
+</code></pre><p>风控引擎 Agent 会运行一个初步的排查程序，生成简单的风险报告。如果发现简单的报告不足以揭示风险，则调用更高消耗的计算模块，获得更多风险信息。最后它综合所有信息进行研判，告诉我们这个用户是不是坏人。如果用户是坏人，它还能继续探查坏人的周边用户，召回更多坏人，进而打击整个黑产团伙。</p>
+<p>参考：<a href="https://openai.com/index/introducing-deep-research/">deep-research</a></p>
+<h3 id="5-世之显学-agent">5. 世之显学 Agent+</h3>
+<p><strong>Agentic</strong> 已经成为一种显学，万物皆可 Agentic，比如 RAG 用 Agent 重做一下叫 <a href="https://langchain-ai.github.io/langgraph/tutorials/rag/langgraph_agentic_rag/">Agentic RAG</a>。这是好事，说明 Agent 真的有用。事实上，它已经为许多业务带来提升，比如智能客服、内容风控、商业智能 (ChatBI) &hellip;&hellip;</p>
+<p>不得不感叹，Agent 发展得实在太快了。让我们回顾一下过去半年的技术进展：</p>
+<ul>
+<li>2024 年 11 月，Anthropic 发布了 <a href="https://github.com/modelcontextprotocol/servers">MCP</a></li>
+<li>2025 年 1 月，阿里发布 <a href="https://github.com/QwenLM/Qwen-Agent">Qwen Agent</a></li>
+<li>2025 年 3 月，OpenAI 发布 <a href="https://github.com/openai/openai-agents-python">OpenAI Agents</a></li>
+<li>2025 年 4 月，Google 发布 <a href="https://github.com/google-a2a/A2A">A2A</a></li>
+</ul>
+<p>最近，MAS (multi-agent system) 领域的声量也不小。就在前几天，Anthropic 发布了题为 <a href="https://www.anthropic.com/engineering/built-multi-agent-research-system"><em>How we built our multi-agent research system</em></a> 的博客，介绍他们将多智能体应用在研究系统中的进展。</p>
+<h2 id="二智能路由">二、智能路由</h2>
+<p>本节通过一个客诉核查 Agent，来实践智能路由模式。</p>
+<p>想象我们是一家电商平台，有位用户发起了客诉，我们用 Agent 核查用户投诉的内容是否属实。这个 Agent 的功能是，根据预设的客诉类型，将客诉转入对应的流程。我们希望待决策问题不要过于简单，必须是 <code>if else</code> 无法实现的，否则 Agent 将变成画蛇添足的产物。</p>
+<p><img src="/img/agent_2_1.png" alt="image"></p>
+<p>客诉以 json 形式传入：</p>
+<pre tabindex="0"><code>{
+    &#34;uid&#34;: 103,
+    &#34;route&#34;: &#34;after_sales&#34;,
+    &#34;content&#34;: &#34;我等了很久，没收到货&#34;,
+    &#34;time&#34;: &#34;2025-06-01 12:03:55&#34;
+}
+</code></pre><p>Agent 接到这条消息，立即判断属于哪种客诉类型，并交给对应的 MCP 核查。核查需要包含最终结果和数据库中的数据作为证据。在没有核查到对应问题的情况下，需要额外检查用户订单状态是否有其他异常。如果有，也应该作为上下文返回给运营同学。</p>
+<p>目录：</p>
+<ol>
+<li>构造样本数据</li>
+<li>使用 Python 连接 Postgres</li>
+<li>使用 MCP 查询 Postgres</li>
+<li>开发客诉核查 Workflow</li>
+</ol>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/agent-project/blob/main/2.intelligent_routing.ipynb')">查看笔记</button>
+</center>
+<br>
+<h2 id="三数据库查询优化-nl2sql-优化">三、数据库查询优化 (NL2SQL 优化)</h2>
+<p>我发现只用 <a href="https://github.com/modelcontextprotocol/servers-archived/tree/main/src/postgres">Postgres MCP Server</a> 无法达到很好的查询效果。于是决定做一些 Agent 的链路工程开发，以提升 MCP 使用数据库数据的能力。我们注意到直接使用 MCP 无法达到很好效果的原因是：Agent 不会固定地“先获取表结构，再写 SQL”；而是“在缺乏背景信息的情况下，直接写 SQL”，由此产生了幻觉。</p>
+<h3 id="1-两种思路">1. 两种思路</h3>
+<p>我们尝试以下两种思路，看一下哪种方法更优：</p>
+<p><strong>1）提示词工程</strong></p>
+<p>在 Prompt 中，让 Agent 先获取表结构，再根据表结构写 SQL。由于此任务较为复杂，可以开启 <code>ReActChat</code> 模式。</p>
+<p><strong>2）链路工程</strong></p>
+<p>开发一个定制的链路工程，为 MCP 添加更多上下文，让 Agent 获得充分的上下文之后再写 <code>SQL</code>。</p>
+<p><img src="/img/agent_3_1.png" alt="image"></p>
+<h3 id="2-开发-webui">2. 开发 WebUI</h3>
+<p>我还开发了对应的 WebUI：</p>
+<ol>
+<li><strong>ReActChat WebUI</strong>：<a href="https://github.com/luochang212/agent-project/blob/main/gradio_postgres_agent.py">gradio_postgres_agent.py</a></li>
+<li><strong>Workflow WebUI</strong>：<a href="https://github.com/luochang212/agent-project/blob/main/gradio_postgres_workflow.py">gradio_postgres_workflow.py</a></li>
+</ol>
+<p>在本地启动 WebUI 尝试哪种方法更优：</p>
+<p><strong>1）ReActChat WebUI</strong>：用于验证提示词工程思路</p>
+<p>运行以下代码以启动 WebUI：</p>
+<pre tabindex="0"><code># 启动 ReActChat WebUI
+python gradio_postgres_agent.py
+</code></pre><p>提示词：</p>
+<pre tabindex="0"><code>查询用户（用户ID为103）的所有订单信息。
+请先调用工具，查询订单表的表结构；然后写 SQL；最后调用工具执行 SQL。
+请以 Markdown 表格的形式，展示该用户的订单信息。
+</code></pre><p>执行结果：</p>
+<img src="/img/prompt_engineering.jpg" style="height:750px" alt="prompt_engineering">
+<p>对比数据库中的真实数据：</p>
+<pre tabindex="0"><code>(1003, 103, 1, 5003, &#39;ordered&#39;, &#39;2025-05-03 09:15:00&#39;)
+</code></pre><p>我们发现 Agent 出现了幻觉。但是不要对 <code>ReActChat</code> 梁木好吗，毕竟我用的是 <code>Qwen3-0.6B-FP8</code> 这样的小尺寸模型。</p>
+<p><strong>2）Workflow WebUI</strong>：用于验证链路工程思路</p>
+<p>运行以下代码以启动 WebUI：</p>
+<pre tabindex="0"><code># 启动 Workflow WebUI
+python gradio_postgres_workflow.py
+</code></pre><p>提示词：</p>
+<pre tabindex="0"><code>查询用户（用户ID为103）的所有订单信息。
+请以 Markdown 表格的形式，展示该用户的订单信息。
+</code></pre><p>执行结果：</p>
+<img src="/img/workflow_engineering.jpg" style="height:750px" alt="workflow_engineering">
+<p>我们对比数据库中的真实数据，发现 Agent 的结果完全正确。</p>
+<blockquote>
+<p>注：数据库中的 <code>timestamp</code> 是以 UTC 格式存储的。</p>
+</blockquote>
+<h3 id="3-小结">3. 小结</h3>
+<p>好啦，两种思路的结果对比完成！</p>
+<p>在同样使用 <code>0.6B</code> 模型的情况下，链路工程显然更胜一筹。虽然开发链路工程很辛苦，但是我们的努力带来了回报！它最终提升了查询结果的准确性。</p>
+<p>下面，我们来看一下链路工程具体是怎么开发的。</p>
+<p>剩余内容的目录：</p>
+<ol start="4">
+<li>初始化 Qwen Agent</li>
+<li>从一个简单的例子出发</li>
+<li>开发 Postgres 数据库查询模块</li>
+<li>开发 Postgres 数据库查询工具</li>
+<li>回到最初的例子</li>
+</ol>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/agent-project/blob/main/3.nl2sql.ipynb')">查看笔记</button>
+</center>
+<br>
+<h2 id="四后日谈">四、后日谈</h2>
+<blockquote>
+<p>一些碎碎念。</p>
+</blockquote>
+<h3 id="1-技术大爆发">1. 技术大爆发</h3>
+<p>大模型输入是语言，输出也是语言，它终究是一种语言模态的东西。想要影响现实世界，比如执行程序、操纵机械臂，就需要一种通信协议，来实现自然语言到接口语言的转换，于是 <strong>MCP</strong> 出现了；囿于单个大模型的上下文窗口限制、参数量限制、思考时间限制，它无法完成复杂且长程的工作。如果有一个框架，把多个乃至多种大模型组织起来，通力协作，共同完成一项任务该有多好，于是 <strong>Agent</strong> 又出现了。</p>
+<p>蛮不可思议的。短短数年间，我们经历了：</p>
+<ol>
+<li>互联网+</li>
+<li>AI+</li>
+<li>LLM+</li>
+<li>Agent+</li>
+</ol>
+<p>看似每项技术都发展得普通且合理，但是跳出来一看，就被技术爆发的速度所震惊。不知道的还以为我们 <a href="https://arxiv.org/abs/1706.03762">2017 年</a> 捡到外星飞船了呢。</p>
+<h3 id="2-对-openai-agents-的看法">2. 对 OpenAI Agents 的看法</h3>
+<p>做技术选型的时候，我没有选 OpenAI Agents，最终还是选了 Qwen Agent。究其根本，是因为 OpenAI Agents 不是一个完全开源的 Agent.</p>
+<ol>
+<li><strong>功能阉割</strong>：OpenAI Agents 的付费接口叫 <a href="https://platform.openai.com/docs/api-reference/responses">Responses API</a>，开源接口叫 <a href="https://platform.openai.com/docs/api-reference/chat">Chat Completions API</a>，付费接口和开源接口协议不同，且开源接口功能阉割严重</li>
+<li><strong>封禁供应商</strong>：检查模型名中的供应商名，若供应商遭封禁，运行时会报错</li>
+<li><strong>追踪 IP</strong>：默认开启 <code>tracing</code> 模式。若要关闭追踪，需设置环境变量 <code>OPENAI_AGENTS_DISABLE_TRACING=1</code>。初次使用者几乎必然向 OpenAI 的服务器暴露自己的 IP</li>
+</ol>
+<p>虽然 OpenAI 依然是行业的开创者和领先者，但是嘴脸实在太难看了。声称为了人类福祉却做着蝇营狗苟的事，这一点上我赞同马斯克，OpenAI 应该改名叫 CloseAI.</p>
+<h3 id="3-预研计划">3. 预研计划</h3>
+<p>Agent 是调用 MCP 的最佳方法，两者无法分开，因此不得不将两者置于同一项目下。如此，项目便显得有些臃肿。为了让它条理清晰，我又不得不设置了一些阶段性的小目标。于是便有了预研计划。</p>
+<p>预研计划如下：</p>
+<ol>
+<li>Qwen3 推理脚本开发：<a href="https://github.com/luochang212/agent-project/tree/main/test_qwen3">test_qwen3</a></li>
+<li>基于 LangChain 实现 RAG：<a href="https://github.com/luochang212/agent-project/tree/main/test_rag">test_rag</a></li>
+<li>Qwen Agent 的简单使用：<a href="https://github.com/luochang212/agent-project/tree/main/test_qwen_agent">test_qwen_agent</a></li>
+<li>OpenAI Agents 的简单使用：<a href="https://github.com/luochang212/agent-project/tree/main/test_openai_agent">test_openai_agent</a></li>
+</ol>
+<p>关于预研计划的具体说明见 <a href="https://github.com/luochang212/agent-project?tab=readme-ov-file#%E4%BA%94%E9%A2%84%E7%A0%94%E8%AE%A1%E5%88%92">预研计划</a>。</p>
+<p>参考：</p>
+<ul>
+<li><a href="https://mp.weixin.qq.com/s/5bkxnrEoLwQWtmwc26CFEA">Manus模式真的有用？阿里妈妈业务风控「深度研究」初探</a></li>
+<li><a href="https://mp.weixin.qq.com/s/CpdXBPTmRZOmTWutywgw3A">如何让 Agent 规划调用工具</a></li>
+</ul>
+<div id="mini-overlay" onclick="overlay_off()"></div>
+<div id="mini-window"><iframe id="mini-iframe" frameBorder="0"></iframe></div>
+<button id="btn-close" onclick="overlay_off()">×</button>
+<script src="/mini-viewer/overlay.js"></script>
+<link rel="stylesheet" href="/mini-viewer/style.css">
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/sft_note/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">三种方法实现监督微调：LLaMA Factory, trl 和 unsloth</span>
+    </a>
+    
+    
+    <a href="/posts/card_magic_mcp/" class="navigation-next">
+      <span class="navigation-tittle">新瓶装旧酒：纸牌魔术 MCP</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+</div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.js" defer></script>
+
+
+<script defer src="https://kit.fontawesome.com/2134995a39.js" crossorigin="anonymous"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/tocbot@4.36.8/dist/tocbot.min.js"></script>
+<script type="text/javascript">
+  if (window.tocbot) {
+    tocbot.init({
+      
+      tocSelector: '.toc',
+      
+      contentSelector: '.post',
+      
+      headingSelector: 'h2, h3, h4',
+      collapseDepth: 4
+    });
+  }
+</script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    mediumZoom('.post img', {
+      background: 'rgba(0,0,0,0.82)',
+      margin: 24,
+      scrollOffset: 0
+    });
+  });
+</script>
+
+
+
+    
+
+
+
+  </body>
+</html>

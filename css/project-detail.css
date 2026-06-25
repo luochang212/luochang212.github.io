@@ -1,0 +1,468 @@
+/* === Project Detail — Developer-Terminal design (after jose.dulan.to) === */
+/* 全站 JetBrains Mono · 纯黑底 · 青色强调 · 紫色 CTA · 假终端面板            */
+/* 字体经各页 <head> 的 Google Fonts <link> 加载，本文件不含 @import          */
+
+:root {
+  --bg: #000;
+  --surface: #1c1f22;
+  --surface-2: #14171a;
+  --text: #f4f4f4;
+  --muted: #a8a8a8;
+  --dim: #6e7378;
+  --cyan: #08bdba;
+  --purple: #ac4bff;
+  --pink: #fb2c36;
+  --magenta: #f6339a;
+  --amber: #edb200;
+  --line: #ffffff1a;
+  --line-strong: #ffffff2e;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+body {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas,
+    monospace;
+  line-height: 1.7;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+::selection {
+  background: var(--cyan);
+  color: #000;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ---------- nav ---------- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 28px;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+}
+.nav .back {
+  color: var(--muted);
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  letter-spacing: 0.02em;
+}
+.nav .back:hover {
+  color: var(--cyan);
+}
+.nav .crumb {
+  color: var(--dim);
+}
+.nav .crumb b {
+  color: var(--cyan);
+  font-weight: 500;
+}
+.nav .gh {
+  color: var(--text);
+  border: 1px solid var(--line-strong);
+  padding: 7px 14px;
+  border-radius: 6px;
+  letter-spacing: 0.08em;
+  font-size: 12px;
+  transition: 0.2s;
+}
+.nav .gh:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+/* ---------- layout ---------- */
+.wrap {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 48px 28px 80px;
+}
+
+/* ---------- hero ---------- */
+.hero {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 40px;
+  align-items: start;
+  margin-bottom: 56px;
+}
+.tag {
+  color: var(--cyan);
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.tag .slash {
+  color: var(--dim);
+}
+h1.title {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 18px;
+}
+h1.title .accent {
+  color: var(--cyan);
+}
+.lede {
+  color: var(--muted);
+  font-size: 15.5px;
+  max-width: 46ch;
+  margin-bottom: 14px;
+}
+.lede b {
+  color: var(--text);
+  font-weight: 500;
+}
+.meta {
+  color: var(--dim);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  margin-bottom: 26px;
+}
+.cta-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: 0.2s;
+  border: 1px solid transparent;
+}
+.btn-primary {
+  background: var(--purple);
+  color: #fff;
+  box-shadow: 0 0 0 1px #00000040, 0 8px 24px #ac4bff33;
+}
+.btn-primary:hover {
+  background: #bd6bff;
+  transform: translateY(-1px);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--line-strong);
+}
+.btn-ghost:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+.arrow {
+  color: var(--cyan);
+}
+
+/* ---------- terminal widget ---------- */
+.term {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 18px 50px #00000080;
+  font-size: 12.5px;
+}
+.term-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 14px;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--line);
+  color: var(--dim);
+}
+.term-bar .dots {
+  display: flex;
+  gap: 6px;
+}
+.term-bar .dots i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: block;
+  background: #333;
+}
+.term-bar .dots i:nth-child(1) {
+  background: #ff5f56;
+}
+.term-bar .dots i:nth-child(2) {
+  background: #ffbd2e;
+}
+.term-bar .dots i:nth-child(3) {
+  background: #27c93f;
+}
+.term-bar .title {
+  letter-spacing: 0.04em;
+}
+.term-bar .ver {
+  color: var(--cyan);
+  font-size: 11px;
+}
+.term-body {
+  padding: 16px;
+}
+.stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.stat {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+}
+.stat .k {
+  color: var(--dim);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.stat .v {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.stat .v .u {
+  color: var(--cyan);
+  font-size: 12px;
+  margin-left: 4px;
+}
+.bar {
+  height: 6px;
+  border-radius: 4px;
+  background: #ffffff14;
+  margin-top: 8px;
+  overflow: hidden;
+}
+.bar i {
+  display: block;
+  height: 100%;
+  width: 95%;
+  background: linear-gradient(90deg, var(--cyan), #0ee);
+}
+.logs {
+  font-size: 12px;
+}
+.logs .row {
+  display: flex;
+  gap: 8px;
+  padding: 2px 0;
+  color: var(--muted);
+}
+.logs .row .gt {
+  color: var(--cyan);
+}
+.logs .row .k {
+  color: var(--pink);
+}
+.logs .row .ok {
+  color: #27c93f;
+}
+.term-foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  font-size: 11px;
+  color: var(--dim);
+  letter-spacing: 0.04em;
+}
+.term-foot .online {
+  color: var(--cyan);
+}
+
+/* ---------- sections ---------- */
+.section {
+  margin-bottom: 30px;
+}
+.section > h2 {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.section > h2 .hash {
+  color: var(--cyan);
+}
+.section > h2 .num {
+  color: var(--dim);
+  font-weight: 400;
+}
+.section > h2 .en {
+  color: var(--dim);
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 24px 26px;
+  color: var(--muted);
+  font-size: 14.5px;
+}
+.card p {
+  margin-bottom: 12px;
+}
+.card p:last-child {
+  margin-bottom: 0;
+}
+.card strong {
+  color: var(--text);
+  font-weight: 600;
+}
+.card code {
+  background: var(--surface-2);
+  color: var(--cyan);
+  padding: 2px 7px;
+  border-radius: 5px;
+  font-size: 0.9em;
+  border: 1px solid var(--line);
+}
+/* syntax highlight utility classes */
+.kw {
+  color: var(--cyan);
+}
+.kw2 {
+  color: var(--pink);
+}
+.kw3 {
+  color: var(--amber);
+}
+.num {
+  color: var(--magenta);
+}
+.specs {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+.specs li {
+  display: grid;
+  grid-template-columns: 16px 1fr;
+  gap: 10px;
+  align-items: start;
+}
+.specs li .gt {
+  color: var(--cyan);
+}
+.specs li b {
+  color: var(--text);
+  font-weight: 600;
+}
+.specs li .v {
+  color: var(--muted);
+}
+
+/* ---------- figure (terminal-framed images) ---------- */
+.figure {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 1.4rem 0;
+}
+.figure figcaption {
+  padding: 8px 14px;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--line);
+  color: var(--dim);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+.figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ---------- footer ---------- */
+.foot {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 11px;
+  color: var(--dim);
+  letter-spacing: 0.05em;
+}
+.foot .sys {
+  color: var(--cyan);
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 820px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .wrap {
+    padding: 32px 18px 56px;
+  }
+  .nav {
+    padding: 12px 18px;
+  }
+  .nav .crumb {
+    display: none;
+  }
+  .term {
+    max-width: 460px;
+  }
+}
+@media (max-width: 480px) {
+  h1.title {
+    font-size: 1.8rem;
+  }
+  .card {
+    padding: 18px 16px;
+  }
+  .stat-grid {
+    grid-template-columns: 1fr;
+  }
+}

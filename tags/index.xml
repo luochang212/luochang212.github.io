@@ -1,0 +1,1088 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Tags on Chang Luo</title>
+		<link>http://localhost:61229/tags/</link>
+		<description>Recent content in Tags on Chang Luo</description>
+		<generator>Hugo</generator>
+		<language>zh-CN</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 24 May 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:61229/tags/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Agent Skills</title>
+				<link>http://localhost:61229/tags/agent-skills/</link>
+				<pubDate>Sun, 24 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/agent-skills/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Desktop App</title>
+				<link>http://localhost:61229/tags/desktop-app/</link>
+				<pubDate>Sun, 24 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/desktop-app/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Rust</title>
+				<link>http://localhost:61229/tags/rust/</link>
+				<pubDate>Sun, 24 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/rust/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Tauri</title>
+				<link>http://localhost:61229/tags/tauri/</link>
+				<pubDate>Sun, 24 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/tauri/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Agent Harness</title>
+				<link>http://localhost:61229/tags/agent-harness/</link>
+				<pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/agent-harness/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>BOOT.md</title>
+				<link>http://localhost:61229/tags/boot.md/</link>
+				<pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/boot.md/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Claude Code</title>
+				<link>http://localhost:61229/tags/claude-code/</link>
+				<pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/claude-code/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Essence</title>
+				<link>http://localhost:61229/tags/essence/</link>
+				<pubDate>Thu, 29 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/essence/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Intelligence</title>
+				<link>http://localhost:61229/tags/intelligence/</link>
+				<pubDate>Thu, 29 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/intelligence/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Uncertainty</title>
+				<link>http://localhost:61229/tags/uncertainty/</link>
+				<pubDate>Thu, 29 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/uncertainty/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Gradio</title>
+				<link>http://localhost:61229/tags/gradio/</link>
+				<pubDate>Sun, 18 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/gradio/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>LangChain</title>
+				<link>http://localhost:61229/tags/langchain/</link>
+				<pubDate>Sun, 18 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/langchain/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Raspberry Pi</title>
+				<link>http://localhost:61229/tags/raspberry-pi/</link>
+				<pubDate>Sun, 18 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/raspberry-pi/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>RAG</title>
+				<link>http://localhost:61229/tags/rag/</link>
+				<pubDate>Sat, 27 Dec 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/rag/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>LangGraph</title>
+				<link>http://localhost:61229/tags/langgraph/</link>
+				<pubDate>Sun, 23 Nov 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/langgraph/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Middleware</title>
+				<link>http://localhost:61229/tags/middleware/</link>
+				<pubDate>Sun, 23 Nov 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/middleware/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Hadoop</title>
+				<link>http://localhost:61229/tags/hadoop/</link>
+				<pubDate>Sat, 15 Nov 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/hadoop/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>HDFS</title>
+				<link>http://localhost:61229/tags/hdfs/</link>
+				<pubDate>Sat, 15 Nov 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/hdfs/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Hive</title>
+				<link>http://localhost:61229/tags/hive/</link>
+				<pubDate>Sat, 15 Nov 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/hive/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>JupyterLab</title>
+				<link>http://localhost:61229/tags/jupyterlab/</link>
+				<pubDate>Sat, 15 Nov 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/jupyterlab/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Spark</title>
+				<link>http://localhost:61229/tags/spark/</link>
+				<pubDate>Sat, 15 Nov 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/spark/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>ChatBI</title>
+				<link>http://localhost:61229/tags/chatbi/</link>
+				<pubDate>Sat, 06 Sep 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/chatbi/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>LLM</title>
+				<link>http://localhost:61229/tags/llm/</link>
+				<pubDate>Sat, 06 Sep 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/llm/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>OLAP</title>
+				<link>http://localhost:61229/tags/olap/</link>
+				<pubDate>Sat, 06 Sep 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/olap/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>ClickHouse</title>
+				<link>http://localhost:61229/tags/clickhouse/</link>
+				<pubDate>Sat, 26 Jul 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/clickhouse/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Magic</title>
+				<link>http://localhost:61229/tags/magic/</link>
+				<pubDate>Sat, 12 Jul 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/magic/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>MCP</title>
+				<link>http://localhost:61229/tags/mcp/</link>
+				<pubDate>Sat, 12 Jul 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/mcp/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Number-Theory</title>
+				<link>http://localhost:61229/tags/number-theory/</link>
+				<pubDate>Sat, 12 Jul 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/number-theory/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Function Calling</title>
+				<link>http://localhost:61229/tags/function-calling/</link>
+				<pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/function-calling/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>NL2SQL</title>
+				<link>http://localhost:61229/tags/nl2sql/</link>
+				<pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/nl2sql/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Qwen Agent</title>
+				<link>http://localhost:61229/tags/qwen-agent/</link>
+				<pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/qwen-agent/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>ReActChat</title>
+				<link>http://localhost:61229/tags/reactchat/</link>
+				<pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/reactchat/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Workflow</title>
+				<link>http://localhost:61229/tags/workflow/</link>
+				<pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/workflow/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>LLaMA Factory</title>
+				<link>http://localhost:61229/tags/llama-factory/</link>
+				<pubDate>Sat, 26 Apr 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/llama-factory/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Trl</title>
+				<link>http://localhost:61229/tags/trl/</link>
+				<pubDate>Sat, 26 Apr 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/trl/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Unsloth</title>
+				<link>http://localhost:61229/tags/unsloth/</link>
+				<pubDate>Sat, 26 Apr 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/unsloth/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>BLIP2</title>
+				<link>http://localhost:61229/tags/blip2/</link>
+				<pubDate>Sat, 19 Apr 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/blip2/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>DBSCAN</title>
+				<link>http://localhost:61229/tags/dbscan/</link>
+				<pubDate>Sat, 19 Apr 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/dbscan/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Hungarian Algorithm</title>
+				<link>http://localhost:61229/tags/hungarian-algorithm/</link>
+				<pubDate>Sat, 19 Apr 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/hungarian-algorithm/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Ollama</title>
+				<link>http://localhost:61229/tags/ollama/</link>
+				<pubDate>Fri, 21 Mar 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/ollama/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Transformers</title>
+				<link>http://localhost:61229/tags/transformers/</link>
+				<pubDate>Fri, 21 Mar 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/transformers/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>VLLM</title>
+				<link>http://localhost:61229/tags/vllm/</link>
+				<pubDate>Fri, 21 Mar 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/vllm/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Langflow</title>
+				<link>http://localhost:61229/tags/langflow/</link>
+				<pubDate>Sat, 15 Mar 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/langflow/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Autoencoder</title>
+				<link>http://localhost:61229/tags/autoencoder/</link>
+				<pubDate>Sun, 09 Mar 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/autoencoder/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>DEC</title>
+				<link>http://localhost:61229/tags/dec/</link>
+				<pubDate>Sun, 09 Mar 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/dec/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>DINOv2</title>
+				<link>http://localhost:61229/tags/dinov2/</link>
+				<pubDate>Sun, 09 Mar 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/dinov2/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>CLIP</title>
+				<link>http://localhost:61229/tags/clip/</link>
+				<pubDate>Sun, 29 Dec 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/clip/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Faiss</title>
+				<link>http://localhost:61229/tags/faiss/</link>
+				<pubDate>Sun, 29 Dec 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/faiss/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>FastAPI</title>
+				<link>http://localhost:61229/tags/fastapi/</link>
+				<pubDate>Sun, 29 Dec 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/fastapi/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Clustering</title>
+				<link>http://localhost:61229/tags/clustering/</link>
+				<pubDate>Sun, 01 Dec 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/clustering/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>CluStream</title>
+				<link>http://localhost:61229/tags/clustream/</link>
+				<pubDate>Sun, 01 Dec 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/clustream/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>DenStream</title>
+				<link>http://localhost:61229/tags/denstream/</link>
+				<pubDate>Sun, 01 Dec 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/denstream/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>River</title>
+				<link>http://localhost:61229/tags/river/</link>
+				<pubDate>Sun, 01 Dec 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/river/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>ONNX</title>
+				<link>http://localhost:61229/tags/onnx/</link>
+				<pubDate>Sat, 30 Nov 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/onnx/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Triton</title>
+				<link>http://localhost:61229/tags/triton/</link>
+				<pubDate>Sat, 30 Nov 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/triton/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Command</title>
+				<link>http://localhost:61229/tags/command/</link>
+				<pubDate>Sat, 23 Nov 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/command/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Docker</title>
+				<link>http://localhost:61229/tags/docker/</link>
+				<pubDate>Sat, 23 Nov 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/docker/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>FP-Growth</title>
+				<link>http://localhost:61229/tags/fp-growth/</link>
+				<pubDate>Thu, 05 Sep 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/fp-growth/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>PrefixSpan</title>
+				<link>http://localhost:61229/tags/prefixspan/</link>
+				<pubDate>Thu, 05 Sep 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/prefixspan/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>PySpark</title>
+				<link>http://localhost:61229/tags/pyspark/</link>
+				<pubDate>Thu, 05 Sep 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/pyspark/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Milvus</title>
+				<link>http://localhost:61229/tags/milvus/</link>
+				<pubDate>Sun, 18 Aug 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/milvus/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Redis</title>
+				<link>http://localhost:61229/tags/redis/</link>
+				<pubDate>Sun, 18 Aug 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/redis/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Vector Engine</title>
+				<link>http://localhost:61229/tags/vector-engine/</link>
+				<pubDate>Sun, 18 Aug 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/vector-engine/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>GAT</title>
+				<link>http://localhost:61229/tags/gat/</link>
+				<pubDate>Sat, 10 Aug 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/gat/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>GCN</title>
+				<link>http://localhost:61229/tags/gcn/</link>
+				<pubDate>Sat, 10 Aug 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/gcn/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>GraphSAGE</title>
+				<link>http://localhost:61229/tags/graphsage/</link>
+				<pubDate>Sat, 10 Aug 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/graphsage/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Connected Component</title>
+				<link>http://localhost:61229/tags/connected-component/</link>
+				<pubDate>Sat, 27 Jul 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/connected-component/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Graph</title>
+				<link>http://localhost:61229/tags/graph/</link>
+				<pubDate>Sat, 27 Jul 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/graph/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Jaccard Similarity</title>
+				<link>http://localhost:61229/tags/jaccard-similarity/</link>
+				<pubDate>Sat, 27 Jul 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/jaccard-similarity/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Decay</title>
+				<link>http://localhost:61229/tags/decay/</link>
+				<pubDate>Sun, 07 Jul 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/decay/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Dropout</title>
+				<link>http://localhost:61229/tags/dropout/</link>
+				<pubDate>Sun, 07 Jul 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/dropout/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Bert</title>
+				<link>http://localhost:61229/tags/bert/</link>
+				<pubDate>Sat, 06 Jul 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/bert/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Classification</title>
+				<link>http://localhost:61229/tags/classification/</link>
+				<pubDate>Sat, 06 Jul 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/classification/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Sentiment</title>
+				<link>http://localhost:61229/tags/sentiment/</link>
+				<pubDate>Sat, 06 Jul 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/sentiment/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Transformer</title>
+				<link>http://localhost:61229/tags/transformer/</link>
+				<pubDate>Sat, 06 Jul 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/transformer/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Embedding</title>
+				<link>http://localhost:61229/tags/embedding/</link>
+				<pubDate>Sat, 29 Jun 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/embedding/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Representation</title>
+				<link>http://localhost:61229/tags/representation/</link>
+				<pubDate>Sat, 29 Jun 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/representation/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Arxiv</title>
+				<link>http://localhost:61229/tags/arxiv/</link>
+				<pubDate>Sun, 16 Jun 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/arxiv/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>MultiHeadAttention</title>
+				<link>http://localhost:61229/tags/multiheadattention/</link>
+				<pubDate>Sun, 09 Jun 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/multiheadattention/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>PositionalEncoding</title>
+				<link>http://localhost:61229/tags/positionalencoding/</link>
+				<pubDate>Sun, 09 Jun 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/positionalencoding/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Jupyter</title>
+				<link>http://localhost:61229/tags/jupyter/</link>
+				<pubDate>Thu, 30 May 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/jupyter/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Nohup</title>
+				<link>http://localhost:61229/tags/nohup/</link>
+				<pubDate>Thu, 30 May 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/nohup/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>FlameAI</title>
+				<link>http://localhost:61229/tags/flameai/</link>
+				<pubDate>Sat, 25 May 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/flameai/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Model Evaluation</title>
+				<link>http://localhost:61229/tags/model-evaluation/</link>
+				<pubDate>Sat, 25 May 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/model-evaluation/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>PyPI</title>
+				<link>http://localhost:61229/tags/pypi/</link>
+				<pubDate>Sat, 25 May 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/pypi/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Note</title>
+				<link>http://localhost:61229/tags/note/</link>
+				<pubDate>Wed, 15 May 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/note/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>LSTM</title>
+				<link>http://localhost:61229/tags/lstm/</link>
+				<pubDate>Sun, 12 May 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/lstm/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>RNN</title>
+				<link>http://localhost:61229/tags/rnn/</link>
+				<pubDate>Sun, 12 May 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/rnn/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Graphviz</title>
+				<link>http://localhost:61229/tags/graphviz/</link>
+				<pubDate>Sat, 13 Apr 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/graphviz/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>LightGBM</title>
+				<link>http://localhost:61229/tags/lightgbm/</link>
+				<pubDate>Sat, 13 Apr 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/lightgbm/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Optuna</title>
+				<link>http://localhost:61229/tags/optuna/</link>
+				<pubDate>Sat, 13 Apr 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/optuna/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Treelite</title>
+				<link>http://localhost:61229/tags/treelite/</link>
+				<pubDate>Sat, 13 Apr 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/treelite/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>HTTP</title>
+				<link>http://localhost:61229/tags/http/</link>
+				<pubDate>Sat, 02 Mar 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/http/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Web</title>
+				<link>http://localhost:61229/tags/web/</link>
+				<pubDate>Sat, 02 Mar 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/web/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Community</title>
+				<link>http://localhost:61229/tags/community/</link>
+				<pubDate>Sun, 25 Feb 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/community/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Raspberry Pi 5</title>
+				<link>http://localhost:61229/tags/raspberry-pi-5/</link>
+				<pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/raspberry-pi-5/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Ubuntu</title>
+				<link>http://localhost:61229/tags/ubuntu/</link>
+				<pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/ubuntu/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>D2L</title>
+				<link>http://localhost:61229/tags/d2l/</link>
+				<pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/d2l/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Python</title>
+				<link>http://localhost:61229/tags/python/</link>
+				<pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/python/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Bash</title>
+				<link>http://localhost:61229/tags/bash/</link>
+				<pubDate>Sat, 03 Feb 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/bash/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>CentOS</title>
+				<link>http://localhost:61229/tags/centos/</link>
+				<pubDate>Sat, 03 Feb 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/centos/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Operations</title>
+				<link>http://localhost:61229/tags/operations/</link>
+				<pubDate>Sat, 03 Feb 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/operations/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Home</title>
+				<link>http://localhost:61229/tags/home/</link>
+				<pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/home/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Shopping-List</title>
+				<link>http://localhost:61229/tags/shopping-list/</link>
+				<pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/shopping-list/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Package</title>
+				<link>http://localhost:61229/tags/package/</link>
+				<pubDate>Wed, 18 Oct 2023 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/package/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Hive-SQL</title>
+				<link>http://localhost:61229/tags/hive-sql/</link>
+				<pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/hive-sql/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Causality</title>
+				<link>http://localhost:61229/tags/causality/</link>
+				<pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/causality/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>R-Project</title>
+				<link>http://localhost:61229/tags/r-project/</link>
+				<pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/r-project/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>APP</title>
+				<link>http://localhost:61229/tags/app/</link>
+				<pubDate>Sun, 03 Jul 2022 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/app/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>API</title>
+				<link>http://localhost:61229/tags/api/</link>
+				<pubDate>Sat, 21 Nov 2020 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/api/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Poisson-Distribution</title>
+				<link>http://localhost:61229/tags/poisson-distribution/</link>
+				<pubDate>Sat, 19 Sep 2020 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/poisson-distribution/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Hadoop-Streaming</title>
+				<link>http://localhost:61229/tags/hadoop-streaming/</link>
+				<pubDate>Sat, 25 Jul 2020 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/hadoop-streaming/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>MapReduce</title>
+				<link>http://localhost:61229/tags/mapreduce/</link>
+				<pubDate>Sat, 25 Jul 2020 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/mapreduce/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Practice</title>
+				<link>http://localhost:61229/tags/practice/</link>
+				<pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/practice/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Combinatorics</title>
+				<link>http://localhost:61229/tags/combinatorics/</link>
+				<pubDate>Fri, 21 Feb 2020 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/combinatorics/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Experience</title>
+				<link>http://localhost:61229/tags/experience/</link>
+				<pubDate>Wed, 12 Feb 2020 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/experience/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>UK</title>
+				<link>http://localhost:61229/tags/uk/</link>
+				<pubDate>Wed, 12 Feb 2020 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/uk/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Bayesian</title>
+				<link>http://localhost:61229/tags/bayesian/</link>
+				<pubDate>Fri, 31 Jan 2020 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/bayesian/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Tips</title>
+				<link>http://localhost:61229/tags/tips/</link>
+				<pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/tips/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Elasticsearch</title>
+				<link>http://localhost:61229/tags/elasticsearch/</link>
+				<pubDate>Thu, 24 Oct 2019 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/elasticsearch/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Search-Engine</title>
+				<link>http://localhost:61229/tags/search-engine/</link>
+				<pubDate>Thu, 24 Oct 2019 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/search-engine/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>DEMO</title>
+				<link>http://localhost:61229/tags/demo/</link>
+				<pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/demo/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Monaco-Editor</title>
+				<link>http://localhost:61229/tags/monaco-editor/</link>
+				<pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/monaco-editor/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Web-Speech-API</title>
+				<link>http://localhost:61229/tags/web-speech-api/</link>
+				<pubDate>Thu, 22 Aug 2019 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/web-speech-api/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Network-Performance-Analysis</title>
+				<link>http://localhost:61229/tags/network-performance-analysis/</link>
+				<pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/network-performance-analysis/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Poisson-Process</title>
+				<link>http://localhost:61229/tags/poisson-process/</link>
+				<pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/poisson-process/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Queuing-Theory</title>
+				<link>http://localhost:61229/tags/queuing-theory/</link>
+				<pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/queuing-theory/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Beef</title>
+				<link>http://localhost:61229/tags/beef/</link>
+				<pubDate>Tue, 02 Jul 2019 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/beef/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Chicken</title>
+				<link>http://localhost:61229/tags/chicken/</link>
+				<pubDate>Tue, 02 Jul 2019 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/chicken/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Pork</title>
+				<link>http://localhost:61229/tags/pork/</link>
+				<pubDate>Tue, 02 Jul 2019 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/pork/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>ABM</title>
+				<link>http://localhost:61229/tags/abm/</link>
+				<pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/abm/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Agent-Based-Model</title>
+				<link>http://localhost:61229/tags/agent-based-model/</link>
+				<pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/agent-based-model/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Nature-System</title>
+				<link>http://localhost:61229/tags/nature-system/</link>
+				<pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/nature-system/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Efficient</title>
+				<link>http://localhost:61229/tags/efficient/</link>
+				<pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/efficient/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Plan</title>
+				<link>http://localhost:61229/tags/plan/</link>
+				<pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/plan/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>To-Do-List</title>
+				<link>http://localhost:61229/tags/to-do-list/</link>
+				<pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/to-do-list/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Layout</title>
+				<link>http://localhost:61229/tags/layout/</link>
+				<pubDate>Fri, 10 May 2019 21:43:09 +0100</pubDate>
+				<guid>http://localhost:61229/tags/layout/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>PyQt5</title>
+				<link>http://localhost:61229/tags/pyqt5/</link>
+				<pubDate>Fri, 10 May 2019 21:43:09 +0100</pubDate>
+				<guid>http://localhost:61229/tags/pyqt5/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Sidebar</title>
+				<link>http://localhost:61229/tags/sidebar/</link>
+				<pubDate>Fri, 10 May 2019 21:43:09 +0100</pubDate>
+				<guid>http://localhost:61229/tags/sidebar/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Jupyter-Notebook</title>
+				<link>http://localhost:61229/tags/jupyter-notebook/</link>
+				<pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/jupyter-notebook/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Python&#34;</title>
+				<link>http://localhost:61229/tags/python/</link>
+				<pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/python/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>WeiBo</title>
+				<link>http://localhost:61229/tags/weibo/</link>
+				<pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/weibo/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Google-API</title>
+				<link>http://localhost:61229/tags/google-api/</link>
+				<pubDate>Wed, 10 Apr 2019 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/google-api/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Google-Maps</title>
+				<link>http://localhost:61229/tags/google-maps/</link>
+				<pubDate>Wed, 10 Apr 2019 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/google-maps/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Abstract-Algebra</title>
+				<link>http://localhost:61229/tags/abstract-algebra/</link>
+				<pubDate>Sat, 16 Mar 2019 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/abstract-algebra/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Permutation</title>
+				<link>http://localhost:61229/tags/permutation/</link>
+				<pubDate>Sat, 16 Mar 2019 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/permutation/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>PyCharm</title>
+				<link>http://localhost:61229/tags/pycharm/</link>
+				<pubDate>Sat, 16 Mar 2019 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/pycharm/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Ant-Colony-Algorithm</title>
+				<link>http://localhost:61229/tags/ant-colony-algorithm/</link>
+				<pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/ant-colony-algorithm/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Markowitz-Model</title>
+				<link>http://localhost:61229/tags/markowitz-model/</link>
+				<pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/markowitz-model/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Optimization</title>
+				<link>http://localhost:61229/tags/optimization/</link>
+				<pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/optimization/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Portfolio</title>
+				<link>http://localhost:61229/tags/portfolio/</link>
+				<pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/portfolio/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Literature</title>
+				<link>http://localhost:61229/tags/literature/</link>
+				<pubDate>Tue, 11 Jul 2017 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/literature/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Movie</title>
+				<link>http://localhost:61229/tags/movie/</link>
+				<pubDate>Tue, 11 Jul 2017 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/tags/movie/</guid>
+				<description></description>
+			</item>
+	</channel>
+</rss>

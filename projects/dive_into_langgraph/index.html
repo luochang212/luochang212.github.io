@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="zh-Hans">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=61229&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="author" content="luochang" />
+    <link rel="shortcut icon" type="image/png" href="/img/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300..800;1,300..600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/project-detail.css" />
+    <title>LangGraph 1.0 完全指南</title>
+  </head>
+  <body>
+    <nav class="nav">
+      <a class="back" href="/projects/">← <span>cd ../projects</span></a>
+      <span class="crumb">~/projects/<b>dive_into_langgraph</b></span>
+      <a
+        class="gh"
+        href="https://github.com/luochang212/dive-into-langgraph"
+        target="_blank"
+        rel="noopener noreferrer"
+        >GITHUB ↗</a
+      >
+    </nav>
+
+    <div class="wrap">
+      <section class="hero">
+        <div>
+          <div class="tag">
+            agent_engineering <span class="slash">//</span> langgraph / langchain / tutorial
+          </div>
+          <h1 class="title">
+            LangGraph 1.0<br /><span class="accent">完全指南</span>
+          </h1>
+          <p class="lede">
+            一套由 <b>14 个章节</b>组成的开源教程，从 ReAct Agent
+            入门，逐步深入状态管理、工作流编排、多智能体协作与应用开发。
+          </p>
+          <p class="meta">开源电子书 / Jupyter Notebook / 中文教程</p>
+          <div class="cta-row">
+            <a
+              class="btn btn-primary"
+              href="https://luochang212.github.io/dive-into-langgraph/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >在线阅读 <span class="arrow">→</span></a
+            >
+            <a class="btn btn-ghost" href="/posts/dive_into_langgraph/">项目博客</a>
+          </div>
+        </div>
+
+        <aside class="term" aria-hidden="true">
+          <div class="term-bar">
+            <span class="dots"><i></i><i></i><i></i></span>
+            <span class="title">langgraph_guide://build</span>
+            <span class="ver">v1.0</span>
+          </div>
+          <div class="term-body">
+            <div class="stat-grid">
+              <div class="stat">
+                <div class="k">CHAPTERS</div>
+                <div class="v">14<span class="u">chapters</span></div>
+              </div>
+              <div class="stat">
+                <div class="k">FORMAT</div>
+                <div class="v">IPYNB<span class="u">book</span></div>
+              </div>
+            </div>
+            <div class="stat" style="margin-bottom: 14px">
+              <div class="k">LANGGRAPH_VERSION</div>
+              <div class="v">1.0<span class="u">stable</span></div>
+              <div class="bar"><i style="width: 100%"></i></div>
+            </div>
+            <div class="logs">
+              <div class="row">
+                <span class="gt">&gt;</span><span><span class="k">load</span> stategraph</span><span class="ok">✓</span>
+              </div>
+              <div class="row">
+                <span class="gt">&gt;</span><span><span class="k">connect</span> mcp_server</span><span class="ok">✓</span>
+              </div>
+              <div class="row">
+                <span class="gt">&gt;</span><span><span class="k">build</span> gradio_agent</span><span class="ok">✓</span>
+              </div>
+              <div class="row">
+                <span class="gt">&gt;</span><span>book_ready = <span class="num">true</span></span><span class="ok">✓</span>
+              </div>
+            </div>
+            <div class="term-foot">
+              <span><span class="online">● BUILD: READY</span></span>
+              <span>LANG: ZH-CN</span>
+              <span>2025</span>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section">
+        <h2>
+          <span class="hash">//</span> <span class="num">01</span> 项目介绍
+          <span class="en">about</span>
+        </h2>
+        <div class="card">
+          <p>
+            <strong>《LangGraph 1.0 完全指南》</strong>是一套面向 Agent
+            开发者的开源教程，帮助读者同时掌握
+            <span class="kw">LangGraph</span> 与 <span class="kw2">LangChain</span>
+            的核心能力。
+          </p>
+          <p>
+            教程从构建第一个 ReAct Agent 开始，通过可运行的 Notebook
+            讲解状态、节点、边与持久化等基础概念，再逐步扩展到中间件、记忆、MCP、RAG、多智能体和应用开发。
+          </p>
+        </div>
+      </section>
+
+      <figure class="figure">
+        <figcaption>figure://langgraph_tutorial.png · 电子书界面与章节目录</figcaption>
+        <img
+          src="/img/langgraph-tutorial.png"
+          alt="LangGraph 1.0 完全指南电子书界面"
+          width="2208"
+          height="1460"
+          loading="lazy"
+        />
+      </figure>
+
+      <section class="section">
+        <h2>
+          <span class="hash">//</span> <span class="num">02</span> 内容结构
+          <span class="en">curriculum</span>
+        </h2>
+        <div class="card">
+          <ul class="specs">
+            <li>
+              <span class="gt">&gt;</span><span><b>基础框架</b><br /><span class="v">ReAct Agent、StateGraph、中间件与人机交互</span></span>
+            </li>
+            <li>
+              <span class="gt">&gt;</span><span><b>状态与上下文</b><br /><span class="v">短期记忆、长期记忆、Store、Runtime 与上下文工程</span></span>
+            </li>
+            <li>
+              <span class="gt">&gt;</span><span><b>工作流扩展</b><br /><span class="v">MCP Server、监督者模式、并行处理、RAG 与网络搜索</span></span>
+            </li>
+            <li>
+              <span class="gt">&gt;</span><span><b>应用实践</b><br /><span class="v">Deep Agents、Gradio 流式对话应用与 langgraph-cli 调试</span></span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>
+          <span class="hash">//</span> <span class="num">03</span> 实践章节
+          <span class="en">hands_on</span>
+        </h2>
+        <div class="card">
+          <p>
+            第 13 章使用 <span class="kw3">Gradio</span> 与 LangChain
+            构建流式对话智能体，展示工具调用、过程反馈、数据可视化与对话界面的组合方式。第 14
+            章介绍如何使用 <code>langgraph dev</code> 启动本地调试页面。
+          </p>
+        </div>
+      </section>
+
+      <figure class="figure">
+        <figcaption>figure://gradio_app.png · 流式对话智能体应用</figcaption>
+        <img
+          src="/img/gradio_app.png"
+          alt="基于 Gradio 的流式对话智能体应用"
+          width="1106"
+          height="710"
+          loading="lazy"
+        />
+      </figure>
+
+      <section class="section">
+        <h2>
+          <span class="hash">//</span> <span class="num">04</span> 开源协作
+          <span class="en">open_source</span>
+        </h2>
+        <div class="card">
+          <p>
+            教程源码、Notebook 与构建配置均托管在 GitHub。你可以在线阅读完整电子书，也可以提交
+            Issue 或 Pull Request，参与修正示例、补充说明与完善章节内容。
+          </p>
+          <div class="cta-row">
+            <a
+              class="btn btn-primary"
+              href="https://github.com/luochang212/dive-into-langgraph"
+              target="_blank"
+              rel="noopener noreferrer"
+              >查看仓库 <span class="arrow">→</span></a
+            >
+            <a
+              class="btn btn-ghost"
+              href="https://luochang212.github.io/dive-into-langgraph/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >阅读教程</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <div class="foot">
+        <span>© 2025 Chang Luo</span>
+        <span><span class="sys">●</span> BUILD: STABLE · UTF-8 · zh-Hans</span>
+      </div>
+    </div>
+  </body>
+</html>
+

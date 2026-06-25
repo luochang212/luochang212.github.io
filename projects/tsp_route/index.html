@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="zh-Hans">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=61229&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="author" content="luochang" />
+    <link rel="shortcut icon" type="image/png" href="/img/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300..800;1,300..600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/project-detail.css" />
+    <title>TSP旅行路线规划</title>
+  </head>
+  <body>
+    <nav class="nav">
+      <a class="back" href="/projects/">← <span>cd ../projects</span></a>
+      <span class="crumb">~/projects/<b>tsp_route</b></span>
+      <a
+        class="gh"
+        href="https://github.com/luochang212/tsp-route"
+        target="_blank"
+        rel="noopener noreferrer"
+        >GITHUB ↗</a
+      >
+    </nav>
+
+    <div class="wrap">
+      <section class="hero">
+        <div>
+          <div class="tag">
+            tsp_route <span class="slash">//</span> or-tools · google-maps ·
+            jupyter
+          </div>
+          <h1 class="title">
+            用<span class="accent"> Jupyter Notebook</span
+            ><br />规划旅行最短路线
+          </h1>
+          <p class="lede">
+            在 Google Maps 上搜索 POI → 调用
+            <b>Google Maps API</b> 获取坐标 → 用
+            <b>OR-Tools</b> 求解 TSP → 用 <b>gmaps</b> 可视化最优路线。
+          </p>
+          <p class="meta">运筹学经典问题 &middot; 旅行商问题（TSP）</p>
+          <div class="cta-row">
+            <a
+              class="btn btn-primary"
+              href="https://github.com/luochang212/tsp-route"
+              target="_blank"
+              rel="noopener noreferrer"
+              >查看源码 <span class="arrow">→</span></a
+            >
+            <a class="btn btn-ghost" href="/posts/tsp_route/">阅读全文</a>
+          </div>
+        </div>
+
+        <aside class="term" aria-hidden="true">
+          <div class="term-bar">
+            <span class="dots"><i></i><i></i><i></i></span>
+            <span class="title">tsp_solver://run</span>
+            <span class="ver">v1.0.0</span>
+          </div>
+          <div class="term-body">
+            <div class="stat-grid">
+              <div class="stat">
+                <div class="k">MODEL</div>
+                <div class="v">TSP<span class="u">Hamiltonian</span></div>
+              </div>
+              <div class="stat">
+                <div class="k">SOLVER</div>
+                <div class="v">OR-Tools<span class="u">Google</span></div>
+              </div>
+            </div>
+            <div class="stat" style="margin-bottom: 14px">
+              <div class="k">ROUTE_OPTIMIZED</div>
+              <div class="v">shortest<span class="u">path</span></div>
+              <div class="bar"><i style="width:100%"></i></div>
+            </div>
+            <div class="logs">
+              <div class="row">
+                <span class="gt">&gt;</span
+                ><span><span class="k">fetch</span> POI coordinates</span
+                ><span class="ok">✓</span>
+              </div>
+              <div class="row">
+                <span class="gt">&gt;</span
+                ><span><span class="k">build</span> distance matrix</span>
+              </div>
+              <div class="row">
+                <span class="gt">&gt;</span
+                ><span><span class="k">solve</span> TSP(places=8)</span>
+              </div>
+              <div class="row">
+                <span class="gt">&gt;</span
+                ><span>route = <span class="num">[0,3,5,2,7,1,6,4,0]</span></span
+                ><span class="ok">✓</span>
+              </div>
+            </div>
+            <div class="term-foot">
+              <span><span class="online">● SYSTEM: ONLINE</span></span>
+              <span>MEM 4.2GB / 128GB</span>
+              <span>2019</span>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section">
+        <h2>
+          <span class="hash">//</span> <span class="num">01</span> 问题背景
+          <span class="en">background</span>
+        </h2>
+        <div class="card">
+          <p>
+            在欧洲旅行时，如何走<b>最少的路</b>遍历所有景点？Google Maps 的 "Add destination" 只能按顺序串联地点，无法给出<strong>全局最短路径</strong>。
+          </p>
+          <p>
+            这个需求正是运筹学经典问题——<strong>旅行商问题（<span class="kw">TSP</span>）</strong>：给定一组城市，找出一条遍历所有城市并回到起点的最短回路。
+          </p>
+          <ul class="specs">
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>输入</b><br /><span class="v"
+                  >一组 POI（景点）名称 + 所在城市</span
+                ></span
+              >
+            </li>
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>输出</b><br /><span class="v"
+                  >Google Maps 上的最短遍历路线 + 总距离</span
+                ></span
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>
+          <span class="hash">//</span> <span class="num">02</span> 技术方案
+          <span class="en">stack</span>
+        </h2>
+        <div class="card">
+          <ul class="specs">
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>坐标获取</b><br /><span class="v"
+                  ><span class="kw">googlemaps</span> 包调用 Google Maps API，获取每个 POI 的经纬度</span
+                ></span
+              >
+            </li>
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>TSP 求解</b><br /><span class="v"
+                  >Google <span class="kw2">OR-Tools</span> 求解器，构建距离矩阵并计算最短哈密顿回路</span
+                ></span
+              >
+            </li>
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>路线可视化</b><br /><span class="v"
+                  ><span class="kw3">gmaps</span> 包在 Jupyter Notebook 中渲染交互式地图，标注路线</span
+                ></span
+              >
+            </li>
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>运行环境</b><br /><span class="v"
+                  >Jupyter Notebook + Python，支持 walking / driving / bicycling / transit 四种出行方式</span
+                ></span
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>
+          <span class="hash">//</span> <span class="num">03</span> 使用指南
+          <span class="en">guide</span>
+        </h2>
+        <div class="card">
+          <p>
+            克隆项目后在 Jupyter Notebook 打开
+            <code>TSPSolver.ipynb</code>，修改第二个代码块的配置变量即可：
+          </p>
+          <ul class="specs">
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>places</b><br /><span class="v"
+                  >目的地列表，如 'London Eye', 'Big Ben', ...</span
+                ></span
+              >
+            </li>
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>Location</b><br /><span class="v"
+                  >所在城市，如 'London'</span
+                ></span
+              >
+            </li>
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>Mode</b><br /><span class="v"
+                  >出行方式：<span class="num">"walking"</span> / <span class="num">"driving"</span> / <span class="num">"bicycling"</span> / <span class="num">"transit"</span></span
+                ></span
+              >
+            </li>
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>password</b><br /><span class="v"
+                  >Google Maps API key，从 <span class="kw">Google Cloud Console</span> 获取</span
+                ></span
+              >
+            </li>
+          </ul>
+          <p style="margin-top:12px">
+            从头到尾运行所有代码块，即可在 Notebook 中获得交互式最优路线图。
+          </p>
+        </div>
+      </section>
+
+      <div class="foot">
+        <span>© 2019 Chang Luo</span>
+        <span><span class="sys">●</span> BUILD: STABLE · UTF-8 · zh-Hans</span>
+      </div>
+    </div>
+  </body>
+</html>
+

@@ -1,0 +1,1135 @@
+<!doctype html>
+<html lang="zh-CN">
+  
+    
+
+
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=61229&amp;path=livereload" data-no-instant defer></script>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://localhost:61229/posts/rag_intro/">
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.163.3">
+
+    
+    
+    
+
+<title>RAG：大模型时代的搜索基座 • Chang Luo</title>
+
+
+    
+
+
+<meta name="description" content="基于 LangChain 实现向量检索、关键词检索、混合检索">
+
+
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="http://localhost:61229/images/og-default.jpg">
+	<meta name="twitter:title" content="RAG：大模型时代的搜索基座">
+	<meta name="twitter:description" content="基于 LangChain 实现向量检索、关键词检索、混合检索">
+			<meta name="twitter:site" content="@_stellar_tide">
+
+<meta property="og:url" content="http://localhost:61229/posts/rag_intro/">
+	<meta property="og:site_name" content="Chang Luo">
+	<meta property="og:title" content="RAG：大模型时代的搜索基座">
+	<meta property="og:description" content="基于 LangChain 实现向量检索、关键词检索、混合检索">
+	<meta property="og:locale" content="zh_CN">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2025-12-27T00:00:00+00:00">
+		<meta property="article:modified_time" content="2025-12-27T00:00:00+00:00">
+		<meta property="article:tag" content="RAG">
+		<meta property="article:tag" content="LangChain">
+		<meta property="og:image" content="http://localhost:61229/images/og-default.jpg">
+
+
+    
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.f9da2b005f03c27beab06923e896c9a3875472209210a9177205d391257298b2.css" integrity="sha256-&#43;dorAF8DwnvqsGkj6JbJo4dUciCSEKkXcgXTkSVymLI=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+
+<link rel="stylesheet" href="/scss/tocbot.5ef07cebc3c477b54270456f149ee02922479bb7555fd344b2c69f953b0e7e5e.css" integrity="sha256-XvB868PEd7VCcEVvFJ7gKSJHm7dVX9NEssaflTsOfl4=">
+
+
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#202020">
+    
+    
+
+</head>
+
+
+  <body
+    class=" "
+  >
+    <div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="http://localhost:61229/">Chang Luo</a>
+      </span>
+      
+      
+      
+      <div class="author-image">
+        <button type="button" class="author-trigger" onclick="openNav()" aria-label="打开个人收藏侧栏"
+          aria-controls="mySidenav" aria-expanded="false"><img src="http://localhost:61229//images/profile.webp"
+            alt="Chang Luo" class="img--circle img--headshot element--center"></button>
+      </div>
+      
+      <p class="site__description">
+        
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Chang Luo</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		<li class="sidebar-nav__home">
+			<a href="http://localhost:61229/"><span>Home</span></a>
+		</li>
+		
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/portfolio/">
+						<span>Projects</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+		
+		<a href="https://twitter.com/_stellar_tide" rel="me" title="X">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		<a href="https://github.com/luochang212" rel="me" title="GitHub">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		<a href="https://mp.weixin.qq.com/s/He-04l46xJTM_MJ3AyTwWQ" rel="me" title="微信">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.35em; height: 1.35em; vertical-align: -0.28em;">
+				<path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135-.01-.27-.027-.407-.03zm-2.53 3.274c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982z"/>
+			</svg>
+		</a>
+		
+		
+		<a href="https://www.zhihu.com/people/Fashionable" rel="me" title="知乎">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2"
+				 stroke-linecap="round" stroke-linejoin="round" style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="m13.3334,3.60098l0,17.1471l1.79582,0l0.75424,2.13703l3.18459,-2.13703l3.93584,0l0,-17.1471l-9.6705,0zm7.41375,14.87538l-1.79283,0l-2.24777,1.50849l-0.53276,-1.50849l-0.53875,0l0,-12.53483l5.10911,0l0,12.53483l0.00299,0zm-8.56906,-7.18927l-3.97475,0c0.06285,-1.34387 0.1287,-3.12174 0.19754,-5.17496l3.91788,0l-0.00299,-0.24244c0,-0.01796 -0.00599,-0.43998 -0.06884,-0.87097c-0.06285,-0.44896 -0.19754,-1.04457 -0.62854,-1.04457l-6.5727,0c0.13169,-0.61657 0.46991,-2.08615 0.87995,-2.80747l0.19155,-0.33522l-0.3861,-0.02095c-0.02394,0 -0.58663,-0.02694 -1.23912,0.31726c-1.06851,0.56868 -1.5474,1.68807 -1.75691,2.52612c-0.55072,2.18791 -1.33489,3.70837 -1.66712,4.35786c-0.09877,0.19155 -0.15863,0.30529 -0.18557,0.38311c-0.05387,0.14666 -0.02394,0.29332 0.0838,0.38909c0.31427,0.28434 1.14334,-0.0868 1.15232,-0.08979c0.01796,-0.00898 0.03891,-0.01796 0.06585,-0.02993c0.41603,-0.18856 1.64916,-0.74826 2.08914,-2.52911l1.69705,0c0.02095,0.96376 0.09278,4.14236 0.0868,5.17496l-4.22018,0l-0.06285,0.0449c-0.69139,0.50582 -0.91288,1.8916 -0.92185,1.95146l-0.0419,0.27536l4.99837,0c-0.36814,2.34355 -0.79315,3.3941 -1.01763,3.81313c-0.11074,0.20951 -0.21849,0.41902 -0.32025,0.62255c-0.63752,1.26306 -1.29898,2.56802 -3.7802,4.5973c-0.10775,0.0838 -0.20951,0.23944 -0.14367,0.41005c0.07183,0.18856 0.27835,0.27237 0.73629,0.27237c0.16162,0 0.35318,-0.00898 0.58065,-0.02993c1.49352,-0.13169 3.01698,-0.53875 4.04359,-2.6219c0.50882,-1.05056 0.94879,-2.14601 1.31394,-3.25941l4.08549,4.78886l0.14965,-0.35916c0.02394,-0.05687 0.56868,-1.38578 0.15264,-2.87032l-0.01497,-0.05387l-3.23547,-3.68143l-0.65847,0.49684c0.19155,-0.78118 0.31726,-1.49352 0.37413,-2.12805l4.74995,0l0,-0.23944c0,-1.20021 -0.55371,-1.91255 -0.57466,-1.94248l-0.07183,-0.08979z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+</section>
+
+      </div>
+    </div>
+    
+<div class="copyright">
+  &copy; 2026 Chang Luo
+  
+</div>
+
+
+
+  </div>
+</div>
+
+<div id="overlay" onclick="closeNav()" aria-hidden="true"></div>
+
+<div id="mySidenav" class="sidenav" role="dialog" aria-label="个人收藏" aria-hidden="true">
+  <div id="main">
+    <div class="tab">
+      <button id="default-tab" class="tablinks active" onclick="openItem(event, 'Resources')"
+        aria-controls="Resources" aria-pressed="true">Resources</button>
+      <button class="tablinks" onclick="openItem(event, 'netease-player')"
+        aria-controls="netease-player" aria-pressed="false">Music</button>
+      <button class="tablinks" onclick="openItem(event, 'video-player')"
+        aria-controls="video-player" aria-pressed="false">Video</button>
+      <button class="tablinks" onclick="openItem(event, 'gallery')"
+        aria-controls="gallery" aria-pressed="false">Gallery</button>
+      <button class="tablinks" onclick="openItem(event, 'gadget')"
+        aria-controls="gadget" aria-pressed="false">Gadget</button>
+      <button class="tablinks" onclick="openItem(event, 'categories')"
+        aria-controls="categories" aria-pressed="false">Cats</button>
+    </div>
+
+    <div id="Resources" class="tabcontent">
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/resources/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Resources"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="netease-player" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
+        frameborder="no"
+        marginheight="0"
+        marginwidth="0"
+        title="Music player"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="video-player" class="tabcontent" hidden>
+      <div class="video-layout">
+        <div class="video-main">
+          <div class="video-cover" id="video-cover">
+            <img id="video-cover-img" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-cover-overlay">
+              <button class="video-play-btn" id="video-play-btn" aria-label="播放视频">
+                <svg viewBox="0 0 24 24" width="48" height="48"><path d="M8 5v14l11-7z" fill="white"/></svg>
+              </button>
+              <span class="video-cover-title" id="video-cover-title">四月是你的谎言</span>
+            </div>
+          </div>
+          <div class="video-frame" id="video-frame" hidden>
+            <iframe src="about:blank"
+              data-src="//player.bilibili.com/player.html?bvid=BV1Ms411D7in&p=1&high_quality=1&danmaku=0&autoplay=0"
+              style="width:100%;"
+              scrolling="no"
+              frameborder="no"
+              framespacing="0"
+              title="Bilibili video player"
+              allowfullscreen="true"></iframe>
+          </div>
+        </div>
+        <div class="video-playlist">
+          <button class="video-item active" data-bvid="BV1Ms411D7in"
+            data-title="四月是你的谎言"
+            data-cover="/images/video-covers/zutomayo.jpg"
+            data-duration="4:04">
+            <img class="video-item-cover" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">四月是你的谎言</span>
+              <span class="video-item-meta">4:04</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1LW411j7dK"
+            data-title="Kids by One republic — 三羊"
+            data-cover="/images/video-covers/sanyang.jpg"
+            data-duration="2:54">
+            <img class="video-item-cover" src="/images/video-covers/sanyang.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">Kids by One republic</span>
+              <span class="video-item-meta">三羊 · 2:54</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Yx411U7Lx"
+            data-title="交织together — M78"
+            data-cover="/images/video-covers/jiaozhi.jpg"
+            data-duration="6:06">
+            <img class="video-item-cover" src="/images/video-covers/jiaozhi.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">交织together</span>
+              <span class="video-item-meta">M78 · 6:06</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1rp4y1L7i4"
+            data-title="新员工入职大会 — 岁己SUI/恋诗夜Koxia"
+            data-cover="/images/video-covers/suisui.jpg"
+            data-duration="2:33">
+            <img class="video-item-cover" src="/images/video-covers/suisui.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">新员工入职大会</span>
+              <span class="video-item-meta">岁己SUI/恋诗夜Koxia · 2:33</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Av4y147QE"
+            data-title="真物论 — 悠亚"
+            data-cover="/images/video-covers/zhenwulun.jpg"
+            data-duration="3:30">
+            <img class="video-item-cover" src="/images/video-covers/zhenwulun.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">真物论</span>
+              <span class="video-item-meta">悠亚 · 3:30</span>
+            </div>
+          </button>
+        </div>        </div>
+      </div>
+
+
+    <div id="gallery" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/gadget/gallery/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Gallery"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="gadget" class="tabcontent drawer-native" hidden>
+      <div class="drawer-native-content">
+        
+          <br>
+<table>
+	<thead>
+			<tr>
+					<th>#</th>
+					<th>name</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td><a href="/gadget/hydra" target="_blank">Hydra</a></td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td><a href="/mozi/" target="_blank">墨子</a></td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td><a href="/gadget/how-old-are-you" target="_blank">年龄可视化</a></td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td><a href="/gadget/piano" target="_blank">Piano</a></td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td><a href="/flockn-roll/" target="_blank">Flock&rsquo;n Roll</a></td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td><a href="/monaco-speech-editor/" target="_blank">Monaco Speech Editor</a></td>
+			</tr>
+	</tbody>
+</table>
+
+        
+      </div>
+    </div>
+
+    <div id="categories" class="tabcontent drawer-native" hidden>
+      <ul class="drawer-category-list">
+        
+          <li>
+            <a href="/categories/devops/" target="_blank" rel="noopener noreferrer">
+              <span>DevOps</span>
+              <span class="drawer-category-count">12</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/deeplearning/" target="_blank" rel="noopener noreferrer">
+              <span>DeepLearning</span>
+              <span class="drawer-category-count">11</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/agent/" target="_blank" rel="noopener noreferrer">
+              <span>Agent</span>
+              <span class="drawer-category-count">7</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/algorithms/" target="_blank" rel="noopener noreferrer">
+              <span>Algorithms</span>
+              <span class="drawer-category-count">6</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/life/" target="_blank" rel="noopener noreferrer">
+              <span>Life</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/sota/" target="_blank" rel="noopener noreferrer">
+              <span>SOTA</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/bigdata/" target="_blank" rel="noopener noreferrer">
+              <span>BigData</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/statistics/" target="_blank" rel="noopener noreferrer">
+              <span>Statistics</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/frontend/" target="_blank" rel="noopener noreferrer">
+              <span>FrontEnd</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/llms/" target="_blank" rel="noopener noreferrer">
+              <span>LLMs</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/machinelearning/" target="_blank" rel="noopener noreferrer">
+              <span>MachineLearning</span>
+              <span class="drawer-category-count">2</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/math/" target="_blank" rel="noopener noreferrer">
+              <span>Math</span>
+              <span class="drawer-category-count">2</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/datavisualization/" target="_blank" rel="noopener noreferrer">
+              <span>DataVisualization</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/hardware/" target="_blank" rel="noopener noreferrer">
+              <span>Hardware</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/modeling/" target="_blank" rel="noopener noreferrer">
+              <span>Modeling</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/multimodal/" target="_blank" rel="noopener noreferrer">
+              <span>Multimodal</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/network/" target="_blank" rel="noopener noreferrer">
+              <span>Network</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/prose/" target="_blank" rel="noopener noreferrer">
+              <span>Prose</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="/js/drawer.js"></script>
+
+
+    <div class="content container">
+    
+<article>
+  <header>
+    <h1>RAG：大模型时代的搜索基座</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Dec 27, 2025
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/agent">AGENT</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/rag">rag</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/langchain">langchain</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 6 min read
+</div>
+
+
+  </header>
+  
+  
+  
+    <div class="toc-wrapper">
+      <input type="checkbox" id="tocToggle">
+      <label for="tocToggle">Table of Content</label>
+      
+        <div class="toc" id="TableOfContents"></div>
+      
+    </div>
+  
+  
+  <div class="post">
+    <blockquote>
+<p>没有一条帆船能吹动自己行驶，它需要外面的风。 &ndash; 因可觅《量子离歌》</p>
+</blockquote>
+<p>大模型的训练数据有截止日期，在此之后的事它不知道；大模型的参数量有限，无法容纳所有专业知识。也就是说，大模型在实时性和专业性上都有所欠缺。</p>
+<p>如何让大模型变得实时且专业呢？最省力的方法是“打小抄”。<strong>知识库</strong> 就像大模型的“小抄”。在回答问题之前，先瞅一眼小抄，看有没有与问题相关的内容。如果有，就从知识库中取回这段内容，结合大模型的推理能力，生成最终答案。</p>
+<p>这里「打小抄」的动作，就是 <a href="https://docs.langchain.com/oss/python/langchain/retrieval"><strong>RAG</strong></a>（Retrieval-Augmented Generation, 检索增强生成）。</p>
+<blockquote>
+<p><strong>Note:</strong> 使用知识库可以让大模型的回答有据可依、减少幻觉，代价是需要承担知识库的构建成本。尤其当知识库的规模较大时，有必要想想是否值得支付对价。毕竟，通过扩大知识库的方式提升 Agent 性能，多少有点「用有限对抗无限，用确定对抗不确定」的意思。虽然我们总是在提起 RAG 时提到知识库，但 RAG 是一种检索技术，它可以检索任何内容。比起检索需要手动构建的知识库，用来检索联网内容、历史对话也是可以的，而且性价比很高。你的下一个检索对象，又何必是知识库。</p>
+</blockquote>
+<h2 id="一提示词模板">一、提示词模板</h2>
+<p>RAG 做的事情并不复杂，就是从知识库中召回与用户问题有关的内容，作为上下文注入到 <strong>提示词模板 (Prompt Template)</strong> 中。</p>
+<p>下面是一个提示词模板：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>{context}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>基于上面给出的上下文，回答问题。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>问题：{question}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>回答： 
+</span></span></code></pre></div><p>使用该模板时，将召回文本填入 <code>{context}</code>，将用户问题填入 <code>{question}</code>。然后把填好的提示词模板交给大模型推理。</p>
+<p>RAG 主要做了两件事：一是从知识库中 <strong>召回</strong> 与用户问题有关的文本，二是使用提示词模板 <strong>拼接</strong> 召回文本与用户问题。拼接很容易做到，难度主要集中在召回上。在下一小节中，我将介绍如何召回与用户问题有关的文本。</p>
+<h2 id="二向量检索">二、向量检索</h2>
+<p>完成「召回与用户问题有关的」这件事，需要用到检索器。实现检索器的方式有 <a href="https://docs.langchain.com/oss/python/integrations/retrievers">很多</a>，比如基于关键词检索的 <a href="https://docs.langchain.com/oss/python/integrations/retrievers/bm25">BM25</a> 算法，但本节主要介绍基于 Embedding 的检索方法：<strong>向量检索</strong>。</p>
+<h3 id="1从文本向量化说起">1）从文本向量化说起</h3>
+<p>Embedding 是一种将文本转为向量的技术。它的输入是一段文本，输出是一个定长的向量。</p>
+<pre tabindex="0"><code>&#34;好喜欢你&#34; --&gt; [0.190012, 0.123555, .... ]
+</code></pre><p>将文本转为向量的目的，是把语义相近的词分配到同一片向量空间。所以，一对近义词转成向量后，它们的向量之间的距离通常比其他词更近。比如，足球和篮球在向量空间中的距离更近一些，而足球和篮筐之间的距离更远。Embedding 的本质是压缩。从编码角度讲，自然语言存在冗余信息。Embedding 相当于对自然语言进行重编码，用最少的 token 表达最多的语义。</p>
+<p>Embedding 在多语言场景下也有优势。经过充分训练的 Embedding 模型，会将多语言内容在语义层面上对齐。也就是说，一个向量可以在多语言环境中保持同一语义。这种特性让大模型得以兼容并包。即使加入多语言材料，也不会因为字面上的词不同，而产生“理解”上的混乱。</p>
+<h3 id="2向量检索的原理">2）向量检索的原理</h3>
+<p>由于 Embedding 模型具有将相似语义的词训练成距离相近的向量的特性，我们可以把「用户问题」与「知识库内容」都转成 Embedding 向量。然后计算向量之间的距离。向量之间的距离越小，则语料之间的相似度越高。借助这个原理，最后返回知识库中与问题向量距离最小的 Top-K 份语料即可。</p>
+<p>我们用一个简单的实验，验证这种计算方式能否获取真正的相关文本。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#cf222e">from</span> <span style="color:#24292e">dotenv</span> <span style="color:#cf222e">import</span> load_dotenv
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">from</span> <span style="color:#24292e">langchain_community.embeddings</span> <span style="color:#cf222e">import</span> DashScopeEmbeddings
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">from</span> <span style="color:#24292e">sklearn.metrics.pairwise</span> <span style="color:#cf222e">import</span> cosine_similarity
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 加载环境变量</span>
+</span></span><span style="display:flex;"><span>_ <span style="color:#0550ae">=</span> load_dotenv<span style="color:#1f2328">()</span>
+</span></span></code></pre></div><p>下面计算知识库中每一条内容与问题之间的相似度，看看语义相近的内容是否具有更高的余弦相似度。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#57606a"># 用户问题</span>
+</span></span><span style="display:flex;"><span>query <span style="color:#0550ae">=</span> <span style="color:#0a3069">&#34;过年要给不熟的亲戚发红包么？&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 知识库</span>
+</span></span><span style="display:flex;"><span>docs <span style="color:#0550ae">=</span> <span style="color:#1f2328">[</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#0a3069">&#34;不来往的人就不要给他钱&#34;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#0a3069">&#34;海胆豆腐真好吃下次还吃&#34;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#0a3069">&#34;半熟牛排淋上不熟的芝士&#34;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#1f2328">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 初始化向量生成器</span>
+</span></span><span style="display:flex;"><span>embeddings <span style="color:#0550ae">=</span> DashScopeEmbeddings<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 生成向量</span>
+</span></span><span style="display:flex;"><span>qv <span style="color:#0550ae">=</span> embeddings<span style="color:#0550ae">.</span>embed_query<span style="color:#1f2328">(</span>query<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>dv <span style="color:#0550ae">=</span> embeddings<span style="color:#0550ae">.</span>embed_documents<span style="color:#1f2328">(</span>docs<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 计算余弦相似度</span>
+</span></span><span style="display:flex;"><span>similarities <span style="color:#0550ae">=</span> cosine_similarity<span style="color:#1f2328">([</span>qv<span style="color:#1f2328">],</span> dv<span style="color:#1f2328">)[</span><span style="color:#0550ae">0</span><span style="color:#1f2328">]</span>
+</span></span><span style="display:flex;"><span>results <span style="color:#0550ae">=</span> <span style="color:#6639ba">list</span><span style="color:#1f2328">(</span><span style="color:#6639ba">enumerate</span><span style="color:#1f2328">(</span>similarities<span style="color:#1f2328">))</span>
+</span></span><span style="display:flex;"><span>by_sim <span style="color:#0550ae">=</span> <span style="color:#6639ba">sorted</span><span style="color:#1f2328">(</span>results<span style="color:#1f2328">,</span> key<span style="color:#0550ae">=</span><span style="color:#cf222e">lambda</span> r<span style="color:#1f2328">:</span> r<span style="color:#1f2328">[</span><span style="color:#0550ae">1</span><span style="color:#1f2328">],</span> reverse<span style="color:#0550ae">=</span><span style="color:#cf222e">True</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 余弦相似度大 -&gt; 两个单位向量夹角小 -&gt; 向量挨得更近</span>
+</span></span><span style="display:flex;"><span><span style="color:#6639ba">print</span><span style="color:#1f2328">(</span><span style="color:#0a3069">&#34;按余弦相似度排序：&#34;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">for</span> i<span style="color:#1f2328">,</span> s <span style="color:#0550ae">in</span> by_sim<span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6639ba">print</span><span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;-&#39;</span><span style="color:#1f2328">,</span> docs<span style="color:#1f2328">[</span>i<span style="color:#1f2328">],</span> s<span style="color:#1f2328">)</span>
+</span></span></code></pre></div><p>输出结果：</p>
+<pre tabindex="0"><code>按余弦相似度排序：
+- 不来往的人就不要给他钱 0.346204651165491
+- 半熟牛排淋上不熟的芝士 0.11805922713791331
+- 海胆豆腐真好吃下次还吃 0.09085072283609508
+</code></pre><h2 id="三向量检索流程">三、向量检索流程</h2>
+<p>上述代码虽然已经可以计算知识库内容与用户问题的相似度，但在工程化过程中还会遇到一些问题：</p>
+<ul>
+<li><strong>问题一</strong>：Embedding 模型对输入文本有长度限制，且文本过长本身也会影响向量表达</li>
+<li><strong>问题二</strong>：当知识库规模较大时，难以快速召回 Top-K 相关文本</li>
+</ul>
+<p>为了解决 <strong>问题一</strong>，我们需要做文本切块（Split into chunks）：将知识库中的文本切成大小均匀的文本片段。然后使用 Embedding 模型将这些文本片段转成 Embedding 向量。为了确保文本片段不会因截断产生语义缺失，还要让两个相邻文本片段之间有一定的 overlap。<strong>问题二</strong> 一般引入向量数据库解决，向量数据库有成熟的 <a href="https://milvus.io/docs/single-vector-search.md">ANN</a> 算法，可以帮助我们快速召回最近邻向量。</p>
+<p>工程化之后，我们的检索流程变得更复杂了一些。下面是一个典型的 <a href="https://docs.langchain.com/oss/python/langchain/retrieval#retrieval-pipeline">向量检索流程</a>：</p>
+<p><img src="/img/vector-retrieval.png" alt="vector-retrieval"></p>
+<p><em>* 圆框代表数据，方框代表组件。</em></p>
+<p>由于 LangChain 使用模块化的编写方式，所以每个组件都是可替换的。下面粗体部分列出了图中的组件，右边是它们可替换的变体：</p>
+<ul>
+<li><strong>Document Loader（文档加载器）</strong>：<code>TextLoader</code>, <code>PyMuPDFLoader</code>, <code>WebBaseLoader</code></li>
+<li><strong>Document Splitter（文档分割器）</strong>：<code>RecursiveCharacterTextSplitter</code></li>
+<li><strong>Embedding Generation（向量生成器）</strong>：<code>DashScopeEmbeddings</code>, <code>HuggingFaceEmbeddings</code></li>
+<li><strong>Vector Store（向量存储）</strong>：<code>Chroma</code>, <code>Milvus</code>, <code>FAISS</code></li>
+<li><strong>Retriever（检索器）</strong>：<code>EnsembleRetriever</code>, <code>BM25Retriever</code></li>
+<li><strong>LLM（大语言模型）</strong>：<code>ChatOpenAI</code></li>
+</ul>
+<p>下一小节，我们将实现一个包含上述全部组件的向量检索流程。</p>
+<h2 id="四基于向量检索的-rag">四、基于向量检索的 RAG</h2>
+<p>☝️🤓 仅需六个步骤，就能实现一个基于向量检索的 RAG。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#cf222e">import</span> <span style="color:#24292e">os</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 配置 UA</span>
+</span></span><span style="display:flex;"><span>MY_USER_AGENT <span style="color:#0550ae">=</span> <span style="color:#1f2328">(</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#0a3069">&#34;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 &#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#0a3069">&#34;(KHTML, like Gecko) Version/17.0 Safari/605.1.15&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>os<span style="color:#0550ae">.</span>environ<span style="color:#1f2328">[</span><span style="color:#0a3069">&#34;USER_AGENT&#34;</span><span style="color:#1f2328">]</span> <span style="color:#0550ae">=</span> MY_USER_AGENT
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">import</span> <span style="color:#24292e">bs4</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">from</span> <span style="color:#24292e">dotenv</span> <span style="color:#cf222e">import</span> load_dotenv
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">from</span> <span style="color:#24292e">langchain_openai</span> <span style="color:#cf222e">import</span> ChatOpenAI
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">from</span> <span style="color:#24292e">langchain_community.document_loaders</span> <span style="color:#cf222e">import</span> WebBaseLoader
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">from</span> <span style="color:#24292e">langchain_text_splitters</span> <span style="color:#cf222e">import</span> RecursiveCharacterTextSplitter
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">from</span> <span style="color:#24292e">langchain_community.embeddings</span> <span style="color:#cf222e">import</span> DashScopeEmbeddings
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">from</span> <span style="color:#24292e">langchain_core.vectorstores</span> <span style="color:#cf222e">import</span> InMemoryVectorStore
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">from</span> <span style="color:#24292e">langchain.tools</span> <span style="color:#cf222e">import</span> tool
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">from</span> <span style="color:#24292e">langchain.agents</span> <span style="color:#cf222e">import</span> create_agent
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 加载模型配置</span>
+</span></span><span style="display:flex;"><span>_ <span style="color:#0550ae">=</span> load_dotenv<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 加载模型</span>
+</span></span><span style="display:flex;"><span>llm <span style="color:#0550ae">=</span> ChatOpenAI<span style="color:#1f2328">(</span>
+</span></span><span style="display:flex;"><span>    model<span style="color:#0550ae">=</span><span style="color:#0a3069">&#34;qwen3-max&#34;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>    api_key<span style="color:#0550ae">=</span>os<span style="color:#0550ae">.</span>getenv<span style="color:#1f2328">(</span><span style="color:#0a3069">&#34;DASHSCOPE_API_KEY&#34;</span><span style="color:#1f2328">),</span>
+</span></span><span style="display:flex;"><span>    base_url<span style="color:#0550ae">=</span>os<span style="color:#0550ae">.</span>getenv<span style="color:#1f2328">(</span><span style="color:#0a3069">&#34;DASHSCOPE_BASE_URL&#34;</span><span style="color:#1f2328">),</span>
+</span></span><span style="display:flex;"><span><span style="color:#1f2328">)</span>
+</span></span></code></pre></div><h3 id="1加载文档">1）加载文档</h3>
+<p>使用 <code>WebBaseLoader</code> 加载 <a href="https://luochang212.github.io/posts/quick_bi_intro/">《阿里发布新版 Quick BI，聊聊 ChatBI 的底层架构、交互设计和云计算生态》</a> 这篇文章的内容。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#57606a"># 加载文章内容</span>
+</span></span><span style="display:flex;"><span>bs4_strainer <span style="color:#0550ae">=</span> bs4<span style="color:#0550ae">.</span>SoupStrainer<span style="color:#1f2328">(</span>class_<span style="color:#0550ae">=</span><span style="color:#1f2328">(</span><span style="color:#0a3069">&#34;post&#34;</span><span style="color:#1f2328">))</span>
+</span></span><span style="display:flex;"><span>loader <span style="color:#0550ae">=</span> WebBaseLoader<span style="color:#1f2328">(</span>
+</span></span><span style="display:flex;"><span>    web_paths<span style="color:#0550ae">=</span><span style="color:#1f2328">(</span><span style="color:#0a3069">&#34;https://luochang212.github.io/posts/quick_bi_intro/&#34;</span><span style="color:#1f2328">,),</span>
+</span></span><span style="display:flex;"><span>    bs_kwargs<span style="color:#0550ae">=</span><span style="color:#1f2328">{</span><span style="color:#0a3069">&#34;parse_only&#34;</span><span style="color:#1f2328">:</span> bs4_strainer<span style="color:#1f2328">},</span>
+</span></span><span style="display:flex;"><span>    requests_kwargs<span style="color:#0550ae">=</span><span style="color:#1f2328">{</span><span style="color:#0a3069">&#34;headers&#34;</span><span style="color:#1f2328">:</span> <span style="color:#1f2328">{</span><span style="color:#0a3069">&#34;User-Agent&#34;</span><span style="color:#1f2328">:</span> MY_USER_AGENT<span style="color:#1f2328">}},</span>
+</span></span><span style="display:flex;"><span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>docs <span style="color:#0550ae">=</span> loader<span style="color:#0550ae">.</span>load<span style="color:#1f2328">()</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">assert</span> <span style="color:#6639ba">len</span><span style="color:#1f2328">(</span>docs<span style="color:#1f2328">)</span> <span style="color:#0550ae">==</span> <span style="color:#0550ae">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6639ba">print</span><span style="color:#1f2328">(</span><span style="color:#0a3069">f</span><span style="color:#0a3069">&#34;Total characters: </span><span style="color:#0a3069">{</span><span style="color:#6639ba">len</span><span style="color:#1f2328">(</span>docs<span style="color:#1f2328">[</span><span style="color:#0550ae">0</span><span style="color:#1f2328">]</span><span style="color:#0550ae">.</span>page_content<span style="color:#1f2328">)</span><span style="color:#0a3069">}</span><span style="color:#0a3069">&#34;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#6639ba">print</span><span style="color:#1f2328">(</span>docs<span style="color:#1f2328">[</span><span style="color:#0550ae">0</span><span style="color:#1f2328">]</span><span style="color:#0550ae">.</span>page_content<span style="color:#1f2328">[:</span><span style="color:#0550ae">248</span><span style="color:#1f2328">])</span>
+</span></span></code></pre></div><h3 id="2分割文档">2）分割文档</h3>
+<p>使用 <code>RecursiveCharacterTextSplitter</code> 将文本分块，以便后续计算文本块的 Embedding。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#57606a"># 文本分块</span>
+</span></span><span style="display:flex;"><span>text_splitter <span style="color:#0550ae">=</span> RecursiveCharacterTextSplitter<span style="color:#1f2328">(</span>
+</span></span><span style="display:flex;"><span>    chunk_size<span style="color:#0550ae">=</span><span style="color:#0550ae">1000</span><span style="color:#1f2328">,</span>  <span style="color:#57606a"># chunk size (characters)</span>
+</span></span><span style="display:flex;"><span>    chunk_overlap<span style="color:#0550ae">=</span><span style="color:#0550ae">200</span><span style="color:#1f2328">,</span>  <span style="color:#57606a"># chunk overlap (characters)</span>
+</span></span><span style="display:flex;"><span>    add_start_index<span style="color:#0550ae">=</span><span style="color:#cf222e">True</span><span style="color:#1f2328">,</span>  <span style="color:#57606a"># track index in original document</span>
+</span></span><span style="display:flex;"><span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>all_splits <span style="color:#0550ae">=</span> text_splitter<span style="color:#0550ae">.</span>split_documents<span style="color:#1f2328">(</span>docs<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6639ba">print</span><span style="color:#1f2328">(</span><span style="color:#0a3069">f</span><span style="color:#0a3069">&#34;Split blog post into </span><span style="color:#0a3069">{</span><span style="color:#6639ba">len</span><span style="color:#1f2328">(</span>all_splits<span style="color:#1f2328">)</span><span style="color:#0a3069">}</span><span style="color:#0a3069"> sub-documents.&#34;</span><span style="color:#1f2328">)</span>
+</span></span></code></pre></div><h3 id="3向量生成">3）向量生成</h3>
+<p>注意，用户问题 和 知识库 必须使用同一个 Embedding 模型来生成向量。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#57606a"># 初始化向量生成器</span>
+</span></span><span style="display:flex;"><span>embeddings <span style="color:#0550ae">=</span> DashScopeEmbeddings<span style="color:#1f2328">()</span>
+</span></span></code></pre></div><h3 id="4向量存储">4）向量存储</h3>
+<p>这里仅用 <code>InMemoryVectorStore</code> 做演示。正式项目请用 Chroma、Milvus 等向量数据库。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#57606a"># 初始化内存向量存储</span>
+</span></span><span style="display:flex;"><span>vector_store <span style="color:#0550ae">=</span> InMemoryVectorStore<span style="color:#1f2328">(</span>embedding<span style="color:#0550ae">=</span>embeddings<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 将文档添加到向量存储</span>
+</span></span><span style="display:flex;"><span>document_ids <span style="color:#0550ae">=</span> vector_store<span style="color:#0550ae">.</span>add_documents<span style="color:#1f2328">(</span>documents<span style="color:#0550ae">=</span>all_splits<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6639ba">print</span><span style="color:#1f2328">(</span>document_ids<span style="color:#1f2328">[:</span><span style="color:#0550ae">2</span><span style="color:#1f2328">])</span>
+</span></span></code></pre></div><h3 id="5创建工具">5）创建工具</h3>
+<p>创建可被 Agent 调用的工具。该工具从向量存储中召回 <code>k=2</code> 个与 <code>query</code> 最相似的文本片段。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#57606a"># 创建上下文检索工具</span>
+</span></span><span style="display:flex;"><span><span style="color:#0550ae">@tool</span><span style="color:#1f2328">(</span>response_format<span style="color:#0550ae">=</span><span style="color:#0a3069">&#34;content_and_artifact&#34;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">def</span> <span style="color:#6639ba">retrieve_context</span><span style="color:#1f2328">(</span>query<span style="color:#1f2328">:</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#0a3069">&#34;&#34;&#34;Retrieve information to help answer a query.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    retrieved_docs <span style="color:#0550ae">=</span> vector_store<span style="color:#0550ae">.</span>similarity_search<span style="color:#1f2328">(</span>query<span style="color:#1f2328">,</span> k<span style="color:#0550ae">=</span><span style="color:#0550ae">2</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>    serialized <span style="color:#0550ae">=</span> <span style="color:#0a3069">&#34;</span><span style="color:#0a3069">\n\n</span><span style="color:#0a3069">&#34;</span><span style="color:#0550ae">.</span>join<span style="color:#1f2328">(</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#1f2328">(</span><span style="color:#0a3069">f</span><span style="color:#0a3069">&#34;Source: </span><span style="color:#0a3069">{</span>doc<span style="color:#0550ae">.</span>metadata<span style="color:#0a3069">}</span><span style="color:#0a3069">\n</span><span style="color:#0a3069">Content: </span><span style="color:#0a3069">{</span>doc<span style="color:#0550ae">.</span>page_content<span style="color:#0a3069">}</span><span style="color:#0a3069">&#34;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">for</span> doc <span style="color:#0550ae">in</span> retrieved_docs
+</span></span><span style="display:flex;"><span>    <span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">return</span> serialized<span style="color:#1f2328">,</span> retrieved_docs
+</span></span></code></pre></div><h3 id="6召回文本">6）召回文本</h3>
+<p>使用 Agent 调用检索工具，召回与问题有关的上下文。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#57606a"># 创建 ReAct Agent</span>
+</span></span><span style="display:flex;"><span>agent <span style="color:#0550ae">=</span> create_agent<span style="color:#1f2328">(</span>
+</span></span><span style="display:flex;"><span>    llm<span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>    tools<span style="color:#0550ae">=</span><span style="color:#1f2328">[</span>retrieve_context<span style="color:#1f2328">],</span>
+</span></span><span style="display:flex;"><span>    system_prompt<span style="color:#0550ae">=</span><span style="color:#1f2328">(</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#57606a"># If desired, specify custom instructions</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;You have access to a tool that retrieves context from a blog post. &#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;Use the tool to help answer user queries.&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 调用 Agent</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#0550ae">=</span> agent<span style="color:#0550ae">.</span>invoke<span style="color:#1f2328">({</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#0a3069">&#34;messages&#34;</span><span style="color:#1f2328">:</span> <span style="color:#1f2328">[{</span><span style="color:#0a3069">&#34;role&#34;</span><span style="color:#1f2328">:</span> <span style="color:#0a3069">&#34;user&#34;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#34;content&#34;</span><span style="color:#1f2328">:</span> <span style="color:#0a3069">&#34;当前的 Agent 能力有哪些局限性？&#34;</span><span style="color:#1f2328">}]</span>
+</span></span><span style="display:flex;"><span><span style="color:#1f2328">})</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 获取 Agent 的最终回复</span>
+</span></span><span style="display:flex;"><span>response<span style="color:#1f2328">[</span><span style="color:#0a3069">&#39;messages&#39;</span><span style="color:#1f2328">][</span><span style="color:#0550ae">-</span><span style="color:#0550ae">1</span><span style="color:#1f2328">]</span><span style="color:#0550ae">.</span>pretty_print<span style="color:#1f2328">()</span>
+</span></span></code></pre></div><p>输出结果：</p>
+<pre tabindex="0"><code>==================================[1m Ai Message [0m==================================
+
+当前的 Agent 能力存在以下几个主要局限性：
+
+1. **长期记忆能力不足**：  
+   Agent 难以有效地区分和保留有用的历史对话信息，同时遗忘无用内容。此外，还缺乏跨对话积累经验、持续提升问答效果的能力。
+
+2. **验证（Verification）能力缺失**：  
+   即使具备一定的记忆能力，Agent 仍缺乏对信息真伪或合理性的判断能力。它无法自主验证所获取或生成的信息是否准确可靠。
+
+3. **知识体系构建困难**：  
+   在没有良好验证机制的前提下，Agent 无法将零散的记忆系统化地加工成结构化的知识体系，从而限制了其推理和决策能力。
+
+这些问题是当前基于 Agent 技术的产品（如 Quick BI、TRAE 等）共同面临的瓶颈。未来随着 Agent 技术在上述方向上的突破，相关应用（例如 ChatBI）的能力也有望显著提升。
+</code></pre><h2 id="五关键词检索">五、关键词检索</h2>
+<p><a href="https://en.wikipedia.org/wiki/Okapi_BM25">BM25</a> 是一种基于词频的排序算法，它可以估计文档与给定查询的相关性。给定一个包含关键词 \( q_1, ..., q_n \) 的查询 \( Q \)，文档 \( D \) 的 BM25 分数是：</p>
+$$\text{score}(D, Q) = \sum_{i=1}^{n} \text{IDF}(q_i) \cdot \frac{f(q_i, D) \cdot (k_1 + 1)}{f(q_i, D) + k_1 \cdot \left( 1 - b + b \cdot \frac{|D|}{\text{avgdl}} \right)}$$<p>其中：</p>
+<ul>
+<li>\( f(q_i, D) \)：关键词 \( q_i \) 在文档 \( D \) 中出现的次数</li>
+<li>\( |D| \)：文档 \( D \) 的词数</li>
+<li>\( avgdl \)：文档集合的平均文档长度</li>
+<li>\( k_1 \)：可调参数，用于控制词频饱和度，通常选择为 \( k_1 \in [1.2, 2.0] \)</li>
+<li>\( b \)：可调参数，用于控制文档归一化程度，通常选择为 \( b = 0.75 \)</li>
+<li>\( \text{IDF}(q_i) \)：关键词 \( q_i \) 的 IDF（逆文档频率）权重，用于衡量一个词的普遍程度，越常见的词值越低</li>
+</ul>
+<p>对于中文关键词检索，需要安装支持分词的 Python 包：</p>
+<h3 id="1创建检索器">1）创建检索器</h3>
+<p>我们使用 LangChain 提供的 <a href="https://docs.langchain.com/oss/python/integrations/retrievers/bm25">BM25Retriever</a> 创建检索器，并将 jieba 作为它的分词器。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#cf222e">import</span> <span style="color:#24292e">jieba</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">from</span> <span style="color:#24292e">langchain_community.retrievers</span> <span style="color:#cf222e">import</span> BM25Retriever
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">from</span> <span style="color:#24292e">langchain_core.documents</span> <span style="color:#cf222e">import</span> Document
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#cf222e">def</span> <span style="color:#6639ba">chinese_tokenize</span><span style="color:#1f2328">(</span>text<span style="color:#1f2328">:</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">)</span> <span style="color:#0550ae">-&gt;</span> <span style="color:#6639ba">list</span><span style="color:#1f2328">[</span><span style="color:#6639ba">str</span><span style="color:#1f2328">]:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#0a3069">&#34;&#34;&#34;中文分词函数&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    tokens <span style="color:#0550ae">=</span> jieba<span style="color:#0550ae">.</span>lcut<span style="color:#1f2328">(</span>text<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">return</span> <span style="color:#1f2328">[</span>token <span style="color:#cf222e">for</span> token <span style="color:#0550ae">in</span> tokens <span style="color:#cf222e">if</span> token<span style="color:#0550ae">.</span>strip<span style="color:#1f2328">()]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 1. 使用文本创建中文检索器</span>
+</span></span><span style="display:flex;"><span>text_retriever <span style="color:#0550ae">=</span> BM25Retriever<span style="color:#0550ae">.</span>from_texts<span style="color:#1f2328">(</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#1f2328">[</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;何意味&#34;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;那很坏了&#34;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;这点小事也无所谓吧&#34;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;我替她原谅你了&#34;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#1f2328">],</span>
+</span></span><span style="display:flex;"><span>    k<span style="color:#0550ae">=</span><span style="color:#0550ae">2</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>    preprocess_func<span style="color:#0550ae">=</span>chinese_tokenize<span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 2. 使用文档创建中文检索器</span>
+</span></span><span style="display:flex;"><span>doc_retriever <span style="color:#0550ae">=</span> BM25Retriever<span style="color:#0550ae">.</span>from_documents<span style="color:#1f2328">(</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#1f2328">[</span>
+</span></span><span style="display:flex;"><span>        Document<span style="color:#1f2328">(</span>page_content<span style="color:#0550ae">=</span><span style="color:#0a3069">&#34;辣椒炒肉拌面&#34;</span><span style="color:#1f2328">),</span>
+</span></span><span style="display:flex;"><span>        Document<span style="color:#1f2328">(</span>page_content<span style="color:#0550ae">=</span><span style="color:#0a3069">&#34;肉蛋葱鸡&#34;</span><span style="color:#1f2328">),</span>
+</span></span><span style="display:flex;"><span>        Document<span style="color:#1f2328">(</span>page_content<span style="color:#0550ae">=</span><span style="color:#0a3069">&#34;这下不熟了&#34;</span><span style="color:#1f2328">),</span>
+</span></span><span style="display:flex;"><span>        Document<span style="color:#1f2328">(</span>page_content<span style="color:#0550ae">=</span><span style="color:#0a3069">&#34;铁串子&#34;</span><span style="color:#1f2328">),</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#1f2328">],</span>
+</span></span><span style="display:flex;"><span>    k<span style="color:#0550ae">=</span><span style="color:#0550ae">2</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>    preprocess_func<span style="color:#0550ae">=</span>chinese_tokenize<span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#1f2328">)</span>
+</span></span></code></pre></div><h3 id="2使用检索器">2）使用检索器</h3>
+<p>检索文本：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>text_retriever<span style="color:#0550ae">.</span>invoke<span style="color:#1f2328">(</span><span style="color:#0a3069">&#34;一件小事&#34;</span><span style="color:#1f2328">)</span>
+</span></span></code></pre></div><p>输出结果：</p>
+<pre tabindex="0"><code>[Document(metadata={}, page_content=&#39;这点小事也无所谓吧&#39;),
+ Document(metadata={}, page_content=&#39;我替她原谅你了&#39;)]
+</code></pre><p>检索文档：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>doc_retriever<span style="color:#0550ae">.</span>invoke<span style="color:#1f2328">(</span><span style="color:#0a3069">&#34;拌面&#34;</span><span style="color:#1f2328">)</span>
+</span></span></code></pre></div><p>输出结果：</p>
+<pre tabindex="0"><code>[Document(metadata={}, page_content=&#39;辣椒炒肉拌面&#39;),
+ Document(metadata={}, page_content=&#39;铁串子&#39;)]
+</code></pre><h2 id="六混合检索">六、混合检索</h2>
+<p>向量检索和关键词检索各擅胜场。向量检索擅长语义匹配，关键词检索擅长精确匹配，两者可以形成互补。因此，工业界的 RAG 系统常用 <strong>向量检索 + 关键词检索</strong> 的混合检索方案。这相当于有两路召回，混合检索的关键在于如何对两路召回的结果进行筛选和重排（Rerank）。</p>
+<h3 id="1rrf-分数">1）RRF 分数</h3>
+<p><strong>RRF</strong>（Reciprocal Rank Fusion, 倒数排序融合）是一种经典的重排方案。你可以使用 RRF 集成多个检索器分数，以计算文本片段的最终排名。</p>
+<p>一个文本片段的 RRF 分数可由以下公式计算得出：</p>
+$$\text{RRF} = \sum_{i} \frac{w_i}{k + r_i}$$<p>其中：</p>
+<ul>
+<li>\( w_i \)：第 \( i \) 个检索器的权重，默认值为 \( 1.0 \)</li>
+<li>\( k \)：平滑参数，默认值为 \( 60 \)</li>
+<li>\( r_i \)：文档在第 \( i \) 个检索器中的排名</li>
+</ul>
+<p>基于 RRF 分数的混合检索可以通过向量数据库实现，详情参见文档，这里不再赘述了：</p>
+<ul>
+<li><a href="https://milvus.io/docs/multi-vector-search.md">Milvus</a></li>
+<li><a href="https://docs.trychroma.com/cloud/search-api/hybrid-search">Chroma</a></li>
+</ul>
+<h3 id="2agentic-hybrid-search">2）Agentic Hybrid Search</h3>
+<p>根据第一性原理，若用大模型可以获得更好的重排效果，何须计算 RRF 分数。下面我们写一段实验代码，验证一下用大模型做重排的效果。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#cf222e">import</span> <span style="color:#24292e">random</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">from</span> <span style="color:#24292e">typing</span> <span style="color:#cf222e">import</span> List
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">from</span> <span style="color:#24292e">pydantic</span> <span style="color:#cf222e">import</span> BaseModel<span style="color:#1f2328">,</span> Field
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 这是用户 query</span>
+</span></span><span style="display:flex;"><span>query <span style="color:#0550ae">=</span> <span style="color:#0a3069">&#34;盘点海獭的黑历史&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 这是 向量检索 召回的文本片段</span>
+</span></span><span style="display:flex;"><span>dense_texts <span style="color:#0550ae">=</span> <span style="color:#1f2328">[</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#0a3069">&#34;某些海洋生物会乱扔垃圾&#34;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#0a3069">&#34;海獭太可爱了&#34;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#0a3069">&#34;海獭臭臭的&#34;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#1f2328">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 这是 关键词检索 召回的文本片段</span>
+</span></span><span style="display:flex;"><span>sparse_texts <span style="color:#0550ae">=</span> <span style="color:#1f2328">[</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#0a3069">&#34;海獭臭臭的&#34;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#0a3069">&#34;雪鸮的黑历史&#34;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#1f2328">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 定义 Agent 输出格式</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">class</span> <span style="color:#1f2328">ReRankOutput</span><span style="color:#1f2328">(</span>BaseModel<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>    indices<span style="color:#1f2328">:</span> List<span style="color:#1f2328">[</span><span style="color:#6639ba">int</span><span style="color:#1f2328">]</span> <span style="color:#0550ae">=</span> Field<span style="color:#1f2328">(</span>description<span style="color:#0550ae">=</span><span style="color:#0a3069">&#34;重排后的召回文本片段的索引列表&#34;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 返回最多 limit 个文本片段</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">def</span> <span style="color:#6639ba">get_relevant_texts</span><span style="color:#1f2328">(</span>query<span style="color:#1f2328">:</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>                     dense_texts<span style="color:#1f2328">:</span> <span style="color:#6639ba">list</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>                     sparse_texts<span style="color:#1f2328">:</span> <span style="color:#6639ba">list</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>                     limit<span style="color:#1f2328">:</span> <span style="color:#6639ba">int</span> <span style="color:#0550ae">=</span> <span style="color:#0550ae">3</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#57606a"># 创建上下文</span>
+</span></span><span style="display:flex;"><span>    texts <span style="color:#0550ae">=</span> dense_texts <span style="color:#0550ae">+</span> sparse_texts
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#57606a"># 去重</span>
+</span></span><span style="display:flex;"><span>    texts <span style="color:#0550ae">=</span> <span style="color:#6639ba">list</span><span style="color:#1f2328">(</span><span style="color:#6639ba">set</span><span style="color:#1f2328">(</span>texts<span style="color:#1f2328">))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#57606a"># 打乱元素顺序，消除由位置引入的 bias</span>
+</span></span><span style="display:flex;"><span>    random<span style="color:#0550ae">.</span>shuffle<span style="color:#1f2328">(</span>texts<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#57606a"># 将索引 id 显式添加到文本片段前</span>
+</span></span><span style="display:flex;"><span>    texts_with_index <span style="color:#0550ae">=</span> <span style="color:#1f2328">[</span><span style="color:#0a3069">f</span><span style="color:#0a3069">&#34;</span><span style="color:#0a3069">{</span>i<span style="color:#0a3069">}</span><span style="color:#0a3069"> - </span><span style="color:#0a3069">{</span>text<span style="color:#0a3069">}</span><span style="color:#0a3069">&#34;</span> <span style="color:#cf222e">for</span> i<span style="color:#1f2328">,</span> text <span style="color:#0550ae">in</span> <span style="color:#6639ba">enumerate</span><span style="color:#1f2328">(</span>texts<span style="color:#1f2328">)]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    context <span style="color:#0550ae">=</span> <span style="color:#0a3069">&#39;</span><span style="color:#0a3069">\n\n</span><span style="color:#0a3069">&#39;</span><span style="color:#0550ae">.</span>join<span style="color:#1f2328">(</span>texts_with_index<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>    prompt <span style="color:#0550ae">=</span> <span style="color:#0a3069">&#34;</span><span style="color:#0a3069">\n</span><span style="color:#0a3069">&#34;</span><span style="color:#0550ae">.</span>join<span style="color:#1f2328">([</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">f</span><span style="color:#0a3069">&#34;</span><span style="color:#0a3069">{</span>context<span style="color:#0a3069">}</span><span style="color:#0a3069">&#34;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;---&#34;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;上面是RAG召回的多个文本片段。每个文本片段的格式为 [索引] - [内容]。&#34;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">f</span><span style="color:#0a3069">&#34;请返回最多</span><span style="color:#0a3069">{</span>limit<span style="color:#0a3069">}</span><span style="color:#0a3069">个与用户问题有关的文本片段的索引（若相关性内容不足，允许少于</span><span style="color:#0a3069">{</span>limit<span style="color:#0a3069">}</span><span style="color:#0a3069">条）。&#34;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;</span><span style="color:#0a3069">\n</span><span style="color:#0a3069">注意事项：&#34;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;1. 相关性更高的文本片段应该排在前面&#34;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;2. 返回的文本片段必须有助于回答用户问题！&#34;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">f</span><span style="color:#0a3069">&#34;</span><span style="color:#0a3069">\n</span><span style="color:#0a3069">用户问题：</span><span style="color:#0a3069">{</span>query<span style="color:#0a3069">}</span><span style="color:#0a3069">&#34;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;文本片段的索引列表：&#34;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#1f2328">])</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#57606a"># 创建带结构化输出的Agent</span>
+</span></span><span style="display:flex;"><span>    agent <span style="color:#0550ae">=</span> create_agent<span style="color:#1f2328">(</span>
+</span></span><span style="display:flex;"><span>        model<span style="color:#0550ae">=</span>llm<span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>        system_prompt<span style="color:#0550ae">=</span><span style="color:#0a3069">&#34;你是一个召回文本相关性重排助手&#34;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>        response_format<span style="color:#0550ae">=</span>ReRankOutput<span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#57606a"># 调用 Agent</span>
+</span></span><span style="display:flex;"><span>    result <span style="color:#0550ae">=</span> agent<span style="color:#0550ae">.</span>invoke<span style="color:#1f2328">(</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#1f2328">{</span><span style="color:#0a3069">&#34;messages&#34;</span><span style="color:#1f2328">:</span> <span style="color:#1f2328">[{</span><span style="color:#0a3069">&#34;role&#34;</span><span style="color:#1f2328">:</span> <span style="color:#0a3069">&#34;user&#34;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#34;content&#34;</span><span style="color:#1f2328">:</span> prompt<span style="color:#1f2328">}]},</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    indices <span style="color:#0550ae">=</span> result<span style="color:#1f2328">[</span><span style="color:#0a3069">&#39;structured_response&#39;</span><span style="color:#1f2328">]</span><span style="color:#0550ae">.</span>indices
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">return</span> <span style="color:#1f2328">[</span>texts<span style="color:#1f2328">[</span>i<span style="color:#1f2328">]</span> <span style="color:#cf222e">for</span> i <span style="color:#0550ae">in</span> indices<span style="color:#1f2328">]</span>
+</span></span></code></pre></div><p>调用召回文本相关性重排助手，获取重排后的相关性文本列表。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>res <span style="color:#0550ae">=</span> get_relevant_texts<span style="color:#1f2328">(</span>
+</span></span><span style="display:flex;"><span>    query<span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>    dense_texts<span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>    sparse_texts<span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>res
+</span></span></code></pre></div><p>输出结果：</p>
+<pre tabindex="0"><code>[&#39;海獭臭臭的&#39;, &#39;海獭太可爱了&#39;]
+</code></pre><h2 id="七rag-架构">七、RAG 架构</h2>
+<p>RAG 有三种主流架构：</p>
+<table>
+	<thead>
+			<tr>
+					<th>架构</th>
+					<th>描述</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>2-Step RAG</td>
+					<td>先检索，再生成</td>
+			</tr>
+			<tr>
+					<td>Agentic RAG</td>
+					<td>使用 Agent 控制检索的时机与方式</td>
+			</tr>
+			<tr>
+					<td>Hybrid RAG</td>
+					<td>在 Agentic RAG 的基础上，增加用户 query 改写，确认召回文本的相关性等步骤</td>
+			</tr>
+	</tbody>
+</table>
+<blockquote>
+<p><strong>Note</strong>
+官方文档的 <a href="https://docs.langchain.com/oss/python/langchain/retrieval#rag-architectures">架构部分</a>  写得很好，推荐阅读。</p>
+</blockquote>
+<h3 id="12-step-rag">1）2-Step RAG</h3>
+<p><img src="/img/2-step-rag.png" alt="2-step-rag"></p>
+<h3 id="2agentic-rag">2）Agentic RAG</h3>
+<p><img src="/img/agentic-rag.png" alt="agentic-rag"></p>
+<h3 id="3hybrid-rag">3）Hybrid RAG</h3>
+<p><img src="/img/hybrid-rag.png" alt="hybrid-rag"></p>
+<h2 id="八网络搜索">八、网络搜索</h2>
+<p>网络搜索本身是一个很重的服务，它包含三项核心任务：网页爬取、网页索引和网页检索。<strong>网页索引</strong> 几乎只能由大公司完成。即使 <a href="https://github.com/searxng/searxng">SearXNG</a> 这样的开源检索方案，也只是聚合第三方搜索引擎（如必应、搜狗）的结果，没有独立索引能力。因此，即使独立开发网络搜索功能，也难以绕开大公司的服务。不如一开始就老老实实用大公司的 API，来获取搜索结果。</p>
+<p>下面展示使用 <a href="https://dashscope.aliyun.com/">DashScope</a> 联网搜索的方法和效果。</p>
+<p>首先安装 dashscope：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install dashscope
+</span></span></code></pre></div><p>只需要将 <code>Generation.call</code> 函数的网络参数 <code>enable_search</code> 设为 <code>True</code> 就能接入互联网。下面把这个函数做成工具供 Agent 调用。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#cf222e">from</span> <span style="color:#24292e">dashscope</span> <span style="color:#cf222e">import</span> Generation
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#0550ae">@tool</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">def</span> <span style="color:#6639ba">dashscope_search</span><span style="color:#1f2328">(</span>query<span style="color:#1f2328">:</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">)</span> <span style="color:#0550ae">-&gt;</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#0a3069">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">    使用夸克搜索 API 搜索互联网信息。
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    response <span style="color:#0550ae">=</span> Generation<span style="color:#0550ae">.</span>call<span style="color:#1f2328">(</span>
+</span></span><span style="display:flex;"><span>        model<span style="color:#0550ae">=</span><span style="color:#0a3069">&#39;qwen3-max&#39;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>        prompt<span style="color:#0550ae">=</span>query<span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>        enable_search<span style="color:#0550ae">=</span><span style="color:#cf222e">True</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>        result_format<span style="color:#0550ae">=</span><span style="color:#0a3069">&#39;message&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">if</span> response<span style="color:#0550ae">.</span>status_code <span style="color:#0550ae">==</span> <span style="color:#0550ae">200</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> response<span style="color:#0550ae">.</span>output<span style="color:#0550ae">.</span>choices<span style="color:#1f2328">[</span><span style="color:#0550ae">0</span><span style="color:#1f2328">]</span><span style="color:#0550ae">.</span>message<span style="color:#0550ae">.</span>content
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">else</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> <span style="color:#1f2328">(</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#0a3069">&#34;Search failed with status code: &#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#0a3069">f</span><span style="color:#0a3069">&#34;</span><span style="color:#0a3069">{</span>response<span style="color:#0550ae">.</span>status_code<span style="color:#0a3069">}</span><span style="color:#0a3069">, message: </span><span style="color:#0a3069">{</span>response<span style="color:#0550ae">.</span>message<span style="color:#0a3069">}</span><span style="color:#0a3069">&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 创建 Agent</span>
+</span></span><span style="display:flex;"><span>agent <span style="color:#0550ae">=</span> create_agent<span style="color:#1f2328">(</span>
+</span></span><span style="display:flex;"><span>    model<span style="color:#0550ae">=</span>llm<span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>    tools<span style="color:#0550ae">=</span><span style="color:#1f2328">[</span>dashscope_search<span style="color:#1f2328">],</span>
+</span></span><span style="display:flex;"><span>    system_prompt<span style="color:#0550ae">=</span><span style="color:#0a3069">&#34;你是一个智能助手，回答前必须使用工具搜索互联网信息&#34;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 运行 Agent</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#0550ae">=</span> agent<span style="color:#0550ae">.</span>invoke<span style="color:#1f2328">(</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#1f2328">{</span><span style="color:#0a3069">&#34;messages&#34;</span><span style="color:#1f2328">:</span> <span style="color:#1f2328">[{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;role&#34;</span><span style="color:#1f2328">:</span> <span style="color:#0a3069">&#34;user&#34;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0a3069">&#34;content&#34;</span><span style="color:#1f2328">:</span> <span style="color:#0a3069">&#34;告诉我今天的日期，以及今天最重要的一条新闻&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#1f2328">}]}</span>
+</span></span><span style="display:flex;"><span><span style="color:#1f2328">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#57606a"># 获取 Agent 的全部回复</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">for</span> message <span style="color:#0550ae">in</span> response<span style="color:#1f2328">[</span><span style="color:#0a3069">&#39;messages&#39;</span><span style="color:#1f2328">]:</span>
+</span></span><span style="display:flex;"><span>    message<span style="color:#0550ae">.</span>pretty_print<span style="color:#1f2328">()</span>
+</span></span></code></pre></div><p>输出结果：</p>
+<pre tabindex="0"><code>================================ Human Message =================================
+
+告诉我今天的日期，以及今天最重要的一条新闻
+================================== Ai Message ==================================
+Tool Calls:
+  dashscope_search (call_0d753c0e020d457f9309a5)
+ Call ID: call_0d753c0e020d457f9309a5
+  Args:
+    query: 今天的日期
+  dashscope_search (call_d714a572adba4037b921eb)
+ Call ID: call_d714a572adba4037b921eb
+  Args:
+    query: 今天最重要的一条新闻
+================================= Tool Message =================================
+Name: dashscope_search
+
+今天的日期是：**2025年12月28日，星期日**。
+================================= Tool Message =================================
+Name: dashscope_search
+
+截至**2025年12月28日**，今天最重要的一条新闻是：
+
+### **美国宣布将对中国部分半导体产品加征301关税，但设置18个月缓冲期（至2027年6月）**
+
+#### 核心要点：
+- **事件背景**：美东时间12月23日，美国贸易代表办公室发布针对中国半导体政策的“301调查”结果，认定中方相关产业政策“损害美国利益”，决定对包括晶体管、集成电路、二极管、放大器等关键半导体产品加征关税。
+- **特殊安排**：**当前税率为0%**，但**2027年6月起将提高税率**。这一“延迟生效”机制被广泛解读为美方在施压与维稳之间寻求平衡。
+- **中方回应**：12月25日，中国商务部发言人**何咏前**在例行发布会上**严正交涉**，强调：
+  - 不认同美方301调查结论；
+  - 坚决反对单边加征关税；
+  - 指出此举违反WTO规则，扰乱全球芯片供应链，“损人不利己”；
+  - 若美方一意孤行，中方将采取必要反制措施。
+- **战略意义**：此举动发生在中美2025年11月刚达成“关税休战”仅一个多月后，标志着美国对华经贸策略进入“**施压—休战循环**”的新阶段，也凸显半导体作为科技竞争核心领域的战略地位。
+
+该事件不仅关乎中美双边关系走向，更可能对**全球半导体产业链、科技企业布局及2026年关键缓和窗口期**产生深远影响，因此被视为今日最具全局性影响的国际新闻。
+================================== Ai Message ==================================
+
+今天的日期是：2025年12月28日，星期日。
+
+今天最重要的一条新闻是关于美国宣布将对中国部分半导体产品加征301关税的决定，但同时设置了18个月的缓冲期（至2027年6月）。具体来说，美方认定中国相关产业政策“损害美国利益”，因此决定对包括晶体管、集成电路、二极管、放大器等关键半导体产品加征关税。然而，当前税率为0%，直到2027年6月才会提高税率。对此，中国商务部发言人何咏前在例行发布会上表示不认同美方301调查结论，并坚决反对单边加征关税，指出此举违反WTO规则且扰乱全球芯片供应链。若美方执意推行，中方将采取必要反制措施。这一事件不仅影响中美双边关系，也可能对全球半导体产业链和科技企业布局产生深远影响。
+</code></pre><p>本文节选自<a href="https://www.luochang.ink/dive-into-langgraph/">《LangGraph 1.0 完全指南》</a>，如果你觉得本文还不错，可以阅读原版教程。</p>
+<p>参考：</p>
+<ul>
+<li><a href="https://datawhalechina.github.io/all-in-rag/#/chapter4/11_hybrid_search">All-in-RAG</a></li>
+<li><a href="https://milvus.io/docs/multi-vector-search.md">Multi-Vector Hybrid Search</a></li>
+<li><a href="https://docs.trychroma.com/cloud/search-api/hybrid-search">Hybrid Search with RRF</a></li>
+</ul>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/dive_into_langgraph/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">《LangGraph 1.0 完全指南》发布</span>
+    </a>
+    
+    
+    <a href="/posts/rpi_agent_server/" class="navigation-next">
+      <span class="navigation-tittle">在树莓派上搭建家用 Agent 服务</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+</div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.js" defer></script>
+
+
+<script defer src="https://kit.fontawesome.com/2134995a39.js" crossorigin="anonymous"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/tocbot@4.36.8/dist/tocbot.min.js"></script>
+<script type="text/javascript">
+  if (window.tocbot) {
+    tocbot.init({
+      
+      tocSelector: '.toc',
+      
+      contentSelector: '.post',
+      
+      headingSelector: 'h2, h3, h4',
+      collapseDepth: 4
+    });
+  }
+</script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    mediumZoom('.post img', {
+      background: 'rgba(0,0,0,0.82)',
+      margin: 24,
+      scrollOffset: 0
+    });
+  });
+</script>
+
+
+
+    
+
+
+
+  </body>
+</html>

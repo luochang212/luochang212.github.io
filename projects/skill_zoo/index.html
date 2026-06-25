@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="zh-Hans">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=61229&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="author" content="luochang" />
+    <link rel="shortcut icon" type="image/png" href="/img/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300..800;1,300..600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/project-detail.css" />
+    <title>Skill Zoo</title>
+  </head>
+  <body>
+    <nav class="nav">
+      <a class="back" href="/projects/">← <span>cd ../projects</span></a>
+      <span class="crumb">~/projects/<b>skill_zoo</b></span>
+      <a
+        class="gh"
+        href="https://github.com/luochang212/skill-zoo"
+        target="_blank"
+        rel="noopener noreferrer"
+        >GITHUB ↗</a
+      >
+    </nav>
+
+    <div class="wrap">
+      <section class="hero">
+        <div>
+          <div class="tag">
+            skill_zoo <span class="slash">//</span> agent-skills · tauri ·
+            desktop-app
+          </div>
+          <h1 class="title">
+            <span class="accent">Skill Zoo</span><br />一站式 Agent 技能管理工具
+          </h1>
+          <p class="lede">
+            为 <b>Claude Code、Codex、Gemini CLI、Cursor、OpenCode</b>
+            等 Coding Agent 打造的本地技能管理器。覆盖技能的<b>发现、安装、阅读、编辑、更新、归档、安全审计</b>全生命周期，
+            同时提供桌面 GUI 与 npm CLI 两种交互方式。
+          </p>
+          <p class="meta">Rust + Tauri v2 &middot; React 19 + TypeScript &middot; MIT 开源 &middot; 2026</p>
+          <div class="cta-row">
+            <a
+              class="btn btn-primary"
+              href="https://www.luochang.ink/skill-zoo/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >项目官网 <span class="arrow">→</span></a
+            >
+            <a class="btn btn-ghost" href="/posts/skill_zoo/">阅读全文</a>
+          </div>
+        </div>
+
+        <aside class="term" aria-hidden="true">
+          <div class="term-bar">
+            <span class="dots"><i></i><i></i><i></i></span>
+            <span class="title">skill_zoo://run</span>
+            <span class="ver">v1.0.0</span>
+          </div>
+          <div class="term-body">
+            <div class="stat-grid">
+              <div class="stat">
+                <div class="k">FRAMEWORK</div>
+                <div class="v">Tauri<span class="u">v2</span></div>
+              </div>
+              <div class="stat">
+                <div class="k">FRONTEND</div>
+                <div class="v">React 19<span class="u">Vite 5</span></div>
+              </div>
+            </div>
+            <div class="stat" style="margin-bottom: 14px">
+              <div class="k">LICENSE</div>
+              <div class="v">MIT<span class="u">open-source</span></div>
+              <div class="bar"><i></i></div>
+            </div>
+            <div class="logs">
+              <div class="row">
+                <span class="gt">&gt;</span
+                ><span><span class="k">init</span> Tauri app</span
+                ><span class="ok">✓</span>
+              </div>
+              <div class="row">
+                <span class="gt">&gt;</span
+                ><span><span class="k">mount</span> SSOT skill directory</span>
+              </div>
+              <div class="row">
+                <span class="gt">&gt;</span
+                ><span><span class="k">index</span> skills from GitHub</span>
+              </div>
+              <div class="row">
+                <span class="gt">&gt;</span
+                ><span>skills = <span class="num">42</span></span
+                ><span class="ok">✓</span>
+              </div>
+            </div>
+            <div class="term-foot">
+              <span><span class="online">● SYSTEM: ONLINE</span></span>
+              <span>MEM 4.2GB / 128GB</span>
+              <span>2026</span>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section">
+        <h2>
+          <span class="hash">//</span> <span class="num">01</span> 为什么需要它
+          <span class="en">why</span>
+        </h2>
+        <div class="card">
+          <p>
+            Agent 技能本质上是带有特定结构的 Markdown 文档。凭借<strong>可插拔、任务间通用、渐进式披露</strong>三大特性，它已经脱离了普通 prompt 的范畴，成为 Coding Agent 能力体系中独立的一层。尤其擅长那些有套路、有 SOP、需要风格迁移的任务——网页设计、数据分析、幻灯片制作。
+          </p>
+          <p>
+            但技能的管理体验一直跟不上。CLI 工具（<span class="kw">npx skills</span>）只能做安装和列表，技能一多列表就被截断，阅读基本无从谈起。哪些技能该删、哪些该更新、哪些质量高——这些判断都需要<strong>人主动参与</strong>，而参与的前提是<strong>看得见、读得懂</strong>。
+          </p>
+          <p>
+            Skill Zoo 的出发点就是这一句话：<strong>给所有流浪的技能宝宝一个家</strong>。用一个桌面 App 把技能管理的完整链条串起来，让阅读和维护不再是一件需要忍耐的事。
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>
+          <span class="hash">//</span> <span class="num">02</span> SSOT：一次管理，到处使用
+          <span class="en">ssot</span>
+        </h2>
+        <div class="card">
+          <p>
+            如果你同时用 Claude Code 和 Codex，两个 Agent 各有一套技能目录。同一个技能存两份——版本分裂、磁盘浪费、更新不可控。Skill Zoo 的方案是<strong>唯一真实源（SSOT）+ 软链接</strong>：
+          </p>
+          <pre>~/.agents/skills/web-search/                    ← 唯一真源，统一管理
+
+~/.claude/skills/web-search  →  ~/.agents/skills/web-search/
+~/.codex/skills/web-search   →  ~/.agents/skills/web-search/</pre>
+          <p>
+            这里有一个产品决策值得展开。从架构最优的角度，把用户所有技能收归 SSOT 目录统一管理是最干净的。但这会破坏一个场景：如果用户同时用 <code>npx skills</code> 更新技能，那个工具依赖技能目录里的真实文件而非软链接，强制收归会导致更新失败。
+          </p>
+          <p>
+            选择最优架构，还是尊重用户习惯？Skill Zoo 选了后者。<strong>不强制迁移已有文件</strong>。只有通过 Skill Zoo 安装的技能才纳入 SSOT 管理。这意味着代码里要多维护一套路径判断逻辑，但用户的现有工作流完全不受影响。
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>
+          <span class="hash">//</span> <span class="num">03</span> 功能全景
+          <span class="en">features</span>
+        </h2>
+        <div class="card">
+          <figure class="figure">
+            <figcaption>Skill Zoo 首页 — 卡片视图与侧边栏导航</figcaption>
+            <img src="/img/skill-zoo-home.jpg" alt="Skill Zoo 首页" loading="lazy" />
+          </figure>
+          <ul class="specs">
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>搜索与发现</b><br /><span class="v"
+                  >搜索栏支持模糊匹配技能名。也接受 GitHub 仓库链接或 <code>owner/repo</code> 标识直接查找。进入仓库页后自动下载并解析全部技能，提供逐个安装或批量安装。</span
+                ></span
+              >
+            </li>
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>仓库视图</b><br /><span class="v"
+                  >首页按仓库分组，点击进入后左侧是该仓库下所有技能，右侧实时渲染 README。不需要离开 App 就能全面了解一个技能仓库的全貌。</span
+                ></span
+              >
+            </li>
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>技能编辑</b><br /><span class="v"
+                  >内置 CodeMirror 6 编辑器，支持在任意位置创建或修改技能 Markdown 文件。不需要切换到外部编辑器。</span
+                ></span
+              >
+            </li>
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>批量管理</b><br /><span class="v"
+                  >卡片视图下没有批量入口——这是刻意的，防止误触。切换到右上角列表视图后，复选框出现，可以批量勾选安装、归档或删除。</span
+                ></span
+              >
+            </li>
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>一致性检查</b><br /><span class="v"
+                  >三种维度：重复技能、版本冲突、格式不规范。随着技能库膨胀，这些检查能帮你及时发现管理死角。</span
+                ></span
+              >
+            </li>
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>安全审计</b><br /><span class="v"
+                  >技能详情页内置安全审计入口，对接 skills.sh 社区，一键获取技能的社区安全评分。</span
+                ></span
+              >
+            </li>
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>技能归档</b><br /><span class="v"
+                  >暂时不用的技能可归档暂存，减少 Agent 上下文占用。需要时一键恢复。</span
+                ></span
+              >
+            </li>
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>CLI + WUI 双模式</b><br /><span class="v"
+                  >除桌面 GUI 外，额外提供 npm CLI（<code>npx skill-zoo</code>）和内嵌轻量 Web 界面。Agent 可以用 CLI 调用，人可以用 GUI 浏览——两种消费端各得其所。</span
+                ></span
+              >
+            </li>
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>中英双语</b><br /><span class="v"
+                  >基于 i18next，完整支持中英文界面切换。</span
+                ></span
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>
+          <span class="hash">//</span> <span class="num">04</span> 技术架构
+          <span class="en">stack</span>
+        </h2>
+        <div class="card">
+          <p>
+            选择 <strong>Tauri v2</strong> 而非 Electron 是认真的。Electron 打包体积动辄上百 MB，内存占用高，对一个小工具来说太重了。
+            Tauri 用系统的 WebView 渲染，后端以 <span class="kw">Rust</span> 编写，打包体积小一个数量级，内存占用也低得多。
+          </p>
+          <ul class="specs">
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>前端</b><br /><span class="v"
+                  >React 19 + TypeScript + Vite 5，UI 层用 Tailwind CSS 4 + shadcn/ui，状态管理 TanStack React Query，动效 Framer Motion</span></span
+              >
+            </li>
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>后端</b><br /><span class="v"
+                  >Rust（Tauri v2），IPC 命令处理层、技能操作服务层、元数据持久化层三层架构</span></span
+              >
+            </li>
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>编辑器</b><br /><span class="v"
+                  >CodeMirror 6，支持 Markdown 语法高亮与内联编辑</span></span
+              >
+            </li>
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>国际化</b><br /><span class="v"
+                  >i18next，中英文完整界面切换</span></span
+              >
+            </li>
+            <li>
+              <span class="gt">&gt;</span
+              ><span
+                ><b>工程化</b><br /><span class="v"
+                  >Bun 包管理，Vitest + Rust tests 双端测试，oxlint + clippy 双端 lint，GitHub Actions 自动化构建 macOS dmg 和 Windows exe</span></span
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>
+          <span class="hash">//</span> <span class="num">05</span> 下载安装
+          <span class="en">install</span>
+        </h2>
+        <div class="card">
+          <p>
+            macOS 用户从 <a href="https://github.com/luochang212/skill-zoo/releases" target="_blank" rel="noopener noreferrer">GitHub Releases</a>
+            下载 <code>.dmg</code>，Windows 用户下载 <code>.exe</code>。也提供 npm CLI：
+          </p>
+          <pre>npm install -g skill-zoo</pre>
+          <p>
+            安装包通过 GitHub Actions 构建，过程透明可审计。项目以 <span class="kw">MIT</span> 协议开源，
+            欢迎 Star 与贡献：<a href="https://github.com/luochang212/skill-zoo" target="_blank" rel="noopener noreferrer">github.com/luochang212/skill-zoo</a>
+          </p>
+        </div>
+      </section>
+
+      <div class="foot">
+        <span>© 2026 Chang Luo</span>
+        <span><span class="sys">●</span> BUILD: STABLE · UTF-8 · zh-Hans</span>
+      </div>
+    </div>
+  </body>
+</html>
+

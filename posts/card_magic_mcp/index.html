@@ -1,0 +1,1391 @@
+<!doctype html>
+<html lang="zh-CN">
+  
+    
+
+
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=61229&amp;path=livereload" data-no-instant defer></script>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://localhost:61229/posts/card_magic_mcp/">
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.163.3">
+
+    
+    
+    
+
+<title>新瓶装旧酒：纸牌魔术 MCP • Chang Luo</title>
+
+
+    
+
+
+<meta name="description" content="数学驱动的纸牌魔术，以 MCP 的形式呈现">
+
+
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="http://localhost:61229/images/og-default.jpg">
+	<meta name="twitter:title" content="新瓶装旧酒：纸牌魔术 MCP">
+	<meta name="twitter:description" content="数学驱动的纸牌魔术，以 MCP 的形式呈现">
+			<meta name="twitter:site" content="@_stellar_tide">
+
+<meta property="og:url" content="http://localhost:61229/posts/card_magic_mcp/">
+	<meta property="og:site_name" content="Chang Luo">
+	<meta property="og:title" content="新瓶装旧酒：纸牌魔术 MCP">
+	<meta property="og:description" content="数学驱动的纸牌魔术，以 MCP 的形式呈现">
+	<meta property="og:locale" content="zh_CN">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2025-07-12T00:00:00+00:00">
+		<meta property="article:modified_time" content="2025-07-12T00:00:00+00:00">
+		<meta property="article:tag" content="MCP">
+		<meta property="article:tag" content="Magic">
+		<meta property="article:tag" content="Number-Theory">
+		<meta property="og:image" content="http://localhost:61229/images/og-default.jpg">
+
+
+    
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.f9da2b005f03c27beab06923e896c9a3875472209210a9177205d391257298b2.css" integrity="sha256-&#43;dorAF8DwnvqsGkj6JbJo4dUciCSEKkXcgXTkSVymLI=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+
+<link rel="stylesheet" href="/scss/tocbot.5ef07cebc3c477b54270456f149ee02922479bb7555fd344b2c69f953b0e7e5e.css" integrity="sha256-XvB868PEd7VCcEVvFJ7gKSJHm7dVX9NEssaflTsOfl4=">
+
+
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#202020">
+    
+    
+
+</head>
+
+
+  <body
+    class=" "
+  >
+    <div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="http://localhost:61229/">Chang Luo</a>
+      </span>
+      
+      
+      
+      <div class="author-image">
+        <button type="button" class="author-trigger" onclick="openNav()" aria-label="打开个人收藏侧栏"
+          aria-controls="mySidenav" aria-expanded="false"><img src="http://localhost:61229//images/profile.webp"
+            alt="Chang Luo" class="img--circle img--headshot element--center"></button>
+      </div>
+      
+      <p class="site__description">
+        
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Chang Luo</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		<li class="sidebar-nav__home">
+			<a href="http://localhost:61229/"><span>Home</span></a>
+		</li>
+		
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/portfolio/">
+						<span>Projects</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+		
+		<a href="https://twitter.com/_stellar_tide" rel="me" title="X">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		<a href="https://github.com/luochang212" rel="me" title="GitHub">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		<a href="https://mp.weixin.qq.com/s/He-04l46xJTM_MJ3AyTwWQ" rel="me" title="微信">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.35em; height: 1.35em; vertical-align: -0.28em;">
+				<path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135-.01-.27-.027-.407-.03zm-2.53 3.274c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982z"/>
+			</svg>
+		</a>
+		
+		
+		<a href="https://www.zhihu.com/people/Fashionable" rel="me" title="知乎">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2"
+				 stroke-linecap="round" stroke-linejoin="round" style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="m13.3334,3.60098l0,17.1471l1.79582,0l0.75424,2.13703l3.18459,-2.13703l3.93584,0l0,-17.1471l-9.6705,0zm7.41375,14.87538l-1.79283,0l-2.24777,1.50849l-0.53276,-1.50849l-0.53875,0l0,-12.53483l5.10911,0l0,12.53483l0.00299,0zm-8.56906,-7.18927l-3.97475,0c0.06285,-1.34387 0.1287,-3.12174 0.19754,-5.17496l3.91788,0l-0.00299,-0.24244c0,-0.01796 -0.00599,-0.43998 -0.06884,-0.87097c-0.06285,-0.44896 -0.19754,-1.04457 -0.62854,-1.04457l-6.5727,0c0.13169,-0.61657 0.46991,-2.08615 0.87995,-2.80747l0.19155,-0.33522l-0.3861,-0.02095c-0.02394,0 -0.58663,-0.02694 -1.23912,0.31726c-1.06851,0.56868 -1.5474,1.68807 -1.75691,2.52612c-0.55072,2.18791 -1.33489,3.70837 -1.66712,4.35786c-0.09877,0.19155 -0.15863,0.30529 -0.18557,0.38311c-0.05387,0.14666 -0.02394,0.29332 0.0838,0.38909c0.31427,0.28434 1.14334,-0.0868 1.15232,-0.08979c0.01796,-0.00898 0.03891,-0.01796 0.06585,-0.02993c0.41603,-0.18856 1.64916,-0.74826 2.08914,-2.52911l1.69705,0c0.02095,0.96376 0.09278,4.14236 0.0868,5.17496l-4.22018,0l-0.06285,0.0449c-0.69139,0.50582 -0.91288,1.8916 -0.92185,1.95146l-0.0419,0.27536l4.99837,0c-0.36814,2.34355 -0.79315,3.3941 -1.01763,3.81313c-0.11074,0.20951 -0.21849,0.41902 -0.32025,0.62255c-0.63752,1.26306 -1.29898,2.56802 -3.7802,4.5973c-0.10775,0.0838 -0.20951,0.23944 -0.14367,0.41005c0.07183,0.18856 0.27835,0.27237 0.73629,0.27237c0.16162,0 0.35318,-0.00898 0.58065,-0.02993c1.49352,-0.13169 3.01698,-0.53875 4.04359,-2.6219c0.50882,-1.05056 0.94879,-2.14601 1.31394,-3.25941l4.08549,4.78886l0.14965,-0.35916c0.02394,-0.05687 0.56868,-1.38578 0.15264,-2.87032l-0.01497,-0.05387l-3.23547,-3.68143l-0.65847,0.49684c0.19155,-0.78118 0.31726,-1.49352 0.37413,-2.12805l4.74995,0l0,-0.23944c0,-1.20021 -0.55371,-1.91255 -0.57466,-1.94248l-0.07183,-0.08979z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+</section>
+
+      </div>
+    </div>
+    
+<div class="copyright">
+  &copy; 2026 Chang Luo
+  
+</div>
+
+
+
+  </div>
+</div>
+
+<div id="overlay" onclick="closeNav()" aria-hidden="true"></div>
+
+<div id="mySidenav" class="sidenav" role="dialog" aria-label="个人收藏" aria-hidden="true">
+  <div id="main">
+    <div class="tab">
+      <button id="default-tab" class="tablinks active" onclick="openItem(event, 'Resources')"
+        aria-controls="Resources" aria-pressed="true">Resources</button>
+      <button class="tablinks" onclick="openItem(event, 'netease-player')"
+        aria-controls="netease-player" aria-pressed="false">Music</button>
+      <button class="tablinks" onclick="openItem(event, 'video-player')"
+        aria-controls="video-player" aria-pressed="false">Video</button>
+      <button class="tablinks" onclick="openItem(event, 'gallery')"
+        aria-controls="gallery" aria-pressed="false">Gallery</button>
+      <button class="tablinks" onclick="openItem(event, 'gadget')"
+        aria-controls="gadget" aria-pressed="false">Gadget</button>
+      <button class="tablinks" onclick="openItem(event, 'categories')"
+        aria-controls="categories" aria-pressed="false">Cats</button>
+    </div>
+
+    <div id="Resources" class="tabcontent">
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/resources/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Resources"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="netease-player" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
+        frameborder="no"
+        marginheight="0"
+        marginwidth="0"
+        title="Music player"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="video-player" class="tabcontent" hidden>
+      <div class="video-layout">
+        <div class="video-main">
+          <div class="video-cover" id="video-cover">
+            <img id="video-cover-img" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-cover-overlay">
+              <button class="video-play-btn" id="video-play-btn" aria-label="播放视频">
+                <svg viewBox="0 0 24 24" width="48" height="48"><path d="M8 5v14l11-7z" fill="white"/></svg>
+              </button>
+              <span class="video-cover-title" id="video-cover-title">四月是你的谎言</span>
+            </div>
+          </div>
+          <div class="video-frame" id="video-frame" hidden>
+            <iframe src="about:blank"
+              data-src="//player.bilibili.com/player.html?bvid=BV1Ms411D7in&p=1&high_quality=1&danmaku=0&autoplay=0"
+              style="width:100%;"
+              scrolling="no"
+              frameborder="no"
+              framespacing="0"
+              title="Bilibili video player"
+              allowfullscreen="true"></iframe>
+          </div>
+        </div>
+        <div class="video-playlist">
+          <button class="video-item active" data-bvid="BV1Ms411D7in"
+            data-title="四月是你的谎言"
+            data-cover="/images/video-covers/zutomayo.jpg"
+            data-duration="4:04">
+            <img class="video-item-cover" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">四月是你的谎言</span>
+              <span class="video-item-meta">4:04</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1LW411j7dK"
+            data-title="Kids by One republic — 三羊"
+            data-cover="/images/video-covers/sanyang.jpg"
+            data-duration="2:54">
+            <img class="video-item-cover" src="/images/video-covers/sanyang.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">Kids by One republic</span>
+              <span class="video-item-meta">三羊 · 2:54</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Yx411U7Lx"
+            data-title="交织together — M78"
+            data-cover="/images/video-covers/jiaozhi.jpg"
+            data-duration="6:06">
+            <img class="video-item-cover" src="/images/video-covers/jiaozhi.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">交织together</span>
+              <span class="video-item-meta">M78 · 6:06</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1rp4y1L7i4"
+            data-title="新员工入职大会 — 岁己SUI/恋诗夜Koxia"
+            data-cover="/images/video-covers/suisui.jpg"
+            data-duration="2:33">
+            <img class="video-item-cover" src="/images/video-covers/suisui.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">新员工入职大会</span>
+              <span class="video-item-meta">岁己SUI/恋诗夜Koxia · 2:33</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Av4y147QE"
+            data-title="真物论 — 悠亚"
+            data-cover="/images/video-covers/zhenwulun.jpg"
+            data-duration="3:30">
+            <img class="video-item-cover" src="/images/video-covers/zhenwulun.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">真物论</span>
+              <span class="video-item-meta">悠亚 · 3:30</span>
+            </div>
+          </button>
+        </div>        </div>
+      </div>
+
+
+    <div id="gallery" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/gadget/gallery/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Gallery"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="gadget" class="tabcontent drawer-native" hidden>
+      <div class="drawer-native-content">
+        
+          <br>
+<table>
+	<thead>
+			<tr>
+					<th>#</th>
+					<th>name</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td><a href="/gadget/hydra" target="_blank">Hydra</a></td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td><a href="/mozi/" target="_blank">墨子</a></td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td><a href="/gadget/how-old-are-you" target="_blank">年龄可视化</a></td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td><a href="/gadget/piano" target="_blank">Piano</a></td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td><a href="/flockn-roll/" target="_blank">Flock&rsquo;n Roll</a></td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td><a href="/monaco-speech-editor/" target="_blank">Monaco Speech Editor</a></td>
+			</tr>
+	</tbody>
+</table>
+
+        
+      </div>
+    </div>
+
+    <div id="categories" class="tabcontent drawer-native" hidden>
+      <ul class="drawer-category-list">
+        
+          <li>
+            <a href="/categories/devops/" target="_blank" rel="noopener noreferrer">
+              <span>DevOps</span>
+              <span class="drawer-category-count">12</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/deeplearning/" target="_blank" rel="noopener noreferrer">
+              <span>DeepLearning</span>
+              <span class="drawer-category-count">11</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/agent/" target="_blank" rel="noopener noreferrer">
+              <span>Agent</span>
+              <span class="drawer-category-count">7</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/algorithms/" target="_blank" rel="noopener noreferrer">
+              <span>Algorithms</span>
+              <span class="drawer-category-count">6</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/life/" target="_blank" rel="noopener noreferrer">
+              <span>Life</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/sota/" target="_blank" rel="noopener noreferrer">
+              <span>SOTA</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/bigdata/" target="_blank" rel="noopener noreferrer">
+              <span>BigData</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/statistics/" target="_blank" rel="noopener noreferrer">
+              <span>Statistics</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/frontend/" target="_blank" rel="noopener noreferrer">
+              <span>FrontEnd</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/llms/" target="_blank" rel="noopener noreferrer">
+              <span>LLMs</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/machinelearning/" target="_blank" rel="noopener noreferrer">
+              <span>MachineLearning</span>
+              <span class="drawer-category-count">2</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/math/" target="_blank" rel="noopener noreferrer">
+              <span>Math</span>
+              <span class="drawer-category-count">2</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/datavisualization/" target="_blank" rel="noopener noreferrer">
+              <span>DataVisualization</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/hardware/" target="_blank" rel="noopener noreferrer">
+              <span>Hardware</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/modeling/" target="_blank" rel="noopener noreferrer">
+              <span>Modeling</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/multimodal/" target="_blank" rel="noopener noreferrer">
+              <span>Multimodal</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/network/" target="_blank" rel="noopener noreferrer">
+              <span>Network</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/prose/" target="_blank" rel="noopener noreferrer">
+              <span>Prose</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="/js/drawer.js"></script>
+
+
+    <div class="content container">
+    
+<article>
+  <header>
+    <h1>新瓶装旧酒：纸牌魔术 MCP</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Jul 12, 2025
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/sota">SOTA</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/mcp">mcp</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/magic">magic</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/number-theory">number-theory</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 10 min read
+</div>
+
+
+  </header>
+  
+  
+  
+    <div class="toc-wrapper">
+      <input type="checkbox" id="tocToggle">
+      <label for="tocToggle">Table of Content</label>
+      
+        <div class="toc" id="TableOfContents"></div>
+      
+    </div>
+  
+  
+  <div class="post">
+    <blockquote>
+<p>Chico 和 Dico 是两名魔术师，他们有一个经典纸牌魔术：抽五张扑克牌，根据前四张，猜第五张是什么。完成这个魔术不需要任何魔术师的技巧，它完全建立在数学原理之上。只需要一点数学知识和充分的练习，你也能表演这个魔术。</p>
+</blockquote>
+<p>GitHub 项目地址：<a href="https://github.com/luochang212/card-magic-mcp" target="_blank">card-magic-mcp</a></p>
+<p>五年前，我写了一篇文章<a href="/posts/chico_and_dico/">《用魔法打败魔法》</a>，介绍 Chico &amp; Dico 魔术的数学原理，并用 Python 实现了这个魔术。随着时代的发展、科技的进步，今天我们有更简单的方法来玩这个魔术，不需要运行 Python，不需要看懂公式，只需要打开 <a href="https://www.modelscope.cn/mcp/servers/FMoBall/card-magic-mcp">ModelScope</a> 和大模型对话，就可以轻松体验这个魔术↓↓↓</p>
+<p>访问 <code>ModelScope Playground</code>: <a href="https://www.modelscope.cn/studios/modelscope/mcp-playground?studio_additional_params=%7B%0A%20%20%22mcpServers%22%3A%20%7B%0A%20%20%20%20%22card-magic-mcp%22%3A%20%7B%0A%20%20%20%20%20%20%22type%22%3A%20%22sse%22%2C%0A%20%20%20%20%20%20%22url%22%3A%20%22https%3A%2F%2Fmcp.api-inference.modelscope.net%2Ffcfa3b28ef6a4f%2Fsse%22%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D">card-magic-mcp</a></p>
+<p>下面我将介绍这个魔术的数学原理和算法实现，然后讲解如何用 FastMCP 将魔术流程包装成大语言模型可以调用的工具（MCP Server）。</p>
+<h3 id="chico--dico-的魔术">Chico &amp; Dico 的魔术</h3>
+<p>Chico 和 Dico 是两位魔术师，他们经常表演的一个魔术是这样的：Chico 将一副 52 张的扑克牌交给观众，让他抽取其中的 5 张。然后 Chico 将这 5 张牌按一定的顺序重新排列，再将其还给观众。上述整个过程 Dico 都是看不见的。然而，当观众按 Chico 排好的顺序依次展示前四张牌之后，Dico 却能准确地说出第五张牌是什么。</p>
+<p>乍一看这个魔术很神奇。随机抽取 5 张牌，你能从前 4 张牌中看出第 5 张牌是什么吗？对于普通人来说，当然不行。Chico 和 Dico 的秘诀在于 Chico 有机会将扑克重新排序。如果两人事先约定好某种协议，Chico 有可能通过前四张扑克排列的顺序，向 Dico 传递关于第 5 张牌的信息。</p>
+<p>关键在于如何实现这种协议。</p>
+<h3 id="数学原理">数学原理</h3>
+<p>在进行分析之前，我们需要把 Chico &amp; Dico 的魔术抽象成一个数学模型。</p>
+<p>魔术本身已经提供了一些建模信息。假设一共有 \( n \) 张牌，抽取其中的 \( k \) 张。在对牌进行某种排序之后，我们需要利用前 \( (k - j) \) 张牌的信息，推测后 \( j \) 张牌是什么。</p>
+<p>现在我们有 \( n, j, k \) 三个变量，下面我们来进一步探究三个变量之间服从何种关系。</p>
+<p>首先，我们知道从 \( n \) 张牌中抽取 \( k \) 张牌一共有 \( C(n, k) \) 种组合方式，而 \( (k - j) \) 张牌的排列方式则有 \( A(n, k-j) \) 种。按照模型的要求，我们要用后者对前者的信息进行编码。根据信息论中的信源编码理论，至少有：
+</p>
+$$C(n, k) \leq A(n, k-j)$$<p>
+根据上述不等式，有：
+</p>
+$$ C(n, k) = \frac{n!}{(n-k)!k!} \leq \frac{n!}{(n-k+j)!} = A(n, k-j), \\ \text{即} \quad (n - k + j)! \leq k!(n - k)! $$<p>
+故 \( n, j, k \) 三个变量至少需要满足：
+</p>
+$$ (n - k + j)! \leq k!(n - k)! $$<p>
+特别地，当 \( j = 1 \) 时，上述不等式等价于：
+</p>
+$$ (n - k + 1)! \leq k!(n - k)! $$<p>
+可以简化为：
+</p>
+$$ (n - k + 1) \cdot (n - k)! \leq k! \cdot (n - k)! \\ \text{即} \quad n \leq k! + k - 1 $$<p>
+根据本魔术的设定，可知 \( n = 52 \), \( k = 5 \)。代入上述不等式，可得：
+</p>
+$$ 52 \leq 5! + 5 - 1 = 124 $$<p>
+也就是说，用前四张牌编码最后一张牌，理论上是可以实现的！</p>
+<p>甚至有很大的冗余空间，在用前四张牌编码最后一张牌的设定下，最大可编码数量是 124，文末我们会推广到 124 张的极限情况。相比起来，Chico &amp; Dico 的魔术仅需编码 52 张牌，根本不在话下。</p>
+<h3 id="算法实现">算法实现</h3>
+<p>目前为止，一切还很抽象。</p>
+<p>为了更好地理解 Chico 编码牌组，以及 Dico 解码牌组的方法。我们用一个实例复现魔术现场。</p>
+<p>根据我们的模型和魔术的设定，显然有 \( n = 52, k = 5, j = 1 \)。</p>
+<p>此外我们还作如下约定：</p>
+<ol>
+<li><code>cards</code> 代表观众选出的 5 张牌组成的列表</li>
+<li>被 Chico 重新排列过的牌组放入列表 <code>reordered_cards</code> 中</li>
+<li>约定 <code>s = sum(cards) mod k!</code></li>
+<li>一般情况下，\( q \) 代表商（初始化那次除外），\( r \) 代表余数</li>
+</ol>
+<p>好了，现在魔术正式开始 <img src="/img/hanser/png/cece.png" class="my-emoji" style = "height: 64px;"></p>
+<p>第一步，我们让观众取出 5 张牌。假设观众取出的是 \( [18, 50, 12, 19, 4] \)，我们要对这 5 张牌从小到大进行排序。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>cards <span style="color:#0550ae">=</span> <span style="color:#1f2328">[</span><span style="color:#0550ae">18</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">50</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">12</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">19</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">4</span><span style="color:#1f2328">]</span>
+</span></span><span style="display:flex;"><span>cards <span style="color:#0550ae">=</span> <span style="color:#6639ba">sorted</span><span style="color:#1f2328">(</span>cards<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># cards = [4, 12, 18, 19, 50]</span>
+</span></span></code></pre></div><p>第二步，计算 <code>s = sum(cards) mod k!</code> 的值。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>s <span style="color:#0550ae">=</span> <span style="color:#6639ba">sum</span><span style="color:#1f2328">(</span>cards<span style="color:#1f2328">)</span> <span style="color:#0550ae">%</span> factorial<span style="color:#1f2328">(</span><span style="color:#0550ae">5</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># s = 103</span>
+</span></span></code></pre></div><p>第三步，对这 5 张牌按如下规则进行编码：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>q <span style="color:#0550ae">=</span> s
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">for</span> i <span style="color:#0550ae">in</span> <span style="color:#6639ba">range</span><span style="color:#1f2328">(</span><span style="color:#0550ae">5</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">0</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">-</span><span style="color:#0550ae">1</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>    q<span style="color:#1f2328">,</span> r <span style="color:#0550ae">=</span> <span style="color:#6639ba">divmod</span><span style="color:#1f2328">(</span>q<span style="color:#1f2328">,</span> i<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>    reordered_cards<span style="color:#0550ae">.</span>append<span style="color:#1f2328">(</span>cards<span style="color:#0550ae">.</span>pop<span style="color:#1f2328">(</span>r<span style="color:#1f2328">))</span>
+</span></span></code></pre></div><p>为了理解这一步做了什么，我们将上述循环展开。</p>
+<details>
+<summary style="outline: none;"><font color='blueviolet'>点击查看每轮迭代中的细节</font></summary>
+<p>初始化，s = 103：</p>
+<table>
+	<thead>
+			<tr>
+					<th>i</th>
+					<th>1</th>
+					<th>2</th>
+					<th>3</th>
+					<th>4</th>
+					<th>5</th>
+					<th></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>card</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>q</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>s = 103</td>
+			</tr>
+			<tr>
+					<td>r</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td></td>
+			</tr>
+	</tbody>
+</table>
+<p>当 i = 5 时，被除数初始化为 s。因此有 \( q_5 = s / i = 103/5 = 20, r_5 = s % i = 103%5 = 3 \)。将列表 cards 中的索引为 \( r_5 \)（= 3）的扑克，放入列表 reordered_cards 中。现在列表 cards 为 \( [4, 12, 18, 50] \)，列表 reordered_cards 为 \( [19] \)。具体结果如下：</p>
+<table>
+	<thead>
+			<tr>
+					<th>i</th>
+					<th>i_1 = 1</th>
+					<th>i_2 = 2</th>
+					<th>i_3 = 3</th>
+					<th>i_4 = 4</th>
+					<th>i_5 = 5</th>
+					<th></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>card</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>reordered_cards[0] = 19</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>q</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>q_5 = s / i_5 =  20</td>
+					<td>s = 103</td>
+			</tr>
+			<tr>
+					<td>r</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>r_5 = s % i_5 = 3</td>
+					<td></td>
+			</tr>
+	</tbody>
+</table>
+<p>当 i = 4 时，有 \( q_4 = q_5 / i = 20/4 = 5, r_4 = q_5 % i = 20%4 = 0 \)。也就是把上一轮的商作为本轮的被除数。本轮之后列表 cards 为 \( [12, 18, 50] \)。</p>
+<table>
+	<thead>
+			<tr>
+					<th>i</th>
+					<th>i_1 = 1</th>
+					<th>i_2 = 2</th>
+					<th>i_3 = 3</th>
+					<th>i_4 = 4</th>
+					<th>i_5 = 5</th>
+					<th></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>card</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>reordered_cards[1] = 4</td>
+					<td>19</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>q</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>q_4 = q_5 / i_4 = 5</td>
+					<td>q_5 = 20</td>
+					<td>s = 103</td>
+			</tr>
+			<tr>
+					<td>r</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>r_4 = q_5 % i_4 = 0</td>
+					<td>r_5 = 3</td>
+					<td></td>
+			</tr>
+	</tbody>
+</table>
+<p>当 i = 3 时，有 \( q_3 = q_4 / i = 5/3 = 1, r_3 = q_4 % i = 5%3 = 2 \)。本轮之后列表 cards 为 \( [12, 18] \)。</p>
+<table>
+	<thead>
+			<tr>
+					<th>i</th>
+					<th>1</th>
+					<th>2</th>
+					<th>3</th>
+					<th>4</th>
+					<th>5</th>
+					<th></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>card</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>50</td>
+					<td>4</td>
+					<td>19</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>q</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>q_3 = 1</td>
+					<td>q_4 = 5</td>
+					<td>q_5 = 20</td>
+					<td>s = 103</td>
+			</tr>
+			<tr>
+					<td>r</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>r_3 = 2</td>
+					<td>r_4 = 0</td>
+					<td>r_5 = 3</td>
+					<td></td>
+			</tr>
+	</tbody>
+</table>
+<p>当 i = 2 时，有 \( q_2 = q_3 / i = 1/2 = 0, r_2 = q_3 % i = 1%2 = 1 \)。本轮之后列表 cards 为 \( [12] \)。</p>
+<table>
+	<thead>
+			<tr>
+					<th>i</th>
+					<th>1</th>
+					<th>2</th>
+					<th>3</th>
+					<th>4</th>
+					<th>5</th>
+					<th></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>card</td>
+					<td>NULL</td>
+					<td>18</td>
+					<td>50</td>
+					<td>4</td>
+					<td>19</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>q</td>
+					<td>NULL</td>
+					<td>q_2 = 0</td>
+					<td>q_3 = 1</td>
+					<td>q_4 = 5</td>
+					<td>q_5 = 20</td>
+					<td>s = 103</td>
+			</tr>
+			<tr>
+					<td>r</td>
+					<td>NULL</td>
+					<td>r_2 = 1</td>
+					<td>r_3 = 2</td>
+					<td>r_4 = 0</td>
+					<td>r_5 = 3</td>
+					<td></td>
+			</tr>
+	</tbody>
+</table>
+<p>当 i = 1 时，有 \( q_1 = q_2 / i = 0/1 = 0, r_1 = q_2 % i = 0%1 = 0 \)。本轮之后列表 cards 为 <code>[]</code>。</p>
+<table>
+	<thead>
+			<tr>
+					<th>i</th>
+					<th>1</th>
+					<th>2</th>
+					<th>3</th>
+					<th>4</th>
+					<th>5</th>
+					<th></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>card</td>
+					<td>12</td>
+					<td>18</td>
+					<td>50</td>
+					<td>4</td>
+					<td>19</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>q</td>
+					<td>q_1 = 0</td>
+					<td>q_2 = 0</td>
+					<td>q_3 = 1</td>
+					<td>q_4 = 5</td>
+					<td>q_5 = 20</td>
+					<td>s = 103</td>
+			</tr>
+			<tr>
+					<td>r</td>
+					<td>r_1 = 0</td>
+					<td>r_2 = 1</td>
+					<td>r_3 = 2</td>
+					<td>r_4 = 0</td>
+					<td>r_5 = 3</td>
+					<td></td>
+			</tr>
+	</tbody>
+</table>
+</details>
+<p>最终，我们得到一个列表 <code>reordered_cards = [12, 18, 50, 4, 19]</code>。</p>
+<p>第四步，我们对上一步中得到的列表 \( [12, 18, 50, 4, 19] \) 进行分割，将前 4 张牌 \( [12, 18, 50, 4] \) 送入解码器中，最后一个值 19 作为答案保存下来，用于最后魔术成功与否的判定。</p>
+<p>第五步，将前 4 张牌 \( [12, 18, 50, 4] \) 解码。此步相当于是第三步的逆过程。我们将牌组按如下规则进行解码：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#cf222e">for</span> i <span style="color:#0550ae">in</span> <span style="color:#6639ba">range</span><span style="color:#1f2328">(</span><span style="color:#0550ae">1</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">5</span><span style="color:#1f2328">,</span> <span style="color:#0550ae">1</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>    q_list<span style="color:#1f2328">[</span>i<span style="color:#1f2328">]</span> <span style="color:#0550ae">=</span> i <span style="color:#0550ae">*</span> q_list<span style="color:#1f2328">[</span>i<span style="color:#0550ae">-</span><span style="color:#0550ae">1</span><span style="color:#1f2328">]</span> <span style="color:#0550ae">+</span> r_list<span style="color:#1f2328">[</span>i<span style="color:#0550ae">-</span><span style="color:#0550ae">1</span><span style="color:#1f2328">]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">if</span> i <span style="color:#0550ae">!=</span> <span style="color:#0550ae">4</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>        visible_cards<span style="color:#0550ae">.</span>append<span style="color:#1f2328">(</span>first_four<span style="color:#1f2328">[</span>i<span style="color:#1f2328">])</span>
+</span></span><span style="display:flex;"><span>        r_list<span style="color:#1f2328">[</span>i<span style="color:#1f2328">]</span> <span style="color:#0550ae">=</span> <span style="color:#6639ba">sorted</span><span style="color:#1f2328">(</span>visible_cards<span style="color:#1f2328">)</span><span style="color:#0550ae">.</span>index<span style="color:#1f2328">(</span>first_four<span style="color:#1f2328">[</span>i<span style="color:#1f2328">])</span>
+</span></span></code></pre></div><p>为了理解这一步做了什么，我们将上述循环展开。</p>
+<details>
+<summary style="outline: none;"><font color='blueviolet'>点击查看每轮迭代中的细节</font></summary>
+<p>当 i = 1 时，有 <code>q_1 = 0, r_1 = 0</code>（证明略，提示：\( s < 5! \)）。其次，由已知的前 4 张牌 \( [12, 18, 50, 4] \)，我们知道：</p>
+<table>
+	<thead>
+			<tr>
+					<th>i</th>
+					<th>i_1 = 1</th>
+					<th>i_2 = 2</th>
+					<th>i_3 = 3</th>
+					<th>i_4 = 4</th>
+					<th>i_5 = 5</th>
+					<th></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>card</td>
+					<td>12</td>
+					<td>18</td>
+					<td>50</td>
+					<td>4</td>
+					<td>NULL</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>q</td>
+					<td>q_1 = 0</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>s = NULL</td>
+			</tr>
+			<tr>
+					<td>r</td>
+					<td>r_1 = 0</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td></td>
+			</tr>
+	</tbody>
+</table>
+<p>当 i = 2 时，有 <code>q_2 = i_1 * q_1 + r_1 = 0, r_2 = [12, 18].index(18) = 1</code>。</p>
+<table>
+	<thead>
+			<tr>
+					<th>i</th>
+					<th>i_1 = 1</th>
+					<th>i_2 = 2</th>
+					<th>i_3 = 3</th>
+					<th>i_4 = 4</th>
+					<th>i_5 = 5</th>
+					<th></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>card</td>
+					<td>12</td>
+					<td>18</td>
+					<td>50</td>
+					<td>4</td>
+					<td>NULL</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>q</td>
+					<td>q_1 = 0</td>
+					<td>q_2 = 0</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>s = NULL</td>
+			</tr>
+			<tr>
+					<td>r</td>
+					<td>r_1 = 0</td>
+					<td>r_2 = 1</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td></td>
+			</tr>
+	</tbody>
+</table>
+<p>当 i = 3 时，有 <code>q_3 = i_2 * q_2 + r_2 = 1, r_3 = [12, 18, 50].index(50) = 2</code>。</p>
+<table>
+	<thead>
+			<tr>
+					<th>i</th>
+					<th>i_1 = 1</th>
+					<th>i_2 = 2</th>
+					<th>i_3 = 3</th>
+					<th>i_4 = 4</th>
+					<th>i_5 = 5</th>
+					<th></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>card</td>
+					<td>12</td>
+					<td>18</td>
+					<td>50</td>
+					<td>4</td>
+					<td>NULL</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>q</td>
+					<td>q_1 = 0</td>
+					<td>q_2 = 0</td>
+					<td>q_3 = 1</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td>s = NULL</td>
+			</tr>
+			<tr>
+					<td>r</td>
+					<td>r_1 = 0</td>
+					<td>r_2 = 1</td>
+					<td>r_3 = 2</td>
+					<td>NULL</td>
+					<td>NULL</td>
+					<td></td>
+			</tr>
+	</tbody>
+</table>
+<p>当 i = 4 时，有 <code>q_4 = i_3 * q_3 + r_3 = 5, r_4 = [4, 12, 18, 50].index(4) = 0</code>。</p>
+<table>
+	<thead>
+			<tr>
+					<th>i</th>
+					<th>i_1 = 1</th>
+					<th>i_2 = 2</th>
+					<th>i_3 = 3</th>
+					<th>i_4 = 4</th>
+					<th>i_5 = 5</th>
+					<th></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>card</td>
+					<td>12</td>
+					<td>18</td>
+					<td>50</td>
+					<td>4</td>
+					<td>NULL</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>q</td>
+					<td>q_1 = 0</td>
+					<td>q_2 = 0</td>
+					<td>q_3 = 1</td>
+					<td>q_4 = 5</td>
+					<td>NULL</td>
+					<td>s = NULL</td>
+			</tr>
+			<tr>
+					<td>r</td>
+					<td>r_1 = 0</td>
+					<td>r_2 = 1</td>
+					<td>r_3 = 2</td>
+					<td>r_4 = 0</td>
+					<td>NULL</td>
+					<td></td>
+			</tr>
+	</tbody>
+</table>
+<p>当 i = 5 时，有 <code>q_5 = i_4 * q_4 + r_4 = 20</code>。</p>
+<table>
+	<thead>
+			<tr>
+					<th>i</th>
+					<th>i_1 = 1</th>
+					<th>i_2 = 2</th>
+					<th>i_3 = 3</th>
+					<th>i_4 = 4</th>
+					<th>i_5 = 5</th>
+					<th></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>card</td>
+					<td>12</td>
+					<td>18</td>
+					<td>50</td>
+					<td>4</td>
+					<td>NULL</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>q</td>
+					<td>q_1 = 0</td>
+					<td>q_2 = 0</td>
+					<td>q_3 = 1</td>
+					<td>q_4 = 5</td>
+					<td>q_5 = 20</td>
+					<td>s = NULL</td>
+			</tr>
+			<tr>
+					<td>r</td>
+					<td>r_1 = 0</td>
+					<td>r_2 = 1</td>
+					<td>r_3 = 2</td>
+					<td>r_4 = 0</td>
+					<td>r_5 = NULL</td>
+					<td></td>
+			</tr>
+	</tbody>
+</table>
+</details>
+<p>第六步，推测第五张牌的值的取值范围。</p>
+<p>经过迭代后，我们知道 \(  q_5 = 20  \)，虽然不知道 \(  r_5  \) 等于多少，但是我们知道 \(  r_5  \) 的范围为 \(  0 \leq r_5 \leq 4  \)。又因为 \( s = 5 * q_5 + r_5  \), 故有 \(  100 \leq s \leq 104  \)。</p>
+<p>此外，我们还知道 s = (v + sum([12, 18, 50, 4]))。设第五张牌的值为 v，有：
+</p>
+$$ 100 \leq (v + sum([12, 18, 50, 4])) \bmod 5! \leq 104 \\ 100 \leq (v + 84) \bmod 5! \leq 104 \\ 16 \leq v \bmod 120 \leq 20 $$<p>
+又 \(  1 \leq v \leq 52  \)，故：
+</p>
+$$ 16 \leq v \leq 20 $$<p>
+上述过程的代码如下：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#57606a"># 总结当前信息</span>
+</span></span><span style="display:flex;"><span>sum_of_first_four <span style="color:#0550ae">=</span> <span style="color:#6639ba">sum</span><span style="color:#1f2328">(</span>first_four<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>q <span style="color:#0550ae">=</span> q_list<span style="color:#1f2328">[</span><span style="color:#0550ae">-</span><span style="color:#0550ae">1</span><span style="color:#1f2328">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 计算编码时q的初始值s的范围</span>
+</span></span><span style="display:flex;"><span>range_l <span style="color:#0550ae">=</span> <span style="color:#0550ae">5</span> <span style="color:#0550ae">*</span> q_list<span style="color:#1f2328">[</span><span style="color:#0550ae">-</span><span style="color:#0550ae">1</span><span style="color:#1f2328">]</span>  <span style="color:#57606a"># range_l &lt;= s的值</span>
+</span></span><span style="display:flex;"><span>range_r <span style="color:#0550ae">=</span> <span style="color:#0550ae">5</span> <span style="color:#0550ae">*</span> q_list<span style="color:#1f2328">[</span><span style="color:#0550ae">-</span><span style="color:#0550ae">1</span><span style="color:#1f2328">]</span> <span style="color:#0550ae">+</span> <span style="color:#0550ae">4</span>  <span style="color:#57606a"># s的值 &lt;= range_r</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># 计算第五张牌的值v的范围</span>
+</span></span><span style="display:flex;"><span>times <span style="color:#0550ae">=</span> <span style="color:#0550ae">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">while</span> <span style="color:#cf222e">True</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>    v_l <span style="color:#0550ae">=</span> range_l <span style="color:#0550ae">+</span> times <span style="color:#0550ae">*</span> factorial<span style="color:#1f2328">(</span><span style="color:#0550ae">5</span><span style="color:#1f2328">)</span> <span style="color:#0550ae">-</span> sum_of_first_four
+</span></span><span style="display:flex;"><span>    v_r <span style="color:#0550ae">=</span> range_r <span style="color:#0550ae">+</span> times <span style="color:#0550ae">*</span> factorial<span style="color:#1f2328">(</span><span style="color:#0550ae">5</span><span style="color:#1f2328">)</span> <span style="color:#0550ae">-</span> sum_of_first_four
+</span></span><span style="display:flex;"><span>    times <span style="color:#0550ae">+=</span> <span style="color:#0550ae">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">if</span> <span style="color:#1f2328">(</span>v_r <span style="color:#0550ae">&gt;=</span> <span style="color:#0550ae">1</span><span style="color:#1f2328">)</span> <span style="color:#0550ae">and</span> <span style="color:#1f2328">(</span>v_l <span style="color:#0550ae">&lt;=</span> <span style="color:#0550ae">52</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">break</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">elif</span> times <span style="color:#0550ae">&gt;</span> <span style="color:#0550ae">2</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">raise</span> ValueError<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;can not find the range of v.&#39;</span><span style="color:#1f2328">)</span>
+</span></span></code></pre></div><p>第七步，尝试可行域中的每一种取值。唯一可行的取值即为第五张牌的值。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#57606a"># 猜解码时第五次迭代的余数r</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">for</span> v <span style="color:#0550ae">in</span> <span style="color:#6639ba">range</span><span style="color:#1f2328">(</span>v_l<span style="color:#1f2328">,</span> v_r<span style="color:#0550ae">+</span><span style="color:#0550ae">1</span><span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">if</span> v <span style="color:#0550ae">not</span> <span style="color:#0550ae">in</span> first_four<span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>        temp <span style="color:#0550ae">=</span> first_four<span style="color:#1f2328">[:]</span>
+</span></span><span style="display:flex;"><span>        temp<span style="color:#0550ae">.</span>append<span style="color:#1f2328">(</span>v<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        test_r <span style="color:#0550ae">=</span> <span style="color:#6639ba">sorted</span><span style="color:#1f2328">(</span>temp<span style="color:#1f2328">)</span><span style="color:#0550ae">.</span>index<span style="color:#1f2328">(</span>v<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>        s <span style="color:#0550ae">=</span> <span style="color:#0550ae">5</span> <span style="color:#0550ae">*</span> q <span style="color:#0550ae">+</span> test_r
+</span></span><span style="display:flex;"><span>        guess_v <span style="color:#0550ae">=</span> s <span style="color:#0550ae">+</span> <span style="color:#1f2328">(</span>times <span style="color:#0550ae">-</span> <span style="color:#0550ae">1</span><span style="color:#1f2328">)</span> <span style="color:#0550ae">*</span> factorial<span style="color:#1f2328">(</span><span style="color:#0550ae">5</span><span style="color:#1f2328">)</span> <span style="color:#0550ae">-</span> sum_of_first_four
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">if</span> v <span style="color:#0550ae">==</span> guess_v<span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#cf222e">return</span> v
+</span></span></code></pre></div><h3 id="mcp-实现">MCP 实现</h3>
+<p>我们可以通过 MCP，实现可供大模型调用的外部工具。</p>
+<p>在 MCP 出现以前，大模型就可以通过 Function Calling 的方式调用外部工具。但是每个大模型有每个模型的 Function Calling，相互之间并不兼容，缺少统一的、标准化的工具调用方法。于是 MCP 应运而生。</p>
+<p>MCP（Model Context Protocol，模型上下文协议）是一种通信协议，它统一了大模型与外部工具的交互方法。目前 MCP 提供三种通信方式：</p>
+<ul>
+<li><strong>Stdio</strong>（标准输入/输出）</li>
+<li><strong>SSE</strong>（Server-Sent Events）</li>
+<li><strong>Streamable HTTP</strong></li>
+</ul>
+<p>Stdio 适合本地运行，每次运行需要重新加载依赖的资源。SSE 和 Streamable HTTP 是提供远程 MCP 服务的方式。关于两者的区别，可以参考阿里云的文章 <a href="https://zhuanlan.zhihu.com/p/1900195324611499288">MCP 协议：为什么 Streamable HTTP 是最佳选择？</a></p>
+<p><a href="https://gofastmcp.com/getting-started/welcome">FastMCP</a> 是当下编写 MCP Server 的最佳方式。FastMCP 能够处理与 LLM 通信过程中的复杂性，让开发者得以聚焦功能性代码。只需要写非常少的代码，就可以实现完整的 MCP 功能。</p>
+<p>在我的 <a href="https://github.com/luochang212/card-magic-mcp/blob/main/src/card_magic_mcp/server.py">代码仓库</a> 中，MCP 的实现只有寥寥几行。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#cf222e">from</span> <span style="color:#24292e">fastmcp</span> <span style="color:#cf222e">import</span> FastMCP
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">from</span> <span style="color:#24292e">.magic</span> <span style="color:#cf222e">import</span> decode_cards<span style="color:#1f2328">,</span> encode_cards
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mcp <span style="color:#0550ae">=</span> FastMCP<span style="color:#1f2328">(</span><span style="color:#0a3069">&#34;card_magic_sse&#34;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#0550ae">@mcp.tool</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">async</span> <span style="color:#cf222e">def</span> <span style="color:#6639ba">encode_cards_tool</span><span style="color:#1f2328">(</span>cards<span style="color:#1f2328">:</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">)</span> <span style="color:#0550ae">-&gt;</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#0a3069">&#34;&#34;&#34;本函数实现魔术师 Chico 的操作：将五张牌重新排序，
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">    并在排序过程中将第五张牌的信息编码在前四张的排序信息中
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">    :param cards: 该参数接受 5 张牌，形如 ♥K ♣3 ♠7 ♦5 ♠A
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">                  每张牌由【花色】和【数字】组成：
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">                    - 可选的花色:
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">                      - ♠ (黑桃, Spades)
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">                      - ♥ (红心, Hearts)
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">                      - ♦ (方块/方片, Diamonds)
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">                      - ♣ (梅花, Clubs)
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">                    - 可选的数字: A 2 3 4 5 6 7 8 9 10 J Q K
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">                  注意：请将花色和数字标准化后再作为参数传入
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">    :return: 本函数返回前四张牌和第五张牌的值
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">return</span> encode_cards<span style="color:#1f2328">(</span>cards<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#0550ae">@mcp.tool</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">async</span> <span style="color:#cf222e">def</span> <span style="color:#6639ba">decode_cards_tool</span><span style="color:#1f2328">(</span>cards<span style="color:#1f2328">:</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">)</span> <span style="color:#0550ae">-&gt;</span> <span style="color:#6639ba">str</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#0a3069">&#34;&#34;&#34;本函数实现魔术师 Dico 的操作：根据前四张牌猜第五张牌
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">    :param cards: 该参数接受 4 张牌，形如 ♠A ♥3 ♣10 ♦K
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">                  每张牌由【花色】和【数字】组成：
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">                    - 可选的花色:
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">                      - ♠ (黑桃, Spades)
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">                      - ♥ (红心, Hearts)
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">                      - ♦ (方块/方片, Diamonds)
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">                      - ♣ (梅花, Clubs)
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">                    - 可选的数字: A 2 3 4 5 6 7 8 9 10 J Q K
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">                  注意：请将花色和数字标准化后再作为参数传入
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">    :return: 本函数返回第五张牌的值
+</span></span></span><span style="display:flex;"><span><span style="color:#0a3069">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">return</span> decode_cards<span style="color:#1f2328">(</span>cards<span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">if</span> <span style="color:#953800">__name__</span> <span style="color:#0550ae">==</span> <span style="color:#0a3069">&#34;__main__&#34;</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>    mcp<span style="color:#0550ae">.</span>run<span style="color:#1f2328">()</span>
+</span></span></code></pre></div><p>只需要将装饰器 <code>@mcp.tool</code> 添加到工具函数上，FastMCP 会自动读取函数的 docstring 作为该工具函数的解释文本。</p>
+<p>如果你希望改变通信方式，也非常简单。只需要修改 <code>mcp.run()</code> 的 <code>transport</code> 参数就可以。<code>transport</code> 参数默认为 <code>stdio</code>，可以通过指定不同的 <code>transport</code> 值，改变 FastMCP 的通信方式。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#57606a"># Stdio</span>
+</span></span><span style="display:flex;"><span>mcp<span style="color:#0550ae">.</span>run<span style="color:#1f2328">(</span>transport<span style="color:#0550ae">=</span><span style="color:#0a3069">&#34;stdio&#34;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># SSE</span>
+</span></span><span style="display:flex;"><span>mcp<span style="color:#0550ae">.</span>run<span style="color:#1f2328">(</span>transport<span style="color:#0550ae">=</span><span style="color:#0a3069">&#34;sse&#34;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>        host<span style="color:#0550ae">=</span><span style="color:#0a3069">&#39;0.0.0.0&#39;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>        port<span style="color:#0550ae">=</span><span style="color:#0a3069">&#39;8000&#39;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#57606a"># Streamable HTTP</span>
+</span></span><span style="display:flex;"><span>mcp<span style="color:#0550ae">.</span>run<span style="color:#1f2328">(</span>transport<span style="color:#0550ae">=</span><span style="color:#0a3069">&#34;http&#34;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>        host<span style="color:#0550ae">=</span><span style="color:#0a3069">&#39;0.0.0.0&#39;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>        port<span style="color:#0550ae">=</span><span style="color:#0a3069">&#39;8000&#39;</span><span style="color:#1f2328">,</span>
+</span></span><span style="display:flex;"><span>        path<span style="color:#0550ae">=</span><span style="color:#0a3069">&#34;/mcp&#34;</span><span style="color:#1f2328">)</span>
+</span></span></code></pre></div><p>目前，使用 MCP 的最佳方式依然是使用 Agent。主流的 Agent 框架全都支持 MCP，比如 <a href="https://github.com/QwenLM/Qwen-Agent">Qwen Agent</a>。直接使用大语言模型，也可以调用 MCP Server，但是需要一定的开发量，不如直接用 Agent 省事。</p>
+<h3 id="推至极限">推至极限</h3>
+<p>作为项目升级的一部分，我将五年前特定情形的算法（\( n = 52, k = 5, j = 1 \)），推广到任意 \( n, k, j \) 的情形。当然，参数 \( n, k, j \) 依然受信息论的约束：
+</p>
+$$ n \leq k! + k - j $$<p>
+算法实现如下：</p>
+<pre tabindex="0"><code>from functools import lru_cache
+
+
+@lru_cache(maxsize=128)
+def factorial(n):
+    &#34;&#34;&#34;计算n的阶乘&#34;&#34;&#34;
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return n * factorial(n-1)
+
+
+class MagicMax:
+    &#34;&#34;&#34;Chico 和 Dico 的魔术 - 推广版&#34;&#34;&#34;
+
+    def __init__(self, n, k):
+        assert 3 &lt;= k
+        assert k &lt;= n &lt; factorial(k) + k
+        self.n = n  # 整个牌组有多少牌
+        self.k = k  # 从牌组中抽几张牌
+
+    @staticmethod
+    def reverse(cards):
+        &#34;&#34;&#34;翻转牌组，分出前 k - 1 张牌&#34;&#34;&#34;
+        reversed_cards = cards[::-1]
+        return reversed_cards[:-1], reversed_cards[-1]
+
+    def encoder(self, cards):
+        &#34;&#34;&#34;将第 k 张牌的牌面信息编码到前 k-1 张的顺序中&#34;&#34;&#34;
+        res = []
+        cards = sorted(cards)
+        s = sum(cards) % factorial(self.k)
+
+        q = s
+        for i in range(self.k, 0, -1):
+            q, r = divmod(q, i)
+            res.append(cards.pop(r))
+        return res
+
+    def decoder(self, visible_cards):
+        &#34;&#34;&#34;将第 k 张牌的牌面信息从前 k-1 张牌的排列信息中解码出来&#34;&#34;&#34;
+        # 逆向求解编码过程
+        q, r = 0, 0
+        for i in range(1, self.k):
+            q = i * q + r
+
+            if i &lt; self.k - 1:  # 前 k-2 步需要计算余数
+                r = sorted(visible_cards[:i+1]).index(visible_cards[i])
+
+        # 判断模 k! 的偏离量 t
+        sum_visible_cards = sum(visible_cards)
+        factorial_k = factorial(self.k)
+
+        epoch = sum([self.n - i for i in range(self.k)]) // factorial_k
+        tt = None
+        for t in range(epoch + 1):
+            v_guess = self.k * q + t * factorial_k - sum_visible_cards
+            if 1 &lt;= v_guess &lt;= self.n:
+                tt = t
+                break
+
+        for r in range(self.k):
+            # 线索1：牌组总和为 s + k! * t
+            s = self.k * q + r
+            v = s + factorial_k * tt - sum_visible_cards
+            # 线索2：第 k 张牌的值 v 放入牌组中获得正确的余数 r
+            if 1 &lt;= v &lt;= self.n and v not in visible_cards:
+                real_r = sorted(visible_cards + [v]).index(v)
+                if real_r == r:
+                    return v
+</code></pre><p><code>decoder</code> 部分的逻辑还是复杂了些，如果有大佬写出更简洁的实现，请随时向我提 <a href="https://github.com/luochang212/card-magic-mcp/pulls">Pull Request</a>。</p>
+<p>在工程实现上，我还编写了两个核心类：<code>CardMapper</code> 和 <code>CardGame</code>，分别实现了 扑克牌和数字编码的双向转换 和 魔术流程编排 的功能。感兴趣的话，可以查阅项目的 GitHub 代码仓库 luochang212/card-magic-mcp。</p>
+<p>以下是本项目的全部资源列表：</p>
+<ul>
+<li>哔哩哔哩: <a href="https://www.bilibili.com/video/BV192GLzJEDU">Chico &amp; Dico 的纸牌魔术【MCP】</a></li>
+<li>GitHub: <a href="https://github.com/luochang212/card-magic-mcp">card-magic-mcp</a></li>
+<li>PyPI: <a href="https://pypi.org/project/card-magic-mcp">card-magic-mcp</a></li>
+<li>ModelScope: <a href="https://www.modelscope.cn/mcp/servers/FMoBall/card-magic-mcp">card-magic-mcp</a></li>
+<li>Smithery: <a href="https://smithery.ai/server/@luochang212/card-magic-mcp">card-magic-mcp</a></li>
+</ul>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/agent_project/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Agent 实战：智能路由、任务拆解和链路工程</span>
+    </a>
+    
+    
+    <a href="/posts/chat_to_clickhouse/" class="navigation-next">
+      <span class="navigation-tittle">耶是 ClickHouse！我们有救了！！</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+</div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.js" defer></script>
+
+
+<script defer src="https://kit.fontawesome.com/2134995a39.js" crossorigin="anonymous"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/tocbot@4.36.8/dist/tocbot.min.js"></script>
+<script type="text/javascript">
+  if (window.tocbot) {
+    tocbot.init({
+      
+      tocSelector: '.toc',
+      
+      contentSelector: '.post',
+      
+      headingSelector: 'h2, h3, h4',
+      collapseDepth: 4
+    });
+  }
+</script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    mediumZoom('.post img', {
+      background: 'rgba(0,0,0,0.82)',
+      margin: 24,
+      scrollOffset: 0
+    });
+  });
+</script>
+
+
+
+    
+
+
+
+  </body>
+</html>

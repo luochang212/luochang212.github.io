@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Causality on Chang Luo</title>
+		<link>http://localhost:61229/tags/causality/</link>
+		<description>Recent content in Causality on Chang Luo</description>
+		<generator>Hugo</generator>
+		<language>zh-CN</language>
+		
+		
+		
+		
+			<lastBuildDate>Sat, 16 Jul 2022 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:61229/tags/causality/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>因果推断笔记</title>
+				<link>http://localhost:61229/posts/causal_inference/</link>
+				<pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/posts/causal_inference/</guid>
+				<description>&lt;blockquote&gt;&#xA;&lt;p&gt;不谜语人的因果推断笔记！&lt;/p&gt;&#xA;&lt;p&gt;学习统计最好还是学习一下 &lt;a href=&#34;https://www.r-project.org&#34;&gt;R 语言&lt;/a&gt;。相比 Python，R 是专门用于统计的语言，它提供了更细致的函数和更标准的实现方法。&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;h2 id=&#34;1-因果推断入门&#34;&gt;1. 因果推断入门&lt;/h2&gt;&#xA;&lt;p&gt;小朋友感冒，家长给他吃药，一个星期后就痊愈了。那么“吃药”和“痊愈”是否有因果关系呢？&lt;/p&gt;&#xA;&lt;p&gt;我们知道普通的小感冒，即使不吃药，一个星期后也会痊愈。因此未必是因为吃药才痊愈的，也有可能是小朋友凭借抵抗力恢复了健康。此时，要进一步分析“吃药”与“痊愈”的因果关系，就要用到因果推断技术。&lt;/p&gt;&#xA;&lt;p&gt;注意在上述例子中，原因存在两种状态：吃药/不吃药。结果也存在两种状态：痊愈/未痊愈。为了描述方便，我们把：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;作为原因的变量：x 叫做控制变量 (control variable)，或解释变量 (explanatory variable)&lt;/li&gt;&#xA;&lt;li&gt;作为结果的变量：y 叫做响应变量 (response variable)，或被解释变量 (explained variable)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;11-如何测量因果关系&#34;&gt;1.1 如何测量因果关系&lt;/h3&gt;&#xA;&lt;p&gt;&lt;strong&gt;反事实因果分析框架&lt;/strong&gt; 是统计学中分析因果关系的一种常见思路。这种思路把一种“状态”与其“反事实状态”造成&lt;strong&gt;结果的差异&lt;/strong&gt;当作因果效应。对于小朋友 \( i \)，反事实因果分析框架反映的因果效应 \( \tau_{i} \) 表示为：&#xA;&lt;/p&gt;&#xA;$$\tau_{i} = Y_{i}(1) - Y_{i}(0)$$&lt;p&gt;&#xA;这里 \( Y_{i}(1) \) 代表吃药，\( Y_{i}(0) \) 代表不吃药，它们都是观测值。&lt;/p&gt;&#xA;&lt;p&gt;不难发现，\( Y_{i}(1) \) 和 \( Y_{i}(0) \) 是无法同时观测到的。这被称为 &lt;strong&gt;因果推断的根本性问题&lt;/strong&gt; (Holland, 1986)。正如“人不能两次踏入同一条河流”，一旦做出某种选择，其他选择的结果就无从观测了。&lt;/p&gt;&#xA;&lt;p&gt;由于此“根本性问题”的存在，对 \( \tau \) 算不了真实值，只能估计。因果效应 \( \tau \) 有三种常见的&lt;strong&gt;估计值&lt;/strong&gt;：&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;我们约定：是否吃药用 \( X \) 表示，\( X = 0 \space or \space 1 \)，其中 1 代表吃药，0 代表不吃药。这里有必要区分下，\( Y_{i}|X=1 \) 是指那些真的吃了药的人的 \( Y \) 值。\( Y_{i}(1) \)、\( Y_{i}(0) \) 则是看不到的一个潜在状态，可能是用统计方法算出的估计值，也可能是模型的外推。&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,870 @@
+<!doctype html>
+<html lang="zh-CN">
+  
+    
+
+
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=61229&amp;path=livereload" data-no-instant defer></script>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://localhost:61229/posts/attention_note/">
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.163.3">
+
+    
+    
+    
+
+<title>注意力机制笔记 • Chang Luo</title>
+
+
+    
+
+
+<meta name="description" content="智能产生的根源：并行、查询、压缩">
+
+
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="http://localhost:61229/images/og-default.jpg">
+	<meta name="twitter:title" content="注意力机制笔记">
+	<meta name="twitter:description" content="智能产生的根源：并行、查询、压缩">
+			<meta name="twitter:site" content="@_stellar_tide">
+
+<meta property="og:url" content="http://localhost:61229/posts/attention_note/">
+	<meta property="og:site_name" content="Chang Luo">
+	<meta property="og:title" content="注意力机制笔记">
+	<meta property="og:description" content="智能产生的根源：并行、查询、压缩">
+	<meta property="og:locale" content="zh_CN">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2024-06-09T00:00:00+00:00">
+		<meta property="article:modified_time" content="2024-06-09T00:00:00+00:00">
+		<meta property="article:tag" content="MultiHeadAttention">
+		<meta property="article:tag" content="PositionalEncoding">
+		<meta property="og:image" content="http://localhost:61229/images/og-default.jpg">
+
+
+    
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.f9da2b005f03c27beab06923e896c9a3875472209210a9177205d391257298b2.css" integrity="sha256-&#43;dorAF8DwnvqsGkj6JbJo4dUciCSEKkXcgXTkSVymLI=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+
+<link rel="stylesheet" href="/scss/tocbot.5ef07cebc3c477b54270456f149ee02922479bb7555fd344b2c69f953b0e7e5e.css" integrity="sha256-XvB868PEd7VCcEVvFJ7gKSJHm7dVX9NEssaflTsOfl4=">
+
+
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#202020">
+    
+    
+
+</head>
+
+
+  <body
+    class=" "
+  >
+    <div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="http://localhost:61229/">Chang Luo</a>
+      </span>
+      
+      
+      
+      <div class="author-image">
+        <button type="button" class="author-trigger" onclick="openNav()" aria-label="打开个人收藏侧栏"
+          aria-controls="mySidenav" aria-expanded="false"><img src="http://localhost:61229//images/profile.webp"
+            alt="Chang Luo" class="img--circle img--headshot element--center"></button>
+      </div>
+      
+      <p class="site__description">
+        
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Chang Luo</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		<li class="sidebar-nav__home">
+			<a href="http://localhost:61229/"><span>Home</span></a>
+		</li>
+		
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/portfolio/">
+						<span>Projects</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+		
+		<a href="https://twitter.com/_stellar_tide" rel="me" title="X">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		<a href="https://github.com/luochang212" rel="me" title="GitHub">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		<a href="https://mp.weixin.qq.com/s/He-04l46xJTM_MJ3AyTwWQ" rel="me" title="微信">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.35em; height: 1.35em; vertical-align: -0.28em;">
+				<path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135-.01-.27-.027-.407-.03zm-2.53 3.274c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982z"/>
+			</svg>
+		</a>
+		
+		
+		<a href="https://www.zhihu.com/people/Fashionable" rel="me" title="知乎">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2"
+				 stroke-linecap="round" stroke-linejoin="round" style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="m13.3334,3.60098l0,17.1471l1.79582,0l0.75424,2.13703l3.18459,-2.13703l3.93584,0l0,-17.1471l-9.6705,0zm7.41375,14.87538l-1.79283,0l-2.24777,1.50849l-0.53276,-1.50849l-0.53875,0l0,-12.53483l5.10911,0l0,12.53483l0.00299,0zm-8.56906,-7.18927l-3.97475,0c0.06285,-1.34387 0.1287,-3.12174 0.19754,-5.17496l3.91788,0l-0.00299,-0.24244c0,-0.01796 -0.00599,-0.43998 -0.06884,-0.87097c-0.06285,-0.44896 -0.19754,-1.04457 -0.62854,-1.04457l-6.5727,0c0.13169,-0.61657 0.46991,-2.08615 0.87995,-2.80747l0.19155,-0.33522l-0.3861,-0.02095c-0.02394,0 -0.58663,-0.02694 -1.23912,0.31726c-1.06851,0.56868 -1.5474,1.68807 -1.75691,2.52612c-0.55072,2.18791 -1.33489,3.70837 -1.66712,4.35786c-0.09877,0.19155 -0.15863,0.30529 -0.18557,0.38311c-0.05387,0.14666 -0.02394,0.29332 0.0838,0.38909c0.31427,0.28434 1.14334,-0.0868 1.15232,-0.08979c0.01796,-0.00898 0.03891,-0.01796 0.06585,-0.02993c0.41603,-0.18856 1.64916,-0.74826 2.08914,-2.52911l1.69705,0c0.02095,0.96376 0.09278,4.14236 0.0868,5.17496l-4.22018,0l-0.06285,0.0449c-0.69139,0.50582 -0.91288,1.8916 -0.92185,1.95146l-0.0419,0.27536l4.99837,0c-0.36814,2.34355 -0.79315,3.3941 -1.01763,3.81313c-0.11074,0.20951 -0.21849,0.41902 -0.32025,0.62255c-0.63752,1.26306 -1.29898,2.56802 -3.7802,4.5973c-0.10775,0.0838 -0.20951,0.23944 -0.14367,0.41005c0.07183,0.18856 0.27835,0.27237 0.73629,0.27237c0.16162,0 0.35318,-0.00898 0.58065,-0.02993c1.49352,-0.13169 3.01698,-0.53875 4.04359,-2.6219c0.50882,-1.05056 0.94879,-2.14601 1.31394,-3.25941l4.08549,4.78886l0.14965,-0.35916c0.02394,-0.05687 0.56868,-1.38578 0.15264,-2.87032l-0.01497,-0.05387l-3.23547,-3.68143l-0.65847,0.49684c0.19155,-0.78118 0.31726,-1.49352 0.37413,-2.12805l4.74995,0l0,-0.23944c0,-1.20021 -0.55371,-1.91255 -0.57466,-1.94248l-0.07183,-0.08979z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+</section>
+
+      </div>
+    </div>
+    
+<div class="copyright">
+  &copy; 2026 Chang Luo
+  
+</div>
+
+
+
+  </div>
+</div>
+
+<div id="overlay" onclick="closeNav()" aria-hidden="true"></div>
+
+<div id="mySidenav" class="sidenav" role="dialog" aria-label="个人收藏" aria-hidden="true">
+  <div id="main">
+    <div class="tab">
+      <button id="default-tab" class="tablinks active" onclick="openItem(event, 'Resources')"
+        aria-controls="Resources" aria-pressed="true">Resources</button>
+      <button class="tablinks" onclick="openItem(event, 'netease-player')"
+        aria-controls="netease-player" aria-pressed="false">Music</button>
+      <button class="tablinks" onclick="openItem(event, 'video-player')"
+        aria-controls="video-player" aria-pressed="false">Video</button>
+      <button class="tablinks" onclick="openItem(event, 'gallery')"
+        aria-controls="gallery" aria-pressed="false">Gallery</button>
+      <button class="tablinks" onclick="openItem(event, 'gadget')"
+        aria-controls="gadget" aria-pressed="false">Gadget</button>
+      <button class="tablinks" onclick="openItem(event, 'categories')"
+        aria-controls="categories" aria-pressed="false">Cats</button>
+    </div>
+
+    <div id="Resources" class="tabcontent">
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/resources/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Resources"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="netease-player" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
+        frameborder="no"
+        marginheight="0"
+        marginwidth="0"
+        title="Music player"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="video-player" class="tabcontent" hidden>
+      <div class="video-layout">
+        <div class="video-main">
+          <div class="video-cover" id="video-cover">
+            <img id="video-cover-img" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-cover-overlay">
+              <button class="video-play-btn" id="video-play-btn" aria-label="播放视频">
+                <svg viewBox="0 0 24 24" width="48" height="48"><path d="M8 5v14l11-7z" fill="white"/></svg>
+              </button>
+              <span class="video-cover-title" id="video-cover-title">四月是你的谎言</span>
+            </div>
+          </div>
+          <div class="video-frame" id="video-frame" hidden>
+            <iframe src="about:blank"
+              data-src="//player.bilibili.com/player.html?bvid=BV1Ms411D7in&p=1&high_quality=1&danmaku=0&autoplay=0"
+              style="width:100%;"
+              scrolling="no"
+              frameborder="no"
+              framespacing="0"
+              title="Bilibili video player"
+              allowfullscreen="true"></iframe>
+          </div>
+        </div>
+        <div class="video-playlist">
+          <button class="video-item active" data-bvid="BV1Ms411D7in"
+            data-title="四月是你的谎言"
+            data-cover="/images/video-covers/zutomayo.jpg"
+            data-duration="4:04">
+            <img class="video-item-cover" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">四月是你的谎言</span>
+              <span class="video-item-meta">4:04</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1LW411j7dK"
+            data-title="Kids by One republic — 三羊"
+            data-cover="/images/video-covers/sanyang.jpg"
+            data-duration="2:54">
+            <img class="video-item-cover" src="/images/video-covers/sanyang.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">Kids by One republic</span>
+              <span class="video-item-meta">三羊 · 2:54</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Yx411U7Lx"
+            data-title="交织together — M78"
+            data-cover="/images/video-covers/jiaozhi.jpg"
+            data-duration="6:06">
+            <img class="video-item-cover" src="/images/video-covers/jiaozhi.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">交织together</span>
+              <span class="video-item-meta">M78 · 6:06</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1rp4y1L7i4"
+            data-title="新员工入职大会 — 岁己SUI/恋诗夜Koxia"
+            data-cover="/images/video-covers/suisui.jpg"
+            data-duration="2:33">
+            <img class="video-item-cover" src="/images/video-covers/suisui.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">新员工入职大会</span>
+              <span class="video-item-meta">岁己SUI/恋诗夜Koxia · 2:33</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Av4y147QE"
+            data-title="真物论 — 悠亚"
+            data-cover="/images/video-covers/zhenwulun.jpg"
+            data-duration="3:30">
+            <img class="video-item-cover" src="/images/video-covers/zhenwulun.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">真物论</span>
+              <span class="video-item-meta">悠亚 · 3:30</span>
+            </div>
+          </button>
+        </div>        </div>
+      </div>
+
+
+    <div id="gallery" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/gadget/gallery/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Gallery"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="gadget" class="tabcontent drawer-native" hidden>
+      <div class="drawer-native-content">
+        
+          <br>
+<table>
+	<thead>
+			<tr>
+					<th>#</th>
+					<th>name</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td><a href="/gadget/hydra" target="_blank">Hydra</a></td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td><a href="/mozi/" target="_blank">墨子</a></td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td><a href="/gadget/how-old-are-you" target="_blank">年龄可视化</a></td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td><a href="/gadget/piano" target="_blank">Piano</a></td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td><a href="/flockn-roll/" target="_blank">Flock&rsquo;n Roll</a></td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td><a href="/monaco-speech-editor/" target="_blank">Monaco Speech Editor</a></td>
+			</tr>
+	</tbody>
+</table>
+
+        
+      </div>
+    </div>
+
+    <div id="categories" class="tabcontent drawer-native" hidden>
+      <ul class="drawer-category-list">
+        
+          <li>
+            <a href="/categories/devops/" target="_blank" rel="noopener noreferrer">
+              <span>DevOps</span>
+              <span class="drawer-category-count">12</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/deeplearning/" target="_blank" rel="noopener noreferrer">
+              <span>DeepLearning</span>
+              <span class="drawer-category-count">11</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/agent/" target="_blank" rel="noopener noreferrer">
+              <span>Agent</span>
+              <span class="drawer-category-count">7</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/algorithms/" target="_blank" rel="noopener noreferrer">
+              <span>Algorithms</span>
+              <span class="drawer-category-count">6</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/life/" target="_blank" rel="noopener noreferrer">
+              <span>Life</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/sota/" target="_blank" rel="noopener noreferrer">
+              <span>SOTA</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/bigdata/" target="_blank" rel="noopener noreferrer">
+              <span>BigData</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/statistics/" target="_blank" rel="noopener noreferrer">
+              <span>Statistics</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/frontend/" target="_blank" rel="noopener noreferrer">
+              <span>FrontEnd</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/llms/" target="_blank" rel="noopener noreferrer">
+              <span>LLMs</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/machinelearning/" target="_blank" rel="noopener noreferrer">
+              <span>MachineLearning</span>
+              <span class="drawer-category-count">2</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/math/" target="_blank" rel="noopener noreferrer">
+              <span>Math</span>
+              <span class="drawer-category-count">2</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/datavisualization/" target="_blank" rel="noopener noreferrer">
+              <span>DataVisualization</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/hardware/" target="_blank" rel="noopener noreferrer">
+              <span>Hardware</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/modeling/" target="_blank" rel="noopener noreferrer">
+              <span>Modeling</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/multimodal/" target="_blank" rel="noopener noreferrer">
+              <span>Multimodal</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/network/" target="_blank" rel="noopener noreferrer">
+              <span>Network</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/prose/" target="_blank" rel="noopener noreferrer">
+              <span>Prose</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="/js/drawer.js"></script>
+
+
+    <div class="content container">
+    
+<article>
+  <header>
+    <h1>注意力机制笔记</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Jun 9, 2024
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/deeplearning">DEEPLEARNING</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/multiheadattention">multiheadattention</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/positionalencoding">positionalencoding</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 2 min read
+</div>
+
+
+  </header>
+  
+  
+  
+    <div class="toc-wrapper">
+      <input type="checkbox" id="tocToggle">
+      <label for="tocToggle">Table of Content</label>
+      
+        <div class="toc" id="TableOfContents"></div>
+      
+    </div>
+  
+  
+  <div class="post">
+    <blockquote>
+<p><a href="https://people.eecs.berkeley.edu/~yima/" target="_blank">马毅</a>：要想正确理解深度神经网络，就必须认识到其本质是学习高维数据中的低维结构的手段。从第一性原理出发，把目的和手段分清楚，其余的都很容易被统一、被解释。</p>
+</blockquote>
+<p>从 Attention 的角度理解马毅老师这句话，Embedding 的时候本来就升维了，再做 QKV 就相当于在高维里面抽低维信息。而且 Q 也是可学习的，所以就既能学到好的抽取方法；对于每一种抽取方法，又能特别高效地抽取。</p>
+<p>GitHub 项目地址：<a href="https://github.com/luochang212/rnn-note" target="_blank">rnn-note</a> / <a href="https://github.com/luochang212/attention-note" target="_blank">attention-note</a></p>
+<h3 id="一语言模型入门rnn-lstm-gru">一、语言模型入门：RNN, LSTM, GRU</h3>
+<h4 id="11-序列模型">1.1 序列模型</h4>
+<p>马尔可夫假设，当前数据只跟最近 τ 个数据点相关。把最近 τ 个数据点作为特征，用 MLP 预测当前数据点的值。</p>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/rnn-note/blob/main/1.序列模型.ipynb')">查看笔记</button>
+</center>
+<br>
+<h4 id="12-文本预处理">1.2 文本预处理</h4>
+<p>对文本词元化 (tokenize) 并构建词表，就是把文本映射到从 0 开始的索引。</p>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/rnn-note/blob/main/2.文本预处理.ipynb')">查看笔记</button>
+</center>
+<br>
+<h4 id="13-语言模型和数据集">1.3 语言模型和数据集</h4>
+<p>对语料分批量 (batch) 处理。介绍了两种（batch 内的）采样策略：</p>
+<ul>
+<li>随机采样策略：每个 batch 内的相邻子序列是随机的</li>
+<li>顺序分区策略：每个 batch 内的相邻子序列是顺序的</li>
+</ul>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/rnn-note/blob/main/3.语言模型和数据集.ipynb')">查看笔记</button>
+</center>
+<br>
+<h4 id="14-循环神经网络的从零开始实现">1.4 循环神经网络的从零开始实现</h4>
+<p>每次输出仅由前一个隐状态和当前新输入 x 决定，是为 RNN。</p>
+<p><img src="/img/rnn_flow.svg" alt="image"></p>
+<p>提及的知识点：</p>
+<ul>
+<li><strong>独热编码</strong>：文本经过词元化后，还要经过 one-hot 处理，才能进入模型</li>
+<li><strong>困惑度</strong>：我们用困惑度来描述文本生成的质量，通过一个序列中所有的 n 个词元的交叉熵损失的平均值来衡量
+
+$$\frac{1}{n} \sum_{t=1}^n-\log P\left(x_t \mid x_{t-1}, \ldots, x_1\right)$$</li>
+<li><strong>梯度裁剪</strong>：对于 \( T \) 长序列将产生 \( O(T) \) 长矩阵乘法链。当 \( T \) 较大时，可能导致数值不稳定，例如可能导致梯度爆炸或梯度消失。这种情况下优化算法可能无法收敛。下式通过将梯度 \( g \) 投影回给定半径 \( \theta \) 来限制梯度的大小。其中 \( \frac{\theta}{\|\mathbf{g}\|} \) 可以理解为梯度 \( g \) 的单位方向向量。
+
+$$\mathbf{g} \leftarrow \min\left(1, \frac{\theta}{\|\mathbf{g}\|}\right) \mathbf{g}$$</li>
+</ul>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/rnn-note/blob/main/4.循环神经网络的从零开始实现.ipynb')">查看笔记</button>
+</center>
+<br>
+<h4 id="15-循环神经网络的简洁实现">1.5 循环神经网络的简洁实现</h4>
+<p>使用高级 API 实现循环神经网络。</p>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/rnn-note/blob/main/5.循环神经网络的简洁实现.ipynb')">查看笔记</button>
+</center>
+<br>
+<h4 id="16-门控循环单元">1.6 门控循环单元</h4>
+<p>”门控循环单元与普通的循环神经网络之间的关键区别在于： 前者支持隐状态的门控。 这意味着模型有专门的机制来确定应该何时更新隐状态， 以及应该何时重置隐状态。 这些机制是可学习的。“</p>
+<p><img src="/img/gru_flow.svg" alt="image"></p>
+<p>为了解决长期记忆依赖的问题，使用两个门和一个候选隐状态：</p>
+<ul>
+<li>重置门 \( \mathbf{R}_t \)</li>
+<li>更新门 \( \mathbf{Z}_t \)</li>
+<li>候选隐状态 \( \mathbf{H}_t \)</li>
+</ul>
+<p>重置门、更新门由上一轮隐状态和当前新输入 x 决定；候选隐状态由上一轮隐状态、当前新输入 x 和重置门决定；本轮产出的隐状态由更新门、上一轮隐状态、候选隐状态决定。</p>
+<p>公式表示如下：
+</p>
+$$\begin{aligned}
+\mathbf{R}_t &= \sigma(\mathbf{X}_t \mathbf{W}_{xr} + \mathbf{H}_{t-1} \mathbf{W}_{hr} + \mathbf{b}_r)\\
+\mathbf{Z}_t &= \sigma(\mathbf{X}_t \mathbf{W}_{xz} + \mathbf{H}_{t-1} \mathbf{W}_{hz} + \mathbf{b}_z)\\
+\tilde{\mathbf{H}}_t &= \tanh(\mathbf{X}_t \mathbf{W}_{xh} + \left(\mathbf{R}_t \odot \mathbf{H}_{t-1}\right) \mathbf{W}_{hh} + \mathbf{b}_h)\\
+\mathbf{H}_t &= \mathbf{Z}_t \odot \mathbf{H}_{t-1}  + (1 - \mathbf{Z}_t) \odot \tilde{\mathbf{H}}_t
+\end{aligned}$$<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/rnn-note/blob/main/6.门控循环单元.ipynb')">查看笔记</button>
+</center>
+<br>
+<h4 id="17-长短期记忆网络">1.7 长短期记忆网络</h4>
+<p>长短期记忆网络 LSTM 比 GRU 复杂一点，效果也好一点。</p>
+<p><img src="/img/lstm_flow.svg" alt="image"></p>
+<ul>
+<li>输入门：和候选记忆元一起更新 记忆元</li>
+<li>遗忘门：更新 记忆元</li>
+<li>输出门：和 记忆元 一起更新 隐状态</li>
+</ul>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/rnn-note/blob/main/7.长短期记忆网络.ipynb')">查看笔记</button>
+</center>
+<br>
+<h4 id="18深度循环神经网络">1.8.深度循环神经网络</h4>
+<p>在输入和输出之间，添加多层隐状态。</p>
+<p><img src="/img/deep_rnn_flow.svg" alt="image"></p>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/rnn-note/blob/main/8.深度循环神经网络.ipynb')">查看笔记</button>
+</center>
+<br>
+<h3 id="二注意力机制">二、注意力机制</h3>
+<h4 id="21-机器翻译数据集">2.1 机器翻译数据集</h4>
+<p>“通过截断和填充文本序列，可以保证所有的文本序列都具有相同的长度，以便以小批量的方式加载。”</p>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/attention-note/blob/main/1.机器翻译数据集.ipynb')">查看笔记</button>
+</center>
+<br>
+<h4 id="22-编码器-解码器架构">2.2 编码器-解码器架构</h4>
+<p>从不定长序列到不定长序列：</p>
+<ul>
+<li>编码器（encoder）： 它接受一个长度可变的序列作为输入，并将其转换为具有固定形状的编码状态。</li>
+<li>解码器（decoder）： 它将固定形状的编码状态映射到长度可变的序列。</li>
+</ul>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/attention-note/blob/main/2.编码器-解码器架构.ipynb')">查看笔记</button>
+</center>
+<br>
+<h4 id="23-序列到序列学习">2.3 序列到序列学习</h4>
+<p>使用两个循环神经网络设计一个序列到序列模型。</p>
+<p>知识点：</p>
+<ul>
+<li>掩蔽填充词，将填充词元的预测排除在损失函数的计算之外</li>
+<li>使用 BLEU 衡量翻译质量的好坏</li>
+</ul>
+<p><img src="/img/seq2seq_flow.svg" alt="image"></p>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/attention-note/blob/main/3.序列到序列学习.ipynb')">查看笔记</button>
+</center>
+<br>
+<h4 id="24-注意力提示">2.4 注意力提示</h4>
+<p>对于一个有杯子、书本、窗户的场景</p>
+<ul>
+<li>非自主性提示：杯子特别红</li>
+<li>自主性提示：想看书、想看看窗外</li>
+</ul>
+<p>其实就是不依赖数据本身的统计信息，而是主动查询来获取信息。本节引出 QKV 的概念。</p>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/attention-note/blob/main/4.注意力提示.ipynb')">查看笔记</button>
+</center>
+<br>
+<h4 id="25-注意力汇聚nadaraya-watson-核回归">2.5 注意力汇聚：Nadaraya-Watson 核回归</h4>
+<p>使用注意力机制解回归问题。分别试验了非参模型和带参模型的效果。</p>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/attention-note/blob/main/5.注意力汇聚：Nadaraya-Watson核回归.ipynb')">查看笔记</button>
+</center>
+<br>
+<h4 id="26-注意力评分函数">2.6 注意力评分函数</h4>
+<p>注意力评分函数是 q 和 k 的函数，本质是对查询和键之间的关系建模。</p>
+<p>本节介绍了两个注意力评分函数：</p>
+<ul>
+<li>加性注意力：用 MLP 做</li>
+<li>缩放点积注意力：用点积做，因此要求查询和键具有相同长度 \( d \)</li>
+</ul>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/attention-note/blob/main/6.注意力评分函数.ipynb')">查看笔记</button>
+</center>
+<br>
+<h4 id="27-bahdanau-注意力">2.7 Bahdanau 注意力</h4>
+<p>受对齐思想启发，Bahdanau 注意力将加性注意力加入解码器。</p>
+<p>每个解码时间步，模型会根据当前解码器状态计算一个权重分布，用于加权求和编码器的所有隐藏状态，生成一个上下文向量。这意味着每次生成新词时，模型可以关注输入序列的不同部分。</p>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/attention-note/blob/main/7.Bahdanau注意力.ipynb')">查看笔记</button>
+</center>
+<br>
+<h4 id="28-多头注意力">2.8 多头注意力</h4>
+<p>为了使用多个注意力汇聚，多头注意力块用 h 组不同的线性投影 (linear projections) 来变换查询、键和值。然后用变换后的 QKV 将并行地进行注意力汇聚。最后，将 h 个注意力汇聚的输出 concat 在一起，并通过另一个可以学习的线性投影 (逐位前馈网络, FFN) 进行变换，以产生最终输出。</p>
+<p><img src="/img/multi_head_flow.svg" alt="image"></p>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/attention-note/blob/main/8.多头注意力.ipynb')">查看笔记</button>
+</center>
+<br>
+<h4 id="29-自注意力和位置编码">2.9 自注意力和位置编码</h4>
+<p>当注意力汇聚的 QKV 均来自同一组输入时，这种注意力被称为自注意力。为了让神经网络既能并行地处理词元，又能学到序列信息，Transformer 通过在输入中添加位置编码来注入绝对或者相对信息。</p>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/attention-note/blob/main/9.自注意力和位置编码.ipynb')">查看笔记</button>
+</center>
+<br>
+<h4 id="210-transformer">2.10 Transformer</h4>
+<p>Transformer 作为编码器-解码器架构的一种实现，其整体架构如下所示。注意到图中出现了三个注意力块，接近输入的两个，是自注意力。连接编码器和解码器的，是编码器-解码器注意力。</p>
+<p><img src="/img/transformer_flow.svg" alt="image"></p>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/attention-note/blob/main/10.transformer.ipynb')">查看笔记</button>
+</center>
+<br>
+<h3 id="问题列表">问题列表</h3>
+<ul>
+<li>transformer架构中都有哪些层？</li>
+<li>自注意力机制在transformer中的作用？</li>
+<li>自注意力在transformer架构中的位置？</li>
+<li>transformer架构中，都有哪些构件用到了注意力机制？</li>
+<li>缩放点积注意力做的是点积，加性注意力做的数学运算是什么？不是点积吗？</li>
+<li>在加性注意力中q和k的维度可以不同吗？在点积放缩注意力中q和k的维度可以不同吗？</li>
+<li>多头自注意力机制如何平衡多个头的输出信息？</li>
+<li>可以把多头注意力跟CNN中的通道做类比吗？两者有什么差别？</li>
+<li>自注意力的输入是否有固定的长度限制？</li>
+<li>实际训练时，样本长度总会有一个限制，一般限制是多少？</li>
+<li>长距离依赖最远能多远，由什么参数决定的？</li>
+<li>相邻样本的位置编码是否也比较相近？这会导致采样策略影响模型效果吗？</li>
+<li>自注意力计算的时间复杂度是多少？</li>
+<li>TPU相比GPU有什么优势？</li>
+<li>时至今日，深度学习本质还是学习线性变换w吗？数学上是否有更精妙的设计？</li>
+<li>transformer做多头注意力时，多个头的qkv共用线性变换 W_q W_k W_v 吗？</li>
+</ul>
+<p>参考：</p>
+<ul>
+<li><a href="https://arxiv.org/abs/1706.03762" target="_blank">Attention Is All You Need</a></li>
+<li><a href="http://zh-v2.d2l.ai/chapter_attention-mechanisms/index.html" target="_blank">zh-v2.d2l.ai</a></li>
+<li><a href="https://cvpr2024-tutorial-low-dim-models.github.io/?continueFlag=c5a6aa2d606ab528733a659adc47aaf0" target="_blank">Learning Deep Low-Dimensional Models from High-Dimensional Data: From Theory to Practice</a></li>
+<li><a href="https://github.com/ridgerchu/matmulfreellm" target="_blank">ridgerchu / matmulfreellm</a></li>
+</ul>
+<div id="mini-overlay" onclick="overlay_off()"></div>
+<div id="mini-window"><iframe id="mini-iframe" frameBorder="0"></iframe></div>
+<button id="btn-close" onclick="overlay_off()">×</button>
+<script src="/mini-viewer/overlay.js"></script>
+<link rel="stylesheet" href="/mini-viewer/style.css">
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/process_manager/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">后台管理工具介绍</span>
+    </a>
+    
+    
+    <a href="/posts/transformer_arxiv/" class="navigation-next">
+      <span class="navigation-tittle">Attention Is All You Need 论文精读</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+</div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.js" defer></script>
+
+
+<script defer src="https://kit.fontawesome.com/2134995a39.js" crossorigin="anonymous"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/tocbot@4.36.8/dist/tocbot.min.js"></script>
+<script type="text/javascript">
+  if (window.tocbot) {
+    tocbot.init({
+      
+      tocSelector: '.toc',
+      
+      contentSelector: '.post',
+      
+      headingSelector: 'h2, h3, h4',
+      collapseDepth: 4
+    });
+  }
+</script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    mediumZoom('.post img', {
+      background: 'rgba(0,0,0,0.82)',
+      margin: 24,
+      scrollOffset: 0
+    });
+  });
+</script>
+
+
+
+    
+
+
+
+  </body>
+</html>

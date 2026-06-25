@@ -1,0 +1,865 @@
+<!doctype html>
+<html lang="zh-CN">
+  
+    
+
+
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=61229&amp;path=livereload" data-no-instant defer></script>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://localhost:61229/posts/graph_embedding/">
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.163.3">
+
+    
+    
+    
+
+<title>三种图神经网络算法：GraphSAGE, GCN 和 GAT • Chang Luo</title>
+
+
+    
+
+
+<meta name="description" content="GNN 处理图数据的方式还是很符合直觉的，基本沿袭了 CNN 的思路：每个神经元只看局部信息，通过层层汇聚掌握全貌">
+
+
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="http://localhost:61229/images/og-default.jpg">
+	<meta name="twitter:title" content="三种图神经网络算法：GraphSAGE, GCN 和 GAT">
+	<meta name="twitter:description" content="GNN 处理图数据的方式还是很符合直觉的，基本沿袭了 CNN 的思路：每个神经元只看局部信息，通过层层汇聚掌握全貌">
+			<meta name="twitter:site" content="@_stellar_tide">
+
+<meta property="og:url" content="http://localhost:61229/posts/graph_embedding/">
+	<meta property="og:site_name" content="Chang Luo">
+	<meta property="og:title" content="三种图神经网络算法：GraphSAGE, GCN 和 GAT">
+	<meta property="og:description" content="GNN 处理图数据的方式还是很符合直觉的，基本沿袭了 CNN 的思路：每个神经元只看局部信息，通过层层汇聚掌握全貌">
+	<meta property="og:locale" content="zh_CN">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2024-08-10T00:00:00+00:00">
+		<meta property="article:modified_time" content="2024-08-10T00:00:00+00:00">
+		<meta property="article:tag" content="GraphSAGE">
+		<meta property="article:tag" content="GCN">
+		<meta property="article:tag" content="GAT">
+		<meta property="og:image" content="http://localhost:61229/images/og-default.jpg">
+
+
+    
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.f9da2b005f03c27beab06923e896c9a3875472209210a9177205d391257298b2.css" integrity="sha256-&#43;dorAF8DwnvqsGkj6JbJo4dUciCSEKkXcgXTkSVymLI=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+
+<link rel="stylesheet" href="/scss/tocbot.5ef07cebc3c477b54270456f149ee02922479bb7555fd344b2c69f953b0e7e5e.css" integrity="sha256-XvB868PEd7VCcEVvFJ7gKSJHm7dVX9NEssaflTsOfl4=">
+
+
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#202020">
+    
+    
+
+</head>
+
+
+  <body
+    class=" "
+  >
+    <div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="http://localhost:61229/">Chang Luo</a>
+      </span>
+      
+      
+      
+      <div class="author-image">
+        <button type="button" class="author-trigger" onclick="openNav()" aria-label="打开个人收藏侧栏"
+          aria-controls="mySidenav" aria-expanded="false"><img src="http://localhost:61229//images/profile.webp"
+            alt="Chang Luo" class="img--circle img--headshot element--center"></button>
+      </div>
+      
+      <p class="site__description">
+        
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Chang Luo</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		<li class="sidebar-nav__home">
+			<a href="http://localhost:61229/"><span>Home</span></a>
+		</li>
+		
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/portfolio/">
+						<span>Projects</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+		
+		<a href="https://twitter.com/_stellar_tide" rel="me" title="X">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		<a href="https://github.com/luochang212" rel="me" title="GitHub">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		<a href="https://mp.weixin.qq.com/s/He-04l46xJTM_MJ3AyTwWQ" rel="me" title="微信">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.35em; height: 1.35em; vertical-align: -0.28em;">
+				<path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135-.01-.27-.027-.407-.03zm-2.53 3.274c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982z"/>
+			</svg>
+		</a>
+		
+		
+		<a href="https://www.zhihu.com/people/Fashionable" rel="me" title="知乎">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2"
+				 stroke-linecap="round" stroke-linejoin="round" style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="m13.3334,3.60098l0,17.1471l1.79582,0l0.75424,2.13703l3.18459,-2.13703l3.93584,0l0,-17.1471l-9.6705,0zm7.41375,14.87538l-1.79283,0l-2.24777,1.50849l-0.53276,-1.50849l-0.53875,0l0,-12.53483l5.10911,0l0,12.53483l0.00299,0zm-8.56906,-7.18927l-3.97475,0c0.06285,-1.34387 0.1287,-3.12174 0.19754,-5.17496l3.91788,0l-0.00299,-0.24244c0,-0.01796 -0.00599,-0.43998 -0.06884,-0.87097c-0.06285,-0.44896 -0.19754,-1.04457 -0.62854,-1.04457l-6.5727,0c0.13169,-0.61657 0.46991,-2.08615 0.87995,-2.80747l0.19155,-0.33522l-0.3861,-0.02095c-0.02394,0 -0.58663,-0.02694 -1.23912,0.31726c-1.06851,0.56868 -1.5474,1.68807 -1.75691,2.52612c-0.55072,2.18791 -1.33489,3.70837 -1.66712,4.35786c-0.09877,0.19155 -0.15863,0.30529 -0.18557,0.38311c-0.05387,0.14666 -0.02394,0.29332 0.0838,0.38909c0.31427,0.28434 1.14334,-0.0868 1.15232,-0.08979c0.01796,-0.00898 0.03891,-0.01796 0.06585,-0.02993c0.41603,-0.18856 1.64916,-0.74826 2.08914,-2.52911l1.69705,0c0.02095,0.96376 0.09278,4.14236 0.0868,5.17496l-4.22018,0l-0.06285,0.0449c-0.69139,0.50582 -0.91288,1.8916 -0.92185,1.95146l-0.0419,0.27536l4.99837,0c-0.36814,2.34355 -0.79315,3.3941 -1.01763,3.81313c-0.11074,0.20951 -0.21849,0.41902 -0.32025,0.62255c-0.63752,1.26306 -1.29898,2.56802 -3.7802,4.5973c-0.10775,0.0838 -0.20951,0.23944 -0.14367,0.41005c0.07183,0.18856 0.27835,0.27237 0.73629,0.27237c0.16162,0 0.35318,-0.00898 0.58065,-0.02993c1.49352,-0.13169 3.01698,-0.53875 4.04359,-2.6219c0.50882,-1.05056 0.94879,-2.14601 1.31394,-3.25941l4.08549,4.78886l0.14965,-0.35916c0.02394,-0.05687 0.56868,-1.38578 0.15264,-2.87032l-0.01497,-0.05387l-3.23547,-3.68143l-0.65847,0.49684c0.19155,-0.78118 0.31726,-1.49352 0.37413,-2.12805l4.74995,0l0,-0.23944c0,-1.20021 -0.55371,-1.91255 -0.57466,-1.94248l-0.07183,-0.08979z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+</section>
+
+      </div>
+    </div>
+    
+<div class="copyright">
+  &copy; 2026 Chang Luo
+  
+</div>
+
+
+
+  </div>
+</div>
+
+<div id="overlay" onclick="closeNav()" aria-hidden="true"></div>
+
+<div id="mySidenav" class="sidenav" role="dialog" aria-label="个人收藏" aria-hidden="true">
+  <div id="main">
+    <div class="tab">
+      <button id="default-tab" class="tablinks active" onclick="openItem(event, 'Resources')"
+        aria-controls="Resources" aria-pressed="true">Resources</button>
+      <button class="tablinks" onclick="openItem(event, 'netease-player')"
+        aria-controls="netease-player" aria-pressed="false">Music</button>
+      <button class="tablinks" onclick="openItem(event, 'video-player')"
+        aria-controls="video-player" aria-pressed="false">Video</button>
+      <button class="tablinks" onclick="openItem(event, 'gallery')"
+        aria-controls="gallery" aria-pressed="false">Gallery</button>
+      <button class="tablinks" onclick="openItem(event, 'gadget')"
+        aria-controls="gadget" aria-pressed="false">Gadget</button>
+      <button class="tablinks" onclick="openItem(event, 'categories')"
+        aria-controls="categories" aria-pressed="false">Cats</button>
+    </div>
+
+    <div id="Resources" class="tabcontent">
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/resources/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Resources"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="netease-player" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
+        frameborder="no"
+        marginheight="0"
+        marginwidth="0"
+        title="Music player"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="video-player" class="tabcontent" hidden>
+      <div class="video-layout">
+        <div class="video-main">
+          <div class="video-cover" id="video-cover">
+            <img id="video-cover-img" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-cover-overlay">
+              <button class="video-play-btn" id="video-play-btn" aria-label="播放视频">
+                <svg viewBox="0 0 24 24" width="48" height="48"><path d="M8 5v14l11-7z" fill="white"/></svg>
+              </button>
+              <span class="video-cover-title" id="video-cover-title">四月是你的谎言</span>
+            </div>
+          </div>
+          <div class="video-frame" id="video-frame" hidden>
+            <iframe src="about:blank"
+              data-src="//player.bilibili.com/player.html?bvid=BV1Ms411D7in&p=1&high_quality=1&danmaku=0&autoplay=0"
+              style="width:100%;"
+              scrolling="no"
+              frameborder="no"
+              framespacing="0"
+              title="Bilibili video player"
+              allowfullscreen="true"></iframe>
+          </div>
+        </div>
+        <div class="video-playlist">
+          <button class="video-item active" data-bvid="BV1Ms411D7in"
+            data-title="四月是你的谎言"
+            data-cover="/images/video-covers/zutomayo.jpg"
+            data-duration="4:04">
+            <img class="video-item-cover" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">四月是你的谎言</span>
+              <span class="video-item-meta">4:04</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1LW411j7dK"
+            data-title="Kids by One republic — 三羊"
+            data-cover="/images/video-covers/sanyang.jpg"
+            data-duration="2:54">
+            <img class="video-item-cover" src="/images/video-covers/sanyang.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">Kids by One republic</span>
+              <span class="video-item-meta">三羊 · 2:54</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Yx411U7Lx"
+            data-title="交织together — M78"
+            data-cover="/images/video-covers/jiaozhi.jpg"
+            data-duration="6:06">
+            <img class="video-item-cover" src="/images/video-covers/jiaozhi.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">交织together</span>
+              <span class="video-item-meta">M78 · 6:06</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1rp4y1L7i4"
+            data-title="新员工入职大会 — 岁己SUI/恋诗夜Koxia"
+            data-cover="/images/video-covers/suisui.jpg"
+            data-duration="2:33">
+            <img class="video-item-cover" src="/images/video-covers/suisui.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">新员工入职大会</span>
+              <span class="video-item-meta">岁己SUI/恋诗夜Koxia · 2:33</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Av4y147QE"
+            data-title="真物论 — 悠亚"
+            data-cover="/images/video-covers/zhenwulun.jpg"
+            data-duration="3:30">
+            <img class="video-item-cover" src="/images/video-covers/zhenwulun.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">真物论</span>
+              <span class="video-item-meta">悠亚 · 3:30</span>
+            </div>
+          </button>
+        </div>        </div>
+      </div>
+
+
+    <div id="gallery" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/gadget/gallery/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Gallery"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="gadget" class="tabcontent drawer-native" hidden>
+      <div class="drawer-native-content">
+        
+          <br>
+<table>
+	<thead>
+			<tr>
+					<th>#</th>
+					<th>name</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td><a href="/gadget/hydra" target="_blank">Hydra</a></td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td><a href="/mozi/" target="_blank">墨子</a></td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td><a href="/gadget/how-old-are-you" target="_blank">年龄可视化</a></td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td><a href="/gadget/piano" target="_blank">Piano</a></td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td><a href="/flockn-roll/" target="_blank">Flock&rsquo;n Roll</a></td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td><a href="/monaco-speech-editor/" target="_blank">Monaco Speech Editor</a></td>
+			</tr>
+	</tbody>
+</table>
+
+        
+      </div>
+    </div>
+
+    <div id="categories" class="tabcontent drawer-native" hidden>
+      <ul class="drawer-category-list">
+        
+          <li>
+            <a href="/categories/devops/" target="_blank" rel="noopener noreferrer">
+              <span>DevOps</span>
+              <span class="drawer-category-count">12</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/deeplearning/" target="_blank" rel="noopener noreferrer">
+              <span>DeepLearning</span>
+              <span class="drawer-category-count">11</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/agent/" target="_blank" rel="noopener noreferrer">
+              <span>Agent</span>
+              <span class="drawer-category-count">7</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/algorithms/" target="_blank" rel="noopener noreferrer">
+              <span>Algorithms</span>
+              <span class="drawer-category-count">6</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/life/" target="_blank" rel="noopener noreferrer">
+              <span>Life</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/sota/" target="_blank" rel="noopener noreferrer">
+              <span>SOTA</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/bigdata/" target="_blank" rel="noopener noreferrer">
+              <span>BigData</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/statistics/" target="_blank" rel="noopener noreferrer">
+              <span>Statistics</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/frontend/" target="_blank" rel="noopener noreferrer">
+              <span>FrontEnd</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/llms/" target="_blank" rel="noopener noreferrer">
+              <span>LLMs</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/machinelearning/" target="_blank" rel="noopener noreferrer">
+              <span>MachineLearning</span>
+              <span class="drawer-category-count">2</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/math/" target="_blank" rel="noopener noreferrer">
+              <span>Math</span>
+              <span class="drawer-category-count">2</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/datavisualization/" target="_blank" rel="noopener noreferrer">
+              <span>DataVisualization</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/hardware/" target="_blank" rel="noopener noreferrer">
+              <span>Hardware</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/modeling/" target="_blank" rel="noopener noreferrer">
+              <span>Modeling</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/multimodal/" target="_blank" rel="noopener noreferrer">
+              <span>Multimodal</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/network/" target="_blank" rel="noopener noreferrer">
+              <span>Network</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/prose/" target="_blank" rel="noopener noreferrer">
+              <span>Prose</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="/js/drawer.js"></script>
+
+
+    <div class="content container">
+    
+<article>
+  <header>
+    <h1>三种图神经网络算法：GraphSAGE, GCN 和 GAT</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Aug 10, 2024
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/deeplearning">DEEPLEARNING</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/graphsage">graphsage</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/gcn">gcn</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/gat">gat</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 2 min read
+</div>
+
+
+  </header>
+  
+  
+  
+    <div class="toc-wrapper">
+      <input type="checkbox" id="tocToggle">
+      <label for="tocToggle">Table of Content</label>
+      
+        <div class="toc" id="TableOfContents"></div>
+      
+    </div>
+  
+  
+  <div class="post">
+    <blockquote>
+<p>GNN 处理图数据的方式还是很符合直觉的，基本沿袭了 CNN 的思路：每个神经元只看局部信息，通过层层汇聚掌握全貌。</p>
+</blockquote>
+<p>GitHub 项目地址：<a href="https://github.com/luochang212/graph-embedding" target="_blank">graph-embedding</a></p>
+<p>本文做了什么：</p>
+<ul>
+<li>对 GraphSAGE 的简单实现做逐行注释</li>
+<li>在 Docker 环境运行 GraphSAGE 的原版示例</li>
+<li>用 <a href="https://pytorch-geometric.readthedocs.io/en/latest/" target="_blank">PyG</a> 实现了 GCN 和 GAT</li>
+<li>为运行 PyG 写了一些 pipeline 代码</li>
+</ul>
+<p>✨ 注意：运行以下代码依赖 <a href="https://github.com/luochang212/graph-embedding/blob/main/util.py" target="_blank">util.py</a> 文件。</p>
+<h2 id="一graphsage-的简单实现">一、GraphSAGE 的简单实现</h2>
+<p>主流图算法大致分两种：</p>
+<ul>
+<li>图嵌入算法 (GE): DeepWalk, Node2Vec 等</li>
+<li>图神经网络算法 (GNN): GraphSAGE, GCN, GAT 等</li>
+</ul>
+<h3 id="11-绪论图神经网络">1.1 绪论：图神经网络</h3>
+<!-- 图神经网络的输入是 **节点间关联关系** 和 **节点特征**，输出是图嵌入。 -->
+<p>图神经网络算法做的事，相当于把图这种复杂的数据结构，转换成低维向量，而低维向量往往是很好用的。</p>
+<p>拿到图嵌入可以做很多事情，比如：</p>
+<ul>
+<li>节点分类</li>
+<li>链接预测</li>
+<li>社区发现</li>
+<li>相似度量</li>
+</ul>
+<p>总之，图嵌入是一种非常有用的特征。在实践中，甚至可以将图嵌入和其他特征 concat 起来，训练更复杂的模型。</p>
+<h4 id="111-gnn-和-cnn">1.1.1 GNN 和 CNN</h4>
+<p>GNN 和 CNN 的思路还挺像的，可以看作 CNN 在图数据上的推广。</p>
+<!-- GNN 基本沿袭了 CNN 的思路，GNN 像是 CNN 在图数据上的推广。 -->
+<p>CNN 有平移不变性和局部性。其中 <strong>局部性</strong> 指：每个神经元每次只看一小块像素，随着神经元层数的堆叠，层级越高的神经元，“看到”的像素量越多（如下图）。</p>
+<p><img src="/img/graphsage_partial.svg" alt="image"></p>
+<p>假设 \( C_1 \) 能看到 4 个像素，\( C_2 \) 能看到 4 个像素。由于 \( B_1 \) 能看到 \( C_1 \) 和 \( C_2 \)，相当于 \( B_1 \) 能够“看到” <code>4*2=8</code> 个像素。</p>
+<p>依此类推，\( A \) 能看到 \( B_1 \) 和 \( B_2 \)，相当于能“看到” <code>8*2=16</code> 个像素。</p>
+<p>层级越高的神经元，底下的“小弟”越多。尽管每个小弟只负责看一部分，但是高层级的神经元汇总了小弟们看见的部分，因此能够看到全局。这好比 merge 周报的老板，虽然细节知道的不如员工多，但比员工更了解公司的全貌。</p>
+<h4 id="112-aggregate-操作">1.1.2 Aggregate 操作</h4>
+<p>图神经网络也有和 CNN 类似的汇聚过程。图神经网络会执行一种叫 Aggregate 的操作。虽然每次 Aggregate 只是把邻居节点的特征聚合到自己身上。但随着聚合次数增加，四跳五跳甚至十八跳节点的信息，也会一步一步“挪”过来。</p>
+<p>更牛的是，Aggregate 是并行的。这意味着每轮迭代，所有节点都会收集邻居节点的信息。每个节点，都会构建一个属于自己的深度网络。而且随着迭代轮次增加，网络的深度和范围也会同步增加。</p>
+<blockquote>
+<p>迭代次数与聚合范围的关系是线性的：</p>
+<ul>
+<li>迭代 1 个轮次，将 1 跳之内的节点信息聚合到本节点</li>
+<li>迭代 2 个轮次，将 2 跳之内的节点信息聚合到本节点</li>
+<li>&hellip; &hellip;</li>
+<li>迭代 n 个轮次，将 n 跳之内的节点信息聚合到本节点</li>
+</ul>
+</blockquote>
+<h3 id="12-graphsage-的基本思想">1.2 GraphSAGE 的基本思想</h3>
+<p>GraphSAGE 是一种可实时计算的图嵌入算法。这意味着它不需要知道节点所在的整张图的信息，只需要知道某节点 n 跳之内的拓扑关系和节点特征，就能计算该节点的嵌入。</p>
+<p>它是如何做到这一点的呢？</p>
+<p>GraphSAGE 的基本思想是：不学节点的下标，只学节点的特征。</p>
+<table>
+	<thead>
+			<tr>
+					<th>姓名</th>
+					<th>唱歌</th>
+					<th>跳舞</th>
+					<th>Rap</th>
+					<th>打篮球</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>小真</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>小弥</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>小鲲</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+					<td>0</td>
+			</tr>
+	</tbody>
+</table>
+<p>如上表，我们只需要知道一个人是不是喜欢唱跳 rap 篮球就好了，至于这个人是谁，我们并不关心。</p>
+<h3 id="13-graphsage-的简单实现">1.3 GraphSAGE 的简单实现</h3>
+<!-- > 本节做了什么：在论文作者提供的 [简单版 GraphSAGE](https://github.com/williamleif/graphsage-simple) 之上进行改写，做了逐行注释、loss 可视化，并优化了部分代码细节。 -->
+<h4 id="131-cora-数据集">1.3.1 Cora 数据集</h4>
+<p><a href="https://paperswithcode.com/dataset/cora">Cora 数据集</a> 是一个经典的图数据集，GraphSAGE 的作者也在 Demo 中用了这个数据集。</p>
+<blockquote>
+<p><strong>Note:</strong> Cora 是一个论文引用关系数据集。它由 2708 篇科学论文组成。这些论文被分成 7 个类别，类别包括神经网络、强化学习、规则学习等。每篇论文由一个 1433 维的词向量表示，该向量的每一个元素对应一个词，元素值为 0 或 1，表示该词在论文中的是否存在。所有词均来自一个 1433 个词的字典。</p>
+</blockquote>
+<p>Cora 包含两个数据文件：</p>
+<ul>
+<li><code>cora.content</code>：记录论文的编号、特征和类别标签，每行代表一篇论文</li>
+<li><code>cora.cites</code>：记录论文间的引用关系，每一行表示一条引用关系</li>
+</ul>
+<h4 id="132-逐行注释">1.3.2 逐行注释</h4>
+<p>论文代码中定义了三个类：</p>
+<table>
+	<thead>
+			<tr>
+					<th>class</th>
+					<th>说明</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>MeanAggregator</code></td>
+					<td>聚合器，聚合邻居节点特征，相当于用邻居节点的表征来表示自己</td>
+			</tr>
+			<tr>
+					<td><code>Encoder</code></td>
+					<td>编码器，concat 当前节点的邻居特征和原始特征</td>
+			</tr>
+			<tr>
+					<td><code>SupervisedGraphSage</code></td>
+					<td>有监督学习器，用全连接层将嵌入结果 Embedding 与标号 label 连接，再用梯度下降更新 Embedding 以对齐 label</td>
+			</tr>
+	</tbody>
+</table>
+<p>这三个类很重要。只用这三个类，就可以把整个算法串起来。</p>
+<ol>
+<li><strong>MeanAggregator</strong> 的作用是将邻居节点特征转换为本节点的表征。由于是邻居的特征，可以把把这种表征记为节点的“关联表征”</li>
+<li>然后由 <strong>Encoder</strong> 将关联表征与原始特征 concat 起来。concat 后的结果输入带 ReLU 的全连接层。这一步的输出其实已经是节点的 Embedding 了。只不过还要经过监督学习的更新，才能保证 Embedding 具有良好的分类性能</li>
+<li>监督学习 <strong>SupervisedGraphSage</strong> 赋予 Embedding 分类性能。它用全连接层将图嵌入 Embedding 和标号 label 连接起来。经过多轮训练，最终得到包含 节点特征信息 和 关联信息，还对由 label 定义的类别具有良好分类性能的 Embedding</li>
+</ol>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/graph-embedding/blob/main/1.GraphSAGE的简单实现.ipynb')">查看笔记</button>
+</center>
+<br>
+<h2 id="二graphsage-的原版实现">二、GraphSAGE 的原版实现</h2>
+<p>上一节我们尝试了 <a href="https://github.com/williamleif/graphsage-simple">GraphSAGE 的简单版实现</a>。在简单实现中，一些与理解无关的复杂性被省略了。作为一名严肃的工程师，当然要跑跑 <a href="https://github.com/williamleif/GraphSAGE">原版 GraphSAGE</a> 实现。</p>
+<h3 id="21-配置-docker-环境">2.1 配置 Docker 环境</h3>
+<p>看了作者的 <code>requirements.txt</code> 里一堆不知道是啥还锁版本的包就头大，所幸作者提供了 Docker。</p>
+<p>首先来到 Dockerfile 所在目录。</p>
+<blockquote>
+<p><strong>Note:</strong> 如果你是中国大陆网友，请等一等，你需要先修改 Dockerfile，否则大概率会运行失败。</p>
+<p>你需要打开 Dockerfile，为 pip 换源：</p>
+<pre tabindex="0"><code># 用阿里源
+RUN pip install networkx==1.11 \
+    -i https://mirrors.aliyun.com/pypi/simple/
+</code></pre></blockquote>
+<p>现在可以运行：</p>
+<pre tabindex="0"><code>docker build -t graphsage .
+</code></pre><p>一旦镜像安装完成，运行以下代码，启动容器：</p>
+<pre tabindex="0"><code># 映射到 9999 是因为我本地 8888 已经开了一个 Jupyter
+# 如果你啥也没开，映射到 8888 就好
+# docker run -it -p 8888:8888 graphsage
+
+docker run -it -p 9999:8888 graphsage
+</code></pre><p>容器启动后，在浏览器打开 <a href="http://localhost:9999">http://localhost:9999</a>。网页会要求输入 token，用容器日志里那个就行。</p>
+<h3 id="22-运行原版示例">2.2 运行原版示例</h3>
+<p>作者给了一些 demo，让我们能快速跑起来 ᕕ( ᐛ )ᕗ</p>
+<h4 id="221-有监督学习">2.2.1 有监督学习</h4>
+<p>在容器提供的 Jupyter Notebook 里打开 Terminal，运行：</p>
+<pre tabindex="0"><code>python -m graphsage.supervised_train \
+    --train_prefix ./example_data/toy-ppi \
+    --model graphsage_mean \
+    --sigmoid
+</code></pre><h4 id="222-无监督学习">2.2.2 无监督学习</h4>
+<pre tabindex="0"><code>python -m graphsage.unsupervised_train \
+    --train_prefix ./example_data/toy-ppi \
+    --model graphsage_mean \
+    --max_total_steps 1000 \
+    --validate_iter 10
+</code></pre><p>没有问题，都成功了。唯一需要注意的是，源码 <code>ppi</code> 前漏了一个 <code>toy-</code>。应该是作者光改数据忘改代码了。</p>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/graph-embedding/blob/main/2.GraphSAGE的原版实现.ipynb')">查看笔记</button>
+</center>
+<br>
+<h2 id="三图卷积网络-gcn">三、图卷积网络 GCN</h2>
+<ul>
+<li>PyG: <a href="https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.nn.conv.GCNConv.html#torch-geometric-nn-conv-gcnconv">conv.GCNConv</a></li>
+<li>arXiv: <a href="https://arxiv.org/abs/1609.02907">Semi-Supervised Classification with Graph Convolutional Networks</a></li>
+<li>GitHub: <a href="https://github.com/tkipf/gcn">tkipf/gcn</a></li>
+</ul>
+<ol>
+<li>加载数据的极简示例</li>
+<li>加载 Cora 数据集</li>
+<li>训练 GCN 模型</li>
+<li>预测与评估</li>
+</ol>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/graph-embedding/blob/main/3.图卷积网络GCN.ipynb')">查看笔记</button>
+</center>
+<br>
+<h2 id="四图注意力网络-gat">四、图注意力网络 GAT</h2>
+<ul>
+<li>PyG: <a href="https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.nn.conv.GATConv.html#torch-geometric-nn-conv-gatconv">conv.GATConv</a></li>
+<li>arXiv: <a href="https://arxiv.org/abs/1710.10903">Graph Attention Networks</a></li>
+<li>GitHub: <a href="https://github.com/PetarV-/GAT">PetarV-/GAT</a></li>
+</ul>
+<ol>
+<li>加载 Cora 数据集</li>
+<li>训练 GAT 模型</li>
+<li>预测与评估</li>
+</ol>
+<p>说实话，这个 Accuracy 效果一般。如果要继续优化，感觉需要从抽样入手。</p>
+<br>
+<center>
+<button class="demo-btn" onclick="window_on('https://nbviewer.org/github/luochang212/graph-embedding/blob/main/4.图注意力网络GAT.ipynb')">查看笔记</button>
+</center>
+<br>
+<div id="mini-overlay" onclick="overlay_off()"></div>
+<div id="mini-window"><iframe id="mini-iframe" frameBorder="0"></iframe></div>
+<button id="btn-close" onclick="overlay_off()">×</button>
+<script src="/mini-viewer/overlay.js"></script>
+<link rel="stylesheet" href="/mini-viewer/style.css">
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/synchrotrap/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">SynchroTrap 算法实现</span>
+    </a>
+    
+    
+    <a href="/posts/redis_util/" class="navigation-next">
+      <span class="navigation-tittle">初见向量引擎：RediSearch 和 Milvus</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+</div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.js" defer></script>
+
+
+<script defer src="https://kit.fontawesome.com/2134995a39.js" crossorigin="anonymous"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/tocbot@4.36.8/dist/tocbot.min.js"></script>
+<script type="text/javascript">
+  if (window.tocbot) {
+    tocbot.init({
+      
+      tocSelector: '.toc',
+      
+      contentSelector: '.post',
+      
+      headingSelector: 'h2, h3, h4',
+      collapseDepth: 4
+    });
+  }
+</script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    mediumZoom('.post img', {
+      background: 'rgba(0,0,0,0.82)',
+      margin: 24,
+      scrollOffset: 0
+    });
+  });
+</script>
+
+
+
+    
+
+
+
+  </body>
+</html>

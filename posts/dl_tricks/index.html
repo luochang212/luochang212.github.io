@@ -1,0 +1,854 @@
+<!doctype html>
+<html lang="zh-CN">
+  
+    
+
+
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=61229&amp;path=livereload" data-no-instant defer></script>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    
+    <link rel="canonical" href="http://localhost:61229/posts/dl_tricks/">
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.163.3">
+
+    
+    
+    
+
+<title>像搭积木一样搭神经网络 • Chang Luo</title>
+
+
+    
+
+
+<meta name="description" content="对费曼学习法的拙劣戏仿">
+
+
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="http://localhost:61229/images/og-default.jpg">
+	<meta name="twitter:title" content="像搭积木一样搭神经网络">
+	<meta name="twitter:description" content="对费曼学习法的拙劣戏仿">
+			<meta name="twitter:site" content="@_stellar_tide">
+
+<meta property="og:url" content="http://localhost:61229/posts/dl_tricks/">
+	<meta property="og:site_name" content="Chang Luo">
+	<meta property="og:title" content="像搭积木一样搭神经网络">
+	<meta property="og:description" content="对费曼学习法的拙劣戏仿">
+	<meta property="og:locale" content="zh_CN">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2024-07-07T00:00:00+00:00">
+		<meta property="article:modified_time" content="2024-07-07T00:00:00+00:00">
+		<meta property="article:tag" content="Dropout">
+		<meta property="article:tag" content="Decay">
+		<meta property="og:image" content="http://localhost:61229/images/og-default.jpg">
+
+
+    
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.f9da2b005f03c27beab06923e896c9a3875472209210a9177205d391257298b2.css" integrity="sha256-&#43;dorAF8DwnvqsGkj6JbJo4dUciCSEKkXcgXTkSVymLI=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+
+<link rel="stylesheet" href="/scss/tocbot.5ef07cebc3c477b54270456f149ee02922479bb7555fd344b2c69f953b0e7e5e.css" integrity="sha256-XvB868PEd7VCcEVvFJ7gKSJHm7dVX9NEssaflTsOfl4=">
+
+
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#202020">
+    
+    
+
+</head>
+
+
+  <body
+    class=" "
+  >
+    <div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="http://localhost:61229/">Chang Luo</a>
+      </span>
+      
+      
+      
+      <div class="author-image">
+        <button type="button" class="author-trigger" onclick="openNav()" aria-label="打开个人收藏侧栏"
+          aria-controls="mySidenav" aria-expanded="false"><img src="http://localhost:61229//images/profile.webp"
+            alt="Chang Luo" class="img--circle img--headshot element--center"></button>
+      </div>
+      
+      <p class="site__description">
+        
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Chang Luo</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		<li class="sidebar-nav__home">
+			<a href="http://localhost:61229/"><span>Home</span></a>
+		</li>
+		
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/portfolio/">
+						<span>Projects</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+		
+		<a href="https://twitter.com/_stellar_tide" rel="me" title="X">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		<a href="https://github.com/luochang212" rel="me" title="GitHub">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		<a href="https://mp.weixin.qq.com/s/He-04l46xJTM_MJ3AyTwWQ" rel="me" title="微信">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"
+				 style="width: 1.35em; height: 1.35em; vertical-align: -0.28em;">
+				<path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135-.01-.27-.027-.407-.03zm-2.53 3.274c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982z"/>
+			</svg>
+		</a>
+		
+		
+		<a href="https://www.zhihu.com/people/Fashionable" rel="me" title="知乎">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2"
+				 stroke-linecap="round" stroke-linejoin="round" style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;">
+				<path d="m13.3334,3.60098l0,17.1471l1.79582,0l0.75424,2.13703l3.18459,-2.13703l3.93584,0l0,-17.1471l-9.6705,0zm7.41375,14.87538l-1.79283,0l-2.24777,1.50849l-0.53276,-1.50849l-0.53875,0l0,-12.53483l5.10911,0l0,12.53483l0.00299,0zm-8.56906,-7.18927l-3.97475,0c0.06285,-1.34387 0.1287,-3.12174 0.19754,-5.17496l3.91788,0l-0.00299,-0.24244c0,-0.01796 -0.00599,-0.43998 -0.06884,-0.87097c-0.06285,-0.44896 -0.19754,-1.04457 -0.62854,-1.04457l-6.5727,0c0.13169,-0.61657 0.46991,-2.08615 0.87995,-2.80747l0.19155,-0.33522l-0.3861,-0.02095c-0.02394,0 -0.58663,-0.02694 -1.23912,0.31726c-1.06851,0.56868 -1.5474,1.68807 -1.75691,2.52612c-0.55072,2.18791 -1.33489,3.70837 -1.66712,4.35786c-0.09877,0.19155 -0.15863,0.30529 -0.18557,0.38311c-0.05387,0.14666 -0.02394,0.29332 0.0838,0.38909c0.31427,0.28434 1.14334,-0.0868 1.15232,-0.08979c0.01796,-0.00898 0.03891,-0.01796 0.06585,-0.02993c0.41603,-0.18856 1.64916,-0.74826 2.08914,-2.52911l1.69705,0c0.02095,0.96376 0.09278,4.14236 0.0868,5.17496l-4.22018,0l-0.06285,0.0449c-0.69139,0.50582 -0.91288,1.8916 -0.92185,1.95146l-0.0419,0.27536l4.99837,0c-0.36814,2.34355 -0.79315,3.3941 -1.01763,3.81313c-0.11074,0.20951 -0.21849,0.41902 -0.32025,0.62255c-0.63752,1.26306 -1.29898,2.56802 -3.7802,4.5973c-0.10775,0.0838 -0.20951,0.23944 -0.14367,0.41005c0.07183,0.18856 0.27835,0.27237 0.73629,0.27237c0.16162,0 0.35318,-0.00898 0.58065,-0.02993c1.49352,-0.13169 3.01698,-0.53875 4.04359,-2.6219c0.50882,-1.05056 0.94879,-2.14601 1.31394,-3.25941l4.08549,4.78886l0.14965,-0.35916c0.02394,-0.05687 0.56868,-1.38578 0.15264,-2.87032l-0.01497,-0.05387l-3.23547,-3.68143l-0.65847,0.49684c0.19155,-0.78118 0.31726,-1.49352 0.37413,-2.12805l4.74995,0l0,-0.23944c0,-1.20021 -0.55371,-1.91255 -0.57466,-1.94248l-0.07183,-0.08979z"/>
+			</svg>
+		</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+</section>
+
+      </div>
+    </div>
+    
+<div class="copyright">
+  &copy; 2026 Chang Luo
+  
+</div>
+
+
+
+  </div>
+</div>
+
+<div id="overlay" onclick="closeNav()" aria-hidden="true"></div>
+
+<div id="mySidenav" class="sidenav" role="dialog" aria-label="个人收藏" aria-hidden="true">
+  <div id="main">
+    <div class="tab">
+      <button id="default-tab" class="tablinks active" onclick="openItem(event, 'Resources')"
+        aria-controls="Resources" aria-pressed="true">Resources</button>
+      <button class="tablinks" onclick="openItem(event, 'netease-player')"
+        aria-controls="netease-player" aria-pressed="false">Music</button>
+      <button class="tablinks" onclick="openItem(event, 'video-player')"
+        aria-controls="video-player" aria-pressed="false">Video</button>
+      <button class="tablinks" onclick="openItem(event, 'gallery')"
+        aria-controls="gallery" aria-pressed="false">Gallery</button>
+      <button class="tablinks" onclick="openItem(event, 'gadget')"
+        aria-controls="gadget" aria-pressed="false">Gadget</button>
+      <button class="tablinks" onclick="openItem(event, 'categories')"
+        aria-controls="categories" aria-pressed="false">Cats</button>
+    </div>
+
+    <div id="Resources" class="tabcontent">
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/resources/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Resources"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="netease-player" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
+        frameborder="no"
+        marginheight="0"
+        marginwidth="0"
+        title="Music player"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="video-player" class="tabcontent" hidden>
+      <div class="video-layout">
+        <div class="video-main">
+          <div class="video-cover" id="video-cover">
+            <img id="video-cover-img" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-cover-overlay">
+              <button class="video-play-btn" id="video-play-btn" aria-label="播放视频">
+                <svg viewBox="0 0 24 24" width="48" height="48"><path d="M8 5v14l11-7z" fill="white"/></svg>
+              </button>
+              <span class="video-cover-title" id="video-cover-title">四月是你的谎言</span>
+            </div>
+          </div>
+          <div class="video-frame" id="video-frame" hidden>
+            <iframe src="about:blank"
+              data-src="//player.bilibili.com/player.html?bvid=BV1Ms411D7in&p=1&high_quality=1&danmaku=0&autoplay=0"
+              style="width:100%;"
+              scrolling="no"
+              frameborder="no"
+              framespacing="0"
+              title="Bilibili video player"
+              allowfullscreen="true"></iframe>
+          </div>
+        </div>
+        <div class="video-playlist">
+          <button class="video-item active" data-bvid="BV1Ms411D7in"
+            data-title="四月是你的谎言"
+            data-cover="/images/video-covers/zutomayo.jpg"
+            data-duration="4:04">
+            <img class="video-item-cover" src="/images/video-covers/zutomayo.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">四月是你的谎言</span>
+              <span class="video-item-meta">4:04</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1LW411j7dK"
+            data-title="Kids by One republic — 三羊"
+            data-cover="/images/video-covers/sanyang.jpg"
+            data-duration="2:54">
+            <img class="video-item-cover" src="/images/video-covers/sanyang.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">Kids by One republic</span>
+              <span class="video-item-meta">三羊 · 2:54</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Yx411U7Lx"
+            data-title="交织together — M78"
+            data-cover="/images/video-covers/jiaozhi.jpg"
+            data-duration="6:06">
+            <img class="video-item-cover" src="/images/video-covers/jiaozhi.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">交织together</span>
+              <span class="video-item-meta">M78 · 6:06</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1rp4y1L7i4"
+            data-title="新员工入职大会 — 岁己SUI/恋诗夜Koxia"
+            data-cover="/images/video-covers/suisui.jpg"
+            data-duration="2:33">
+            <img class="video-item-cover" src="/images/video-covers/suisui.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">新员工入职大会</span>
+              <span class="video-item-meta">岁己SUI/恋诗夜Koxia · 2:33</span>
+            </div>
+          </button>
+          <button class="video-item" data-bvid="BV1Av4y147QE"
+            data-title="真物论 — 悠亚"
+            data-cover="/images/video-covers/zhenwulun.jpg"
+            data-duration="3:30">
+            <img class="video-item-cover" src="/images/video-covers/zhenwulun.jpg" alt="">
+            <div class="video-item-info">
+              <span class="video-item-title">真物论</span>
+              <span class="video-item-meta">悠亚 · 3:30</span>
+            </div>
+          </button>
+        </div>        </div>
+      </div>
+
+
+    <div id="gallery" class="tabcontent" hidden>
+      <iframe class="myiframe"
+        src="about:blank"
+        data-src="/gadget/gallery/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Gallery"
+        scrolling="auto"></iframe>
+    </div>
+
+    <div id="gadget" class="tabcontent drawer-native" hidden>
+      <div class="drawer-native-content">
+        
+          <br>
+<table>
+	<thead>
+			<tr>
+					<th>#</th>
+					<th>name</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td><a href="/gadget/hydra" target="_blank">Hydra</a></td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td><a href="/mozi/" target="_blank">墨子</a></td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td><a href="/gadget/how-old-are-you" target="_blank">年龄可视化</a></td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td><a href="/gadget/piano" target="_blank">Piano</a></td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td><a href="/flockn-roll/" target="_blank">Flock&rsquo;n Roll</a></td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td><a href="/monaco-speech-editor/" target="_blank">Monaco Speech Editor</a></td>
+			</tr>
+	</tbody>
+</table>
+
+        
+      </div>
+    </div>
+
+    <div id="categories" class="tabcontent drawer-native" hidden>
+      <ul class="drawer-category-list">
+        
+          <li>
+            <a href="/categories/devops/" target="_blank" rel="noopener noreferrer">
+              <span>DevOps</span>
+              <span class="drawer-category-count">12</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/deeplearning/" target="_blank" rel="noopener noreferrer">
+              <span>DeepLearning</span>
+              <span class="drawer-category-count">11</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/agent/" target="_blank" rel="noopener noreferrer">
+              <span>Agent</span>
+              <span class="drawer-category-count">7</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/algorithms/" target="_blank" rel="noopener noreferrer">
+              <span>Algorithms</span>
+              <span class="drawer-category-count">6</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/life/" target="_blank" rel="noopener noreferrer">
+              <span>Life</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/sota/" target="_blank" rel="noopener noreferrer">
+              <span>SOTA</span>
+              <span class="drawer-category-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/bigdata/" target="_blank" rel="noopener noreferrer">
+              <span>BigData</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/statistics/" target="_blank" rel="noopener noreferrer">
+              <span>Statistics</span>
+              <span class="drawer-category-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/frontend/" target="_blank" rel="noopener noreferrer">
+              <span>FrontEnd</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/llms/" target="_blank" rel="noopener noreferrer">
+              <span>LLMs</span>
+              <span class="drawer-category-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/machinelearning/" target="_blank" rel="noopener noreferrer">
+              <span>MachineLearning</span>
+              <span class="drawer-category-count">2</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/math/" target="_blank" rel="noopener noreferrer">
+              <span>Math</span>
+              <span class="drawer-category-count">2</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/datavisualization/" target="_blank" rel="noopener noreferrer">
+              <span>DataVisualization</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/hardware/" target="_blank" rel="noopener noreferrer">
+              <span>Hardware</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/modeling/" target="_blank" rel="noopener noreferrer">
+              <span>Modeling</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/multimodal/" target="_blank" rel="noopener noreferrer">
+              <span>Multimodal</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/network/" target="_blank" rel="noopener noreferrer">
+              <span>Network</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/prose/" target="_blank" rel="noopener noreferrer">
+              <span>Prose</span>
+              <span class="drawer-category-count">1</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="/js/drawer.js"></script>
+
+
+    <div class="content container">
+    
+<article>
+  <header>
+    <h1>像搭积木一样搭神经网络</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Jul 7, 2024
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/deeplearning">DEEPLEARNING</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/dropout">dropout</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/decay">decay</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 4 min read
+</div>
+
+
+  </header>
+  
+  
+  
+    <div class="toc-wrapper">
+      <input type="checkbox" id="tocToggle">
+      <label for="tocToggle">Table of Content</label>
+      
+        <div class="toc" id="TableOfContents"></div>
+      
+    </div>
+  
+  
+  <div class="post">
+    <blockquote>
+<p>搭积木的时候，需要将不同类型的积木搭在一起：门框、窗子、走廊、屋顶。对每一种类型的积木，又有多种变体可供选择。比如，屋顶可以用文艺复兴风格，也可以用中式庭园风格。神经网络也是，学神经网络，本质上就是认识各种各样“积木”的过程。</p>
+</blockquote>
+<p>GitHub 项目地址：<a href="https://github.com/luochang212/dl-tricks/blob/main/note.ipynb" target="_blank">dl-tricks/note.ipynb</a></p>
+<h3 id="一必要组件">一、必要组件</h3>
+<h4 id="11-从-mlp-说起">1.1 从 MLP 说起</h4>
+<p>我们从最简单的深度神经网络 <strong>多层感知机</strong> (MLP) 开始说起。麻雀虽小，五脏俱全。了解数据如何在 MLP 中流动，就能大致勾勒一个神经网络的 <strong>必要组件</strong>。</p>
+<p>下图是一个 4 层感知机，左边是特征，右边是标签。训练开始时，样本数据先从左到右做 <strong>正向传播</strong>。待数据流到右侧，用 <strong>损失函数</strong> 计算损失。此时损失是一个标量，而最后一层的节点权重 \( W \) 是一个矩阵，标量对矩阵的偏导是矩阵。<strong>优化器</strong> 会用大小合适的梯度矩阵，沿负梯度方向逐层反向更新权重 \( W \)。这样下一 <strong>批量</strong> (batch) 数据进入网络时，正好能用上一轮更新后的参数做正向传播。</p>
+<p><img src="/img/mlp_network.png" alt="image"></p>
+<h4 id="12-dataloader">1.2 DataLoader</h4>
+<p>样本是有限的，为了让模型获得最强性能，必须榨干每个样本的价值。</p>
+<p>因此在训练中，一个样本往往要复用多次。<code>DataLoader</code> 就在做这样一件事。它把数据编排成一个个批量，并构建一个迭代器。每次调用它，会返回一个从第一个批量开始遍历的迭代器。这个特性使得复用样本变得更加方便。</p>
+<p>原生的 PyTorch <code>DataLoader</code> 很复杂，让我们来实现一个野生 <code>DataLoader</code>：</p>
+<pre tabindex="0"><code>import math
+import torch
+
+class DataLoader:
+    def __init__(self, data: list, batch_size: int):
+        self.i = 0
+        self.batch_size = batch_size
+        self.batch_num = math.ceil(len(data) / batch_size)
+        self._data = self.gen_batch(data)
+
+    def gen_batch(self, data):
+        lst = []
+        s = self.batch_size
+        for i in range(self.batch_num):
+            start, end = s * i, s * (i + 1)
+            X = torch.tensor([e[0] for e in data[start:end]])
+            y = torch.tensor([e[1] for e in data[start:end]])
+            lst.append((X, y))
+
+        return lst
+
+    def __iter__(self):
+        self.i = 0
+        return self
+
+    def __next__(self):
+        if self.i &lt; len(self._data):
+            self.i += 1
+            return self._data[self.i - 1]
+        else:
+            raise StopIteration
+</code></pre><p>假设有 2560 个样本。计划分成 10 个批量，则每批量有 256 个样本。我们可以用上面的野生 <code>DataLoader</code> 加载这些样本。</p>
+<pre tabindex="0"><code># 构造符合 f(a, b) = \frac{a^2 - b^2}{a^2 + b^2} + \epsilon 函数的样本生成
+sample_num, batch_size = 2560, 10
+X = [(random.random(), random.random()) for e in range(sample_num)]
+y = map(lambda e: ((e[0]**2 - e[1]**2) / (e[0]**2 + e[1]**2)) + (random.random() / 100), X)
+
+raw_data = list(zip(X, y))
+</code></pre><pre tabindex="0"><code># 输出一个批量的数据
+for X, y in DataLoader(data=raw_data, batch_size=batch_size):
+    print(f&#39;X: {X}&#39;)
+    print(f&#39;y: {y}&#39;)
+    break
+</code></pre><p>在实际训练过程中，如果把全部 10 个批量的数据全训了一遍，就叫完成一个轮次 (epoch) 的训练。深度神经网络通常需要多个轮次训练才会收敛。</p>
+<p><img src="/img/epoch_and_batch.png" alt="image"></p>
+<blockquote>
+<p><strong>Note:</strong> 为什么要做成批量？因为批量计算提高了反向传播的效率。你可以问 GPT：批量随机梯度下降比随机梯度下降好在哪儿？</p>
+</blockquote>
+<h4 id="13-神经元里发生了什么">1.3 神经元里发生了什么</h4>
+<p>为了考察神经元里发生了什么。我们假设输入样本有 10 个特征 (features). 我们构建一个四层 MLP，假定各层神经元数量如下：</p>
+<pre tabindex="0"><code>[Layer 0] 第一层维数为 10
+[Layer 1] 第二层维数为 12
+[Layer 2] 第三层维数为 12
+[Layer 3] 第四层维数为 10
+</code></pre><blockquote>
+<p>在设计各层神经元数量时，需要满足一些客观条件：</p>
+<ul>
+<li>第一层神经元数量需与样本特征数相同</li>
+<li>最后一层神经元数量需与预测的类别数相同</li>
+<li>中间隐藏层的神经元数量比较自由，可以灵活地调整</li>
+</ul>
+</blockquote>
+<p>现在，我们来考虑一个样本在 MLP 的前两层做正向传播的情况：</p>
+<p><strong>第一层：</strong></p>
+<p>把样本的 10 个特征直接填入 10 个神经元就好了。</p>
+<pre tabindex="0"><code># 原始特征
+features = [&#34;张&#34;, &#34;女性&#34;, 143.0, &#34;国际贸易&#34;, 97.0, \
+            88.5, 95.0, 79.0, 91.0, 70.0]
+
+# 经过 encoder 编码后
+features = [33, 1, 143.0, 1002, 97.0, \
+            88.5, 95.0, 79.0, 91.0, 70.0]
+
+# 把特征注入对应神经元
+x_00, x_01, x_02, x_03, x_04, x_05, x_06, x_07, x_08, x_09 = *features
+</code></pre><p><strong>第二层：</strong></p>
+<p>第二层第 i 个神经元的值 \( x_{1i} \)，可以看作是由第一层神经元的值 \( x_{0i} (i \in [0, 9]) \) 经过 <code>线性变换 -&gt; 加偏置项 -&gt; 过激活函数</code> 得到的。</p>
+<p>公式表达如下：</p>
+$$ x_{1i} = ReLU (W_{0i} X_0 + b_{0i}) $$<p>其中：</p>
+<table>
+	<thead>
+			<tr>
+					<th>符号</th>
+					<th>解释</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>\( ReLU \)</td>
+					<td>是激活函数</td>
+			</tr>
+			<tr>
+					<td>\( W_{0i} \)</td>
+					<td>第 2 层第 i 个神经元上的可学习权重，是长为 10 的一维向量</td>
+			</tr>
+			<tr>
+					<td>\( X_0 \)</td>
+					<td>第 1 层所有神经元 <code>x</code> 值 concat 成的向量，是长为 10 的一维向量</td>
+			</tr>
+			<tr>
+					<td>\( b_{0i} \)</td>
+					<td>第 2 层第 i 个神经元上的可学习偏置，是标量</td>
+			</tr>
+			<tr>
+					<td>\( x_{1i} \)</td>
+					<td>第 2 层第 i 个神经元的值，是标量（对于最后一层，它就是输出值 \( \hat{y}_{i} \)）</td>
+			</tr>
+	</tbody>
+</table>
+<p>以下三个参数可以被认为是“包含”在第 i 个神经元中：</p>
+<ul>
+<li>\( W_{0i} \): 权重</li>
+<li>\( b_{0i} \): 偏置</li>
+<li>\( x_{1i} \): 神经元的值</li>
+</ul>
+<p>注意到，\( W_{0i} \) 和 \( b_{0i} \) 下标的第一个数字虽然是 0，并不意味着它们在 <code>Layer 0</code>（第一层）上，它们实际“属于”第二层的第 i 个神经元。</p>
+<p>下图解释了这种情况形成的原因：我们认为 \( x_{1i} \) 的计算过程发生在第二层中，因此 \( X_0 \) 被看作是来自上一层的输入。因此 \( W_{0i} \) 和 \( b_{0i} \) 也应被视为在第二层上进行更新的参数。但是计算时，这俩参数实际与 \( X_0 \) 发生运算，在等式中又位于 \( X_0 \) 那边，因此具有 0 下标.</p>
+<img src="/img/calc_net.png" alt="描述信息" style="height: 450px; display: block; margin-left: auto; margin-right: auto;">
+<blockquote>
+<p>好崩溃，画个图把 <a href="https://lucid.app/" target="_blank">Lucid</a> 免费额度用完了 (´;ω;`)</p>
+</blockquote>
+<h4 id="14-层视角而非神经元视角">1.4 层视角，而非神经元视角</h4>
+<p>如果从层视角，而非从神经元视角看。</p>
+<p>我们把：</p>
+<ul>
+<li>第二层所有权重 \( W_{00}, W_{01}, ... ... W_{09} \) concat 起来得到矩阵 \( W_0 \)</li>
+<li>第二层所有偏置 \( b_{00}, b_{10}, ... ... b_{0,11} \) concat 起来得到向量 \( b_0 \)</li>
+<li>第一层所有神经元的值 \( X_{00}, X_{01}, ... ... X_{09} \) concat 起来得到 \( X_0 \)</li>
+<li>第二层所有神经元的值 \( X_{10}, X_{11}, ... ... X_{1,11} \) concat 起来得到 \( X_1 \)</li>
+</ul>
+<p>此时，第一层到第二层的非线性变换可写作：</p>
+$$ X_1 = ReLU (W_0 X_0 + b_0) $$<h3 id="二激活函数">二、激活函数</h3>
+<p>激活函数堪称伟大。如果说神经网络的多层架构解决了 <a href="/posts/d2l/#4-xor问题-minsky--papert-1969" target="_blank">XOR 问题</a>，激活函数则为深度神经网络引入了非线性性，让神经网络具有拟合任意函数的能力，使其拥有了解非凸优化问题的能力。</p>
+<p>本节介绍三种常见的激活函数：<code>Sigmoid</code>, <code>Tanh</code>, <code>ReLU</code>。其中 <code>ReLU</code> 因为计算简单，在工业界被大量使用。</p>
+<h4 id="21-sigmoid">2.1 Sigmoid</h4>
+<ul>
+<li>表达式：\(  sigmoid (x) = \frac{1}{1 + e^{-x}}  \)</li>
+<li>值域：\( (0, 1) \)</li>
+<li>特性：导数存在且处处可微。但在输入值很大或很小的情况下，梯度接近于零，导致梯度消失的问题。且输出不是零均值，可能会影响下一层的收敛速度。</li>
+</ul>
+<p><img src="/img/Sigmoid-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.png" alt="image"></p>
+<h4 id="22-tanh">2.2 Tanh</h4>
+<ul>
+<li>表达式：\(  \tanh(x) = \frac{1 - e^{-2x}}{1 + e^{-2x}}  \)</li>
+<li>值域：\( (-1, 1) \)</li>
+<li>特性：与 Sigmoid 函数相似，存在梯度消失问题。但相比 Sigmoid 函数，输出值更接近于零均值，有助于加快收敛速度。</li>
+</ul>
+<p><img src="/img/Tanh-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.png" alt="image"></p>
+<h4 id="23-relu">2.3 ReLU</h4>
+<ul>
+<li>表达式：\(  ReLU (x) = \max(0, x)  \)</li>
+<li>值域：\( [0, +\infty) \)</li>
+<li>特性：简单高效，计算速度快。当输入为正数时，梯度为 1，可避免梯度消失问题；当输入为负数时，梯度为 0，意味着不再激活，即神经元死亡。输出不是归一化的，可能需要额外的规范化技术。</li>
+</ul>
+<p><img src="/img/ReLU-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.png" alt="image"></p>
+<h4 id="24-softmax">2.4 Softmax</h4>
+<ul>
+<li>表达式：\( \operatorname{softmax}(\mathbf{X})_{i j}=\frac{\exp \left(\mathbf{X}_{i j}\right)}{\sum_k \exp \left(\mathbf{X}_{i k}\right)} \)</li>
+<li>值域：输出是一个概率分布，所有元素和为 1</li>
+<li>特性：可将任意实数向量转化为概率分布向量，常用于分类模型输出层的激活函数。</li>
+</ul>
+<h3 id="三损失函数">三、损失函数</h3>
+<p>对于不同的任务，常用损失函数也不同。分类任务常用交叉熵损失；回归任务常用均方误差损失。</p>
+<h4 id="31-交叉熵损失">3.1 交叉熵损失</h4>
+<p>交叉熵损失（Cross Entropy Loss）用于衡量两个分布的差异。差异越大，则损失函数的值越大。</p>
+<p>下面给出交叉熵函数的计算公式：</p>
+<ol>
+<li>
+<p>对于 <strong>二分类任务</strong>，假设模型正样本概率为 p，真实标号正样本概率为 q，则模型给出的预测分布和真实分布之间的交叉熵可由下式计算：</p>
+<p>\( H(p, q) = - (p \cdot \log(q) + (1 - p) \cdot \log(1 - q)) \)</p>
+</li>
+<li>
+<p>对于 <strong>多分类任务</strong>，假设模型预测概率分布为 <code>P</code>，真实标号分布为 <code>Q</code>，则交叉熵函数为：</p>
+<p>\( H(P, Q) = - \sum_{i=1}^{C} (P(i) * log(Q(i))) \)</p>
+</li>
+</ol>
+<p>写个函数验证下这件事：</p>
+<h4 id="32-均方误差">3.2 均方误差</h4>
+<p>均方误差（Mean Squared Error, MSE）</p>
+<h3 id="四优化器">四、优化器</h3>
+<h4 id="41-sgd">4.1 SGD</h4>
+<h4 id="42-adam">4.2 Adam</h4>
+<h3 id="五链式求导">五、链式求导</h3>
+<h3 id="六正则化技术">六、正则化技术</h3>
+<h4 id="61-权重衰减">6.1 权重衰减</h4>
+<h4 id="62-dropout">6.2 dropout</h4>
+<h3 id="七优化策略梯度更新策略">七、优化策略（梯度更新策略）</h3>
+<h4 id="71-梯度裁剪">7.1 梯度裁剪</h4>
+<h4 id="72-学习率调度">7.2 学习率调度</h4>
+<h4 id="73-量化">7.3 量化</h4>
+<h3 id="八归一化技术">八、归一化技术</h3>
+<h4 id="81-批量归一化">8.1 批量归一化</h4>
+<h4 id="82-层归一化">8.2 层归一化</h4>
+<h3 id="九推理和可视化">九、推理和可视化</h3>
+<p>ONNX + Netron</p>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/sentiment_analysis/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">文本情感分析</span>
+    </a>
+    
+    
+    <a href="/posts/synchrotrap/" class="navigation-next">
+      <span class="navigation-tittle">SynchroTrap 算法实现</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+</div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.js" defer></script>
+
+
+<script defer src="https://kit.fontawesome.com/2134995a39.js" crossorigin="anonymous"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/tocbot@4.36.8/dist/tocbot.min.js"></script>
+<script type="text/javascript">
+  if (window.tocbot) {
+    tocbot.init({
+      
+      tocSelector: '.toc',
+      
+      contentSelector: '.post',
+      
+      headingSelector: 'h2, h3, h4',
+      collapseDepth: 4
+    });
+  }
+</script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    mediumZoom('.post img', {
+      background: 'rgba(0,0,0,0.82)',
+      margin: 24,
+      scrollOffset: 0
+    });
+  });
+</script>
+
+
+
+    
+
+
+
+  </body>
+</html>

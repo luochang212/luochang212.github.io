@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Categories on Chang Luo</title>
+		<link>http://localhost:61229/categories/</link>
+		<description>Recent content in Categories on Chang Luo</description>
+		<generator>Hugo</generator>
+		<language>zh-CN</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 24 May 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:61229/categories/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>SOTA</title>
+				<link>http://localhost:61229/categories/sota/</link>
+				<pubDate>Sun, 24 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/categories/sota/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Agent</title>
+				<link>http://localhost:61229/categories/agent/</link>
+				<pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/categories/agent/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Prose</title>
+				<link>http://localhost:61229/categories/prose/</link>
+				<pubDate>Thu, 29 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/categories/prose/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>BigData</title>
+				<link>http://localhost:61229/categories/bigdata/</link>
+				<pubDate>Sat, 15 Nov 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/categories/bigdata/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>LLMs</title>
+				<link>http://localhost:61229/categories/llms/</link>
+				<pubDate>Sat, 26 Apr 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/categories/llms/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Algorithms</title>
+				<link>http://localhost:61229/categories/algorithms/</link>
+				<pubDate>Sat, 19 Apr 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/categories/algorithms/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>DeepLearning</title>
+				<link>http://localhost:61229/categories/deeplearning/</link>
+				<pubDate>Sun, 09 Mar 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/categories/deeplearning/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Multimodal</title>
+				<link>http://localhost:61229/categories/multimodal/</link>
+				<pubDate>Sun, 29 Dec 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/categories/multimodal/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>DevOps</title>
+				<link>http://localhost:61229/categories/devops/</link>
+				<pubDate>Sat, 23 Nov 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/categories/devops/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>MachineLearning</title>
+				<link>http://localhost:61229/categories/machinelearning/</link>
+				<pubDate>Sat, 13 Apr 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/categories/machinelearning/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Network</title>
+				<link>http://localhost:61229/categories/network/</link>
+				<pubDate>Sat, 02 Mar 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/categories/network/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Hardware</title>
+				<link>http://localhost:61229/categories/hardware/</link>
+				<pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/categories/hardware/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Life</title>
+				<link>http://localhost:61229/categories/life/</link>
+				<pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/categories/life/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Statistics</title>
+				<link>http://localhost:61229/categories/statistics/</link>
+				<pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/categories/statistics/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>FrontEnd</title>
+				<link>http://localhost:61229/categories/frontend/</link>
+				<pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/categories/frontend/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Math</title>
+				<link>http://localhost:61229/categories/math/</link>
+				<pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/categories/math/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Modeling</title>
+				<link>http://localhost:61229/categories/modeling/</link>
+				<pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/categories/modeling/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>DataVisualization</title>
+				<link>http://localhost:61229/categories/datavisualization/</link>
+				<pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
+				<guid>http://localhost:61229/categories/datavisualization/</guid>
+				<description></description>
+			</item>
+	</channel>
+</rss>
