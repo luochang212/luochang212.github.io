@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
 		<title>Desktop App on Chang Luo</title>
-		<link>http://localhost:1313/tags/desktop-app/</link>
+		<link>https://www.luochang.ink/tags/desktop-app/</link>
 		<description>Recent content in Desktop App on Chang Luo</description>
 		<generator>Hugo</generator>
 		<language>zh-CN</language>
@@ -12,13 +12,13 @@
 		
 			<lastBuildDate>Sun, 24 May 2026 00:00:00 +0000</lastBuildDate>
 		
-			<atom:link href="http://localhost:1313/tags/desktop-app/index.xml" rel="self" type="application/rss+xml" />
+			<atom:link href="https://www.luochang.ink/tags/desktop-app/index.xml" rel="self" type="application/rss+xml" />
 			<item>
 				<title>Skill Zoo：一站式 Agent 技能管理工具</title>
-				<link>http://localhost:1313/posts/skill_zoo/</link>
+				<link>https://www.luochang.ink/posts/skill_zoo/</link>
 				<pubDate>Sun, 24 May 2026 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/posts/skill_zoo/</guid>
-				<description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/header-image.webp&#34; alt=&#34;Skill Zoo 应用封面&#34;&gt;&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;给所有流浪的技能宝宝一个家&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;GitHub 项目地址：&lt;a href=&#34;https://github.com/luochang212/skill-zoo&#34; target=&#34;_blank&#34;&gt;skill-zoo&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;自 Coding Agent 爆火以来，Agent 技能作为其能力的重要载体也备受关注。Agent 技能本质上是文档，但凭借其可插拔、任务间通用和渐进式披露等特性，已经变成了 prompt 的一种独特存在形式。&lt;/p&gt;&#xA;&lt;p&gt;Agent 技能尤其擅长有套路、有 SOP、需要风格迁移的任务，比如网页设计、数据分析、制作幻灯片等。下面是我用 ThariqS 佬开源的 HTML 模板做的 Slide。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/skill-zoo-slide.jpg&#34; alt=&#34;使用 Agent 技能制作的简洁风格幻灯片&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;这个 Slide 偏简洁风，如果你喜欢其它风格，可以上 GitHub 搜索相关 skill。&lt;/p&gt;&#xA;&lt;h3 id=&#34;一如何管理技能&#34;&gt;一、如何管理技能&lt;/h3&gt;&#xA;&lt;p&gt;Agent 技能良莠不齐，下载下来用不用得上另说，上下文总归被占用了。如果技能数量太多，技能列表甚至会被截断。&lt;/p&gt;&#xA;&lt;p&gt;因此，技能是需要管理的：不用的要删除，过时的要更新。同时技能管理又是一件挺主观的事，哪些技能有用，哪些技能质量高，需要我们主动判断。阅读方便就变成一个很重要的指标。npx skills 这种 CLI 不方便阅读，需要一个 App 来提供阅读和管理功能。&lt;/p&gt;&#xA;&lt;p&gt;Skill Zoo 就打算做好这件事。它提供了一系列随点随用的功能，帮我们降低技能管理成本，拉近我们和技能之间的距离。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/skill-zoo-home.jpg&#34; alt=&#34;Skill Zoo 首页的技能卡片视图&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;项目地址：&lt;a href=&#34;https://www.luochang.ink/skill-zoo/&#34; target=&#34;_blank&#34;&gt;luochang.ink/skill-zoo&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;二产品设计&#34;&gt;二、产品设计&lt;/h3&gt;&#xA;&lt;p&gt;为了达成这个目标，我开发了覆盖 Agent Skills 整个生命周期的管理功能。&lt;/p&gt;&#xA;&lt;h4 id=&#34;21-ssot-模式&#34;&gt;2.1 SSOT 模式&lt;/h4&gt;&#xA;&lt;p&gt;为解决 Agent 技能跨编程工具复用的问题，Skill Zoo 采用 &lt;strong&gt;唯一真实源（SSOT）+ 软链接&lt;/strong&gt; 的方法，将已有技能链接至其他编程工具的 Skill 目录使用。&lt;/p&gt;&#xA;&lt;p&gt;SSOT 是什么？Claude Code 和 Codex 都有技能文件夹。如果一个技能分别存放在不同的技能文件夹里，会造成技能重复存放、技能版本不可控等问题。SSOT 就是维护唯一的技能文件夹，统一管理技能。&lt;/p&gt;</description>
+				<guid>https://www.luochang.ink/posts/skill_zoo/</guid>
+				<description>&lt;p&gt;&lt;img src=&#34;https://www.luochang.ink/img/header-image.webp&#34; alt=&#34;Skill Zoo 应用封面&#34;&gt;&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;给所有流浪的技能宝宝一个家&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;GitHub 项目地址：&lt;a href=&#34;https://github.com/luochang212/skill-zoo&#34; target=&#34;_blank&#34;&gt;skill-zoo&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;自 Coding Agent 爆火以来，Agent 技能作为其能力的重要载体也备受关注。Agent 技能本质上是文档，但凭借其可插拔、任务间通用和渐进式披露等特性，已经变成了 prompt 的一种独特存在形式。&lt;/p&gt;&#xA;&lt;p&gt;Agent 技能尤其擅长有套路、有 SOP、需要风格迁移的任务，比如网页设计、数据分析、制作幻灯片等。下面是我用 ThariqS 佬开源的 HTML 模板做的 Slide。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://www.luochang.ink/img/skill-zoo-slide.jpg&#34; alt=&#34;使用 Agent 技能制作的简洁风格幻灯片&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;这个 Slide 偏简洁风，如果你喜欢其它风格，可以上 GitHub 搜索相关 skill。&lt;/p&gt;&#xA;&lt;h3 id=&#34;一如何管理技能&#34;&gt;一、如何管理技能&lt;/h3&gt;&#xA;&lt;p&gt;Agent 技能良莠不齐，下载下来用不用得上另说，上下文总归被占用了。如果技能数量太多，技能列表甚至会被截断。&lt;/p&gt;&#xA;&lt;p&gt;因此，技能是需要管理的：不用的要删除，过时的要更新。同时技能管理又是一件挺主观的事，哪些技能有用，哪些技能质量高，需要我们主动判断。阅读方便就变成一个很重要的指标。npx skills 这种 CLI 不方便阅读，需要一个 App 来提供阅读和管理功能。&lt;/p&gt;&#xA;&lt;p&gt;Skill Zoo 就打算做好这件事。它提供了一系列随点随用的功能，帮我们降低技能管理成本，拉近我们和技能之间的距离。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://www.luochang.ink/img/skill-zoo-home.jpg&#34; alt=&#34;Skill Zoo 首页的技能卡片视图&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;项目地址：&lt;a href=&#34;https://www.luochang.ink/skill-zoo/&#34; target=&#34;_blank&#34;&gt;luochang.ink/skill-zoo&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;二产品设计&#34;&gt;二、产品设计&lt;/h3&gt;&#xA;&lt;p&gt;为了达成这个目标，我开发了覆盖 Agent Skills 整个生命周期的管理功能。&lt;/p&gt;&#xA;&lt;h4 id=&#34;21-ssot-模式&#34;&gt;2.1 SSOT 模式&lt;/h4&gt;&#xA;&lt;p&gt;为解决 Agent 技能跨编程工具复用的问题，Skill Zoo 采用 &lt;strong&gt;唯一真实源（SSOT）+ 软链接&lt;/strong&gt; 的方法，将已有技能链接至其他编程工具的 Skill 目录使用。&lt;/p&gt;&#xA;&lt;p&gt;SSOT 是什么？Claude Code 和 Codex 都有技能文件夹。如果一个技能分别存放在不同的技能文件夹里，会造成技能重复存放、技能版本不可控等问题。SSOT 就是维护唯一的技能文件夹，统一管理技能。&lt;/p&gt;</description>
 			</item>
 	</channel>
 </rss>

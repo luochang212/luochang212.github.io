@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
 		<title>Resources on Chang Luo</title>
-		<link>http://localhost:1313/resources/</link>
+		<link>https://www.luochang.ink/resources/</link>
 		<description>Recent content in Resources on Chang Luo</description>
 		<generator>Hugo</generator>
 		<language>zh-CN</language>
@@ -10,6 +10,6 @@
 		
 		
 		
-			<atom:link href="http://localhost:1313/resources/index.xml" rel="self" type="application/rss+xml" />
+			<atom:link href="https://www.luochang.ink/resources/index.xml" rel="self" type="application/rss+xml" />
 	</channel>
 </rss>

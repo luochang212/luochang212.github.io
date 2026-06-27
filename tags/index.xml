@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
 		<title>Tags on Chang Luo</title>
-		<link>http://localhost:1313/tags/</link>
+		<link>https://www.luochang.ink/tags/</link>
 		<description>Recent content in Tags on Chang Luo</description>
 		<generator>Hugo</generator>
 		<language>zh-CN</language>
@@ -12,1048 +12,1048 @@
 		
 			<lastBuildDate>Sun, 24 May 2026 00:00:00 +0000</lastBuildDate>
 		
-			<atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+			<atom:link href="https://www.luochang.ink/tags/index.xml" rel="self" type="application/rss+xml" />
 			<item>
 				<title>Agent Skills</title>
-				<link>http://localhost:1313/tags/agent-skills/</link>
+				<link>https://www.luochang.ink/tags/agent-skills/</link>
 				<pubDate>Sun, 24 May 2026 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/agent-skills/</guid>
+				<guid>https://www.luochang.ink/tags/agent-skills/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Desktop App</title>
-				<link>http://localhost:1313/tags/desktop-app/</link>
+				<link>https://www.luochang.ink/tags/desktop-app/</link>
 				<pubDate>Sun, 24 May 2026 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/desktop-app/</guid>
+				<guid>https://www.luochang.ink/tags/desktop-app/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Rust</title>
-				<link>http://localhost:1313/tags/rust/</link>
+				<link>https://www.luochang.ink/tags/rust/</link>
 				<pubDate>Sun, 24 May 2026 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/rust/</guid>
+				<guid>https://www.luochang.ink/tags/rust/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Tauri</title>
-				<link>http://localhost:1313/tags/tauri/</link>
+				<link>https://www.luochang.ink/tags/tauri/</link>
 				<pubDate>Sun, 24 May 2026 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/tauri/</guid>
+				<guid>https://www.luochang.ink/tags/tauri/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Agent Harness</title>
-				<link>http://localhost:1313/tags/agent-harness/</link>
+				<link>https://www.luochang.ink/tags/agent-harness/</link>
 				<pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/agent-harness/</guid>
+				<guid>https://www.luochang.ink/tags/agent-harness/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>BOOT.md</title>
-				<link>http://localhost:1313/tags/boot.md/</link>
+				<link>https://www.luochang.ink/tags/boot.md/</link>
 				<pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/boot.md/</guid>
+				<guid>https://www.luochang.ink/tags/boot.md/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Claude Code</title>
-				<link>http://localhost:1313/tags/claude-code/</link>
+				<link>https://www.luochang.ink/tags/claude-code/</link>
 				<pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/claude-code/</guid>
+				<guid>https://www.luochang.ink/tags/claude-code/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Essence</title>
-				<link>http://localhost:1313/tags/essence/</link>
+				<link>https://www.luochang.ink/tags/essence/</link>
 				<pubDate>Thu, 29 Jan 2026 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/essence/</guid>
+				<guid>https://www.luochang.ink/tags/essence/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Intelligence</title>
-				<link>http://localhost:1313/tags/intelligence/</link>
+				<link>https://www.luochang.ink/tags/intelligence/</link>
 				<pubDate>Thu, 29 Jan 2026 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/intelligence/</guid>
+				<guid>https://www.luochang.ink/tags/intelligence/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Uncertainty</title>
-				<link>http://localhost:1313/tags/uncertainty/</link>
+				<link>https://www.luochang.ink/tags/uncertainty/</link>
 				<pubDate>Thu, 29 Jan 2026 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/uncertainty/</guid>
+				<guid>https://www.luochang.ink/tags/uncertainty/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Gradio</title>
-				<link>http://localhost:1313/tags/gradio/</link>
+				<link>https://www.luochang.ink/tags/gradio/</link>
 				<pubDate>Sun, 18 Jan 2026 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/gradio/</guid>
+				<guid>https://www.luochang.ink/tags/gradio/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>LangChain</title>
-				<link>http://localhost:1313/tags/langchain/</link>
+				<link>https://www.luochang.ink/tags/langchain/</link>
 				<pubDate>Sun, 18 Jan 2026 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/langchain/</guid>
+				<guid>https://www.luochang.ink/tags/langchain/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Raspberry Pi</title>
-				<link>http://localhost:1313/tags/raspberry-pi/</link>
+				<link>https://www.luochang.ink/tags/raspberry-pi/</link>
 				<pubDate>Sun, 18 Jan 2026 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/raspberry-pi/</guid>
+				<guid>https://www.luochang.ink/tags/raspberry-pi/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>RAG</title>
-				<link>http://localhost:1313/tags/rag/</link>
+				<link>https://www.luochang.ink/tags/rag/</link>
 				<pubDate>Sat, 27 Dec 2025 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/rag/</guid>
+				<guid>https://www.luochang.ink/tags/rag/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>LangGraph</title>
-				<link>http://localhost:1313/tags/langgraph/</link>
+				<link>https://www.luochang.ink/tags/langgraph/</link>
 				<pubDate>Sun, 23 Nov 2025 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/langgraph/</guid>
+				<guid>https://www.luochang.ink/tags/langgraph/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Middleware</title>
-				<link>http://localhost:1313/tags/middleware/</link>
+				<link>https://www.luochang.ink/tags/middleware/</link>
 				<pubDate>Sun, 23 Nov 2025 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/middleware/</guid>
+				<guid>https://www.luochang.ink/tags/middleware/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Hadoop</title>
-				<link>http://localhost:1313/tags/hadoop/</link>
+				<link>https://www.luochang.ink/tags/hadoop/</link>
 				<pubDate>Sat, 15 Nov 2025 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/hadoop/</guid>
+				<guid>https://www.luochang.ink/tags/hadoop/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>HDFS</title>
-				<link>http://localhost:1313/tags/hdfs/</link>
+				<link>https://www.luochang.ink/tags/hdfs/</link>
 				<pubDate>Sat, 15 Nov 2025 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/hdfs/</guid>
+				<guid>https://www.luochang.ink/tags/hdfs/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Hive</title>
-				<link>http://localhost:1313/tags/hive/</link>
+				<link>https://www.luochang.ink/tags/hive/</link>
 				<pubDate>Sat, 15 Nov 2025 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/hive/</guid>
+				<guid>https://www.luochang.ink/tags/hive/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>JupyterLab</title>
-				<link>http://localhost:1313/tags/jupyterlab/</link>
+				<link>https://www.luochang.ink/tags/jupyterlab/</link>
 				<pubDate>Sat, 15 Nov 2025 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/jupyterlab/</guid>
+				<guid>https://www.luochang.ink/tags/jupyterlab/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Spark</title>
-				<link>http://localhost:1313/tags/spark/</link>
+				<link>https://www.luochang.ink/tags/spark/</link>
 				<pubDate>Sat, 15 Nov 2025 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/spark/</guid>
+				<guid>https://www.luochang.ink/tags/spark/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>ChatBI</title>
-				<link>http://localhost:1313/tags/chatbi/</link>
+				<link>https://www.luochang.ink/tags/chatbi/</link>
 				<pubDate>Sat, 06 Sep 2025 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/chatbi/</guid>
+				<guid>https://www.luochang.ink/tags/chatbi/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>LLM</title>
-				<link>http://localhost:1313/tags/llm/</link>
+				<link>https://www.luochang.ink/tags/llm/</link>
 				<pubDate>Sat, 06 Sep 2025 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/llm/</guid>
+				<guid>https://www.luochang.ink/tags/llm/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>OLAP</title>
-				<link>http://localhost:1313/tags/olap/</link>
+				<link>https://www.luochang.ink/tags/olap/</link>
 				<pubDate>Sat, 06 Sep 2025 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/olap/</guid>
+				<guid>https://www.luochang.ink/tags/olap/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>ClickHouse</title>
-				<link>http://localhost:1313/tags/clickhouse/</link>
+				<link>https://www.luochang.ink/tags/clickhouse/</link>
 				<pubDate>Sat, 26 Jul 2025 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/clickhouse/</guid>
+				<guid>https://www.luochang.ink/tags/clickhouse/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Magic</title>
-				<link>http://localhost:1313/tags/magic/</link>
+				<link>https://www.luochang.ink/tags/magic/</link>
 				<pubDate>Sat, 12 Jul 2025 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/magic/</guid>
+				<guid>https://www.luochang.ink/tags/magic/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>MCP</title>
-				<link>http://localhost:1313/tags/mcp/</link>
+				<link>https://www.luochang.ink/tags/mcp/</link>
 				<pubDate>Sat, 12 Jul 2025 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/mcp/</guid>
+				<guid>https://www.luochang.ink/tags/mcp/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Number-Theory</title>
-				<link>http://localhost:1313/tags/number-theory/</link>
+				<link>https://www.luochang.ink/tags/number-theory/</link>
 				<pubDate>Sat, 12 Jul 2025 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/number-theory/</guid>
+				<guid>https://www.luochang.ink/tags/number-theory/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Function Calling</title>
-				<link>http://localhost:1313/tags/function-calling/</link>
+				<link>https://www.luochang.ink/tags/function-calling/</link>
 				<pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/function-calling/</guid>
+				<guid>https://www.luochang.ink/tags/function-calling/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>NL2SQL</title>
-				<link>http://localhost:1313/tags/nl2sql/</link>
+				<link>https://www.luochang.ink/tags/nl2sql/</link>
 				<pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/nl2sql/</guid>
+				<guid>https://www.luochang.ink/tags/nl2sql/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Qwen Agent</title>
-				<link>http://localhost:1313/tags/qwen-agent/</link>
+				<link>https://www.luochang.ink/tags/qwen-agent/</link>
 				<pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/qwen-agent/</guid>
+				<guid>https://www.luochang.ink/tags/qwen-agent/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>ReActChat</title>
-				<link>http://localhost:1313/tags/reactchat/</link>
+				<link>https://www.luochang.ink/tags/reactchat/</link>
 				<pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/reactchat/</guid>
+				<guid>https://www.luochang.ink/tags/reactchat/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Workflow</title>
-				<link>http://localhost:1313/tags/workflow/</link>
+				<link>https://www.luochang.ink/tags/workflow/</link>
 				<pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/workflow/</guid>
+				<guid>https://www.luochang.ink/tags/workflow/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>LLaMA Factory</title>
-				<link>http://localhost:1313/tags/llama-factory/</link>
+				<link>https://www.luochang.ink/tags/llama-factory/</link>
 				<pubDate>Sat, 26 Apr 2025 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/llama-factory/</guid>
+				<guid>https://www.luochang.ink/tags/llama-factory/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Trl</title>
-				<link>http://localhost:1313/tags/trl/</link>
+				<link>https://www.luochang.ink/tags/trl/</link>
 				<pubDate>Sat, 26 Apr 2025 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/trl/</guid>
+				<guid>https://www.luochang.ink/tags/trl/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Unsloth</title>
-				<link>http://localhost:1313/tags/unsloth/</link>
+				<link>https://www.luochang.ink/tags/unsloth/</link>
 				<pubDate>Sat, 26 Apr 2025 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/unsloth/</guid>
+				<guid>https://www.luochang.ink/tags/unsloth/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>BLIP2</title>
-				<link>http://localhost:1313/tags/blip2/</link>
+				<link>https://www.luochang.ink/tags/blip2/</link>
 				<pubDate>Sat, 19 Apr 2025 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/blip2/</guid>
+				<guid>https://www.luochang.ink/tags/blip2/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>DBSCAN</title>
-				<link>http://localhost:1313/tags/dbscan/</link>
+				<link>https://www.luochang.ink/tags/dbscan/</link>
 				<pubDate>Sat, 19 Apr 2025 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/dbscan/</guid>
+				<guid>https://www.luochang.ink/tags/dbscan/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Hungarian Algorithm</title>
-				<link>http://localhost:1313/tags/hungarian-algorithm/</link>
+				<link>https://www.luochang.ink/tags/hungarian-algorithm/</link>
 				<pubDate>Sat, 19 Apr 2025 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/hungarian-algorithm/</guid>
+				<guid>https://www.luochang.ink/tags/hungarian-algorithm/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Ollama</title>
-				<link>http://localhost:1313/tags/ollama/</link>
+				<link>https://www.luochang.ink/tags/ollama/</link>
 				<pubDate>Fri, 21 Mar 2025 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/ollama/</guid>
+				<guid>https://www.luochang.ink/tags/ollama/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Transformers</title>
-				<link>http://localhost:1313/tags/transformers/</link>
+				<link>https://www.luochang.ink/tags/transformers/</link>
 				<pubDate>Fri, 21 Mar 2025 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/transformers/</guid>
+				<guid>https://www.luochang.ink/tags/transformers/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>VLLM</title>
-				<link>http://localhost:1313/tags/vllm/</link>
+				<link>https://www.luochang.ink/tags/vllm/</link>
 				<pubDate>Fri, 21 Mar 2025 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/vllm/</guid>
+				<guid>https://www.luochang.ink/tags/vllm/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Langflow</title>
-				<link>http://localhost:1313/tags/langflow/</link>
+				<link>https://www.luochang.ink/tags/langflow/</link>
 				<pubDate>Sat, 15 Mar 2025 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/langflow/</guid>
+				<guid>https://www.luochang.ink/tags/langflow/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Autoencoder</title>
-				<link>http://localhost:1313/tags/autoencoder/</link>
+				<link>https://www.luochang.ink/tags/autoencoder/</link>
 				<pubDate>Sun, 09 Mar 2025 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/autoencoder/</guid>
+				<guid>https://www.luochang.ink/tags/autoencoder/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>DEC</title>
-				<link>http://localhost:1313/tags/dec/</link>
+				<link>https://www.luochang.ink/tags/dec/</link>
 				<pubDate>Sun, 09 Mar 2025 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/dec/</guid>
+				<guid>https://www.luochang.ink/tags/dec/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>DINOv2</title>
-				<link>http://localhost:1313/tags/dinov2/</link>
+				<link>https://www.luochang.ink/tags/dinov2/</link>
 				<pubDate>Sun, 09 Mar 2025 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/dinov2/</guid>
+				<guid>https://www.luochang.ink/tags/dinov2/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>CLIP</title>
-				<link>http://localhost:1313/tags/clip/</link>
+				<link>https://www.luochang.ink/tags/clip/</link>
 				<pubDate>Sun, 29 Dec 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/clip/</guid>
+				<guid>https://www.luochang.ink/tags/clip/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Faiss</title>
-				<link>http://localhost:1313/tags/faiss/</link>
+				<link>https://www.luochang.ink/tags/faiss/</link>
 				<pubDate>Sun, 29 Dec 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/faiss/</guid>
+				<guid>https://www.luochang.ink/tags/faiss/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>FastAPI</title>
-				<link>http://localhost:1313/tags/fastapi/</link>
+				<link>https://www.luochang.ink/tags/fastapi/</link>
 				<pubDate>Sun, 29 Dec 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/fastapi/</guid>
+				<guid>https://www.luochang.ink/tags/fastapi/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Clustering</title>
-				<link>http://localhost:1313/tags/clustering/</link>
+				<link>https://www.luochang.ink/tags/clustering/</link>
 				<pubDate>Sun, 01 Dec 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/clustering/</guid>
+				<guid>https://www.luochang.ink/tags/clustering/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>CluStream</title>
-				<link>http://localhost:1313/tags/clustream/</link>
+				<link>https://www.luochang.ink/tags/clustream/</link>
 				<pubDate>Sun, 01 Dec 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/clustream/</guid>
+				<guid>https://www.luochang.ink/tags/clustream/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>DenStream</title>
-				<link>http://localhost:1313/tags/denstream/</link>
+				<link>https://www.luochang.ink/tags/denstream/</link>
 				<pubDate>Sun, 01 Dec 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/denstream/</guid>
+				<guid>https://www.luochang.ink/tags/denstream/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>River</title>
-				<link>http://localhost:1313/tags/river/</link>
+				<link>https://www.luochang.ink/tags/river/</link>
 				<pubDate>Sun, 01 Dec 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/river/</guid>
+				<guid>https://www.luochang.ink/tags/river/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>ONNX</title>
-				<link>http://localhost:1313/tags/onnx/</link>
+				<link>https://www.luochang.ink/tags/onnx/</link>
 				<pubDate>Sat, 30 Nov 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/onnx/</guid>
+				<guid>https://www.luochang.ink/tags/onnx/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Triton</title>
-				<link>http://localhost:1313/tags/triton/</link>
+				<link>https://www.luochang.ink/tags/triton/</link>
 				<pubDate>Sat, 30 Nov 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/triton/</guid>
+				<guid>https://www.luochang.ink/tags/triton/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Command</title>
-				<link>http://localhost:1313/tags/command/</link>
+				<link>https://www.luochang.ink/tags/command/</link>
 				<pubDate>Sat, 23 Nov 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/command/</guid>
+				<guid>https://www.luochang.ink/tags/command/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Docker</title>
-				<link>http://localhost:1313/tags/docker/</link>
+				<link>https://www.luochang.ink/tags/docker/</link>
 				<pubDate>Sat, 23 Nov 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/docker/</guid>
+				<guid>https://www.luochang.ink/tags/docker/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>FP-Growth</title>
-				<link>http://localhost:1313/tags/fp-growth/</link>
+				<link>https://www.luochang.ink/tags/fp-growth/</link>
 				<pubDate>Thu, 05 Sep 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/fp-growth/</guid>
+				<guid>https://www.luochang.ink/tags/fp-growth/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>PrefixSpan</title>
-				<link>http://localhost:1313/tags/prefixspan/</link>
+				<link>https://www.luochang.ink/tags/prefixspan/</link>
 				<pubDate>Thu, 05 Sep 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/prefixspan/</guid>
+				<guid>https://www.luochang.ink/tags/prefixspan/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>PySpark</title>
-				<link>http://localhost:1313/tags/pyspark/</link>
+				<link>https://www.luochang.ink/tags/pyspark/</link>
 				<pubDate>Thu, 05 Sep 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/pyspark/</guid>
+				<guid>https://www.luochang.ink/tags/pyspark/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Milvus</title>
-				<link>http://localhost:1313/tags/milvus/</link>
+				<link>https://www.luochang.ink/tags/milvus/</link>
 				<pubDate>Sun, 18 Aug 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/milvus/</guid>
+				<guid>https://www.luochang.ink/tags/milvus/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Redis</title>
-				<link>http://localhost:1313/tags/redis/</link>
+				<link>https://www.luochang.ink/tags/redis/</link>
 				<pubDate>Sun, 18 Aug 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/redis/</guid>
+				<guid>https://www.luochang.ink/tags/redis/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Vector Engine</title>
-				<link>http://localhost:1313/tags/vector-engine/</link>
+				<link>https://www.luochang.ink/tags/vector-engine/</link>
 				<pubDate>Sun, 18 Aug 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/vector-engine/</guid>
+				<guid>https://www.luochang.ink/tags/vector-engine/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>GAT</title>
-				<link>http://localhost:1313/tags/gat/</link>
+				<link>https://www.luochang.ink/tags/gat/</link>
 				<pubDate>Sat, 10 Aug 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/gat/</guid>
+				<guid>https://www.luochang.ink/tags/gat/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>GCN</title>
-				<link>http://localhost:1313/tags/gcn/</link>
+				<link>https://www.luochang.ink/tags/gcn/</link>
 				<pubDate>Sat, 10 Aug 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/gcn/</guid>
+				<guid>https://www.luochang.ink/tags/gcn/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>GraphSAGE</title>
-				<link>http://localhost:1313/tags/graphsage/</link>
+				<link>https://www.luochang.ink/tags/graphsage/</link>
 				<pubDate>Sat, 10 Aug 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/graphsage/</guid>
+				<guid>https://www.luochang.ink/tags/graphsage/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Connected Component</title>
-				<link>http://localhost:1313/tags/connected-component/</link>
+				<link>https://www.luochang.ink/tags/connected-component/</link>
 				<pubDate>Sat, 27 Jul 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/connected-component/</guid>
+				<guid>https://www.luochang.ink/tags/connected-component/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Graph</title>
-				<link>http://localhost:1313/tags/graph/</link>
+				<link>https://www.luochang.ink/tags/graph/</link>
 				<pubDate>Sat, 27 Jul 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/graph/</guid>
+				<guid>https://www.luochang.ink/tags/graph/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Jaccard Similarity</title>
-				<link>http://localhost:1313/tags/jaccard-similarity/</link>
+				<link>https://www.luochang.ink/tags/jaccard-similarity/</link>
 				<pubDate>Sat, 27 Jul 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/jaccard-similarity/</guid>
+				<guid>https://www.luochang.ink/tags/jaccard-similarity/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Decay</title>
-				<link>http://localhost:1313/tags/decay/</link>
+				<link>https://www.luochang.ink/tags/decay/</link>
 				<pubDate>Sun, 07 Jul 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/decay/</guid>
+				<guid>https://www.luochang.ink/tags/decay/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Dropout</title>
-				<link>http://localhost:1313/tags/dropout/</link>
+				<link>https://www.luochang.ink/tags/dropout/</link>
 				<pubDate>Sun, 07 Jul 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/dropout/</guid>
+				<guid>https://www.luochang.ink/tags/dropout/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Bert</title>
-				<link>http://localhost:1313/tags/bert/</link>
+				<link>https://www.luochang.ink/tags/bert/</link>
 				<pubDate>Sat, 06 Jul 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/bert/</guid>
+				<guid>https://www.luochang.ink/tags/bert/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Classification</title>
-				<link>http://localhost:1313/tags/classification/</link>
+				<link>https://www.luochang.ink/tags/classification/</link>
 				<pubDate>Sat, 06 Jul 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/classification/</guid>
+				<guid>https://www.luochang.ink/tags/classification/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Sentiment</title>
-				<link>http://localhost:1313/tags/sentiment/</link>
+				<link>https://www.luochang.ink/tags/sentiment/</link>
 				<pubDate>Sat, 06 Jul 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/sentiment/</guid>
+				<guid>https://www.luochang.ink/tags/sentiment/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Transformer</title>
-				<link>http://localhost:1313/tags/transformer/</link>
+				<link>https://www.luochang.ink/tags/transformer/</link>
 				<pubDate>Sat, 06 Jul 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/transformer/</guid>
+				<guid>https://www.luochang.ink/tags/transformer/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Embedding</title>
-				<link>http://localhost:1313/tags/embedding/</link>
+				<link>https://www.luochang.ink/tags/embedding/</link>
 				<pubDate>Sat, 29 Jun 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/embedding/</guid>
+				<guid>https://www.luochang.ink/tags/embedding/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Representation</title>
-				<link>http://localhost:1313/tags/representation/</link>
+				<link>https://www.luochang.ink/tags/representation/</link>
 				<pubDate>Sat, 29 Jun 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/representation/</guid>
+				<guid>https://www.luochang.ink/tags/representation/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Arxiv</title>
-				<link>http://localhost:1313/tags/arxiv/</link>
+				<link>https://www.luochang.ink/tags/arxiv/</link>
 				<pubDate>Sun, 16 Jun 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/arxiv/</guid>
+				<guid>https://www.luochang.ink/tags/arxiv/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>MultiHeadAttention</title>
-				<link>http://localhost:1313/tags/multiheadattention/</link>
+				<link>https://www.luochang.ink/tags/multiheadattention/</link>
 				<pubDate>Sun, 09 Jun 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/multiheadattention/</guid>
+				<guid>https://www.luochang.ink/tags/multiheadattention/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>PositionalEncoding</title>
-				<link>http://localhost:1313/tags/positionalencoding/</link>
+				<link>https://www.luochang.ink/tags/positionalencoding/</link>
 				<pubDate>Sun, 09 Jun 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/positionalencoding/</guid>
+				<guid>https://www.luochang.ink/tags/positionalencoding/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Jupyter</title>
-				<link>http://localhost:1313/tags/jupyter/</link>
+				<link>https://www.luochang.ink/tags/jupyter/</link>
 				<pubDate>Thu, 30 May 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/jupyter/</guid>
+				<guid>https://www.luochang.ink/tags/jupyter/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Nohup</title>
-				<link>http://localhost:1313/tags/nohup/</link>
+				<link>https://www.luochang.ink/tags/nohup/</link>
 				<pubDate>Thu, 30 May 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/nohup/</guid>
+				<guid>https://www.luochang.ink/tags/nohup/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>FlameAI</title>
-				<link>http://localhost:1313/tags/flameai/</link>
+				<link>https://www.luochang.ink/tags/flameai/</link>
 				<pubDate>Sat, 25 May 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/flameai/</guid>
+				<guid>https://www.luochang.ink/tags/flameai/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Model Evaluation</title>
-				<link>http://localhost:1313/tags/model-evaluation/</link>
+				<link>https://www.luochang.ink/tags/model-evaluation/</link>
 				<pubDate>Sat, 25 May 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/model-evaluation/</guid>
+				<guid>https://www.luochang.ink/tags/model-evaluation/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>PyPI</title>
-				<link>http://localhost:1313/tags/pypi/</link>
+				<link>https://www.luochang.ink/tags/pypi/</link>
 				<pubDate>Sat, 25 May 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/pypi/</guid>
+				<guid>https://www.luochang.ink/tags/pypi/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Note</title>
-				<link>http://localhost:1313/tags/note/</link>
+				<link>https://www.luochang.ink/tags/note/</link>
 				<pubDate>Wed, 15 May 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/note/</guid>
+				<guid>https://www.luochang.ink/tags/note/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>LSTM</title>
-				<link>http://localhost:1313/tags/lstm/</link>
+				<link>https://www.luochang.ink/tags/lstm/</link>
 				<pubDate>Sun, 12 May 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/lstm/</guid>
+				<guid>https://www.luochang.ink/tags/lstm/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>RNN</title>
-				<link>http://localhost:1313/tags/rnn/</link>
+				<link>https://www.luochang.ink/tags/rnn/</link>
 				<pubDate>Sun, 12 May 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/rnn/</guid>
+				<guid>https://www.luochang.ink/tags/rnn/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Graphviz</title>
-				<link>http://localhost:1313/tags/graphviz/</link>
+				<link>https://www.luochang.ink/tags/graphviz/</link>
 				<pubDate>Sat, 13 Apr 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/graphviz/</guid>
+				<guid>https://www.luochang.ink/tags/graphviz/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>LightGBM</title>
-				<link>http://localhost:1313/tags/lightgbm/</link>
+				<link>https://www.luochang.ink/tags/lightgbm/</link>
 				<pubDate>Sat, 13 Apr 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/lightgbm/</guid>
+				<guid>https://www.luochang.ink/tags/lightgbm/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Optuna</title>
-				<link>http://localhost:1313/tags/optuna/</link>
+				<link>https://www.luochang.ink/tags/optuna/</link>
 				<pubDate>Sat, 13 Apr 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/optuna/</guid>
+				<guid>https://www.luochang.ink/tags/optuna/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Treelite</title>
-				<link>http://localhost:1313/tags/treelite/</link>
+				<link>https://www.luochang.ink/tags/treelite/</link>
 				<pubDate>Sat, 13 Apr 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/treelite/</guid>
+				<guid>https://www.luochang.ink/tags/treelite/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>HTTP</title>
-				<link>http://localhost:1313/tags/http/</link>
+				<link>https://www.luochang.ink/tags/http/</link>
 				<pubDate>Sat, 02 Mar 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/http/</guid>
+				<guid>https://www.luochang.ink/tags/http/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Web</title>
-				<link>http://localhost:1313/tags/web/</link>
+				<link>https://www.luochang.ink/tags/web/</link>
 				<pubDate>Sat, 02 Mar 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/web/</guid>
+				<guid>https://www.luochang.ink/tags/web/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Community</title>
-				<link>http://localhost:1313/tags/community/</link>
+				<link>https://www.luochang.ink/tags/community/</link>
 				<pubDate>Sun, 25 Feb 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/community/</guid>
+				<guid>https://www.luochang.ink/tags/community/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Raspberry Pi 5</title>
-				<link>http://localhost:1313/tags/raspberry-pi-5/</link>
+				<link>https://www.luochang.ink/tags/raspberry-pi-5/</link>
 				<pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/raspberry-pi-5/</guid>
+				<guid>https://www.luochang.ink/tags/raspberry-pi-5/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Ubuntu</title>
-				<link>http://localhost:1313/tags/ubuntu/</link>
+				<link>https://www.luochang.ink/tags/ubuntu/</link>
 				<pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/ubuntu/</guid>
+				<guid>https://www.luochang.ink/tags/ubuntu/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>D2L</title>
-				<link>http://localhost:1313/tags/d2l/</link>
+				<link>https://www.luochang.ink/tags/d2l/</link>
 				<pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/d2l/</guid>
+				<guid>https://www.luochang.ink/tags/d2l/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Python</title>
-				<link>http://localhost:1313/tags/python/</link>
+				<link>https://www.luochang.ink/tags/python/</link>
 				<pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/python/</guid>
+				<guid>https://www.luochang.ink/tags/python/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Bash</title>
-				<link>http://localhost:1313/tags/bash/</link>
+				<link>https://www.luochang.ink/tags/bash/</link>
 				<pubDate>Sat, 03 Feb 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/bash/</guid>
+				<guid>https://www.luochang.ink/tags/bash/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>CentOS</title>
-				<link>http://localhost:1313/tags/centos/</link>
+				<link>https://www.luochang.ink/tags/centos/</link>
 				<pubDate>Sat, 03 Feb 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/centos/</guid>
+				<guid>https://www.luochang.ink/tags/centos/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Operations</title>
-				<link>http://localhost:1313/tags/operations/</link>
+				<link>https://www.luochang.ink/tags/operations/</link>
 				<pubDate>Sat, 03 Feb 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/operations/</guid>
+				<guid>https://www.luochang.ink/tags/operations/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Home</title>
-				<link>http://localhost:1313/tags/home/</link>
+				<link>https://www.luochang.ink/tags/home/</link>
 				<pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/home/</guid>
+				<guid>https://www.luochang.ink/tags/home/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Shopping-List</title>
-				<link>http://localhost:1313/tags/shopping-list/</link>
+				<link>https://www.luochang.ink/tags/shopping-list/</link>
 				<pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/shopping-list/</guid>
+				<guid>https://www.luochang.ink/tags/shopping-list/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Package</title>
-				<link>http://localhost:1313/tags/package/</link>
+				<link>https://www.luochang.ink/tags/package/</link>
 				<pubDate>Wed, 18 Oct 2023 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/package/</guid>
+				<guid>https://www.luochang.ink/tags/package/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Hive-SQL</title>
-				<link>http://localhost:1313/tags/hive-sql/</link>
+				<link>https://www.luochang.ink/tags/hive-sql/</link>
 				<pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/hive-sql/</guid>
+				<guid>https://www.luochang.ink/tags/hive-sql/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Causality</title>
-				<link>http://localhost:1313/tags/causality/</link>
+				<link>https://www.luochang.ink/tags/causality/</link>
 				<pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/causality/</guid>
+				<guid>https://www.luochang.ink/tags/causality/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>R-Project</title>
-				<link>http://localhost:1313/tags/r-project/</link>
+				<link>https://www.luochang.ink/tags/r-project/</link>
 				<pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/r-project/</guid>
+				<guid>https://www.luochang.ink/tags/r-project/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>APP</title>
-				<link>http://localhost:1313/tags/app/</link>
+				<link>https://www.luochang.ink/tags/app/</link>
 				<pubDate>Sun, 03 Jul 2022 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/app/</guid>
+				<guid>https://www.luochang.ink/tags/app/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>API</title>
-				<link>http://localhost:1313/tags/api/</link>
+				<link>https://www.luochang.ink/tags/api/</link>
 				<pubDate>Sat, 21 Nov 2020 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/api/</guid>
+				<guid>https://www.luochang.ink/tags/api/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Poisson-Distribution</title>
-				<link>http://localhost:1313/tags/poisson-distribution/</link>
+				<link>https://www.luochang.ink/tags/poisson-distribution/</link>
 				<pubDate>Sat, 19 Sep 2020 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/poisson-distribution/</guid>
+				<guid>https://www.luochang.ink/tags/poisson-distribution/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Hadoop-Streaming</title>
-				<link>http://localhost:1313/tags/hadoop-streaming/</link>
+				<link>https://www.luochang.ink/tags/hadoop-streaming/</link>
 				<pubDate>Sat, 25 Jul 2020 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/hadoop-streaming/</guid>
+				<guid>https://www.luochang.ink/tags/hadoop-streaming/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>MapReduce</title>
-				<link>http://localhost:1313/tags/mapreduce/</link>
+				<link>https://www.luochang.ink/tags/mapreduce/</link>
 				<pubDate>Sat, 25 Jul 2020 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/mapreduce/</guid>
+				<guid>https://www.luochang.ink/tags/mapreduce/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Practice</title>
-				<link>http://localhost:1313/tags/practice/</link>
+				<link>https://www.luochang.ink/tags/practice/</link>
 				<pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/practice/</guid>
+				<guid>https://www.luochang.ink/tags/practice/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Combinatorics</title>
-				<link>http://localhost:1313/tags/combinatorics/</link>
+				<link>https://www.luochang.ink/tags/combinatorics/</link>
 				<pubDate>Fri, 21 Feb 2020 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/combinatorics/</guid>
+				<guid>https://www.luochang.ink/tags/combinatorics/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Experience</title>
-				<link>http://localhost:1313/tags/experience/</link>
+				<link>https://www.luochang.ink/tags/experience/</link>
 				<pubDate>Wed, 12 Feb 2020 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/experience/</guid>
+				<guid>https://www.luochang.ink/tags/experience/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>UK</title>
-				<link>http://localhost:1313/tags/uk/</link>
+				<link>https://www.luochang.ink/tags/uk/</link>
 				<pubDate>Wed, 12 Feb 2020 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/uk/</guid>
+				<guid>https://www.luochang.ink/tags/uk/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Bayesian</title>
-				<link>http://localhost:1313/tags/bayesian/</link>
+				<link>https://www.luochang.ink/tags/bayesian/</link>
 				<pubDate>Fri, 31 Jan 2020 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/bayesian/</guid>
+				<guid>https://www.luochang.ink/tags/bayesian/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Tips</title>
-				<link>http://localhost:1313/tags/tips/</link>
+				<link>https://www.luochang.ink/tags/tips/</link>
 				<pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/tips/</guid>
+				<guid>https://www.luochang.ink/tags/tips/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Elasticsearch</title>
-				<link>http://localhost:1313/tags/elasticsearch/</link>
+				<link>https://www.luochang.ink/tags/elasticsearch/</link>
 				<pubDate>Thu, 24 Oct 2019 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/elasticsearch/</guid>
+				<guid>https://www.luochang.ink/tags/elasticsearch/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Search-Engine</title>
-				<link>http://localhost:1313/tags/search-engine/</link>
+				<link>https://www.luochang.ink/tags/search-engine/</link>
 				<pubDate>Thu, 24 Oct 2019 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/search-engine/</guid>
+				<guid>https://www.luochang.ink/tags/search-engine/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>DEMO</title>
-				<link>http://localhost:1313/tags/demo/</link>
+				<link>https://www.luochang.ink/tags/demo/</link>
 				<pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/demo/</guid>
+				<guid>https://www.luochang.ink/tags/demo/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Monaco-Editor</title>
-				<link>http://localhost:1313/tags/monaco-editor/</link>
+				<link>https://www.luochang.ink/tags/monaco-editor/</link>
 				<pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/monaco-editor/</guid>
+				<guid>https://www.luochang.ink/tags/monaco-editor/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Web-Speech-API</title>
-				<link>http://localhost:1313/tags/web-speech-api/</link>
+				<link>https://www.luochang.ink/tags/web-speech-api/</link>
 				<pubDate>Thu, 22 Aug 2019 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/web-speech-api/</guid>
+				<guid>https://www.luochang.ink/tags/web-speech-api/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Network-Performance-Analysis</title>
-				<link>http://localhost:1313/tags/network-performance-analysis/</link>
+				<link>https://www.luochang.ink/tags/network-performance-analysis/</link>
 				<pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/network-performance-analysis/</guid>
+				<guid>https://www.luochang.ink/tags/network-performance-analysis/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Poisson-Process</title>
-				<link>http://localhost:1313/tags/poisson-process/</link>
+				<link>https://www.luochang.ink/tags/poisson-process/</link>
 				<pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/poisson-process/</guid>
+				<guid>https://www.luochang.ink/tags/poisson-process/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Queuing-Theory</title>
-				<link>http://localhost:1313/tags/queuing-theory/</link>
+				<link>https://www.luochang.ink/tags/queuing-theory/</link>
 				<pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/queuing-theory/</guid>
+				<guid>https://www.luochang.ink/tags/queuing-theory/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Beef</title>
-				<link>http://localhost:1313/tags/beef/</link>
+				<link>https://www.luochang.ink/tags/beef/</link>
 				<pubDate>Tue, 02 Jul 2019 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/beef/</guid>
+				<guid>https://www.luochang.ink/tags/beef/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Chicken</title>
-				<link>http://localhost:1313/tags/chicken/</link>
+				<link>https://www.luochang.ink/tags/chicken/</link>
 				<pubDate>Tue, 02 Jul 2019 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/chicken/</guid>
+				<guid>https://www.luochang.ink/tags/chicken/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Pork</title>
-				<link>http://localhost:1313/tags/pork/</link>
+				<link>https://www.luochang.ink/tags/pork/</link>
 				<pubDate>Tue, 02 Jul 2019 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/pork/</guid>
+				<guid>https://www.luochang.ink/tags/pork/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>ABM</title>
-				<link>http://localhost:1313/tags/abm/</link>
+				<link>https://www.luochang.ink/tags/abm/</link>
 				<pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/abm/</guid>
+				<guid>https://www.luochang.ink/tags/abm/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Agent-Based-Model</title>
-				<link>http://localhost:1313/tags/agent-based-model/</link>
+				<link>https://www.luochang.ink/tags/agent-based-model/</link>
 				<pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/agent-based-model/</guid>
+				<guid>https://www.luochang.ink/tags/agent-based-model/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Nature-System</title>
-				<link>http://localhost:1313/tags/nature-system/</link>
+				<link>https://www.luochang.ink/tags/nature-system/</link>
 				<pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/nature-system/</guid>
+				<guid>https://www.luochang.ink/tags/nature-system/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Efficient</title>
-				<link>http://localhost:1313/tags/efficient/</link>
+				<link>https://www.luochang.ink/tags/efficient/</link>
 				<pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/efficient/</guid>
+				<guid>https://www.luochang.ink/tags/efficient/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Plan</title>
-				<link>http://localhost:1313/tags/plan/</link>
+				<link>https://www.luochang.ink/tags/plan/</link>
 				<pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/plan/</guid>
+				<guid>https://www.luochang.ink/tags/plan/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>To-Do-List</title>
-				<link>http://localhost:1313/tags/to-do-list/</link>
+				<link>https://www.luochang.ink/tags/to-do-list/</link>
 				<pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/to-do-list/</guid>
+				<guid>https://www.luochang.ink/tags/to-do-list/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Layout</title>
-				<link>http://localhost:1313/tags/layout/</link>
+				<link>https://www.luochang.ink/tags/layout/</link>
 				<pubDate>Fri, 10 May 2019 21:43:09 +0100</pubDate>
-				<guid>http://localhost:1313/tags/layout/</guid>
+				<guid>https://www.luochang.ink/tags/layout/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>PyQt5</title>
-				<link>http://localhost:1313/tags/pyqt5/</link>
+				<link>https://www.luochang.ink/tags/pyqt5/</link>
 				<pubDate>Fri, 10 May 2019 21:43:09 +0100</pubDate>
-				<guid>http://localhost:1313/tags/pyqt5/</guid>
+				<guid>https://www.luochang.ink/tags/pyqt5/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Sidebar</title>
-				<link>http://localhost:1313/tags/sidebar/</link>
+				<link>https://www.luochang.ink/tags/sidebar/</link>
 				<pubDate>Fri, 10 May 2019 21:43:09 +0100</pubDate>
-				<guid>http://localhost:1313/tags/sidebar/</guid>
+				<guid>https://www.luochang.ink/tags/sidebar/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Jupyter-Notebook</title>
-				<link>http://localhost:1313/tags/jupyter-notebook/</link>
+				<link>https://www.luochang.ink/tags/jupyter-notebook/</link>
 				<pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/jupyter-notebook/</guid>
+				<guid>https://www.luochang.ink/tags/jupyter-notebook/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Python&#34;</title>
-				<link>http://localhost:1313/tags/python/</link>
+				<link>https://www.luochang.ink/tags/python/</link>
 				<pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/python/</guid>
+				<guid>https://www.luochang.ink/tags/python/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>WeiBo</title>
-				<link>http://localhost:1313/tags/weibo/</link>
+				<link>https://www.luochang.ink/tags/weibo/</link>
 				<pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/weibo/</guid>
+				<guid>https://www.luochang.ink/tags/weibo/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Google-API</title>
-				<link>http://localhost:1313/tags/google-api/</link>
+				<link>https://www.luochang.ink/tags/google-api/</link>
 				<pubDate>Wed, 10 Apr 2019 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/google-api/</guid>
+				<guid>https://www.luochang.ink/tags/google-api/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Google-Maps</title>
-				<link>http://localhost:1313/tags/google-maps/</link>
+				<link>https://www.luochang.ink/tags/google-maps/</link>
 				<pubDate>Wed, 10 Apr 2019 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/google-maps/</guid>
+				<guid>https://www.luochang.ink/tags/google-maps/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Abstract-Algebra</title>
-				<link>http://localhost:1313/tags/abstract-algebra/</link>
+				<link>https://www.luochang.ink/tags/abstract-algebra/</link>
 				<pubDate>Sat, 16 Mar 2019 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/abstract-algebra/</guid>
+				<guid>https://www.luochang.ink/tags/abstract-algebra/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Permutation</title>
-				<link>http://localhost:1313/tags/permutation/</link>
+				<link>https://www.luochang.ink/tags/permutation/</link>
 				<pubDate>Sat, 16 Mar 2019 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/permutation/</guid>
+				<guid>https://www.luochang.ink/tags/permutation/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>PyCharm</title>
-				<link>http://localhost:1313/tags/pycharm/</link>
+				<link>https://www.luochang.ink/tags/pycharm/</link>
 				<pubDate>Sat, 16 Mar 2019 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/pycharm/</guid>
+				<guid>https://www.luochang.ink/tags/pycharm/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Literature</title>
-				<link>http://localhost:1313/tags/literature/</link>
+				<link>https://www.luochang.ink/tags/literature/</link>
 				<pubDate>Tue, 11 Jul 2017 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/literature/</guid>
+				<guid>https://www.luochang.ink/tags/literature/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Movie</title>
-				<link>http://localhost:1313/tags/movie/</link>
+				<link>https://www.luochang.ink/tags/movie/</link>
 				<pubDate>Tue, 11 Jul 2017 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/tags/movie/</guid>
+				<guid>https://www.luochang.ink/tags/movie/</guid>
 				<description></description>
 			</item>
 	</channel>
