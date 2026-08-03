@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.163.3">
+<meta name="generator" content="Hugo 0.159.2">
 
     
     
@@ -29,30 +29,30 @@
 
 
 
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:image" content="https://www.luochang.ink/images/og-default.jpg">
-	<meta name="twitter:title" content="Hive SQL 笔记">
-	<meta name="twitter:description" content="Hive SQL 不需要注释，它会自己解释自己">
-			<meta name="twitter:site" content="@_stellar_tide">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.luochang.ink/images/og-default.jpg">
+  <meta name="twitter:title" content="Hive SQL 笔记">
+  <meta name="twitter:description" content="Hive SQL 不需要注释，它会自己解释自己">
+      <meta name="twitter:site" content="@_stellar_tide">
 
 <meta property="og:url" content="https://www.luochang.ink/posts/hive_sql_note/">
-	<meta property="og:site_name" content="Chang Luo">
-	<meta property="og:title" content="Hive SQL 笔记">
-	<meta property="og:description" content="Hive SQL 不需要注释，它会自己解释自己">
-	<meta property="og:locale" content="zh_CN">
-	<meta property="og:type" content="article">
-		<meta property="article:section" content="posts">
-		<meta property="article:published_time" content="2022-12-25T00:00:00+00:00">
-		<meta property="article:modified_time" content="2022-12-25T00:00:00+00:00">
-		<meta property="article:tag" content="Hive-SQL">
-		<meta property="article:tag" content="Note">
-		<meta property="og:image" content="https://www.luochang.ink/images/og-default.jpg">
+  <meta property="og:site_name" content="Chang Luo">
+  <meta property="og:title" content="Hive SQL 笔记">
+  <meta property="og:description" content="Hive SQL 不需要注释，它会自己解释自己">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2022-12-25T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-12-25T00:00:00+00:00">
+    <meta property="article:tag" content="Hive-SQL">
+    <meta property="article:tag" content="Note">
+    <meta property="og:image" content="https://www.luochang.ink/images/og-default.jpg">
 
 
     
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.f9da2b005f03c27beab06923e896c9a3875472209210a9177205d391257298b2.css" integrity="sha256-&#43;dorAF8DwnvqsGkj6JbJo4dUciCSEKkXcgXTkSVymLI=">
+<link rel="stylesheet" href="/scss/hyde-hyde.3d5546046a87c3adbb07fcda477023c4d878e66355faba34d4bc376fe6e62f29.css" integrity="sha256-PVVGBGqHw627B/zaR3AjxNh45mNV&#43;ro01Lw3b&#43;bmLyk=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -234,7 +234,7 @@
     <div id="netease-player" class="tabcontent" hidden>
       <iframe class="myiframe"
         src="about:blank"
-        data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
+        data-src="//music.163.com/outchain/player?type=0&amp;id=2250585392&amp;auto=0&amp;height=430"
         frameborder="no"
         marginheight="0"
         marginwidth="0"
@@ -243,84 +243,92 @@
     </div>
 
     <div id="video-player" class="tabcontent" hidden>
-      <div class="video-layout">
-        <div class="video-main">
-          <div class="video-cover" id="video-cover">
-            <img id="video-cover-img" src="/images/video-covers/zutomayo.jpg" alt="">
-            <div class="video-cover-overlay">
-              <button class="video-play-btn" id="video-play-btn" aria-label="播放视频">
-                <svg viewBox="0 0 24 24" width="48" height="48"><path d="M8 5v14l11-7z" fill="white"/></svg>
-              </button>
-              <span class="video-cover-title" id="video-cover-title">四月是你的谎言</span>
-            </div>
-          </div>
-          <div class="video-frame" id="video-frame" hidden>
-            <iframe src="about:blank"
-              data-src="//player.bilibili.com/player.html?bvid=BV1Ms411D7in&p=1&high_quality=1&danmaku=0&autoplay=0"
-              style="width:100%;"
-              scrolling="no"
-              frameborder="no"
-              framespacing="0"
-              title="Bilibili video player"
-              allowfullscreen="true"></iframe>
-          </div>
+  
+  <div class="video-layout">
+    <div class="video-main">
+      <div class="video-cover" id="video-cover">
+        
+        <img id="video-cover-img" src="/images/video-covers/zutomayo.webp" alt="四月是你的谎言">
+        <div class="video-cover-overlay">
+          <button class="video-play-btn" id="video-play-btn" aria-label="播放视频">
+            <svg viewBox="0 0 24 24" width="48" height="48"><path d="M8 5v14l11-7z" fill="white"/></svg>
+          </button>
+          <span class="video-cover-title" id="video-cover-title">四月是你的谎言</span>
         </div>
-        <div class="video-playlist">
-          <button class="video-item active" data-bvid="BV1Ms411D7in"
-            data-title="四月是你的谎言"
-            data-cover="/images/video-covers/zutomayo.jpg"
-            data-duration="4:04">
-            <img class="video-item-cover" src="/images/video-covers/zutomayo.jpg" alt="">
-            <div class="video-item-info">
-              <span class="video-item-title">四月是你的谎言</span>
-              <span class="video-item-meta">4:04</span>
-            </div>
-          </button>
-          <button class="video-item" data-bvid="BV1LW411j7dK"
-            data-title="Kids by One republic — 三羊"
-            data-cover="/images/video-covers/sanyang.jpg"
-            data-duration="2:54">
-            <img class="video-item-cover" src="/images/video-covers/sanyang.jpg" alt="">
-            <div class="video-item-info">
-              <span class="video-item-title">Kids by One republic</span>
-              <span class="video-item-meta">三羊 · 2:54</span>
-            </div>
-          </button>
-          <button class="video-item" data-bvid="BV1Yx411U7Lx"
-            data-title="交织together — M78"
-            data-cover="/images/video-covers/jiaozhi.jpg"
-            data-duration="6:06">
-            <img class="video-item-cover" src="/images/video-covers/jiaozhi.jpg" alt="">
-            <div class="video-item-info">
-              <span class="video-item-title">交织together</span>
-              <span class="video-item-meta">M78 · 6:06</span>
-            </div>
-          </button>
-          <button class="video-item" data-bvid="BV1rp4y1L7i4"
-            data-title="新员工入职大会 — 岁己SUI/恋诗夜Koxia"
-            data-cover="/images/video-covers/suisui.jpg"
-            data-duration="2:33">
-            <img class="video-item-cover" src="/images/video-covers/suisui.jpg" alt="">
-            <div class="video-item-info">
-              <span class="video-item-title">新员工入职大会</span>
-              <span class="video-item-meta">岁己SUI/恋诗夜Koxia · 2:33</span>
-            </div>
-          </button>
-          <button class="video-item" data-bvid="BV1Av4y147QE"
-            data-title="真物论 — 悠亚"
-            data-cover="/images/video-covers/zhenwulun.jpg"
-            data-duration="3:30">
-            <img class="video-item-cover" src="/images/video-covers/zhenwulun.jpg" alt="">
-            <div class="video-item-info">
-              <span class="video-item-title">真物论</span>
-              <span class="video-item-meta">悠亚 · 3:30</span>
-            </div>
-          </button>
-        </div>        </div>
       </div>
-
-
-    <div id="gallery" class="tabcontent" hidden>
+      <div class="video-frame" id="video-frame" hidden>
+        <iframe src="about:blank"
+          data-src="//player.bilibili.com/player.html?bvid=BV1Ms411D7in&p=1&high_quality=1&danmaku=0&autoplay=0"
+          style="width:100%;"
+          scrolling="no"
+          frameborder="no"
+          framespacing="0"
+          title="Bilibili video player"
+          allowfullscreen="true"></iframe>
+      </div>
+    </div>
+    <div class="video-playlist">
+      
+      <button class="video-item active" data-bvid="BV1Ms411D7in"
+        data-title="四月是你的谎言"
+        data-cover="/images/video-covers/zutomayo.webp"
+        data-duration="4:04">
+        <img class="video-item-cover" loading="lazy" src="/images/video-covers/zutomayo.webp" alt="">
+        <div class="video-item-info">
+          <span class="video-item-title">四月是你的谎言</span>
+          <span class="video-item-meta">4:04</span>
+        </div>
+      </button>
+      
+      <button class="video-item" data-bvid="BV1LW411j7dK"
+        data-title="Kids by One republic — 三羊"
+        data-cover="/images/video-covers/sanyang.webp"
+        data-duration="2:54">
+        <img class="video-item-cover" loading="lazy" src="/images/video-covers/sanyang.webp" alt="">
+        <div class="video-item-info">
+          <span class="video-item-title">Kids by One republic</span>
+          <span class="video-item-meta">三羊 · 2:54</span>
+        </div>
+      </button>
+      
+      <button class="video-item" data-bvid="BV1Yx411U7Lx"
+        data-title="交织together — M78"
+        data-cover="/images/video-covers/jiaozhi.webp"
+        data-duration="6:06">
+        <img class="video-item-cover" loading="lazy" src="/images/video-covers/jiaozhi.webp" alt="">
+        <div class="video-item-info">
+          <span class="video-item-title">交织together</span>
+          <span class="video-item-meta">M78 · 6:06</span>
+        </div>
+      </button>
+      
+      <button class="video-item" data-bvid="BV1rp4y1L7i4"
+        data-title="新员工入职大会 — 岁己SUI/恋诗夜Koxia"
+        data-cover="/images/video-covers/suisui.webp"
+        data-duration="2:33">
+        <img class="video-item-cover" loading="lazy" src="/images/video-covers/suisui.webp" alt="">
+        <div class="video-item-info">
+          <span class="video-item-title">新员工入职大会</span>
+          <span class="video-item-meta">岁己SUI/恋诗夜Koxia · 2:33</span>
+        </div>
+      </button>
+      
+      <button class="video-item" data-bvid="BV1Av4y147QE"
+        data-title="真物论 — 悠亚"
+        data-cover="/images/video-covers/zhenwulun.webp"
+        data-duration="3:30">
+        <img class="video-item-cover" loading="lazy" src="/images/video-covers/zhenwulun.webp" alt="">
+        <div class="video-item-info">
+          <span class="video-item-title">真物论</span>
+          <span class="video-item-meta">悠亚 · 3:30</span>
+        </div>
+      </button>
+      
+    </div>
+  </div>
+  
+</div>
+<div id="gallery" class="tabcontent" hidden>
       <iframe class="myiframe"
         src="about:blank"
         data-src="/gadget/gallery/"
@@ -336,38 +344,38 @@
         
           <br>
 <table>
-	<thead>
-			<tr>
-					<th>#</th>
-					<th>name</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>1</td>
-					<td><a href="/gadget/hydra" target="_blank">Hydra</a></td>
-			</tr>
-			<tr>
-					<td>2</td>
-					<td><a href="/mozi/" target="_blank">墨子</a></td>
-			</tr>
-			<tr>
-					<td>3</td>
-					<td><a href="/gadget/how-old-are-you" target="_blank">年龄可视化</a></td>
-			</tr>
-			<tr>
-					<td>4</td>
-					<td><a href="/gadget/piano" target="_blank">Piano</a></td>
-			</tr>
-			<tr>
-					<td>5</td>
-					<td><a href="/flockn-roll/" target="_blank">Flock&rsquo;n Roll</a></td>
-			</tr>
-			<tr>
-					<td>6</td>
-					<td><a href="/monaco-speech-editor/" target="_blank">Monaco Speech Editor</a></td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>#</th>
+          <th>name</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td><a href="/gadget/hydra" target="_blank">Hydra</a></td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td><a href="/mozi/" target="_blank">墨子</a></td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td><a href="/gadget/how-old-are-you" target="_blank">年龄可视化</a></td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td><a href="/gadget/piano" target="_blank">Piano</a></td>
+      </tr>
+      <tr>
+          <td>5</td>
+          <td><a href="/flockn-roll/" target="_blank">Flock&rsquo;n Roll</a></td>
+      </tr>
+      <tr>
+          <td>6</td>
+          <td><a href="/monaco-speech-editor/" target="_blank">Monaco Speech Editor</a></td>
+      </tr>
+  </tbody>
 </table>
 
         
@@ -750,40 +758,40 @@ FROM
 </code></pre><h3 id="3-数据类型">3. 数据类型</h3>
 <h4 id="31-常用数据类型">3.1 常用数据类型</h4>
 <table>
-	<thead>
-			<tr>
-					<th>数据类型</th>
-					<th>示例</th>
-					<th>说明</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>BIGINT</td>
-					<td><code>3</code></td>
-					<td>整型</td>
-			</tr>
-			<tr>
-					<td>DOUBLE</td>
-					<td><code>3.5</code></td>
-					<td>双精度浮点型</td>
-			</tr>
-			<tr>
-					<td>STRING</td>
-					<td><code>apple</code></td>
-					<td>字符串</td>
-			</tr>
-			<tr>
-					<td>ARRAY&lt;BIGINT&gt;</td>
-					<td><code>[1,2,3]</code></td>
-					<td>列表，列表元素可以是 BIGINT, DOUBLE, STRING 等</td>
-			</tr>
-			<tr>
-					<td>MAP&lt;BIGINT,STRING&gt;</td>
-					<td><code>{1:'A+',2:'B-'}</code></td>
-					<td>字典，字典的 key 和 value 可以是 BIGINT, DOUBLE, STRING 等</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>数据类型</th>
+          <th>示例</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>BIGINT</td>
+          <td><code>3</code></td>
+          <td>整型</td>
+      </tr>
+      <tr>
+          <td>DOUBLE</td>
+          <td><code>3.5</code></td>
+          <td>双精度浮点型</td>
+      </tr>
+      <tr>
+          <td>STRING</td>
+          <td><code>apple</code></td>
+          <td>字符串</td>
+      </tr>
+      <tr>
+          <td>ARRAY&lt;BIGINT&gt;</td>
+          <td><code>[1,2,3]</code></td>
+          <td>列表，列表元素可以是 BIGINT, DOUBLE, STRING 等</td>
+      </tr>
+      <tr>
+          <td>MAP&lt;BIGINT,STRING&gt;</td>
+          <td><code>{1:'A+',2:'B-'}</code></td>
+          <td>字典，字典的 key 和 value 可以是 BIGINT, DOUBLE, STRING 等</td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="32-数据类型转换">3.2 数据类型转换</h4>
 <p>1）DOUBLE 转成 STRING</p>
@@ -902,34 +910,34 @@ GROUP BY gender;
 </code></pre><h3 id="9-join-方法">9. JOIN 方法</h3>
 <h4 id="91-常见的-join-方法">9.1 常见的 JOIN 方法</h4>
 <table>
-	<thead>
-			<tr>
-					<th>方法</th>
-					<th>说明</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><code>LEFT JOIN</code></td>
-					<td>保留左表所有记录，保留右表与左表连接键相同的记录，连接键有多值时做笛卡尔积</td>
-			</tr>
-			<tr>
-					<td><code>INNER JOIN</code></td>
-					<td>保留左表与右表连接键存在且相同的记录，连接键有多值时做笛卡尔积</td>
-			</tr>
-			<tr>
-					<td><code>FULL OUTER JOIN</code></td>
-					<td>保留左表与右表所有记录，连接键值相等时连接，连接键有多值时做笛卡尔积</td>
-			</tr>
-			<tr>
-					<td><code>LEFT SEMI JOIN</code></td>
-					<td>如果左表的数据行在右表中存在匹配项，则返回左表这一行。它不会返回右表的任何列，结果集只包含左表的列</td>
-			</tr>
-			<tr>
-					<td><code>MAP JOIN</code></td>
-					<td>适用于大小表 JOIN，MAP JOIN 实现时，会将小表数据广播到所有 MAP 任务节点，所有 MAP 任务都会在本地缓存小表数据。由于 JOIN 操作在 MAP 阶段完成，不需要 shuffle 和 reduce，因此大大减少了计算资源的消耗</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>方法</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>LEFT JOIN</code></td>
+          <td>保留左表所有记录，保留右表与左表连接键相同的记录，连接键有多值时做笛卡尔积</td>
+      </tr>
+      <tr>
+          <td><code>INNER JOIN</code></td>
+          <td>保留左表与右表连接键存在且相同的记录，连接键有多值时做笛卡尔积</td>
+      </tr>
+      <tr>
+          <td><code>FULL OUTER JOIN</code></td>
+          <td>保留左表与右表所有记录，连接键值相等时连接，连接键有多值时做笛卡尔积</td>
+      </tr>
+      <tr>
+          <td><code>LEFT SEMI JOIN</code></td>
+          <td>如果左表的数据行在右表中存在匹配项，则返回左表这一行。它不会返回右表的任何列，结果集只包含左表的列</td>
+      </tr>
+      <tr>
+          <td><code>MAP JOIN</code></td>
+          <td>适用于大小表 JOIN，MAP JOIN 实现时，会将小表数据广播到所有 MAP 任务节点，所有 MAP 任务都会在本地缓存小表数据。由于 JOIN 操作在 MAP 阶段完成，不需要 shuffle 和 reduce，因此大大减少了计算资源的消耗</td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="92-left-join-示例">9.2 LEFT JOIN 示例</h4>
 <pre tabindex="0"><code>SELECT
@@ -986,19 +994,19 @@ LEFT SEMI JOIN orders o
 ON p.product_id = o.product_id;
 </code></pre><p>输出：</p>
 <table>
-	<thead>
-			<tr>
-					<th>product_name</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>A</td>
-			</tr>
-			<tr>
-					<td>B</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>product_name</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>A</td>
+      </tr>
+      <tr>
+          <td>B</td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="94-map-join-示例">9.4 MAP JOIN 示例</h4>
 <p>复用上面的两张临时表，计算 MAP JOIN</p>
@@ -1041,30 +1049,30 @@ INNER JOIN products p
 ON o.product_id = p.product_id;
 </code></pre><p>输出：</p>
 <table>
-	<thead>
-			<tr>
-					<th>order_id</th>
-					<th>product_id</th>
-					<th>product_name</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>1001</td>
-					<td>1</td>
-					<td>A</td>
-			</tr>
-			<tr>
-					<td>1002</td>
-					<td>2</td>
-					<td>B</td>
-			</tr>
-			<tr>
-					<td>1004</td>
-					<td>1</td>
-					<td>A</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>order_id</th>
+          <th>product_id</th>
+          <th>product_name</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1001</td>
+          <td>1</td>
+          <td>A</td>
+      </tr>
+      <tr>
+          <td>1002</td>
+          <td>2</td>
+          <td>B</td>
+      </tr>
+      <tr>
+          <td>1004</td>
+          <td>1</td>
+          <td>A</td>
+      </tr>
+  </tbody>
 </table>
 <blockquote>
 <p><strong>Note</strong>: 如果你不确定 MAP JOIN 是否实际生效，可以使用 <code>EXPLAIN</code> 关键字，获取查询计划</p>
@@ -1216,22 +1224,22 @@ LATERAL VIEW OUTER EXPLODE(sub_score) e AS k, v
 GROUP BY `id`;
 </code></pre><p>output:</p>
 <table>
-	<thead>
-			<tr>
-					<th>id</th>
-					<th>my_map</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>1</td>
-					<td><code>{&quot;语文&quot;:&quot;80&quot;,&quot;数学&quot;:&quot;85&quot;,&quot;英语&quot;:&quot;95&quot;,&quot;政治&quot;:&quot;90&quot;}</code></td>
-			</tr>
-			<tr>
-					<td>2</td>
-					<td><code>{&quot;法律&quot;:&quot;90&quot;,&quot;英语&quot;:&quot;75&quot;,&quot;政治&quot;:&quot;92&quot;}</code></td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>id</th>
+          <th>my_map</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td><code>{&quot;语文&quot;:&quot;80&quot;,&quot;数学&quot;:&quot;85&quot;,&quot;英语&quot;:&quot;95&quot;,&quot;政治&quot;:&quot;90&quot;}</code></td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td><code>{&quot;法律&quot;:&quot;90&quot;,&quot;英语&quot;:&quot;75&quot;,&quot;政治&quot;:&quot;92&quot;}</code></td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="123-构造形如-arraymapstringstring-的字符串">12.3 构造形如 <code>ARRAY&lt;MAP&lt;STRING,STRING&gt;&gt;</code> 的字符串</h4>
 <pre tabindex="0"><code>SELECT
@@ -1305,34 +1313,34 @@ LATERAL VIEW OUTER EXPLODE(group_id) g AS gid
 WHERE id IN (1,3);
 </code></pre><p>output:</p>
 <table>
-	<thead>
-			<tr>
-					<th>id</th>
-					<th>gid</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>1</td>
-					<td>1</td>
-			</tr>
-			<tr>
-					<td>1</td>
-					<td>2</td>
-			</tr>
-			<tr>
-					<td>1</td>
-					<td>3</td>
-			</tr>
-			<tr>
-					<td>1</td>
-					<td>5</td>
-			</tr>
-			<tr>
-					<td>1</td>
-					<td>5</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>id</th>
+          <th>gid</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>1</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>1</td>
+          <td>3</td>
+      </tr>
+      <tr>
+          <td>1</td>
+          <td>5</td>
+      </tr>
+      <tr>
+          <td>1</td>
+          <td>5</td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="142-将-array-展成多行更复杂的例子">14.2 将 ARRAY 展成多行：更复杂的例子</h4>
 <pre tabindex="0"><code>SELECT
@@ -1353,30 +1361,30 @@ WHERE gid &gt; 1
 GROUP BY gid;
 </code></pre><p>output:</p>
 <table>
-	<thead>
-			<tr>
-					<th>gid</th>
-					<th>id_list</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>2</td>
-					<td>1,2</td>
-			</tr>
-			<tr>
-					<td>3</td>
-					<td>1,2</td>
-			</tr>
-			<tr>
-					<td>4</td>
-					<td>1,2</td>
-			</tr>
-			<tr>
-					<td>5</td>
-					<td>1</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>gid</th>
+          <th>id_list</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>2</td>
+          <td>1,2</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>1,2</td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td>1,2</td>
+      </tr>
+      <tr>
+          <td>5</td>
+          <td>1</td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="143-多个-array-展开group_id-与-level-之间做笛卡尔积">14.3 多个 ARRAY 展开：<code>group_id</code> 与 <code>level</code> 之间做笛卡尔积</h4>
 <pre tabindex="0"><code>SELECT
@@ -1394,35 +1402,35 @@ LATERAL VIEW OUTER EXPLODE(group_id) g AS gid
 LATERAL VIEW OUTER EXPLODE(level) l AS lvl;
 </code></pre><p>output:</p>
 <table>
-	<thead>
-			<tr>
-					<th>id</th>
-					<th>gid</th>
-					<th>lvl</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>1</td>
-					<td>1</td>
-					<td>A</td>
-			</tr>
-			<tr>
-					<td>1</td>
-					<td>1</td>
-					<td>B</td>
-			</tr>
-			<tr>
-					<td>1</td>
-					<td>2</td>
-					<td>A</td>
-			</tr>
-			<tr>
-					<td>1</td>
-					<td>2</td>
-					<td>B</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>id</th>
+          <th>gid</th>
+          <th>lvl</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>1</td>
+          <td>A</td>
+      </tr>
+      <tr>
+          <td>1</td>
+          <td>1</td>
+          <td>B</td>
+      </tr>
+      <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>A</td>
+      </tr>
+      <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>B</td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="144-map-也能展开">14.4 MAP 也能展开</h4>
 <blockquote>
@@ -1449,30 +1457,30 @@ FROM
 ) t;
 </code></pre><p>output:</p>
 <table>
-	<thead>
-			<tr>
-					<th>id</th>
-					<th>class</th>
-					<th>id_list</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>1</td>
-					<td>A</td>
-					<td>[1,2]</td>
-			</tr>
-			<tr>
-					<td>2</td>
-					<td>A</td>
-					<td>[1,2]</td>
-			</tr>
-			<tr>
-					<td>3</td>
-					<td>B</td>
-					<td>[3]</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>id</th>
+          <th>class</th>
+          <th>id_list</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>A</td>
+          <td>[1,2]</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>A</td>
+          <td>[1,2]</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>B</td>
+          <td>[3]</td>
+      </tr>
+  </tbody>
 </table>
 <blockquote>
 <p><strong>Note</strong>: 常用的聚合函数，都可以替换本例中的 <code>COLLECT_SET(id)</code>，比如：</p>
@@ -1501,40 +1509,40 @@ FROM
 ) t;
 </code></pre><p>output:</p>
 <table>
-	<thead>
-			<tr>
-					<th>id</th>
-					<th>class</th>
-					<th>score</th>
-					<th>class_no</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>1</td>
-					<td>A</td>
-					<td>90</td>
-					<td>3</td>
-			</tr>
-			<tr>
-					<td>2</td>
-					<td>A</td>
-					<td>91</td>
-					<td>1</td>
-			</tr>
-			<tr>
-					<td>3</td>
-					<td>A</td>
-					<td>91</td>
-					<td>2</td>
-			</tr>
-			<tr>
-					<td>4</td>
-					<td>B</td>
-					<td>100</td>
-					<td>1</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>id</th>
+          <th>class</th>
+          <th>score</th>
+          <th>class_no</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>A</td>
+          <td>90</td>
+          <td>3</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>A</td>
+          <td>91</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>A</td>
+          <td>91</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td>B</td>
+          <td>100</td>
+          <td>1</td>
+      </tr>
+  </tbody>
 </table>
 <blockquote>
 <p><strong>Note</strong>: 注意到虽然学生2和学生3分数都是91分，但他们的班级序号（class_no）不重叠。2号学生班级序号是1，3号学生班级序号是2</p>
@@ -1557,40 +1565,40 @@ FROM
 ) t;
 </code></pre><p>output:</p>
 <table>
-	<thead>
-			<tr>
-					<th>id</th>
-					<th>class</th>
-					<th>score</th>
-					<th>class_rk</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>1</td>
-					<td>A</td>
-					<td>90</td>
-					<td>3</td>
-			</tr>
-			<tr>
-					<td>2</td>
-					<td>A</td>
-					<td>91</td>
-					<td>1</td>
-			</tr>
-			<tr>
-					<td>3</td>
-					<td>A</td>
-					<td>91</td>
-					<td>1</td>
-			</tr>
-			<tr>
-					<td>4</td>
-					<td>B</td>
-					<td>100</td>
-					<td>1</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>id</th>
+          <th>class</th>
+          <th>score</th>
+          <th>class_rk</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>A</td>
+          <td>90</td>
+          <td>3</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>A</td>
+          <td>91</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>A</td>
+          <td>91</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td>B</td>
+          <td>100</td>
+          <td>1</td>
+      </tr>
+  </tbody>
 </table>
 <blockquote>
 <p><strong>Note</strong>: 注意看，虽然学生2和学生3分数都是91分，但他们的班级排名（class_rk）是相同的。2号同学与3号同学并列第一，1号学生由于有2位同学排在他前面，直接变成第3名。</p>
@@ -1615,40 +1623,40 @@ FROM
 ) t;
 </code></pre><p>output:</p>
 <table>
-	<thead>
-			<tr>
-					<th>id</th>
-					<th>class</th>
-					<th>score</th>
-					<th>class_rk</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>1</td>
-					<td>A</td>
-					<td>90</td>
-					<td>2</td>
-			</tr>
-			<tr>
-					<td>2</td>
-					<td>A</td>
-					<td>91</td>
-					<td>1</td>
-			</tr>
-			<tr>
-					<td>3</td>
-					<td>A</td>
-					<td>91</td>
-					<td>1</td>
-			</tr>
-			<tr>
-					<td>4</td>
-					<td>B</td>
-					<td>100</td>
-					<td>1</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>id</th>
+          <th>class</th>
+          <th>score</th>
+          <th>class_rk</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>A</td>
+          <td>90</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>A</td>
+          <td>91</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>A</td>
+          <td>91</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td>B</td>
+          <td>100</td>
+          <td>1</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="16-尾缀方法">16. 尾缀方法</h3>
 <h4 id="161-对结果排序-order-by-方法">16.1 对结果排序: ORDER BY 方法</h4>
@@ -1783,19 +1791,19 @@ FROM
 ) t;
 </code></pre><p>output:</p>
 <table>
-	<thead>
-			<tr>
-					<th>res</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>10</td>
-			</tr>
-			<tr>
-					<td>0</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>res</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>10</td>
+      </tr>
+      <tr>
+          <td>0</td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="182-nvl-函数">18.2 NVL 函数</h4>
 <p><strong>NVL 函数</strong>：接受两个参数。如果第一个参数为 <code>NULL</code>，返回第二个参数，否则返回第一个参数</p>
@@ -1811,22 +1819,22 @@ FROM
 ) t;
 </code></pre><p>output:</p>
 <table>
-	<thead>
-			<tr>
-					<th>res</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>10</td>
-			</tr>
-			<tr>
-					<td>NULL</td>
-			</tr>
-			<tr>
-					<td>100</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>res</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>10</td>
+      </tr>
+      <tr>
+          <td>NULL</td>
+      </tr>
+      <tr>
+          <td>100</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="19-useful-codes">19. Useful Codes</h3>
 <h4 id="191-行内跨字段计算最大--最小值">19.1 行内跨字段计算最大 / 最小值</h4>
@@ -1836,18 +1844,18 @@ FROM
     LEAST(6,5,7) AS least_num;
 </code></pre><p>output:</p>
 <table>
-	<thead>
-			<tr>
-					<th>greatest_num</th>
-					<th>least_num</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>3</td>
-					<td>5</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>greatest_num</th>
+          <th>least_num</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>3</td>
+          <td>5</td>
+      </tr>
+  </tbody>
 </table>
 <p>场景：计算一天中最贵/最便宜的一餐</p>
 <pre tabindex="0"><code>SELECT
@@ -1863,26 +1871,26 @@ FROM
 ) t;
 </code></pre><p>output:</p>
 <table>
-	<thead>
-			<tr>
-					<th>cheapest_meal</th>
-					<th>expensive_meal</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>3</td>
-					<td>25</td>
-			</tr>
-			<tr>
-					<td>0</td>
-					<td>20</td>
-			</tr>
-			<tr>
-					<td>0</td>
-					<td>35</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>cheapest_meal</th>
+          <th>expensive_meal</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>3</td>
+          <td>25</td>
+      </tr>
+      <tr>
+          <td>0</td>
+          <td>20</td>
+      </tr>
+      <tr>
+          <td>0</td>
+          <td>35</td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="192-计算分位数">19.2 计算分位数</h4>
 <p>简单的例子：计算学生分数的95分位数</p>

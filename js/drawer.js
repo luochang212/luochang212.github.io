@@ -51,7 +51,8 @@ function openItem(evt, itemName) {
 
 // ── Video tab ──
 
-var currentBvid = 'BV1Ms411D7in'
+var firstVideoItem = document.querySelector('.video-item')
+var currentBvid = firstVideoItem ? firstVideoItem.dataset.bvid : ''
 
 function selectVideo(itemEl) {
   document.querySelectorAll('.video-item').forEach(function (el) {

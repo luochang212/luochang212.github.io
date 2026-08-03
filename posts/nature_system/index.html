@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.163.3">
+<meta name="generator" content="Hugo 0.159.2">
 
     
     
@@ -29,31 +29,31 @@
 
 
 
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:image" content="https://www.luochang.ink/images/og-default.jpg">
-	<meta name="twitter:title" content="生态系统建模">
-	<meta name="twitter:description" content="本文介绍如何用 Agent-based model 的方法，对一个包含狼、麋鹿、草三种生物的生态系统建模。本模型的优势在于模拟了狼的集群行为，即模拟了在头狼带领下狼群的捕食行为。">
-			<meta name="twitter:site" content="@_stellar_tide">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.luochang.ink/images/og-default.jpg">
+  <meta name="twitter:title" content="生态系统建模">
+  <meta name="twitter:description" content="本文介绍如何用 Agent-based model 的方法，对一个包含狼、麋鹿、草三种生物的生态系统建模。本模型的优势在于模拟了狼的集群行为，即模拟了在头狼带领下狼群的捕食行为。">
+      <meta name="twitter:site" content="@_stellar_tide">
 
 <meta property="og:url" content="https://www.luochang.ink/posts/nature_system/">
-	<meta property="og:site_name" content="Chang Luo">
-	<meta property="og:title" content="生态系统建模">
-	<meta property="og:description" content="本文介绍如何用 Agent-based model 的方法，对一个包含狼、麋鹿、草三种生物的生态系统建模。本模型的优势在于模拟了狼的集群行为，即模拟了在头狼带领下狼群的捕食行为。">
-	<meta property="og:locale" content="zh_CN">
-	<meta property="og:type" content="article">
-		<meta property="article:section" content="posts">
-		<meta property="article:published_time" content="2019-06-12T00:00:00+00:00">
-		<meta property="article:modified_time" content="2019-06-12T00:00:00+00:00">
-		<meta property="article:tag" content="Nature-System">
-		<meta property="article:tag" content="ABM">
-		<meta property="article:tag" content="Agent-Based-Model">
-		<meta property="og:image" content="https://www.luochang.ink/images/og-default.jpg">
+  <meta property="og:site_name" content="Chang Luo">
+  <meta property="og:title" content="生态系统建模">
+  <meta property="og:description" content="本文介绍如何用 Agent-based model 的方法，对一个包含狼、麋鹿、草三种生物的生态系统建模。本模型的优势在于模拟了狼的集群行为，即模拟了在头狼带领下狼群的捕食行为。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2019-06-12T00:00:00+00:00">
+    <meta property="article:modified_time" content="2019-06-12T00:00:00+00:00">
+    <meta property="article:tag" content="Nature-System">
+    <meta property="article:tag" content="ABM">
+    <meta property="article:tag" content="Agent-Based-Model">
+    <meta property="og:image" content="https://www.luochang.ink/images/og-default.jpg">
 
 
     
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.f9da2b005f03c27beab06923e896c9a3875472209210a9177205d391257298b2.css" integrity="sha256-&#43;dorAF8DwnvqsGkj6JbJo4dUciCSEKkXcgXTkSVymLI=">
+<link rel="stylesheet" href="/scss/hyde-hyde.3d5546046a87c3adbb07fcda477023c4d878e66355faba34d4bc376fe6e62f29.css" integrity="sha256-PVVGBGqHw627B/zaR3AjxNh45mNV&#43;ro01Lw3b&#43;bmLyk=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -235,7 +235,7 @@
     <div id="netease-player" class="tabcontent" hidden>
       <iframe class="myiframe"
         src="about:blank"
-        data-src="//music.163.com/outchain/player?type=0&id=2250585392&auto=0&height=430"
+        data-src="//music.163.com/outchain/player?type=0&amp;id=2250585392&amp;auto=0&amp;height=430"
         frameborder="no"
         marginheight="0"
         marginwidth="0"
@@ -244,84 +244,92 @@
     </div>
 
     <div id="video-player" class="tabcontent" hidden>
-      <div class="video-layout">
-        <div class="video-main">
-          <div class="video-cover" id="video-cover">
-            <img id="video-cover-img" src="/images/video-covers/zutomayo.jpg" alt="">
-            <div class="video-cover-overlay">
-              <button class="video-play-btn" id="video-play-btn" aria-label="播放视频">
-                <svg viewBox="0 0 24 24" width="48" height="48"><path d="M8 5v14l11-7z" fill="white"/></svg>
-              </button>
-              <span class="video-cover-title" id="video-cover-title">四月是你的谎言</span>
-            </div>
-          </div>
-          <div class="video-frame" id="video-frame" hidden>
-            <iframe src="about:blank"
-              data-src="//player.bilibili.com/player.html?bvid=BV1Ms411D7in&p=1&high_quality=1&danmaku=0&autoplay=0"
-              style="width:100%;"
-              scrolling="no"
-              frameborder="no"
-              framespacing="0"
-              title="Bilibili video player"
-              allowfullscreen="true"></iframe>
-          </div>
+  
+  <div class="video-layout">
+    <div class="video-main">
+      <div class="video-cover" id="video-cover">
+        
+        <img id="video-cover-img" src="/images/video-covers/zutomayo.webp" alt="四月是你的谎言">
+        <div class="video-cover-overlay">
+          <button class="video-play-btn" id="video-play-btn" aria-label="播放视频">
+            <svg viewBox="0 0 24 24" width="48" height="48"><path d="M8 5v14l11-7z" fill="white"/></svg>
+          </button>
+          <span class="video-cover-title" id="video-cover-title">四月是你的谎言</span>
         </div>
-        <div class="video-playlist">
-          <button class="video-item active" data-bvid="BV1Ms411D7in"
-            data-title="四月是你的谎言"
-            data-cover="/images/video-covers/zutomayo.jpg"
-            data-duration="4:04">
-            <img class="video-item-cover" src="/images/video-covers/zutomayo.jpg" alt="">
-            <div class="video-item-info">
-              <span class="video-item-title">四月是你的谎言</span>
-              <span class="video-item-meta">4:04</span>
-            </div>
-          </button>
-          <button class="video-item" data-bvid="BV1LW411j7dK"
-            data-title="Kids by One republic — 三羊"
-            data-cover="/images/video-covers/sanyang.jpg"
-            data-duration="2:54">
-            <img class="video-item-cover" src="/images/video-covers/sanyang.jpg" alt="">
-            <div class="video-item-info">
-              <span class="video-item-title">Kids by One republic</span>
-              <span class="video-item-meta">三羊 · 2:54</span>
-            </div>
-          </button>
-          <button class="video-item" data-bvid="BV1Yx411U7Lx"
-            data-title="交织together — M78"
-            data-cover="/images/video-covers/jiaozhi.jpg"
-            data-duration="6:06">
-            <img class="video-item-cover" src="/images/video-covers/jiaozhi.jpg" alt="">
-            <div class="video-item-info">
-              <span class="video-item-title">交织together</span>
-              <span class="video-item-meta">M78 · 6:06</span>
-            </div>
-          </button>
-          <button class="video-item" data-bvid="BV1rp4y1L7i4"
-            data-title="新员工入职大会 — 岁己SUI/恋诗夜Koxia"
-            data-cover="/images/video-covers/suisui.jpg"
-            data-duration="2:33">
-            <img class="video-item-cover" src="/images/video-covers/suisui.jpg" alt="">
-            <div class="video-item-info">
-              <span class="video-item-title">新员工入职大会</span>
-              <span class="video-item-meta">岁己SUI/恋诗夜Koxia · 2:33</span>
-            </div>
-          </button>
-          <button class="video-item" data-bvid="BV1Av4y147QE"
-            data-title="真物论 — 悠亚"
-            data-cover="/images/video-covers/zhenwulun.jpg"
-            data-duration="3:30">
-            <img class="video-item-cover" src="/images/video-covers/zhenwulun.jpg" alt="">
-            <div class="video-item-info">
-              <span class="video-item-title">真物论</span>
-              <span class="video-item-meta">悠亚 · 3:30</span>
-            </div>
-          </button>
-        </div>        </div>
       </div>
-
-
-    <div id="gallery" class="tabcontent" hidden>
+      <div class="video-frame" id="video-frame" hidden>
+        <iframe src="about:blank"
+          data-src="//player.bilibili.com/player.html?bvid=BV1Ms411D7in&p=1&high_quality=1&danmaku=0&autoplay=0"
+          style="width:100%;"
+          scrolling="no"
+          frameborder="no"
+          framespacing="0"
+          title="Bilibili video player"
+          allowfullscreen="true"></iframe>
+      </div>
+    </div>
+    <div class="video-playlist">
+      
+      <button class="video-item active" data-bvid="BV1Ms411D7in"
+        data-title="四月是你的谎言"
+        data-cover="/images/video-covers/zutomayo.webp"
+        data-duration="4:04">
+        <img class="video-item-cover" loading="lazy" src="/images/video-covers/zutomayo.webp" alt="">
+        <div class="video-item-info">
+          <span class="video-item-title">四月是你的谎言</span>
+          <span class="video-item-meta">4:04</span>
+        </div>
+      </button>
+      
+      <button class="video-item" data-bvid="BV1LW411j7dK"
+        data-title="Kids by One republic — 三羊"
+        data-cover="/images/video-covers/sanyang.webp"
+        data-duration="2:54">
+        <img class="video-item-cover" loading="lazy" src="/images/video-covers/sanyang.webp" alt="">
+        <div class="video-item-info">
+          <span class="video-item-title">Kids by One republic</span>
+          <span class="video-item-meta">三羊 · 2:54</span>
+        </div>
+      </button>
+      
+      <button class="video-item" data-bvid="BV1Yx411U7Lx"
+        data-title="交织together — M78"
+        data-cover="/images/video-covers/jiaozhi.webp"
+        data-duration="6:06">
+        <img class="video-item-cover" loading="lazy" src="/images/video-covers/jiaozhi.webp" alt="">
+        <div class="video-item-info">
+          <span class="video-item-title">交织together</span>
+          <span class="video-item-meta">M78 · 6:06</span>
+        </div>
+      </button>
+      
+      <button class="video-item" data-bvid="BV1rp4y1L7i4"
+        data-title="新员工入职大会 — 岁己SUI/恋诗夜Koxia"
+        data-cover="/images/video-covers/suisui.webp"
+        data-duration="2:33">
+        <img class="video-item-cover" loading="lazy" src="/images/video-covers/suisui.webp" alt="">
+        <div class="video-item-info">
+          <span class="video-item-title">新员工入职大会</span>
+          <span class="video-item-meta">岁己SUI/恋诗夜Koxia · 2:33</span>
+        </div>
+      </button>
+      
+      <button class="video-item" data-bvid="BV1Av4y147QE"
+        data-title="真物论 — 悠亚"
+        data-cover="/images/video-covers/zhenwulun.webp"
+        data-duration="3:30">
+        <img class="video-item-cover" loading="lazy" src="/images/video-covers/zhenwulun.webp" alt="">
+        <div class="video-item-info">
+          <span class="video-item-title">真物论</span>
+          <span class="video-item-meta">悠亚 · 3:30</span>
+        </div>
+      </button>
+      
+    </div>
+  </div>
+  
+</div>
+<div id="gallery" class="tabcontent" hidden>
       <iframe class="myiframe"
         src="about:blank"
         data-src="/gadget/gallery/"
@@ -337,38 +345,38 @@
         
           <br>
 <table>
-	<thead>
-			<tr>
-					<th>#</th>
-					<th>name</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>1</td>
-					<td><a href="/gadget/hydra" target="_blank">Hydra</a></td>
-			</tr>
-			<tr>
-					<td>2</td>
-					<td><a href="/mozi/" target="_blank">墨子</a></td>
-			</tr>
-			<tr>
-					<td>3</td>
-					<td><a href="/gadget/how-old-are-you" target="_blank">年龄可视化</a></td>
-			</tr>
-			<tr>
-					<td>4</td>
-					<td><a href="/gadget/piano" target="_blank">Piano</a></td>
-			</tr>
-			<tr>
-					<td>5</td>
-					<td><a href="/flockn-roll/" target="_blank">Flock&rsquo;n Roll</a></td>
-			</tr>
-			<tr>
-					<td>6</td>
-					<td><a href="/monaco-speech-editor/" target="_blank">Monaco Speech Editor</a></td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>#</th>
+          <th>name</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td><a href="/gadget/hydra" target="_blank">Hydra</a></td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td><a href="/mozi/" target="_blank">墨子</a></td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td><a href="/gadget/how-old-are-you" target="_blank">年龄可视化</a></td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td><a href="/gadget/piano" target="_blank">Piano</a></td>
+      </tr>
+      <tr>
+          <td>5</td>
+          <td><a href="/flockn-roll/" target="_blank">Flock&rsquo;n Roll</a></td>
+      </tr>
+      <tr>
+          <td>6</td>
+          <td><a href="/monaco-speech-editor/" target="_blank">Monaco Speech Editor</a></td>
+      </tr>
+  </tbody>
 </table>
 
         
@@ -651,58 +659,58 @@
 <p>（一）生物的属性</p>
 <p>模型内有三种生物：狼(wolf)、麋鹿(moose)、草(grass)。此外，狼还分为头狼和普通狼。下面这张表展示了头狼、普通狼、麋鹿的属性：</p>
 <table>
-	<thead>
-			<tr>
-					<th>#</th>
-					<th>age</th>
-					<th>food</th>
-					<th>pos</th>
-					<th>speed</th>
-					<th>last_breed</th>
-					<th>population</th>
-					<th>packNo</th>
-					<th>range</th>
-					<th>eaten</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>头狼</td>
-					<td>√</td>
-					<td>√</td>
-					<td>√</td>
-					<td>√</td>
-					<td>√</td>
-					<td>√</td>
-					<td></td>
-					<td>√</td>
-					<td>√</td>
-			</tr>
-			<tr>
-					<td>普通狼</td>
-					<td>√</td>
-					<td>√</td>
-					<td>√</td>
-					<td>√</td>
-					<td></td>
-					<td></td>
-					<td>√</td>
-					<td></td>
-					<td></td>
-			</tr>
-			<tr>
-					<td>麋鹿</td>
-					<td>√</td>
-					<td>√</td>
-					<td>√</td>
-					<td>√</td>
-					<td>√</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>#</th>
+          <th>age</th>
+          <th>food</th>
+          <th>pos</th>
+          <th>speed</th>
+          <th>last_breed</th>
+          <th>population</th>
+          <th>packNo</th>
+          <th>range</th>
+          <th>eaten</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>头狼</td>
+          <td>√</td>
+          <td>√</td>
+          <td>√</td>
+          <td>√</td>
+          <td>√</td>
+          <td>√</td>
+          <td></td>
+          <td>√</td>
+          <td>√</td>
+      </tr>
+      <tr>
+          <td>普通狼</td>
+          <td>√</td>
+          <td>√</td>
+          <td>√</td>
+          <td>√</td>
+          <td></td>
+          <td></td>
+          <td>√</td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>麋鹿</td>
+          <td>√</td>
+          <td>√</td>
+          <td>√</td>
+          <td>√</td>
+          <td>√</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
 </table>
 <p>从上表可以看出，年龄、食物、位置、速度是头狼、普通狼和麋鹿的共有属性。last_breed指和上一次生育的时间间隔，在模型内用一次迭代表示一次时间间隔，因为迭代必须是整数，因此last_breed也是整型变量。头狼特有population属性，用来表示该头狼所在狼群中狼的数量；头狼特有range属性，表示该狼群活动的范围；头狼特有eaten属性，表示狼群在一次迭代中，全体成员吃到的麋鹿的总数。普通狼特有packNo属性，用来标记其所属狼群的头狼在列表中的索引号。普通狼没有last_breed属性，是因为其生育是以整个狼群为单位的。由于狼群是由头狼定义的，狼群相关的属性和行为也绑定在头狼身上，因此在代码实现上，狼群的生育是通过头狼实现的。</p>
 <p>草没有上述生物那么复杂的模型，本模型中的草均匀平铺在环境中，且不会生长，吃完就没了。因此麋鹿为了获取新的食物来源，需要经常迁徙。</p>
