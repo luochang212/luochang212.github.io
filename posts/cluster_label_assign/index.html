@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.159.2">
+<meta name="generator" content="Hugo 0.168.0">
 
     
     
@@ -29,25 +29,25 @@
 
 
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://www.luochang.ink/images/og-default.jpg">
-  <meta name="twitter:title" content="DNN 模型聚类特征更新方法">
-  <meta name="twitter:description" content="如何在天级更新聚类特征时，保持聚类标签的稳定性">
-      <meta name="twitter:site" content="@_stellar_tide">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://www.luochang.ink/images/og-default.jpg">
+	<meta name="twitter:title" content="DNN 模型聚类特征更新方法">
+	<meta name="twitter:description" content="如何在天级更新聚类特征时，保持聚类标签的稳定性">
+			<meta name="twitter:site" content="@_stellar_tide">
 
 <meta property="og:url" content="https://www.luochang.ink/posts/cluster_label_assign/">
-  <meta property="og:site_name" content="Chang Luo">
-  <meta property="og:title" content="DNN 模型聚类特征更新方法">
-  <meta property="og:description" content="如何在天级更新聚类特征时，保持聚类标签的稳定性">
-  <meta property="og:locale" content="zh_CN">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2025-04-19T00:00:00+00:00">
-    <meta property="article:modified_time" content="2025-04-19T00:00:00+00:00">
-    <meta property="article:tag" content="BLIP2">
-    <meta property="article:tag" content="DBSCAN">
-    <meta property="article:tag" content="Hungarian Algorithm">
-    <meta property="og:image" content="https://www.luochang.ink/images/og-default.jpg">
+	<meta property="og:site_name" content="Chang Luo">
+	<meta property="og:title" content="DNN 模型聚类特征更新方法">
+	<meta property="og:description" content="如何在天级更新聚类特征时，保持聚类标签的稳定性">
+	<meta property="og:locale" content="zh_CN">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2025-04-19T00:00:00+00:00">
+		<meta property="article:modified_time" content="2025-04-19T00:00:00+00:00">
+		<meta property="article:tag" content="BLIP2">
+		<meta property="article:tag" content="DBSCAN">
+		<meta property="article:tag" content="Hungarian Algorithm">
+		<meta property="og:image" content="https://www.luochang.ink/images/og-default.jpg">
 
 
     
@@ -345,38 +345,38 @@
         
           <br>
 <table>
-  <thead>
-      <tr>
-          <th>#</th>
-          <th>name</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>1</td>
-          <td><a href="/gadget/hydra" target="_blank">Hydra</a></td>
-      </tr>
-      <tr>
-          <td>2</td>
-          <td><a href="/mozi/" target="_blank">墨子</a></td>
-      </tr>
-      <tr>
-          <td>3</td>
-          <td><a href="/gadget/how-old-are-you" target="_blank">年龄可视化</a></td>
-      </tr>
-      <tr>
-          <td>4</td>
-          <td><a href="/gadget/piano" target="_blank">Piano</a></td>
-      </tr>
-      <tr>
-          <td>5</td>
-          <td><a href="/flockn-roll/" target="_blank">Flock&rsquo;n Roll</a></td>
-      </tr>
-      <tr>
-          <td>6</td>
-          <td><a href="/monaco-speech-editor/" target="_blank">Monaco Speech Editor</a></td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>#</th>
+					<th>name</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td><a href="/gadget/hydra" target="_blank">Hydra</a></td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td><a href="/mozi/" target="_blank">墨子</a></td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td><a href="/gadget/how-old-are-you" target="_blank">年龄可视化</a></td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td><a href="/gadget/piano" target="_blank">Piano</a></td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td><a href="/flockn-roll/" target="_blank">Flock&rsquo;n Roll</a></td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td><a href="/projects/monaco_speech_editor/" target="_blank">Monaco Speech Editor</a></td>
+			</tr>
+	</tbody>
 </table>
 
         
@@ -665,10 +665,10 @@
 <p>将模型特征 ID 化有很多方法，比如 聚类（无监督）、分类（有监督）、量化等等。本文仅讨论 <strong>聚类算法</strong> 及其在深度学习模型中的应用。</p>
 <h2 id="一引子频繁变更索引的代价">一、引子：频繁变更索引的代价</h2>
 <p>为了理解聚类算法产生的聚类 ID 是如何在深度模型中发生作用的，有必要介绍一下 <strong>嵌入层 (Embedding Layer)</strong> 的工作原理。</p>
-<p><strong>嵌入层是聚类 ID 与深度模型连接的桥梁</strong>。嵌入层的输入是聚类 ID，输出是该聚类 ID 对应的 embedding。在嵌入层中，聚类 ID 的每个枚举值都对应一个可学习的 embedding。如下图，假设聚类 ID 有 5 个枚举值 <code>[0, 1, 2, 3, 4]</code>，枚举值对应的索引分别为 <code>idx0</code>, <code>idx1</code> &hellip; <code>idx4</code>。当一个样本进入模型，它会根据聚类 id 号（比如 2 号）去找对应的索引（<code>idx2</code>），然后将索引下的 N 维 embedding 取回。嵌入层在有些地方也被称为码本 (codebook).</p>
+<p><strong>嵌入层是聚类 ID 与深度模型连接的桥梁</strong>。嵌入层的输入是聚类 ID，输出是该聚类 ID 对应的 embedding。在嵌入层中，聚类 ID 的每个枚举值都对应一个可学习的 embedding。如下图，假设聚类 ID 有 5 个枚举值 <code>[0, 1, 2, 3, 4]</code>，枚举值对应的索引分别为 <code>idx0</code>、<code>idx1</code>……<code>idx4</code>。当一个样本进入模型，它会根据聚类 id 号（比如 2 号）去找对应的索引（<code>idx2</code>），然后将索引下的 N 维 embedding 取回。嵌入层在有些地方也被称为码本 (codebook)。</p>
 <p><img src="/img/embedding_layer.png" alt="embedding_layer"></p>
 <p>嵌入层的 embedding 是可学习的。随着模型训练的进行，索引对应的 embedding 会不断被反向传播带来的梯度更新，这就是 <strong>表示学习</strong> 的过程。在搜索、广告、推荐业务中，历史上模型关于这个聚类 ID 的“知识和经验”，都会积累在该 ID 对应的 embedding 上。</p>
-<p>聚类算法有个特点：模型输出和输入的全集有关。具体表现为，模型每次算出来的簇，<strong>即使簇内样本完全相同，用于标识该簇的聚类 ID 也可能发生变化</strong>。举例来说，今天叫 “3 号” 的簇，明天训练可能叫 “7 号”。这可要了亲命了。模型特征每天都在变，如果每次训练，同一个簇都会被映射到不同的聚类 ID，那么这个聚类 ID 绑定的 embedding 其实是用来&quot;表示&quot;别的簇的，此时这个 embedding 实际学不到关于该簇的任何东西，在模型推理中必然产生反效果。因此，我们需要做一些开发，将簇持续映射到一个稳定的聚类 ID 上，多塔模型才能够正常运行。</p>
+<p>聚类算法有个特点：模型输出和输入的全集有关。具体表现为，模型每次算出来的簇，<strong>即使簇内样本完全相同，用于标识该簇的聚类 ID 也可能发生变化</strong>。举例来说，今天叫“3 号”的簇，明天训练可能叫“7 号”。这可要了亲命了。模型特征每天都在变，如果每次训练，同一个簇都会被映射到不同的聚类 ID，那么这个聚类 ID 绑定的 embedding 其实是用来“表示”别的簇的，此时这个 embedding 实际学不到关于该簇的任何东西，在模型推理中必然产生反效果。因此，我们需要做一些开发，将簇持续映射到一个稳定的聚类 ID 上，多塔模型才能够正常运行。</p>
 <p>如何将簇稳定地映射到一个聚类 ID 上，本文介绍了两种方法：</p>
 <ol>
 <li>使用匈牙利算法进行标签重匹配</li>
@@ -705,7 +705,7 @@
 <li>类心距离</li>
 </ul>
 <p><strong>样本重合率</strong> 的问题是不同标签的样本量不同，这意味着不同标签的敏感性是不同的。如果样本量较高，我们就有较高的置信水平认为该重合率可信；若样本量较低，这种匹配可能不置信。使用 <strong>类心距离</strong> 可以避免这个问题，在整个度量空间中，类心距离不会因标签的不同有所偏倚，是一种相对公平的匹配方法。</p>
-<p>因此，类心距离看起来更适合作为度量。但想了想，我还是决定两种方法都尝试一下。因为并非所有聚类都有&quot;类心&quot;。比如，对于物品 ITEM，很可能只有标签，没有类心。这时，样本重合率作为更通用的解决方案，便彰显其价值。下面我们来开发这两种标签重匹配方法。</p>
+<p>因此，类心距离看起来更适合作为度量。但想了想，我还是决定两种方法都尝试一下。因为并非所有聚类都有“类心”。比如，对于物品 ITEM，很可能只有标签，没有类心。这时，样本重合率作为更通用的解决方案，便彰显其价值。下面我们来开发这两种标签重匹配方法。</p>
 <ol>
 <li>初次训练与重训练标签</li>
 <li>样本重合率</li>
@@ -816,8 +816,7 @@
 
 </div>
     
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.js" defer></script>
-
+    
 
 <script defer src="https://kit.fontawesome.com/2134995a39.js" crossorigin="anonymous"></script>
 

@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.159.2">
+<meta name="generator" content="Hugo 0.168.0">
 
     
     
@@ -29,25 +29,25 @@
 
 
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://www.luochang.ink/images/og-default.jpg">
-  <meta name="twitter:title" content="三种图神经网络算法：GraphSAGE, GCN 和 GAT">
-  <meta name="twitter:description" content="GNN 处理图数据的方式还是很符合直觉的，基本沿袭了 CNN 的思路：每个神经元只看局部信息，通过层层汇聚掌握全貌">
-      <meta name="twitter:site" content="@_stellar_tide">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://www.luochang.ink/images/og-default.jpg">
+	<meta name="twitter:title" content="三种图神经网络算法：GraphSAGE, GCN 和 GAT">
+	<meta name="twitter:description" content="GNN 处理图数据的方式还是很符合直觉的，基本沿袭了 CNN 的思路：每个神经元只看局部信息，通过层层汇聚掌握全貌">
+			<meta name="twitter:site" content="@_stellar_tide">
 
 <meta property="og:url" content="https://www.luochang.ink/posts/graph_embedding/">
-  <meta property="og:site_name" content="Chang Luo">
-  <meta property="og:title" content="三种图神经网络算法：GraphSAGE, GCN 和 GAT">
-  <meta property="og:description" content="GNN 处理图数据的方式还是很符合直觉的，基本沿袭了 CNN 的思路：每个神经元只看局部信息，通过层层汇聚掌握全貌">
-  <meta property="og:locale" content="zh_CN">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-08-10T00:00:00+00:00">
-    <meta property="article:modified_time" content="2024-08-10T00:00:00+00:00">
-    <meta property="article:tag" content="GraphSAGE">
-    <meta property="article:tag" content="GCN">
-    <meta property="article:tag" content="GAT">
-    <meta property="og:image" content="https://www.luochang.ink/images/og-default.jpg">
+	<meta property="og:site_name" content="Chang Luo">
+	<meta property="og:title" content="三种图神经网络算法：GraphSAGE, GCN 和 GAT">
+	<meta property="og:description" content="GNN 处理图数据的方式还是很符合直觉的，基本沿袭了 CNN 的思路：每个神经元只看局部信息，通过层层汇聚掌握全貌">
+	<meta property="og:locale" content="zh_CN">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2024-08-10T00:00:00+00:00">
+		<meta property="article:modified_time" content="2024-08-10T00:00:00+00:00">
+		<meta property="article:tag" content="GraphSAGE">
+		<meta property="article:tag" content="GCN">
+		<meta property="article:tag" content="GAT">
+		<meta property="og:image" content="https://www.luochang.ink/images/og-default.jpg">
 
 
     
@@ -345,38 +345,38 @@
         
           <br>
 <table>
-  <thead>
-      <tr>
-          <th>#</th>
-          <th>name</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>1</td>
-          <td><a href="/gadget/hydra" target="_blank">Hydra</a></td>
-      </tr>
-      <tr>
-          <td>2</td>
-          <td><a href="/mozi/" target="_blank">墨子</a></td>
-      </tr>
-      <tr>
-          <td>3</td>
-          <td><a href="/gadget/how-old-are-you" target="_blank">年龄可视化</a></td>
-      </tr>
-      <tr>
-          <td>4</td>
-          <td><a href="/gadget/piano" target="_blank">Piano</a></td>
-      </tr>
-      <tr>
-          <td>5</td>
-          <td><a href="/flockn-roll/" target="_blank">Flock&rsquo;n Roll</a></td>
-      </tr>
-      <tr>
-          <td>6</td>
-          <td><a href="/monaco-speech-editor/" target="_blank">Monaco Speech Editor</a></td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>#</th>
+					<th>name</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td><a href="/gadget/hydra" target="_blank">Hydra</a></td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td><a href="/mozi/" target="_blank">墨子</a></td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td><a href="/gadget/how-old-are-you" target="_blank">年龄可视化</a></td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td><a href="/gadget/piano" target="_blank">Piano</a></td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td><a href="/flockn-roll/" target="_blank">Flock&rsquo;n Roll</a></td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td><a href="/projects/monaco_speech_editor/" target="_blank">Monaco Speech Editor</a></td>
+			</tr>
+	</tbody>
 </table>
 
         
@@ -691,7 +691,7 @@
 <ul>
 <li>迭代 1 个轮次，将 1 跳之内的节点信息聚合到本节点</li>
 <li>迭代 2 个轮次，将 2 跳之内的节点信息聚合到本节点</li>
-<li>&hellip; &hellip;</li>
+<li>……</li>
 <li>迭代 n 个轮次，将 n 跳之内的节点信息聚合到本节点</li>
 </ul>
 </blockquote>
@@ -700,38 +700,38 @@
 <p>它是如何做到这一点的呢？</p>
 <p>GraphSAGE 的基本思想是：不学节点的下标，只学节点的特征。</p>
 <table>
-  <thead>
-      <tr>
-          <th>姓名</th>
-          <th>唱歌</th>
-          <th>跳舞</th>
-          <th>Rap</th>
-          <th>打篮球</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>小真</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-      </tr>
-      <tr>
-          <td>小弥</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-      </tr>
-      <tr>
-          <td>小鲲</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>0</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>姓名</th>
+					<th>唱歌</th>
+					<th>跳舞</th>
+					<th>Rap</th>
+					<th>打篮球</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>小真</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>小弥</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>小鲲</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+					<td>0</td>
+			</tr>
+	</tbody>
 </table>
 <p>如上表，我们只需要知道一个人是不是喜欢唱跳 rap 篮球就好了，至于这个人是谁，我们并不关心。</p>
 <h3 id="13-graphsage-的简单实现">1.3 GraphSAGE 的简单实现</h3>
@@ -749,26 +749,26 @@
 <h4 id="132-逐行注释">1.3.2 逐行注释</h4>
 <p>论文代码中定义了三个类：</p>
 <table>
-  <thead>
-      <tr>
-          <th>class</th>
-          <th>说明</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>MeanAggregator</code></td>
-          <td>聚合器，聚合邻居节点特征，相当于用邻居节点的表征来表示自己</td>
-      </tr>
-      <tr>
-          <td><code>Encoder</code></td>
-          <td>编码器，concat 当前节点的邻居特征和原始特征</td>
-      </tr>
-      <tr>
-          <td><code>SupervisedGraphSage</code></td>
-          <td>有监督学习器，用全连接层将嵌入结果 Embedding 与标号 label 连接，再用梯度下降更新 Embedding 以对齐 label</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>class</th>
+					<th>说明</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>MeanAggregator</code></td>
+					<td>聚合器，聚合邻居节点特征，相当于用邻居节点的表征来表示自己</td>
+			</tr>
+			<tr>
+					<td><code>Encoder</code></td>
+					<td>编码器，concat 当前节点的邻居特征和原始特征</td>
+			</tr>
+			<tr>
+					<td><code>SupervisedGraphSage</code></td>
+					<td>有监督学习器，用全连接层将嵌入结果 Embedding 与标号 label 连接，再用梯度下降更新 Embedding 以对齐 label</td>
+			</tr>
+	</tbody>
 </table>
 <p>这三个类很重要。只用这三个类，就可以把整个算法串起来。</p>
 <ol>
@@ -919,7 +919,7 @@ docker run -it -p 9999:8888 graphsage
 
 </div>
     
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-mml-chtml.js" defer></script>
 
 
 <script defer src="https://kit.fontawesome.com/2134995a39.js" crossorigin="anonymous"></script>

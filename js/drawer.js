@@ -29,7 +29,30 @@ function closeNav() {
   document.getElementById('mySidenav').setAttribute('aria-hidden', 'true')
   document.body.classList.remove('drawer-open')
   sidebarTrigger.setAttribute('aria-expanded', 'false')
+  stopMediaPlayback()
   sidebarTrigger.focus()
+}
+
+// 关闭时必须停掉媒体，否则音视频会在后台继续播放。
+// 音乐 iframe 把当前地址写回 data-src，下次打开由 loadPanel 续载；
+// 视频 iframe 清空并恢复封面态，重新点封面才会再播。
+// Resources/Gallery 是普通页面，保留状态不动。
+function stopMediaPlayback() {
+  var musicFrame = document.querySelector('#netease-player iframe')
+  if (musicFrame && !musicFrame.hasAttribute('data-src') && musicFrame.src !== 'about:blank') {
+    musicFrame.setAttribute('data-src', musicFrame.src)
+    musicFrame.src = 'about:blank'
+  }
+  var cover = document.getElementById('video-cover')
+  var frameEl = document.getElementById('video-frame')
+  var videoIframe = frameEl ? frameEl.querySelector('iframe') : null
+  if (videoIframe) {
+    videoIframe.src = 'about:blank'
+  }
+  if (frameEl && cover) {
+    frameEl.hidden = true
+    cover.style.display = ''
+  }
 }
 
 function openItem(evt, itemName) {
@@ -81,7 +104,9 @@ function playCurrentVideo() {
   frameEl.hidden = false
   var iframe = frameEl.querySelector('iframe')
   var url = '//player.bilibili.com/player.html?bvid=' + currentBvid + '&p=1&high_quality=1&danmaku=0&autoplay=1'
-  if (iframe.src !== url) {
+  // iframe.src 返回解析后的绝对地址，必须先归一化再比较，否则守卫永远为真
+  var resolved = new URL(url, location.href).href
+  if (iframe.src !== resolved) {
     iframe.src = url
   }
 }

@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.159.2">
+<meta name="generator" content="Hugo 0.168.0">
 
     
     
@@ -29,24 +29,24 @@
 
 
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://www.luochang.ink/images/og-default.jpg">
-  <meta name="twitter:title" content="注意力机制笔记">
-  <meta name="twitter:description" content="智能产生的根源：并行、查询、压缩">
-      <meta name="twitter:site" content="@_stellar_tide">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://www.luochang.ink/images/og-default.jpg">
+	<meta name="twitter:title" content="注意力机制笔记">
+	<meta name="twitter:description" content="智能产生的根源：并行、查询、压缩">
+			<meta name="twitter:site" content="@_stellar_tide">
 
 <meta property="og:url" content="https://www.luochang.ink/posts/attention_note/">
-  <meta property="og:site_name" content="Chang Luo">
-  <meta property="og:title" content="注意力机制笔记">
-  <meta property="og:description" content="智能产生的根源：并行、查询、压缩">
-  <meta property="og:locale" content="zh_CN">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-06-09T00:00:00+00:00">
-    <meta property="article:modified_time" content="2024-06-09T00:00:00+00:00">
-    <meta property="article:tag" content="MultiHeadAttention">
-    <meta property="article:tag" content="PositionalEncoding">
-    <meta property="og:image" content="https://www.luochang.ink/images/og-default.jpg">
+	<meta property="og:site_name" content="Chang Luo">
+	<meta property="og:title" content="注意力机制笔记">
+	<meta property="og:description" content="智能产生的根源：并行、查询、压缩">
+	<meta property="og:locale" content="zh_CN">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2024-06-09T00:00:00+00:00">
+		<meta property="article:modified_time" content="2024-06-09T00:00:00+00:00">
+		<meta property="article:tag" content="MultiHeadAttention">
+		<meta property="article:tag" content="PositionalEncoding">
+		<meta property="og:image" content="https://www.luochang.ink/images/og-default.jpg">
 
 
     
@@ -344,38 +344,38 @@
         
           <br>
 <table>
-  <thead>
-      <tr>
-          <th>#</th>
-          <th>name</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>1</td>
-          <td><a href="/gadget/hydra" target="_blank">Hydra</a></td>
-      </tr>
-      <tr>
-          <td>2</td>
-          <td><a href="/mozi/" target="_blank">墨子</a></td>
-      </tr>
-      <tr>
-          <td>3</td>
-          <td><a href="/gadget/how-old-are-you" target="_blank">年龄可视化</a></td>
-      </tr>
-      <tr>
-          <td>4</td>
-          <td><a href="/gadget/piano" target="_blank">Piano</a></td>
-      </tr>
-      <tr>
-          <td>5</td>
-          <td><a href="/flockn-roll/" target="_blank">Flock&rsquo;n Roll</a></td>
-      </tr>
-      <tr>
-          <td>6</td>
-          <td><a href="/monaco-speech-editor/" target="_blank">Monaco Speech Editor</a></td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>#</th>
+					<th>name</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td><a href="/gadget/hydra" target="_blank">Hydra</a></td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td><a href="/mozi/" target="_blank">墨子</a></td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td><a href="/gadget/how-old-are-you" target="_blank">年龄可视化</a></td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td><a href="/gadget/piano" target="_blank">Piano</a></td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td><a href="/flockn-roll/" target="_blank">Flock&rsquo;n Roll</a></td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td><a href="/projects/monaco_speech_editor/" target="_blank">Monaco Speech Editor</a></td>
+			</tr>
+	</tbody>
 </table>
 
         
@@ -699,7 +699,7 @@ $$\mathbf{g} \leftarrow \min\left(1, \frac{\theta}{\|\mathbf{g}\|}\right) \mathb
 </center>
 <br>
 <h4 id="16-门控循环单元">1.6 门控循环单元</h4>
-<p>”门控循环单元与普通的循环神经网络之间的关键区别在于： 前者支持隐状态的门控。 这意味着模型有专门的机制来确定应该何时更新隐状态， 以及应该何时重置隐状态。 这些机制是可学习的。“</p>
+<p>“门控循环单元与普通的循环神经网络之间的关键区别在于：前者支持隐状态的门控。这意味着模型有专门的机制来确定应该何时更新隐状态，以及应该何时重置隐状态。这些机制是可学习的。”</p>
 <p><img src="/img/gru_flow.svg" alt="image"></p>
 <p>为了解决长期记忆依赖的问题，使用两个门和一个候选隐状态：</p>
 <ul>
@@ -752,8 +752,8 @@ $$\begin{aligned}
 <h4 id="22-编码器-解码器架构">2.2 编码器-解码器架构</h4>
 <p>从不定长序列到不定长序列：</p>
 <ul>
-<li>编码器（encoder）： 它接受一个长度可变的序列作为输入，并将其转换为具有固定形状的编码状态。</li>
-<li>解码器（decoder）： 它将固定形状的编码状态映射到长度可变的序列。</li>
+<li>编码器（encoder）：它接受一个长度可变的序列作为输入，并将其转换为具有固定形状的编码状态。</li>
+<li>解码器（decoder）：它将固定形状的编码状态映射到长度可变的序列。</li>
 </ul>
 <br>
 <center>
@@ -813,7 +813,7 @@ $$\begin{aligned}
 </center>
 <br>
 <h4 id="28-多头注意力">2.8 多头注意力</h4>
-<p>为了使用多个注意力汇聚，多头注意力块用 h 组不同的线性投影 (linear projections) 来变换查询、键和值。然后用变换后的 QKV 将并行地进行注意力汇聚。最后，将 h 个注意力汇聚的输出 concat 在一起，并通过另一个可以学习的线性投影 (逐位前馈网络, FFN) 进行变换，以产生最终输出。</p>
+<p>为了使用多个注意力汇聚，多头注意力块用 h 组不同的线性投影 (linear projections) 来变换查询、键和值。然后用变换后的 QKV 将并行地进行注意力汇聚。最后，将 h 个注意力汇聚的输出 concat 在一起，并通过另一个可以学习的线性投影 (逐位前馈网络，FFN) 进行变换，以产生最终输出。</p>
 <p><img src="/img/multi_head_flow.svg" alt="image"></p>
 <br>
 <center>
@@ -924,7 +924,7 @@ $$\begin{aligned}
 
 </div>
     
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-mml-chtml.js" defer></script>
 
 
 <script defer src="https://kit.fontawesome.com/2134995a39.js" crossorigin="anonymous"></script>

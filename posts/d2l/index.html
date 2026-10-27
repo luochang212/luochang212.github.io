@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.159.2">
+<meta name="generator" content="Hugo 0.168.0">
 
     
     
@@ -29,24 +29,24 @@
 
 
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://www.luochang.ink/images/og-default.jpg">
-  <meta name="twitter:title" content="深度学习笔记">
-  <meta name="twitter:description" content="我踏马记记记">
-      <meta name="twitter:site" content="@_stellar_tide">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://www.luochang.ink/images/og-default.jpg">
+	<meta name="twitter:title" content="深度学习笔记">
+	<meta name="twitter:description" content="我踏马记记记">
+			<meta name="twitter:site" content="@_stellar_tide">
 
 <meta property="og:url" content="https://www.luochang.ink/posts/d2l/">
-  <meta property="og:site_name" content="Chang Luo">
-  <meta property="og:title" content="深度学习笔记">
-  <meta property="og:description" content="我踏马记记记">
-  <meta property="og:locale" content="zh_CN">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2023-11-11T00:00:00+00:00">
-    <meta property="article:modified_time" content="2023-11-11T00:00:00+00:00">
-    <meta property="article:tag" content="Python">
-    <meta property="article:tag" content="Note">
-    <meta property="og:image" content="https://www.luochang.ink/images/og-default.jpg">
+	<meta property="og:site_name" content="Chang Luo">
+	<meta property="og:title" content="深度学习笔记">
+	<meta property="og:description" content="我踏马记记记">
+	<meta property="og:locale" content="zh_CN">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2023-11-11T00:00:00+00:00">
+		<meta property="article:modified_time" content="2023-11-11T00:00:00+00:00">
+		<meta property="article:tag" content="Python">
+		<meta property="article:tag" content="Note">
+		<meta property="og:image" content="https://www.luochang.ink/images/og-default.jpg">
 
 
     
@@ -344,38 +344,38 @@
         
           <br>
 <table>
-  <thead>
-      <tr>
-          <th>#</th>
-          <th>name</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>1</td>
-          <td><a href="/gadget/hydra" target="_blank">Hydra</a></td>
-      </tr>
-      <tr>
-          <td>2</td>
-          <td><a href="/mozi/" target="_blank">墨子</a></td>
-      </tr>
-      <tr>
-          <td>3</td>
-          <td><a href="/gadget/how-old-are-you" target="_blank">年龄可视化</a></td>
-      </tr>
-      <tr>
-          <td>4</td>
-          <td><a href="/gadget/piano" target="_blank">Piano</a></td>
-      </tr>
-      <tr>
-          <td>5</td>
-          <td><a href="/flockn-roll/" target="_blank">Flock&rsquo;n Roll</a></td>
-      </tr>
-      <tr>
-          <td>6</td>
-          <td><a href="/monaco-speech-editor/" target="_blank">Monaco Speech Editor</a></td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>#</th>
+					<th>name</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td><a href="/gadget/hydra" target="_blank">Hydra</a></td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td><a href="/mozi/" target="_blank">墨子</a></td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td><a href="/gadget/how-old-are-you" target="_blank">年龄可视化</a></td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td><a href="/gadget/piano" target="_blank">Piano</a></td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td><a href="/flockn-roll/" target="_blank">Flock&rsquo;n Roll</a></td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td><a href="/projects/monaco_speech_editor/" target="_blank">Monaco Speech Editor</a></td>
+			</tr>
+	</tbody>
 </table>
 
         
@@ -624,7 +624,7 @@
     
     
     <br/>
-    <i class="fas fa-clock"></i> 5 min read
+    <i class="fas fa-clock"></i> 6 min read
 </div>
 
 
@@ -973,65 +973,65 @@ flowchart TD
 <h4 id="4-alexnet架构">4. AlexNet架构</h4>
 <p>1）第一个卷积层和池化层的区别</p>
 <table>
-  <thead>
-      <tr>
-          <th>AlexNet</th>
-          <th>LeNet</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>image (\( 3 \times 224 \times 224 \))</td>
-          <td>image (\( 32 \times 32 \))</td>
-      </tr>
-      <tr>
-          <td>11*11 Conv(96), stride 4</td>
-          <td>5*5 Conv(6), pad 2</td>
-      </tr>
-      <tr>
-          <td>3*3 MaxPool, stride 2</td>
-          <td>2*2 AvgPool, stride 2</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>AlexNet</th>
+					<th>LeNet</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>image (\( 3 \times 224 \times 224 \))</td>
+					<td>image (\( 32 \times 32 \))</td>
+			</tr>
+			<tr>
+					<td>11*11 Conv(96), stride 4</td>
+					<td>5*5 Conv(6), pad 2</td>
+			</tr>
+			<tr>
+					<td>3*3 MaxPool, stride 2</td>
+					<td>2*2 AvgPool, stride 2</td>
+			</tr>
+	</tbody>
 </table>
 <ul>
-<li>卷积：更大的窗口，更大的通道数，更大的步幅</li>
+<li>卷积：更大的窗口、更大的通道数、更大的步幅</li>
 <li>池化：更大的窗口且stride不变（对位置更不敏感），使用MaxPool</li>
 </ul>
 <p>2）接下来</p>
 <table>
-  <thead>
-      <tr>
-          <th>AlexNet</th>
-          <th>LeNet</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>5*5 Conv(256), pad 2</td>
-          <td>5*5 Conv()</td>
-      </tr>
-      <tr>
-          <td>3*3 MaxPool, stride 2</td>
-          <td>2*2 AvgPool, stride 2</td>
-      </tr>
-      <tr>
-          <td>3*3 Conv(384), pad 1</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>3*3 Conv(384), pad 1</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>3*3 Conv(384), pad 1</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>3*3 MaxPool, stride 2</td>
-          <td></td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>AlexNet</th>
+					<th>LeNet</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>5*5 Conv(256), pad 2</td>
+					<td>5*5 Conv()</td>
+			</tr>
+			<tr>
+					<td>3*3 MaxPool, stride 2</td>
+					<td>2*2 AvgPool, stride 2</td>
+			</tr>
+			<tr>
+					<td>3*3 Conv(384), pad 1</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>3*3 Conv(384), pad 1</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>3*3 Conv(384), pad 1</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>3*3 MaxPool, stride 2</td>
+					<td></td>
+			</tr>
+	</tbody>
 </table>
 <ul>
 <li>新增了3层卷积层</li>
@@ -1039,26 +1039,26 @@ flowchart TD
 </ul>
 <p>3）全连接层</p>
 <table>
-  <thead>
-      <tr>
-          <th>AlexNet</th>
-          <th>LeNet</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Dense(4096)</td>
-          <td>Dense(120)</td>
-      </tr>
-      <tr>
-          <td>Dense(4096)</td>
-          <td>Dense(84)</td>
-      </tr>
-      <tr>
-          <td>Dense(1000)</td>
-          <td>Dense(10)</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>AlexNet</th>
+					<th>LeNet</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Dense(4096)</td>
+					<td>Dense(120)</td>
+			</tr>
+			<tr>
+					<td>Dense(4096)</td>
+					<td>Dense(84)</td>
+			</tr>
+			<tr>
+					<td>Dense(1000)</td>
+					<td>Dense(10)</td>
+			</tr>
+	</tbody>
 </table>
 <ul>
 <li>隐藏层大小：120 \( \to \) 4096</li>
@@ -1145,7 +1145,7 @@ flowchart TD
 
 </div>
     
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-mml-chtml.js" defer></script>
 
 
 <script defer src="https://kit.fontawesome.com/2134995a39.js" crossorigin="anonymous"></script>

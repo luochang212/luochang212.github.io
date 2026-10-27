@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.159.2">
+<meta name="generator" content="Hugo 0.168.0">
 
     
     
@@ -29,24 +29,24 @@
 
 
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://www.luochang.ink/images/og-default.jpg">
-  <meta name="twitter:title" content="树莓派 5 装机指南">
-  <meta name="twitter:description" content="树莓派 5 安装 Ubuntu 23.10 的踩坑记录">
-      <meta name="twitter:site" content="@_stellar_tide">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://www.luochang.ink/images/og-default.jpg">
+	<meta name="twitter:title" content="树莓派 5 装机指南">
+	<meta name="twitter:description" content="树莓派 5 安装 Ubuntu 23.10 的踩坑记录">
+			<meta name="twitter:site" content="@_stellar_tide">
 
 <meta property="og:url" content="https://www.luochang.ink/posts/raspberry_pi_5/">
-  <meta property="og:site_name" content="Chang Luo">
-  <meta property="og:title" content="树莓派 5 装机指南">
-  <meta property="og:description" content="树莓派 5 安装 Ubuntu 23.10 的踩坑记录">
-  <meta property="og:locale" content="zh_CN">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-02-24T00:00:00+00:00">
-    <meta property="article:modified_time" content="2024-02-24T00:00:00+00:00">
-    <meta property="article:tag" content="Raspberry Pi 5">
-    <meta property="article:tag" content="Ubuntu">
-    <meta property="og:image" content="https://www.luochang.ink/images/og-default.jpg">
+	<meta property="og:site_name" content="Chang Luo">
+	<meta property="og:title" content="树莓派 5 装机指南">
+	<meta property="og:description" content="树莓派 5 安装 Ubuntu 23.10 的踩坑记录">
+	<meta property="og:locale" content="zh_CN">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2024-02-24T00:00:00+00:00">
+		<meta property="article:modified_time" content="2024-02-24T00:00:00+00:00">
+		<meta property="article:tag" content="Raspberry Pi 5">
+		<meta property="article:tag" content="Ubuntu">
+		<meta property="og:image" content="https://www.luochang.ink/images/og-default.jpg">
 
 
     
@@ -344,38 +344,38 @@
         
           <br>
 <table>
-  <thead>
-      <tr>
-          <th>#</th>
-          <th>name</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>1</td>
-          <td><a href="/gadget/hydra" target="_blank">Hydra</a></td>
-      </tr>
-      <tr>
-          <td>2</td>
-          <td><a href="/mozi/" target="_blank">墨子</a></td>
-      </tr>
-      <tr>
-          <td>3</td>
-          <td><a href="/gadget/how-old-are-you" target="_blank">年龄可视化</a></td>
-      </tr>
-      <tr>
-          <td>4</td>
-          <td><a href="/gadget/piano" target="_blank">Piano</a></td>
-      </tr>
-      <tr>
-          <td>5</td>
-          <td><a href="/flockn-roll/" target="_blank">Flock&rsquo;n Roll</a></td>
-      </tr>
-      <tr>
-          <td>6</td>
-          <td><a href="/monaco-speech-editor/" target="_blank">Monaco Speech Editor</a></td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>#</th>
+					<th>name</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td><a href="/gadget/hydra" target="_blank">Hydra</a></td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td><a href="/mozi/" target="_blank">墨子</a></td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td><a href="/gadget/how-old-are-you" target="_blank">年龄可视化</a></td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td><a href="/gadget/piano" target="_blank">Piano</a></td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td><a href="/flockn-roll/" target="_blank">Flock&rsquo;n Roll</a></td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td><a href="/projects/monaco_speech_editor/" target="_blank">Monaco Speech Editor</a></td>
+			</tr>
+	</tbody>
 </table>
 
         
@@ -777,7 +777,7 @@ conda activate  # 启动 miniforge
 <pre tabindex="0"><code>cat ~/.ssh/id_ed25519.pub
 </code></pre><p><strong>RSA 算法</strong></p>
 <pre tabindex="0"><code>cat ~/.ssh/id_rsa.pub
-</code></pre><p>如果返回一长串以 ssh-ed25519 或 ssh-rsa 开头的字符串, 说明已存在本地公钥，你可以跳过步骤二生成 SSH 密钥，直接操作步骤三。</p>
+</code></pre><p>如果返回一长串以 ssh-ed25519 或 ssh-rsa 开头的字符串，说明已存在本地公钥，你可以跳过步骤二生成 SSH 密钥，直接操作步骤三。</p>
 <p>② 生成 SSH 密钥</p>
 <p>若步骤一未返回指定内容字符串，表示本地暂无可用 SSH 密钥，需要生成新的 SSH 密钥，请按如下步骤操作：</p>
 <p>1.访问终端（ Windows 请使用 <code>WSL</code> 或 <code>Git Bash</code>），运行 <code>ssh-keygen -t</code>。</p>
@@ -848,60 +848,60 @@ code-server --host 0.0.0.0 --port 7635
 </code></pre><p>PS: 本教程来自 <a href="https://github.com/luochang212/mcp-project/blob/main/install_code_server.ipynb">luochang212/mcp-project</a>.</p>
 <h3 id="六软件推荐">六、软件推荐</h3>
 <table>
-  <thead>
-      <tr>
-          <th>软件名</th>
-          <th>用途</th>
-          <th>下载方式</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Firefox</td>
-          <td>浏览器</td>
-          <td>官方自带的 App Center</td>
-      </tr>
-      <tr>
-          <td>Chromium</td>
-          <td>浏览器</td>
-          <td>官方自带的 App Center</td>
-      </tr>
-      <tr>
-          <td>VSCode</td>
-          <td>代码编辑器</td>
-          <td><a href="https://code.visualstudio.com/Download" target="_blank">visualstudio</a> 官网</td>
-      </tr>
-      <tr>
-          <td>Sublime</td>
-          <td>代码编辑器</td>
-          <td>官方自带的 App Center</td>
-      </tr>
-      <tr>
-          <td>IntelliJ IDEA</td>
-          <td>代码编辑器</td>
-          <td><a href="https://www.jetbrains.com/idea/download" target="_blank">jetbrains</a> 官网</td>
-      </tr>
-      <tr>
-          <td>Alacritty</td>
-          <td>Terminal</td>
-          <td><code>sudo apt install alacritty</code></td>
-      </tr>
-      <tr>
-          <td>VLC</td>
-          <td>视频播放器</td>
-          <td><code>sudo apt install vlc</code></td>
-      </tr>
-      <tr>
-          <td>UFW</td>
-          <td>防火墙</td>
-          <td>官方自带的 App Center</td>
-      </tr>
-      <tr>
-          <td>cmatrix</td>
-          <td>黑客帝国风格的“数字雨”</td>
-          <td><code>sudo apt install cmatrix</code></td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>软件名</th>
+					<th>用途</th>
+					<th>下载方式</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Firefox</td>
+					<td>浏览器</td>
+					<td>官方自带的 App Center</td>
+			</tr>
+			<tr>
+					<td>Chromium</td>
+					<td>浏览器</td>
+					<td>官方自带的 App Center</td>
+			</tr>
+			<tr>
+					<td>VSCode</td>
+					<td>代码编辑器</td>
+					<td><a href="https://code.visualstudio.com/Download" target="_blank">visualstudio</a> 官网</td>
+			</tr>
+			<tr>
+					<td>Sublime</td>
+					<td>代码编辑器</td>
+					<td>官方自带的 App Center</td>
+			</tr>
+			<tr>
+					<td>IntelliJ IDEA</td>
+					<td>代码编辑器</td>
+					<td><a href="https://www.jetbrains.com/idea/download" target="_blank">jetbrains</a> 官网</td>
+			</tr>
+			<tr>
+					<td>Alacritty</td>
+					<td>Terminal</td>
+					<td><code>sudo apt install alacritty</code></td>
+			</tr>
+			<tr>
+					<td>VLC</td>
+					<td>视频播放器</td>
+					<td><code>sudo apt install vlc</code></td>
+			</tr>
+			<tr>
+					<td>UFW</td>
+					<td>防火墙</td>
+					<td>官方自带的 App Center</td>
+			</tr>
+			<tr>
+					<td>cmatrix</td>
+					<td>黑客帝国风格的“数字雨”</td>
+					<td><code>sudo apt install cmatrix</code></td>
+			</tr>
+	</tbody>
 </table>
 <h3 id="七物料清单">七、物料清单</h3>
 <ul>
@@ -1002,7 +1002,7 @@ code-server --host 0.0.0.0 --port 7635
 
 </div>
     
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-mml-chtml.js" defer></script>
 
 
 <script defer src="https://kit.fontawesome.com/2134995a39.js" crossorigin="anonymous"></script>

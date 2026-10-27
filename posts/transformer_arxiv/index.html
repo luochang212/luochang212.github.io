@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.159.2">
+<meta name="generator" content="Hugo 0.168.0">
 
     
     
@@ -29,24 +29,24 @@
 
 
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://www.luochang.ink/images/og-default.jpg">
-  <meta name="twitter:title" content="Attention Is All You Need 论文精读">
-  <meta name="twitter:description" content="注意力机制是个挺 fancy 的词，起一个 fancy 的名字也是学术能力的一环">
-      <meta name="twitter:site" content="@_stellar_tide">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://www.luochang.ink/images/og-default.jpg">
+	<meta name="twitter:title" content="Attention Is All You Need 论文精读">
+	<meta name="twitter:description" content="注意力机制是个挺 fancy 的词，起一个 fancy 的名字也是学术能力的一环">
+			<meta name="twitter:site" content="@_stellar_tide">
 
 <meta property="og:url" content="https://www.luochang.ink/posts/transformer_arxiv/">
-  <meta property="og:site_name" content="Chang Luo">
-  <meta property="og:title" content="Attention Is All You Need 论文精读">
-  <meta property="og:description" content="注意力机制是个挺 fancy 的词，起一个 fancy 的名字也是学术能力的一环">
-  <meta property="og:locale" content="zh_CN">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-06-16T00:00:00+00:00">
-    <meta property="article:modified_time" content="2024-06-16T00:00:00+00:00">
-    <meta property="article:tag" content="Arxiv">
-    <meta property="article:tag" content="Transformer">
-    <meta property="og:image" content="https://www.luochang.ink/images/og-default.jpg">
+	<meta property="og:site_name" content="Chang Luo">
+	<meta property="og:title" content="Attention Is All You Need 论文精读">
+	<meta property="og:description" content="注意力机制是个挺 fancy 的词，起一个 fancy 的名字也是学术能力的一环">
+	<meta property="og:locale" content="zh_CN">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2024-06-16T00:00:00+00:00">
+		<meta property="article:modified_time" content="2024-06-16T00:00:00+00:00">
+		<meta property="article:tag" content="Arxiv">
+		<meta property="article:tag" content="Transformer">
+		<meta property="og:image" content="https://www.luochang.ink/images/og-default.jpg">
 
 
     
@@ -344,38 +344,38 @@
         
           <br>
 <table>
-  <thead>
-      <tr>
-          <th>#</th>
-          <th>name</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>1</td>
-          <td><a href="/gadget/hydra" target="_blank">Hydra</a></td>
-      </tr>
-      <tr>
-          <td>2</td>
-          <td><a href="/mozi/" target="_blank">墨子</a></td>
-      </tr>
-      <tr>
-          <td>3</td>
-          <td><a href="/gadget/how-old-are-you" target="_blank">年龄可视化</a></td>
-      </tr>
-      <tr>
-          <td>4</td>
-          <td><a href="/gadget/piano" target="_blank">Piano</a></td>
-      </tr>
-      <tr>
-          <td>5</td>
-          <td><a href="/flockn-roll/" target="_blank">Flock&rsquo;n Roll</a></td>
-      </tr>
-      <tr>
-          <td>6</td>
-          <td><a href="/monaco-speech-editor/" target="_blank">Monaco Speech Editor</a></td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>#</th>
+					<th>name</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td><a href="/gadget/hydra" target="_blank">Hydra</a></td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td><a href="/mozi/" target="_blank">墨子</a></td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td><a href="/gadget/how-old-are-you" target="_blank">年龄可视化</a></td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td><a href="/gadget/piano" target="_blank">Piano</a></td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td><a href="/flockn-roll/" target="_blank">Flock&rsquo;n Roll</a></td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td><a href="/projects/monaco_speech_editor/" target="_blank">Monaco Speech Editor</a></td>
+			</tr>
+	</tbody>
 </table>
 
         
@@ -661,7 +661,7 @@
 <p>在我们的认知里，Transformer 是首个基于自注意机制计算输入输出的表征，且不使用序列对齐的 RNN 或 CNN 的 seq2seq 模型。接下来的章节，我们将阐述使用自注意力的原因，并探讨为什么它比 Neural GPU, ByteNet 和 ConvS2S 这类模型更好。</p>
 <h3 id="3-模型架构">3. 模型架构</h3>
 <p><img src="/img/ModalNet-21.png" alt="图一"></p>
-<p>大多数有竞争力的神经网络序列转换模型都有编码器-解码器结构。这里，编码器将输入序列中词元的表征 \( (x_1, ..., x_n) \) 映射到一个连续的表征序列 \( \mathbf{z} = (z_1, ..., z_n) \). 对于给定的 \( \mathbf{z} \)，解码器输出一个序列 \( (y_1, ..., y_m) \)，每次只输出一个元素。每次迭代，模型都在做自回归。它将上一轮生成的词元作为输入，用于生成下一个的词元。</p>
+<p>大多数有竞争力的神经网络序列转换模型都有编码器-解码器结构。这里，编码器将输入序列中词元的表征 \( (x_1, ..., x_n) \) 映射到一个连续的表征序列 \( \mathbf{z} = (z_1, ..., z_n) \)。对于给定的 \( \mathbf{z} \)，解码器输出一个序列 \( (y_1, ..., y_m) \)，每次只输出一个元素。每次迭代，模型都在做自回归。它将上一轮生成的词元作为输入，用于生成下一个的词元。</p>
 <p>Transformer 遵循这种整体架构，分别在编码器和解码器中使用堆叠的自注意力和逐点的全连接层，如上图左右两边所示。</p>
 <h4 id="31-编码器和解码器">3.1 编码器和解码器</h4>
 <p><strong>编码器：</strong></p>
@@ -747,7 +747,7 @@ $$\operatorname{Attention}(Q, K, V)=\operatorname{softmax}\left(\frac{Q K^T}{d_k
 
 </div>
     
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-mml-chtml.js" defer></script>
 
 
 <script defer src="https://kit.fontawesome.com/2134995a39.js" crossorigin="anonymous"></script>
