@@ -33,16 +33,13 @@ function closeNav() {
   sidebarTrigger.focus()
 }
 
-// 关闭时必须停掉媒体，否则音视频会在后台继续播放。
+// 关闭抽屉时必须停掉媒体，否则音视频会在后台继续播放。
+// 在 tab 之间切走 Video 时也要停视频：iframe 被隐藏但继续出声是反直觉的；
+// 音乐则保留跨 tab 播放（后台听歌是常见用法）。
 // 音乐 iframe 把当前地址写回 data-src，下次打开由 loadPanel 续载；
 // 视频 iframe 清空并恢复封面态，重新点封面才会再播。
 // Resources/Gallery 是普通页面，保留状态不动。
-function stopMediaPlayback() {
-  var musicFrame = document.querySelector('#netease-player iframe')
-  if (musicFrame && !musicFrame.hasAttribute('data-src') && musicFrame.src !== 'about:blank') {
-    musicFrame.setAttribute('data-src', musicFrame.src)
-    musicFrame.src = 'about:blank'
-  }
+function stopVideoPlayback() {
   var cover = document.getElementById('video-cover')
   var frameEl = document.getElementById('video-frame')
   var videoIframe = frameEl ? frameEl.querySelector('iframe') : null
@@ -53,6 +50,15 @@ function stopMediaPlayback() {
     frameEl.hidden = true
     cover.style.display = ''
   }
+}
+
+function stopMediaPlayback() {
+  var musicFrame = document.querySelector('#netease-player iframe')
+  if (musicFrame && !musicFrame.hasAttribute('data-src') && musicFrame.src !== 'about:blank') {
+    musicFrame.setAttribute('data-src', musicFrame.src)
+    musicFrame.src = 'about:blank'
+  }
+  stopVideoPlayback()
 }
 
 function openItem(evt, itemName) {
@@ -67,6 +73,9 @@ function openItem(evt, itemName) {
     tablinks[i].setAttribute('aria-pressed', 'false')
   }
   document.getElementById(itemName).hidden = false
+  if (itemName !== 'video-player') {
+    stopVideoPlayback()
+  }
   evt.currentTarget.className += ' active'
   evt.currentTarget.setAttribute('aria-pressed', 'true')
   loadPanel(document.getElementById(itemName))

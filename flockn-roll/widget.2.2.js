@@ -205,8 +205,8 @@ exports.sliderElement = function(d,i) {
 		.attr("x1", d.X.range()[0]).attr("x2", d.X.range()[1])
 		.style("stroke-width", 2* d.handleSize())
 		.call(d3.drag()
-			.on("start drag", function() {
-				var value = d.X.invert(d3.event.x);
+			.on("start drag", function(event) {
+				var value = d.X.invert(event.x);
 				d3.selectAll("#handle_" + d.id()).attr("cx", d.X(value))
 				d.parameter().value = value;
 				d.update(d);
@@ -289,7 +289,7 @@ exports.radioElement = function(d,i){
 	}
 	
 	background
-		.on("mouseover",function(x,j){
+		.on("mouseover",function(_event,_datum,j){
 			d3.select("#radiobutton_"+d.id() + "_" +j).select(".radiobutton-off")
 			.attr("class","radiobutton-hover")
 
@@ -297,7 +297,7 @@ exports.radioElement = function(d,i){
 		.on("mouseout",function(){
 				led.attr("class",function(x,j){return j==d.value() ? "radiobutton-on" : "radiobutton-off"})
 		})
-		.on("click",function(x,j){
+		.on("click",function(_event,_datum,j){
 			d.parameter().value=j;
 			led.attr("class",function(z,k){return k==d.value() ? "radiobutton-on" : "radiobutton-off"})
 			d.update(d);

@@ -27,34 +27,70 @@ re.toString = function() {
     return '';
 };
 
-$(document).on('copy', function (){
+document.addEventListener('copy', function (){
     showMessage('你都复制了些什么呀，转载要记得加上出处哦~~', 5000);
 });
 
-function initTips(){
-    $.ajax({
-        cache: true,
-        url: `${message_Path}message.json`,
-        dataType: "json",
-        success: function (result){
-            $.each(result.mouseover, function (index, tips){
-                $(tips.selector).mouseover(function (){
-                    var text = tips.text;
-                    if(Array.isArray(tips.text)) text = tips.text[Math.floor(Math.random() * tips.text.length + 1)-1];
-                    text = text.renderTip({text: $(this).text()});
-                    showMessage(text, 3000);
-                });
-            });
-            $.each(result.click, function (index, tips){
-                $(tips.selector).click(function (){
-                    var text = tips.text;
-                    if(Array.isArray(tips.text)) text = tips.text[Math.floor(Math.random() * tips.text.length + 1)-1];
-                    text = text.renderTip({text: $(this).text()});
-                    showMessage(text, 3000);
-                });
-            });
+// —— 原生动画工具（替代 jQuery 的 fadeTo / fadeIn / fadeOut / stop / delay）——
+// 对某个元素的动画互相打断：进入新动画前取消旧 requestAnimationFrame 和延迟定时器
+function _fade(el, to, duration, done) {
+    if (el._fadeRaf) cancelAnimationFrame(el._fadeRaf);
+    if (el._fadeTimer) { clearTimeout(el._fadeTimer); el._fadeTimer = null; }
+    var from = parseFloat(getComputedStyle(el).opacity);
+    var start = null;
+    function step(ts) {
+        if (start === null) start = ts;
+        var p = duration <= 0 ? 1 : Math.min((ts - start) / duration, 1);
+        el.style.opacity = from + (to - from) * p;
+        if (p < 1) {
+            el._fadeRaf = requestAnimationFrame(step);
+        } else {
+            el._fadeRaf = null;
+            if (done) done();
         }
-    });
+    }
+    el._fadeRaf = requestAnimationFrame(step);
+}
+
+// jQuery fadeIn/fadeOut 的原生等价：display 切换 + 透明度过渡
+function _showHide(el, show, duration) {
+    if (el._fadeRaf) cancelAnimationFrame(el._fadeRaf);
+    if (show) {
+        el.style.display = 'block';
+        el.style.opacity = 0;
+        void el.offsetWidth; // 强制 reflow，让过渡生效
+        _fade(el, 1, duration);
+    } else {
+        _fade(el, 0, duration, function () { el.style.display = 'none'; });
+    }
+}
+
+function initTips(){
+    fetch(`${message_Path}message.json`, { cache: 'default' })
+        .then(function (r) { return r.json(); })
+        .then(function (result){
+            result.mouseover.forEach(function (tips){
+                document.querySelectorAll(tips.selector).forEach(function (el){
+                    el.addEventListener('mouseover', function (){
+                        var text = tips.text;
+                        if(Array.isArray(tips.text)) text = tips.text[Math.floor(Math.random() * tips.text.length + 1)-1];
+                        text = text.renderTip({text: el.textContent});
+                        showMessage(text, 3000);
+                    });
+                });
+            });
+            result.click.forEach(function (tips){
+                document.querySelectorAll(tips.selector).forEach(function (el){
+                    el.addEventListener('click', function (){
+                        var text = tips.text;
+                        if(Array.isArray(tips.text)) text = tips.text[Math.floor(Math.random() * tips.text.length + 1)-1];
+                        text = text.renderTip({text: el.textContent});
+                        showMessage(text, 3000);
+                    });
+                });
+            });
+        })
+        .catch(function (){}); // 加载失败静默，与原 jQuery 版 success-only 行为一致
 }
 initTips();
 
@@ -112,31 +148,39 @@ initTips();
 
 function showMessage(text, timeout){
     if(Array.isArray(text)) text = text[Math.floor(Math.random() * text.length + 1)-1];
-    //console.log('showMessage', text);
-    $('.message').stop();
-    $('.message').html(text).fadeTo(200, 1);
+    var msg = document.querySelector('.message');
+    msg.innerHTML = text;
     if (timeout === null) timeout = 5000;
     hideMessage(timeout);
 }
 
 function hideMessage(timeout){
-    $('.message').stop().css('opacity',1);
+    var msg = document.querySelector('.message');
+    // 等价于原 .stop().css('opacity',1)：打断进行中的淡入淡出，直接满透明度显示
+    if (msg._fadeRaf) cancelAnimationFrame(msg._fadeRaf);
+    if (msg._fadeTimer) { clearTimeout(msg._fadeTimer); msg._fadeTimer = null; }
+    msg.style.opacity = 1;
     if (timeout === null) timeout = 5000;
-    $('.message').delay(timeout).fadeTo(200, 0);
+    msg._fadeTimer = setTimeout(function(){ _fade(msg, 0, 200); }, timeout);
 }
 
 function initLive2d (){
-    $('.hide-button').fadeOut(0).on('click', () => {
-        $('#landlord').css('display', 'none')
-    })
-    $('#landlord').hover(() => {
-        $('.hide-button').fadeIn(600)
-    }, () => {
-        $('.hide-button').fadeOut(600)
-    })
+    var hideBtn = document.querySelector('.hide-button');
+    var landlord = document.getElementById('landlord');
+    hideBtn.style.display = 'none'; // 等价原 .fadeOut(0)
+    hideBtn.addEventListener('click', function () {
+        landlord.style.display = 'none';
+    });
+    landlord.addEventListener('mouseenter', function () {
+        _showHide(hideBtn, true, 600);
+    });
+    landlord.addEventListener('mouseleave', function () {
+        _showHide(hideBtn, false, 600);
+    });
     var click_number = 0;
-    $( "#live2d" ).click(function() {
+    document.getElementById('live2d').addEventListener('click', function() {
         click_number = click_number + 1;
+        var textArray;
         if (click_number <= 8) {
             textArray = ["不要动手动脚的！快把手拿开~~", "真…真的是不知羞耻！","Hentai！", "再摸的话我可要报警了！⌇●﹏●⌇", "110吗，这里有个变态一直在摸我(ó﹏ò｡)","人家已经不是小孩子了！", "哎呀！别碰我！"];
         } else {
